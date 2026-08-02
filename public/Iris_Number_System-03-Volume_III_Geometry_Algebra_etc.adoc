@@ -99,6 +99,65 @@ In \( Cl ( 4 , 1 , 1 ) \), the state of solid and fluid media (stress, strain ra
 . **Algebraic Invertibility**: Unlike tensor differential equations requiring index-based matrix inversions, \( Cl ( 4 , 1 , 1 ) \) multivector differential operators possess direct algebraic inverses \( D ^ { - 1 } \) via green multivector kernels on grid \( \mathcal { G } _ N \), providing exact, closed-form solutions to statics, fluid dynamics, and electromagnetic boundary problems without coordinate system dependencies. \( \square \)
 ====
 
+[#example-solid-mechanics-statics]
+[EXAMPLE]
+.Example Problem 1: Solid Elastic Media Statics and Stress-Strain Multivector Equilibrium
+====
+*Problem*: Consider a solid elastic medium on discrete grid \( \mathcal { G } _ N \) subjected to internal volume body forces \( \mathbf { f } \) and boundary surface tractions. Formulate the stress state and strain displacement field as coordinate-free multivectors in \( Cl(3,0) \), and derive the static equilibrium condition without tensor index notation.
+
+*Solution*:
+
+1. **Stress Bivector Representation**: Instead of a 3x3 symmetric matrix \( \sigma _ { i j } \), encode the Cauchy stress state as a dual bivector field \( \mathbf { T } _ 2 = \sigma _ { 2 3 } e _ 2 e _ 3 + \sigma _ { 3 1 } e _ 3 e _ 1 + \sigma _ { 1 2 } e _ 1 e _ 2 \). Surface traction vector \( \mathbf { t } _ n \) on a surface element with unit normal vector \( \mathbf { n } \) is computed directly via vector-bivector contraction: \( \mathbf { t } _ n = \mathbf { n } \cdot \mathbf { T } _ 2 \).
+
+2. **Multivector Strain Tensor Operator**: For a displacement vector field \( \mathbf { u } = u _ 1 e _ 1 + u _ 2 e _ 2 + u _ 3 e _ 3 \), the spatial derivative operator \( D = e _ 1 \frac { \partial } { \partial x _ 1 } + e _ 2 \frac { \partial } { \partial x _ 2 } + e _ 3 \frac { \partial } { \partial x _ 3 } \) acts on \( \mathbf { u } \) via geometric product \( D \mathbf { u } = D \cdot \mathbf { u } + D \wedge \mathbf { u } \).
+   - Scalar part \( D \cdot \mathbf { u } = \nabla \cdot \mathbf { u } \) represents volumetric dilation (trace of strain).
+   - Bivector part \( D \wedge \mathbf { u } = \nabla \wedge \mathbf { u } \) represents rotational shear and local rigid rotation.
+
+3. **Coordinate-Free Static Equilibrium**: The divergence of the stress bivector is the vector grade contraction \( D \cdot \mathbf { T } _ 2 \). Adding body force vector \( \mathbf { f } \), static equilibrium reduces to the single coordinate-free multivector equation:
+\[ D \cdot \mathbf { T } _ 2 + \mathbf { f } = \mathbf { 0 } \]
+Isotropic linear elasticity expresses stress directly as \( \mathbf { T } _ 2 = \lambda ( D \cdot \mathbf { u } ) I _ 3 + \mu ( D \wedge \mathbf { u } ) I _ 3 \), yielding Navier's displacement equilibrium equation \( ( \lambda + 2 \mu ) D ( D \cdot \mathbf { u } ) - \mu D \cdot ( D \wedge \mathbf { u } ) + \mathbf { f } = \mathbf { 0 } \) without components or index transformations.
+====
+
+[#example-fluid-dynamics-momentum]
+[EXAMPLE]
+.Example Problem 2: Viscous Fluid Dynamics and Multivector Navier-Stokes Conservation
+====
+*Problem*: Formulate mass conservation and dynamic momentum flux for a viscous fluid medium as a single multivector field equation in \( Cl(3,0) \).
+
+*Solution*:
+
+1. **Unified Fluid State Multivector**: Define the fluid state multivector \( \Phi = \rho \mathbf { 1 } _ { Cl } + \mathbf { p } + \mathbf { S } _ 2 \), where \( \rho \) is fluid density (scalar), \( \mathbf { p } = \rho \mathbf { v } \) is momentum density vector, and \( \mathbf { S } _ 2 \) is the viscous stress bivector.
+
+2. **Multivector Material Derivative**: The directional advective multivector operator is \( \mathcal { D } _ t = \frac { \partial } { \partial t } + \mathbf { v } \cdot D \).
+
+3. **Unified Conservation Equation**: Mass conservation (continuity) and dynamic momentum balance combine into the multivector equation:
+\[ \mathcal { D } _ t \Phi = D \cdot \mathbf { S } _ 2 - ( D p _ { \text { press } } ) \mathbf { 1 } _ { Cl } + \mathbf { f } _ { \text { ext } } \]
+Projecting onto orthogonal grade subspaces:
+   - **Grade-0 (Scalar Projection)**: \( \frac { \partial \rho } { \partial t } + D \cdot ( \rho \mathbf { v } ) = 0 \) (exact continuity equation).
+   - **Grade-1 (Vector Projection)**: \( \rho \left( \frac { \partial \mathbf { v } } { \partial t } + ( \mathbf { v } \cdot D ) \mathbf { v } \right) = - D p _ { \text { press } } + \mu D ^ 2 \mathbf { v } + \mathbf { f } _ { \text { ext } } \) (exact Navier-Stokes momentum equation).
+====
+
+[#example-electrodynamics-maxwell]
+[EXAMPLE]
+.Example Problem 3: Unified Electrodynamics and the Single Maxwell Multivector Equation
+====
+*Problem*: Express electrostatics, magnetostatics, and dynamic electromagnetic wave propagation for source charge-current distributions using a single coordinate-free multivector field equation.
+
+*Solution*:
+
+1. **Electromagnetic Field Bivector**: Combine electric field vector \( \mathbf { E } \) and magnetic field vector \( \mathbf { B } \) into the single multivector field \( F = \mathbf { E } + I _ 3 \mathbf { B } \in Cl(3,0) \), where \( I _ 3 = e _ 1 e _ 2 e _ 3 \) is the spatial pseudoscalar.
+
+2. **Unified Source Multivector**: Combine charge density \( \rho \) and current density vector \( \mathbf { j } \) into source multivector \( J = c \rho \mathbf { 1 } _ { Cl } - \mathbf { j } \).
+
+3. **Single Maxwell Multivector Equation**: With spacetime derivative operator \( D = \frac { 1 } { c } \frac { \partial } { \partial t } + \nabla \), all four Maxwell equations reduce to the single coordinate-free equation:
+\[ D F = J \]
+Taking the geometric product \( D F = ( D \cdot F ) + ( D \wedge F ) \) and equating grade components yields:
+   - Scalar grade: \( \nabla \cdot \mathbf { E } = c \rho \) (Gauss's law for electrostatics).
+   - Vector grade: \( - \frac { 1 } { c } \frac { \partial \mathbf { E } } { \partial t } + \nabla \times \mathbf { B } = \mathbf { j } \) (Ampère-Maxwell law).
+   - Pseudovector grade: \( \frac { 1 } { c } \frac { \partial \mathbf { B } } { \partial t } + \nabla \times \mathbf { E } = \mathbf { 0 } \) (Faraday's law of induction).
+   - Pseudoscalar grade: \( \nabla \cdot \mathbf { B } = 0 \) (Gauss's law for magnetostatics).
+====
+
 == Multivector Metric Spaces and Discrete Aperture Norms
 
 In this section, distance metrics and aperture norms are defined on finite discrete grids \( \mathcal { G } _ N \), establishing constructive completeness without uncountable infinite limits.
@@ -453,3 +512,9 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
 * xref:theorem-multivector-permutation-invariance[**Theorem: Multivector Permutation Group Invariance**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Multivector Permutations and Finite Grid Enumeration*
 * xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
+
+=== Examples
+
+* xref:example-solid-mechanics-statics[**Example: Solid Elastic Media Statics and Stress-Strain Multivector Equilibrium**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
+* xref:example-fluid-dynamics-momentum[**Example: Viscous Fluid Dynamics and Multivector Navier-Stokes Conservation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
+* xref:example-electrodynamics-maxwell[**Example: Unified Electrodynamics and the Single Maxwell Multivector Equation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
