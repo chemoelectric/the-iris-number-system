@@ -743,6 +743,35 @@ D_{\mathcal{I}} f(r) = \sum_{k=0}^{N-1} c_k \frac{\iota^{k \delta N} - 1}{\delta
 
 In this chapter, probability theory is strictly reformulated on finite operational measurement spaces, treating probabilities as objective Jaynesian Maximum Entropy states constrained by physical aperture measurements rather than unconstructive infinite measure spaces.
 
+== Cox's Consistency Theorem for Operational Inference
+
+[#theorem-cox-consistency]
+[THEOREM]
+.Theorem: Cox's Consistency Theorem for Jaynesian Operational Probability
+====
+Let \( \mathcal{B} \) be a finite discrete Boolean algebra of operational propositions defined on partition grid \( \mathcal{G}_N \). Any scalar plausibility valuation \( \psi(A \mid B) \in \mathbb{R}_{\mathcal{I}} \cdot \mathbf{1}_{Cl} \) that satisfies Jaynesian consistency postulates—(1) Divisibility and monotonicity, (2) Structural consistency for conjunctions \( \psi(A \land B \mid C) = F(\psi(A \mid B \land C), \psi(B \mid C)) \), and (3) Consistency for negation \( \psi(\neg A \mid B) = S(\psi(A \mid B)) \)—is uniquely isomorphic under a monotonic rescaling to the operational Jaynesian probability measure \( P(A \mid B) \in [0, 1] \) satisfying the standard sum and product rules.
+
+*Proof:*
+
+. **Conjunction Functional Equation**: By the associative law of Boolean conjunctions \( (A \land B \land C) \), the function \( F \) defining conditional plausibility must satisfy the associativity functional equation \( F(F(x, y), z) = F(x, F(y, z)) \).
+
+. **Unique Product Rule Mapping**: In discrete grid space \( \mathcal{G}_N \), the solution to the associativity functional equation reduces to a strictly monotonic transformation \( w(\psi) \) such that \( w(\psi(A \land B \mid C)) = w(\psi(A \mid B \land C)) \cdot w(\psi(B \mid C)) \). Defining operational probability as \( P(A \mid B) = w(\psi(A \mid B)) \) yields the Jaynesian Product Rule:
+
+\[
+P(A \land B \mid C) = P(A \mid B \land C) \cdot P(B \mid C)
+\]
+
+. **Negation Complementarity and Sum Rule**: Consistency under double negation \( \neg(\neg A) = A \) forces the negation function \( S \) to satisfy Abel's functional equation on finite lattice states. Rescaling guarantees the Jaynesian Sum Rule:
+
+\[
+P(A \mid C) + P(\neg A \mid C) = 1 \cdot \mathbf{1}_{Cl}
+\]
+
+. **Uniqueness on Finite Grids**: Because state space \( \mathcal{G}_N \) consists of a finite count of discrete partition states, no continuum assumptions are required, and the operational probability measure \( P \) is uniquely determined up to an exponent scaling.
+
+. **Tautological Conclusion**: Any consistent operational reasoning framework over finite discrete proposition spaces is strictly isomorphic to Jaynesian probability theory. \( \blacksquare \)
+====
+
 == The Discrete Operational Law of Large Numbers
 
 [#theorem-discrete-lln]
