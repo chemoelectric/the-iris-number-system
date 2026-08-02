@@ -91,6 +91,21 @@ const vol2 = parseAdocFile(
   "A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics"
 );
 
+const vol3 = parseAdocFile(
+  fs.existsSync("public/Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc")
+    ? "public/Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc"
+    : "public/Iris_Number_System_Geometry_Algebra_etc.adoc",
+  "textbook-iris-geometry-algebra",
+  "The Iris Number System",
+  "Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+  "Frédéric Blondel Custer",
+  "A Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
+);
+
+vol1.filename = "Iris_Number_System-01-Volume_I_Fundamentals.adoc";
+vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
+vol3.filename = "Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc";
+
 function generateFormalIndexChapterObj(chapters) {
   const entries = [];
   chapters.filter((c) => c.id !== "chap-index").forEach((chap) => {
@@ -179,6 +194,7 @@ function generateFormalIndexChapterObj(chapters) {
 
 vol1.chapters.push(generateFormalIndexChapterObj(vol1.chapters));
 vol2.chapters.push(generateFormalIndexChapterObj(vol2.chapters));
+vol3.chapters.push(generateFormalIndexChapterObj(vol3.chapters));
 
 const fileHeader = `import { TextbookChapter, Textbook } from "../types";
 
@@ -289,7 +305,9 @@ export const INITIAL_TEXTBOOK: Textbook = ${JSON.stringify(vol1, null, 2)};
 
 export const NUMBER_THEORY_TEXTBOOK: Textbook = ${JSON.stringify(vol2, null, 2)};
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK];
+export const GEOMETRY_ALGEBRA_TEXTBOOK: Textbook = ${JSON.stringify(vol3, null, 2)};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);

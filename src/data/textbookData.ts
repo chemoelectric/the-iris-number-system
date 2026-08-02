@@ -443,7 +443,8 @@ export const INITIAL_TEXTBOOK: Textbook = {
         }
       ]
     }
-  ]
+  ],
+  "filename": "Iris_Number_System-01-Volume_I_Fundamentals.adoc"
 };
 
 export const NUMBER_THEORY_TEXTBOOK: Textbook = {
@@ -704,10 +705,150 @@ export const NUMBER_THEORY_TEXTBOOK: Textbook = {
         }
       ]
     }
-  ]
+  ],
+  "filename": "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc"
 };
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK];
+export const GEOMETRY_ALGEBRA_TEXTBOOK: Textbook = {
+  "id": "textbook-iris-geometry-algebra",
+  "title": "The Iris Number System",
+  "subtitle": "Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+  "author": "Frédéric Blondel Custer",
+  "version": "2.1.0",
+  "lastUpdated": "2026-08-01",
+  "description": "A Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System",
+  "chapters": [
+    {
+      "id": "chap-the-iris-number-system-volume-iii-geometry-algebra-topology-lattices-categories-combinatorics",
+      "title": "The Iris Number System, Volume III: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+      "summary": ":subtitle: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System",
+      "sections": [
+        {
+          "id": "chap-the-iris-number-system-volume-iii-geometry-algebra-topology-lattices-categories-combinatorics-sec-1",
+          "title": "The Iris Number System, Volume III: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+          "contentAsciiDoc": ":subtitle: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
+        }
+      ]
+    },
+    {
+      "id": "chap-constructive-clifford-geometry-and-aperture-metrics",
+      "title": "Constructive Clifford Geometry and Aperture Metrics",
+      "summary": "In this chapter, geometry is constructed strictly within the Iris number system and \\( Cl ( 4 , 1 , 1 ) \\) multivector space without appealing to uncountable geometric continua. Geometric distance, affine transformations, bivector rotations, and conformal null-geometries are formulated on discrete rational partition grids \\( \\mathcal { G } _ N \\).",
+      "sections": [
+        {
+          "id": "sec-multivector-metric-spaces-and-discrete-aperture-norms",
+          "title": "Multivector Metric Spaces and Discrete Aperture Norms",
+          "contentAsciiDoc": "== Multivector Metric Spaces and Discrete Aperture Norms\n\nIn this section, distance metrics and aperture norms are defined on finite discrete grids \\( \\mathcal { G } _ N \\), establishing constructive completeness without continuum limits.\n\n[#theorem-multivector-metric-completeness]\n[THEOREM]\n.Theorem: Constructive Multivector Metric Space Completeness\n====\nThe discrete grid space \\( \\mathcal { G } _ N \\) endowed with the Iris multivector metric norm \\( d _ { \\mathcal { I } } ( x , y ) = \\| x - y \\| _ { \\mathcal { I } } \\mathbf { 1 } _ { Cl } \\) forms a complete discrete metric space wherein every Cauchy sequence of rational grid steps converges in a finite number of steps to a unique grid point in \\( \\mathcal { G } _ N \\).\n\n*Proof:*\n\n. **Discrete Metric Norm Definition**: For any pair of grid multivectors \\( x , y \\in \\mathcal { G } _ N \\), the metric distance is defined via the positive scalar projection \\( d _ { \\mathcal { I } } ( x , y ) = ( \\downarrow ) \\sqrt { \\langle x - y , x - y \\rangle _ { \\mathcal { I } } } \\cdot \\mathbf { 1 } _ { Cl } \\).\n\n. **Cauchy Sequence Stabilization**: Let \\( \\{ x _ k \\} _ { k = 1 } ^ M \\) be a Cauchy sequence on finite grid \\( \\mathcal { G } _ N \\) with grid step resolution \\( \\delta = 1 / N \\). By definition, for any rational threshold \\( \\epsilon > 0 \\), there exists an integer \\( K \\) such that for all \\( m , n \\ge K \\), \\( d _ { \\mathcal { I } } ( x _ m , x _ n ) < \\epsilon \\). Choosing \\( \\epsilon = \\delta / 2 \\), since all distances on \\( \\mathcal { G } _ N \\) are integer multiples of \\( \\delta \\), it follows that \\( x _ m = x _ n \\) for all \\( m , n \\ge K \\).\n\n. **Finite Step Convergence**: The sequence becomes stationary at step \\( K \\), converging exactly to grid element \\( x _ K \\in \\mathcal { G } _ N \\). Hence, discrete completeness is an exact tautology. \\( \\square \\)\n===="
+        },
+        {
+          "id": "sec-conformal-null-geometry-and-spinor-transformations-in-cl-4-1-1-",
+          "title": "Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)",
+          "contentAsciiDoc": "== Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)\n\nThis section establishes conformal geometry and spinor rotations using the conformal null vector basis \\( e _ \\infty = e _ + + e _ - \\) and \\( e _ 0 = \\frac { 1 } { 2 } ( e _ - - e _ + ) \\) in \\( Cl ( 4 , 1 , 1 ) \\).\n\n[#theorem-conformal-spinor-invariance]\n[THEOREM]\n.Theorem: Conformal Null Geometry Spinor Invariance Theorem\n====\nEvery conformal transformation on discrete grid \\( \\mathcal { G } _ N \\) is represented by a multivector spinor rotor \\( R = \\exp \\left ( \\frac { 1 } { 2 } \\theta B \\right ) \\in \\text { Spin } ( 4 , 1 , 1 ) \\), where \\( B \\) is a closed bivector generator. The transformation preserves the conformal inner product \\( \\langle R x \\tilde { R } , R y \\tilde { R } \\rangle _ { \\mathcal { I } } = \\langle x , y \\rangle _ { \\mathcal { I } } \\mathbf { 1 } _ { Cl } \\).\n\n*Proof:*\n\n. **Rotor Unit Norm**: The spinor rotor satisfies \\( R \\tilde { R } = \\mathbf { 1 } _ { Cl } \\) by exponential bivector expansion on finite grid step counts.\n\n. **Inner Product Preserving Action**: Applying rotor action to multivector grid elements gives \\( \\langle R x \\tilde { R } , R y \\tilde { R } \\rangle _ { \\mathcal { I } } = \\frac { 1 } { 2 } \\big ( R x \\tilde { R } R y \\tilde { R } + R y \\tilde { R } R x \\tilde { R } \\big ) = R \\langle x , y \\rangle _ { \\mathcal { I } } \\tilde { R } = \\langle x , y \\rangle _ { \\mathcal { I } } R \\tilde { R } = \\langle x , y \\rangle _ { \\mathcal { I } } \\mathbf { 1 } _ { Cl } \\).\n\n. **Tautological Invariance**: Conformal geometry is strictly isometric and invariant under Clifford rotor operations. \\( \\square \\)\n===="
+        }
+      ]
+    },
+    {
+      "id": "chap-multivector-algebra-and-structural-tautologies",
+      "title": "Multivector Algebra and Structural Tautologies",
+      "summary": "In this chapter, algebraic structures—including Clifford modules, blade ideals, ring homomorphisms, and invariant multivector submanifolds—are formally proved within \\( Cl ( 4 , 1 , 1 ) \\).",
+      "sections": [
+        {
+          "id": "sec-clifford-module-structure-and-blade-ideal-decompositions",
+          "title": "Clifford Module Structure and Blade Ideal Decompositions",
+          "contentAsciiDoc": "== Clifford Module Structure and Blade Ideal Decompositions\n\nThis section proves the exact direct sum decomposition of \\( Cl ( 4 , 1 , 1 ) \\) into orthogonal grade-projected blade ideals.\n\n[#theorem-clifford-module-decomposition]\n[THEOREM]\n.Theorem: Clifford Blade Ideal Direct Sum Decomposition\n====\nThe 64-dimensional Clifford algebra \\( Cl ( 4 , 1 , 1 ) \\) over the rational grid field decomposes uniquely into an orthogonal direct sum of 7 grade-projected module ideals \\( Cl ( 4 , 1 , 1 ) = \\bigoplus _ { k = 0 } ^ 6 \\mathcal { J } _ k \\), where \\( \\mathcal { J } _ k \\) is spanned by grade-\\( k \\) multivector blades.\n\n*Proof:*\n\n. **Grade Projection Operators**: Define the grade projection operator \\( \\langle A \\rangle _ k \\) for any multivector \\( A \\in Cl ( 4 , 1 , 1 ) \\). Since grade projections are mutually orthogonal (\\( \\langle \\langle A \\rangle _ k \\rangle _ j = \\delta _ { kj } \\langle A \\rangle _ k \\)), each subspace \\( \\mathcal { J } _ k = \\langle Cl ( 4 , 1 , 1 ) \\rangle _ k \\) intersects trivially with the sum of others.\n\n. **Dimension Sum Conservation**: The dimension of grade \\( k \\) in 6-dimensional space is given by the binomial coefficient \\( \\binom { 6 } { k } \\). Summing across all grades yields \\( \\sum _ { k = 0 } ^ 6 \\binom { 6 } { k } = 2 ^ 6 = 64 \\).\n\n. **Direct Sum Tautology**: The linear independence of blade generators forces \\( Cl ( 4 , 1 , 1 ) = \\mathcal { J } _ 0 \\oplus \\mathcal { J } _ 1 \\oplus \\dots \\oplus \\mathcal { J } _ 6 \\). \\( \\square \\)\n===="
+        },
+        {
+          "id": "sec-ring-homomorphisms-and-multiplicative-invariants",
+          "title": "Ring Homomorphisms and Multiplicative Invariants",
+          "contentAsciiDoc": "== Ring Homomorphisms and Multiplicative Invariants\n\nThis section examines ring homomorphisms on discrete multivector lattices.\n\n[#theorem-iris-ring-homomorphism]\n[THEOREM]\n.Theorem: Multivector Ring Homomorphism Invariance\n====\nThe Main Scale Projection operator \\( ( \\downarrow ) : Cl ( 4 , 1 , 1 ) \\to \\mathbb { Q } \\) is a strict ring homomorphism on the scalar subring of \\( Cl ( 4 , 1 , 1 ) \\), preserving addition, multiplication, and identity.\n\n*Proof:*\n\n. **Additive Invariance**: For any \\( x ^ \\ast = x \\mathbf { 1 } _ { Cl } + \\epsilon _ x \\) and \\( y ^ \\ast = y \\mathbf { 1 } _ { Cl } + \\epsilon _ y \\), \\( ( \\downarrow ) ( x ^ \\ast + y ^ \\ast ) = ( \\downarrow ) ( ( x + y ) \\mathbf { 1 } _ { Cl } + \\epsilon _ x + \\epsilon _ y ) = x + y = ( \\downarrow ) ( x ^ \\ast ) + ( \\downarrow ) ( y ^ \\ast ) \\).\n\n. **Multiplicative Invariance**: \\( ( \\downarrow ) ( x ^ \\ast \\cdot y ^ \\ast ) = ( \\downarrow ) ( x y \\mathbf { 1 } _ { Cl } + x \\epsilon _ y + y \\epsilon _ x + \\epsilon _ x \\epsilon _ y ) = x y = ( \\downarrow ) ( x ^ \\ast ) \\cdot ( \\downarrow ) ( y ^ \\ast ) \\).\n\n. **Identity Mapping**: \\( ( \\downarrow ) ( \\mathbf { 1 } _ { Cl } ) = 1 \\). Hence \\( ( \\downarrow ) \\) is a ring homomorphism. \\( \\square \\)\n===="
+        }
+      ]
+    },
+    {
+      "id": "chap-constructive-discrete-topology-and-aperture-coverings",
+      "title": "Constructive Discrete Topology and Aperture Coverings",
+      "summary": "In this chapter, topology is developed without infinite point sets. Open sets, neighborhood bases, and Vernier compactness are established on finite rational partition grids \\( \\mathcal { G } _ N \\).",
+      "sections": [
+        {
+          "id": "sec-discrete-aperture-topologies-and-neighborhood-bases",
+          "title": "Discrete Aperture Topologies and Neighborhood Bases",
+          "contentAsciiDoc": "== Discrete Aperture Topologies and Neighborhood Bases\n\n[#theorem-discrete-topology-closure]\n[THEOREM]\n.Theorem: Finite Discrete Topology Aperture Closure Theorem\n====\nOn any finite discrete grid \\( \\mathcal { G } _ N \\), the collection of aperture open sets \\( \\tau _ { \\mathcal { I } } \\) generated by open metric balls \\( B _ r ( x ) = \\{ y \\in \\mathcal { G } _ N \\mid d _ { \\mathcal { I } } ( x , y ) < r \\} \\) satisfies the exact axioms of a finite topology, where every subset is both open and closed (clopen).\n\n*Proof:*\n\n. **Finiteness of Grid Elements**: Since grid \\( \\mathcal { G } _ N \\) contains a finite number \\( N ^ 3 \\) of discrete rational points, every single point set \\( \\{ x \\} \\) is an open ball of radius \\( r = \\delta / 2 \\).\n\n. **Clopen Sets**: Every subset \\( U \\subseteq \\mathcal { G } _ N \\) is a finite union of singletons \\( U = \\bigcup _ { x \\in U } \\{ x \\} \\), rendering every subset open. The complement \\( \\mathcal { G } _ N \\setminus U \\) is similarly a finite union of singletons and therefore open, making \\( U \\) closed.\n\n. **Topology Axioms**: Empty set \\( \\emptyset \\) and full grid \\( \\mathcal { G } _ N \\) are open; arbitrary unions and intersections of subsets are finite and remain in \\( \\tau _ { \\mathcal { I } } \\). \\( \\square \\)\n===="
+        },
+        {
+          "id": "sec-vernier-compactness-and-finite-covering-theorems",
+          "title": "Vernier Compactness and Finite Covering Theorems",
+          "contentAsciiDoc": "== Vernier Compactness and Finite Covering Theorems\n\n[#theorem-vernier-compactness]\n[THEOREM]\n.Theorem: Constructive Vernier Compactness Equivalence\n====\nEvery subset \\( K \\subseteq \\mathcal { G } _ N \\) on a finite discrete partition grid is constructively compact: every open cover of \\( K \\) admits an exact, minimal finite subcover reducible in a finite number of algorithmic verification steps.\n\n*Proof:*\n\n. **Finite Grid Boundary**: Let \\( \\mathcal { U } = \\{ U _ \\alpha \\} \\) be an open cover of \\( K \\subseteq \\mathcal { G } _ N \\).\n\n. **Algorithmic Reduction**: Since \\( K \\) contains a finite number \\( | K | \\le N ^ 3 \\) of elements, for each point \\( x _ i \\in K \\) (\\( i = 1 , \\dots , | K | \\)), select one set \\( U _ { \\alpha _ i } \\in \\mathcal { U } \\) containing \\( x _ i \\).\n\n. **Exact Finite Subcover**: The collection \\( \\{ U _ { \\alpha _ 1 } , \\dots , U _ { \\alpha _ {|K|} } \\} \\) is a finite subcover of \\( K \\) of size at most \\( | K | \\). Thus compactness holds constructively without requiring infinite choice axioms. \\( \\square \\)\n===="
+        }
+      ]
+    },
+    {
+      "id": "chap-order-theory-and-discrete-iris-lattices",
+      "title": "Order Theory and Discrete Iris Lattices",
+      "summary": "In this chapter, order theory and lattice structures are established on finite rational grids \\( \\mathcal { G } _ N \\), defining join (\\( \\vee \\)), meet (\\( \\wedge \\)), and Boolean sublattices.",
+      "sections": [
+        {
+          "id": "sec-aperture-partial-orders-and-lattice-homomorphisms",
+          "title": "Aperture Partial Orders and Lattice Homomorphisms",
+          "contentAsciiDoc": "== Aperture Partial Orders and Lattice Homomorphisms\n\n[#theorem-iris-lattice-isomorphism]\n[THEOREM]\n.Theorem: Iris Grid Lattice Completeness Theorem\n====\nThe finite grid \\( \\mathcal { G } _ N \\) ordered by component-wise rational magnitude forms a bounded, distributive, complete lattice \\( ( \\mathcal { G } _ N , \\le , \\vee , \\wedge ) \\) with unique top element \\( \\mathbf { 1 } _ { \\mathcal { G } } \\) and bottom element \\( \\mathbf { 0 } _ { \\mathcal { G } } \\).\n\n*Proof:*\n\n. **Partial Order Axioms**: Component-wise ordering satisfies reflexivity (\\( x \\le x \\)), antisymmetry (\\( x \\le y \\land y \\le x \\implies x = y \\)), and transitivity (\\( x \\le y \\land y \\le z \\implies x \\le z \\)).\n\n. **Join and Meet Operations**: For any pair \\( x , y \\in \\mathcal { G } _ N \\), the join \\( x \\vee y = \\max ( x , y ) \\) and meet \\( x \\wedge y = \\min ( x , y ) \\) exist uniquely in \\( \\mathcal { G } _ N \\).\n\n. **Distributivity and Boundedness**: Distributivity \\( x \\wedge ( y \\vee z ) = ( x \\wedge y ) \\vee ( x \\wedge z ) \\) holds component-wise. Top element \\( \\mathbf { 1 } _ { \\mathcal { G } } = ( 1 , 1 , 1 ) \\) and bottom element \\( \\mathbf { 0 } _ { \\mathcal { G } } = ( 0 , 0 , 0 ) \\) bound all elements. \\( \\square \\)\n===="
+        },
+        {
+          "id": "sec-boolean-sublattices-and-modular-multivector-structure",
+          "title": "Boolean Sublattices and Modular Multivector Structure",
+          "contentAsciiDoc": "== Boolean Sublattices and Modular Multivector Structure\n\n[#theorem-boolean-sublattice-modularity]\n[THEOREM]\n.Theorem: Modular Aperture Sublattice Theorem\n====\nThe set of idempotents in \\( Cl ( 4 , 1 , 1 ) \\) satisfying \\( P ^ 2 = P \\) forms a modular Boolean sublattice under multivector operations \\( P \\vee Q = P + Q - P Q \\) and \\( P \\wedge Q = P Q \\).\n\n*Proof:*\n\n. **Idempotent Closure**: If \\( P \\) and \\( Q \\) are commuting idempotents (\\( P Q = Q P \\)), then \\( ( P Q ) ^ 2 = P Q P Q = P ^ 2 Q ^ 2 = P Q \\), so \\( P \\wedge Q \\) is idempotent.\n\n. **Join Idempotence**: \\( ( P + Q - P Q ) ^ 2 = P ^ 2 + Q ^ 2 + P Q - 2 P Q + 2 P Q - 2 P Q = P + Q - P Q \\), so \\( P \\vee Q \\) is idempotent.\n\n. **Modularity Law**: For idempotents with \\( P \\le R \\), \\( P \\vee ( Q \\wedge R ) = ( P \\vee Q ) \\wedge R \\) holds algebraically by expanding multivector products. \\( \\square \\)\n===="
+        }
+      ]
+    },
+    {
+      "id": "chap-constructive-categories-and-multivector-functors",
+      "title": "Constructive Categories and Multivector Functors",
+      "summary": "In this chapter, category theory is constructed over finite rational aperture spaces, multivector functors, and monoidal coherence.",
+      "sections": [
+        {
+          "id": "sec-the-category-of-finite-iris-aperture-spaces",
+          "title": "The Category of Finite Iris Aperture Spaces",
+          "contentAsciiDoc": "== The Category of Finite Iris Aperture Spaces\n\n[#theorem-iris-category-duality]\n[THEOREM]\n.Theorem: Constructive Iris Category Duality Theorem\n====\nThe category \\( \\mathbf { Iris } _ N \\) whose objects are finite discrete grids \\( \\mathcal { G } _ N \\) and whose morphisms are MSRA linear aperture operators admits an exact contravariant duality functor \\( T : \\mathbf { Iris } _ N \\to \\mathbf { Iris } _ N ^ { \\text { op } } \\) mapping grid spaces to their multivector dual spaces.\n\n*Proof:*\n\n. **Identity and Composition**: For any object \\( \\mathcal { G } _ N \\), identity morphism \\( \\text { id } _ { \\mathcal { G } } \\) maps elements identically. Morphism composition of linear MSRA operators is associative.\n\n. **Dual Functor Action**: Define \\( T ( \\mathcal { G } _ N ) = \\mathcal { G } _ N ^ \\ast \\) and for morphism \\( f : \\mathcal { G } _ M \\to \\mathcal { G } _ N \\), define dual transpose \\( T ( f ) = f ^ \\ast : \\mathcal { G } _ N ^ \\ast \\to \\mathcal { G } _ M ^ \\ast \\).\n\n. **Functoriality Tautology**: \\( T ( \\text { id } ) = \\text { id } \\) and \\( T ( g \\circ f ) = T ( f ) \\circ T ( g ) \\), establishing exact category duality. \\( \\square \\)\n===="
+        },
+        {
+          "id": "sec-monoidal-structures-and-multivector-functorial-mapping",
+          "title": "Monoidal Structures and Multivector Functorial Mapping",
+          "contentAsciiDoc": "== Monoidal Structures and Multivector Functorial Mapping\n\n[#theorem-monoidal-functor-coherence]\n[THEOREM]\n.Theorem: Monoidal Aperture Functor Coherence\n====\nThe tensor product of multivector spaces \\( \\mathcal { G } _ M \\otimes \\mathcal { G } _ N \\) equips \\( \\mathbf { Iris } _ N \\) with a symmetric monoidal category structure satisfying Mac Lane's pentagon and hexagon coherence diagrams tautologically.\n\n*Proof:*\n\n. **Tensor Bifunctor**: The tensor product \\( \\otimes : \\mathbf { Iris } _ N \\times \\mathbf { Iris } _ N \\to \\mathbf { Iris } _ N \\) maps objects \\( ( \\mathcal { G } _ M , \\mathcal { G } _ N ) \\mapsto \\mathcal { G } _ M \\otimes \\mathcal { G } _ N \\) with unit object \\( \\mathbf { 1 } _ { Cl } \\).\n\n. **Associativity and Unit Isomorphisms**: The natural associator \\( \\alpha _ { A , B , C } : ( A \\otimes B ) \\otimes C \\to A \\otimes ( B \\otimes C ) \\) is defined via multivector blade associativity \\( ( u \\wedge v ) \\wedge w = u \\wedge ( v \\wedge w ) \\).\n\n. **Coherence Diagram Satisfaction**: Since blade associativity is exact in Clifford algebra \\( Cl ( 4 , 1 , 1 ) \\), Mac Lane's pentagon diagram commutes strictly without approximation. \\( \\square \\)\n===="
+        }
+      ]
+    },
+    {
+      "id": "chap-constructive-discrete-combinatorics-and-partition-tautologies",
+      "title": "Constructive Discrete Combinatorics and Partition Tautologies",
+      "summary": "In this chapter, discrete combinatorics, multivector permutations, and partition enumeration identities are derived on finite rational grids \\( \\mathcal { G } _ N \\).",
+      "sections": [
+        {
+          "id": "sec-multivector-permutations-and-finite-grid-enumeration",
+          "title": "Multivector Permutations and Finite Grid Enumeration",
+          "contentAsciiDoc": "== Multivector Permutations and Finite Grid Enumeration\n\n[#theorem-multivector-permutation-invariance]\n[THEOREM]\n.Theorem: Multivector Permutation Group Invariance\n====\nThe symmetric permutation group \\( S _ M \\) acting on an \\( M \\)-element discrete grid subset preserves the multivector pseudoscalar volume element \\( I _ M = e _ 1 \\wedge e _ 2 \\wedge \\dots \\wedge e _ M \\) up to the sign signature \\( \\text { sgn } ( \\sigma ) \\mathbf { 1 } _ { Cl } \\).\n\n*Proof:*\n\n. **Permutation Action on Basis Blades**: Let \\( \\sigma \\in S _ M \\) be a grid permutation. The action on basis wedge product yields \\( e _ { \\sigma ( 1 ) } \\wedge e _ { \\sigma ( 2 ) } \\wedge \\dots \\wedge e _ { \\sigma ( M ) } = \\text { sgn } ( \\sigma ) ( e _ 1 \\wedge e _ 2 \\wedge \\dots \\wedge e _ M ) \\).\n\n. **Transposition Anti-commutation**: Every permutation decomposes into a product of adjacent transpositions. Each transposition swaps two adjacent basis vectors, introducing a factor of \\( - 1 \\) due to Clifford anti-commutation \\( e _ i e _ j = - e _ j e _ i \\) (\\( i \\neq j \\)).\n\n. **Signature Invariance Tautology**: The total sign factor equals \\( ( - 1 ) ^ k = \\text { sgn } ( \\sigma ) \\), proving exact permutation invariance. \\( \\square \\)\n===="
+        },
+        {
+          "id": "sec-constructive-partition-identities-and-generating-tautologies",
+          "title": "Constructive Partition Identities and Generating Tautologies",
+          "contentAsciiDoc": "== Constructive Partition Identities and Generating Tautologies\n\n[#theorem-constructive-partition-tautology]\n[THEOREM]\n.Theorem: Constructive Partition Function Identity\n====\nThe number of discrete grid partitions \\( p _ N ( k ) \\) of an integer measurement count \\( k \\) into at most \\( N \\) grid parts satisfies the exact finite generating polynomial identity:\n\n\\[ \\sum _ { k = 0 } ^ M p _ N ( k ) q ^ k \\cdot \\mathbf { 1 } _ { Cl } = \\prod _ { j = 1 } ^ N \\frac { 1 } { 1 - q ^ j } \\cdot \\mathbf { 1 } _ { Cl } \\pmod { q ^ { M + 1 } } \\]\n\n*Proof:*\n\n. **Finite Geometric Series Expansion**: Expand each factor \\( \\frac { 1 } { 1 - q ^ j } = \\sum _ { m = 0 } ^ { \\lfloor M / j \\rfloor } q ^ { m j } \\) as a finite polynomial up to degree \\( M \\).\n\n. **Coefficient Counting**: The coefficient of \\( q ^ k \\) in the product equals the number of non-negative integer solutions \\( ( m _ 1 , m _ 2 , \\dots , m _ N ) \\) to \\( \\sum _ { j = 1 } ^ N j m _ j = k \\).\n\n. **Tautological Equivalence**: Each solution corresponds uniquely to a partition of \\( k \\) into parts of size at most \\( N \\). The identity holds strictly on finite degree polynomials modulo \\( q ^ { M + 1 } \\). \\( \\square \\)\n===="
+        }
+      ]
+    },
+    {
+      "id": "chap-index",
+      "title": "Index of Formal Statements",
+      "summary": "Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.",
+      "sections": [
+        {
+          "id": "sec-index-formal-statements",
+          "title": "Index of Formal Statements",
+          "contentAsciiDoc": "== Index of Formal Statements\n\nThis index lists all formal Postulates, Theorems, and Definitions established across the textbook.\n\n=== Theorems\n\n* xref:theorem-multivector-metric-completeness[**Theorem: Constructive Multivector Metric Space Completeness**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Metric Spaces and Discrete Aperture Norms*\n* xref:theorem-conformal-spinor-invariance[**Theorem: Conformal Null Geometry Spinor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)*\n* xref:theorem-clifford-module-decomposition[**Theorem: Clifford Blade Ideal Direct Sum Decomposition**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Clifford Module Structure and Blade Ideal Decompositions*\n* xref:theorem-iris-ring-homomorphism[**Theorem: Multivector Ring Homomorphism Invariance**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Ring Homomorphisms and Multiplicative Invariants*\n* xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Aperture Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Aperture Topologies and Neighborhood Bases*\n* xref:theorem-vernier-compactness[**Theorem: Constructive Vernier Compactness Equivalence**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Vernier Compactness and Finite Covering Theorems*\n* xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Aperture Partial Orders and Lattice Homomorphisms*\n* xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Aperture Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*\n* xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*\n* xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*\n* xref:theorem-multivector-permutation-invariance[**Theorem: Multivector Permutation Group Invariance**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Multivector Permutations and Finite Grid Enumeration*\n* xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*\n\n"
+        }
+      ]
+    }
+  ],
+  "filename": "Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc"
+};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
