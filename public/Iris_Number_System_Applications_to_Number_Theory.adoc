@@ -1,4 +1,4 @@
-= The Iris Number System: Applications to Number Theory, Analysis, Probability Theory, Statistics
+= The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics
 :subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
 :author: Frédéric Blondel Custer
 :doctype: book

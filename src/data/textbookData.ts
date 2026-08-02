@@ -103,7 +103,7 @@ export function getCompleteChapters(chapters: TextbookChapter[]): TextbookChapte
 
 export const INITIAL_TEXTBOOK: Textbook = {
   "id": "textbook-iris-number-system",
-  "title": "The Iris Number System",
+  "title": "The Iris Number System, Volume I",
   "subtitle": "Fundamentals",
   "author": "Frédéric Blondel Custer",
   "version": "2.1.0",
@@ -436,7 +436,7 @@ export const INITIAL_TEXTBOOK: Textbook = {
 
 export const NUMBER_THEORY_TEXTBOOK: Textbook = {
   "id": "textbook-iris-number-theory",
-  "title": "The Iris Number System",
+  "title": "The Iris Number System, Volume II",
   "subtitle": "Applications to Number Theory, Analysis, Probability Theory, Statistics",
   "author": "Frédéric Blondel Custer",
   "version": "2.1.0",
