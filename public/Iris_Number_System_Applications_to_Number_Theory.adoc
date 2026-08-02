@@ -388,7 +388,7 @@ In this chapter, probability theory is strictly reformulated on finite operation
 [THEOREM]
 .Theorem: Iris Discrete Weak Law of Large Numbers
 ====
-For $N$ independent discrete operational measurement results \( X_1, X_2, \dots, X_N \) on partition grid \( \mathcal{G}_M \) with common Jaynesian expected value \( \mu \cdot \mathbf{1}_{Cl} \), the empirical sample mean \( \bar{X}_N = \frac{1}{N} \sum_{i=1}^N X_i \) converges in Jaynesian probability measure to \( \mu \) as $N \to \infty$.
+For \( N \) independent discrete operational measurement results \( X_1, X_2, \dots, X_N \) on partition grid \( \mathcal{G}_M \) with common Jaynesian expected value \( \mu \cdot \mathbf{1}_{Cl} \), the empirical sample mean \( \bar{X}_N = \frac{1}{N} \sum_{i=1}^N X_i \) converges in Jaynesian probability measure to \( \mu \) as \( N \to \infty \).
 
 *Proof:*
 
@@ -400,7 +400,7 @@ For $N$ independent discrete operational measurement results \( X_1, X_2, \dots,
 P\left( \|\bar{X}_N - \mu \mathbf{1}_{Cl}\|_{\mathcal{I}} \ge \epsilon \right) \le \frac{\sigma_{\mathcal{I}}^2}{N \epsilon^2}
 \]
 
-. **Main Scale Projection Limit**: Taking Main Scale Projection \( (\downarrow) \) as count bound $N$ increases yields \( (\downarrow) P\left( \|\bar{X}_N - \mu \mathbf{1}_{Cl}\|_{\mathcal{I}} \ge \epsilon \right) \to 0 \).
+. **Main Scale Projection Limit**: Taking Main Scale Projection \( (\downarrow) \) as count bound \( N \) increases yields \( (\downarrow) P\left( \|\bar{X}_N - \mu \mathbf{1}_{Cl}\|_{\mathcal{I}} \ge \epsilon \right) \to 0 \).
 
 . **Tautological Conclusion**: The empirical measurement mean contracts strictly to the Jaynesian expectation state. \( \blacksquare \)
 ====
