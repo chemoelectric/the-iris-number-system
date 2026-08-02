@@ -1,5 +1,5 @@
-= The Iris Number System, Volume III: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics
-:subtitle: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics
+= The Iris Number System, Volume III: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics
+:subtitle: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics
 :author: Frédéric Blondel Custer
 :doctype: book
 :toc: left

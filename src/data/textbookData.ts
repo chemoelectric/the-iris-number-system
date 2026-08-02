@@ -712,21 +712,21 @@ export const NUMBER_THEORY_TEXTBOOK: Textbook = {
 export const GEOMETRY_ALGEBRA_TEXTBOOK: Textbook = {
   "id": "textbook-iris-geometry-algebra",
   "title": "The Iris Number System",
-  "subtitle": "Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+  "subtitle": "Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
   "author": "Frédéric Blondel Custer",
   "version": "2.1.0",
   "lastUpdated": "2026-08-01",
   "description": "A Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System",
   "chapters": [
     {
-      "id": "chap-the-iris-number-system-volume-iii-geometry-algebra-topology-lattices-categories-combinatorics",
-      "title": "The Iris Number System, Volume III: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
-      "summary": ":subtitle: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System",
+      "id": "chap-the-iris-number-system-volume-iii-applications-to-geometry-algebra-topology-lattices-categories-combinatorics",
+      "title": "The Iris Number System, Volume III: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+      "summary": ":subtitle: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System",
       "sections": [
         {
-          "id": "chap-the-iris-number-system-volume-iii-geometry-algebra-topology-lattices-categories-combinatorics-sec-1",
-          "title": "The Iris Number System, Volume III: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
-          "contentAsciiDoc": ":subtitle: Geometry, Algebra, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
+          "id": "chap-the-iris-number-system-volume-iii-applications-to-geometry-algebra-topology-lattices-categories-combinatorics-sec-1",
+          "title": "The Iris Number System, Volume III: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+          "contentAsciiDoc": ":subtitle: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
         }
       ]
     },

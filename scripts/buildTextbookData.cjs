@@ -97,7 +97,7 @@ const vol3 = parseAdocFile(
     : "public/Iris_Number_System_Geometry_Algebra_etc.adoc",
   "textbook-iris-geometry-algebra",
   "The Iris Number System",
-  "Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
+  "Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics",
   "Frédéric Blondel Custer",
   "A Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
 );
