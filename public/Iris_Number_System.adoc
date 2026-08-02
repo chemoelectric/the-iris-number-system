@@ -175,7 +175,7 @@ Every integer \( n \in \mathbb { Z } \) possesses a canonical parity projection 
 [POSTULATE]
 .Postulate 5: Discrete Scale Extension and Exact Rational Partition Grids
 ====
-Every discrete integer domain \( \mathbb { Z } \) induces an exact bounded discrete rational partition grid \( \mathcal { G } _ N = \{ k/N \mid k \in \mathbb { Z } , |k| \le N ^ 2 \} \) for any discrete resolution count \( N \in \mathbb { Z } _ { \gt 0 } \). The exact unit step size \( \delta = 1/N \) satisfies exact integer-scaled reciprocity: \( \delta \cdot N = \mathbf { 1 } \), ensuring all operations reduce strictly to finite discrete rational arithmetic.
+Every discrete integer domain \( \mathbb { Z } \) induces an exact bounded discrete rational partition grid \( \mathcal { G } _ N = \{ k/N \mid k \in \mathbb { Z } , |k| \le N ^ 2 \} \) for any discrete resolution count \( N \in \mathbb { Z } _ { > 0 } \). The exact unit step size \( \delta = 1/N \) satisfies exact integer-scaled reciprocity: \( \delta \cdot N = \mathbf { 1 } \), ensuring all operations reduce strictly to finite discrete rational arithmetic.
 ====
 
 [#postulate-6]
@@ -256,7 +256,7 @@ Rather than abstract static fractions, a rational number represents the relative
 \]
 
 
-In this optical-geometric model, the fully open reference Iris aperture corresponds to the unit scalar identity \( \mathbf { 1 } _ { Cl } \) (or primary unit counting step \( \bullet \)). An Iris aperture is divided sectorially by \( q _ { \text { den } } \in \mathbb { Z } _ { \gt 0 } \) overlapping aperture blades or grid steps. Selecting \( p \in \mathbb { Z } \) blade counting steps yields the fractional Iris aperture opening ratio:
+In this optical-geometric model, the fully open reference Iris aperture corresponds to the unit scalar identity \( \mathbf { 1 } _ { Cl } \) (or primary unit counting step \( \bullet \)). An Iris aperture is divided sectorially by \( q _ { \text { den } } \in \mathbb { Z } _ { > 0 } \) overlapping aperture blades or grid steps. Selecting \( p \in \mathbb { Z } \) blade counting steps yields the fractional Iris aperture opening ratio:
 
 [#definition-rational-aperture-ratio]
 [DEFINITION]
@@ -278,7 +278,7 @@ Under this directional Iris aperture measurement representation:
 * \( \frac { \mathbf { 0 } } { q _ { \text { den } } } \): A completely closed Iris aperture state (\( r = 0 \)).
 
 === Discrete Partition Grids as Iris Aperture Grid Resolutions
-As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { \gt 0 } \) corresponds to an \( N \)-blade Iris aperture resolution level, inducing an exact, bounded discrete rational partition grid:
+As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { > 0 } \) corresponds to an \( N \)-blade Iris aperture resolution level, inducing an exact, bounded discrete rational partition grid:
 
 
 \[
@@ -346,11 +346,11 @@ While classical analysis often relies on non-constructive completed infinities (
 [DEFINITION]
 .Definition: Constructive Iris Aperture Real Number
 ====
-A real number \( x \in \mathbb { R } \) is an active measurement process defined as an equivalence class of Cauchy sequences of rational aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { \gt 0 } } \), where each \( r _ N \in \mathcal { G } _ N \) represents an exact rational measurement state on an \( N \)-blade Iris aperture grid, satisfying the Cauchy convergence criterion:
+A real number \( x \in \mathbb { R } \) is an active measurement process defined as an equivalence class of Cauchy sequences of rational aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \), where each \( r _ N \in \mathcal { G } _ N \) represents an exact rational measurement state on an \( N \)-blade Iris aperture grid, satisfying the Cauchy convergence criterion:
 
 
 \[
-\forall \epsilon = \frac { 1 } { M } \in \mathbb { Q } _ { \gt 0 } , \quad \exists K \in \mathbb { Z } _ { \gt 0 } \quad \text { s.t. } \quad \forall n , m \gt K , \quad \left| r _ n - r _ m \right| \lt \frac { 1 } { M }
+\forall \epsilon = \frac { 1 } { M } \in \mathbb { Q } _ { > 0 } , \quad \exists K \in \mathbb { Z } _ { > 0 } \quad \text { s.t. } \quad \forall n , m > K , \quad \left| r _ n - r _ m \right| < \frac { 1 } { M }
 \]
 
 
@@ -362,7 +362,7 @@ x \equiv (\downarrow) ( r _ \omega ) = (\downarrow) \left ( \text { ApertureFlux
 \]
 
 
-where \( r _ \omega = \frac { k _ \omega } { \omega } \in \mathcal { G } _ \omega \) is an ultra-refined vernier rational measurement state satisfying \( | r _ N - x | \lt \frac { 1 } { N } \) for all finite grid stages \( N \in \mathbb { Z } _ { \gt 0 } \).
+where \( r _ \omega = \frac { k _ \omega } { \omega } \in \mathcal { G } _ \omega \) is an ultra-refined vernier rational measurement state satisfying \( | r _ N - x | < \frac { 1 } { N } \) for all finite grid stages \( N \in \mathbb { Z } _ { > 0 } \).
 
 ====
 
@@ -396,9 +396,9 @@ The transcendental functions \( \cos\theta \) and \( \sin\theta \) are not mysti
 [THEOREM]
 .Theorem: Constructive Completeness of Iris Grid Limits
 ====
-Every Cauchy sequence of rational Iris aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { \gt 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the Clifford multivector field \( \Psi \in Cl ( 4 , 1 , 1 ) \). 
+Every Cauchy sequence of rational Iris aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the Clifford multivector field \( \Psi \in Cl ( 4 , 1 , 1 ) \). 
 
-Furthermore, the space of real aperture flux parameters \( [-1 , 1] \) is constructively complete: any smooth aperture modulation \( f ( r ) \) can be uniformly approximated to arbitrary precision \( \epsilon \in \mathbb { Q } _ { \gt 0 } \) by a finite rational polynomial operator on an Iris partition grid \( \mathcal { G } _ N \).
+Furthermore, the space of real aperture flux parameters \( [-1 , 1] \) is constructively complete: any smooth aperture modulation \( f ( r ) \) can be uniformly approximated to arbitrary precision \( \epsilon \in \mathbb { Q } _ { > 0 } \) by a finite rational polynomial operator on an Iris partition grid \( \mathcal { G } _ N \).
 ====
 
 === Multiplicative Real Inverse and Flux Conservation
@@ -428,7 +428,7 @@ Just as a physical vernier caliper uses an auxiliary sliding scale aligned with 
 [DEFINITION]
 .Definition: Multiscale Vernier Measurement Number (m-res Number)
 ====
-A multiscale resolution number (or **m-res number**) \( x^{\ast} \in \mathbb { R } ^ * \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier aperture grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { \gt 0 } \):
+A multiscale resolution number (or **m-res number**) \( x^{\ast} \in \mathbb { R } ^ * \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier aperture grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { > 0 } \):
 
 
 \[
@@ -439,7 +439,7 @@ x^{\ast} = \frac { k } { \omega } \equiv \text { VernierApertureFlux } _ { \omeg
 . **Finite-Duration Observation Step**: A multiscale resolution quantity \( \epsilon ^ * \in \mathbb { R } ^ * \) represents an observation or measurement process conducted over a finite temporal duration \( \tau _ { \text { obs } } \), whose measured flux magnitude is strictly smaller than any standard positive rational step:
 +
 \[
-|\epsilon ^ *| \lt \frac { 1 } { N } , \quad \forall N \in \mathbb { Z } _ { \gt 0 }
+|\epsilon ^ *| < \frac { 1 } { N } , \quad \forall N \in \mathbb { Z } _ { > 0 }
 \]
 +
 An elementary finite-duration step is executed by a physical measurement process taking a finite time duration to perform across a fine vernier sub-tick step \( \delta_\omega = \frac { \bullet } { \omega } \).
@@ -447,7 +447,7 @@ An elementary finite-duration step is executed by a physical measurement process
 . **Extended Temporal Measurement Scale**: A multiscale resolution quantity \( \Omega ^ * \in \mathbb { R } ^ * \) represents a cumulative measurement process conducted over an extended series of finite time observation steps whose step count exceeds any standard integer bound:
 +
 \[
-|\Omega ^ *| \gt M , \quad \forall M \in \mathbb { Z } _ { \gt 0 }
+|\Omega ^ *| > M , \quad \forall M \in \mathbb { Z } _ { > 0 }
 \]
 
 ====
@@ -467,7 +467,7 @@ Under Multiscale Resolution Analysis (MSRA), every finite multiscale vernier rea
 
 
 \[
-x^{\ast} = r + \epsilon ^ * , \quad r \in \mathbb { R } , \quad |\epsilon ^ *| \lt \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { \gt 0 } )
+x^{\ast} = r + \epsilon ^ * , \quad r \in \mathbb { R } , \quad |\epsilon ^ *| < \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { > 0 } )
 \]
 
 
