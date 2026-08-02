@@ -143,6 +143,97 @@ For distinct odd Iris prime measurement counts \( p \) and \( q \), the product 
 . **Tautological Conclusion**: The Law of Quadratic Reciprocity is established as an exact parity conservation law in \( Cl(4,1,1) \). \( \blacksquare \)
 ====
 
+== Theory of Multi-Radix Positional Numerals in Iris Arithmetic
+
+In this section, positional numeral systems across arbitrary discrete bases (radices) \( b \ge 2 \) are formally established as exact multivector aperture expansions in \( Cl(4,1,1) \). We demonstrate that digit strings in binary (base 2), octal (base 8), decimal (base 10), and hexadecimal (base 16) represent invariant discrete scalar counting states under Main Scale Projection \( (\downarrow) \).
+
+[#theorem-radix-representation]
+[THEOREM]
+.Theorem: Multi-Radix Representation and Uniqueness Theorem
+====
+For any discrete radix integer count \( b \ge 2 \) and any positive measurement step count \( n \in \mathbb{Z}^+ \), there exists a unique finite sequence of discrete digit coefficients \( (d_M, d_{M-1}, \dots, d_1, d_0) \) with \( d_k \in \{0, 1, \dots, b-1\} \) and \( d_M \neq 0 \) such that:
+
+\[
+M(n) = n \cdot \mathbf{1}_{Cl} = \sum_{k=0}^M d_k b^k \cdot \mathbf{1}_{Cl}
+\]
+
+*Proof:*
+
+. **Discrete Division Algorithm Iteration**: On partition grid \( \mathcal{G}_N \), apply the Euclidean division step recursively starting with \( n_0 = n \):
+
+\[
+n_k = q_k b + d_k, \quad \text{where } 0 \le d_k < b \text{ and } q_k = \lfloor n_k / b \rfloor
+\]
+
+. **Strict Step Contraction**: Since \( b \ge 2 \), the quotient sequence \( q_0 > q_1 > q_2 > \dots \) decreases strictly in discrete step count, terminating at \( q_M = 0 \) in a finite number of steps \( M = \lfloor \log_b n \rfloor \).
+
+. **Algebraic Substitution**: Substituting the remainder steps recursively yields the exact grade-0 multivector sum \( M(n) = \sum_{k=0}^M d_k b^k \cdot \mathbf{1}_{Cl} \).
+
+. **Uniqueness of Digit Sequence**: Suppose \( \sum_{k=0}^M d_k b^k = \sum_{k=0}^M c_k b^k \). Taking congruences modulo \( b \) forces \( d_0 \equiv c_0 \pmod b \). Since \( 0 \le d_0, c_0 < b \), \( d_0 = c_0 \). Subtracting \( d_0 \) and dividing by \( b \) yields \( d_1 = c_1 \), and by finite induction, \( d_k = c_k \) for all \( k = 0, \dots, M \).
+
+. **Tautological Conclusion**: Every discrete integer step count possesses a unique digit expansion in radix \( b \). \( \blacksquare \)
+====
+
+[#theorem-radix-conversion-invariance]
+[THEOREM]
+.Theorem: Radix Transformation Invariance Theorem
+====
+Let \( (d_M \dots d_0)_{b_1} \) and \( (c_K \dots c_0)_{b_2} \) be numeral representations of measurement state \( M(n) \) in distinct radices \( b_1, b_2 \ge 2 \). The total multivector scalar energy and \( Cl(4,1,1) \) grade decomposition remain strictly invariant across radix transformations:
+
+\[
+(\downarrow) \sum_{k=0}^M d_k b_1^k \cdot \mathbf{1}_{Cl} = (\downarrow) \sum_{j=0}^K c_j b_2^j \cdot \mathbf{1}_{Cl} = n \cdot \mathbf{1}_{Cl}
+\]
+
+*Proof:*
+
+. **Scalar Metric Embedding**: Both positional sums evaluate to the same Grade-0 scalar multivector element \( M(n) = n \cdot \mathbf{1}_{Cl} \in Cl(4,1,1) \).
+
+. **Basis Identity**: The choice of radix base \( b \) alters only the discrete aperture grouping mechanism, leaving the fundamental count of unit steps \( \mathbf{1}_{Cl} \) invariant.
+
+. **Main Scale Projection**: Applying Main Scale Projection \( (\downarrow) \) removes any intermediate radix conversion vernier residuals, proving exact operational equivalence. \( \blacksquare \)
+====
+
+=== Worked Examples across Standard Radices
+
+To demonstrate the invariant operational nature of multi-radix representations, consider the discrete measurement step count \( n = 42 \in \mathbb{Z}^+ \):
+
+* **Binary (Base 2)**:
+  Repeated division by \( b=2 \) yields remainders \( d_0=0, d_1=1, d_2=0, d_3=1, d_4=0, d_5=1 \):
+  \[
+  M(42) = (1 \cdot 2^5 + 0 \cdot 2^4 + 1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0) \cdot \mathbf{1}_{Cl} = (32 + 0 + 8 + 0 + 2 + 0) \cdot \mathbf{1}_{Cl} = 42_{10} \cdot \mathbf{1}_{Cl}
+  \]
+  Thus, \( 42_{10} = 101010_2 \).
+
+* **Octal (Base 8)**:
+  Division by \( b=8 \) yields \( 42 = 5 \cdot 8 + 2 \):
+  \[
+  M(42) = (5 \cdot 8^1 + 2 \cdot 8^0) \cdot \mathbf{1}_{Cl} = (40 + 2) \cdot \mathbf{1}_{Cl} = 42_{10} \cdot \mathbf{1}_{Cl}
+  \]
+  Thus, \( 42_{10} = 52_8 \).
+
+* **Decimal (Base 10)**:
+  Standard decimal grouping gives digits \( d_1=4, d_0=2 \):
+  \[
+  M(42) = (4 \cdot 10^1 + 2 \cdot 10^0) \cdot \mathbf{1}_{Cl} = (40 + 2) \cdot \mathbf{1}_{Cl} = 42_{10} \cdot \mathbf{1}_{Cl}
+  \]
+
+* **Hexadecimal (Base 16)**:
+  Division by \( b=16 \) yields \( 42 = 2 \cdot 16 + 10 \). Mapping digit 10 to hexadecimal symbol `A`:
+  \[
+  M(42) = (2 \cdot 16^1 + 10 \cdot 16^0) \cdot \mathbf{1}_{Cl} = (32 + 10) \cdot \mathbf{1}_{Cl} = 42_{10} \cdot \mathbf{1}_{Cl}
+  \]
+  Thus, \( 42_{10} = 2\text{A}_{16} \).
+
+=== Fractional Radix Aperture Expansion
+
+For fractional rational grid points \( r = \frac{p}{q} \in \mathcal{G}_N \), positional radix expansion extends into negative powers of radix \( b \):
+
+\[
+r \cdot \mathbf{1}_{Cl} = \left( \sum_{k=0}^M d_k b^k + \sum_{j=1}^K d_{-j} b^{-j} \right) \cdot \mathbf{1}_{Cl} + \varpi \vartheta
+\]
+
+where \( d_{-j} \in \{0, 1, \dots, b-1\} \) are fractional aperture digits, and \( \varpi \vartheta \) is the nilpotent vernier truncation residual at grid resolution step \( \delta = b^{-K} \).
+
 == Classical Conjectures as Iris Tautologies
 
 == The Goldbach Partition Theorem
