@@ -33,7 +33,7 @@ Every discrete positive integer measurement count \( n > 1 \) in \( \mathbb{Z}^+
 
 . **Uniqueness by Parity Induction**: Suppose \( M(n) = \prod_{i=1}^k p_i = \prod_{j=1}^m q_j \). Since \( p_1 \mid \prod q_j \), coprimality forces \( p_1 = q_j \) for some \( j \). Canceling \( p_1 \) and applying induction on the reduced integer step count establishes that \( k = m \) and \( p_i = q_i \) for all factors up to permutation.
 
-. **Tautological Conclusion**: Integer measurement step counts possess a unique prime factor decomposition in \( Cl(4,1,1) \). \( \blacksquare \)
+. **Tautological Conclusion**: Integer measurement step counts possess a unique prime factor decomposition in \( Cl(4,1,1) \). \( \whitesquare \)
 ====
 
 [#theorem-euclid-primes]
@@ -52,7 +52,7 @@ The set of discrete Iris prime measurement step counts is strictly unbounded on 
 
 . **Contradiction on Grid Limit**: By the Fundamental Theorem of Arithmetic (Theorem 13), \( M(N_S) \) must possess a prime factor \( q \notin S \), contradicting the assumption that \( S \) contains all prime step counts.
 
-. **Tautological Conclusion**: The set of discrete Iris prime step counts is strictly unbounded across \( \mathbb{Z} \). \( \blacksquare \)
+. **Tautological Conclusion**: The set of discrete Iris prime step counts is strictly unbounded across \( \mathbb{Z} \). \( \whitesquare \)
 ====
 
 [#theorem-fermat-little]
@@ -75,7 +75,7 @@ For any discrete Iris prime measurement count \( p \) and integer step count \( 
 
 . **Factor Cancellation**: Since \( \gcd((p-1)!, p) = 1 \), dividing by \( (p-1)! \) in \( Cl(4,1,1) \) grade-0 scalar space yields \( a^{p-1} \equiv 1 \cdot \mathbf{1}_{Cl} \pmod p \).
 
-. **Tautological Conclusion**: Fermat's Little Theorem holds strictly for all discrete integer step counts coprime to \( p \). \( \blacksquare \)
+. **Tautological Conclusion**: Fermat's Little Theorem holds strictly for all discrete integer step counts coprime to \( p \). \( \whitesquare \)
 ====
 
 [#theorem-euler-totient]
@@ -98,7 +98,7 @@ For any discrete positive integer count \( n \ge 1 \) and integer step count \( 
 
 . **Residue Cancellation**: Since \( \gcd(\prod r_i, n) = 1 \), canceling the product in \( Cl(4,1,1) \) yields \( a^{\varphi(n)} \equiv 1 \cdot \mathbf{1}_{Cl} \pmod n \).
 
-. **Tautological Conclusion**: Euler's Totient Theorem holds strictly for all coprime aperture step counts on \( \mathcal{G}_n \). \( \blacksquare \)
+. **Tautological Conclusion**: Euler's Totient Theorem holds strictly for all coprime aperture step counts on \( \mathcal{G}_n \). \( \whitesquare \)
 ====
 
 [#theorem-chinese-remainder]
@@ -117,7 +117,7 @@ Let \( m_1, m_2, \dots, m_k \) be pairwise coprime discrete integer counts. For 
 
 . **Uniqueness Modulo M**: If \( x_1, x_2 \) are two solutions, then \( x_1 - x_2 \equiv 0 \pmod{m_i} \) for all \( i \). Since the moduli \( m_i \) are pairwise coprime, \( M \mid (x_1 - x_2) \), establishing uniqueness modulo \( M \).
 
-. **Tautological Conclusion**: System of modular measurement congruences possesses a unique constructive solution on discrete partition grids. \( \blacksquare \)
+. **Tautological Conclusion**: System of modular measurement congruences possesses a unique constructive solution on discrete partition grids. \( \whitesquare \)
 ====
 
 [#theorem-quadratic-reciprocity]
@@ -140,7 +140,7 @@ For distinct odd Iris prime measurement counts \( p \) and \( q \), the product 
 
 . **Legendre Parity Exponentiation**: Expressing the Legendre symbols as parity signs \( \left(\frac{p}{q}\right) = (-1)^{S(q, p)} \) and \( \left(\frac{q}{p}\right) = (-1)^{S(p, q)} \), their product equals \( (-1)^{S(p, q) + S(q, p)} = (-1)^{\frac{p-1}{2} \frac{q-1}{2}} \mathbf{1}_{Cl} \).
 
-. **Tautological Conclusion**: The Law of Quadratic Reciprocity is established as an exact parity conservation law in \( Cl(4,1,1) \). \( \blacksquare \)
+. **Tautological Conclusion**: The Law of Quadratic Reciprocity is established as an exact parity conservation law in \( Cl(4,1,1) \). \( \whitesquare \)
 ====
 
 == Theory of Multi-Radix Positional Numerals in Iris Arithmetic
@@ -171,7 +171,7 @@ n_k = q_k b + d_k, \quad \text{where } 0 \le d_k < b \text{ and } q_k = \lfloor 
 
 . **Uniqueness of Digit Sequence**: Suppose \( \sum_{k=0}^M d_k b^k = \sum_{k=0}^M c_k b^k \). Taking congruences modulo \( b \) forces \( d_0 \equiv c_0 \pmod b \). Since \( 0 \le d_0, c_0 < b \), \( d_0 = c_0 \). Subtracting \( d_0 \) and dividing by \( b \) yields \( d_1 = c_1 \), and by finite induction, \( d_k = c_k \) for all \( k = 0, \dots, M \).
 
-. **Tautological Conclusion**: Every discrete integer step count possesses a unique digit expansion in radix \( b \). \( \blacksquare \)
+. **Tautological Conclusion**: Every discrete integer step count possesses a unique digit expansion in radix \( b \). \( \whitesquare \)
 ====
 
 [#theorem-radix-conversion-invariance]
@@ -190,7 +190,7 @@ Let \( (d_M \dots d_0)_{b_1} \) and \( (c_K \dots c_0)_{b_2} \) be numeral repre
 
 . **Basis Identity**: The choice of radix base \( b \) alters only the discrete aperture grouping mechanism, leaving the fundamental count of unit steps \( \mathbf{1}_{Cl} \) invariant.
 
-. **Main Scale Projection**: Applying Main Scale Projection \( (\downarrow) \) removes any intermediate radix conversion vernier residuals, proving exact operational equivalence. \( \blacksquare \)
+. **Main Scale Projection**: Applying Main Scale Projection \( (\downarrow) \) removes any intermediate radix conversion vernier residuals, proving exact operational equivalence. \( \whitesquare \)
 ====
 
 === Worked Examples across Standard Radices
@@ -259,7 +259,7 @@ where \( x = \frac{p+q}{2} \) and \( y = \frac{q-p}{2} \). The search space for 
 
 . **Jaynesian Quadratic Residue Filter**: To accelerate factor location on partition grid \( \mathcal{G}_N \), test candidate values \( x^2 - N \) against quadratic residue tables modulo small Iris prime bases \( m \in \{3, 5, 7, 8, 11, 13, 16\} \). If \( x^2 - N \pmod m \) is a quadratic non-residue for any \( m \), candidate \( x \) is rejected immediately without performing full square-root evaluation.
 
-. **Tautological Conclusion**: Factor discovery is transformed into a deterministic quadratic residue filter over discrete step space \( \mathbb{Z}^+ \). \( \blacksquare \)
+. **Tautological Conclusion**: Factor discovery is transformed into a deterministic quadratic residue filter over discrete step space \( \mathbb{Z}^+ \). \( \whitesquare \)
 ====
 
 [#theorem-parallel-prime-factorization]
@@ -277,7 +277,7 @@ Let \( N \in \mathbb{Z}^+ \) be a composite measurement step count to be factori
 
 . **First-Hit Termination**: As soon as any processor \( k \) discovers an index \( m \) where \( x_{k, m}^2 - N = y^2 \) is a perfect square, it reports factors \( p = x_{k, m} - y \) and \( q = x_{k, m} + y \) and broadcasts a termination flag.
 
-. **Tautological Conclusion**: Multi-channel grid partitioning guarantees exact parallel factorization scalability over discrete step space \( \mathbb{Z}^+ \). \( \blacksquare \)
+. **Tautological Conclusion**: Multi-channel grid partitioning guarantees exact parallel factorization scalability over discrete step space \( \mathbb{Z}^+ \). \( \whitesquare \)
 ====
 
 [#theorem-recursive-grover-factorization]
@@ -295,7 +295,7 @@ Let \( N \in \mathbb{Z}^+ \) be an arbitrary composite discrete integer step cou
 
 . **Terminal Prime State Verification**: If child search retries return no further non-trivial factor pairs after \( R_c = \lceil \frac{\ln(1/\epsilon)}{\ln 2} \rceil \) retry sweeps, the candidate step counts are certified as irreducible discrete Iris primes with operational certainty exceeding \( 1 - \epsilon \).
 
-. **Tautological Conclusion**: Recursive digital Grover amplitude diffusion systematically resolves all composite discrete step counts into their unique prime constituent factors in finite discrete operations on digital parallel hardware. \( \blacksquare \)
+. **Tautological Conclusion**: Recursive digital Grover amplitude diffusion systematically resolves all composite discrete step counts into their unique prime constituent factors in finite discrete operations on digital parallel hardware. \( \whitesquare \)
 ====
 
 == Classical Conjectures as Iris Tautologies
@@ -324,7 +324,7 @@ where \( \|\cdot\|_{\mathcal{I}} \) is the non-Euclidean Iris metric norm.
 
 . **Cl(4,1,1) Parity Bivector Conservation**: By Parity Conservation (Theorem 1), Grade-2 bivector projection \( \text{Grade}_2(M(p_1) M(p_2)) = 0 \) forces prime elements \( p_1 \) and \( p_2 \) to match bivector parity residues in \( Cl(4,1,1) \).
 
-. **Tautological Conclusion**: Under Main Scale Projection \( (\downarrow) \), the measure of zero-pair prime representations vanishes identically, establishing \( 2n = p_1 + p_2 \) as an exact tautology. \( \blacksquare \)
+. **Tautological Conclusion**: Under Main Scale Projection \( (\downarrow) \), the measure of zero-pair prime representations vanishes identically, establishing \( 2n = p_1 + p_2 \) as an exact tautology. \( \whitesquare \)
 ====
 
 == The Riemann Hypothesis Spectral Theorem
@@ -345,7 +345,7 @@ Let \( s \) be an Iris spectral point in discrete domain \( \mathcal{D}_{\text{I
 
 . **Hermitian Norm Conservation**: An off-critical candidate (\( \delta \neq 0 \)) violates Hermitian operator positivity, forcing \( (\downarrow)\|\zeta_{\mathcal{I}}(s)\|_{\mathcal{I}} > 0 \).
 
-. **Tautological Conclusion**: Non-trivial zeros of \( \zeta_{\mathcal{I}}(s) \) lie strictly on the anti-isometric invariant line \( \text{Re}(s) = 1/2 \). \( \blacksquare \)
+. **Tautological Conclusion**: Non-trivial zeros of \( \zeta_{\mathcal{I}}(s) \) lie strictly on the anti-isometric invariant line \( \text{Re}(s) = 1/2 \). \( \whitesquare \)
 ====
 
 == The Twin Prime Infinitude Theorem
@@ -366,7 +366,7 @@ The counting step sequence of discrete Iris twin prime pairs \( (p, p + 2 \cdot 
 
 . **Unbounded Operational Progression**: The open-ended counting step sequence guarantees that the ratio \( N / \ln^2 N \) increases without bound as step operations continue.
 
-. **Tautological Conclusion**: Twin prime pairs recur indefinitely across the discrete integer domain \( \mathbb{Z} \). \( \blacksquare \)
+. **Tautological Conclusion**: Twin prime pairs recur indefinitely across the discrete integer domain \( \mathbb{Z} \). \( \whitesquare \)
 ====
 
 == The Collatz Orbit Convergence Theorem
@@ -387,7 +387,7 @@ Every discrete Collatz orbit starting at positive integer count \( n \in \mathbb
 
 . **Monotonic Contraction**: Strict negative energy drift \( \langle \Delta E \rangle < 0 \) forces monotonic contraction of logarithmic energy \( E(n) \) toward the minimum integer count \( n = 1 \).
 
-. **Tautological Conclusion**: Secondary cycles and divergent orbits are ruled out, proving universal contraction to \( n = 1 \). \( \blacksquare \)
+. **Tautological Conclusion**: Secondary cycles and divergent orbits are ruled out, proving universal contraction to \( n = 1 \). \( \whitesquare \)
 ====
 
 == Fermat's Last Theorem in Iris Arithmetic
@@ -408,7 +408,7 @@ For any discrete positive integer counts \( x, y, z \in \mathbb{Z}^+ \) and inte
 
 . **Grade Separation Invariance**: Independent grade vanishing requirements force \( x = 0 \) or \( y = 0 \).
 
-. **Tautological Conclusion**: \( x^n + y^n = z^n \) has no positive integer solutions for \( n > 2 \). \( \blacksquare \)
+. **Tautological Conclusion**: \( x^n + y^n = z^n \) has no positive integer solutions for \( n > 2 \). \( \whitesquare \)
 ====
 
 == Legendre's Prime Existence Theorem
@@ -429,7 +429,7 @@ For every discrete integer measurement step \( n \ge 1 \), the interval \( (n^2,
 
 . **Strict Positivity**: Main Scale Projection yields \( (\downarrow) K_n = (\downarrow)\left( \frac{n}{\ln n} \right) \ge 1 \) for all steps \( n \ge 1 \) (for \( n=1 \), \( \mathcal{I}_1 \) contains 2 or 3; for \( n \ge 2 \), \( n / \ln n > 1 \)).
 
-. **Tautological Conclusion**: At least one Iris prime exists between any consecutive squares \( n^2 \) and \( (n+1)^2 \). \( \blacksquare \)
+. **Tautological Conclusion**: At least one Iris prime exists between any consecutive squares \( n^2 \) and \( (n+1)^2 \). \( \whitesquare \)
 ====
 
 == Non-Existence of Odd Perfect Numbers
@@ -452,7 +452,7 @@ No discrete odd positive integer measurement step count \( n \in \mathbb{Z}^+ \)
 
 . **Grade Separation Invariance**: The grade-0 scalar equality \( \sigma(n) = 2n \) requires \( 2 \equiv 0 \pmod 4 \) in the \( e_{12} \) parity bivector subspace, creating an irreconcilable parity residue mismatch.
 
-. **Tautological Conclusion**: Odd perfect numbers cannot exist in discrete integer measurement space \( \mathbb{Z}^+ \). \( \blacksquare \)
+. **Tautological Conclusion**: Odd perfect numbers cannot exist in discrete integer measurement space \( \mathbb{Z}^+ \). \( \whitesquare \)
 ====
 
 == Polignac's Prime Gap Infinitude Theorem
@@ -471,7 +471,7 @@ For every even integer step gap \( 2k \ge 2 \), there exist infinitely many pair
 
 . **Unbounded Operational Progression**: For any fixed integer gap \( 2k \), \( C_{2k} > 0 \) is strictly positive. As discrete step count \( N \to \infty \), \( \frac{N}{\ln^2 N} \) increases without bound.
 
-. **Tautological Conclusion**: For every even gap \( 2k \), pairs of Iris primes separated by \( 2k \) recur infinitely across discrete integer step space \( \mathbb{Z}^+ \). \( \blacksquare \)
+. **Tautological Conclusion**: For every even gap \( 2k \), pairs of Iris primes separated by \( 2k \) recur infinitely across discrete integer step space \( \mathbb{Z}^+ \). \( \whitesquare \)
 ====
 
 == Infinitude of Mersenne Primes
@@ -494,7 +494,7 @@ There exist infinitely many prime measurement step counts \( p \) such that the 
 
 . **Divergent Counting Progression**: As prime step count bound \( x \to \infty \), the logarithmic series \( \ln(\ln x) \) diverges strictly in discrete step space.
 
-. **Tautological Conclusion**: Infinitely many Mersenne step counts \( M_p = 2^p - 1 \) are discrete Iris primes. \( \blacksquare \)
+. **Tautological Conclusion**: Infinitely many Mersenne step counts \( M_p = 2^p - 1 \) are discrete Iris primes. \( \whitesquare \)
 ====
 
 == Gilbreath's Successive Prime Difference Theorem
@@ -515,7 +515,7 @@ Let \( A_0 = (p_1, p_2, p_3, \dots) = (2, 3, 5, 7, 11, \dots) \) be the ordered 
 
 . **Bounded Magnitude Constraint**: Since difference values are bounded by discrete step spacing on grid \( \mathcal{G}_N \) and cannot decrease below 0, the modulo-2 constraint \( A_k(1) \equiv 1 \pmod 2 \) forces \( A_k(1) = 1 \cdot \mathbf{1}_{Cl} \) for all rows \( k \ge 1 \).
 
-. **Tautological Conclusion**: The leading term of every successive prime difference row is identically 1. \( \blacksquare \)
+. **Tautological Conclusion**: The leading term of every successive prime difference row is identically 1. \( \whitesquare \)
 ====
 
 == Lychrel Number Non-Existence Theorem
@@ -536,7 +536,7 @@ Under radix base \( b \ge 2 \) aperture iteration \( R_b(n) = n + \text{rev}_b(n
 
 . **Finite Entropy Termination**: Since the initial digit entropy \( H(n) \le M \ln b \) is finite for any discrete step count \( n \), the entropy decays to zero in at most \( K \le C \cdot M \) discrete iterations, yielding a strictly symmetric palindrome state.
 
-. **Tautological Conclusion**: Lychrel numbers do not exist in discrete operational step space \( \mathbb{Z}^+ \). \( \blacksquare \)
+. **Tautological Conclusion**: Lychrel numbers do not exist in discrete operational step space \( \mathbb{Z}^+ \). \( \whitesquare \)
 ====
 
 
@@ -578,7 +578,7 @@ Under Main Scale Projection \( (\downarrow) \), the nilpotent boundary term \( \
 
 . **Main Scale Boundary Invariance**: Including higher-order vernier boundary residuals yields \( \int_a^b D_{\mathcal{I}} f(r) \, d_{\mathcal{I}}r = f(b) - f(a) + \varpi \vartheta \). Applying Main Scale Projection \( (\downarrow) \) eliminates the nilpotent boundary term \( \varpi \vartheta \).
 
-. **Tautological Conclusion**: The Fundamental Theorem of Calculus holds as an exact telescoping algebraic identity on finite discrete grids \( \mathcal{G}_N \). \( \blacksquare \)
+. **Tautological Conclusion**: The Fundamental Theorem of Calculus holds as an exact telescoping algebraic identity on finite discrete grids \( \mathcal{G}_N \). \( \whitesquare \)
 ====
 
 [#theorem-mvt-msra]
@@ -605,7 +605,7 @@ Let \( f : \mathcal{G}_N \to Cl(4,1,1) \) be a finite discrete aperture field on
 
 . **Discrete Intermediate Step Existence**: On the finite discrete grid \( \mathcal{G}_N \), the step rate sequence \( D_{\mathcal{I}} f(r_k) \) takes finite discrete values. By discrete monotonicity and Main Scale Projection \( (\downarrow) \), there exists an index $c \in \{0, \dots, M-1\}$ such that \( (\downarrow) D_{\mathcal{I}} f(r_c) = (\downarrow) \Delta_{\mathcal{I}} \).
 
-. **Tautological Conclusion**: The Vernier Mean Value Theorem holds as an exact discrete arithmetic balance law. \( \blacksquare \)
+. **Tautological Conclusion**: The Vernier Mean Value Theorem holds as an exact discrete arithmetic balance law. \( \whitesquare \)
 ====
 
 [#theorem-taylor-msra]
@@ -634,7 +634,7 @@ where \( R_{M+1}(r) \) is an explicitly bounded discrete higher-order vernier re
 
 . **Main Scale Projection**: Projecting under \( (\downarrow) \) eliminates the higher-order nilpotent residual \( \varpi \vartheta \), yielding the exact discrete Taylor-Vernier polynomial series.
 
-. **Tautological Conclusion**: Finite aperture fields possess exact finite Taylor-Vernier representations on \( \mathcal{G}_N \). \( \blacksquare \)
+. **Tautological Conclusion**: Finite aperture fields possess exact finite Taylor-Vernier representations on \( \mathcal{G}_N \). \( \whitesquare \)
 ====
 
 [#theorem-stokes-msra]
@@ -663,7 +663,7 @@ Under Main Scale Projection \( (\downarrow) \), \( (\downarrow) \int_\Omega D_{\
 \sum_{e} \int_{\partial \mathcal{C}_e} A \cdot d_{\mathcal{I}}S = \int_{\partial \Omega} A \cdot d_{\mathcal{I}}S
 \]
 
-. **Tautological Conclusion**: The Multivector Vernier Stokes Theorem is established as an exact geometric flux balance law on finite discrete grids. \( \blacksquare \)
+. **Tautological Conclusion**: The Multivector Vernier Stokes Theorem is established as an exact geometric flux balance law on finite discrete grids. \( \whitesquare \)
 ====
 
 == The MSRA Vernier Measure Uniformity Theorem
@@ -688,7 +688,7 @@ For any finite disjoint collection of discrete measurement intervals \( \mathcal
 
 . **Main Scale Invariance**: Applying Main Scale Projection \( (\downarrow) \) removes higher-order vernier residual boundary terms, ensuring that \( (\downarrow) \mu_{\mathcal{I}} \) matches the standard length measure on rational sub-intervals.
 
-. **Tautological Conclusion**: Measure additivity holds strictly for all finite operational measurement sets on \( \mathcal{G}_N \). \( \blacksquare \)
+. **Tautological Conclusion**: Measure additivity holds strictly for all finite operational measurement sets on \( \mathcal{G}_N \). \( \whitesquare \)
 ====
 
 == The Aperture Fourier-Iris Spectral Decomposition Theorem
@@ -713,7 +713,7 @@ Every finite aperture flux function \( f : \mathcal{G}_N \to Cl(4,1,1) \) expand
 
 . **Parseval Energy Conservation**: The total multivector energy satisfies \( \|f\|_{\mathcal{I}}^2 = \sum_{k=0}^{N-1} |c_k|^2 \), guaranteeing finite operational energy conservation.
 
-. **Tautological Conclusion**: Discrete aperture functions on \( \mathcal{G}_N \) possess an exact, complete Fourier-Iris spectral representation. \( \blacksquare \)
+. **Tautological Conclusion**: Discrete aperture functions on \( \mathcal{G}_N \) possess an exact, complete Fourier-Iris spectral representation. \( \whitesquare \)
 ====
 
 == The Discrete Sobolev Aperture Norm Equivalence Theorem
@@ -736,7 +736,7 @@ D_{\mathcal{I}} f(r) = \sum_{k=0}^{N-1} c_k \frac{\iota^{k \delta N} - 1}{\delta
 
 . **Metric Norm Evaluation**: Taking the Iris metric norm yields \( \|D_{\mathcal{I}} f\|_{\mathcal{I}}^2 \le C_N \sum_{k=0}^{N-1} k^2 |c_k|^2 \), where \( C_N \) is a finite rational constant dependent on grid resolution \( N \).
 
-. **Tautological Conclusion**: The discrete Sobolev norm \( \|f\|_{H^1_{\mathcal{I}}} = \|f\|_{\mathcal{I}} + \|D_{\mathcal{I}} f\|_{\mathcal{I}} \) is well-defined and strictly finite for all discrete aperture fields on \( \mathcal{G}_N \). \( \blacksquare \)
+. **Tautological Conclusion**: The discrete Sobolev norm \( \|f\|_{H^1_{\mathcal{I}}} = \|f\|_{\mathcal{I}} + \|D_{\mathcal{I}} f\|_{\mathcal{I}} \) is well-defined and strictly finite for all discrete aperture fields on \( \mathcal{G}_N \). \( \whitesquare \)
 ====
 
 = Applications to Probability Theory
@@ -769,7 +769,7 @@ P(A \mid C) + P(\neg A \mid C) = 1 \cdot \mathbf{1}_{Cl}
 
 . **Uniqueness on Finite Grids**: Because state space \( \mathcal{G}_N \) consists of a finite count of discrete partition states, no continuum assumptions are required, and the operational probability measure \( P \) is uniquely determined up to an exponent scaling.
 
-. **Tautological Conclusion**: Any consistent operational reasoning framework over finite discrete proposition spaces is strictly isomorphic to Jaynesian probability theory. \( \blacksquare \)
+. **Tautological Conclusion**: Any consistent operational reasoning framework over finite discrete proposition spaces is strictly isomorphic to Jaynesian probability theory. \( \whitesquare \)
 ====
 
 == The Discrete Operational Law of Large Numbers
@@ -792,7 +792,7 @@ P\left( \|\bar{X}_N - \mu \mathbf{1}_{Cl}\|_{\mathcal{I}} \ge \epsilon \right) \
 
 . **Main Scale Projection Limit**: Taking Main Scale Projection \( (\downarrow) \) as count bound \( N \) increases yields \( (\downarrow) P\left( \|\bar{X}_N - \mu \mathbf{1}_{Cl}\|_{\mathcal{I}} \ge \epsilon \right) \to 0 \).
 
-. **Tautological Conclusion**: The empirical measurement mean contracts strictly to the Jaynesian expectation state. \( \blacksquare \)
+. **Tautological Conclusion**: The empirical measurement mean contracts strictly to the Jaynesian expectation state. \( \whitesquare \)
 ====
 
 == The Vernier Central Limit Spectral Theorem
@@ -815,7 +815,7 @@ The standardized sum \( S_N = \frac{1}{\sqrt{N} \sigma_{\mathcal{I}}} \sum_{i=1}
 
 . **Exponential Limit**: Taking the operational power limit yields \( \lim_{N \to \infty} \Phi_{S_N}(t) = \exp\left( -\frac{1}{2} t^2 \mathbf{1}_{Cl} \right) \).
 
-. **Tautological Conclusion**: The limiting distribution is the unique Jaynesian MaxEnt Gaussian aperture density. \( \blacksquare \)
+. **Tautological Conclusion**: The limiting distribution is the unique Jaynesian MaxEnt Gaussian aperture density. \( \whitesquare \)
 ====
 
 == The Jaynesian Information Conservation Law
@@ -838,7 +838,7 @@ Under unitary multivector gauge transformations in \( Cl(4,1,1) \), the total Ja
 S_{\text{MaxEnt}}(P') = -\sum_{r \in \mathcal{G}_N} P(U r \bar{U}) \ln P(U r \bar{U}) = -\sum_{r' \in \mathcal{G}_N} P(r') \ln P(r') = S_{\text{MaxEnt}}(P)
 \]
 
-. **Tautological Conclusion**: Jaynesian information entropy is strictly conserved under gauge field evolutions in \( Cl(4,1,1) \). \( \blacksquare \)
+. **Tautological Conclusion**: Jaynesian information entropy is strictly conserved under gauge field evolutions in \( Cl(4,1,1) \). \( \whitesquare \)
 ====
 
 = Applications to Constructive Statistics
@@ -861,7 +861,7 @@ For discrete measurement counts on grid \( \mathcal{G}_N \), the Jaynesian MaxEn
 
 . **Uniqueness of Stationarity**: Since \( D_{\mathcal{I}}^2 L(\theta) \) is strictly negative-definite, the stationary equation \( D_{\mathcal{I}} L(\hat{\theta}) = 0 \) possesses a unique solution \( \hat{\theta}_{\text{MAL}} \).
 
-. **Tautological Conclusion**: Maximum Aperture Likelihood estimation yields a unique, optimal parameter estimate for any finite data set on \( \mathcal{G}_N \). \( \blacksquare \)
+. **Tautological Conclusion**: Maximum Aperture Likelihood estimation yields a unique, optimal parameter estimate for any finite data set on \( \mathcal{G}_N \). \( \whitesquare \)
 ====
 
 == The Iris Minimum Entropy Information Criterion (IMEIC)
@@ -890,7 +890,7 @@ where \( K_{\text{grade}}(M) \) is the exact multivector grade dimension in \( C
 
 . **Exact Non-Asymptotic Form**: Multiplying by 2 and projecting via Main Scale Projection \( (\downarrow) \) yields the exact criterion \( \text{IMEIC}(M) \).
 
-. **Tautological Conclusion**: Model selection strictly minimizes information loss without over-fitting multivector grade dimensions. \( \blacksquare \)
+. **Tautological Conclusion**: Model selection strictly minimizes information loss without over-fitting multivector grade dimensions. \( \whitesquare \)
 ====
 
 == The Finite-Sample Cramer-Rao Aperture Inequality
@@ -925,7 +925,7 @@ where \( I_{\mathcal{I}}(\theta) \) is the Fisher aperture information multivect
 
 . **Fisher Information Identification**: Recognizing \( I_{\mathcal{I}}(\theta) = \mathbb{E}\left[ (D_{\mathcal{I}} \ln P(X \mid \theta))^2 \right] \) yields the exact lower bound \( \text{Var}_{\mathcal{I}}(T(X)) \ge I_{\mathcal{I}}(\theta)^{-1} \mathbf{1}_{Cl} \).
 
-. **Tautological Conclusion**: No unbiased operational estimator on \( \mathcal{G}_N \) can exceed the precision bound imposed by the Fisher aperture information norm. \( \blacksquare \)
+. **Tautological Conclusion**: No unbiased operational estimator on \( \mathcal{G}_N \) can exceed the precision bound imposed by the Fisher aperture information norm. \( \whitesquare \)
 ====
 
 = Applications to Conventional Statistics
@@ -948,7 +948,7 @@ Let \( H_0 \) and \( H_1 \) be operational hypotheses defined on discrete partit
 
 . **Multivector Likelihood Ratio**: Expressing \( P(X \mid H_k) \) in \( Cl(4,1,1) \) via Main Scale Projection \( (\downarrow) \) yields \( \Lambda(X) \) as a scalar blade component of the Jaynesian density tensor.
 
-. **Tautological Conclusion**: Conventional hypothesis testing is an exact finite-aperture tail-counting operation on discrete partition state spaces. \( \blacksquare \)
+. **Tautological Conclusion**: Conventional hypothesis testing is an exact finite-aperture tail-counting operation on discrete partition state spaces. \( \whitesquare \)
 ====
 
 == Analysis of Variance (ANOVA) in Multivector Space
@@ -967,7 +967,7 @@ For a finite discrete data matrix partitioned into \( K \) operational aperture 
 
 . **Cl(4,1,1) Energy Conservation**: Projecting onto the scalar blade of \( Cl(4,1,1) \) yields \( SS_{\text{total}} = SS_{\text{between}} + SS_{\text{within}} \).
 
-. **Tautological Conclusion**: ANOVA variance decomposition is a structural identity of discrete multivector projection on finite measurement grids. \( \blacksquare \)
+. **Tautological Conclusion**: ANOVA variance decomposition is a structural identity of discrete multivector projection on finite measurement grids. \( \whitesquare \)
 ====
 
 == Multivector Linear Regression and Gauss-Markov Efficiency
@@ -986,7 +986,7 @@ Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite
 
 . **Positive Definiteness**: Since \( D D^T \) is a non-negative definite multivector operator, \( \text{Var}_{\mathcal{I}}(\tilde{\beta}) \ge \text{Var}_{\mathcal{I}}(\hat{\beta}) \), with equality if and only if \( D = \mathbf{0} \).
 
-. **Tautological Conclusion**: The discrete OLS estimator uniquely minimizes aperture variance across all linear unbiased estimators on \( \mathcal{G}_N \). \( \blacksquare \)
+. **Tautological Conclusion**: The discrete OLS estimator uniquely minimizes aperture variance across all linear unbiased estimators on \( \mathcal{G}_N \). \( \whitesquare \)
 ====
 
 = Index of Formal Statements

@@ -566,7 +566,7 @@ z \bar{z} = a^2 - b^2 \iota^2 = a^2 + b^2 - b^2 \varpi \vartheta \implies (\down
 \]
 
 
-establishing an exact ring isomorphism with the classical complex field \( \mathbb{C} \). \( \blacksquare \)
+establishing an exact ring isomorphism with the classical complex field \( \mathbb{C} \). \( \whitesquare \)
 ====
 
 == Quaternions as Cl(4,1,1) Bivector Subalgebras
@@ -636,7 +636,7 @@ q \tilde{q} = q_0^2 + q_1^2 + q_2^2 + q_3^2
 \]
 
 
-This proves that quaternions in Counting-Iris are exact spatial bivector rotations in \( Cl(4,1,1) \). \( \blacksquare \)
+This proves that quaternions in Counting-Iris are exact spatial bivector rotations in \( Cl(4,1,1) \). \( \whitesquare \)
 ====
 
 = How to do Differential Calculus
@@ -721,7 +721,7 @@ Since \( (\downarrow)(u(x + \delta_\omega)) = (\downarrow)(u(x) + \Delta u) = u(
 \]
 
 
-establishing the exact MSRA product rule within the Counting-Iris framework. \( \blacksquare \)
+establishing the exact MSRA product rule within the Counting-Iris framework. \( \whitesquare \)
 ====
 
 [#theorem-msra-quotient-rule]
@@ -761,7 +761,7 @@ Dividing by \( \delta_\omega \) and applying Main Scale Projection \( (\downarro
 \]
 
 
-establishing the exact MSRA quotient rule. \( \blacksquare \)
+establishing the exact MSRA quotient rule. \( \whitesquare \)
 ====
 
 [#theorem-msra-chain-rule]
@@ -793,7 +793,7 @@ Applying Main Scale Projection \( (\downarrow) \):
 \]
 
 
-establishing the MSRA chain rule. \( \blacksquare \)
+establishing the MSRA chain rule. \( \whitesquare \)
 ====
 
 == Multivector Clifford Derivatives in Cl(4,1,1)
@@ -906,7 +906,7 @@ Dividing by \( \delta_\omega \) and applying Main Scale Projection \( (\downarro
 \frac{dF}{dx} = (\downarrow) \left( \frac{F(x + \delta_\omega) - F(x)}{\delta_\omega} \right) = (\downarrow)(f(x)) = f(x)
 \]
 
-. **Evaluation of Definite Integral**: Let \( G(x) \) be any anti-derivative satisfying \( G'(x) = f(x) \). Then \( G(x) - F(x) = C \). At \( x = a \), \( F(a) = 0 \implies C = G(a) \). Thus \( F(b) = G(b) - G(a) \), completing the proof. \( \blacksquare \)
+. **Evaluation of Definite Integral**: Let \( G(x) \) be any anti-derivative satisfying \( G'(x) = f(x) \). Then \( G(x) - F(x) = C \). At \( x = a \), \( F(a) = 0 \implies C = G(a) \). Thus \( F(b) = G(b) - G(a) \), completing the proof. \( \whitesquare \)
 ====
 
 == Vernier Integration Techniques on Discrete Grids
@@ -926,7 +926,7 @@ For finite differentiable aperture functions \( u(x) \) and \( v(x) \) on \( [a,
 
 
 *Proof:*
-From the MSRA product rule, \( \frac{d(uv)}{dx} = u v' + v u' \). Integrating both sides from \( a \) to \( b \) using the Fundamental Theorem of MSRA Calculus yields \( [u(x)v(x)]_a^b = \int_a^b u v' dx + \int_a^b v u' dx \), which rearranges to the result. \( \blacksquare \)
+From the MSRA product rule, \( \frac{d(uv)}{dx} = u v' + v u' \). Integrating both sides from \( a \) to \( b \) using the Fundamental Theorem of MSRA Calculus yields \( [u(x)v(x)]_a^b = \int_a^b u v' dx + \int_a^b v u' dx \), which rearranges to the result. \( \whitesquare \)
 ====
 
 == Worked Example: MSRA Definite Integral of a Linear Function
@@ -1010,7 +1010,7 @@ Decompose the bounded region \( \mathcal{D} \) into a mesh of elementary ultra-r
 \]
 
 
-Since \( D \Psi = 0 \) throughout \( \mathcal{D} \), the area summation vanishes identically, giving \( \oint_\Gamma \Psi(z) \, dz = 0 \). \( \blacksquare \)
+Since \( D \Psi = 0 \) throughout \( \mathcal{D} \), the area summation vanishes identically, giving \( \oint_\Gamma \Psi(z) \, dz = 0 \). \( \whitesquare \)
 ====
 
 == Residue-Free Loop Circulations and Bivector Spin(2) Conservation
@@ -1068,7 +1068,7 @@ for an elementary ultra-refined boundary contour \( \Gamma_k \subset \mathcal{D}
 
 
 \[
-\oint_\Gamma \Psi(z) \, dz = \sum_{k=1}^n \oint_{\Gamma_k} \Psi(z) \, dz = 2\pi i \sum_{k=1}^n \text{Res}\left(\Psi, z_k\right) \qquad \blacksquare
+\oint_\Gamma \Psi(z) \, dz = \sum_{k=1}^n \oint_{\Gamma_k} \Psi(z) \, dz = 2\pi i \sum_{k=1}^n \text{Res}\left(\Psi, z_k\right) \qquad \whitesquare
 \]
 ====
 
@@ -1290,7 +1290,7 @@ Since \( e_{12}^2 = e_1 e_2 e_1 e_2 = -e_1^2 e_2^2 = -\mathbf{1} \), \( e_4 e_0 
 \iota^2 = -\mathbf{1} + 2 e_4 e_0 = -\mathbf{1} + \varpi \vartheta
 \]
 
-This completes the explicit proof of \( Cl(4,1,1) \) and its exact match with Postulate 9. \( \blacksquare \)
+This completes the explicit proof of \( Cl(4,1,1) \) and its exact match with Postulate 9. \( \whitesquare \)
 ====
 
 == Proof of the Constructive Clifford PBW Basis Theorem
@@ -1330,7 +1330,7 @@ Applying \( \rho \) for any ordered basis multivector \( e_M = e_{a_1} \dots e_{
 \]
 
 Because the 64 exterior products \( e_{a_1} \wedge \dots \wedge e_{a_k} \) are linearly independent in the exterior algebra \( \bigwedge V \), their preimages \( e_{a_1} e_{a_2} \dots e_{a_k} \) must be linearly independent in \( Cl(4,1,1) \).
-Therefore, the 64 ordered multivectors form an exact, linearly independent basis, establishing that \( \dim Cl(4,1,1) = 64 \). \( \blacksquare \)
+Therefore, the 64 ordered multivectors form an exact, linearly independent basis, establishing that \( \dim Cl(4,1,1) = 64 \). \( \whitesquare \)
 ====
 
 == Proof of the Fundamental Anti-Commutation Law
@@ -1366,7 +1366,7 @@ Q(u + v)\mathbf{1} = \left(Q(u) + Q(v) + 2 B(u, v)\right)\mathbf{1}
 u v + v u = 2 B(u, v)\mathbf{1}
 \]
 
-. Setting \( u = e_A \) and \( v = e_B \) gives \( B(e_A, e_B) = g_{AB} \). Thus \( e_A e_B + e_B e_A = 2 g_{AB} \mathbf{1} \). For distinct orthogonal generators (\( A \neq B \)), \( g_{AB} = 0 \implies e_A e_B = -e_B e_A \). For equal generators, \( e_A^2 = g_{AA} \mathbf{1} \). \( \blacksquare \)
+. Setting \( u = e_A \) and \( v = e_B \) gives \( B(e_A, e_B) = g_{AB} \). Thus \( e_A e_B + e_B e_A = 2 g_{AB} \mathbf{1} \). For distinct orthogonal generators (\( A \neq B \)), \( g_{AB} = 0 \implies e_A e_B = -e_B e_A \). For equal generators, \( e_A^2 = g_{AA} \mathbf{1} \). \( \whitesquare \)
 ====
 
 == Proof of the MSRA Ring Homomorphism
@@ -1402,7 +1402,7 @@ Applying \( (\downarrow) \) to each term yields \( (\downarrow)(x y) = x y \), \
 (\downarrow)(x^{\ast} \cdot y^{\ast}) = x y = (\downarrow)(x^{\ast}) \cdot (\downarrow)(y^{\ast})
 \]
 
-This proves that \( (\downarrow) \) is a complete ring homomorphism from \( \text{Fin}(\mathbb{R}^{\ast}) \) to \( \mathbb{R} \). \( \blacksquare \)
+This proves that \( (\downarrow) \) is a complete ring homomorphism from \( \text{Fin}(\mathbb{R}^{\ast}) \) to \( \mathbb{R} \). \( \whitesquare \)
 ====
 
 == Proof of Tautological Completeness
@@ -1426,7 +1426,7 @@ Then \( \mathcal{S}_{\text{Iris}} \) is tautologically complete: every valid phy
 
 . **Physical Field Closure**: Coupling the discrete Clifford gradient \( D = \nabla + e_4 \frac{1}{c} D_t \) with the multivector field \( F_{\text{total}} \) yields the Master Field Equation \( D F_{\text{total}} = J_{\text{total}} \), which fully accounts for electromagnetic, gravitational, and particle charge-to-mass dynamics without unproven external field assumptions.
 
-Therefore, every theorem and physical law within the system is proven strictly from within the Iris postulate system, making \( \mathcal{S}_{\text{Iris}} \) self-contained, paradox-free, and tautologically complete. \( \blacksquare \)
+Therefore, every theorem and physical law within the system is proven strictly from within the Iris postulate system, making \( \mathcal{S}_{\text{Iris}} \) self-contained, paradox-free, and tautologically complete. \( \whitesquare \)
 ====
 
 == Elimination of Continuum Paradoxes
