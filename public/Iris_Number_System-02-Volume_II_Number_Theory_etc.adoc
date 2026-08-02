@@ -556,67 +556,67 @@ Under radix base \( b \ge 2 \) aperture iteration \( R_b(n) = n + \text{rev}_b(n
 [#sec-riemann-shannon-consequences]
 == Profound Consequences of the Riemann-Shannon Capacity Equivalence in Iris Arithmetic
 
-The constructive equivalence between the Riemann Hypothesis (the spectral zero distribution of the Iris Zeta Operator \( \zeta_{\mathcal{I}}(s) \)) and Shannon's Channel Capacity Theorem leads to several profound structural deductions regarding the nature of prime numbers, discrete arithmetic, and information conservation within the Iris Number System:
+The constructive equivalence between the Riemann Hypothesis (the spectral zero distribution of the Iris Zeta Operator \( \zeta _ { \mathcal { I } } ( s ) \)) and Shannon's Channel Capacity Theorem leads to several profound structural deductions regarding the nature of prime numbers, discrete arithmetic, and information conservation within the Iris Number System:
 
 . **Unconditional Resolution Bound on Prime Fluctuations**:
-   Because discrete Iris primes act as orthogonal sub-carrier channels carrying the complete factorizational state of the integer sequence, the equivalence to Shannon's capacity bound forces prime counting fluctuations \( |\pi_{\mathcal{I}}(x) - \text{Li}(x)| \) to remain strictly constrained within the thermodynamic aperture threshold \( \mathcal{O}(\sqrt{x} \ln x) \). Any excursion beyond this threshold would represent an illegal information transmission rate exceeding the physical capacity of the discrete partition grid \( \mathcal{G}_N \), violating Jaynesian Maximum Entropy bivector parity conservation in \( Cl(4,1,1) \).
+   Because discrete Iris primes act as orthogonal sub-carrier channels carrying the complete factorizational state of the integer sequence, the equivalence to Shannon's capacity bound forces prime counting fluctuations \( | \pi _ { \mathcal { I } } ( x ) - \text { Li } ( x ) | \) to remain strictly constrained within the thermodynamic aperture threshold \( \mathcal { O } ( \sqrt { x } \ln x ) \). Any excursion beyond this threshold would represent an illegal information transmission rate exceeding the physical capacity of the discrete partition grid \( \mathcal { G } _ N \), violating Jaynesian Maximum Entropy bivector parity conservation in \( Cl ( 4 , 1 , 1 ) \).
 
 . **Zero Information Dissipation and Optimal Channel Equipartition**:
-   The critical line \( \text{Re}(s) = 1/2 \) represents the unique anti-isometric invariant axis of non-dissipative equipartition. Off-critical zeroes (\( \delta \neq 0 \)) generate a positive Hermitian energy gap \( 4 \delta \tau t^2 > 0 \), which acts as destructive phase dispersion or noise distortion across the grid \( \mathcal{G}_N \). The strict restriction of all non-trivial zeroes to \( \text{Re}(s) = 1/2 \) proves that the discrete number line is an optimal, noise-free, zero-dissipation communication medium.
+   The critical line \( \text { Re } ( s ) = 1 / 2 \) represents the unique anti-isometric invariant axis of non-dissipative equipartition. Off-critical zeroes (\( \delta \neq 0 \)) generate a positive Hermitian energy gap \( 4 \delta \tau t ^ 2 > 0 \), which acts as destructive phase dispersion or noise distortion across the grid \( \mathcal { G } _ N \). The strict restriction of all non-trivial zeroes to \( \text { Re } ( s ) = 1 / 2 \) proves that the discrete number line is an optimal, noise-free, zero-dissipation communication medium.
 
 . **Information-Theoretic Determinism of Multiplicative Residues**:
-   In the discrete partition grid \( \mathcal{G}_N \), the prime sub-carrier channels exhibit maximum entropy in their modular phase distribution while maintaining exact algebraic orthogonality under Grade-2 \( Cl(4,1,1) \) bivector commutators. This proves that apparent pseudo-randomness in prime distributions is merely an artifact of aperture projection, whereas the underlying discrete operational step state is completely deterministic and capacity-saturated.
+   In the discrete partition grid \( \mathcal { G } _ N \), the prime sub-carrier channels exhibit maximum entropy in their modular phase distribution while maintaining exact algebraic orthogonality under Grade-2 \( Cl ( 4 , 1 , 1 ) \) bivector commutators. This proves that apparent pseudo-randomness in prime distributions is merely an artifact of aperture projection, whereas the underlying discrete operational step state is completely deterministic and capacity-saturated.
 
 . **Unification of Arithmetic and Communication Theory**:
-   By formulating both arithmetic factorization and channel capacity over finite rational partition grids \( \mathcal{G}_N \), the traditional boundary between number theory and information theory vanishes. Number theory in the Iris framework is established as the exact structural science of lossless discrete information transmission across multivector aperture channels.
+   By formulating both arithmetic factorization and channel capacity over finite rational partition grids \( \mathcal { G } _ N \), the traditional boundary between number theory and information theory vanishes. Number theory in the Iris framework is established as the exact structural science of lossless discrete information transmission across multivector aperture channels.
 
 [#sec-capacity-saturated-prime-sieve]
 == Capacity-Saturated Parallel Multigrid Prime Sieve Algorithm
 
-Based on the constructive equivalence between the Riemann Hypothesis and Shannon's Channel Capacity Theorem established in <<sec-riemann-shannon-consequences>>, prime generation in the Iris Number System is reformulated as the optimal, non-dissipative demodulation of orthogonal sub-carrier channels across the discrete partition grid \( \mathcal{G}_N \).
+Based on the constructive equivalence between the Riemann Hypothesis and Shannon's Channel Capacity Theorem established in <<sec-riemann-shannon-consequences>>, prime generation in the Iris Number System is reformulated as the optimal, non-dissipative demodulation of orthogonal sub-carrier channels across the discrete partition grid \( \mathcal { G } _ N \).
 
 === Conceptual Basis: Prime Detection as Phase Demodulation
 
-In conventional sieve algorithms (such as the Sieve of Eratosthenes or Atkin), compositeness is detected through redundant sequential trial elimination. In the Iris Number System, each prime \( p_k \) constitutes an orthogonal sub-carrier mode operating in the Grade-2 bivector subspace of \( Cl(4,1,1) \). 
+In conventional sieve algorithms (such as the Sieve of Eratosthenes or Atkin), compositeness is detected through redundant sequential trial elimination. In the Iris Number System, each prime \( p _ k \) constitutes an orthogonal sub-carrier mode operating in the Grade-2 bivector subspace of \( Cl ( 4 , 1 , 1 ) \). 
 
-Because the discrete number line is an information channel operating at maximum Shannon capacity with zero spectral dissipation, prime generation reduces to identifying the **zero-phase interference nodes** of the multivector aperture field \( \mathcal{A}_{\mathcal{I}}(x) \):
+Because the discrete number line is an information channel operating at maximum Shannon capacity with zero spectral dissipation, prime generation reduces to identifying the **zero-phase interference nodes** of the multivector aperture field \( \mathcal { A } _ { \mathcal { I } } ( x ) \):
 
 [stem]
 ++++
-\mathcal{A}_{\mathcal{I}}(x) = \bigwedge_{k=1}^{\pi(\sqrt{x})} \mathbf{B}_{p_k} \left( \frac{2\pi x}{p_k} \right) \in Cl(4,1,1)
+\mathcal { A } _ { \mathcal { I } } ( x ) = \bigwedge _ { k = 1 } ^ { \pi ( \sqrt { x } ) } \mathbf { B } _ { p _ k } \left ( \frac { 2 \pi x } { p _ k } \right ) \in Cl ( 4 , 1 , 1 )
 ++++
 
-A discrete integer coordinate \( x \in \mathcal{G}_N \) is prime if and only if its total bivector phase noise vanishes identically: \( \Vert \mathcal{A}_{\mathcal{I}}(x) \Vert = 0 \).
+A discrete integer coordinate \( x \in \mathcal { G } _ N \) is prime if and only if its total bivector phase noise vanishes identically: \( \Vert \mathcal { A } _ { \mathcal { I } } ( x ) \Vert = 0 \).
 
 === Algorithm Specification: The Capacity-Saturated Vernier Sieve
 
 [ALGORITHM]
 .Capacity-Saturated Multigrid Prime Sieve
 ====
-*Input*: An upper bound \( N \in \mathbb{Z}^+ \) defining the discrete partition grid \( \mathcal{G}_N \).
-*Output*: The exact sequence of prime numbers \( \{ p_1, p_2, \dots, p_{\pi(N)} \} \le N \).
+*Input*: An upper bound \( N \in \mathbb { Z } ^ + \) defining the discrete partition grid \( \mathcal { G } _ N \).
+*Output*: The exact sequence of prime numbers \( \{ p _ 1 , p _ 2 , \dots , p _ { \pi ( N ) } \} \le N \).
 
 1. **Multiscale Wheel Channel Initialization**:
-   Select a base wheel primorial \( M = \prod_{p \le B} p \) (e.g., \( M = 2 \cdot 3 \cdot 5 \cdot 7 = 210 \)) operating at the fundamental Vernier aperture scale. Partition \( \mathcal{G}_N \) into coprime residue channels \( \{ r \in \mathbb{Z}_M : \gcd(r, M) = 1 \} \).
+   Select a base wheel primorial \( M = \prod _ { p \le B } p \) (e.g., \( M = 2 \cdot 3 \cdot 5 \cdot 7 = 210 \)) operating at the fundamental Vernier aperture scale. Partition \( \mathcal { G } _ N \) into coprime residue channels \( \{ r \in \mathbb { Z } _ M : \gcd ( r , M ) = 1 \} \).
 
 2. **Parallel Bivector Phase Demodulation**:
-   For each parallel Vernier block of size \( L = \mathcal{O}(\sqrt{N}) \):
-   a. Construct the local Grade-2 multivector aperture state vector \( \mathbf{\Phi}(x) \) across all wheel residue channels simultaneously using vector bitwise SIMD registers.
-   b. Apply the discrete \( Cl(4,1,1) \) Vernier commutator operator \( \mathcal{D}_{\mathcal{I}} \mathbf{\Phi} \). By the capacity equipartition property, non-prime positions induce non-zero bivector phase shifts \( \Delta \phi \neq 0 \) in time \( \mathcal{O}(1) \) per wheel frame.
+   For each parallel Vernier block of size \( L = \mathcal { O } ( \sqrt { N } ) \):
+   a. Construct the local Grade-2 multivector aperture state vector \( \mathbf { \Phi } ( x ) \) across all wheel residue channels simultaneously using vector bitwise SIMD registers.
+   b. Apply the discrete \( Cl ( 4 , 1 , 1 ) \) Vernier commutator operator \( \mathcal { D } _ { \mathcal { I } } \mathbf { \Phi } \). By the capacity equipartition property, non-prime positions induce non-zero bivector phase shifts \( \Delta \phi \neq 0 \) in time \( \mathcal { O } ( 1 ) \) per wheel frame.
 
 3. **Zero-Phase Node Extraction**:
-   Extract all coordinates \( x \in \mathcal{G}_N \) where the bivector phase noise vanishes:
+   Extract all coordinates \( x \in \mathcal { G } _ N \) where the bivector phase noise vanishes:
    [stem]
    ++++
-   \text{Re}(\mathbf{\Phi}(x)) = 0 \quad \text{and} \quad \text{Im}(\mathbf{\Phi}(x)) = 0
+   \text { Re } ( \mathbf { \Phi } ( x ) ) = 0 \quad \text { and } \quad \text { Im } ( \mathbf { \Phi } ( x ) ) = 0
    ++++
    The resulting set of coordinates constitutes the exact, non-dissipative list of prime numbers up to \( N \).
 ====
 
 === Complexity and Information Throughput
 
-1. **Computational Complexity**: Operating at the Shannon capacity bound reduces redundant trial divisions to zero. The total operational step count is strictly bounded by \( \mathcal{O}\left( \frac{N \ln \ln \sqrt{N}}{\ln \sqrt{N}} \right) \) bit operations, or \( \mathcal{O}(N) \) parallel operations.
-2. **Space Complexity**: By partitioning the grid into local Vernier blocks of size \( L = \sqrt{N} \), the total active workspace memory is strictly constrained to \( \mathcal{O}(\sqrt{N}) \) bits.
+1. **Computational Complexity**: Operating at the Shannon capacity bound reduces redundant trial divisions to zero. The total operational step count is strictly bounded by \( \mathcal { O } \left ( \frac { N \ln \ln \sqrt { N } } { \ln \sqrt { N } } \right ) \) bit operations, or \( \mathcal { O } ( N ) \) parallel operations.
+2. **Space Complexity**: By partitioning the grid into local Vernier blocks of size \( L = \sqrt { N } \), the total active workspace memory is strictly constrained to \( \mathcal { O } ( \sqrt { N } ) \) bits.
 3. **Lossless Equipartition**: The algorithm achieves maximum theoretical information throughput without generating uncoordinated memory access overhead, realizing the physical limit of discrete prime generation on finite rational grids.
 
 = Applications to Constructive Analysis
