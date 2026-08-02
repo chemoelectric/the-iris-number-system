@@ -30,7 +30,7 @@ In 2D Euclidean Geometric Algebra \( Cl ( 2 , 0 ) \subset Cl ( 4 , 1 , 1 ) \), t
 . **Rotor Reversal Norm**: The reverse rotor is \( \tilde { R } = \cos ( \theta / 2 ) \mathbf { 1 } _ { Cl } + \sin ( \theta / 2 ) I _ 2 \). Thus \( R \tilde { R } = \cos ^ 2 ( \theta / 2 ) \mathbf { 1 } _ { Cl } + \sin ^ 2 ( \theta / 2 ) \mathbf { 1 } _ { Cl } = \mathbf { 1 } _ { Cl } \).
 
 . **Length Invariance**: Evaluating the square of transformed vector \( v ' = R v \tilde { R } \):
-\[ v ' ^ 2 = ( R v \tilde { R } ) ( R v \tilde { R } ) = R v ( \tilde { R } R ) v \tilde { R } = R v ^ 2 \tilde { R } = v ^ 2 R \tilde { R } = v ^ 2 \mathbf { 1 } _ { Cl } \]
+\[ ( v ' ) ^ 2 = ( R v \tilde { R } ) ( R v \tilde { R } ) = R v ( \tilde { R } R ) v \tilde { R } = R v ^ 2 \tilde { R } = v ^ 2 R \tilde { R } = v ^ 2 \mathbf { 1 } _ { Cl } \]
 Since \( v ^ 2 = ( x ^ 2 + y ^ 2 ) \mathbf { 1 } _ { Cl } \), length preservation holds strictly on rational grid steps. \( \square \)
 ====
 
