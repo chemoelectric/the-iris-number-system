@@ -68,8 +68,9 @@ For any discrete Iris prime measurement count \( p \) and integer step count \( 
 . **Bijective Phase Shift**: Since \( \gcd ( a , p ) = 1 \), the map \( x \mapsto a \cdot x \pmod p \) is a permutation of $R$ on discrete grid \( \mathcal { G } _ p \).
 
 . **Product Invariance**: Multiplying all permuted residue steps gives:
-
++
 \[ \prod _ { x = 1 } ^ { p - 1 } ( a \cdot x ) \equiv a ^ { p - 1 } ( p - 1 ) ! \cdot \mathbf { 1 } _ { Cl } \pmod p \]
++
 
 . **Factor Cancellation**: Since \( \gcd ( ( p - 1 ) ! , p ) = 1 \), dividing by \( ( p - 1 ) ! \) in \( Cl ( 4 , 1 , 1 ) \) grade-0 scalar space yields \( a ^ { p - 1 } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod p \).
 
@@ -89,8 +90,9 @@ For any discrete positive integer count \( n \ge 1 \) and integer step count \( 
 . **Multivector Phase Action**: Multiplication by \( a \cdot \mathbf { 1 } _ { Cl } \) permutes \( C _ n \) bijectively because \( \gcd ( a , n ) = 1 \).
 
 . **Product Equation**: Taking the product over all elements in \( C _ n \):
-
++
 \[ \prod _ { i = 1 } ^ { \varphi ( n ) } ( a \cdot r _ i ) \equiv a ^ { \varphi ( n ) } \prod _ { i = 1 } ^ { \varphi ( n ) } r _ i \cdot \mathbf { 1 } _ { Cl } \pmod n \]
++
 
 . **Residue Cancellation**: Since \( \gcd ( \prod r _ i , n ) = 1 \), canceling the product in \( Cl ( 4 , 1 , 1 ) \) yields \( a ^ { \varphi ( n ) } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod n \).
 
@@ -123,6 +125,7 @@ Let \( m _ 1 , m _ 2 , \dots , m _ k \) be pairwise coprime discrete integer cou
 For distinct odd Iris prime measurement counts \( p \) and \( q \), the product of their Legendre parity symbols satisfies:
 
 \[ \left ( \frac { p } { q } \right ) \left ( \frac { q } { p } \right ) = ( - 1 ) ^ { \frac { p - 1 } { 2 } \frac { q - 1 } { 2 } } \mathbf { 1 } _ { Cl } \]
++
 
 *Proof:*
 
@@ -148,12 +151,14 @@ In this section, positional numeral systems across arbitrary discrete bases (rad
 For any discrete radix integer count \( b \ge 2 \) and any positive measurement step count \( n \in \mathbb { Z } ^ + \), there exists a unique finite sequence of discrete digit coefficients \( ( d _ M , d _ { M - 1 } , \dots , d _ 1 , d _ 0 ) \) with \( d _ k \in \{ 0 , 1 , \dots , b - 1 \} \) and \( d _ M \neq 0 \) such that:
 
 \[ M ( n ) = n \cdot \mathbf { 1 } _ { Cl } = \sum _ { k = 0 } ^ M d _ k b ^ k \cdot \mathbf { 1 } _ { Cl } \]
++
 
 *Proof:*
 
 . **Discrete Division Algorithm Iteration**: On partition grid \( \mathcal { G } _ N \), apply the Euclidean division step recursively starting with \( n _ 0 = n \):
-
++
 \[ n _ k = q _ k b + d _ k , \quad \text { where } 0 \le d _ k < b \text { and } q _ k = \lfloor n _ k / b \rfloor \]
++
 
 . **Strict Step Contraction**: Since \( b \ge 2 \), the quotient sequence \( q _ 0 > q _ 1 > q _ 2 > \dots \) decreases strictly in discrete step count, terminating at \( q _ M = 0 \) in a finite number of steps \( M = \lfloor \log _ b n \rfloor \).
 
@@ -171,6 +176,7 @@ For any discrete radix integer count \( b \ge 2 \) and any positive measurement 
 Let \( ( d _ M \dots d _ 0 ) _ { b _ 1 } \) and \( ( c _ K \dots c _ 0 ) _ { b _ 2 } \) be numeral representations of measurement state \( M ( n ) \) in distinct radices \( b _ 1 , b _ 2 \ge 2 \). The total multivector scalar energy and \( Cl ( 4 , 1 , 1 ) \) grade decomposition remain strictly invariant across radix transformations:
 
 \[ ( \downarrow ) \sum _ { k = 0 } ^ M d _ k b _ 1 ^ k \cdot \mathbf { 1 } _ { Cl } = ( \downarrow ) \sum _ { j = 0 } ^ K c _ j b _ 2 ^ j \cdot \mathbf { 1 } _ { Cl } = n \cdot \mathbf { 1 } _ { Cl } \]
++
 
 *Proof:*
 
@@ -198,6 +204,7 @@ To demonstrate the invariant operational nature of multi-radix representations, 
 * **Decimal (Base 10)**:
   Standard decimal grouping gives digits \( d _ 1 = 4 , d _ 0 = 2 \):
   \[ M ( 42 ) = ( 4 \cdot 10 ^ 1 + 2 \cdot 10 ^ 0 ) \cdot \mathbf { 1 } _ { Cl } = ( 40 + 2 ) \cdot \mathbf { 1 } _ { Cl } = 42 _ { 10 } \cdot \mathbf { 1 } _ { Cl } \]
++
 
 * **Hexadecimal (Base 16)**:
   Division by \( b = 16 \) yields \( 42 = 2 \cdot 16 + 10 \). Mapping digit 10 to hexadecimal symbol `A`:
@@ -289,7 +296,7 @@ Every discrete even integer measurement step count \( 2n > 2 \) in \( \mathbb { 
 . **Operation of Measurement Mapping**: Map discrete integer step count \( 2n \in \mathbb { Z } \) into \( Cl ( 4 , 1 , 1 ) \) multivector space as scalar \( M ( 2n ) = 2n \cdot \mathbf { 1 } _ { Cl } \) (Postulate 0 & Postulate 2). Even integer multivectors \( M ( 2n ) \) are purely Grade-0 scalar elements.
 
 . **Jaynesian MaxEnt Distribution**: Formulate the objective Jaynesian probability density over the bounded discrete partition grid \( \mathcal { G } _ N \) with resolution step \( \delta = 1 / N \):
-
++
 \[ P ( p _ 1 , p _ 2 \mid 2n ) = \frac { 1 } { Z _ N } \exp \left ( - \lambda \| M ( p _ 1 ) + M ( p _ 2 ) - M ( 2n ) \| _ { \mathcal { I } } \right ) \]
 
 where \( \| \cdot \| _ { \mathcal { I } } \) is the non-Euclidean Iris metric norm.
@@ -616,12 +623,14 @@ Under Main Scale Projection \( ( \downarrow ) \), the nilpotent boundary term \(
 . **MSRA Difference Operator Representation**: The MSRA vernier derivative at step \( r _ k = a + k \delta \) is defined by \( D _ { \mathcal { I } } f ( r _ k ) = \frac { f ( r _ k + \delta ) - f ( r _ k ) } { \delta } \mathbf { 1 } _ { Cl } \).
 
 . **Definite Integration as Vernier Aperture Sum**: The definite vernier integral over discrete grid interval \( [ a , b ] \) with \( b = a + M \delta \) is defined as the finite sum:
-
++
 \[ \int _ a ^ b D _ { \mathcal { I } } f ( r ) \, d _ { \mathcal { I } } r = \sum _ { k = 0 } ^ { M - 1 } D _ { \mathcal { I } } f ( r _ k ) \cdot \delta \mathbf { 1 } _ { Cl } = \sum _ { k = 0 } ^ { M - 1 } \left ( \frac { f ( r _ k + \delta ) - f ( r _ k ) } { \delta } \right ) \delta \cdot \mathbf { 1 } _ { Cl } \]
++
 
 . **Telescoping Sum Cancellation**: Simplifying the product yields an exact telescoping sum across all finite step counts:
-
++
 \[ \sum _ { k = 0 } ^ { M - 1 } \big ( f ( r _ { k + 1 } ) - f ( r _ k ) \big ) \mathbf { 1 } _ { Cl } = f ( r _ M ) - f ( r _ 0 ) = f ( b ) - f ( a ) \]
++
 
 . **Main Scale Boundary Invariance**: Including higher-order vernier boundary residuals yields \( \int _ a ^ b D _ { \mathcal { I } } f ( r ) \, d _ { \mathcal { I } } r = f ( b ) - f ( a ) + \varpi \vartheta \). Applying Main Scale Projection \( ( \downarrow ) \) eliminates the nilpotent boundary term \( \varpi \vartheta \).
 
@@ -635,14 +644,16 @@ Under Main Scale Projection \( ( \downarrow ) \), the nilpotent boundary term \(
 Let \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) be a finite discrete aperture field on grid \( \mathcal { G } _ N \). Then there exists at least one discrete grid step \( r _ c \in \mathcal { G } _ N \cap [ a , b - \delta ] \) such that the Main Scale Projection satisfies:
 
 \[ ( \downarrow ) D _ { \mathcal { I } } f ( r _ c ) = ( \downarrow ) \frac { f ( b ) - f ( a ) } { b - a } \]
++
 
 *Proof:*
 
 . **Average Vernier Rate Evaluation**: Compute the net change ratio \( \Delta _ { \mathcal { I } } = \frac { f ( b ) - f ( a ) } { b - a } \mathbf { 1 } _ { Cl } \). Let \( M = ( b - a ) / \delta \) be the total finite count of grid steps.
 
 . **Sum Decomposition**: Express \( f ( b ) - f ( a ) \) as the telescoping sum \( \sum _ { k = 0 } ^ { M - 1 } D _ { \mathcal { I } } f ( r _ k ) \delta \). Dividing by \( b - a = M \delta \):
-
++
 \[ \Delta _ { \mathcal { I } } = \frac { 1 } { M } \sum _ { k = 0 } ^ { M - 1 } D _ { \mathcal { I } } f ( r _ k ) \]
++
 
 . **Extremal Grid Bound**: The discrete arithmetic mean \( \Delta _ { \mathcal { I } } \) is bounded by the minimum and maximum discrete step rates: \( \min _ k D _ { \mathcal { I } } f ( r _ k ) \le \Delta _ { \mathcal { I } } \le \max _ k D _ { \mathcal { I } } f ( r _ k ) \).
 
@@ -666,8 +677,9 @@ where \( R _ { M + 1 } ( r ) \) is an explicitly bounded discrete higher-order v
 . **Repeated Vernier Integration by Parts**: Apply MSRA Integration by Parts iteratively to the fundamental representation \( f ( r ) = f ( a ) + \int _ a ^ r D _ { \mathcal { I } } f ( t ) \, d _ { \mathcal { I } } t \).
 
 . **Inductive Vernier Derivation**: At step \( k \), integrating the power kernel \( \frac { ( r - t ) ^ k } { k! } d _ { \mathcal { I } } t \) yields:
-
++
 \[ \int _ a ^ r \frac { ( r - t ) ^ k } { k! } D _ { \mathcal { I } } ^ { k + 1 } f ( t ) \, d _ { \mathcal { I } } t = \frac { D _ { \mathcal { I } } ^ { k + 1 } f ( a ) } { ( k + 1 ) ! } ( r - a ) ^ { k + 1 } \mathbf { 1 } _ { Cl } + \int _ a ^ r \frac { ( r - t ) ^ { k + 1 } } { ( k + 1 ) ! } D _ { \mathcal { I } } ^ { k + 2 } f ( t ) \, d _ { \mathcal { I } } t \]
++
 
 . **Finite Step Termination**: On a finite partition grid \( \mathcal { G } _ N \), the derivative operator chain terminates or reaches a higher-order vernier residual bounded by \( \mathcal { O } \big ( ( r - a ) ^ { M + 1 } \big ) \).
 
@@ -695,8 +707,9 @@ Under Main Scale Projection \( ( \downarrow ) \), \( ( \downarrow ) \int _ \Omeg
 . **Internal Edge Cancellation**: Summing over all internal adjacent cells in \( \Omega \), boundary fluxes along shared internal interfaces have equal magnitude and opposite orientations, canceling identically in \( Cl ( 4 , 1 , 1 ) \).
 
 . **Boundary Residue Isolation**: The net sum reduces strictly to the uncancelled exterior boundary flux along \( \partial \Omega \):
-
++
 \[ \sum _ { e } \int _ { \partial \mathcal { C } _ e } A \cdot d _ { \mathcal { I } } S = \int _ { \partial \Omega } A \cdot d _ { \mathcal { I } } S \]
++
 
 . **Tautological Conclusion**: The Multivector Vernier Stokes Theorem is established as an exact geometric flux balance law on finite discrete grids. \( \square \)
 ====
@@ -716,8 +729,9 @@ For any finite disjoint collection of discrete measurement intervals \( \mathcal
 . **Disjoint Partition Count**: Let \( \mathcal { U } _ i \cap \mathcal { U } _ j = \emptyset \) for \( i \neq j \). The operational count of elements satisfies \( | \bigcup _ { i = 1 } ^ k \mathcal { U } _ i | = \sum _ { i = 1 } ^ k | \mathcal { U } _ i | \).
 
 . **Scale-Invariant Evaluation**: Evaluating the flux sum yields:
-
++
 \[ \mu _ { \mathcal { I } } \left ( \bigcup _ { i = 1 } ^ k \mathcal { U } _ i \right ) = \sum _ { r \in \bigcup \mathcal { U } _ i } \delta = \sum _ { i = 1 } ^ k \left ( \sum _ { r \in \mathcal { U } _ i } \delta \right ) = \sum _ { i = 1 } ^ k \mu _ { \mathcal { I } } ( \mathcal { U } _ i ) \]
++
 
 . **Main Scale Invariance**: Applying Main Scale Projection \( ( \downarrow ) \) removes higher-order vernier residual boundary terms, ensuring that \( ( \downarrow ) \mu _ { \mathcal { I } } \) matches the standard length measure on rational sub-intervals.
 
@@ -737,8 +751,9 @@ Every finite aperture flux function \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1
 . **Aperture Basis Definition**: Define the discrete Fourier-Iris basis operators \( \Psi _ k ( r ) = \iota ^ { k \cdot r \cdot N } \) for integer harmonic counts \( k \in \{ 0 , 1 , \dots , N - 1 \} \) on partition grid \( \mathcal { G } _ N \).
 
 . **Orthogonality Relation**: Compute the inner product of basis multivectors using the Iris metric norm:
-
++
 \[ \langle \Psi _ j , \Psi _ k \rangle _ { \mathcal { I } } = \frac { 1 } { N } \sum _ { r \in \mathcal { G } _ N } \Psi _ j ( r ) \bar { \Psi } _ k ( r ) = \delta _ { jk } \mathbf { 1 } _ { Cl } + \varpi \vartheta \]
++
 
 . **Main Scale Orthogonality**: Under Main Scale Projection \( ( \downarrow ) \), the nilpotent boundary term \( \varpi \vartheta \) vanishes, yielding exact discrete orthogonality \( ( \downarrow ) \langle \Psi _ j , \Psi _ k \rangle _ { \mathcal { I } } = \delta _ { jk } \).
 
@@ -760,8 +775,9 @@ On discrete grid \( \mathcal { G } _ N \), the MSRA vernier derivative norm \( \
 . **Vernier Difference Operator**: Define the MSRA vernier derivative \( D _ { \mathcal { I } } f ( r ) = \frac { f ( r + \delta ) - f ( r ) } { \delta } \mathbf { 1 } _ { Cl } \).
 
 . **Aperture Energy Bound**: Expand \( D _ { \mathcal { I } } f ( r ) \) in terms of the Fourier-Iris basis coefficients \( c _ k \):
-
++
 \[ D _ { \mathcal { I } } f ( r ) = \sum _ { k = 0 } ^ { N - 1 } c _ k \frac { \iota ^ { k \delta N } - 1 } { \delta } \iota ^ { k r N } \]
++
 
 . **Metric Norm Evaluation**: Taking the Iris metric norm yields \( \| D _ { \mathcal { I } } f \| _ { \mathcal { I } } ^ 2 \le C _ N \sum _ { k = 0 } ^ { N - 1 } k ^ 2 | c _ k | ^ 2 \), where \( C _ N \) is a finite rational constant dependent on grid resolution \( N \).
 
@@ -785,12 +801,14 @@ Let \( \mathcal { B } \) be a finite discrete Boolean algebra of operational pro
 . **Conjunction Functional Equation**: By the associative law of Boolean conjunctions \( ( A \land B \land C ) \), the function \( F \) defining conditional plausibility must satisfy the associativity functional equation \( F ( F ( x , y ) , z ) = F ( x , F ( y , z ) ) \).
 
 . **Unique Product Rule Mapping**: In discrete grid space \( \mathcal { G } _ N \), the solution to the associativity functional equation reduces to a strictly monotonic transformation \( w ( \psi ) \) such that \( w ( \psi ( A \land B \mid C ) ) = w ( \psi ( A \mid B \land C ) ) \cdot w ( \psi ( B \mid C ) ) \). Defining operational probability as \( P ( A \mid B ) = w ( \psi ( A \mid B ) ) \) yields the Jaynesian Product Rule:
-
++
 \[ P ( A \land B \mid C ) = P ( A \mid B \land C ) \cdot P ( B \mid C ) \]
++
 
 . **Negation Complementarity and Sum Rule**: Consistency under double negation \( \neg ( \neg A ) = A \) forces the negation function \( S \) to satisfy Abel's functional equation on finite lattice states. Rescaling guarantees the Jaynesian Sum Rule:
-
++
 \[ P ( A \mid C ) + P ( \neg A \mid C ) = 1 \cdot \mathbf { 1 } _ { Cl } \]
++
 
 . **Uniqueness on Finite Grids**: Because state space \( \mathcal { G } _ N \) consists of a finite count of discrete partition states, no continuum assumptions are required, and the operational probability measure \( P \) is uniquely determined up to an exponent scaling.
 
@@ -810,8 +828,9 @@ For \( N \) independent discrete operational measurement results \( X _ 1 , X _ 
 . **Operational Variance Formulation**: Define the discrete aperture variance \( \sigma _ { \mathcal { I } } ^ 2 = \mathbb { E } _ { \text { MaxEnt } } \left [ \| X _ i - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } ^ 2 \right ] \), which is strictly finite on bounded grid \( \mathcal { G } _ M \).
 
 . **Chebyshev Aperture Inequality**: For any discrete rational threshold \( \epsilon > 0 \), evaluate the Jaynesian prior bound:
-
++
 \[ P \left ( \| \bar { X } _ N - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } \ge \epsilon \right ) \le \frac { \sigma _ { \mathcal { I } } ^ 2 } { N \epsilon ^ 2 } \]
++
 
 . **Main Scale Projection Limit**: Taking Main Scale Projection \( ( \downarrow ) \) as count bound \( N \) increases yields \( ( \downarrow ) P \left ( \| \bar { X } _ N - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } \ge \epsilon \right ) \to 0 \).
 
@@ -831,8 +850,9 @@ The standardized sum \( S _ N = \frac { 1 } { \sqrt { N } \sigma _ { \mathcal { 
 . **Characteristic Operator Function**: Define the characteristic operator \( \Phi _ { S _ N } ( t ) = \mathbb { E } _ { \text { MaxEnt } } \left [ \exp \left ( \iota t S _ N \right ) \right ] \) using the Iris generator \( \iota \).
 
 . **Taylor-Vernier Expansion**: Expand the exponent to second order over discrete grid steps:
-
++
 \[ \Phi _ { S _ N } ( t ) = \left ( 1 - \frac { t ^ 2 } { 2N } \mathbf { 1 } _ { Cl } + \mathcal { O } \left ( N ^ { - 3 / 2 } \right ) \right ) ^ N \]
++
 
 . **Exponential Limit**: Taking the operational power limit yields \( \lim _ { N \to \infty } \Phi _ { S _ N } ( t ) = \exp \left ( - \frac { 1 } { 2 } t ^ 2 \mathbf { 1 } _ { Cl } \right ) \).
 
@@ -854,8 +874,9 @@ Under unitary multivector gauge transformations in \( Cl ( 4 , 1 , 1 ) \), the t
 . **State Density Transformation**: The transformed probability density satisfies \( P' ( r ) = P ( U r \bar { U } ) \).
 
 . **Sum Invariance**: Since unitary transformations preserve grid measure \( \mu _ { \mathcal { I } } ( U \mathcal { U } \bar { U } ) = \mu _ { \mathcal { I } } ( \mathcal { U } ) \), the entropy sum satisfies:
-
++
 \[ S _ { \text { MaxEnt } } ( P' ) = - \sum _ { r \in \mathcal { G } _ N } P ( U r \bar { U } ) \ln P ( U r \bar { U } ) = - \sum _ { r' \in \mathcal { G } _ N } P ( r' ) \ln P ( r' ) = S _ { \text { MaxEnt } } ( P ) \]
++
 
 . **Tautological Conclusion**: Jaynesian information entropy is strictly conserved under gauge field evolutions in \( Cl ( 4 , 1 , 1 ) \). \( \square \)
 ====
@@ -900,8 +921,9 @@ where \( K _ { \text { grade } } ( M ) \) is the exact multivector grade dimensi
 . **Multivector Grade Complexity**: Model space in \( Cl ( 4 , 1 , 1 ) \) is spanned by grades 0 through 6, with total dimension 64. A model \( M \) uses \( K _ { \text { grade } } ( M ) \) independent blade generators.
 
 . **Jaynesian Information Loss**: The expected relative entropy (Kullback-Leibler divergence) between the true data generator and model candidate \( M \) expands as:
-
++
 \[ \mathbb { E } _ { \text { MaxEnt } } \left [ D _ { \text { KL } } ( P _ { \text { true } } \parallel P _ M ) \right ] = - L ( \hat { \theta } _ { \text { MAL } } ) + K _ { \text { grade } } ( M ) \mathbf { 1 } _ { Cl } + \mathcal { O } ( N ^ { - 1 } ) \]
++
 
 . **Exact Non-Asymptotic Form**: Multiplying by 2 and projecting via Main Scale Projection \( ( \downarrow ) \) yields the exact criterion \( \text { IMEIC } ( M ) \).
 
@@ -923,14 +945,16 @@ where \( I _ { \mathcal { I } } ( \theta ) \) is the Fisher aperture information
 *Proof:*
 
 . **Unbiased Expectation Condition**: Let \( \mathbb { E } _ { \text { MaxEnt } } [ T ( X ) ] = \theta \mathbf { 1 } _ { Cl } \). Differentiating both sides with respect to \( \theta \) using MSRA derivative \( D _ { \mathcal { I } } \) yields:
-
++
 \[ \sum _ { x \in \mathcal { G } _ N } T ( x ) D _ { \mathcal { I } } P ( x \mid \theta ) = \mathbf { 1 } _ { Cl } \]
++
 
 . **Score Operator Identity**: Rewrite \( D _ { \mathcal { I } } P ( x \mid \theta ) = P ( x \mid \theta ) D _ { \mathcal { I } } \ln P ( x \mid \theta ) \).
 
 . **Cauchy-Schwarz Multivector Inequality**: Applying the Iris inner product inequality to \( ( T ( X ) - \theta \mathbf { 1 } _ { Cl } ) \) and \( D _ { \mathcal { I } } \ln P ( X \mid \theta ) \) gives:
-
++
 \[ \mathbb { E } \left [ ( T ( X ) - \theta \mathbf { 1 } _ { Cl } ) ^ 2 \right ] \cdot \mathbb { E } \left [ ( D _ { \mathcal { I } } \ln P ( X \mid \theta ) ) ^ 2 \right ] \ge \mathbf { 1 } _ { Cl } \]
++
 
 . **Fisher Information Identification**: Recognizing \( I _ { \mathcal { I } } ( \theta ) = \mathbb { E } \left [ ( D _ { \mathcal { I } } \ln P ( X \mid \theta ) ) ^ 2 \right ] \) yields the exact lower bound \( \text { Var } _ { \mathcal { I } } ( T ( X ) ) \ge I _ { \mathcal { I } } ( \theta ) ^ { - 1 } \mathbf { 1 } _ { Cl } \).
 

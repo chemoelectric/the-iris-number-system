@@ -390,6 +390,7 @@ A multiscale resolution number (or **m-res number**) \( x ^ { \ast } \in \mathbb
 
 
 \[ x ^ { \ast } = \frac { k } { \omega } \equiv \text { VernierApertureFlux } _ { \omega } \left ( k \cdot \delta _ \omega \right ) \quad \text { where } \quad \delta _ \omega = \frac { \bullet } { \omega } \]
++
 
 
 . **Finite-Duration Observation Step**: A multiscale resolution quantity \( \epsilon ^ * \in \mathbb { R } ^ * \) represents an observation or measurement process conducted over a finite temporal duration \( \tau _ { \text { obs } } \), whose measured flux magnitude is strictly smaller than any standard positive rational step:
@@ -596,6 +597,7 @@ Let \( u , v : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finit
 
 
 \[ \frac { d ( uv ) } { dx } = u \frac { dv } { dx } + v \frac { du } { dx } \]
++
 
 
 *Proof:*
@@ -640,6 +642,7 @@ Let \( u , v : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finit
 
 
 \[ \frac { d } { dx } \left ( \frac { u } { v } \right ) = \frac { v \frac { du } { dx } - u \frac { dv } { dx } } { v ^ 2 } \]
++
 
 
 *Proof:*
@@ -672,6 +675,7 @@ Let \( g : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) and \( f : \
 
 
 \[ \frac { d ( f \circ g ) } { dx } = f' ( g ( x ) ) \cdot g' ( x ) \]
++
 
 
 *Proof:*
@@ -707,10 +711,12 @@ To illustrate the MSRA vernier derivative in practice, consider the multiscale a
 . **Evaluate Vernier Shift**: On an ultra-refined grid \( \mathcal { G } _ \omega \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \), compute the shifted value:
 +
 \[ \Psi ( x + \delta _ \omega ) = ( x + \delta _ \omega ) ^ 2 = x ^ 2 + 2x \delta _ \omega + \delta _ \omega ^ 2 \]
++
 
 . **Form Difference Ratio**: Subtract \( \Psi ( x ) = x ^ 2 \) and divide by the non-zero step \( \delta _ \omega \):
 +
 \[ \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } = \frac { 2x \delta _ \omega + \delta _ \omega ^ 2 } { \delta _ \omega } = 2x + \delta _ \omega \]
++
 
 . **Apply Main Scale Projection**: Project the finite vernier reading back to the main-scale real domain:
 +
@@ -765,6 +771,7 @@ Let \( f : \mathbb { R } \to \mathbb { R } \) be a continuous aperture function,
 
 
 \[ \frac { dF } { dx } = f ( x ) \quad \text { and } \quad \int _ a ^ b f ( x ) \, dx = F ( b ) - F ( a ) \]
++
 
 
 *Proof:*
@@ -779,6 +786,7 @@ Subtracting the sums isolates the single vernier interval ending at \( x \):
 Dividing by \( \delta _ \omega \) and applying Main Scale Projection \( ( \downarrow ) \) yields:
 +
 \[ \frac { dF } { dx } = ( \downarrow ) \left ( \frac { F ( x + \delta _ \omega ) - F ( x ) } { \delta _ \omega } \right ) = ( \downarrow ) ( f ( x ) ) = f ( x ) \]
++
 
 . **Evaluation of Definite Integral**: Let \( G ( x ) \) be any anti-derivative satisfying \( G' ( x ) = f ( x ) \). Then \( G ( x ) - F ( x ) = C \). At \( x = a \), \( F ( a ) = 0 \implies C = G ( a ) \). Thus \( F ( b ) = G ( b ) - G ( a ) \), completing the proof. \( \square \)
 ====
@@ -795,6 +803,7 @@ For finite differentiable aperture functions \( u ( x ) \) and \( v ( x ) \) on 
 
 
 \[ \int _ a ^ b u ( x ) v' ( x ) \, dx = \left [ u ( x ) v ( x ) \right ] _ a ^ b - \int _ a ^ b v ( x ) u' ( x ) \, dx \]
++
 
 
 *Proof:*
@@ -808,10 +817,12 @@ To illustrate discrete MSRA integration, evaluate \( \int _ 0 ^ 1 x \, dx \) dir
 . **Construct Vernier Sum**: Partition the interval \( [ 0 , 1 ] \) on an ultra-refined grid \( \mathcal { G } _ \omega \) into \( N _ \omega = \frac { 1 } { \delta _ \omega } \) steps, where \( \delta _ \omega = \frac { \bullet } { \omega } \):
 +
 \[ S _ \omega = \sum _ { k = 0 } ^ { N _ \omega - 1 } f ( k \delta _ \omega ) \cdot \delta _ \omega = \sum _ { k = 0 } ^ { N _ \omega - 1 } ( k \delta _ \omega ) \cdot \delta _ \omega = \delta _ \omega ^ 2 \sum _ { k = 0 } ^ { N _ \omega - 1 } k \]
++
 
 . **Apply Discrete Sum Formula**: Using the standard arithmetic sum \( \sum _ { k = 0 } ^ { N - 1 } k = \frac { ( N - 1 ) N } { 2 } \) with \( N = N _ \omega = \frac { 1 } { \delta _ \omega } \):
 +
 \[ S _ \omega = \delta _ \omega ^ 2 \cdot \frac { \left ( \frac { 1 } { \delta _ \omega } - 1 \right ) \frac { 1 } { \delta _ \omega } } { 2 } = \frac { 1 - \delta _ \omega } { 2 } \]
++
 
 . **Apply Main Scale Projection**:
 +
@@ -858,6 +869,7 @@ Let \( \Gamma \) be a closed oriented contour in \( Cl ( 4 , 1 , 1 ) \) bounding
 
 
 \[ \oint _ \Gamma \Psi ( z ) \, dz = 0 \]
++
 
 
 *Proof:*
@@ -909,13 +921,14 @@ for an elementary ultra-refined boundary contour \( \Gamma _ k \subset \mathcal 
 
 . Apply the MSRA Cauchy-Goursat Theorem (Theorem 13) to the boundary \( \partial \mathcal { D } ' = \Gamma \cup \bigcup _ { k = 1 } ^ n ( - \Gamma _ k ) \):
 
-
++
 \[ \oint _ { \partial \mathcal { D } ' } \Psi ( z ) \, dz = \oint _ \Gamma \Psi ( z ) \, dz - \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 0 \]
++
 
 
 . Rearranging terms and substituting the definition of the MSRA aperture residue \( \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \, \text { Res } ( \Psi , z _ k ) \) yields:
 
-
++
 \[ \oint _ \Gamma \Psi ( z ) \, dz = \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \qquad \square \]
 ====
 
@@ -926,14 +939,17 @@ To verify the MSRA Cauchy-Goursat theorem with an explicit example, evaluate the
 . **Parameter Derivative**: Compute the velocity vector along the curve:
 +
 \[ \gamma ' ( t ) = \frac { d \gamma } { dt } = i R e ^ { i t } \]
++
 
 . **Set up Parameterized Integral**: Substitute \( \Psi ( \gamma ( t ) ) = \mathbf { c } \) and \( \gamma ' ( t ) \) into the MSRA line integral formula:
 +
 \[ \oint _ \Gamma \mathbf { c } \, dz = \int _ 0 ^ { 2 \pi } \mathbf { c } \cdot ( i R e ^ { i t } ) \, dt = \mathbf { c } \cdot i R \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt \]
++
 
 . **Evaluate MSRA Integral**: Integrate \( e ^ { i t } \) using its anti-derivative aperture function \( \frac { e ^ { i t } } { i } \):
 +
 \[ \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt = \left [ \frac { e ^ { i t } } { i } \right ] _ 0 ^ { 2 \pi } = \frac { e ^ { 2 \pi i } - e ^ 0 } { i } = \frac { 1 - 1 } { i } = 0 \]
++
 
 . **Result**:
 +
@@ -958,10 +974,12 @@ The contour \( \Gamma \) (radius 1 centered at \( i \)) encloses only the pole \
 The residue at simple pole \( z _ 1 = i \) is:
 +
 \[ \text { Res } \left ( \Psi , i \right ) = \left . ( z - i ) \Psi ( z ) \right | _ { z = i } = \left . \frac { \mathbf { 1 } _ { Cl } } { z + i } \right | _ { z = i } = \frac { \mathbf { 1 } _ { Cl } } { 2i } = - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \]
++
 
 . **Apply the MSRA Residue Theorem**: Substitute the computed residue into the residue sum formula:
 +
 \[ \oint _ \Gamma \frac { 1 } { z ^ 2 + 1 } \, dz = 2 \pi i \, \text { Res } \left ( \Psi , i \right ) = 2 \pi i \left ( - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \right ) = \pi \mathbf { 1 } _ { Cl } \]
++
 
 . **Direct Parametric Verification**: Parameterize \( \Gamma \) as \( \gamma ( t ) = i + r e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \) with \( r = 1 \). Then \( \gamma ' ( t ) = i e ^ { i t } \, dt \). Substituting into the integral:
 +
@@ -1075,7 +1093,7 @@ To ensure that no geometric structure is taken as an unproved external assertion
 .Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)
 ====
 Let \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) be the discrete multiscale resolution ring induced by Postulates 1, 5, and 7. There exists a unique \( 2 ^ 6 = 64 \)-dimensional associative algebra \( Cl ( 4 , 1 , 1 ) \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) generated by six orthogonal basis elements \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) satisfying the metric quadratic form:
-
++
 \[ Q ( v ) = v _ 1 ^ 2 + v _ 2 ^ 2 + v _ 3 ^ 2 + v _ 5 ^ 2 - v _ 6 ^ 2 \quad \text { for } v = \sum _ { A = 1 } ^ 6 v _ A e _ A \]
 
 Furthermore, the Iris generator \( \iota \) (Postulate 9) maps into the multivector algebra as \( \iota = e _ { 12 } + e _ 4 e _ 0 \), satisfying \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
@@ -1090,12 +1108,13 @@ Furthermore, the Iris generator \( \iota \) (Postulate 9) maps into the multivec
 . **Dimension and Basis**: By the Constructive Clifford PBW Basis Theorem (proven below as Theorem 15), \( Cl ( 4 , 1 , 1 ) \) has exact dimension \( 2 ^ 6 = 64 \), spanned by the 64 strictly ordered basis multivectors \( e _ M = e _ { a _ 1 } e _ { a _ 2 } \cdots e _ { a _ k } \) with \( 1 \le a _ 1 < a _ 2 < \dots < a _ k \le 6 \).
 
 . **Representation of the Iris Generator**: Set \( \iota = e _ 1 e _ 2 + e _ 4 e _ 0 \), where \( e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \). Using basis metrics \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } \), \( e _ 1 e _ 2 = - e _ 2 e _ 1 \), \( e _ 4 ^ 2 = 0 \) (identifying \( \varpi = e _ 4 \)), and \( e _ 0 ^ 2 = 0 \) (identifying \( \vartheta = e _ 0 \)), we evaluate:
-
++
 \[ \iota ^ 2 = ( e _ { 12 } + e _ 4 e _ 0 ) ^ 2 = e _ { 12 } ^ 2 + e _ { 12 } e _ 4 e _ 0 + e _ 4 e _ 0 e _ { 12 } + ( e _ 4 e _ 0 ) ^ 2 \]
 
 Since \( e _ { 12 } ^ 2 = e _ 1 e _ 2 e _ 1 e _ 2 = - e _ 1 ^ 2 e _ 2 ^ 2 = - \mathbf { 1 } \), \( e _ 4 e _ 0 \) commutes with spatial bivector \( e _ { 12 } \), and \( ( e _ 4 e _ 0 ) ^ 2 = e _ 4 e _ 0 e _ 4 e _ 0 = 0 \), this simplifies to:
 
 \[ \iota ^ 2 = - \mathbf { 1 } + 2 e _ 4 e _ 0 = - \mathbf { 1 } + \varpi \vartheta \]
++
 
 This completes the explicit proof of \( Cl ( 4 , 1 , 1 ) \) and its exact match with Postulate 9. \( \square \)
 ====
@@ -1143,6 +1162,7 @@ Therefore, the 64 ordered multivectors form an exact, linearly independent basis
 For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) in \( Cl ( 4 , 1 , 1 ) \), the fundamental anti-commutation relation holds:
 
 \[ e _ A e _ B + e _ B e _ A = 2 g _ { AB } \mathbf { 1 } \]
++
 
 *Proof:*
 . Let \( u , v \in V \). By definition of the ideal quotient \( I ( Q ) \), we have \( ( u + v ) ^ 2 = Q ( u + v ) \mathbf { 1 } \).
@@ -1150,14 +1170,17 @@ For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _
 . Expanding the left-hand side in \( Cl ( 4 , 1 , 1 ) \):
 +
 \[ ( u + v ) ^ 2 = ( u + v ) ( u + v ) = u ^ 2 + u v + v u + v ^ 2 = Q ( u ) \mathbf { 1 } + u v + v u + Q ( v ) \mathbf { 1 } \]
++
 
 . Expanding the right-hand side using linearity of the metric bilinear form:
 +
 \[ Q ( u + v ) \mathbf { 1 } = \left ( Q ( u ) + Q ( v ) + 2 B ( u , v ) \right ) \mathbf { 1 } \]
++
 
 . Equating LHS and RHS and subtracting \( Q ( u ) \mathbf { 1 } + Q ( v ) \mathbf { 1 } \) from both sides yields:
-
++
 \[ u v + v u = 2 B ( u , v ) \mathbf { 1 } \]
++
 
 . Setting \( u = e _ A \) and \( v = e _ B \) gives \( B ( e _ A , e _ B ) = g _ { AB } \). Thus \( e _ A e _ B + e _ B e _ A = 2 g _ { AB } \mathbf { 1 } \). For distinct orthogonal generators (\( A \neq B \)), \( g _ { AB } = 0 \implies e _ A e _ B = - e _ B e _ A \). For equal generators, \( e _ A ^ 2 = g _ { AA } \mathbf { 1 } \). \( \square \)
 ====
@@ -1171,6 +1194,7 @@ For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _
 The Main Scale Projection operator \( ( \downarrow ) : \text { Fin } ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) is a strict ring homomorphism mapping finite multiscale vernier quantities onto standard real flux values, preserving addition and multiplication:
 
 \[ ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) , \qquad ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
++
 
 *Proof:*
 . Represent finite vernier quantities in canonical decomposition: \( x ^ { \ast } = x + \epsilon _ x ^ { \ast } \) and \( y ^ { \ast } = y + \epsilon _ y ^ { \ast } \), where \( x , y \in \mathbb { R } \) are main-scale real parts and \( \epsilon _ x ^ { \ast } , \epsilon _ y ^ { \ast } \in \text { Fin } ( \mathbb { R } ^ { \ast } ) \) are vernier residuals satisfying \( ( \downarrow ) ( \epsilon _ x ^ { \ast } ) = 0 \) and \( ( \downarrow ) ( \epsilon _ y ^ { \ast } ) = 0 \).
@@ -1178,6 +1202,7 @@ The Main Scale Projection operator \( ( \downarrow ) : \text { Fin } ( \mathbb {
 . **Additive Preservation**:
 +
 \[ x ^ { \ast } + y ^ { \ast } = ( x + y ) + ( \epsilon _ x ^ { \ast } + \epsilon _ y ^ { \ast } ) \implies ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = x + y + ( \downarrow ) ( \epsilon _ x ^ { \ast } + \epsilon _ y ^ { \ast } ) = x + y + 0 = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) \]
++
 
 . **Multiplicative Preservation**:
 +
