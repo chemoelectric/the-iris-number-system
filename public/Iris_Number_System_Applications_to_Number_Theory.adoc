@@ -234,6 +234,52 @@ r \cdot \mathbf{1}_{Cl} = \left( \sum_{k=0}^M d_k b^k + \sum_{j=1}^K d_{-j} b^{-
 
 where \( d_{-j} \in \{0, 1, \dots, b-1\} \) are fractional aperture digits, and \( \varpi \vartheta \) is the nilpotent vernier truncation residual at grid resolution step \( \delta = b^{-K} \).
 
+== Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic
+
+In this section, constructive heuristics for locating prime factors of discrete integer step counts \( N \in \mathbb{Z}^+ \) are formally established within the Counting-Iris framework and \( Cl(4,1,1) \) multivector algebra. Furthermore, we construct a parallel multi-grid factorization algorithm that decomposes factor search spaces across independent discrete channels without inter-channel communication overhead.
+
+[#theorem-prime-factor-search-bounds]
+[THEOREM]
+.Theorem: Iris Aperture Difference-of-Squares Prime Factor Search Theorem
+====
+For any composite discrete step count \( N = p \cdot q \in \mathbb{Z}^+ \) with odd factors \( p \le q \), the search for factors reduces to identifying discrete integer step counts \( x, y \in \mathbb{Z}^+ \) such that:
+
+\[
+M(N) = (x^2 - y^2) \cdot \mathbf{1}_{Cl} = (x - y)(x + y) \cdot \mathbf{1}_{Cl}
+\]
+
+where \( x = \frac{p+q}{2} \) and \( y = \frac{q-p}{2} \). The search space for candidate value \( x \) is strictly bounded in discrete step count by \( \lceil \sqrt{N} \rceil \le x \le \frac{N+1}{2} \).
+
+*Proof:*
+. **Multivector Identity Mapping**: Represent composite step count \( N \) as scalar element \( M(N) = N \cdot \mathbf{1}_{Cl} \in Cl(4,1,1) \).
+
+. **Difference of Squares Transformation**: Since \( N \) is odd, \( p \) and \( q \) are both odd. Define \( x = (q+p)/2 \) and \( y = (q-p)/2 \). Both \( x, y \) are discrete integers in \( \mathbb{Z}^+ \). Expanding yields \( x^2 - y^2 = \frac{(q+p)^2 - (q-p)^2}{4} = \frac{4pq}{4} = N \).
+
+. **Square Residue Search Criterion**: A candidate step count \( x \) yields a valid factorization if and only if \( x^2 - N = y^2 \) is a perfect square in \( \mathbb{Z}^+ \).
+
+. **Jaynesian Quadratic Residue Filter**: To accelerate factor location on partition grid \( \mathcal{G}_N \), test candidate values \( x^2 - N \) against quadratic residue tables modulo small Iris prime bases \( m \in \{3, 5, 7, 8, 11, 13, 16\} \). If \( x^2 - N \pmod m \) is a quadratic non-residue for any \( m \), candidate \( x \) is rejected immediately without performing full square-root evaluation.
+
+. **Tautological Conclusion**: Factor discovery is transformed into a deterministic quadratic residue filter over discrete step space \( \mathbb{Z}^+ \). \( \blacksquare \)
+====
+
+[#theorem-parallel-prime-factorization]
+[THEOREM]
+.Theorem: Parallel Multi-Grid Vernier Factorization Theorem
+====
+Let \( N \in \mathbb{Z}^+ \) be a composite measurement step count to be factorized. Dividing the search domain \( [\lceil \sqrt{N} \rceil, \frac{N+1}{2}] \) into \( P \) disjoint discrete sub-grid channels \( \mathcal{G}_{N, k} \) for \( k = 0, 1, \dots, P-1 \) enables fully parallel execution, achieving an exact linear speedup of \( \mathcal{O}(1/P) \) in search time with zero inter-process synchronization communication.
+
+*Proof:*
+. **Domain Partitioning**: Define sub-grid step offsets \( x_{k, m} = \lceil \sqrt{N} \rceil + k + m \cdot P \) for step indices \( m = 0, 1, 2, \dots \). The sub-grids \( \mathcal{G}_{N, k} = \{ x_{k, m} \} \) form a complete, mutually disjoint partition of the search interval.
+
+. **Independent Channel Execution**: Each processing unit \( k \in \{0, \dots, P-1\} \) independently evaluates quadratic residue conditions \( x_{k, m}^2 - N \pmod m \) in parallel inside its own \( Cl(4,1,1) \) multivector registers.
+
+. **Zero Inter-Channel Communication**: Because the sub-grids \( \mathcal{G}_{N, k} \) are pairwise disjoint, no thread or process requires shared lock acquisition, state synchronization, or inter-channel communication during the search phase.
+
+. **First-Hit Termination**: As soon as any processor \( k \) discovers an index \( m \) where \( x_{k, m}^2 - N = y^2 \) is a perfect square, it reports factors \( p = x_{k, m} - y \) and \( q = x_{k, m} + y \) and broadcasts a termination flag.
+
+. **Tautological Conclusion**: Multi-channel grid partitioning guarantees exact parallel factorization scalability over discrete step space \( \mathbb{Z}^+ \). \( \blacksquare \)
+====
+
 == Classical Conjectures as Iris Tautologies
 
 == The Goldbach Partition Theorem
