@@ -620,6 +620,101 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         continue;
       }
 
+      // Ordered list items starting with . or 1.
+      const isOrderedItem = line.startsWith('. ') || /^\d+\.\s+/.test(line);
+      if (isOrderedItem) {
+        const listItems: { text: string; extraNodes?: React.ReactNode[] }[] = [];
+        
+        while (i < lines.length) {
+          const curr = lines[i].trim();
+          if (!curr) {
+            // Empty line: check if next non-empty line continues list or ends it
+            let nextIdx = i + 1;
+            while (nextIdx < lines.length && !lines[nextIdx].trim()) nextIdx++;
+            if (nextIdx < lines.length) {
+              const nextLine = lines[nextIdx].trim();
+              if (nextLine.startsWith('. ') || /^\d+\.\s+/.test(nextLine)) {
+                i = nextIdx;
+                continue;
+              }
+            }
+            break;
+          }
+
+          if (curr.startsWith('. ') || /^\d+\.\s+/.test(curr)) {
+            const itemText = curr.replace(/^(\.|\d+\.)\s+/, '');
+            listItems.push({ text: itemText });
+            i++;
+          } else if (listItems.length > 0 && (curr.startsWith('\\[') || curr.startsWith('$$'))) {
+            // Display math block inside or between list items
+            const mathLines: string[] = [];
+            const isDoubleDollar = curr.startsWith('$$');
+            const endDelimiter = isDoubleDollar ? '$$' : '\\]';
+            if (curr.length > 2 && curr.endsWith(endDelimiter)) {
+              mathLines.push(curr.substring(2, curr.length - endDelimiter.length).trim());
+              i++;
+            } else {
+              if (curr.substring(2).trim()) mathLines.push(curr.substring(2).trim());
+              i++;
+              while (i < lines.length) {
+                const ml = lines[i].trim();
+                if (ml === endDelimiter || ml.endsWith(endDelimiter)) {
+                  if (ml !== endDelimiter) {
+                    const lastText = ml.substring(0, ml.length - endDelimiter.length).trim();
+                    if (lastText) mathLines.push(lastText);
+                  }
+                  i++;
+                  break;
+                }
+                mathLines.push(lines[i]);
+                i++;
+              }
+            }
+            const mathCode = mathLines.join('\n').trim();
+            try {
+              const html = katex.renderToString(normalizeMathSpacing(mathCode), { displayMode: true, throwOnError: false });
+              const mathNode = (
+                <div
+                  key={`ol-math-${i}`}
+                  className="my-3 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
+              );
+              const lastItem = listItems[listItems.length - 1];
+              lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+            } catch {
+              // fallback
+            }
+          } else if (listItems.length > 0 && !curr.startsWith('=') && !curr.startsWith('[') && !curr.startsWith('* ') && !curr.startsWith('- ')) {
+            // Continuation line for last list item
+            const lastItem = listItems[listItems.length - 1];
+            lastItem.text += ' ' + curr;
+            i++;
+          } else {
+            break;
+          }
+        }
+
+        const currentAnchor = pendingAnchorId;
+        pendingAnchorId = null;
+
+        nodes.push(
+          <ol
+            id={currentAnchor || undefined}
+            key={`ol-${i}`}
+            className="my-4 space-y-3 list-decimal list-outside pl-6 text-xs sm:text-sm text-slate-300"
+          >
+            {listItems.map((li, liIdx) => (
+              <li key={`ol-li-${liIdx}`} className="leading-relaxed pl-1">
+                <div>{renderMathInline(li.text)}</div>
+                {li.extraNodes}
+              </li>
+            ))}
+          </ol>
+        );
+        continue;
+      }
+
       // Standard paragraph
       const currentAnchor = pendingAnchorId;
       pendingAnchorId = null;

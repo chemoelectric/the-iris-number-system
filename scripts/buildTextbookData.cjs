@@ -82,9 +82,9 @@ const vol2 = parseAdocFile(
   "public/Iris_Number_System_Applications_to_Number_Theory.adoc",
   "textbook-iris-number-theory",
   "The Iris Number System",
-  "Applications to Number Theory",
+  "Applications to Number Theory, Analysis, Probability Theory, Statistics",
   "Frédéric Blondel Custer",
-  "A Rigorous Application of the Counting-Iris Number System to Classical Number-Theoretic Conjectures"
+  "A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics"
 );
 
 const fileHeader = `import { TextbookChapter, Textbook } from "../types";
