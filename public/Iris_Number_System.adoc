@@ -11,7 +11,7 @@ A formal axiomatic development of the Counting-Iris Number System unifying discr
 
 = The Counting Process and the Integers
 
-Foundational definition of the discrete integer domain Z and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).
+Foundational definition of the discrete integer domain \( \mathbb { Z } \) and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).
 
 == Definition of the Integers
 
@@ -242,7 +242,7 @@ where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators
 
 = The Rational Numbers
 
-Constructing the rational numbers Q using the Iris optical-geometric aperture analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating without non-denumerable continua.
+Constructing the rational numbers \( \mathbb { Q } \) using the Iris optical-geometric aperture analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating without non-denumerable continua.
 
 == Iris Aperture Ratios and Fractional Measurement Operations
 
@@ -334,7 +334,7 @@ Varying the rational aperture ratio \( r \) adjusts the central flux transmissio
 
 = The Real Numbers
 
-Constructing the real numbers R through constructive Iris aperture refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations without unconstructive non-denumerable infinities.
+Constructing the real numbers \( \mathbb { R } \) through constructive Iris aperture refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations without unconstructive non-denumerable infinities.
 
 == Constructive Iris Aperture Limits and Rational Grid Refinement
 

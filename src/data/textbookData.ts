@@ -113,7 +113,7 @@ export const INITIAL_TEXTBOOK: Textbook = {
     {
       "id": "chap-the-counting-process-and-the-integers",
       "title": "The Counting Process and the Integers",
-      "summary": "Foundational definition of the discrete integer domain Z and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).",
+      "summary": "Foundational definition of the discrete integer domain \\( \\mathbb { Z } \\) and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).",
       "sections": [
         {
           "id": "sec-definition-of-the-integers",
@@ -154,7 +154,7 @@ export const INITIAL_TEXTBOOK: Textbook = {
     {
       "id": "chap-the-rational-numbers",
       "title": "The Rational Numbers",
-      "summary": "Constructing the rational numbers Q using the Iris optical-geometric aperture analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating without non-denumerable continua.",
+      "summary": "Constructing the rational numbers \\( \\mathbb { Q } \\) using the Iris optical-geometric aperture analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating without non-denumerable continua.",
       "sections": [
         {
           "id": "sec-iris-aperture-ratios-and-fractional-measurement-operations",
@@ -191,7 +191,7 @@ export const INITIAL_TEXTBOOK: Textbook = {
     {
       "id": "chap-the-real-numbers",
       "title": "The Real Numbers",
-      "summary": "Constructing the real numbers R through constructive Iris aperture refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations without unconstructive non-denumerable infinities.",
+      "summary": "Constructing the real numbers \\( \\mathbb { R } \\) through constructive Iris aperture refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations without unconstructive non-denumerable infinities.",
       "sections": [
         {
           "id": "sec-constructive-iris-aperture-limits-and-rational-grid-refinement",
