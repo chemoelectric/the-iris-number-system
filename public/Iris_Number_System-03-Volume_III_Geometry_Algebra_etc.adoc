@@ -338,6 +338,10 @@ The number of discrete grid partitions \( p _ N ( k ) \) of an integer measureme
 
 = Index of Formal Statements
 
+Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
+
+== Index of Formal Statements
+
 This index lists all formal Postulates, Theorems, and Definitions established across Volume III.
 
 === Theorems
