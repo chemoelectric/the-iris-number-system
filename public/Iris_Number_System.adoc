@@ -1,4 +1,5 @@
-= The Iris Number System
+= The Iris Number System: Fundamentals
+:subtitle: Fundamentals
 :author: Frédéric Blondel Custer
 :doctype: book
 :toc: left

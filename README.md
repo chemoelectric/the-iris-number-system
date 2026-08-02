@@ -12,11 +12,13 @@ The **Iris Number System Deduction & Inference Engine** provides a constructive 
 
 ### Core Modules & Features
 
-1. **Iris Textbook (AsciiDoc & LatexMath Renderer)**
-   - Complete interactive rendered textbook sourced from `public/Iris_Number_System.adoc`.
-   - Dynamic Table of Contents, section navigation, full-text search, and inline KaTeX equation rendering.
+1. **Iris Textbook Volumes by Frédéric Blondel Custer (AsciiDoc & LatexMath Renderer)**
+   - Multi-volume treatise viewer with instant switching between volumes:
+     - **Volume I: Fundamentals** (`public/Iris_Number_System.adoc`): Covers Postulates 0–9, Multiscale Resolution Analysis (MSRA), Cl(4,1,1) multivector differential & integral calculus, and the Master Field Equation.
+     - **Volume II: Applications to Number Theory** (`public/Iris_Number_System_Applications_to_Number_Theory.adoc`): Tautological proofs of classical conjectures including the Goldbach Partition Theorem, Riemann Hypothesis Spectral Theorem, Twin Prime Infinitude Theorem, Collatz Orbit Convergence Theorem, Fermat's Last Theorem, and Legendre's Prime Existence Theorem.
+   - Dynamic Table of Contents, section navigation, full-text search, volume dropdown, and inline KaTeX equation rendering.
    - Automatically updated **Index of Formal Statements** indexing all Postulates, Theorems, Definitions, Axioms, and Lemmas.
-   - Direct dynamic AsciiDoc file generation and download option (`/public/Iris_Number_System.adoc`).
+   - Direct dynamic AsciiDoc file generation and download option for each volume.
 
 2. **Search & Inference Engine Prover**
    - Server-side inference integration powered by Gemini 3.6 Flash.
@@ -97,7 +99,8 @@ The inference engine operates strictly within the Counting-Iris number system:
 ## 🛠️ Project Structure
 ```
 ├── public/
-│   └── Iris_Number_System.adoc   # Canonical AsciiDoc source textbook
+│   ├── Iris_Number_System.adoc                            # Volume I: Fundamentals (AsciiDoc)
+│   └── Iris_Number_System_Applications_to_Number_Theory.adoc # Volume II: Applications to Number Theory (AsciiDoc)
 ├── src/
 │   ├── components/               # React UI modules (Navbar, Textbook, Prover, Calculator, etc.)
 │   ├── data/

@@ -14,12 +14,14 @@ import {
   Hash,
   Bookmark
 } from 'lucide-react';
-import { INITIAL_TEXTBOOK, generateFullAsciiDoc } from '../data/textbookData';
+import { INITIAL_TEXTBOOK, TEXTBOOK_VOLUMES, generateFullAsciiDoc } from '../data/textbookData';
 import { TextbookChapter, TextbookSection } from '../types';
 import { AsciiDocViewer } from './AsciiDocViewer';
 
 export const IrisTextbook: React.FC = () => {
-  const [textbook, setTextbook] = useState(INITIAL_TEXTBOOK);
+  const [selectedVolumeId, setSelectedVolumeId] = useState<string>(INITIAL_TEXTBOOK.id);
+  const textbook = TEXTBOOK_VOLUMES.find((v) => v.id === selectedVolumeId) || INITIAL_TEXTBOOK;
+
   const [selectedChapterId, setSelectedChapterId] = useState<string>(textbook.chapters[0].id);
   const [selectedSectionId, setSelectedSectionId] = useState<string>(textbook.chapters[0].sections[0].id);
   
@@ -28,6 +30,17 @@ export const IrisTextbook: React.FC = () => {
   
   // Search query for TOC or textbook content
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const handleSelectVolume = (volId: string) => {
+    setSelectedVolumeId(volId);
+    const targetVol = TEXTBOOK_VOLUMES.find((v) => v.id === volId) || INITIAL_TEXTBOOK;
+    if (targetVol.chapters.length > 0) {
+      setSelectedChapterId(targetVol.chapters[0].id);
+      if (targetVol.chapters[0].sections.length > 0) {
+        setSelectedSectionId(targetVol.chapters[0].sections[0].id);
+      }
+    }
+  };
 
   // Active chapter and section objects
   const activeChapter = textbook.chapters.find((c) => c.id === selectedChapterId) || textbook.chapters[0];
@@ -97,20 +110,39 @@ export const IrisTextbook: React.FC = () => {
             <BookOpen className="w-7 h-7" />
           </div>
           <div>
-            <div className="flex items-center space-x-2">
-              <h1 className="text-xl font-extrabold text-white tracking-tight">{textbook.title}</h1>
+            <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+              <h1 className="text-xl font-extrabold text-white tracking-tight">
+                {textbook.title}
+                {textbook.subtitle && <span className="text-amber-400 font-semibold ml-2">: {textbook.subtitle}</span>}
+              </h1>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-700/50 uppercase tracking-widest">
                 AsciiDoc • Unnumbered
               </span>
             </div>
             <p className="text-xs text-slate-400 mt-1 max-w-2xl">
-              Official Treatise on the Counting-Iris Number System. Chapters and sections are named without ordinal numbers.
+              Official Treatise on the Counting-Iris Number System — {textbook.subtitle || 'Fundamentals'}. Chapters and sections are named without ordinal numbers.
             </p>
           </div>
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center space-x-3 w-full md:w-auto justify-end">
+        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+          {/* Volume Switcher Dropdown */}
+          <div className="flex items-center space-x-2 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 font-mono text-xs text-slate-300">
+            <Bookmark className="w-3.5 h-3.5 text-amber-400" />
+            <select
+              value={selectedVolumeId}
+              onChange={(e) => handleSelectVolume(e.target.value)}
+              className="bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer font-sans"
+            >
+              {TEXTBOOK_VOLUMES.map((vol) => (
+                <option key={vol.id} value={vol.id} className="bg-slate-900 text-slate-200">
+                  Volume: {vol.subtitle} ({vol.author})
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* Mode Switcher */}
           <div className="flex items-center p-1 bg-slate-950 border border-slate-800 rounded-xl font-mono text-xs">
             <button

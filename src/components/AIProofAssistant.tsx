@@ -94,7 +94,7 @@ export const AIProofAssistant: React.FC<AIProofAssistantProps> = ({
     {
       title: 'Iris Conjugate Real Norm Theorem',
       query: 'Prove that z * z* is always a non-negative real scalar in R for any Iris number z = a + b·ι + c·ϖ + d·ϑ.',
-      domain: 'Number Theory' as const,
+      domain: 'Tautological Discrete Arithmetic' as const,
     },
     {
       title: 'Iris Zeta Pole Residue at s = 1',
@@ -104,7 +104,7 @@ export const AIProofAssistant: React.FC<AIProofAssistantProps> = ({
     {
       title: 'Modular Iris Prime Fermat Congruence',
       query: 'Prove Fermat-Iris congruence: z^(p-1) ≡ 1 + ι·ϖ (mod p_I) for Iris prime p_I with ||p_I||_I = 7.',
-      domain: 'Abstract Algebra' as const,
+      domain: 'Tautological Discrete Arithmetic' as const,
     },
   ];
 
@@ -157,10 +157,13 @@ export const AIProofAssistant: React.FC<AIProofAssistantProps> = ({
               onChange={(e) => setDomain(e.target.value as IrisDomain)}
               className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white font-mono focus:outline-none focus:border-purple-500"
             >
-              <option value="Number Theory">Number Theory</option>
+              <option value="Tautological Discrete Arithmetic">Tautological Discrete Arithmetic</option>
               <option value="Discrete Spectrum Algebra">Discrete Spectrum Algebra</option>
-              <option value="Abstract Algebra">Abstract Algebra</option>
+              <option value="Clifford Algebra Cl(4,1,1)">Clifford Algebra Cl(4,1,1)</option>
+              <option value="Jaynesian MaxEnt Probability">Jaynesian MaxEnt Probability</option>
+              <option value="Star-Finite Rational Algebra">Star-Finite Rational Algebra</option>
               <option value="Spectral Topology">Spectral Topology</option>
+              <option value="Quantum Iris Field">Quantum Iris Field</option>
             </select>
           </div>
 

@@ -1,10 +1,91 @@
 const fs = require("fs");
 
-let adocContent = fs.readFileSync("public/Iris_Number_System.adoc", "utf8");
-// Ensure downarrow operator always has a space before it when following an equals sign
-adocContent = adocContent
-  .replace(/=\s*\\downarrow/g, "= \\downarrow")
-  .replace(/=\s*↓/g, "= ↓");
+function parseAdocFile(filePath, id, defaultTitle, defaultSubtitle, author, description) {
+  let adocContent = fs.readFileSync(filePath, "utf8");
+  adocContent = adocContent
+    .replace(/=\s*\\downarrow/g, "= \\downarrow")
+    .replace(/=\s*↓/g, "= ↓");
+
+  const chapterBlocks = adocContent.split(/^= /m);
+  const chapters = [];
+
+  for (let i = 1; i < chapterBlocks.length; i++) {
+    const block = chapterBlocks[i];
+    const lines = block.split("\n");
+    const chapTitle = lines[0].trim();
+    
+    if (chapTitle.toLowerCase().includes("index of formal statements")) continue;
+    if (chapTitle.includes("The Iris Number System:")) continue; // Skip book title line if split matched header
+    
+    const chapId = "chap-" + chapTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    const sectionBlocks = ("\n" + lines.slice(1).join("\n")).split(/\n(?=={2,3} )/);
+    
+    const sections = [];
+    let chapSummary = "";
+    
+    sectionBlocks.forEach((secBlock) => {
+      const secLines = secBlock.trim().split("\n");
+      if (secLines[0].startsWith("==")) {
+        const secHeader = secLines[0].replace(/^={2,3}\s*/, "").trim();
+        const secId = "sec-" + secHeader.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        const secContent = secLines.join("\n").trim();
+        sections.push({
+          id: secId,
+          title: secHeader,
+          contentAsciiDoc: secContent
+        });
+      } else {
+        if (secBlock.trim()) {
+          chapSummary = secBlock.trim();
+        }
+      }
+    });
+
+    if (sections.length === 0) {
+      sections.push({
+        id: chapId + "-sec-1",
+        title: chapTitle,
+        contentAsciiDoc: lines.slice(1).join("\n").trim()
+      });
+    }
+
+    chapters.push({
+      id: chapId,
+      title: chapTitle,
+      summary: chapSummary,
+      sections: sections
+    });
+  }
+
+  return {
+    id,
+    title: defaultTitle,
+    subtitle: defaultSubtitle,
+    author,
+    version: "2.1.0",
+    lastUpdated: "2026-08-01",
+    description,
+    chapters
+  };
+}
+
+const vol1 = parseAdocFile(
+  "public/Iris_Number_System.adoc",
+  "textbook-iris-number-system",
+  "The Iris Number System",
+  "Fundamentals",
+  "Frédéric Blondel Custer",
+  "A Rigorous Constructive Foundation for Mathematics and Physics"
+);
+
+const vol2 = parseAdocFile(
+  "public/Iris_Number_System_Applications_to_Number_Theory.adoc",
+  "textbook-iris-number-theory",
+  "The Iris Number System",
+  "Applications to Number Theory",
+  "Frédéric Blondel Custer",
+  "A Rigorous Application of the Counting-Iris Number System to Classical Number-Theoretic Conjectures"
+);
 
 const fileHeader = `import { TextbookChapter, Textbook } from "../types";
 
@@ -110,76 +191,17 @@ export function getCompleteChapters(chapters: TextbookChapter[]): TextbookChapte
 }
 `;
 
-const chapterBlocks = adocContent.split(/^= /m);
+const exportStr = `
+export const INITIAL_TEXTBOOK: Textbook = ${JSON.stringify(vol1, null, 2)};
 
-let bookTitle = "The Iris Number System";
-let author = "Frédéric Blondel Custer";
-let description = "A Rigorous Constructive Foundation for Mathematics and Physics";
+export const NUMBER_THEORY_TEXTBOOK: Textbook = ${JSON.stringify(vol2, null, 2)};
 
-const chapters = [];
-
-for (let i = 1; i < chapterBlocks.length; i++) {
-  const block = chapterBlocks[i];
-  const lines = block.split("\n");
-  const chapTitle = lines[0].trim();
-  
-  if (chapTitle.toLowerCase().includes("index of formal statements")) continue;
-  
-  const chapId = "chap-" + chapTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  
-  const sectionBlocks = ("\n" + lines.slice(1).join("\n")).split(/\n(?=={2,3} )/);
-  
-  const sections = [];
-  let chapSummary = "";
-  
-  sectionBlocks.forEach((secBlock) => {
-    const secLines = secBlock.trim().split("\n");
-    if (secLines[0].startsWith("==")) {
-      const secHeader = secLines[0].replace(/^={2,3}\s*/, "").trim();
-      const secId = "sec-" + secHeader.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-      const secContent = secLines.join("\n").trim();
-      sections.push({
-        id: secId,
-        title: secHeader,
-        contentAsciiDoc: secContent
-      });
-    } else {
-      if (secBlock.trim()) {
-        chapSummary = secBlock.trim();
-      }
-    }
-  });
-
-  if (sections.length === 0) {
-    sections.push({
-      id: chapId + "-sec-1",
-      title: chapTitle,
-      contentAsciiDoc: lines.slice(1).join("\n").trim()
-    });
-  }
-
-  chapters.push({
-    id: chapId,
-    title: chapTitle,
-    summary: chapSummary,
-    sections: sections
-  });
-}
-
-const initialTextbookStr = `export const INITIAL_TEXTBOOK: Textbook = {
-  id: "textbook-iris-number-system",
-  title: JSON.parse(${JSON.stringify(JSON.stringify(bookTitle))}),
-  subtitle: "Constructive Clifford Multivector Analysis",
-  author: JSON.parse(${JSON.stringify(JSON.stringify(author))}),
-  version: "2.1.0",
-  lastUpdated: "2026-08-01",
-  description: JSON.parse(${JSON.stringify(JSON.stringify(description))}),
-  chapters: ${JSON.stringify(chapters, null, 2)}
-};
+export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
-  let adoc = \`= \${textbook.title}\\n\`;
+  let adoc = \`= \${textbook.title}: \${textbook.subtitle || "Fundamentals"}\\n\`;
+  adoc += \`:subtitle: \${textbook.subtitle || "Fundamentals"}\\n\`;
   adoc += \`:author: \${textbook.author}\\n\`;
   adoc += \`:doctype: book\\n\`;
   adoc += \`:toc: left\\n\`;
@@ -202,5 +224,5 @@ export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
 }
 `;
 
-fs.writeFileSync("src/data/textbookData.ts", fileHeader + "\n" + initialTextbookStr, "utf8");
+fs.writeFileSync("src/data/textbookData.ts", fileHeader + exportStr, "utf8");
 console.log("Re-generated src/data/textbookData.ts successfully!");
