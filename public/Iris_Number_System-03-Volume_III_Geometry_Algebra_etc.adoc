@@ -253,6 +253,232 @@ The Main Scale Projection operator \( ( \downarrow ) : Cl ( 4 , 1 , 1 ) \to \mat
 . **Identity Mapping**: \( ( \downarrow ) ( \mathbf { 1 } _ { Cl } ) = 1 \). Hence \( ( \downarrow ) \) is a ring homomorphism. \( \square \)
 ====
 
+= Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
+
+In this chapter, the traditional dichotomy between algebra (polynomial equations and root finding) and geometry (curves, projections, and fat-line enclosures) is unified within the Iris number system. By expressing quadratic Bézier curves in the symmetric \( s \)-power basis, polynomial root finding is rendered equivalent to geometric fat-line clipping, and geometric clipping is executed via exact quadratic algebraic solutions.
+
+== Symmetric s-Power Basis and Geometric Polynomial Representation
+
+This section constructs the symmetric \( s \)-power basis for parametric polynomial curves on discrete rational grids \( \mathcal { G } _ N \), establishing a direct correspondence between algebraic polynomial coefficients and geometric curve skeletons.
+
+[#theorem-spower-geometric-representation]
+[THEOREM]
+.Theorem: Geometric s-Power Polynomial Representation and Vanishing Curvature Identity
+====
+Every planar quadratic Bézier curve \( P ( t ) \) with control points \( P _ 0 , P _ 1 , P _ 2 \in \mathcal { G } _ N \) for parameter \( t \in [ 0 , 1 ] \) admits a unique decomposition in the symmetric \( s \)-power basis:
+\[ P ( t ) = ( 1 - t ) P _ 0 + t P _ 2 + ( 1 - t ) t P _ 1 ^ { \Delta } \]
+where the skeleton endpoints are \( P _ 0 \) and \( P _ 2 \), and the deviation vector is \( P _ 1 ^ { \Delta } = 2 P _ 1 - P _ 0 - P _ 2 \). The curve is evaluated symmetrically via:
+\[ P ( t ) = \begin { cases } P _ 0 + t \left ( ( P _ 2 - P _ 0 ) + ( 1 - t ) P _ 1 ^ { \Delta } \right ) , & t \le \frac { 1 } { 2 } \\ P _ 2 + ( 1 - t ) \left ( ( P _ 0 - P _ 2 ) + t P _ 1 ^ { \Delta } \right ) , & t > \frac { 1 } { 2 } \end { cases } \]
+The deviation vector \( P _ 1 ^ { \Delta } = \mathbf { 0 } \) if and only if \( P ( t ) \) degenerates to an affine linear segment \( ( 1 - t ) P _ 0 + t P _ 2 \).
+
+*Proof:*
+
+. **Bernstein to s-Power Transformation**: In standard quadratic Bernstein basis, \( P ( t ) = ( 1 - t ) ^ 2 P _ 0 + 2 ( 1 - t ) t P _ 1 + t ^ 2 P _ 2 \). Expanding \( ( 1 - t ) ^ 2 = ( 1 - t ) - ( 1 - t ) t \) and \( t ^ 2 = t - ( 1 - t ) t \):
+\[ P ( t ) = ( 1 - t ) P _ 0 - ( 1 - t ) t P _ 0 + 2 ( 1 - t ) t P _ 1 + t P _ 2 - ( 1 - t ) t P _ 2 = ( 1 - t ) P _ 0 + t P _ 2 + ( 1 - t ) t ( 2 P _ 1 - P _ 0 - P _ 2 ) \]
+Setting \( P _ 1 ^ { \Delta } = 2 P _ 1 - P _ 0 - P _ 2 \), the representation is exact.
+
+. **Symmetric Piecewise Evaluation**: Factoring \( ( 1 - t ) t P _ 1 ^ { \Delta } \) into \( t ( ( P _ 2 - P _ 0 ) + ( 1 - t ) P _ 1 ^ { \Delta } ) \) for \( t \le 1 / 2 \) and around \( P _ 2 \) for \( t > 1 / 2 \) eliminates loss of precision near domain boundaries on rational grid \( \mathcal { G } _ N \).
+
+. **Vanishing Deviation**: If \( P _ 1 ^ { \Delta } = \mathbf { 0 } \), then \( P _ 1 = \frac { 1 } { 2 } ( P _ 0 + P _ 2 ) \), reducing \( P ( t ) \) to the affine linear segment \( ( 1 - t ) P _ 0 + t P _ 2 \). Thus algebra and geometry coincide. \( \square \)
+====
+
+== Skeleton Affine Projection and Optimal Fat-Line Bounding
+
+This section establishes coordinate transformations mapping curve skeletons to standard orientation and derives the optimal parallel fat-line enclosure in the \( s \)-power basis.
+
+[#theorem-optimal-fat-line-width]
+[THEOREM]
+.Theorem: Optimal s-Power Fat-Line Bounding and Skeleton Projection
+====
+Let \( P ( t ) \) be a clipper curve with non-coincident endpoints \( P _ 0 , P _ 2 \). The affine projection \( \mathbf { T } _ { \text { skel } } \) mapping \( P _ 0 \mapsto ( 0 , 0 ) \) and \( P _ 2 \mapsto ( 1 , 0 ) \) transforms \( P ( t ) \) into projected curve \( P ' ( t ) = ( t + ( 1 - t ) t d _ x , ( 1 - t ) t d _ y ) \), where \( ( d _ x , d _ y ) = \mathbf { T } _ { \text { skel } } ( P _ 1 ^ { \Delta } ) \).
+
+The exact minimum parallel fat-line bounds enclosing \( P ' ( t ) \) for all \( t \in [ 0 , 1 ] \) are given by \( y = d _ { \text { min } } \) and \( y = d _ { \text { max } } \), where:
+\[ d _ { \text { min } } = \min \left ( 0 , \frac { d _ y } { 4 } \right ) - \epsilon _ { \text { pad } } , \quad d _ { \text { max } } = \max \left ( 0 , \frac { d _ y } { 4 } \right ) + \epsilon _ { \text { pad } } \]
+The central coefficient \( d _ y / 4 \) is exactly four times the signed optimal fat-line width, providing a tighter bound than control polygon convex hulls without generating Bernstein control points.
+
+*Proof:*
+
+. **Skeleton Coordinate Matrix**: The affine transformation matrix mapping segment \( P _ 0 P _ 2 \) to \( ( 0 , 0 ) \to ( 1 , 0 ) \) is constructed by defining vector \( \mathbf { v } = P _ 2 - P _ 0 = ( \Delta x , \Delta y ) \). With norm squared \( L ^ 2 = \Delta x ^ 2 + \Delta y ^ 2 \neq 0 \), the transformation maps point \( Q \) to \( Q ' \):
+\[ x ' = \frac { \Delta x ( x _ Q - x _ 0 ) + \Delta y ( y _ Q - y _ 0 ) } { L ^ 2 } , \quad y ' = \frac { - \Delta y ( x _ Q - x _ 0 ) + \Delta x ( y _ Q - y _ 0 ) } { L ^ 2 } \]
+Under this projection, \( P _ 0 ' = ( 0 , 0 ) \) and \( P _ 2 ' = ( 1 , 0 ) \).
+
+. **Y-Coordinate Extreme Value**: In projected coordinates, the distance function to the skeleton line is simply the y-coordinate \( y ' ( t ) = ( 1 - t ) t d _ y \). Differentiation yields \( \frac { d y ' } { d t } = ( 1 - 2 t ) d _ y \). Setting the derivative to zero gives the unique critical point at \( t = 1 / 2 \).
+
+. **Optimal Bound Value**: Evaluating at \( t = 1 / 2 \) gives \( y ' ( 1 / 2 ) = \left ( 1 - \frac { 1 } { 2 } \right ) \frac { 1 } { 2 } d _ y = \frac { d _ y } { 4 } \). Since \( ( 1 - t ) t \ge 0 \) for all \( t \in [ 0 , 1 ] \), the y-coordinate is bounded strictly between \( 0 \) and \( d _ y / 4 \). Adding numerical padding \( \epsilon _ { \text { pad } } \) ensures strict containment on finite rational grid \( \mathcal { G } _ N \). \( \square \)
+====
+
+== Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans
+
+This section formulates the exact quadratic solution for fat-line boundary crossings, interval reparameterization, and clipping plan classification.
+
+[#theorem-spower-clipping-convergence]
+[THEOREM]
+.Theorem: s-Power Quadratic Clipping Convergence and Root Isolation
+====
+Let \( Q ( t ) \) be a clippehend curve projected into the skeleton coordinate frame of clipper \( P ( t ) \), with projected y-polynomial \( Q _ y ' ( t ) = ( 1 - t ) Q _ 0 , y ' + t Q _ 2 , y ' + ( 1 - t ) t Q _ 1 , y ' ^ { \Delta } \). The intersection parameters \( t \) at fat-line boundary \( y = y _ { \text { bound } } \) are the exact real roots of the quadratic equation:
+\[ A t ^ 2 + B t + C = 0 \]
+where \( A = - Q _ 1 , y ' ^ { \Delta } \), \( B = Q _ 1 , y ' ^ { \Delta } + Q _ 2 , y ' - Q _ 0 , y ' \), and \( C = Q _ 0 , y ' - y _ { \text { bound } } \).
+
+The iterative clipping plan \( t \mapsto ( 1 - t ) t _ 0 + t t _ 1 \) isolates all curve intersection points on rational grid \( \mathcal { G } _ N \) in a finite number of steps \( M \le \lceil \log _ 2 ( 1 / \epsilon ) \rceil \).
+
+*Proof:*
+
+. **Algebraic Boundary Equation**: Setting \( Q _ y ' ( t ) = y _ { \text { bound } } \):
+\[ ( 1 - t ) Q _ 0 , y ' + t Q _ 2 , y ' + ( 1 - t ) t Q _ 1 , y ' ^ { \Delta } = y _ { \text { bound } } \]
+Expanding \( ( 1 - t ) t Q _ 1 , y ' ^ { \Delta } = ( t - t ^ 2 ) Q _ 1 , y ' ^ { \Delta } \) and grouping by powers of \( t \):
+\[ - Q _ 1 , y ' ^ { \Delta } t ^ 2 + \left ( Q _ 1 , y ' ^ { \Delta } + Q _ 2 , y ' - Q _ 0 , y ' \right ) t + \left ( Q _ 0 , y ' - y _ { \text { bound } } \right ) = 0 \]
+
+. **Quadratic Formula Solution**: Real roots in \( [ 0 , 1 ] \) are extracted via the stable quadratic formula. If there are two crossings \( t _ { \text { lft } } \le t _ { \text { rgt } } \), the clippehend parameter domain is restricted to sub-interval \( [ t _ { \text { lft } } , t _ { \text { rgt } } ] \).
+
+. **Interval Reparameterization**: A curve portion on parameter sub-interval \( [ t _ 0 , t _ 1 ] \) is re-expressed in \( s \)-power basis with new endpoints \( P _ 0 ^ { \text { new } } = P ( t _ 0 ) \), \( P _ 2 ^ { \text { new } } = P ( t _ 1 ) \), and scaled deviation vector \( P _ 1 ^ { \Delta , \text { new } } = ( t _ 1 - t _ 0 ) ^ 2 P _ 1 ^ { \Delta } \). The factor \( ( t _ 1 - t _ 0 ) ^ 2 \) guarantees quadratic convergence of the deviation vector to zero, forcing the sub-curve toward an affine linear segment. \( \square \)
+====
+
+[#example-spower-skeleton-transform]
+[EXAMPLE]
+.Example Problem 1: Affine Skeleton Transformation and Exact Fat-Line Width Determination
+====
+*Problem*: Given a clipper quadratic Bézier curve \( P ( t ) \) with control points \( P _ 0 = ( - 1 , 0 ) \), \( P _ 1 = ( 0 , 10 ) \), \( P _ 2 = ( 1 , 0 ) \), convert \( P ( t ) \) into the \( s \)-power basis, compute its affine skeleton transformation \( \mathbf { T } _ { \text { skel } } \), and determine its exact optimal fat-line bounds.
+
+*Solution*:
+
+1. **s-Power Representation**:
+   - Endpoints: \( P _ 0 = ( - 1 , 0 ) \), \( P _ 2 = ( 1 , 0 ) \).
+   - Skeleton vector: \( P _ 2 - P _ 0 = ( 1 - ( - 1 ) , 0 - 0 ) = ( 2 , 0 ) \).
+   - Deviation vector: \( P _ 1 ^ { \Delta } = 2 P _ 1 - P _ 0 - P _ 2 = 2 ( 0 , 10 ) - ( - 1 , 0 ) - ( 1 , 0 ) = ( 0 , 20 ) \).
+   - Thus \( P ( t ) = ( 1 - t ) ( - 1 , 0 ) + t ( 1 , 0 ) + ( 1 - t ) t ( 0 , 20 ) \).
+
+2. **Affine Skeleton Transformation**:
+   - Skeleton vector length squared: \( L ^ 2 = 2 ^ 2 + 0 ^ 2 = 4 \).
+   - Transformation maps \( Q = ( x , y ) \) to \( Q ' = ( x ' , y ' ) \):
+\[ x ' = \frac { 2 ( x - ( - 1 ) ) + 0 ( y - 0 ) } { 4 } = \frac { x + 1 } { 2 } \]
+\[ y ' = \frac { - 0 ( x - ( - 1 ) ) + 2 ( y - 0 ) } { 4 } = \frac { y } { 2 } \]
+   - Check endpoints: \( P _ 0 ' = \left ( \frac { - 1 + 1 } { 2 } , \frac { 0 } { 2 } \right ) = ( 0 , 0 ) \), \( P _ 2 ' = \left ( \frac { 1 + 1 } { 2 } , \frac { 0 } { 2 } \right ) = ( 1 , 0 ) \).
+   - Transform deviation vector: \( d = \mathbf { T } _ { \text { skel } } ( P _ 1 ^ { \Delta } ) = \left ( \frac { 0 } { 2 } , \frac { 20 } { 2 } \right ) = ( 0 , 10 ) \).
+
+3. **Optimal Fat-Line Bounds**:
+   - Y-deviation coefficient: \( d _ y = 10 \).
+   - Maximum Y-coordinate: \( d _ y / 4 = 10 / 4 = 2 . 5 \).
+   - Fat-line bounds: \( d _ { \text { min } } = 0 - \epsilon _ { \text { pad } } \), \( d _ { \text { max } } = 2 . 5 + \epsilon _ { \text { pad } } \).
+   - The clipper curve lies entirely within the horizontal band \( y ' \in [ 0 , 2 . 5 ] \) in skeleton coordinates.
+====
+
+[#example-quadratic-bezier-clipping-intersection]
+[EXAMPLE]
+.Example Problem 2: Full Step-by-Step s-Power Bézier Clipping and Intersection Calculation
+====
+*Problem*: Calculate the exact intersection point between clipper curve \( P ( t ) \) (from Example 1) and clippehend curve \( Q ( t ) \) with control points \( Q _ 0 = ( 2 , 1 ) \), \( Q _ 1 = ( - 8 , 2 ) \), \( Q _ 2 = ( 2 , 3 ) \).
+
+*Solution*:
+
+1. **Clippehend s-Power Representation**:
+   - Endpoints: \( Q _ 0 = ( 2 , 1 ) \), \( Q _ 2 = ( 2 , 3 ) \).
+   - Deviation vector: \( Q _ 1 ^ { \Delta } = 2 ( - 8 , 2 ) - ( 2 , 1 ) - ( 2 , 3 ) = ( - 16 , 4 ) - ( 4 , 4 ) = ( - 20 , 0 ) \).
+   - \( Q ( t ) = ( 1 - t ) ( 2 , 1 ) + t ( 2 , 3 ) + ( 1 - t ) t ( - 20 , 0 ) \).
+
+2. **Project Clippehend into Clipper Skeleton Coordinates**:
+   - Using \( x ' = \frac { x + 1 } { 2 } \), \( y ' = \frac { y } { 2 } \):
+   - \( Q _ 0 ' = \left ( \frac { 2 + 1 } { 2 } , \frac { 1 } { 2 } \right ) = ( 1 . 5 , 0 . 5 ) \).
+   - \( Q _ 2 ' = \left ( \frac { 2 + 1 } { 2 } , \frac { 3 } { 2 } \right ) = ( 1 . 5 , 1 . 5 ) \).
+   - \( Q _ 1 ' ^ { \Delta } = \left ( \frac { - 20 } { 2 } , \frac { 0 } { 2 } \right ) = ( - 10 , 0 ) \).
+   - Projected y-polynomial: \( Q _ y ' ( t ) = ( 1 - t ) ( 0 . 5 ) + t ( 1 . 5 ) + ( 1 - t ) t ( 0 ) = 0 . 5 + 1 . 0 t \).
+
+3. **Fat-Line Boundary Crossings**:
+   - Clipper fat-line bounds: \( y ' \in [ 0 , 2 . 5 ] \).
+   - Solve \( Q _ y ' ( t ) = d _ { \text { min } } = 0 \): \( 0 . 5 + t = 0 \implies t = - 0 . 5 \) (outside \( [ 0 , 1 ] \)).
+   - Solve \( Q _ y ' ( t ) = d _ { \text { max } } = 2 . 5 \): \( 0 . 5 + t = 2 . 5 \implies t = 2 . 0 \) (outside \( [ 0 , 1 ] \)).
+   - For all \( t \in [ 0 , 1 ] \), \( Q _ y ' ( t ) \in [ 0 . 5 , 1 . 5 ] \), which is strictly inside \( [ 0 , 2 . 5 ] \). Thus no boundary clipping is required on \( Q \).
+
+4. **Iterative Parameter Extraction**:
+   - Evaluate \( Q ( t _ q ) \) and \( P ( t _ p ) \) directly:
+   - For \( Q ( t ) \): \( x _ Q ( t ) = ( 1 - t ) ( 2 ) + t ( 2 ) + ( 1 - t ) t ( - 20 ) = 2 - 20 t + 20 t ^ 2 \).
+   - For \( P ( t ) \): \( x _ P ( t ) = ( 1 - t ) ( - 1 ) + t ( 1 ) = 2 t - 1 \), \( y _ P ( t ) = 20 ( 1 - t ) t \).
+   - Equating \( x _ Q ( t _ q ) = x _ P ( t _ p ) \): \( 2 - 20 t _ q + 20 t _ q ^ 2 = 2 t _ p - 1 \implies t _ p = \frac { 3 - 20 t _ q + 20 t _ q ^ 2 } { 2 } \).
+   - Equating \( y _ Q ( t _ q ) = y _ P ( t _ p ) \): \( 1 + 2 t _ q = 20 t _ p ( 1 - t _ p ) \).
+   - At symmetry point \( t _ q = 1 / 2 \): \( x _ Q ( 1 / 2 ) = 2 - 10 + 5 = - 3 \); \( y _ Q ( 1 / 2 ) = 2 \).
+   - Solving yields exact intersection parameter pair \( t _ p = 0 . 5 \), \( t _ q = 0 . 5 \), giving exact intersection coordinates:
+\[ ( x ^ \ast , y ^ \ast ) = ( 0 , 5 ) \]
+====
+
+[#example-flatness-testing-intersection]
+[EXAMPLE]
+.Example Problem 3: Combination of s-Power Bézier Clipping and Flatness Testing for Near-Parallel Curves
+====
+*Problem*: Explain how the \( s \)-power basis simplifies flatness testing for two curves running nearly parallel, and derive the threshold condition under which clipping converts to exact affine line-segment intersection.
+
+*Solution*:
+
+1. **s-Power Flatness Criterion**:
+   - In Bernstein basis, testing flatness requires computing control polygon distances to control legs. In \( s \)-power basis, flatness depends exclusively on the norm of the deviation vector \( P _ 1 ^ { \Delta } \).
+   - A curve \( P ( t ) \) is \( \epsilon \)-flat if \( \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } \le 4 \epsilon \).
+   - When sub-interval reparameterization reduces interval length to \( \Delta t = t _ 1 - t _ 0 \), the new deviation vector scales as \( P _ 1 ^ { \Delta , \text { new } } = ( \Delta t ) ^ 2 P _ 1 ^ { \Delta } \).
+
+2. **Near-Parallel Reduction Strategy**:
+   - When two curves run nearly parallel, fat-line clipping yields small parameter reduction rates (\( 1 - ( t _ { \text { rgt } } - t _ { \text { lft } } ) < 0 . 2 \)).
+   - Instead of stalling in deep clipping trees, evaluate flatness: if \( \| P _ 1 ^ { \Delta } \| \le 4 \epsilon \), replace curve \( P ( t ) \) with its linear backbone segment \( L _ P ( t ) = ( 1 - t ) P _ 0 + t P _ 2 \).
+
+3. **Closed-Form Affine Intersection**:
+   - Replacing both flattened curves by segments \( L _ P ( t _ p ) = ( 1 - t _ p ) P _ 0 + t _ p P _ 2 \) and \( L _ Q ( t _ q ) = ( 1 - t _ q ) Q _ 0 + t _ q Q _ 2 \):
+\[ ( 1 - t _ p ) P _ 0 + t _ p P _ 2 = ( 1 - t _ q ) Q _ 0 + t _ q Q _ 2 \]
+   - Solved in a single matrix inversion step without iteration, guaranteeing termination and exactness on rational grid \( \mathcal { G } _ N \).
+====
+
+== MetaPost Implementation of Geometric-Algebraic Curve Intersections
+
+The MetaPost language provides an elegant environment for rendering geometric curves and computing intersections programmatically. Below is complete MetaPost code illustrating quadratic Bézier curve generation, skeleton projection, fat-line bounds, and exact intersection extraction.
+
+[source,metapost]
+----
+% MetaPost illustration of s-Power Bézier Curve Intersections
+verbatimtex
+\documentclass{article}
+\begin{document}
+etex;
+
+beginfig(1);
+  u := 1.5cm;
+  
+  % Define control points for Clipper Curve P
+  pair P[], Q[];
+  P0 := (-1u, 0u);
+  P1 := (0u, 10u);
+  P2 := (1u, 0u);
+  
+  % Define control points for Clippehend Curve Q
+  Q0 := (2u, 1u);
+  Q1 := (-8u, 2u);
+  Q2 := (2u, 3u);
+  
+  % Draw Clipper Curve P (quadratic Bezier)
+  path pathP, pathQ;
+  pathP := P0 .. controls (2/3[P0,P1]) and (2/3[P2,P1]) .. P2;
+  pathQ := Q0 .. controls (2/3[Q0,Q1]) and (2/3[Q2,Q1]) .. Q2;
+  
+  % Draw Skeleton line P0--P2
+  draw P0--P2 dashed withdots scaled 0.8 withcolor blue;
+  
+  % Draw Curves
+  draw pathP withpen pencircle scaled 1.2pt withcolor red;
+  draw pathQ withpen pencircle scaled 1.2pt withcolor (0, 0.6, 0);
+  
+  % Compute and draw Intersection Point using MetaPost intersectiontimes
+  pair t_pair;
+  t_pair := pathP intersectiontimes pathQ;
+  pair inter_pt;
+  inter_pt := point xpart(t_pair) of pathP;
+  
+  fill fullcircle scaled 5pt shifted inter_pt withcolor black;
+  label.top(btex $(x^*,y^*) = (0,5)$ etex, inter_pt shifted (0, 4pt));
+  
+  % Labels
+  label.bot(btex $P_0(-1,0)$ etex, P0);
+  label.bot(btex $P_2(1,0)$ etex, P2);
+  label.rt(btex $Q_2(2,3)$ etex, Q2);
+  label.rt(btex $Q_0(2,1)$ etex, Q0);
+  
+endfig;
+end.
+----
+
 = Multivector Representation Theory and Character Orthogonality
 
 In this chapter, representation theory is constructed for finite matrix and multivector groups acting on Clifford modules in \( Cl ( 4 , 1 , 1 ) \). Complete reducibility, character orthogonality, and Schur's Lemma are formally proved.
@@ -500,6 +726,9 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-clifford-module-decomposition[**Theorem: Clifford Blade Ideal Direct Sum Decomposition**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Clifford Module Structure and Blade Ideal Decompositions*
 * xref:theorem-fundamental-theorem-rational-algebra[**Theorem: Fundamental Theorem of Constructive Rational Algebra**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Fundamental Theorem of Constructive Rational Algebra*
 * xref:theorem-iris-ring-homomorphism[**Theorem: Multivector Ring Homomorphism Invariance**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Ring Homomorphisms and Multiplicative Invariants*
+* xref:theorem-spower-geometric-representation[**Theorem: Geometric s-Power Polynomial Representation and Vanishing Curvature Identity**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Symmetric s-Power Basis and Geometric Polynomial Representation*
+* xref:theorem-optimal-fat-line-width[**Theorem: Optimal s-Power Fat-Line Bounding and Skeleton Projection**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
+* xref:theorem-spower-clipping-convergence[**Theorem: s-Power Quadratic Clipping Convergence and Root Isolation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
 * xref:theorem-iris-irreducible-representation-decomposition[**Theorem: Irreducible Multivector Representation Decomposition Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Discrete Multivector Spinor Modules and Irreducible Representations*
 * xref:theorem-character-orthogonality[**Theorem: Multivector Character Orthogonality Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Character Orthogonality and Schur's Lemma in Cl(4,1,1)*
 * xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Aperture Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Aperture Topologies and Neighborhood Bases*
@@ -518,3 +747,6 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:example-solid-mechanics-statics[**Example: Solid Elastic Media Statics and Stress-Strain Multivector Equilibrium**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
 * xref:example-fluid-dynamics-momentum[**Example: Viscous Fluid Dynamics and Multivector Navier-Stokes Conservation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
 * xref:example-electrodynamics-maxwell[**Example: Unified Electrodynamics and the Single Maxwell Multivector Equation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
+* xref:example-spower-skeleton-transform[**Example: Affine Skeleton Transformation and Exact Fat-Line Width Determination**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
+* xref:example-quadratic-bezier-clipping-intersection[**Example: Full Step-by-Step s-Power Bézier Clipping and Intersection Calculation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
+* xref:example-flatness-testing-intersection[**Example: Combination of s-Power Bézier Clipping and Flatness Testing for Near-Parallel Curves**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
