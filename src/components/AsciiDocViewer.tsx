@@ -624,7 +624,100 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             const itemText = curr.replace(/^(\*\*|\*|\-)\s+/, '');
             listItems.push({ text: itemText });
             i++;
-          } else if (listItems.length > 0 && (curr.startsWith('+') || lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
+          } else if (listItems.length > 0 && (curr.startsWith('\\[') || curr.startsWith('$$'))) {
+            const mathLines: string[] = [];
+            const isDoubleDollar = curr.startsWith('$$');
+            const endDelimiter = isDoubleDollar ? '$$' : '\\]';
+            if (curr.length > 2 && curr.endsWith(endDelimiter)) {
+              mathLines.push(curr.substring(2, curr.length - endDelimiter.length).trim());
+              i++;
+            } else {
+              if (curr.substring(2).trim()) mathLines.push(curr.substring(2).trim());
+              i++;
+              while (i < lines.length) {
+                const ml = lines[i].trim();
+                if (ml === endDelimiter || ml.endsWith(endDelimiter)) {
+                  if (ml !== endDelimiter) {
+                    const lastText = ml.substring(0, ml.length - endDelimiter.length).trim();
+                    if (lastText) mathLines.push(lastText);
+                  }
+                  i++;
+                  break;
+                }
+                mathLines.push(lines[i]);
+                i++;
+              }
+            }
+            const mathCode = mathLines.join('\n').trim();
+            try {
+              const html = katex.renderToString(normalizeMathSpacing(mathCode), { displayMode: true, throwOnError: false });
+              const mathNode = (
+                <div
+                  key={`ul-math-${i}`}
+                  className="my-3 p-3 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
+              );
+              const lastItem = listItems[listItems.length - 1];
+              lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+            } catch {
+              // fallback
+            }
+          } else if (listItems.length > 0 && (curr === '+' || curr.startsWith('+'))) {
+            i++;
+            if (i < lines.length) {
+              const nextLine = lines[i].trim();
+              if (nextLine.startsWith('\\[') || nextLine.startsWith('$$')) {
+                const mathLines: string[] = [];
+                const isDoubleDollar = nextLine.startsWith('$$');
+                const endDelimiter = isDoubleDollar ? '$$' : '\\]';
+                if (nextLine.length > 2 && nextLine.endsWith(endDelimiter)) {
+                  mathLines.push(nextLine.substring(2, nextLine.length - endDelimiter.length).trim());
+                  i++;
+                } else {
+                  if (nextLine.substring(2).trim()) mathLines.push(nextLine.substring(2).trim());
+                  i++;
+                  while (i < lines.length) {
+                    const ml = lines[i].trim();
+                    if (ml === endDelimiter || ml.endsWith(endDelimiter)) {
+                      if (ml !== endDelimiter) {
+                        const lastText = ml.substring(0, ml.length - endDelimiter.length).trim();
+                        if (lastText) mathLines.push(lastText);
+                      }
+                      i++;
+                      break;
+                    }
+                    mathLines.push(lines[i]);
+                    i++;
+                  }
+                }
+                const mathCode = mathLines.join('\n').trim();
+                try {
+                  const html = katex.renderToString(normalizeMathSpacing(mathCode), { displayMode: true, throwOnError: false });
+                  const mathNode = (
+                    <div
+                      key={`ul-math-cont-${i}`}
+                      className="my-3 p-3 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
+                      dangerouslySetInnerHTML={{ __html: html }}
+                    />
+                  );
+                  const lastItem = listItems[listItems.length - 1];
+                  lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+                } catch {
+                  // fallback
+                }
+              } else if (nextLine && !nextLine.startsWith('.') && !nextLine.startsWith('*') && !nextLine.startsWith('-') && !nextLine.startsWith('=')) {
+                const paraNode = (
+                  <div key={`ul-para-${i}`} className="my-2 text-slate-200 font-serif">
+                    {renderMathInline(nextLine.replace(/^\+\s*/, ''))}
+                  </div>
+                );
+                const lastItem = listItems[listItems.length - 1];
+                lastItem.extraNodes = [...(lastItem.extraNodes || []), paraNode];
+                i++;
+              }
+            }
+          } else if (listItems.length > 0 && (lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
             const lastItem = listItems[listItems.length - 1];
             lastItem.text += ' ' + curr.replace(/^\+\s*/, '');
             i++;
@@ -716,7 +809,61 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             } catch {
               // fallback
             }
-          } else if (listItems.length > 0 && (curr.startsWith('+') || lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
+          } else if (listItems.length > 0 && (curr === '+' || curr.startsWith('+'))) {
+            i++;
+            if (i < lines.length) {
+              const nextLine = lines[i].trim();
+              if (nextLine.startsWith('\\[') || nextLine.startsWith('$$')) {
+                const mathLines: string[] = [];
+                const isDoubleDollar = nextLine.startsWith('$$');
+                const endDelimiter = isDoubleDollar ? '$$' : '\\]';
+                if (nextLine.length > 2 && nextLine.endsWith(endDelimiter)) {
+                  mathLines.push(nextLine.substring(2, nextLine.length - endDelimiter.length).trim());
+                  i++;
+                } else {
+                  if (nextLine.substring(2).trim()) mathLines.push(nextLine.substring(2).trim());
+                  i++;
+                  while (i < lines.length) {
+                    const ml = lines[i].trim();
+                    if (ml === endDelimiter || ml.endsWith(endDelimiter)) {
+                      if (ml !== endDelimiter) {
+                        const lastText = ml.substring(0, ml.length - endDelimiter.length).trim();
+                        if (lastText) mathLines.push(lastText);
+                      }
+                      i++;
+                      break;
+                    }
+                    mathLines.push(lines[i]);
+                    i++;
+                  }
+                }
+                const mathCode = mathLines.join('\n').trim();
+                try {
+                  const html = katex.renderToString(normalizeMathSpacing(mathCode), { displayMode: true, throwOnError: false });
+                  const mathNode = (
+                    <div
+                      key={`ol-math-cont-${i}`}
+                      className="my-3 p-3 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
+                      dangerouslySetInnerHTML={{ __html: html }}
+                    />
+                  );
+                  const lastItem = listItems[listItems.length - 1];
+                  lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+                } catch {
+                  // fallback
+                }
+              } else if (nextLine && !nextLine.startsWith('.') && !nextLine.startsWith('*') && !nextLine.startsWith('-') && !nextLine.startsWith('=')) {
+                const paraNode = (
+                  <div key={`ol-para-${i}`} className="my-2 text-slate-200 font-serif">
+                    {renderMathInline(nextLine.replace(/^\+\s*/, ''))}
+                  </div>
+                );
+                const lastItem = listItems[listItems.length - 1];
+                lastItem.extraNodes = [...(lastItem.extraNodes || []), paraNode];
+                i++;
+              }
+            }
+          } else if (listItems.length > 0 && (lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
             const lastItem = listItems[listItems.length - 1];
             lastItem.text += ' ' + curr.replace(/^\+\s*/, '');
             i++;

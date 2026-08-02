@@ -77,7 +77,7 @@ export const IrisTextbook: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `Iris_Number_System.adoc`;
+    link.download = textbook.filename || `Iris_Number_System-01-Volume_I_Fundamentals.adoc`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -170,9 +170,9 @@ export const IrisTextbook: React.FC = () => {
           </div>
 
           <a
-            href="/Iris_Number_System.adoc"
-            download="Iris_Number_System.adoc"
-            title="Download Public AsciiDoc File (/Iris_Number_System.adoc)"
+            href={`/${textbook.filename || 'Iris_Number_System-01-Volume_I_Fundamentals.adoc'}`}
+            download={textbook.filename || 'Iris_Number_System-01-Volume_I_Fundamentals.adoc'}
+            title={`Download Public AsciiDoc File (/${textbook.filename || 'Iris_Number_System-01-Volume_I_Fundamentals.adoc'})`}
             className="flex items-center space-x-1.5 px-3.5 py-2 bg-[#222222] hover:bg-[#2a2a2a] text-slate-200 text-xs font-medium transition"
           >
             <Download className="w-3.5 h-3.5 text-slate-300" />

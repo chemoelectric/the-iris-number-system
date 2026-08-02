@@ -125,6 +125,7 @@ export interface Textbook {
   version: string;
   lastUpdated: string;
   description: string;
+  filename?: string;
   chapters: TextbookChapter[];
 }
 

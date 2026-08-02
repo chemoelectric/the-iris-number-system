@@ -1119,6 +1119,7 @@ The contour \( \Gamma \) (radius 1 centered at \( i \)) encloses only the pole \
 \[
 \Psi(z) = \frac{\mathbf{1}_{Cl}}{(z - i)(z + i)} = \frac{\frac{\mathbf{1}_{Cl}}{z + i}}{z - i}
 \]
++
 The residue at simple pole \( z_1 = i \) is:
 +
 \[
