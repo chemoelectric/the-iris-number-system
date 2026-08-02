@@ -44,7 +44,7 @@ export type IrisDomain =
   | 'Discrete Spectrum Algebra'
   | 'Clifford Algebra Cl(4,1,1)'
   | 'Jaynesian MaxEnt Probability'
-  | 'Star-Finite Rational Algebra'
+  | 'Bounded Rational Algebra'
   | 'Spectral Topology'
   | 'Quantum Iris Field';
 
@@ -54,7 +54,7 @@ export interface IrisAxiom {
   latex: string;
   domain: IrisDomain;
   description: string;
-  category: 'Fundamental' | 'Clifford' | 'Jaynesian' | 'Star-Finite' | 'Duality' | 'Convergence' | 'Modular' | 'Differential';
+  category: 'Fundamental' | 'Clifford' | 'Jaynesian' | 'Bounded Rational' | 'Duality' | 'Convergence' | 'Modular' | 'Differential';
 }
 
 export interface DeductionStep {

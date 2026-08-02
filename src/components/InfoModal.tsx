@@ -21,7 +21,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
             </div>
             <div>
               <h3 className="text-lg font-bold text-white">Counting-Iris Number System Foundations</h3>
-              <p className="text-xs text-slate-400">Clifford Algebra Cl(4,1,1), MaxEnt, Star-Finite Partition Grids & Tautological Proofs</p>
+              <p className="text-xs text-slate-400">Clifford Algebra Cl(4,1,1), MaxEnt, Bounded Discrete Partition Grids & Tautological Proofs</p>
             </div>
           </div>
           <button
@@ -52,7 +52,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
 
           <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3 font-mono text-[11px]">
             <div className="text-indigo-400 font-semibold uppercase tracking-wider text-[10px]">
-              2. Star-Finite Rational Partition Grids & Nilpotents
+              2. Bounded Rational Partition Grids & Nilpotents
             </div>
             <div className="text-amber-200 font-bold">
               G_N = {'{ k/N | k ∈ Z, |k| ≤ N² }'}, where δ = 1/N and δ · N = 1
@@ -107,7 +107,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800">
                 <div className="font-bold text-amber-300">Twin Prime Infinitude</div>
                 <div className="text-[11px] text-slate-400 mt-1">
-                  Derived using MaxEnt density across star-finite rational partition grid G_N at scale bound N.
+                  Derived using MaxEnt density across bounded rational partition grid G_N at scale bound N.
                 </div>
               </div>
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800">

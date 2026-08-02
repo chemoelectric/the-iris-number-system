@@ -175,7 +175,7 @@ Every integer \( n \in \mathbb { Z } \) possesses a canonical parity projection 
 [POSTULATE]
 .Postulate 5: Discrete Scale Extension and Exact Rational Partition Grids
 ====
-Every discrete integer domain \( \mathbb { Z } \) induces an exact star-finite rational partition grid \( \mathcal { G } _ N = \{ k/N \mid k \in \mathbb { Z } , |k| \le N ^ 2 \} \) for any discrete resolution count \( N \in \mathbb { Z } _ { \gt 0 } \). The exact unit step size \( \delta = 1/N \) satisfies exact integer-scaled reciprocity: \( \delta \cdot N = \mathbf { 1 } \), ensuring all operations reduce strictly to finite discrete rational arithmetic.
+Every discrete integer domain \( \mathbb { Z } \) induces an exact bounded discrete rational partition grid \( \mathcal { G } _ N = \{ k/N \mid k \in \mathbb { Z } , |k| \le N ^ 2 \} \) for any discrete resolution count \( N \in \mathbb { Z } _ { \gt 0 } \). The exact unit step size \( \delta = 1/N \) satisfies exact integer-scaled reciprocity: \( \delta \cdot N = \mathbf { 1 } \), ensuring all operations reduce strictly to finite discrete rational arithmetic.
 ====
 
 [#postulate-6]
@@ -278,7 +278,7 @@ Under this directional Iris aperture measurement representation:
 * \( \frac { \mathbf { 0 } } { q _ { \text { den } } } \): A completely closed Iris aperture state (\( r = 0 \)).
 
 === Discrete Partition Grids as Iris Aperture Grid Resolutions
-As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { \gt 0 } \) corresponds to an \( N \)-blade Iris aperture resolution level, inducing an exact, star-finite rational partition grid:
+As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { \gt 0 } \) corresponds to an \( N \)-blade Iris aperture resolution level, inducing an exact, bounded discrete rational partition grid:
 
 
 \[

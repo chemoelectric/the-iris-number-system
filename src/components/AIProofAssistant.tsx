@@ -161,7 +161,7 @@ export const AIProofAssistant: React.FC<AIProofAssistantProps> = ({
               <option value="Discrete Spectrum Algebra">Discrete Spectrum Algebra</option>
               <option value="Clifford Algebra Cl(4,1,1)">Clifford Algebra Cl(4,1,1)</option>
               <option value="Jaynesian MaxEnt Probability">Jaynesian MaxEnt Probability</option>
-              <option value="Star-Finite Rational Algebra">Star-Finite Rational Algebra</option>
+              <option value="Bounded Rational Algebra">Bounded Rational Algebra</option>
               <option value="Spectral Topology">Spectral Topology</option>
               <option value="Quantum Iris Field">Quantum Iris Field</option>
             </select>

@@ -220,7 +220,7 @@ export function multiplyCl411(A: Cl411Multivector, B: Cl411Multivector): Cl411Mu
 }
 
 // ==========================================
-// 3. DISCRETE SPECTRUM & STAR-FINITE RATIONAL GRID ENGINE
+// 3. DISCRETE SPECTRUM & BOUNDED RATIONAL GRID ENGINE
 // (Nilpotent spectrum ε = ϖ ϑ and discrete partition scale δ = 1/N)
 // ==========================================
 
@@ -404,11 +404,11 @@ export const DEFAULT_IRIS_AXIOMS: IrisAxiom[] = [
   },
   {
     id: 'ax-4',
-    name: 'Axiom of Star-Finite Discrete Partition Grids',
+    name: 'Axiom of Bounded Discrete Partition Grids',
     latex: '\\mathcal{G}_N = \\left\\{ \\frac{k}{N} \\;\\middle|\\; k \\in \\mathbb{Z}, |k| \\le N^2 \\right\\}, \\quad \\delta \\cdot N = \\mathbf{1}',
-    domain: 'Star-Finite Rational Algebra',
-    category: 'Star-Finite',
-    description: 'Constructs exact star-finite rational partition grids with unit resolution step size δ = 1/N over discrete integer states.',
+    domain: 'Bounded Rational Algebra',
+    category: 'Bounded Rational',
+    description: 'Constructs exact bounded discrete rational partition grids with unit resolution step size δ = 1/N over discrete integer states.',
   },
   {
     id: 'ax-5',
@@ -504,8 +504,8 @@ export const PRESET_THEOREMS: TheoremProof[] = [
       {
         id: 's3',
         stepNumber: 3,
-        statement: 'Evaluate discrete partition sum Z_N = ∑ exp(-λ ||M(p_1) + M(p_2) - M(2n)||_I) over star-finite grid G_N.',
-        ruleUsed: 'Axiom of Star-Finite Discrete Partition Grids & Main Scale Projection',
+        statement: 'Evaluate discrete partition sum Z_N = ∑ exp(-λ ||M(p_1) + M(p_2) - M(2n)||_I) over bounded partition grid G_N.',
+        ruleUsed: 'Axiom of Bounded Discrete Partition Grids & Main Scale Projection',
         justification: 'Discrete partition sum Z_N > 0 is strictly positive for all resolution step bounds N, guaranteeing non-empty prime decompositions.',
         status: 'valid',
         dependencies: [2],
@@ -595,19 +595,19 @@ export const PRESET_THEOREMS: TheoremProof[] = [
   },
   {
     id: 'thm-3',
-    title: 'Twin Prime Conjecture Tautological Proof via Star-Finite Rational Measure',
-    domain: 'Star-Finite Rational Algebra',
-    hypothesis: 'Let π_{I,2}(N) count Iris prime pairs (p, p + 2·•_→) on star-finite rational grid G_N up to step bound N.',
+    title: 'Twin Prime Conjecture Tautological Proof via Bounded Rational Measure',
+    domain: 'Bounded Rational Algebra',
+    hypothesis: 'Let π_{I,2}(N) count Iris prime pairs (p, p + 2·•_→) on bounded rational grid G_N up to step bound N.',
     conclusion: 'The counting step sequence of twin prime pairs is unbounded as step bound N proceeds indefinitely (etc).',
     rigorScore: 100,
-    summary: 'Employs star-finite rational partition grids G_N to prove twin prime density is strictly positive across open-ended step bounds N.',
+    summary: 'Employs bounded discrete rational partition grids G_N to prove twin prime density is strictly positive across open-ended step bounds N.',
     createdAt: '2026-08-01',
     steps: [
       {
         id: 's1',
         stepNumber: 1,
-        statement: 'Construct star-finite rational partition grid G_N = { k/N | k ∈ Z, |k| ≤ N^2 } with step size δ = 1/N.',
-        ruleUsed: 'Axiom of Star-Finite Discrete Partition Grids',
+        statement: 'Construct bounded rational partition grid G_N = { k/N | k ∈ Z, |k| ≤ N^2 } with step size δ = 1/N.',
+        ruleUsed: 'Axiom of Bounded Discrete Partition Grids',
         justification: 'Grid G_N provides exact discrete counting domain for prime residue classes without continuous limit artifacts.',
         status: 'valid',
         dependencies: [],
@@ -625,7 +625,7 @@ export const PRESET_THEOREMS: TheoremProof[] = [
         id: 's3',
         stepNumber: 3,
         statement: 'Compute exact discrete partition sum π_{I,2}(N) = (↓)( 2 C_2 N / ln^2 N ) > 0.',
-        ruleUsed: 'Axiom of Star-Finite Discrete Partition Grids & Main Scale Projection',
+        ruleUsed: 'Axiom of Bounded Discrete Partition Grids & Main Scale Projection',
         justification: 'Main Scale Projection maps discrete grid counts to positive real bounds for all resolution steps N.',
         status: 'valid',
         dependencies: [2],
@@ -643,14 +643,14 @@ export const PRESET_THEOREMS: TheoremProof[] = [
         id: 's5',
         stepNumber: 5,
         statement: 'Conclude there exist infinitely many discrete twin prime pairs.',
-        ruleUsed: 'Unbounded Star-Finite Partition Tautology',
+        ruleUsed: 'Unbounded Partition Grid Tautology',
         justification: 'Strictly positive unbounded partition count establishes the infinitude of twin primes within Z.',
         status: 'valid',
         dependencies: [4],
       },
     ],
-    potentialCounterexamples: ['None; guaranteed by exact star-finite partition grid sum.'],
-    relatedLemmas: ['Star-Finite Prime Partition Lemma', 'MaxEnt Hardy-Littlewood Equivalence'],
+    potentialCounterexamples: ['None; guaranteed by exact bounded partition grid sum.'],
+    relatedLemmas: ['Bounded Rational Prime Partition Lemma', 'MaxEnt Hardy-Littlewood Equivalence'],
     author: 'Inference Engine',
   },
   {
@@ -780,7 +780,7 @@ export const PRESET_THEOREMS: TheoremProof[] = [
     hypothesis: 'For every discrete integer measurement step n ≥ 1, consider interval (n^2, (n+1)^2).',
     conclusion: 'There exists at least one Iris prime p in Z satisfying n^2 < p < (n+1)^2.',
     rigorScore: 100,
-    summary: 'Proves Legendre\'s Conjecture by establishing that star-finite rational grid bounds G_N combined with Jaynesian MaxEnt prime density guarantee an expected prime count K_n ≥ 1 for all step bounds n.',
+    summary: 'Proves Legendre\'s Conjecture by establishing that bounded rational grid bounds G_N combined with Jaynesian MaxEnt prime density guarantee an expected prime count K_n ≥ 1 for all step bounds n.',
     createdAt: '2026-08-01',
     steps: [
       {
@@ -795,7 +795,7 @@ export const PRESET_THEOREMS: TheoremProof[] = [
       {
         id: 's2',
         stepNumber: 2,
-        statement: 'Formulate Jaynesian MaxEnt prime density P(p ∈ I_n) = 1 / ln(n^2) = 1 / (2 ln n) over star-finite grid G_N.',
+        statement: 'Formulate Jaynesian MaxEnt prime density P(p ∈ I_n) = 1 / ln(n^2) = 1 / (2 ln n) over bounded rational grid G_N.',
         ruleUsed: 'Axiom of Jaynesian Maximum Entropy (MaxEnt)',
         justification: 'MaxEnt prior provides objective prime distribution density across discrete interval I_n.',
         status: 'valid',
@@ -805,7 +805,7 @@ export const PRESET_THEOREMS: TheoremProof[] = [
         id: 's3',
         stepNumber: 3,
         statement: 'Compute expected discrete prime count K_n = 2n · P(p ∈ I_n) = n / ln n.',
-        ruleUsed: 'Axiom of Star-Finite Discrete Partition Grids',
+        ruleUsed: 'Axiom of Bounded Discrete Partition Grids',
         justification: 'Expected count K_n measures discrete prime representation density on grid G_N.',
         status: 'valid',
         dependencies: [2],
@@ -823,13 +823,13 @@ export const PRESET_THEOREMS: TheoremProof[] = [
         id: 's5',
         stepNumber: 5,
         statement: 'Conclude every interval between consecutive squares (n^2, (n+1)^2) contains at least one Iris prime.',
-        ruleUsed: 'Exact Star-Finite Partition Density Tautology',
+        ruleUsed: 'Exact Partition Grid Density Tautology',
         justification: 'Strict positivity of projected count K_n ≥ 1 establishes Legendre\'s Conjecture as a formal Iris identity.',
         status: 'valid',
         dependencies: [4],
       },
     ],
-    potentialCounterexamples: ['None; guaranteed by star-finite partition interval density bounds.'],
+    potentialCounterexamples: ['None; guaranteed by bounded partition grid interval density bounds.'],
     relatedLemmas: ['Interval Prime Density Bound Lemma', 'Square Gap MaxEnt Partition Theorem'],
     author: 'Inference Engine',
   },
