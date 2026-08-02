@@ -866,7 +866,7 @@ For \( N \) independent discrete operational measurement results \( X_1, X_2, \d
 . **Chebyshev Aperture Inequality**: For any discrete rational threshold \( \epsilon > 0 \), evaluate the Jaynesian prior bound:
 
 \[
-P\left( \|\bar{X}_N - \mu \mathbf{1}_{Cl}\|_{\mathcal{I}} \ge \epsilon \right) \le \frac{\sigma_{\mathcal{I}}^2}{N \epsilon^2}
+P\left( \|\bar{ X } _ N - \mu \mathbf{1} _ {Cl} \| _ { \mathcal{I} } \ge \epsilon \right) \le \frac{ \sigma_{ \mathcal{I} }^2 }{ N \epsilon^2 }
 \]
 
 . **Main Scale Projection Limit**: Taking Main Scale Projection \( (\downarrow) \) as count bound \( N \) increases yields \( (\downarrow) P\left( \|\bar{X}_N - \mu \mathbf{1}_{Cl}\|_{\mathcal{I}} \ge \epsilon \right) \to 0 \).
