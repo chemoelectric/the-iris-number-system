@@ -227,7 +227,7 @@ Spectral density transfers and force couplings execute strictly through contiguo
 
 [#postulate-iris-generator]
 [POSTULATE]
-.Postulate 9: Formal Definition of the Iris Generator (\iota)
+.Postulate 9: Formal Definition of the Iris Generator (\( \iota \))
 ====
 The fundamental Iris generator \( \iota \) is defined as a multivector operator in Clifford Algebra \( Cl ( 4 , 1 , 1 ) \) acting as an algebraic aperture whose quadratic constraint satisfies:
 
