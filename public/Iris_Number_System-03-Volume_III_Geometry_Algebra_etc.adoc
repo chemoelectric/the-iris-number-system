@@ -1,5 +1,5 @@
-= The Iris Number System, Volume III: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics
-:subtitle: Applications to Geometry, Algebra, Topology, Lattices, Categories, Combinatorics
+= The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
+:subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
 :author: Frédéric Blondel Custer
 :doctype: book
 :toc: left
@@ -7,7 +7,7 @@
 :stem: latexmath
 :sectnums!:
 
-A Rigorous Foundation for Geometry, Algebra, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
+A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
 
 = Constructive Clifford Geometry and Aperture Metrics
 
