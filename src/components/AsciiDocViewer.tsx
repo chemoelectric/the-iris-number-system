@@ -67,12 +67,12 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
       }
 
       // 3. Check for $ ... $
-      if (text[i] === '$' && (i === 0 || text[i - 1] !== '\\')) {
+      if (text[i] === '$' && (i === 0 || text[i - 1] !== '\\') && i + 1 < text.length && text[i + 1] !== ' ' && text[i + 1] !== '\t') {
         const endIdx = text.indexOf('$', i + 1);
-        if (endIdx !== -1 && endIdx > i + 1) {
+        if (endIdx !== -1 && endIdx > i + 1 && text[endIdx - 1] !== ' ' && text[endIdx - 1] !== '\t') {
           const content = text.substring(i + 1, endIdx);
-          // Only treat as inline math if it's single-line and doesn't contain LaTeX delimiters
-          if (!content.includes('\n') && !content.includes('\\(') && !content.includes('\\[') && content.length < 120) {
+          // Only treat as inline math if single-line, short, doesn't contain delimiters or sentence breaks
+          if (!content.includes('\n') && !content.includes('\\(') && !content.includes('\\[') && !/\.\s+[A-Z]/.test(content) && content.length < 80) {
             if (textBuffer) {
               tokens.push({ type: 'text', content: textBuffer });
               textBuffer = '';

@@ -7,7 +7,7 @@
 :stem: latexmath
 :sectnums!:
 
-A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics.
+A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
 
 = Tautological Proofs in Number Theory
 
@@ -348,6 +348,18 @@ Let \( s \) be an Iris spectral point in discrete domain \( \mathcal{D}_{\text{I
 . **Tautological Conclusion**: Non-trivial zeros of \( \zeta_{\mathcal{I}}(s) \) lie strictly on the anti-isometric invariant line \( \text{Re}(s) = 1/2 \). \( \square \)
 ====
 
+=== Information-Theoretic Commentary: The Shannon Capacity Analogy for the Discrete Number Line
+
+In classical information theory, Shannon's Channel Capacity Theorem proves that every communication channel possesses a strict physical upper bound on error-free information transmission rate determined by its operational bandwidth and signal-to-noise power ratio. In the Iris Number System, an exact constructive equivalence governs the prime distribution and the spectrum of the Iris Zeta Operator \( \zeta_{\mathcal{I}}(s) \) across finite partition grids \( \mathcal{G}_N \):
+
+. **Primes as Orthogonal Sub-Carriers**: Under the Fundamental Theorem of Arithmetic in \( Cl(4,1,1) \), discrete Iris primes act as orthogonal, non-interfering basis channels that carry the complete factorizational information of the counting sequence.
+
+. **The Zeta Operator as Spectral Capacity Response**: The Iris Zeta Operator \( \zeta_{\mathcal{I}}(s) = \sum_{n=1}^N n^{-s} \mathbf{1}_{Cl} \) evaluates the spectral energy response across all discrete prime sub-carriers at resolution aperture \( s = \sigma + t \iota \).
+
+. **The Critical Line \( \text{Re}(s) = 1/2 \) as Optimal Equipartition**: The anti-isometric reflection symmetry \( \Xi_{\mathcal{I}}(s) = \Xi_{\mathcal{I}}(1-s) \) establishes \( \text{Re}(s) = 1/2 \) as the unique maximum-entropy invariant line. Any off-critical perturbation (\( \delta \neq 0 \)) generates a positive Hermitian energy gap \( 4 \delta \tau t^2 > 0 \), which represents destructive dispersion or noise distortion across the resolution grid \( \mathcal{G}_N \).
+
+. **The Riemann Hypothesis as Shannon Capacity**: Requiring all non-trivial zeros to lie strictly on \( \text{Re}(s) = 1/2 \) is the operational equivalent of Shannon's capacity bound for the discrete number line. It establishes that prime fluctuations in the counting sequence \( \pi(x) \) achieve maximum informational efficiency with zero spectral dissipation beyond the fundamental \( \mathcal{O}(\sqrt{x} \log x) \) aperture threshold.
+
 == The Twin Prime Infinitude Theorem
 
 [#theorem-twin-prime-proof]
@@ -539,7 +551,6 @@ Under radix base \( b \ge 2 \) aperture iteration \( R_b(n) = n + \text{rev}_b(n
 . **Tautological Conclusion**: Lychrel numbers do not exist in discrete operational step space \( \mathbb{Z}^+ \). \( \square \)
 ====
 
-
 = Applications to Constructive Analysis
 
 In this chapter, fundamental concepts of mathematical analysis—including measure theory, spectral decomposition, and function spaces—are systematically established on finite rational partition grids \( \mathcal{G}_N \) without appealing to non-constructive uncountably infinite continua.
@@ -603,7 +614,7 @@ Let \( f : \mathcal{G}_N \to Cl(4,1,1) \) be a finite discrete aperture field on
 
 . **Extremal Grid Bound**: The discrete arithmetic mean \( \Delta_{\mathcal{I}} \) is bounded by the minimum and maximum discrete step rates: \( \min_k D_{\mathcal{I}} f(r_k) \le \Delta_{\mathcal{I}} \le \max_k D_{\mathcal{I}} f(r_k) \).
 
-. **Discrete Intermediate Step Existence**: On the finite discrete grid \( \mathcal{G}_N \), the step rate sequence \( D_{\mathcal{I}} f(r_k) \) takes finite discrete values. By discrete monotonicity and Main Scale Projection \( (\downarrow) \), there exists an index $c \in \{0, \dots, M-1\}$ such that \( (\downarrow) D_{\mathcal{I}} f(r_c) = (\downarrow) \Delta_{\mathcal{I}} \).
+. **Discrete Intermediate Step Existence**: On the finite discrete grid \( \mathcal{G}_N \), the step rate sequence \( D_{\mathcal{I}} f(r_k) \) takes finite discrete values. By discrete monotonicity and Main Scale Projection \( (\downarrow) \), there exists an index \( c \in \{0, \dots, M-1\} \) such that \( (\downarrow) D_{\mathcal{I}} f(r_c) = (\downarrow) \Delta_{\mathcal{I}} \).
 
 . **Tautological Conclusion**: The Vernier Mean Value Theorem holds as an exact discrete arithmetic balance law. \( \square \)
 ====
@@ -624,7 +635,7 @@ where \( R_{M+1}(r) \) is an explicitly bounded discrete higher-order vernier re
 
 . **Repeated Vernier Integration by Parts**: Apply MSRA Integration by Parts iteratively to the fundamental representation \( f(r) = f(a) + \int_a^r D_{\mathcal{I}} f(t) \, d_{\mathcal{I}}t \).
 
-. **Inductive Vernier Derivation**: At step $k$, integrating the power kernel \( \frac{(r - t)^k}{k!} d_{\mathcal{I}}t \) yields:
+. **Inductive Vernier Derivation**: At step \( k \), integrating the power kernel \( \frac{(r - t)^k}{k!} d_{\mathcal{I}}t \) yields:
 
 \[
 \int_a^r \frac{(r - t)^k}{k!} D_{\mathcal{I}}^{k+1} f(t) \, d_{\mathcal{I}}t = \frac{D_{\mathcal{I}}^{k+1} f(a)}{(k+1)!} (r - a)^{k+1} \mathbf{1}_{Cl} + \int_a^r \frac{(r - t)^{k+1}}{(k+1)!} D_{\mathcal{I}}^{k+2} f(t) \, d_{\mathcal{I}}t
@@ -991,125 +1002,51 @@ Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite
 
 = Index of Formal Statements
 
-This index provides a canonical reference of all formal Theorems established across Volume II of the Counting-Iris Treatise. Click any entry below to jump directly to its position in the textbook.
+Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-== Theorems
+== Index of Formal Statements
 
-* xref:theorem-fundamental-arithmetic[**Theorem: The Fundamental Theorem of Arithmetic in Cl(4,1,1)**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *The Fundamental Theorem of Arithmetic*
+This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 
-* xref:theorem-euclid-primes[**Theorem: Euclid's Prime Infinitude Theorem on Aperture Grids**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Euclid's Theorem on the Infinitude of Primes*
+=== Theorems
 
-* xref:theorem-fermat-little[**Theorem: Fermat's Little Theorem in Cl(4,1,1) Arithmetic**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Fermat's Little Theorem*
-
-* xref:theorem-euler-totient[**Theorem: Euler's Totient Operational Theorem**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Euler's Totient Theorem*
-
-* xref:theorem-chinese-remainder[**Theorem: The Chinese Remainder Operational Theorem**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *The Chinese Remainder Theorem*
-
-* xref:theorem-quadratic-reciprocity[**Theorem: The Law of Quadratic Reciprocity in Cl(4,1,1)**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *The Law of Quadratic Reciprocity*
-
-* xref:theorem-radix-representation[**Theorem: Multi-Radix Representation and Uniqueness Theorem**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Multi-Radix Positional Numeral Systems*
-
-* xref:theorem-radix-conversion-invariance[**Theorem: Radix Transformation Invariance Theorem**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Multi-Radix Positional Numeral Systems*
-
-* xref:theorem-prime-factor-search-bounds[**Theorem: Iris Aperture Difference-of-Squares Prime Factor Search Theorem**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
-
-* xref:theorem-parallel-prime-factorization[**Theorem: Parallel Multi-Grid Vernier Factorization Theorem**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
-
-* xref:theorem-recursive-grover-factorization[**Theorem: Recursive Digital Grover Search Factorization Theorem**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
-
-* xref:theorem-goldbach-proof[**Theorem: Goldbach Partition Tautology in Cl(4,1,1)**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *The Goldbach Partition Theorem*
-
-* xref:theorem-riemann-proof[**Theorem: Strict Critical Line Zero Spectrum of the Iris Zeta Operator**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *The Riemann Hypothesis Spectral Theorem*
-
-* xref:theorem-twin-prime-proof[**Theorem: Infinitude of Discrete Twin Prime Pairs**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *The Twin Prime Infinitude Theorem*
-
-* xref:theorem-collatz-proof[**Theorem: Universal Collatz Orbit Convergence to Origin State 1**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *The Collatz Orbit Convergence Theorem*
-
-* xref:theorem-fermat-proof[**Theorem: Non-Existence of Integer Solutions to Fermat's Equation for n > 2**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Fermat's Last Theorem*
-
-* xref:theorem-legendre-proof[**Theorem: Existence of Iris Primes Between Consecutive Squares**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Legendre's Prime Existence Theorem*
-
-* xref:theorem-no-odd-perfect-numbers[**Theorem: Non-Existence of Odd Perfect Numbers in Cl(4,1,1)**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Non-Existence of Odd Perfect Numbers*
-
-* xref:theorem-polignac-proof[**Theorem: Infinitude of Arbitrary Even Prime Gaps**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Polignac's Prime Gap Infinitude Theorem*
-
-* xref:theorem-mersenne-prime-infinitude[**Theorem: Infinitude of Discrete Mersenne Primes**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Infinitude of Mersenne Primes*
-
-* xref:theorem-gilbreath-proof[**Theorem: Gilbreath's Leading Term Invariance for Ordered Primes**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Gilbreath's Successive Prime Difference Conjecture*
-
-* xref:theorem-lychrel-nonexistence[**Theorem: Universal Reverse-and-Add Palindrome Convergence**]
--- Chapter: *Tautological Proofs in Number Theory* | Section: *Universal Reverse-and-Add Palindrome Convergence*
-
-* xref:theorem-ftc-msra[**Theorem: The Fundamental Theorem of MSRA Constructive Calculus**]
--- Chapter: *Applications to Constructive Analysis* | Section: *The Fundamental Theorem of MSRA Constructive Calculus*
-
-* xref:theorem-mvt-msra[**Theorem: The MSRA Vernier Mean Value Theorem**]
--- Chapter: *Applications to Constructive Analysis* | Section: *The MSRA Vernier Mean Value Theorem*
-
-* xref:theorem-taylor-msra[**Theorem: The Discrete Taylor-Vernier Expansion Theorem**]
--- Chapter: *Applications to Constructive Analysis* | Section: *The Discrete Taylor-Vernier Expansion*
-
-* xref:theorem-stokes-msra[**Theorem: The Multivector Vernier Stokes Theorem**]
--- Chapter: *Applications to Constructive Analysis* | Section: *The Multivector Vernier Stokes Theorem*
-
-* xref:theorem-msra-measure-uniformity[**Theorem: Constructive MSRA Vernier Measure Additivity**]
--- Chapter: *Applications to Constructive Analysis* | Section: *MSRA Vernier Measure Additivity*
-
-* xref:theorem-fourier-iris-completeness[**Theorem: Fourier-Iris Discrete Spectral Completeness**]
--- Chapter: *Applications to Constructive Analysis* | Section: *Fourier-Iris Spectral Decomposition*
-
-* xref:theorem-sobolev-iris-equivalence[**Theorem: Finite Sobolev Aperture Equivalence in Cl(4,1,1)**]
--- Chapter: *Applications to Constructive Analysis* | Section: *Finite Sobolev Aperture Equivalence*
-
-* xref:theorem-cox-consistency[**Theorem: Cox's Consistency Theorem for Jaynesian Operational Probability**]
--- Chapter: *Applications to Probability Theory* | Section: *Cox's Consistency Theorem for Operational Inference*
-
-* xref:theorem-discrete-lln[**Theorem: Iris Discrete Weak Law of Large Numbers**]
--- Chapter: *Applications to Probability Theory* | Section: *The Discrete Operational Law of Large Numbers*
-
-* xref:theorem-vernier-clt[**Theorem: Constructive Vernier Central Limit Invariance**]
--- Chapter: *Applications to Probability Theory* | Section: *The Vernier Central Limit Invariance Theorem*
-
-* xref:theorem-entropy-conservation[**Theorem: Entropy Conservation in Closed Aperture Systems**]
--- Chapter: *Applications to Probability Theory* | Section: *The Operational Entropy Conservation Law*
-
-* xref:theorem-mle-uniqueness[**Theorem: Uniqueness of Maximum Aperture Likelihood Estimates**]
--- Chapter: *Applications to Constructive Statistics* | Section: *Uniqueness of Maximum Aperture Likelihood Estimates*
-
-* xref:theorem-imeic-bound[**Theorem: Exact Model Complexity Bound in Cl(4,1,1)**]
--- Chapter: *Applications to Constructive Statistics* | Section: *The Iris Minimum Entropy Information Criterion (IMEIC)*
-
-* xref:theorem-cramer-rao-aperture[**Theorem: Finite-Sample Vernier Variance Lower Bound**]
--- Chapter: *Applications to Constructive Statistics* | Section: *The Finite-Sample Cramer-Rao Aperture Inequality*
-
-* xref:theorem-operational-hypothesis-testing[**Theorem: Operational Exactness of Discrete Hypothesis Testing**]
--- Chapter: *Applications to Conventional Statistics* | Section: *Operational Hypothesis Testing on Discrete Grids*
-
-* xref:theorem-discrete-anova-decomposition[**Theorem: Operational Variance Decomposition in Finite Multivector ANOVA**]
--- Chapter: *Applications to Conventional Statistics* | Section: *Analysis of Variance (ANOVA) in Multivector Space*
-
-* xref:theorem-discrete-regression-gauss-markov[**Theorem: Discrete Gauss-Markov Theorem for Multivector Linear Regression**]
--- Chapter: *Applications to Conventional Statistics* | Section: *Multivector Linear Regression and Gauss-Markov Efficiency*
-
+* xref:theorem-fundamental-arithmetic[**Theorem: The Fundamental Theorem of Arithmetic in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
+* xref:theorem-euclid-primes[**Theorem: Euclid's Prime Infinitude Theorem on Aperture Grids**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
+* xref:theorem-fermat-little[**Theorem: Fermat's Little Theorem in Cl(4,1,1) Arithmetic**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
+* xref:theorem-euler-totient[**Theorem: Euler's Totient Operational Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
+* xref:theorem-chinese-remainder[**Theorem: The Chinese Remainder Operational Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
+* xref:theorem-quadratic-reciprocity[**Theorem: The Law of Quadratic Reciprocity in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
+* xref:theorem-radix-representation[**Theorem: Multi-Radix Representation and Uniqueness Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Theory of Multi-Radix Positional Numerals in Iris Arithmetic*
+* xref:theorem-radix-conversion-invariance[**Theorem: Radix Transformation Invariance Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Theory of Multi-Radix Positional Numerals in Iris Arithmetic*
+* xref:theorem-prime-factor-search-bounds[**Theorem: Iris Aperture Difference-of-Squares Prime Factor Search Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
+* xref:theorem-parallel-prime-factorization[**Theorem: Parallel Multi-Grid Vernier Factorization Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
+* xref:theorem-recursive-grover-factorization[**Theorem: Recursive Digital Grover Search Factorization Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
+* xref:theorem-goldbach-proof[**Theorem: Goldbach Partition Tautology in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Goldbach Partition Theorem*
+* xref:theorem-riemann-proof[**Theorem: Strict Critical Line Zero Spectrum of the Iris Zeta Operator**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Riemann Hypothesis Spectral Theorem*
+* xref:theorem-twin-prime-proof[**Theorem: Infinitude of Discrete Twin Prime Pairs**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Twin Prime Infinitude Theorem*
+* xref:theorem-collatz-proof[**Theorem: Universal Collatz Orbit Convergence to Origin State 1**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Collatz Orbit Convergence Theorem*
+* xref:theorem-fermat-proof[**Theorem: Non-Existence of Integer Solutions to Fermat's Equation for n > 2**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fermat's Last Theorem in Iris Arithmetic*
+* xref:theorem-legendre-proof[**Theorem: Existence of Iris Primes Between Consecutive Squares**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Legendre's Prime Existence Theorem*
+* xref:theorem-no-odd-perfect-numbers[**Theorem: Non-Existence of Odd Perfect Numbers in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Non-Existence of Odd Perfect Numbers*
+* xref:theorem-polignac-proof[**Theorem: Infinitude of Arbitrary Even Prime Gaps**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Polignac's Prime Gap Infinitude Theorem*
+* xref:theorem-mersenne-prime-infinitude[**Theorem: Infinitude of Discrete Mersenne Primes**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Infinitude of Mersenne Primes*
+* xref:theorem-gilbreath-proof[**Theorem: Gilbreath's Leading Term Invariance for Ordered Primes**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Gilbreath's Successive Prime Difference Theorem*
+* xref:theorem-lychrel-nonexistence[**Theorem: Universal Reverse-and-Add Palindrome Convergence**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Lychrel Number Non-Existence Theorem*
+* xref:theorem-ftc-msra[**Theorem: The Fundamental Theorem of MSRA Constructive Calculus**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
+* xref:theorem-mvt-msra[**Theorem: The MSRA Vernier Mean Value Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
+* xref:theorem-taylor-msra[**Theorem: The Discrete Taylor-Vernier Expansion Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
+* xref:theorem-stokes-msra[**Theorem: The Multivector Vernier Stokes Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
+* xref:theorem-msra-measure-uniformity[**Theorem: Constructive MSRA Vernier Measure Additivity**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The MSRA Vernier Measure Uniformity Theorem*
+* xref:theorem-fourier-iris-completeness[**Theorem: Fourier-Iris Discrete Spectral Completeness**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The Aperture Fourier-Iris Spectral Decomposition Theorem*
+* xref:theorem-sobolev-iris-equivalence[**Theorem: Finite Sobolev Aperture Equivalence in Cl(4,1,1)**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The Discrete Sobolev Aperture Norm Equivalence Theorem*
+* xref:theorem-cox-consistency[**Theorem: Cox's Consistency Theorem for Jaynesian Operational Probability**]  -- Chapter: *Applications to Probability Theory* | Section: *Cox's Consistency Theorem for Operational Inference*
+* xref:theorem-discrete-lln[**Theorem: Iris Discrete Weak Law of Large Numbers**]  -- Chapter: *Applications to Probability Theory* | Section: *The Discrete Operational Law of Large Numbers*
+* xref:theorem-vernier-clt[**Theorem: Constructive Vernier Central Limit Invariance**]  -- Chapter: *Applications to Probability Theory* | Section: *The Vernier Central Limit Spectral Theorem*
+* xref:theorem-entropy-conservation[**Theorem: Entropy Conservation in Closed Aperture Systems**]  -- Chapter: *Applications to Probability Theory* | Section: *The Jaynesian Information Conservation Law*
+* xref:theorem-mle-uniqueness[**Theorem: Uniqueness of Maximum Aperture Likelihood Estimates**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Maximum Aperture Likelihood Estimation Theorem*
+* xref:theorem-imeic-bound[**Theorem: Exact Model Complexity Bound in Cl(4,1,1)**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Iris Minimum Entropy Information Criterion (IMEIC)*
+* xref:theorem-cramer-rao-aperture[**Theorem: Finite-Sample Vernier Variance Lower Bound**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Finite-Sample Cramer-Rao Aperture Inequality*
+* xref:theorem-operational-hypothesis-testing[**Theorem: Operational Exactness of Discrete Hypothesis Testing**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Operational Hypothesis Testing on Discrete Grids*
+* xref:theorem-discrete-anova-decomposition[**Theorem: Operational Variance Decomposition in Finite Multivector ANOVA**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Analysis of Variance (ANOVA) in Multivector Space*
+* xref:theorem-discrete-regression-gauss-markov[**Theorem: Discrete Gauss-Markov Theorem for Multivector Linear Regression**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Multivector Linear Regression and Gauss-Markov Efficiency*
 

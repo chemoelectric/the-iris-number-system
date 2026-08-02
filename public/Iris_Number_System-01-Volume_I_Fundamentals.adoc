@@ -7,7 +7,7 @@
 :stem: latexmath
 :sectnums!:
 
-A formal axiomatic development of the Counting-Iris Number System unifying discrete arithmetic, Clifford Algebra Cl(4,1,1), Exact Discrete Rational Grids, Jaynesian Maximum Entropy, and tautological proofs in number theory.
+A Rigorous Constructive Foundation for Mathematics and Physics
 
 = The Counting Process and the Integers
 
@@ -984,7 +984,6 @@ In terms of parameter derivative \( \gamma'(t) = \frac{d\gamma}{dt} \), the cont
 \int_\Gamma \Psi(z) \, dz = \int_a^b \Psi(\gamma(t)) \gamma'(t) \, dt
 \]
 
-
 == The Vernier Cauchy-Goursat Theorem in MSRA
 
 In complex analysis and multivector Clifford analysis, closed-loop circulations quantify enclosed source density and bivector flux vorticity.
@@ -1139,7 +1138,6 @@ The residue at simple pole \( z_1 = i \) is:
 \]
 
 This explicitly verifies the MSRA Residue Theorem for rational aperture field functions.
-
 
 = The Master Field Equation
 
@@ -1440,115 +1438,58 @@ By grounding all analysis in discrete Multiscale Resolution Analysis (MSRA) and 
 +
 . **Non-Measurable Sets**: Because every set of physical or mathematical interest is constructed via finite discrete counting operations, non-measurable sets (such as those in the Banach-Tarski paradox) cannot be formulated within the Iris number system.
 
-
 = Index of Formal Statements
 
-This index provides a canonical reference of all axiomatic Postulates, Theorems, and Definitions established across the Counting-Iris Treatise. Click any entry below to jump directly to its position in the textbook.
+Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-== Postulates
+== Index of Formal Statements
 
-* xref:postulate-0[**Postulate 0: Primordial Principle of Measurement**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 
-* xref:postulate-1[**Postulate 1: Successor Order and Discrete Ring Properties**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+=== Postulates
 
-* xref:postulate-2[**Postulate 2: Canonical Scalar Embedding into Clifford Algebra Cl(4,1,1)**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-0[**Postulate 0: Primordial Principle of Measurement**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-1[**Postulate 1: Successor Order and Discrete Ring Properties**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-2[**Postulate 2: Canonical Scalar Embedding into Clifford Algebra Cl(4,1,1)**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-3[**Postulate 3: Metric Preservation of Quadratic Forms**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-4[**Postulate 4: Bivector Parity Duality**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-5[**Postulate 5: Discrete Scale Extension and Exact Rational Partition Grids**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-6[**Postulate 6: Jaynesian Maximum Entropy Prior**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-7[**Postulate 7: Strict Discrete Countability Boundary**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-8[**Postulate 8: Action by Direct Contact via Topological Halos**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-iris-generator[**Postulate 9: Formal Definition of the Iris Generator (\( \iota \))**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
 
-* xref:postulate-3[**Postulate 3: Metric Preservation of Quadratic Forms**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+=== Theorems
 
-* xref:postulate-4[**Postulate 4: Bivector Parity Duality**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:theorem-parity-conservation[**Theorem: Parity Conservation in Geometric Products**]  -- Chapter: *The Counting Process and the Integers* | Section: *Clifford Algebra Integration and Parity Algebra*
+* xref:theorem-rational-reciprocity[**Theorem: Scale-Invariant Rational Reciprocity**]  -- Chapter: *The Rational Numbers* | Section: *Multiplication as Composite Aperture Gating*
+* xref:theorem-real-aperture-completeness[**Theorem: Constructive Completeness of Iris Grid Limits**]  -- Chapter: *The Real Numbers* | Section: *Bivector Rotations and Transcendental Angles*
+* xref:theorem-vernier-flux-conservation[**Theorem: Vernier Flux Conservation and Main Scale Projection**]  -- Chapter: *The Multiscale Resolution Numbers* | Section: *Main Scale Projection (Downwards Arrow Operator \(\downarrow)\))*
+* xref:theorem-complex-main-scale-field[**Theorem: Main Scale Complex Field Isomorphism**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Complex Numbers in Counting-Iris*
+* xref:theorem-quaternion-algebra-identities[**Theorem: Quaternion Bivector Algebraic Identities**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Quaternions as Cl(4,1,1) Bivector Subalgebras*
+* xref:theorem-msra-product-rule[**Theorem: MSRA Product Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
+* xref:theorem-msra-quotient-rule[**Theorem: MSRA Quotient Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
+* xref:theorem-msra-chain-rule[**Theorem: MSRA Chain Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
+* xref:theorem-msra-fundamental-theorem[**Theorem: Fundamental Theorem of MSRA Calculus**]  -- Chapter: *How to do Integral Calculus* | Section: *The Fundamental Theorem of MSRA Calculus*
+* xref:theorem-msra-integration-by-parts[**Theorem: Vernier Integration by Parts**]  -- Chapter: *How to do Integral Calculus* | Section: *Vernier Integration Techniques on Discrete Grids*
+* xref:theorem-msra-cauchy-goursat[**Theorem: MSRA Cauchy-Goursat Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The Vernier Cauchy-Goursat Theorem in MSRA*
+* xref:theorem-msra-residue[**Theorem: MSRA Residue Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The MSRA Residue Theorem*
+* xref:theorem-cl411-existence[**Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Constructive Proof of Clifford Algebra Cl(4,1,1)*
+* xref:theorem-clifford-pbw-basis[**Theorem: Constructive Clifford PBW Basis Theorem for Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Constructive Clifford PBW Basis Theorem*
+* xref:theorem-cl411-anticommutation[**Theorem: Fundamental Anti-Commutation Law of Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Fundamental Anti-Commutation Law*
+* xref:theorem-msra-homomorphism[**Theorem: Ring Homomorphism Property of Main Scale Projection**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the MSRA Ring Homomorphism*
+* xref:theorem-tautological-completeness[**Theorem: Formal Tautological Completeness of the Iris System**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of Tautological Completeness*
 
-* xref:postulate-5[**Postulate 5: Discrete Scale Extension and Exact Rational Partition Grids**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+=== Definitions
 
-* xref:postulate-6[**Postulate 6: Jaynesian Maximum Entropy Prior**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:definition-rational-aperture-ratio[**Definition: Iris Aperture Rational Ratio**]  -- Chapter: *The Rational Numbers* | Section: *Iris Aperture Ratios and Fractional Measurement Operations*
+* xref:definition-real-aperture-limit[**Definition: Constructive Iris Aperture Real Number**]  -- Chapter: *The Real Numbers* | Section: *Constructive Iris Aperture Limits and Rational Grid Refinement*
+* xref:definition-multiscale-vernier-number[**Definition: Multiscale Vernier Measurement Number (m-res Number)**]  -- Chapter: *The Multiscale Resolution Numbers* | Section: *Vernier Scale Metrology and Multiscale Aperture Resolutions*
+* xref:definition-complex-iris-number[**Definition: Counting-Iris Complex Number**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Complex Numbers in Counting-Iris*
+* xref:definition-iris-quaternion[**Definition: Counting-Iris Quaternion Bivector**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Quaternions as Cl(4,1,1) Bivector Subalgebras*
+* xref:definition-msra-derivative[**Definition: MSRA Vernier Derivative**]  -- Chapter: *How to do Differential Calculus* | Section: *Vernier Differences and the MSRA Derivative*
+* xref:definition-msra-definite-integral[**Definition: MSRA Definite Integral**]  -- Chapter: *How to do Integral Calculus* | Section: *Definite and Indefinite Integration as Vernier Aperture Sums*
+* xref:definition-msra-indefinite-integral[**Definition: MSRA Indefinite Integral**]  -- Chapter: *How to do Integral Calculus* | Section: *Definite and Indefinite Integration as Vernier Aperture Sums*
+* xref:definition-msra-contour-integral[**Definition: MSRA Contour Integral**]  -- Chapter: *How to Compute a Contour Integral* | Section: *Parameterized Paths and Line Integrals in Cl(4,1,1)*
+* xref:definition-master-field-equation[**Definition: The Master Field Equation**]  -- Chapter: *The Master Field Equation* | Section: *Basis Vectors of \( Cl(4,1,1) \)*
 
-* xref:postulate-7[**Postulate 7: Strict Discrete Countability Boundary**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
-
-* xref:postulate-8[**Postulate 8: Action by Direct Contact via Topological Halos**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
-
-* xref:postulate-iris-generator[**Postulate 9: Formal Definition of the Iris Generator (\( \iota \))**]
--- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
-
-== Theorems
-
-* xref:theorem-parity-conservation[**Theorem: Parity Conservation in Geometric Products**]
--- Chapter: *The Counting Process and the Integers* | Section: *Clifford Algebra Integration and Parity Algebra*
-
-* xref:theorem-rational-reciprocity[**Theorem: Scale-Invariant Rational Reciprocity**]
--- Chapter: *The Rational Numbers* | Section: *Rational Arithmetic as Iris Aperture Composition and Scale Refinement*
-
-* xref:theorem-real-aperture-completeness[**Theorem: Constructive Completeness of Iris Grid Limits**]
--- Chapter: *The Real Numbers* | Section: *Real Aperture Dynamics, Transcendental Functions, and Clifford Rotations*
-
-* xref:theorem-vernier-flux-conservation[**Theorem: Vernier Flux Conservation and Main Scale Projection**]
--- Chapter: *The Multiscale Resolution Numbers* | Section: *Vernier Scale Arithmetic and Main Scale Projection*
-
-* xref:theorem-msra-product-rule[**Theorem: MSRA Product Rule**]
--- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
-
-* xref:theorem-msra-quotient-rule[**Theorem: MSRA Quotient Rule**]
--- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
-
-* xref:theorem-msra-chain-rule[**Theorem: MSRA Chain Rule**]
--- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
-
-* xref:theorem-msra-fundamental-theorem[**Theorem: Fundamental Theorem of MSRA Calculus**]
--- Chapter: *How to do Integral Calculus* | Section: *The Fundamental Theorem of MSRA Calculus*
-
-* xref:theorem-msra-integration-by-parts[**Theorem: Vernier Integration by Parts**]
--- Chapter: *How to do Integral Calculus* | Section: *Vernier Integration Techniques on Discrete Grids*
-
-* xref:theorem-msra-cauchy-goursat[**Theorem: MSRA Cauchy-Goursat Theorem**]
--- Chapter: *How to Compute a Contour Integral* | Section: *The Vernier Cauchy-Goursat Theorem in MSRA*
-
-* xref:theorem-msra-residue[**Theorem: MSRA Residue Theorem**]
--- Chapter: *How to Compute a Contour Integral* | Section: *The MSRA Residue Theorem*
-
-* xref:theorem-cl411-existence[**Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)**]
--- Chapter: *Completion of the Tautological Postulate System* | Section: *Constructive Proof of Clifford Algebra Cl(4,1,1)*
-
-* xref:theorem-clifford-pbw-basis[**Theorem: Constructive Clifford PBW Basis Theorem for Cl(4,1,1)**]
--- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Constructive Clifford PBW Basis Theorem*
-
-* xref:theorem-cl411-anticommutation[**Theorem: Fundamental Anti-Commutation Law of Cl(4,1,1)**]
--- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Fundamental Anti-Commutation Law*
-
-* xref:theorem-msra-homomorphism[**Theorem: Ring Homomorphism Property of Main Scale Projection**]
--- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the MSRA Ring Homomorphism*
-
-* xref:theorem-tautological-completeness[**Theorem: Formal Tautological Completeness of the Iris System**]
--- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of Tautological Completeness*
-
-== Definitions
-
-* xref:definition-rational-aperture-ratio[**Definition: Iris Aperture Rational Ratio**]
--- Chapter: *The Rational Numbers* | Section: *Iris Aperture Ratios and Fractional Measurement Operations*
-
-* xref:definition-real-aperture-limit[**Definition: Constructive Iris Aperture Real Number**]
--- Chapter: *The Real Numbers* | Section: *Constructive Iris Aperture Limits and Rational Grid Refinement*
-
-* xref:definition-multiscale-vernier-number[**Definition: Multiscale Vernier Measurement Number**]
--- Chapter: *The Multiscale Resolution Numbers* | Section: *Vernier Scale Metrology and Multiscale Aperture Resolutions*
-
-* xref:definition-msra-derivative[**Definition: MSRA Vernier Derivative**]
--- Chapter: *How to do Differential Calculus* | Section: *Vernier Differences and the MSRA Derivative*
-
-* xref:definition-msra-definite-integral[**Definition: MSRA Definite Integral**]
--- Chapter: *How to do Integral Calculus* | Section: *Definite and Indefinite Integration as Vernier Aperture Sums*
-
-* xref:definition-msra-indefinite-integral[**Definition: MSRA Indefinite Integral**]
--- Chapter: *How to do Integral Calculus* | Section: *Definite and Indefinite Integration as Vernier Aperture Sums*
-
-* xref:definition-msra-contour-integral[**Definition: MSRA Contour Integral**]
--- Chapter: *How to Compute a Contour Integral* | Section: *Parameterized Paths and Line Integrals in Cl(4,1,1)*
-
-* xref:definition-master-field-equation[**Definition: The Master Field Equation**]
--- Chapter: *The Master Field Equation* | Section: *The Clifford Unified Master Field Equation*
