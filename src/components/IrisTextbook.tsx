@@ -106,16 +106,16 @@ export const IrisTextbook: React.FC = () => {
       {/* Header Banner */}
       <div className="bg-[#181818] p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="flex items-center space-x-4">
-          <div className="p-3 bg-[#222222] text-amber-400">
+          <div className="p-3 bg-[#222222] text-slate-200">
             <BookOpen className="w-7 h-7" />
           </div>
           <div>
             <div className="flex items-center space-x-2 flex-wrap gap-y-1">
               <h1 className="text-xl font-extrabold text-white tracking-tight">
                 {textbook.title}
-                {textbook.subtitle && <span className="text-amber-400 font-semibold ml-2">: {textbook.subtitle}</span>}
+                {textbook.subtitle && <span className="text-slate-300 font-semibold ml-2">: {textbook.subtitle}</span>}
               </h1>
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-[#222222] text-amber-300 uppercase tracking-widest">
+              <span className="text-[10px] font-mono px-2 py-0.5 bg-[#222222] text-slate-300 uppercase tracking-widest">
                 AsciiDoc • Unnumbered
               </span>
             </div>
@@ -129,7 +129,7 @@ export const IrisTextbook: React.FC = () => {
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
           {/* Volume Switcher Dropdown */}
           <div className="flex items-center space-x-2 bg-[#121212] px-3 py-1.5 font-mono text-xs text-slate-300">
-            <Bookmark className="w-3.5 h-3.5 text-amber-400" />
+            <Bookmark className="w-3.5 h-3.5 text-slate-400" />
             <select
               value={selectedVolumeId}
               onChange={(e) => handleSelectVolume(e.target.value)}
@@ -149,7 +149,7 @@ export const IrisTextbook: React.FC = () => {
               onClick={() => setViewMode('rendered')}
               className={`flex items-center space-x-1.5 px-3 py-1.5 transition ${
                 viewMode === 'rendered'
-                  ? 'bg-[#282828] text-amber-300'
+                  ? 'bg-[#282828] text-white font-bold'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -160,7 +160,7 @@ export const IrisTextbook: React.FC = () => {
               onClick={() => setViewMode('source')}
               className={`flex items-center space-x-1.5 px-3 py-1.5 transition ${
                 viewMode === 'source'
-                  ? 'bg-[#282828] text-amber-300'
+                  ? 'bg-[#282828] text-white font-bold'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -175,7 +175,7 @@ export const IrisTextbook: React.FC = () => {
             title="Download Public AsciiDoc File (/Iris_Number_System.adoc)"
             className="flex items-center space-x-1.5 px-3.5 py-2 bg-[#222222] hover:bg-[#2a2a2a] text-slate-200 text-xs font-medium transition"
           >
-            <Download className="w-3.5 h-3.5 text-amber-400" />
+            <Download className="w-3.5 h-3.5 text-slate-300" />
             <span className="hidden sm:inline">Download .adoc</span>
           </a>
         </div>
@@ -187,7 +187,7 @@ export const IrisTextbook: React.FC = () => {
         <aside className="lg:col-span-4 bg-[#181818] p-4 space-y-4 sticky top-20">
           <div className="flex items-center justify-between pb-3">
             <div className="flex items-center space-x-2">
-              <Layers className="w-4 h-4 text-amber-400" />
+              <Layers className="w-4 h-4 text-slate-300" />
               <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
                 Table of Contents
               </h2>
@@ -228,15 +228,15 @@ export const IrisTextbook: React.FC = () => {
                       }}
                       className={`w-full flex items-center justify-between p-2.5 text-left transition font-semibold text-xs ${
                         isChapterActive
-                          ? 'bg-[#262626] text-amber-300'
+                          ? 'bg-[#262626] text-white font-bold'
                           : 'text-slate-300 hover:bg-[#202020] hover:text-white'
                       }`}
                     >
                       <div className="flex items-center space-x-2 truncate">
-                        <Bookmark className={`w-3.5 h-3.5 shrink-0 ${isChapterActive ? 'text-amber-400' : 'text-slate-500'}`} />
+                        <Bookmark className={`w-3.5 h-3.5 shrink-0 ${isChapterActive ? 'text-slate-200' : 'text-slate-500'}`} />
                         <span className="truncate">{chapter.title}</span>
                       </div>
-                      <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform ${isChapterActive ? 'rotate-90 text-amber-400' : 'text-slate-600'}`} />
+                      <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform ${isChapterActive ? 'rotate-90 text-slate-200' : 'text-slate-600'}`} />
                     </button>
 
                     {/* Sections under active Chapter */}
@@ -250,12 +250,12 @@ export const IrisTextbook: React.FC = () => {
                               onClick={() => setSelectedSectionId(section.id)}
                               className={`w-full text-left px-2.5 py-1.5 text-xs font-medium transition flex items-center justify-between ${
                                 isSectionActive
-                                  ? 'bg-[#2a2a2a] text-amber-200 font-bold'
+                                  ? 'bg-[#2a2a2a] text-slate-100 font-bold'
                                   : 'text-slate-400 hover:text-slate-200 hover:bg-[#1f1f1f]'
                               }`}
                             >
                               <span className="truncate">{section.title}</span>
-                              {isSectionActive && <CheckCircle className="w-3 h-3 text-amber-400 shrink-0 ml-1" />}
+                              {isSectionActive && <CheckCircle className="w-3 h-3 text-slate-300 shrink-0 ml-1" />}
                             </button>
                           );
                         })}
@@ -280,10 +280,10 @@ export const IrisTextbook: React.FC = () => {
           {/* Chapter & Section Header Card */}
           <div className="bg-[#181818] p-6 space-y-3">
             <div className="flex items-center justify-between pb-3">
-              <div className="flex items-center space-x-2 text-xs font-mono text-amber-400">
+              <div className="flex items-center space-x-2 text-xs font-mono text-slate-300">
                 <span>Chapter</span>
                 <ChevronRight className="w-3 h-3 text-slate-600" />
-                <span className="text-amber-300 font-bold">{activeChapter.title}</span>
+                <span className="text-slate-100 font-bold">{activeChapter.title}</span>
               </div>
               <span className="text-[10px] font-mono text-slate-500 bg-[#121212] px-2.5 py-0.5">
                 Unnumbered Section
@@ -312,7 +312,7 @@ export const IrisTextbook: React.FC = () => {
                   readOnly
                   value={activeSection.contentAsciiDoc.trim()}
                   rows={20}
-                  className="w-full bg-[#121212] p-4 text-xs font-mono text-amber-200/90 leading-relaxed focus:outline-none scrollbar-thin"
+                  className="w-full bg-[#121212] p-4 text-xs font-mono text-slate-200 leading-relaxed focus:outline-none scrollbar-thin"
                 />
               </div>
             )}
@@ -344,7 +344,7 @@ export const IrisTextbook: React.FC = () => {
                       }}
                       className="px-4 py-2 bg-[#222222] hover:bg-[#2a2a2a] text-slate-300 text-xs font-medium transition flex items-center space-x-1.5"
                     >
-                      <ChevronRight className="w-3.5 h-3.5 rotate-180 text-amber-400" />
+                      <ChevronRight className="w-3.5 h-3.5 rotate-180 text-slate-400" />
                       <span>{prevItem.sec.title}</span>
                     </button>
                   ) : (
@@ -357,10 +357,10 @@ export const IrisTextbook: React.FC = () => {
                         setSelectedChapterId(nextItem.chapId);
                         setSelectedSectionId(nextItem.sec.id);
                       }}
-                      className="px-4 py-2 bg-[#282828] hover:bg-[#333333] text-amber-200 text-xs font-medium transition flex items-center space-x-1.5"
+                      className="px-4 py-2 bg-[#282828] hover:bg-[#333333] text-slate-200 text-xs font-medium transition flex items-center space-x-1.5"
                     >
                       <span>{nextItem.sec.title}</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                     </button>
                   ) : (
                     <div />

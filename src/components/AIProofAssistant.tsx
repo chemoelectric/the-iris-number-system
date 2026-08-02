@@ -280,7 +280,7 @@ export const AIProofAssistant: React.FC<AIProofAssistantProps> = ({
             </div>
             {generatedProof.steps.map((st) => (
               <div key={st.id} className="p-3.5 bg-slate-950/80 rounded-xl border border-slate-800 font-mono text-xs space-y-1">
-                <div className="flex items-center justify-between text-amber-300">
+                <div className="flex items-center justify-between text-slate-100">
                   <span className="font-semibold">
                     Step {st.stepNumber}: {st.statement}
                   </span>

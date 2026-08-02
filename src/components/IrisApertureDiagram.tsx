@@ -55,32 +55,32 @@ export const IrisApertureDiagram: React.FC = () => {
   });
 
   return (
-    <div className="my-8 bg-slate-950 border border-indigo-900/60 rounded-2xl p-6 shadow-2xl space-y-6 font-sans">
+    <div className="my-8 bg-[#181818] p-6 space-y-6 font-sans">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4">
         <div className="flex items-center space-x-3">
-          <div className="p-2.5 bg-indigo-950 rounded-xl border border-indigo-700/50 text-indigo-400 shadow-md">
+          <div className="p-2.5 bg-[#222222] text-slate-200">
             <Compass className="w-6 h-6" />
           </div>
           <div>
             <h3 className="text-base font-bold text-white tracking-wide flex items-center space-x-2">
               <span>Dynamic Iris Aperture Model</span>
-              <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-mono uppercase">
+              <span className="px-2 py-0.5 bg-[#222222] text-slate-300 text-[10px] font-mono uppercase">
                 Visual Analogy
               </span>
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
-              Geometric projection of the Iris generator <span className="font-mono text-amber-300">\iota</span> via variable aperture blades and Clifford bivector plane <span className="font-mono text-indigo-300">e₁₂</span>.
+              Geometric projection of the Iris generator <span className="font-mono text-slate-200">\iota</span> via variable aperture blades and Clifford bivector plane <span className="font-mono text-slate-300">e₁₂</span>.
             </p>
           </div>
         </div>
 
         <button
           onClick={() => setIsAnimating(!isAnimating)}
-          className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-xl text-xs font-mono font-semibold transition border ${
+          className={`flex items-center space-x-2 px-3.5 py-1.5 text-xs font-mono font-semibold transition ${
             isAnimating
-              ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 hover:bg-amber-500/30'
-              : 'bg-indigo-600/30 text-indigo-200 border-indigo-500/40 hover:bg-indigo-600/40'
+              ? 'bg-[#282828] text-white hover:bg-[#333333]'
+              : 'bg-[#222222] text-slate-300 hover:bg-[#2a2a2a]'
           }`}
         >
           {isAnimating ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -91,34 +91,28 @@ export const IrisApertureDiagram: React.FC = () => {
       {/* Main Grid: SVG Aperture Canvas + Control & HUD Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         {/* SVG Aperture Graphic */}
-        <div className="lg:col-span-6 flex flex-col items-center justify-center relative bg-slate-900/80 rounded-2xl p-4 border border-slate-800 shadow-inner min-h-[320px]">
-          <svg viewBox="0 0 300 300" className="w-full max-w-[300px] h-auto drop-shadow-2xl">
+        <div className="lg:col-span-6 flex flex-col items-center justify-center relative bg-[#121212] p-4 min-h-[320px]">
+          <svg viewBox="0 0 300 300" className="w-full max-w-[300px] h-auto">
             <defs>
               {/* Radial gradient for central aperture core (\iota field) */}
               <radialGradient id="irisCoreGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.9" />
-                <stop offset="45%" stopColor="#818cf8" stopOpacity="0.7" />
-                <stop offset="85%" stopColor="#312e81" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                <stop offset="45%" stopColor="#a3a3a3" stopOpacity="0.5" />
+                <stop offset="85%" stopColor="#404040" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="#121212" stopOpacity="0" />
               </radialGradient>
 
-              {/* Metallic gradient for iris diaphragm blades */}
+              {/* Monochrome gradient for iris diaphragm blades */}
               <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#1e293b" />
-                <stop offset="50%" stopColor="#334155" />
-                <stop offset="100%" stopColor="#0f172a" />
+                <stop offset="0%" stopColor="#262626" />
+                <stop offset="50%" stopColor="#404040" />
+                <stop offset="100%" stopColor="#171717" />
               </linearGradient>
-
-              {/* Glowing border for bivector rotation */}
-              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
             </defs>
 
             {/* Outer Fixed Casing Ring */}
-            <circle cx="150" cy="150" r="145" fill="none" stroke="#334155" strokeWidth="6" />
-            <circle cx="150" cy="150" r="140" fill="#090d16" stroke="#1e293b" strokeWidth="2" />
+            <circle cx="150" cy="150" r="145" fill="none" stroke="#404040" strokeWidth="6" />
+            <circle cx="150" cy="150" r="140" fill="#0c0c0c" stroke="#262626" strokeWidth="2" />
 
             {/* Bivector Phase Axis Ring (Spin 2 Plane) */}
             <circle
@@ -126,14 +120,14 @@ export const IrisApertureDiagram: React.FC = () => {
               cy="150"
               r="135"
               fill="none"
-              stroke="#6366f1"
+              stroke="#737373"
               strokeWidth="1.5"
               strokeDasharray="4 4"
               opacity="0.6"
             />
 
             {/* Central Iris Aperture Field Glow (\iota core) */}
-            <circle cx="150" cy="150" r={currentInnerR} fill="url(#irisCoreGlow)" filter="url(#glow)" />
+            <circle cx="150" cy="150" r={currentInnerR} fill="url(#irisCoreGlow)" />
 
             {/* Mechanical Iris Aperture Blades */}
             {blades.map((b) => (
@@ -141,7 +135,7 @@ export const IrisApertureDiagram: React.FC = () => {
                 key={b.id}
                 d={b.pathData}
                 fill="url(#bladeGrad)"
-                stroke="#475569"
+                stroke="#525252"
                 strokeWidth="1"
                 opacity="0.88"
                 className="transition-all duration-100 ease-out"
@@ -154,9 +148,8 @@ export const IrisApertureDiagram: React.FC = () => {
               cy="150"
               r={currentInnerR}
               fill="none"
-              stroke={showBoundaryFlux ? '#f59e0b' : '#38bdf8'}
+              stroke={showBoundaryFlux ? '#ffffff' : '#a3a3a3'}
               strokeWidth="2"
-              filter="url(#glow)"
               className="transition-all duration-300"
             />
 
@@ -166,16 +159,15 @@ export const IrisApertureDiagram: React.FC = () => {
               y1="150"
               x2={150 + (currentInnerR + 25) * Math.cos(phaseAngle)}
               y2={150 + (currentInnerR + 25) * Math.sin(phaseAngle)}
-              stroke="#fbbf24"
+              stroke="#ffffff"
               strokeWidth="2.5"
               strokeLinecap="round"
-              filter="url(#glow)"
             />
             <circle
               cx={150 + (currentInnerR + 25) * Math.cos(phaseAngle)}
               cy={150 + (currentInnerR + 25) * Math.sin(phaseAngle)}
               r="4"
-              fill="#fbbf24"
+              fill="#ffffff"
             />
 
             {/* Center Origin Mark */}
@@ -189,7 +181,7 @@ export const IrisApertureDiagram: React.FC = () => {
               x={150 + (currentInnerR + 35) * Math.cos(phaseAngle)}
               y={150 + (currentInnerR + 35) * Math.sin(phaseAngle)}
               textAnchor="middle"
-              fill="#fbbf24"
+              fill="#ffffff"
               fontSize="10"
               fontFamily="monospace"
               fontWeight="bold"
@@ -197,7 +189,7 @@ export const IrisApertureDiagram: React.FC = () => {
               e₁₂
             </text>
             {showBoundaryFlux && (
-              <text x="150" y={150 + currentInnerR + 14} textAnchor="middle" fill="#f59e0b" fontSize="9" fontFamily="monospace">
+              <text x="150" y={150 + currentInnerR + 14} textAnchor="middle" fill="#e5e5e5" fontSize="9" fontFamily="monospace">
                 \varpi\vartheta
               </text>
             )}
@@ -211,15 +203,15 @@ export const IrisApertureDiagram: React.FC = () => {
         {/* Interactive Controls & Mathematical HUD */}
         <div className="lg:col-span-6 space-y-4">
           {/* Sliders Card */}
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-4">
+          <div className="bg-[#141414] p-4 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-indigo-300 uppercase flex items-center space-x-1.5">
-                <Sliders className="w-3.5 h-3.5 text-indigo-400" />
+              <span className="text-xs font-mono font-bold text-slate-200 uppercase flex items-center space-x-1.5">
+                <Sliders className="w-3.5 h-3.5 text-slate-400" />
                 <span>Aperture Parameters</span>
               </span>
               <button
                 onClick={() => setShowBoundaryFlux(!showBoundaryFlux)}
-                className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 hover:text-white"
+                className="text-[10px] font-mono px-2 py-0.5 bg-[#222222] text-slate-300 hover:text-white"
               >
                 {showBoundaryFlux ? 'Hide Nilpotent Boundary' : 'Show Nilpotent Boundary'}
               </button>
@@ -229,7 +221,7 @@ export const IrisApertureDiagram: React.FC = () => {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-mono text-slate-300">
                 <span>Aperture Opening (Magnitude r):</span>
-                <span className="text-amber-400 font-bold">{radius.toFixed(2)}</span>
+                <span className="text-white font-bold">{radius.toFixed(2)}</span>
               </div>
               <input
                 type="range"
@@ -241,7 +233,7 @@ export const IrisApertureDiagram: React.FC = () => {
                   setIsAnimating(false);
                   setRadius(parseFloat(e.target.value));
                 }}
-                className="w-full accent-amber-500 bg-slate-950 h-1.5 rounded-lg appearance-none cursor-pointer"
+                className="w-full bg-[#222222] h-1.5 appearance-none cursor-pointer"
               />
             </div>
 
@@ -249,7 +241,7 @@ export const IrisApertureDiagram: React.FC = () => {
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-mono text-slate-300">
                 <span>Bivector Phase Angle (\theta e₁₂):</span>
-                <span className="text-indigo-400 font-bold">{((phaseAngle * 180) / Math.PI).toFixed(1)}°</span>
+                <span className="text-white font-bold">{((phaseAngle * 180) / Math.PI).toFixed(1)}°</span>
               </div>
               <input
                 type="range"
@@ -261,34 +253,34 @@ export const IrisApertureDiagram: React.FC = () => {
                   setIsAnimating(false);
                   setPhaseAngle(parseFloat(e.target.value));
                 }}
-                className="w-full accent-indigo-500 bg-slate-950 h-1.5 rounded-lg appearance-none cursor-pointer"
+                className="w-full bg-[#222222] h-1.5 appearance-none cursor-pointer"
               />
             </div>
           </div>
 
           {/* Real-time Math HUD */}
-          <div className="bg-slate-950 border border-indigo-900/50 rounded-xl p-4 space-y-2 font-mono text-xs">
-            <div className="text-[10px] text-amber-400 uppercase tracking-wider font-bold flex items-center space-x-1">
-              <Zap className="w-3 h-3 text-amber-400" />
+          <div className="bg-[#121212] p-4 space-y-2 font-mono text-xs">
+            <div className="text-[10px] text-slate-300 uppercase tracking-wider font-bold flex items-center space-x-1">
+              <Zap className="w-3 h-3 text-slate-400" />
               <span>Real-Time Operator State</span>
             </div>
 
-            <div className="p-2.5 bg-slate-900/90 rounded-lg border border-slate-800 text-slate-200 space-y-1.5">
+            <div className="p-2.5 bg-[#181818] text-slate-200 space-y-1.5">
               <div className="flex justify-between items-center">
                 <span className="text-slate-400">Generator \iota:</span>
-                <span className="text-amber-300 font-bold">
+                <span className="text-white font-bold">
                   {(radius * Math.cos(phaseAngle)).toFixed(2)} \cdot \mathbf{1} + {(radius * Math.sin(phaseAngle)).toFixed(2)} e₁₂ + {(Math.sqrt(Math.max(0, 1 - radius * radius))).toFixed(2)} \varpi\vartheta
                 </span>
               </div>
 
-              <div className="flex justify-between items-center border-t border-slate-800/80 pt-1 text-[11px]">
+              <div className="flex justify-between items-center pt-1 text-[11px]">
                 <span className="text-slate-400">Quadratic Constraint:</span>
-                <span className="text-indigo-300 font-bold">\iota² = -\mathbf{1} + \varpi \vartheta</span>
+                <span className="text-slate-200 font-bold">\iota² = -\mathbf{1} + \varpi \vartheta</span>
               </div>
 
-              <div className="flex justify-between items-center border-t border-slate-800/80 pt-1 text-[11px]">
+              <div className="flex justify-between items-center pt-1 text-[11px]">
                 <span className="text-slate-400">Nilpotent Perimeter Boundary:</span>
-                <span className="text-emerald-400 font-bold">\varpi² = 0, \;\; \vartheta² = 0</span>
+                <span className="text-slate-200 font-bold">\varpi² = 0, \;\; \vartheta² = 0</span>
               </div>
             </div>
 
