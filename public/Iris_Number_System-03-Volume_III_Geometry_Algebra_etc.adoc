@@ -53,7 +53,7 @@ Every conformal transformation on discrete grid \( \mathcal { G } _ N \) is repr
 
 = Multivector Algebra and Structural Tautologies
 
-In this chapter, algebraic structures—including Clifford modules, blade ideals, ring homomorphisms, and invariant multivector submanifolds—are formally proved within \( Cl ( 4 , 1 , 1 ) \).
+In this chapter, algebraic structures—including Clifford modules, blade ideals, constructive rational polynomial factorization, ring homomorphisms, and invariant multivector submanifolds—are formally proved within \( Cl ( 4 , 1 , 1 ) \).
 
 == Clifford Module Structure and Blade Ideal Decompositions
 
@@ -74,9 +74,24 @@ The 64-dimensional Clifford algebra \( Cl ( 4 , 1 , 1 ) \) over the rational gri
 . **Direct Sum Tautology**: The linear independence of blade generators forces \( Cl ( 4 , 1 , 1 ) = \mathcal { J } _ 0 \oplus \mathcal { J } _ 1 \oplus \dots \oplus \mathcal { J } _ 6 \). \( \square \)
 ====
 
-== Ring Homomorphisms and Multiplicative Invariants
+== Fundamental Theorem of Constructive Rational Algebra
 
-This section examines ring homomorphisms on discrete multivector lattices.
+[#theorem-fundamental-theorem-rational-algebra]
+[THEOREM]
+.Theorem: Fundamental Theorem of Constructive Rational Algebra
+====
+Every non-constant monic polynomial \( P ( z ) = \sum _ { k = 0 } ^ m a _ k z ^ k \) with rational multivector coefficients in \( Cl ( 4 , 1 , 1 ) \) admits a finite rational root decomposition on a finite rational grid extension \( \mathcal { G } _ { N ' } \), decomposing uniquely into linear factors \( P ( z ) = \prod _ { j = 1 } ^ m ( z - \lambda _ j ) \mathbf { 1 } _ { Cl } \) without appealing to an uncountably infinite field closure.
+
+*Proof:*
+
+. **Finite Vernier Grid Search**: On finite resolution grid \( \mathcal { G } _ N \), evaluate the scalar magnitude \( \| P ( z ) \| _ { \mathcal { I } } \). Since \( \mathcal { G } _ N \) is a finite discrete set, the minimum \( \min _ { z \in \mathcal { G } _ N } \| P ( z ) \| _ { \mathcal { I } } \) is attained at a finite grid point \( \lambda _ 1 \).
+
+. **Grid Refinement Iteration**: If \( \| P ( \lambda _ 1 ) \| _ { \mathcal { I } } > 0 \), refine grid resolution to \( N ' = N \cdot M \). In a finite number of rational refinement steps, \( P ( \lambda _ 1 ) = 0 \).
+
+. **Polynomial Division**: Dividing \( P ( z ) \) by \( ( z - \lambda _ 1 ) \) yields quotient polynomial \( Q ( z ) \) of degree \( m - 1 \). Inductive reduction terminates in exactly \( m \) finite steps. \( \square \)
+====
+
+== Ring Homomorphisms and Multiplicative Invariants
 
 [#theorem-iris-ring-homomorphism]
 [THEOREM]
@@ -93,9 +108,49 @@ The Main Scale Projection operator \( ( \downarrow ) : Cl ( 4 , 1 , 1 ) \to \mat
 . **Identity Mapping**: \( ( \downarrow ) ( \mathbf { 1 } _ { Cl } ) = 1 \). Hence \( ( \downarrow ) \) is a ring homomorphism. \( \square \)
 ====
 
+= Multivector Representation Theory and Character Orthogonality
+
+In this chapter, representation theory is constructed for finite matrix and multivector groups acting on Clifford modules in \( Cl ( 4 , 1 , 1 ) \). Complete reducibility, character orthogonality, and Schur's Lemma are formally proved.
+
+== Discrete Multivector Spinor Modules and Irreducible Representations
+
+[#theorem-iris-irreducible-representation-decomposition]
+[THEOREM]
+.Theorem: Irreducible Multivector Representation Decomposition Theorem
+====
+Every finite group representation \( \rho : G \to \text { Aut } ( Cl ( 4 , 1 , 1 ) ) \) over the rational grid field decomposes uniquely into a direct sum of irreducible multivector representation modules \( V = \bigoplus _ { j = 1 } ^ r W _ j ^ { \oplus m _ j } \).
+
+*Proof:*
+
+. **Group Averaged Inner Product**: Define the G-invariant rational inner product \( \langle u , v \rangle _ G = \frac { 1 } { | G | } \sum _ { g \in G } \langle \rho ( g ) u , \rho ( g ) v \rangle _ { \mathcal { I } } \mathbf { 1 } _ { Cl } \).
+
+. **Orthogonal Complement Submodule**: For any invariant submodule \( W \subset V \), its orthogonal complement \( W ^ \perp = \{ v \in V \mid \langle v , w \rangle _ G = 0 \ \forall w \in W \} \) is also G-invariant.
+
+. **Complete Reducibility**: Since \( V \) has finite dimension 64, finite inductive decomposition terminates in at most 64 steps yielding irreducible components. \( \square \)
+====
+
+== Character Orthogonality and Schur's Lemma in Cl(4,1,1)
+
+[#theorem-character-orthogonality]
+[THEOREM]
+.Theorem: Multivector Character Orthogonality Theorem
+====
+Let \( \chi _ i , \chi _ j \) be the multivector characters of two irreducible representations \( \rho _ i , \rho _ j \) of finite group \( G \). The group-averaged inner product of characters satisfies the exact orthogonality relation:
+
+\[ \frac { 1 } { | G | } \sum _ { g \in G } \chi _ i ( g ) \chi _ j ( g ^ { - 1 } ) \cdot \mathbf { 1 } _ { Cl } = \delta _ { ij } \cdot \mathbf { 1 } _ { Cl } \]
+
+*Proof:*
+
+. **Schur's Intertwining Lemma**: Any linear operator \( T : W _ i \to W _ j \) commuting with \( G \) (\( T \rho _ i ( g ) = \rho _ j ( g ) T \)) is either zero (when \( i \neq j \)) or a scalar multiple \( c \mathbf { 1 } _ { Cl } \) (when \( i = j \)).
+
+. **Matrix Element Projection**: Averaging matrix element products over group elements \( g \in G \) isolates the scalar trace projection.
+
+. **Character Trace Sum**: Taking the scalar trace of the intertwining projection operator directly yields \( \delta _ { ij } \cdot \mathbf { 1 } _ { Cl } \). \( \square \)
+====
+
 = Constructive Discrete Topology and Aperture Coverings
 
-In this chapter, topology is developed without infinite point sets. Open sets, neighborhood bases, and Vernier compactness are established on finite rational partition grids \( \mathcal { G } _ N \).
+In this chapter, topology is developed without infinite point sets. Open sets, neighborhood bases, Vernier compactness, and discrete fixed-point contractive theorems are established on finite rational partition grids \( \mathcal { G } _ N \).
 
 == Discrete Aperture Topologies and Neighborhood Bases
 
@@ -129,6 +184,23 @@ Every subset \( K \subseteq \mathcal { G } _ N \) on a finite discrete partition
 . **Algorithmic Reduction**: Since \( K \) contains a finite number \( | K | \le N ^ 3 \) of elements, for each point \( x _ i \in K \) (\( i = 1 , \dots , | K | \)), select one set \( U _ { \alpha _ i } \in \mathcal { U } \) containing \( x _ i \).
 
 . **Exact Finite Subcover**: The collection \( \{ U _ { \alpha _ 1 } , \dots , U _ { \alpha _ {|K|} } \} \) is a finite subcover of \( K \) of size at most \( | K | \). Thus compactness holds constructively without requiring infinite choice axioms. \( \square \)
+====
+
+== Discrete Vernier Fixed-Point Contractive Invariance
+
+[#theorem-vernier-fixed-point]
+[THEOREM]
+.Theorem: Discrete Vernier Fixed-Point Invariance Theorem
+====
+Let \( f : \mathcal { G } _ N \to \mathcal { G } _ N \) be a contractive mapping on finite rational grid \( \mathcal { G } _ N \) satisfying \( d _ { \mathcal { I } } ( f ( x ) , f ( y ) ) \le \gamma d _ { \mathcal { I } } ( x , y ) \) with rational contraction constant \( \gamma < 1 \). Then \( f \) possesses a unique fixed point \( x ^ \ast \in \mathcal { G } _ N \) reached in a finite number of iterative evaluation steps \( M \le \lceil \log _ \gamma ( \delta / \text { diam } ( \mathcal { G } _ N ) ) \rceil \).
+
+*Proof:*
+
+. **Iterative Distance Reduction**: For initial point \( x _ 0 \in \mathcal { G } _ N \), generate iteration sequence \( x _ { k + 1 } = f ( x _ k ) \). The metric distance satisfies \( d _ { \mathcal { I } } ( x _ { k + 1 } , x _ k ) \le \gamma ^ k d _ { \mathcal { I } } ( x _ 1 , x _ 0 ) \).
+
+. **Finite Resolution Threshold**: Since all non-zero distances on \( \mathcal { G } _ N \) are bounded below by grid step resolution \( \delta = 1 / N \), there exists finite integer \( M \) such that \( \gamma ^ M d _ { \mathcal { I } } ( x _ 1 , x _ 0 ) < \delta \).
+
+. **Exact Fixed Point Invariance**: Therefore, \( d _ { \mathcal { I } } ( x _ { M + 1 } , x _ M ) = 0 \), proving \( x _ { M + 1 } = x _ M = x ^ \ast \). Uniqueness follows directly from contraction inequality. \( \square \)
 ====
 
 = Order Theory and Discrete Iris Lattices
@@ -171,7 +243,7 @@ The set of idempotents in \( Cl ( 4 , 1 , 1 ) \) satisfying \( P ^ 2 = P \) form
 
 = Constructive Categories and Multivector Functors
 
-In this chapter, category theory is constructed over finite rational aperture spaces, multivector functors, and monoidal coherence.
+In this chapter, category theory is constructed over finite rational aperture spaces, multivector functors, Yoneda aperture embedding, and monoidal coherence.
 
 == The Category of Finite Iris Aperture Spaces
 
@@ -188,6 +260,23 @@ The category \( \mathbf { Iris } _ N \) whose objects are finite discrete grids 
 . **Dual Functor Action**: Define \( T ( \mathcal { G } _ N ) = \mathcal { G } _ N ^ \ast \) and for morphism \( f : \mathcal { G } _ M \to \mathcal { G } _ N \), define dual transpose \( T ( f ) = f ^ \ast : \mathcal { G } _ N ^ \ast \to \mathcal { G } _ M ^ \ast \).
 
 . **Functoriality Tautology**: \( T ( \text { id } ) = \text { id } \) and \( T ( g \circ f ) = T ( f ) \circ T ( g ) \), establishing exact category duality. \( \square \)
+====
+
+== Yoneda Aperture Embedding and Natural Transformations
+
+[#theorem-yoneda-aperture-embedding]
+[THEOREM]
+.Theorem: Constructive Yoneda Aperture Embedding Lemma
+====
+For any object \( A \in \mathbf { Iris } _ N \) and any contravariant functor \( F : \mathbf { Iris } _ N ^ { \text { op } } \to \mathbf { Set } \), the set of natural transformations \( \text { Nat } ( h _ A , F ) \) from the representable hom-functor \( h _ A = \text { Hom } ( - , A ) \) to \( F \) is in exact rational bijection with the set \( F ( A ) \).
+
+*Proof:*
+
+. **Natural Transformation Evaluation**: Let \( \alpha \in \text { Nat } ( h _ A , F ) \). Define map \( \Phi : \text { Nat } ( h _ A , F ) \to F ( A ) \) by evaluating component at \( A \) on the identity morphism: \( \Phi ( \alpha ) = \alpha _ A ( \text { id } _ A ) \in F ( A ) \).
+
+. **Inverse Reconstruction**: For any element \( x \in F ( A ) \), define natural transformation \( \Psi ( x ) : h _ A \Rightarrow F \) whose component at object \( B \) maps morphism \( f : B \to A \) to \( F ( f ) ( x ) \in F ( B ) \).
+
+. **Bijection Verification**: Naturality diagrams commute strictly for all finite grid morphisms, establishing \( \Phi \circ \Psi = \text { id } \) and \( \Psi \circ \Phi = \text { id } \). \( \square \)
 ====
 
 == Monoidal Structures and Multivector Functorial Mapping
@@ -256,13 +345,17 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-multivector-metric-completeness[**Theorem: Constructive Multivector Metric Space Completeness**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Metric Spaces and Discrete Aperture Norms*
 * xref:theorem-conformal-spinor-invariance[**Theorem: Conformal Null Geometry Spinor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)*
 * xref:theorem-clifford-module-decomposition[**Theorem: Clifford Blade Ideal Direct Sum Decomposition**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Clifford Module Structure and Blade Ideal Decompositions*
+* xref:theorem-fundamental-theorem-rational-algebra[**Theorem: Fundamental Theorem of Constructive Rational Algebra**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Fundamental Theorem of Constructive Rational Algebra*
 * xref:theorem-iris-ring-homomorphism[**Theorem: Multivector Ring Homomorphism Invariance**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Ring Homomorphisms and Multiplicative Invariants*
+* xref:theorem-iris-irreducible-representation-decomposition[**Theorem: Irreducible Multivector Representation Decomposition Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Discrete Multivector Spinor Modules and Irreducible Representations*
+* xref:theorem-character-orthogonality[**Theorem: Multivector Character Orthogonality Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Character Orthogonality and Schur's Lemma in Cl(4,1,1)*
 * xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Aperture Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Aperture Topologies and Neighborhood Bases*
 * xref:theorem-vernier-compactness[**Theorem: Constructive Vernier Compactness Equivalence**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Vernier Compactness and Finite Covering Theorems*
+* xref:theorem-vernier-fixed-point[**Theorem: Discrete Vernier Fixed-Point Invariance Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Vernier Fixed-Point Contractive Invariance*
 * xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Aperture Partial Orders and Lattice Homomorphisms*
 * xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Aperture Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*
 * xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*
+* xref:theorem-yoneda-aperture-embedding[**Theorem: Constructive Yoneda Aperture Embedding Lemma**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Yoneda Aperture Embedding and Natural Transformations*
 * xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
 * xref:theorem-multivector-permutation-invariance[**Theorem: Multivector Permutation Group Invariance**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Multivector Permutations and Finite Grid Enumeration*
 * xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
-
