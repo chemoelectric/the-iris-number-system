@@ -87,6 +87,95 @@ const vol2 = parseAdocFile(
   "A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics"
 );
 
+function generateFormalIndexChapterObj(chapters) {
+  const entries = [];
+  chapters.filter((c) => c.id !== "chap-index").forEach((chap) => {
+    chap.sections.forEach((sec) => {
+      const lines = sec.contentAsciiDoc.split("\n");
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (line.match(/^\[(POSTULATE|THEOREM|DEFINITION|AXIOM|LEMMA|COROLLARY)\]$/i)) {
+          const type = line.replace(/[\[\]]/g, "").toUpperCase();
+          let anchorId = "";
+          if (i > 0 && lines[i - 1].trim().match(/^\[#([a-zA-Z0-9_-]+)\]$/)) {
+            anchorId = lines[i - 1].trim().match(/^\[#([a-zA-Z0-9_-]+)\]$/)[1];
+          }
+          let title = `${type}`;
+          if (i + 1 < lines.length && lines[i + 1].trim().startsWith(".")) {
+            title = lines[i + 1].trim().substring(1).trim();
+          }
+          if (!anchorId) {
+            anchorId = `${type.toLowerCase()}-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+          }
+          entries.push({
+            type,
+            title,
+            anchorId,
+            chapterTitle: chap.title,
+            sectionTitle: sec.title,
+          });
+        }
+      }
+    });
+  });
+
+  const postulates = entries.filter((e) => e.type === "POSTULATE");
+  const theorems = entries.filter((e) => e.type === "THEOREM");
+  const definitions = entries.filter((e) => e.type === "DEFINITION");
+  const others = entries.filter((e) => !["POSTULATE", "THEOREM", "DEFINITION"].includes(e.type));
+
+  let indexAdoc = "== Index of Formal Statements\n\n";
+  indexAdoc += "This index lists all formal Postulates, Theorems, and Definitions established across the textbook.\n\n";
+
+  if (postulates.length > 0) {
+    indexAdoc += "=== Postulates\n\n";
+    postulates.forEach((e) => {
+      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+    });
+    indexAdoc += "\n";
+  }
+
+  if (theorems.length > 0) {
+    indexAdoc += "=== Theorems\n\n";
+    theorems.forEach((e) => {
+      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+    });
+    indexAdoc += "\n";
+  }
+
+  if (definitions.length > 0) {
+    indexAdoc += "=== Definitions\n\n";
+    definitions.forEach((e) => {
+      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+    });
+    indexAdoc += "\n";
+  }
+
+  if (others.length > 0) {
+    indexAdoc += "=== Other Formal Statements\n\n";
+    others.forEach((e) => {
+      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+    });
+    indexAdoc += "\n";
+  }
+
+  return {
+    id: "chap-index",
+    title: "Index of Formal Statements",
+    summary: "Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.",
+    sections: [
+      {
+        id: "sec-index-formal-statements",
+        title: "Index of Formal Statements",
+        contentAsciiDoc: indexAdoc,
+      },
+    ],
+  };
+}
+
+vol1.chapters.push(generateFormalIndexChapterObj(vol1.chapters));
+vol2.chapters.push(generateFormalIndexChapterObj(vol2.chapters));
+
 const fileHeader = `import { TextbookChapter, Textbook } from "../types";
 
 export function generateFormalIndexChapter(chapters: TextbookChapter[]): TextbookChapter {

@@ -927,3 +927,118 @@ where \( I_{\mathcal{I}}(\theta) \) is the Fisher aperture information multivect
 
 . **Tautological Conclusion**: No unbiased operational estimator on \( \mathcal{G}_N \) can exceed the precision bound imposed by the Fisher aperture information norm. \( \blacksquare \)
 ====
+
+= Index of Formal Statements
+
+This index provides a canonical reference of all formal Theorems established across Volume II of the Counting-Iris Treatise. Click any entry below to jump directly to its position in the textbook.
+
+== Theorems
+
+* xref:theorem-fundamental-arithmetic[**Theorem: The Fundamental Theorem of Arithmetic in Cl(4,1,1)**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *The Fundamental Theorem of Arithmetic*
+
+* xref:theorem-euclid-primes[**Theorem: Euclid's Prime Infinitude Theorem on Aperture Grids**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Euclid's Theorem on the Infinitude of Primes*
+
+* xref:theorem-fermat-little[**Theorem: Fermat's Little Theorem in Cl(4,1,1) Arithmetic**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Fermat's Little Theorem*
+
+* xref:theorem-euler-totient[**Theorem: Euler's Totient Operational Theorem**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Euler's Totient Theorem*
+
+* xref:theorem-chinese-remainder[**Theorem: The Chinese Remainder Operational Theorem**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *The Chinese Remainder Theorem*
+
+* xref:theorem-quadratic-reciprocity[**Theorem: The Law of Quadratic Reciprocity in Cl(4,1,1)**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *The Law of Quadratic Reciprocity*
+
+* xref:theorem-radix-representation[**Theorem: Multi-Radix Representation and Uniqueness Theorem**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Multi-Radix Positional Numeral Systems*
+
+* xref:theorem-radix-conversion-invariance[**Theorem: Radix Transformation Invariance Theorem**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Multi-Radix Positional Numeral Systems*
+
+* xref:theorem-prime-factor-search-bounds[**Theorem: Iris Aperture Difference-of-Squares Prime Factor Search Theorem**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
+
+* xref:theorem-parallel-prime-factorization[**Theorem: Parallel Multi-Grid Vernier Factorization Theorem**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
+
+* xref:theorem-recursive-grover-factorization[**Theorem: Recursive Digital Grover Search Factorization Theorem**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
+
+* xref:theorem-goldbach-proof[**Theorem: Goldbach Partition Tautology in Cl(4,1,1)**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *The Goldbach Partition Theorem*
+
+* xref:theorem-riemann-proof[**Theorem: Strict Critical Line Zero Spectrum of the Iris Zeta Operator**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *The Riemann Hypothesis Spectral Theorem*
+
+* xref:theorem-twin-prime-proof[**Theorem: Infinitude of Discrete Twin Prime Pairs**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *The Twin Prime Infinitude Theorem*
+
+* xref:theorem-collatz-proof[**Theorem: Universal Collatz Orbit Convergence to Origin State 1**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *The Collatz Orbit Convergence Theorem*
+
+* xref:theorem-fermat-proof[**Theorem: Non-Existence of Integer Solutions to Fermat's Equation for n > 2**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Fermat's Last Theorem*
+
+* xref:theorem-legendre-proof[**Theorem: Existence of Iris Primes Between Consecutive Squares**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Legendre's Prime Existence Theorem*
+
+* xref:theorem-no-odd-perfect-numbers[**Theorem: Non-Existence of Odd Perfect Numbers in Cl(4,1,1)**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Non-Existence of Odd Perfect Numbers*
+
+* xref:theorem-polignac-proof[**Theorem: Infinitude of Arbitrary Even Prime Gaps**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Polignac's Prime Gap Infinitude Theorem*
+
+* xref:theorem-mersenne-prime-infinitude[**Theorem: Infinitude of Discrete Mersenne Primes**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Infinitude of Mersenne Primes*
+
+* xref:theorem-gilbreath-proof[**Theorem: Gilbreath's Leading Term Invariance for Ordered Primes**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Gilbreath's Successive Prime Difference Conjecture*
+
+* xref:theorem-lychrel-nonexistence[**Theorem: Universal Reverse-and-Add Palindrome Convergence**]
+-- Chapter: *Tautological Proofs in Number Theory* | Section: *Universal Reverse-and-Add Palindrome Convergence*
+
+* xref:theorem-ftc-msra[**Theorem: The Fundamental Theorem of MSRA Constructive Calculus**]
+-- Chapter: *Applications to Constructive Analysis* | Section: *The Fundamental Theorem of MSRA Constructive Calculus*
+
+* xref:theorem-mvt-msra[**Theorem: The MSRA Vernier Mean Value Theorem**]
+-- Chapter: *Applications to Constructive Analysis* | Section: *The MSRA Vernier Mean Value Theorem*
+
+* xref:theorem-taylor-msra[**Theorem: The Discrete Taylor-Vernier Expansion Theorem**]
+-- Chapter: *Applications to Constructive Analysis* | Section: *The Discrete Taylor-Vernier Expansion*
+
+* xref:theorem-stokes-msra[**Theorem: The Multivector Vernier Stokes Theorem**]
+-- Chapter: *Applications to Constructive Analysis* | Section: *The Multivector Vernier Stokes Theorem*
+
+* xref:theorem-msra-measure-uniformity[**Theorem: Constructive MSRA Vernier Measure Additivity**]
+-- Chapter: *Applications to Constructive Analysis* | Section: *MSRA Vernier Measure Additivity*
+
+* xref:theorem-fourier-iris-completeness[**Theorem: Fourier-Iris Discrete Spectral Completeness**]
+-- Chapter: *Applications to Constructive Analysis* | Section: *Fourier-Iris Spectral Decomposition*
+
+* xref:theorem-sobolev-iris-equivalence[**Theorem: Finite Sobolev Aperture Equivalence in Cl(4,1,1)**]
+-- Chapter: *Applications to Constructive Analysis* | Section: *Finite Sobolev Aperture Equivalence*
+
+* xref:theorem-cox-consistency[**Theorem: Cox's Consistency Theorem for Jaynesian Operational Probability**]
+-- Chapter: *Applications to Probability Theory* | Section: *Cox's Consistency Theorem for Operational Inference*
+
+* xref:theorem-discrete-lln[**Theorem: Iris Discrete Weak Law of Large Numbers**]
+-- Chapter: *Applications to Probability Theory* | Section: *The Discrete Operational Law of Large Numbers*
+
+* xref:theorem-vernier-clt[**Theorem: Constructive Vernier Central Limit Invariance**]
+-- Chapter: *Applications to Probability Theory* | Section: *The Vernier Central Limit Invariance Theorem*
+
+* xref:theorem-entropy-conservation[**Theorem: Entropy Conservation in Closed Aperture Systems**]
+-- Chapter: *Applications to Probability Theory* | Section: *The Operational Entropy Conservation Law*
+
+* xref:theorem-mle-uniqueness[**Theorem: Uniqueness of Maximum Aperture Likelihood Estimates**]
+-- Chapter: *Applications to Constructive Statistics* | Section: *Uniqueness of Maximum Aperture Likelihood Estimates*
+
+* xref:theorem-imeic-bound[**Theorem: Exact Model Complexity Bound in Cl(4,1,1)**]
+-- Chapter: *Applications to Constructive Statistics* | Section: *The Iris Minimum Entropy Information Criterion (IMEIC)*
+
+* xref:theorem-cramer-rao-aperture[**Theorem: Finite-Sample Vernier Variance Lower Bound**]
+-- Chapter: *Applications to Constructive Statistics* | Section: *The Finite-Sample Cramer-Rao Aperture Inequality*
+
