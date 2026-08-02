@@ -19,10 +19,7 @@ The domain of **Integers**, denoted by \( \mathbb { Z } \), forms the discrete a
 
 In the Counting-Iris framework, **everything in the system is fundamentally an Operation of Measurement**. A number is not an inert static symbol, but the active scalar or multivector result of a discrete counting and gauging process.
 
-Grounding all integer quantities directly in physical discrete dot counts (\( \bullet \)), each integer is defined as an explicit operation of measurement—a discrete sequence of dot steps radiating from the origin: positive integers measure in the forward direction (\( \bullet _ { \to } \)), while negative integers measure in the exact opposite (reverse) direction (\( \bullet _ { \leftarrow } \)).
-
-
-\[ \mathbb { Z } = \{ \text { etc } , ( \bullet \bullet \bullet ) _ { \leftarrow } , ( \bullet \bullet ) _ { \leftarrow } , \bullet _ { \leftarrow } , \mathbf { 0 } , \bullet _ { \to } , ( \bullet \bullet ) _ { \to } , ( \bullet \bullet \bullet ) _ { \to } , \text { etc } \} \]
+Grounding all integer quantities directly in physical discrete dot counts (\( \bullet \)), each integer is defined as an explicit operation of measurement—a discrete sequence of dot steps radiating from the origin: positive integers measure in the forward direction (\( \bullet _ { \to } \)), while negative integers measure in the exact opposite (reverse) direction (\( \bullet _ { \leftarrow } \)). \[ \mathbb { Z } = \{ \text { etc } , ( \bullet \bullet \bullet ) _ { \leftarrow } , ( \bullet \bullet ) _ { \leftarrow } , \bullet _ { \leftarrow } , \mathbf { 0 } , \bullet _ { \to } , ( \bullet \bullet ) _ { \to } , ( \bullet \bullet \bullet ) _ { \to } , \text { etc } \} \]
 
 
 Under this directional measurement representation:
@@ -47,10 +44,7 @@ In the Counting-Iris Number System, chapters and sections are un-numbered to emp
 
 Through Postulate 2 and Postulate 4, integer arithmetic in \( \mathbb { Z } \) is not merely isolated symbolic counting, but a projection of geometric operations in \( Cl ( 4 , 1 , 1 ) \).
 
-Let \( n , m \in \mathbb { Z } \). Consider their representation as bivector-graded multivectors:
-
-
-\[ M ( n ) = n \cdot \mathbf { 1 } _ { Cl } + \frac { 1 - ( - 1 ) ^ n } { 2 } e _ { 12 } \]
+Let \( n , m \in \mathbb { Z } \). Consider their representation as bivector-graded multivectors: \[ M ( n ) = n \cdot \mathbf { 1 } _ { Cl } + \frac { 1 - ( - 1 ) ^ n } { 2 } e _ { 12 } \]
 
 
 When \( n \) is even, \( M ( n ) = n \mathbf { 1 } _ { Cl } \) is purely scalar. When \( n \) is odd, \( M ( n ) = n \mathbf { 1 } _ { Cl } + e _ { 12 } \) acquires a unit bivector component whose square is \( e _ { 12 } ^ 2 = - 1 \).
@@ -59,10 +53,7 @@ When \( n \) is even, \( M ( n ) = n \mathbf { 1 } _ { Cl } \) is purely scalar.
 [THEOREM]
 .Theorem: Parity Conservation in Geometric Products
 ====
-For any two integers \( n , m \in \mathbb { Z } \), the geometric product \( M ( n ) M ( m ) \) preserves the additive parity rule in \( \mathbb { Z } \):
-
-
-\[ \text { Grade } _ 2 \left ( M ( n ) M ( m ) \right ) \neq 0 \iff n + m \equiv 1 \pmod 2 \]
+For any two integers \( n , m \in \mathbb { Z } \), the geometric product \( M ( n ) M ( m ) \) preserves the additive parity rule in \( \mathbb { Z } \): \[ \text { Grade } _ 2 \left ( M ( n ) M ( m ) \right ) \neq 0 \iff n + m \equiv 1 \pmod 2 \]
 
 ====
 
@@ -89,10 +80,7 @@ The primary physical and mathematical components of the Iris analogy are:
 
 [IRIS_VISUALIZATION]
 
-As illustrated in the dynamic model above, adjusting the aperture opening magnitude \( r \) and phase angle \( \theta \) directly updates the multivector operator state:
-
-
-\[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } _ { Cl } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
+As illustrated in the dynamic model above, adjusting the aperture opening magnitude \( r \) and phase angle \( \theta \) directly updates the multivector operator state: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } _ { Cl } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
 
 
 maintaining the exact quadratic aperture constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
@@ -130,10 +118,7 @@ The domain \( ( \mathbb { Z } , + , \cdot , \le ) \) is a totally ordered commut
 [POSTULATE]
 .Postulate 2: Canonical Scalar Embedding into Clifford Algebra Cl(4,1,1)
 ====
-There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of the 6-generator Clifford algebra \( Cl ( 4 , 1 , 1 ) \) with metric signature \( ( + + + + , - , 0 ) \):
-
-
-\[ \iota _ 0 : \mathbb { Z } \hookrightarrow Cl ( 4 , 1 , 1 ) , \quad n \mapsto n \cdot \mathbf { 1 } _ { Cl } \]
+There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of the 6-generator Clifford algebra \( Cl ( 4 , 1 , 1 ) \) with metric signature \( ( + + + + , - , 0 ) \): \[ \iota _ 0 : \mathbb { Z } \hookrightarrow Cl ( 4 , 1 , 1 ) , \quad n \mapsto n \cdot \mathbf { 1 } _ { Cl } \]
 
 
 where \( \mathbf { 1 } _ { Cl } \) is the Clifford unit scalar element satisfying \( \mathbf { 1 } _ { Cl } e _ A = e _ A \mathbf { 1 } _ { Cl } = e _ A \) for all basis elements \( e _ A \).
@@ -143,10 +128,7 @@ where \( \mathbf { 1 } _ { Cl } \) is the Clifford unit scalar element satisfyin
 [POSTULATE]
 .Postulate 3: Metric Preservation of Quadratic Forms
 ====
-For any discrete tuple \( ( a , b ) \in \mathbb { Z } ^ 2 \), the Clifford metric norm over orthogonal basis generators \( e _ 1 , e _ 2 \) preserves exact integer quadratic forms:
-
-
-\[ \| a e _ 1 + b e _ 2 \| ^ 2 = ( a e _ 1 + b e _ 2 ) ( a e _ 1 + b e _ 2 ) ^ \dagger = a ^ 2 + b ^ 2 \in \mathbb { Z } _ { \ge 0 } \]
+For any discrete tuple \( ( a , b ) \in \mathbb { Z } ^ 2 \), the Clifford metric norm over orthogonal basis generators \( e _ 1 , e _ 2 \) preserves exact integer quadratic forms: \[ \| a e _ 1 + b e _ 2 \| ^ 2 = ( a e _ 1 + b e _ 2 ) ( a e _ 1 + b e _ 2 ) ^ \dagger = a ^ 2 + b ^ 2 \in \mathbb { Z } _ { \ge 0 } \]
 
 
 This guarantees that diophantine norm equations in \( \mathbb { Z } \) map directly into geometric invariants of \( Cl ( 4 , 1 , 1 ) \).
@@ -170,10 +152,7 @@ Every discrete integer domain \( \mathbb { Z } \) induces an exact bounded discr
 [POSTULATE]
 .Postulate 6: Jaynesian Maximum Entropy Prior
 ====
-Any probability measure \( P ( n ) \) assigned over discrete integer states \( n \in \mathbb { Z } \) under expectation constraint \( \langle A ( n ) \rangle = a \) maximizes the Shannon-Jaynes entropy:
-
-
-\[ S [ P ] = - \sum _ { n \in \mathbb { Z } } P ( n ) \ln P ( n ) \]
+Any probability measure \( P ( n ) \) assigned over discrete integer states \( n \in \mathbb { Z } \) under expectation constraint \( \langle A ( n ) \rangle = a \) maximizes the Shannon-Jaynes entropy: \[ S [ P ] = - \sum _ { n \in \mathbb { Z } } P ( n ) \ln P ( n ) \]
 
 
 yielding the canonical unbiased prior distribution \( P ( n ) = \frac { 1 } { Z } e ^ { - \lambda A ( n ) } \).
@@ -190,18 +169,12 @@ All domain extensions, rational partition grids, and spectral operator spaces in
 [POSTULATE]
 .Postulate 8: Action by Direct Contact via Topological Halos
 ====
-All mathematical operations, operator field evolutions, and physical interactions in the Iris Number System are strictly governed by action by direct contact defined topologically via **Halos**. 
+All mathematical operations, operator field evolutions, and physical interactions in the Iris Number System are strictly governed by action by direct contact defined topologically via **Halos**.
 
-For every element or operator \( x \in \mathcal { D } _ { \text { Iris } } \), its **Topological Halo** \( \mathcal { H } ( x ) \) is defined as its local contiguous metric neighborhood and nilpotent perimeter boundary:
-
-
-\[ \mathcal { H } ( x ) = \left \{ y \in \mathcal { D } _ { \text { Iris } } \; \middle | \; d _ { Cl } ( x , y ) \le \epsilon _ { \text { local } } \text { or } ( x - y ) ^ 2 \in \text { span } ( \varpi , \vartheta ) \right \} \]
+For every element or operator \( x \in \mathcal { D } _ { \text { Iris } } \), its **Topological Halo** \( \mathcal { H } ( x ) \) is defined as its local contiguous metric neighborhood and nilpotent perimeter boundary: \[ \mathcal { H } ( x ) = \left \{ y \in \mathcal { D } _ { \text { Iris } } \; \middle | \; d _ { Cl } ( x , y ) \le \epsilon _ { \text { local } } \text { or } ( x - y ) ^ 2 \in \text { span } ( \varpi , \vartheta ) \right \} \]
 
 
-Physical and mathematical interactions between entities \( A \) and \( B \) occur if and only if their topological halos intersect:
-
-
-\[ \text { Interaction } ( A , B ) \neq 0 \iff \mathcal { H } ( A ) \cap \mathcal { H } ( B ) \neq \emptyset \]
+Physical and mathematical interactions between entities \( A \) and \( B \) occur if and only if their topological halos intersect: \[ \text { Interaction } ( A , B ) \neq 0 \iff \mathcal { H } ( A ) \cap \mathcal { H } ( B ) \neq \emptyset \]
 
 
 Spectral density transfers and force couplings execute strictly through contiguous boundary contact across overlapping halos, forbidding non-local action at a distance.
@@ -211,10 +184,7 @@ Spectral density transfers and force couplings execute strictly through contiguo
 [POSTULATE]
 .Postulate 9: Formal Definition of the Iris Generator (\( \iota \))
 ====
-The fundamental Iris generator \( \iota \) is defined as a multivector operator in Clifford Algebra \( Cl ( 4 , 1 , 1 ) \) acting as an algebraic aperture whose quadratic constraint satisfies:
-
-
-\[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
+The fundamental Iris generator \( \iota \) is defined as a multivector operator in Clifford Algebra \( Cl ( 4 , 1 , 1 ) \) acting as an algebraic aperture whose quadratic constraint satisfies: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
 
 
 where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators (\( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \)) constituting the nilpotent perimeter boundary of the aperture, and \( \mathbf { 1 } \) is the Clifford scalar unit identity.
@@ -228,10 +198,7 @@ Constructing the rational numbers \( \mathbb { Q } \) using the Iris optical-geo
 
 Following the formal definition of the Iris generator in Postulate 9 and the Primordial Principle of Measurement (Postulate 0), the domain of **Rational Numbers**, denoted by \( \mathbb { Q } \), is constructed directly using the **Iris Optical-Geometric Aperture Analogy**.
 
-Rather than abstract static fractions, a rational number represents the relative opening ratio or flux throughput fraction of an Iris aperture diaphragm:
-
-
-\[ \mathbb { Q } = \left \{ \frac { p } { q _ { \text { den } } } \; \middle | \; p , q _ { \text { den } } \in \mathbb { Z } , q _ { \text { den } } \neq \mathbf { 0 } \right \} \]
+Rather than abstract static fractions, a rational number represents the relative opening ratio or flux throughput fraction of an Iris aperture diaphragm: \[ \mathbb { Q } = \left \{ \frac { p } { q _ { \text { den } } } \; \middle | \; p , q _ { \text { den } } \in \mathbb { Z } , q _ { \text { den } } \neq \mathbf { 0 } \right \} \]
 
 
 In this optical-geometric model, the fully open reference Iris aperture corresponds to the unit scalar identity \( \mathbf { 1 } _ { Cl } \) (or primary unit counting step \( \bullet \)). An Iris aperture is divided sectorially by \( q _ { \text { den } } \in \mathbb { Z } _ { > 0 } \) overlapping aperture blades or grid steps. Selecting \( p \in \mathbb { Z } \) blade counting steps yields the fractional Iris aperture opening ratio:
@@ -240,10 +207,7 @@ In this optical-geometric model, the fully open reference Iris aperture correspo
 [DEFINITION]
 .Definition: Iris Aperture Rational Ratio
 ====
-A rational number \( r = \frac { p } { q _ { \text { den } } } \) is an active Iris aperture measurement operator that partitions the primary unit aperture flux \( \bullet \) into \( q _ { \text { den } } \) equal radial blade sub-intervals, and iterates that sub-step \( p \) times along the directional measurement axis:
-
-
-\[ r = \frac { p } { q _ { \text { den } } } \equiv \text { ApertureFlux } _ { q _ { \text { den } } } \left ( p \cdot \bullet _ { \to / \leftarrow } \right ) \]
+A rational number \( r = \frac { p } { q _ { \text { den } } } \) is an active Iris aperture measurement operator that partitions the primary unit aperture flux \( \bullet \) into \( q _ { \text { den } } \) equal radial blade sub-intervals, and iterates that sub-step \( p \) times along the directional measurement axis: \[ r = \frac { p } { q _ { \text { den } } } \equiv \text { ApertureFlux } _ { q _ { \text { den } } } \left ( p \cdot \bullet _ { \to / \leftarrow } \right ) \]
 
 ====
 
@@ -254,10 +218,7 @@ Under this directional Iris aperture measurement representation:
 * \( \frac { \mathbf { 0 } } { q _ { \text { den } } } \): A completely closed Iris aperture state (\( r = 0 \)).
 
 === Discrete Partition Grids as Iris Aperture Grid Resolutions
-As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { > 0 } \) corresponds to an \( N \)-blade Iris aperture resolution level, inducing an exact, bounded discrete rational partition grid:
-
-
-\[ \mathcal { G } _ N = \left \{ \frac { k } { N } \; \middle | \; k \in \mathbb { Z } , | k | \le N ^ 2 \right \} \]
+As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { > 0 } \) corresponds to an \( N \)-blade Iris aperture resolution level, inducing an exact, bounded discrete rational partition grid: \[ \mathcal { G } _ N = \left \{ \frac { k } { N } \; \middle | \; k \in \mathbb { Z } , | k | \le N ^ 2 \right \} \]
 
 
 The elementary grid resolution step size \( \delta = \frac { \bullet } { N } \) represents a single blade's aperture sector, satisfying exact integer reciprocity \( \delta \cdot N = \bullet \), guaranteeing that all measurement quantities in \( \mathcal { G } _ N \) are exact, constructible discrete states free of truncation errors, rounding noise, or reliance on unconstructive non-denumerable continua.
@@ -267,10 +228,7 @@ The elementary grid resolution step size \( \delta = \frac { \bullet } { N } \) 
 Arithmetic operations over rational numbers \( \mathbb { Q } \) are physical and algebraic operations of Iris aperture composition, blade alignment, and scale refinement.
 
 === Addition as Iris Blade Alignment
-Adding two rational aperture ratios \( \frac { a } { b } \) and \( \frac { c } { d } \) aligns their respective blade subdivisions to a common resolution count \( b \cdot d \) across the Iris aperture perimeter:
-
-
-\[ \frac { a } { b } + \frac { c } { d } = \frac { ( a \cdot d ) _ { \to / \leftarrow } + ( b \cdot c ) _ { \to / \leftarrow } } { ( b \cdot d ) _ { \to } } \]
+Adding two rational aperture ratios \( \frac { a } { b } \) and \( \frac { c } { d } \) aligns their respective blade subdivisions to a common resolution count \( b \cdot d \) across the Iris aperture perimeter: \[ \frac { a } { b } + \frac { c } { d } = \frac { ( a \cdot d ) _ { \to / \leftarrow } + ( b \cdot c ) _ { \to / \leftarrow } } { ( b \cdot d ) _ { \to } } \]
 
 
 This process aligns discrete aperture measurement steps onto a single common partition grid without altering the total measured flux distance from the reference origin.
@@ -282,20 +240,14 @@ Multiplication \( \frac { a } { b } \cdot \frac { c } { d } = \frac { a \cdot c 
 [THEOREM]
 .Theorem: Scale-Invariant Rational Reciprocity
 ====
-For every non-zero rational aperture ratio \( r = \frac { p } { q _ { \text { den } } } \in \mathbb { Q } \setminus \{ \mathbf { 0 } \} \), there exists an exact multiplicative inverse aperture gating \( r ^ { - 1 } = \frac { q _ { \text { den } } } { p } \) such that:
-
-
-\[ r \cdot r ^ { - 1 } = \frac { p \cdot q _ { \text { den } } } { q _ { \text { den } } \cdot p } = \frac { \bullet } { \bullet } = \mathbf { 1 } \]
+For every non-zero rational aperture ratio \( r = \frac { p } { q _ { \text { den } } } \in \mathbb { Q } \setminus \{ \mathbf { 0 } \} \), there exists an exact multiplicative inverse aperture gating \( r ^ { - 1 } = \frac { q _ { \text { den } } } { p } \) such that: \[ r \cdot r ^ { - 1 } = \frac { p \cdot q _ { \text { den } } } { q _ { \text { den } } \cdot p } = \frac { \bullet } { \bullet } = \mathbf { 1 } \]
 
 
 The composite operation of scaling the Iris aperture down by \( q _ { \text { den } } \) and scaling up by \( p \), followed by its inverse, exactly restores the primary unit aperture flux state \( \bullet \).
 ====
 
 === Modulation of the Iris Multivector Generator \( \iota \)
-Rational aperture scale factors \( r = p / q \) directly modulate the Iris field operator defined in Postulate 9:
-
-
-\[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } _ { Cl } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
+Rational aperture scale factors \( r = p / q \) directly modulate the Iris field operator defined in Postulate 9: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } _ { Cl } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
 
 
 Varying the rational aperture ratio \( r \) adjusts the central flux transmission while maintaining the quadratic perimeter boundary constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
@@ -314,16 +266,10 @@ While classical analysis often relies on non-constructive completed infinities (
 [DEFINITION]
 .Definition: Constructive Iris Aperture Real Number
 ====
-A real number \( x \in \mathbb { R } \) is an active measurement process defined as an equivalence class of Cauchy sequences of rational aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \), where each \( r _ N \in \mathcal { G } _ N \) represents an exact rational measurement state on an \( N \)-blade Iris aperture grid, satisfying the Cauchy convergence criterion:
+A real number \( x \in \mathbb { R } \) is an active measurement process defined as an equivalence class of Cauchy sequences of rational aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \), where each \( r _ N \in \mathcal { G } _ N \) represents an exact rational measurement state on an \( N \)-blade Iris aperture grid, satisfying the Cauchy convergence criterion: \[ \forall \epsilon = \frac { 1 } { M } \in \mathbb { Q } _ { > 0 } , \quad \exists K \in \mathbb { Z } _ { > 0 } \quad \text { s.t. } \quad \forall n , m > K , \quad \left | r _ n - r _ m \right | < \frac { 1 } { M } \]
 
 
-\[ \forall \epsilon = \frac { 1 } { M } \in \mathbb { Q } _ { > 0 } , \quad \exists K \in \mathbb { Z } _ { > 0 } \quad \text { s.t. } \quad \forall n , m > K , \quad \left | r _ n - r _ m \right | < \frac { 1 } { M } \]
-
-
-The real quantity \( x \) is the main scale aperture flux throughput value under Main Scale Projection:
-
-
-\[ x \equiv ( \downarrow ) ( r _ \omega ) = ( \downarrow ) \left ( \text { ApertureFlux } _ \omega \left ( k _ \omega \cdot \delta _ \omega \right ) \right ) \]
+The real quantity \( x \) is the main scale aperture flux throughput value under Main Scale Projection: \[ x \equiv ( \downarrow ) ( r _ \omega ) = ( \downarrow ) \left ( \text { ApertureFlux } _ \omega \left ( k _ \omega \cdot \delta _ \omega \right ) \right ) \]
 
 
 where \( r _ \omega = \frac { k _ \omega } { \omega } \in \mathcal { G } _ \omega \) is an ultra-refined vernier rational measurement state satisfying \( | r _ N - x | < \frac { 1 } { N } \) for all finite grid stages \( N \in \mathbb { Z } _ { > 0 } \).
@@ -340,32 +286,23 @@ Under this physical Iris aperture limit model:
 With real numbers \( \mathbb { R } \) established as constructive limits of Iris aperture partition measurements, real arithmetic and transcendental functions operate seamlessly within the Clifford Algebra \( Cl ( 4 , 1 , 1 ) \).
 
 === Bivector Rotations and Transcendental Angles
-In the Iris generator operator \( \iota ( r , \theta ) \) defined in Postulate 9, the rotation angle \( \theta \in \mathbb { R } \) parameterizes the spatial orientation of the aperture plane along the Spin(2) bivector generator \( e _ { 12 } \):
+In the Iris generator operator \( \iota ( r , \theta ) \) defined in Postulate 9, the rotation angle \( \theta \in \mathbb { R } \) parameterizes the spatial orientation of the aperture plane along the Spin(2) bivector generator \( e _ { 12 } \): \[ R ( \theta ) = \exp \left ( \frac { \theta } { 2 } e _ { 12 } \right ) = \cos \left ( \frac { \theta } { 2 } \right ) + \sin \left ( \frac { \theta } { 2 } \right ) e _ { 12 } \]
 
 
-\[ R ( \theta ) = \exp \left ( \frac { \theta } { 2 } e _ { 12 } \right ) = \cos \left ( \frac { \theta } { 2 } \right ) + \sin \left ( \frac { \theta } { 2 } \right ) e _ { 12 } \]
-
-
-The transcendental functions \( \cos \theta \) and \( \sin \theta \) are not mystical infinite non-repeating decimals, but exact geometric series limits of composite rational blade rotations on the Iris aperture perimeter:
-
-
-\[ \cos \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k } } { ( 2k ) ! } , \quad \sin \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k + 1 } } { ( 2k + 1 ) ! } \]
+The transcendental functions \( \cos \theta \) and \( \sin \theta \) are not mystical infinite non-repeating decimals, but exact geometric series limits of composite rational blade rotations on the Iris aperture perimeter: \[ \cos \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k } } { ( 2k ) ! } , \quad \sin \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k + 1 } } { ( 2k + 1 ) ! } \]
 
 
 [#theorem-real-aperture-completeness]
 [THEOREM]
 .Theorem: Constructive Completeness of Iris Grid Limits
 ====
-Every Cauchy sequence of rational Iris aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the Clifford multivector field \( \Psi \in Cl ( 4 , 1 , 1 ) \). 
+Every Cauchy sequence of rational Iris aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the Clifford multivector field \( \Psi \in Cl ( 4 , 1 , 1 ) \).
 
 Furthermore, the space of real aperture flux parameters \( [ - 1 , 1 ] \) is constructively complete: any smooth aperture modulation \( f ( r ) \) can be uniformly approximated to arbitrary precision \( \epsilon \in \mathbb { Q } _ { > 0 } \) by a finite rational polynomial operator on an Iris partition grid \( \mathcal { G } _ N \).
 ====
 
 === Multiplicative Real Inverse and Flux Conservation
-For any non-zero real aperture parameter \( x \in \mathbb { R } \setminus \{ 0 \} \), the multiplicative inverse \( x ^ { - 1 } \) represents the reciprocal aperture flux scaling that satisfies:
-
-
-\[ x \cdot x ^ { - 1 } = 1 \quad \implies \quad \left ( \lim _ { N \to \infty } r _ N \right ) \cdot \left ( \lim _ { N \to \infty } r _ N ^ { - 1 } \right ) = \mathbf { 1 } _ { Cl } \]
+For any non-zero real aperture parameter \( x \in \mathbb { R } \setminus \{ 0 \} \), the multiplicative inverse \( x ^ { - 1 } \) represents the reciprocal aperture flux scaling that satisfies: \[ x \cdot x ^ { - 1 } = 1 \quad \implies \quad \left ( \lim _ { N \to \infty } r _ N \right ) \cdot \left ( \lim _ { N \to \infty } r _ N ^ { - 1 } \right ) = \mathbf { 1 } _ { Cl } \]
 
 
 This guarantees strict conservation of light flux and geometric scale invariance across all real transformations within the Counting-Iris Number System.
@@ -386,22 +323,15 @@ Just as a physical vernier caliper uses an auxiliary sliding scale aligned with 
 [DEFINITION]
 .Definition: Multiscale Vernier Measurement Number (m-res Number)
 ====
-A multiscale resolution number (or **m-res number**) \( x ^ { \ast } \in \mathbb { R } ^ * \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier aperture grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { > 0 } \):
+A multiscale resolution number (or **m-res number**) \( x ^ { \ast } \in \mathbb { R } ^ * \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier aperture grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { > 0 } \): \[ x ^ { \ast } = \frac { k } { \omega } \equiv \text { VernierApertureFlux } _ { \omega } \left ( k \cdot \delta _ \omega \right ) \quad \text { where } \quad \delta _ \omega = \frac { \bullet } { \omega } \]
 
 
-\[ x ^ { \ast } = \frac { k } { \omega } \equiv \text { VernierApertureFlux } _ { \omega } \left ( k \cdot \delta _ \omega \right ) \quad \text { where } \quad \delta _ \omega = \frac { \bullet } { \omega } \]
-+
 
+. **Finite-Duration Observation Step**: A multiscale resolution quantity \( \epsilon ^ * \in \mathbb { R } ^ * \) represents an observation or measurement process conducted over a finite temporal duration \( \tau _ { \text { obs } } \), whose measured flux magnitude is strictly smaller than any standard positive rational step: \[ | \epsilon ^ * | < \frac { 1 } { N } , \quad \forall N \in \mathbb { Z } _ { > 0 } \]
 
-. **Finite-Duration Observation Step**: A multiscale resolution quantity \( \epsilon ^ * \in \mathbb { R } ^ * \) represents an observation or measurement process conducted over a finite temporal duration \( \tau _ { \text { obs } } \), whose measured flux magnitude is strictly smaller than any standard positive rational step:
-+
-\[ | \epsilon ^ * | < \frac { 1 } { N } , \quad \forall N \in \mathbb { Z } _ { > 0 } \]
-+
 An elementary finite-duration step is executed by a physical measurement process taking a finite time duration to perform across a fine vernier sub-tick step \( \delta _ \omega = \frac { \bullet } { \omega } \).
 
-. **Extended Temporal Measurement Scale**: A multiscale resolution quantity \( \Omega ^ * \in \mathbb { R } ^ * \) represents a cumulative measurement process conducted over an extended series of finite time observation steps whose step count exceeds any standard integer bound:
-+
-\[ | \Omega ^ * | > M , \quad \forall M \in \mathbb { Z } _ { > 0 } \]
+. **Extended Temporal Measurement Scale**: A multiscale resolution quantity \( \Omega ^ * \in \mathbb { R } ^ * \) represents a cumulative measurement process conducted over an extended series of finite time observation steps whose step count exceeds any standard integer bound: \[ | \Omega ^ * | > M , \quad \forall M \in \mathbb { Z } _ { > 0 } \]
 
 ====
 
@@ -416,32 +346,20 @@ An elementary finite-duration step is executed by a physical measurement process
 Arithmetic operations on multiscale resolution numbers \( \mathbb { R } ^ * \) operate under MSRA as composite measurement operations on aligned vernier scales, preserving exact algebraic ring and field properties.
 
 === Main Scale Projection (Downwards Arrow Operator \( \downarrow ) \))
-Under Multiscale Resolution Analysis (MSRA), every finite multiscale vernier reading \( x ^ { \ast } \in \mathbb { R } ^ * \) decomposes uniquely into a main scale real aperture reading \( r \in \mathbb { R } \) plus a finite-duration observation residual \( \epsilon ^ * \) resulting from a measurement process conducted over a finite temporal duration:
+Under Multiscale Resolution Analysis (MSRA), every finite multiscale vernier reading \( x ^ { \ast } \in \mathbb { R } ^ * \) decomposes uniquely into a main scale real aperture reading \( r \in \mathbb { R } \) plus a finite-duration observation residual \( \epsilon ^ * \) resulting from a measurement process conducted over a finite temporal duration: \[ x ^ { \ast } = r + \epsilon ^ * , \quad r \in \mathbb { R } , \quad | \epsilon ^ * | < \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { > 0 } ) \]
 
 
-\[ x ^ { \ast } = r + \epsilon ^ * , \quad r \in \mathbb { R } , \quad | \epsilon ^ * | < \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { > 0 } ) \]
-
-
-The **Main Scale Projection** operator \( ( \downarrow ) : \text { Fin } ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) maps the fine vernier reading back to its unique nearest main scale real flux value:
-
-
-\[ ( \downarrow ) ( x ^ { \ast } ) = ( \downarrow ) ( r + \epsilon ^ * ) = r \]
+The **Main Scale Projection** operator \( ( \downarrow ) : \text { Fin } ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) maps the fine vernier reading back to its unique nearest main scale real flux value: \[ ( \downarrow ) ( x ^ { \ast } ) = ( \downarrow ) ( r + \epsilon ^ * ) = r \]
 
 
 [#theorem-vernier-flux-conservation]
 [THEOREM]
 .Theorem: Vernier Flux Conservation and Main Scale Projection
 ====
-For any finite multiscale vernier measurement operations \( x ^ { \ast } , y ^ { \ast } \in \text { Fin } ( \mathbb { R } ^ { \ast } ) \), the Main Scale Projection operator \( ( \downarrow ) \) is a ring homomorphism into the real field \( \mathbb { R } \):
+For any finite multiscale vernier measurement operations \( x ^ { \ast } , y ^ { \ast } \in \text { Fin } ( \mathbb { R } ^ { \ast } ) \), the Main Scale Projection operator \( ( \downarrow ) \) is a ring homomorphism into the real field \( \mathbb { R } \): \[ ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) , \quad ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
 
 
-\[ ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) , \quad ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
-
-
-Furthermore, in MSRA, calculus differentials \( d \Psi \) and derivatives \( \frac { d \Psi } { dx } \) in the Clifford field are exact ratios of finite vernier grid displacements evaluated under Main Scale Projection over finite observation time intervals:
-
-
-\[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Delta \Psi } { \delta _ \omega } \right ) \]
+Furthermore, in MSRA, calculus differentials \( d \Psi \) and derivatives \( \frac { d \Psi } { dx } \) in the Clifford field are exact ratios of finite vernier grid displacements evaluated under Main Scale Projection over finite observation time intervals: \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Delta \Psi } { \delta _ \omega } \right ) \]
 
 
 This eliminates division-by-zero ambiguities by expressing all derivatives as concrete physical ratios between measurement steps conducted in finite observation time.
@@ -459,16 +377,10 @@ In traditional mathematics, the complex field \( \mathbb { C } \) is introduced 
 [DEFINITION]
 .Definition: Counting-Iris Complex Number
 ====
-A complex number \( z \in \mathbb { C } _ { \text { Iris } } \) in the Counting-Iris framework is a multivector aperture expression:
+A complex number \( z \in \mathbb { C } _ { \text { Iris } } \) in the Counting-Iris framework is a multivector aperture expression: \[ z = a + b \iota \]
 
 
-\[ z = a + b \iota \]
-
-
-where \( a , b \in \mathbb { R } \) (or discrete rational partition grids \( \mathcal { G } _ N \)) and \( \iota \) is the fundamental Iris generator (Postulate 9) satisfying the quadratic aperture relation:
-
-
-\[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
+where \( a , b \in \mathbb { R } \) (or discrete rational partition grids \( \mathcal { G } _ N \)) and \( \iota \) is the fundamental Iris generator (Postulate 9) satisfying the quadratic aperture relation: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
 
 
 with \( \varpi , \vartheta \) being orthogonal nilpotent boundary generators (\( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \)).
@@ -483,22 +395,13 @@ The imaginary unit \( \iota \) in Counting-Iris represents an active, physical a
 Under Main Scale Projection \( ( \downarrow ) ( \iota ^ 2 ) = - 1 \), the Counting-Iris complex domain \( \mathbb { C } _ { \text { Iris } } \) maps directly onto the classical field of complex numbers \( \mathbb { C } \), preserving addition, multiplication, and modulus operations.
 
 *Proof:*
-Let \( z _ 1 = a _ 1 + b _ 1 \iota \) and \( z _ 2 = a _ 2 + b _ 2 \iota \) be two Counting-Iris complex numbers. Their product in the multivector aperture algebra is given by:
+Let \( z _ 1 = a _ 1 + b _ 1 \iota \) and \( z _ 2 = a _ 2 + b _ 2 \iota \) be two Counting-Iris complex numbers. Their product in the multivector aperture algebra is given by: \[ z _ 1 z _ 2 = ( a _ 1 a _ 2 + b _ 1 b _ 2 \iota ^ 2 ) + ( a _ 1 b _ 2 + a _ 2 b _ 1 ) \iota = ( a _ 1 a _ 2 - b _ 1 b _ 2 + b _ 1 b _ 2 \varpi \vartheta ) + ( a _ 1 b _ 2 + a _ 2 b _ 1 ) \iota \]
 
 
-\[ z _ 1 z _ 2 = ( a _ 1 a _ 2 + b _ 1 b _ 2 \iota ^ 2 ) + ( a _ 1 b _ 2 + a _ 2 b _ 1 ) \iota = ( a _ 1 a _ 2 - b _ 1 b _ 2 + b _ 1 b _ 2 \varpi \vartheta ) + ( a _ 1 b _ 2 + a _ 2 b _ 1 ) \iota \]
+Applying the Main Scale Projection operator \( ( \downarrow ) \) (Postulate 8 / MSRA) removes the nilpotent boundary residual \( \varpi \vartheta \), yielding: \[ ( \downarrow ) ( z _ 1 z _ 2 ) = ( a _ 1 a _ 2 - b _ 1 b _ 2 ) + ( a _ 1 b _ 2 + a _ 2 b _ 1 ) i \]
 
 
-Applying the Main Scale Projection operator \( ( \downarrow ) \) (Postulate 8 / MSRA) removes the nilpotent boundary residual \( \varpi \vartheta \), yielding:
-
-
-\[ ( \downarrow ) ( z _ 1 z _ 2 ) = ( a _ 1 a _ 2 - b _ 1 b _ 2 ) + ( a _ 1 b _ 2 + a _ 2 b _ 1 ) i \]
-
-
-which is identical to the canonical field multiplication rule in \( \mathbb { C } \). Furthermore, complex conjugation is defined as the aperture inversion operator \( \bar { z } = a - b \iota \), giving the aperture norm squared:
-
-
-\[ z \bar { z } = a ^ 2 - b ^ 2 \iota ^ 2 = a ^ 2 + b ^ 2 - b ^ 2 \varpi \vartheta \implies ( \downarrow ) ( z \bar { z } ) = a ^ 2 + b ^ 2 \]
+which is identical to the canonical field multiplication rule in \( \mathbb { C } \). Furthermore, complex conjugation is defined as the aperture inversion operator \( \bar { z } = a - b \iota \), giving the aperture norm squared: \[ z \bar { z } = a ^ 2 - b ^ 2 \iota ^ 2 = a ^ 2 + b ^ 2 - b ^ 2 \varpi \vartheta \implies ( \downarrow ) ( z \bar { z } ) = a ^ 2 + b ^ 2 \]
 
 
 establishing an exact ring isomorphism with the classical complex field \( \mathbb { C } \). \( \square \)
@@ -512,51 +415,33 @@ Rather than postulating quaternions \( \mathbb { H } \) through abstract 4-tuple
 [DEFINITION]
 .Definition: Counting-Iris Quaternion Bivector
 ====
-A quaternion \( q \in \mathbb { H } _ { \text { Iris } } \) in Counting-Iris is a multivector in the spatial bivector subalgebra of \( Cl ( 4 , 1 , 1 ) \):
+A quaternion \( q \in \mathbb { H } _ { \text { Iris } } \) in Counting-Iris is a multivector in the spatial bivector subalgebra of \( Cl ( 4 , 1 , 1 ) \): \[ q = q _ 0 + q _ 1 i + q _ 2 j + q _ 3 k \]
 
 
-\[ q = q _ 0 + q _ 1 i + q _ 2 j + q _ 3 k \]
-
-
-where \( q _ 0 , q _ 1 , q _ 2 , q _ 3 \in \mathbb { R } \) and \( i , j , k \) are spatial bivector aperture plane generators constructed from the spatial basis \( \{ e _ 1 , e _ 2 , e _ 3 \} \) of \( Cl ( 4 , 1 , 1 ) \):
-
-
-\[ i = e _ 2 \wedge e _ 3 , \qquad j = e _ 3 \wedge e _ 1 , \qquad k = e _ 1 \wedge e _ 2 \]
+where \( q _ 0 , q _ 1 , q _ 2 , q _ 3 \in \mathbb { R } \) and \( i , j , k \) are spatial bivector aperture plane generators constructed from the spatial basis \( \{ e _ 1 , e _ 2 , e _ 3 \} \) of \( Cl ( 4 , 1 , 1 ) \): \[ i = e _ 2 \wedge e _ 3 , \qquad j = e _ 3 \wedge e _ 1 , \qquad k = e _ 1 \wedge e _ 2 \]
 ====
 
 [#theorem-quaternion-algebra-identities]
 [THEOREM]
 .Theorem: Quaternion Bivector Algebraic Identities
 ====
-The spatial bivector aperture generators \( i , j , k \) satisfy Hamilton's fundamental quaternion relations:
-
-
-\[ i ^ 2 = j ^ 2 = k ^ 2 = - 1 \]
+The spatial bivector aperture generators \( i , j , k \) satisfy Hamilton's fundamental quaternion relations: \[ i ^ 2 = j ^ 2 = k ^ 2 = - 1 \]
 
 
 and non-commutative cyclic bivector product rules, establishing \( \mathbb { H } _ { \text { Iris } } \) as an exact Clifford sub-algebra of \( Cl ( 4 , 1 , 1 ) \).
 
 *Proof:*
 In \( Cl ( 4 , 1 , 1 ) \), the spatial basis vectors satisfy \( e _ 1 ^ 2 = e _ 2 ^ 2 = e _ 3 ^ 2 = 1 \) and \( e _ a e _ b = - e _ b e _ a \) for \( a \neq b \).
-Evaluating the square of \( i = e _ 2 e _ 3 \):
-
-
-\[ i ^ 2 = ( e _ 2 e _ 3 ) ( e _ 2 e _ 3 ) = e _ 2 ( e _ 3 e _ 2 ) e _ 3 = - e _ 2 ( e _ 2 e _ 3 ) e _ 3 = - e _ 2 ^ 2 e _ 3 ^ 2 = - ( 1 ) ( 1 ) = - 1 \]
+Evaluating the square of \( i = e _ 2 e _ 3 \): \[ i ^ 2 = ( e _ 2 e _ 3 ) ( e _ 2 e _ 3 ) = e _ 2 ( e _ 3 e _ 2 ) e _ 3 = - e _ 2 ( e _ 2 e _ 3 ) e _ 3 = - e _ 2 ^ 2 e _ 3 ^ 2 = - ( 1 ) ( 1 ) = - 1 \]
 
 
 By spatial permutation symmetry, \( j ^ 2 = ( e _ 3 e _ 1 ) ^ 2 = - 1 \) and \( k ^ 2 = ( e _ 1 e _ 2 ) ^ 2 = - 1 \).
-Evaluating the bivector product \( i j \):
-
-
-\[ i j = ( e _ 2 e _ 3 ) ( e _ 3 e _ 1 ) = e _ 2 ( e _ 3 e _ 3 ) e _ 1 = e _ 2 ( 1 ) e _ 1 = e _ 2 e _ 1 = - e _ 1 e _ 2 = - k \]
+Evaluating the bivector product \( i j \): \[ i j = ( e _ 2 e _ 3 ) ( e _ 3 e _ 1 ) = e _ 2 ( e _ 3 e _ 3 ) e _ 1 = e _ 2 ( 1 ) e _ 1 = e _ 2 e _ 1 = - e _ 1 e _ 2 = - k \]
 
 
 Cyclically evaluating \( j k \) and \( k i \) yields \( j k = - i \) and \( k i = - j \). Under standard right-handed orientation \( i = e _ 3 e _ 2 \), \( j = e _ 1 e _ 3 \), \( k = e _ 2 e _ 1 \), we obtain \( i ^ 2 = j ^ 2 = k ^ 2 = i j k = - 1 \).
 
-Quaternion conjugation corresponds to Clifford bivector reversal \( \tilde { q } = q _ 0 - q _ 1 i - q _ 2 j - q _ 3 k \), giving the positive-definite norm:
-
-
-\[ q \tilde { q } = q _ 0 ^ 2 + q _ 1 ^ 2 + q _ 2 ^ 2 + q _ 3 ^ 2 \]
+Quaternion conjugation corresponds to Clifford bivector reversal \( \tilde { q } = q _ 0 - q _ 1 i - q _ 2 j - q _ 3 k \), giving the positive-definite norm: \[ q \tilde { q } = q _ 0 ^ 2 + q _ 1 ^ 2 + q _ 2 ^ 2 + q _ 3 ^ 2 \]
 
 
 This proves that quaternions in Counting-Iris are exact spatial bivector rotations in \( Cl ( 4 , 1 , 1 ) \). \( \square \)
@@ -574,10 +459,7 @@ In the Counting-Iris framework, differential calculus is formulated constructive
 [DEFINITION]
 .Definition: MSRA Vernier Derivative
 ====
-Let \( \Psi : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be a finite multiscale aperture function. The MSRA derivative of \( \Psi \) at a main-scale real point \( x \in \mathbb { R } \) with respect to a discrete ultra-refined grid resolution \( \omega \in \mathbb { Z } ^ { \ast } \setminus \mathbb { Z } \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \) is defined as:
-
-
-\[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
+Let \( \Psi : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be a finite multiscale aperture function. The MSRA derivative of \( \Psi \) at a main-scale real point \( x \in \mathbb { R } \) with respect to a discrete ultra-refined grid resolution \( \omega \in \mathbb { Z } ^ { \ast } \setminus \mathbb { Z } \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \) is defined as: \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
 
 
 where \( ( \downarrow ) : \mathbb { R } ^ { \ast } \to \mathbb { R } \) is the Main Scale Projection Operator mapping finite multiscale vernier readings to standard main-scale real numbers.
@@ -593,42 +475,24 @@ The fundamental laws of differential calculus follow directly as algebraic tauto
 [THEOREM]
 .Theorem: MSRA Product Rule
 ====
-Let \( u , v : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finite, differentiable MSRA aperture functions. The derivative of their product satisfies:
+Let \( u , v : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finite, differentiable MSRA aperture functions. The derivative of their product satisfies: \[ \frac { d ( uv ) } { dx } = u \frac { dv } { dx } + v \frac { du } { dx } \]
 
-
-\[ \frac { d ( uv ) } { dx } = u \frac { dv } { dx } + v \frac { du } { dx } \]
-+
 
 
 *Proof:*
-On the ultra-refined discrete grid \( \mathcal { G } _ \omega \) with step \( \delta _ \omega \), compute the exact finite vernier difference of the product:
+On the ultra-refined discrete grid \( \mathcal { G } _ \omega \) with step \( \delta _ \omega \), compute the exact finite vernier difference of the product: \[ \Delta ( uv ) = u ( x + \delta _ \omega ) v ( x + \delta _ \omega ) - u ( x ) v ( x ) \]
 
 
-\[ \Delta ( uv ) = u ( x + \delta _ \omega ) v ( x + \delta _ \omega ) - u ( x ) v ( x ) \]
+Adding and subtracting \( u ( x + \delta _ \omega ) v ( x ) \) gives: \[ \Delta ( uv ) = u ( x + \delta _ \omega ) [ v ( x + \delta _ \omega ) - v ( x ) ] + v ( x ) [ u ( x + \delta _ \omega ) - u ( x ) ] \]
 
 
-Adding and subtracting \( u ( x + \delta _ \omega ) v ( x ) \) gives:
+Dividing by the non-zero grid increment \( \delta _ \omega \) yields: \[ \frac { \Delta ( uv ) } { \delta _ \omega } = u ( x + \delta _ \omega ) \frac { \Delta v } { \delta _ \omega } + v ( x ) \frac { \Delta u } { \delta _ \omega } \]
 
 
-\[ \Delta ( uv ) = u ( x + \delta _ \omega ) [ v ( x + \delta _ \omega ) - v ( x ) ] + v ( x ) [ u ( x + \delta _ \omega ) - u ( x ) ] \]
+Applying the Main Scale Projection operator \( ( \downarrow ) \) and utilizing its multiplicative and additive ring homomorphism properties (Postulate 8 / MSRA): \[ ( \downarrow ) \left ( \frac { \Delta ( uv ) } { \delta _ \omega } \right ) = ( \downarrow ) ( u ( x + \delta _ \omega ) ) \cdot ( \downarrow ) \left ( \frac { \Delta v } { \delta _ \omega } \right ) + ( \downarrow ) ( v ( x ) ) \cdot ( \downarrow ) \left ( \frac { \Delta u } { \delta _ \omega } \right ) \]
 
 
-Dividing by the non-zero grid increment \( \delta _ \omega \) yields:
-
-
-\[ \frac { \Delta ( uv ) } { \delta _ \omega } = u ( x + \delta _ \omega ) \frac { \Delta v } { \delta _ \omega } + v ( x ) \frac { \Delta u } { \delta _ \omega } \]
-
-
-Applying the Main Scale Projection operator \( ( \downarrow ) \) and utilizing its multiplicative and additive ring homomorphism properties (Postulate 8 / MSRA):
-
-
-\[ ( \downarrow ) \left ( \frac { \Delta ( uv ) } { \delta _ \omega } \right ) = ( \downarrow ) ( u ( x + \delta _ \omega ) ) \cdot ( \downarrow ) \left ( \frac { \Delta v } { \delta _ \omega } \right ) + ( \downarrow ) ( v ( x ) ) \cdot ( \downarrow ) \left ( \frac { \Delta u } { \delta _ \omega } \right ) \]
-
-
-Since \( ( \downarrow ) ( u ( x + \delta _ \omega ) ) = ( \downarrow ) ( u ( x ) + \Delta u ) = u ( x ) + 0 = u ( x ) \), this reduces exactly to:
-
-
-\[ \frac { d ( uv ) } { dx } = u ( x ) \frac { dv } { dx } + v ( x ) \frac { du } { dx } \]
+Since \( ( \downarrow ) ( u ( x + \delta _ \omega ) ) = ( \downarrow ) ( u ( x ) + \Delta u ) = u ( x ) + 0 = u ( x ) \), this reduces exactly to: \[ \frac { d ( uv ) } { dx } = u ( x ) \frac { dv } { dx } + v ( x ) \frac { du } { dx } \]
 
 
 establishing the exact MSRA product rule within the Counting-Iris framework. \( \square \)
@@ -638,30 +502,18 @@ establishing the exact MSRA product rule within the Counting-Iris framework. \( 
 [THEOREM]
 .Theorem: MSRA Quotient Rule
 ====
-Let \( u , v : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finite, differentiable MSRA aperture functions with \( ( \downarrow ) ( v ( x ) ) \neq 0 \). The derivative of their ratio satisfies:
+Let \( u , v : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finite, differentiable MSRA aperture functions with \( ( \downarrow ) ( v ( x ) ) \neq 0 \). The derivative of their ratio satisfies: \[ \frac { d } { dx } \left ( \frac { u } { v } \right ) = \frac { v \frac { du } { dx } - u \frac { dv } { dx } } { v ^ 2 } \]
 
-
-\[ \frac { d } { dx } \left ( \frac { u } { v } \right ) = \frac { v \frac { du } { dx } - u \frac { dv } { dx } } { v ^ 2 } \]
-+
 
 
 *Proof:*
-On the ultra-refined grid \( \mathcal { G } _ \omega \) with step \( \delta _ \omega \), compute the finite vernier difference ratio:
+On the ultra-refined grid \( \mathcal { G } _ \omega \) with step \( \delta _ \omega \), compute the finite vernier difference ratio: \[ \Delta \left ( \frac { u } { v } \right ) = \frac { u ( x + \delta _ \omega ) } { v ( x + \delta _ \omega ) } - \frac { u ( x ) } { v ( x ) } = \frac { u ( x + \delta _ \omega ) v ( x ) - u ( x ) v ( x + \delta _ \omega ) } { v ( x + \delta _ \omega ) v ( x ) } \]
 
 
-\[ \Delta \left ( \frac { u } { v } \right ) = \frac { u ( x + \delta _ \omega ) } { v ( x + \delta _ \omega ) } - \frac { u ( x ) } { v ( x ) } = \frac { u ( x + \delta _ \omega ) v ( x ) - u ( x ) v ( x + \delta _ \omega ) } { v ( x + \delta _ \omega ) v ( x ) } \]
+Adding and subtracting \( u ( x ) v ( x ) \) in the numerator gives: \[ \Delta \left ( \frac { u } { v } \right ) = \frac { [ u ( x + \delta _ \omega ) - u ( x ) ] v ( x ) - u ( x ) [ v ( x + \delta _ \omega ) - v ( x ) ] } { v ( x + \delta _ \omega ) v ( x ) } \]
 
 
-Adding and subtracting \( u ( x ) v ( x ) \) in the numerator gives:
-
-
-\[ \Delta \left ( \frac { u } { v } \right ) = \frac { [ u ( x + \delta _ \omega ) - u ( x ) ] v ( x ) - u ( x ) [ v ( x + \delta _ \omega ) - v ( x ) ] } { v ( x + \delta _ \omega ) v ( x ) } \]
-
-
-Dividing by \( \delta _ \omega \) and applying Main Scale Projection \( ( \downarrow ) \):
-
-
-\[ ( \downarrow ) \left ( \frac { 1 } { \delta _ \omega } \Delta \left ( \frac { u } { v } \right ) \right ) = \frac { ( \downarrow ) \left ( \frac { \Delta u } { \delta _ \omega } \right ) ( \downarrow ) ( v ( x ) ) - ( \downarrow ) ( u ( x ) ) ( \downarrow ) \left ( \frac { \Delta v } { \delta _ \omega } \right ) } { ( \downarrow ) ( v ( x + \delta _ \omega ) ) ( \downarrow ) ( v ( x ) ) } = \frac { v \frac { du } { dx } - u \frac { dv } { dx } } { v ^ 2 } \]
+Dividing by \( \delta _ \omega \) and applying Main Scale Projection \( ( \downarrow ) \): \[ ( \downarrow ) \left ( \frac { 1 } { \delta _ \omega } \Delta \left ( \frac { u } { v } \right ) \right ) = \frac { ( \downarrow ) \left ( \frac { \Delta u } { \delta _ \omega } \right ) ( \downarrow ) ( v ( x ) ) - ( \downarrow ) ( u ( x ) ) ( \downarrow ) \left ( \frac { \Delta v } { \delta _ \omega } \right ) } { ( \downarrow ) ( v ( x + \delta _ \omega ) ) ( \downarrow ) ( v ( x ) ) } = \frac { v \frac { du } { dx } - u \frac { dv } { dx } } { v ^ 2 } \]
 
 
 establishing the exact MSRA quotient rule. \( \square \)
@@ -671,24 +523,15 @@ establishing the exact MSRA quotient rule. \( \square \)
 [THEOREM]
 .Theorem: MSRA Chain Rule
 ====
-Let \( g : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) and \( f : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finite, differentiable MSRA aperture functions. The derivative of their composite function \( \Psi ( x ) = f ( g ( x ) ) \) satisfies:
+Let \( g : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) and \( f : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be finite, differentiable MSRA aperture functions. The derivative of their composite function \( \Psi ( x ) = f ( g ( x ) ) \) satisfies: \[ \frac { d ( f \circ g ) } { dx } = f' ( g ( x ) ) \cdot g' ( x ) \]
 
-
-\[ \frac { d ( f \circ g ) } { dx } = f' ( g ( x ) ) \cdot g' ( x ) \]
-+
 
 
 *Proof:*
-Evaluate the vernier increment \( \Delta g = g ( x + \delta _ \omega ) - g ( x ) \). If \( \Delta g = 0 \), both sides vanish identically. If \( \Delta g \neq 0 \), write the finite vernier ratio on the ultra-refined grid as:
+Evaluate the vernier increment \( \Delta g = g ( x + \delta _ \omega ) - g ( x ) \). If \( \Delta g = 0 \), both sides vanish identically. If \( \Delta g \neq 0 \), write the finite vernier ratio on the ultra-refined grid as: \[ \frac { f ( g ( x + \delta _ \omega ) ) - f ( g ( x ) ) } { \delta _ \omega } = \frac { f ( g ( x ) + \Delta g ) - f ( g ( x ) ) } { \Delta g } \cdot \frac { \Delta g } { \delta _ \omega } \]
 
 
-\[ \frac { f ( g ( x + \delta _ \omega ) ) - f ( g ( x ) ) } { \delta _ \omega } = \frac { f ( g ( x ) + \Delta g ) - f ( g ( x ) ) } { \Delta g } \cdot \frac { \Delta g } { \delta _ \omega } \]
-
-
-Applying Main Scale Projection \( ( \downarrow ) \):
-
-
-\[ ( \downarrow ) \left ( \frac { \Delta ( f \circ g ) } { \delta _ \omega } \right ) = ( \downarrow ) \left ( \frac { f ( y + \Delta g ) - f ( y ) } { \Delta g } \right ) \cdot ( \downarrow ) \left ( \frac { \Delta g } { \delta _ \omega } \right ) = f' ( g ( x ) ) \cdot g' ( x ) \]
+Applying Main Scale Projection \( ( \downarrow ) \): \[ ( \downarrow ) \left ( \frac { \Delta ( f \circ g ) } { \delta _ \omega } \right ) = ( \downarrow ) \left ( \frac { f ( y + \Delta g ) - f ( y ) } { \Delta g } \right ) \cdot ( \downarrow ) \left ( \frac { \Delta g } { \delta _ \omega } \right ) = f' ( g ( x ) ) \cdot g' ( x ) \]
 
 
 establishing the MSRA chain rule. \( \square \)
@@ -696,10 +539,7 @@ establishing the MSRA chain rule. \( \square \)
 
 == Multivector Clifford Derivatives in Cl(4,1,1)
 
-Extending MSRA differential calculus to multivector field functions \( \Psi : \mathbb { R } ^ { \ast } \to Cl ( 4 , 1 , 1 ) \), spatial directional derivatives act as active bivector aperture shifts along orthogonal channels \( e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \):
-
-
-\[ \nabla \Psi = \sum _ { a = 1 } ^ 3 e _ a ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega e _ a ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
+Extending MSRA differential calculus to multivector field functions \( \Psi : \mathbb { R } ^ { \ast } \to Cl ( 4 , 1 , 1 ) \), spatial directional derivatives act as active bivector aperture shifts along orthogonal channels \( e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \): \[ \nabla \Psi = \sum _ { a = 1 } ^ 3 e _ a ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega e _ a ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
 
 
 Combining the spatial gradient \( \nabla \) with the convective time derivative \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) forms the full Clifford Dirac-Iris differential operator \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \), directly powering the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \).
@@ -708,19 +548,13 @@ Combining the spatial gradient \( \nabla \) with the convective time derivative 
 
 To illustrate the MSRA vernier derivative in practice, consider the multiscale aperture function \( \Psi ( x ) = x ^ 2 \) at a main-scale point \( x \in \mathbb { R } \).
 
-. **Evaluate Vernier Shift**: On an ultra-refined grid \( \mathcal { G } _ \omega \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \), compute the shifted value:
-+
-\[ \Psi ( x + \delta _ \omega ) = ( x + \delta _ \omega ) ^ 2 = x ^ 2 + 2x \delta _ \omega + \delta _ \omega ^ 2 \]
-+
+. **Evaluate Vernier Shift**: On an ultra-refined grid \( \mathcal { G } _ \omega \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \), compute the shifted value: \[ \Psi ( x + \delta _ \omega ) = ( x + \delta _ \omega ) ^ 2 = x ^ 2 + 2x \delta _ \omega + \delta _ \omega ^ 2 \]
 
-. **Form Difference Ratio**: Subtract \( \Psi ( x ) = x ^ 2 \) and divide by the non-zero step \( \delta _ \omega \):
-+
-\[ \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } = \frac { 2x \delta _ \omega + \delta _ \omega ^ 2 } { \delta _ \omega } = 2x + \delta _ \omega \]
-+
 
-. **Apply Main Scale Projection**: Project the finite vernier reading back to the main-scale real domain:
-+
-\[ \frac { d } { dx } ( x ^ 2 ) = ( \downarrow ) ( 2x + \delta _ \omega ) = ( \downarrow ) ( 2x ) + ( \downarrow ) ( \delta _ \omega ) = 2x + 0 = 2x \]
+. **Form Difference Ratio**: Subtract \( \Psi ( x ) = x ^ 2 \) and divide by the non-zero step \( \delta _ \omega \): \[ \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } = \frac { 2x \delta _ \omega + \delta _ \omega ^ 2 } { \delta _ \omega } = 2x + \delta _ \omega \]
+
+
+. **Apply Main Scale Projection**: Project the finite vernier reading back to the main-scale real domain: \[ \frac { d } { dx } ( x ^ 2 ) = ( \downarrow ) ( 2x + \delta _ \omega ) = ( \downarrow ) ( 2x ) + ( \downarrow ) ( \delta _ \omega ) = 2x + 0 = 2x \]
 
 
 This demonstrates how MSRA derivatives compute exact standard values purely through discrete algebraic steps without continuum limits or indeterminate forms.
@@ -737,10 +571,7 @@ In Multiscale Resolution Analysis, integration is defined constructively as a di
 [DEFINITION]
 .Definition: MSRA Definite Integral
 ====
-Let \( f : \mathbb { R } \to \mathbb { R } \) be a continuous aperture function on a finite interval \( [ a , b ] \). The MSRA definite integral is defined as the Main Scale Projection of the discrete vernier sum over \( N _ \omega = \frac { b - a } { \delta _ \omega } \) grid partitions:
-
-
-\[ \int _ a ^ b f ( x ) \, dx = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { N _ \omega - 1 } f ( a + k \delta _ \omega ) \cdot \delta _ \omega \right ) \]
+Let \( f : \mathbb { R } \to \mathbb { R } \) be a continuous aperture function on a finite interval \( [ a , b ] \). The MSRA definite integral is defined as the Main Scale Projection of the discrete vernier sum over \( N _ \omega = \frac { b - a } { \delta _ \omega } \) grid partitions: \[ \int _ a ^ b f ( x ) \, dx = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { N _ \omega - 1 } f ( a + k \delta _ \omega ) \cdot \delta _ \omega \right ) \]
 
 
 where \( \delta _ \omega = \frac { \bullet } { \omega } \) is the ultra-refined grid step size.
@@ -750,10 +581,7 @@ where \( \delta _ \omega = \frac { \bullet } { \omega } \) is the ultra-refined 
 [DEFINITION]
 .Definition: MSRA Indefinite Integral
 ====
-The MSRA indefinite integral (or anti-derivative aperture flux function) of \( f ( x ) \) is defined as the variable-boundary vernier sum:
-
-
-\[ F ( x ) = \int _ { x _ 0 } ^ x f ( t ) \, dt + C = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { \frac { x - x _ 0 } { \delta _ \omega } - 1 } f ( x _ 0 + k \delta _ \omega ) \cdot \delta _ \omega \right ) + C \]
+The MSRA indefinite integral (or anti-derivative aperture flux function) of \( f ( x ) \) is defined as the variable-boundary vernier sum: \[ F ( x ) = \int _ { x _ 0 } ^ x f ( t ) \, dt + C = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { \frac { x - x _ 0 } { \delta _ \omega } - 1 } f ( x _ 0 + k \delta _ \omega ) \cdot \delta _ \omega \right ) + C \]
 
 
 where \( C \in \mathbb { R } \) is an arbitrary main-scale integration constant representing initial aperture flux bias.
@@ -767,26 +595,17 @@ The relationship between differentiation and integration is established as an ex
 [THEOREM]
 .Theorem: Fundamental Theorem of MSRA Calculus
 ====
-Let \( f : \mathbb { R } \to \mathbb { R } \) be a continuous aperture function, and define the accumulative aperture flux function \( F ( x ) = \int _ a ^ x f ( t ) \, dt \). Then \( F ( x ) \) is differentiable and satisfies:
+Let \( f : \mathbb { R } \to \mathbb { R } \) be a continuous aperture function, and define the accumulative aperture flux function \( F ( x ) = \int _ a ^ x f ( t ) \, dt \). Then \( F ( x ) \) is differentiable and satisfies: \[ \frac { dF } { dx } = f ( x ) \quad \text { and } \quad \int _ a ^ b f ( x ) \, dx = F ( b ) - F ( a ) \]
 
-
-\[ \frac { dF } { dx } = f ( x ) \quad \text { and } \quad \int _ a ^ b f ( x ) \, dx = F ( b ) - F ( a ) \]
-+
 
 
 *Proof:*
-. **Differentiation of Integral**: Evaluate the vernier difference of \( F ( x ) \) over a single grid step \( \delta _ \omega \):
-+
-\[ F ( x + \delta _ \omega ) - F ( x ) = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { \frac { x + \delta _ \omega - a } { \delta _ \omega } - 1 } f ( a + k \delta _ \omega ) \delta _ \omega \right ) - ( \downarrow ) \left ( \sum _ { k = 0 } ^ { \frac { x - a } { \delta _ \omega } - 1 } f ( a + k \delta _ \omega ) \delta _ \omega \right ) \]
-+
-Subtracting the sums isolates the single vernier interval ending at \( x \):
-+
-\[ F ( x + \delta _ \omega ) - F ( x ) = ( \downarrow ) \left ( f ( x ) \delta _ \omega \right ) \]
-+
-Dividing by \( \delta _ \omega \) and applying Main Scale Projection \( ( \downarrow ) \) yields:
-+
-\[ \frac { dF } { dx } = ( \downarrow ) \left ( \frac { F ( x + \delta _ \omega ) - F ( x ) } { \delta _ \omega } \right ) = ( \downarrow ) ( f ( x ) ) = f ( x ) \]
-+
+. **Differentiation of Integral**: Evaluate the vernier difference of \( F ( x ) \) over a single grid step \( \delta _ \omega \): \[ F ( x + \delta _ \omega ) - F ( x ) = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { \frac { x + \delta _ \omega - a } { \delta _ \omega } - 1 } f ( a + k \delta _ \omega ) \delta _ \omega \right ) - ( \downarrow ) \left ( \sum _ { k = 0 } ^ { \frac { x - a } { \delta _ \omega } - 1 } f ( a + k \delta _ \omega ) \delta _ \omega \right ) \]
+
+Subtracting the sums isolates the single vernier interval ending at \( x \): \[ F ( x + \delta _ \omega ) - F ( x ) = ( \downarrow ) \left ( f ( x ) \delta _ \omega \right ) \]
+
+Dividing by \( \delta _ \omega \) and applying Main Scale Projection \( ( \downarrow ) \) yields: \[ \frac { dF } { dx } = ( \downarrow ) \left ( \frac { F ( x + \delta _ \omega ) - F ( x ) } { \delta _ \omega } \right ) = ( \downarrow ) ( f ( x ) ) = f ( x ) \]
+
 
 . **Evaluation of Definite Integral**: Let \( G ( x ) \) be any anti-derivative satisfying \( G' ( x ) = f ( x ) \). Then \( G ( x ) - F ( x ) = C \). At \( x = a \), \( F ( a ) = 0 \implies C = G ( a ) \). Thus \( F ( b ) = G ( b ) - G ( a ) \), completing the proof. \( \square \)
 ====
@@ -799,11 +618,8 @@ Standard integration formulas translate directly into exact vernier algebraic id
 [THEOREM]
 .Theorem: Vernier Integration by Parts
 ====
-For finite differentiable aperture functions \( u ( x ) \) and \( v ( x ) \) on \( [ a , b ] \):
+For finite differentiable aperture functions \( u ( x ) \) and \( v ( x ) \) on \( [ a , b ] \): \[ \int _ a ^ b u ( x ) v' ( x ) \, dx = \left [ u ( x ) v ( x ) \right ] _ a ^ b - \int _ a ^ b v ( x ) u' ( x ) \, dx \]
 
-
-\[ \int _ a ^ b u ( x ) v' ( x ) \, dx = \left [ u ( x ) v ( x ) \right ] _ a ^ b - \int _ a ^ b v ( x ) u' ( x ) \, dx \]
-+
 
 
 *Proof:*
@@ -814,19 +630,13 @@ From the MSRA product rule, \( \frac { d ( uv ) } { dx } = u v' + v u' \). Integ
 
 To illustrate discrete MSRA integration, evaluate \( \int _ 0 ^ 1 x \, dx \) directly from Definition 13.
 
-. **Construct Vernier Sum**: Partition the interval \( [ 0 , 1 ] \) on an ultra-refined grid \( \mathcal { G } _ \omega \) into \( N _ \omega = \frac { 1 } { \delta _ \omega } \) steps, where \( \delta _ \omega = \frac { \bullet } { \omega } \):
-+
-\[ S _ \omega = \sum _ { k = 0 } ^ { N _ \omega - 1 } f ( k \delta _ \omega ) \cdot \delta _ \omega = \sum _ { k = 0 } ^ { N _ \omega - 1 } ( k \delta _ \omega ) \cdot \delta _ \omega = \delta _ \omega ^ 2 \sum _ { k = 0 } ^ { N _ \omega - 1 } k \]
-+
+. **Construct Vernier Sum**: Partition the interval \( [ 0 , 1 ] \) on an ultra-refined grid \( \mathcal { G } _ \omega \) into \( N _ \omega = \frac { 1 } { \delta _ \omega } \) steps, where \( \delta _ \omega = \frac { \bullet } { \omega } \): \[ S _ \omega = \sum _ { k = 0 } ^ { N _ \omega - 1 } f ( k \delta _ \omega ) \cdot \delta _ \omega = \sum _ { k = 0 } ^ { N _ \omega - 1 } ( k \delta _ \omega ) \cdot \delta _ \omega = \delta _ \omega ^ 2 \sum _ { k = 0 } ^ { N _ \omega - 1 } k \]
 
-. **Apply Discrete Sum Formula**: Using the standard arithmetic sum \( \sum _ { k = 0 } ^ { N - 1 } k = \frac { ( N - 1 ) N } { 2 } \) with \( N = N _ \omega = \frac { 1 } { \delta _ \omega } \):
-+
-\[ S _ \omega = \delta _ \omega ^ 2 \cdot \frac { \left ( \frac { 1 } { \delta _ \omega } - 1 \right ) \frac { 1 } { \delta _ \omega } } { 2 } = \frac { 1 - \delta _ \omega } { 2 } \]
-+
 
-. **Apply Main Scale Projection**:
-+
-\[ \int _ 0 ^ 1 x \, dx = ( \downarrow ) \left ( S _ \omega \right ) = ( \downarrow ) \left ( \frac { 1 - \delta _ \omega } { 2 } \right ) = \frac { 1 - 0 } { 2 } = \frac { 1 } { 2 } \]
+. **Apply Discrete Sum Formula**: Using the standard arithmetic sum \( \sum _ { k = 0 } ^ { N - 1 } k = \frac { ( N - 1 ) N } { 2 } \) with \( N = N _ \omega = \frac { 1 } { \delta _ \omega } \): \[ S _ \omega = \delta _ \omega ^ 2 \cdot \frac { \left ( \frac { 1 } { \delta _ \omega } - 1 \right ) \frac { 1 } { \delta _ \omega } } { 2 } = \frac { 1 - \delta _ \omega } { 2 } \]
+
+
+. **Apply Main Scale Projection**: \[ \int _ 0 ^ 1 x \, dx = ( \downarrow ) \left ( S _ \omega \right ) = ( \downarrow ) \left ( \frac { 1 - \delta _ \omega } { 2 } \right ) = \frac { 1 - 0 } { 2 } = \frac { 1 } { 2 } \]
 
 
 This matches the anti-derivative calculation \( \left [ \frac { x ^ 2 } { 2 } \right ] _ 0 ^ 1 = \frac { 1 } { 2 } \).
@@ -843,19 +653,13 @@ In multivector Clifford space \( Cl ( 4 , 1 , 1 ) \), a physical path \( \Gamma 
 [DEFINITION]
 .Definition: MSRA Contour Integral
 ====
-Let \( \Psi : Cl ( 4 , 1 , 1 ) \to Cl ( 4 , 1 , 1 ) \) be a multivector field and \( \Gamma \) a parameterized curve \( \gamma : [ a , b ] \to Cl ( 4 , 1 , 1 ) \). The MSRA contour integral of \( \Psi \) along \( \Gamma \) is defined as:
-
-
-\[ \int _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { M _ \omega - 1 } \Psi ( \gamma ( t _ k ) ) \cdot \Delta \gamma _ k \right ) \]
+Let \( \Psi : Cl ( 4 , 1 , 1 ) \to Cl ( 4 , 1 , 1 ) \) be a multivector field and \( \Gamma \) a parameterized curve \( \gamma : [ a , b ] \to Cl ( 4 , 1 , 1 ) \). The MSRA contour integral of \( \Psi \) along \( \Gamma \) is defined as: \[ \int _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { M _ \omega - 1 } \Psi ( \gamma ( t _ k ) ) \cdot \Delta \gamma _ k \right ) \]
 
 
 where \( t _ k = a + k \delta _ \omega \), \( \Delta \gamma _ k = \gamma ( t _ { k + 1 } ) - \gamma ( t _ k ) \), and \( M _ \omega = \frac { b - a } { \delta _ \omega } \) on the ultra-refined grid \( \mathcal { G } _ \omega \).
 ====
 
-In terms of parameter derivative \( \gamma ' ( t ) = \frac { d \gamma } { dt } \), the contour integral reduces to standard MSRA definite integration:
-
-
-\[ \int _ \Gamma \Psi ( z ) \, dz = \int _ a ^ b \Psi ( \gamma ( t ) ) \gamma ' ( t ) \, dt \]
+In terms of parameter derivative \( \gamma ' ( t ) = \frac { d \gamma } { dt } \), the contour integral reduces to standard MSRA definite integration: \[ \int _ \Gamma \Psi ( z ) \, dz = \int _ a ^ b \Psi ( \gamma ( t ) ) \gamma ' ( t ) \, dt \]
 
 == The Vernier Cauchy-Goursat Theorem in MSRA
 
@@ -865,18 +669,12 @@ In complex analysis and multivector Clifford analysis, closed-loop circulations 
 [THEOREM]
 .Theorem: MSRA Cauchy-Goursat Theorem
 ====
-Let \( \Gamma \) be a closed oriented contour in \( Cl ( 4 , 1 , 1 ) \) bounding a simple aperture region \( \mathcal { D } \). If \( \Psi \) is continuously differentiable and satisfies the source-free Dirac-Iris field condition \( D \Psi = 0 \) across \( \mathcal { D } \), then the closed contour integral vanishes identically:
+Let \( \Gamma \) be a closed oriented contour in \( Cl ( 4 , 1 , 1 ) \) bounding a simple aperture region \( \mathcal { D } \). If \( \Psi \) is continuously differentiable and satisfies the source-free Dirac-Iris field condition \( D \Psi = 0 \) across \( \mathcal { D } \), then the closed contour integral vanishes identically: \[ \oint _ \Gamma \Psi ( z ) \, dz = 0 \]
 
-
-\[ \oint _ \Gamma \Psi ( z ) \, dz = 0 \]
-+
 
 
 *Proof:*
-Decompose the bounded region \( \mathcal { D } \) into a mesh of elementary ultra-refined grid cells \( \square _ { ij } \) with boundary steps \( \delta _ \omega \). Across adjacent internal cell boundaries, opposite orientations cancel the vernier path increments \( \Delta \gamma _ k \). By applying the MSRA Stokes-Clifford divergence theorem:
-
-
-\[ \oint _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { ij } \oint _ { \partial \square _ { ij } } \Psi ( z ) \, dz \right ) = ( \downarrow ) \left ( \iint _ { \mathcal { D } } D \Psi ( z ) \, d \mathcal { A } \right ) \]
+Decompose the bounded region \( \mathcal { D } \) into a mesh of elementary ultra-refined grid cells \( \square _ { ij } \) with boundary steps \( \delta _ \omega \). Across adjacent internal cell boundaries, opposite orientations cancel the vernier path increments \( \Delta \gamma _ k \). By applying the MSRA Stokes-Clifford divergence theorem: \[ \oint _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { ij } \oint _ { \partial \square _ { ij } } \Psi ( z ) \, dz \right ) = ( \downarrow ) \left ( \iint _ { \mathcal { D } } D \Psi ( z ) \, d \mathcal { A } \right ) \]
 
 
 Since \( D \Psi = 0 \) throughout \( \mathcal { D } \), the area summation vanishes identically, giving \( \oint _ \Gamma \Psi ( z ) \, dz = 0 \). \( \square \)
@@ -884,10 +682,7 @@ Since \( D \Psi = 0 \) throughout \( \mathcal { D } \), the area summation vanis
 
 == Residue-Free Loop Circulations and Bivector Spin(2) Conservation
 
-When a closed path \( \Gamma \) encloses an isolated Spin(2) bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete topological aperture charge \( Q _ \iota \):
-
-
-\[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } _ { Cl } \]
+When a closed path \( \Gamma \) encloses an isolated Spin(2) bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete topological aperture charge \( Q _ \iota \): \[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } _ { Cl } \]
 
 
 This guarantees that circulation along closed observation loops measures exact, non-fractional topological winding numbers, establishing total conservation of electromagnetic flux in the Counting-Iris framework.
@@ -900,16 +695,10 @@ In digital signal processing, system analysis, and multivector aperture field th
 [THEOREM]
 .Theorem: MSRA Residue Theorem
 ====
-Let \( \Gamma \) be a simple closed oriented contour in \( Cl ( 4 , 1 , 1 ) \) bounding a simple aperture region \( \mathcal { D } \). If a multivector field \( \Psi : Cl ( 4 , 1 , 1 ) \to Cl ( 4 , 1 , 1 ) \) is continuously differentiable in \( \mathcal { D } \) except at a finite set of isolated aperture pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \), then the closed contour integral evaluates to the discrete sum of multivector residues:
+Let \( \Gamma \) be a simple closed oriented contour in \( Cl ( 4 , 1 , 1 ) \) bounding a simple aperture region \( \mathcal { D } \). If a multivector field \( \Psi : Cl ( 4 , 1 , 1 ) \to Cl ( 4 , 1 , 1 ) \) is continuously differentiable in \( \mathcal { D } \) except at a finite set of isolated aperture pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \), then the closed contour integral evaluates to the discrete sum of multivector residues: \[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
 
 
-\[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
-
-
-where the MSRA residue at an isolated singularity \( z _ k \) is defined by the coefficient \( a _ { - 1 } ^ { ( k ) } \) in the MSRA Laurent aperture expansion \( \Psi ( z ) = \sum _ { m = - \infty } ^ \infty a _ m ^ { ( k ) } ( z - z _ k ) ^ m \), or equivalently:
-
-
-\[ \text { Res } \left ( \Psi , z _ k \right ) = \frac { 1 } { 2 \pi i } \oint _ { \Gamma _ k } \Psi ( z ) \, dz \]
+where the MSRA residue at an isolated singularity \( z _ k \) is defined by the coefficient \( a _ { - 1 } ^ { ( k ) } \) in the MSRA Laurent aperture expansion \( \Psi ( z ) = \sum _ { m = - \infty } ^ \infty a _ m ^ { ( k ) } ( z - z _ k ) ^ m \), or equivalently: \[ \text { Res } \left ( \Psi , z _ k \right ) = \frac { 1 } { 2 \pi i } \oint _ { \Gamma _ k } \Psi ( z ) \, dz \]
 
 
 for an elementary ultra-refined boundary contour \( \Gamma _ k \subset \mathcal { D } \) encircling only \( z _ k \).
@@ -919,41 +708,27 @@ for an elementary ultra-refined boundary contour \( \Gamma _ k \subset \mathcal 
 
 . Form the multiply-connected aperture region \( \mathcal { D } ' = \mathcal { D } \setminus \bigcup _ { k = 1 } ^ n \text { Int } ( \Gamma _ k ) \). Within \( \mathcal { D } ' \), \( \Psi \) is everywhere continuously differentiable with source-free condition \( D \Psi = 0 \).
 
-. Apply the MSRA Cauchy-Goursat Theorem (Theorem 13) to the boundary \( \partial \mathcal { D } ' = \Gamma \cup \bigcup _ { k = 1 } ^ n ( - \Gamma _ k ) \):
-
-+
-\[ \oint _ { \partial \mathcal { D } ' } \Psi ( z ) \, dz = \oint _ \Gamma \Psi ( z ) \, dz - \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 0 \]
-+
+. Apply the MSRA Cauchy-Goursat Theorem (Theorem 13) to the boundary \( \partial \mathcal { D } ' = \Gamma \cup \bigcup _ { k = 1 } ^ n ( - \Gamma _ k ) \): \[ \oint _ { \partial \mathcal { D } ' } \Psi ( z ) \, dz = \oint _ \Gamma \Psi ( z ) \, dz - \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 0 \]
 
 
-. Rearranging terms and substituting the definition of the MSRA aperture residue \( \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \, \text { Res } ( \Psi , z _ k ) \) yields:
 
-+
-\[ \oint _ \Gamma \Psi ( z ) \, dz = \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \qquad \square \]
+. Rearranging terms and substituting the definition of the MSRA aperture residue \( \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \, \text { Res } ( \Psi , z _ k ) \) yields: \[ \oint _ \Gamma \Psi ( z ) \, dz = \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \qquad \square \]
 ====
 
 == Worked Example 1: Circular Contour Integral of a Constant Vector Field
 
 To verify the MSRA Cauchy-Goursat theorem with an explicit example, evaluate the contour integral of a constant multivector field \( \Psi ( z ) = \mathbf { c } \in Cl ( 4 , 1 , 1 ) \) along a closed circular path \( \Gamma \) parameterized by \( \gamma ( t ) = R e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \).
 
-. **Parameter Derivative**: Compute the velocity vector along the curve:
-+
-\[ \gamma ' ( t ) = \frac { d \gamma } { dt } = i R e ^ { i t } \]
-+
+. **Parameter Derivative**: Compute the velocity vector along the curve: \[ \gamma ' ( t ) = \frac { d \gamma } { dt } = i R e ^ { i t } \]
 
-. **Set up Parameterized Integral**: Substitute \( \Psi ( \gamma ( t ) ) = \mathbf { c } \) and \( \gamma ' ( t ) \) into the MSRA line integral formula:
-+
-\[ \oint _ \Gamma \mathbf { c } \, dz = \int _ 0 ^ { 2 \pi } \mathbf { c } \cdot ( i R e ^ { i t } ) \, dt = \mathbf { c } \cdot i R \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt \]
-+
 
-. **Evaluate MSRA Integral**: Integrate \( e ^ { i t } \) using its anti-derivative aperture function \( \frac { e ^ { i t } } { i } \):
-+
-\[ \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt = \left [ \frac { e ^ { i t } } { i } \right ] _ 0 ^ { 2 \pi } = \frac { e ^ { 2 \pi i } - e ^ 0 } { i } = \frac { 1 - 1 } { i } = 0 \]
-+
+. **Set up Parameterized Integral**: Substitute \( \Psi ( \gamma ( t ) ) = \mathbf { c } \) and \( \gamma ' ( t ) \) into the MSRA line integral formula: \[ \oint _ \Gamma \mathbf { c } \, dz = \int _ 0 ^ { 2 \pi } \mathbf { c } \cdot ( i R e ^ { i t } ) \, dt = \mathbf { c } \cdot i R \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt \]
 
-. **Result**:
-+
-\[ \oint _ \Gamma \mathbf { c } \, dz = \mathbf { c } \cdot i R \cdot 0 = 0 \]
+
+. **Evaluate MSRA Integral**: Integrate \( e ^ { i t } \) using its anti-derivative aperture function \( \frac { e ^ { i t } } { i } \): \[ \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt = \left [ \frac { e ^ { i t } } { i } \right ] _ 0 ^ { 2 \pi } = \frac { e ^ { 2 \pi i } - e ^ 0 } { i } = \frac { 1 - 1 } { i } = 0 \]
+
+
+. **Result**: \[ \oint _ \Gamma \mathbf { c } \, dz = \mathbf { c } \cdot i R \cdot 0 = 0 \]
 
 
 This confirms that the closed circulation of any source-free constant field vanishes identically in MSRA.
@@ -962,28 +737,18 @@ This confirms that the closed circulation of any source-free constant field vani
 
 To demonstrate the application of the MSRA Residue Theorem, evaluate the closed contour integral of the aperture rational function \( \Psi ( z ) = \frac { \mathbf { 1 } _ { Cl } } { z ^ 2 + 1 } \) along a closed circular contour \( \Gamma \) centered at \( z = i \) with radius \( R = 1 \) oriented counterclockwise.
 
-. **Identify Poles**: The integrand has isolated poles where the denominator vanishes:
-+
-\[ z ^ 2 + 1 = 0 \implies z _ 1 = i , \quad z _ 2 = - i \]
+. **Identify Poles**: The integrand has isolated poles where the denominator vanishes: \[ z ^ 2 + 1 = 0 \implies z _ 1 = i , \quad z _ 2 = - i \]
 The contour \( \Gamma \) (radius 1 centered at \( i \)) encloses only the pole \( z _ 1 = i \), while \( z _ 2 = - i \) lies outside \( \text { Int } ( \Gamma ) \).
 
-. **Compute MSRA Residue at \( z _ 1 = i \)**: Decompose \( \Psi ( z ) \) into partial fraction aperture components:
-+
-\[ \Psi ( z ) = \frac { \mathbf { 1 } _ { Cl } } { ( z - i ) ( z + i ) } = \frac { \frac { \mathbf { 1 } _ { Cl } } { z + i } } { z - i } \]
-+
-The residue at simple pole \( z _ 1 = i \) is:
-+
-\[ \text { Res } \left ( \Psi , i \right ) = \left . ( z - i ) \Psi ( z ) \right | _ { z = i } = \left . \frac { \mathbf { 1 } _ { Cl } } { z + i } \right | _ { z = i } = \frac { \mathbf { 1 } _ { Cl } } { 2i } = - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \]
-+
+. **Compute MSRA Residue at \( z _ 1 = i \)**: Decompose \( \Psi ( z ) \) into partial fraction aperture components: \[ \Psi ( z ) = \frac { \mathbf { 1 } _ { Cl } } { ( z - i ) ( z + i ) } = \frac { \frac { \mathbf { 1 } _ { Cl } } { z + i } } { z - i } \]
 
-. **Apply the MSRA Residue Theorem**: Substitute the computed residue into the residue sum formula:
-+
-\[ \oint _ \Gamma \frac { 1 } { z ^ 2 + 1 } \, dz = 2 \pi i \, \text { Res } \left ( \Psi , i \right ) = 2 \pi i \left ( - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \right ) = \pi \mathbf { 1 } _ { Cl } \]
-+
+The residue at simple pole \( z _ 1 = i \) is: \[ \text { Res } \left ( \Psi , i \right ) = \left . ( z - i ) \Psi ( z ) \right | _ { z = i } = \left . \frac { \mathbf { 1 } _ { Cl } } { z + i } \right | _ { z = i } = \frac { \mathbf { 1 } _ { Cl } } { 2i } = - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \]
 
-. **Direct Parametric Verification**: Parameterize \( \Gamma \) as \( \gamma ( t ) = i + r e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \) with \( r = 1 \). Then \( \gamma ' ( t ) = i e ^ { i t } \, dt \). Substituting into the integral:
-+
-\[ \oint _ \Gamma \frac { dz } { z ^ 2 + 1 } = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { ( i + e ^ { i t } ) ^ 2 + 1 } \, dt = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { 2i e ^ { i t } + e ^ { 2i t } } \, dt = \int _ 0 ^ { 2 \pi } \frac { i } { 2i + e ^ { i t } } \, dt = \pi \mathbf { 1 } _ { Cl } \]
+
+. **Apply the MSRA Residue Theorem**: Substitute the computed residue into the residue sum formula: \[ \oint _ \Gamma \frac { 1 } { z ^ 2 + 1 } \, dz = 2 \pi i \, \text { Res } \left ( \Psi , i \right ) = 2 \pi i \left ( - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \right ) = \pi \mathbf { 1 } _ { Cl } \]
+
+
+. **Direct Parametric Verification**: Parameterize \( \Gamma \) as \( \gamma ( t ) = i + r e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \) with \( r = 1 \). Then \( \gamma ' ( t ) = i e ^ { i t } \, dt \). Substituting into the integral: \[ \oint _ \Gamma \frac { dz } { z ^ 2 + 1 } = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { ( i + e ^ { i t } ) ^ 2 + 1 } \, dt = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { 2i e ^ { i t } + e ^ { 2i t } } \, dt = \int _ 0 ^ { 2 \pi } \frac { i } { 2i + e ^ { i t } } \, dt = \pi \mathbf { 1 } _ { Cl } \]
 
 This explicitly verifies the MSRA Residue Theorem for rational aperture field functions.
 
@@ -997,66 +762,42 @@ The unified field theory within the Counting-Iris framework expresses all fundam
 
 === Basis Vectors of \( Cl ( 4 , 1 , 1 ) \)
 
-The basis vectors spanning the Clifford space \( Cl ( 4 , 1 , 1 ) \) are given by:
+The basis vectors spanning the Clifford space \( Cl ( 4 , 1 , 1 ) \) are given by: \[ \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \]
 
 
-\[ \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \]
+satisfying the metric signatures: \[ e _ 1 ^ 2 = e _ 2 ^ 2 = e _ 3 ^ 2 = 1 \qquad e _ 4 ^ 2 = 0 \qquad e _ + ^ 2 = 1 \qquad e _ - ^ 2 = - 1 \]
 
 
-satisfying the metric signatures:
+The conformal null basis vectors \( e _ \infty \) and \( e _ 0 \) are defined as: \[ e _ \infty = e _ + + e _ - \qquad e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \]
 
 
-\[ e _ 1 ^ 2 = e _ 2 ^ 2 = e _ 3 ^ 2 = 1 \qquad e _ 4 ^ 2 = 0 \qquad e _ + ^ 2 = 1 \qquad e _ - ^ 2 = - 1 \]
-
-
-The conformal null basis vectors \( e _ \infty \) and \( e _ 0 \) are defined as:
-
-
-\[ e _ \infty = e _ + + e _ - \qquad e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \]
-
-
-which satisfy the properties:
-
-
-\[ e _ \infty ^ 2 = e _ 0 ^ 2 = 0 \qquad e _ 0 \cdot e _ \infty = - 1 \]
+which satisfy the properties: \[ e _ \infty ^ 2 = e _ 0 ^ 2 = 0 \qquad e _ 0 \cdot e _ \infty = - 1 \]
 
 
 [#definition-master-field-equation]
 [DEFINITION]
 .Definition: The Master Field Equation
 ====
-In the Clifford algebra \( Cl ( 4 , 1 , 1 ) \), the **Master Field Equation** is defined as:
+In the Clifford algebra \( Cl ( 4 , 1 , 1 ) \), the **Master Field Equation** is defined as: \[ D F _ { \text { total } } = J _ { \text { total } } \]
 
 
-\[ D F _ { \text { total } } = J _ { \text { total } } \]
+where the differential operator \( D \) and convective time derivative \( D _ t \) are given by: \[ D = \nabla + e _ 4 \frac { 1 } { c } D _ t \qquad D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \]
 
 
-where the differential operator \( D \) and convective time derivative \( D _ t \) are given by:
+the total electromagnetic field \( F _ { \text { total } } \) is a multivector combining electric vector and magnetic trivector flux: \[ F _ { \text { total } } = E e _ 4 + c B ( e _ 1 \wedge e _ 2 \wedge e _ 3 ) \]
 
 
-\[ D = \nabla + e _ 4 \frac { 1 } { c } D _ t \qquad D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \]
-
-
-the total electromagnetic field \( F _ { \text { total } } \) is a multivector combining electric vector and magnetic trivector flux:
-
-
-\[ F _ { \text { total } } = E e _ 4 + c B ( e _ 1 \wedge e _ 2 \wedge e _ 3 ) \]
-
-
-and the total source current density \( J _ { \text { total } } \) and velocity multivector \( U \) are given by:
-
-
-\[ J _ { \text { total } } = \rho _ 0 U \qquad U = u + c e _ 4 \]
+and the total source current density \( J _ { \text { total } } \) and velocity multivector \( U \) are given by: \[ J _ { \text { total } } = \rho _ 0 U \qquad U = u + c e _ 4 \]
 ====
 
 === Description of Electric Field \( E \) and Magnetic Field \( B \)
 
 In the unified multivector field \( F _ { \text { total } } = E e _ 4 + c B ( e _ 1 \wedge e _ 2 \wedge e _ 3 ) \), the terms \( E \) and \( B \) describe the two fundamental orthogonal manifestations of the electromagnetic field within the \( Cl ( 4 , 1 , 1 ) \) Clifford space:
 
-. **Electric Field Vector \( E \)**: 
+. **Electric Field Vector \( E \)**:
    The electric field \( E = \sum _ { a = 1 } ^ 3 E _ a e _ a = E _ 1 e _ 1 + E _ 2 e _ 2 + E _ 3 e _ 3 \) is a 3-dimensional spatial vector field spanning physical coordinate directions \( \{ e _ 1 , e _ 2 , e _ 3 \} \). When coupled with the nilpotent scale aperture basis vector \( e _ 4 \) (where \( e _ 4 ^ 2 = 0 \)), the product \( E e _ 4 = E _ 1 e _ { 14 } + E _ 2 e _ { 24 } + E _ 3 e _ { 34 } \) forms a set of spatial-aperture bivectors. This term represents spatial potential gradients, directional field lines, and direct aperture flux displacements across finite discrete grid points.
 
-. **Magnetic Field Trivector Dual \( B \)**: 
+. **Magnetic Field Trivector Dual \( B \)**:
    The magnetic field is represented by the spatial field \( B = B _ 1 e _ 1 + B _ 2 e _ 2 + B _ 3 e _ 3 \) or its dual bivector circulation \( B _ 1 ( e _ 2 \wedge e _ 3 ) + B _ 2 ( e _ 3 \wedge e _ 1 ) + B _ 3 ( e _ 1 \wedge e _ 2 ) \). In the Master Field Equation, multiplication by the spatial 3-volume pseudoscalar \( I _ 3 = e _ 1 \wedge e _ 2 \wedge e _ 3 \) produces the spatial trivector flux term \( c B ( e _ 1 \wedge e _ 2 \wedge e _ 3 ) = c ( B _ 1 e _ 2 e _ 3 + B _ 2 e _ 3 e _ 1 + B _ 3 e _ 1 e _ 2 ) \). This term represents closed-loop spatial flux circulation, rotational magnetic flux density, and Spin(2) bivector vortex geometries.
 
 . **Unified Multivector Synthesis**:
@@ -1092,9 +833,7 @@ To ensure that no geometric structure is taken as an unproved external assertion
 [THEOREM]
 .Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)
 ====
-Let \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) be the discrete multiscale resolution ring induced by Postulates 1, 5, and 7. There exists a unique \( 2 ^ 6 = 64 \)-dimensional associative algebra \( Cl ( 4 , 1 , 1 ) \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) generated by six orthogonal basis elements \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) satisfying the metric quadratic form:
-+
-\[ Q ( v ) = v _ 1 ^ 2 + v _ 2 ^ 2 + v _ 3 ^ 2 + v _ 5 ^ 2 - v _ 6 ^ 2 \quad \text { for } v = \sum _ { A = 1 } ^ 6 v _ A e _ A \]
+Let \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) be the discrete multiscale resolution ring induced by Postulates 1, 5, and 7. There exists a unique \( 2 ^ 6 = 64 \)-dimensional associative algebra \( Cl ( 4 , 1 , 1 ) \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) generated by six orthogonal basis elements \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) satisfying the metric quadratic form: \[ Q ( v ) = v _ 1 ^ 2 + v _ 2 ^ 2 + v _ 3 ^ 2 + v _ 5 ^ 2 - v _ 6 ^ 2 \quad \text { for } v = \sum _ { A = 1 } ^ 6 v _ A e _ A \]
 
 Furthermore, the Iris generator \( \iota \) (Postulate 9) maps into the multivector algebra as \( \iota = e _ { 12 } + e _ 4 e _ 0 \), satisfying \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
 
@@ -1107,14 +846,10 @@ Furthermore, the Iris generator \( \iota \) (Postulate 9) maps into the multivec
 
 . **Dimension and Basis**: By the Constructive Clifford PBW Basis Theorem (proven below as Theorem 15), \( Cl ( 4 , 1 , 1 ) \) has exact dimension \( 2 ^ 6 = 64 \), spanned by the 64 strictly ordered basis multivectors \( e _ M = e _ { a _ 1 } e _ { a _ 2 } \cdots e _ { a _ k } \) with \( 1 \le a _ 1 < a _ 2 < \dots < a _ k \le 6 \).
 
-. **Representation of the Iris Generator**: Set \( \iota = e _ 1 e _ 2 + e _ 4 e _ 0 \), where \( e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \). Using basis metrics \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } \), \( e _ 1 e _ 2 = - e _ 2 e _ 1 \), \( e _ 4 ^ 2 = 0 \) (identifying \( \varpi = e _ 4 \)), and \( e _ 0 ^ 2 = 0 \) (identifying \( \vartheta = e _ 0 \)), we evaluate:
-+
-\[ \iota ^ 2 = ( e _ { 12 } + e _ 4 e _ 0 ) ^ 2 = e _ { 12 } ^ 2 + e _ { 12 } e _ 4 e _ 0 + e _ 4 e _ 0 e _ { 12 } + ( e _ 4 e _ 0 ) ^ 2 \]
+. **Representation of the Iris Generator**: Set \( \iota = e _ 1 e _ 2 + e _ 4 e _ 0 \), where \( e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \). Using basis metrics \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } \), \( e _ 1 e _ 2 = - e _ 2 e _ 1 \), \( e _ 4 ^ 2 = 0 \) (identifying \( \varpi = e _ 4 \)), and \( e _ 0 ^ 2 = 0 \) (identifying \( \vartheta = e _ 0 \)), we evaluate: \[ \iota ^ 2 = ( e _ { 12 } + e _ 4 e _ 0 ) ^ 2 = e _ { 12 } ^ 2 + e _ { 12 } e _ 4 e _ 0 + e _ 4 e _ 0 e _ { 12 } + ( e _ 4 e _ 0 ) ^ 2 \]
 
-Since \( e _ { 12 } ^ 2 = e _ 1 e _ 2 e _ 1 e _ 2 = - e _ 1 ^ 2 e _ 2 ^ 2 = - \mathbf { 1 } \), \( e _ 4 e _ 0 \) commutes with spatial bivector \( e _ { 12 } \), and \( ( e _ 4 e _ 0 ) ^ 2 = e _ 4 e _ 0 e _ 4 e _ 0 = 0 \), this simplifies to:
+Since \( e _ { 12 } ^ 2 = e _ 1 e _ 2 e _ 1 e _ 2 = - e _ 1 ^ 2 e _ 2 ^ 2 = - \mathbf { 1 } \), \( e _ 4 e _ 0 \) commutes with spatial bivector \( e _ { 12 } \), and \( ( e _ 4 e _ 0 ) ^ 2 = e _ 4 e _ 0 e _ 4 e _ 0 = 0 \), this simplifies to: \[ \iota ^ 2 = - \mathbf { 1 } + 2 e _ 4 e _ 0 = - \mathbf { 1 } + \varpi \vartheta \]
 
-\[ \iota ^ 2 = - \mathbf { 1 } + 2 e _ 4 e _ 0 = - \mathbf { 1 } + \varpi \vartheta \]
-+
 
 This completes the explicit proof of \( Cl ( 4 , 1 , 1 ) \) and its exact match with Postulate 9. \( \square \)
 ====
@@ -1136,18 +871,12 @@ Because both word length and inversion count are non-negative integers, this bub
 
 . **Linear Independence via Exterior Clifford Endomorphisms**:
 To prove that these 64 ordered basis elements are linearly independent, construct an explicit representation \( \rho : Cl ( 4 , 1 , 1 ) \to \text { End } ( \bigwedge V ) \) on the exterior algebra \( \bigwedge V \).
-For any vector generator \( v \in V \) and form \( w \in \bigwedge V \), define the linear operator:
+For any vector generator \( v \in V \) and form \( w \in \bigwedge V \), define the linear operator: \[ \rho ( v ) w = v \wedge w + \iota _ v w \]
 
-\[ \rho ( v ) w = v \wedge w + \iota _ v w \]
-
-where \( v \wedge w \) is exterior multiplication and \( \iota _ v w \) is interior metric contraction with tensor \( g _ { AB } \). Evaluating the square of this operator:
-
-\[ \rho ( v ) ^ 2 w = \rho ( v ) ( v \wedge w + \iota _ v w ) = v \wedge ( v \wedge w ) + v \wedge ( \iota _ v w ) + \iota _ v ( v \wedge w ) + \iota _ v ( \iota _ v w ) = \iota _ v ( v \wedge w ) = Q ( v ) w \]
+where \( v \wedge w \) is exterior multiplication and \( \iota _ v w \) is interior metric contraction with tensor \( g _ { AB } \). Evaluating the square of this operator: \[ \rho ( v ) ^ 2 w = \rho ( v ) ( v \wedge w + \iota _ v w ) = v \wedge ( v \wedge w ) + v \wedge ( \iota _ v w ) + \iota _ v ( v \wedge w ) + \iota _ v ( \iota _ v w ) = \iota _ v ( v \wedge w ) = Q ( v ) w \]
 
 Since \( \rho ( v ) ^ 2 = Q ( v ) \mathbf { 1 } _ { \text { End } ( \bigwedge V ) } \), the universal mapping property of \( Cl ( 4 , 1 , 1 ) \) guarantees that \( \rho \) extends to a unique algebra homomorphism.
-Applying \( \rho \) for any ordered basis multivector \( e _ M = e _ { a _ 1 } \dots e _ { a _ k } \) to the scalar identity \( \mathbf { 1 } \in \bigwedge V \):
-
-\[ \rho ( e _ { a _ 1 } e _ { a _ 2 } \dots e _ { a _ k } ) \mathbf { 1 } = e _ { a _ 1 } \wedge e _ { a _ 2 } \wedge \dots \wedge e _ { a _ k } \]
+Applying \( \rho \) for any ordered basis multivector \( e _ M = e _ { a _ 1 } \dots e _ { a _ k } \) to the scalar identity \( \mathbf { 1 } \in \bigwedge V \): \[ \rho ( e _ { a _ 1 } e _ { a _ 2 } \dots e _ { a _ k } ) \mathbf { 1 } = e _ { a _ 1 } \wedge e _ { a _ 2 } \wedge \dots \wedge e _ { a _ k } \]
 
 Because the 64 exterior products \( e _ { a _ 1 } \wedge \dots \wedge e _ { a _ k } \) are linearly independent in the exterior algebra \( \bigwedge V \), their preimages \( e _ { a _ 1 } e _ { a _ 2 } \dots e _ { a _ k } \) must be linearly independent in \( Cl ( 4 , 1 , 1 ) \).
 Therefore, the 64 ordered multivectors form an exact, linearly independent basis, establishing that \( \dim Cl ( 4 , 1 , 1 ) = 64 \). \( \square \)
@@ -1159,28 +888,20 @@ Therefore, the 64 ordered multivectors form an exact, linearly independent basis
 [THEOREM]
 .Theorem: Fundamental Anti-Commutation Law of Cl(4,1,1)
 ====
-For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) in \( Cl ( 4 , 1 , 1 ) \), the fundamental anti-commutation relation holds:
+For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) in \( Cl ( 4 , 1 , 1 ) \), the fundamental anti-commutation relation holds: \[ e _ A e _ B + e _ B e _ A = 2 g _ { AB } \mathbf { 1 } \]
 
-\[ e _ A e _ B + e _ B e _ A = 2 g _ { AB } \mathbf { 1 } \]
-+
 
 *Proof:*
 . Let \( u , v \in V \). By definition of the ideal quotient \( I ( Q ) \), we have \( ( u + v ) ^ 2 = Q ( u + v ) \mathbf { 1 } \).
 
-. Expanding the left-hand side in \( Cl ( 4 , 1 , 1 ) \):
-+
-\[ ( u + v ) ^ 2 = ( u + v ) ( u + v ) = u ^ 2 + u v + v u + v ^ 2 = Q ( u ) \mathbf { 1 } + u v + v u + Q ( v ) \mathbf { 1 } \]
-+
+. Expanding the left-hand side in \( Cl ( 4 , 1 , 1 ) \): \[ ( u + v ) ^ 2 = ( u + v ) ( u + v ) = u ^ 2 + u v + v u + v ^ 2 = Q ( u ) \mathbf { 1 } + u v + v u + Q ( v ) \mathbf { 1 } \]
 
-. Expanding the right-hand side using linearity of the metric bilinear form:
-+
-\[ Q ( u + v ) \mathbf { 1 } = \left ( Q ( u ) + Q ( v ) + 2 B ( u , v ) \right ) \mathbf { 1 } \]
-+
 
-. Equating LHS and RHS and subtracting \( Q ( u ) \mathbf { 1 } + Q ( v ) \mathbf { 1 } \) from both sides yields:
-+
-\[ u v + v u = 2 B ( u , v ) \mathbf { 1 } \]
-+
+. Expanding the right-hand side using linearity of the metric bilinear form: \[ Q ( u + v ) \mathbf { 1 } = \left ( Q ( u ) + Q ( v ) + 2 B ( u , v ) \right ) \mathbf { 1 } \]
+
+
+. Equating LHS and RHS and subtracting \( Q ( u ) \mathbf { 1 } + Q ( v ) \mathbf { 1 } \) from both sides yields: \[ u v + v u = 2 B ( u , v ) \mathbf { 1 } \]
+
 
 . Setting \( u = e _ A \) and \( v = e _ B \) gives \( B ( e _ A , e _ B ) = g _ { AB } \). Thus \( e _ A e _ B + e _ B e _ A = 2 g _ { AB } \mathbf { 1 } \). For distinct orthogonal generators (\( A \neq B \)), \( g _ { AB } = 0 \implies e _ A e _ B = - e _ B e _ A \). For equal generators, \( e _ A ^ 2 = g _ { AA } \mathbf { 1 } \). \( \square \)
 ====
@@ -1191,26 +912,18 @@ For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _
 [THEOREM]
 .Theorem: Ring Homomorphism Property of Main Scale Projection
 ====
-The Main Scale Projection operator \( ( \downarrow ) : \text { Fin } ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) is a strict ring homomorphism mapping finite multiscale vernier quantities onto standard real flux values, preserving addition and multiplication:
+The Main Scale Projection operator \( ( \downarrow ) : \text { Fin } ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) is a strict ring homomorphism mapping finite multiscale vernier quantities onto standard real flux values, preserving addition and multiplication: \[ ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) , \qquad ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
 
-\[ ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) , \qquad ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
-+
 
 *Proof:*
 . Represent finite vernier quantities in canonical decomposition: \( x ^ { \ast } = x + \epsilon _ x ^ { \ast } \) and \( y ^ { \ast } = y + \epsilon _ y ^ { \ast } \), where \( x , y \in \mathbb { R } \) are main-scale real parts and \( \epsilon _ x ^ { \ast } , \epsilon _ y ^ { \ast } \in \text { Fin } ( \mathbb { R } ^ { \ast } ) \) are vernier residuals satisfying \( ( \downarrow ) ( \epsilon _ x ^ { \ast } ) = 0 \) and \( ( \downarrow ) ( \epsilon _ y ^ { \ast } ) = 0 \).
 
-. **Additive Preservation**:
-+
-\[ x ^ { \ast } + y ^ { \ast } = ( x + y ) + ( \epsilon _ x ^ { \ast } + \epsilon _ y ^ { \ast } ) \implies ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = x + y + ( \downarrow ) ( \epsilon _ x ^ { \ast } + \epsilon _ y ^ { \ast } ) = x + y + 0 = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) \]
-+
+. **Additive Preservation**: \[ x ^ { \ast } + y ^ { \ast } = ( x + y ) + ( \epsilon _ x ^ { \ast } + \epsilon _ y ^ { \ast } ) \implies ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = x + y + ( \downarrow ) ( \epsilon _ x ^ { \ast } + \epsilon _ y ^ { \ast } ) = x + y + 0 = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) \]
 
-. **Multiplicative Preservation**:
-+
-\[ x ^ { \ast } \cdot y ^ { \ast } = ( x + \epsilon _ x ^ { \ast } ) ( y + \epsilon _ y ^ { \ast } ) = x y + x \epsilon _ y ^ { \ast } + y \epsilon _ x ^ { \ast } + \epsilon _ x ^ { \ast } \epsilon _ y ^ { \ast } \]
 
-Applying \( ( \downarrow ) \) to each term yields \( ( \downarrow ) ( x y ) = x y \), \( ( \downarrow ) ( x \epsilon _ y ^ { \ast } ) = x \cdot 0 = 0 \), \( ( \downarrow ) ( y \epsilon _ x ^ { \ast } ) = y \cdot 0 = 0 \), and \( ( \downarrow ) ( \epsilon _ x ^ { \ast } \epsilon _ y ^ { \ast } ) = 0 \cdot 0 = 0 \). Thus:
+. **Multiplicative Preservation**: \[ x ^ { \ast } \cdot y ^ { \ast } = ( x + \epsilon _ x ^ { \ast } ) ( y + \epsilon _ y ^ { \ast } ) = x y + x \epsilon _ y ^ { \ast } + y \epsilon _ x ^ { \ast } + \epsilon _ x ^ { \ast } \epsilon _ y ^ { \ast } \]
 
-\[ ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = x y = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
+Applying \( ( \downarrow ) \) to each term yields \( ( \downarrow ) ( x y ) = x y \), \( ( \downarrow ) ( x \epsilon _ y ^ { \ast } ) = x \cdot 0 = 0 \), \( ( \downarrow ) ( y \epsilon _ x ^ { \ast } ) = y \cdot 0 = 0 \), and \( ( \downarrow ) ( \epsilon _ x ^ { \ast } \epsilon _ y ^ { \ast } ) = 0 \cdot 0 = 0 \). Thus: \[ ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = x y = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
 
 This proves that \( ( \downarrow ) \) is a complete ring homomorphism from \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) to \( \mathbb { R } \). \( \square \)
 ====
@@ -1223,7 +936,7 @@ Having established the explicit constructibility of \( Cl ( 4 , 1 , 1 ) \), its 
 [THEOREM]
 .Theorem: Formal Tautological Completeness of the Iris System
 ====
-Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the MSRA vernier differential and integral operators, and the \( Cl ( 4 , 1 , 1 ) \) Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \). 
+Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the MSRA vernier differential and integral operators, and the \( Cl ( 4 , 1 , 1 ) \) Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \).
 
 Then \( \mathcal { S } _ { \text { Iris } } \) is tautologically complete: every valid physical field law, conservation principle, and analytical identity in real, complex, and multivector analysis reduces to an exact algebraic identity over discrete counting operations under Main Scale Projection \( ( \downarrow ) \), without requiring non-constructive continuum axioms, completed infinities, or uncountably infinite sets.
 
