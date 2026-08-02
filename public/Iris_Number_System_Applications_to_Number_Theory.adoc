@@ -928,6 +928,67 @@ where \( I_{\mathcal{I}}(\theta) \) is the Fisher aperture information multivect
 . **Tautological Conclusion**: No unbiased operational estimator on \( \mathcal{G}_N \) can exceed the precision bound imposed by the Fisher aperture information norm. \( \blacksquare \)
 ====
 
+= Applications to Conventional Statistics
+
+In this chapter, classical methods of conventional statistics—such as hypothesis testing via \( p \)-values, confidence intervals, analysis of variance (ANOVA), and linear regression estimation—are rigorously mapped into exact operational gauge operations within the discrete Iris framework. We demonstrate how conventional statistical formulas arise as finite-aperture projections of \( Cl(4,1,1) \) multivector distributions under Jaynesian Maximum Entropy constraints, eliminating reliance on infinite continuum distributions while strictly preserving operational sampling bounds.
+
+== Operational Hypothesis Testing on Discrete Grids
+
+[#theorem-operational-hypothesis-testing]
+[THEOREM]
+.Theorem: Operational Exactness of Discrete Hypothesis Testing
+====
+Let \( H_0 \) and \( H_1 \) be operational hypotheses defined on discrete partition grid \( \mathcal{G}_N \). The conventional likelihood ratio test statistic \( \Lambda(X) = \frac{P(X \mid H_0)}{P(X \mid H_1)} \) is strictly equivalent to a multivector gauge projection \( Q_{\text{gauge}}(X) \in Cl(4,1,1) \), wherein conventional \( p \)-values represent exact discrete tail-counting aperture fractions under Jaynesian MaxEnt state assignments without continuous integral approximations.
+
+*Proof:*
+
+. **Discrete Tail-Counting Measure**: On finite grid \( \mathcal{G}_N \), the operational probability of observing a sample \( X \) at least as extreme as \( x_0 \) under \( H_0 \) is the finite sum \( p_{\text{tail}} = \sum_{x \in \mathcal{G}_N : \Lambda(x) \le \Lambda(x_0)} P(x \mid H_0) \mathbf{1}_{Cl} \).
+
+. **Exact Vernier Bounding**: Because \( \mathcal{G}_N \) contains a finite step count \( N \), \( p_{\text{tail}} \) is an exact rational step fraction in \( \mathbb{R}_{\mathcal{I}} \), avoiding continuum normal or \( t \)-distribution approximations.
+
+. **Multivector Likelihood Ratio**: Expressing \( P(X \mid H_k) \) in \( Cl(4,1,1) \) via Main Scale Projection \( (\downarrow) \) yields \( \Lambda(X) \) as a scalar blade component of the Jaynesian density tensor.
+
+. **Tautological Conclusion**: Conventional hypothesis testing is an exact finite-aperture tail-counting operation on discrete partition state spaces. \( \blacksquare \)
+====
+
+== Analysis of Variance (ANOVA) in Multivector Space
+
+[#theorem-discrete-anova-decomposition]
+[THEOREM]
+.Theorem: Operational Variance Decomposition in Finite Multivector ANOVA
+====
+For a finite discrete data matrix partitioned into \( K \) operational aperture groups on grid \( \mathcal{G}_N \), the total multivector sum of squares \( SS_{\text{total}} \) satisfies the exact identity \( SS_{\text{total}} = SS_{\text{between}} + SS_{\text{within}} \) in \( Cl(4,1,1) \), guaranteeing that conventional Analysis of Variance (ANOVA) \( F \)-tests are finite gauge projections of Jaynesian aperture energy conservation.
+
+*Proof:*
+
+. **Group Partition Energy**: Let \( x_{ij} \in \mathcal{G}_N \) denote the \( j \)-th discrete measurement step count in group \( i \). The total deviation operator is \( (x_{ij} - \bar{x}) \mathbf{1}_{Cl} = (x_{ij} - \bar{x}_i) \mathbf{1}_{Cl} + (\bar{x}_i - \bar{x}) \mathbf{1}_{Cl} \).
+
+. **Orthogonality of Discrete Cross-Terms**: Summing the squared inner products over finite grid points \( i \in \{1,\dots,K\} \) and \( j \in \{1,\dots,n_i\} \) causes the discrete cross-term \( 2 \sum_{i,j} (x_{ij} - \bar{x}_i)(\bar{x}_i - \bar{x}) \mathbf{1}_{Cl} \) to vanish identically by definition of the group Vernier mean \( \bar{x}_i \).
+
+. **Cl(4,1,1) Energy Conservation**: Projecting onto the scalar blade of \( Cl(4,1,1) \) yields \( SS_{\text{total}} = SS_{\text{between}} + SS_{\text{within}} \).
+
+. **Tautological Conclusion**: ANOVA variance decomposition is a structural identity of discrete multivector projection on finite measurement grids. \( \blacksquare \)
+====
+
+== Multivector Linear Regression and Gauss-Markov Efficiency
+
+[#theorem-discrete-regression-gauss-markov]
+[THEOREM]
+.Theorem: Discrete Gauss-Markov Theorem for Multivector Linear Regression
+====
+Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite grid \( \mathcal{G}_N \) with zero-mean, uncorrelated discrete noise \( \epsilon \), the Ordinary Least Squares (OLS) estimator \( \hat{\beta} = (X^T X)^{-1} X^T Y \) is the unique Minimum Variance Linear Unbiased Estimator (BLUE) within \( Cl(4,1,1) \) under Jaynesian finite-sample constraints.
+
+*Proof:*
+
+. **Linear Unbiased Class**: Consider any alternative linear estimator \( \tilde{\beta} = C Y \). The unbiased condition \( \mathbb{E}_{\text{MaxEnt}}[\tilde{\beta}] = \beta \mathbf{1}_{Cl} \) requires \( C X = \mathbf{I} \).
+
+. **Variance Decomposition**: Express \( C = (X^T X)^{-1} X^T + D \), where \( D X = \mathbf{0} \). The covariance matrix in \( Cl(4,1,1) \) evaluates to \( \text{Var}_{\mathcal{I}}(\tilde{\beta}) = \sigma^2 (X^T X)^{-1} \mathbf{1}_{Cl} + \sigma^2 D D^T \mathbf{1}_{Cl} \).
+
+. **Positive Definiteness**: Since \( D D^T \) is a non-negative definite multivector operator, \( \text{Var}_{\mathcal{I}}(\tilde{\beta}) \ge \text{Var}_{\mathcal{I}}(\hat{\beta}) \), with equality if and only if \( D = \mathbf{0} \).
+
+. **Tautological Conclusion**: The discrete OLS estimator uniquely minimizes aperture variance across all linear unbiased estimators on \( \mathcal{G}_N \). \( \blacksquare \)
+====
+
 = Index of Formal Statements
 
 This index provides a canonical reference of all formal Theorems established across Volume II of the Counting-Iris Treatise. Click any entry below to jump directly to its position in the textbook.
@@ -1041,4 +1102,14 @@ This index provides a canonical reference of all formal Theorems established acr
 
 * xref:theorem-cramer-rao-aperture[**Theorem: Finite-Sample Vernier Variance Lower Bound**]
 -- Chapter: *Applications to Constructive Statistics* | Section: *The Finite-Sample Cramer-Rao Aperture Inequality*
+
+* xref:theorem-operational-hypothesis-testing[**Theorem: Operational Exactness of Discrete Hypothesis Testing**]
+-- Chapter: *Applications to Conventional Statistics* | Section: *Operational Hypothesis Testing on Discrete Grids*
+
+* xref:theorem-discrete-anova-decomposition[**Theorem: Operational Variance Decomposition in Finite Multivector ANOVA**]
+-- Chapter: *Applications to Conventional Statistics* | Section: *Analysis of Variance (ANOVA) in Multivector Space*
+
+* xref:theorem-discrete-regression-gauss-markov[**Theorem: Discrete Gauss-Markov Theorem for Multivector Linear Regression**]
+-- Chapter: *Applications to Conventional Statistics* | Section: *Multivector Linear Regression and Gauss-Markov Efficiency*
+
 
