@@ -246,3 +246,23 @@ The number of discrete grid partitions \( p _ N ( k ) \) of an integer measureme
 
 . **Tautological Equivalence**: Each solution corresponds uniquely to a partition of \( k \) into parts of size at most \( N \). The identity holds strictly on finite degree polynomials modulo \( q ^ { M + 1 } \). \( \square \)
 ====
+
+= Index of Formal Statements
+
+This index lists all formal Postulates, Theorems, and Definitions established across Volume III.
+
+=== Theorems
+
+* xref:theorem-multivector-metric-completeness[**Theorem: Constructive Multivector Metric Space Completeness**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Metric Spaces and Discrete Aperture Norms*
+* xref:theorem-conformal-spinor-invariance[**Theorem: Conformal Null Geometry Spinor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)*
+* xref:theorem-clifford-module-decomposition[**Theorem: Clifford Blade Ideal Direct Sum Decomposition**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Clifford Module Structure and Blade Ideal Decompositions*
+* xref:theorem-iris-ring-homomorphism[**Theorem: Multivector Ring Homomorphism Invariance**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Ring Homomorphisms and Multiplicative Invariants*
+* xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Aperture Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Aperture Topologies and Neighborhood Bases*
+* xref:theorem-vernier-compactness[**Theorem: Constructive Vernier Compactness Equivalence**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Vernier Compactness and Finite Covering Theorems*
+* xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Aperture Partial Orders and Lattice Homomorphisms*
+* xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Aperture Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*
+* xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*
+* xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
+* xref:theorem-multivector-permutation-invariance[**Theorem: Multivector Permutation Group Invariance**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Multivector Permutations and Finite Grid Enumeration*
+* xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
+
