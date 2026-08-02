@@ -268,7 +268,7 @@ This section constructs the symmetric \( s \)-power basis for parametric polynom
 Every planar quadratic Bézier curve \( P ( t ) \) with control points \( P _ 0 , P _ 1 , P _ 2 \in \mathcal { G } _ N \) for parameter \( t \in [ 0 , 1 ] \) admits a unique decomposition in the symmetric \( s \)-power basis:
 \[ P ( t ) = ( 1 - t ) P _ 0 + t P _ 2 + ( 1 - t ) t P _ 1 ^ { \Delta } \]
 where the skeleton endpoints are \( P _ 0 \) and \( P _ 2 \), and the deviation vector is \( P _ 1 ^ { \Delta } = 2 P _ 1 - P _ 0 - P _ 2 \). The curve is evaluated symmetrically via:
-\[ P ( t ) = \begin { cases } P _ 0 + t \left ( ( P _ 2 - P _ 0 ) + ( 1 - t ) P _ 1 ^ { \Delta } \right ) , & t \le \frac { 1 } { 2 } \\ P _ 2 + ( 1 - t ) \left ( ( P _ 0 - P _ 2 ) + t P _ 1 ^ { \Delta } \right ) , & t > \frac { 1 } { 2 } \end { cases } \]
+\[ P ( t ) = \left\{ \begin { array } { ll } P _ 0 + t \left ( ( P _ 2 - P _ 0 ) + ( 1 - t ) P _ 1 ^ { \Delta } \right ) , & t \le \frac { 1 } { 2 } \\ P _ 2 + ( 1 - t ) \left ( ( P _ 0 - P _ 2 ) + t P _ 1 ^ { \Delta } \right ) , & t > \frac { 1 } { 2 } \end { array } \right. \]
 The deviation vector \( P _ 1 ^ { \Delta } = \mathbf { 0 } \) if and only if \( P ( t ) \) degenerates to an affine linear segment \( ( 1 - t ) P _ 0 + t P _ 2 \).
 
 *Proof:*
