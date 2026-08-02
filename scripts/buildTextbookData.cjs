@@ -70,7 +70,9 @@ function parseAdocFile(filePath, id, defaultTitle, defaultSubtitle, author, desc
 }
 
 const vol1 = parseAdocFile(
-  "public/Iris_Number_System.adoc",
+  fs.existsSync("public/Iris_Number_System-01-Volume_I_Fundamentals.adoc")
+    ? "public/Iris_Number_System-01-Volume_I_Fundamentals.adoc"
+    : "public/Iris_Number_System.adoc",
   "textbook-iris-number-system",
   "The Iris Number System",
   "Fundamentals",
@@ -79,7 +81,9 @@ const vol1 = parseAdocFile(
 );
 
 const vol2 = parseAdocFile(
-  "public/Iris_Number_System_Applications_to_Number_Theory.adoc",
+  fs.existsSync("public/Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc")
+    ? "public/Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc"
+    : "public/Iris_Number_System_Applications_to_Number_Theory.adoc",
   "textbook-iris-number-theory",
   "The Iris Number System",
   "Applications to Number Theory, Analysis, Probability Theory, Statistics",
