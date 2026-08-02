@@ -58,7 +58,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[#0c0c0c] text-slate-100 font-sans selection:bg-amber-500 selection:text-black flex flex-col">
       {/* Top Navbar */}
       <Navbar
         activeTab={activeTab}
@@ -105,12 +105,12 @@ export default function App() {
       <InfoModal isOpen={infoModalOpen} onClose={() => setInfoModalOpen(false)} />
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-6 text-center text-xs text-slate-500">
+      <footer className="bg-[#121212] py-6 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div>
-            Iris Number System Deduction Engine • Discrete Analysis & Number Theory
+            Iris Number System Inference Engine • Discrete Analysis & Number Theory
           </div>
-          <div className="font-mono text-slate-600">
+          <div className="font-mono text-slate-500">
             basis: {'{1, ι, ϖ, ϑ}'} • τ = (1+√5)/2
           </div>
         </div>

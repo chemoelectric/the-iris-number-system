@@ -6,9 +6,10 @@ interface AsciiDocViewerProps {
   content: string;
   className?: string;
   onNavigate?: (anchorId: string) => void;
+  fontFamily?: 'serif' | 'sans';
 }
 
-export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, className = '', onNavigate }) => {
+export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, className = '', onNavigate, fontFamily = 'serif' }) => {
   // Normalize downarrow operator spacing after equals signs across all content
   const normalizeMathSpacing = (mathStr: string): string => {
     return mathStr
@@ -25,16 +26,20 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
     let textBuffer = '';
 
     while (i < text.length) {
-      // 1. Check for \( ... \)
-      if (text.startsWith('\\(', i)) {
-        const endIdx = text.indexOf('\\)', i + 2);
-        if (endIdx !== -1) {
+      // 1. Check for \( ... \) or \\( ... \\)
+      if (text.startsWith('\\(', i) || text.startsWith('\\\\(', i)) {
+        const offset = text.startsWith('\\\\(', i) ? 3 : 2;
+        const endIdx = text.indexOf('\\)', i + offset);
+        const altEndIdx = text.indexOf('\\\\)', i + offset);
+        const actualEnd = (endIdx !== -1 && altEndIdx !== -1) ? Math.min(endIdx, altEndIdx) : (endIdx !== -1 ? endIdx : altEndIdx);
+        if (actualEnd !== -1) {
           if (textBuffer) {
             tokens.push({ type: 'text', content: textBuffer });
             textBuffer = '';
           }
-          tokens.push({ type: 'math', content: text.substring(i + 2, endIdx) });
-          i = endIdx + 2;
+          const endOffset = text.startsWith('\\\\)', actualEnd) ? 3 : 2;
+          tokens.push({ type: 'math', content: text.substring(i + offset, actualEnd) });
+          i = actualEnd + endOffset;
           continue;
         }
       }
@@ -66,8 +71,8 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         const endIdx = text.indexOf('$', i + 1);
         if (endIdx !== -1 && endIdx > i + 1) {
           const content = text.substring(i + 1, endIdx);
-          // Only treat as inline math if it's single-line, doesn't contain LaTeX delimiters, and is reasonably short
-          if (!content.includes('\n') && !content.includes('\\(') && !content.includes('\\[') && content.length < 80) {
+          // Only treat as inline math if it's single-line and doesn't contain LaTeX delimiters
+          if (!content.includes('\n') && !content.includes('\\(') && !content.includes('\\[') && content.length < 120) {
             if (textBuffer) {
               tokens.push({ type: 'text', content: textBuffer });
               textBuffer = '';
@@ -118,7 +123,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           return (
             <div
               key={`block-${idx}`}
-              className="my-4 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+              className="my-4 p-4 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );
@@ -142,12 +147,16 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           return (
             <span
               key={`inmath-${tIdx}`}
-              className="inline-block px-1 text-amber-300 font-mono"
+              className="katex-inline-wrapper text-amber-200 font-serif"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );
         } catch {
-          return <code key={`inmath-err-${tIdx}`} className="text-amber-400 font-mono">\( {token.content} \)</code>;
+          return (
+            <span key={`inmath-err-${tIdx}`} className="text-amber-300 font-mono text-xs px-1 bg-slate-900 rounded">
+              \( {token.content} \)
+            </span>
+          );
         }
       });
 
@@ -196,14 +205,14 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
       } else if (match[7] || match[8]) {
         // Bold
         parts.push(
-          <strong key={`b-${match.index}`} className="font-semibold text-slate-100">
+          <strong key={`b-${match.index}`} className="font-bold text-slate-100">
             {match[7] || match[8]}
           </strong>
         );
       } else if (match[9]) {
         // Italic
         parts.push(
-          <em key={`i-${match.index}`} className="italic text-slate-300">
+          <em key={`i-${match.index}`} className="italic text-slate-200">
             {match[9]}
           </em>
         );
@@ -249,18 +258,19 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         continue;
       }
 
-      // Standalone LaTeX math line auto-detection (e.g., \mathbb{Z} = ..., |\epsilon^*| < ..., x^* = ...)
+      // Standalone LaTeX math line auto-detection
+      const hasInlineDelimiters = line.includes('\\(') || line.includes('\\\\(') || line.includes('latexmath:') || line.includes('stem:');
+      const hasProseWords = /\b(in|this|framework|integer|acts|as|an|active|both|directional|tally|physical|dots|discrete|projection|operator|upon|spectrum|basis|represents|operates|decomposes|is|are|was|were|be|been|being|have|has|had|we|our|you|your|the|a|an|for|with|about|between|into|through|during|before|after|above|below|to|from|and|or|but|not|so|if|then|else|when|where|why|how|all|any|each|every|some|such|no|nor|only|own|same|than|too|very|can|will|should|must|proof|tautological|conclusion|theorem|postulate|definition|axiom|lemma|corollary)\b/i.test(line);
+
       const isStandaloneMathLine =
+        !hasInlineDelimiters &&
+        !hasProseWords &&
         !line.startsWith('=') &&
         !line.startsWith('[') &&
         !line.startsWith('* ') &&
         !line.startsWith('- ') &&
         !line.match(/^\d+\.\s+\*\*/) &&
-        /(\\mathbb|\\mathcal|\\frac|\\sum|\\int|\\iota|\\varpi|\\vartheta|\\mathbf|\\nabla|\\operatorname|\\left|\\right|\\equiv|\\in|\\forall|\\exists|\\partial|\\epsilon|\\[a-zA-Z]+|\^\*)/.test(line) &&
-        !line.includes(' represents ') &&
-        !line.includes(' is an active ') &&
-        !line.includes(' operates as ') &&
-        !line.includes(' decomposes ');
+        /(\\mathbb|\\mathcal|\\frac|\\sum|\\int|\\iota|\\varpi|\\vartheta|\\mathbf|\\nabla|\\operatorname|\\left|\\right|\\equiv|\\in|\\forall|\\exists|\\partial|\\epsilon|\\[a-zA-Z]+|\^\*)/.test(line);
 
       if (isStandaloneMathLine && !line.startsWith('\\[')) {
         const mathCode = line.replace(/^\\\[\s*/, '').replace(/\s*\\\]$/, '').trim();
@@ -272,7 +282,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             <div
               id={currentAnchor || undefined}
               key={`standalone-math-${i}`}
-              className="my-4 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+              className="my-4 p-4 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );
@@ -292,7 +302,6 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         const isDoubleDollar = line.startsWith('$$');
         const endDelimiter = isDoubleDollar ? '$$' : '\\]';
 
-        // Check if single-line block math e.g. \[ x = y \] or $$ x = y $$
         if (line.length > 2 && line.endsWith(endDelimiter)) {
           const mathCode = line.substring(2, line.length - endDelimiter.length).trim().replace(/\\+$/, '').trim();
           const currentAnchor = pendingAnchorId;
@@ -303,7 +312,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
               <div
                 id={currentAnchor || undefined}
                 key={`math-block-${i}`}
-                className="my-4 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+                className="my-4 p-4 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             );
@@ -318,9 +327,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           continue;
         }
 
-        // Multi-line block math
         const mathLines: string[] = [];
-        // First line after delimiter if any text remains on line
         const firstLineText = line.substring(2).trim();
         if (firstLineText && firstLineText !== endDelimiter) {
           mathLines.push(firstLineText);
@@ -334,7 +341,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
               const lastLineText = currLine.substring(0, currLine.length - endDelimiter.length).trim();
               if (lastLineText) mathLines.push(lastLineText);
             }
-            i++; // skip closing delimiter
+            i++;
             break;
           }
           mathLines.push(lines[i]);
@@ -352,7 +359,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             <div
               id={currentAnchor || undefined}
               key={`math-multiline-${i}`}
-              className="my-4 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+              className="my-4 p-4 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );
@@ -399,7 +406,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             <div
               id={currentAnchor || undefined}
               key={`latexmath-block-${i}`}
-              className="my-4 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+              className="my-4 p-4 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );
@@ -436,7 +443,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             <div
               id={currentAnchor || undefined}
               key={`latex-env-${i}`}
-              className="my-4 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+              className="my-4 p-4 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );
@@ -459,7 +466,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           <h1
             id={currentAnchor || undefined}
             key={`h1-${i}`}
-            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight border-b border-slate-800 pb-3 mt-6 mb-4"
+            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight border-b border-slate-800 pb-3 mt-6 mb-4 font-sans"
           >
             {renderMathInline(title)}
           </h1>
@@ -477,7 +484,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           <h2
             id={currentAnchor || undefined}
             key={`h2-${i}`}
-            className="text-xl sm:text-2xl font-bold text-amber-200 tracking-tight border-b border-slate-800/80 pb-2 mt-8 mb-4"
+            className="text-xl sm:text-2xl font-bold text-amber-200 tracking-tight border-b border-slate-800/80 pb-2 mt-8 mb-4 font-sans"
           >
             {renderMathInline(title)}
           </h2>
@@ -495,7 +502,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           <h3
             id={currentAnchor || undefined}
             key={`h3-${i}`}
-            className="text-lg font-semibold text-indigo-300 mt-6 mb-3"
+            className="text-lg font-semibold text-indigo-300 mt-6 mb-3 font-sans"
           >
             {renderMathInline(title)}
           </h3>
@@ -518,13 +525,11 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         let blockContentLines: string[] = [];
         
         i++;
-        // Check optional block title line starting with . Title
         if (i < lines.length && lines[i].trim().startsWith('.')) {
           blockTitle = lines[i].trim().substring(1).trim();
           i++;
         }
 
-        // Check if delimited block starts with ====
         if (i < lines.length && lines[i].trim() === '====') {
           i++;
           while (i < lines.length && lines[i].trim() !== '====') {
@@ -532,10 +537,9 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             i++;
           }
           if (i < lines.length && lines[i].trim() === '====') {
-            i++; // skip closing ====
+            i++;
           }
         } else {
-          // single line or paragraph block
           while (i < lines.length && lines[i].trim() !== '') {
             blockContentLines.push(lines[i]);
             i++;
@@ -544,30 +548,29 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
 
         const blockContent = blockContentLines.join('\n');
 
-        // Styles based on blockType
-        let boxStyles = 'bg-slate-900/90 border-slate-800 text-slate-200';
-        let badgeStyles = 'bg-slate-800 text-slate-300';
+        let boxStyles = 'bg-[#141414] text-slate-200';
+        let badgeStyles = 'bg-[#222222] text-slate-300';
         let titleColor = 'text-white';
 
         if (blockType === 'POSTULATE') {
-          boxStyles = 'bg-amber-950/20 border-amber-500/40 text-amber-100 shadow-lg shadow-amber-950/20';
-          badgeStyles = 'bg-amber-500/20 text-amber-300 border border-amber-500/30';
+          boxStyles = 'bg-[#181818] text-amber-100';
+          badgeStyles = 'bg-amber-500/20 text-amber-300';
           titleColor = 'text-amber-300';
         } else if (blockType === 'DEFINITION') {
-          boxStyles = 'bg-indigo-950/20 border-indigo-500/40 text-indigo-100 shadow-lg shadow-indigo-950/20';
-          badgeStyles = 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30';
+          boxStyles = 'bg-[#181818] text-indigo-100';
+          badgeStyles = 'bg-indigo-500/20 text-indigo-300';
           titleColor = 'text-indigo-300';
         } else if (blockType === 'THEOREM') {
-          boxStyles = 'bg-purple-950/20 border-purple-500/40 text-purple-100 shadow-lg shadow-purple-950/20';
-          badgeStyles = 'bg-purple-500/20 text-purple-300 border border-purple-500/30';
+          boxStyles = 'bg-[#181818] text-purple-100';
+          badgeStyles = 'bg-purple-500/20 text-purple-300';
           titleColor = 'text-purple-300';
         } else if (blockType === 'IMPORTANT') {
-          boxStyles = 'bg-rose-950/20 border-rose-500/40 text-rose-100';
-          badgeStyles = 'bg-rose-500/20 text-rose-300 border border-rose-500/30';
+          boxStyles = 'bg-[#181818] text-rose-100';
+          badgeStyles = 'bg-rose-500/20 text-rose-300';
           titleColor = 'text-rose-300';
         } else if (blockType === 'NOTE') {
-          boxStyles = 'bg-sky-950/20 border-sky-500/40 text-sky-100';
-          badgeStyles = 'bg-sky-500/20 text-sky-300 border border-sky-500/30';
+          boxStyles = 'bg-[#181818] text-sky-100';
+          badgeStyles = 'bg-sky-500/20 text-sky-300';
           titleColor = 'text-sky-300';
         }
 
@@ -578,19 +581,19 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           <div
             id={currentAnchor || undefined}
             key={`callout-${i}`}
-            className={`my-6 p-5 rounded-2xl border ${boxStyles} space-y-3 font-sans transition-all duration-500`}
+            className={`my-6 p-5 sm:p-6 ${boxStyles} space-y-3 font-serif transition-all duration-500`}
           >
             <div className="flex items-center space-x-2">
-              <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold tracking-wider uppercase ${badgeStyles}`}>
+              <span className={`px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase ${badgeStyles}`}>
                 {blockType}
               </span>
               {blockTitle && (
-                <h4 className={`text-sm font-bold ${titleColor}`}>
+                <h4 className={`text-sm sm:text-base font-bold ${titleColor}`}>
                   {renderMathInline(blockTitle)}
                 </h4>
               )}
             </div>
-            <div className="text-xs sm:text-sm leading-relaxed space-y-2">
+            <div className="text-sm sm:text-base leading-relaxed space-y-3 font-serif">
               {parseAsciiDoc(blockContent)}
             </div>
           </div>
@@ -600,11 +603,36 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
 
       // Unordered list items starting with *, -, or **
       if (line.startsWith('* ') || line.startsWith('- ') || line.startsWith('** ')) {
-        const listItems: string[] = [];
-        while (i < lines.length && (lines[i].trim().startsWith('* ') || lines[i].trim().startsWith('- ') || lines[i].trim().startsWith('** '))) {
-          listItems.push(lines[i].trim().replace(/^(\*\*|\*|\-)\s+/, ''));
-          i++;
+        const listItems: { text: string; extraNodes?: React.ReactNode[] }[] = [];
+        
+        while (i < lines.length) {
+          const curr = lines[i].trim();
+          if (!curr) {
+            let nextIdx = i + 1;
+            while (nextIdx < lines.length && !lines[nextIdx].trim()) nextIdx++;
+            if (nextIdx < lines.length) {
+              const nextLine = lines[nextIdx].trim();
+              if (nextLine.startsWith('* ') || nextLine.startsWith('- ') || nextLine.startsWith('** ')) {
+                i = nextIdx;
+                continue;
+              }
+            }
+            break;
+          }
+
+          if (curr.startsWith('* ') || curr.startsWith('- ') || curr.startsWith('** ')) {
+            const itemText = curr.replace(/^(\*\*|\*|\-)\s+/, '');
+            listItems.push({ text: itemText });
+            i++;
+          } else if (listItems.length > 0 && (curr.startsWith('+') || lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
+            const lastItem = listItems[listItems.length - 1];
+            lastItem.text += ' ' + curr.replace(/^\+\s*/, '');
+            i++;
+          } else {
+            break;
+          }
         }
+
         const currentAnchor = pendingAnchorId;
         pendingAnchorId = null;
 
@@ -612,11 +640,12 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           <ul
             id={currentAnchor || undefined}
             key={`ul-${i}`}
-            className="my-4 space-y-2 list-disc list-outside pl-6 text-xs sm:text-sm text-slate-300"
+            className="my-5 space-y-3 list-disc list-outside pl-6 text-sm sm:text-base text-slate-200 font-serif leading-relaxed"
           >
             {listItems.map((li, liIdx) => (
               <li key={`li-${liIdx}`} className="leading-relaxed pl-1">
-                {renderMathInline(li)}
+                <div>{renderMathInline(li.text)}</div>
+                {li.extraNodes}
               </li>
             ))}
           </ul>
@@ -632,7 +661,6 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         while (i < lines.length) {
           const curr = lines[i].trim();
           if (!curr) {
-            // Empty line: check if next non-empty line continues list or ends it
             let nextIdx = i + 1;
             while (nextIdx < lines.length && !lines[nextIdx].trim()) nextIdx++;
             if (nextIdx < lines.length) {
@@ -650,7 +678,6 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             listItems.push({ text: itemText });
             i++;
           } else if (listItems.length > 0 && (curr.startsWith('\\[') || curr.startsWith('$$'))) {
-            // Display math block inside or between list items
             const mathLines: string[] = [];
             const isDoubleDollar = curr.startsWith('$$');
             const endDelimiter = isDoubleDollar ? '$$' : '\\]';
@@ -680,7 +707,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
               const mathNode = (
                 <div
                   key={`ol-math-${i}`}
-                  className="my-3 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-mono"
+                  className="my-3 p-3 bg-[#121212] overflow-x-auto text-amber-200 text-center text-sm sm:text-base font-serif"
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
               );
@@ -689,10 +716,9 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             } catch {
               // fallback
             }
-          } else if (listItems.length > 0 && !curr.startsWith('=') && !curr.startsWith('[') && !curr.startsWith('* ') && !curr.startsWith('- ')) {
-            // Continuation line for last list item
+          } else if (listItems.length > 0 && (curr.startsWith('+') || lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
             const lastItem = listItems[listItems.length - 1];
-            lastItem.text += ' ' + curr;
+            lastItem.text += ' ' + curr.replace(/^\+\s*/, '');
             i++;
           } else {
             break;
@@ -706,7 +732,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           <ol
             id={currentAnchor || undefined}
             key={`ol-${i}`}
-            className="my-4 space-y-3 list-decimal list-outside pl-6 text-xs sm:text-sm text-slate-300"
+            className="my-5 space-y-3 list-decimal list-outside pl-6 text-sm sm:text-base text-slate-200 font-serif leading-relaxed"
           >
             {listItems.map((li, liIdx) => (
               <li key={`ol-li-${liIdx}`} className="leading-relaxed pl-1">
@@ -723,11 +749,15 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
       const currentAnchor = pendingAnchorId;
       pendingAnchorId = null;
 
+      const isProofLine = line.startsWith('*Proof:*') || line.startsWith('_Proof:_') || line.startsWith('Proof:');
+
       nodes.push(
         <p
           id={currentAnchor || undefined}
           key={`p-${i}`}
-          className="my-3 text-xs sm:text-sm leading-relaxed text-slate-300"
+          className={`my-4 text-base sm:text-lg leading-relaxed text-slate-200 font-serif ${
+            isProofLine ? 'mt-6 mb-2 text-amber-300 font-semibold italic text-base font-serif border-l-2 border-amber-500/60 pl-3 py-0.5' : ''
+          }`}
         >
           {renderMathInline(line)}
         </p>
@@ -738,6 +768,8 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
     return nodes;
   };
 
-  return <div className={`prose prose-invert max-w-none font-sans ${className}`}>{parseAsciiDoc(content)}</div>;
+  const fontClass = fontFamily === 'serif' ? 'font-serif' : 'font-sans';
+
+  return <div className={`prose prose-invert max-w-none treatise-body ${fontClass} ${className}`}>{parseAsciiDoc(content)}</div>;
 };
 
