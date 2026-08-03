@@ -139,9 +139,9 @@ Projecting onto orthogonal grade subspaces:
 
 [#example-electrodynamics-maxwell]
 [EXAMPLE]
-.Example Problem 3: Unified Electrodynamics and the Single Maxwell Multivector Equation
+.Example Problem 3: Unified Electrodynamics, Maxwell's Equations, and Gravitational Field Inferences
 ====
-*Problem*: Express electrostatics, magnetostatics, and dynamic electromagnetic wave propagation for source charge-current distributions using a single coordinate-free multivector field equation.
+*Problem*: Express electrostatics, magnetostatics, and dynamic electromagnetic wave propagation for source charge-current distributions using a single coordinate-free multivector field equation, and derive Newton's law of universal gravitation as a static scalar-source corollary.
 
 *Solution*:
 
@@ -156,6 +156,11 @@ Taking the geometric product \( D F = ( D \cdot F ) + ( D \wedge F ) \) and equa
    - Vector grade: \( - \frac { 1 } { c } \frac { \partial \mathbf { E } } { \partial t } + \nabla \times \mathbf { B } = \mathbf { j } \) (Ampère-Maxwell law).
    - Pseudovector grade: \( \frac { 1 } { c } \frac { \partial \mathbf { B } } { \partial t } + \nabla \times \mathbf { E } = \mathbf { 0 } \) (Faraday's law of induction).
    - Pseudoscalar grade: \( \nabla \cdot \mathbf { B } = 0 \) (Gauss's law for magnetostatics).
+
+4. **By the way: Derivation of Newton's Law of Universal Gravitation**:
+   By direct mathematical analogy in static conditions (\( \frac { \partial } { \partial t } = 0 \)), consider a static scalar mass density field \( \rho _ m \) generating a static vector gravitational acceleration field \( F _ g = \mathbf { g } \). Setting derivative operator \( D = \nabla \) and scalar mass source \( J _ g = - 4 \pi G \rho _ m \mathbf { 1 } _ { Cl } \), the static field equation \( D F _ g = J _ g \) reduces to scalar grade projection \( \nabla \cdot \mathbf { g } = - 4 \pi G \rho _ m \) (Gauss's law for gravitation). For a finite localized mass aperture \( m _ 1 = \int \rho _ m \, d V \), radial symmetry and aperture flux conservation demand field intensity \( \mathbf { g } ( r ) = - \frac { G m _ 1 } { r ^ 2 } \hat { \mathbf { r } } \). Coupling to a second finite mass \( m _ 2 \) yields Newton's law of universal gravitation:
+\[ \mathbf { F } _ g = m _ 2 \mathbf { g } ( r ) = - \frac { G m _ 1 m _ 2 } { r ^ 2 } \hat { \mathbf { r } } \]
+proving that static universal gravitation is derived as a direct static scalar-source corollary within the unified Master Field Equation framework.
 ====
 
 == Multivector Metric Spaces and Discrete Aperture Norms
@@ -855,7 +860,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 
 * xref:example-solid-mechanics-statics[**Example: Solid Elastic Media Statics and Stress-Strain Multivector Equilibrium**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
 * xref:example-fluid-dynamics-momentum[**Example: Viscous Fluid Dynamics and Multivector Navier-Stokes Conservation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
-* xref:example-electrodynamics-maxwell[**Example: Unified Electrodynamics and the Single Maxwell Multivector Equation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
+* xref:example-electrodynamics-maxwell[**Example: Unified Electrodynamics, Maxwell's Equations, and Gravitational Field Inferences**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
 * xref:example-spower-skeleton-transform[**Example: Affine Skeleton Transformation and Exact Fat-Line Width Determination**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
 * xref:example-quadratic-bezier-clipping-intersection[**Example: Full Step-by-Step s-Power Bézier Clipping and Intersection Calculation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
 * xref:example-flatness-testing-intersection[**Example: Combination of s-Power Bézier Clipping and Flatness Testing for Near-Parallel Curves**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
