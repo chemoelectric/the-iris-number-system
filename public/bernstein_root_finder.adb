@@ -129,7 +129,7 @@ procedure bernstein_root_finder is
       x_f : real;
       x_t : real;
       x_itp : real;
-      delta : real;
+      delta_val : real;
       sigma : real;
       radius : real;
       diff : real;
@@ -202,7 +202,7 @@ procedure bernstein_root_finder is
 
          diff := b - a;
          pow_val := diff ** kappa_2;
-         delta := kappa_1 * pow_val;
+         delta_val := kappa_1 * pow_val;
 
          diff := x_half - x_f;
          diff := abs (diff);
@@ -213,8 +213,8 @@ procedure bernstein_root_finder is
             sigma := -1.0;
          end if;
 
-         if delta <= diff then
-            t1 := sigma * delta;
+         if delta_val <= diff then
+            t1 := sigma * delta_val;
             x_t := x_f + t1;
          else
             x_t := x_half;
