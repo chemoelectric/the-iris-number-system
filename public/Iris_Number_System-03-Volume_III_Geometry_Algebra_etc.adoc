@@ -348,7 +348,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m b _ k B _ { k , m } ( x ) \) be a polynomi
    - If \( P ( r _ i ) = 0 \), \( r _ i \) is identified as a critical root (local extremum touching zero).
    - If \( P ( r _ i ) \cdot P ( r _ { i + 1 } ) > 0 \), \( P ( x ) \) contains no real roots on \( ( r _ i , r _ { i + 1 } ) \).
 
-4. **ITP (Interpolate, Truncate, Project) Refinement**: On each sub-interval containing a sign change, the unique real root is refined to target aperture precision \( \epsilon = 2 ^ { - N } \) via the ITP algorithm, achieving super-linear / secant convergence speed while maintaining strict worst-case bisection guarantees \( k \le \lceil \log _ 2 ( ( r _ { i + 1 } - r _ i ) / \epsilon ) \rceil \).
+4. **ITP (Interpolate, Truncate, Project) Refinement**: On each sub-interval containing a sign change, the unique real root is refined to target aperture precision \( \epsilon = 2 ^ { - N } \) via the ITP algorithm (Oliveira & Takahashi, 2021), achieving super-linear / secant convergence speed while maintaining strict worst-case bisection guarantees \( k \le \lceil \log _ 2 ( ( r _ { i + 1 } - r _ i ) / \epsilon ) \rceil \).
 
 *Proof:*
 
@@ -903,6 +903,13 @@ begin
    end loop;
 end bernstein_root_finder;
 ----
+
+[#references-itp-root-finding]
+=== Primary References and Citations for the ITP Root-Finding Method
+
+The Interpolate, Truncate, Project (ITP) root-finding algorithm—which achieves superlinear convergence matching the secant method while preserving strict minimax worst-case bisection bounds and optimal average performance across any continuous probability distribution—was originated by I. F. D. Oliveira and R. H. C. Takahashi:
+
+* **Oliveira, I. F. D., & Takahashi, R. H. C. (2021).** "An Enhancement of the Bisection Method Average Performance Preserving Minmax Optimality." *ACM Transactions on Mathematical Software*, 47(1), Article 5, pp. 1–24. link:https://doi.org/10.1145/3423597[DOI: 10.1145/3423597].
 
 == Optimal Real Root Isolation Across Serial and Parallel Architectures and Numerical Representations
 
