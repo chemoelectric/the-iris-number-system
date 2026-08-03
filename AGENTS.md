@@ -14,3 +14,16 @@
 - In `latexmath` formulations, always use `\( ` and ` \)` for inline math instead of single dollar signs (`$`).
 - Use `\[ ` and ` \]` for display math blocks with padded spaces inside delimiters.
 - Maintain ample spacing between operators, variables, and delimiters in math expressions (e.g., `\( a \cdot x \pmod p \)`), but avoid adding spaces inside LaTeX environment commands or macro keywords (such as `\begin{array}`, `\end{array}`, `\begin{cases}`, or `\text{...}`) to preserve exact syntactic parsing.
+
+## Computer Programming Guidelines
+
+- **Ada Standard**: In Ada, use the 2022 standard and place `pragma ada_2022;` near the top of files.
+- **Case Sensitivity & Lowercase Preference**: In case-insensitive languages (such as Ada or Pascal), write code strictly in lowercase (for visual accessibility/hypersensitivity reasons). This rule does not apply to string literals, character constants, comments, or external references where case is fixed.
+- **Structured Control Flow**: In imperative languages generally, enforce strictly structured code:
+  - Do not use `goto` or any `goto`-like constructs.
+  - Return statements must only appear at the very end of subprograms.
+  - Exceptions are allowed, but strictly for exceptional runtime conditions.
+  - In C and similar languages, `switch`-`case` statements are permitted under the following strict conditions: no fallthrough is allowed except for a sequential list of empty cases preceding executable code, and every case block (including the final case block) must terminate with an explicit `break`.
+- **Increment and Decrement Operators**: The increment (`++`) and decrement (`--`) operators are strictly disallowed in C-like languages.
+- **Single Operation per Statement**: In imperative languages (e.g., C, Fortran, Ada, Pascal, etc.), statements must perform only a single operation at a time. Complex side-effecting compound expressions (e.g., `x = y + (i += 1);`) are strictly forbidden and must be decomposed into separate, explicit sequential statements.
+- **Cyclomatic Complexity Limit**: In imperative languages, no subprogram (including functions, procedures, or nested subprograms) shall exceed a modified McCabe cyclomatic complexity of 10.
