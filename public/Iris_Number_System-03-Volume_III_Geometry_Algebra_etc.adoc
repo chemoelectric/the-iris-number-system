@@ -545,7 +545,7 @@ Let \( P ( z ) = z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 \
    \[ z _ i ^ \ast \approx z _ i ^ { ( k ) } - \frac { 1 } { \frac { P ' ( z _ i ^ { ( k ) } ) } { P ( z _ i ^ { ( k ) } ) } - \sum _ { j \neq i } \frac { 1 } { z _ i ^ { ( k ) } - z _ j ^ { ( k ) } } } \]
    Inverting numerator and denominator gives the Aberth-Ehrlich update formula. Vanishing second partial derivatives confirm cubic convergence.
 
-. **Companion Matrix Characteristic Identity**: Computing \( \det ( z \mathbf { I } - \mathbf { C } _ P ) \) via cofactor expansion along the final column yields \( z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 = P ( z ) \). Eigenvalues are preserved under orthogonal QR similarity transformations \( \mathbf { C } _ { k + 1 } = \mathbf { R } _ k \mathbf { Q } _ k = \mathbf { Q } _ k ^ T \mathbf { C } _ k \mathbf { Q } _ k \), converging to upper triangular Schur fixed points containing all $m$ roots on the main diagonal. \( \square \)
+. **Companion Matrix Characteristic Identity**: Computing \( \det ( z \mathbf { I } - \mathbf { C } _ P ) \) via cofactor expansion along the final column yields \( z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 = P ( z ) \). Eigenvalues are preserved under orthogonal QR similarity transformations \( \mathbf { C } _ { k + 1 } = \mathbf { R } _ k \mathbf { Q } _ k = \mathbf { Q } _ k ^ T \mathbf { C } _ k \mathbf { Q } _ k \), converging to upper triangular Schur fixed points containing all \( m \) roots on the main diagonal. \( \square \)
 ====
 
 [#numerical-stability-simultaneous-rootfinding]
