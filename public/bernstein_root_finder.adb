@@ -10,7 +10,8 @@ with ada.numerics.generic_elementary_functions;
 procedure bernstein_root_finder is
 
    type real is new long_float;
-   package real_functions is new ada.numerics.generic_elementary_functions (real);
+   package real_functions is new
+     ada.numerics.generic_elementary_functions (real);
    use real_functions;
 
    type float_array is array (integer range <>) of real;
@@ -117,8 +118,12 @@ procedure bernstein_root_finder is
       a_in     : real;
       b_in     : real;
       tol      : real) return real
-     with pre  => coeffs'length >= 2 and domain_b > domain_a and b_in >= a_in and tol > 0.0,
-          post => refine_root_itp'result >= a_in and refine_root_itp'result <= b_in
+     with pre  => coeffs'length >= 2 and
+                  domain_b > domain_a and
+                  b_in >= a_in and
+                  tol > 0.0,
+          post => refine_root_itp'result >= a_in and
+                  refine_root_itp'result <= b_in
    is
       a : real;
       b : real;
@@ -286,7 +291,10 @@ procedure bernstein_root_finder is
       tol        : real;
       roots      : out float_array;
       num_roots  : out integer)
-     with pre => coeffs'length >= 2 and domain_b > domain_a and tol > 0.0 and roots'length >= coeffs'length - 1
+     with pre => coeffs'length >= 2 and
+                 domain_b > domain_a and
+                 tol > 0.0 and
+                 roots'length >= coeffs'length - 1
    is
       m : constant integer := coeffs'length - 1;
       eps_filter : real;
@@ -447,10 +455,14 @@ procedure bernstein_root_finder is
    idx_r : integer;
    r_val : real;
 begin
-   ada.text_io.put_line ("=================================================");
-   ada.text_io.put_line (" recursive bernstein derivative-crossing finder ");
-   ada.text_io.put_line ("   demonstration in floating-point (ada 2022)   ");
-   ada.text_io.put_line ("=================================================");
+   ada.text_io.put_line
+     ("=================================================");
+   ada.text_io.put_line
+     (" recursive bernstein derivative-crossing finder ");
+   ada.text_io.put_line
+     ("   demonstration in floating-point (ada 2022)   ");
+   ada.text_io.put_line
+     ("=================================================");
 
    isolate_bernstein_roots
      (coeffs    => test_b,
@@ -470,7 +482,11 @@ begin
       ada.text_io.put ("  root");
       ada.text_io.put (integer'image (idx_r + 1));
       ada.text_io.put (" = ");
-      ada.float_text_io.put (item => float (r_val), fore => 1, aft => 8, exp => 0);
+      ada.float_text_io.put
+        (item => float (r_val),
+         fore => 1,
+         aft  => 8,
+         exp  => 0);
       ada.text_io.new_line;
       idx_r := idx_r + 1;
    end loop;
