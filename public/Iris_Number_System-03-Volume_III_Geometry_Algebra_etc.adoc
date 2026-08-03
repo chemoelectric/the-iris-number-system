@@ -430,27 +430,38 @@ This section establishes the algebraic simplicity of degree elevation in the sym
 [THEOREM]
 .Theorem: s-Power Trivial Degree Elevation and Geometric Degree Reduction
 ====
-Let \( P ( t ) = ( 1 - t ) P _ 0 + t P _ 2 + ( 1 - t ) t P _ 1 ^ { \Delta } \) be a quadratic curve in the symmetric \( s \)-power basis on rational grid \( \mathcal { G } _ N \).
+Let \( P ( t ) \) be a polynomial curve in the symmetric \( s \)-power basis on rational grid \( \mathcal { G } _ N \).
 
-1. **Trivial Degree Elevation**: Re-expressing \( P ( t ) \) as a degree-3 (cubic) curve in the \( s \)-power basis:
+1. **Trivial Degree Elevation**: Re-expressing a quadratic curve \( P ( t ) = ( 1 - t ) P _ 0 + t P _ 2 + ( 1 - t ) t P _ 1 ^ { \Delta } \) as a degree-3 (cubic) curve:
 \[ P ( t ) = ( 1 - t ) Q _ 0 + t Q _ 3 + ( 1 - t ) ^ 2 t Q _ 1 ^ { \Delta } + ( 1 - t ) t ^ 2 Q _ 2 ^ { \Delta } \]
 is executed trivially by inheriting the lower-degree deviation vector directly into both cubic deviation positions without modifying endpoints:
 \[ Q _ 0 = P _ 0 , \quad Q _ 3 = P _ 2 , \quad Q _ 1 ^ { \Delta } = P _ 1 ^ { \Delta } , \quad Q _ 2 ^ { \Delta } = P _ 1 ^ { \Delta } \]
 
-2. **Geometric Degree Reduction**: Reducing \( P ( t ) \) to an affine linear segment (degree 1) by setting \( P _ 1 ^ { \Delta } \mapsto \mathbf { 0 } \) incurs a maximum geometric deviation bounded by:
+2. **Geometric Linear Degree Reduction**: Reducing quadratic \( P ( t ) \) to an affine linear segment (degree 1) by setting \( P _ 1 ^ { \Delta } \mapsto \mathbf { 0 } \) incurs a maximum geometric deviation bounded by:
 \[ E _ 1 = \max _ { t \in [ 0 , 1 ] } \| P ( t ) - L ( t ) \| _ { \mathcal { I } } = \frac { 1 } { 4 } \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } \]
-When domain \( [ 0 , 1 ] \) is partitioned into \( K \) uniform sub-intervals of length \( \Delta t = 1 / K \), setting sub-interval deviation vectors \( P _ 1 ^ { \Delta , ( i ) } = ( \Delta t ) ^ 2 P _ 1 ^ { \Delta } \mapsto \mathbf { 0 } \) yields a \( C ^ 0 \) piecewise linear curve whose maximum error to \( P ( t ) \) converges quadratically as:
-\[ E _ K = \frac { \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } } { 4 K ^ 2 } \]
+Partitioning domain \( [ 0 , 1 ] \) into \( K \) uniform sub-intervals gives a piecewise linear curve whose maximum error converges quadratically as \( E _ K = \frac { \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } } { 4 K ^ 2 } \).
+
+3. **Cubic-to-Quadratic Degree Reduction (OpenType CFF Font Conversion)**: Given a cubic curve \( C ( t ) = ( 1 - t ) P _ 0 + t P _ 3 + ( 1 - t ) ^ 2 t Q _ 1 ^ { \Delta } + ( 1 - t ) t ^ 2 Q _ 2 ^ { \Delta } \) (such as an OpenType CFF cubic glyph contour with Bézier control points \( P _ 0 , P _ 1 , P _ 2 , P _ 3 \), where \( Q _ 1 ^ { \Delta } = 3 P _ 1 - 2 P _ 0 - P _ 3 \) and \( Q _ 2 ^ { \Delta } = 3 P _ 2 - P _ 0 - 2 P _ 3 \)), the optimal single quadratic approximation:
+\[ Q ( t ) = ( 1 - t ) P _ 0 + t P _ 3 + ( 1 - t ) t M ^ { \Delta } \quad \text{with} \quad M ^ { \Delta } = \frac { Q _ 1 ^ { \Delta } + Q _ 2 ^ { \Delta } } { 2 } \]
+has quadratic control point \( P _ { \text { quad } } = \frac { 3 } { 4 } ( P _ 1 + P _ 2 ) - \frac { 1 } { 4 } ( P _ 0 + P _ 3 ) \). The maximum geometric error over \( [ 0 , 1 ] \) is strictly bounded by:
+\[ E _ 1 = \max _ { t \in [ 0 , 1 ] } \| C ( t ) - Q ( t ) \| _ { \mathcal { I } } = \frac { \| Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } \| _ { \mathcal { I } } } { 1 2 \sqrt { 3 } } \approx 0 . 0 4 8 1 1 3 \, \| Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } \| _ { \mathcal { I } } \]
+When domain \( [ 0 , 1 ] \) is partitioned into \( K \) uniform sub-intervals of length \( \Delta t = 1 / K \), the deviation difference scales down by factor \( 1 / K ^ 2 \), yielding a \( C ^ 0 \) piecewise quadratic curve with maximum geometric error:
+\[ E _ K = \frac { \| Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } \| _ { \mathcal { I } } } { 1 2 \sqrt { 3 } \, K ^ 2 } \]
+enabling direct application of fat-line Bézier clipping and curve intersection algorithms to OpenType CFF font glyph outlines.
 
 *Proof:*
 
 . **Degree Elevation Identity**: Substituting \( 1 = ( 1 - t ) + t \) into the quadratic deviation term yields:
 \[ ( 1 - t ) t P _ 1 ^ { \Delta } = ( 1 - t ) t [ ( 1 - t ) + t ] P _ 1 ^ { \Delta } = ( 1 - t ) ^ 2 t P _ 1 ^ { \Delta } + ( 1 - t ) t ^ 2 P _ 1 ^ { \Delta } \]
-Matching coefficients with the cubic \( s \)-power expansion \( ( 1 - t ) Q _ 0 + t Q _ 3 + ( 1 - t ) ^ 2 t Q _ 1 ^ { \Delta } + ( 1 - t ) t ^ 2 Q _ 2 ^ { \Delta } \) directly verifies \( Q _ 0 = P _ 0 \), \( Q _ 3 = P _ 2 \), \( Q _ 1 ^ { \Delta } = P _ 1 ^ { \Delta } \), and \( Q _ 2 ^ { \Delta } = P _ 1 ^ { \Delta } \).
+Matching coefficients with the cubic \( s \)-power expansion directly verifies \( Q _ 0 = P _ 0 \), \( Q _ 3 = P _ 2 \), \( Q _ 1 ^ { \Delta } = P _ 1 ^ { \Delta } \), and \( Q _ 2 ^ { \Delta } = P _ 1 ^ { \Delta } \).
 
-. **Geometric Degree Reduction Bound**: The deviation from the linear backbone \( L ( t ) = ( 1 - t ) P _ 0 + t P _ 2 \) is \( d ( t ) = ( 1 - t ) t P _ 1 ^ { \Delta } \). Since the scalar function \( f ( t ) = ( 1 - t ) t \) achieves its absolute maximum at \( t = 1 / 2 \) with value \( f ( 1 / 2 ) = 1 / 4 \), the maximum geometric error over \( [ 0 , 1 ] \) is exactly \( \frac { 1 } { 4 } \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } \).
+. **Linear Reduction Bound**: The deviation from the linear backbone \( L ( t ) \) is \( d ( t ) = ( 1 - t ) t P _ 1 ^ { \Delta } \). Since \( f ( t ) = ( 1 - t ) t \) reaches maximum \( 1 / 4 \) at \( t = 1 / 2 \), maximum geometric error is \( \frac { 1 } { 4 } \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } \).
 
-. **Subdivision Error Scaling**: Under reparameterization on sub-interval \( [ t _ i , t _ { i + 1 } ] \) with length \( \Delta t = 1 / K \), the deviation vector scales as \( P _ 1 ^ { \Delta , ( i ) } = ( \Delta t ) ^ 2 P _ 1 ^ { \Delta } \). Replacing each quadratic sub-arc with its linear backbone segment gives a piecewise linear approximation with maximal sub-interval error \( \frac { 1 } { 4 } \| P _ 1 ^ { \Delta , ( i ) } \| = \frac { \| P _ 1 ^ { \Delta } \| } { 4 K ^ 2 } \). \( \square \)
+. **Cubic-to-Quadratic Error Bound**: The difference vector between cubic \( C ( t ) \) and quadratic \( Q ( t ) \) is:
+\[ d ( t ) = C ( t ) - Q ( t ) = ( 1 - t ) t \left[ ( 1 - t ) Q _ 1 ^ { \Delta } + t Q _ 2 ^ { \Delta } - \frac { Q _ 1 ^ { \Delta } + Q _ 2 ^ { \Delta } } { 2 } \right] = \frac { 1 } { 2 } ( 1 - t ) t ( 1 - 2 t ) ( Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } ) \]
+The cubic scalar function \( g ( t ) = ( 1 - t ) t ( 1 - 2 t ) = t - 3 t ^ 2 + 2 t ^ 3 \) has derivative \( g ' ( t ) = 1 - 6 t + 6 t ^ 2 = 0 \). The extrema occur at \( t = \frac { 3 \mp \sqrt { 3 } } { 6 } \), yielding maximum absolute value \( | g ( t _ { \text { max } } ) | = \frac { 1 } { 6 \sqrt { 3 } } = \frac { \sqrt { 3 } } { 1 8 } \). Therefore:
+\[ \max _ { t \in [ 0 , 1 ] } \| d ( t ) \| _ { \mathcal { I } } = \frac { 1 } { 2 } \cdot \frac { 1 } { 6 \sqrt { 3 } } \| Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } \| _ { \mathcal { I } } = \frac { \| Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } \| _ { \mathcal { I } } } { 1 2 \sqrt { 3 } } \]
+Under subdivision into \( K \) sub-intervals, the parameter rescaling \( t \mapsto t / K \) reduces the deviation difference norm quadratically, proving \( E _ K = \frac { \| Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } \| } { 1 2 \sqrt { 3 } \, K ^ 2 } \). \( \square \)
 ====
 
 [#example-spower-degree-reduction]
@@ -478,8 +489,37 @@ Matching coefficients with the cubic \( s \)-power expansion \( ( 1 - t ) Q _ 0 
 3. **Subdivision for Target Tolerance**:
    - Require \( E _ K = \frac { \| P _ 1 ^ { \Delta } \| } { 4 K ^ 2 } \le \epsilon \implies \frac { 1 6 } { 4 K ^ 2 } \le 0 . 0 5 \implies \frac { 4 } { K ^ 2 } \le 0 . 0 5 \implies K ^ 2 \ge 8 0 \).
    - Taking ceiling: \( K = \lceil \sqrt { 8 0 } \rceil = 9 \).
-   - With \( K = 9 \) sub-intervals (\( \Delta t = 1 / 9 \)), the scaled sub-interval deviation vector norm is \( \| P _ 1 ^ { \Delta , ( i ) } \| = \frac { 1 6 } { 8 1 } \approx 0 . 1 9 75 \).
+   - With \( K = 9 \) sub-intervals (\( \Delta t = 1 / 9 \)), the scaled sub-interval deviation vector norm is \( \| P _ 1 ^ { \Delta , ( i ) } \| = \frac { 1 6 } { 8 1 } \approx 0 . 1 9 7 5 \).
    - The piecewise linear backbone curve achieves maximum geometric error \( E _ 9 = \frac { 1 6 } { 4 \times 8 1 } = \frac { 4 } { 8 1 } \approx 0 . 0 4 9 4 < 0 . 0 5 \), producing a lightweight piecewise polynomial extraordinarily close to the original curve.
+====
+
+[#example-opentype-cff-cubic-to-quadratic]
+[EXAMPLE]
+.Example Problem 5: OpenType CFF Font Outline Cubic-to-Quadratic Degree Reduction in 2D Space
+====
+*Problem*: In an OpenType CFF font (1000 UPM grid), a glyph outline segment is defined as a cubic Bézier curve with control points \( P _ 0 = ( 1 0 0 , 1 0 0 ) \), \( P _ 1 = ( 1 0 0 , 4 0 0 ) \), \( P _ 2 = ( 3 0 0 , 6 0 0 ) \), and \( P _ 3 = ( 6 0 0 , 6 0 0 ) \).
+1. Convert the cubic curve into its symmetric \( s \)-power representation and determine deviation vectors \( Q _ 1 ^ { \Delta } \) and \( Q _ 2 ^ { \Delta } \).
+2. Calculate the quadratic control point \( P _ { \text { quad } } \) for a single-segment quadratic reduction and compute its maximum geometric error \( E _ 1 \).
+3. Determine the minimum uniform subdivision count \( K \) required to reduce the curve into a piecewise quadratic contour within a rendering/intersection tolerance of \( \epsilon = 0 . 5 \) font design units.
+
+*Solution*:
+
+1. **s-Power Deviation Vectors**:
+   - \( Q _ 1 ^ { \Delta } = 3 P _ 1 - 2 P _ 0 - P _ 3 = 3 ( 1 0 0 , 4 0 0 ) - 2 ( 1 0 0 , 1 0 0 ) - ( 6 0 0 , 6 0 0 ) = ( 3 0 0 , 1 2 0 0 ) - ( 2 0 0 , 2 0 0 ) - ( 6 0 0 , 6 0 0 ) = ( - 5 0 0 , 4 0 0 ) \).
+   - \( Q _ 2 ^ { \Delta } = 3 P _ 2 - P _ 0 - 2 P _ 3 = 3 ( 3 0 0 , 6 0 0 ) - ( 1 0 0 , 1 0 0 ) - 2 ( 6 0 0 , 6 0 0 ) = ( 9 0 0 , 1 8 0 0 ) - ( 1 0 0 , 1 0 0 ) - ( 1 2 0 0 , 1 2 0 0 ) = ( - 4 0 0 , 5 0 0 ) \).
+   - \( s \)-power cubic representation: \( C ( t ) = ( 1 - t ) ( 1 0 0 , 1 0 0 ) + t ( 6 0 0 , 6 0 0 ) + ( 1 - t ) ^ 2 t ( - 5 0 0 , 4 0 0 ) + ( 1 - t ) t ^ 2 ( - 4 0 0 , 5 0 0 ) \).
+
+2. **Single-Segment Quadratic Control Point and Error**:
+   - Mid-deviation vector: \( M ^ { \Delta } = \frac { Q _ 1 ^ { \Delta } + Q _ 2 ^ { \Delta } } { 2 } = \frac { ( - 5 0 0 , 4 0 0 ) + ( - 4 0 0 , 5 0 0 ) } { 2 } = ( - 4 5 0 , 4 5 0 ) \).
+   - Quadratic control point: \( P _ { \text { quad } } = \frac { 3 } { 4 } ( P _ 1 + P _ 2 ) - \frac { 1 } { 4 } ( P _ 0 + P _ 3 ) = \frac { 3 } { 4 } ( 4 0 0 , 1 0 0 0 ) - \frac { 1 } { 4 } ( 7 0 0 , 7 0 0 ) = ( 3 0 0 , 7 5 0 ) - ( 1 7 5 , 1 7 5 ) = ( 1 2 5 , 5 7 5 ) \).
+   - Difference vector: \( Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } = ( - 5 0 0 , 4 0 0 ) - ( - 4 0 0 , 5 0 0 ) = ( - 1 0 0 , - 1 0 0 ) \).
+   - Norm: \( \| Q _ 1 ^ { \Delta } - Q _ 2 ^ { \Delta } \| = \sqrt { ( - 1 0 0 ) ^ 2 + ( - 1 0 0 ) ^ 2 } = 1 0 0 \sqrt { 2 } \approx 1 4 1 . 4 2 1 \).
+   - Maximum geometric error: \( E _ 1 = \frac { 1 0 0 \sqrt { 2 } } { 1 2 \sqrt { 3 } } = \frac { 2 5 \sqrt { 6 } } { 9 } \approx 6 . 8 0 4 \) font design units.
+
+3. **Piecewise Quadratic Subdivision for OpenType Precision**:
+   - Setting error requirement: \( E _ K = \frac { E _ 1 } { K ^ 2 } \le 0 . 5 \implies \frac { 6 . 8 0 4 } { K ^ 2 } \le 0 . 5 \implies K ^ 2 \ge 1 3 . 6 0 8 \).
+   - Minimum sub-intervals required: \( K = \lceil \sqrt { 1 3 . 6 0 8 } \rceil = 4 \).
+   - Partitioning the CFF cubic curve at parameters \( t \in \{ 0 , 0 . 2 5 , 0 . 5 , 0 . 7 5 , 1 . 0 \} \) into 4 sub-arcs yields a piecewise quadratic contour with maximum geometric error \( E _ 4 = \frac { 6 . 8 0 4 } { 1 6 } \approx 0 . 4 2 5 < 0 . 5 \), directly suitable for fast fat-line Bézier clipping and curve intersection in font rendering engines.
 ====
 
 == Primary References and Citations
@@ -820,3 +860,4 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:example-quadratic-bezier-clipping-intersection[**Example: Full Step-by-Step s-Power Bézier Clipping and Intersection Calculation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
 * xref:example-flatness-testing-intersection[**Example: Combination of s-Power Bézier Clipping and Flatness Testing for Near-Parallel Curves**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
 * xref:example-spower-degree-reduction[**Example: Trivial Degree Elevation and Geometric Piecewise Degree Reduction**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
+* xref:example-opentype-cff-cubic-to-quadratic[**Example: OpenType CFF Font Outline Cubic-to-Quadratic Degree Reduction in 2D Space**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
