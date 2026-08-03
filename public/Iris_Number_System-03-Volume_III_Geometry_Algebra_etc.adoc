@@ -258,6 +258,77 @@ The Main Scale Projection operator \( ( \downarrow ) : Cl ( 4 , 1 , 1 ) \to \mat
 . **Identity Mapping**: \( ( \downarrow ) ( \mathbf { 1 } _ { Cl } ) = 1 \). Hence \( ( \downarrow ) \) is a ring homomorphism. \( \square \)
 ====
 
+== Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding
+
+This section addresses constructive polynomial factorization, exact real root isolation, and numerical real root finding on discrete grid \( \mathcal { G } _ N \), providing foundational algebraic tools for font curve intersection, ray-casting, and outline synthesis.
+
+[#theorem-constructive-real-root-isolation]
+[THEOREM]
+.Theorem: Constructive Real Root Isolation and Sturm-Vernier Sequence Theorem
+====
+Let \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) be a square-free polynomial of degree \( m \) with rational coefficients in \( \mathbb { Q } \subset Cl ( 4 , 1 , 1 ) \).
+
+1. **Sturm-Vernier Remainder Chain**: Construct the finite sequence of polynomials \( \{ S _ 0 ( x ) , S _ 1 ( x ) , \dots , S _ r ( x ) \} \) on grid \( \mathcal { G } _ N \) via polynomial pseudo-division:
+\[ S _ 0 ( x ) = P ( x ) , \quad S _ 1 ( x ) = P ' ( x ) , \quad S _ { k + 1 } ( x ) = - \text{rem} ( S _ { k - 1 } ( x ) , S _ k ( x ) ) \]
+terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \setminus \{ 0 \} \).
+
+2. **Exact Real Root Isolation**: For any interval \( [ a , b ] \) on grid \( \mathcal { G } _ N \), let \( V ( c ) \) denote the number of sign variations in the sequence of values \( ( S _ 0 ( c ) , S _ 1 ( c ) , \dots , S _ r ( c ) ) \). The exact number of distinct real roots of \( P ( x ) \) in \( ( a , b ] \) is given strictly by the integer difference:
+\[ N _ { \text { roots } } ( a , b ) = V ( a ) - V ( b ) \]
+
+3. **Vernier Root Refinement and Factorization**: If \( N _ { \text { roots } } ( a , b ) = 1 \), the unique root \( x ^ \ast \in ( a , b ] \) is isolated and refined to aperture precision \( \Delta x = ( b - a ) / 2 ^ k \le 2 ^ { - N } \) via binary interval bisection or quadratic $s$-power clipping in at most \( k \le \lceil N + \log _ 2 ( b - a ) \rceil \) steps, factoring \( P ( x ) = ( x - x ^ \ast ) Q ( x ) + \mathbf { 0 } _ { Cl } \) exactly on extended grid \( \mathcal { G } _ { N ' } \).
+
+*Proof:*
+
+. **Square-Free Property**: Since \( P ( x ) \) is square-free, \( \gcd ( P ( x ) , P ' ( x ) ) = 1 \), ensuring the Sturm sequence terminates at a non-zero constant \( S _ r ( x ) \).
+
+. **Sign Variation Continuity and Crossing Invariance**: At any non-root point \( x \in ( a , b ) \), sign variation \( V ( x ) \) is locally constant. At an intermediate zero \( x_0 \) of \( S_k(x) \) (\( 1 \le k < r \)), neighbor signs satisfy \( S _ { k - 1 } ( x_0 ) = - S _ { k + 1 } ( x_0 ) \neq 0 \), leaving the sign variation count \( V ( x ) \) invariant as \( x \) passes through \( x_0 \).
+
+. **Boundary Sign Drop**: At a zero \( x ^ \ast \) of \( P ( x ) = S_0(x) \), \( S_1(x^\ast) = P'(x^\ast) \). If \( P'(x^\ast) > 0 \), \( S_0(x^\ast - \epsilon) < 0 \) and \( S_1(x^\ast - \epsilon) > 0 \) (one sign change), while \( S_0(x^\ast + \epsilon) > 0 \) and \( S_1(x^\ast + \epsilon) > 0 \) (zero sign changes). Hence \( V ( x ) \) decreases by exactly 1 as \( x \) crosses \( x ^ \ast \) from left to right, proving \( N _ { \text { roots } } ( a , b ) = V ( a ) - V ( b ) \). \( \square \)
+====
+
+[#example-font-contour-real-root-finding]
+[EXAMPLE]
+.Example Problem 6: Real Root Isolation and Vernier Finding for Font Outline Ray-Casting
+====
+*Problem*: In a font outline rendering engine, a horizontal ray at height \( y = 200 \) intersects a cubic font contour curve \( y ( t ) = 600 t ^ 3 - 900 t ^ 2 + 500 t + 100 \).
+1. Formulate the ray intersection polynomial \( P ( t ) = y ( t ) - 200 = 0 \) on parameter domain \( t \in [ 0 , 1 ] \).
+2. Construct the Sturm-Vernier sequence to isolate all real roots in \( ( 0 , 1 ] \).
+3. Perform Vernier bisection refinement to locate the exact intersection parameter \( t ^ \ast \) within tolerance \( \epsilon = 1 / 1024 \).
+
+*Solution*:
+
+1. **Ray Intersection Polynomial**:
+   - \( P ( t ) = 600 t ^ 3 - 900 t ^ 2 + 500 t - 100 = 0 \). Simplifying by dividing by 100: \( P ( t ) = 6 t ^ 3 - 9 t ^ 2 + 5 t - 1 \).
+
+2. **Sturm-Vernier Remainder Chain**:
+   - \( S _ 0 ( t ) = 6 t ^ 3 - 9 t ^ 2 + 5 t - 1 \).
+   - \( S _ 1 ( t ) = P ' ( t ) = 18 t ^ 2 - 18 t + 5 \).
+   - Dividing \( S _ 0 \) by \( S _ 1 \): \( S _ 0 ( t ) = ( \frac { 1 } { 3 } t - \frac { 1 } { 6 } ) S _ 1 ( t ) + ( \frac { 2 } { 3 } t - \frac { 1 } { 6 } ) \). Negating remainder: \( S _ 2 ( t ) = - \frac { 2 } { 3 } t + \frac { 1 } { 6 } = - \frac { 1 } { 6 } ( 4 t - 1 ) \).
+   - Dividing \( S _ 1 \) by \( S _ 2 \): \( S _ 1 ( t ) = ( - \frac { 9 } { 2 } t + \frac { 9 } { 8 } ) ( - \frac { 2 } { 3 } t + \frac { 1 } { 6 } ) + \frac { 25 } { 8 } \). Negating remainder: \( S _ 3 ( t ) = - \frac { 25 } { 8 } \).
+
+3. **Evaluating Sign Variations at Domain Boundaries**:
+   - At \( t = 0 \):
+     - \( S _ 0 ( 0 ) = - 1 \quad (-) \)
+     - \( S _ 1 ( 0 ) = + 5 \quad (+) \)
+     - \( S _ 2 ( 0 ) = + 1 / 6 \quad (+) \)
+     - \( S _ 3 ( 0 ) = - 25 / 8 \quad (-) \)
+     - Sign sequence at \( t = 0 \): \( ( - , + , + , - ) \implies V ( 0 ) = 2 \) sign changes.
+   - At \( t = 1 \):
+     - \( S _ 0 ( 1 ) = 6 - 9 + 5 - 1 = + 1 \quad (+) \)
+     - \( S _ 1 ( 1 ) = 18 - 18 + 5 = + 5 \quad (+) \)
+     - \( S _ 2 ( 1 ) = - 2 / 3 + 1 / 6 = - 1 / 2 \quad (-) \)
+     - \( S _ 3 ( 1 ) = - 25 / 8 \quad (-) \)
+     - Sign sequence at \( t = 1 \): \( ( + , + , - , - ) \implies V ( 1 ) = 1 \) sign change.
+   - Number of real roots in \( ( 0 , 1 ] \): \( N _ { \text { roots } } ( 0 , 1 ) = V ( 0 ) - V ( 1 ) = 2 - 1 = 1 \).
+   - Thus, there is exactly one real root in \( ( 0 , 1 ] \).
+
+4. **Vernier Bisection Refinement**:
+   - Midpoint \( t = 1 / 2 = 0.5 \):
+     - \( P ( 1 / 2 ) = 6 ( 1 / 8 ) - 9 ( 1 / 4 ) + 5 ( 1 / 2 ) - 1 = 3 / 4 - 9 / 4 + 10 / 4 - 4 / 4 = 0 \).
+   - The exact root is hit immediately at \( t ^ \ast = 1 / 2 = 0.5 \).
+   - Evaluating contour coordinates at \( t ^ \ast = 0.5 \): \( y ( 0.5 ) = 200 \). The horizontal ray intersects the font contour exactly at parameter \( t ^ \ast = 0.5 \), demonstrating zero-error root isolation and refinement.
+====
+
 = Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
 
 In this chapter, the traditional dichotomy between algebra (polynomial equations and root finding) and geometry (curves, projections, and fat-line enclosures) is unified within the Iris number system. Building upon the seminal work of Thomas W. Sederberg (Sederberg & Nishita, 1990) on Bézier clipping and fat-line enclosures, and Javier Sánchez-Reyes (1997, 2000) on the symmetric \( s \)-power basis representation for polynomial curves, polynomial root finding is rendered equivalent to geometric fat-line clipping, and geometric clipping is executed via exact quadratic algebraic solutions.
@@ -820,6 +891,70 @@ The number of discrete grid partitions \( p _ N ( k ) \) of an integer measureme
 . **Tautological Equivalence**: Each solution corresponds uniquely to a partition of \( k \) into parts of size at most \( N \). The identity holds strictly on finite degree polynomials modulo \( q ^ { M + 1 } \). \( \square \)
 ====
 
+[#theorem-n-queens-algebraic-permutation]
+[THEOREM]
+.Theorem: Algebraic Solvability and Permutation Characterization of the n-Queens Problem
+====
+Let \( n \ge 1 \) be an integer board dimension on discrete grid \( \mathcal { G } _ N \). Represent a queen placement on an \( n \times n \) board as a permutation tuple \( \pi = ( \pi ( 1 ) , \pi ( 2 ) , \dots , \pi ( n ) ) \in S _ n \), where row index \( i \in \{ 1 , 2 , \dots , n \} \) and column coordinate \( \pi ( i ) \in \{ 1 , 2 , \dots , n \} \).
+
+1. **Orthogonal Non-Attacking Tautology**: Since \( \pi \) is a permutation of \( ( 1 , 2 , \dots , n ) \), no two queens share a row or column by construction.
+
+2. **Diagonal Collision Algebraic Invariance**: Two queens at board positions \( ( i , \pi ( i ) ) \) and \( ( j , \pi ( j ) ) \) (\( 1 \le i < j \le n \)) lie on the same diagonal if and only if \( | \pi ( i ) - \pi ( j ) | = | i - j | \), or equivalently \( ( \pi ( i ) - \pi ( j ) ) ^ 2 - ( i - j ) ^ 2 = 0 \).
+
+3. **Algebraic Characteristic Polynomial**: A permutation tuple \( \pi \in S _ n \) is a valid non-attacking solution to the \( n \)-queens puzzle if and only if the diagonal collision multivector product:
+\[ P _ { \text { queens } } ( \pi ) = \left( \prod _ { 1 \le i < j \le n } \left[ ( \pi ( i ) - \pi ( j ) ) ^ 2 - ( i - j ) ^ 2 \right] \right) \mathbf { 1 } _ { Cl } \neq \mathbf { 0 } _ { Cl } \]
+or equivalently, if both the main-diagonal tuple \( D ^ + ( \pi ) = ( \pi ( 1 ) + 1 , \pi ( 2 ) + 2 , \dots , \pi ( n ) + n ) \) and anti-diagonal tuple \( D ^ - ( \pi ) = ( \pi ( 1 ) - 1 , \pi ( 2 ) - 2 , \dots , \pi ( n ) - n ) \) consist of pairwise distinct elements in \( \mathbb { Z } \).
+
+*Proof:*
+
+. **Row and Column Uniqueness**: Mapping row index \( i \) to column value \( \pi ( i ) \) via a bijection on \( \{ 1 , \dots , n \} \) guarantees exactly one queen per row and one queen per column.
+
+. **Diagonal Condition**: Slopes of lines connecting board points \( ( i , \pi ( i ) ) \) and \( ( j , \pi ( j ) ) \) are \( \frac { \pi ( j ) - \pi ( i ) } { j - i } \). Diagonal attack corresponds to slope \( \pm 1 \), i.e., \( \pi ( j ) - \pi ( i ) = \pm ( j - i ) \). Multiplying these two linear factors yields \( ( \pi ( i ) - \pi ( j ) ) ^ 2 - ( i - j ) ^ 2 = 0 \).
+
+. **Global Product Non-Vanishing**: The product \( P _ { \text { queens } } ( \pi ) \) vanishes if and only if at least one pair of queens shares a diagonal. Thus \( P _ { \text { queens } } ( \pi ) \neq 0 \) is an exact necessary and sufficient algebraic condition for a valid solution. \( \square \)
+====
+
+[#example-4-queens-algebraic-permutation]
+[EXAMPLE]
+.Example Problem 7: Algebraic Permutation Solution of the 4-Queens Puzzle
+====
+*Problem*: Apply the algebraic permutation method to determine all valid non-attacking solutions for the \( 4 \)-queens puzzle on a \( 4 \times 4 \) grid.
+1. Enumerate all \( 4 ! = 24 \) permutations of \( ( 1 , 2 , 3 , 4 ) \).
+2. Evaluate the diagonal difference vectors \( D ^ + ( \pi ) \) and \( D ^ - ( \pi ) \).
+3. Identify all valid solutions and verify that \( P _ { \text { queens } } ( \pi ) \neq 0 \).
+
+*Solution*:
+
+1. **Permutation Search Space**:
+   - The 24 permutations range from \( ( 1 , 2 , 3 , 4 ) \) to \( ( 4 , 3 , 2 , 1 ) \).
+
+2. **Testing Sample Permutations**:
+   - Test \( \pi_1 = ( 1 , 2 , 3 , 4 ) \):
+     - Pair \( ( 1 , 2 ) \): \( \pi ( 2 ) - \pi ( 1 ) = 2 - 1 = 1 = 2 - 1 \) (diagonal collision). \( P _ { \text { queens } } ( \pi_1 ) = 0 \).
+   - Test \( \pi_2 = ( 2 , 4 , 1 , 3 ) \):
+     - Row-column positions: \( ( 1 , 2 ) , ( 2 , 4 ) , ( 3 , 1 ) , ( 4 , 3 ) \).
+     - Main diagonal sum \( D ^ + = ( 2 + 1 , 4 + 2 , 1 + 3 , 3 + 4 ) = ( 3 , 6 , 4 , 7 ) \) (all 4 elements distinct!).
+     - Anti-diagonal diff \( D ^ - = ( 2 - 1 , 4 - 2 , 1 - 3 , 3 - 4 ) = ( 1 , 2 , - 2 , - 1 ) \) (all 4 elements distinct!).
+     - Pairwise diagonal term products:
+       - \( ( 1 , 2 ) \): \( ( 2 - 4 ) ^ 2 - ( 1 - 2 ) ^ 2 = 4 - 1 = 3 \).
+       - \( ( 1 , 3 ) \): \( ( 2 - 1 ) ^ 2 - ( 1 - 3 ) ^ 2 = 1 - 4 = - 3 \).
+       - \( ( 1 , 4 ) \): \( ( 2 - 3 ) ^ 2 - ( 1 - 4 ) ^ 2 = 1 - 9 = - 8 \).
+       - \( ( 2 , 3 ) \): \( ( 4 - 1 ) ^ 2 - ( 2 - 3 ) ^ 2 = 9 - 1 = 8 \).
+       - \( ( 2 , 4 ) \): \( ( 4 - 3 ) ^ 2 - ( 2 - 4 ) ^ 2 = 1 - 4 = - 3 \).
+       - \( ( 3 , 4 ) \): \( ( 1 - 3 ) ^ 2 - ( 3 - 4 ) ^ 2 = 4 - 1 = 3 \).
+     - Total product: \( P _ { \text { queens } } ( 2 , 4 , 1 , 3 ) = 3 \times ( - 3 ) \times ( - 8 ) \times 8 \times ( - 3 ) \times 3 = - 5184 \neq 0 \).
+     - Hence \( \pi_2 = ( 2 , 4 , 1 , 3 ) \) is a valid solution!
+
+   - Test \( \pi_3 = ( 3 , 1 , 4 , 2 ) \):
+     - Main diagonal sum \( D ^ + = ( 3 + 1 , 1 + 2 , 4 + 3 , 2 + 4 ) = ( 4 , 3 , 7 , 6 ) \) (all distinct!).
+     - Anti-diagonal diff \( D ^ - = ( 3 - 1 , 1 - 2 , 4 - 3 , 2 - 4 ) = ( 2 , - 1 , 1 , - 2 ) \) (all distinct!).
+     - Total product: \( P _ { \text { queens } } ( 3 , 1 , 4 , 2 ) = - 5184 \neq 0 \).
+     - Hence \( \pi_3 = ( 3 , 1 , 4 , 2 ) \) is a valid solution!
+
+3. **Conclusion**:
+   Out of 24 permutations, exactly 2 permutations—\( ( 2 , 4 , 1 , 3 ) \) and \( ( 3 , 1 , 4 , 2 ) \)—satisfy \( P _ { \text { queens } } ( \pi ) \neq 0 \), yielding the exact 2 fundamental non-attacking solutions to the 4-queens puzzle algebraically.
+====
+
 = Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
@@ -838,6 +973,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-conformal-spinor-invariance[**Theorem: Conformal Null Geometry Spinor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)*
 * xref:theorem-clifford-module-decomposition[**Theorem: Clifford Blade Ideal Direct Sum Decomposition**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Clifford Module Structure and Blade Ideal Decompositions*
 * xref:theorem-fundamental-theorem-rational-algebra[**Theorem: Fundamental Theorem of Constructive Rational Algebra**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Fundamental Theorem of Constructive Rational Algebra*
+* xref:theorem-constructive-real-root-isolation[**Theorem: Constructive Real Root Isolation and Sturm-Vernier Sequence Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding*
 * xref:theorem-iris-ring-homomorphism[**Theorem: Multivector Ring Homomorphism Invariance**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Ring Homomorphisms and Multiplicative Invariants*
 * xref:theorem-spower-geometric-representation[**Theorem: Geometric s-Power Polynomial Representation and Vanishing Curvature Identity**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Symmetric s-Power Basis and Geometric Polynomial Representation*
 * xref:theorem-optimal-fat-line-width[**Theorem: Optimal s-Power Fat-Line Bounding and Skeleton Projection**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
@@ -855,14 +991,17 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
 * xref:theorem-multivector-permutation-invariance[**Theorem: Multivector Permutation Group Invariance**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Multivector Permutations and Finite Grid Enumeration*
 * xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
+* xref:theorem-n-queens-algebraic-permutation[**Theorem: Algebraic Solvability and Permutation Characterization of the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
 
 === Examples
 
 * xref:example-solid-mechanics-statics[**Example: Solid Elastic Media Statics and Stress-Strain Multivector Equilibrium**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
 * xref:example-fluid-dynamics-momentum[**Example: Viscous Fluid Dynamics and Multivector Navier-Stokes Conservation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
 * xref:example-electrodynamics-maxwell[**Example: Unified Electrodynamics, Maxwell's Equations, and Gravitational Field Inferences**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
+* xref:example-font-contour-real-root-finding[**Example: Real Root Isolation and Vernier Finding for Font Outline Ray-Casting**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding*
 * xref:example-spower-skeleton-transform[**Example: Affine Skeleton Transformation and Exact Fat-Line Width Determination**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
 * xref:example-quadratic-bezier-clipping-intersection[**Example: Full Step-by-Step s-Power Bézier Clipping and Intersection Calculation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
 * xref:example-flatness-testing-intersection[**Example: Combination of s-Power Bézier Clipping and Flatness Testing for Near-Parallel Curves**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
 * xref:example-spower-degree-reduction[**Example: Trivial Degree Elevation and Geometric Piecewise Degree Reduction**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
 * xref:example-opentype-cff-cubic-to-quadratic[**Example: OpenType CFF Font Outline Cubic-to-Quadratic Degree Reduction in 2D Space**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
+* xref:example-4-queens-algebraic-permutation[**Example: Algebraic Permutation Solution of the 4-Queens Puzzle**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
