@@ -255,11 +255,11 @@ The Main Scale Projection operator \( ( \downarrow ) : Cl ( 4 , 1 , 1 ) \to \mat
 
 = Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
 
-In this chapter, the traditional dichotomy between algebra (polynomial equations and root finding) and geometry (curves, projections, and fat-line enclosures) is unified within the Iris number system. By expressing quadratic Bézier curves in the symmetric \( s \)-power basis, polynomial root finding is rendered equivalent to geometric fat-line clipping, and geometric clipping is executed via exact quadratic algebraic solutions.
+In this chapter, the traditional dichotomy between algebra (polynomial equations and root finding) and geometry (curves, projections, and fat-line enclosures) is unified within the Iris number system. Building upon the seminal work of Thomas W. Sederberg (Sederberg & Nishita, 1990) on Bézier clipping and fat-line enclosures, and Javier Sánchez-Reyes (1997, 2000) on the symmetric \( s \)-power basis representation for polynomial curves, polynomial root finding is rendered equivalent to geometric fat-line clipping, and geometric clipping is executed via exact quadratic algebraic solutions.
 
 == Symmetric s-Power Basis and Geometric Polynomial Representation
 
-This section constructs the symmetric \( s \)-power basis for parametric polynomial curves on discrete rational grids \( \mathcal { G } _ N \), establishing a direct correspondence between algebraic polynomial coefficients and geometric curve skeletons.
+This section constructs the symmetric \( s \)-power basis (Sánchez-Reyes, 1997) for parametric polynomial curves on discrete rational grids \( \mathcal { G } _ N \), establishing a direct correspondence between algebraic polynomial coefficients and geometric curve skeletons.
 
 [#theorem-spower-geometric-representation]
 [THEOREM]
@@ -421,6 +421,14 @@ Expanding \( ( 1 - t ) t { Q _ { 1 , y } ' } ^ { \Delta } = ( t - t ^ 2 ) { Q _ 
 \[ ( 1 - t _ p ) P _ 0 + t _ p P _ 2 = ( 1 - t _ q ) Q _ 0 + t _ q Q _ 2 \]
    - Solved in a single matrix inversion step without iteration, guaranteeing termination and exactness on rational grid \( \mathcal { G } _ N \).
 ====
+
+== Primary References and Citations
+
+The geometric-algebraic polynomial curve intersection and Bézier clipping formulations in this chapter build upon and extend the seminal publications of Thomas W. Sederberg and Javier Sánchez-Reyes:
+
+* **Sederberg, T. W., & Nishita, T. (1990).** "Curve intersection using Bézier clipping." *Computer-Aided Design*, 22(9), 538–549.
+* **Sánchez-Reyes, J. (1997).** "The symmetric s-power basis for polynomial curves and surfaces." *Computer-Aided Design*, 29(6), 441–451.
+* **Sánchez-Reyes, J. (2000).** "Applications of the s-power basis to polynomial curves." *Computer-Aided Design*, 32(14), 879–886.
 
 == MetaPost Implementation of Geometric-Algebraic Curve Intersections
 
