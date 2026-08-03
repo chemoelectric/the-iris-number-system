@@ -2,7 +2,7 @@ pragma ada_2022;
 
 with ada.text_io;
 with ada.float_text_io;
-with ada.numerics.elementary_functions;
+with ada.numerics.generic_elementary_functions;
 
 -- complete demonstration of recursive bernstein
 -- real root isolation algorithm in floating point (ada 2022).
@@ -10,6 +10,9 @@ with ada.numerics.elementary_functions;
 procedure bernstein_root_finder is
 
    type real is new long_float;
+   package real_functions is new ada.numerics.generic_elementary_functions (real);
+   use real_functions;
+
    type float_array is array (integer range <>) of real;
 
    function eval_bernstein (coeffs : float_array; u : real) return real
@@ -170,7 +173,7 @@ procedure bernstein_root_finder is
       ratio := diff / two_tol;
 
       if ratio > 1.0 then
-         n_half := ada.numerics.elementary_functions.log (ratio, 2.0);
+         n_half := log (ratio, real (2.0));
          n_half := real'ceiling (n_half);
       else
          n_half := 0.0;
@@ -222,7 +225,7 @@ procedure bernstein_root_finder is
 
          t1 := real (k);
          t2 := n_max - t1;
-         pow_val := 2.0 ** t2;
+         pow_val := real (2.0) ** t2;
          t1 := pow_val * tol;
          t2 := b - a;
          t2 := 0.5 * t2;
