@@ -18,7 +18,7 @@
 
 ## Computer Programming Guidelines
 
-- **Ada Standard & Loop Constructs**: In Ada, use the 2022 standard and place `pragma ada_2022;` near the top of files. Always use `while ... loop ... end loop;` constructs instead of `loop ... exit ... end loop;` constructs, and never use `loop ... exit ... end loop;` as a mechanism to bypass structured control flow requirements.
+- **Ada Standard & Subprogram Contracts**: In Ada, use the 2022 standard and place `pragma ada_2022;` near the top of files. Liberally use subprogram contract aspects including `with Pre => ...`, `Post => ...`, and related formal safeguards. Always use `while ... loop ... end loop;` constructs instead of `loop ... exit ... end loop;` constructs, and never use `loop ... exit ... end loop;` as a mechanism to bypass structured control flow requirements.
 - **Case Sensitivity & Lowercase Preference**: In case-insensitive languages (such as Ada or Pascal), write code strictly in lowercase (for visual accessibility/hypersensitivity reasons). This rule does not apply to string literals, character constants, comments, or external references where case is fixed.
 - **Structured Control Flow**: In imperative languages generally, enforce strictly structured code:
   - Do not use `goto` or any `goto`-like constructs.

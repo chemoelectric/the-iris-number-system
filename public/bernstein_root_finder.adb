@@ -12,7 +12,10 @@ procedure bernstein_root_finder is
    type real is new long_float;
    type float_array is array (integer range <>) of real;
 
-   function eval_bernstein (coeffs : float_array; u : real) return real is
+   function eval_bernstein (coeffs : float_array; u : real) return real
+     with Pre  => coeffs'length >= 1 and u >= 0.0 and u <= 1.0,
+          Post => eval_bernstein'result'valid
+   is
       m : constant integer := coeffs'length - 1;
       v : float_array (0 .. m);
       i : integer;
@@ -48,7 +51,10 @@ procedure bernstein_root_finder is
       return res;
    end eval_bernstein;
 
-   function compute_error_filter (coeffs : float_array) return real is
+   function compute_error_filter (coeffs : float_array) return real
+     with Pre  => coeffs'length >= 1,
+          Post => compute_error_filter'result >= 0.0
+   is
       m_val : constant real := real (coeffs'length - 1);
       eps_mach : constant real := real'epsilon;
       gamma_m : real;
@@ -77,6 +83,7 @@ procedure bernstein_root_finder is
    procedure compute_derivative
      (coeffs : float_array;
       deriv  : out float_array)
+     with Pre => coeffs'length >= 2 and deriv'length = coeffs'length - 1
    is
       m_val : constant real := real (coeffs'length - 1);
       i : integer;
@@ -107,6 +114,8 @@ procedure bernstein_root_finder is
       a_in     : real;
       b_in     : real;
       tol      : real) return real
+     with Pre  => coeffs'length >= 2 and domain_b > domain_a and b_in >= a_in and tol > 0.0,
+          Post => refine_root_itp'result >= a_in and refine_root_itp'result <= b_in
    is
       a : real;
       b : real;
@@ -274,6 +283,7 @@ procedure bernstein_root_finder is
       tol        : real;
       roots      : out float_array;
       num_roots  : out integer)
+     with Pre => coeffs'length >= 2 and domain_b > domain_a and tol > 0.0 and roots'length >= coeffs'length - 1
    is
       m : constant integer := coeffs'length - 1;
       eps_filter : real;
