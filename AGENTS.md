@@ -27,3 +27,4 @@
 - **Increment and Decrement Operators**: The increment (`++`) and decrement (`--`) operators are strictly disallowed in C-like languages.
 - **Single Operation per Statement**: In imperative languages (e.g., C, Fortran, Ada, Pascal, etc.), statements must perform only a single operation at a time. Complex side-effecting compound expressions (e.g., `x = y + (i += 1);`) are strictly forbidden and must be decomposed into separate, explicit sequential statements.
 - **Cyclomatic Complexity Limit**: In imperative languages, no subprogram (including functions, procedures, or nested subprograms) shall exceed a modified McCabe cyclomatic complexity of 10.
+- **Strict For-Loop Usage in C-Like Languages**: In C and C-like languages, if a `for`-loop would not be a `for`-loop in other traditional imperative programming languages (such as simple definite iteration over a bounded range), write it as a `while`-loop instead.
