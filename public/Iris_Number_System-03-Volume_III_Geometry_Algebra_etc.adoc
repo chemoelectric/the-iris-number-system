@@ -664,7 +664,7 @@ To prevent zero-information evaluation loops near quantization noise floors, the
 
 == Accelerated Higher-Order Newton-Raphson and BFGS Quasi-Newton Vector Fixed-Point Iteration Theorem
 
-While standard Newton-Raphson iteration provides quadratic convergence \( e _ { k + 1 } \le C e _ k ^ 2 \) for simple roots, higher-order modifications and multivariate quasi-Newton methods dramatically accelerate convergence and eliminate explicit second-derivative evaluation costs. This section establishes higher-order scalar root-finding algorithms (Halley and Householder) and the multivariate Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton update (Shanno, 1970) as contractive fixed-point vector mappings within the Iris number system and discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \).
+While standard Newton-Raphson iteration provides quadratic convergence \( e _ { k + 1 } \le C e _ k ^ 2 \) for simple roots, higher-order modifications and multivariate quasi-Newton methods dramatically accelerate convergence and eliminate explicit second-derivative evaluation costs. This section establishes higher-order scalar root-finding algorithms (Halley and Householder) and the multivariate Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton update (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970]) as contractive fixed-point vector mappings within the Iris number system and discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \).
 
 [#theorem-bfgs-quasi-newton-fixedpoint]
 [THEOREM]
@@ -677,8 +677,8 @@ Let \( P ( z ) \) be a polynomial or multivector field over discrete rational gr
    \[ z _ { k + 1 } = z _ k - \frac { 2 P ( z _ k ) P ' ( z _ k ) } { 2 [ P ' ( z _ k ) ] ^ 2 - P ( z _ k ) P '' ( z _ k ) } \]
    is a fixed-point mapping on \( \mathcal { G } _ N \) with fixed point \( z ^ \ast \). In an open neighborhood of simple root \( z ^ \ast \), the first two derivatives of \( \Phi _ { \text { Halley } } \) vanish at \( z ^ \ast \) (\( \Phi ' ( z ^ \ast ) = 0 \), \( \Phi '' ( z ^ \ast ) = 0 \)), proving cubic convergence \( | z _ { k + 1 } - z ^ \ast | \le C _ 3 | z _ k - z ^ \ast | ^ 3 \).
 
-2. **Multivariate BFGS Quasi-Newton Operator (Shanno, 1970)**:
-   For multivariate root finding or gradient optimization \( \mathbf { g } ( \mathbf { x } ) = \nabla f ( \mathbf { x } ) = \mathbf { 0 } \) with step vector \( \mathbf { s } _ k = \mathbf { x } _ { k + 1 } - \mathbf { x } _ k \) and gradient change \( \mathbf { y } _ k = \mathbf { g } _ { k + 1 } - \mathbf { g } _ k \), the inverse Hessian approximation matrix \( \mathbf { H } _ k \approx ( \nabla ^ 2 f ) ^ { - 1 } \) updates symmetrically according to the BFGS formula (Shanno, 1970):
+2. **Multivariate BFGS Quasi-Newton Operator (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970])**:
+   For multivariate root finding or gradient optimization \( \mathbf { g } ( \mathbf { x } ) = \nabla f ( \mathbf { x } ) = \mathbf { 0 } \) with step vector \( \mathbf { s } _ k = \mathbf { x } _ { k + 1 } - \mathbf { x } _ k \) and gradient change \( \mathbf { y } _ k = \mathbf { g } _ { k + 1 } - \mathbf { g } _ k \), the inverse Hessian approximation matrix \( \mathbf { H } _ k \approx ( \nabla ^ 2 f ) ^ { - 1 } \) updates symmetrically according to the BFGS formula (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970]):
    \[ \mathbf { H } _ { k + 1 } = ( \mathbf { I } - \rho _ k \mathbf { s } _ k \mathbf { y } _ k ^ T ) \mathbf { H } _ k ( \mathbf { I } - \rho _ k \mathbf { y } _ k \mathbf { s } _ k ^ T ) + \rho _ k \mathbf { s } _ k \mathbf { s } _ k ^ T \quad \text{where} \quad \rho _ k = \frac { 1 } { \mathbf { y } _ k ^ T \mathbf { s } _ k } \]
    The search direction update \( \mathbf { x } _ { k + 1 } = \mathbf { x } _ k - \mathbf { H } _ k \mathbf { g } _ k \) converges superlinearly to fixed point \( \mathbf { x } ^ \ast \) on discrete grid \( \mathcal { G } _ N \), preserving symmetric positive-definiteness of \( \mathbf { H } _ k \) for all iterations satisfying curvature condition \( \mathbf { y } _ k ^ T \mathbf { s } _ k > 0 \).
 
@@ -699,7 +699,7 @@ Let \( P ( z ) \) be a polynomial or multivector field over discrete rational gr
 To guarantee numerical stability and exact aperture convergence when executing BFGS quasi-Newton updates on discrete rational grid \( \mathcal { G } _ N \), the search-and-inference engine mandates the following execution safeguards:
 
 1. **Curvature Condition Verification and Powell Damping**:
-   - Before applying the BFGS update (Shanno, 1970), evaluate inner product \( \mathbf { y } _ k ^ T \mathbf { s } _ k \). If \( \mathbf { y } _ k ^ T \mathbf { s } _ k < \theta \mathbf { s } _ k ^ T \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) with threshold \( \theta = 0.2 \), replace \( \mathbf { y } _ k \) with damped vector \( \mathbf { r } _ k = \theta \mathbf { y } _ k + ( 1 - \theta ) \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) to enforce strict positive-definiteness.
+   - Before applying the BFGS update (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970]), evaluate inner product \( \mathbf { y } _ k ^ T \mathbf { s } _ k \). If \( \mathbf { y } _ k ^ T \mathbf { s } _ k < \theta \mathbf { s } _ k ^ T \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) with threshold \( \theta = 0.2 \), replace \( \mathbf { y } _ k \) with damped vector \( \mathbf { r } _ k = \theta \mathbf { y } _ k + ( 1 - \theta ) \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) to enforce strict positive-definiteness.
 
 2. **64-Bit Intermediate Accumulator Scaling**:
    - In fixed-point Q\( M.F \) representations, outer product terms \( \mathbf { s } _ k \mathbf { s } _ k ^ T \) and scalar denominators \( \mathbf { y } _ k ^ T \mathbf { s } _ k \) must be evaluated using 64-bit wide registers before right-shifting, preventing bit truncation or artificial matrix indefiniteness.
@@ -735,6 +735,14 @@ To guarantee numerical stability and exact aperture convergence when executing B
    - Gradient at \( \mathbf { x } _ 2 \): \( \mathbf { g } ( 2 , 1 ) = ( 0 , 0 ) ^ T \).
    - Exact fixed point \( \mathbf { x } ^ \ast = ( 2 , 1 ) ^ T \) is reached in 2 iterations, illustrating superlinear convergence of Shanno's BFGS quasi-Newton algorithm.
 ====
+
+[#references-bfgs-quasi-newton]
+=== Primary References and Citations for BFGS Quasi-Newton Optimization
+
+The Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton algorithm and its optimal conditioning theory are based on the seminal 1970 papers of Professor David F. Shanno:
+
+* **Shanno, D. F. (1970).** "Conditioning of quasi-Newton methods for function minimization." *Mathematics of Computation*, 24(111), 647–656. link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[DOI: 10.1090/S0025-5718-1970-0274029-X].
+* **Shanno, D. F., & Kettler, P. C. (1970).** "Optimal conditioning of quasi-Newton methods." *Mathematics of Computation*, 24(111), 657–664. link:https://doi.org/10.1090/S0025-5718-1970-0274030-6[DOI: 10.1090/S0025-5718-1970-0274030-6].
 
 = Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
 
