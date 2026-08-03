@@ -1,0 +1,20 @@
+= The Iris Number System, Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
+:subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
+:author: Frédéric Blondel Custer
+:doctype: book
+:toc: left
+:toc-title: Table of Contents
+:stem: latexmath
+:sectnums!:
+
+A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding
+
+= Index of Formal Statements
+
+== Index of Formal Statements
+
+This index lists all formal Postulates, Theorems, and Definitions established across Volume IV of the textbook.
+
+=== Theorems
+
+* No formal theorems defined in this volume yet.

@@ -103,7 +103,7 @@ const vol3 = parseAdocFile(
 );
 
 const vol4 = parseAdocFile(
-  "public/Iris_Number_System-04-Volume_IV_Applications_to_Physics_Chemistry_etc.adoc",
+  "public/Iris_Number_System-04-Volume_IV_Physics_etc.adoc",
   "textbook-iris-physics-chemistry-etc",
   "The Iris Number System",
   "Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
@@ -114,7 +114,7 @@ const vol4 = parseAdocFile(
 vol1.filename = "Iris_Number_System-01-Volume_I_Fundamentals.adoc";
 vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
 vol3.filename = "Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc";
-vol4.filename = "Iris_Number_System-04-Volume_IV_Applications_to_Physics_Chemistry_etc.adoc";
+vol4.filename = "Iris_Number_System-04-Volume_IV_Physics_etc.adoc";
 
 function generateFormalIndexChapterObj(chapters) {
   const entries = [];
