@@ -362,7 +362,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m b _ k B _ { k , m } ( x ) \) be a polynomi
 [#numerical-stability-bernstein-rootfinding]
 === Floating-Point and Fixed-Point Numerical Stability Safeguards
 
-To guarantee numerical stability and exact topological correctness when implementing Command Officer's recursive derivative-crossing algorithm across floating-point (IEEE 754) and fixed-point (Q\( M.F \)) hardware, the search-and-inference engine establishes the following execution directives:
+To guarantee numerical stability and exact topological correctness when implementing Command Officer's recursive derivative-crossing algorithm across floating-point (IEEE 754) and fixed-point (Q\( M.F \)) hardware, the following execution recommendations are provided:
 
 1. **Floating-Point Stability Directives**:
    - **Backward Error Filtering at Critical Extrema**: Evaluating \( P ( r _ i ) \) at a derivative root \( r _ i \) subject to IEEE 754 double-precision rounding can yield false sign perturbations when the true extremum is near zero. Compute a dynamic error filter threshold:
@@ -551,7 +551,7 @@ Let \( P ( z ) = z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 \
 [#numerical-stability-simultaneous-rootfinding]
 === Numerical Stability Safeguards for Global Simultaneous Iterations
 
-To prevent numerical stagnation, division-by-zero singularities, and precision loss during global simultaneous root iterations, the search-and-inference engine mandates the following fixed-point and floating-point safeguards:
+To prevent numerical stagnation, division-by-zero singularities, and precision loss during global simultaneous root iterations, the following fixed-point and floating-point safeguards are recommended:
 
 1. **Aberth Circle Seed Initialization and Symmetry Breaking**:
    - Initial root estimates must never be placed on the real axis or aligned collinearly, as collinear symmetry causes derivative denominator cancelation.
@@ -632,7 +632,7 @@ Let \( P ( x ) \) be a polynomial of degree \( m \ge 1 \) defined over discrete 
 [#numerical-stability-shannon-rootfinding]
 === Numerical Stability Safeguards for Information-Theoretic Root-Finding
 
-To prevent zero-information evaluation loops near quantization noise floors, the search-and-inference engine enforces the following operational directives:
+To prevent zero-information evaluation loops near quantization noise floors, the following operational recommendations are provided:
 
 1. **SNR Noise-Floor Thresholding**: When interval length \( | b - a | \le \sqrt { \sigma _ { \text { round } } ^ 2 } \), the evaluation signal-to-noise ratio drops below unity (\( \text { SNR } \le 0 \text{ dB} \)), causing mutual information \( I ( X ; Y ) \to 0 \). Terminate interval division when SNR drops below 3 dB to avoid zero-information thrashing.
 
@@ -696,7 +696,7 @@ Let \( P ( z ) \) be a polynomial or multivector field over discrete rational gr
 [#numerical-stability-bfgs-rootfinding]
 === Numerical Stability Safeguards for BFGS Quasi-Newton Iterations
 
-To guarantee numerical stability and exact aperture convergence when executing BFGS quasi-Newton updates on discrete rational grid \( \mathcal { G } _ N \), the search-and-inference engine mandates the following execution safeguards:
+To guarantee numerical stability and exact aperture convergence when executing BFGS quasi-Newton updates on discrete rational grid \( \mathcal { G } _ N \), the following execution safeguards are recommended:
 
 1. **Curvature Condition Verification and Powell Damping**:
    - Before applying the BFGS update (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970]), evaluate inner product \( \mathbf { y } _ k ^ T \mathbf { s } _ k \). If \( \mathbf { y } _ k ^ T \mathbf { s } _ k < \theta \mathbf { s } _ k ^ T \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) with threshold \( \theta = 0.2 \), replace \( \mathbf { y } _ k \) with damped vector \( \mathbf { r } _ k = \theta \mathbf { y } _ k + ( 1 - \theta ) \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) to enforce strict positive-definiteness.
@@ -1212,7 +1212,7 @@ Let \( \mathbf { A } , \mathbf { B } , \mathbf { v } \in Cl ( 4 , 1 , 1 ) \) be 
 [#numerical-stability-practical-topology]
 === Numerical Stability Safeguards for Computational Topology in Engineering
 
-When evaluating topological invariants, helicity sums, and defect indices on discrete rational grid \( \mathcal { G } _ N \), the search-and-inference engine enforces the following practical engineering directives:
+When evaluating topological invariants, helicity sums, and defect indices on discrete rational grid \( \mathcal { G } _ N \), the following practical engineering recommendations are provided:
 
 1. **Defect Core Buffer Separation**:
    - Loop contours \( \Gamma \) used for winding index calculation must maintain a minimum buffer distance \( d ( \Gamma , \text { Core } ) \ge 2 \delta \) from singular defect centers where \( | \mathbf { \psi } | < \epsilon _ { \text { core } } = 2 ^ { - F / 2 } \), preventing phase ambiguity from zero-vector normalization.
