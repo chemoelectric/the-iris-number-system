@@ -65,7 +65,7 @@ For any discrete Iris prime measurement count \( p \) and integer step count \( 
 
 . **Discrete Residue Permutation**: Consider the set of non-zero residue counts modulo \( p \): \( R = \{ 1 , 2 , \dots , p - 1 \} \). Multiply each element by scalar step count \( a \cdot \mathbf { 1 } _ { Cl } \).
 
-. **Bijective Phase Shift**: Since \( \gcd ( a , p ) = 1 \), the map \( x \mapsto a \cdot x \pmod p \) is a permutation of $R$ on discrete grid \( \mathcal { G } _ p \).
+. **Bijective Phase Shift**: Since \( \gcd ( a , p ) = 1 \), the map \( x \mapsto a \cdot x \pmod p \) is a permutation of \( R \) on discrete grid \( \mathcal { G } _ p \).
 
 . **Product Invariance**: Multiplying all permuted residue steps gives: \[ \prod _ { x = 1 } ^ { p - 1 } ( a \cdot x ) \equiv a ^ { p - 1 } ( p - 1 ) ! \cdot \mathbf { 1 } _ { Cl } \pmod p \]
 
