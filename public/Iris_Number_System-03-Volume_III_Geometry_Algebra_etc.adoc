@@ -1867,6 +1867,112 @@ The lattice-theoretic density formulation on finite lattices and union-closed se
 * **Chase, Z., & Lovett, S. (2022).** "The union-closed conjecture holds for small family sizes and optimizes at \( ( 3 - \sqrt { 5 } ) / 2 \)." *arXiv preprint arXiv:2211.11689*.
 * **Pebody, L. (2022).** "Extension of Gilmer's lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.13139*.
 
+== Dedekind-Jordan Chain Condition for Finite Modular Lattices
+
+[#theorem-dedekind-jordan-chain]
+[THEOREM]
+.Theorem: Dedekind-Jordan Chain Condition for Finite Modular Lattices
+====
+Let \( L \subseteq \mathcal { G } _ N \) be a finite modular lattice. For any pair of elements \( a , b \in L \) with \( a \le b \), all maximal chains connecting \( a \) to \( b \):
+\[ C = \{ a = x _ 0 < x _ 1 < \dots < x _ k = b \} \]
+have the exact same finite length \( k \). Consequently, every finite modular lattice admits a strictly additive height function \( h : L \to \mathbb { Z } _ { \ge 0 } \) satisfying for all \( x , y \in L \):
+\[ h ( x \vee y ) + h ( x \wedge y ) = h ( x ) + h ( y ) \]
+
+*Proof:*
+
+. **Isomorphism of Covered Intervals**: In any modular lattice, if \( x \wedge y \lessdot x \) (where \( \lessdot \) denotes the covering relation), then \( y \lessdot x \vee y \). The map \( \theta ( z ) = z \vee y \) defines an isomorphism between interval \( [ x \wedge y , x ] \) and interval \( [ y , x \vee y ] \).
+
+. **Induction on Height**: By induction on the length of maximal chains in interval \( [ a , b ] \), replacing any element in a maximal chain with a modular join/meet preserves step count.
+
+. **Additive Rank Formula**: Define \( h ( x ) \) as the length of any maximal chain from bottom element \( \mathbf { 0 } _ L \) to \( x \). The modular law guarantees \( h ( x \vee y ) + h ( x \wedge y ) = h ( x ) + h ( y ) \). \( \square \)
+====
+
+[#references-dedekind-jordan]
+=== Primary References and Citations for the Dedekind-Jordan Chain Condition
+
+The Jordan-Hölder and Dedekind chain condition theorems for modular and semimodular lattices were established in:
+
+* **Jordan, C. (1870).** *Traité des substitutions et des équations algébriques*. Paris: Gauthier-Villars.
+* **Dedekind, R. (1897).** "Ueber Gruppen, deren sämtliche Theiler Normaltheiler sind." *Mathematische Annalen*, 48(4), pp. 548–561.
+* **Birkhoff, G. (1940).** *Lattice Theory*. American Mathematical Society Colloquium Publications, Vol. 25. Providence, RI: AMS.
+
+== Fundamental Structure Theorem of Finite Boolean Lattices
+
+[#theorem-boolean-power-set-isomorphism]
+[THEOREM]
+.Theorem: Fundamental Structure Theorem of Finite Boolean Lattices
+====
+Let \( B \) be a finite Boolean lattice (a bounded distributive complemented lattice). Let \( \text{Atoms} ( B ) = \{ p \in B \setminus \{ \mathbf { 0 } _ B \} \mid \forall x \in B , \mathbf { 0 } _ B \le x \le p \implies ( x = \mathbf { 0 } _ B \lor x = p ) \} \). Then \( B \) is isomorphic to the power set lattice \( \mathcal { P } ( \text{Atoms} ( B ) ) \) under set union and intersection. In particular, \( | B | = 2 ^ k \) where \( k = | \text{Atoms} ( B ) | \).
+
+*Proof:*
+
+. **Atomic Representation**: In a finite Boolean algebra, every element \( a \in B \) is uniquely expressible as the join of all atoms beneath it: \( a = \bigvee \{ p \in \text{Atoms} ( B ) \mid p \le a \} \).
+
+. **Boolean Isomorphism**: The assignment \( \psi ( a ) = \{ p \in \text{Atoms} ( B ) \mid p \le a \} \) defines a bijection from \( B \) to \( \mathcal { P } ( \text{Atoms} ( B ) ) \) preserving meets, joins, and complements.
+
+. **Cardinality**: Since \( \mathcal { P } ( X ) \) for a finite set of size \( k \) has size \( 2 ^ k \), \( | B | = 2 ^ k \). \( \square \)
+====
+
+[#references-boolean-structure]
+=== Primary References and Citations for Finite Boolean Lattices
+
+The algebraic foundation of finite Boolean algebras and power set representations was developed by:
+
+* **Boole, G. (1854).** *An Investigation of the Laws of Thought*. London: Walton and Maberly.
+* **Stone, M. H. (1936).** "The theory of representations for Boolean algebras." *Transactions of the American Mathematical Society*, 40(1), pp. 37–111.
+
+== Dilworth Antichain Partition Theorem for Finite Posets
+
+[#theorem-dilworth-poset-decomposition]
+[THEOREM]
+.Theorem: Dilworth Antichain Partition Theorem for Finite Posets
+====
+Let \( P \) be any finite partially ordered set. An antichain in \( P \) is a subset \( A \subseteq P \) such that no two distinct elements of \( A \) are comparable. The minimum number of disjoint chains needed to cover \( P \) equals the maximum size of an antichain in \( P \) (the width \( w ( P ) \)).
+
+*Proof:*
+
+. **Lower Bound**: If \( A \) is an antichain of size \( w \), no single chain can contain more than one element of \( A \). Thus at least \( w \) chains are required to cover \( P \).
+
+. **Constructive Induction**: By induction on \( | P | \), let \( C \) be a maximal chain in \( P \). If every antichain in \( P \setminus C \) has size strictly less than \( w \), then by induction \( P \setminus C \) can be partitioned into \( w - 1 \) chains, which together with \( C \) forms a partition into \( w \) chains.
+
+. **Antichain Splitting**: If \( P \setminus C \) contains an antichain \( A \) of size \( w \), split \( P \) into down-set \( P _ \downarrow = \{ x \in P \mid \exists a \in A , x \le a \} \) and up-set \( P _ \uparrow = \{ x \in P \mid \exists a \in A , a \le x \} \). Since top element of \( C \) is not in \( P _ \downarrow \) and bottom element is not in \( P _ \uparrow \), both subsets are strictly smaller than \( P \). Applying induction to both and joining matching chains at elements of \( A \) yields exactly \( w \) chains. \( \square \)
+====
+
+[#references-dilworth]
+=== Primary References and Citations for Dilworth's Theorem
+
+The min-max chain-antichain duality theorem for finite posets was proven by:
+
+* **Dilworth, R. P. (1950).** "A decomposition theorem for partially ordered sets." *Annals of Mathematics*, 51(1), pp. 161–166.
+
+== Sperner Maximum Antichain Theorem on Discrete Boolean Grids
+
+[#theorem-sperner-antichain-bound]
+[THEOREM]
+.Theorem: Sperner Maximum Antichain Theorem on Discrete Boolean Grids
+====
+Let \( \mathcal { P } ( S ) \) be the finite Boolean lattice on an \( n \)-element set \( S \). The maximum size of an antichain \( A \subseteq \mathcal { P } ( S ) \) is equal to the middle binomial coefficient:
+\[ \max _ { A \text{ antichain} } | A | = \binom { n } { \lfloor n / 2 \rfloor } \]
+
+*Proof:*
+
+. **Chain Permutations**: The total number of maximal chains in \( \mathcal { P } ( S ) \) connecting \( \emptyset \) to \( S \) is \( n ! \). Each subset \( X \subseteq S \) of size \( k \) lies on exactly \( k ! ( n - k ) ! \) maximal chains.
+
+. **LYM Inequality**: If \( A \) is an antichain, no maximal chain can intersect \( A \) more than once. Summing over all elements of \( A \):
+\[ \sum _ { X \in A } k ! ( n - k ) ! \le n ! \implies \sum _ { X \in A } \frac { 1 } { \binom { n } { | X | } } \le 1 \]
+
+. **Binomial Maximization**: Since \( \binom { n } { k } \le \binom { n } { \lfloor n / 2 \rfloor } \), replacing each denominator with the maximum gives:
+\[ \frac { | A | } { \binom { n } { \lfloor n / 2 \rfloor } } \le \sum _ { X \in A } \frac { 1 } { \binom { n } { | X | } } \le 1 \implies | A | \le \binom { n } { \lfloor n / 2 \rfloor } \]
+Equality is achieved by choosing \( A \) to be the set of all subsets of rank \( \lfloor n / 2 \rfloor \). \( \square \)
+====
+
+[#references-sperner]
+=== Primary References and Citations for Sperner's Theorem
+
+The extremal antichain theorem on finite Boolean lattices was established by:
+
+* **Sperner, E. (1928).** "Ein Satz über Untermengen einer endlichen Menge." *Mathematische Zeitschrift*, 27(1), pp. 544–548.
+
 = Constructive Categories and Multivector Functors
 
 In this chapter, category theory is constructed over finite rational aperture spaces, multivector functors, Yoneda aperture embedding, and monoidal coherence.
@@ -2178,6 +2284,10 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Aperture Partial Orders and Lattice Homomorphisms*
 * xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Aperture Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*
 * xref:theorem-birkhoff-representation[**Theorem: Birkhoff Representation Theorem for Finite Distributive Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Birkhoff Representation Theorem for Finite Distributive Lattices*
+* xref:theorem-dedekind-jordan-chain[**Theorem: Dedekind-Jordan Chain Condition for Finite Modular Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Dedekind-Jordan Chain Condition for Finite Modular Lattices*
+* xref:theorem-boolean-power-set-isomorphism[**Theorem: Fundamental Structure Theorem of Finite Boolean Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Fundamental Structure Theorem of Finite Boolean Lattices*
+* xref:theorem-dilworth-poset-decomposition[**Theorem: Dilworth Antichain Partition Theorem for Finite Posets**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Dilworth Antichain Partition Theorem for Finite Posets*
+* xref:theorem-sperner-antichain-bound[**Theorem: Sperner Maximum Antichain Theorem on Discrete Boolean Grids**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Sperner Maximum Antichain Theorem on Discrete Boolean Grids*
 * xref:theorem-frankl-lattice-density[**Theorem: Frankl Join-Irreducible Lattice Density Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Frankl Join-Irreducible Density Theorem on Finite Grid Lattices*
 * xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*
 * xref:theorem-yoneda-aperture-embedding[**Theorem: Constructive Yoneda Aperture Embedding Lemma**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Yoneda Aperture Embedding and Natural Transformations*
