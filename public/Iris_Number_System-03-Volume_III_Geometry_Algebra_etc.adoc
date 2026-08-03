@@ -2028,6 +2028,31 @@ The tensor product of multivector spaces \( \mathcal { G } _ M \otimes \mathcal 
 . **Coherence Diagram Satisfaction**: Since blade associativity is exact in Clifford algebra \( Cl ( 4 , 1 , 1 ) \), Mac Lane's pentagon diagram commutes strictly without approximation. \( \square \)
 ====
 
+== Freyd Adjoint Functor Theorem for Finite Categories
+
+[#theorem-freyd-finite-adjoint-functor]
+[THEOREM]
+.Theorem: Freyd Adjoint Functor Theorem for Finite Categories
+====
+Let \( \mathcal { C } \) and \( \mathcal { D } \) be finite small categories. A functor \( G : \mathcal { D } \to \mathcal { C } \) possesses a left adjoint functor \( F : \mathcal { C } \to \mathcal { D } \) if and only if \( G \) preserves all finite limits.
+
+*Proof:*
+
+. **Necessity**: If \( G \) has a left adjoint \( F \), then by standard category theory duality, \( G \) preserves all limits that exist in \( \mathcal { D } \). In particular, \( G \) preserves all finite limits.
+
+. **Constructive Solution Set Condition**: Because \( \mathcal { D } \) is a finite category, the set of objects \( \text{Obj} ( \mathcal { D } ) \) is finite. For any object \( C \in \mathcal { C } \), the solution set condition is satisfied automatically by taking the finite set of all arrows \( f : C \to G ( D ) \).
+
+. **Adjoint Construction via Equalizers**: Define \( F ( C ) \) as the finite limit (equalizer) of all arrows from \( C \) into \( G ( D ) \). Since \( \mathcal { D } \) is finite and complete, this limit exists. The natural isomorphism \( \text{Hom} _ { \mathcal { D } } ( F ( C ) , D ) \cong \text{Hom} _ { \mathcal { C } } ( C , G ( D ) ) \) follows directly, yielding left adjoint \( F \). \( \square \)
+====
+
+[#references-freyd-adjoint]
+=== Primary References and Citations for the Adjoint Functor Theorem
+
+The adjoint functor theorem establishing necessary and sufficient conditions for the existence of left adjoints was formulated by:
+
+* **Freyd, P. (1964).** *Abelian Categories: An Introduction to the Theory of Infinite Abelian Groups*. Harper & Row.
+* **Mac Lane, S. (1971).** *Categories for the Working Mathematician*. Graduate Texts in Mathematics, Vol. 5. Springer-Verlag.
+
 = Constructive Discrete Combinatorics and Partition Tautologies
 
 In this chapter, discrete combinatorics, multivector permutations, and partition enumeration identities are derived on finite rational grids \( \mathcal { G } _ N \).
@@ -2067,6 +2092,86 @@ The number of discrete grid partitions \( p _ N ( k ) \) of an integer measureme
 
 . **Tautological Equivalence**: Each solution corresponds uniquely to a partition of \( k \) into parts of size at most \( N \). The identity holds strictly on finite degree polynomials modulo \( q ^ { M + 1 } \). \( \square \)
 ====
+
+== Hall's Marriage Theorem and Distinct Representatives
+
+[#theorem-halls-marriage]
+[THEOREM]
+.Theorem: Hall's Marriage Theorem for Finite Bipartite Systems
+====
+Let \( ( A _ 1 , A _ 2 , \dots , A _ n ) \) be a finite collection of finite sets. A system of distinct representatives (SDR) is a tuple of distinct elements \( ( x _ 1 , x _ 2 , \dots , x _ n ) \) such that \( x _ i \in A _ i \) for all \( 1 \le i \le n \). An SDR exists if and only if Hall's marriage condition holds: for every subset of indices \( I \subseteq \{ 1 , 2 , \dots , n \} \),
+\[ \left| \bigcup _ { i \in I } A _ i \right| \ge | I | \]
+
+*Proof:*
+
+. **Necessity**: If an SDR \( ( x _ 1 , \dots , x _ n ) \) exists, then for any subset \( I \subseteq \{ 1 , \dots , n \} \), the set \( \{ x _ i \mid i \in I \} \subseteq \bigcup _ { i \in I } A _ i \) contains \( | I | \) distinct elements. Thus \( | \bigcup _ { i \in I } A _ i | \ge | I | \).
+
+. **Sufficiency by Induction**: Proceed by induction on \( n \). Base case \( n = 1 \) is trivial.
+   - *Case 1*: If for every proper non-empty subset \( I \subsetneq \{ 1 , \dots , n \} \), the strict inequality \( | \bigcup _ { i \in I } A _ i | \ge | I | + 1 \) holds, select any \( x _ 1 \in A _ 1 \) and remove \( x _ 1 \) from all remaining sets. The reduced collection of \( n - 1 \) sets satisfies Hall's condition, completing the SDR by induction.
+   - *Case 2*: If there exists a proper non-empty subset \( I \) with \( | \bigcup _ { i \in I } A _ i | = | I | \), apply induction to \( I \) to obtain an SDR for \( ( A _ i ) _ { i \in I } \). Remove these chosen elements from the remaining sets \( ( A _ j ) _ { j \notin I } \). The remaining collection satisfies Hall's condition, yielding a full SDR by induction. \( \square \)
+====
+
+[#references-halls-marriage]
+=== Primary References and Citations for Hall's Marriage Theorem
+
+The system of distinct representatives theorem on finite bipartite systems was established by:
+
+* **Hall, P. (1935).** "On Representatives of Subsets." *Journal of the London Mathematical Society*, 10(1), pp. 26–30.
+
+== Erdős-Szekeres Monotone Subsequence Theorem
+
+[#theorem-erdos-szekeres-monotone]
+[THEOREM]
+.Theorem: Erdős-Szekeres Monotone Subsequence Theorem
+====
+Let \( r, s \ge 1 \) be integers. Any sequence of real or rational numbers of length at least \( ( r - 1 ) ( s - 1 ) + 1 \) contains either a monotonically increasing subsequence of length \( r \) or a monotonically decreasing subsequence of length \( s \).
+
+*Proof:*
+
+. **Labeling Sequence Terms**: Let \( ( a _ 1 , a _ 2 , \dots , a _ N ) \) be a sequence of length \( N = ( r - 1 ) ( s - 1 ) + 1 \). For each term \( a _ i \), define pair \( ( x _ i , y _ i ) \in \mathbb { Z } _ { \ge 1 } ^ 2 \), where \( x _ i \) is the length of the longest increasing subsequence ending at \( a _ i \), and \( y _ i \) is the length of the longest decreasing subsequence ending at \( a _ i \).
+
+. **Injectivity of Labels**: For any two indices \( 1 \le i < j \le N \):
+   - If \( a _ i \le a _ j \), then \( x _ j \ge x _ i + 1 \), so \( x _ i \neq x _ j \).
+   - If \( a _ i > a _ j \), then \( y _ j \ge y _ i + 1 \), so \( y _ i \neq y _ j \).
+   Hence the mapping \( i \mapsto ( x _ i , y _ i ) \) is strictly injective.
+
+. **Pigeonhole Principle Conclusion**: If no increasing subsequence has length \( r \) (so \( x _ i \le r - 1 \)) and no decreasing subsequence has length \( s \) (so \( y _ i \le s - 1 \)), the number of possible label pairs is at most \( ( r - 1 ) ( s - 1 ) \). Since \( N = ( r - 1 ) ( s - 1 ) + 1 > ( r - 1 ) ( s - 1 ) \), by the Pigeonhole Principle two indices must share the same label pair, contradicting injectivity. Thus either an increasing subsequence of length \( r \) or a decreasing subsequence of length \( s \) must exist. \( \square \)
+====
+
+[#references-erdos-szekeres]
+=== Primary References and Citations for Erdős-Szekeres Theorem
+
+The extremal monotone subsequence theorem was proven by:
+
+* **Erdős, P., & Szekeres, G. (1935).** "A combinatorial problem in geometry." *Compositio Mathematica*, 2, pp. 463–470.
+
+== Ramsey's Finite Graph Clique-Independent Set Theorem
+
+[#theorem-ramsey-finite-graph]
+[THEOREM]
+.Theorem: Ramsey's Finite Graph Clique-Independent Set Theorem
+====
+For any positive integers \( r, s \ge 1 \), there exists a minimal integer \( R ( r , s ) \) such that every simple graph on \( n \ge R ( r , s ) \) vertices contains either a clique of size \( r \) or an independent set of size \( s \). Furthermore, \( R ( r , s ) \le \binom { r + s - 2 } { r - 1 } \).
+
+*Proof:*
+
+. **Inductive Bound**: Base cases \( R ( 1 , s ) = 1 \) and \( R ( r , 1 ) = 1 \) are trivial. Assume by induction that \( R ( r - 1 , s ) \) and \( R ( r , s - 1 ) \) exist. Let \( N = R ( r - 1 , s ) + R ( r , s - 1 ) \).
+
+. **Degree Splitting**: Choose any vertex \( v \) in a graph \( G \) on \( N \) vertices. Partition remaining \( N - 1 \) vertices into neighborhood \( N ( v ) \) (adjacent to \( v \)) and non-neighborhood \( V \setminus ( N ( v ) \cup \{ v \} ) \) (non-adjacent to \( v \)).
+
+. **Pigeonhole Dichotomy**: Since \( | N ( v ) | + | V \setminus ( N ( v ) \cup \{ v \} ) | = N - 1 = R ( r - 1 , s ) + R ( r , s - 1 ) - 1 \), either:
+   - \( | N ( v ) | \ge R ( r - 1 , s ) \): By induction, \( N ( v ) \) contains an independent set of size \( s \) (done) or a clique of size \( r - 1 \), which together with \( v \) forms a clique of size \( r \).
+   - \( | V \setminus ( N ( v ) \cup \{ v \} ) | \ge R ( r , s - 1 ) \): By induction, it contains a clique of size \( r \) (done) or an independent set of size \( s - 1 \), which together with \( v \) forms an independent set of size \( s \).
+
+. **Pascal Recurrence Bound**: By induction on Pascal's identity, \( R ( r , s ) \le R ( r - 1 , s ) + R ( r , s - 1 ) \le \binom { ( r - 1 ) + s - 2 } { ( r - 1 ) - 1 } + \binom { r + ( s - 1 ) - 2 } { r - 1 } = \binom { r + s - 2 } { r - 1 } \). \( \square \)
+====
+
+[#references-ramsey]
+=== Primary References and Citations for Ramsey's Theorem
+
+The foundational partition theorem for finite graphs was established by:
+
+* **Ramsey, F. P. (1930).** "On a Problem of Formal Logic." *Proceedings of the London Mathematical Society*, s2-30(1), pp. 264–286.
 
 [#theorem-n-queens-algebraic-permutation]
 [THEOREM]
@@ -2292,8 +2397,12 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*
 * xref:theorem-yoneda-aperture-embedding[**Theorem: Constructive Yoneda Aperture Embedding Lemma**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Yoneda Aperture Embedding and Natural Transformations*
 * xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
+* xref:theorem-freyd-finite-adjoint-functor[**Theorem: Freyd Adjoint Functor Theorem for Finite Categories**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Freyd Adjoint Functor Theorem for Finite Categories*
 * xref:theorem-multivector-permutation-invariance[**Theorem: Multivector Permutation Group Invariance**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Multivector Permutations and Finite Grid Enumeration*
 * xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
+* xref:theorem-halls-marriage[**Theorem: Hall's Marriage Theorem for Finite Bipartite Systems**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Hall's Marriage Theorem and Distinct Representatives*
+* xref:theorem-erdos-szekeres-monotone[**Theorem: Erdős-Szekeres Monotone Subsequence Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Erdős-Szekeres Monotone Subsequence Theorem*
+* xref:theorem-ramsey-finite-graph[**Theorem: Ramsey's Finite Graph Clique-Independent Set Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Ramsey's Finite Graph Clique-Independent Set Theorem*
 * xref:theorem-n-queens-algebraic-permutation[**Theorem: Algebraic Solvability and Permutation Characterization of the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
 * xref:theorem-vernier-knights-tour[**Theorem: Deterministic Vernier-Aperture Knight's Tour Construction Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
 * xref:theorem-multivector-chess-game-theory[**Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
