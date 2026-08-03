@@ -1011,6 +1011,70 @@ Let \( G = ( V , E ) \) be the knight's graph on an \( n \times n \) board (\( n
    - Thus, \( v _ { 64 } \to v _ 1 \) completes a re-entrant closed Knight's Tour on the \( 8 \times 8 \) grid in exactly 64 steps with 0 backtracks!
 ====
 
+[#theorem-multivector-chess-game-theory]
+[THEOREM]
+.Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem
+====
+Let \( \mathcal { S } \) be a finite discrete state space of valid game configurations (such as standard chess positions on grid \( \mathcal { G } _ N \)), where each board state \( s \in \mathcal { S } \) is mapped to a state-transition multivector \( \psi_s \in Cl ( 4 , 1 , 1 ) \) encoding material balance, mobility, board apertures, and king safety fields.
+
+1. **Exact Multivector Position Evaluation**: A state position multivector \( \psi_s \) is evaluated via scalar aperture contraction \( v ( s ) = \langle \Omega \cdot \psi_s \rangle _ 0 \in \mathbb { Q } \cdot \mathbf { 1 } _ { Cl } \), where \( \Omega \in Cl ( 4 , 1 , 1 ) \) is a fixed linear aperture valuation operator.
+
+2. **Discrete Minimax Aperture Recurrence**: For a two-player zero-sum finite game, the exact minimax aperture value \( V ( s , d ) \) at search depth \( d \in \mathbb { N } _ 0 \) is defined recursively by:
+\[ V ( s , d ) = \begin{cases} v ( s ) & \text{if } d = 0 \text{ or } A ( s ) = \emptyset \\ \max _ { a \in A ( s ) } \{ - V ( \text{succ} ( s , a ) , d - 1 ) \} & \text{if } d > 0 \end{cases} \]
+where \( A ( s ) \) denotes the finite set of legal candidate moves at state \( s \), and \( \text{succ} ( s , a ) \) is the deterministic successor state following move \( a \).
+
+3. **Alpha-Beta Aperture Pruning Invariance**: During depth-first tree traversal over search interval \( [ \alpha , \beta ] \), if candidate moves \( a \in A ( s ) \) are ordered by descending immediate move mobility \( | A ( \text{succ} ( s , a ) ) | \), any subtree branch where current value exceeds \( \beta \) is pruned without altering the minimax evaluation \( V ( s , d ) \). The pruning optimization reduces evaluated nodes from \( O ( b ^ d ) \) to \( O ( b ^ { d / 2 } ) \) while maintaining exact algebraic equivalence.
+
+4. **Deterministic Optimal Move Decision**: The optimal move \( a ^ \ast \in A ( s ) \) is selected as:
+\[ a ^ \ast = \arg\max _ { a \in A ( s ) } \{ - V ( \text{succ} ( s , a ) , d - 1 ) \} \]
+where ties in minimax aperture value are resolved strictly by discrete lexicographical orientation ordering in \( Cl ( 4 , 1 , 1 ) \).
+
+*Proof:*
+
+. **Finite State Tree Termination**: Since chess board positions have finite piece sets and standard repetition rules guarantee finite game trees, every path terminates in at most finite moves at depth \( D \).
+
+. **Negamax Equivalence**: Zero-sum two-player structure implies \( V_2 ( s , d ) = - V_1 ( s , d ) \), ensuring that negamax recursion accurately computes minimax values without sign drift.
+
+. **Exactness of Alpha-Beta Cutoffs**: Pruning a subtree occurs only when a player can force a score at least as good as \( \beta \) on an earlier branch. Because the opponent chooses to minimize the player's gain, the opponent will never allow state transitions into a pruned subtree. Thus, pruned nodes cannot influence the root decision, proving exact algebraic invariance. \( \square \)
+====
+
+[#example-chess-minimax-alpha-beta]
+[EXAMPLE]
+.Example Problem 9: 2-Ply Multivector Minimax Evaluation and Alpha-Beta Pruning in a Finite Discrete Chess Endgame
+====
+*Problem*: Given a finite chess endgame position \( s _ 0 \) with 3 legal root candidate moves \( a _ 1 , a _ 2 , a _ 3 \), construct a 2-ply (\( d = 2 \)) game-tree evaluation using the multivector minimax algorithm with initial search bounds \( [ \alpha , \beta ] = [ -\infty , +\infty ] \).
+1. Evaluate leaf position multivectors for each successor branch.
+2. Apply alpha-beta pruning to omit redundant subtrees.
+3. Determine the exact optimal root move \( a ^ \ast \) and minimax value \( V ( s _ 0 , 2 ) \).
+
+*Solution*:
+
+1. **Branch 1 Evaluation (\( a _ 1 \))**:
+   - Move \( a _ 1 \) leads to successor \( s _ 1 = \text{succ} ( s _ 0 , a _ 1 ) \).
+   - Opponent's candidate replies at \( s _ 1 \) yield leaf evaluation values:
+     \( v ( s _ { 1 , 1 } ) = +1.20 \), \( v ( s _ { 1 , 2 } ) = +0.80 \).
+   - Opponent minimizes (negamax negates): \( V ( s _ 1 , 1 ) = \min ( 1.20 , 0.80 ) = +0.80 \).
+   - Update root lower bound: \( \alpha = \max ( -\infty , +0.80 ) = +0.80 \).
+
+2. **Branch 2 Evaluation (\( a _ 2 \)) and Pruning**:
+   - Move \( a _ 2 \) leads to successor \( s _ 2 = \text{succ} ( s _ 0 , a _ 2 ) \).
+   - Opponent's first reply yields leaf evaluation \( v ( s _ { 2 , 1 } ) = +1.75 \).
+   - Opponent's second reply yields leaf evaluation \( v ( s _ { 2 , 2 } ) = +2.10 \).
+   - Opponent minimizes: \( V ( s _ 2 , 1 ) = \min ( 1.75 , 2.10 ) = +1.75 \).
+   - Update root lower bound: \( \alpha = \max ( +0.80 , +1.75 ) = +1.75 \).
+
+3. **Branch 3 Evaluation (\( a _ 3 \)) and Alpha-Beta Cutoff**:
+   - Move \( a _ 3 \) leads to successor \( s _ 3 = \text{succ} ( s _ 0 , a _ 3 ) \).
+   - Opponent's first reply yields leaf evaluation \( v ( s _ { 3 , 1 } ) = +0.40 \).
+   - Since \( +0.40 < \alpha = +1.75 \), opponent can guarantee keeping score below current best \( \alpha \).
+   - Remaining opponent replies under move \( a _ 3 \) are pruned immediately without evaluation (\( \alpha \)-beta cutoff!).
+
+4. **Optimal Decision**:
+   - Comparing root move evaluations: \( V ( s _ 1 ) = +0.80 \), \( V ( s _ 2 ) = +1.75 \), \( V ( s _ 3 ) \le +0.40 \).
+   - Maximum value is achieved by move \( a _ 2 \).
+   - Optimal move decision: \( a ^ \ast = a _ 2 \) with exact minimax aperture value \( V ( s _ 0 , 2 ) = +1.75 \cdot \mathbf { 1 } _ { Cl } \).
+====
+
 = Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
@@ -1049,6 +1113,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
 * xref:theorem-n-queens-algebraic-permutation[**Theorem: Algebraic Solvability and Permutation Characterization of the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
 * xref:theorem-vernier-knights-tour[**Theorem: Deterministic Vernier-Aperture Knight's Tour Construction Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
+* xref:theorem-multivector-chess-game-theory[**Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
 
 === Examples
 
@@ -1063,3 +1128,4 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:example-opentype-cff-cubic-to-quadratic[**Example: OpenType CFF Font Outline Cubic-to-Quadratic Degree Reduction in 2D Space**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
 * xref:example-4-queens-algebraic-permutation[**Example: Algebraic Permutation Solution of the 4-Queens Puzzle**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
 * xref:example-8x8-knights-tour[**Example: Exact Linear-Time Deterministic Closed Knight's Tour Construction on an 8x8 Grid**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
+* xref:example-chess-minimax-alpha-beta[**Example: 2-Ply Multivector Minimax Evaluation and Alpha-Beta Pruning in a Finite Discrete Chess Endgame**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
