@@ -422,6 +422,66 @@ Expanding \( ( 1 - t ) t { Q _ { 1 , y } ' } ^ { \Delta } = ( t - t ^ 2 ) { Q _ 
    - Solved in a single matrix inversion step without iteration, guaranteeing termination and exactness on rational grid \( \mathcal { G } _ N \).
 ====
 
+== Trivial Degree Elevation and Geometric Piecewise Degree Reduction
+
+This section establishes the algebraic simplicity of degree elevation in the symmetric \( s \)-power basis and formulates geometric degree reduction, constructing a piecewise lower-degree polynomial bounded by quadratic error convergence.
+
+[#theorem-spower-degree-elevation-reduction]
+[THEOREM]
+.Theorem: s-Power Trivial Degree Elevation and Geometric Degree Reduction
+====
+Let \( P ( t ) = ( 1 - t ) P _ 0 + t P _ 2 + ( 1 - t ) t P _ 1 ^ { \Delta } \) be a quadratic curve in the symmetric \( s \)-power basis on rational grid \( \mathcal { G } _ N \).
+
+1. **Trivial Degree Elevation**: Re-expressing \( P ( t ) \) as a degree-3 (cubic) curve in the \( s \)-power basis:
+\[ P ( t ) = ( 1 - t ) Q _ 0 + t Q _ 3 + ( 1 - t ) ^ 2 t Q _ 1 ^ { \Delta } + ( 1 - t ) t ^ 2 Q _ 2 ^ { \Delta } \]
+is executed trivially by inheriting the lower-degree deviation vector directly into both cubic deviation positions without modifying endpoints:
+\[ Q _ 0 = P _ 0 , \quad Q _ 3 = P _ 2 , \quad Q _ 1 ^ { \Delta } = P _ 1 ^ { \Delta } , \quad Q _ 2 ^ { \Delta } = P _ 1 ^ { \Delta } \]
+
+2. **Geometric Degree Reduction**: Reducing \( P ( t ) \) to an affine linear segment (degree 1) by setting \( P _ 1 ^ { \Delta } \mapsto \mathbf { 0 } \) incurs a maximum geometric deviation bounded by:
+\[ E _ 1 = \max _ { t \in [ 0 , 1 ] } \| P ( t ) - L ( t ) \| _ { \mathcal { I } } = \frac { 1 } { 4 } \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } \]
+When domain \( [ 0 , 1 ] \) is partitioned into \( K \) uniform sub-intervals of length \( \Delta t = 1 / K \), setting sub-interval deviation vectors \( P _ 1 ^ { \Delta , ( i ) } = ( \Delta t ) ^ 2 P _ 1 ^ { \Delta } \mapsto \mathbf { 0 } \) yields a \( C ^ 0 \) piecewise linear curve whose maximum error to \( P ( t ) \) converges quadratically as:
+\[ E _ K = \frac { \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } } { 4 K ^ 2 } \]
+
+*Proof:*
+
+. **Degree Elevation Identity**: Substituting \( 1 = ( 1 - t ) + t \) into the quadratic deviation term yields:
+\[ ( 1 - t ) t P _ 1 ^ { \Delta } = ( 1 - t ) t [ ( 1 - t ) + t ] P _ 1 ^ { \Delta } = ( 1 - t ) ^ 2 t P _ 1 ^ { \Delta } + ( 1 - t ) t ^ 2 P _ 1 ^ { \Delta } \]
+Matching coefficients with the cubic \( s \)-power expansion \( ( 1 - t ) Q _ 0 + t Q _ 3 + ( 1 - t ) ^ 2 t Q _ 1 ^ { \Delta } + ( 1 - t ) t ^ 2 Q _ 2 ^ { \Delta } \) directly verifies \( Q _ 0 = P _ 0 \), \( Q _ 3 = P _ 2 \), \( Q _ 1 ^ { \Delta } = P _ 1 ^ { \Delta } \), and \( Q _ 2 ^ { \Delta } = P _ 1 ^ { \Delta } \).
+
+. **Geometric Degree Reduction Bound**: The deviation from the linear backbone \( L ( t ) = ( 1 - t ) P _ 0 + t P _ 2 \) is \( d ( t ) = ( 1 - t ) t P _ 1 ^ { \Delta } \). Since the scalar function \( f ( t ) = ( 1 - t ) t \) achieves its absolute maximum at \( t = 1 / 2 \) with value \( f ( 1 / 2 ) = 1 / 4 \), the maximum geometric error over \( [ 0 , 1 ] \) is exactly \( \frac { 1 } { 4 } \| P _ 1 ^ { \Delta } \| _ { \mathcal { I } } \).
+
+. **Subdivision Error Scaling**: Under reparameterization on sub-interval \( [ t _ i , t _ { i + 1 } ] \) with length \( \Delta t = 1 / K \), the deviation vector scales as \( P _ 1 ^ { \Delta , ( i ) } = ( \Delta t ) ^ 2 P _ 1 ^ { \Delta } \). Replacing each quadratic sub-arc with its linear backbone segment gives a piecewise linear approximation with maximal sub-interval error \( \frac { 1 } { 4 } \| P _ 1 ^ { \Delta , ( i ) } \| = \frac { \| P _ 1 ^ { \Delta } \| } { 4 K ^ 2 } \). \( \square \)
+====
+
+[#example-spower-degree-reduction]
+[EXAMPLE]
+.Example Problem 4: Trivial Degree Elevation and Geometric Piecewise Degree Reduction
+====
+*Problem*: Given the quadratic Bézier curve \( P ( t ) \) with control points \( P _ 0 = ( 0 , 0 ) \), \( P _ 1 = ( 2 , 8 ) \), \( P _ 2 = ( 4 , 0 ) \):
+1. Elevate its degree trivially to cubic in the \( s \)-power basis.
+2. Calculate the maximum error of reducing its degree directly to a single linear segment.
+3. Determine the number of uniform sub-intervals \( K \) required for geometric degree reduction to yield a piecewise linear curve within tolerance \( \epsilon = 0 . 0 5 \).
+
+*Solution*:
+
+1. **s-Power Representation and Elevation**:
+   - Deviation vector: \( P _ 1 ^ { \Delta } = 2 P _ 1 - P _ 0 - P _ 2 = 2 ( 2 , 8 ) - ( 0 , 0 ) - ( 4 , 0 ) = ( 4 , 16 ) - ( 4 , 0 ) = ( 0 , 16 ) \).
+   - Quadratic representation: \( P ( t ) = ( 1 - t ) ( 0 , 0 ) + t ( 4 , 0 ) + ( 1 - t ) t ( 0 , 16 ) \).
+   - Elevated cubic representation: \( Q _ 0 = ( 0 , 0 ) \), \( Q _ 3 = ( 4 , 0 ) \), \( Q _ 1 ^ { \Delta } = ( 0 , 16 ) \), \( Q _ 2 ^ { \Delta } = ( 0 , 16 ) \):
+\[ P ( t ) = ( 1 - t ) ( 0 , 0 ) + t ( 4 , 0 ) + ( 1 - t ) ^ 2 t ( 0 , 16 ) + ( 1 - t ) t ^ 2 ( 0 , 16 ) \]
+
+2. **Single-Segment Linear Degree Reduction Error**:
+   - Deviation vector norm: \( \| P _ 1 ^ { \Delta } \| = \sqrt { 0 ^ 2 + 16 ^ 2 } = 16 \).
+   - Single linear segment approximation: \( L ( t ) = ( 1 - t ) ( 0 , 0 ) + t ( 4 , 0 ) = ( 4 t , 0 ) \).
+   - Maximum geometric error: \( E _ 1 = \frac { 1 } { 4 } \| P _ 1 ^ { \Delta } \| = \frac { 1 6 } { 4 } = 4 . 0 \).
+
+3. **Subdivision for Target Tolerance**:
+   - Require \( E _ K = \frac { \| P _ 1 ^ { \Delta } \| } { 4 K ^ 2 } \le \epsilon \implies \frac { 1 6 } { 4 K ^ 2 } \le 0 . 0 5 \implies \frac { 4 } { K ^ 2 } \le 0 . 0 5 \implies K ^ 2 \ge 8 0 \).
+   - Taking ceiling: \( K = \lceil \sqrt { 8 0 } \rceil = 9 \).
+   - With \( K = 9 \) sub-intervals (\( \Delta t = 1 / 9 \)), the scaled sub-interval deviation vector norm is \( \| P _ 1 ^ { \Delta , ( i ) } \| = \frac { 1 6 } { 8 1 } \approx 0 . 1 9 75 \).
+   - The piecewise linear backbone curve achieves maximum geometric error \( E _ 9 = \frac { 1 6 } { 4 \times 8 1 } = \frac { 4 } { 8 1 } \approx 0 . 0 4 9 4 < 0 . 0 5 \), producing a lightweight piecewise polynomial extraordinarily close to the original curve.
+====
+
 == Primary References and Citations
 
 The geometric-algebraic polynomial curve intersection and Bézier clipping formulations in this chapter build upon and extend the seminal publications of Thomas W. Sederberg and Javier Sánchez-Reyes:
@@ -737,6 +797,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-spower-geometric-representation[**Theorem: Geometric s-Power Polynomial Representation and Vanishing Curvature Identity**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Symmetric s-Power Basis and Geometric Polynomial Representation*
 * xref:theorem-optimal-fat-line-width[**Theorem: Optimal s-Power Fat-Line Bounding and Skeleton Projection**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
 * xref:theorem-spower-clipping-convergence[**Theorem: s-Power Quadratic Clipping Convergence and Root Isolation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
+* xref:theorem-spower-degree-elevation-reduction[**Theorem: s-Power Trivial Degree Elevation and Geometric Degree Reduction**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
 * xref:theorem-iris-irreducible-representation-decomposition[**Theorem: Irreducible Multivector Representation Decomposition Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Discrete Multivector Spinor Modules and Irreducible Representations*
 * xref:theorem-character-orthogonality[**Theorem: Multivector Character Orthogonality Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Character Orthogonality and Schur's Lemma in Cl(4,1,1)*
 * xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Aperture Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Aperture Topologies and Neighborhood Bases*
@@ -758,3 +819,4 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:example-spower-skeleton-transform[**Example: Affine Skeleton Transformation and Exact Fat-Line Width Determination**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
 * xref:example-quadratic-bezier-clipping-intersection[**Example: Full Step-by-Step s-Power Bézier Clipping and Intersection Calculation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
 * xref:example-flatness-testing-intersection[**Example: Combination of s-Power Bézier Clipping and Flatness Testing for Near-Parallel Curves**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
+* xref:example-spower-degree-reduction[**Example: Trivial Degree Elevation and Geometric Piecewise Degree Reduction**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
