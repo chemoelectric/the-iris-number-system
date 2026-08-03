@@ -9,6 +9,89 @@
 
 A Rigorous Constructive Foundation for Mathematics and Physics
 
+= Euclidean Geometry as a Tautological System
+
+Operational formulation of classical Euclidean geometry as an exact algebraic tautological system constructed over discrete rational partition grids \( \mathcal { G } _ N \) and multivector geometric algebra \( Cl ( 2 , 0 ) \subset Cl ( 4 , 1 , 1 ) \).
+
+== The Tautological Nature of Geometric Axiomatics
+
+Classical Euclidean geometry, when stripped of continuum idealizations and unmeasurable infinite point sets, reveals its true identity as a closed, operational **tautological system**.
+
+In this formulation, geometric primitives—points, directed line segments, angles, directed areas, and oriented volumes—are not mysterious entities with zero spatial extent, but operational multivector measurements within discrete partition grids \( \mathcal { G } _ N \).
+
+Every classical geometric relation (such as the Pythagorean relation, Thales's right-angle relation, or the law of sines) is an algebraic identity (tautology) holding strictly within the Clifford bivector algebra \( Cl ( 2 , 0 ) \).
+
+== Operational Primitives in Discrete Euclidean Multivector Space
+
+Let \( \mathcal { G } _ N \subset Cl ( 2 , 0 ) \) denote a discrete rational partition grid spanned by orthogonal basis vectors \( e _ 1 , e _ 2 \) satisfying \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } _ { Cl } \) and \( e _ 1 e _ 2 = - e _ 2 e _ 1 \).
+
+* **Discrete Position Vectors**: A point in the plane is operationalized by a position vector \( p = x e _ 1 + y e _ 2 \in \mathcal { G } _ N \), where \( x , y \in \mathbb { Q } \).
+* **Directed Line Segments**: A directed segment from \( p _ 1 \) to \( p _ 2 \) is the vector difference \( v = p _ 2 - p _ 1 \).
+* **Inner Scalar Product**: Metric distance and orthogonality are governed by the symmetric scalar product:
+\[ u \cdot v = \frac { 1 } { 2 } ( u v + v u ) \in \mathbb { Q } \mathbf { 1 } _ { Cl } \]
+* **Directed Bivector Area**: Oriented planar area is governed by the anti-symmetric wedge product:
+\[ u \wedge v = \frac { 1 } { 2 } ( u v - v u ) = ( u _ 1 v _ 2 - u _ 2 v _ 1 ) e _ 1 e _ 2 \]
+
+== Core Theorems of Euclidean Geometry as Multivector Tautologies
+
+[#theorem-tautological-pythagoras]
+[THEOREM]
+.Theorem: Tautological Pythagorean Identity in Cl(2,0)
+====
+Let \( u , v \in \mathcal { G } _ N \) be two orthogonal vectors in \( Cl ( 2 , 0 ) \), so that \( u \cdot v = \frac { 1 } { 2 } ( u v + v u ) = 0 \). Then the square norm of the hypotenuse vector \( w = u + v \) satisfies the exact algebraic tautology:
+\[ \| w \| _ { \mathcal { I } } ^ 2 = w ^ 2 = \| u \| _ { \mathcal { I } } ^ 2 + \| v \| _ { \mathcal { I } } ^ 2 \]
+
+*Proof:*
+
+. **Product Expansion**: Expand the geometric square of \( w = u + v \):
+\[ w ^ 2 = ( u + v ) ( u + v ) = u ^ 2 + u v + v u + v ^ 2 \]
+
+. **Substitution of Orthogonality**: By hypothesis, orthogonality implies \( u v + v u = 2 ( u \cdot v ) = 0 \).
+
+. **Algebraic Reduction**: Substituting \( u v + v u = 0 \) yields \( w ^ 2 = u ^ 2 + v ^ 2 \). Since for any vector \( x \), \( x ^ 2 = \| x \| _ { \mathcal { I } } ^ 2 \mathbf { 1 } _ { Cl } \), this establishes \( \| u + v \| _ { \mathcal { I } } ^ 2 = \| u \| _ { \mathcal { I } } ^ 2 + \| v \| _ { \mathcal { I } } ^ 2 \). \( \square \)
+====
+
+[#theorem-tautological-thales]
+[THEOREM]
+.Theorem: Tautological Thales Right-Angle Theorem
+====
+Let \( a , b , c \in \mathcal { G } _ N \) be three discrete position vectors such that \( a \) and \( b \) define the endpoints of a circle diameter centered at origin \( \mathbf { 0 } \), so \( b = - a \). Let \( c \) be any point on the discrete circle satisfying \( \| c \| _ { \mathcal { I } } ^ 2 = \| a \| _ { \mathcal { I } } ^ 2 \). Then the directed vectors \( u = c - a \) and \( v = c - b = c + a \) are orthogonal: \( u \cdot v = 0 \).
+
+*Proof:*
+
+. **Inner Product Evaluation**: Calculate the scalar inner product \( u \cdot v \):
+\[ u \cdot v = \frac { 1 } { 2 } \left ( ( c - a ) ( c + a ) + ( c + a ) ( c - a ) \right ) \]
+
+. **Geometric Expansion**: Expand the product terms:
+\[ ( c - a ) ( c + a ) = c ^ 2 + c a - a c - a ^ 2 \]
+\[ ( c + a ) ( c - a ) = c ^ 2 - c a + a c - a ^ 2 \]
+
+. **Summation**: Adding the two expansions cancels the cross terms \( \pm ( c a - a c ) \):
+\[ u \cdot v = \frac { 1 } { 2 } \left ( 2 c ^ 2 - 2 a ^ 2 \right ) = c ^ 2 - a ^ 2 \]
+
+. **Radius Equality**: Since \( c \) lies on the circle of radius \( \| a \| _ { \mathcal { I } } \), \( c ^ 2 = \| c \| _ { \mathcal { I } } ^ 2 = \| a \| _ { \mathcal { I } } ^ 2 = a ^ 2 \). Thus \( u \cdot v = 0 \), establishing right-angle orthogonality tautologically. \( \square \)
+====
+
+[#theorem-tautological-sine-law]
+[THEOREM]
+.Theorem: Tautological Directed Area Law of Sines
+====
+Let \( a , b , c \in \mathcal { G } _ N \) define a discrete triangle with side vectors \( u = b - a \), \( v = c - b \), and \( w = a - c \). The bivector directed area tautology \( u \wedge v = v \wedge w = w \wedge u \) holds identically, implying the exact Law of Sines:
+\[ \frac { \| u \| } { \sin \alpha } = \frac { \| v \| } { \sin \beta } = \frac { \| w \| } { \sin \gamma } \]
+
+*Proof:*
+
+. **Closure Identity**: The side vectors form a closed loop: \( u + v + w = \mathbf { 0 } \).
+
+. **Wedge Product with Side Vector**: Taking the wedge product of \( u + v + w = \mathbf { 0 } \) with \( u \):
+\[ u \wedge ( u + v + w ) = u \wedge u + u \wedge v + u \wedge w = \mathbf { 0 } \]
+Since \( u \wedge u = 0 \) and \( u \wedge w = - w \wedge u \), this yields \( u \wedge v = w \wedge u \). Similarly, wedging with \( v \) yields \( u \wedge v = v \wedge w \).
+
+. **Magnitude Equivalence**: Taking norms yields equal oriented area magnitudes:
+\[ \| u \| \| v \| \sin \gamma = \| v \| \| w \| \sin \alpha = \| w \| \| u \| \sin \beta \]
+Dividing by \( \| u \| \| v \| \| w \| \) produces the canonical Law of Sines. \( \square \)
+====
+
 = The Counting Process and the Integers
 
 Foundational definition of the discrete integer domain \( \mathbb { Z } \) and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).
@@ -985,6 +1068,9 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 
 === Theorems
 
+* xref:theorem-tautological-pythagoras[**Theorem: Tautological Pythagorean Identity in Cl(2,0)**]  -- Chapter: *Euclidean Geometry as a Tautological System* | Section: *Core Theorems of Euclidean Geometry as Multivector Tautologies*
+* xref:theorem-tautological-thales[**Theorem: Tautological Thales Right-Angle Theorem**]  -- Chapter: *Euclidean Geometry as a Tautological System* | Section: *Core Theorems of Euclidean Geometry as Multivector Tautologies*
+* xref:theorem-tautological-sine-law[**Theorem: Tautological Directed Area Law of Sines**]  -- Chapter: *Euclidean Geometry as a Tautological System* | Section: *Core Theorems of Euclidean Geometry as Multivector Tautologies*
 * xref:theorem-parity-conservation[**Theorem: Parity Conservation in Geometric Products**]  -- Chapter: *The Counting Process and the Integers* | Section: *Clifford Algebra Integration and Parity Algebra*
 * xref:theorem-rational-reciprocity[**Theorem: Scale-Invariant Rational Reciprocity**]  -- Chapter: *The Rational Numbers* | Section: *Multiplication as Composite Aperture Gating*
 * xref:theorem-real-aperture-completeness[**Theorem: Constructive Completeness of Iris Grid Limits**]  -- Chapter: *The Real Numbers* | Section: *Bivector Rotations and Transcendental Angles*
