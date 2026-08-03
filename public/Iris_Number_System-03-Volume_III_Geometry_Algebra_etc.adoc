@@ -149,7 +149,7 @@ Projecting onto orthogonal grade subspaces:
 
 2. **Unified Source Multivector**: Combine charge density \( \rho \) and current density vector \( \mathbf { j } \) into source multivector \( J = c \rho \mathbf { 1 } _ { Cl } - \mathbf { j } \).
 
-3. **Single Maxwell Multivector Equation**: With spacetime derivative operator \( D = \frac { 1 } { c } \frac { \partial } { \partial t } + \nabla \), all four Maxwell equations reduce to the single coordinate-free equation:
+3. **Single Maxwell Multivector Equation**: With Clifford derivative operator \( D = e_4 \frac { 1 } { c } \frac { \partial } { \partial t } + \nabla \), all four Maxwell equations reduce to the single coordinate-free equation:
 \[ D F = J \]
 Taking the geometric product \( D F = ( D \cdot F ) + ( D \wedge F ) \) and equating grade components yields:
    - Scalar grade: \( \nabla \cdot \mathbf { E } = c \rho \) (Gauss's law for electrostatics).

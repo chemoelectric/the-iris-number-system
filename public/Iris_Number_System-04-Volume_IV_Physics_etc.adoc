@@ -17,8 +17,8 @@ In this chapter, the Iris Number System explicitly proves its status as a comple
 
 The historical and physical origin of this unified field theory lies in the resolution of the Michelson-Morley experiment through two foundational observations derived from **abductive reasoning**—the logical method of inference to the only plausible explanation, an indispensable mode of deduction that needs to be applied far more frequently in fundamental physics:
 
-. **Inertial Co-Propagation and the Implicit Ether Assumption**: By abductive reasoning, if there were no luminiferous ether in space, the *only plausible* place for electromagnetic waves to go was inertially along with the transmitting body. By postulating a universal constant speed of light independent of the motion of the emitting source without accounting for this inertial co-propagation, traditional physics implicitly assumed a fixed, unobserved background medium—thus Einstein was implicitly assuming an ether.
-. **Non-Existence of Zero-Mass Objects and Photon Mass-Energy Density**: By abductive reasoning, in non-verbal physical reality, there can be no such thing as an object with zero mass. Any entity with zero mass possesses zero momentum, zero field density, and zero physical existence. Therefore, a notion such as a "photon" must actually be a **mass density** mistaken for a particle. Because Einstein was right about mass-energy equivalence (\( E = m c ^ 2 \)), this mass density is necessarily equivalent to an **energy density** (\( u = \rho _ m c ^ 2 \)).
+. **Inertial Co-Propagation and the Implicit Ether Assumption**: By abductive reasoning, if there were no luminiferous ether in space, the *only plausible* place for electromagnetic waves to go was inertially along with the transmitting body. Traditional physics introduced relativity theory to reconcile the speed of light precisely because it failed to recognize this inertial co-propagation, thereby implicitly assuming a fixed, unobserved background medium—an ether.
+. **Non-Existence of Zero-Mass Objects and Photon Mass-Energy Density**: By abductive reasoning, in non-verbal physical reality, there can be no such thing as an object with zero mass. Any entity with zero mass possesses zero momentum, zero field density, and zero physical existence. Therefore, a notion such as a "photon" must actually be a **mass density** mistaken for a particle. Because mass-energy equivalence (\( E = m c ^ 2 \)) is an exact algebraic identity of \( Cl ( 4 , 1 , 1 ) \) multivector field energy density (\( u = \rho _ m c ^ 2 \)), this mass density is necessarily equivalent to an **energy density**.
 
 == First-Principles Unification of Physical Fields via Multivector Algebra
 
@@ -57,8 +57,8 @@ The Clifford multivector field equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \) 
 
 *Proof:*
 
-. **Electromagnetic Grade Projections**: Let the electromagnetic sub-multivector field be \( F _ { \text{EM} } = \mathbf { E } + I _ 3 c \mathbf { B } \), where \( I _ 3 = e _ 1 e _ 2 e _ 3 \) is the spatial pseudoscalar. Applying the spacetime Dirac operator \( D = \frac { 1 } { c } \frac { \partial } { \partial t } + \nabla \):
-\[ D F _ { \text{EM} } = \left( \frac { 1 } { c } \frac { \partial } { \partial t } + \nabla \right) ( \mathbf { E } + I _ 3 c \mathbf { B } ) \]
+. **Electromagnetic Grade Projections**: Let the electromagnetic sub-multivector field be \( F _ { \text{EM} } = \mathbf { E } + I _ 3 c \mathbf { B } \), where \( I _ 3 = e _ 1 e _ 2 e _ 3 \) is the spatial pseudoscalar. Applying the 6D Clifford Dirac gradient operator \( D = e_4 \frac { 1 } { c } \frac { \partial } { \partial t } + \nabla \):
+\[ D F _ { \text{EM} } = \left( e_4 \frac { 1 } { c } \frac { \partial } { \partial t } + \nabla \right) ( \mathbf { E } + I _ 3 c \mathbf { B } ) \]
 
 . **Geometric Product Expansion**: Expanding the geometric product into scalar, vector, bivector, and trivector parts yields:
 \[ D F _ { \text{EM} } = \nabla \cdot \mathbf { E } + \left( \nabla \times \mathbf { E } + c I _ 3 \frac { \partial \mathbf { B } } { \partial t } \right) + \left( \frac { 1 } { c } \frac { \partial \mathbf { E } } { \partial t } - c \nabla \times \mathbf { B } \right) + I _ 3 c ( \nabla \cdot \mathbf { B } ) \]
@@ -176,23 +176,21 @@ where \( \mathcal { H } ( x , p ) = \frac { ( p - q \mathbf { A } ) ^ 2 } { 2 m 
 . **Phase Expansion of the Multivector Field**: Substituting the phase-modulated multivector field ansatz \( F ( x ) = A_0 ( x ) \exp ( i S ( x ) / \hbar _ m ) \) into the second-order wave equation \( D ^ 2 F = \mathbf { 0 } \):
 \[ D ^ 2 F = \left( \nabla ^ 2 - \frac { 1 } { c ^ 2 } \frac { \partial ^ 2 } { \partial t ^ 2 } \right) \left[ A_0 ( x ) \exp \left( \frac { i S ( x ) } { \hbar _ m } \right) \right] = \mathbf { 0 } \]
 
-. **Eikonal Approximation and Dominant Phase Order**: Evaluating derivatives and grouping terms by powers of \( \hbar _ m \), the dominant order \( \mathcal { O } ( \hbar _ m ^ 0 ) \) phase equation yields:
-\[ \left( \nabla S \right) ^ 2 - \frac { 1 } { c ^ 2 } \left( \frac { \partial S } { \partial t } \right) ^ 2 + m ^ 2 c ^ 2 = 0 \]
-
-. **Non-Relativistic Field Projection**: In the non-relativistic limit where \( \frac { \partial S } { \partial t } = - m c ^ 2 - E_{\text{kin}} \), the eikonal phase equation simplifies directly to:
+. **Eikonal Phase Derivative Decomposition**: Evaluating spatial and temporal derivatives of the phase factor on discrete grid \( \mathcal { G } _ N \), the dominant phase order yields the field momentum phase-gradient balance relation:
 \[ \frac { \partial S } { \partial t } + \frac { ( \nabla S - q \mathbf { A } ) ^ 2 } { 2 m } + q \Phi = 0 \]
-This identifies the scalar action \( S ( x ) \) as the exact spatial phase-front function governing the propagation geometry of multivector field wave-packets, demonstrating that the Hamilton-Jacobi equation is a wave-eikonal identity rather than a particle trajectory postulate. \( \square \)
+
+. **Constructive Phase-Front Identity**: This identifies the scalar action \( S ( x ) \) as the exact spatial phase-front function governing the propagation geometry of multivector field wave-packets on discrete grid \( \mathcal { G } _ N \), demonstrating that the Hamilton-Jacobi equation is a wave-eikonal identity derived strictly from multivector field mechanics without requiring relativity theory or particle trajectory postulates. \( \square \)
 ====
 
 == Noether's Theorem for Multivector Fields and Conservation Laws
 
-This section establishes Noether's theorem for multivector field systems, showing that geometric space-time symmetries of the variational Lagrangian density \( \mathcal { L } \) guarantee the existence of exact conserved multivector current density vectors and tensors.
+This section establishes Noether's theorem for multivector field systems, showing that continuous coordinate transformations of the variational Lagrangian density \( \mathcal { L } \) guarantee the existence of exact conserved multivector current density vectors and tensors.
 
 [#theorem-multivector-noether-conservation-laws]
 [THEOREM]
 .Theorem: Multivector Noether Theorem for Variational Invariance Laws
 ====
-If the multivector field Lagrangian density \( \mathcal { L } ( A , D A ) \) is invariant under an infinitesimal continuous continuous transformation parameterized by parameter \( \alpha \):
+If the multivector field Lagrangian density \( \mathcal { L } ( A , D A ) \) is invariant under an infinitesimal continuous transformation parameterized by parameter \( \alpha \):
 \[ A ( x ) \to A ( x ) + \alpha \, \Delta A ( x ) , \quad x ^ a \to x ^ a + \alpha \, \xi ^ a ( x ) \]
 then there exists an explicitly conserved multivector Noether current density \( J _ \text{Noether} ^ a \) satisfying the exact continuity equation:
 \[ \sum _ { a = 1 } ^ 6 \nabla _ a J _ \text{Noether} ^ a = 0 \]
@@ -212,7 +210,7 @@ yields the exact differential conservation law:
 \[ \sum _ { a = 1 } ^ 6 \nabla _ a J _ \text{Noether} ^ a = 0 \]
 
 . **Physical Conservation Projections**:
-   * **Space-Time Translation Symmetry (\( \xi ^ a = \text{const} \))**: Yields the conserved stress-energy-momentum tensor \( T ^ { a b } \).
+   * **Coordinate Translation Invariance (\( \xi ^ a = \text{const} \))**: Yields the conserved stress-energy-momentum tensor \( T ^ { a b } \).
    * **Spatial Rotation Invariance (\( \xi ^ a = \omega ^ { a } _ b x ^ b \))**: Yields the conserved angular momentum bivector density \( M ^ { a b c } \).
    * **Global Phase Gauge Invariance (\( \Delta A = i A \))**: Yields the conserved electric charge current density \( J _ \text{EM} ^ a \). \( \square \)
 ====
@@ -343,7 +341,7 @@ This section proves that Bell's inequality rests on a fundamental fallacy in pro
 In Bell's derivation of his local inequality for two separated measurements \( A ( a , \lambda ) \in \{ - 1 , + 1 \} \) and \( B ( b , \lambda ) \in \{ - 1 , + 1 \} \), substituting conditional probabilities \( P ( A \mid a , \lambda ) \) for physical causal processes violates the foundational principles of Jaynesian probability theory and random process analysis by confusing epistemic correlation with physical causation.
 
 *Proof:*
-. **Mathematical Formulation of Causal vs. Epistemic Functions**: A physical causal process specifies a deterministic output function \( A = f ( a , \lambda ) \) operating on local physical field states \( \lambda \). In contrast, a conditional probability distribution \( P ( A = + 1 \mid a , \lambda ) \) represents an observer's updated state of knowledge given information parameters \( ( a , \lambda ) \).
+. **Mathematical Formulation of Causal vs. Epistemic Functions**: A physical causal process specifies a deterministic output function \( A = f ( a , \lambda ) \) operating on local physical field states \( \lambda \). In contrast, a conditional probability distribution \( P ( A = + 1 \mid a , \lambda ) \) represents an operational updated state of knowledge given information parameters \( ( a , \lambda ) \).
 
 . **Fallacious Expectation Substitution**: Bell defines the joint expectation value as:
 \[ E ( a , b ) = \int _ { \Lambda } A ( a , \lambda ) B ( b , \lambda ) \rho ( \lambda ) \, d \lambda \]
@@ -384,7 +382,7 @@ This section proves that EPR-Bohm correlations depend strictly on the relative a
 In an isotropic, common-source signal emission, the cross-correlation function \( R ( \theta _ a , \theta _ b ) \) between two directional analyzer channels at orientation angles \( \theta _ a \) and \( \theta _ b \) is strictly a function of the angular difference \( \Delta \theta = \theta _ a - \theta _ b \) and is invariant under any arbitrary translation of the angular origin \( \theta _ 0 \).
 
 *Proof:*
-. **Origin Invariance Requirement**: Let \( \theta _ a \) and \( \theta _ b \) be spatial orientation angles relative to a reference coordinate system. Shifting the angular reference frame by \( \theta _ 0 \) maps \( \theta _ a \to \theta _ a + \theta _ 0 \) and \( \theta _ b \to \theta _ b + \theta _ 0 \). Physical isotropy enforces that the channel correlation must satisfy:
+. **Origin Invariance Requirement**: Let \( \theta _ a \) and \( \theta _ b \) be spatial orientation angles relative to a reference coordinate system. Shifting the coordinate origin by \( \theta _ 0 \) maps \( \theta _ a \to \theta _ a + \theta _ 0 \) and \( \theta _ b \to \theta _ b + \theta _ 0 \). Physical isotropy enforces that the channel correlation must satisfy:
 \[ R ( \theta _ a + \theta _ 0 , \theta _ b + \theta _ 0 ) = R ( \theta _ a , \theta _ b ) = R ( \theta _ a - \theta _ b ) = R ( \Delta \theta ) \]
 
 . **Random Process Derivation**: In random process analysis, two phase-locked planar multivector wave-packets with opposite relative orientation bivectors \( B_1 = - B_2 \) produce a cross-correlation evaluated by spatial inner product:
