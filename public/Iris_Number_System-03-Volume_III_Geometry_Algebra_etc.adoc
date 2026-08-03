@@ -331,7 +331,7 @@ terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \se
 
 == Recursive Bernstein Derivative-Crossing Real Root Isolation and ITP Refinement Theorem
 
-This section presents the recursive derivative-crossing root isolation algorithm in the Bernstein basis (as formulated in Command Officer's `_dpoly_findroots_recursively` architecture). The algorithm addresses real root finding for polynomial curves—specifically Bézier curves where root multiplicities are ignored in favor of isolating monotonic branches defined by critical points and inflection points.
+This section presents the recursive derivative-crossing root isolation algorithm in the Bernstein basis (as formulated in the `_dpoly_findroots_recursively` architecture). The algorithm addresses real root finding for polynomial curves—specifically Bézier curves where root multiplicities are ignored in favor of isolating monotonic branches defined by critical points and inflection points.
 
 [#theorem-recursive-bernstein-derivative-root-isolation]
 [THEOREM]
@@ -362,7 +362,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m b _ k B _ { k , m } ( x ) \) be a polynomi
 [#numerical-stability-bernstein-rootfinding]
 === Floating-Point and Fixed-Point Numerical Stability Safeguards
 
-To guarantee numerical stability and exact topological correctness when implementing Command Officer's recursive derivative-crossing algorithm across floating-point (IEEE 754) and fixed-point (Q\( M.F \)) hardware, the following execution recommendations are provided:
+To guarantee numerical stability and exact topological correctness when implementing the recursive derivative-crossing algorithm across floating-point (IEEE 754) and fixed-point (Q\( M.F \)) hardware, the following execution recommendations are provided:
 
 1. **Floating-Point Stability Directives**:
    - **Backward Error Filtering at Critical Extrema**: Evaluating \( P ( r _ i ) \) at a derivative root \( r _ i \) subject to IEEE 754 double-precision rounding can yield false sign perturbations when the true extremum is near zero. Compute a dynamic error filter threshold:
@@ -379,7 +379,7 @@ To guarantee numerical stability and exact topological correctness when implemen
 [EXAMPLE]
 .Example Problem 7: Recursive Bernstein Derivative-Crossing Real Root Isolation
 ====
-*Problem*: Isolate all real roots of cubic polynomial \( P ( t ) = 8 t ^ 3 - 12 t ^ 2 + 3 t + 1 \) on parameter domain \( t \in [ 0 , 1 ] \) using Command Officer's recursive derivative-crossing method in the Bernstein basis, and refine any isolated roots using ITP / Vernier refinement.
+*Problem*: Isolate all real roots of cubic polynomial \( P ( t ) = 8 t ^ 3 - 12 t ^ 2 + 3 t + 1 \) on parameter domain \( t \in [ 0 , 1 ] \) using the recursive derivative-crossing method in the Bernstein basis, and refine any isolated roots using ITP / Vernier refinement.
 
 *Solution*:
 

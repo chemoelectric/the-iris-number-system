@@ -4,8 +4,8 @@ with ada.text_io;
 with ada.float_text_io;
 with ada.numerics.elementary_functions;
 
--- complete demonstration of command officer's recursive bernstein
--- derivative-crossing real root isolation algorithm in floating point.
+-- complete demonstration of recursive bernstein
+-- real root isolation algorithm in floating point (ada 2022).
 -- author: frédéric blondin custer.
 procedure bernstein_root_finder is
 
