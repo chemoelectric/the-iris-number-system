@@ -160,7 +160,7 @@ Let \( \mathcal { M } \) be a mathematical system of governing equations represe
 
 *Proof:*
 
-. **Semantic/Nomenclature Substitution**: Consider any physical word problem \( P _ \text{quant} \). Let \( T _ \text{sem} \) be an bijective map substituting domain nouns and verbs (e.g., substituting "frog" for "electron", "pad" for "potential well", and "jump" for "be emitted"). Applying \( T _ \text{sem} \) yields an isomorphic word problem \( P _ \text{bio} = T _ \text{sem} ( P _ \text{quant} ) \). The algebraic structure and numerical predictions of \( \mathcal { M } \) are completely preserved under \( T _ \text{sem} \), while every trace of "quantum" terminology is eliminated.
+. **Semantic/Nomenclature Substitution**: Consider any physical word problem \( P _ \text{quant} \). Let \( T _ \text{sem} \) be a bijective map substituting domain nouns and verbs (e.g., substituting "frog" for "electron", "pad" for "potential well", and "jump" for "be emitted"). Applying \( T _ \text{sem} \) yields an isomorphic word problem \( P _ \text{bio} = T _ \text{sem} ( P _ \text{quant} ) \). The algebraic structure and numerical predictions of \( \mathcal { M } \) are completely preserved under \( T _ \text{sem} \), while every trace of "quantum" terminology is eliminated.
 
 . **Signal Processing & Random Process Transformation**: Let \( T _ \text{sig} \) be an isomorphic domain transformation mapping a physical experiment (e.g., the Aspect correlation experiment) into a problem in multi-channel signal processing and random process analysis over discrete channels. Under \( T _ \text{sig} \), the correlated detector clicks are calculated as standard Bayesian spatial-temporal channel correlations without non-local "entanglement" or "action at a distance."
 
