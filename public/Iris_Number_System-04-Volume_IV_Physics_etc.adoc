@@ -182,9 +182,9 @@ In Bell's derivation of his local inequality for two separated measurements \( A
 
 . **Fallacious Expectation Substitution**: Bell defines the joint expectation value as:
 \[ E ( a , b ) = \int _ { \Lambda } A ( a , \lambda ) B ( b , \lambda ) \rho ( \lambda ) \, d \lambda \]
-and assumes complete factorizability \( P ( A , B \mid a , b , \lambda ) = P ( A \mid a , \lambda ) P ( B \mid b , \lambda ) \). Equating the epistemic factorized expectation of conditional probability states to a physical, scalar causal mechanism misidentifies epistemic correlation with physical cause. In probability theory and random process analysis, conditional probabilities do not compose as linear algebraic scalars across independent measurement contexts.
+and assumes complete factorizability \( P ( A , B \mid a , b , \lambda ) = P ( A \mid a , \lambda ) P ( B \mid b , \lambda ) \). Equating the epistemic factorized expectation of conditional probability states to a physical causal mechanism misidentifies epistemic correlation with physical cause. In probability theory and random process analysis, conditional probabilities do not compose linearly across independent measurement contexts.
 
-. **Resolution in Signal Processing**: In digital signal processing, two correlated channels receiving a common-source random process \( \lambda \) exhibit non-factorable joint conditional probabilities \( P ( A , B \mid a , b , \lambda ) \) due to local phase-matching without requiring non-local causation. Thus, Bell's inequality applies only to factorable scalar approximations, not to actual physical random processes. \( \square \)
+. **Resolution in Signal Processing**: In digital signal processing, two correlated channels receiving a common-source random process \( \lambda \) exhibit non-factorable joint conditional probabilities \( P ( A , B \mid a , b , \lambda ) \) due to local phase-matching without requiring non-local causation. Thus, Bell's factorizability condition is mathematically false, and Bell's derivation is wrong. \( \square \)
 ====
 
 == The Data-Erasure Flaw: Suppression of Nature's Complete Sub-Microstate Record
