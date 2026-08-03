@@ -1792,6 +1792,46 @@ The set of idempotents in \( Cl ( 4 , 1 , 1 ) \) satisfying \( P ^ 2 = P \) form
 . **Modularity Law**: For idempotents with \( P \le R \), \( P \vee ( Q \wedge R ) = ( P \vee Q ) \wedge R \) holds algebraically by expanding multivector products. \( \square \)
 ====
 
+== Birkhoff Representation Theorem for Finite Distributive Lattices
+
+[#theorem-birkhoff-representation]
+[THEOREM]
+.Theorem: Birkhoff Representation Theorem for Finite Distributive Lattices
+====
+Let \( L \subseteq \mathcal { G } _ N \) be a finite distributive lattice. Let \( J ( L ) = \{ x \in L \setminus \{ \mathbf { 0 } _ L \} \mid \forall a , b \in L , x = a \vee b \implies ( x = a \lor x = b ) \} \) denote the poset of join-irreducible elements of \( L \), equipped with the partial order induced from \( L \). Let \( \mathcal { O } ( J ( L ) ) \) denote the set of order ideals (down-sets) of \( J ( L ) \):
+\[ \mathcal { O } ( J ( L ) ) = \{ I \subseteq J ( L ) \mid \forall x \in I , \forall y \in J ( L ) , y \le x \implies y \in I \} \]
+ordered by set inclusion \( \subseteq \). Then \( \mathcal { O } ( J ( L ) ) \) is a distributive lattice under set union \( \cup \) and set intersection \( \cap \), and the evaluation map \( \phi : L \to \mathcal { O } ( J ( L ) ) \) defined by:
+\[ \phi ( a ) = \{ x \in J ( L ) \mid x \le a \} \]
+is a lattice isomorphism, satisfying for all \( a , b \in L \):
+1. \( \phi ( a \vee b ) = \phi ( a ) \cup \phi ( b ) \)
+2. \( \phi ( a \wedge b ) = \phi ( a ) \cap \phi ( b ) \)
+3. \( a \le b \iff \phi ( a ) \subseteq \phi ( b ) \)
+
+*Proof:*
+
+. **Order Ideal Invariance**: For any \( a \in L \), if \( x \in \phi ( a ) \) and \( y \in J ( L ) \) satisfies \( y \le x \), then by transitivity of partial order, \( y \le a \), so \( y \in \phi ( a ) \). Thus \( \phi ( a ) \in \mathcal { O } ( J ( L ) ) \).
+
+. **Injectivity via Join Decomposition**: In any finite distributive lattice \( L \), every element \( a \in L \) is uniquely expressible as the join of the join-irreducible elements below it: \( a = \bigvee \phi ( a ) \). If \( \phi ( a ) = \phi ( b ) \), then \( a = \bigvee \phi ( a ) = \bigvee \phi ( b ) = b \), establishing injectivity.
+
+. **Homomorphism of Joins and Meets**:
+   - For joins: Since \( L \) is distributive and \( x \in J ( L ) \), \( x \le a \vee b \iff ( x \le a ) \lor ( x \le b ) \). Therefore, \( \phi ( a \vee b ) = \phi ( a ) \cup \phi ( b ) \).
+   - For meets: By definition of meet, \( x \le a \wedge b \iff ( x \le a ) \land ( x \le b ) \). Therefore, \( \phi ( a \wedge b ) = \phi ( a ) \cap \phi ( b ) \).
+
+. **Surjectivity**: Given any order ideal \( I \in \mathcal { O } ( J ( L ) ) \), define \( a = \bigvee I \). Since \( I \) is down-closed, the set of join-irreducibles satisfying \( x \le a \) is precisely \( I \), so \( \phi ( a ) = I \), establishing surjectivity.
+
+. **Conclusion**: The map \( \phi \) is an order-preserving bijection whose inverse is order-preserving, proving \( L \cong \mathcal { O } ( J ( L ) ) \). \( \square \)
+====
+
+[#references-birkhoff-representation]
+=== Primary References and Citations for Birkhoff's Representation Theorem
+
+The fundamental representation theorem establishing the natural isomorphism between finite distributive lattices and posets of order ideals was originated and developed by Garrett Birkhoff and elaborated in classical order theory:
+
+* **Birkhoff, G. (1937).** "Rings of sets." *Duke Mathematical Journal*, 3(3), pp. 443–454. (First proof of the representation theorem for finite distributive lattices).
+* **Birkhoff, G. (1940).** *Lattice Theory*. American Mathematical Society Colloquium Publications, Vol. 25. Providence, RI: American Mathematical Society.
+* **Davey, B. A., & Priestley, H. A. (2002).** *Introduction to Lattices and Order* (2nd ed.). Cambridge University Press.
+* **Grätzer, G. (2011).** *Lattice Theory: Foundation*. Basel: Springer Science & Media.
+
 == Frankl Join-Irreducible Density Theorem on Finite Grid Lattices
 
 [#theorem-frankl-lattice-density]
@@ -2137,6 +2177,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-vernier-fixed-point[**Theorem: Discrete Vernier Fixed-Point Invariance Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Vernier Fixed-Point Contractive Invariance*
 * xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Aperture Partial Orders and Lattice Homomorphisms*
 * xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Aperture Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*
+* xref:theorem-birkhoff-representation[**Theorem: Birkhoff Representation Theorem for Finite Distributive Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Birkhoff Representation Theorem for Finite Distributive Lattices*
 * xref:theorem-frankl-lattice-density[**Theorem: Frankl Join-Irreducible Lattice Density Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Frankl Join-Irreducible Density Theorem on Finite Grid Lattices*
 * xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*
 * xref:theorem-yoneda-aperture-embedding[**Theorem: Constructive Yoneda Aperture Embedding Lemma**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Yoneda Aperture Embedding and Natural Transformations*
