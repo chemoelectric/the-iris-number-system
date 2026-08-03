@@ -145,7 +145,7 @@ Mathematics is strictly consistent and constructive in the Iris Number System. T
 \[ M _ Q ( P ) = M _ C ( P ) \]
 If \( M _ Q ( P ) \neq M _ C ( P ) \), then the mathematical system itself contains a logical contradiction, rendering mathematics useless.
 
-. **Resolution in the Iris System**: Because mathematics in the Iris Number System is demonstrably consistent, \( M _ Q ( P ) \) and \( M _ C ( P ) \) produce identical numerical and structural results. Thus, "quantum physics" possesses no unique physical existence separate from classical field mechanics and signal processing, confirming Einstein's fundamental insight that Hilbert space formalism is merely obfuscated random process analysis. \( \square \)
+. **Resolution in the Iris System**: Because mathematics in the Iris Number System is demonstrably consistent, \( M _ Q ( P ) \) and \( M _ C ( P ) \) produce identical numerical and structural results. Thus, "quantum physics" possesses no unique physical existence separate from classical field mechanics and signal processing, demonstrating that the quantum mathematical formalism is merely obfuscated random process analysis. \( \square \)
 ====
 
 == Isomorphic Problem Mapping and the Domain Agnosticism of Mathematics
