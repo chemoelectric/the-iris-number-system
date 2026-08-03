@@ -167,6 +167,66 @@ Let \( \mathcal { M } \) be a mathematical system of governing equations represe
 . **Conclusion**: Because \( T _ \text{sem} \) and \( T _ \text{sig} \) preserve all mathematical solutions while eliminating "quantumness," the concept of "quantum physics" is an artifact of word choice and domain misattribution rather than a feature of physical reality. \( \square \)
 ====
 
+== Deconstruction of Bell's Theorem: The Causation-Correlation Fallacy and Conditional Probability Substitution
+
+This section proves that Bell's inequality rests on a fundamental fallacy in probability theory: substituting conditional probability distributions (states of knowledge regarding correlation) for functional representations of physical causal mechanisms.
+
+[#theorem-bell-causation-correlation-fallacy]
+[THEOREM]
+.Theorem: Flaw of Bell's Inequality via Causation-Correlation Fallacy and Conditional Probability Misattribution
+====
+In Bell's derivation of his local inequality for two separated measurements \( A ( a , \lambda ) \in \{ - 1 , + 1 \} \) and \( B ( b , \lambda ) \in \{ - 1 , + 1 \} \), substituting conditional probabilities \( P ( A \mid a , \lambda ) \) for physical causal processes violates the foundational principles of Jaynesian probability theory and digital signal processing by confusing epistemic correlation with physical causation.
+
+*Proof:*
+. **Mathematical Formulation of Causal vs. Epistemic Functions**: A physical causal process specifies a deterministic output function \( A = f ( a , \lambda ) \) operating on local physical field states \( \lambda \). In contrast, a conditional probability distribution \( P ( A = + 1 \mid a , \lambda ) \) represents an observer's updated state of knowledge given information parameters \( ( a , \lambda ) \).
+
+. **Fallacious Expectation Substitution**: Bell defines the joint expectation value as:
+\[ E ( a , b ) = \int _ { \Lambda } A ( a , \lambda ) B ( b , \lambda ) \rho ( \lambda ) \, d \lambda \]
+and assumes complete factorizability \( P ( A , B \mid a , b , \lambda ) = P ( A \mid a , \lambda ) P ( B \mid b , \lambda ) \). Equating the epistemic factorized expectation of conditional probability states to a physical, scalar causal mechanism misidentifies epistemic correlation with physical cause. In probability theory and random process analysis, conditional probabilities do not compose as linear algebraic scalars across independent measurement contexts.
+
+. **Resolution in Signal Processing**: In digital signal processing, two correlated channels receiving a common-source random process \( \lambda \) exhibit non-factorable joint conditional probabilities \( P ( A , B \mid a , b , \lambda ) \) due to local phase-matching without requiring non-local causation. Thus, Bell's inequality applies only to factorable scalar approximations, not to actual physical random processes. \( \square \)
+====
+
+== The Data-Erasure Flaw: Suppression of Nature's Complete Sub-Microstate Record
+
+This section demonstrates that Bell's theorem mathematically erases data—specifically non-detection events, unobserved sub-trials, and internal phase degrees of freedom—that physical nature retains, invalidating the derived bound.
+
+[#theorem-bell-data-erasure-flaw]
+[THEOREM]
+.Theorem: Invalidation of Bell's Bound via Sub-Ensemble Data Erasure
+====
+The derivation of Bell-type inequalities requires restricting the evaluation of expectation values to a post-selected sub-ensemble of detected pairs, discarding non-detection states and phase micro-variables that remain physically operative in Nature. This data-erasure invalidates the mathematical bound \( | E ( a , b ) - E ( a , b ' ) + E ( a ' , b ) + E ( a ' , b ' ) | \le 2 \).
+
+*Proof:*
+. **Incomplete Measure Space Integration**: Let \( \Omega \) be the complete physical state space of emitted wave-packets on discrete grid \( \mathcal { G } _ N \), including local detector thresholding and phase aperture parameters. In any real experiment, detector response is governed by a finite aperture function \( \chi _ a ( \lambda ) \in \{ 0 , 1 \} \).
+
+. **Post-Selection Data Erasure**: Bell's derivation assumes integration over a normalized density \( \int _ { \Lambda } \rho ( \lambda ) \, d \lambda = 1 \) where every emitted pair produces a binary outcome. However, physical detection evaluates expectations on the post-selected subset \( \Omega _ \text{det} = \{ \lambda \in \Omega \mid \chi _ a ( \lambda ) \chi _ b ( \lambda ) = 1 \} \). Erasing the complementary set \( \Omega \setminus \Omega _ \text{det} \) from the mathematical record alters the normalization measure:
+\[ E _ \text{exp} ( a , b ) = \frac { \int _ { \Omega } A ( a , \lambda ) B ( b , \lambda ) \chi _ a ( \lambda ) \chi _ b ( \lambda ) \rho ( \lambda ) \, d \lambda } { \int _ { \Omega } \chi _ a ( \lambda ) \chi _ b ( \lambda ) \rho ( \lambda ) \, d \lambda } \]
+
+. **Failure of the Inequality**: Because the normalization denominator depends explicitly on the analyzer settings \( ( a , b ) \), the four terms in Clauser-Horne-Shimony-Holt (CHSH) sums do not share a common integration measure. Re-establishing the complete measure space preserved by Nature demonstrates that the bound of 2 is an artifact of data-erasure, disproving non-local action at a distance. \( \square \)
+====
+
+== Rotational Invariance and Origin-Independence of Angular Channel Correlations
+
+This section proves that EPR-Bohm correlations depend strictly on the relative angular difference between analyzer channels and are invariant under shift of the angular origin, a fundamental property of phase-matched random processes ignored by Bell.
+
+[#theorem-rotational-invariance-epr-bohm]
+[THEOREM]
+.Theorem: Origin Independence and Rotational Invariance of EPR-Bohm Signal Correlations
+====
+In an isotropic, common-source signal emission, the cross-correlation function \( R ( \theta _ a , \theta _ b ) \) between two directional analyzer channels at orientation angles \( \theta _ a \) and \( \theta _ b \) is strictly a function of the angular difference \( \Delta \theta = \theta _ a - \theta _ b \) and is invariant under any arbitrary translation of the angular origin \( \theta _ 0 \).
+
+*Proof:*
+. **Origin Invariance Requirement**: Let \( \theta _ a \) and \( \theta _ b \) be spatial orientation angles relative to a reference coordinate system. Shifting the angular reference frame by \( \theta _ 0 \) maps \( \theta _ a \to \theta _ a + \theta _ 0 \) and \( \theta _ b \to \theta _ b + \theta _ 0 \). Physical isotropy enforces that the channel correlation must satisfy:
+\[ R ( \theta _ a + \theta _ 0 , \theta _ b + \theta _ 0 ) = R ( \theta _ a , \theta _ b ) = R ( \theta _ a - \theta _ b ) = R ( \Delta \theta ) \]
+
+. **Signal Processing Derivation**: In digital signal processing and random process analysis, two phase-locked planar multivector wave-packets with opposite relative orientation bivectors \( B_1 = - B_2 \) produce a cross-correlation evaluated by spatial inner product:
+\[ R ( \Delta \theta ) = - \cos ( \Delta \theta ) = - \cos ( \theta _ a - \theta _ b ) \]
+This trigonometric relation is an exact, deterministic result of rotational symmetry and phase matching on discrete grid \( \mathcal { G } _ N \).
+
+. **Bell's Origin-Dependent Factorization Defect**: Bell's factorized integrand \( A ( a , \lambda ) B ( b , \lambda ) \) breaks rotational origin-independence by tying individual outcomes to absolute, decoupled detector vectors \( a \) and \( b \) independently. Correctly enforcing origin-independence \( R ( \theta _ a , \theta _ b ) = R ( \theta _ a - \theta _ b ) \) directly yields the classical trigonometric correlation \( - \cos ( \Delta \theta ) \), proving that EPR-Bohm correlations are standard signal-processing phenomena of rotationally invariant channels. \( \square \)
+====
+
 = Index of Formal Statements
 
 == Index of Formal Statements
@@ -182,3 +242,6 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-topological-standing-wave-quantization[**Theorem: Deterministic Topological Quantization of Multivector Field Nodes**] -- Chapter: *Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent* | Section: *Topological Origin of Quantized Energy Levels without Probabilistic Wave-Particle Duality*
 * xref:theorem-consistency-math-nonexistence-quantum[**Theorem: Non-Existence of Unique Quantum Physics via Mathematical Consistency**] -- Chapter: *Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent* | Section: *Proof of the Non-Existence of Unique Quantum Physics by Mathematical Consistency*
 * xref:theorem-domain-agnosticism-isomorphic-mapping[**Theorem: Domain Agnosticism of Mathematics and Dissolution of Quantum Pseudo-Physics**] -- Chapter: *Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent* | Section: *Isomorphic Problem Mapping and the Domain Agnosticism of Mathematics*
+* xref:theorem-bell-causation-correlation-fallacy[**Theorem: Flaw of Bell's Inequality via Causation-Correlation Fallacy and Conditional Probability Misattribution**] -- Chapter: *Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent* | Section: *Deconstruction of Bell's Theorem: The Causation-Correlation Fallacy and Conditional Probability Substitution*
+* xref:theorem-bell-data-erasure-flaw[**Theorem: Invalidation of Bell's Bound via Sub-Ensemble Data Erasure**] -- Chapter: *Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent* | Section: *The Data-Erasure Flaw: Suppression of Nature's Complete Sub-Microstate Record*
+* xref:theorem-rotational-invariance-epr-bohm[**Theorem: Origin Independence and Rotational Invariance of EPR-Bohm Signal Correlations**] -- Chapter: *Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent* | Section: *Rotational Invariance and Origin-Independence of Angular Channel Correlations*
