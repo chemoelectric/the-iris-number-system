@@ -102,9 +102,19 @@ const vol3 = parseAdocFile(
   "A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
 );
 
+const vol4 = parseAdocFile(
+  "public/Iris_Number_System-04-Volume_IV_Applications_to_Physics_Chemistry_etc.adoc",
+  "textbook-iris-physics-chemistry-etc",
+  "The Iris Number System",
+  "Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
+  "Frédéric Blondel Custer",
+  "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding"
+);
+
 vol1.filename = "Iris_Number_System-01-Volume_I_Fundamentals.adoc";
 vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
 vol3.filename = "Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc";
+vol4.filename = "Iris_Number_System-04-Volume_IV_Applications_to_Physics_Chemistry_etc.adoc";
 
 function generateFormalIndexChapterObj(chapters) {
   const entries = [];
@@ -195,6 +205,7 @@ function generateFormalIndexChapterObj(chapters) {
 vol1.chapters.push(generateFormalIndexChapterObj(vol1.chapters));
 vol2.chapters.push(generateFormalIndexChapterObj(vol2.chapters));
 vol3.chapters.push(generateFormalIndexChapterObj(vol3.chapters));
+vol4.chapters.push(generateFormalIndexChapterObj(vol4.chapters));
 
 const fileHeader = `import { TextbookChapter, Textbook } from "../types";
 
@@ -307,7 +318,9 @@ export const NUMBER_THEORY_TEXTBOOK: Textbook = ${JSON.stringify(vol2, null, 2)}
 
 export const GEOMETRY_ALGEBRA_TEXTBOOK: Textbook = ${JSON.stringify(vol3, null, 2)};
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK];
+export const PHYSICS_CHEMISTRY_TEXTBOOK: Textbook = ${JSON.stringify(vol4, null, 2)};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
