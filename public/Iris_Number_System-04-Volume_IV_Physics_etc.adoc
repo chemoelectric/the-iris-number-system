@@ -134,7 +134,7 @@ This section establishes Hamilton's principle of stationary action for the multi
 ====
 Let \( A \in Cl ( 4 , 1 , 1 ) \) be the multivector field potential such that \( F = D A \), and let \( J \in Cl ( 4 , 1 , 1 ) \) be the multivector source current density. Define the total multivector field action scalar \( S [ A ] \) over a bounded grid domain \( \Omega \):
 \[ S [ A ] = \int _ { \Omega } \mathcal { L } ( A , D A ) \, dV = \int _ { \Omega } \left( \frac { 1 } { 2 } \langle ( D A ) ^ \dagger ( D A ) \rangle - \langle A J \rangle \right) \, dV \]
-where \( \langle M \rangle \) denotes the scalar blade projection of multivector \( M \). Stationary variation of the action integral \( \delta S = 0 \) with respect to arbitrary smooth potential variations \( \delta A \) vanishing on the domain boundary \( \partial \Omega \) strictly implies the Master Field Equation:
+where \( \langle M \rangle \) denotes the scalar blade projection of multivector \( M \). Stationary variation of the action integral \( \delta S = 0 \) with respect to arbitrary admissible potential variations \( \delta A \) vanishing on the domain boundary \( \partial \Omega \) strictly implies the Master Field Equation:
 \[ D F = J \]
 
 *Proof:*
@@ -184,20 +184,20 @@ where \( \mathcal { H } ( x , p ) = \frac { ( p - q \mathbf { A } ) ^ 2 } { 2 m 
 
 == Noether's Theorem for Multivector Fields and Conservation Laws
 
-This section establishes Noether's theorem for multivector field systems, showing that smooth parameter transformations of the variational Lagrangian density \( \mathcal { L } \) guarantee the existence of exact conserved multivector current density vectors and tensors.
+This section establishes Noether's theorem for multivector field systems, showing that parameterized transformations of the variational Lagrangian density \( \mathcal { L } \) guarantee the existence of exact conserved multivector current density vectors and tensors.
 
 [#theorem-multivector-noether-conservation-laws]
 [THEOREM]
 .Theorem: Multivector Noether Theorem for Variational Invariance Laws
 ====
-If the multivector field Lagrangian density \( \mathcal { L } ( A , D A ) \) is invariant under a smooth parameter transformation parameterized by scalar \( \alpha \):
+If the multivector field Lagrangian density \( \mathcal { L } ( A , D A ) \) is invariant under a parameterized transformation with scalar parameter \( \alpha \):
 \[ A ( x ) \to A ( x ) + \alpha \, \Delta A ( x ) , \quad x ^ a \to x ^ a + \alpha \, \xi ^ a ( x ) \]
-then there exists an explicitly conserved multivector Noether current density \( J _ \text{Noether} ^ a \) satisfying the exact continuity equation:
+then there exists an explicitly conserved multivector Noether current density \( J _ \text{Noether} ^ a \) satisfying the exact local conservation equation (aperture flux conservation):
 \[ \sum _ { a = 1 } ^ 6 \nabla _ a J _ \text{Noether} ^ a = 0 \]
 
 *Proof:*
 
-. **Invariance Condition**: Invariance of the action integral \( S \) under the smooth parameter transformation implies that the change in the Lagrangian density is equal to a pure total divergence:
+. **Invariance Condition**: Invariance of the action integral \( S \) under the parameterized transformation implies that the change in the Lagrangian density is equal to a pure total divergence:
 \[ \delta \mathcal { L } = \alpha \, \sum _ { a = 1 } ^ 6 \nabla _ a K ^ a \]
 for some multivector field array \( K ^ a \).
 
