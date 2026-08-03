@@ -315,18 +315,18 @@ This section formulates the exact quadratic solution for fat-line boundary cross
 [THEOREM]
 .Theorem: s-Power Quadratic Clipping Convergence and Root Isolation
 ====
-Let \( Q ( t ) \) be a clippehend curve projected into the skeleton coordinate frame of clipper \( P ( t ) \), with projected y-polynomial \( Q _ y ' ( t ) = ( 1 - t ) Q _ 0 , y ' + t Q _ 2 , y ' + ( 1 - t ) t Q _ 1 , y ' ^ { \Delta } \). The intersection parameters \( t \) at fat-line boundary \( y = y _ { \text { bound } } \) are the exact real roots of the quadratic equation:
+Let \( Q ( t ) \) be a clippehend curve projected into the skeleton coordinate frame of clipper \( P ( t ) \), with projected y-polynomial \( Q _ y ' ( t ) = ( 1 - t ) Q _ { 0 , y } ' + t Q _ { 2 , y } ' + ( 1 - t ) t { Q _ { 1 , y } ' } ^ { \Delta } \). The intersection parameters \( t \) at fat-line boundary \( y = y _ { \text { bound } } \) are the exact real roots of the quadratic equation:
 \[ A t ^ 2 + B t + C = 0 \]
-where \( A = - Q _ 1 , y ' ^ { \Delta } \), \( B = Q _ 1 , y ' ^ { \Delta } + Q _ 2 , y ' - Q _ 0 , y ' \), and \( C = Q _ 0 , y ' - y _ { \text { bound } } \).
+where \( A = - { Q _ { 1 , y } ' } ^ { \Delta } \), \( B = { Q _ { 1 , y } ' } ^ { \Delta } + Q _ { 2 , y } ' - Q _ { 0 , y } ' \), and \( C = Q _ { 0 , y } ' - y _ { \text { bound } } \).
 
 The iterative clipping plan \( t \mapsto ( 1 - t ) t _ 0 + t t _ 1 \) isolates all curve intersection points on rational grid \( \mathcal { G } _ N \) in a finite number of steps \( M \le \lceil \log _ 2 ( 1 / \epsilon ) \rceil \).
 
 *Proof:*
 
 . **Algebraic Boundary Equation**: Setting \( Q _ y ' ( t ) = y _ { \text { bound } } \):
-\[ ( 1 - t ) Q _ 0 , y ' + t Q _ 2 , y ' + ( 1 - t ) t Q _ 1 , y ' ^ { \Delta } = y _ { \text { bound } } \]
-Expanding \( ( 1 - t ) t Q _ 1 , y ' ^ { \Delta } = ( t - t ^ 2 ) Q _ 1 , y ' ^ { \Delta } \) and grouping by powers of \( t \):
-\[ - Q _ 1 , y ' ^ { \Delta } t ^ 2 + \left ( Q _ 1 , y ' ^ { \Delta } + Q _ 2 , y ' - Q _ 0 , y ' \right ) t + \left ( Q _ 0 , y ' - y _ { \text { bound } } \right ) = 0 \]
+\[ ( 1 - t ) Q _ { 0 , y } ' + t Q _ { 2 , y } ' + ( 1 - t ) t { Q _ { 1 , y } ' } ^ { \Delta } = y _ { \text { bound } } \]
+Expanding \( ( 1 - t ) t { Q _ { 1 , y } ' } ^ { \Delta } = ( t - t ^ 2 ) { Q _ { 1 , y } ' } ^ { \Delta } \) and grouping by powers of \( t \):
+\[ - { Q _ { 1 , y } ' } ^ { \Delta } t ^ 2 + \left ( { Q _ { 1 , y } ' } ^ { \Delta } + Q _ { 2 , y } ' - Q _ { 0 , y } ' \right ) t + \left ( Q _ { 0 , y } ' - y _ { \text { bound } } \right ) = 0 \]
 
 . **Quadratic Formula Solution**: Real roots in \( [ 0 , 1 ] \) are extracted via the stable quadratic formula. If there are two crossings \( t _ { \text { lft } } \le t _ { \text { rgt } } \), the clippehend parameter domain is restricted to sub-interval \( [ t _ { \text { lft } } , t _ { \text { rgt } } ] \).
 
@@ -379,7 +379,7 @@ Expanding \( ( 1 - t ) t Q _ 1 , y ' ^ { \Delta } = ( t - t ^ 2 ) Q _ 1 , y ' ^ 
    - Using \( x ' = \frac { x + 1 } { 2 } \), \( y ' = \frac { y } { 2 } \):
    - \( Q _ 0 ' = \left ( \frac { 2 + 1 } { 2 } , \frac { 1 } { 2 } \right ) = ( 1 . 5 , 0 . 5 ) \).
    - \( Q _ 2 ' = \left ( \frac { 2 + 1 } { 2 } , \frac { 3 } { 2 } \right ) = ( 1 . 5 , 1 . 5 ) \).
-   - \( Q _ 1 ' ^ { \Delta } = \left ( \frac { - 20 } { 2 } , \frac { 0 } { 2 } \right ) = ( - 10 , 0 ) \).
+   - \( { Q _ 1 ' } ^ { \Delta } = \left ( \frac { - 20 } { 2 } , \frac { 0 } { 2 } \right ) = ( - 10 , 0 ) \).
    - Projected y-polynomial: \( Q _ y ' ( t ) = ( 1 - t ) ( 0 . 5 ) + t ( 1 . 5 ) + ( 1 - t ) t ( 0 ) = 0 . 5 + 1 . 0 t \).
 
 3. **Fat-Line Boundary Crossings**:
