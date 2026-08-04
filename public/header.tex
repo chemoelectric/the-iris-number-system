@@ -2,8 +2,6 @@
 \usepackage{fontspec}
 \usepackage{fancyhdr}
 \usepackage{newunicodechar}
-\usepackage[Latin,Greek]{ucharclasses}
-\usepackage{silence}
 
 % Assign U+2009 to \thinspace
 \newunicodechar{ }{\thinspace}
@@ -25,13 +23,6 @@
 \setmathfont[Scale=MatchLowercase]{Garamond-Math.otf}[
   range={up/Greek, it/Greek, bfit/Greek, bfup/Greek}
 ]
-
-% 5. Handle rogue literal Unicode Greek characters passed by the HTML intermediate step
-\newfontfamily{\greekfallback}{Latin Modern Roman} 
-\setTransitionsForGreek{\begingroup\greekfallback}{\endgroup}
-
-\WarningFilter{fontspec}{Missing character}
-\tracinglostchars=0
 
 \pagestyle{fancy}
 \fancyhf{}                      % Clear the old layouts.
