@@ -36,10 +36,10 @@ The **Iris Number System Deduction & Inference Engine** provides a constructive 
 4. **Iris Calculator & Multivector Workbench**
    - Full implementation of the Cl(4,1,1) 6-generator Clifford algebra signature (+,+,+,+,-,0).
    - Embedded bivector quaternion algebra (i = e_23, j = e_31, k = e_12).
-   - Discrete Spectrum Arithmetic (x + ε · residual + ω · scale) and Nonstandard Analysis Main Scale Projection operator (↓)(x).
+   - Discrete Spectrum Arithmetic \( ( x + \epsilon \cdot \text{residual} + \omega \cdot \text{scale} ) \) and Nonstandard Analysis Main Scale Projection operator \( ( \downarrow ) ( x ) \).
 
 5. **Zeta & Prime Spectrum Visualizer**
-   - Interactive Recharts visualization of the Iris Zeta function ζ_I(s) along the critical line.
+   - Interactive Recharts visualization of the Iris Zeta function \( \zeta_I ( s ) \) along the critical line.
    - Numerical zero candidate search and phase spectrum density analysis.
    - Iris Prime Distribution spiral and residue distribution modeling.
 
@@ -84,10 +84,10 @@ npm start
 ## 📜 Mathematical Foundations
 
 The inference engine operates strictly within the Counting-Iris number system:
-- **Basis Elements**: {1, ι, ϖ, ϑ} with ι² = τ - 1 where τ = (1+√5)/2.
+- **Basis Elements**: \( \{ 1 , \iota , \varpi , \vartheta \} \) with \( \iota^2 = \tau - 1 \) where \( \tau = \frac{1 + \sqrt{5}}{2} \).
 - **Multiscale Resolution Analysis (MSRA)**: Multiscale resolution numbers (short name **m-res numbers**) \( x^{\ast} \in \mathbb{R}^{\ast} \) constructed as physical vernier aperture measurement quantities on ultra-refined grid \( \mathcal{G}_\omega \).
 - **MSRA Calculus**: 
-  - *Differential Calculus*: Constructive derivatives dΨ/dx = (↓)((Ψ(x+δ_ω) - Ψ(x))/δ_ω) with exact proofs of product, quotient, and chain rules, plus step-by-step worked polynomial examples.
+  - *Differential Calculus*: Constructive derivatives \( \frac{\mathrm{d} \Psi}{\mathrm{d} x} = ( \downarrow ) \left( \frac{\Psi ( x + \delta_\omega ) - \Psi ( x )}{\delta_\omega} \right) \) with exact proofs of product, quotient, and chain rules, plus step-by-step worked polynomial examples.
   - *Integral Calculus*: Indefinite and definite integrals defined as discrete vernier aperture sums with exact proof of the Fundamental Theorem of MSRA Calculus and explicit step-by-step sum calculations.
   - *Contour Integration*: Multivector path line integrals in Cl(4,1,1) with the vernier Cauchy-Goursat theorem, MSRA Residue Theorem with explicit proof and worked pole examples, residue-free loop circulations, and closed circular path examples.
   - *Master Field Equation*: Unified Clifford field dynamics DF_total = J_total in Cl(4,1,1), basis vector definitions, explicit electric vector E (spatial aperture bivectors E e4) and magnetic trivector flux B (spatial dual flux c B I3) definitions, self-generated inertial mass, electromagnetic gravitation, steady-state cosmological flux conservation, and Newtonian inertial wave kinematics (advective vector c+u propagation over invariant speed constraints).
