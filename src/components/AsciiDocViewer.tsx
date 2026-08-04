@@ -374,7 +374,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
       }
 
       // AsciiDoc [latexmath] or [stem] blocks
-      if (line === '[latexmath]' || line === '[stem]') {
+      if (line === '[latexmath]' || line === '[stem]' || line.startsWith('[latexmath,') || line.startsWith('[stem,')) {
         i++;
         let delimiter = '';
         if (i < lines.length && (lines[i].trim() === '++++' || lines[i].trim() === '--')) {

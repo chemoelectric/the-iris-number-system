@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import katex from 'katex';
 import {
   Wind,
   Play,
@@ -13,6 +14,58 @@ import {
   ArrowUp,
   Maximize2
 } from 'lucide-react';
+
+const RenderMath: React.FC<{ text: string; className?: string; displayMode?: boolean }> = ({ text, className = '', displayMode = false }) => {
+  const tokens: React.ReactNode[] = [];
+  let i = 0;
+  let textBuffer = '';
+
+  while (i < text.length) {
+    if (text.startsWith('\\(', i) || text.startsWith('\\[', i) || text.startsWith('latexmath:[', i)) {
+      let prefixLen = 2;
+      let isBlock = text.startsWith('\\[', i);
+      if (text.startsWith('latexmath:[', i)) {
+        prefixLen = 11;
+      }
+
+      const closeDelimiter = text.startsWith('latexmath:[', i) ? ']' : (isBlock ? '\\]' : '\\)');
+      const endIdx = text.indexOf(closeDelimiter, i + prefixLen);
+
+      if (endIdx !== -1) {
+        if (textBuffer) {
+          tokens.push(<span key={`txt-${i}`}>{textBuffer}</span>);
+          textBuffer = '';
+        }
+        const mathCode = text.substring(i + prefixLen, endIdx);
+        try {
+          const html = katex.renderToString(mathCode.trim(), {
+            displayMode: displayMode || isBlock,
+            throwOnError: false,
+          });
+          tokens.push(
+            <span
+              key={`math-${i}`}
+              className="katex-inline-wrapper font-serif text-amber-200"
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          );
+        } catch {
+          tokens.push(<span key={`err-${i}`}>{mathCode}</span>);
+        }
+        i = endIdx + closeDelimiter.length;
+        continue;
+      }
+    }
+    textBuffer += text[i];
+    i++;
+  }
+
+  if (textBuffer) {
+    tokens.push(<span key={`txt-end`}>{textBuffer}</span>);
+  }
+
+  return <span className={className}>{tokens}</span>;
+};
 
 export type WingShapeId =
   | 'paper_airplane'
@@ -682,7 +735,7 @@ export const WingAeroSimulator: React.FC = () => {
           <p className="text-sm text-slate-300 max-w-3xl leading-relaxed">
             Test various wing cross-sections, flat plates, and biomechanical shapes in a live interactive fluid stream.
             Demonstrates that <span className="text-sky-300 font-semibold italic">all wings work on the downwash principle</span> by
-            imparting downward momentum to the fluid mass {"(\\( L = \\dot{m} \\cdot w_{\\text{downwash}} \\)"} via Newton’s third law.
+            imparting downward momentum to the fluid mass <RenderMath text="(\( L = \dot{m} \cdot w_{\text{downwash}} \))" className="text-amber-200 font-semibold" /> via Newton’s third law.
           </p>
         </div>
 
@@ -769,7 +822,7 @@ export const WingAeroSimulator: React.FC = () => {
             {/* Pitch Angle of Attack Slider */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-mono">
-                <span className="text-slate-300">{"Pitch Angle of Attack (\\(\\alpha\\)):"}</span>
+                <span className="text-slate-300"><RenderMath text="Pitch Angle of Attack (\(\alpha\)):" /></span>
                 <span className="text-sky-400 font-bold">{alpha.toFixed(1)}°</span>
               </div>
               <input
@@ -791,7 +844,7 @@ export const WingAeroSimulator: React.FC = () => {
             {/* Free Stream Velocity Slider */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-mono">
-                <span className="text-slate-300">{"Wind Velocity (\\(U_0\\)):"}</span>
+                <span className="text-slate-300"><RenderMath text="Wind Velocity (\(U_0\)):" /></span>
                 <span className="text-sky-400 font-bold">{windSpeed} m/s</span>
               </div>
               <input
@@ -813,7 +866,7 @@ export const WingAeroSimulator: React.FC = () => {
             {/* Air Density Selection */}
             <div className="space-y-2">
               <label className="text-xs font-mono text-slate-300 block">
-                {"Fluid Environment (\\(\\rho\\)):"}
+                <RenderMath text="Fluid Environment (\(\rho\)):" />
               </label>
               <select
                 value={airDensity}
@@ -883,7 +936,7 @@ export const WingAeroSimulator: React.FC = () => {
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span className="font-semibold text-slate-200">{currentShapeObj.name}</span>
                 <span className="text-slate-400 font-mono">
-                  {`(\\(\\alpha = ${alpha.toFixed(1)}^\\circ\\))`}
+                  <RenderMath text={`(\\(\\alpha = ${alpha.toFixed(1)}^\\circ\\))`} />
                 </span>
               </div>
               <div className="text-slate-400 font-mono text-[11px]">
@@ -951,13 +1004,15 @@ export const WingAeroSimulator: React.FC = () => {
                 <span>Downwash Momentum & Force Telemetry</span>
               </div>
               <span className="text-xs font-mono text-slate-400">
-                {"\\( L = \\dot{m} \\cdot w_{\\text{downwash}} \\)"}
+                <RenderMath text="\( L = \dot{m} \cdot w_{\text{downwash}} \)" />
               </span>
             </h3>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
               <div className="bg-[#18181b] p-3 rounded border border-neutral-800">
-                <div className="text-slate-400 text-[10px] uppercase">{"Processed Mass Flow (\\(\\dot{m}\\))"}</div>
+                <div className="text-slate-400 text-[10px] uppercase">
+                  <RenderMath text="Processed Mass Flow (\(\dot{m}\))" />
+                </div>
                 <div className="text-base font-bold text-slate-100 mt-1">
                   {(massFlowRate / 1000).toFixed(2)} t/s
                 </div>
@@ -965,17 +1020,21 @@ export const WingAeroSimulator: React.FC = () => {
               </div>
 
               <div className="bg-[#18181b] p-3 rounded border border-neutral-800">
-                <div className="text-slate-400 text-[10px] uppercase">{"Downwash Velocity (\\(w_{\\text{downwash}}\\))"}</div>
+                <div className="text-slate-400 text-[10px] uppercase">
+                  <RenderMath text="Downwash Velocity (\(w_{\text{downwash}}\))" />
+                </div>
                 <div className="text-base font-bold text-sky-400 mt-1">
                   {downwashVelocity.toFixed(2)} m/s
                 </div>
                 <div className="text-[10px] text-slate-500 mt-0.5">
-                  {`\\(\\alpha_{\\text{downwash}} = ${downwashAngleDeg.toFixed(1)}^\\circ\\)`}
+                  <RenderMath text={`\\(\\alpha_{\\text{downwash}} = ${downwashAngleDeg.toFixed(1)}^\\circ\\)`} />
                 </div>
               </div>
 
               <div className="bg-[#18181b] p-3 rounded border border-neutral-800">
-                <div className="text-slate-400 text-[10px] uppercase">{"Calculated Lift (\\(F_{\\text{lift}}\\))"}</div>
+                <div className="text-slate-400 text-[10px] uppercase">
+                  <RenderMath text="Calculated Lift (\(F_{\\text{lift}}\))" />
+                </div>
                 <div
                   className={`text-base font-bold mt-1 ${
                     selectedShape === 'flat_myth' ? 'text-red-400' : 'text-emerald-400'
@@ -984,12 +1043,14 @@ export const WingAeroSimulator: React.FC = () => {
                   {selectedShape === 'flat_myth' ? '0.00 kN' : `${(calculatedLift / 1000).toFixed(2)} kN`}
                 </div>
                 <div className="text-[10px] text-slate-500 mt-0.5">
-                  {`\\(C_L \\approx ${effectiveCL.toFixed(2)}\\)`}
+                  <RenderMath text={`\\(C_L \\approx ${effectiveCL.toFixed(2)}\\)`} />
                 </div>
               </div>
 
               <div className="bg-[#18181b] p-3 rounded border border-neutral-800">
-                <div className="text-slate-400 text-[10px] uppercase">{"Induced Drag (\\(F_{\\text{drag}}\\))"}</div>
+                <div className="text-slate-400 text-[10px] uppercase">
+                  <RenderMath text="Induced Drag (\(F_{\\text{drag}}\))" />
+                </div>
                 <div className="text-base font-bold text-amber-400 mt-1">
                   {(calculatedDrag / 1000).toFixed(2)} kN
                 </div>
@@ -1005,10 +1066,10 @@ export const WingAeroSimulator: React.FC = () => {
                 <span>The Mathematical Universal Downwash Principle</span>
               </div>
               <p>
-                {"In the Iris Number System framework and momentum conservation laws, aerodynamic lift is strictly governed by the downward momentum imparted to the surrounding air stream tube of effective diameter equal to span \\( b \\):"}
+                <RenderMath text="In the Iris Number System framework and momentum conservation laws, aerodynamic lift is strictly governed by the downward momentum imparted to the surrounding air stream tube of effective diameter equal to span \( b \):" />
               </p>
-              <div className="bg-[#0f0f11] p-3 rounded border border-neutral-800 text-center font-mono text-sky-300 my-2">
-                {"\\( w_{\\text{downwash}} = \\frac{2 M g}{\\pi \\rho b^2 U_0} \\quad \\implies \\quad F_{\\text{lift}} = \\dot{m} \\cdot w_{\\text{downwash}} = M g \\)"}
+              <div className="bg-[#0f0f11] p-3 rounded border border-neutral-800 text-center font-mono text-amber-200 my-2">
+                <RenderMath text="\( w_{\text{downwash}} = \frac{2 M g}{\pi \rho b^2 U_0} \quad \implies \quad F_{\text{lift}} = \dot{m} \cdot w_{\text{downwash}} = M g \)" displayMode={true} />
               </div>
               <p className="text-slate-400 text-[11px]">
                 Whether examining a simple paper airplane, a flat balsa wood glider, a child’s hand held out a car window, a regional airliner with symmetric wings (Embraer EMB 120 Brasilia), or a supersonic delta jet, aerodynamic lift exists if and only if air is accelerated downward.
