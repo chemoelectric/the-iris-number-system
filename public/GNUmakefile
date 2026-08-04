@@ -31,6 +31,7 @@ clean:: clean-html
 	          --metadata title="" \
 	          --pdf-engine=$(PDF_ENGINE) \
 	          -H header.tex \
+	          -V fontsize=12pt \
 	          $(<) -o $(@)
 .PHONY: clean-pdf
 clean-pdf::

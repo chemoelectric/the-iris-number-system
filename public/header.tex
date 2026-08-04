@@ -1,5 +1,6 @@
 \usepackage{unicode-math}
 \usepackage{fontspec}
+\usepackage{fancyhdr}
 \usepackage{newunicodechar}
 \usepackage[Latin,Greek]{ucharclasses}
 \usepackage{silence}
@@ -31,3 +32,8 @@
 
 \WarningFilter{fontspec}{Missing character}
 \tracinglostchars=0
+
+\pagestyle{fancy}
+\fancyhf{}                      % Clear the old layouts.
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0pt}
