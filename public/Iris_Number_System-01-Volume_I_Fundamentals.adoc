@@ -445,7 +445,7 @@ For any finite multiscale vernier measurement operations \( x ^ { \ast } , y ^ {
 Furthermore, in MSRA, calculus differentials \( d \Psi \) and derivatives \( \frac { d \Psi } { dx } \) in the Clifford field are exact ratios of finite vernier grid displacements evaluated under Main Scale Projection over finite observation time intervals: \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Delta \Psi } { \delta _ \omega } \right ) \]
 
 
-This eliminates division-by-zero ambiguities by expressing all derivatives as concrete physical ratios between measurement steps conducted in finite observation time.
+This eliminates division-by-zero ambiguities by expressing all derivatives as explicit physical ratios between measurement steps conducted in finite observation time.
 ====
 
 = Complex Numbers and Quaternions
