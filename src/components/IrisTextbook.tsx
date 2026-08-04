@@ -301,31 +301,6 @@ export const IrisTextbook: React.FC<IrisTextbookProps> = ({ onOpenAeroSimulator 
                 <AsciiDocViewer content={activeChapter.summary} onNavigate={handleNavigateToAnchor} />
               </div>
             )}
-
-            {activeChapter.id === 'chap-how-wings-work' && onOpenAeroSimulator && (
-              <div className="bg-sky-950/40 border border-sky-800/80 p-4 rounded flex flex-col sm:flex-row sm:items-center justify-between gap-3 not-italic">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-sky-900/60 rounded text-sky-300">
-                    <Wind className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-sky-200">
-                      Interactive Airstream & Wing Function Simulator
-                    </div>
-                    <div className="text-xs text-sky-400/80">
-                      Test paper airplanes, balsa wings, child’s hand, symmetric & cambered airfoils in real-time fluid stream.
-                    </div>
-                  </div>
-                </div>
-                <button
-                  onClick={onOpenAeroSimulator}
-                  className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs rounded transition shrink-0 flex items-center space-x-1.5 shadow"
-                >
-                  <span>Launch Simulator</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            )}
           </div>
 
           {/* Textbook Main Content Display */}
