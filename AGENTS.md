@@ -19,6 +19,7 @@
 - In `latexmath` formulations, always use `\( ` and ` \)` for inline math instead of single dollar signs (`$`).
 - Use `\[ ` and ` \]` for display math blocks with padded spaces inside delimiters.
 - Maintain ample spacing between operators, variables, and delimiters in math expressions (e.g., `\( a \cdot x \pmod p \)`), but avoid adding spaces inside LaTeX environment commands or macro keywords (such as `\begin{array}`, `\end{array}`, `\begin{cases}`, or `\text{...}`) to preserve exact syntactic parsing.
+- In prose and textbook text, use directional double quotes (“ and ”) for quotation marks instead of straight double quotes ("), to ensure proper English quotation mark styling in rendering and PDF production.
 
 ## Computer Programming Guidelines
 

@@ -925,7 +925,7 @@ end bernstein_root_finder;
 
 The Interpolate, Truncate, Project (ITP) root-finding algorithm—which achieves superlinear convergence matching the secant method while preserving strict minimax worst-case bisection bounds and optimal average performance across any continuous probability distribution—was originated by I. F. D. Oliveira and R. H. C. Takahashi:
 
-* **Oliveira, I. F. D., & Takahashi, R. H. C. (2021).** "An Enhancement of the Bisection Method Average Performance Preserving Minmax Optimality." *ACM Transactions on Mathematical Software*, 47(1), Article 5, pp. 1–24. link:https://doi.org/10.1145/3423597[DOI: 10.1145/3423597].
+* **Oliveira, I. F. D., & Takahashi, R. H. C. (2021).** “An Enhancement of the Bisection Method Average Performance Preserving Minmax Optimality.” *ACM Transactions on Mathematical Software*, 47(1), Article 5, pp. 1–24. link:https://doi.org/10.1145/3423597[DOI: 10.1145/3423597].
 
 == Optimal Real Root Isolation Across Serial and Parallel Architectures and Numerical Representations
 
@@ -1250,8 +1250,8 @@ To guarantee numerical stability and exact aperture convergence when executing B
 
 The Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton algorithm and its optimal conditioning theory are based on the seminal 1970 papers of Professor David F. Shanno:
 
-* **Shanno, D. F. (1970).** "Conditioning of quasi-Newton methods for function minimization." *Mathematics of Computation*, 24(111), 647–656. link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[DOI: 10.1090/S0025-5718-1970-0274029-X].
-* **Shanno, D. F., & Kettler, P. C. (1970).** "Optimal conditioning of quasi-Newton methods." *Mathematics of Computation*, 24(111), 657–664. link:https://doi.org/10.1090/S0025-5718-1970-0274030-6[DOI: 10.1090/S0025-5718-1970-0274030-6].
+* **Shanno, D. F. (1970).** “Conditioning of quasi-Newton methods for function minimization.” *Mathematics of Computation*, 24(111), 647–656. link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[DOI: 10.1090/S0025-5718-1970-0274029-X].
+* **Shanno, D. F., & Kettler, P. C. (1970).** “Optimal conditioning of quasi-Newton methods.” *Mathematics of Computation*, 24(111), 657–664. link:https://doi.org/10.1090/S0025-5718-1970-0274030-6[DOI: 10.1090/S0025-5718-1970-0274030-6].
 
 = Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
 
@@ -1526,9 +1526,9 @@ Under subdivision into \( K \) sub-intervals, the parameter rescaling \( t \maps
 
 The geometric-algebraic polynomial curve intersection and Bézier clipping formulations in this chapter build upon and extend the seminal publications of Thomas W. Sederberg and Javier Sánchez-Reyes:
 
-* **Sederberg, T. W., & Nishita, T. (1990).** "Curve intersection using Bézier clipping." *Computer-Aided Design*, 22(9), 538–549.
-* **Sánchez-Reyes, J. (1997).** "The symmetric s-power basis for polynomial curves and surfaces." *Computer-Aided Design*, 29(6), 441–451.
-* **Sánchez-Reyes, J. (2000).** "Applications of the s-power basis to polynomial curves." *Computer-Aided Design*, 32(14), 879–886.
+* **Sederberg, T. W., & Nishita, T. (1990).** “Curve intersection using Bézier clipping.” *Computer-Aided Design*, 22(9), 538–549.
+* **Sánchez-Reyes, J. (1997).** “The symmetric s-power basis for polynomial curves and surfaces.” *Computer-Aided Design*, 29(6), 441–451.
+* **Sánchez-Reyes, J. (2000).** “Applications of the s-power basis to polynomial curves.” *Computer-Aided Design*, 32(14), 879–886.
 
 == MetaPost Implementation of Geometric-Algebraic Curve Intersections
 
@@ -1827,7 +1827,7 @@ is a lattice isomorphism, satisfying for all \( a , b \in L \):
 
 The fundamental representation theorem establishing the natural isomorphism between finite distributive lattices and posets of order ideals was originated and developed by Garrett Birkhoff and elaborated in classical order theory:
 
-* **Birkhoff, G. (1937).** "Rings of sets." *Duke Mathematical Journal*, 3(3), pp. 443–454. (First proof of the representation theorem for finite distributive lattices).
+* **Birkhoff, G. (1937).** “Rings of sets.” *Duke Mathematical Journal*, 3(3), pp. 443–454. (First proof of the representation theorem for finite distributive lattices).
 * **Birkhoff, G. (1940).** *Lattice Theory*. American Mathematical Society Colloquium Publications, Vol. 25. Providence, RI: American Mathematical Society.
 * **Davey, B. A., & Priestley, H. A. (2002).** *Introduction to Lattices and Order* (2nd ed.). Cambridge University Press.
 * **Grätzer, G. (2011).** *Lattice Theory: Foundation*. Basel: Springer Science & Media.
@@ -1859,13 +1859,13 @@ Furthermore, for any finite non-trivial lattice \( L \), the maximum principal f
 
 The lattice-theoretic density formulation on finite lattices and union-closed set families—commonly known as Frankl's conjecture—and its modern information-theoretic resolution were established by the following authors:
 
-* **Frankl, P. (1979).** "On the trace of finite set systems." *Journal of Combinatorial Theory, Series A*, 27(2), pp. 130–136. (Original formulation of the conjecture for finite union-closed set systems and finite lattices).
-* **Reinhold, J. (1989).** "Frankl's conjecture is true for lower semilattices." *Graphs and Combinatorics*, 5(1), pp. 177–179. (Proved the dual lattice formulation for lower semilattices).
-* **Poonen, B. (1992).** "Union-closed families." *Journal of Combinatorial Theory, Series A*, 59(2), pp. 253–268. (Established formal lattice-theoretic equivalences and verified the theorem for small finite set universes).
-* **Gilmer, J. (2022).** "A constant lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.09055*. (Breakthrough discovery of the information-theoretic entropy framework yielding a constant lower bound).
-* **Sawin, W. (2022).** "An improved lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.11504*. (Determined the exact optimal constant threshold \( ( 3 - \sqrt { 5 } ) / 2 \approx 0.381966 \)).
-* **Chase, Z., & Lovett, S. (2022).** "The union-closed conjecture holds for small family sizes and optimizes at \( ( 3 - \sqrt { 5 } ) / 2 \)." *arXiv preprint arXiv:2211.11689*.
-* **Pebody, L. (2022).** "Extension of Gilmer's lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.13139*.
+* **Frankl, P. (1979).** “On the trace of finite set systems.” *Journal of Combinatorial Theory, Series A*, 27(2), pp. 130–136. (Original formulation of the conjecture for finite union-closed set systems and finite lattices).
+* **Reinhold, J. (1989).** “Frankl's conjecture is true for lower semilattices.” *Graphs and Combinatorics*, 5(1), pp. 177–179. (Proved the dual lattice formulation for lower semilattices).
+* **Poonen, B. (1992).** “Union-closed families.” *Journal of Combinatorial Theory, Series A*, 59(2), pp. 253–268. (Established formal lattice-theoretic equivalences and verified the theorem for small finite set universes).
+* **Gilmer, J. (2022).** “A constant lower bound for the union-closed sets conjecture.” *arXiv preprint arXiv:2211.09055*. (Breakthrough discovery of the information-theoretic entropy framework yielding a constant lower bound).
+* **Sawin, W. (2022).** “An improved lower bound for the union-closed sets conjecture.” *arXiv preprint arXiv:2211.11504*. (Determined the exact optimal constant threshold \( ( 3 - \sqrt { 5 } ) / 2 \approx 0.381966 \)).
+* **Chase, Z., & Lovett, S. (2022).** “The union-closed conjecture holds for small family sizes and optimizes at \( ( 3 - \sqrt { 5 } ) / 2 \).” *arXiv preprint arXiv:2211.11689*.
+* **Pebody, L. (2022).** “Extension of Gilmer's lower bound for the union-closed sets conjecture.” *arXiv preprint arXiv:2211.13139*.
 
 == Dedekind-Jordan Chain Condition for Finite Modular Lattices
 
@@ -1893,7 +1893,7 @@ have the exact same finite length \( k \). Consequently, every finite modular la
 The Jordan-Hölder and Dedekind chain condition theorems for modular and semimodular lattices were established in:
 
 * **Jordan, C. (1870).** *Traité des substitutions et des équations algébriques*. Paris: Gauthier-Villars.
-* **Dedekind, R. (1897).** "Ueber Gruppen, deren sämtliche Theiler Normaltheiler sind." *Mathematische Annalen*, 48(4), pp. 548–561.
+* **Dedekind, R. (1897).** “Ueber Gruppen, deren sämtliche Theiler Normaltheiler sind.” *Mathematische Annalen*, 48(4), pp. 548–561.
 * **Birkhoff, G. (1940).** *Lattice Theory*. American Mathematical Society Colloquium Publications, Vol. 25. Providence, RI: AMS.
 
 == Fundamental Structure Theorem of Finite Boolean Lattices
@@ -1919,7 +1919,7 @@ Let \( B \) be a finite Boolean lattice (a bounded distributive complemented lat
 The algebraic foundation of finite Boolean algebras and power set representations was developed by:
 
 * **Boole, G. (1854).** *An Investigation of the Laws of Thought*. London: Walton and Maberly.
-* **Stone, M. H. (1936).** "The theory of representations for Boolean algebras." *Transactions of the American Mathematical Society*, 40(1), pp. 37–111.
+* **Stone, M. H. (1936).** “The theory of representations for Boolean algebras.” *Transactions of the American Mathematical Society*, 40(1), pp. 37–111.
 
 == Dilworth Antichain Partition Theorem for Finite Posets
 
@@ -1943,7 +1943,7 @@ Let \( P \) be any finite partially ordered set. An antichain in \( P \) is a su
 
 The min-max chain-antichain duality theorem for finite posets was proven by:
 
-* **Dilworth, R. P. (1950).** "A decomposition theorem for partially ordered sets." *Annals of Mathematics*, 51(1), pp. 161–166.
+* **Dilworth, R. P. (1950).** “A decomposition theorem for partially ordered sets.” *Annals of Mathematics*, 51(1), pp. 161–166.
 
 == Sperner Maximum Antichain Theorem on Discrete Boolean Grids
 
@@ -1971,7 +1971,7 @@ Equality is achieved by choosing \( A \) to be the set of all subsets of rank \(
 
 The extremal antichain theorem on finite Boolean lattices was established by:
 
-* **Sperner, E. (1928).** "Ein Satz über Untermengen einer endlichen Menge." *Mathematische Zeitschrift*, 27(1), pp. 544–548.
+* **Sperner, E. (1928).** “Ein Satz über Untermengen einer endlichen Menge.” *Mathematische Zeitschrift*, 27(1), pp. 544–548.
 
 = Constructive Categories and Multivector Functors
 
@@ -2116,7 +2116,7 @@ Let \( ( A _ 1 , A _ 2 , \dots , A _ n ) \) be a finite collection of finite set
 
 The system of distinct representatives theorem on finite bipartite systems was established by:
 
-* **Hall, P. (1935).** "On Representatives of Subsets." *Journal of the London Mathematical Society*, 10(1), pp. 26–30.
+* **Hall, P. (1935).** “On Representatives of Subsets.” *Journal of the London Mathematical Society*, 10(1), pp. 26–30.
 
 == Erdős-Szekeres Monotone Subsequence Theorem
 
@@ -2143,7 +2143,7 @@ Let \( r, s \ge 1 \) be integers. Any sequence of real or rational numbers of le
 
 The extremal monotone subsequence theorem was proven by:
 
-* **Erdős, P., & Szekeres, G. (1935).** "A combinatorial problem in geometry." *Compositio Mathematica*, 2, pp. 463–470.
+* **Erdős, P., & Szekeres, G. (1935).** “A combinatorial problem in geometry.” *Compositio Mathematica*, 2, pp. 463–470.
 
 == Ramsey's Finite Graph Clique-Independent Set Theorem
 
@@ -2171,7 +2171,7 @@ For any positive integers \( r, s \ge 1 \), there exists a minimal integer \( R 
 
 The foundational partition theorem for finite graphs was established by:
 
-* **Ramsey, F. P. (1930).** "On a Problem of Formal Logic." *Proceedings of the London Mathematical Society*, s2-30(1), pp. 264–286.
+* **Ramsey, F. P. (1930).** “On a Problem of Formal Logic.” *Proceedings of the London Mathematical Society*, s2-30(1), pp. 264–286.
 
 [#theorem-n-queens-algebraic-permutation]
 [THEOREM]

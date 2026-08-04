@@ -112,7 +112,7 @@ Under this directional measurement representation:
 * \( ( \bullet \bullet ) _ { \to } \): Two discrete measurement steps in the forward direction.
 * \( \bullet _ { \leftarrow } \): A single discrete measurement step in the opposite direction (replacing the abstract '-1' symbol).
 * \( ( \bullet \bullet ) _ { \leftarrow } \): Two discrete measurement steps in the opposite direction.
-* **etc** (*et cetera*): Explicitly utilized in place of standard mathematical ellipsis dots \( ( \dots ) \) to represent countable infinity, reminding the reader that **etc** signifies *"and indefinitely onwards in similar fashion"*, denoting an active, open-ended operational process of step-by-step measurement carrying none of the conventional mathematical assumptions or completed-infinity abstractions found in set theory and classical real analysis.
+* **etc** (*et cetera*): Explicitly utilized in place of standard mathematical ellipsis dots \( ( \dots ) \) to represent countable infinity, reminding the reader that **etc** signifies *“and indefinitely onwards in similar fashion”*, denoting an active, open-ended operational process of step-by-step measurement carrying none of the conventional mathematical assumptions or completed-infinity abstractions found in set theory and classical real analysis.
 
 Positive integers represent measurement operations counting steps in the forward direction, while negative integers represent identical measurement steps in the opposite spatial/algebraic direction from the zero origin.
 
@@ -176,7 +176,7 @@ Essential postulates governing the tautological structure of the Counting-Iris N
 
 [NOTE]
 ====
-These axioms are designated as **"Initial Postulates"** because, once the tautological structure of the Counting-Iris system is complete, any sufficient set of facts within the system can form a postulate set. Such a tautological axiomatic system is guaranteed to be free of contradictions and paradoxes and therefore is unusually reliable.
+These axioms are designated as **“Initial Postulates”** because, once the tautological structure of the Counting-Iris system is complete, any sufficient set of facts within the system can form a postulate set. Such a tautological axiomatic system is guaranteed to be free of contradictions and paradoxes and therefore is unusually reliable.
 ====
 
 To establish the tautological engine of the Iris Number System starting strictly from the integers \( \mathbb { Z } \), we postulate the following foundational axioms:
