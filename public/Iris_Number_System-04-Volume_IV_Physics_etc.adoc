@@ -260,7 +260,7 @@ This section proves that the assumption of an uncountably infinite complex Hilbe
 [THEOREM]
 .Theorem: Inconsistency of Continuous Quantum Probability Collapses
 ====
-The standard quantum mechanical measurement postulate—requiring an instantaneous, non-unitary projection of a continuous state vector \( | \psi \rangle \in \mathcal { H } \) upon measurement—is formally inconsistent with the deterministic Schrödinger or Dirac evolution equation.
+The standard quantum mechanical measurement postulate—requiring an zero-duration, non-unitary projection of a continuous state vector \( | \psi \rangle \in \mathcal { H } \) upon measurement—is formally inconsistent with the deterministic Schrödinger or Dirac evolution equation.
 
 *Proof:*
 
@@ -347,7 +347,7 @@ In Bell's derivation of his local inequality for two separated measurements \( A
 \[ E ( a , b ) = \int _ { \Lambda } A ( a , \lambda ) B ( b , \lambda ) \rho ( \lambda ) \, d \lambda \]
 and assumes complete factorizability \( P ( A , B \mid a , b , \lambda ) = P ( A \mid a , \lambda ) P ( B \mid b , \lambda ) \). Equating the epistemic factorized expectation of conditional probability states to a physical causal mechanism misidentifies epistemic correlation with physical cause. In probability theory and random process analysis, conditional probabilities do not compose linearly across independent measurement contexts.
 
-. **Biological Analogy of Common-Source Correlation**: To illustrate the absurdity of Bell's factorizability requirement, consider two siblings taking DNA tests at geographically separated laboratories. The genetic profiles of the two siblings exhibit high correlation because both inherited DNA from a common parental source \( \lambda \). Under Bell's reasoning, because the tests are conducted independently in separate locations without physical communication between the testing instruments, the siblings' matching DNA results could not occur except by non-local action-at-a-distance. Asserting that common-source origin requires instantaneous non-local signaling misinterprets shared origin as non-local influence.
+. **Biological Analogy of Common-Source Correlation**: To illustrate the absurdity of Bell's factorizability requirement, consider two siblings taking DNA tests at geographically separated laboratories. The genetic profiles of the two siblings exhibit high correlation because both inherited DNA from a common parental source \( \lambda \). Under Bell's reasoning, because the tests are conducted independently in separate locations without physical communication between the testing instruments, the siblings' matching DNA results could not occur except by non-local action-at-a-distance. Asserting that common-source origin requires zero-duration non-local signaling misinterprets shared origin as non-local influence.
 
 . **Resolution in Random Process Analysis**: In random process analysis, two correlated channels receiving a common-source random process \( \lambda \) exhibit non-factorable joint conditional probabilities \( P ( A , B \mid a , b , \lambda ) \) due to local phase-matching without requiring non-local causation. Thus, Bell's factorizability condition is mathematically false, and Bell's derivation is wrong. \( \square \)
 ====
@@ -407,7 +407,7 @@ Maxwell's equations and the Master Field Equation \( D F = J \) are defined stri
 \[ \nabla _ a F ( x ) = \lim _ { \Delta x _ a \to 0 } \frac { F ( x + \Delta x _ a e _ a ) - F ( x ) } { \Delta x _ a } \]
 By mathematical construction, \( D \) is a local direct contact action operator: the field derivative at point \( x \) depends exclusively on the immediate spatial neighborhood of \( x \).
 
-. **Formulation of the Contradiction**: Let \( P _ \text{local} \) be the assertion that field variations propagate strictly through local differential contact action according to \( D F = J \). Let \( P _ \text{nonlocal} \) be the assertion that physical state changes at spatial coordinate \( x _ A \) are instantaneously induced by events at spatially separated coordinate \( x _ B \) without a mediating continuous field gradient along any path connecting \( x _ A \) and \( x _ B \). By definition, \( P _ \text{nonlocal} \equiv \neg P _ \text{local} \).
+. **Formulation of the Contradiction**: Let \( P _ \text{local} \) be the assertion that field variations propagate strictly through local differential contact action according to \( D F = J \). Let \( P _ \text{nonlocal} \) be the assertion that physical state changes at spatial coordinate \( x _ A \) are induced across zero time by events at spatially separated coordinate \( x _ B \) without a mediating continuous field gradient along any path connecting \( x _ A \) and \( x _ B \). By definition, \( P _ \text{nonlocal} \equiv \neg P _ \text{local} \).
 
 . **Logical Inconsistency**: Claiming that electromagnetic fields simultaneously satisfy \( P _ \text{local} \) (Maxwellian differential field equations) and \( P _ \text{nonlocal} \) (“spooky action at a distance”) asserts \( P _ \text{local} \land \neg P _ \text{local} \). In a consistent mathematical system, any theory requiring \( P \land \neg P \) is false. Therefore, non-local action at a distance does not exist, and electromagnetism is governed solely by local direct contact action. \( \square \)
 ====
@@ -420,14 +420,14 @@ This section proves that if physical forces operated via non-local action at a d
 [THEOREM]
 .Theorem: Destruction of Structural Integrity and Material Cohesion under Non-Local Forces
 ====
-Let \( T = F e _ 4 \tilde { F } \) be the multivector stress-energy tensor governing the internal cohesion of an atomic lattice or macroscopic material body over volume \( \Omega \). If physical interactions permit unmediated non-local action at a distance, local stress-energy conservation \( \nabla \cdot T = \mathbf { 0 } \) fails, causing the instantaneous uncoupling of cohesive inter-atomic forces and the collapse of material structural integrity.
+Let \( T = F e _ 4 \tilde { F } \) be the multivector stress-energy tensor governing the internal cohesion of an atomic lattice or macroscopic material body over volume \( \Omega \). If physical interactions permit unmediated non-local action at a distance, local stress-energy conservation \( \nabla \cdot T = \mathbf { 0 } \) fails, causing the uncoupling of cohesive inter-atomic forces and the collapse of material structural integrity.
 
 *Proof:*
 . **Local Stress Equilibrium**: In a stable, cohesive physical body (such as a solid lattice or bound wave-packet ensemble), internal mechanical integrity requires local momentum and stress equilibrium at every spatial grid node:
 \[ \nabla \cdot T = f _ \text{cohesive} + f _ \text{external} = \mathbf { 0 } \]
 where cohesive force density \( f _ \text{cohesive} \) arises strictly from direct contact multivector field gradients between adjacent atomic constituents.
 
-. **Non-Local Force Perturbation**: If non-local action at a distance exists, a distant event at coordinate \( x _ B \notin \Omega \) exerts an unmediated, instantaneous force density \( f _ \text{nonlocal} ( x _ A ) \) at internal coordinate \( x _ A \in \Omega \) without generating an intermediary stress-energy flux through the boundary \( \partial \Omega \).
+. **Non-Local Force Perturbation**: If non-local action at a distance exists, a distant event at coordinate \( x _ B \notin \Omega \) exerts an unmediated force density operating across zero duration \( f _ \text{nonlocal} ( x _ A ) \) at internal coordinate \( x _ A \in \Omega \) without generating an intermediary stress-energy flux through the boundary \( \partial \Omega \).
 
 . **Uncoupling of Cohesive Balance**: Under non-local force injection, the local stress balance becomes:
 \[ \nabla \cdot T = f _ \text{cohesive} + f _ \text{nonlocal} \neq \mathbf { 0 } \]
@@ -498,7 +498,7 @@ When the *Warp One* energized its primary multivector field coils in an attempt 
 
 . **Threshold of Hull Dissociation**: At velocity \( v = 0.998 c \), the longitudinal binding force \( \mathbf { E } _ \text{long} \) dropped below the critical binding threshold \( E _ \text{crit} \approx 10 ^ { 11 } \text{ V/m} \) required to retain valence electrons within titanium atomic orbits. The electron shells stripped away from the nuclear lattice, creating an unshielded positive nuclear ion core.
 
-. **Coulomb Explosion and Explosive Radiation Transduction**: Deprived of neutralizing electron shells, the positive nuclear cores experienced massive electrostatic repulsion (Coulomb explosion). The total chemical, metallic, and field binding energy stored in the 12,000-tonne hull was instantaneously released as an isotropic burst of incoherent electromagnetic radiation:
+. **Coulomb Explosion and Explosive Radiation Transduction**: Deprived of neutralizing electron shells, the positive nuclear cores experienced massive electrostatic repulsion (Coulomb explosion). The total chemical, metallic, and field binding energy stored in the 12,000-tonne hull was rapidly released over a finite duration of 0.12 milliseconds as an isotropic burst of incoherent electromagnetic radiation:
 \[ E _ \text{explosion} = M _ \text{hull} c ^ 2 \approx 1.08 \times 10 ^ { 21 } \text{ Joules} \]
 The *Warp One* did not contract space or enter a "warp bubble"; its entire physical structure underwent total explosive dissociation within 0.12 milliseconds of field activation, proving that the electromagnetic structure of matter strictly forbids superluminal spacecraft propulsion. \( \square \)
 ====
@@ -655,7 +655,7 @@ The Gas-Phase Nanoparticle Powder Thermal Generator operates without liquid elec
 
 === Device Architecture III: High-Voltage Glow-Discharge Plasma Target Reactor
 
-The High-Voltage Glow-Discharge Target Reactor utilizes energetic Deuterium plasma ion bombardment to achieve ultra-high instantaneous surface skin loading ratios (\( D / Pd > 1.2 \)).
+The High-Voltage Glow-Discharge Target Reactor utilizes energetic Deuterium plasma ion bombardment to achieve ultra-high peak surface skin loading ratios (\( D / Pd > 1.2 \)).
 
 . **Vacuum Target Chamber**: A vacuum vessel evacuated to a base pressure of \( 10 ^ { - 6 } \text{ Torr} \) and backfilled with pure Deuterium gas to a working pressure of 1 to 10 Torr.
 . **Water-Cooled Solid Target Cathode**: A solid Palladium or Nickel target disk mounted on a water-cooled copper substrate. The cathode surface features laser-micro-machined array pits that focus local surface electric fields.
@@ -721,7 +721,7 @@ This section establishes the mathematical basis for reagentless water decontamin
 [THEOREM]
 .Theorem: Resonant Cavitation Shock Fronts and Covalent Pollutant Cleavage
 ====
-Let contaminated water containing pathogenic microorganisms or organofluorine molecules (PFAS) flow through an acoustic-electrodynamic reactor on discrete grid \( \mathcal { G } _ N \). Under synchronized ultrasonic pressure waves \( P _ \text{acoustic} ( \mathbf { r } , t ) \) and pulsed high-voltage electric fields \( \mathbf { E } _ \text{pulse} ( t ) \), localized transient cavitation bubbles collapse with instantaneous peak temperatures \( T _ \text{cav} > 5000 \text{ K} \), localized pressures \( P _ \text{cav} > 1000 \text{ bar} \), and high-density multivector radical current densities \( J _ \text{radical} \). The probability of complete pathogen lipid membrane disruption and covalent C-F bond cleavage approaches unity:
+Let contaminated water containing pathogenic microorganisms or organofluorine molecules (PFAS) flow through an acoustic-electrodynamic reactor on discrete grid \( \mathcal { G } _ N \). Under synchronized ultrasonic pressure waves \( P _ \text{acoustic} ( \mathbf { r } , t ) \) and pulsed high-voltage electric fields \( \mathbf { E } _ \text{pulse} ( t ) \), localized transient cavitation bubbles collapse with transient peak temperatures \( T _ \text{cav} > 5000 \text{ K} \), localized pressures \( P _ \text{cav} > 1000 \text{ bar} \), and high-density multivector radical current densities \( J _ \text{radical} \). The probability of complete pathogen lipid membrane disruption and covalent C-F bond cleavage approaches unity:
 \[ P _ \text{decontamination} = 1 - \exp ( - \alpha \, \eta _ \text{cav} \, t _ \text{residence} ) \to 1.0 \]
 producing completely sterile water free of organic toxic residues.
 
@@ -1037,7 +1037,7 @@ Insects such as hawkmoths (*Manduca sexta*) fly at moderate Reynolds numbers (\(
 ====
 Let a flapping biological organism (bat, bird, hummingbird, or hawkmoth) of body mass \( m _ b \) flap its wings at frequency \( f \) with stroke amplitude \( \Phi \) and wingspan \( b \) on discrete grid \( \mathcal { G } _ N \). The time-averaged vertical aerodynamic force \( \langle F _ z \rangle \) produced over a stroke period \( T _ p = 1 / f \) satisfies:
 \[ \langle F _ z \rangle = \frac { 1 } { T _ p } \int _ 0 ^ { T _ p } \left( \int _ { S _ \text{wing} } [ P _ \text{lower} ( t ) - P _ \text{upper} ( t ) ] d S \right) d t = \langle \dot { m } _ \text{flapping} w _ \text{downwash} ( t ) \rangle = m _ b g \]
-where the leading-edge vortex (LEV) attachment amplifies the instantaneous lift coefficient to \( C _ L \ge 3.5 \), far exceeding steady-state airfoil bounds (\( C _ L, \text{max} \approx 1.5 \)).
+where the leading-edge vortex (LEV) attachment amplifies the peak lift coefficient to \( C _ L \ge 3.5 \), far exceeding steady-state airfoil bounds (\( C _ L, \text{max} \approx 1.5 \)).
 
 *Proof:*
 . **Leading-Edge Vortex Low-Pressure Integration**: During high-amplitude flapping, bound circulation \( \Gamma ( t ) \) is augmented by the formation of a stable leading-edge vortex with swirl velocity \( v _ \theta \). By the unsteady multivector Bernoulli-Iris momentum relation, the pressure drop under the LEV core is \( \Delta P _ \text{LEV} = \frac { 1 } { 2 } \rho v _ \theta ^ 2 \).
