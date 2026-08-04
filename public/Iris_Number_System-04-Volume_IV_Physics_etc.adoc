@@ -697,11 +697,35 @@ Let \( \mathcal { C } \subset A ^ L \) be the set of all syntactically valid sen
 
 Human social systems, religious organizations, political ideologies, and academic institutions routinely construct *creeds*—rigid, unalterable sets of dogmatic postulates and symbolic declarations designed to enforce cognitive conformity across populations. A central operational mechanism in the propagation and maintenance of creeds is the *coöptation of terms*, wherein pre-existing, rigorously defined lexical tokens (such as "truth", "logic", "science", "freedom", or "probability") are surreptitiously assigned modified semantic meanings while retaining their familiar phonetic or visual forms.
 
-Building upon Keyser's theory of doctrinal functions and the signal processing theory of human language, this chapter formalizes creeds as static propositional multivector filters and analyzes term coöptation as a semantic phase-shift transformation in \( Cl ( 4 , 1 , 1 ) \). We prove that term coöptation inevitably introduces hidden logical contradictions and deductive instability into social systems, and we establish operational extensional definitions as the necessary and sufficient mathematical safeguard against creedal corruption.
+Building upon Keyser's theory of doctrinal functions, the signal processing theory of human language, and Alfred Korzybski's foundational general semantics formulated in *Science and Sanity*, this chapter formalizes creeds as static propositional multivector filters. We analyze term coöptation as a semantic phase-shift transformation in \( Cl ( 4 , 1 , 1 ) \), prove that definition by intension creates vulnerable creedal enclosures, establish definition by extension as the indispensable operational safeguard, and examine historical case studies—including the 1927 Solvay Conference—where terms were coöpted to institutionalize dogmatic creeds over scientific objections.
+
+== Korzybskian Operational Semantics: Definition by Intension vs. Definition by Extension
+
+In the lengthy introduction to the second edition of *Science and Sanity*—written by Alfred Korzybski in 1941 amidst the world-shattering destruction of World War II and printed on wartime pulp paper due to critical paper shortages—Korzybski emphasized the urgent necessity of distinguishing between two fundamentally different modes of definition: *definition by intension* and *definition by extension*.
+
+* **Definition by Intension** (Dictionary Definitions): A verbal substitution wherein words are defined by other words, producing circular symbol-to-symbol associations within a linguistic loop. Intensional definitions remain entirely trapped in higher-order verbal abstractions without pointing to physical operations or non-verbal events.
+* **Definition by Extension** (Definition by Giving Examples): An operational, extensional definition wherein a term is defined by pointing directly to concrete physical instances, specific non-verbal objects, measurable laboratory operations, or finite step counts on a discrete spatial-temporal grid.
+
+While human societies continually default to definitions by intension—giving rise to endless verbal disputes, semantic coöptations, and dogmatic creeds—human sanity, scientific progress, and effective time-binding depend strictly on definitions by extension.
+
+[#theorem-korzybski-extensional-intensional-duality]
+[THEOREM]
+.Theorem: Korzybskian Extensional Operationalism and Intensional Creed Dissolution Theorem
+====
+Let \( t \) be a lexical token within a natural language or scientific nomenclature.
+
+1. **Intensional Circularity and Creedal Vulnerability**: An intensional definition \( D _ \text{int} ( t ) \) defines token \( t \) via a finite sequence of other verbal tokens \( \{ t _ 1 ' , t _ 2 ' , \dots , t _ M ' \} \). Because intensional definitions lack direct physical grounding on discrete grid \( \mathcal { G } _ N \), they form closed verbal loops \( t \to t _ 1 ' \to t _ 2 ' \to t \), permitting arbitrary semantic drift and coöptation without physical detection.
+2. **Extensional Uniqueness and Invariance**: An extensional definition \( D _ \text{ext} ( t ) \) defines token \( t \) by specifying an explicit set of physical examples, physical pointer operations, or algorithmic grid step counts \( \{ E_1 , E_2 , \dots , E_K \} \). The corresponding multivector state \( M _ \text{ext} ( t ) \in Cl ( 4 , 1 , 1 ) \) is invariant under verbal redefinition.
+
+*Proof:*
+. **Intensional Loop Formulation**: Represent verbal tokens as nodes in a directed graph \( G = ( V , E ) \). An intensional definition corresponds to a directed edge \( ( t , t ' ) \). Since the dictionary vocabulary \( V \) is finite, every path of purely verbal definitions must enter a directed cycle \( C \subset G \). Thus, intensional definitions reduce to circular tautologies of the form "A is B, B is C, C is A". Within such closed loops, an authority can alter the multivector interpretation of node \( A \) without breaking graph connectivity, enabling covert term coöptation.
+
+. **Extensional Grounding**: An extensional definition breaks graph circularity by mapping token \( t \) directly to an external physical measurement or concrete set of physical exemplars \( E_k \subset \mathcal { G } _ N \). The multivector representation \( M ( t ) = \sum _ k w _ k M ( E _ k ) \) is anchored directly in observable spatial-temporal step counts. Any attempt to alter \( M ( t ) \) while keeping physical exemplars \( E_k \) fixed generates an immediate observable discrepancy \( \| M ' ( t ) - M ( t ) \| > 0 \), instantly exposing creedal deception. \( \square \)
+====
 
 == Creeds as Rigid Postulate Sets and the Mathematical Mechanics of Semantic Coöptation
 
-In Keyser's framework, a doctrine is a flexible deductive system generated by assigning variables within a doctrinal function. A *creed*, by contrast, is a closed, frozen postulate set \( \Pi _ \text{creed} \) that forbids variable revision, alternative postulate exploration, or operational empirical auditing.
+In Keyser's framework, a doctrine is a flexible deductive system generated by assigning variables within a doctrinal function. A *creed*, by contrast, is a closed, frozen postulate set \( \Pi _ \text{creed} \) that forbids variable revision, alternative postulate exploration, or operational empirical auditing, relying entirely on definitions by intension to maintain authority.
 
 [#theorem-semantic-cooptation-deductive-instability]
 [THEOREM]
@@ -719,6 +743,22 @@ Let \( T = \{ t _ 1 , t _ 2 , \dots , t _ K \} \) be a set of lexical tokens ass
 
 . **Inescapable Contradiction**: In any formal creed that relies on the public prestige of original meanings \( M ( t _ k ) \) to command assent while enforcing coöpted operations \( M ' ( t _ k ) \), the simultaneous assertion of \( D \) and \( D ' \) yields \( D \wedge D ' \neq 0 \), generating an explicit contradiction in the deductive lattice. This demonstrates that term coöptation is a mathematically unstable deception mechanism. \( \square \)
 ====
+
+== Case Study: The 1927 Solvay Conference Creed and the Coöptation of Einstein's Retort
+
+A supreme historical example of creedal construction and term coöptation occurred at the Fifth Solvay International Conference in Brussels (1927). A dominant faction led by Niels Bohr and Werner Heisenberg sought to establish the probabilistic "Copenhagen interpretation" not merely as a working computational approximation, but as an absolute, untouchable dogma of physical reality.
+
+Albert Einstein stubbornly resisted this institutional creed, pointing out that replacing local physical causality with ungrounded intrinsic randomness was an abdication of physical science. Einstein summarized his objection in his famous extensional protest:
+
+\[ \text{"God does not play dice with the universe!"} \]
+
+Einstein was explicitly accusing Bohr and his circle of imposing a rigid, ungrounded creed on physics—substituting mystical dice-rolling for physical wave-propagation mechanisms. 
+
+Niels Bohr's response was a masterclass in semantic turnabout and term coöptation. Rather than producing an operational, extensional physical proof of non-local probability collapse, Bohr replied with a clever rhetorical inversion:
+
+\[ \text{"Einstein, stop telling God what to do!"} \]
+
+In this historical exchange, Bohr executed an "I'm rubber, you're glue" semantic reflection. Einstein had accused Bohr of inventing an arbitrary theological-probabilistic creed ("God playing dice"). Bohr coöpted Einstein's metaphor by reframing Einstein—who was defending strict physical causality and operational extensionalism—as the dogmatist who was "dictating to God". By shifting the debate from extensional physical operations on spatial grids to intensional theological metaphors, the Copenhagen school successfully weaponized Einstein's own words, silenced operational critique, and institutionalized quantum probability as a scientific creed that dominated physics for a century.
 
 == The Operational Safeguard of Operational Definitions and Explicit Postulate Apertures
 
@@ -796,6 +836,8 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-phoneme-nyquist-aperture-encoding[**Theorem: Discrete Phoneme Nyquist-Aperture Encoding Theorem**] -- Chapter: *Signal Processing Theory of Human Language* | Section: *Discrete Acoustic Phoneme Modulation and Nyquist-Aperture Speech Encoding*
 * xref:theorem-linguistic-filter-bank-capacity[**Theorem: Linguistic Filter Bank Capacity and Semantic Resolution Theorem**] -- Chapter: *Signal Processing Theory of Human Language* | Section: *Symbolic Transduction, Contextual Filter Banks, and Information Capacity of Human Language*
 * xref:theorem-linguistic-error-correcting-redundancy[**Theorem: Linguistic Error-Correcting Redundancy and Channel Robustness Theorem**] -- Chapter: *Signal Processing Theory of Human Language* | Section: *Time-Series Parsing, Noise Invariance, and Error-Correcting Linguistic Redundancy*
+* xref:theorem-korzybski-extensional-intensional-duality[**Theorem: Korzybskian Extensional Operationalism and Intensional Creed Dissolution Theorem**] -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Korzybskian Operational Semantics: Definition by Intension vs. Definition by Extension*
 * xref:theorem-semantic-cooptation-deductive-instability[**Theorem: Semantic Coöptation, Sub-Aperture Shift, and Deductive Instability Theorem**] -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Creeds as Rigid Postulate Sets and the Mathematical Mechanics of Semantic Coöptation*
 * xref:theorem-operational-definition-creed-dissolution[**Theorem: Operational Definition Conservation and Creed Dissolution Theorem**] -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Operational Safeguard of Operational Definitions and Explicit Postulate Apertures*
 * xref:theorem-time-binding-creed-immunity[**Theorem: Time-Binding Immune System and Creed-Driven Systemic Collapse Theorem**] -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Time-Binding Immunity to Dogmatic Creeds and Systemic Evolutionary Integrity*
+
