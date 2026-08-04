@@ -750,23 +750,30 @@ Niels Bohr's principle of complementarity (“*Contraria sunt complementa*“) a
 
 From the perspective of signal processing theory, forcing a receiving organism to process the self-contradictory signal \( P \land \neg P \) introduces a deliberate **zero-Hamming-distance semantic collision** into the linguistic filter bank. In a healthy linguistic communication channel, mutually exclusive semantic state code-words \( P \) and \( \neg P \) are separated by a non-zero Hamming distance \( d _ \text{min} > 0 \), enabling the syntactic filter matrix \( \mathbf { H } _ g \) to detect and reject corrupted token transitions. Mandating \( P \land \neg P \) forces the syntax filter \( \mathbf { H } _ g \) into an all-pass degenerate state, collapsing the channel's error-detecting aperture to zero (\( d _ \text{min} \to 0 \)).
 
-This deliberate jamming of the linguistic signal processing channel bypasses the cognitive error-correcting filter banks of receiving organisms. By overloading the channel with an unresolvable logical collision, complementarity functions not as a physical law, but as a socio-linguistic signal degradation technique (ideologically recognized as *Doublethink*) that disables critical error detection and forces compliance with institutional dogma.
+This deliberate jamming of the linguistic signal processing channel bypasses the cognitive error-correcting filter banks of receiving organisms. By overloading the channel with an unresolvable logical collision, complementarity functions not as a physical law, but as a socio-linguistic signal degradation technique—ideologically recognized as **Doublethink** (originated and defined by George Orwell in his 1949 treatise *Nineteen Eighty-Four*)—that disables critical error detection and forces compliance with institutional dogma.
 
 [#theorem-bohr-complementarity-doublethink]
 [THEOREM]
 .Theorem: Socio-Linguistic Invalidation of Bohr's Complementarity via Signal Processing Theory
 ====
-Niels Bohr's principle of complementarity—asserting that mutually exclusive physical descriptions \( P \) and \( \neg P \) are simultaneously valid complementary aspects of reality—is a structural violation of the Law of Non-Contradiction. Under the Signal Processing Theory of Human Language, complementarity acts as a deliberate channel-jamming signal that collapses the minimum Hamming distance of the linguistic filter bank (\( d _ \text{min} \to 0 \)), functioning as an institutional mechanism of Doublethink rather than a valid physical postulate.
+Niels Bohr's principle of complementarity—asserting that mutually exclusive physical descriptions \( P \) and \( \neg P \) are simultaneously valid complementary aspects of reality—is a structural violation of the Law of Non-Contradiction. Under the Signal Processing Theory of Human Language, complementarity acts as a deliberate channel-jamming signal that collapses the minimum Hamming distance of the linguistic filter bank (\( d _ \text{min} \to 0 \)), functioning as an institutional mechanism of Doublethink (George Orwell, *Nineteen Eighty-Four*, 1949) rather than a valid physical postulate.
 
 *Proof:*
 . **Formal Statement of Complementarity Signal**: Bohr's principle requires receiving organisms to accept a composite linguistic signal encoding \( P \land \neg P \), where proposition \( P \) (“Energy propagates as a local wave”) and proposition \( \neg P \) (“Energy transfers as a localized non-wave particle point”) represent mutually exclusive semantic multivector states in cognitive lattice \( \mathcal { M } \).
 
 . **Linguistic Filter Bank Degradation**: As established in Theorem 6.3 (Linguistic Filter Bank Capacity) and Theorem 6.4 (Linguistic Error-Correcting Redundancy), natural human language uses a digital syntax filter matrix \( \mathbf { H } _ g \) and non-zero Hamming distance \( d _ \text{min} \ge 2 e + 1 \) between valid sentence code-words to filter out corrupted or contradictory token transitions. Forcing the simultaneous acceptance of \( P \) and \( \neg P \) forces the syntax filter matrix \( \mathbf { H } _ g \) into a degenerate, all-pass state, driving the minimum semantic Hamming distance to zero (\( d _ \text{min} = 0 \)).
 
-. **Channel Jamming and Doublethink**: In communication signal processing, a zero-Hamming-distance signal collision renders the receiver's error-detection and error-correction sub-routines non-functional. By corrupting the organismal transduction channel \( T _ \text{recv} \), complementarity disables logical error-filtering, compelling the recipient organism to accept an unresolvable signal collision—a technique of institutional Doublethink that enforces compliance by degrading linguistic signal processing capacity.
+. **Channel Jamming and Doublethink**: In communication signal processing, a zero-Hamming-distance signal collision renders the receiver's error-detection and error-correction sub-routines non-functional. By corrupting the organismal transduction channel \( T _ \text{recv} \), complementarity disables logical error-filtering, compelling the recipient organism to accept an unresolvable signal collision—a technique of institutional Doublethink (George Orwell, 1949) that enforces compliance by degrading linguistic signal processing capacity.
 
 . **Deterministic Multivector Resolution**: In the Iris Number System, physical fields are deterministic multivectors \( F \in Cl ( 4 , 1 , 1 ) \). Wave-like spatial distribution and particle-like discrete momentum transfer are exact, deterministic topological properties of localized wave-packet solutions. Eliminating the artificial signal collision \( P \land \neg P \) restores non-zero Hamming separation \( d _ \text{min} > 0 \), re-establishing strict logical consistency and physical integrity to physical science. \( \square \)
 ====
+
+[#references-orwell-doublethink]
+=== Primary References and Citations for Orwellian Doublethink
+
+The concept of **Doublethink**—defined as the cognitive capacity to hold two mutually contradictory beliefs in one's mind simultaneously, and accepting both of them, thereby disabling logical error-detection sub-routines—was introduced and formally defined by George Orwell in his 1949 analysis of institutional ideological control:
+
+* **Orwell, George (1949).** *Nineteen Eighty-Four*. London: Secker & Warburg.
 
 == Modern Case Study: The Creed of Quantum Superposition vs. Mid-Circuit Register Sampling in Recursive Digital Grover Factorization
 
