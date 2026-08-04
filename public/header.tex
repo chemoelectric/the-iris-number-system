@@ -1,0 +1,33 @@
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage{newunicodechar}
+\usepackage[Latin,Greek]{ucharclasses}
+\usepackage{silence}
+
+% Assign U+2009 to \thinspace
+\newunicodechar{ }{\thinspace}
+
+% 1. Set text font with optical sizing hooks
+\setmainfont{Brioso Pro}[
+  SizeFeatures={
+    {Size={-9}, Font=* Caption},
+    {Size={9-14}, Font=*},
+    {Size={14-24}, Font=* Subhead},
+    {Size={24-}, Font=* Display}
+  }
+]
+
+% 2. Set the primary math engine
+\setmathfont{Garamond-Math.otf}
+
+% 3. Map mathematical Greek variables directly to Garamond Math
+\setmathfont{Garamond-Math.otf}[
+  range={up/Greek, it/Greek, bfit/Greek, bfup/Greek}
+]
+
+% 5. Handle rogue literal Unicode Greek characters passed by the HTML intermediate step
+\newfontfamily{\greekfallback}{Latin Modern Roman} 
+\setTransitionsForGreek{\begingroup\greekfallback}{\endgroup}
+
+\WarningFilter{fontspec}{Missing character}
+\tracinglostchars=0
