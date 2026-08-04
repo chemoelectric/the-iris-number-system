@@ -221,7 +221,7 @@ This section demonstrates that the Principle of Least Action is neither a teleol
 
 When a field distribution moves from initial state \( A_1 \) to final state \( A_2 \), the path traversed in field space renders the action integral stationary (\( \delta S = 0 \)) precisely because any non-stationary deviation would represent an uncompensated, non-zero net field force acting inside the domain without a corresponding source current \( J \). Thus, “least action” is simply the integral formulation of local field momentum conservation \( D F = J \) across spatial apertures on discrete grid \( \mathcal { G } _ N \).
 
-= Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent
+= Quantum Pseudo-Physics
 
 In this chapter, conventional quantum mechanics—specifically its reliance on non-causal probability collapses, non-local action at a distance, and uncountably infinite Hilbert space continuums—is demonstrated to be an artifact of assuming mathematical inconsistency in field descriptions, whereas the Iris Number System restores strict constructive determinism and topological aperture quantization.
 

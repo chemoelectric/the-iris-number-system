@@ -1225,8 +1225,8 @@ export const PHYSICS_CHEMISTRY_TEXTBOOK: Textbook = {
       ]
     },
     {
-      "id": "chap-quantum-pseudo-physics-is-founded-on-the-assumption-mathematics-is-inconsistent",
-      "title": "Quantum Pseudo-Physics is Founded on the Assumption Mathematics is Inconsistent",
+      "id": "chap-quantum-pseudo-physics",
+      "title": "Quantum Pseudo-Physics",
       "summary": "In this chapter, conventional quantum mechanics—specifically its reliance on non-causal probability collapses, non-local action at a distance, and uncountably infinite Hilbert space continuums—is demonstrated to be an artifact of assuming mathematical inconsistency in field descriptions, whereas the Iris Number System restores strict constructive determinism and topological aperture quantization.",
       "sections": [
         {
