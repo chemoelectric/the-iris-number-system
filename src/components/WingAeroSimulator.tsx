@@ -408,7 +408,7 @@ export const WingAeroSimulator: React.FC = () => {
       // 4. Draw Wing / Object Profile
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.rotate(-alphaRad); // Negative because Canvas Y is down
+      ctx.rotate(alphaRad); // Positive angle rotates leading edge (-x) upward (-y) in canvas coordinates
 
       ctx.fillStyle = '#f3f4f6';
       ctx.strokeStyle = '#9ca3af';
