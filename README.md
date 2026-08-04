@@ -38,7 +38,13 @@ The **Iris Number System Deduction & Inference Engine** provides a constructive 
    - Embedded bivector quaternion algebra (i = e_23, j = e_31, k = e_12).
    - Discrete Spectrum Arithmetic \( ( x + \epsilon \cdot \text{residual} + \omega \cdot \text{scale} ) \) and Nonstandard Analysis Main Scale Projection operator \( ( \downarrow ) ( x ) \).
 
-5. **Zeta & Prime Spectrum Visualizer**
+5. **Wing Aerodynamics & Airstream Simulator**
+   - Interactive 2D real-time fluid airstream canvas simulator based on first-principles momentum flux and boundary pressure field integrals.
+   - Allows live testing and comparison of 8 distinct wing and lifting geometries: Simple Paper Airplane Wing, Balsa Model Flat Wing, Child's Hand in Wind, Commercial Cambered Airfoil, Embraer EMB 120 Brasilia Nearly Symmetric Wing, Supersonic Delta Wedge, Symmetric Cylinder, and Flawed Horizontal Airflow Myth Counter-Proof.
+   - Real-time controls for pitch angle of attack (\(\alpha\)), wind stream velocity (\(U_0\)), fluid density (\(\rho\)), and visual overlays (Streamlines, Pressure Field Heatmap, Downwash Jet Vectors, Force Vectors, Stream Tube Boundaries).
+   - Live telemetry for processed mass flow rate (\(\dot{m}\)), downwash velocity (\(w_{\text{downwash}}\)), lift force (\(F_{\text{lift}}\)), drag (\(F_{\text{drag}}\)), and Newton's 3rd law momentum balance.
+
+6. **Zeta & Prime Spectrum Visualizer**
    - Interactive Recharts visualization of the Iris Zeta function \( \zeta_I ( s ) \) along the critical line.
    - Numerical zero candidate search and phase spectrum density analysis.
    - Iris Prime Distribution spiral and residue distribution modeling.

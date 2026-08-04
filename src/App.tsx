@@ -9,6 +9,7 @@ import { SpectralAnalysis } from './components/SpectralAnalysis';
 import { TheoremLibrary } from './components/TheoremLibrary';
 import { AIProofAssistant } from './components/AIProofAssistant';
 import { AxiomWorkbench } from './components/AxiomWorkbench';
+import { WingAeroSimulator } from './components/WingAeroSimulator';
 import { InfoModal } from './components/InfoModal';
 
 export default function App() {
@@ -69,7 +70,9 @@ export default function App() {
 
       {/* Main Content Workspace */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === 'textbook' && <IrisTextbook />}
+        {activeTab === 'textbook' && (
+          <IrisTextbook onOpenAeroSimulator={() => setActiveTab('aerodynamics')} />
+        )}
 
         {activeTab === 'deduction' && (
           <DeductionFramework
@@ -99,6 +102,8 @@ export default function App() {
         )}
 
         {activeTab === 'axioms' && <AxiomWorkbench />}
+
+        {activeTab === 'aerodynamics' && <WingAeroSimulator />}
       </main>
 
       {/* Info Modal */}

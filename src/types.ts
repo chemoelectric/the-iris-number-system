@@ -130,6 +130,6 @@ export interface Textbook {
 }
 
 export interface ActiveView {
-  tab: 'textbook' | 'deduction' | 'sandbox' | 'spectral' | 'assistant' | 'library' | 'axioms';
+  tab: 'textbook' | 'deduction' | 'sandbox' | 'spectral' | 'assistant' | 'library' | 'axioms' | 'aerodynamics';
 }
 

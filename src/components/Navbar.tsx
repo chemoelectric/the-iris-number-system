@@ -7,6 +7,7 @@ import {
   BookOpen,
   Bot,
   ShieldAlert,
+  Wind,
   Download,
   Info
 } from 'lucide-react';
@@ -26,6 +27,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   onExportWorkspace,
 }) => {
   const navItems = [
+    {
+      id: 'aerodynamics' as const,
+      label: 'Wing Aerodynamics',
+      icon: Wind,
+      badge: 'Airstream',
+    },
     {
       id: 'textbook' as const,
       label: 'Iris Textbook',
