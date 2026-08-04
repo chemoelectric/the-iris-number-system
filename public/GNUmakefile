@@ -26,12 +26,14 @@ clean-html::
 	-rm -f *.html
 clean:: clean-html
 
-%.pdf: %.html header.tex
+%.pdf: %.html header.tex fix-greek.lua GNUmakefile
 	$(PANDOC) -f html+tex_math_single_backslash \
-	          --metadata title="" \
+	          -t pdf \
 	          --pdf-engine=$(PDF_ENGINE) \
+	          --lua-filter=fix-greek.lua \
 	          -H header.tex \
 	          -V fontsize=12pt \
+	          --metadata title="" \
 	          $(<) -o $(@)
 .PHONY: clean-pdf
 clean-pdf::
