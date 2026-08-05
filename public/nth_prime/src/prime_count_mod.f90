@@ -273,11 +273,10 @@ contains
 
       p2_sum = 0_i64
 
-      !$omp parallel do reduction(+:p2_sum) private(i, p_i, y, pi_y, term1, term2, curr_j) schedule(static, 256)
+      !$omp parallel private(i, p_i, y, pi_y, term1, term2, curr_j)
+      curr_j = -1_i64
+      !$omp do reduction(+:p2_sum) schedule(static, 256)
       do i = a_idx + 1_i64, b_idx
-        if (i == a_idx + 1_i64) then
-          curr_j = -1_i64
-        end if
         p_i = global_primes(i)
         y = x / p_i
         call get_pi_local(y, curr_j, pi_y)
@@ -285,7 +284,8 @@ contains
         term2 = term1 + 1_i64
         p2_sum = p2_sum + term2
       end do
-      !$omp end parallel do
+      !$omp end do
+      !$omp end parallel
 
       res = phi_recursive(x, a_idx)
       res = res + a_idx

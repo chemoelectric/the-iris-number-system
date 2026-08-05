@@ -6,9 +6,8 @@ module sieve_mod
 
 contains
 
-  subroutine mark_odd_composites(is_odd_prime, limit, num_odds, sq_lim)
+  subroutine mark_odd_composites(is_odd_prime, num_odds, sq_lim)
     logical, intent(inout) :: is_odd_prime(:)
-    integer(i64), intent(in) :: limit
     integer(i64), intent(in) :: num_odds
     integer(i64), intent(in) :: sq_lim
     integer(i64) :: k, p, idx, k_plus_1, prod_k
@@ -91,7 +90,7 @@ contains
       rlim = sqrt(rlim)
       sq_lim = int(rlim, i64)
 
-      call mark_odd_composites(is_odd_prime, limit, num_odds, sq_lim)
+      call mark_odd_composites(is_odd_prime, num_odds, sq_lim)
       call collect_odd_primes(is_odd_prime, num_odds, primes, num_primes)
 
       deallocate(is_odd_prime)
