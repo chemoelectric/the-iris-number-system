@@ -1,6 +1,6 @@
 module prime_count_mod
   use types_mod, only : i64, r128
-  use sieve_mod, only : sieve_primes
+  use iso_c_binding, only : c_int64_t
   implicit none
   private
   public :: init_prime_counter, pi_count, pi_small, pi_val, &
@@ -9,266 +9,54 @@ module prime_count_mod
   integer(i64), allocatable :: global_primes(:)
   integer(i64) :: global_num_primes = 0_i64
 
-  integer(i64), parameter :: P6 = 30030_i64
-  integer(i64), parameter :: PHI6_P6 = 5760_i64
-  integer(i64) :: phi6_table(0:30029)
-  logical :: phi6_initialized = .false.
+  interface
+    subroutine init_c_prime_counter(max_limit) bind(C, name="init_c_prime_counter")
+      import :: c_int64_t
+      integer(c_int64_t), value, intent(in) :: max_limit
+    end subroutine init_c_prime_counter
 
-  integer(i64), parameter :: hash_size = 16777216_i64
-  integer(i64) :: cache_x(16777216)
-  integer(i64) :: cache_a(16777216)
-  integer(i64) :: cache_v(16777216)
+    function c_pi_small(y) result(res) bind(C, name="c_pi_small")
+      import :: c_int64_t
+      integer(c_int64_t), value, intent(in) :: y
+      integer(c_int64_t) :: res
+    end function c_pi_small
+
+    function c_pi_count(x) result(res) bind(C, name="c_pi_count")
+      import :: c_int64_t
+      integer(c_int64_t), value, intent(in) :: x
+      integer(c_int64_t) :: res
+    end function c_pi_count
+
+    function c_pi_val(y) result(res) bind(C, name="c_pi_val")
+      import :: c_int64_t
+      integer(c_int64_t), value, intent(in) :: y
+      integer(c_int64_t) :: res
+    end function c_pi_val
+  end interface
 
 contains
 
-  subroutine init_phi_table()
-    integer(i64) :: i, count
-    if (phi6_initialized) return
-    count = 0_i64
-    phi6_table(0) = 0_i64
-    i = 1_i64
-    do while (i < P6)
-      if (mod(i, 2_i64) /= 0_i64 .and. &
-          mod(i, 3_i64) /= 0_i64 .and. &
-          mod(i, 5_i64) /= 0_i64 .and. &
-          mod(i, 7_i64) /= 0_i64 .and. &
-          mod(i, 11_i64) /= 0_i64 .and. &
-          mod(i, 13_i64) /= 0_i64) then
-        count = count + 1_i64
-      end if
-      phi6_table(i) = count
-      i = i + 1_i64
-    end do
-    phi6_initialized = .true.
-  end subroutine init_phi_table
-
   subroutine init_prime_counter(max_limit)
     integer(i64), intent(in) :: max_limit
-    call init_phi_table()
-    if (allocated(global_primes)) then
-      deallocate(global_primes)
-    end if
-    call sieve_primes(max_limit, global_primes, global_num_primes)
+    call init_c_prime_counter(max_limit)
   end subroutine init_prime_counter
 
   function pi_small(y) result(cnt)
     integer(i64), intent(in) :: y
     integer(i64) :: cnt
-    integer(i64) :: low_idx, high_idx, mid_idx, ans, p_mid, sum_idx
-
-    if (y < 2_i64) then
-      cnt = 0_i64
-    else if (global_num_primes > 0_i64) then
-      p_mid = global_primes(global_num_primes)
-      if (y >= p_mid) then
-        cnt = global_num_primes
-      else
-        low_idx = 1_i64
-        high_idx = global_num_primes
-        ans = 0_i64
-        do while (low_idx <= high_idx)
-          sum_idx = low_idx + high_idx
-          mid_idx = sum_idx / 2_i64
-          p_mid = global_primes(mid_idx)
-          if (p_mid <= y) then
-            ans = mid_idx
-            low_idx = mid_idx + 1_i64
-          else
-            high_idx = mid_idx - 1_i64
-          end if
-        end do
-        cnt = ans
-      end if
-    else
-      cnt = 0_i64
-    end if
+    cnt = c_pi_small(y)
   end function pi_small
 
-  subroutine clear_phi_cache()
-    cache_x = -1_i64
-    cache_a = -1_i64
-    cache_v = -1_i64
-  end subroutine clear_phi_cache
-
-  subroutine check_cache(x, a, val, found, h_idx)
-    integer(i64), intent(in) :: x
-    integer(i64), intent(in) :: a
-    integer(i64), intent(out) :: val
-    logical, intent(out) :: found
-    integer(i64), intent(out) :: h_idx
-
-    integer(i64) :: key, idx, probe, first_empty
-
-    found = .false.
-    val = 0_i64
-    first_empty = -1_i64
-
-    key = x * 3141592653589793238_i64
-    key = key + a * 2718281828459045235_i64
-    idx = ieor(key, shiftr(key, 22))
-    idx = mod(abs(idx), hash_size)
-    idx = idx + 1_i64
-
-    probe = 0_i64
-    do while (probe < 64_i64)
-      if (cache_x(idx) == x) then
-        if (cache_a(idx) == a) then
-          val = cache_v(idx)
-          found = .true.
-          h_idx = idx
-          probe = 64_i64
-        end if
-      else if (cache_x(idx) == -1_i64) then
-        if (first_empty == -1_i64) then
-          first_empty = idx
-        end if
-        probe = 64_i64
-      end if
-      if (.not. found) then
-        if (probe < 64_i64) then
-          idx = mod(idx, hash_size)
-          idx = idx + 1_i64
-          probe = probe + 1_i64
-        end if
-      end if
-    end do
-
-    if (.not. found) then
-      if (first_empty /= -1_i64) then
-        h_idx = first_empty
-      else
-        h_idx = idx
-      end if
-    end if
-  end subroutine check_cache
-
-  subroutine store_cache(x, a, val, h_idx)
-    integer(i64), intent(in) :: x
-    integer(i64), intent(in) :: a
-    integer(i64), intent(in) :: val
-    integer(i64), intent(in) :: h_idx
-
-    if (h_idx > 0_i64) then
-      cache_x(h_idx) = x
-      cache_a(h_idx) = a
-      cache_v(h_idx) = val
-    end if
-  end subroutine store_cache
-
-  recursive function phi_recursive(x, a) result(val)
-    integer(i64), intent(in) :: x
-    integer(i64), intent(in) :: a
-    integer(i64) :: val
-    integer(i64) :: h_idx, p_a, p_a_sq, v1, v2, a_prev, x_div, pi_x, temp_val
-    integer(i64) :: q_val, r_val, term_q, term_r
-    logical :: found_cached
-
-    if (x == 0_i64) then
-      val = 0_i64
-    else if (a == 0_i64) then
-      val = x
-    else if (a == 1_i64) then
-      x_div = x / 2_i64
-      val = x - x_div
-    else if (a == 6_i64) then
-      q_val = x / P6
-      r_val = mod(x, P6)
-      term_q = q_val * PHI6_P6
-      term_r = phi6_table(r_val)
-      val = term_q + term_r
-    else
-      p_a = global_primes(a)
-      if (x < p_a) then
-        val = 1_i64
-      else
-        p_a_sq = p_a * p_a
-        if (x < p_a_sq) then
-          pi_x = pi_small(x)
-          temp_val = pi_x - a
-          val = temp_val + 1_i64
-        else
-          call check_cache(x, a, val, found_cached, h_idx)
-          if (.not. found_cached) then
-            a_prev = a - 1_i64
-            v1 = phi_recursive(x, a_prev)
-            x_div = x / p_a
-            v2 = phi_recursive(x_div, a_prev)
-            val = v1 - v2
-            call store_cache(x, a, val, h_idx)
-          end if
-        end if
-      end if
-    end if
-  end function phi_recursive
-
-  recursive function pi_val(y) result(cnt)
+  function pi_val(y) result(cnt)
     integer(i64), intent(in) :: y
     integer(i64) :: cnt
-
-    if (y < 2_i64) then
-      cnt = 0_i64
-    else if (allocated(global_primes) .and. global_num_primes > 0_i64) then
-      if (y <= global_primes(global_num_primes)) then
-        cnt = pi_small(y)
-      else
-        cnt = pi_count(y)
-      end if
-    else
-      cnt = 0_i64
-    end if
+    cnt = c_pi_val(y)
   end function pi_val
 
-  recursive function pi_count(x) result(res)
+  function pi_count(x) result(res)
     integer(i64), intent(in) :: x
     integer(i64) :: res
-    integer(i64) :: x_cbrt, x_sqrt, a_idx, b_idx, p2_sum, i, p_i, y, pi_y
-    integer(i64) :: cbrt_plus, cbrt_sq, term1, term2
-    real(r128) :: rx, lx, lx_3
-
-    if (x < 2_i64) then
-      res = 0_i64
-    else if (allocated(global_primes) .and. global_num_primes > 0_i64 .and. &
-             x <= global_primes(global_num_primes)) then
-      res = pi_small(x)
-    else
-      call clear_phi_cache()
-
-      rx = real(x, kind=r128)
-      lx = log(rx)
-      lx_3 = lx / 3.0_r128
-      x_cbrt = int(exp(lx_3), i64)
-      cbrt_plus = x_cbrt + 1_i64
-      cbrt_sq = cbrt_plus * cbrt_plus
-      if (cbrt_sq > 0_i64) then
-        if (x / cbrt_sq >= cbrt_plus) then
-          x_cbrt = cbrt_plus
-        end if
-      end if
-
-      rx = sqrt(rx)
-      x_sqrt = int(rx, i64)
-
-      a_idx = pi_small(x_cbrt)
-      b_idx = pi_small(x_sqrt)
-
-      p2_sum = 0_i64
-
-      !$omp parallel do reduction(+:p2_sum) private(i, p_i, y, pi_y, term1, term2) schedule(static, 256)
-      do i = a_idx + 1_i64, b_idx
-        p_i = global_primes(i)
-        y = x / p_i
-        pi_y = pi_small(y)
-        term1 = pi_y - i
-        term2 = term1 + 1_i64
-        p2_sum = p2_sum + term2
-      end do
-      !$omp end parallel do
-
-      res = phi_recursive(x, a_idx)
-      res = res + a_idx
-      res = res - 1_i64
-      res = res - p2_sum
-    end if
+    res = c_pi_count(x)
   end function pi_count
 
 end module prime_count_mod
