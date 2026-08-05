@@ -610,10 +610,7 @@ A discrete integer coordinate \( x \in \mathcal { G } _ N \) is prime if and onl
 
 3. **Zero-Phase Node Extraction**:
    Extract all coordinates \( x \in \mathcal { G } _ N \) where the bivector phase noise vanishes:
-   [stem]
-   ++++
-   \text { Re } ( \mathbf { \Phi } ( x ) ) = 0 \quad \text { and } \quad \text { Im } ( \mathbf { \Phi } ( x ) ) = 0
-   ++++
+   \[ \text { Re } ( \mathbf { \Phi } ( x ) ) = 0 \quad \text { and } \quad \text { Im } ( \mathbf { \Phi } ( x ) ) = 0 \]
    The resulting set of coordinates constitutes the exact, non-dissipative list of prime numbers up to \( N \).
 ====
 
