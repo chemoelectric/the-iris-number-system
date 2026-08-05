@@ -79,6 +79,7 @@ contains
 
     found = .false.
     val = 0_i64
+    h_idx = -1_i64
 
     key = x * 3141592653589793238_i64
     key = key + a * 2718281828459045235_i64
@@ -105,11 +106,6 @@ contains
         probe = probe + 1_i64
       end if
     end do
-    if (.not. found) then
-      if (cache_x(idx) /= -1_i64) then
-        h_idx = -1_i64
-      end if
-    end if
   end subroutine check_cache
 
   subroutine store_cache(x, a, val, h_idx)
