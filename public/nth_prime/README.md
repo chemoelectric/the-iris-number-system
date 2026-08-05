@@ -48,7 +48,8 @@ The executable accepts input via command-line arguments or standard input, suppo
 - **C23 / Fortran 2023 Interoperability**: Direct ISO C Binding interface linking Fortran subprogram callers to optimized C23 backend subroutines.
 - **Hardware `POPCNT` Bitset $O(1)$ $\pi(y)$ Evaluation**: Memory-efficient bitset with 64-bit word sampling, evaluating $\pi(y)$ for any $y \le x^{2/3}$ in $O(1)$ constant time with zero branch mispredictions using the x86_64 / Zen 5 `POPCNT` instruction.
 - **Quad Precision (`r128`) Arithmetic**: 128-bit IEEE floating-point arithmetic for asymptotic logarithmic and exponent calculations, preserving exact integer mantissas for large \(n\).
-- **\(O(1)\) Periodic Wheel Base Case (\(\phi(x, 6)\))**: Precomputed lookup table for $P_6 = 30030$ ($\phi(30030, 6) = 5760$), instantly evaluating sub-trees at $a = 6$ without recursive branching.
+- **\(O(1)\) Periodic Wheel Base Case (\(\phi(x, 7)\))**: Precomputed lookup table for $P_7 = 510510$ ($\phi(510510, 7) = 92160$), instantly evaluating sub-trees at $a = 7$ without recursive branching.
+- **64-Bit Word-Oriented Segmented Sieve**: Bitset-backed segmented sieve with 64-candidate word clearing and hardware `POPCNT` skipping for sub-linear prime extraction.
 - **Fast Open-Addressing Hash Table**: $2^{24}$-entry (16,777,216 entries) memoization table for $\phi(x, a)$ evaluations in C with 64-probe linear collision resolution and cache-aligned structs.
 - **Adaptive Secant Interval Stepping**: Logarithmic secant step adjustments for candidate search windows around $x_1$, converging to the $n$-th prime boundary in minimum steps.
 - **Flexible Numeric Input Parser**: Exact ASCII character-by-character digit parsing, support for scientific floating-point inputs (“1e12”), exponent operators (“10^12”, “10**12”), and digit separators (“1_000_000”).

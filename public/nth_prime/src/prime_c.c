@@ -5,8 +5,16 @@
 #include <omp.h>
 #include "prime_c.h"
 
+#if defined(__x86_64__) || defined(_M_X64)
+#  include <immintrin.h>
+#endif
+
 #define P6_VAL 30030LL
 #define PHI6_P6_VAL 5760LL
+
+#define P7_VAL 510510LL
+#define PHI7_P7_VAL 92160LL
+
 #define HASH_SIZE 16777216LL
 
 typedef struct {
@@ -23,42 +31,48 @@ static int64_t num_odds_glob = 0;
 static int64_t *global_primes_c = NULL;
 static int64_t global_num_primes_c = 0;
 
-static int64_t phi6_tbl[30030];
-static bool phi6_done = false;
+static int64_t *phi7_tbl = NULL;
+static bool phi7_done = false;
 
 static cache_entry_t *cache_tbl = NULL;
 
-static void init_phi6_table(void) {
+static inline bool is_coprime_p7(int64_t v) {
+  bool ok = true;
+  int64_t m2 = v % 2;
+  int64_t m3 = v % 3;
+  int64_t m5 = v % 5;
+  int64_t m7 = v % 7;
+  int64_t m11 = v % 11;
+  int64_t m13 = v % 13;
+  int64_t m17 = v % 17;
+
+  if (m2 == 0 || m3 == 0 || m5 == 0) {
+    ok = false;
+  } else if (m7 == 0 || m11 == 0) {
+    ok = false;
+  } else if (m13 == 0 || m17 == 0) {
+    ok = false;
+  }
+  return ok;
+}
+
+static void init_phi7_table(void) {
   int64_t count = 0;
   int64_t i = 1;
-  int64_t rem;
+  size_t sz;
 
-  if (phi6_done == false) {
-    phi6_tbl[0] = 0;
-    while (i < P6_VAL) {
-      rem = i % 2;
-      if (rem != 0) {
-        rem = i % 3;
-        if (rem != 0) {
-          rem = i % 5;
-          if (rem != 0) {
-            rem = i % 7;
-            if (rem != 0) {
-              rem = i % 11;
-              if (rem != 0) {
-                rem = i % 13;
-                if (rem != 0) {
-                  count = count + 1;
-                }
-              }
-            }
-          }
-        }
+  if (phi7_done == false) {
+    sz = (size_t)P7_VAL * sizeof(int64_t);
+    phi7_tbl = (int64_t *)malloc(sz);
+    phi7_tbl[0] = 0;
+    while (i < P7_VAL) {
+      if (is_coprime_p7(i) == true) {
+        count = count + 1;
       }
-      phi6_tbl[i] = count;
+      phi7_tbl[i] = count;
       i = i + 1;
     }
-    phi6_done = true;
+    phi7_done = true;
   }
 }
 
@@ -89,6 +103,14 @@ static void sieve_c_primes(int64_t limit) {
   size_t sz_words;
   size_t sz_primes;
   uint32_t running_count = 0;
+  uint64_t word;
+  uint64_t mask;
+  uint64_t bit_mask;
+  uint64_t w;
+  uint64_t m;
+  int pop;
+  int64_t prime_idx;
+  int64_t odd_i;
 
   if (bitset != NULL) {
     free(bitset);
@@ -116,15 +138,15 @@ static void sieve_c_primes(int64_t limit) {
   bitset[0] = bitset[0] & ~1ULL;
 
   while (k <= sq_lim / 2) {
-    uint64_t word = bitset[k / 64];
-    uint64_t mask = 1ULL << (k % 64);
+    word = bitset[k / 64];
+    mask = 1ULL << (k % 64);
     if ((word & mask) != 0ULL) {
       p = 2 * k + 1;
       start_idx = (p * p - 1) / 2;
       step = p;
       idx = start_idx;
       while (idx < num_odds) {
-        uint64_t bit_mask = 1ULL << (idx % 64);
+        bit_mask = 1ULL << (idx % 64);
         bitset[idx / 64] = bitset[idx / 64] & ~bit_mask;
         idx = idx + step;
       }
@@ -135,7 +157,7 @@ static void sieve_c_primes(int64_t limit) {
   i = 0;
   while (i < words) {
     pi_samples[i] = running_count;
-    int pop = __builtin_popcountll(bitset[i]);
+    pop = __builtin_popcountll(bitset[i]);
     running_count = running_count + (uint32_t)pop;
     i = i + 1;
   }
@@ -147,11 +169,11 @@ static void sieve_c_primes(int64_t limit) {
   global_primes_c[0] = 0;
   global_primes_c[1] = 2;
 
-  int64_t prime_idx = 2;
-  int64_t odd_i = 1;
+  prime_idx = 2;
+  odd_i = 1;
   while (odd_i < num_odds) {
-    uint64_t w = bitset[odd_i / 64];
-    uint64_t m = 1ULL << (odd_i % 64);
+    w = bitset[odd_i / 64];
+    m = 1ULL << (odd_i % 64);
     if ((w & m) != 0ULL) {
       global_primes_c[prime_idx] = 2 * odd_i + 1;
       prime_idx = prime_idx + 1;
@@ -162,36 +184,47 @@ static void sieve_c_primes(int64_t limit) {
 
 int64_t c_pi_small(int64_t y) {
   int64_t res = 0;
+  int64_t y_odd;
+  int64_t block;
+  int64_t offset;
+  uint64_t word;
+  uint64_t mask = 0ULL;
+  uint64_t masked;
+  int pop;
+  int64_t base_cnt;
+  int64_t p_max;
+  int64_t low;
+  int64_t high;
+  int64_t ans;
+  int64_t mid;
+  int64_t p_mid;
 
   if (y < 2) {
     res = 0;
   } else if (y == 2) {
     res = 1;
   } else if (y <= max_sieve_limit) {
-    int64_t y_odd = (y - 1) / 2;
-    int64_t block = y_odd / 64;
-    int64_t offset = y_odd % 64;
-    uint64_t word = bitset[block];
-    uint64_t mask = 0ULL;
+    y_odd = (y - 1) / 2;
+    block = y_odd / 64;
+    offset = y_odd % 64;
+    word = bitset[block];
     if (offset == 63) {
       mask = ~0ULL;
     } else {
       mask = (1ULL << (offset + 1)) - 1ULL;
     }
-    uint64_t masked = word & mask;
-    int pop = __builtin_popcountll(masked);
-    int64_t base_cnt = (int64_t)pi_samples[block];
+    masked = word & mask;
+    pop = __builtin_popcountll(masked);
+    base_cnt = (int64_t)pi_samples[block];
     res = base_cnt + 1 + (int64_t)pop;
   } else if (global_num_primes_c > 0) {
-    int64_t p_max = global_primes_c[global_num_primes_c - 1];
+    p_max = global_primes_c[global_num_primes_c - 1];
     if (y >= p_max) {
       res = global_num_primes_c - 1;
     } else {
-      int64_t low = 1;
-      int64_t high = global_num_primes_c - 1;
-      int64_t ans = 0;
-      int64_t mid;
-      int64_t p_mid;
+      low = 1;
+      high = global_num_primes_c - 1;
+      ans = 0;
       while (low <= high) {
         mid = (low + high) / 2;
         p_mid = global_primes_c[mid];
@@ -288,11 +321,11 @@ int64_t c_phi_recursive(int64_t x, int64_t a) {
     res = x;
   } else if (a == 1) {
     res = x - (x / 2);
-  } else if (a == 6) {
-    q_val = x / P6_VAL;
-    r_val = x % P6_VAL;
-    term_q = q_val * PHI6_P6_VAL;
-    term_r = phi6_tbl[r_val];
+  } else if (a == 7) {
+    q_val = x / P7_VAL;
+    r_val = x % P7_VAL;
+    term_q = q_val * PHI7_P7_VAL;
+    term_r = phi7_tbl[r_val];
     res = term_q + term_r;
   } else {
     p_a = global_primes_c[a];
@@ -325,6 +358,7 @@ int64_t c_pi_count(int64_t x) {
   int64_t b_idx;
   int64_t p2_sum = 0;
   int64_t phi_val;
+  double rx;
 
   if (x < 2) {
     res = 0;
@@ -333,14 +367,14 @@ int64_t c_pi_count(int64_t x) {
   } else {
     clear_cache_tbl();
 
-    double rx = (double)x;
+    rx = (double)x;
     x_cbrt = (int64_t)cbrt(rx);
     x_sqrt = (int64_t)sqrt(rx);
 
     a_idx = c_pi_small(x_cbrt);
     b_idx = c_pi_small(x_sqrt);
 
-    #pragma omp parallel for reduction(+:p2_sum) schedule(static, 256)
+    #pragma omp parallel for reduction(+:p2_sum) schedule(guided)
     for (int64_t i = a_idx + 1; i <= b_idx; i = i + 1) {
       int64_t p_i = global_primes_c[i];
       int64_t y = x / p_i;
@@ -372,22 +406,26 @@ void c_segmented_sieve_count(int64_t low_val, int64_t high_val,
                              int64_t base_count, int64_t *result_prime,
                              bool *found) {
   int64_t seg_len = high_val - low_val + 1;
-  size_t sz_seg = (size_t)seg_len;
-  bool *seg = (bool *)malloc(sz_seg * sizeof(bool));
-  int64_t i;
-  int64_t idx;
+  int64_t num_words = (seg_len + 63) / 64;
+  size_t sz_words = (size_t)num_words;
+  uint64_t *seg = (uint64_t *)malloc(sz_words * sizeof(uint64_t));
+  int64_t i = 0;
   int64_t p;
   int64_t p_sq;
   int64_t start_val;
-  int64_t current_count;
+  int64_t idx;
+  int64_t current_count = base_count;
+  int64_t w;
   int64_t cand;
+  int64_t bit_idx;
+  uint64_t word;
+  int pop;
 
   *found = false;
   *result_prime = high_val;
 
-  i = 0;
-  while (i < seg_len) {
-    seg[i] = true;
+  while (i < num_words) {
+    seg[i] = ~0ULL;
     i = i + 1;
   }
 
@@ -404,35 +442,54 @@ void c_segmented_sieve_count(int64_t low_val, int64_t high_val,
       }
       idx = start_val - low_val;
       while (idx < seg_len) {
-        seg[idx] = false;
+        seg[idx / 64] = seg[idx / 64] & ~(1ULL << (idx % 64));
         idx = idx + p;
       }
       i = i + 1;
     }
   }
 
-  current_count = base_count;
-  idx = 0;
-  while (idx < seg_len) {
-    cand = low_val + idx;
-    if (cand > 1) {
-      if (seg[idx] == true) {
-        current_count = current_count + 1;
-        if (current_count == target_offset) {
-          *result_prime = cand;
-          *found = true;
-          idx = seg_len;
+  w = 0;
+  while (w < num_words) {
+    word = seg[w];
+    if (w == 0) {
+      if (low_val <= 1) {
+        if (low_val == 0) {
+          word = word & ~3ULL;
+        } else if (low_val == 1) {
+          word = word & ~1ULL;
         }
       }
     }
-    idx = idx + 1;
+    pop = __builtin_popcountll(word);
+    if (current_count + (int64_t)pop < target_offset) {
+      current_count = current_count + (int64_t)pop;
+    } else {
+      bit_idx = 0;
+      while (bit_idx < 64) {
+        cand = w * 64 + bit_idx;
+        if (cand < seg_len) {
+          if ((word & (1ULL << bit_idx)) != 0ULL) {
+            current_count = current_count + 1;
+            if (current_count == target_offset) {
+              *result_prime = low_val + cand;
+              *found = true;
+              bit_idx = 64;
+              w = num_words;
+            }
+          }
+        }
+        bit_idx = bit_idx + 1;
+      }
+    }
+    w = w + 1;
   }
 
   free(seg);
 }
 
 void init_c_prime_counter(int64_t max_limit) {
-  init_phi6_table();
+  init_phi7_table();
   if (cache_tbl == NULL) {
     size_t sz = (size_t)HASH_SIZE * sizeof(cache_entry_t);
     cache_tbl = (cache_entry_t *)malloc(sz);
@@ -456,5 +513,9 @@ void free_c_prime_counter(void) {
   if (cache_tbl != NULL) {
     free(cache_tbl);
     cache_tbl = NULL;
+  }
+  if (phi7_tbl != NULL) {
+    free(phi7_tbl);
+    phi7_tbl = NULL;
   }
 }
