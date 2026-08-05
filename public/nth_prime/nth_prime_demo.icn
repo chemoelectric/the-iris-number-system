@@ -1,0 +1,50 @@
+# nth_prime.icn
+# Sub-linear n-th prime extraction procedure in Icon
+# Author: Frédéric Blondin Custer
+
+link nth_prime
+
+procedure parse_input_num(s)
+   local clean_s
+   local c
+   local num_val
+   local res
+
+   clean_s := ""
+   every c := !s do {
+      if (c ~== ",") & (c ~== "_") then {
+         clean_s := clean_s || c
+      }
+   }
+
+   num_val := numeric(clean_s)
+   if /num_val then {
+      res := 0
+   } else {
+      res := integer(num_val)
+   }
+
+   return res
+end
+
+procedure main(args)
+   local arg_str
+   local n_val
+   local p_res
+
+   if *args > 0 then {
+      arg_str := args[1]
+      n_val := parse_input_num(arg_str)
+   } else {
+      arg_str := read()
+      if /arg_str then {
+         arg_str := "1"
+      }
+      n_val := parse_input_num(arg_str)
+   }
+
+   p_res := nth_prime(n_val)
+   write(p_res)
+
+   return
+end
