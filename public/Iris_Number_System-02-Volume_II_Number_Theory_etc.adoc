@@ -1,4 +1,26 @@
+= The Iris Number System: Applications to Number Theory, Analysis, Probability Theory, Statistics
+:subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
+:author: Frédéric Blondel Custer
+:doctype: book
+:toc: left
+:toc-title: Table of Contents
+:stem: latexmath
+:sectnums!:
+
+A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
+
 = The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics
+
+:subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
+:author: Frédéric Blondel Custer
+:doctype: book
+:toc: left
+:toc-title: Table of Contents
+:stem: latexmath
+:sectnums!:
+
+A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
+
 :subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
 :author: Frédéric Blondel Custer
 :doctype: book
@@ -559,6 +581,7 @@ Under radix base \( b \ge 2 \) aperture iteration \( R _ b ( n ) = n + \text { r
 ====
 
 [#sec-riemann-shannon-consequences]
+
 == Profound Consequences of the Riemann-Shannon Capacity Equivalence in Iris Arithmetic
 
 The constructive equivalence between the Riemann Hypothesis (the spectral zero distribution of the Iris Zeta Operator \( \zeta _ { \mathcal { I } } ( s ) \)) and Shannon's Channel Capacity Theorem leads to several profound structural deductions regarding the nature of prime numbers, discrete arithmetic, and information conservation within the Iris Number System:
@@ -576,6 +599,7 @@ The constructive equivalence between the Riemann Hypothesis (the spectral zero d
    By formulating both arithmetic factorization and channel capacity over finite rational partition grids \( \mathcal { G } _ N \), the traditional boundary between number theory and information theory vanishes. Number theory in the Iris framework is established as the exact structural science of lossless discrete information transmission across multivector aperture channels.
 
 [#sec-capacity-saturated-prime-sieve]
+
 == Capacity-Saturated Parallel Multigrid Prime Sieve Algorithm
 
 Based on the constructive equivalence between the Riemann Hypothesis and Shannon's Channel Capacity Theorem established in <<sec-riemann-shannon-consequences>>, prime generation in the Iris Number System is reformulated as the optimal, non-dissipative demodulation of orthogonal sub-carrier channels across the discrete partition grid \( \mathcal { G } _ N \).
@@ -655,7 +679,6 @@ On 2026 parallel hardware architectures—specifically targeting a 24-core / 48-
 
 The zero-phase bivector demodulation structure permits L1/L2 cache locality per Vernier block size \( L = \mathcal { O } ( \sqrt { N } ) \), eliminating main memory bandwidth bottlenecks and achieving up to 94% of theoretical peak SIMD bitwise and arithmetic throughput in compiled C and Fortran binaries.
 
-[#sec-nth-prime-inversion]
 == Fast Sub-Linear Algorithm for the \( n \)-th Prime Number
 
 While the Capacity-Saturated Vernier Sieve (<<sec-capacity-saturated-prime-sieve>>) extracts the complete sequence of primes up to an upper bound \( N \) in linear parallel time, finding the single \( n \)-th prime number \( p _ n \) for massive indices (such as \( n = 10 ^ { 12 } \) or \( n = 10 ^ { 18 } \)) does not require sieving all intervening integers from \( 1 \) to \( p _ n \).
@@ -1167,7 +1190,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-mersenne-prime-infinitude[**Theorem: Infinitude of Discrete Mersenne Primes**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Infinitude of Mersenne Primes*
 * xref:theorem-gilbreath-proof[**Theorem: Gilbreath's Leading Term Invariance for Ordered Primes**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Gilbreath's Successive Prime Difference Theorem*
 * xref:theorem-lychrel-nonexistence[**Theorem: Universal Reverse-and-Add Palindrome Convergence**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Lychrel Number Non-Existence Theorem*
-* xref:theorem-nth-prime-inversion[**Theorem: Sub-Linear \( n \)-th Prime Inversion and Segmented Vernier Extraction Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fast Sub-Linear Algorithm for the \( n \)-th Prime Number*
+* xref:theorem-nth-prime-inversion[**Theorem: Sub-Linear \( n \)-th Prime Inversion and Segmented Vernier Extraction Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fast Sub-Linear Algorithm for the n-th Prime Number*
 * xref:theorem-ftc-msra[**Theorem: The Fundamental Theorem of MSRA Constructive Calculus**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
 * xref:theorem-mvt-msra[**Theorem: The MSRA Vernier Mean Value Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
 * xref:theorem-taylor-msra[**Theorem: The Discrete Taylor-Vernier Expansion Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*

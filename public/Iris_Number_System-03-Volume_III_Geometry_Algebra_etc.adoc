@@ -1,4 +1,26 @@
+= The Iris Number System: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
+:subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
+:author: Frédéric Blondel Custer
+:doctype: book
+:toc: left
+:toc-title: Table of Contents
+:stem: latexmath
+:sectnums!:
+
+A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
+
 = The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
+
+:subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
+:author: Frédéric Blondel Custer
+:doctype: book
+:toc: left
+:toc-title: Table of Contents
+:stem: latexmath
+:sectnums!:
+
+A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
+
 :subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
 :author: Frédéric Blondel Custer
 :doctype: book
@@ -360,6 +382,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m b _ k B _ { k , m } ( x ) \) be a polynomi
 ====
 
 [#numerical-stability-bernstein-rootfinding]
+
 === Floating-Point and Fixed-Point Numerical Stability Safeguards
 
 To guarantee numerical stability and exact topological correctness when implementing the recursive derivative-crossing algorithm across floating-point (IEEE 754) and fixed-point (Q\( M.F \)) hardware, the following execution recommendations are provided:
@@ -419,6 +442,7 @@ To guarantee numerical stability and exact topological correctness when implemen
 ====
 
 [#ada-2022-bernstein-root-finder-program]
+
 === Complete Ada 2022 Floating-Point Implementation of Bernstein Derivative-Crossing Root Isolation
 
 To provide a complete, self-contained reference implementation for numerical software engineers and computational mathematicians, the following Ada 2022 program (`bernstein_root_finder.adb`) implements the recursive Bernstein derivative-crossing root isolation algorithm in floating-point arithmetic. The implementation incorporates backward error filtering at extrema, de Casteljau evaluation, recursive derivative reduction, and ITP (Interpolate, Truncate, Project) root refinement. In compliance with strict software engineering discipline, all loops use structured `while` constructs, statements perform a single arithmetic operation, and subprogram return statements appear strictly at termination.
@@ -921,11 +945,12 @@ end bernstein_root_finder;
 ----
 
 [#references-itp-root-finding]
+
 === Primary References and Citations for the ITP Root-Finding Method
 
 The Interpolate, Truncate, Project (ITP) root-finding algorithm—which achieves superlinear convergence matching the secant method while preserving strict minimax worst-case bisection bounds and optimal average performance across any continuous probability distribution—was originated by I. F. D. Oliveira and R. H. C. Takahashi:
 
-* **Oliveira, I. F. D., & Takahashi, R. H. C. (2021).** “An Enhancement of the Bisection Method Average Performance Preserving Minmax Optimality.” *ACM Transactions on Mathematical Software*, 47(1), Article 5, pp. 1–24. link:https://doi.org/10.1145/3423597[DOI: 10.1145/3423597].
+* **Oliveira, I. F. D., & Takahashi, R. H. C. (2021).** "An Enhancement of the Bisection Method Average Performance Preserving Minmax Optimality." *ACM Transactions on Mathematical Software*, 47(1), Article 5, pp. 1–24. link:https://doi.org/10.1145/3423597[DOI: 10.1145/3423597].
 
 == Optimal Real Root Isolation Across Serial and Parallel Architectures and Numerical Representations
 
@@ -1058,6 +1083,7 @@ Let \( P ( z ) = z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 \
 ====
 
 [#numerical-stability-simultaneous-rootfinding]
+
 === Numerical Stability Safeguards for Global Simultaneous Iterations
 
 To prevent numerical stagnation, division-by-zero singularities, and precision loss during global simultaneous root iterations, the following fixed-point and floating-point safeguards are recommended:
@@ -1139,6 +1165,7 @@ Let \( P ( x ) \) be a polynomial of degree \( m \ge 1 \) defined over discrete 
 ====
 
 [#numerical-stability-shannon-rootfinding]
+
 === Numerical Stability Safeguards for Information-Theoretic Root-Finding
 
 To prevent zero-information evaluation loops near quantization noise floors, the following operational recommendations are provided:
@@ -1203,6 +1230,7 @@ Let \( P ( z ) \) be a polynomial or multivector field over discrete rational gr
 ====
 
 [#numerical-stability-bfgs-rootfinding]
+
 === Numerical Stability Safeguards for BFGS Quasi-Newton Iterations
 
 To guarantee numerical stability and exact aperture convergence when executing BFGS quasi-Newton updates on discrete rational grid \( \mathcal { G } _ N \), the following execution safeguards are recommended:
@@ -1246,12 +1274,13 @@ To guarantee numerical stability and exact aperture convergence when executing B
 ====
 
 [#references-bfgs-quasi-newton]
+
 === Primary References and Citations for BFGS Quasi-Newton Optimization
 
 The Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton algorithm and its optimal conditioning theory are based on the seminal 1970 papers of Professor David F. Shanno:
 
-* **Shanno, D. F. (1970).** “Conditioning of quasi-Newton methods for function minimization.” *Mathematics of Computation*, 24(111), 647–656. link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[DOI: 10.1090/S0025-5718-1970-0274029-X].
-* **Shanno, D. F., & Kettler, P. C. (1970).** “Optimal conditioning of quasi-Newton methods.” *Mathematics of Computation*, 24(111), 657–664. link:https://doi.org/10.1090/S0025-5718-1970-0274030-6[DOI: 10.1090/S0025-5718-1970-0274030-6].
+* **Shanno, D. F. (1970).** "Conditioning of quasi-Newton methods for function minimization." *Mathematics of Computation*, 24(111), 647–656. link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[DOI: 10.1090/S0025-5718-1970-0274029-X].
+* **Shanno, D. F., & Kettler, P. C. (1970).** "Optimal conditioning of quasi-Newton methods." *Mathematics of Computation*, 24(111), 657–664. link:https://doi.org/10.1090/S0025-5718-1970-0274030-6[DOI: 10.1090/S0025-5718-1970-0274030-6].
 
 = Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
 
@@ -1526,9 +1555,9 @@ Under subdivision into \( K \) sub-intervals, the parameter rescaling \( t \maps
 
 The geometric-algebraic polynomial curve intersection and Bézier clipping formulations in this chapter build upon and extend the seminal publications of Thomas W. Sederberg and Javier Sánchez-Reyes:
 
-* **Sederberg, T. W., & Nishita, T. (1990).** “Curve intersection using Bézier clipping.” *Computer-Aided Design*, 22(9), 538–549.
-* **Sánchez-Reyes, J. (1997).** “The symmetric s-power basis for polynomial curves and surfaces.” *Computer-Aided Design*, 29(6), 441–451.
-* **Sánchez-Reyes, J. (2000).** “Applications of the s-power basis to polynomial curves.” *Computer-Aided Design*, 32(14), 879–886.
+* **Sederberg, T. W., & Nishita, T. (1990).** "Curve intersection using Bézier clipping." *Computer-Aided Design*, 22(9), 538–549.
+* **Sánchez-Reyes, J. (1997).** "The symmetric s-power basis for polynomial curves and surfaces." *Computer-Aided Design*, 29(6), 441–451.
+* **Sánchez-Reyes, J. (2000).** "Applications of the s-power basis to polynomial curves." *Computer-Aided Design*, 32(14), 879–886.
 
 == MetaPost Implementation of Geometric-Algebraic Curve Intersections
 
@@ -1723,6 +1752,7 @@ Let \( \mathbf { A } , \mathbf { B } , \mathbf { v } \in Cl ( 4 , 1 , 1 ) \) be 
 ====
 
 [#numerical-stability-practical-topology]
+
 === Numerical Stability Safeguards for Computational Topology in Engineering
 
 When evaluating topological invariants, helicity sums, and defect indices on discrete rational grid \( \mathcal { G } _ N \), the following practical engineering recommendations are provided:
@@ -1827,11 +1857,12 @@ is a lattice isomorphism, satisfying for all \( a , b \in L \):
 ====
 
 [#references-birkhoff-representation]
+
 === Primary References and Citations for Birkhoff's Representation Theorem
 
 The fundamental representation theorem establishing the natural isomorphism between finite distributive lattices and posets of order ideals was originated and developed by Garrett Birkhoff and elaborated in classical order theory:
 
-* **Birkhoff, G. (1937).** “Rings of sets.” *Duke Mathematical Journal*, 3(3), pp. 443–454. (First proof of the representation theorem for finite distributive lattices).
+* **Birkhoff, G. (1937).** "Rings of sets." *Duke Mathematical Journal*, 3(3), pp. 443–454. (First proof of the representation theorem for finite distributive lattices).
 * **Birkhoff, G. (1940).** *Lattice Theory*. American Mathematical Society Colloquium Publications, Vol. 25. Providence, RI: American Mathematical Society.
 * **Davey, B. A., & Priestley, H. A. (2002).** *Introduction to Lattices and Order* (2nd ed.). Cambridge University Press.
 * **Grätzer, G. (2011).** *Lattice Theory: Foundation*. Basel: Springer Science & Media.
@@ -1859,17 +1890,18 @@ Furthermore, for any finite non-trivial lattice \( L \), the maximum principal f
 ====
 
 [#references-frankl-lattice]
+
 === Primary References and Citations for Frankl's Lattice Theorem and Union-Closed Bounds
 
 The lattice-theoretic density formulation on finite lattices and union-closed set families—commonly known as Frankl's conjecture—and its modern information-theoretic resolution were established by the following authors:
 
-* **Frankl, P. (1979).** “On the trace of finite set systems.” *Journal of Combinatorial Theory, Series A*, 27(2), pp. 130–136. (Original formulation of the conjecture for finite union-closed set systems and finite lattices).
-* **Reinhold, J. (1989).** “Frankl's conjecture is true for lower semilattices.” *Graphs and Combinatorics*, 5(1), pp. 177–179. (Proved the dual lattice formulation for lower semilattices).
-* **Poonen, B. (1992).** “Union-closed families.” *Journal of Combinatorial Theory, Series A*, 59(2), pp. 253–268. (Established formal lattice-theoretic equivalences and verified the theorem for small finite set universes).
-* **Gilmer, J. (2022).** “A constant lower bound for the union-closed sets conjecture.” *arXiv preprint arXiv:2211.09055*. (Breakthrough discovery of the information-theoretic entropy framework yielding a constant lower bound).
-* **Sawin, W. (2022).** “An improved lower bound for the union-closed sets conjecture.” *arXiv preprint arXiv:2211.11504*. (Determined the exact optimal constant threshold \( ( 3 - \sqrt { 5 } ) / 2 \approx 0.381966 \)).
-* **Chase, Z., & Lovett, S. (2022).** “The union-closed conjecture holds for small family sizes and optimizes at \( ( 3 - \sqrt { 5 } ) / 2 \).” *arXiv preprint arXiv:2211.11689*.
-* **Pebody, L. (2022).** “Extension of Gilmer's lower bound for the union-closed sets conjecture.” *arXiv preprint arXiv:2211.13139*.
+* **Frankl, P. (1979).** "On the trace of finite set systems." *Journal of Combinatorial Theory, Series A*, 27(2), pp. 130–136. (Original formulation of the conjecture for finite union-closed set systems and finite lattices).
+* **Reinhold, J. (1989).** "Frankl's conjecture is true for lower semilattices." *Graphs and Combinatorics*, 5(1), pp. 177–179. (Proved the dual lattice formulation for lower semilattices).
+* **Poonen, B. (1992).** "Union-closed families." *Journal of Combinatorial Theory, Series A*, 59(2), pp. 253–268. (Established formal lattice-theoretic equivalences and verified the theorem for small finite set universes).
+* **Gilmer, J. (2022).** "A constant lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.09055*. (Breakthrough discovery of the information-theoretic entropy framework yielding a constant lower bound).
+* **Sawin, W. (2022).** "An improved lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.11504*. (Determined the exact optimal constant threshold \( ( 3 - \sqrt { 5 } ) / 2 \approx 0.381966 \)).
+* **Chase, Z., & Lovett, S. (2022).** "The union-closed conjecture holds for small family sizes and optimizes at \( ( 3 - \sqrt { 5 } ) / 2 \)." *arXiv preprint arXiv:2211.11689*.
+* **Pebody, L. (2022).** "Extension of Gilmer's lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.13139*.
 
 == Dedekind-Jordan Chain Condition for Finite Modular Lattices
 
@@ -1892,12 +1924,13 @@ have the exact same finite length \( k \). Consequently, every finite modular la
 ====
 
 [#references-dedekind-jordan]
+
 === Primary References and Citations for the Dedekind-Jordan Chain Condition
 
 The Jordan-Hölder and Dedekind chain condition theorems for modular and semimodular lattices were established in:
 
 * **Jordan, C. (1870).** *Traité des substitutions et des équations algébriques*. Paris: Gauthier-Villars.
-* **Dedekind, R. (1897).** “Ueber Gruppen, deren sämtliche Theiler Normaltheiler sind.” *Mathematische Annalen*, 48(4), pp. 548–561.
+* **Dedekind, R. (1897).** "Ueber Gruppen, deren sämtliche Theiler Normaltheiler sind." *Mathematische Annalen*, 48(4), pp. 548–561.
 * **Birkhoff, G. (1940).** *Lattice Theory*. American Mathematical Society Colloquium Publications, Vol. 25. Providence, RI: AMS.
 
 == Fundamental Structure Theorem of Finite Boolean Lattices
@@ -1918,12 +1951,13 @@ Let \( B \) be a finite Boolean lattice (a bounded distributive complemented lat
 ====
 
 [#references-boolean-structure]
+
 === Primary References and Citations for Finite Boolean Lattices
 
 The algebraic foundation of finite Boolean algebras and power set representations was developed by:
 
 * **Boole, G. (1854).** *An Investigation of the Laws of Thought*. London: Walton and Maberly.
-* **Stone, M. H. (1936).** “The theory of representations for Boolean algebras.” *Transactions of the American Mathematical Society*, 40(1), pp. 37–111.
+* **Stone, M. H. (1936).** "The theory of representations for Boolean algebras." *Transactions of the American Mathematical Society*, 40(1), pp. 37–111.
 
 == Dilworth Antichain Partition Theorem for Finite Posets
 
@@ -1943,11 +1977,12 @@ Let \( P \) be any finite partially ordered set. An antichain in \( P \) is a su
 ====
 
 [#references-dilworth]
+
 === Primary References and Citations for Dilworth's Theorem
 
 The min-max chain-antichain duality theorem for finite posets was proven by:
 
-* **Dilworth, R. P. (1950).** “A decomposition theorem for partially ordered sets.” *Annals of Mathematics*, 51(1), pp. 161–166.
+* **Dilworth, R. P. (1950).** "A decomposition theorem for partially ordered sets." *Annals of Mathematics*, 51(1), pp. 161–166.
 
 == Sperner Maximum Antichain Theorem on Discrete Boolean Grids
 
@@ -1971,11 +2006,12 @@ Equality is achieved by choosing \( A \) to be the set of all subsets of rank \(
 ====
 
 [#references-sperner]
+
 === Primary References and Citations for Sperner's Theorem
 
 The extremal antichain theorem on finite Boolean lattices was established by:
 
-* **Sperner, E. (1928).** “Ein Satz über Untermengen einer endlichen Menge.” *Mathematische Zeitschrift*, 27(1), pp. 544–548.
+* **Sperner, E. (1928).** "Ein Satz über Untermengen einer endlichen Menge." *Mathematische Zeitschrift*, 27(1), pp. 544–548.
 
 = Constructive Categories and Multivector Functors
 
@@ -2050,6 +2086,7 @@ Let \( \mathcal { C } \) and \( \mathcal { D } \) be finite small categories. A 
 ====
 
 [#references-freyd-adjoint]
+
 === Primary References and Citations for the Adjoint Functor Theorem
 
 The adjoint functor theorem establishing necessary and sufficient conditions for the existence of left adjoints was formulated by:
@@ -2116,11 +2153,12 @@ Let \( ( A _ 1 , A _ 2 , \dots , A _ n ) \) be a finite collection of finite set
 ====
 
 [#references-halls-marriage]
+
 === Primary References and Citations for Hall's Marriage Theorem
 
 The system of distinct representatives theorem on finite bipartite systems was established by:
 
-* **Hall, P. (1935).** “On Representatives of Subsets.” *Journal of the London Mathematical Society*, 10(1), pp. 26–30.
+* **Hall, P. (1935).** "On Representatives of Subsets." *Journal of the London Mathematical Society*, 10(1), pp. 26–30.
 
 == Erdős-Szekeres Monotone Subsequence Theorem
 
@@ -2143,11 +2181,12 @@ Let \( r, s \ge 1 \) be integers. Any sequence of real or rational numbers of le
 ====
 
 [#references-erdos-szekeres]
+
 === Primary References and Citations for Erdős-Szekeres Theorem
 
 The extremal monotone subsequence theorem was proven by:
 
-* **Erdős, P., & Szekeres, G. (1935).** “A combinatorial problem in geometry.” *Compositio Mathematica*, 2, pp. 463–470.
+* **Erdős, P., & Szekeres, G. (1935).** "A combinatorial problem in geometry." *Compositio Mathematica*, 2, pp. 463–470.
 
 == Ramsey's Finite Graph Clique-Independent Set Theorem
 
@@ -2171,11 +2210,12 @@ For any positive integers \( r, s \ge 1 \), there exists a minimal integer \( R 
 ====
 
 [#references-ramsey]
+
 === Primary References and Citations for Ramsey's Theorem
 
 The foundational partition theorem for finite graphs was established by:
 
-* **Ramsey, F. P. (1930).** “On a Problem of Formal Logic.” *Proceedings of the London Mathematical Society*, s2-30(1), pp. 264–286.
+* **Ramsey, F. P. (1930).** "On a Problem of Formal Logic." *Proceedings of the London Mathematical Society*, s2-30(1), pp. 264–286.
 
 [#theorem-n-queens-algebraic-permutation]
 [THEOREM]
@@ -2367,7 +2407,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 
 == Index of Formal Statements
 
-This index lists all formal Postulates, Theorems, and Definitions established across Volume III.
+This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 
 === Theorems
 
@@ -2379,8 +2419,13 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-conformal-spinor-invariance[**Theorem: Conformal Null Geometry Spinor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)*
 * xref:theorem-clifford-module-decomposition[**Theorem: Clifford Blade Ideal Direct Sum Decomposition**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Clifford Module Structure and Blade Ideal Decompositions*
 * xref:theorem-fundamental-theorem-rational-algebra[**Theorem: Fundamental Theorem of Constructive Rational Algebra**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Fundamental Theorem of Constructive Rational Algebra*
-* xref:theorem-constructive-real-root-isolation[**Theorem: Constructive Real Root Isolation and Sturm-Vernier Sequence Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding*
 * xref:theorem-iris-ring-homomorphism[**Theorem: Multivector Ring Homomorphism Invariance**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Ring Homomorphisms and Multiplicative Invariants*
+* xref:theorem-constructive-real-root-isolation[**Theorem: Constructive Real Root Isolation and Sturm-Vernier Sequence Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding*
+* xref:theorem-recursive-bernstein-derivative-root-isolation[**Theorem: Recursive Bernstein Derivative-Crossing Real Root Isolation and Monotonic Sub-Interval Refinement Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Recursive Bernstein Derivative-Crossing Real Root Isolation and ITP Refinement Theorem*
+* xref:theorem-optimal-root-isolation-classification[**Theorem: Optimal Real Root Isolation Algorithm Classification and Stability Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Optimal Real Root Isolation Across Serial and Parallel Architectures and Numerical Representations*
+* xref:theorem-simultaneous-rootfinding-fixedpoint[**Theorem: Global Simultaneous Polynomial Root-Finding and Fixed-Point Contraction Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Global Simultaneous Polynomial Root-Finding and Vector Fixed-Point Iteration Theorem*
+* xref:theorem-shannon-capacity-root-finding[**Theorem: Information-Theoretic Shannon Channel Capacity and Optimal Sub-Interval Division Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Information-Theoretic Shannon Channel Capacity for Optimal Polynomial Root Isolation Theorem*
+* xref:theorem-bfgs-quasi-newton-fixedpoint[**Theorem: Accelerated Higher-Order Newton and BFGS Quasi-Newton Fixed-Point Contraction Theorem**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Accelerated Higher-Order Newton-Raphson and BFGS Quasi-Newton Vector Fixed-Point Iteration Theorem*
 * xref:theorem-spower-geometric-representation[**Theorem: Geometric s-Power Polynomial Representation and Vanishing Curvature Identity**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Symmetric s-Power Basis and Geometric Polynomial Representation*
 * xref:theorem-optimal-fat-line-width[**Theorem: Optimal s-Power Fat-Line Bounding and Skeleton Projection**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
 * xref:theorem-spower-clipping-convergence[**Theorem: s-Power Quadratic Clipping Convergence and Root Isolation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
@@ -2390,14 +2435,15 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Aperture Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Aperture Topologies and Neighborhood Bases*
 * xref:theorem-vernier-compactness[**Theorem: Constructive Vernier Compactness Equivalence**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Vernier Compactness and Finite Covering Theorems*
 * xref:theorem-vernier-fixed-point[**Theorem: Discrete Vernier Fixed-Point Invariance Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Vernier Fixed-Point Contractive Invariance*
+* xref:theorem-practical-multivector-field-topology[**Theorem: Practical Multivector Field Topology, Helicity Invariance, and Defect Index Quantization Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Practical Multivector Field Topology for Plasmas, Media, and Engineering Dynamics*
 * xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Aperture Partial Orders and Lattice Homomorphisms*
 * xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Aperture Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*
 * xref:theorem-birkhoff-representation[**Theorem: Birkhoff Representation Theorem for Finite Distributive Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Birkhoff Representation Theorem for Finite Distributive Lattices*
+* xref:theorem-frankl-lattice-density[**Theorem: Frankl Join-Irreducible Lattice Density Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Frankl Join-Irreducible Density Theorem on Finite Grid Lattices*
 * xref:theorem-dedekind-jordan-chain[**Theorem: Dedekind-Jordan Chain Condition for Finite Modular Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Dedekind-Jordan Chain Condition for Finite Modular Lattices*
 * xref:theorem-boolean-power-set-isomorphism[**Theorem: Fundamental Structure Theorem of Finite Boolean Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Fundamental Structure Theorem of Finite Boolean Lattices*
 * xref:theorem-dilworth-poset-decomposition[**Theorem: Dilworth Antichain Partition Theorem for Finite Posets**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Dilworth Antichain Partition Theorem for Finite Posets*
 * xref:theorem-sperner-antichain-bound[**Theorem: Sperner Maximum Antichain Theorem on Discrete Boolean Grids**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Sperner Maximum Antichain Theorem on Discrete Boolean Grids*
-* xref:theorem-frankl-lattice-density[**Theorem: Frankl Join-Irreducible Lattice Density Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Frankl Join-Irreducible Density Theorem on Finite Grid Lattices*
 * xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*
 * xref:theorem-yoneda-aperture-embedding[**Theorem: Constructive Yoneda Aperture Embedding Lemma**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Yoneda Aperture Embedding and Natural Transformations*
 * xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
@@ -2407,21 +2453,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-halls-marriage[**Theorem: Hall's Marriage Theorem for Finite Bipartite Systems**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Hall's Marriage Theorem and Distinct Representatives*
 * xref:theorem-erdos-szekeres-monotone[**Theorem: Erdős-Szekeres Monotone Subsequence Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Erdős-Szekeres Monotone Subsequence Theorem*
 * xref:theorem-ramsey-finite-graph[**Theorem: Ramsey's Finite Graph Clique-Independent Set Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Ramsey's Finite Graph Clique-Independent Set Theorem*
-* xref:theorem-n-queens-algebraic-permutation[**Theorem: Algebraic Solvability and Permutation Characterization of the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
-* xref:theorem-vernier-knights-tour[**Theorem: Deterministic Vernier-Aperture Knight's Tour Construction Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
-* xref:theorem-multivector-chess-game-theory[**Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
+* xref:theorem-n-queens-algebraic-permutation[**Theorem: Algebraic Solvability and Permutation Characterization of the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
+* xref:theorem-vernier-knights-tour[**Theorem: Deterministic Vernier-Aperture Knight's Tour Construction Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
+* xref:theorem-multivector-chess-game-theory[**Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
 
-=== Examples
-
-* xref:example-solid-mechanics-statics[**Example: Solid Elastic Media Statics and Stress-Strain Multivector Equilibrium**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
-* xref:example-fluid-dynamics-momentum[**Example: Viscous Fluid Dynamics and Multivector Navier-Stokes Conservation**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
-* xref:example-electrodynamics-maxwell[**Example: Unified Electrodynamics, Maxwell's Equations, and Gravitational Field Inferences**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
-* xref:example-font-contour-real-root-finding[**Example: Real Root Isolation and Vernier Finding for Font Outline Ray-Casting**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding*
-* xref:example-spower-skeleton-transform[**Example: Affine Skeleton Transformation and Exact Fat-Line Width Determination**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Skeleton Affine Projection and Optimal Fat-Line Bounding*
-* xref:example-quadratic-bezier-clipping-intersection[**Example: Full Step-by-Step s-Power Bézier Clipping and Intersection Calculation**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
-* xref:example-flatness-testing-intersection[**Example: Combination of s-Power Bézier Clipping and Flatness Testing for Near-Parallel Curves**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans*
-* xref:example-spower-degree-reduction[**Example: Trivial Degree Elevation and Geometric Piecewise Degree Reduction**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
-* xref:example-opentype-cff-cubic-to-quadratic[**Example: OpenType CFF Font Outline Cubic-to-Quadratic Degree Reduction in 2D Space**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
-* xref:example-4-queens-algebraic-permutation[**Example: Algebraic Permutation Solution of the 4-Queens Puzzle**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
-* xref:example-8x8-knights-tour[**Example: Exact Linear-Time Deterministic Closed Knight's Tour Construction on an 8x8 Grid**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
-* xref:example-chess-minimax-alpha-beta[**Example: 2-Ply Multivector Minimax Evaluation and Alpha-Beta Pruning in a Finite Discrete Chess Endgame**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
