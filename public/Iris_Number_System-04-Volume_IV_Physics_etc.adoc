@@ -1666,7 +1666,7 @@ To grasp the magnitude of this temporal disconnect, consider a historical analog
 
 Consider the operational context of such an ancient query:
 * Which Roman magistrate, emperor, or provincial governor ordered the transmission, and what were its operational contents?
-* Did the outgoing message inquire about the proper ritual sacrifices required to placate Jupiter, Zeus, or Hera? Did it concern Roman military legion movements, trireme galley navigation, or agricultural auguries?
+* Did the outgoing message inquire about the proper ritual sacrifices required to placate Jupiter, Juno, or Minerva? Did it concern Roman military legion movements, trireme galley navigation, or agricultural auguries?
 * How could modern engineers and scientists in the present era connect an incoming sequence of pulses back to the theological, administrative, or practical preoccupations of a society that existed two millennia ago?
 
 In the intervening twenty centuries, the Latin language evolved and transformed, the Roman Empire collapsed, entire scientific and technological revolutions reshaped human civilization, and the underlying cultural and operational worldview was replaced multiple times. Modern human society possesses zero cognitive or institutional continuity with an operational inquiry formulated in 26 CE. The incoming message, even if successfully demodulated, arrives as a detached historical artifact rather than an active component of a two-way dialogue.
