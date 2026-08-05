@@ -9,6 +9,11 @@ module prime_count_mod
   integer(i64), allocatable, public :: global_primes(:)
   integer(i64), public :: global_num_primes = 0_i64
 
+  integer(i64), parameter :: P6 = 30030_i64
+  integer(i64), parameter :: PHI6_P6 = 5760_i64
+  integer(i64) :: phi6_table(0:30029)
+  logical :: phi6_initialized = .false.
+
   integer(i64), parameter :: hash_size = 2097152_i64
   integer(i64) :: cache_x(2097152)
   integer(i64) :: cache_a(2097152)
@@ -16,8 +21,30 @@ module prime_count_mod
 
 contains
 
+  subroutine init_phi_table()
+    integer(i64) :: i, count
+    if (phi6_initialized) return
+    count = 0_i64
+    phi6_table(0) = 0_i64
+    i = 1_i64
+    do while (i < P6)
+      if (mod(i, 2_i64) /= 0_i64 .and. &
+          mod(i, 3_i64) /= 0_i64 .and. &
+          mod(i, 5_i64) /= 0_i64 .and. &
+          mod(i, 7_i64) /= 0_i64 .and. &
+          mod(i, 11_i64) /= 0_i64 .and. &
+          mod(i, 13_i64) /= 0_i64) then
+        count = count + 1_i64
+      end if
+      phi6_table(i) = count
+      i = i + 1_i64
+    end do
+    phi6_initialized = .true.
+  end subroutine init_phi_table
+
   subroutine init_prime_counter(max_limit)
     integer(i64), intent(in) :: max_limit
+    call init_phi_table()
     if (allocated(global_primes)) then
       deallocate(global_primes)
     end if
@@ -126,6 +153,7 @@ contains
     integer(i64), intent(in) :: a
     integer(i64) :: val
     integer(i64) :: h_idx, p_a, p_a_sq, v1, v2, a_prev, x_div, pi_x, temp_val
+    integer(i64) :: q_val, r_val, term_q, term_r
     logical :: found_cached
 
     if (x == 0_i64) then
@@ -135,6 +163,12 @@ contains
     else if (a == 1_i64) then
       x_div = x / 2_i64
       val = x - x_div
+    else if (a == 6_i64) then
+      q_val = x / P6
+      r_val = mod(x, P6)
+      term_q = q_val * PHI6_P6
+      term_r = phi6_table(r_val)
+      val = term_q + term_r
     else
       p_a = global_primes(a)
       if (x < p_a) then
@@ -160,6 +194,33 @@ contains
     end if
   end function phi_recursive
 
+  subroutine get_pi_local(y, curr_j, pi_y)
+    integer(i64), intent(in) :: y
+    integer(i64), intent(inout) :: curr_j
+    integer(i64), intent(out) :: pi_y
+    integer(i64) :: diff
+
+    if (curr_j <= 0_i64 .or. curr_j > global_num_primes) then
+      curr_j = pi_small(y)
+    else if (global_primes(curr_j) < y) then
+      curr_j = pi_small(y)
+    else
+      diff = global_primes(curr_j) - y
+      if (diff > 100000_i64) then
+        curr_j = pi_small(y)
+      end if
+    end if
+
+    do while (curr_j > 0_i64)
+      if (global_primes(curr_j) <= y) then
+        exit
+      end if
+      curr_j = curr_j - 1_i64
+    end do
+
+    pi_y = curr_j
+  end subroutine get_pi_local
+
   recursive function pi_val(y) result(cnt)
     integer(i64), intent(in) :: y
     integer(i64) :: cnt
@@ -181,7 +242,7 @@ contains
     integer(i64), intent(in) :: x
     integer(i64) :: res
     integer(i64) :: x_cbrt, x_sqrt, a_idx, b_idx, p2_sum, i, p_i, y, pi_y
-    integer(i64) :: cbrt_plus, cbrt_sq, term1, term2
+    integer(i64) :: cbrt_plus, cbrt_sq, term1, term2, curr_j
     real(r128) :: rx, lx, lx_3
 
     if (x < 2_i64) then
@@ -212,11 +273,14 @@ contains
 
       p2_sum = 0_i64
 
-      !$omp parallel do reduction(+:p2_sum) private(i, p_i, y, pi_y, term1, term2) schedule(dynamic, 64)
+      !$omp parallel do reduction(+:p2_sum) private(i, p_i, y, pi_y, term1, term2, curr_j) schedule(static, 256)
       do i = a_idx + 1_i64, b_idx
+        if (i == a_idx + 1_i64) then
+          curr_j = -1_i64
+        end if
         p_i = global_primes(i)
         y = x / p_i
-        pi_y = pi_val(y)
+        call get_pi_local(y, curr_j, pi_y)
         term1 = pi_y - i
         term2 = term1 + 1_i64
         p2_sum = p2_sum + term2

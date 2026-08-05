@@ -40,14 +40,17 @@ The executable accepts input via command-line arguments or standard input, suppo
 
 4. **Multi-Threaded Execution**:
    ```bash
-   OMP_NUM_THREADS=24 ./nth-prime 10^11
+   OMP_NUM_THREADS=24 ./nth-prime 10^12
    ```
 
 ## Key Optimization & Architectural Features
 
 - **Fortran 2023 Standard**: Standard intrinsic modules (`iso_fortran_env`), strict typing, and lowercase code style.
 - **Quad Precision (`r128`) Arithmetic**: 128-bit IEEE floating-point arithmetic for asymptotic logarithmic and exponent calculations, preserving exact integer mantissas for large \(n\).
-- **Exact Sieve Upper Bound Allocation**: Initial prime sieve threshold scaled to \(x_0^{2/3}\) (up to 2 billion), guaranteeing that all \(y = x / p_i\) evaluation arguments in the $P_2$ parallel reduction reside strictly within the pre-sieved array bounds, eliminating recursive cache thrashing.
+- **\(O(1)\) Periodic Wheel Base Case (\(\phi(x, 6)\))**: Precomputed lookup table for $P_6 = 30030$ ($\phi(30030, 6) = 5760$), instantly evaluating sub-trees at $a = 6$ without recursive branching.
+- **Two-Pointer Local Monotonic Search in $P_2$**: Replaces $O(\log N)$ binary search across tens of millions of primes with a local decremental search pointer per thread, eliminating cache misses in the parallel $P_2$ loop.
+- **Odd-Only Bit/Byte Sieve**: Odd-only indexing in Eratosthenes sieve reducing memory footprint by 50% and doubling sieving throughput.
+- **Exact Sieve Upper Bound Allocation**: Initial prime sieve threshold scaled to \(x_0^{2/3}\), guaranteeing that all \(y = x / p_i\) evaluation arguments in $P_2$ reside strictly within pre-sieved array bounds.
 - **Adaptive Secant Interval Stepping**: Logarithmic secant step adjustments for candidate search windows around $x_1$, converging to the $n$-th prime boundary in minimum steps.
 - **Open-Addressing Hash Table Memoization**: Full memoization of \(\phi(x, a)\) state evaluations across all \(a\) indices using linear probing and a 2,097,152-entry hash structure.
 - **Flexible Numeric Input Parser**: Exact ASCII character-by-character digit parsing, support for scientific floating-point inputs (“1e12”), exponent operators (“10^12”, “10**12”), and digit separators (“1_000_000”).

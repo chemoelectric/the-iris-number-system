@@ -6,80 +6,95 @@ module sieve_mod
 
 contains
 
-  subroutine mark_composites(is_prime, limit, sq_lim)
-    logical, intent(inout) :: is_prime(:)
+  subroutine mark_odd_composites(is_odd_prime, limit, num_odds, sq_lim)
+    logical, intent(inout) :: is_odd_prime(:)
     integer(i64), intent(in) :: limit
+    integer(i64), intent(in) :: num_odds
     integer(i64), intent(in) :: sq_lim
-    integer(i64) :: i, j
+    integer(i64) :: k, p, idx, k_plus_1, prod_k
 
-    i = 2_i64
-    do while (i <= sq_lim)
-      if (is_prime(i)) then
-        j = i * i
-        do while (j <= limit)
-          is_prime(j) = .false.
-          j = j + i
+    k = 1_i64
+    p = 3_i64
+    do while (p <= sq_lim)
+      if (is_odd_prime(k)) then
+        k_plus_1 = k + 1_i64
+        prod_k = k * k_plus_1
+        idx = 2_i64 * prod_k
+        do while (idx <= num_odds)
+          is_odd_prime(idx) = .false.
+          idx = idx + p
         end do
       end if
-      i = i + 1_i64
+      k = k + 1_i64
+      p = 2_i64 * k
+      p = p + 1_i64
     end do
-  end subroutine mark_composites
+  end subroutine mark_odd_composites
 
-  subroutine collect_primes(is_prime, limit, primes, num_primes)
-    logical, intent(in) :: is_prime(:)
-    integer(i64), intent(in) :: limit
+  subroutine collect_odd_primes(is_odd_prime, num_odds, primes, num_primes)
+    logical, intent(in) :: is_odd_prime(:)
+    integer(i64), intent(in) :: num_odds
     integer(i64), allocatable, intent(out) :: primes(:)
     integer(i64), intent(out) :: num_primes
-    integer(i64) :: i, count
+    integer(i64) :: k, count, p
 
-    count = 0_i64
-    i = 1_i64
-    do while (i <= limit)
-      if (is_prime(i)) then
+    count = 1_i64
+    k = 1_i64
+    do while (k <= num_odds)
+      if (is_odd_prime(k)) then
         count = count + 1_i64
       end if
-      i = i + 1_i64
+      k = k + 1_i64
     end do
 
     num_primes = count
     allocate(primes(num_primes))
 
-    count = 0_i64
-    i = 1_i64
-    do while (i <= limit)
-      if (is_prime(i)) then
+    primes(1) = 2_i64
+    count = 1_i64
+    k = 1_i64
+    do while (k <= num_odds)
+      if (is_odd_prime(k)) then
         count = count + 1_i64
-        primes(count) = i
+        p = 2_i64 * k
+        p = p + 1_i64
+        primes(count) = p
       end if
-      i = i + 1_i64
+      k = k + 1_i64
     end do
-  end subroutine collect_primes
+  end subroutine collect_odd_primes
 
   subroutine sieve_primes(limit, primes, num_primes)
     integer(i64), intent(in) :: limit
     integer(i64), allocatable, intent(out) :: primes(:)
     integer(i64), intent(out) :: num_primes
 
-    logical, allocatable :: is_prime(:)
-    integer(i64) :: sq_lim
+    logical, allocatable :: is_odd_prime(:)
+    integer(i64) :: sq_lim, num_odds, lim_minus_1
     real(r128) :: rlim
 
     if (limit < 2_i64) then
       num_primes = 0_i64
       allocate(primes(0))
+    else if (limit == 2_i64) then
+      num_primes = 1_i64
+      allocate(primes(1))
+      primes(1) = 2_i64
     else
-      allocate(is_prime(limit))
-      is_prime = .true.
-      is_prime(1) = .false.
+      lim_minus_1 = limit - 1_i64
+      num_odds = lim_minus_1 / 2_i64
+
+      allocate(is_odd_prime(num_odds))
+      is_odd_prime = .true.
 
       rlim = real(limit, kind=r128)
       rlim = sqrt(rlim)
       sq_lim = int(rlim, i64)
 
-      call mark_composites(is_prime, limit, sq_lim)
-      call collect_primes(is_prime, limit, primes, num_primes)
+      call mark_odd_composites(is_odd_prime, limit, num_odds, sq_lim)
+      call collect_odd_primes(is_odd_prime, num_odds, primes, num_primes)
 
-      deallocate(is_prime)
+      deallocate(is_odd_prime)
     end if
   end subroutine sieve_primes
 
