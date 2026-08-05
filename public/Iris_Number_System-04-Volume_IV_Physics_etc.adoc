@@ -1658,7 +1658,20 @@ All physical interactions, field propagations, and wave transmissions require fi
 
 For interstellar distances separating star systems (\( d \ge 10 \text{ light-years} \)), a single one-way signal transmission requires a finite duration \( \Delta t _ \text{oneway} = \frac { d } { c } \ge 10 \text{ years} \). A two-way interactive exchange (transmission, reception, decoding, response formulation, and return transmission) requires a round-trip temporal duration:
 \[ \Delta t _ \text{roundtrip} \ge \frac { 2 d } { c } \ge 20 \text{ years} \]
-For typical galactic distances (\( d \sim 10 ^ 3 - 10 ^ 5 \text{ light-years} \)), the round-trip signal delay spans thousands to hundreds of thousands of years. This duration strictly exceeds the operational coherence lifespan \( T _ \text{soc} \) of technological societies, political institutions, linguistic conventions, and receiver hardware maintenance.
+For typical galactic distances (\( d \sim 10 ^ 3 - 10 ^ 5 \text{ light-years} \)), the round-trip signal delay spans thousands to hundreds of thousands of years.
+
+The central argument against interstellar dialogue is not merely that physical hardware decays or institutional funding wanes over millennia; it is that the emitting species itself becomes fundamentally incapable of comprehending or contextualizing the conversation across such immense temporal gulfs. Over spans of thousands of years, the language, cultural framework, scientific paradigms, political structures, and subjective operational motivations of the transmitting civilization undergo complete transformation or extinction. Consequently, when a response arrives, the receiving population possesses no living, operational connection to the original inquiry.
+
+To grasp the magnitude of this temporal disconnect, consider a historical analogy. Suppose an interstellar query-and-response round trip required a span of 2,000 years. If an incoming response signal were detected and decoded by radio astronomers today, that message would be a reply to an outgoing query emitted in the year 26 CE—during the reign of the Roman Emperor Tiberius.
+
+Consider the operational context of such an ancient query:
+* Which Roman magistrate, emperor, or provincial governor ordered the transmission, and what were its operational contents?
+* Did the outgoing message inquire about the proper ritual sacrifices required to placate Jupiter, Zeus, or Hera? Did it concern Roman military legion movements, trireme galley navigation, or agricultural auguries?
+* How could modern engineers and scientists in the present era connect an incoming sequence of pulses back to the theological, administrative, or practical preoccupations of a society that existed two millennia ago?
+
+In the intervening twenty centuries, the Latin language evolved and transformed, the Roman Empire collapsed, entire scientific and technological revolutions reshaped human civilization, and the underlying cultural and operational worldview was replaced multiple times. Modern human society possesses zero cognitive or institutional continuity with an operational inquiry formulated in 26 CE. The incoming message, even if successfully demodulated, arrives as a detached historical artifact rather than an active component of a two-way dialogue.
+
+Because closed-loop communication requires sustained temporal continuity of the cognitive, operational, and institutional framework between the sender of a query and the recipient of its reply, multi-millennial light-travel delays render true conversational dialogue physically and semiotically impossible.
 
 [#theorem-interstellar-temporal-disconnect]
 [THEOREM]
