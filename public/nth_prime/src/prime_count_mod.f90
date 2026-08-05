@@ -9,10 +9,10 @@ module prime_count_mod
   integer(i64), allocatable, public :: global_primes(:)
   integer(i64), public :: global_num_primes = 0_i64
 
-  integer(i64), parameter :: hash_size = 131072_i64
-  integer(i64) :: cache_x(131072)
-  integer(i64) :: cache_a(131072)
-  integer(i64) :: cache_v(131072)
+  integer(i64), parameter :: hash_size = 2097152_i64
+  integer(i64) :: cache_x(2097152)
+  integer(i64) :: cache_a(2097152)
+  integer(i64) :: cache_v(2097152)
 
 contains
 
@@ -74,23 +74,41 @@ contains
     integer(i64), intent(out) :: val
     logical, intent(out) :: found
     integer(i64), intent(out) :: h_idx
-    integer(i64) :: temp_val
+
+    integer(i64) :: key, idx, probe
 
     found = .false.
     val = 0_i64
-    if (a <= 100_i64) then
-      temp_val = x * 10007_i64
-      temp_val = temp_val + a
-      h_idx = mod(temp_val, hash_size)
-      h_idx = h_idx + 1_i64
-      if (cache_x(h_idx) == x) then
-        if (cache_a(h_idx) == a) then
-          val = cache_v(h_idx)
+
+    key = x * 3141592653589793238_i64
+    key = key + a * 2718281828459045235_i64
+    idx = ieor(key, shiftr(key, 20))
+    idx = mod(abs(idx), hash_size)
+    idx = idx + 1_i64
+
+    probe = 0_i64
+    do while (probe < 16_i64)
+      if (cache_x(idx) == x) then
+        if (cache_a(idx) == a) then
+          val = cache_v(idx)
           found = .true.
+          h_idx = idx
+          probe = 16_i64
         end if
+      else if (cache_x(idx) == -1_i64) then
+        h_idx = idx
+        probe = 16_i64
       end if
-    else
-      h_idx = -1_i64
+      if (.not. found) then
+        idx = mod(idx, hash_size)
+        idx = idx + 1_i64
+        probe = probe + 1_i64
+      end if
+    end do
+    if (.not. found) then
+      if (cache_x(idx) /= -1_i64) then
+        h_idx = -1_i64
+      end if
     end if
   end subroutine check_cache
 

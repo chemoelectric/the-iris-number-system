@@ -1,6 +1,6 @@
 # Sub-Linear n-th Prime Filter in Fortran 2023 with Quad Precision & OpenMP Parallelization
 
-An optimized implementation of the Sub-Linear $n$-th Prime Extraction algorithm in Fortran 2023 with IEEE 754 128-bit Quad Precision (`r128`), recursive $\pi(y)$ evaluation, and OpenMP parallelization, targeting `gfortran` 16.1 (and modern GCC releases) on hardware architectures such as AMD Zen 5.
+An optimized implementation of the Sub-Linear \(n\)-th Prime Extraction algorithm in Fortran 2023 with IEEE 754 128-bit Quad Precision (`r128`), recursive \(\pi(y)\) evaluation, open-addressing hash table memoization, and OpenMP parallelization, targeting `gfortran` 16.1 (and modern GCC releases) on hardware architectures such as AMD Zen 5.
 
 ## Building
 
@@ -16,41 +16,42 @@ To compile with custom compiler flags or standard specifications:
 FC=gfortran FCFLAGS="-std=f2023 -O3 -fopenmp -march=native -ffast-math -funroll-loops" make -f GNUmakefile
 ```
 
-## Usage
+## Usage & Flexible Input Parsing
 
-The executable acts as a standard Unix filter:
+The executable accepts input via command-line arguments or standard input, supporting standard integers, formatted digit strings, scientific notation, and power expressions:
 
-1. **Command Line Argument**:
+1. **Standard Integer Input**:
    ```bash
    ./nth-prime 256789
    ```
-   Output:
-   ```
-   3600847
-   ```
 
-2. **Standard Input**:
+2. **Scientific & Power Notation** (`1e12`, `10^12`, `10**12`):
    ```bash
-   echo 256789 | ./nth-prime
+   ./nth-prime 1e12
    ```
-   Output:
-   ```
-   3600847
-   ```
-
-3. **Multi-Threaded Execution**:
    ```bash
-   OMP_NUM_THREADS=24 ./nth-prime 1000000000
+   echo "10^12" | ./nth-prime
    ```
 
-## Key Optimization Features
+3. **Formatted String Input** (Commas / Underscores):
+   ```bash
+   ./nth-prime 1_000_000_000
+   ```
+
+4. **Multi-Threaded Execution**:
+   ```bash
+   OMP_NUM_THREADS=24 ./nth-prime 1e12
+   ```
+
+## Key Optimization & Architectural Features
 
 - **Fortran 2023 Standard**: Standard intrinsic modules (`iso_fortran_env`), strict typing, and lowercase code style.
-- **Quad Precision (`r128`) Arithmetic**: 128-bit IEEE floating-point arithmetic for asymptotic logarithmic and exponent calculations, preserving exact integer mantissas for large $n$.
-- **Recursive Prime-Counting Evaluation (`pi_val`)**: Exact $\pi(y)$ calculation via recursive evaluation whenever $y$ exceeds pre-sieved array bounds.
+- **Quad Precision (`r128`) Arithmetic**: 128-bit IEEE floating-point arithmetic for asymptotic logarithmic and exponent calculations, preserving exact integer mantissas for large \(n\).
+- **Open-Addressing Hash Table Memoization**: Full memoization of \(\phi(x, a)\) state evaluations across all \(a\) indices using linear probing and a 2,097,152-entry hash structure.
+- **Flexible Numeric Input Parser**: Support for plain integers, scientific floating-point inputs (“1e12”), exponent operators (“10^12”, “10**12”), and digit separators (“1_000_000”).
+- **Recursive Prime-Counting Evaluation (`pi_val`)**: Exact \(\pi(y)\) calculation via recursive evaluation whenever \(y\) exceeds pre-sieved array bounds.
 - **Bidirectional Interval Convergence**: Automated lower and upper window search adjustments preventing divergence for arbitrary prime magnitudes.
-- **OpenMP Multithreading**: Parallel $P_2$ summation reduction across multi-core CPUs (e.g. 24-core AMD Zen 5).
-- **Fast Base-Case Pruning**: Exact identity $\phi(x, a) = \pi(x) - a + 1$ whenever $x < p_a^2$, accelerating recursive sub-tree evaluation.
+- **OpenMP Multithreading**: Parallel \(P_2\) summation reduction across multi-core CPUs (e.g. 24-core AMD Zen 5).
+- **Fast Base-Case Pruning**: Exact identity \(\phi(x, a) = \pi(x) - a + 1\) whenever \(x < p_a^2\), accelerating recursive sub-tree evaluation.
 - **Overflow-Safe Integer Guards**: Division-based boundary testing for power checks to prevent signed `int64` wrapping.
-- **Compiler Flags**: `-O3 -fopenmp -march=native -ffast-math -funroll-loops` for auto-vectorization and OpenMP execution.
-- **Strict Control Flow**: Cyclomatic complexity $\le 10$ per subprogram and single operation per statement.
+- **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per subprogram and single operation per statement.
