@@ -1,3 +1,5 @@
+CC ?= gcc
+CFLAGS ?= -std=gnu23 -O3 -fopenmp -march=native -ffast-math -funroll-loops -Wall -Wextra
 FC ?= gfortran
 FCFLAGS ?= -std=f2023 -O3 -fopenmp -march=native -ffast-math -funroll-loops -Wall -Wextra
 TARGET = nth-prime
@@ -5,13 +7,8 @@ TARGET = nth-prime
 SRC_DIR = src
 OBJ_DIR = build
 
-SRCS = $(SRC_DIR)/types_mod.f90 \
-       $(SRC_DIR)/sieve_mod.f90 \
-       $(SRC_DIR)/prime_count_mod.f90 \
-       $(SRC_DIR)/nth_prime_mod.f90 \
-       $(SRC_DIR)/main.f90
-
-OBJS = $(OBJ_DIR)/types_mod.o \
+OBJS = $(OBJ_DIR)/prime_c.o \
+       $(OBJ_DIR)/types_mod.o \
        $(OBJ_DIR)/sieve_mod.o \
        $(OBJ_DIR)/prime_count_mod.o \
        $(OBJ_DIR)/nth_prime_mod.o \
@@ -22,7 +19,10 @@ OBJS = $(OBJ_DIR)/types_mod.o \
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(FC) $(FCFLAGS) -o $@ $^
+	$(FC) $(FCFLAGS) -o $@ $^ -lm
+
+$(OBJ_DIR)/prime_c.o: $(SRC_DIR)/prime_c.c $(SRC_DIR)/prime_c.h | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/types_mod.o: $(SRC_DIR)/types_mod.f90 | $(OBJ_DIR)
 	$(FC) $(FCFLAGS) -J$(OBJ_DIR) -c $< -o $@
