@@ -1,10 +1,10 @@
-# Sub-Linear n-th Prime Filter in Fortran 2023
+# Sub-Linear n-th Prime Filter in Fortran 2023 with OpenMP Parallelization
 
-An implementation of the Sub-Linear $n$-th Prime Extraction algorithm in Fortran 2023 targeting `gfortran` 16.1 (and modern GCC releases) on hardware architectures such as AMD Zen 5.
+An optimized implementation of the Sub-Linear $n$-th Prime Extraction algorithm in Fortran 2023 with OpenMP parallelization, targeting `gfortran` 16.1 (and modern GCC releases) on hardware architectures such as AMD Zen 5.
 
 ## Building
 
-Build the `nth-prime` binary using GNU Make:
+Build the parallelized `nth-prime` binary using GNU Make:
 
 ```bash
 make -f GNUmakefile
@@ -13,7 +13,7 @@ make -f GNUmakefile
 To compile with custom compiler flags or standard specifications:
 
 ```bash
-FC=gfortran FCFLAGS="-std=f2023 -O3 -march=native" make -f GNUmakefile
+FC=gfortran FCFLAGS="-std=f2023 -O3 -fopenmp -march=native -ffast-math -funroll-loops" make -f GNUmakefile
 ```
 
 ## Usage
@@ -38,8 +38,15 @@ The executable acts as a standard Unix filter:
    3600847
    ```
 
-## Design Highlights
+3. **Multi-Threaded Execution**:
+   ```bash
+   OMP_NUM_THREADS=24 ./nth-prime 1000000000
+   ```
 
-- **Fortran 2023 Standard**: Utilizes modern Fortran features, standard intrinsic modules (`iso_fortran_env`), and strict typing.
-- **Strict Control Flow**: Adheres strictly to structured control flow with single operations per line, subprogram contracts, and low cyclomatic complexity (under 10 per procedure and main program).
-- **Sub-Linear Algorithm**: Employs initial 5-term asymptotic estimation, Lehmer prime counting, and targeted local segmented sieving.
+## Key Optimization Features
+
+- **Fortran 2023 Standard**: Standard intrinsic modules (`iso_fortran_env`), strict typing, and lowercase code style.
+- **OpenMP Multithreading**: Parallel $P_2$ summation reduction across multi-core CPUs (e.g. 24-core AMD Zen 5).
+- **Fast Base-Case Pruning**: Exact identity $\phi(x, a) = \pi(x) - a + 1$ whenever $x < p_a^2$, accelerating recursive sub-tree evaluation.
+- **Compiler Flags**: `-O3 -fopenmp -march=native -ffast-math -funroll-loops` for auto-vectorization and OpenMP execution.
+- **Strict Control Flow**: Cyclomatic complexity $\le 10$ per subprogram and single operation per statement.

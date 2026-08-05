@@ -6,13 +6,63 @@ module sieve_mod
 
 contains
 
+  subroutine mark_composites(is_prime, limit, sq_lim)
+    logical, intent(inout) :: is_prime(:)
+    integer(i64), intent(in) :: limit
+    integer(i64), intent(in) :: sq_lim
+    integer(i64) :: i, j
+
+    i = 2_i64
+    do while (i <= sq_lim)
+      if (is_prime(i)) then
+        j = i * i
+        do while (j <= limit)
+          is_prime(j) = .false.
+          j = j + i
+        end do
+      end if
+      i = i + 1_i64
+    end do
+  end subroutine mark_composites
+
+  subroutine collect_primes(is_prime, limit, primes, num_primes)
+    logical, intent(in) :: is_prime(:)
+    integer(i64), intent(in) :: limit
+    integer(i64), allocatable, intent(out) :: primes(:)
+    integer(i64), intent(out) :: num_primes
+    integer(i64) :: i, count
+
+    count = 0_i64
+    i = 1_i64
+    do while (i <= limit)
+      if (is_prime(i)) then
+        count = count + 1_i64
+      end if
+      i = i + 1_i64
+    end do
+
+    num_primes = count
+    allocate(primes(num_primes))
+
+    count = 0_i64
+    i = 1_i64
+    do while (i <= limit)
+      if (is_prime(i)) then
+        count = count + 1_i64
+        primes(count) = i
+      end if
+      i = i + 1_i64
+    end do
+  end subroutine collect_primes
+
   subroutine sieve_primes(limit, primes, num_primes)
     integer(i64), intent(in) :: limit
     integer(i64), allocatable, intent(out) :: primes(:)
     integer(i64), intent(out) :: num_primes
 
     logical, allocatable :: is_prime(:)
-    integer(i64) :: i, j, count, sq_lim
+    integer(i64) :: sq_lim
+    real(kind=8) :: rlim
 
     if (limit < 2_i64) then
       num_primes = 0_i64
@@ -22,40 +72,12 @@ contains
       is_prime = .true.
       is_prime(1) = .false.
 
-      sq_lim = int(sqrt(real(limit)), i64)
-      i = 2_i64
-      do while (i <= sq_lim)
-        if (is_prime(i)) then
-          j = i * i
-          do while (j <= limit)
-            is_prime(j) = .false.
-            j = j + i
-          end do
-        end if
-        i = i + 1_i64
-      end do
+      rlim = real(limit, kind=8)
+      rlim = sqrt(rlim)
+      sq_lim = int(rlim, i64)
 
-      count = 0_i64
-      i = 1_i64
-      do while (i <= limit)
-        if (is_prime(i)) then
-          count = count + 1_i64
-        end if
-        i = i + 1_i64
-      end do
-
-      num_primes = count
-      allocate(primes(num_primes))
-
-      count = 0_i64
-      i = 1_i64
-      do while (i <= limit)
-        if (is_prime(i)) then
-          count = count + 1_i64
-          primes(count) = i
-        end if
-        i = i + 1_i64
-      end do
+      call mark_composites(is_prime, limit, sq_lim)
+      call collect_primes(is_prime, limit, primes, num_primes)
 
       deallocate(is_prime)
     end if
@@ -74,25 +96,31 @@ contains
     logical, intent(out) :: found
 
     logical, allocatable :: seg(:)
-    integer(i64) :: seg_len, i, p, start_val, idx, current_count
+    integer(i64) :: seg_len, i, p, start_val, idx, current_count, cand, p_sq
 
     found = .false.
     result_prime = high_val
-    seg_len = high_val - low_val + 1_i64
+    seg_len = high_val - low_val
+    seg_len = seg_len + 1_i64
     allocate(seg(seg_len))
     seg = .true.
 
     i = 1_i64
     do while (i <= num_small)
       p = small_primes(i)
-      if (p * p > high_val) then
+      p_sq = p * p
+      if (p_sq > high_val) then
         i = num_small + 1_i64
       else
-        start_val = ((low_val + p - 1_i64) / p) * p
-        if (start_val < p * p) then
-          start_val = p * p
+        start_val = low_val + p
+        start_val = start_val - 1_i64
+        start_val = start_val / p
+        start_val = start_val * p
+        if (start_val < p_sq) then
+          start_val = p_sq
         end if
-        idx = start_val - low_val + 1_i64
+        idx = start_val - low_val
+        idx = idx + 1_i64
         do while (idx <= seg_len)
           seg(idx) = .false.
           idx = idx + p
@@ -104,11 +132,13 @@ contains
     current_count = base_count
     idx = 1_i64
     do while (idx <= seg_len)
-      if (low_val + idx - 1_i64 > 1_i64) then
+      cand = low_val + idx
+      cand = cand - 1_i64
+      if (cand > 1_i64) then
         if (seg(idx)) then
           current_count = current_count + 1_i64
           if (current_count == target_offset) then
-            result_prime = low_val + idx - 1_i64
+            result_prime = cand
             found = .true.
             idx = seg_len + 1_i64
           end if
