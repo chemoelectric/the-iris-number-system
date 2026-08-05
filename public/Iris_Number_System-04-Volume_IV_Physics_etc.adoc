@@ -398,7 +398,7 @@ This section proves that claiming electromagnetism simultaneously obeys Maxwell'
 
 [#theorem-direct-contact-differential-contradiction]
 [THEOREM]
- me.Theorem: Incompatibility of Local Differential Field Equations with Non-Local Action-at-a-Distance
+.Theorem: Incompatibility of Local Differential Field Equations with Non-Local Action-at-a-Distance
 ====
 Maxwell's equations and the Master Field Equation \( D F = J \) are defined strictly via spatial and temporal differential operators on discrete grid \( \mathcal { G } _ N \). Asserting that electromagnetic phenomena exhibit non-local “spooky action at a distance” while satisfying local differential field equations constitutes a direct logical contradiction (\( A \land \neg A \)).
 
