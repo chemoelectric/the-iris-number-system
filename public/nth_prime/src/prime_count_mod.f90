@@ -14,10 +14,10 @@ module prime_count_mod
   integer(i64) :: phi6_table(0:30029)
   logical :: phi6_initialized = .false.
 
-  integer(i64), parameter :: hash_size = 2097152_i64
-  integer(i64) :: cache_x(2097152)
-  integer(i64) :: cache_a(2097152)
-  integer(i64) :: cache_v(2097152)
+  integer(i64), parameter :: hash_size = 16777216_i64
+  integer(i64) :: cache_x(16777216)
+  integer(i64) :: cache_a(16777216)
+  integer(i64) :: cache_v(16777216)
 
 contains
 
@@ -85,14 +85,9 @@ contains
   end function pi_small
 
   subroutine clear_phi_cache()
-    integer(i64) :: i
-    i = 1_i64
-    do while (i <= hash_size)
-      cache_x(i) = -1_i64
-      cache_a(i) = -1_i64
-      cache_v(i) = -1_i64
-      i = i + 1_i64
-    end do
+    cache_x = -1_i64
+    cache_a = -1_i64
+    cache_v = -1_i64
   end subroutine clear_phi_cache
 
   subroutine check_cache(x, a, val, found, h_idx)
@@ -102,37 +97,49 @@ contains
     logical, intent(out) :: found
     integer(i64), intent(out) :: h_idx
 
-    integer(i64) :: key, idx, probe
+    integer(i64) :: key, idx, probe, first_empty
 
     found = .false.
     val = 0_i64
-    h_idx = -1_i64
+    first_empty = -1_i64
 
     key = x * 3141592653589793238_i64
     key = key + a * 2718281828459045235_i64
-    idx = ieor(key, shiftr(key, 20))
+    idx = ieor(key, shiftr(key, 22))
     idx = mod(abs(idx), hash_size)
     idx = idx + 1_i64
 
     probe = 0_i64
-    do while (probe < 16_i64)
+    do while (probe < 64_i64)
       if (cache_x(idx) == x) then
         if (cache_a(idx) == a) then
           val = cache_v(idx)
           found = .true.
           h_idx = idx
-          probe = 16_i64
+          probe = 64_i64
         end if
       else if (cache_x(idx) == -1_i64) then
-        h_idx = idx
-        probe = 16_i64
+        if (first_empty == -1_i64) then
+          first_empty = idx
+        end if
+        probe = 64_i64
       end if
       if (.not. found) then
-        idx = mod(idx, hash_size)
-        idx = idx + 1_i64
-        probe = probe + 1_i64
+        if (probe < 64_i64) then
+          idx = mod(idx, hash_size)
+          idx = idx + 1_i64
+          probe = probe + 1_i64
+        end if
       end if
     end do
+
+    if (.not. found) then
+      if (first_empty /= -1_i64) then
+        h_idx = first_empty
+      else
+        h_idx = idx
+      end if
+    end if
   end subroutine check_cache
 
   subroutine store_cache(x, a, val, h_idx)
@@ -194,33 +201,6 @@ contains
     end if
   end function phi_recursive
 
-  subroutine get_pi_local(y, curr_j, pi_y)
-    integer(i64), intent(in) :: y
-    integer(i64), intent(inout) :: curr_j
-    integer(i64), intent(out) :: pi_y
-    integer(i64) :: diff
-
-    if (curr_j <= 0_i64 .or. curr_j > global_num_primes) then
-      curr_j = pi_small(y)
-    else if (global_primes(curr_j) < y) then
-      curr_j = pi_small(y)
-    else
-      diff = global_primes(curr_j) - y
-      if (diff > 100000_i64) then
-        curr_j = pi_small(y)
-      end if
-    end if
-
-    do while (curr_j > 0_i64)
-      if (global_primes(curr_j) <= y) then
-        exit
-      end if
-      curr_j = curr_j - 1_i64
-    end do
-
-    pi_y = curr_j
-  end subroutine get_pi_local
-
   recursive function pi_val(y) result(cnt)
     integer(i64), intent(in) :: y
     integer(i64) :: cnt
@@ -242,7 +222,7 @@ contains
     integer(i64), intent(in) :: x
     integer(i64) :: res
     integer(i64) :: x_cbrt, x_sqrt, a_idx, b_idx, p2_sum, i, p_i, y, pi_y
-    integer(i64) :: cbrt_plus, cbrt_sq, term1, term2, curr_j
+    integer(i64) :: cbrt_plus, cbrt_sq, term1, term2
     real(r128) :: rx, lx, lx_3
 
     if (x < 2_i64) then
@@ -273,19 +253,16 @@ contains
 
       p2_sum = 0_i64
 
-      !$omp parallel private(i, p_i, y, pi_y, term1, term2, curr_j)
-      curr_j = -1_i64
-      !$omp do reduction(+:p2_sum) schedule(static, 256)
+      !$omp parallel do reduction(+:p2_sum) private(i, p_i, y, pi_y, term1, term2) schedule(static, 256)
       do i = a_idx + 1_i64, b_idx
         p_i = global_primes(i)
         y = x / p_i
-        call get_pi_local(y, curr_j, pi_y)
+        pi_y = pi_small(y)
         term1 = pi_y - i
         term2 = term1 + 1_i64
         p2_sum = p2_sum + term2
       end do
-      !$omp end do
-      !$omp end parallel
+      !$omp end parallel do
 
       res = phi_recursive(x, a_idx)
       res = res + a_idx

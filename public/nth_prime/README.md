@@ -48,11 +48,11 @@ The executable accepts input via command-line arguments or standard input, suppo
 - **Fortran 2023 Standard**: Standard intrinsic modules (`iso_fortran_env`), strict typing, and lowercase code style.
 - **Quad Precision (`r128`) Arithmetic**: 128-bit IEEE floating-point arithmetic for asymptotic logarithmic and exponent calculations, preserving exact integer mantissas for large \(n\).
 - **\(O(1)\) Periodic Wheel Base Case (\(\phi(x, 6)\))**: Precomputed lookup table for $P_6 = 30030$ ($\phi(30030, 6) = 5760$), instantly evaluating sub-trees at $a = 6$ without recursive branching.
-- **Two-Pointer Local Monotonic Search in $P_2$**: Replaces $O(\log N)$ binary search across tens of millions of primes with a local decremental search pointer per thread, eliminating cache misses in the parallel $P_2$ loop.
+- **Thread-Safe Binary Search in $P_2$**: High-efficiency logarithmic prime counting for $y = x / p_i$, eliminating cache misses and linear step overheads in the parallel $P_2$ loop.
+- **Expanded Open-Addressing Hash Table**: 16,777,216-entry ($2^{24}$) memoization table for $\phi(x, a)$ evaluations with 64-probe linear collision resolution and guaranteed slot assignment, eliminating recursive tree re-evaluations.
 - **Odd-Only Bit/Byte Sieve**: Odd-only indexing in Eratosthenes sieve reducing memory footprint by 50% and doubling sieving throughput.
 - **Exact Sieve Upper Bound Allocation**: Initial prime sieve threshold scaled to \(x_0^{2/3}\), guaranteeing that all \(y = x / p_i\) evaluation arguments in $P_2$ reside strictly within pre-sieved array bounds.
 - **Adaptive Secant Interval Stepping**: Logarithmic secant step adjustments for candidate search windows around $x_1$, converging to the $n$-th prime boundary in minimum steps.
-- **Open-Addressing Hash Table Memoization**: Full memoization of \(\phi(x, a)\) state evaluations across all \(a\) indices using linear probing and a 2,097,152-entry hash structure.
 - **Flexible Numeric Input Parser**: Exact ASCII character-by-character digit parsing, support for scientific floating-point inputs (“1e12”), exponent operators (“10^12”, “10**12”), and digit separators (“1_000_000”).
 - **OpenMP Multithreading**: Parallel \(P_2\) summation reduction across multi-core CPUs (e.g. 24-core AMD Zen 5).
 - **Fast Base-Case Pruning**: Exact identity \(\phi(x, a) = \pi(x) - a + 1\) whenever \(x < p_a^2\), accelerating recursive sub-tree evaluation.
