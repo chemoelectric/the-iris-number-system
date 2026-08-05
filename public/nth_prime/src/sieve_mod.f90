@@ -1,5 +1,5 @@
 module sieve_mod
-  use types_mod, only : i64
+  use types_mod, only : i64, r128
   implicit none
   private
   public :: sieve_primes, segmented_sieve_count
@@ -62,7 +62,7 @@ contains
 
     logical, allocatable :: is_prime(:)
     integer(i64) :: sq_lim
-    real(kind=8) :: rlim
+    real(r128) :: rlim
 
     if (limit < 2_i64) then
       num_primes = 0_i64
@@ -72,7 +72,7 @@ contains
       is_prime = .true.
       is_prime(1) = .false.
 
-      rlim = real(limit, kind=8)
+      rlim = real(limit, kind=r128)
       rlim = sqrt(rlim)
       sq_lim = int(rlim, i64)
 

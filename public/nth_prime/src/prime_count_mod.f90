@@ -1,9 +1,9 @@
 module prime_count_mod
-  use types_mod, only : i64
+  use types_mod, only : i64, r128
   use sieve_mod, only : sieve_primes
   implicit none
   private
-  public :: init_prime_counter, pi_count, pi_small, &
+  public :: init_prime_counter, pi_count, pi_small, pi_val, &
             global_primes, global_num_primes
 
   integer(i64), allocatable, public :: global_primes(:)
@@ -146,29 +146,48 @@ contains
     end if
   end function phi_recursive
 
-  function pi_count(x) result(res)
+  recursive function pi_val(y) result(cnt)
+    integer(i64), intent(in) :: y
+    integer(i64) :: cnt
+
+    if (y < 2_i64) then
+      cnt = 0_i64
+    else if (allocated(global_primes) .and. global_num_primes > 0_i64) then
+      if (y <= global_primes(global_num_primes)) then
+        cnt = pi_small(y)
+      else
+        cnt = pi_count(y)
+      end if
+    else
+      cnt = 0_i64
+    end if
+  end function pi_val
+
+  recursive function pi_count(x) result(res)
     integer(i64), intent(in) :: x
     integer(i64) :: res
     integer(i64) :: x_cbrt, x_sqrt, a_idx, b_idx, p2_sum, i, p_i, y, pi_y
-    integer(i64) :: cbrt_plus, cbrt_cube, term1, term2
-    real(kind=8) :: rx, lx, lx_3
+    integer(i64) :: cbrt_plus, cbrt_sq, term1, term2
+    real(r128) :: rx, lx, lx_3
 
     if (x < 2_i64) then
       res = 0_i64
-    else if (x <= global_primes(global_num_primes)) then
+    else if (allocated(global_primes) .and. global_num_primes > 0_i64 .and. &
+             x <= global_primes(global_num_primes)) then
       res = pi_small(x)
     else
       call clear_phi_cache()
 
-      rx = real(x, kind=8)
+      rx = real(x, kind=r128)
       lx = log(rx)
-      lx_3 = lx / 3.0_8
+      lx_3 = lx / 3.0_r128
       x_cbrt = int(exp(lx_3), i64)
       cbrt_plus = x_cbrt + 1_i64
-      cbrt_cube = cbrt_plus * cbrt_plus
-      cbrt_cube = cbrt_cube * cbrt_plus
-      if (cbrt_cube <= x) then
-        x_cbrt = cbrt_plus
+      cbrt_sq = cbrt_plus * cbrt_plus
+      if (cbrt_sq > 0_i64) then
+        if (x / cbrt_sq >= cbrt_plus) then
+          x_cbrt = cbrt_plus
+        end if
       end if
 
       rx = sqrt(rx)
@@ -183,7 +202,7 @@ contains
       do i = a_idx + 1_i64, b_idx
         p_i = global_primes(i)
         y = x / p_i
-        pi_y = pi_small(y)
+        pi_y = pi_val(y)
         term1 = pi_y - i
         term2 = term1 + 1_i64
         p2_sum = p2_sum + term2
