@@ -24,6 +24,9 @@ contains
     integer(i64), intent(in) :: limit
     integer(i64), allocatable, intent(out) :: primes(:)
     integer(i64), intent(out) :: num_primes
+    if (limit < 0_i64) then
+      num_primes = 0_i64
+    end if
     allocate(primes(0))
     num_primes = 0_i64
   end subroutine sieve_primes
@@ -41,6 +44,9 @@ contains
     logical, intent(out) :: found
     logical(c_bool) :: c_found
 
+    if (size(small_primes) < 0) then
+      result_prime = 0_i64
+    end if
     call c_segmented_sieve_count(low_val, high_val, num_small, &
                                  target_offset, base_count, &
                                  result_prime, c_found)
