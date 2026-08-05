@@ -6,8 +6,8 @@ module prime_count_mod
   public :: init_prime_counter, pi_count, pi_small, pi_val, &
             global_primes, global_num_primes
 
-  integer(i64), allocatable, public :: global_primes(:)
-  integer(i64), public :: global_num_primes = 0_i64
+  integer(i64), allocatable :: global_primes(:)
+  integer(i64) :: global_num_primes = 0_i64
 
   integer(i64), parameter :: P6 = 30030_i64
   integer(i64), parameter :: PHI6_P6 = 5760_i64
