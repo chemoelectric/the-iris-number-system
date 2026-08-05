@@ -1671,6 +1671,12 @@ Consider the operational context of such an ancient query:
 
 In the intervening twenty centuries, the Latin language evolved and transformed, the Roman Empire collapsed, entire scientific and technological revolutions reshaped human civilization, and the underlying cultural and operational worldview was replaced multiple times. Modern human society possesses zero cognitive or institutional continuity with an operational inquiry formulated in 26 CE. The incoming message, even if successfully demodulated, arrives as a detached historical artifact rather than an active component of a two-way dialogue.
 
+Furthermore, bridging the 2,000-year gap backward from 2026 CE to 26 CE is far simpler than bridging the 2,000-year gap forward from 2026 CE to 4026 CE. The historic rate of developmental divergence prior to the modern industrial era was constrained by linear or slow polynomial knowledge transmission. In contrast, modern technological evolution and linguistic abstraction operate under the law of geometric time-binding, where capacity and structural complexity expand exponentially with time:
+\[ \mathcal { C } ( t ) = \mathcal { C } _ 0 e ^ { k t } \]
+Crucially, every derivative of an exponential function with respect to time is itself an exponential function:
+\[ \frac { d ^ n \mathcal { C } ( t ) } { d t ^ n } = k ^ n \mathcal { C } _ 0 e ^ { k t } \]
+Because the velocity, acceleration, and all higher-order derivatives of structural and conceptual divergence increase exponentially, the developmental gap between 2026 CE and 4026 CE is vastly greater than the gap between 26 CE and 2026 CE. A query transmitted in 2026 CE whose response arrives in 4026 CE will return to a society whose cognitive tools, mathematical paradigms, and physical apertures have undergone thousands of compounding exponential doubling periods. To the inhabitants of 4026 CE, an inquiry formulated with 2026 CE technology will appear as primitive, irrelevant, and operationally uninterpretable as a paleolithic stone arrangement.
+
 Because closed-loop communication requires sustained temporal continuity of the cognitive, operational, and institutional framework between the sender of a query and the recipient of its reply, multi-millennial light-travel delays render true conversational dialogue physically and semiotically impossible.
 
 [#theorem-interstellar-temporal-disconnect]
