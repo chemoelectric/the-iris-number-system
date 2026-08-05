@@ -1732,6 +1732,36 @@ matching the physical proton-to-electron mass ratio.
 . **Cosmic Boundary Integral**: Resolving the Master Field Equation \( D F = J \) globally across the bounded domain of the visible universe \( \Omega _ \text{universe} \), the local mass density \( \rho _ m \) at any spatial coordinate \( \mathbf { r } \) is the aperture projection of the global multivector potential \( A _ \text{cosmic} \). Local inertia is thus the direct field reaction of a particle's vortex aperture against the global cosmic background field. \( \square \)
 ====
 
+=== Chirality and Topological Asymmetry in Particle Prevalence
+
+In conventional continuum physics, the overwhelming observational prevalence of matter over antimatter in the visible universe (baryon asymmetry) is treated as a cosmological anomaly requiring arbitrary, post hoc CP-violation parameters or ad hoc baryogenesis scenarios. In the Counting-Iris framework, matter-antimatter prevalence is a direct consequence of the intrinsic chirality and topological orientation of Spin(2) bivector vortex rings in Clifford algebra \( Cl ( 4 , 1 , 1 ) \).
+
+A localized multivector vortex solution \( F \in Cl ( 4 , 1 , 1 ) \) possesses a right-handed or left-handed topological orientation defined by the pseudoscalar product:
+\[ \chi = \int _ { \Omega } \langle F \cdot I _ 6 \rangle \, dV \in \{ + 1 , - 1 \} \]
+where \( I _ 6 = e _ 1 e _ 2 e _ 3 e _ 4 e _ 5 e _ 6 \) is the volume pseudoscalar of \( Cl ( 4 , 1 , 1 ) \).
+
+On a discrete multiscale resolution grid \( \mathcal { G } _ N \) with finite boundary conditions, the global background flux vector \( \mathbf { J } _ \text{cosmic} \) introduces an intrinsic, non-zero topological orientation bias. When matter-antimatter vortex pairs condense out of isotropic field energy, right-handed leptonic rings (electrons) and right-handed nucleonic knots (protons) phase-lock constructively with the cosmic background helicity, whereas left-handed dual vortex configurations (positrons and antiprotons) suffer destructive phase interference at grid cell boundaries.
+
+Consequently, anti-particles experience a non-zero differential decay rate on discrete grid \( \mathcal { G } _ N \), causing left-handed anti-vortex rings to rapidly unravel into outgoing Grade-2 electromagnetic field radiation during the early field-condensation epoch. This leaves a universe dominated strictly by right-handed matter vortex apertures.
+
+[#theorem-topological-chirality-asymmetry]
+[THEOREM]
+.Theorem: Topological Chirality and Cosmic Matter Prevalence Invariance
+====
+Let \( F _ + \) represent a right-handed matter vortex aperture and \( F _ - = \tilde { F } _ + \) represent its left-handed anti-matter spatial dual on discrete resolution grid \( \mathcal { G } _ N \). Under coupling to the global cosmic background potential \( \mathbf { A } _ \text{cosmic} \):
+
+1. **Chiral Field Energy Splitting**: The localized field energy difference \( \Delta E = E ( F _ - ) - E ( F _ + ) \) between dual topological orientations is strictly positive:
+\[ \Delta E = 2 \oint _ { \partial \Omega } \langle F _ + \cdot \mathbf { A } _ \text{cosmic} \, I _ 6 \rangle \, d S > 0 \]
+2. **Topological Phase Unraveling**: Left-handed anti-vortex apertures \( F _ - \) possess higher total field energy and unstable boundary phase-gradients, undergoing spontaneous topological relaxation into un-trapped radiation field modes with characteristic lifetime \( \tau _ \text{decay} \propto N _ \text{grid} \, t _ \text{Iris} \).
+
+*Proof:*
+. **Pseudoscalar Coupling Integration**: Evaluating the multivector product of the localized vortex field \( F \) with the global background potential \( \mathbf { A } _ \text{cosmic} \) in \( Cl ( 4 , 1 , 1 ) \), the pseudoscalar cross-term \( \langle F \cdot \mathbf { A } _ \text{cosmic} \, I _ 6 \rangle \) changes sign under spatial inversion \( \tilde { F } \).
+
+. **Grid Boundary Instability**: On discrete grid \( \mathcal { G } _ N \), a right-handed vortex \( F _ + \) aligns constructively with the spatial orientation of the discrete grid lattice vectors \( \{ \mathbf { e } _ 1 , \mathbf { e } _ 2 , \mathbf { e } _ 3 \} \), yielding stable, bound standing wave circulation. Conversely, the inverted left-handed vortex \( F _ - \) enforces anti-parallel phase-gradients across grid boundaries, creating localized field stress concentrations that drive field un-trapping and phase-cancellation into free photons.
+
+. **Baryon Prevalence**: As the early field energy density cooled below the subatomic condensation threshold, the differential decay rate \( \Gamma _ - \gg \Gamma _ + \) caused all left-handed anti-matter apertures to unravel into radiation, leaving an exclusive, topologically stable prevalence of right-handed matter particles (\( e ^ - , p ^ + \)) across the visible universe. \( \square \)
+====
+
 = Nuclear Isotopes, Chemical Elements, and the Periodic Table
 
 Building upon the topological structure of fundamental nucleons, this chapter demonstrates how lighter atomic nuclei and isotopes assemble through spatial lattice packing, and how the entire Periodic Table of Chemical Elements emerges deterministically as spatial harmonic standing wave modes of the Master Field Equation.
@@ -2020,6 +2050,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-futility-of-ceti[**Theorem: Total Futility of CETI and Physical Interstellar Isolation Theorem**] -- Chapter: *The Futility of CETI* | Section: *The Total Futility of CETI: Physical, Semiotic, and Temporal Isolation*
 * xref:theorem-subatomic-particle-topological-vortex[**Theorem: Topological Multivector Structure and Charge-Spin Invariance of Fundamental Subatomic Particles**] -- Chapter: *Subatomic Topology: Structures and Interrelationships of Fundamental Particles* | Section: *Topological Vortex Architecture of Leptons: The Electron and Positron*
 * xref:theorem-nucleonic-mass-ratio-cosmic-coupling[**Theorem: Geometric Derivation of the Proton-to-Electron Mass Ratio and Universal Cosmic Coupling**] -- Chapter: *Subatomic Topology: Structures and Interrelationships of Fundamental Particles* | Section: *Geometric Origin of the Proton-to-Electron Mass Ratio and Cosmic Boundary Coupling*
+* xref:theorem-topological-chirality-asymmetry[**Theorem: Topological Chirality and Cosmic Matter Prevalence Invariance**] -- Chapter: *Subatomic Topology: Structures and Interrelationships of Fundamental Particles* | Section: *Chirality and Topological Asymmetry in Particle Prevalence*
 * xref:theorem-nuclear-isotope-lattice-packing[**Theorem: Interstitial Multivector Phase-Locking and Light Isotope Binding Energetics**] -- Chapter: *Nuclear Isotopes, Chemical Elements, and the Periodic Table* | Section: *Isotope Architecture and Interstitial Nuclear Binding Energetics*
 * xref:theorem-periodic-table-shell-derivation[**Theorem: Deterministic Derivation of the Periodic Table via Master Field Shell Resonances**] -- Chapter: *Nuclear Isotopes, Chemical Elements, and the Periodic Table* | Section: *Deterministic Derivation of the Periodic Table of Elements*
 * xref:theorem-water-molecular-dielectric-network[**Theorem: Multivector Dipole Architecture and Topological Hydrogen-Bonded Network of Water**] -- Chapter: *Molecular Architecture and Dynamics of Water and Common Solvents* | Section: *Structure, Dipole Architecture, and Dynamic Network of Water (\( \text{H}_2\text{O} \))*
