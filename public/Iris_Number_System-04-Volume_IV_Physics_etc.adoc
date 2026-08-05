@@ -9,29 +9,7 @@
 
 A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding
 
-= The Iris Number System, Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
-
-:subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding
-
-:subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding
-
-== Preface: The Universe as a Unified Multivector Electromagnetic Field Engine
+== Prelude: The Electromagnetic Field
 
 To visualize the physical universe as a single, vast, interconnected electromagnetic field engine is not merely a reasonable physical intuition; it is the precise, operational result derived from the Master Field Equation \( D F = J \) in the 6D Clifford algebra \( Cl ( 4 , 1 , 1 ) \).
 
