@@ -63,12 +63,12 @@ contains
       lx0_23 = log(rx0)
       lx0_23 = lx0_23 * 0.6666666666666666666666666666666666_r128
       max_sieve_prime = int(exp(lx0_23), i64)
-      max_sieve_prime = max_sieve_prime + 1000_i64
+      max_sieve_prime = max_sieve_prime + 10000_i64
       if (max_sieve_prime < 100000_i64) then
         max_sieve_prime = 100000_i64
       end if
-      if (max_sieve_prime > 100000000_i64) then
-        max_sieve_prime = 100000000_i64
+      if (max_sieve_prime > 2000000000_i64) then
+        max_sieve_prime = 2000000000_i64
       end if
 
       call init_prime_counter(max_sieve_prime)
@@ -95,6 +95,9 @@ contains
         pi_low = pi_count(range_len)
 
         if (n < pi_low) then
+          adj = real(pi_low - n, kind=r128)
+          adj = adj * log(real(low_bound, kind=r128))
+          step_size = max(10000_i64, int(adj, i64) + 1000_i64)
           high_bound = low_bound - 1_i64
           low_bound = high_bound - step_size + 1_i64
           if (low_bound < 2_i64) then
@@ -107,6 +110,9 @@ contains
           call segmented_sieve_count(low_bound, high_bound, global_primes, &
                                      num_small, n, pi_low, pn, found)
           if (.not. found) then
+            adj = real(n - pi_low, kind=r128)
+            adj = adj * log(real(high_bound, kind=r128))
+            step_size = max(10000_i64, int(adj, i64) + 1000_i64)
             low_bound = high_bound + 1_i64
             high_bound = low_bound + step_size - 1_i64
           end if

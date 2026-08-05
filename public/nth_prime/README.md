@@ -40,17 +40,17 @@ The executable accepts input via command-line arguments or standard input, suppo
 
 4. **Multi-Threaded Execution**:
    ```bash
-   OMP_NUM_THREADS=24 ./nth-prime 1e12
+   OMP_NUM_THREADS=24 ./nth-prime 10^11
    ```
 
 ## Key Optimization & Architectural Features
 
 - **Fortran 2023 Standard**: Standard intrinsic modules (`iso_fortran_env`), strict typing, and lowercase code style.
 - **Quad Precision (`r128`) Arithmetic**: 128-bit IEEE floating-point arithmetic for asymptotic logarithmic and exponent calculations, preserving exact integer mantissas for large \(n\).
+- **Exact Sieve Upper Bound Allocation**: Initial prime sieve threshold scaled to \(x_0^{2/3}\) (up to 2 billion), guaranteeing that all \(y = x / p_i\) evaluation arguments in the $P_2$ parallel reduction reside strictly within the pre-sieved array bounds, eliminating recursive cache thrashing.
+- **Adaptive Secant Interval Stepping**: Logarithmic secant step adjustments for candidate search windows around $x_1$, converging to the $n$-th prime boundary in minimum steps.
 - **Open-Addressing Hash Table Memoization**: Full memoization of \(\phi(x, a)\) state evaluations across all \(a\) indices using linear probing and a 2,097,152-entry hash structure.
-- **Flexible Numeric Input Parser**: Support for plain integers, scientific floating-point inputs (“1e12”), exponent operators (“10^12”, “10**12”), and digit separators (“1_000_000”).
-- **Recursive Prime-Counting Evaluation (`pi_val`)**: Exact \(\pi(y)\) calculation via recursive evaluation whenever \(y\) exceeds pre-sieved array bounds.
-- **Bidirectional Interval Convergence**: Automated lower and upper window search adjustments preventing divergence for arbitrary prime magnitudes.
+- **Flexible Numeric Input Parser**: Exact ASCII character-by-character digit parsing, support for scientific floating-point inputs (“1e12”), exponent operators (“10^12”, “10**12”), and digit separators (“1_000_000”).
 - **OpenMP Multithreading**: Parallel \(P_2\) summation reduction across multi-core CPUs (e.g. 24-core AMD Zen 5).
 - **Fast Base-Case Pruning**: Exact identity \(\phi(x, a) = \pi(x) - a + 1\) whenever \(x < p_a^2\), accelerating recursive sub-tree evaluation.
 - **Overflow-Safe Integer Guards**: Division-based boundary testing for power checks to prevent signed `int64` wrapping.
