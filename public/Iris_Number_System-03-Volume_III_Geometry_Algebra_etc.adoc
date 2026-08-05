@@ -9,28 +9,6 @@
 
 A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
 
-= The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
-
-:subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
-
-:subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
-
 = Constructive Clifford Geometry and Aperture Metrics
 
 In this chapter, geometry is constructed strictly within the Iris number system and \( Cl ( 4 , 1 , 1 ) \) multivector space without appealing to uncountable geometric continua. 2D Euclidean Geometric Algebra \( Cl ( 2 , 0 ) \), 3D Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \), and 4D Homogeneous Projective Geometric Algebra \( Cl ( 3 , 0 , 1 ) \) are constructed directly as sub-algebras, along with metric spaces and conformal null-geometries on discrete rational partition grids \( \mathcal { G } _ N \).

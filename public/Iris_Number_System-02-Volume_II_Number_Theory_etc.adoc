@@ -9,28 +9,6 @@
 
 A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
 
-= The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics
-
-:subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
-
-:subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
-
 = Tautological Proofs in Number Theory
 
 In this chapter, classical conjectures and fundamental theorems of number theory and arithmetic analysis are established as exact tautological deductions strictly within the Counting-Iris framework, utilizing \( Cl ( 4 , 1 , 1 ) \) multivector parity conservation, bounded discrete rational partition grids \( \mathcal { G } _ N \), and Jaynesian Maximum Entropy (MaxEnt) priors.

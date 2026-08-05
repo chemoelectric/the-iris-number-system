@@ -9,28 +9,6 @@
 
 A Rigorous Constructive Foundation for Mathematics and Physics
 
-= The Iris Number System, Volume I: Fundamentals
-
-:subtitle: Fundamentals
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Constructive Foundation for Mathematics and Physics
-
-:subtitle: Fundamentals
-:author: Frédéric Blondel Custer
-:doctype: book
-:toc: left
-:toc-title: Table of Contents
-:stem: latexmath
-:sectnums!:
-
-A Rigorous Constructive Foundation for Mathematics and Physics
-
 = Euclidean Geometry as a Tautological System
 
 Operational formulation of classical Euclidean geometry as an exact algebraic tautological system constructed over discrete rational partition grids \( \mathcal { G } _ N \) and multivector geometric algebra \( Cl ( 2 , 0 ) \subset Cl ( 4 , 1 , 1 ) \).
