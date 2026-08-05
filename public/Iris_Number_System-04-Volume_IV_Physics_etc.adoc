@@ -1,4 +1,4 @@
-= The Iris Number System: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
+= The Iris Number System, Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
 :subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
 :author: Frédéric Blondel Custer
 :doctype: book
