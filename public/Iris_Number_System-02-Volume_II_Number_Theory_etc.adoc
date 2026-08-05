@@ -331,6 +331,7 @@ where \( \| \cdot \| _ { \mathcal { I } } \) is the non-Euclidean Iris metric no
 . **Tautological Conclusion**: Under Main Scale Projection \( ( \downarrow ) \), the measure of zero-pair prime representations vanishes identically, establishing \( 2n = p _ 1 + p _ 2 \) as an exact tautology. \( \square \)
 ====
 
+[#sec-riemann-proof]
 == The Riemann Hypothesis Spectral Theorem
 
 [#theorem-riemann-proof]
@@ -663,7 +664,7 @@ In the Iris Number System, extracting \( p _ n \) is formulated as the determini
 
 === Mathematical Foundation: Asymptotic Aperture Inversion and Combinatorial Vernier Decompositions
 
-By the Riemann Hypothesis Spectral Theorem (<<sec-riemann-proof>>), the discrete prime counting function \( \pi _ { \mathcal { I } } ( x ) \) exhibits an exact spectral representation:
+By the Riemann Hypothesis Spectral Theorem (<<sec-riemann-proof, The Riemann Hypothesis Spectral Theorem>>), the discrete prime counting function \( \pi _ { \mathcal { I } } ( x ) \) exhibits an exact spectral representation:
 
 \[ \pi _ { \mathcal { I } } ( x ) = \text { Li } ( x ) - \sum _ { \rho } \text { Li } ( x ^ { \rho } ) - \ln 2 + \int _ { x } ^ { \infty } \frac { d t } { t ( t ^ 2 - 1 ) \ln t } \]
 
