@@ -1,6 +1,11 @@
-FC ?= gfortran
-FCFLAGS ?= -std=f2023 -O3 -march=native -Wall -Wextra
-TARGET = nth-prime
+FC := gfortran
+FCFLAGS := -std=f2023 -O3 -march=native
+MKDIR_P := mkdir -p
+
+TARGET := nth-prime
+
+.DELETE_ON_ERROR:
+.DEFAULT_GOAL := all
 
 SRC_DIR = src
 OBJ_DIR = build
@@ -17,30 +22,23 @@ OBJS = $(OBJ_DIR)/types_mod.o \
        $(OBJ_DIR)/nth_prime_mod.o \
        $(OBJ_DIR)/main.o
 
-.PHONY: all clean
+.PHONY: clean
 
-all: $(TARGET)
+.PHONY: all
+all:: $(TARGET)
+clean::
+	-rm -f $(TARGET)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.f90
+	$(MKDIR_P) $(@D) && $(FC) -c $(FCFLAGS) -J$(OBJ_DIR) -o $(@) $(<)
+clean::
+	-rm -R -f $(OBJ_DIR)
 
 $(TARGET): $(OBJS)
-	$(FC) $(FCFLAGS) -o $@ $^
+	$(FC) $(FCFLAGS) -o $(@) $(^)
 
-$(OBJ_DIR)/types_mod.o: $(SRC_DIR)/types_mod.f90 | $(OBJ_DIR)
-	$(FC) $(FCFLAGS) -J$(OBJ_DIR) -c $< -o $@
-
-$(OBJ_DIR)/sieve_mod.o: $(SRC_DIR)/sieve_mod.f90 $(OBJ_DIR)/types_mod.o | $(OBJ_DIR)
-	$(FC) $(FCFLAGS) -J$(OBJ_DIR) -I$(OBJ_DIR) -c $< -o $@
-
-$(OBJ_DIR)/prime_count_mod.o: $(SRC_DIR)/prime_count_mod.f90 $(OBJ_DIR)/types_mod.o $(OBJ_DIR)/sieve_mod.o | $(OBJ_DIR)
-	$(FC) $(FCFLAGS) -J$(OBJ_DIR) -I$(OBJ_DIR) -c $< -o $@
-
-$(OBJ_DIR)/nth_prime_mod.o: $(SRC_DIR)/nth_prime_mod.f90 $(OBJ_DIR)/types_mod.o $(OBJ_DIR)/sieve_mod.o $(OBJ_DIR)/prime_count_mod.o | $(OBJ_DIR)
-	$(FC) $(FCFLAGS) -J$(OBJ_DIR) -I$(OBJ_DIR) -c $< -o $@
-
-$(OBJ_DIR)/main.o: $(SRC_DIR)/main.f90 $(OBJ_DIR)/types_mod.o $(OBJ_DIR)/nth_prime_mod.o | $(OBJ_DIR)
-	$(FC) $(FCFLAGS) -J$(OBJ_DIR) -I$(OBJ_DIR) -c $< -o $@
-
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
-clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+$(OBJ_DIR)/types_mod.o: $(SRC_DIR)/types_mod.f90
+$(OBJ_DIR)/sieve_mod.o: $(SRC_DIR)/sieve_mod.f90 $(OBJ_DIR)/types_mod.o
+$(OBJ_DIR)/prime_count_mod.o: $(SRC_DIR)/prime_count_mod.f90 $(OBJ_DIR)/types_mod.o $(OBJ_DIR)/sieve_mod.o
+$(OBJ_DIR)/nth_prime_mod.o: $(SRC_DIR)/nth_prime_mod.f90 $(OBJ_DIR)/types_mod.o $(OBJ_DIR)/sieve_mod.o $(OBJ_DIR)/prime_count_mod.o
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.f90 $(OBJ_DIR)/types_mod.o $(OBJ_DIR)/nth_prime_mod.o
