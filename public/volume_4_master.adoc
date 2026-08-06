@@ -2255,6 +2255,23 @@ Unlike slow geological phase changes that unfolded over millions of years, the m
 3. **Physical Work Amplification and High-Force Atmospheric Displacement**:
    Because energy represents the capacity to perform work—moving matter across space—this accumulated energy surplus acts as a massive mechanical driver. Temperature gradients \( \nabla T \) generate steep pressure differentials \( \nabla P \) in accordance with the Master Field Equation. Trapped Poynting flux is converted directly into physical work (\( W = \int \mathbf { F } \cdot d \mathbf { r } \)), pushing huge fluid masses (hurricanes, atmospheric rivers, ocean currents, and polar air fronts) with significantly greater force (\( \mathbf { F } = \frac { d \mathbf { p } } { d t } \)) and higher velocities (\( \mathbf { v } \)), manifesting as severe storm wave-packets and violent weather volatility.
 
+=== Ancillary Hydro-Chemical Analysis: Relative Acidification of Aquatic Bodies
+
+In addition to thermal energy trapping and fluid displacement, the surge in atmospheric carbon dioxide (\( \text{CO} _ 2 \)) impacts the chemical equilibrium of Earth’s aquatic reservoirs—including global oceans, seas, lakes, estuaries, and smaller freshwater bodies.
+
+1. **Precision of Terminology: Relative Acidification**:
+   Popular discourse frequently employs the phrase “ocean acidification”, creating the false impression that aquatic bodies are turning into corrosive acidic solutions (\( \text{pH} < 7.0 \)). In rigorous physical chemistry, ocean water is moderately alkaline, with a pre-industrial baseline \( \text{pH} \approx 8.2 \). The ongoing process is strictly a **relative acidification**: an incremental reduction in \( \text{pH} \) (shifting from approximately \( 8.2 \) down to \( 8.1 \)) toward the neutral point (\( \text{pH} = 7.0 \)). The water remains alkaline, but its hydronium ion concentration \( [ \text{H} ^ + ] \) increases relatively.
+
+2. **Chemical Mechanics of Carbonate Equilibrium**:
+   When excess atmospheric \( \text{CO} _ 2 \) contacts surface waters, it dissolves according to Henry’s Law and reacts with water molecules to form aqueous carbonic acid:
+   \[ \text{CO} _ 2 \text{ (aq)} + \text{H} _ 2 \text{O} \rightleftharpoons \text{H} _ 2 \text{CO} _ 3 \rightleftharpoons \text{H} ^ + + \text{HCO} _ 3 ^ - \]
+   The liberated hydronium ions \( \text{H} ^ + \) react with ambient carbonate ions (\( \text{CO} _ 3 ^ { 2 - } \)) to form bicarbonate (\( \text{HCO} _ 3 ^ - \)):
+   \[ \text{H} ^ + + \text{CO} _ 3 ^ { 2 - } \rightleftharpoons \text{HCO} _ 3 ^ - \]
+   This relative shift reduces the saturation state of calcium carbonate (\( \text{CaCO} _ 3 \)), placing metabolic stress on calcifying organisms (mollusks, corals, plankton) whose structural shell formation relies on abundant \( \text{CO} _ 3 ^ { 2 - } \).
+
+3. **Extension to Regional and Freshwater Basins**:
+   While oceanic buffer systems (principally carbonate and borate) mitigate extreme pH shifts, smaller or localized bodies of water—such as lakes, rivers, and coastal estuaries—possess smaller volumetric thermal and chemical buffering capacities. In these regional aquatic systems, relative acidification can progress at higher localized rates, influenced by agricultural runoff, organic decomposition, and localized atmospheric fallout.
+
 [#theorem-thermodynamic-catastrophe-earth-absorber]
 [THEOREM]
 .Theorem: First-Principles Electrodynamic Mechanics of the Modern Thermodynamic Catastrophe
