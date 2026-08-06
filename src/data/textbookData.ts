@@ -103,25 +103,13 @@ export function getCompleteChapters(chapters: TextbookChapter[]): TextbookChapte
 
 export const INITIAL_TEXTBOOK: Textbook = {
   "id": "textbook-iris-number-system",
-  "title": "The Iris Number System",
+  "title": "The Iris Number System, Volume I: Fundamentals",
   "subtitle": "Fundamentals",
   "author": "Frédéric Blondel Custer",
   "version": "2.1.0",
   "lastUpdated": "2026-08-01",
   "description": "A Rigorous Constructive Foundation for Mathematics and Physics",
   "chapters": [
-    {
-      "id": "chap-the-iris-number-system-volume-i-fundamentals",
-      "title": "The Iris Number System, Volume I: Fundamentals",
-      "summary": ":subtitle: Fundamentals\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Constructive Foundation for Mathematics and Physics",
-      "sections": [
-        {
-          "id": "chap-the-iris-number-system-volume-i-fundamentals-sec-1",
-          "title": "The Iris Number System, Volume I: Fundamentals",
-          "contentAsciiDoc": ":subtitle: Fundamentals\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Constructive Foundation for Mathematics and Physics"
-        }
-      ]
-    },
     {
       "id": "chap-euclidean-geometry-as-a-tautological-system",
       "title": "Euclidean Geometry as a Tautological System",
@@ -471,25 +459,13 @@ export const INITIAL_TEXTBOOK: Textbook = {
 
 export const NUMBER_THEORY_TEXTBOOK: Textbook = {
   "id": "textbook-iris-number-theory",
-  "title": "The Iris Number System",
+  "title": "The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics",
   "subtitle": "Applications to Number Theory, Analysis, Probability Theory, Statistics",
   "author": "Frédéric Blondel Custer",
   "version": "2.1.0",
   "lastUpdated": "2026-08-01",
   "description": "A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics",
   "chapters": [
-    {
-      "id": "chap-the-iris-number-system-volume-ii-applications-to-number-theory-analysis-probability-theory-statistics",
-      "title": "The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics",
-      "summary": ":subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics",
-      "sections": [
-        {
-          "id": "chap-the-iris-number-system-volume-ii-applications-to-number-theory-analysis-probability-theory-statistics-sec-1",
-          "title": "The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics",
-          "contentAsciiDoc": ":subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics"
-        }
-      ]
-    },
     {
       "id": "chap-tautological-proofs-in-number-theory",
       "title": "Tautological Proofs in Number Theory",
@@ -748,25 +724,13 @@ export const NUMBER_THEORY_TEXTBOOK: Textbook = {
 
 export const GEOMETRY_ALGEBRA_TEXTBOOK: Textbook = {
   "id": "textbook-iris-geometry-algebra",
-  "title": "The Iris Number System",
+  "title": "The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics",
   "subtitle": "Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics",
   "author": "Frédéric Blondel Custer",
   "version": "2.1.0",
   "lastUpdated": "2026-08-01",
   "description": "A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System",
   "chapters": [
-    {
-      "id": "chap-the-iris-number-system-volume-iii-applications-to-geometry-algebra-representations-topology-lattices-categories-combinatorics",
-      "title": "The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics",
-      "summary": ":subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System",
-      "sections": [
-        {
-          "id": "chap-the-iris-number-system-volume-iii-applications-to-geometry-algebra-representations-topology-lattices-categories-combinatorics-sec-1",
-          "title": "The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics",
-          "contentAsciiDoc": ":subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
-        }
-      ]
-    },
     {
       "id": "chap-constructive-clifford-geometry-and-aperture-metrics",
       "title": "Constructive Clifford Geometry and Aperture Metrics",
@@ -1151,27 +1115,22 @@ export const GEOMETRY_ALGEBRA_TEXTBOOK: Textbook = {
 
 export const PHYSICS_CHEMISTRY_TEXTBOOK: Textbook = {
   "id": "textbook-iris-physics-chemistry-etc",
-  "title": "The Iris Number System",
-  "subtitle": "Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
+  "title": "The Iris Number System, Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding",
+  "subtitle": "Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding",
   "author": "Frédéric Blondel Custer",
   "version": "2.1.0",
   "lastUpdated": "2026-08-01",
-  "description": "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding",
+  "description": "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, and Time-Binding",
   "chapters": [
     {
-      "id": "chap-the-iris-number-system-volume-iv-applications-to-physics-chemistry-astronomy-engineering-communications-computing-time-binding",
-      "title": "The Iris Number System, Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
-      "summary": ":subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding",
+      "id": "chap-prelude-the-electromagnetic-field",
+      "title": "Prelude: The Electromagnetic Field",
+      "summary": "",
       "sections": [
         {
-          "id": "chap-the-iris-number-system-volume-iv-applications-to-physics-chemistry-astronomy-engineering-communications-computing-time-binding-sec-1",
-          "title": "The Iris Number System, Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
-          "contentAsciiDoc": ":subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding\n:author: Frédéric Blondel Custer\n:doctype: book\n:toc: left\n:toc-title: Table of Contents\n:stem: latexmath\n:sectnums!:\n\nA Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding"
-        },
-        {
-          "id": "sec-preface-the-universe-as-a-unified-electromagnetic-field-engine",
-          "title": "Preface: The Universe as a Unified Multivector Electromagnetic Field Engine",
-          "contentAsciiDoc": "== Preface: The Universe as a Unified Multivector Electromagnetic Field Engine\n\nTo visualize the physical universe as a single, vast, interconnected electromagnetic field engine is not merely a reasonable physical intuition; it is the precise, operational result derived from the Master Field Equation \\( D F = J \\) in the 6D Clifford algebra \\( Cl ( 4 , 1 , 1 ) \\).\n\nFor over a century, fundamental physics suffered from a severe conceptual fragmentation. Physical phenomena were artificially segregated into disconnected compartments: Maxwellian electrodynamics governed electric charges and magnetic vectors; Newtonian and relativistic mechanics governed gravitational mass; atomic physics postulated point-particle quanta; and astrophysics invented unobserved entities such as “dark matter” and “dark energy” to salvage failing gravitational models.\n\nVolume IV demonstrates that this compartmentalization is an artifact of inappropriate mathematical abstractions—specifically, the uncritical assumption of an uncountably infinite continuum populated by point entities of zero volume. When physical reality is formulated over the discrete spatial multiscale resolution grid \\( \\mathcal { G } _ N \\), all physical phenomena unify into the dynamics of a single, non-singular multivector field \\( F \\).\n\nIn this unified framework:\n\n1. **The Field as Primary Reality**: The universe consists of a finite or countably infinite number of finite physical entities—atoms, plasma filaments, stellar bodies, and galactic vortices—embedded within an unbounded, discrete three-dimensional spatial lattice. The total multivector field \\( F \\) encompasses vector electric fields \\( \\mathbf { E } \\), bivector magnetic induction \\( \\mathbf { B } \\), vector gravitational acceleration \\( \\mathbf { g } \\), and mechanical stress-energy tensors as orthogonal blade projections.\n2. **Elimination of Vacuum Nullity**: Space is not an empty, passive void, nor is it a curved continuum metric. Space is an active, structured multivector field medium. What traditional physics termed “empty space” or “vacuum” is the baseline, equilibrium state of the multivector field grid \\( \\mathcal { G } _ N \\). Electromagnetic wave packets propagate through this structured grid at finite speed \\( c \\), carrying localized field mass density \\( u = \\rho _ m c ^ 2 \\).\n3. **Plasma, Vorticity, and Cosmic Recirculation**: Matter is not composed of zero-dimensional point particles, but of localized, self-trapped multivector field knots and plasmoids. From subatomic ring-sheaths to stellar reactors, galactic disks, and cosmic filaments, physical structure is sustained by circulating electromagnetic and gravitational current densities \\( J \\). Bivector field tension \\( \\nabla \\times \\mathbf { B } \\) binds galactic disks naturally without ad hoc dark matter, while non-singular magnetoplasmoid kernels at galactic centers and collapsed stellar cores recirculate energy across discrete lattice cells.\n4. **Finite Attenuation and the Cosmic Floor**: Cosmic microwave radiation is the thermalized, steady-state background floor \\( T \\approx 2.725 \\text{ K} \\) generated by redshifted electromagnetic wave packets propagating over vast grid distances. Beyond the optical visibility horizon \\( d _ \\text{vis} = \\frac { c } { H _ 0 } \\approx 13.8 \\times 10 ^ 9 \\text{ light-years} \\), electromagnetic radiation attenuates into the background noise floor, defining an operational limit to optical observation while physical space and matter extend unbounded across discrete grid cells.\n\nThus, the universe is indeed a single, self-sustaining, steady-state electromagnetic and multivector field engine. Volume IV provides the mathematical proofs, engineering derivations, and physical applications that establish this unified field architecture."
+          "id": "sec-prelude-the-electromagnetic-field",
+          "title": "Prelude: The Electromagnetic Field",
+          "contentAsciiDoc": "== Prelude: The Electromagnetic Field\n\n_Starting today, picture the universe as_ the _electromagnetic field._\n\nMany an electrical engineer might already do so. They are justified. Visualizing the physical universe as a single, vast, interconnected electromagnetic field engine is not merely a reasonable physical intuition; it is the precise, operational result derived from the Master Field Equation \\( D F = J \\) in the 6D Clifford algebra \\( Cl ( 4 , 1 , 1 ) \).\n\nFor over a century, fundamental physics suffered from a severe conceptual fragmentation. Physical phenomena were artificially segregated into disconnected compartments: Maxwellian electrodynamics governed electric charges and magnetic vectors; Newtonian and relativistic mechanics governed gravitational mass; atomic physics postulated point-particle quanta; and astrophysics invented unobserved entities such as “dark matter” and “dark energy” to salvage failing gravitational models.\n\nVolume IV demonstrates that this compartmentalization is an artifact of inappropriate mathematical abstractions—specifically, the uncritical assumption of an uncountably infinite continuum populated by point entities of zero volume. When physical reality is formulated over the discrete spatial multiscale resolution grid \\( \\mathcal { G } _ N \\), all physical phenomena unify into the dynamics of a single, non-singular multivector field \\( F \\).\n\nIn this unified framework:\n\n1. **The Field as Primary Reality**: The universe consists of a finite or countably infinite number of finite physical entities—atoms, plasma filaments, stellar bodies, and galactic vortices—embedded within an unbounded, discrete three-dimensional spatial lattice. The total multivector field \\( F \\) encompasses vector electric fields \\( \\mathbf { E } \\), bivector magnetic induction \\( \\mathbf { B } \\), vector gravitational acceleration \\( \\mathbf { g } \\), and mechanical stress-energy tensors as orthogonal blade projections.\n2. **Elimination of Vacuum Nullity**: Space is not an empty, passive void, nor is it a curved continuum metric. Space is an active, structured multivector field medium. What traditional physics termed “empty space” or “vacuum” is the baseline, equilibrium state of the multivector field grid \\( \\mathcal { G } _ N \\). Electromagnetic wave packets propagate through this structured grid at finite speed \\( c \\), carrying localized field mass density \\( u = \\rho _ m c ^ 2 \\).\n3. **Plasma, Vorticity, and Cosmic Recirculation**: Matter is not composed of zero-dimensional point particles, but of localized, self-trapped multivector field knots and plasmoids. From subatomic ring-sheaths to stellar reactors, galactic disks, and cosmic filaments, physical structure is sustained by circulating electromagnetic and gravitational current densities \\( J \\). Bivector field tension \\( \\nabla \\times \\mathbf { B } \\) binds galactic disks naturally without ad hoc dark matter, while non-singular magnetoplasmoid kernels at galactic centers and collapsed stellar cores recirculate energy across discrete lattice cells.\n4. **Finite Attenuation and the Cosmic Floor**: Cosmic microwave radiation is the thermalized, steady-state background floor \\( T \\approx 2.725 \\text{ K} \\) generated by redshifted electromagnetic wave packets propagating over vast grid distances. Beyond the optical visibility horizon \\( d _ \\text{vis} = \\frac { c } { H _ 0 } \\approx 13.8 \\times 10 ^ 9 \\text{ light-years} \\), electromagnetic radiation attenuates into the background noise floor, defining an operational limit to optical observation while physical space and matter extend unbounded across discrete grid cells.\n\nThus, the universe is indeed a single, self-sustaining, steady-state electromagnetic and multivector field engine. Volume IV provides the mathematical proofs, engineering derivations, and physical applications that establish this unified field architecture."
         }
       ]
     },
@@ -1643,7 +1602,7 @@ export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEX
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
-  let adoc = `= ${textbook.title}: ${textbook.subtitle || "Fundamentals"}\n`;
+  let adoc = `= ${textbook.title}\n`;
   adoc += `:subtitle: ${textbook.subtitle || "Fundamentals"}\n`;
   adoc += `:author: ${textbook.author}\n`;
   adoc += `:doctype: book\n`;
@@ -1654,7 +1613,6 @@ export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   adoc += `${textbook.description}\n\n`;
 
   chapters.forEach((chap) => {
-    adoc += `= ${chap.title}\n\n`;
     if (chap.summary) {
       adoc += `${chap.summary}\n\n`;
     }

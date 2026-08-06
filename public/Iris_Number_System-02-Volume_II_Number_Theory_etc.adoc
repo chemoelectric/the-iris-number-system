@@ -9,8 +9,6 @@
 
 A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
 
-= Tautological Proofs in Number Theory
-
 In this chapter, classical conjectures and fundamental theorems of number theory and arithmetic analysis are established as exact tautological deductions strictly within the Counting-Iris framework, utilizing \( Cl ( 4 , 1 , 1 ) \) multivector parity conservation, bounded discrete rational partition grids \( \mathcal { G } _ N \), and Jaynesian Maximum Entropy (MaxEnt) priors.
 
 == Fundamental Theorems of Arithmetic and Number Theory
@@ -757,8 +755,6 @@ Because the algorithm relies on the sub-linear \( \pi _ { \mathcal { I } } ( x )
 | \( 82 \text { seconds } \quad ( \sim 1.37 \text { minutes } ) \)
 |===
 
-= Applications to Constructive Analysis
-
 In this chapter, fundamental concepts of mathematical analysis—including measure theory, spectral decomposition, and function spaces—are systematically established on finite rational partition grids \( \mathcal { G } _ N \) without appealing to non-constructive uncountably infinite continua.
 
 == Fundamental Theorems of Constructive Calculus
@@ -917,8 +913,6 @@ On discrete grid \( \mathcal { G } _ N \), the MSRA vernier derivative norm \( \
 . **Tautological Conclusion**: The discrete Sobolev norm \( \| f \| _ { H ^ 1 _ { \mathcal { I } } } = \| f \| _ { \mathcal { I } } + \| D _ { \mathcal { I } } f \| _ { \mathcal { I } } \) is well-defined and strictly finite for all discrete aperture fields on \( \mathcal { G } _ N \). \( \square \)
 ====
 
-= Applications to Probability Theory
-
 In this chapter, probability theory is strictly reformulated on finite operational measurement spaces, treating probabilities as objective Jaynesian Maximum Entropy states constrained by physical aperture measurements rather than unconstructive infinite measure spaces.
 
 == Cox's Consistency Theorem for Operational Inference
@@ -1004,8 +998,6 @@ Under unitary multivector gauge transformations in \( Cl ( 4 , 1 , 1 ) \), the t
 . **Tautological Conclusion**: Jaynesian information entropy is strictly conserved under gauge field evolutions in \( Cl ( 4 , 1 , 1 ) \). \( \square \)
 ====
 
-= Applications to Constructive Statistics
-
 In this chapter, statistical inference and hypothesis testing are reformulated as exact operational gauging procedures on finite discrete measurement data, establishing optimal parameter estimation and information criteria.
 
 == The Maximum Aperture Likelihood Estimation Theorem
@@ -1074,8 +1066,6 @@ where \( I _ { \mathcal { I } } ( \theta ) \) is the Fisher aperture information
 . **Tautological Conclusion**: No unbiased operational estimator on \( \mathcal { G } _ N \) can exceed the precision bound imposed by the Fisher aperture information norm. \( \square \)
 ====
 
-= Applications to Conventional Statistics
-
 In this chapter, classical methods of conventional statistics—such as hypothesis testing via \( p \)-values, confidence intervals, analysis of variance (ANOVA), and linear regression estimation—are rigorously mapped into exact operational gauge operations within the discrete Iris framework. We demonstrate how conventional statistical formulas arise as finite-aperture projections of \( Cl ( 4 , 1 , 1 ) \) multivector distributions under Jaynesian Maximum Entropy constraints, eliminating reliance on infinite continuum distributions while strictly preserving operational sampling bounds.
 
 == Operational Hypothesis Testing on Discrete Grids
@@ -1134,8 +1124,6 @@ Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite
 
 . **Tautological Conclusion**: The discrete OLS estimator uniquely minimizes aperture variance across all linear unbiased estimators on \( \mathcal { G } _ N \). \( \square \)
 ====
-
-= Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
