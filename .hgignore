@@ -1,0 +1,14 @@
+.*~
+.*\.orig
+
+^node_modules$
+^dist$
+
+^public/.*\.pdf
+
+^public/mpxerr\.tex$
+^public/.*\.(mps|o|ali)
+^public/.*_mod\.mod
+
+^public/bernstein_root_finder
+^public/nth_prime/(nth-prime|nth_prime)((-|_)demo)?
