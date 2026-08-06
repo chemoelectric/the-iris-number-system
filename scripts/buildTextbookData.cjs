@@ -6,37 +6,55 @@ function parseAdocFile(filePath, id, defaultTitle, defaultSubtitle, author, desc
     .replace(/=\s*\\downarrow/g, "= \\downarrow")
     .replace(/=\s*↓/g, "= ↓");
 
-  const chapterBlocks = adocContent.split(/^= /m);
+  const chapterBlocks = ("\n" + adocContent).split(/\n(?=== )/);
   const chapters = [];
+  const seenChapIds = new Set();
 
-  for (let i = 1; i < chapterBlocks.length; i++) {
-    const block = chapterBlocks[i];
+  for (let i = 0; i < chapterBlocks.length; i++) {
+    const block = chapterBlocks[i].trim();
+    if (!block.startsWith("==")) continue;
+
     const lines = block.split("\n");
-    const chapTitle = lines[0].trim();
-    
-    if (chapTitle.toLowerCase().includes("index of formal statements")) continue;
-    if (chapTitle.includes("The Iris Number System:")) continue; // Skip book title line if split matched header
-    
-    const chapId = "chap-" + chapTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    const sectionBlocks = ("\n" + lines.slice(1).join("\n")).split(/\n(?=={2,3} )/);
-    
+    const chapHeader = lines[0].replace(/^==\s*/, "").trim();
+    if (chapHeader.toLowerCase().includes("index of formal statements")) continue;
+
+    let chapId = "chap-" + chapHeader.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    let cCount = 1;
+    let rawChapId = chapId;
+    while (seenChapIds.has(chapId)) {
+      cCount++;
+      chapId = `${rawChapId}-${cCount}`;
+    }
+    seenChapIds.add(chapId);
+
+    const sectionBlocks = ("\n" + lines.slice(1).join("\n")).split(/\n(?==== )/);
     const sections = [];
+    const seenSecIds = new Set();
     let chapSummary = "";
-    
+
     sectionBlocks.forEach((secBlock) => {
-      const secLines = secBlock.trim().split("\n");
-      if (secLines[0].startsWith("==")) {
-        const secHeader = secLines[0].replace(/^={2,3}\s*/, "").trim();
-        const secId = "sec-" + secHeader.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      const trimmedSec = secBlock.trim();
+      if (trimmedSec.startsWith("===")) {
+        const secLines = trimmedSec.split("\n");
+        const secHeader = secLines[0].replace(/^===\s*/, "").trim();
+        let baseSecId = "sec-" + secHeader.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        let sCount = 1;
+        let rawSecId = baseSecId;
+        while (seenSecIds.has(baseSecId)) {
+          sCount++;
+          baseSecId = `${rawSecId}-${sCount}`;
+        }
+        seenSecIds.add(baseSecId);
+
         const secContent = secLines.join("\n").trim();
         sections.push({
-          id: secId,
+          id: baseSecId,
           title: secHeader,
           contentAsciiDoc: secContent
         });
       } else {
-        if (secBlock.trim()) {
-          chapSummary = secBlock.trim();
+        if (trimmedSec) {
+          chapSummary = trimmedSec;
         }
       }
     });
@@ -44,14 +62,14 @@ function parseAdocFile(filePath, id, defaultTitle, defaultSubtitle, author, desc
     if (sections.length === 0) {
       sections.push({
         id: chapId + "-sec-1",
-        title: chapTitle,
+        title: chapHeader,
         contentAsciiDoc: lines.slice(1).join("\n").trim()
       });
     }
 
     chapters.push({
       id: chapId,
-      title: chapTitle,
+      title: chapHeader,
       summary: chapSummary,
       sections: sections
     });

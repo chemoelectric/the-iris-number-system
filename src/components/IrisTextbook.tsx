@@ -219,10 +219,10 @@ export const IrisTextbook: React.FC<IrisTextbookProps> = ({ onOpenAeroSimulator 
                 No matching chapters or sections found.
               </div>
             ) : (
-              filteredChapters.map((chapter) => {
+              filteredChapters.map((chapter, cIdx) => {
                 const isChapterActive = chapter.id === selectedChapterId;
                 return (
-                  <div key={chapter.id} className="space-y-1">
+                  <div key={`${chapter.id}-${cIdx}`} className="space-y-1">
                     {/* Chapter Header (Unnumbered, Named Only) */}
                     <button
                       onClick={() => {
@@ -247,11 +247,11 @@ export const IrisTextbook: React.FC<IrisTextbookProps> = ({ onOpenAeroSimulator 
                     {/* Sections under active Chapter */}
                     {isChapterActive && (
                       <div className="ml-3 pl-3 space-y-1 py-1 bg-[#141414]">
-                        {chapter.sections.map((section) => {
+                        {chapter.sections.map((section, sIdx) => {
                           const isSectionActive = section.id === selectedSectionId;
                           return (
                             <button
-                              key={section.id}
+                              key={`${section.id}-${sIdx}`}
                               onClick={() => setSelectedSectionId(section.id)}
                               className={`w-full text-left px-2.5 py-1.5 text-xs font-medium transition flex items-center justify-between ${
                                 isSectionActive
