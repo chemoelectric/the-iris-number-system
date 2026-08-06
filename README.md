@@ -110,7 +110,11 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── Iris_Number_System-01-Volume_I_Fundamentals.adoc   # Volume I: Fundamentals (AsciiDoc)
 │   ├── Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc # Volume II: Applications to Number Theory (AsciiDoc)
 │   ├── Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc # Volume III: Geometry & Algebra (AsciiDoc)
-│   └── Iris_Number_System-04-Volume_IV_Physics_etc.adoc # Volume IV: Physics, Chemistry, Engineering (AsciiDoc)
+│   ├── Iris_Number_System-04-Volume_IV_Physics_etc.adoc # Volume IV: Physics, Chemistry, Engineering (AsciiDoc)
+│   ├── electron.mp              # MetaPost 3D depiction of the electron toroidal plasmoid
+│   ├── proton.mp                # MetaPost 3D depiction of the proton knotted tri-vortex core
+│   ├── neutron.mp               # MetaPost 3D depiction of the neutron composite neutral aperture
+│   └── bezclip.mp               # MetaPost illustration of s-power Bézier clipping
 ├── src/
 │   ├── components/               # React UI modules (Navbar, Textbook, Prover, Calculator, etc.)
 │   ├── data/
