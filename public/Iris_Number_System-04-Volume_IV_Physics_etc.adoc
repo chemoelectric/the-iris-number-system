@@ -1788,7 +1788,7 @@ Furthermore, bridging the 2,000-year gap backward from 2026 CE to 26 CE is far s
 \[ \mathcal { C } ( t ) = \mathcal { C } _ 0 e ^ { k t } \]
 Crucially, every derivative of an exponential function with respect to time is itself an exponential function:
 \[ \frac { d ^ n \mathcal { C } ( t ) } { d t ^ n } = k ^ n \mathcal { C } _ 0 e ^ { k t } \]
-Because the velocity, acceleration, and all higher-order derivatives of structural and conceptual divergence increase exponentially, the developmental gap between 2026 CE and 4026 CE is vastly greater than the gap between 26 CE and 2026 CE. A query transmitted in 2026 CE whose response arrives in 4026 CE will return to a society whose cognitive tools, mathematical paradigms, and physical apertures have undergone thousands of compounding exponential doubling periods. To the inhabitants of 4026 CE, an inquiry formulated with 2026 CE technology will appear as primitive, irrelevant, and operationally uninterpretable as a paleolithic stone arrangement.
+Because the velocity, acceleration, and all higher-order derivatives of structural divergence increase exponentially, the developmental gap between 2026 CE and 4026 CE is vastly greater than the gap between 26 CE and 2026 CE. A query transmitted in 2026 CE whose response arrives in 4026 CE will return to a society whose cognitive tools, mathematical paradigms, and physical apertures have undergone thousands of compounding exponential doubling periods. To the inhabitants of 4026 CE, an inquiry formulated with 2026 CE technology will appear as primitive, irrelevant, and operationally uninterpretable as a paleolithic stone arrangement.
 
 Because closed-loop communication requires sustained temporal continuity of the cognitive, operational, and institutional framework between the sender of a query and the recipient of its reply, multi-millennial light-travel delays render true conversational dialogue physically and semiotically impossible.
 
@@ -1838,23 +1838,23 @@ This proves that CETI initiatives are physically, interpretively, and temporally
 
 In addition to formal physical and information-theoretic calculations, popular culture and twentieth-century speculative literature have fostered widespread romantic illusions regarding interstellar contact. In famous works of speculative fiction—exemplified by Arthur C. Clarke’s 1953 novel *Childhood’s End*—humanity is depicted as progressing through developmental stages until it is welcomed into a broader extraterrestrial community, guided by benevolent cosmic elders (“Overlords” or pan-galactic federations) into a unified interstellar guild.
 
-While such stories serve as engaging literary allegories, they rest upon two fundamental mathematical and physical fallacies that collapse entirely under rigorous analysis in the Iris Number System.
+While such stories serve as engaging literary allegories, they rest upon two flaws that collapse entirely under rigorous analysis in the Iris Number System.
 
-==== The Fallacy of Linear Progression versus Exponential Time-Binding
+==== The Flaw of Linear Progression versus Exponential Time-Binding
 
-The primary conceptual flaw in speculative interstellar narratives is the unexamined assumption of a *linear* progression of technological and cognitive development. In these stories, civilizations originating at vastly different cosmic epochs are portrayed as meeting, conversing, or mentoring one another on roughly comparable conceptual levels, as if technological evolution were a modest scalar incline along which younger species eventually “catch up” to elder guardians.
+The flaw in speculative interstellar narratives is the assumption of a *linear* progression of technological development. In these stories, civilizations originating at vastly different cosmic epochs are portrayed as meeting, conversing, or mentoring one another on roughly comparable levels, as if technological evolution were a modest scalar incline along which younger species eventually “catch up” to elder guardians.
 
 In reality, as established by Korzybskian time-binding mechanics on discrete generational grid \( \mathcal { G } _ N \), technological knowledge accumulation does not follow a linear function \( \mathcal { K } ( t ) = \mathcal { K } _ 0 + \alpha t \). Because each generation inherits, recombines, and operates upon the total symbolic output of all preceding generations, knowledge expansion follows an *exponential* trajectory \( \mathcal { K } ( t ) = \mathcal { K } _ 0 e ^ { \alpha t } \) (or hyper-exponential geometric compounding).
 
 Consequently, if two technological civilizations are separated by even a modest cosmic interval—such as \( 10 ^ 4 \) to \( 10 ^ 6 \) years—they do not exist in a relationship of “advanced mentor” and “maturing pupil.” The older civilization's posture, postulate aperture, and operational multivector field control have diverged exponentially into an order of structural complexity that is completely incomprehensible and disjoint from the younger species. There is zero shared semantic aperture, zero mutual contextual overlap, and zero possibility of fraternal integration across exponential developmental gaps.
 
-==== The Fallacy of Superluminal Travel and the Misleading Designation of c
+==== The Flaw of Superluminal Travel and the Misleading Designation of c
 
-The second fatal flaw of speculative interstellar fiction is its reliance on superluminal travel or signaling—presuming that material vessels or messages can cross interstellar voids at velocities exceeding the physical speed limit \( c \).
+The flaw of speculative interstellar fiction is its reliance on superluminal travel or signaling—presuming that material vessels or messages can cross interstellar voids at velocities exceeding the physical speed limit \( c \).
 
-Here a crucial linguistic and historical clarification is mandatory. Designating \( c \) as “the speed of light” was the primary verbal error that misled Albert Einstein and twentieth-century conventional physics into treating \( c \) as a kinematic property of an optical medium or a local frame transformation. In truth, \( c = \frac { 1 } { \sqrt { \mu _ 0 \varepsilon _ 0 } } \) is not merely a light property; it is the universal invariant electromagnetic wave propagation speed limit on discrete spatial-temporal resolution grid \( \mathcal { G } _ N \).
+Hearing a crucial linguistic and historical clarification is mandatory. Designating \( c \) as “the speed of light” was the primary verbal error that misled Albert Einstein and twentieth-century conventional physics into treating \( c \) as a kinematic property of an optical medium or a local frame transformation. In truth, \( c = \frac { 1 } { \sqrt { \mu _ 0 \varepsilon _ 0 } } \) is not merely a light property; it is the universal invariant electromagnetic wave propagation speed limit on discrete spatial-temporal resolution grid \( \mathcal { G } _ N \).
 
-All physical interactions, field propagations, wave packet transitions, and material movements require finite duration and are strictly bounded by \( c \). There is no physical possibility of material transport or field communication exceeding \( c \). Concepts such as “warp drives,” “hyperspace jumps,” or “subspace relays” are unphysical fictions that violate the core conservation laws of the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \).
+All physical interactions, field propagations, wave packet transitions, and material movements require finite duration and are strictly bounded by \( c \). There is no physical possibility of material transport or field communication exceeding \( c \). Constructs such as “warp drives,” “hyperspace jumps,” or “subspace relays” are unphysical fictions that violate the core conservation laws of the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \).
 
 [#theorem-demolition-speculative-interstellar-fraternities]
 [THEOREM]
@@ -1862,7 +1862,7 @@ All physical interactions, field propagations, wave packet transitions, and mate
 ====
 Let two distinct technological civilizations \( A \) and \( B \) emerge at temporal coordinates \( t _ A \) and \( t _ B \) with developmental time-binding growth rates \( \alpha _ A , \alpha _ B > 0 \) on discrete grid \( \mathcal { G } _ N \). Let spatial separation distance be \( d > 0 \).
 
-1. **Exponential Semantic Divergence**: The ratio of cognitive postulate apertures \( \mathcal { A } _ A / \mathcal { A } _ B \) scales exponentially with temporal disparity \( \Delta t = | t _ A - t _ B | \):
+1. **Exponential Semantic Divergence**: The ratio of postulate apertures \( \mathcal { A } _ A / \mathcal { A } _ B \) scales exponentially with temporal disparity \( \Delta t = | t _ A - t _ B | \):
 \[ \frac { \mathcal { A } _ A ( t ) } { \mathcal { A } _ B ( t ) } \sim \exp \left( \alpha _ A t - \alpha _ B ( t - \Delta t ) \right) \to \infty \quad \text{as } \Delta t \to \infty \]
 yielding zero mutual semantic overlap \( I ( M _ A ; M _ B \mid S ) = 0 \).
 
