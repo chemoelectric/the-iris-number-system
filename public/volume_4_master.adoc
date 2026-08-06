@@ -2221,6 +2221,7 @@ To analyze the ongoing planetary crisis from first principles, one must first el
 
 3. **The Proper Designation: The Thermodynamic Catastrophe**:
    In the Iris Number System, the ongoing phenomenon is designated **the thermodynamic catastrophe**. This term accurately specifies both the physical domain (thermodynamics and electrodynamics) and the operational trajectory: a rapid, non-equilibrium shift where incoming shortwave solar Poynting flux continues unabated while outgoing longwave infrared Poynting flux is obstructed by inflated atmospheric dielectric impedance, forcing excess energy to accumulate catastrophically within the biosphere during a single human lifetime.
+   At its foundational level, **energy** is defined as the capacity to perform **work** (\( W = \int \mathbf { F } \cdot d \mathbf { r } \)), where *work* is simply the formal technical term for *moving things*—displacing physical mass across spatial distances against resistive forces. Therefore, the trapped Poynting flux directly translates into an enormous surplus budget of physical work: matter throughout the biosphere (air masses, ocean waters, cloud formations, and surface debris) is being pushed about more frequently, over greater distances, and with vastly increased mechanical force (\( \mathbf { F } = \frac { d \mathbf { p } } { d t } \)).
 
 === The Electrodynamic and Thermodynamic Mechanism of Thermal Energy Trapping
 
@@ -2251,8 +2252,8 @@ Unlike slow geological phase changes that unfolded over millions of years, the m
    * **Water-Vapor Dipole Amplification**: Elevated sea-surface temperature increases ocean evaporation, swelling the atmospheric density of \( \text{H} _ 2 \text{O} \) molecules. Because water vapor is the dominant atmospheric infrared dipole, this further inflates \( \varepsilon '' ( \omega ) \) and optical depth \( \tau _ \text{IR} \), forming a direct self-reinforcing energy trap.
    * **Methane Hydrate and Permafrost Dissociation**: Warming tundra lattices cause the thermal decomposition of subterranean methane clathrates, releasing concentrated \( \text{CH} _ 4 \) into the atmosphere and surging dielectric optical depth on human time scales.
 
-3. **Atmospheric Velocity and Storm Power Surges**:
-   The trapped thermal energy cannot remain uniformly distributed. Temperature gradients \( \nabla T \) drive violent fluid convection and pressure differentials in accordance with the Master Field Equation. Excess field energy is converted into turbulent kinetic energy \( \frac { 1 } { 2 } \rho v ^ 2 \), manifesting as intensified hurricane wave-packets, severe atmospheric rivers, prolonged drought regimes, and catastrophic weather volatility.
+3. **Physical Work Amplification and High-Force Atmospheric Displacement**:
+   Because energy represents the capacity to perform work—moving matter across space—this accumulated energy surplus acts as a massive mechanical driver. Temperature gradients \( \nabla T \) generate steep pressure differentials \( \nabla P \) in accordance with the Master Field Equation. Trapped Poynting flux is converted directly into physical work (\( W = \int \mathbf { F } \cdot d \mathbf { r } \)), pushing huge fluid masses (hurricanes, atmospheric rivers, ocean currents, and polar air fronts) with significantly greater force (\( \mathbf { F } = \frac { d \mathbf { p } } { d t } \)) and higher velocities (\( \mathbf { v } \)), manifesting as severe storm wave-packets and violent weather volatility.
 
 [#theorem-thermodynamic-catastrophe-earth-absorber]
 [THEOREM]
