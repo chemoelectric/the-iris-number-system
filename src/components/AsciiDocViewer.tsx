@@ -457,25 +457,61 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         continue;
       }
 
-      // H1 Header (e.g. = Title)
-      if (line.startsWith('= ')) {
-        const title = line.replace(/^=\s+/, '');
+      // H5 Header (e.g. ===== Sub-subsection Title)
+      if (line.startsWith('===== ')) {
+        const title = line.replace(/^=====\s+/, '');
         const currentAnchor = pendingAnchorId;
         pendingAnchorId = null;
         nodes.push(
-          <h1
+          <h5
             id={currentAnchor || undefined}
-            key={`h1-${i}`}
-            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight border-b border-slate-800 pb-3 mt-6 mb-4 font-sans"
+            key={`h5-${i}`}
+            className="text-sm sm:text-base font-semibold text-amber-300 mt-4 mb-2 font-sans"
           >
             {renderMathInline(title)}
-          </h1>
+          </h5>
         );
         i++;
         continue;
       }
 
-      // H2 Header (e.g. == Chapter/Section Title)
+      // H4 Header (e.g. ==== Subsection Title)
+      if (line.startsWith('==== ')) {
+        const title = line.replace(/^====\s+/, '');
+        const currentAnchor = pendingAnchorId;
+        pendingAnchorId = null;
+        nodes.push(
+          <h4
+            id={currentAnchor || undefined}
+            key={`h4-${i}`}
+            className="text-base sm:text-lg font-semibold text-sky-300 mt-5 mb-2.5 font-sans"
+          >
+            {renderMathInline(title)}
+          </h4>
+        );
+        i++;
+        continue;
+      }
+
+      // H3 Header (e.g. === Section Title)
+      if (line.startsWith('=== ')) {
+        const title = line.replace(/^===\s+/, '');
+        const currentAnchor = pendingAnchorId;
+        pendingAnchorId = null;
+        nodes.push(
+          <h3
+            id={currentAnchor || undefined}
+            key={`h3-${i}`}
+            className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight border-b border-slate-800/50 pb-1.5 mt-6 mb-3 font-sans"
+          >
+            {renderMathInline(title)}
+          </h3>
+        );
+        i++;
+        continue;
+      }
+
+      // H2 Header (e.g. == Chapter Title)
       if (line.startsWith('== ')) {
         const title = line.replace(/^==\s+/, '');
         const currentAnchor = pendingAnchorId;
@@ -493,19 +529,19 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         continue;
       }
 
-      // H3 Header (e.g. === Subsection Title)
-      if (line.startsWith('=== ')) {
-        const title = line.replace(/^===\s+/, '');
+      // H1 Header (e.g. = Title)
+      if (line.startsWith('= ')) {
+        const title = line.replace(/^=\s+/, '');
         const currentAnchor = pendingAnchorId;
         pendingAnchorId = null;
         nodes.push(
-          <h3
+          <h1
             id={currentAnchor || undefined}
-            key={`h3-${i}`}
-            className="text-lg font-semibold text-indigo-300 mt-6 mb-3 font-sans"
+            key={`h1-${i}`}
+            className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight border-b border-slate-800 pb-3 mt-6 mb-4 font-sans"
           >
             {renderMathInline(title)}
-          </h3>
+          </h1>
         );
         i++;
         continue;

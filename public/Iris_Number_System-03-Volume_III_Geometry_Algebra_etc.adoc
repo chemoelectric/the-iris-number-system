@@ -9,9 +9,12 @@
 
 A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
 
+[#chap-constructive-clifford-geometry-and-aperture-metrics]
+== Constructive Clifford Geometry and Aperture Metrics
+
 In this chapter, geometry is constructed strictly within the Iris number system and \( Cl ( 4 , 1 , 1 ) \) multivector space without appealing to uncountable geometric continua. 2D Euclidean Geometric Algebra \( Cl ( 2 , 0 ) \), 3D Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \), and 4D Homogeneous Projective Geometric Algebra \( Cl ( 3 , 0 , 1 ) \) are constructed directly as sub-algebras, along with metric spaces and conformal null-geometries on discrete rational partition grids \( \mathcal { G } _ N \).
 
-== Constructive 2D Euclidean Geometric Algebra Cl(2,0) and Planar Rotors
+=== Constructive 2D Euclidean Geometric Algebra Cl(2,0) and Planar Rotors
 
 This section establishes 2D Euclidean Geometric Algebra \( Cl ( 2 , 0 ) \) embedded directly as a sub-algebra of \( Cl ( 4 , 1 , 1 ) \) spanned by spatial basis vectors \( e _ 1 , e _ 2 \) with \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } _ { Cl } \) and \( e _ 1 e _ 2 = - e _ 2 e _ 1 \).
 
@@ -32,7 +35,7 @@ In 2D Euclidean Geometric Algebra \( Cl ( 2 , 0 ) \subset Cl ( 4 , 1 , 1 ) \), t
 Since \( v ^ 2 = ( x ^ 2 + y ^ 2 ) \mathbf { 1 } _ { Cl } \), length preservation holds strictly on rational grid steps. \( \square \)
 ====
 
-== Constructive 3D Euclidean Geometric Algebra Cl(3,0) and Spatial Quaternionic Rotations
+=== Constructive 3D Euclidean Geometric Algebra Cl(3,0) and Spatial Quaternionic Rotations
 
 This section constructs 3D Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \subset Cl ( 4 , 1 , 1 ) \) spanned by orthonormal basis vectors \( e _ 1 , e _ 2 , e _ 3 \) with \( e _ i e _ j + e _ j e _ i = 2 \delta _ { ij } \mathbf { 1 } _ { Cl } \).
 
@@ -53,7 +56,7 @@ In 3D Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \), the unit pseudoscalar \( I
 . **Spatial Rotation Action**: For any 3D vector \( v = x e _ 1 + y e _ 2 + z e _ 3 \), the rotor action \( ( v ' ) = R v \tilde { R } \) rotates \( v \) around axis unit bivector \( B \) by angle \( \theta \), preserving vector grade and length on grid \( \mathcal { G } _ N \). \( \square \)
 ====
 
-== Constructive 4D Homogeneous Geometric Algebra: Null and Ordinary-Magnitude Basis Formulations
+=== Constructive 4D Homogeneous Geometric Algebra: Null and Ordinary-Magnitude Basis Formulations
 
 This section establishes 4D Homogeneous Projective Geometric Algebra under dual basis representations within \( Cl ( 4 , 1 , 1 ) \): both with a degenerate null origin basis \( e _ 0 \) (\( e _ 0 ^ 2 = 0 \), Projective GA) and with an ordinary-magnitude basis \( e _ 4 \) (\( e _ 4 ^ 2 = \mathbf { 1 } _ { Cl } \), Euclidean 4D projective embedding).
 
@@ -78,7 +81,7 @@ This shifts spatial coordinates to \( ( x + t _ x ) e _ 1 + ( y + t _ y ) e _ 2 
 . **Equivalence and Motor Composition**: In both formulations, motor composition \( M = T R \) preserves grade structure and rational grid norms \( M \tilde { M } = \mathbf { 1 } _ { Cl } \), proving constructive equivalence of degenerate null and ordinary-magnitude 4D homogeneous geometric algebras. \( \square \)
 ====
 
-== Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics
+=== Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics
 
 This section establishes coordinate-free geometric algebra methods for statics, dynamics of solid and fluid media, and electrodynamics within \( Cl ( 4 , 1 , 1 ) \), demonstrating mathematical supremacy over coordinate-dependent tensor calculus.
 
@@ -161,7 +164,7 @@ Taking the geometric product \( D F = ( D \cdot F ) + ( D \wedge F ) \) and equa
 proving that static universal gravitation is derived as a direct static scalar-source corollary within the unified Master Field Equation framework.
 ====
 
-== Multivector Metric Spaces and Discrete Aperture Norms
+=== Multivector Metric Spaces and Discrete Aperture Norms
 
 In this section, distance metrics and aperture norms are defined on finite discrete grids \( \mathcal { G } _ N \), establishing constructive completeness without uncountable infinite limits.
 
@@ -180,7 +183,7 @@ The discrete grid space \( \mathcal { G } _ N \) endowed with the Iris multivect
 . **Finite Step Convergence**: The sequence becomes stationary at step \( K \), converging exactly to grid element \( x _ K \in \mathcal { G } _ N \). Hence, discrete completeness is an exact tautology. \( \square \)
 ====
 
-== Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)
+=== Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)
 
 This section establishes conformal geometry and spinor rotations using the conformal null vector basis \( e _ \infty = e _ + + e _ - \) and \( e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \) in \( Cl ( 4 , 1 , 1 ) \).
 
@@ -199,9 +202,12 @@ Every conformal transformation on discrete grid \( \mathcal { G } _ N \) is repr
 . **Tautological Invariance**: Conformal geometry is strictly isometric and invariant under Clifford rotor operations. \( \square \)
 ====
 
+[#chap-multivector-algebra-and-structural-tautologies]
+== Multivector Algebra and Structural Tautologies
+
 In this chapter, algebraic structures—including Clifford modules, blade ideals, constructive rational polynomial factorization, ring homomorphisms, and invariant multivector submanifolds—are formally proved within \( Cl ( 4 , 1 , 1 ) \).
 
-== Clifford Module Structure and Blade Ideal Decompositions
+=== Clifford Module Structure and Blade Ideal Decompositions
 
 This section proves the exact direct sum decomposition of \( Cl ( 4 , 1 , 1 ) \) into orthogonal grade-projected blade ideals.
 
@@ -220,7 +226,7 @@ The 64-dimensional Clifford algebra \( Cl ( 4 , 1 , 1 ) \) over the rational gri
 . **Direct Sum Tautology**: The linear independence of blade generators forces \( Cl ( 4 , 1 , 1 ) = \mathcal { J } _ 0 \oplus \mathcal { J } _ 1 \oplus \dots \oplus \mathcal { J } _ 6 \). \( \square \)
 ====
 
-== Fundamental Theorem of Constructive Rational Algebra
+=== Fundamental Theorem of Constructive Rational Algebra
 
 [#theorem-fundamental-theorem-rational-algebra]
 [THEOREM]
@@ -237,7 +243,7 @@ Every non-constant monic polynomial \( P ( z ) = \sum _ { k = 0 } ^ m a _ k z ^ 
 . **Polynomial Division**: Dividing \( P ( z ) \) by \( ( z - \lambda _ 1 ) \) yields quotient polynomial \( Q ( z ) \) of degree \( m - 1 \). Inductive reduction terminates in exactly \( m \) finite steps. \( \square \)
 ====
 
-== Ring Homomorphisms and Multiplicative Invariants
+=== Ring Homomorphisms and Multiplicative Invariants
 
 [#theorem-iris-ring-homomorphism]
 [THEOREM]
@@ -254,7 +260,7 @@ The Main Scale Projection operator \( ( \downarrow ) : Cl ( 4 , 1 , 1 ) \to \mat
 . **Identity Mapping**: \( ( \downarrow ) ( \mathbf { 1 } _ { Cl } ) = 1 \). Hence \( ( \downarrow ) \) is a ring homomorphism. \( \square \)
 ====
 
-== Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding
+=== Constructive Polynomial Factorization, Real Root Isolation, and Vernier Root Finding
 
 This section addresses constructive polynomial factorization, exact real root isolation, and numerical real root finding on discrete grid \( \mathcal { G } _ N \), providing foundational algebraic tools for font curve intersection, ray-casting, and outline synthesis.
 
@@ -325,7 +331,7 @@ terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \se
    - Evaluating contour coordinates at \( t ^ \ast = 0.5 \): \( y ( 0.5 ) = 200 \). The horizontal ray intersects the font contour exactly at parameter \( t ^ \ast = 0.5 \), demonstrating zero-error root isolation and refinement.
 ====
 
-== Recursive Bernstein Derivative-Crossing Real Root Isolation and ITP Refinement Theorem
+=== Recursive Bernstein Derivative-Crossing Real Root Isolation and ITP Refinement Theorem
 
 This section presents the recursive derivative-crossing root isolation algorithm in the Bernstein basis. The algorithm addresses real root finding for polynomial curves—specifically Bézier curves where root multiplicities are ignored in favor of isolating monotonic branches defined by critical points and inflection points.
 
@@ -926,7 +932,7 @@ The Interpolate, Truncate, Project (ITP) root-finding algorithm—which achieves
 
 * **Oliveira, I. F. D., & Takahashi, R. H. C. (2021).** "An Enhancement of the Bisection Method Average Performance Preserving Minmax Optimality." *ACM Transactions on Mathematical Software*, 47(1), Article 5, pp. 1–24. link:https://doi.org/10.1145/3423597[DOI: 10.1145/3423597].
 
-== Optimal Real Root Isolation Across Serial and Parallel Architectures and Numerical Representations
+=== Optimal Real Root Isolation Across Serial and Parallel Architectures and Numerical Representations
 
 This section establishes a comprehensive architectural and numerical classification for real root isolation of square-free polynomials \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) on discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \), analyzing the optimal algorithms, convergence characteristics, numerical stability, and hardware execution efficiency across six fundamental paradigms: Serial vs. Parallel execution, combined respectively with Exact Rational, Fixed-Point, and Floating-Point arithmetic systems.
 
@@ -1016,7 +1022,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) be a square-free polynomial
    - Root is isolated at \( x ^ \ast = 0.5 \) with zero vector pipeline stalls, achieving maximum throughput on modern parallel hardware.
 ====
 
-== Global Simultaneous Polynomial Root-Finding and Vector Fixed-Point Iteration Theorem
+=== Global Simultaneous Polynomial Root-Finding and Vector Fixed-Point Iteration Theorem
 
 Beyond single-root isolation and interval subdivision, polynomial root finding can be formulated as a coupled physical/electrostatic field system where all \( m \) roots are evaluated simultaneously as fixed points of a multi-dimensional vector mapping \( \mathbf { \Phi } ( \mathbf { z } ) = \mathbf { z } \). This section establishes the theoretical framework, convergence dynamics, matrix eigenvalue connections, and fixed-point stability directives for simultaneous global polynomial root finding within the Iris number system.
 
@@ -1112,7 +1118,7 @@ To prevent numerical stagnation, division-by-zero singularities, and precision l
    - All three roots \( z = 1 , 2 , 3 \) are identified simultaneously in 3 vector fixed-point iterations.
 ====
 
-== Information-Theoretic Shannon Channel Capacity for Optimal Polynomial Root Isolation Theorem
+=== Information-Theoretic Shannon Channel Capacity for Optimal Polynomial Root Isolation Theorem
 
 This section establishes the information-theoretic foundation of polynomial root isolation and refinement by formulating root location queries as an information transmission channel governed by Shannon's channel capacity theorem.
 
@@ -1172,7 +1178,7 @@ To prevent zero-information evaluation loops near quantization noise floors, the
    This proves that 32-bit root resolution is achievable in a single parallel vector evaluation step when operating at maximum channel capacity.
 ====
 
-== Accelerated Higher-Order Newton-Raphson and BFGS Quasi-Newton Vector Fixed-Point Iteration Theorem
+=== Accelerated Higher-Order Newton-Raphson and BFGS Quasi-Newton Vector Fixed-Point Iteration Theorem
 
 While standard Newton-Raphson iteration provides quadratic convergence \( e _ { k + 1 } \le C e _ k ^ 2 \) for simple roots, higher-order modifications and multivariate quasi-Newton methods dramatically accelerate convergence and eliminate explicit second-derivative evaluation costs. This section establishes higher-order scalar root-finding algorithms (Halley and Householder) and the multivariate Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton update (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970]) as contractive fixed-point vector mappings within the Iris number system and discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \).
 
@@ -1256,9 +1262,12 @@ The Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton algorithm and its
 * **Shanno, D. F. (1970).** "Conditioning of quasi-Newton methods for function minimization." *Mathematics of Computation*, 24(111), 647–656. link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[DOI: 10.1090/S0025-5718-1970-0274029-X].
 * **Shanno, D. F., & Kettler, P. C. (1970).** "Optimal conditioning of quasi-Newton methods." *Mathematics of Computation*, 24(111), 657–664. link:https://doi.org/10.1090/S0025-5718-1970-0274030-6[DOI: 10.1090/S0025-5718-1970-0274030-6].
 
+[#chap-geometric-algebraic-polynomial-curve-intersections-and-s-power-b-zier-clipping]
+== Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
+
 In this chapter, the traditional dichotomy between algebra (polynomial equations and root finding) and geometry (curves, projections, and fat-line enclosures) is unified within the Iris number system. Building upon the seminal work of Thomas W. Sederberg (Sederberg & Nishita, 1990) on Bézier clipping and fat-line enclosures, and Javier Sánchez-Reyes (1997, 2000) on the symmetric \( s \)-power basis representation for polynomial curves, polynomial root finding is rendered equivalent to geometric fat-line clipping, and geometric clipping is executed via exact quadratic algebraic solutions.
 
-== Symmetric s-Power Basis and Geometric Polynomial Representation
+=== Symmetric s-Power Basis and Geometric Polynomial Representation
 
 This section constructs the symmetric \( s \)-power basis (Sánchez-Reyes, 1997) for parametric polynomial curves on discrete rational grids \( \mathcal { G } _ N \), establishing a direct correspondence between algebraic polynomial coefficients and geometric curve skeletons.
 
@@ -1283,7 +1292,7 @@ Setting \( P _ 1 ^ { \Delta } = 2 P _ 1 - P _ 0 - P _ 2 \), the representation i
 . **Vanishing Deviation**: If \( P _ 1 ^ { \Delta } = \mathbf { 0 } \), then \( P _ 1 = \frac { 1 } { 2 } ( P _ 0 + P _ 2 ) \), reducing \( P ( t ) \) to the affine linear segment \( ( 1 - t ) P _ 0 + t P _ 2 \). Thus algebra and geometry coincide. \( \square \)
 ====
 
-== Skeleton Affine Projection and Optimal Fat-Line Bounding
+=== Skeleton Affine Projection and Optimal Fat-Line Bounding
 
 This section establishes coordinate transformations mapping curve skeletons to standard orientation and derives the optimal parallel fat-line enclosure in the \( s \)-power basis.
 
@@ -1308,7 +1317,7 @@ Under this projection, \( P _ 0 ' = ( 0 , 0 ) \) and \( P _ 2 ' = ( 1 , 0 ) \).
 . **Optimal Bound Value**: Evaluating at \( t = 1 / 2 \) gives \( y ' ( 1 / 2 ) = \left ( 1 - \frac { 1 } { 2 } \right ) \frac { 1 } { 2 } d _ y = \frac { d _ y } { 4 } \). Since \( ( 1 - t ) t \ge 0 \) for all \( t \in [ 0 , 1 ] \), the y-coordinate is bounded strictly between \( 0 \) and \( d _ y / 4 \). Adding numerical padding \( \epsilon _ { \text { pad } } \) ensures strict containment on finite rational grid \( \mathcal { G } _ N \). \( \square \)
 ====
 
-== Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans
+=== Algebraic Intersection via Quadratic Boundary Crossings and Clipping Plans
 
 This section formulates the exact quadratic solution for fat-line boundary crossings, interval reparameterization, and clipping plan classification.
 
@@ -1423,7 +1432,7 @@ Expanding \( ( 1 - t ) t { Q _ { 1 , y } ' } ^ { \Delta } = ( t - t ^ 2 ) { Q _ 
    - Solved in a single matrix inversion step without iteration, guaranteeing termination and exactness on rational grid \( \mathcal { G } _ N \).
 ====
 
-== Trivial Degree Elevation and Geometric Piecewise Degree Reduction
+=== Trivial Degree Elevation and Geometric Piecewise Degree Reduction
 
 This section establishes the algebraic simplicity of degree elevation in the symmetric \( s \)-power basis and formulates geometric degree reduction, constructing a piecewise lower-degree polynomial bounded by quadratic error convergence.
 
@@ -1523,7 +1532,7 @@ Under subdivision into \( K \) sub-intervals, the parameter rescaling \( t \maps
    - Partitioning the CFF cubic curve at parameters \( t \in \{ 0 , 0 . 2 5 , 0 . 5 , 0 . 7 5 , 1 . 0 \} \) into 4 sub-arcs yields a piecewise quadratic contour with maximum geometric error \( E _ 4 = \frac { 6 . 8 0 4 } { 1 6 } \approx 0 . 4 2 5 < 0 . 5 \), directly suitable for fast fat-line Bézier clipping and curve intersection in font rendering engines.
 ====
 
-== Primary References and Citations
+=== Primary References and Citations
 
 The geometric-algebraic polynomial curve intersection and Bézier clipping formulations in this chapter build upon and extend the seminal publications of Thomas W. Sederberg and Javier Sánchez-Reyes:
 
@@ -1531,7 +1540,7 @@ The geometric-algebraic polynomial curve intersection and Bézier clipping formu
 * **Sánchez-Reyes, J. (1997).** "The symmetric s-power basis for polynomial curves and surfaces." *Computer-Aided Design*, 29(6), 441–451.
 * **Sánchez-Reyes, J. (2000).** "Applications of the s-power basis to polynomial curves." *Computer-Aided Design*, 32(14), 879–886.
 
-== MetaPost Implementation of Geometric-Algebraic Curve Intersections
+=== MetaPost Implementation of Geometric-Algebraic Curve Intersections
 
 The MetaPost language provides an elegant environment for rendering geometric curves and computing intersections programmatically. Below is complete MetaPost code illustrating quadratic Bézier curve generation, skeleton projection, fat-line bounds, and exact intersection extraction.
 
@@ -1592,9 +1601,12 @@ endfig;
 end.
 ----
 
+[#chap-multivector-representation-theory-and-character-orthogonality]
+== Multivector Representation Theory and Character Orthogonality
+
 In this chapter, representation theory is constructed for finite matrix and multivector groups acting on Clifford modules in \( Cl ( 4 , 1 , 1 ) \). Complete reducibility, character orthogonality, and Schur's Lemma are formally proved.
 
-== Discrete Multivector Spinor Modules and Irreducible Representations
+=== Discrete Multivector Spinor Modules and Irreducible Representations
 
 [#theorem-iris-irreducible-representation-decomposition]
 [THEOREM]
@@ -1611,7 +1623,7 @@ Every finite group representation \( \rho : G \to \text { Aut } ( Cl ( 4 , 1 , 1
 . **Complete Reducibility**: Since \( V \) has finite dimension 64, finite inductive decomposition terminates in at most 64 steps yielding irreducible components. \( \square \)
 ====
 
-== Character Orthogonality and Schur's Lemma in Cl(4,1,1)
+=== Character Orthogonality and Schur's Lemma in Cl(4,1,1)
 
 [#theorem-character-orthogonality]
 [THEOREM]
@@ -1630,9 +1642,12 @@ Let \( \chi _ i , \chi _ j \) be the multivector characters of two irreducible r
 . **Character Trace Sum**: Taking the scalar trace of the intertwining projection operator directly yields \( \delta _ { ij } \cdot \mathbf { 1 } _ { Cl } \). \( \square \)
 ====
 
+[#chap-constructive-discrete-topology-and-aperture-coverings]
+== Constructive Discrete Topology and Aperture Coverings
+
 In this chapter, topology is developed without infinite point sets. Open sets, neighborhood bases, Vernier compactness, and discrete fixed-point contractive theorems are established on finite rational partition grids \( \mathcal { G } _ N \).
 
-== Discrete Aperture Topologies and Neighborhood Bases
+=== Discrete Aperture Topologies and Neighborhood Bases
 
 [#theorem-discrete-topology-closure]
 [THEOREM]
@@ -1649,7 +1664,7 @@ On any finite discrete grid \( \mathcal { G } _ N \), the collection of aperture
 . **Topology Axioms**: Empty set \( \emptyset \) and full grid \( \mathcal { G } _ N \) are open; arbitrary unions and intersections of subsets are finite and remain in \( \tau _ { \mathcal { I } } \). \( \square \)
 ====
 
-== Vernier Compactness and Finite Covering Theorems
+=== Vernier Compactness and Finite Covering Theorems
 
 [#theorem-vernier-compactness]
 [THEOREM]
@@ -1666,7 +1681,7 @@ Every subset \( K \subseteq \mathcal { G } _ N \) on a finite discrete partition
 . **Exact Finite Subcover**: The collection \( \{ U _ { \alpha _ 1 } , \dots , U _ { \alpha _ {|K|} } \} \) is a finite subcover of \( K \) of size at most \( | K | \). Thus compactness holds constructively without requiring infinite choice axioms. \( \square \)
 ====
 
-== Discrete Vernier Fixed-Point Contractive Invariance
+=== Discrete Vernier Fixed-Point Contractive Invariance
 
 [#theorem-vernier-fixed-point]
 [THEOREM]
@@ -1683,7 +1698,7 @@ Let \( f : \mathcal { G } _ N \to \mathcal { G } _ N \) be a contractive mapping
 . **Exact Fixed Point Invariance**: Therefore, \( d _ { \mathcal { I } } ( x _ { M + 1 } , x _ M ) = 0 \), proving \( x _ { M + 1 } = x _ M = x ^ \ast \). Uniqueness follows directly from contraction inequality. \( \square \)
 ====
 
-== Practical Multivector Field Topology for Plasmas, Media, and Engineering Dynamics
+=== Practical Multivector Field Topology for Plasmas, Media, and Engineering Dynamics
 
 Traditional point-set topology abstracts away physical geometry and engineering constraints by invoking uncountably infinite point sets. In contrast, practical topology for engineers, natural scientists, and computational mechanics provides exact discrete invariants governing field line knotting, plasma magnetic helicity, fluid vorticity dynamics, and dislocation defect classification in condensed matter and solid media obeying Newton's force-acceleration law \( \mathbf { F } = m \mathbf { a } = m \ddot { \mathbf { x } } \).
 
@@ -1756,9 +1771,12 @@ When evaluating topological invariants, helicity sums, and defect indices on dis
    - The topological winding index \( n = 1 \) confirms the existence of a single, stable plasma vortex line core, demonstrating exact topological classification without continuum limit assumptions.
 ====
 
+[#chap-order-theory-and-discrete-iris-lattices]
+== Order Theory and Discrete Iris Lattices
+
 In this chapter, order theory and lattice structures are established on finite rational grids \( \mathcal { G } _ N \), defining join (\( \vee \)), meet (\( \wedge \)), and Boolean sublattices.
 
-== Aperture Partial Orders and Lattice Homomorphisms
+=== Aperture Partial Orders and Lattice Homomorphisms
 
 [#theorem-iris-lattice-isomorphism]
 [THEOREM]
@@ -1775,7 +1793,7 @@ The finite grid \( \mathcal { G } _ N \) ordered by component-wise rational magn
 . **Distributivity and Boundedness**: Distributivity \( x \wedge ( y \vee z ) = ( x \wedge y ) \vee ( x \wedge z ) \) holds component-wise. Top element \( \mathbf { 1 } _ { \mathcal { G } } = ( 1 , 1 , 1 ) \) and bottom element \( \mathbf { 0 } _ { \mathcal { G } } = ( 0 , 0 , 0 ) \) bound all elements. \( \square \)
 ====
 
-== Boolean Sublattices and Modular Multivector Structure
+=== Boolean Sublattices and Modular Multivector Structure
 
 [#theorem-boolean-sublattice-modularity]
 [THEOREM]
@@ -1792,7 +1810,7 @@ The set of idempotents in \( Cl ( 4 , 1 , 1 ) \) satisfying \( P ^ 2 = P \) form
 . **Modularity Law**: For idempotents with \( P \le R \), \( P \vee ( Q \wedge R ) = ( P \vee Q ) \wedge R \) holds algebraically by expanding multivector products. \( \square \)
 ====
 
-== Birkhoff Representation Theorem for Finite Distributive Lattices
+=== Birkhoff Representation Theorem for Finite Distributive Lattices
 
 [#theorem-birkhoff-representation]
 [THEOREM]
@@ -1833,7 +1851,7 @@ The fundamental representation theorem establishing the natural isomorphism betw
 * **Davey, B. A., & Priestley, H. A. (2002).** *Introduction to Lattices and Order* (2nd ed.). Cambridge University Press.
 * **Grätzer, G. (2011).** *Lattice Theory: Foundation*. Basel: Springer Science & Media.
 
-== Frankl Join-Irreducible Density Theorem on Finite Grid Lattices
+=== Frankl Join-Irreducible Density Theorem on Finite Grid Lattices
 
 [#theorem-frankl-lattice-density]
 [THEOREM]
@@ -1869,7 +1887,7 @@ The lattice-theoretic density formulation on finite lattices and union-closed se
 * **Chase, Z., & Lovett, S. (2022).** "The union-closed conjecture holds for small family sizes and optimizes at \( ( 3 - \sqrt { 5 } ) / 2 \)." *arXiv preprint arXiv:2211.11689*.
 * **Pebody, L. (2022).** "Extension of Gilmer's lower bound for the union-closed sets conjecture." *arXiv preprint arXiv:2211.13139*.
 
-== Dedekind-Jordan Chain Condition for Finite Modular Lattices
+=== Dedekind-Jordan Chain Condition for Finite Modular Lattices
 
 [#theorem-dedekind-jordan-chain]
 [THEOREM]
@@ -1899,7 +1917,7 @@ The Jordan-Hölder and Dedekind chain condition theorems for modular and semimod
 * **Dedekind, R. (1897).** "Ueber Gruppen, deren sämtliche Theiler Normaltheiler sind." *Mathematische Annalen*, 48(4), pp. 548–561.
 * **Birkhoff, G. (1940).** *Lattice Theory*. American Mathematical Society Colloquium Publications, Vol. 25. Providence, RI: AMS.
 
-== Fundamental Structure Theorem of Finite Boolean Lattices
+=== Fundamental Structure Theorem of Finite Boolean Lattices
 
 [#theorem-boolean-power-set-isomorphism]
 [THEOREM]
@@ -1925,7 +1943,7 @@ The algebraic foundation of finite Boolean algebras and power set representation
 * **Boole, G. (1854).** *An Investigation of the Laws of Thought*. London: Walton and Maberly.
 * **Stone, M. H. (1936).** "The theory of representations for Boolean algebras." *Transactions of the American Mathematical Society*, 40(1), pp. 37–111.
 
-== Dilworth Antichain Partition Theorem for Finite Posets
+=== Dilworth Antichain Partition Theorem for Finite Posets
 
 [#theorem-dilworth-poset-decomposition]
 [THEOREM]
@@ -1950,7 +1968,7 @@ The min-max chain-antichain duality theorem for finite posets was proven by:
 
 * **Dilworth, R. P. (1950).** "A decomposition theorem for partially ordered sets." *Annals of Mathematics*, 51(1), pp. 161–166.
 
-== Sperner Maximum Antichain Theorem on Discrete Boolean Grids
+=== Sperner Maximum Antichain Theorem on Discrete Boolean Grids
 
 [#theorem-sperner-antichain-bound]
 [THEOREM]
@@ -1979,9 +1997,12 @@ The extremal antichain theorem on finite Boolean lattices was established by:
 
 * **Sperner, E. (1928).** "Ein Satz über Untermengen einer endlichen Menge." *Mathematische Zeitschrift*, 27(1), pp. 544–548.
 
+[#chap-constructive-categories-and-multivector-functors]
+== Constructive Categories and Multivector Functors
+
 In this chapter, category theory is constructed over finite rational aperture spaces, multivector functors, Yoneda aperture embedding, and monoidal coherence.
 
-== The Category of Finite Iris Aperture Spaces
+=== The Category of Finite Iris Aperture Spaces
 
 [#theorem-iris-category-duality]
 [THEOREM]
@@ -1998,7 +2019,7 @@ The category \( \mathbf { Iris } _ N \) whose objects are finite discrete grids 
 . **Functoriality Tautology**: \( T ( \text { id } ) = \text { id } \) and \( T ( g \circ f ) = T ( f ) \circ T ( g ) \), establishing exact category duality. \( \square \)
 ====
 
-== Yoneda Aperture Embedding and Natural Transformations
+=== Yoneda Aperture Embedding and Natural Transformations
 
 [#theorem-yoneda-aperture-embedding]
 [THEOREM]
@@ -2015,7 +2036,7 @@ For any object \( A \in \mathbf { Iris } _ N \) and any contravariant functor \(
 . **Bijection Verification**: Naturality diagrams commute strictly for all finite grid morphisms, establishing \( \Phi \circ \Psi = \text { id } \) and \( \Psi \circ \Phi = \text { id } \). \( \square \)
 ====
 
-== Monoidal Structures and Multivector Functorial Mapping
+=== Monoidal Structures and Multivector Functorial Mapping
 
 [#theorem-monoidal-functor-coherence]
 [THEOREM]
@@ -2032,7 +2053,7 @@ The tensor product of multivector spaces \( \mathcal { G } _ M \otimes \mathcal 
 . **Coherence Diagram Satisfaction**: Since blade associativity is exact in Clifford algebra \( Cl ( 4 , 1 , 1 ) \), Mac Lane's pentagon diagram commutes strictly without approximation. \( \square \)
 ====
 
-== Freyd Adjoint Functor Theorem for Finite Categories
+=== Freyd Adjoint Functor Theorem for Finite Categories
 
 [#theorem-freyd-finite-adjoint-functor]
 [THEOREM]
@@ -2058,9 +2079,12 @@ The adjoint functor theorem establishing necessary and sufficient conditions for
 * **Freyd, P. (1964).** *Abelian Categories: An Introduction to the Theory of Infinite Abelian Groups*. Harper & Row.
 * **Mac Lane, S. (1971).** *Categories for the Working Mathematician*. Graduate Texts in Mathematics, Vol. 5. Springer-Verlag.
 
+[#chap-constructive-discrete-combinatorics-and-partition-tautologies]
+== Constructive Discrete Combinatorics and Partition Tautologies
+
 In this chapter, discrete combinatorics, multivector permutations, and partition enumeration identities are derived on finite rational grids \( \mathcal { G } _ N \).
 
-== Multivector Permutations and Finite Grid Enumeration
+=== Multivector Permutations and Finite Grid Enumeration
 
 [#theorem-multivector-permutation-invariance]
 [THEOREM]
@@ -2077,7 +2101,7 @@ The symmetric permutation group \( S _ M \) acting on an \( M \)-element discret
 . **Signature Invariance Tautology**: The total sign factor equals \( ( - 1 ) ^ k = \text { sgn } ( \sigma ) \), proving exact permutation invariance. \( \square \)
 ====
 
-== Constructive Partition Identities and Generating Tautologies
+=== Constructive Partition Identities and Generating Tautologies
 
 [#theorem-constructive-partition-tautology]
 [THEOREM]
@@ -2096,7 +2120,7 @@ The number of discrete grid partitions \( p _ N ( k ) \) of an integer measureme
 . **Tautological Equivalence**: Each solution corresponds uniquely to a partition of \( k \) into parts of size at most \( N \). The identity holds strictly on finite degree polynomials modulo \( q ^ { M + 1 } \). \( \square \)
 ====
 
-== Hall's Marriage Theorem and Distinct Representatives
+=== Hall's Marriage Theorem and Distinct Representatives
 
 [#theorem-halls-marriage]
 [THEOREM]
@@ -2122,7 +2146,7 @@ The system of distinct representatives theorem on finite bipartite systems was e
 
 * **Hall, P. (1935).** "On Representatives of Subsets." *Journal of the London Mathematical Society*, 10(1), pp. 26–30.
 
-== Erdős-Szekeres Monotone Subsequence Theorem
+=== Erdős-Szekeres Monotone Subsequence Theorem
 
 [#theorem-erdos-szekeres-monotone]
 [THEOREM]
@@ -2150,7 +2174,7 @@ The extremal monotone subsequence theorem was proven by:
 
 * **Erdős, P., & Szekeres, G. (1935).** "A combinatorial problem in geometry." *Compositio Mathematica*, 2, pp. 463–470.
 
-== Ramsey's Finite Graph Clique-Independent Set Theorem
+=== Ramsey's Finite Graph Clique-Independent Set Theorem
 
 [#theorem-ramsey-finite-graph]
 [THEOREM]
@@ -2363,9 +2387,12 @@ where ties in minimax aperture value are resolved strictly by discrete lexicogra
    - Optimal move decision: \( a ^ \ast = a _ 2 \) with exact minimax aperture value \( V ( s _ 0 , 2 ) = +1.75 \cdot \mathbf { 1 } _ { Cl } \).
 ====
 
+[#chap-index]
+== Index of Formal Statements
+
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-== Index of Formal Statements
+=== Index of Formal Statements
 
 This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 
