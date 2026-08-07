@@ -7,6 +7,7 @@ import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
 import std.parallelism : parallel;
+import core.bitop : bsr;
 
 __gshared ushort[30030] phi6Table;
 __gshared bool phi6Initialized = false;
@@ -140,20 +141,21 @@ ulong piSmall(ulong w, const(ulong)[] primes) {
         ulong maxP = primes[len - 1];
         if (w >= maxP) {
             count = cast(ulong) len;
-        } else {
-            size_t low = 0;
-            size_t high = len;
-            while (low < high) {
-                size_t mid = low + high;
-                mid = mid / 2;
-                ulong pMid = primes[mid];
-                if (pMid <= w) {
-                    low = mid + 1;
-                } else {
-                    high = mid;
+        } else if (w >= primes[0]) {
+            size_t msb = cast(size_t) bsr(len);
+            size_t mask = cast(size_t) 1 << msb;
+            size_t idx = 0;
+            while (mask > 0) {
+                size_t candidate = idx | mask;
+                if (candidate < len) {
+                    ulong pCand = primes[candidate];
+                    if (pCand <= w) {
+                        idx = candidate;
+                    }
                 }
+                mask = mask >> 1;
             }
-            count = cast(ulong) low;
+            count = cast(ulong) (idx + 1);
         }
     }
     return count;
