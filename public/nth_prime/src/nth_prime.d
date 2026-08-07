@@ -3,14 +3,17 @@ module nth_prime;
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
 import core.stdc.string : memset;
+import core.bitop : bsr;
 import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
 import std.parallelism : parallel;
-import core.bitop : bsr;
 
 __gshared ushort[30030] phi6Table;
 __gshared bool phi6Initialized = false;
+
+__gshared uint[] smallPiTable;
+__gshared uint[] sampledIndex;
 
 void initPhi6Table() {
     if (!phi6Initialized) {
@@ -40,7 +43,7 @@ ulong phi6(ulong x) {
     return ans;
 }
 
-ulong phiSmallA(ulong x, ulong a, const(ulong)[] primes) {
+ulong phiSmallA(ulong x, ulong a, const(uint)[] primes) {
     ulong res = 0;
     if (a == 0) {
         res = x;
@@ -51,13 +54,13 @@ ulong phiSmallA(ulong x, ulong a, const(ulong)[] primes) {
         if (a == 6) {
             res = phi6(x);
         } else {
-            ulong pa = primes[a - 1];
+            ulong pa = cast(ulong) primes[cast(size_t) (a - 1)];
             ulong t1 = phiSmallA(x, a - 1, primes);
             ulong t2 = phiSmallA(x / pa, a - 1, primes);
             res = t1 - t2;
         }
     } else {
-        ulong pa = primes[a - 1];
+        ulong pa = cast(ulong) primes[cast(size_t) (a - 1)];
         ulong t1 = phiSmallA(x, a - 1, primes);
         ulong t2 = phiSmallA(x / pa, a - 1, primes);
         res = t1 - t2;
@@ -82,7 +85,7 @@ ulong estimateInitialX(ulong n) {
     return x0;
 }
 
-ulong[] generateBasePrimes(ulong limit) {
+uint[] generateBasePrimes(ulong limit) {
     size_t memSize = cast(size_t) limit;
     memSize = memSize + 1;
     ubyte* sieve = cast(ubyte*) malloc(memSize);
@@ -117,14 +120,14 @@ ulong[] generateBasePrimes(ulong limit) {
         i = i + 1;
     }
 
-    ulong[] primes = new ulong[](count);
+    uint[] primes = new uint[](count);
     size_t pIdx = 0;
     i = 2;
     while (i <= limit) {
         size_t iIdx = cast(size_t) i;
         ubyte isPrime = *(sieve + iIdx);
         if (isPrime == 1) {
-            primes[pIdx] = i;
+            primes[pIdx] = cast(uint) i;
             pIdx = pIdx + 1;
         }
         i = i + 1;
@@ -134,34 +137,72 @@ ulong[] generateBasePrimes(ulong limit) {
     return primes;
 }
 
-ulong piSmall(ulong w, const(ulong)[] primes) {
+void initLookupTables(const(uint)[] primes, ulong maxBase) {
+    ulong tableLimit = 200000UL;
+    if (tableLimit > maxBase) {
+        tableLimit = maxBase;
+    }
+    smallPiTable = new uint[](cast(size_t) (tableLimit + 1));
+    ulong pIdx = 0;
+    ulong pCount = 0;
+    size_t i = 0;
+    while (i <= tableLimit) {
+        while (pIdx < primes.length && primes[pIdx] <= i) {
+            pCount = pCount + 1;
+            pIdx = pIdx + 1;
+        }
+        smallPiTable[i] = cast(uint) pCount;
+        i = i + 1;
+    }
+
+    size_t sampleCount = cast(size_t) ((maxBase >> 7) + 2);
+    sampledIndex = new uint[](sampleCount);
+    size_t sIdx = 0;
+    size_t prIdx = 0;
+    while (sIdx < sampleCount) {
+        ulong boundVal = cast(ulong) (sIdx << 7);
+        while (prIdx < primes.length && primes[prIdx] <= boundVal) {
+            prIdx = prIdx + 1;
+        }
+        sampledIndex[sIdx] = cast(uint) prIdx;
+        sIdx = sIdx + 1;
+    }
+}
+
+ulong piSmall(ulong w, const(uint)[] primes) {
     ulong count = 0;
-    size_t len = primes.length;
-    if (len > 0) {
-        ulong maxP = primes[len - 1];
-        if (w >= maxP) {
-            count = cast(ulong) len;
-        } else if (w >= primes[0]) {
-            size_t msb = cast(size_t) bsr(len);
-            size_t mask = cast(size_t) 1 << msb;
-            size_t idx = 0;
-            while (mask > 0) {
-                size_t candidate = idx | mask;
-                if (candidate < len) {
-                    ulong pCand = primes[candidate];
-                    if (pCand <= w) {
-                        idx = candidate;
+    if (w <= 200000UL && smallPiTable.length > cast(size_t) w) {
+        count = cast(ulong) smallPiTable[cast(size_t) w];
+    } else {
+        size_t len = primes.length;
+        if (len == 0) {
+            count = 0;
+        } else {
+            ulong maxP = cast(ulong) primes[len - 1];
+            if (w >= maxP) {
+                count = cast(ulong) len;
+            } else if (w >= cast(ulong) primes[0]) {
+                size_t msb = cast(size_t) bsr(len);
+                size_t mask = cast(size_t) 1 << msb;
+                size_t idx = 0;
+                while (mask > 0) {
+                    size_t candidate = idx | mask;
+                    if (candidate < len) {
+                        ulong pCand = cast(ulong) primes[candidate];
+                        if (pCand <= w) {
+                            idx = candidate;
+                        }
                     }
+                    mask = mask >> 1;
                 }
-                mask = mask >> 1;
+                count = cast(ulong) (idx + 1);
             }
-            count = cast(ulong) (idx + 1);
         }
     }
     return count;
 }
 
-ulong phiRec(ulong x, ulong a, const(ulong)[] primes,
+ulong phiRec(ulong x, ulong a, const(uint)[] primes,
              ref ulong[ulong] memo) {
     ulong result = 0;
     if (x == 0) {
@@ -169,7 +210,7 @@ ulong phiRec(ulong x, ulong a, const(ulong)[] primes,
     } else if (a <= 12) {
         result = phiSmallA(x, a, primes);
     } else {
-        ulong pa = primes[a - 1];
+        ulong pa = cast(ulong) primes[cast(size_t) (a - 1)];
         if (x < pa) {
             result = 1;
         } else if (x < pa * pa) {
@@ -197,24 +238,18 @@ ulong phiRec(ulong x, ulong a, const(ulong)[] primes,
 }
 
 ulong computeP2(ulong x, ulong a, ulong b,
-                const(ulong)[] primes) {
+                const(uint)[] primes) {
     ulong sum = 0;
     if (a < b) {
         size_t count = cast(size_t) (b - a);
         ulong[] partialTerms = new ulong[](count);
-        ulong maxBase = primes[primes.length - 1];
 
         foreach (idx, ref termRef; parallel(partialTerms)) {
             ulong i = cast(ulong) (a + 1 + idx);
             size_t pIdx = cast(size_t) (i - 1);
-            ulong pi = primes[pIdx];
+            ulong pi = cast(ulong) primes[pIdx];
             ulong w = x / pi;
-            ulong piW = 0;
-            if (w <= maxBase) {
-                piW = piSmall(w, primes);
-            } else {
-                piW = primeCountSublinear(w, primes);
-            }
+            ulong piW = piSmall(w, primes);
             ulong term = piW + 1;
             term = term - i;
             termRef = term;
@@ -230,94 +265,44 @@ ulong computeP2(ulong x, ulong a, ulong b,
     return sum;
 }
 
-ulong computeP3(ulong x, ulong a, ulong c,
-                const(ulong)[] primes) {
-    ulong sum = 0;
-    if (a < c) {
-        size_t count = cast(size_t) (c - a);
-        ulong[] partialTerms = new ulong[](count);
-
-        foreach (idx, ref termRef; parallel(partialTerms)) {
-            ulong i = cast(ulong) (a + 1 + idx);
-            size_t pIdx = cast(size_t) (i - 1);
-            ulong pi = primes[pIdx];
-            ulong wi = x / pi;
-
-            double fWi = cast(double) wi;
-            double sqWi = sqrt(fWi);
-            ulong limit = cast(ulong) sqWi;
-
-            ulong bi = piSmall(limit, primes);
-            ulong subSum = 0;
-
-            ulong j = i;
-            while (j <= bi) {
-                size_t jIdx = cast(size_t) (j - 1);
-                ulong pj = primes[jIdx];
-                ulong v = wi / pj;
-                ulong piV = piSmall(v, primes);
-                ulong term = piV + 1;
-                term = term - j;
-                subSum = subSum + term;
-                j = j + 1;
-            }
-            termRef = subSum;
-        }
-
-        size_t k = 0;
-        while (k < count) {
-            ulong tVal = partialTerms[k];
-            sum = sum + tVal;
-            k = k + 1;
-        }
-    }
-    return sum;
-}
-
-ulong primeCountLehmer(ulong x, const(ulong)[] primes) {
+ulong primeCountMeissel(ulong x, const(uint)[] primes) {
     ulong count = 0;
     if (x < 2) {
         count = 0;
     } else {
         double fx = cast(double) x;
-        double fourthRoot = sqrt(sqrt(fx));
-        ulong u = cast(ulong) fourthRoot;
-
         double cubeRoot = cbrt(fx);
         ulong y = cast(ulong) cubeRoot;
 
         double squareRoot = sqrt(fx);
         ulong z = cast(ulong) squareRoot;
 
-        ulong a = piSmall(u, primes);
-        ulong c = piSmall(y, primes);
+        ulong a = piSmall(y, primes);
         ulong b = piSmall(z, primes);
 
         ulong[ulong] memo;
         ulong phiVal = phiRec(x, a, primes, memo);
         ulong p2Val = computeP2(x, a, b, primes);
-        ulong p3Val = computeP3(x, a, c, primes);
 
         ulong sum1 = phiVal + a;
         sum1 = sum1 - 1;
-        ulong diff1 = sum1 - p2Val;
-        count = diff1 - p3Val;
+        count = sum1 - p2Val;
     }
     return count;
 }
 
-ulong primeCountSublinear(ulong x, const(ulong)[] primes) {
+ulong primeCountSublinear(ulong x, const(uint)[] primes) {
     ulong count = 0;
     if (x <= 1000) {
         count = piSmall(x, primes);
     } else {
-        count = primeCountLehmer(x, primes);
+        count = primeCountMeissel(x, primes);
     }
     return count;
 }
 
 ulong countPrimesInSegment(ulong lowVal, ulong highVal,
-                           const(ulong)[] primes) {
+                           const(uint)[] primes) {
     if (lowVal > highVal) {
         return 0;
     }
@@ -334,7 +319,7 @@ ulong countPrimesInSegment(ulong lowVal, ulong highVal,
 
     size_t pIdx = 0;
     while (pIdx < numSmall) {
-        ulong p = primes[pIdx];
+        ulong p = cast(ulong) primes[pIdx];
         ulong rem = lowVal % p;
         ulong startVal = 0;
         if (rem != 0) {
@@ -366,7 +351,7 @@ ulong countPrimesInSegment(ulong lowVal, ulong highVal,
 }
 
 ulong sieveSegmentFindNthPrime(ulong lowVal, ulong highVal,
-                               const(ulong)[] primes,
+                               const(uint)[] primes,
                                ulong targetN, ulong piLow) {
     ulong result = 0;
     ulong diff = highVal - lowVal;
@@ -383,7 +368,7 @@ ulong sieveSegmentFindNthPrime(ulong lowVal, ulong highVal,
 
     size_t pIdx = 0;
     while (pIdx < numSmall) {
-        ulong p = primes[pIdx];
+        ulong p = cast(ulong) primes[pIdx];
         ulong rem = lowVal % p;
         ulong startVal = 0;
         if (rem != 0) {
@@ -424,7 +409,7 @@ ulong sieveSegmentFindNthPrime(ulong lowVal, ulong highVal,
 }
 
 ulong computePiLow(ulong x0, ulong pi0, ulong rangeLow,
-                   const(ulong)[] primes) {
+                   const(uint)[] primes) {
     ulong piLow = 0;
     if (rangeLow >= x0) {
         ulong segCnt = countPrimesInSegment(x0 + 1, rangeLow, primes);
@@ -460,22 +445,16 @@ ulong getNthPrime(ulong n) {
         ulong x0 = estimateInitialX(n);
 
         double fx0 = cast(double) x0;
-        double sqrtX0 = sqrt(fx0);
-        ulong baseLimit = cast(ulong) sqrtX0;
+        double cbt = cbrt(fx0);
+        double tVal = cbt * cbt;
+        ulong baseLimit = cast(ulong) tVal;
         baseLimit = baseLimit + 100000;
-        if (n >= 1000000000UL) {
-            double cbt = cbrt(fx0);
-            double tVal = cbt * cbt;
-            ulong tLimit = cast(ulong) tVal;
-            if (tLimit > 35000000UL) {
-                tLimit = 35000000UL;
-            }
-            if (baseLimit < tLimit) {
-                baseLimit = tLimit;
-            }
+        if (baseLimit < 10000UL) {
+            baseLimit = 10000UL;
         }
 
-        ulong[] basePrimes = generateBasePrimes(baseLimit);
+        uint[] basePrimes = generateBasePrimes(baseLimit);
+        initLookupTables(basePrimes, baseLimit);
 
         ulong pi0 = primeCountSublinear(x0, basePrimes);
 
