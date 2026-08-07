@@ -9,7 +9,11 @@ FCFLAGS = -std=f2023 $(OPTSFLAGS) $(WARNFLAGS)
 CC = gcc
 CFLAGS = -std=gnu23 $(OPTSFLAGS) $(WARNFLAGS)
 
+DC = gdc
+DFLAGS = $(OPTSFLAGS) $(WARNFLAGS)
+
 TARGET = nth-prime
+D_TARGET = nth-prime-d
 
 OPTSFLAGS =
 OPTSFLAGS += -march=native -mtune=native
@@ -46,7 +50,12 @@ OBJS =
 OBJS += $(FCSOURCES:%=$(OBJ_DIR)/%.o)
 OBJS += $(CSOURCES:%=$(OBJ_DIR)/%.o)
 
-.PHONY: all clean
+.PHONY: all clean d
+
+$(D_TARGET): $(SRC_DIR)/nth_prime.d
+	$(DC) $(DFLAGS) -o $(@) $(<)
+
+d: $(D_TARGET)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.f90
 	$(FC) $(FCFLAGS) -J$(OBJ_DIR) -I$(OBJ_DIR) -c $(<) -o $(@)
@@ -91,4 +100,4 @@ $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)
 
 clean::
-	-rm -R -f $(OBJ_DIR) $(TARGET)
+	-rm -R -f $(OBJ_DIR) $(TARGET) $(D_TARGET)
