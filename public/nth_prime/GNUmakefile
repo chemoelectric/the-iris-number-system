@@ -14,6 +14,7 @@ DFLAGS = $(DOPTSFLAGS) $(WARNFLAGS)
 
 TARGET = nth-prime
 D_TARGET = nth-prime-d
+D64_TARGET = nth-prime-64-d
 D128_TARGET = nth-prime-128-d
 
 OPTSFLAGS =
@@ -58,15 +59,19 @@ OBJS =
 OBJS += $(FCSOURCES:%=$(OBJ_DIR)/%.o)
 OBJS += $(CSOURCES:%=$(OBJ_DIR)/%.o)
 
-.PHONY: all clean d d128
+.PHONY: all clean d d64 d128
 
 $(D_TARGET): $(SRC_DIR)/nth_prime.d
+	$(DC) $(DFLAGS) -o $(@) $(<)
+
+$(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -o $(@) $(<)
 
 $(D128_TARGET): $(SRC_DIR)/nth_prime_128.d
 	$(DC) $(DFLAGS) -o $(@) $(<)
 
 d: $(D_TARGET)
+d64: $(D64_TARGET)
 d128: $(D128_TARGET)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.f90
@@ -112,4 +117,4 @@ $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)
 
 clean::
-	-rm -R -f $(OBJ_DIR) $(TARGET) $(D_TARGET) $(D128_TARGET)
+	-rm -R -f $(OBJ_DIR) $(TARGET) $(D_TARGET) $(D64_TARGET) $(D128_TARGET)
