@@ -378,7 +378,7 @@ u128 getNthPrime(u128 n) {
         u128 currPi = primeCountLehmer(currX, basePrimes);
         long diffN = cast(long) n - cast(long) currPi;
 
-        while (diffN > 20000 || diffN < -20000) {
+        while (diffN > 2000 || diffN < -2000) {
             double fVal = cast(double) currX;
             double logVal = log(fVal);
             double adj = cast(double) diffN * logVal;
@@ -390,7 +390,21 @@ u128 getNthPrime(u128 n) {
             diffN = cast(long) n - cast(long) currPi;
         }
 
-        u128 window = 200000;
+        u128 absDiff = 0;
+        if (diffN < 0) {
+            absDiff = cast(u128) (-diffN);
+        } else {
+            absDiff = cast(u128) diffN;
+        }
+
+        double fCurr = cast(double) currX;
+        double logC = log(fCurr);
+        double estW = cast(double) absDiff * logC * 2.5;
+        u128 window = cast(u128) estW + 50000;
+        if (window < 200000) {
+            window = 200000;
+        }
+
         if (diffN >= 0) {
             u128 lowVal = currX + 1;
             u128 highVal = currX + window;
@@ -406,6 +420,19 @@ u128 getNthPrime(u128 n) {
         }
     }
     return pn;
+}
+
+u128 parseDigits(string str) {
+    u128 val = 0;
+    size_t i = 0;
+    while (i < str.length) {
+        char c = str[i];
+        if (c >= '0' && c <= '9') {
+            val = val * 10 + (cast(u128) (c - '0'));
+        }
+        i = i + 1;
+    }
+    return val;
 }
 
 u128 parsePowersSmall(string str) {
@@ -449,7 +476,7 @@ u128 parseSpecialInput(string str) {
     if (val > 0) {
         return val;
     }
-    return to!u128(str);
+    return parseDigits(str);
 }
 
 u128 parseInputString(string inputStr) {
