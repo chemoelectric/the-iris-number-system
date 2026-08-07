@@ -91,20 +91,16 @@ void buildBitSieve(ulong limit) {
     }
 }
 
-ulong piFast(ulong w) {
+ulong piFast(ulong w, const(uint)[] primes) {
     ulong count = 0;
     if (w < 2) {
         count = 0;
     } else if (w == 2) {
         count = 1;
-    } else {
-        ulong effW = w;
-        if (effW > sieveMax) {
-            effW = sieveMax;
-        }
-        ulong wOdd = effW;
-        if (effW % 2 == 0) {
-            wOdd = effW - 1;
+    } else if (w <= sieveMax) {
+        ulong wOdd = w;
+        if (w % 2 == 0) {
+            wOdd = w - 1;
         }
         ulong k = (wOdd - 1) / 2;
         size_t b = cast(size_t) (k / 64);
@@ -120,12 +116,37 @@ ulong piFast(ulong w) {
         ulong wBits = isSubprimeBit[b] & mask;
         ulong remCnt = cast(ulong) popcnt(wBits);
         count = baseCnt + remCnt;
+    } else {
+        size_t len = primes.length;
+        if (len == 0) {
+            count = 0;
+        } else {
+            ulong maxP = cast(ulong) primes[len - 1];
+            if (w >= maxP) {
+                count = cast(ulong) len;
+            } else if (w >= cast(ulong) primes[0]) {
+                size_t msb = cast(size_t) bsr(len);
+                size_t mask = cast(size_t) 1 << msb;
+                size_t idx = 0;
+                while (mask > 0) {
+                    size_t candidate = idx | mask;
+                    if (candidate < len) {
+                        ulong pCand = cast(ulong) primes[candidate];
+                        if (pCand <= w) {
+                            idx = candidate;
+                        }
+                    }
+                    mask = mask >> 1;
+                }
+                count = cast(ulong) (idx + 1);
+            }
+        }
     }
     return count;
 }
 
 uint[] collectPrimesUpTo(ulong limit) {
-    ulong numPrimes = piFast(limit);
+    ulong numPrimes = piFast(limit, null);
     uint[] primes = new uint[](cast(size_t) numPrimes);
     if (numPrimes > 0) {
         primes[0] = 2;
@@ -200,7 +221,7 @@ ulong phiRec(ulong x, ulong a, const(uint)[] primes,
         if (x < pa) {
             result = 1;
         } else if (x < pa * pa) {
-            ulong piX = piFast(x);
+            ulong piX = piFast(x, primes);
             result = piX + 1;
             result = result - a;
         } else {
@@ -223,11 +244,11 @@ ulong phiRec(ulong x, ulong a, const(uint)[] primes,
     return result;
 }
 
-ulong computeP2(ulong x, ulong a, ulong b,
+ulong computeP2(ulong x, ulong a, ulong c,
                 const(uint)[] primes) {
     ulong sum = 0;
-    if (a < b) {
-        size_t count = cast(size_t) (b - a);
+    if (a < c) {
+        size_t count = cast(size_t) (c - a);
         ulong[] partialTerms = new ulong[](count);
 
         foreach (idx, ref termRef; parallel(partialTerms)) {
@@ -235,10 +256,14 @@ ulong computeP2(ulong x, ulong a, ulong b,
             size_t pIdx = cast(size_t) (i - 1);
             ulong pi = cast(ulong) primes[pIdx];
             ulong w = x / pi;
-            ulong piW = piFast(w);
-            ulong term = piW + 1;
-            term = term - i;
-            termRef = term;
+            ulong piW = piFast(w, primes);
+            if (piW >= i) {
+                ulong term = piW + 1;
+                term = term - i;
+                termRef = term;
+            } else {
+                termRef = 0;
+            }
         }
 
         size_t k = 0;
@@ -251,38 +276,77 @@ ulong computeP2(ulong x, ulong a, ulong b,
     return sum;
 }
 
-ulong primeCountMeissel(ulong x, const(uint)[] primes) {
+ulong computeP3(ulong x, ulong a, ulong b,
+                const(uint)[] primes) {
+    ulong sum3 = 0;
+    if (a < b) {
+        size_t countI = cast(size_t) (b - a);
+        ulong[] partialP3 = new ulong[](countI);
+
+        foreach (idx, ref termRef; parallel(partialP3)) {
+            ulong i = cast(ulong) (a + 1 + idx);
+            size_t pIdxI = cast(size_t) (i - 1);
+            ulong pi = cast(ulong) primes[pIdxI];
+
+            double fVal = cast(double) (x / pi);
+            ulong sqVal = cast(ulong) sqrt(fVal);
+            ulong limitJ = piFast(sqVal, primes);
+
+            ulong sumI = 0;
+            ulong j = i;
+            while (j <= limitJ) {
+                size_t pIdxJ = cast(size_t) (j - 1);
+                ulong pj = cast(ulong) primes[pIdxJ];
+                ulong w = x / (pi * pj);
+                ulong piW = piFast(w, primes);
+                if (piW >= j) {
+                    ulong term = piW + 1;
+                    term = term - j;
+                    sumI = sumI + term;
+                }
+                j = j + 1;
+            }
+            termRef = sumI;
+        }
+
+        size_t k = 0;
+        while (k < countI) {
+            ulong tVal = partialP3[k];
+            sum3 = sum3 + tVal;
+            k = k + 1;
+        }
+    }
+    return sum3;
+}
+
+ulong primeCountLehmer(ulong x, const(uint)[] primes) {
     ulong count = 0;
     if (x < 2) {
         count = 0;
     } else {
         double fx = cast(double) x;
+        double fourthRoot = sqrt(sqrt(fx));
+        ulong pA = cast(ulong) fourthRoot;
+
         double cubeRoot = cbrt(fx);
-        ulong y = cast(ulong) cubeRoot;
+        ulong pB = cast(ulong) cubeRoot;
 
         double squareRoot = sqrt(fx);
-        ulong z = cast(ulong) squareRoot;
+        ulong pC = cast(ulong) squareRoot;
 
-        ulong a = piFast(y);
-        ulong b = piFast(z);
+        ulong a = piFast(pA, primes);
+        ulong b = piFast(pB, primes);
+        ulong c = piFast(pC, primes);
 
         ulong[ulong] memo;
         ulong phiVal = phiRec(x, a, primes, memo);
-        ulong p2Val = computeP2(x, a, b, primes);
+        ulong p2Val = computeP2(x, a, c, primes);
+        ulong p3Val = computeP3(x, a, b, primes);
 
         ulong sum1 = phiVal + a;
         sum1 = sum1 - 1;
-        count = sum1 - p2Val;
-    }
-    return count;
-}
-
-ulong primeCountSublinear(ulong x, const(uint)[] primes) {
-    ulong count = 0;
-    if (x <= 1000) {
-        count = piFast(x);
-    } else {
-        count = primeCountMeissel(x, primes);
+        sum1 = sum1 - p2Val;
+        count = sum1 - p3Val;
     }
     return count;
 }
@@ -301,7 +365,7 @@ ulong countPrimesInSegment(ulong lowVal, ulong highVal,
     double rHigh = cast(double) highVal;
     double sqHigh = sqrt(rHigh);
     ulong maxP = cast(ulong) sqHigh;
-    ulong numSmall = piFast(maxP);
+    ulong numSmall = piFast(maxP, primes);
 
     size_t pIdx = 0;
     while (pIdx < numSmall) {
@@ -350,7 +414,7 @@ ulong sieveSegmentFindNthPrime(ulong lowVal, ulong highVal,
     double rHigh = cast(double) highVal;
     double sqHigh = sqrt(rHigh);
     ulong maxP = cast(ulong) sqHigh;
-    ulong numSmall = piFast(maxP);
+    ulong numSmall = piFast(maxP, primes);
 
     size_t pIdx = 0;
     while (pIdx < numSmall) {
@@ -394,19 +458,6 @@ ulong sieveSegmentFindNthPrime(ulong lowVal, ulong highVal,
     return result;
 }
 
-ulong computePiLow(ulong x0, ulong pi0, ulong rangeLow,
-                   const(uint)[] primes) {
-    ulong piLow = 0;
-    if (rangeLow >= x0) {
-        ulong segCnt = countPrimesInSegment(x0 + 1, rangeLow, primes);
-        piLow = pi0 + segCnt;
-    } else {
-        ulong segCnt = countPrimesInSegment(rangeLow + 1, x0, primes);
-        piLow = pi0 - segCnt;
-    }
-    return piLow;
-}
-
 ulong getSmallNthPrime(ulong n) {
     ulong val = 0;
     if (n == 1) {
@@ -431,21 +482,19 @@ ulong getNthPrime(ulong n) {
         ulong currX = estimateInitialX(n);
 
         double fx = cast(double) currX;
-        double cbt = cbrt(fx);
-        double tVal = cbt * cbt;
-        ulong sieveLimit = cast(ulong) tVal;
-        sieveLimit = sieveLimit + 200000;
-        if (sieveLimit < 200000UL) {
-            sieveLimit = 200000UL;
+        double sqX = sqrt(fx);
+        ulong zVal = cast(ulong) sqX;
+
+        ulong sieveLimit = zVal * 4;
+        if (sieveLimit < 20000000UL) {
+            sieveLimit = 20000000UL;
         }
 
         buildBitSieve(sieveLimit);
 
-        double sqX = sqrt(fx);
-        ulong zVal = cast(ulong) sqX;
         uint[] basePrimes = collectPrimesUpTo(zVal + 1000);
 
-        ulong currPi = primeCountMeissel(currX, basePrimes);
+        ulong currPi = primeCountLehmer(currX, basePrimes);
         long diffN = cast(long) n - cast(long) currPi;
 
         while (diffN > 20000 || diffN < -20000) {
@@ -456,7 +505,7 @@ ulong getNthPrime(ulong n) {
             long xNew = cast(long) currX + step;
             currX = cast(ulong) xNew;
 
-            currPi = primeCountMeissel(currX, basePrimes);
+            currPi = primeCountLehmer(currX, basePrimes);
             diffN = cast(long) n - cast(long) currPi;
         }
 
