@@ -1,14 +1,11 @@
-.*~
-.*\.orig
+.*~$
+.*\.orig$
 
-^node_modules$
-^dist$
+^(dist|node_modules)$
 
-^public/.*\.pdf
+.*\.(gcda|gcno)$
+^.*/coverage(\.info)?$
 
-^public/mpxerr\.tex$
-^public/.*\.(mps|o|ali)
-^public/.*_mod\.mod
+^.*/html_report$
 
-^public/bernstein_root_finder
-^public/nth_prime/(nth-prime|nth_prime)((-|_)demo)?
+^.*/Iris.*\.pdf$
