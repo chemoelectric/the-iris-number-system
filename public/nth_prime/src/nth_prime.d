@@ -428,58 +428,50 @@ ulong getNthPrime(ulong n) {
     if (n <= 5) {
         pn = getSmallNthPrime(n);
     } else {
-        ulong x0 = estimateInitialX(n);
+        ulong currX = estimateInitialX(n);
 
-        double fx0 = cast(double) x0;
-        double cbt = cbrt(fx0);
+        double fx = cast(double) currX;
+        double cbt = cbrt(fx);
         double tVal = cbt * cbt;
         ulong sieveLimit = cast(ulong) tVal;
-        sieveLimit = sieveLimit + 100000;
-        if (sieveLimit < 100000UL) {
-            sieveLimit = 100000UL;
+        sieveLimit = sieveLimit + 200000;
+        if (sieveLimit < 200000UL) {
+            sieveLimit = 200000UL;
         }
 
         buildBitSieve(sieveLimit);
 
-        double sqX0 = sqrt(fx0);
-        ulong zVal = cast(ulong) sqX0;
-        uint[] basePrimes = collectPrimesUpTo(zVal + 100);
+        double sqX = sqrt(fx);
+        ulong zVal = cast(ulong) sqX;
+        uint[] basePrimes = collectPrimesUpTo(zVal + 1000);
 
-        ulong pi0 = primeCountMeissel(x0, basePrimes);
+        ulong currPi = primeCountMeissel(currX, basePrimes);
+        long diffN = cast(long) n - cast(long) currPi;
 
-        long deltaN = cast(long) n;
-        long longPi0 = cast(long) pi0;
-        deltaN = deltaN - longPi0;
+        while (diffN > 20000 || diffN < -20000) {
+            double fVal = cast(double) currX;
+            double logVal = log(fVal);
+            double adj = cast(double) diffN * logVal;
+            long step = cast(long) adj;
+            long xNew = cast(long) currX + step;
+            currX = cast(ulong) xNew;
 
-        double logX0 = log(fx0);
-        double adj = cast(double) deltaN;
-        adj = adj * logX0;
-        long lAdj = cast(long) adj;
-        long x1Long = cast(long) x0;
-        x1Long = x1Long + lAdj;
-        ulong x1 = cast(ulong) x1Long;
-
-        ulong lowBound = x1 - 50000;
-        if (x1 < 50000) {
-            lowBound = 2;
+            currPi = primeCountMeissel(currX, basePrimes);
+            diffN = cast(long) n - cast(long) currPi;
         }
-        ulong highBound = x1 + 50000;
-        ulong rangeLow = lowBound - 1;
 
-        ulong piLow = computePiLow(x0, pi0, rangeLow, basePrimes);
-
-        pn = sieveSegmentFindNthPrime(lowBound, highBound,
-                                     basePrimes, n, piLow);
-        while (pn == 0) {
-            if (lowBound > 50000) {
-                lowBound = lowBound - 50000;
-            } else {
-                lowBound = 2;
-            }
-            highBound = highBound + 100000;
-            rangeLow = lowBound - 1;
-            piLow = computePiLow(x0, pi0, rangeLow, basePrimes);
-            pn = sieveSegmentFindNthPrime(lowBound, highBound,
+        ulong window = 200000;
+        if (diffN >= 0) {
+            ulong lowVal = currX + 1;
+            ulong highVal = currX + window;
+            pn = sieveSegmentFindNthPrime(lowVal, highVal,
+                                         basePrimes, n, currPi);
+        } else {
+            ulong lowVal = currX - window;
+            ulong segCnt = countPrimesInSegment(lowVal, currX,
+                                                basePrimes);
+            ulong piLow = currPi - segCnt;
+            pn = sieveSegmentFindNthPrime(lowVal, currX,
                                          basePrimes, n, piLow);
         }
     }
@@ -505,6 +497,15 @@ ulong parsePowersLarge(string str) {
     }
     if (str == "1e12" || str == "10^12" || str == "10**12") {
         return 1000000000000UL;
+    }
+    if (str == "1e13" || str == "10^13" || str == "10**13") {
+        return 10000000000000UL;
+    }
+    if (str == "1e14" || str == "10^14" || str == "10**14") {
+        return 100000000000000UL;
+    }
+    if (str == "1e15" || str == "10^15" || str == "10**15") {
+        return 1000000000000000UL;
     }
     return 0;
 }
