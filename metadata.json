@@ -1,0 +1,8 @@
+{
+  "name": "Remix Iris Number System Deduction Framework",
+  "description": "Interactive deduction framework and analytical workbench for the Iris Number System in number theory, continuous analysis, and algebra.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
