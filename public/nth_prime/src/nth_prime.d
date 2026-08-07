@@ -462,9 +462,9 @@ ulong getNthPrime(ulong n) {
         double fx0 = cast(double) x0;
         double sqrtX0 = sqrt(fx0);
         ulong baseLimit = cast(ulong) sqrtX0;
-        baseLimit = baseLimit + 50000;
-        if (baseLimit < 30000000UL) {
-            baseLimit = 30000000UL;
+        baseLimit = baseLimit + 100000;
+        if (baseLimit < 1000UL) {
+            baseLimit = 1000UL;
         }
 
         ulong[] basePrimes = generateBasePrimes(baseLimit);
