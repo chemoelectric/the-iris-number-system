@@ -494,9 +494,9 @@ ulong getNthPrime(ulong n) {
         double sqX = sqrt(fx);
         ulong zVal = cast(ulong) sqX;
 
-        ulong sieveLimit = zVal * 4;
-        if (sieveLimit < 50000000UL) {
-            sieveLimit = 50000000UL;
+        ulong sieveLimit = zVal * 12;
+        if (sieveLimit < 200000000UL) {
+            sieveLimit = 200000000UL;
         }
 
         buildBitSieve(sieveLimit);
