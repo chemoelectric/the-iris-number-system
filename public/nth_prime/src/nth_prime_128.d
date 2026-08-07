@@ -461,13 +461,19 @@ u128 parseInputString(string inputStr) {
 }
 
 void printResult(u128 val) {
-    ulong lowPart = cast(ulong) val;
-    ulong highPart = cast(ulong) (val >> 64);
-    if (highPart > 0) {
-        printf("The calculated nth prime " ~
-               "number value is: %llu%019llu\n",
-               highPart, lowPart);
+    static if (u128.sizeof > ulong.sizeof) {
+        ulong lowPart = cast(ulong) val;
+        ulong highPart = cast(ulong) (val >> 64);
+        if (highPart > 0) {
+            printf("The calculated nth prime " ~
+                   "number value is: %llu%019llu\n",
+                   highPart, lowPart);
+        } else {
+            printf("The calculated nth prime number value is: %llu\n",
+                   lowPart);
+        }
     } else {
+        ulong lowPart = cast(ulong) val;
         printf("The calculated nth prime number value is: %llu\n",
                lowPart);
     }
