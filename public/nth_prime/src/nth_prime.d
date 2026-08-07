@@ -5,6 +5,7 @@ import core.stdc.stdlib : malloc, free;
 import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
+import std.parallelism : parallel;
 
 ulong estimateInitialX(ulong n) {
     double fn = cast(double) n;
@@ -131,16 +132,27 @@ ulong phiRec(ulong x, ulong a, const(ulong)[] primes,
 ulong computeP2(ulong x, ulong a, ulong b,
                 const(ulong)[] primes) {
     ulong sum = 0;
-    ulong i = a + 1;
-    while (i <= b) {
-        size_t idx = cast(size_t) (i - 1);
-        ulong pi = primes[idx];
-        ulong w = x / pi;
-        ulong piW = piSmall(w, primes);
-        ulong term = piW + 1;
-        term = term - i;
-        sum = sum + term;
-        i = i + 1;
+    if (a < b) {
+        size_t count = cast(size_t) (b - a);
+        ulong[] partialTerms = new ulong[](count);
+
+        foreach (idx, ref termRef; parallel(partialTerms)) {
+            ulong i = cast(ulong) (a + 1 + idx);
+            size_t pIdx = cast(size_t) (i - 1);
+            ulong pi = primes[pIdx];
+            ulong w = x / pi;
+            ulong piW = piSmall(w, primes);
+            ulong term = piW + 1;
+            term = term - i;
+            termRef = term;
+        }
+
+        size_t k = 0;
+        while (k < count) {
+            ulong tVal = partialTerms[k];
+            sum = sum + tVal;
+            k = k + 1;
+        }
     }
     return sum;
 }
@@ -259,10 +271,10 @@ ulong getNthPrime(ulong n) {
         ulong x0 = estimateInitialX(n);
 
         double fx0 = cast(double) x0;
-        double sqx0 = sqrt(fx0);
-        sqx0 = sqx0 * 1.25;
-        ulong baseLimit = cast(ulong) sqx0;
-        baseLimit = baseLimit + 20000;
+        double cbrtX0 = cbrt(fx0);
+        double x23 = fx0 / cbrtX0;
+        ulong baseLimit = cast(ulong) x23;
+        baseLimit = baseLimit + 50000;
 
         ulong[] basePrimes = generateBasePrimes(baseLimit);
 
@@ -313,6 +325,18 @@ ulong getNthPrime(ulong n) {
 
         pn = sieveSegmentFindNthPrime(lowBound, highBound,
                                      basePrimes, n, piLow);
+        while (pn == 0) {
+            if (lowBound > 50000) {
+                lowBound = lowBound - 50000;
+            } else {
+                lowBound = 2;
+            }
+            highBound = highBound + 100000;
+            rangeLow = lowBound - 1;
+            piLow = primeCountSublinear(rangeLow, basePrimes);
+            pn = sieveSegmentFindNthPrime(lowBound, highBound,
+                                         basePrimes, n, piLow);
+        }
     }
     return pn;
 }
@@ -331,15 +355,20 @@ ulong parseInputString(string inputStr) {
     }
 
     ulong n = 0;
-    if (cleanStr == "1e6" || cleanStr == "10^6" || cleanStr == "10**6") {
+    if (cleanStr == "1e6" || cleanStr == "10^6" ||
+        cleanStr == "10**6") {
         n = 1000000UL;
-    } else if (cleanStr == "1e9" || cleanStr == "10^9" || cleanStr == "10**9") {
+    } else if (cleanStr == "1e9" || cleanStr == "10^9" ||
+               cleanStr == "10**9") {
         n = 1000000000UL;
-    } else if (cleanStr == "1e10" || cleanStr == "10^10" || cleanStr == "10**10") {
+    } else if (cleanStr == "1e10" || cleanStr == "10^10" ||
+               cleanStr == "10**10") {
         n = 10000000000UL;
-    } else if (cleanStr == "1e11" || cleanStr == "10^11" || cleanStr == "10**11") {
+    } else if (cleanStr == "1e11" || cleanStr == "10^11" ||
+               cleanStr == "10**11") {
         n = 100000000000UL;
-    } else if (cleanStr == "1e12" || cleanStr == "10^12" || cleanStr == "10**12") {
+    } else if (cleanStr == "1e12" || cleanStr == "10^12" ||
+               cleanStr == "10**12") {
         n = 1000000000000UL;
     } else {
         n = to!ulong(cleanStr);

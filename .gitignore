@@ -6,3 +6,5 @@ coverage/
 *.log
 .env*
 !.env.example
+public/nth_prime/nth-prime
+public/nth_prime/nth-prime-d

@@ -61,5 +61,5 @@ The executable accepts input via command-line arguments or standard input, suppo
 - **Flexible Numeric Input Parser**: Exact ASCII character-by-character digit parsing, support for scientific floating-point inputs (“1e12”), exponent operators (“10^12”, “10**12”), and digit separators (“1_000_000”).
 - **OpenMP Multithreading**: Parallel \(P_2\) summation reduction across multi-core CPUs (e.g. 24-core AMD Zen 5).
 - **Icon Procedure Implementation**: Clean, standalone `nth_prime(n)` procedure implemented in `nth_prime.icn` for string input filtering, asymptotic estimation, and prime calculation.
-- **D Implementation**: Standalone, sub-linear Meissel algorithm implementation in `src/nth_prime.d` with memoized $\phi(x, a)$ evaluations, adaptive secant interval stepping, and localized segmented sieving.
+- **D Implementation**: Standalone, sub-linear Meissel algorithm implementation in `src/nth_prime.d` with `std.parallelism` multithreading for \(P_2(x, a)\) evaluation, `-O3` optimization with `gdc`, memoized \(\phi(x, a)\) evaluations, adaptive secant interval stepping, and localized segmented sieving.
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per subprogram, max line length \(\le 72\) characters, and single operation per statement.

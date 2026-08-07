@@ -10,7 +10,7 @@ CC = gcc
 CFLAGS = -std=gnu23 $(OPTSFLAGS) $(WARNFLAGS)
 
 DC = gdc
-DFLAGS = $(OPTSFLAGS) $(WARNFLAGS)
+DFLAGS = $(DOPTSFLAGS) $(WARNFLAGS)
 
 TARGET = nth-prime
 D_TARGET = nth-prime-d
@@ -24,6 +24,13 @@ OPTSFLAGS += -funroll-loops
 #OPTSFLAGS += -ftree-parallelize-loops=24
 #OPTSFLAGS += -fno-stack-arrays
 OPTSFLAGS += -flto
+
+DOPTSFLAGS =
+DOPTSFLAGS += -march=native -mtune=native
+DOPTSFLAGS += -O3
+DOPTSFLAGS += -ffast-math
+DOPTSFLAGS += -funroll-loops
+DOPTSFLAGS += -flto
 
 WARNFLAGS =
 WARNFLAGS += -Wall
