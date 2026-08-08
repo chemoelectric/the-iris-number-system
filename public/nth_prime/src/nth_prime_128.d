@@ -11,7 +11,193 @@ import std.conv : to;
 import std.string : strip;
 import std.parallelism : parallel;
 
-alias u128 = Cent;
+struct u128 {
+    ulong low = 0;
+    ulong high = 0;
+
+    this(ulong l) {
+        low = l;
+        high = 0;
+    }
+
+    this(ulong l, ulong h) {
+        low = l;
+        high = h;
+    }
+
+    this(Cent c) {
+        low = c.low;
+        high = cast(ulong) c.high;
+    }
+
+    Cent toCent() const {
+        Cent c;
+        c.low = low;
+        c.high = high;
+        return c;
+    }
+
+    T opCast(T)() const if (is(T == ulong)) {
+        return low;
+    }
+
+    T opCast(T)() const if (is(T == double)) {
+        double dHigh = cast(double) high;
+        double dLow = cast(double) low;
+        return dHigh * 18446744073709551616.0 + dLow;
+    }
+
+    T opCast(T)() const if (is(T == Cent)) {
+        return toCent();
+    }
+
+    T opCast(T)() const if (is(T == bool)) {
+        return low != 0 || high != 0;
+    }
+
+    int opCmp(const u128 rhs) const {
+        int res = 0;
+        if (high < rhs.high) {
+            res = -1;
+        } else if (high > rhs.high) {
+            res = 1;
+        } else if (low < rhs.low) {
+            res = -1;
+        } else if (low > rhs.low) {
+            res = 1;
+        }
+        return res;
+    }
+
+    int opCmp(ulong rhs) const {
+        return opCmp(u128(rhs));
+    }
+
+    bool opEquals(const u128 rhs) const {
+        return low == rhs.low && high == rhs.high;
+    }
+
+    bool opEquals(ulong rhs) const {
+        return high == 0 && low == rhs;
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "+") {
+        ulong resLow = low + rhs.low;
+        ulong carry = (resLow < low) ? 1 : 0;
+        ulong resHigh = high + rhs.high + carry;
+        return u128(resLow, resHigh);
+    }
+
+    u128 opBinary(string op)(ulong rhs) const if (op == "+") {
+        return this + u128(rhs);
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "-") {
+        ulong resLow = low - rhs.low;
+        ulong borrow = (low < rhs.low) ? 1 : 0;
+        ulong resHigh = high - rhs.high - borrow;
+        return u128(resLow, resHigh);
+    }
+
+    u128 opBinary(string op)(ulong rhs) const if (op == "-") {
+        return this - u128(rhs);
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "*") {
+        BigInt a = this.toBigInt();
+        BigInt b = rhs.toBigInt();
+        return u128.fromBigInt(a * b);
+    }
+
+    u128 opBinary(string op)(ulong rhs) const if (op == "*") {
+        return this * u128(rhs);
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "/") {
+        BigInt a = this.toBigInt();
+        BigInt b = rhs.toBigInt();
+        return u128.fromBigInt(a / b);
+    }
+
+    u128 opBinary(string op)(ulong rhs) const if (op == "/") {
+        return this / u128(rhs);
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "%") {
+        BigInt a = this.toBigInt();
+        BigInt b = rhs.toBigInt();
+        return u128.fromBigInt(a % b);
+    }
+
+    u128 opBinary(string op)(ulong rhs) const if (op == "%") {
+        return this % u128(rhs);
+    }
+
+    u128 opBinary(string op)(int shift) const if (op == ">>") {
+        u128 res = u128(0, 0);
+        if (shift > 0 && shift < 128) {
+            if (shift >= 64) {
+                res = u128(high >> (shift - 64), 0);
+            } else {
+                ulong l = (low >> shift) | (high << (64 - shift));
+                ulong h = high >> shift;
+                res = u128(l, h);
+            }
+        } else if (shift == 0) {
+            res = this;
+        }
+        return res;
+    }
+
+    u128 opBinary(string op)(int shift) const if (op == "<<") {
+        u128 res = u128(0, 0);
+        if (shift > 0 && shift < 128) {
+            if (shift >= 64) {
+                res = u128(0, low << (shift - 64));
+            } else {
+                ulong l = low << shift;
+                ulong h = (high << shift) | (low >> (64 - shift));
+                res = u128(l, h);
+            }
+        } else if (shift == 0) {
+            res = this;
+        }
+        return res;
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "^") {
+        return u128(low ^ rhs.low, high ^ rhs.high);
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "&") {
+        return u128(low & rhs.low, high & rhs.high);
+    }
+
+    u128 opBinary(string op)(const u128 rhs) const if (op == "|") {
+        return u128(low | rhs.low, high | rhs.high);
+    }
+
+    u128 opUnary(string op)() const if (op == "~") {
+        return u128(~low, ~high);
+    }
+
+    BigInt toBigInt() const {
+        BigInt bHigh = BigInt(high);
+        BigInt bLow = BigInt(low);
+        return (bHigh << 64) + bLow;
+    }
+
+    static u128 fromBigInt(BigInt b) {
+        u128 res = u128(0, 0);
+        if (b > 0) {
+            BigInt mask = (BigInt(1) << 64) - BigInt(1);
+            BigInt lowB = b & mask;
+            BigInt highB = (b >> 64) & mask;
+            res = u128(cast(ulong) lowB, cast(ulong) highB);
+        }
+        return res;
+    }
+}
 
 struct MemoEntry {
     u128 x;
@@ -433,25 +619,11 @@ u128 getNthPrime(u128 n) {
 }
 
 u128 bigIntToU128(BigInt b) {
-    u128 res = Cent(0);
-    if (b > 0) {
-        BigInt mask = (BigInt(1) << 64) - BigInt(1);
-        BigInt lowB = b & mask;
-        ulong low = cast(ulong) lowB;
-        BigInt highB = (b >> 64) & mask;
-        ulong high = cast(ulong) highB;
-        res = (Cent(high) << 64) | Cent(low);
-    }
-    return res;
+    return u128.fromBigInt(b);
 }
 
 BigInt u128ToBigInt(u128 val) {
-    ulong low = cast(ulong) val;
-    ulong high = cast(ulong) (val >> 64);
-    BigInt bHigh = BigInt(high);
-    BigInt bLow = BigInt(low);
-    BigInt res = (bHigh << 64) + bLow;
-    return res;
+    return val.toBigInt();
 }
 
 BigInt getNthPrime(BigInt n) {
@@ -464,10 +636,22 @@ BigInt getNthPrime(BigInt n) {
     return res;
 }
 
+Cent getNthPrime(Cent n) {
+    Cent res;
+    res.low = 0;
+    res.high = 0;
+    if (n.low != 0 || n.high != 0) {
+        u128 uVal = u128(n);
+        u128 p = getNthPrime(uVal);
+        res = p.toCent();
+    }
+    return res;
+}
+
 ulong getNthPrime(ulong n) {
     ulong res = 0;
     if (n > 0) {
-        u128 uVal = Cent(n);
+        u128 uVal = u128(n);
         u128 p = getNthPrime(uVal);
         res = cast(ulong) p;
     }
@@ -475,7 +659,7 @@ ulong getNthPrime(ulong n) {
 }
 
 u128 parseDigits128(string str) {
-    u128 val = Cent(0);
+    u128 val = u128(0);
     size_t i = 0;
     while (i < str.length) {
         char c = str[i];
@@ -488,39 +672,39 @@ u128 parseDigits128(string str) {
 }
 
 u128 parsePowersSmall128(string str) {
-    u128 res = Cent(0);
+    u128 res = u128(0);
     if (str == "1e6" || str == "10^6" || str == "10**6") {
-        res = Cent(1000000);
+        res = u128(1000000);
     } else if (str == "1e9" || str == "10^9" || str == "10**9") {
-        res = Cent(1000000000);
+        res = u128(1000000000);
     }
     return res;
 }
 
 u128 parsePowersLarge128(string str) {
-    u128 res = Cent(0);
+    u128 res = u128(0);
     if (str == "1e10" || str == "10^10" || str == "10**10") {
-        res = Cent(10000000000UL);
+        res = u128(10000000000UL);
     } else if (str == "1e11" || str == "10^11" || str == "10**11") {
-        res = Cent(100000000000UL);
+        res = u128(100000000000UL);
     } else if (str == "1e12" || str == "10^12" || str == "10**12") {
-        res = Cent(1000000000000UL);
+        res = u128(1000000000000UL);
     } else if (str == "1e13" || str == "10^13" || str == "10**13") {
-        res = Cent(10000000000000UL);
+        res = u128(10000000000000UL);
     } else if (str == "1e14" || str == "10^14" || str == "10**14") {
-        res = Cent(100000000000000UL);
+        res = u128(100000000000000UL);
     } else if (str == "1e15" || str == "10^15" || str == "10**15") {
-        res = Cent(1000000000000000UL);
+        res = u128(1000000000000000UL);
     }
     return res;
 }
 
 u128 parseSpecialInput128(string str) {
     u128 val = parsePowersSmall128(str);
-    if (val == Cent(0)) {
+    if (val == 0) {
         val = parsePowersLarge128(str);
     }
-    if (val == Cent(0)) {
+    if (val == 0) {
         val = parseDigits128(str);
     }
     return val;
@@ -528,7 +712,7 @@ u128 parseSpecialInput128(string str) {
 
 u128 parseInputString128(string inputStr) {
     string cleanStr = strip(inputStr);
-    u128 val = Cent(0);
+    u128 val = u128(0);
     if (cleanStr.length > 0) {
         val = parseSpecialInput128(cleanStr);
     }
@@ -536,13 +720,12 @@ u128 parseInputString128(string inputStr) {
 }
 
 void printResult128(u128 val) {
-    ulong low = cast(ulong) val;
-    ulong high = cast(ulong) (val >> 64);
-    if (high > 0) {
+    if (val.high > 0) {
         printf("The calculated nth prime number value is: " ~
-               "%llu%019llu\n", high, low);
+               "%llu%019llu\n", val.high, val.low);
     } else {
-        printf("The calculated nth prime number value is: %llu\n", low);
+        printf("The calculated nth prime number value is: " ~
+               "%llu\n", val.low);
     }
 }
 
@@ -556,7 +739,7 @@ version (standalone) {
 
 static if (HAS_MAIN) {
     int main(string[] args) {
-        u128 targetN = Cent(0);
+        u128 targetN = u128(0);
         if (args.length > 1) {
             targetN = parseInputString128(args[1]);
         } else {
@@ -570,7 +753,7 @@ static if (HAS_MAIN) {
             }
         }
 
-        if (targetN > Cent(0)) {
+        if (targetN > 0) {
             u128 nthPrimeVal = getNthPrime(targetN);
             printResult128(nthPrimeVal);
         } else {

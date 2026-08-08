@@ -490,24 +490,22 @@ ulong limbsToUlong(LimbNumber ln) {
 
 LimbNumber centToLimbs(Cent val) {
     LimbNumber ln;
-    ulong low = cast(ulong) val;
-    ulong high = cast(ulong) (val >> 64);
-    ln.limbs[0] = low;
+    ln.limbs[0] = val.low;
     if (NUM_LIMBS > 1) {
-        ln.limbs[1] = high;
+        ln.limbs[1] = cast(ulong) val.high;
     }
     return ln;
 }
 
 Cent limbsToCent(LimbNumber ln) {
-    ulong low = ln.limbs[0];
-    ulong high = 0;
+    Cent c;
+    c.low = ln.limbs[0];
     if (NUM_LIMBS > 1) {
-        high = ln.limbs[1];
+        c.high = ln.limbs[1];
+    } else {
+        c.high = 0;
     }
-    Cent cLow = Cent(low);
-    Cent cHigh = Cent(high);
-    return (cHigh << 64) | cLow;
+    return c;
 }
 
 LimbNumber getNthPrime(LimbNumber n) {
@@ -528,8 +526,10 @@ BigInt getNthPrime(BigInt n) {
 }
 
 Cent getNthPrime(Cent n) {
-    Cent res = Cent(0);
-    if (n > Cent(0)) {
+    Cent res;
+    res.low = 0;
+    res.high = 0;
+    if (n.low != 0 || n.high != 0) {
         LimbNumber lnIn = centToLimbs(n);
         LimbNumber lnOut = getNthPrime(lnIn);
         res = limbsToCent(lnOut);
@@ -548,7 +548,7 @@ ulong getNthPrime(ulong n) {
 }
 
 void printResultBigInt(BigInt val) {
-    string s = val.toDecimalString();
+    string s = to!string(val);
     printf("The calculated nth prime number value is: %.*s\n",
            cast(int) s.length, s.ptr);
 }
