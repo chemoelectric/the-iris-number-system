@@ -442,11 +442,14 @@ BigInt getNthPrime(BigInt n) {
 }
 
 Cent getNthPrime(Cent n) {
-    Cent res = Cent(0);
-    if (n > Cent(0)) {
-        ulong uVal = cast(ulong) n;
+    Cent res;
+    res.low = 0;
+    res.high = 0;
+    if (n.low != 0 || n.high != 0) {
+        ulong uVal = n.low;
         ulong p = getNthPrime(uVal);
-        res = Cent(p);
+        res.low = p;
+        res.high = 0;
     }
     return res;
 }
