@@ -535,7 +535,7 @@ u64 parseInputString(string inputStr) {
 }
 
 void printResult(u64 val) {
-    printf("The calculated nth prime number value is: %llu\n", val);
+    printf("%llu\n", val);
 }
 
 version (standalone) {
