@@ -25,7 +25,7 @@ DOPTSFLAGS += -march=native -mtune=native
 DOPTSFLAGS += -Ofast
 #DOPTSFLAGS += -ffast-math
 DOPTSFLAGS += -funroll-loops
-#DOPTSFLAGS += -flto
+DOPTSFLAGS += -flto
 DOPTSFLAGS += -mprefer-vector-width=512
 #DOPTSFLAGS += -fopt-info-vec-optimized
 
@@ -39,7 +39,7 @@ OBJ_DIR = build
 .PHONY: clean
 
 $(D_TARGET): $(SRC_DIR)/nth_prime.d
-	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
+	$(DC) $(DFLAGS) -fversion=standalone -fversion=LIMBS_128 -o $(@) $(<)
 
 $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
