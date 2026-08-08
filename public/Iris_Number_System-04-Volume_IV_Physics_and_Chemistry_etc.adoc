@@ -720,7 +720,7 @@ A central objection raised by orthodox nuclear physics against cold fusion is th
 [THEOREM]
 .Theorem: Coherent Multivector Transduction of Nuclear Mass-Energy into Lattice Phonon Standing Waves
 ====
-In a lattice-assisted nuclear fusion reaction on discrete grid \( \mathcal { G } _ N \), the total nuclear mass-energy release \( Q = \Delta m c^2 \) is transduced into the host lattice through non-linear multivector current coupling \( J _ \text{lattice} \). The single-photon gamma emission probability \( P _ \gamma \) satisfies:
+In a lattice-assisted nuclear fusion reaction on discrete grid \( \mathcal { G } _ N \), the total nuclear mass-energy release \( Q = \Delta m c^2 \) is transduced into the host lattice through non-linear multivector current coupling \( J _ \text{lattice} \). The direct gamma-mode wave packet emission probability \( P _ \gamma \) satisfies:
 \[ P _ \gamma \approx \exp ( - N _ \text{lattice} ) \to 0 \]
 while the efficiency of direct thermal energy transduction into collective lattice vibrational modes (phonons) approaches unity (\( \eta _ \text{thermal} \to 1 \)), providing an exact mathematical explanation for anomalous excess heat without ionizing radiation.
 
@@ -730,7 +730,7 @@ while the efficiency of direct thermal energy transduction into collective latti
 . **Multivector Coupling to Host Lattice**: In a solid host matrix, \( J _ \text{nuc} \) is not isolated in a vacuum, but is embedded within the electromagnetic and mechanical field matrix of \( N _ \text{lattice} \sim 10 ^ { 12 } \text{--} 10 ^ { 23 } \) metal atoms. Operating with the Master Field Equation \( D F = J _ \text{nuc} + J _ \text{lattice} \), the localized nuclear stress-energy tensor \( T _ \text{nuc} \) couples directly to the lattice elastodynamic stress tensor \( T _ \text{elast} \):
 \[ \nabla \cdot ( T _ \text{nuc} + T _ \text{elast} ) = \mathbf { 0 } \]
 
-. **Suppression of Single Gamma-Ray Photon Emission**: For a single high-energy gamma photon (\( E _ \gamma = 23.84 \text{ MeV} \)) to be emitted, the entire energy \( Q \) must concentrate into a single high-frequency radiative mode of the multivector field. However, the coupling matrix element between the localized nuclear source \( J _ \text{nuc} \) and the \( N _ \text{lattice} \)-body collective phonon modes is larger by a factor of \( \sim N _ \text{lattice} \). The transition rate into \( N _ \text{lattice} \) lattice vibrational modes (phonons) dominates the radiative transition rate:
+. **Suppression of Unconfined Gamma-Ray Wave Packet Emission**: For an unconfined high-energy gamma wave packet (\( E _ \gamma = 23.84 \text{ MeV} \)) to be emitted, the entire energy \( Q \) must concentrate into a single high-frequency radiative mode of the multivector field. However, the coupling matrix element between the localized nuclear source \( J _ \text{nuc} \) and the \( N _ \text{lattice} \)-body collective phonon modes is larger by a factor of \( \sim N _ \text{lattice} \). The transition rate into \( N _ \text{lattice} \) lattice vibrational modes (phonons) dominates the radiative transition rate:
 \[ \frac { \Gamma _ \text{phonon} } { \Gamma _ \gamma } \sim N _ \text{lattice} \cdot \left( \frac { \hbar \omega _ \text{Debye} } { Q } \right) ^ 2 \gg 10 ^ { 15 } \]
 
 . **Radiationless Thermal Dissipation**: The energy \( Q \) is rapidly partitioned across millions of discrete lattice vibrational quanta (Debye phonons, \( \hbar \omega _ \text{Debye} \sim 20 \text{--} 30 \text{ meV} \)) within picosecond time scales. Consequently, the nuclear energy manifests macroscopically as clean thermal heat dissipated into the lattice structure, with zero high-energy gamma-ray flux or ionizing radiation. \( \square \)
@@ -2270,7 +2270,7 @@ The physical mechanism of the thermodynamic catastrophe is rooted in the Master 
 
 3. **Inversion from Conductor/Radiator to Absorber**:
    Under pristine equilibrium, Earth operated as an effective thermal radiator, conducting absorbed solar energy through atmospheric spectral apertures and re-radiating it into the space thermal sink at rate \( 4 \pi R _ \oplus ^ 2 \sigma _ \text{SB} T _ \text{eq} ^ 4 \).
-   As atmospheric dielectric opacity \( \tau _ \text{IR} \) surges, the atmospheric aperture narrows. Outbound infrared photon wave packets undergo multiple internal scattering and absorption events, transferring their field energy to surrounding air molecules via dipole damping. The atmosphere ceases to act as an efficient thermal radiator and transitions into a closed, heat-trapping **solar energy absorber**.
+   As atmospheric dielectric opacity \( \tau _ \text{IR} \) surges, the atmospheric aperture narrows. Outbound infrared electromagnetic wave packets undergo multiple internal scattering and absorption events, transferring their field energy to surrounding air molecules via dipole damping. The atmosphere ceases to act as an efficient thermal radiator and transitions into a closed, heat-trapping **solar energy absorber**.
 
 === Lifetime-Scale Acceleration, Positive Feedback Loops, and Atmospheric Disequilibrium
 
