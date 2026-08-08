@@ -9,7 +9,7 @@
 
 A Rigorous Constructive Foundation for Mathematics and Physics
 
-= Euclidean Geometry as a Tautological System
+== Euclidean Geometry as a Tautological System
 
 Operational formulation of classical Euclidean geometry as an exact algebraic tautological system constructed over discrete rational partition grids \( \mathcal { G } _ N \) and multivector geometric algebra \( Cl ( 2 , 0 ) \subset Cl ( 4 , 1 , 1 ) \).
 
@@ -94,7 +94,7 @@ Dividing by \( \| u \| \| v \| \| w \| \) produces the canonical Law of Sines. \
 
 [#chap-the-counting-process-and-the-integers]
 
-= The Counting Process and the Integers
+== The Counting Process and the Integers
 
 Foundational definition of the discrete integer domain \( \mathbb { Z } \) and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).
 
@@ -146,7 +146,7 @@ This algebraic duality provides the structural foundation for proving parity-bas
 
 [#chap-the-iris]
 
-= The Iris
+== The Iris
 
 Conceptual introduction to the Iris optical-geometric analogy, variable aperture flux gating, Spin(2) bivector rotation planes, and the nilpotent perimeter boundary.
 
@@ -174,7 +174,7 @@ maintaining the exact quadratic aperture constraint \( \iota ^ 2 = - \mathbf { 1
 
 [#chap-initial-postulates-of-the-tautological-structure]
 
-= Initial Postulates of the Tautological Structure
+== Initial Postulates of the Tautological Structure
 
 Essential postulates governing the tautological structure of the Counting-Iris Number System.
 
@@ -281,7 +281,7 @@ where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators
 
 [#chap-the-rational-numbers]
 
-= The Rational Numbers
+== The Rational Numbers
 
 Constructing the rational numbers \( \mathbb { Q } \) using the Iris optical-geometric aperture analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating without non-denumerable continua.
 
@@ -345,7 +345,7 @@ Varying the rational aperture ratio \( r \) adjusts the central flux transmissio
 
 [#chap-the-real-numbers]
 
-= The Real Numbers
+== The Real Numbers
 
 Constructing the real numbers \( \mathbb { R } \) through constructive Iris aperture refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations without unconstructive non-denumerable infinities.
 
@@ -402,7 +402,7 @@ This guarantees strict conservation of light flux and geometric scale invariance
 
 [#chap-the-multiscale-resolution-numbers]
 
-= The Multiscale Resolution Numbers
+== The Multiscale Resolution Numbers
 
 Constructing multiscale resolution numbers as measurement quantities evaluated across finer and finer vernier scales on the Iris aperture grid, establishing Multiscale Resolution Analysis (MSRA) with exact finite-duration observation steps and extended temporal scale parameters without external non-constructive set mappings.
 
@@ -462,7 +462,7 @@ This eliminates division-by-zero ambiguities by expressing all derivatives as co
 
 [#chap-complex-numbers-and-quaternions]
 
-= Complex Numbers and Quaternions
+== Complex Numbers and Quaternions
 
 Constructing complex numbers and quaternions directly within the Counting-Iris framework, establishing complex numbers via the fundamental Iris aperture generator \( \iota \) and quaternions as the spatial bivector subalgebra of \( Cl ( 4 , 1 , 1 ) \) without introducing non-constructive sets or ungrounded imaginary abstractions.
 
@@ -546,7 +546,7 @@ This proves that quaternions in Counting-Iris are exact spatial bivector rotatio
 
 [#chap-how-to-do-differential-calculus]
 
-= How to do Differential Calculus
+== How to do Differential Calculus
 
 Constructing differential calculus and real analysis within Multiscale Resolution Analysis (MSRA) without continuum limit paradoxes or uncountably infinite point-sets. Derivatives are defined as exact vernier aperture difference ratios projected onto the main-scale real domain via the Main Scale Projection operator \( ( \downarrow ) \).
 
@@ -660,7 +660,7 @@ This demonstrates how MSRA derivatives compute exact standard values purely thro
 
 [#chap-how-to-do-integral-calculus]
 
-= How to do Integral Calculus
+== How to do Integral Calculus
 
 Constructing indefinite and definite integration within Multiscale Resolution Analysis (MSRA) as exact vernier aperture summations over discrete partition grids \( \mathcal { G } _ \omega \), proving the Fundamental Theorem of MSRA Calculus without infinite measure theory.
 
@@ -744,7 +744,7 @@ This matches the anti-derivative calculation \( \left [ \frac { x ^ 2 } { 2 } \r
 
 [#chap-how-to-compute-a-contour-integral]
 
-= How to Compute a Contour Integral
+== How to Compute a Contour Integral
 
 Formulating line integrals and contour integration across multivector paths in \( Cl ( 4 , 1 , 1 ) \) Clifford space, establishing the discrete MSRA Cauchy-Goursat analogue on ultra-refined vernier grids and residue-free aperture loop circulations.
 
@@ -857,7 +857,7 @@ This explicitly verifies the MSRA Residue Theorem for rational aperture field fu
 
 [#chap-the-master-field-equation]
 
-= The Master Field Equation
+== The Master Field Equation
 
 Formulation of the Master Field Equation in \( Cl ( 4 , 1 , 1 ) \) Clifford space, establishing unified field dynamics, basis vector definitions, self-generated mass, electromagnetic gravitation, and steady-state cosmological flux conservation under finite-duration observation processes.
 
@@ -922,7 +922,7 @@ In the unified multivector field \( F _ { \text { total } } = E e _ 4 + c B ( e 
 
 [#chap-completion-of-the-tautological-postulate-system]
 
-= Completion of the Tautological Postulate System
+== Completion of the Tautological Postulate System
 
 In this chapter, the foundational postulates introduced in Chapter 3 are synthesized with the differential, integral, and multivector calculus developed across the preceding chapters, including the Master Field Equation. We establish that the Counting-Iris framework constitutes a closed, complete, and self-consistent tautological inference engine, and provide explicit, self-contained proofs for every structural component within the system—including the formal derivation of Clifford algebra \( Cl ( 4 , 1 , 1 ) \).
 
@@ -1075,7 +1075,7 @@ By grounding all analysis in discrete Multiscale Resolution Analysis (MSRA) and 
 
 [#chap-index]
 
-= Index of Formal Statements
+== Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 

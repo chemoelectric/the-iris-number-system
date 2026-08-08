@@ -9,7 +9,7 @@
 
 A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
 
-= Tautological Proofs in Number Theory
+== Tautological Proofs in Number Theory
 
 In this chapter, classical conjectures and fundamental theorems of number theory and arithmetic analysis are established as exact tautological deductions strictly within the Counting-Iris framework, utilizing \( Cl ( 4 , 1 , 1 ) \) multivector parity conservation, bounded discrete rational partition grids \( \mathcal { G } _ N \), and Jaynesian Maximum Entropy (MaxEnt) priors.
 
@@ -759,7 +759,7 @@ Because the algorithm relies on the sub-linear \( \pi _ { \mathcal { I } } ( x )
 
 [#chap-applications-to-constructive-analysis]
 
-= Applications to Constructive Analysis
+== Applications to Constructive Analysis
 
 In this chapter, fundamental concepts of mathematical analysis—including measure theory, spectral decomposition, and function spaces—are systematically established on finite rational partition grids \( \mathcal { G } _ N \) without appealing to non-constructive uncountably infinite continua.
 
@@ -921,7 +921,7 @@ On discrete grid \( \mathcal { G } _ N \), the MSRA vernier derivative norm \( \
 
 [#chap-applications-to-probability-theory]
 
-= Applications to Probability Theory
+== Applications to Probability Theory
 
 In this chapter, probability theory is strictly reformulated on finite operational measurement spaces, treating probabilities as objective Jaynesian Maximum Entropy states constrained by physical aperture measurements rather than unconstructive infinite measure spaces.
 
@@ -1010,7 +1010,7 @@ Under unitary multivector gauge transformations in \( Cl ( 4 , 1 , 1 ) \), the t
 
 [#chap-applications-to-constructive-statistics]
 
-= Applications to Constructive Statistics
+== Applications to Constructive Statistics
 
 In this chapter, statistical inference and hypothesis testing are reformulated as exact operational gauging procedures on finite discrete measurement data, establishing optimal parameter estimation and information criteria.
 
@@ -1082,7 +1082,7 @@ where \( I _ { \mathcal { I } } ( \theta ) \) is the Fisher aperture information
 
 [#chap-applications-to-conventional-statistics]
 
-= Applications to Conventional Statistics
+== Applications to Conventional Statistics
 
 In this chapter, classical methods of conventional statistics—such as hypothesis testing via \( p \)-values, confidence intervals, analysis of variance (ANOVA), and linear regression estimation—are rigorously mapped into exact operational gauge operations within the discrete Iris framework. We demonstrate how conventional statistical formulas arise as finite-aperture projections of \( Cl ( 4 , 1 , 1 ) \) multivector distributions under Jaynesian Maximum Entropy constraints, eliminating reliance on infinite continuum distributions while strictly preserving operational sampling bounds.
 
@@ -1145,7 +1145,7 @@ Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite
 
 [#chap-index]
 
-= Index of Formal Statements
+== Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 

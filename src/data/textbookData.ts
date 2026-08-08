@@ -1719,7 +1719,7 @@ export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   adoc += `${textbook.description}\n\n`;
 
   chapters.forEach((chap) => {
-    adoc += `= ${chap.title}\n\n`;
+    adoc += `== ${chap.title}\n\n`;
     if (chap.summary) {
       adoc += `${chap.summary}\n\n`;
     }

@@ -9,7 +9,7 @@
 
 A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding
 
-= Prelude: The Electromagnetic Field
+== Prelude: The Electromagnetic Field
 
 _Starting today, picture the universe as_ *the* _electromagnetic field._
 
@@ -49,7 +49,7 @@ Thus, the universe is indeed a single, self-sustaining, steady-state electromagn
 
 [#chap-the-master-field-equation-that-unites-the-sciences]
 
-= The Master Field Equation that Unites the Sciences
+== The Master Field Equation that Unites the Sciences
 
 In this chapter, the Iris Number System explicitly proves its status as a complete Unified Field Theory. By establishing the 6D Clifford multivector field equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \), all physical interaction fields—electrodynamics, gravitation, mechanics, and mass-energy transport—are derived directly from first principles.
 
@@ -162,7 +162,7 @@ In any source-free spatial aperture region where \( J = \mathbf { 0 } \), a loca
 
 [#chap-the-principle-of-least-action-and-variational-principles-in-multivector-mechanics]
 
-= The Principle of Least Action and Variational Principles in Multivector Mechanics
+== The Principle of Least Action and Variational Principles in Multivector Mechanics
 
 In this chapter, the Principle of Least Action (\( \delta S = 0 \)) and variational principles are shown to be constructive, structural tautologies of multivector field momentum and energy conservation rather than empirical postulates or mysterious teleological "minimizations" of scalar quantities. By formulating the field action integral on the discrete multiscale grid \( \mathcal { G } _ N \), variational principles are derived directly from first principles.
 
@@ -265,7 +265,7 @@ When a field distribution moves from initial state \( A_1 \) to final state \( A
 
 [#chap-quantum-pseudo-physics]
 
-= Quantum Pseudo-Physics
+== Quantum Pseudo-Physics
 
 In this chapter, conventional quantum mechanics—specifically its reliance on non-causal probability collapses, non-local action at a distance, and uncountably infinite Hilbert space continuums—is demonstrated to be an artifact of assuming mathematical inconsistency in field descriptions, whereas the Iris Number System restores strict constructive determinism and topological aperture quantization.
 
@@ -595,7 +595,7 @@ Evaluating the invariant field mass norm \( P _ \mu P ^ \mu = 0 \) for the wave 
 
 [#chap-the-warp-drive-disaster]
 
-= The Warp Drive Disaster
+== The Warp Drive Disaster
 
 This chapter proves from the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \) that faster-than-light spacecraft propulsion is physically impossible, and details how speculative attempts to accelerate physical vessels to the speed of electromagnetic waves lead to catastrophic structural destruction. In both conventional physics and unified field theory, a spacecraft is not an idealized point mass, but a physical structure composed entirely of bound electromagnetic field stress-energy states—specifically, an atomic lattice of nuclei embedded in tightly bound electron shells held together by electromagnetic cohesive forces propagating at wave speed \( c = 1 / \sqrt{\mu_0 \varepsilon_0} \). When an external force or field gradient attempts to propel a material vessel toward \( c \), the longitudinal electromagnetic binding forces between constituent electron shells and nuclei drop to zero, while the multivector stress-energy tensor generates unbounded transverse shear gradients. This chapter details the historical flight test of the experimental vessel *Warp One*, proving that attempting to reach the speed of light causes immediate phase-lag decoupling of atomic electron shells, resulting in the complete physical disintegration and total explosive radiation converting the vessel into an ionized particle cloud.
 
@@ -663,7 +663,7 @@ The *Warp One* did not contract space or enter a "warp bubble"; its entire physi
 
 [#chap-cold-fusion]
 
-= Cold Fusion
+== Cold Fusion
 
 This chapter establishes the first-principles mathematical foundation of lattice-assisted nuclear reactions—historically designated as “Cold Fusion” or Low Energy Nuclear Reactions (LENR)—within the framework of the Iris Number System and the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \). By replacing unphysical point-particle continuum models with non-singular multivector standing wave-packets on discrete grid lattices, this chapter proves that the conventional assertion of an insurmountable “Coulomb potential barrier” is a mathematical artifact of point-particle singularities. High interstitial loading ratios (\( D / Pd \ge 1 \)) in metal crystal lattices establish localized electron-lattice multivector shielding, enabling close nuclear proximity at room temperature. Furthermore, the nuclear mass-energy defect \( Q = \Delta m c^2 \) is shown to undergo coherent, radiationless transduction into collective lattice vibrational (phononic) multivector modes, explaining anomalous excess heat generation without ionizing gamma-ray radiation or dangerous neutron emissions.
 
@@ -819,7 +819,7 @@ For interstitial loading ratios \( D / Pd \ge 0.95 \) and phase-matched pulsed e
 
 [#chap-clean-water]
 
-= Clean Water
+== Clean Water
 
 This chapter establishes the first-principles mathematical, physical, and engineering foundations for high-efficiency water desalination, pathogen decontamination, chemical pollutant destruction, and lossless municipal water distribution within the framework of the Iris Number System and the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \). By abandoning classical continuum approximations—such as high-pressure reverse osmosis thermodynamic work limits, chemical reagents like chlorine or ozone, and turbulent Navier-Stokes dissipation models—and replacing them with discrete multivector dielectric lattice mechanics, this chapter proves that salt ion separation, biological and chemical decontamination, and friction-reduced fluid transport are achieved with near-zero energy losses through resonant electromagnetic, acoustic, and geometric vortex channel alignment. Detailed engineering designs for three practical water purification and distribution devices are presented.
 
@@ -936,7 +936,7 @@ compared to \( 3.5 \text{--} 5.5 \text{ kWh / m}^3 \) in conventional municipal 
 
 [#chap-ecologically-superior-cement-production]
 
-= Ecologically Superior Cement Production
+== Ecologically Superior Cement Production
 
 This chapter establishes the first-principles mathematical, physical, chemical, and engineering foundations for zero-carbon, carbon-negative structural cement production within the framework of the Iris Number System and the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \). By abandoning classical high-temperature pyro-processing—such as the thermal decomposition of limestone (\( CaCO_3 \to CaO + CO_2 \)) at 1450 °C in rotary kilns, which accounts for over 8% of total global anthropogenic carbon dioxide emissions—and replacing it with discrete multivector dielectric and acoustic mechanochemical silicate lattice activation, this chapter proves that structural calcium-magnesium silicate hydrate (C-M-S-H) binders are synthesized at low temperatures (\( T < 80 \ ^circ \text{C} \)) with zero calcinative carbon emissions. Furthermore, this chapter demonstrates that the resulting binder matrix actively absorbs ambient carbon dioxide during curing, achieving a net carbon-negative footprint while exceeding the compressive strength and fracture toughness of conventional Portland cement. Detailed engineering designs for three industrial cement production and curing devices are presented.
 
@@ -1051,7 +1051,7 @@ providing a complete, ecologically superior alternative to traditional Portland 
 
 [#chap-how-wings-work]
 
-= How Wings Work
+== How Wings Work
 
 This chapter establishes the first-principles mathematical, physical, and mechanical foundations of aerodynamic and hydrodynamic lift within the Iris Number System and the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \). The fundamental thesis of this chapter is that *all* wings work on the downwash principle: imparting downward momentum to the fluid mass to generate an upward reaction force balancing gravity via Newton’s third law. By formulating momentum flux conservation and boundary pressure field integrals on discrete resolution grids, this chapter rigorously debunks four pervasive aviation myths: the Bernoulli / equal-transit-time fallacy, the Coandă surface adhesion fallacy, the laminar flow myth on large commercial wings, and the flat rearward airflow diagram fallacy (demonstrating that if airflow exited horizontally without downwash deflection, Newton's third law dictates zero upward force and immediate catastrophic plummeting). Furthermore, this chapter provides complete physical analysis across sixteen distinct aerodynamic, mechanical, and biomechanical lifting systems: simple paper airplanes, balsa model airplanes with flat wings, a child holding a hand at an angle against the wind, large commercial aircraft, smaller cambered aircraft, nearly symmetric airfoils (specifically the Embraer EMB 120 Brasilia), supersonic aircraft, helicopter rotors, flying and hovering bats, flying birds, hovering hummingbirds, flying and hovering hawkmoths, autorotating maple seeds, and tethered box kites.
 
@@ -1188,7 +1188,7 @@ For hovering hummingbirds and hawkmoths, LEV attachment on both fore stroke and 
 
 [#chap-deterministic-communication-theory-and-discrete-channel-capacity]
 
-= Deterministic Communication Theory and Discrete Channel Capacity
+== Deterministic Communication Theory and Discrete Channel Capacity
 
 This chapter establishes first-principles communication theory over discrete Counting-Iris channels and discrete spatial-temporal grids, demonstrating that fundamental information transmission bounds—specifically Nyquist's sampling theorem, the Hamming sphere-packing bound for error-correcting codes, and Shannon's channel capacity theorem—are exact, deterministic counting theorems over finite discrete state spaces without continuum limits.
 
@@ -1264,7 +1264,7 @@ By Jaynesian maximum entropy principles on discrete state counts, uniform random
 
 [#chap-keyser-s-theory-of-doctrinal-functions-and-logical-destiny]
 
-= Keyser’s Theory of Doctrinal Functions and Logical Destiny
+== Keyser’s Theory of Doctrinal Functions and Logical Destiny
 
 In his seminal treatise *Mathematical Philosophy: A Study of Fate and Freedom* (1922), Cassius Jackson Keyser established a profound epistemological foundation linking mathematical rigor with human dynamics and systemic evolution. Keyser introduced the formulation *doctrinal function*—a generalized propositional function containing variable terms (variables of proposition, relationship, and domain) that yields a specific *doctrine* (a deductive system, theory, or social law) when its variables are assigned definite values (postulates or axioms).
 
@@ -1337,7 +1337,7 @@ Let \( \Pi _ t \) represent the human postulate aperture at generational time st
 
 [#chap-signal-processing-theory-of-human-language]
 
-= Signal Processing Theory of Human Language
+== Signal Processing Theory of Human Language
 
 Human language—whether expressed as spoken acoustic pressure variations, written symbolic glyphs, or formal mathematical notation—is fundamentally a physical, time-sampled, aperture-modulated signal transmitted across discrete spatial-temporal media. Traditional linguistic approaches frequently suffer from continuum fallacies, mystical psychological constructs, or ungrounded symbolic abstractions that decouple language from physical signal processing laws.
 
@@ -1435,7 +1435,7 @@ Let \( \mathcal { C } \subset A ^ L \) be the set of all syntactically valid sen
 
 [#chap-creeds-and-the-co-ptation-of-terms]
 
-= Creeds and the Coöptation of Terms
+== Creeds and the Coöptation of Terms
 
 Human social systems, religious organizations, political ideologies, and academic institutions routinely construct *creeds*—rigid, unalterable sets of dogmatic postulates and symbolic declarations designed to enforce cognitive conformity across populations. A central operational mechanism in the propagation and maintenance of creeds is the *coöptation of terms*, wherein pre-existing, rigorously defined lexical tokens (such as "truth", "logic", "science", "freedom", or "probability") are surreptitiously assigned modified semantic meanings while retaining their familiar phonetic or visual forms.
 
@@ -1695,7 +1695,7 @@ Let \( \Pi _ t \) be the collective postulate set of a human society at generati
 
 [#chap-the-futility-of-ceti]
 
-= The Futility of CETI
+== The Futility of CETI
 
 For decades, astronomical initiatives and popular scientific movements under the rubric of CETI (Communication with Extraterrestrial Intelligence) have asserted that transmitting electromagnetic radio waves or laser pulses into interstellar space can achieve intelligible two-way communication with distant technological civilizations. CETI relies on the unexamined assumption that abstract mathematical sequences (such as binary lists of prime numbers) sent through space constitute a universal, self-interpreting lingua franca that any intelligent organism can automatically decode and comprehend.
 
@@ -1909,7 +1909,7 @@ prohibiting superluminal physical contact or closed-loop interaction.
 
 [#chap-universal-doppler-mechanics]
 
-= Universal Doppler Mechanics: Wave Front Geometry, Oblique Transformations, Rotational Phase Shifts, and Chirp Modulation
+== Universal Doppler Mechanics: Wave Front Geometry, Oblique Transformations, Rotational Phase Shifts, and Chirp Modulation
 
 This chapter establishes the complete, first-principles mathematical and physical mechanics of Doppler shifts across discrete spatial-temporal resolution grids \( \mathcal { G } _ N \) in \( Cl ( 4 , 1 , 1 ) \). As established in the Afterword of Chapter 12, all physical influences, field perturbations, and wave packets propagate through the universal multivector field at the invariant wave speed limit \( c = \frac { 1 } { \sqrt { \mu _ 0 \varepsilon _ 0 } } \). What speculative literature misinterprets as “speeds faster than \( c \)” is physically experienced as an extreme Doppler frequency transformation—squeezing wave crests ahead into ultra-high-frequency blueshifts or stretching wave crests behind into near-zero-frequency redshifts. Here we provide a comprehensive, unified exposition of Doppler mechanics covering longitudinal, transverse, arbitrary oblique angle, rotational/orbital phase shifts, and acceleration-induced chirp modulations, derived entirely from the Iris Number System and the Master Field Equation \( D F = J \).
 
@@ -2038,7 +2038,7 @@ Let a source emitting periodic multivector field waves at intrinsic frequency \(
 
 [#chap-structural-cosmology]
 
-= Structural Cosmology: Galaxies, Stellar Evolution, Collapsed Objects, and the Cosmic Microwave Background
+== Structural Cosmology: Galaxies, Stellar Evolution, Collapsed Objects, and the Cosmic Microwave Background
 
 This chapter applies the Master Field Equation DF = J in Cl(4,1,1) to macro-scale astrophysics and cosmology. Grounded in a discrete multiscale spatial grid, the framework resolves core cosmological paradoxes without unobservable entities like dark matter, dark energy, or Big Bang creation singularities. We examine galactic vorticity and flat rotation curves, stellar nucleosynthesis, collapsed remnants (white dwarfs, neutron stars, and non-singular magnetoplasmoid kernels), the steady-state cosmic microwave background, and establish the physical optical visibility horizon of the universe.
 
@@ -2127,7 +2127,7 @@ Let \( \mathcal { G } _ N \) be the discrete spatial multiscale resolution grid 
 
 [#chap-solar-system-formation-structure]
 
-= Formation and Structure of Solar Systems: Multivector Gravitational Collapse, Angular Momentum Conservation, Disk Accretion, and Titius-Bode Orbit Quantization
+== Formation and Structure of Solar Systems: Multivector Gravitational Collapse, Angular Momentum Conservation, Disk Accretion, and Titius-Bode Orbit Quantization
 
 This chapter establishes the first-principles mathematical and physical mechanics governing the origin, dynamical evolution, and planetary architecture of solar systems. In the Iris Number System, planetary systems are not accidental or chaotic outcomes of probabilistic continuum mechanics. Under the Master Field Equation \( D F = J \) on discrete resolution grid \( \mathcal { G } _ N \) in \( Cl ( 4 , 1 , 1 ) \), the collapse of interstellar molecular cloud plasmoids, the flattening into rotating protoplanetary disks, the thermal segregation of terrestrial and Jovian matter, and the discrete orbital spacing of planets emerge deterministically from field momentum conservation, radiant pressure gradients, and acoustic-gravitational standing wave resonances.
 
@@ -2238,7 +2238,7 @@ Let \( \mathcal { G } _ N \) be the discrete spatial multiscale resolution grid 
 
 [#chap-index]
 
-= The Transition of Earth From Solar Energy Conductor to Solar Energy Absorber
+== The Transition of Earth From Solar Energy Conductor to Solar Energy Absorber
 
 First-principles electrodynamic and thermodynamic account of Earth's rapid transition on a human-lifetime scale from a resonant solar energy conductor and radiator into a closed, heat-trapping solar energy absorber, deconstructing the category error of 'climate change' and establishing the physical mechanics of the thermodynamic catastrophe.
 
@@ -2351,7 +2351,7 @@ where effective emission temperature is \( T _ \text{eff} = T _ \text{surface} e
 This massive energy surplus drives temperature rise \( \Delta T = \frac { E _ \text{accumulated} } { C _ \text{climate} } \), which decreases albedo via ice melt (\( \frac { d A } { d T } < 0 \)) and increases atmospheric moisture content (\( \frac { d n _ { \text{H}_2\text{O} } } { d T } > 0 \)), creating a self-reinforcing positive feedback loop. In fluid dynamics governed by the Master Field Equation, elevated thermal gradient \( \nabla T \) drives severe atmospheric pressure gradients \( \nabla P \), converting trapped heat into kinetic atmospheric work \( \frac { 1 } { 2 } \rho v ^ 2 \). This proves that the rapid transition of Earth into a heat-trapping solar energy absorber causes systemic atmospheric disequilibrium on human-lifetime scales—the thermodynamic catastrophe. \( \square \)
 ====
 
-= Index of Formal Statements
+== Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
