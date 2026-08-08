@@ -21,11 +21,11 @@ D64_TARGET = nth-prime-64-d
 DOPTSFLAGS =
 DOPTSFLAGS += -frelease
 DOPTSFLAGS += -march=native -mtune=native
-DOPTSFLAGS += -Ofast
-#DOPTSFLAGS += -ffast-math
+DOPTSFLAGS += -O3
 DOPTSFLAGS += -funroll-loops
 DOPTSFLAGS += -flto=auto
 DOPTSFLAGS += -mprefer-vector-width=512
+DOPTSFLAGS += -ftree-vectorize
 #DOPTSFLAGS += -fopt-info-vec-optimized
 
 WARNFLAGS =
