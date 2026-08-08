@@ -9,7 +9,7 @@ import core.bitop : popcnt;
 import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
-import std.parallelism : task, taskPool, parallel;
+import std.parallelism : parallel;
 
 alias u64 = ulong;
 
@@ -228,27 +228,11 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
                             result = piX - castA + 1;
                         } else {
                             u64 divP = x / p;
-                            if (a > 12 && x > 1_000_000) {
-                                auto t = task!phiRec(divP, a - 1, primes);
-                                taskPool.put(t);
-                                u64 left = phiRec(x, a - 1, primes);
-                                u64 right = t.yieldForce();
-                                result = left - right;
-                            } else {
-                                result = phiRec(x, a - 1, primes) - phiRec(divP, a - 1, primes);
-                            }
+                            result = phiRec(x, a - 1, primes) - phiRec(divP, a - 1, primes);
                         }
                     } else {
                         u64 divP = x / p;
-                        if (a > 12 && x > 1_000_000) {
-                            auto t = task!phiRec(divP, a - 1, primes);
-                            taskPool.put(t);
-                            u64 left = phiRec(x, a - 1, primes);
-                            u64 right = t.yieldForce();
-                            result = left - right;
-                        } else {
-                            result = phiRec(x, a - 1, primes) - phiRec(divP, a - 1, primes);
-                        }
+                        result = phiRec(x, a - 1, primes) - phiRec(divP, a - 1, primes);
                     }
                 }
                 memoTable[slot].x = x;
