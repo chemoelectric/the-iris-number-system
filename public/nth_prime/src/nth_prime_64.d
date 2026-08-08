@@ -180,16 +180,77 @@ u64 piFast(u64 w, const(uint)[] primes) {
     return count;
 }
 
+// u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
+//   //
+//   // A tail-recursive function.
+//   //
+//   a = (!!x) * a;
+//   if (7 <= a) {
+//     u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
+//     size_t slot = cast(size_t) (key & CACHE_MASK);
+//     if ((memoTable[slot].x == x) * (memoTable[slot].a == a)) {
+//       return memoTable[slot].res;
+//     } else {
+//       u64 p = cast(u64) primes[a - 1];
+//       u64 result = 1;
+//       if (p <= x) {
+//         if (x <= sieveMax) {
+//           u64 p6 = cast(u64) primes[5];
+//           if (x <= p6 * p) {
+//             u64 piX = piFast(x, primes);
+//             u64 castA = cast(u64) a;
+//             result = piX - castA + 1;
+//           } else {
+//             u64 divP = x / p;
+//             result = phiRec(x, a - 1, primes) - phiRec(divP, a - 1, primes);
+//           }
+//         } else {
+//           u64 divP = x / p;
+//           result = phiRec(x, a - 1, primes) - phiRec(divP, a - 1, primes);
+//         }
+//       }
+//       memoTable[slot].x = x;
+//       memoTable[slot].a = cast(uint) a;
+//       memoTable[slot].res = result;
+//       return result;
+//     }
+//   }
+//   if (a <= 3) {
+//     switch (a) {
+//     case 0:
+//       return x;
+//     case 1:
+//       u64 x_half = (x >> 1);
+//       return (x - x_half);
+//     default:
+//       u64 div2 = x >> 1;
+//       u64 div3 = x / 3;
+//       u64 div6 = x / 6;
+//       return (x - div2 - div3 + div6);
+//     }
+//   }
+//   if (a == 6) {
+//     return phi6(x);
+//   }
+//   u64 p = cast(u64) primes[a - 1];
+//   u64 divP = x / p;
+//   return (phiRec(x, a - 1, primes)
+//           - phiRec(divP, a - 1, primes));
+// }
+
 u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
-    u64 retval = 0;
-    switch ((!!x) * a) {
+    //
+    // A tail-recursive function.
+    //
+    a = (!!x) * a;
+    switch (a) {
     case 0:
-        retval = x;
+        return x;
         break;
     case 1:
         {
             u64 x_half = (x >> 1);
-            retval = x - x_half;
+            return (x - x_half);
         }
         break;
     case 2:
@@ -197,25 +258,26 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
             u64 div2 = x >> 1;
             u64 div3 = x / 3;
             u64 div6 = x / 6;
-            retval = x - div2 - div3 + div6;
+            return (x - div2 - div3 + div6);
         }
         break;
     case 3, 4, 5:
         {
             u64 p = cast(u64) primes[a - 1];
             u64 divP = x / p;
-            retval = phiRec(x, a - 1, primes) - phiRec(divP, a - 1, primes);
+            return (phiRec(x, a - 1, primes)
+                    - phiRec(divP, a - 1, primes));
         }
         break;
     case 6:
-        retval = phi6(x);
+        return phi6(x);
         break;
     default:
         {
             u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
             size_t slot = cast(size_t) (key & CACHE_MASK);
             if ((memoTable[slot].x == x) * (memoTable[slot].a == a)) {
-                retval = memoTable[slot].res;
+                return memoTable[slot].res;
             } else {
                 u64 p = cast(u64) primes[a - 1];
                 u64 result = 1;
@@ -238,12 +300,11 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
                 memoTable[slot].x = x;
                 memoTable[slot].a = cast(uint) a;
                 memoTable[slot].res = result;
-                retval = result;
+                return result;
             }
         }
         break;
     }
-    return retval;
 }
 
 u64 primeCountLehmer(u64 x, const(uint)[] primes) {

@@ -22,15 +22,14 @@ DOPTSFLAGS =
 DOPTSFLAGS += -frelease
 DOPTSFLAGS += -march=native -mtune=native
 DOPTSFLAGS += -O3
-DOPTSFLAGS += -fgcse -fgcse-lm -fgcse-sm -fgcse-las
+#DOPTSFLAGS += -fgcse -fgcse-lm -fgcse-sm -fgcse-las
 DOPTSFLAGS += -funroll-loops
 DOPTSFLAGS += -flto=auto
 #DOPTSFLAGS += -mprefer-vector-width=512
-DOPTSFLAGS += -ftree-vectorize
-DOPTSFLAGS += -fgraphite-identity
-DOPTSFLAGS += -ftree-loop-im
-DOPTSFLAGS += -ftree-loop-ivcanon
-DOPTSFLAGS += -ftree-parallelize-loops
+#DOPTSFLAGS += -fgraphite-identity
+#DOPTSFLAGS += -ftree-loop-im
+#DOPTSFLAGS += -ftree-loop-ivcanon
+#DOPTSFLAGS += -ftree-parallelize-loops
 #DOPTSFLAGS += -fopt-info-vec-optimized
 
 WARNFLAGS =

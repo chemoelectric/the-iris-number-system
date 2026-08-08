@@ -205,9 +205,10 @@ u64 piFast(u64 w, const(uint)[] primes) {
 }
 
 u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
-    if (x == 0) {
-        return 0;
-    }
+    //
+    // A tail-recursive function.
+    //
+    a = (!!x) * a;
     if (a == 0) {
         return x;
     }
@@ -227,7 +228,7 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
     }
     u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
     size_t slot = cast(size_t) (key & CACHE_MASK);
-    if (memoTable[slot].x == x && memoTable[slot].a == a) {
+    if ((memoTable[slot].x == x) * (memoTable[slot].a == a)) {
         return memoTable[slot].res;
     }
     u64 p = cast(u64) primes[a - 1];
