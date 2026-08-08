@@ -1,4 +1,4 @@
-= The Iris Number System, Volume I: Fundamentals
+= The Iris Number System: Fundamentals
 :subtitle: Fundamentals
 :author: Frédéric Blondel Custer
 :doctype: book
@@ -9,8 +9,7 @@
 
 A Rigorous Constructive Foundation for Mathematics and Physics
 
-[#chap-euclidean-geometry-as-a-tautological-system]
-== Euclidean Geometry as a Tautological System
+= Euclidean Geometry as a Tautological System
 
 Operational formulation of classical Euclidean geometry as an exact algebraic tautological system constructed over discrete rational partition grids \( \mathcal { G } _ N \) and multivector geometric algebra \( Cl ( 2 , 0 ) \subset Cl ( 4 , 1 , 1 ) \).
 
@@ -94,7 +93,8 @@ Dividing by \( \| u \| \| v \| \| w \| \) produces the canonical Law of Sines. \
 ====
 
 [#chap-the-counting-process-and-the-integers]
-== The Counting Process and the Integers
+
+= The Counting Process and the Integers
 
 Foundational definition of the discrete integer domain \( \mathbb { Z } \) and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).
 
@@ -145,7 +145,8 @@ For any two integers \( n , m \in \mathbb { Z } \), the geometric product \( M (
 This algebraic duality provides the structural foundation for proving parity-based number theory conjectures (such as Goldbach's Partition Problem) without relying on heuristic approximations.
 
 [#chap-the-iris]
-== The Iris
+
+= The Iris
 
 Conceptual introduction to the Iris optical-geometric analogy, variable aperture flux gating, Spin(2) bivector rotation planes, and the nilpotent perimeter boundary.
 
@@ -172,7 +173,8 @@ As illustrated in the dynamic model above, adjusting the aperture opening magnit
 maintaining the exact quadratic aperture constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
 
 [#chap-initial-postulates-of-the-tautological-structure]
-== Initial Postulates of the Tautological Structure
+
+= Initial Postulates of the Tautological Structure
 
 Essential postulates governing the tautological structure of the Counting-Iris Number System.
 
@@ -278,7 +280,8 @@ where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators
 ====
 
 [#chap-the-rational-numbers]
-== The Rational Numbers
+
+= The Rational Numbers
 
 Constructing the rational numbers \( \mathbb { Q } \) using the Iris optical-geometric aperture analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating without non-denumerable continua.
 
@@ -341,7 +344,8 @@ Rational aperture scale factors \( r = p / q \) directly modulate the Iris field
 Varying the rational aperture ratio \( r \) adjusts the central flux transmission while maintaining the quadratic perimeter boundary constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
 
 [#chap-the-real-numbers]
-== The Real Numbers
+
+= The Real Numbers
 
 Constructing the real numbers \( \mathbb { R } \) through constructive Iris aperture refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations without unconstructive non-denumerable infinities.
 
@@ -397,7 +401,8 @@ For any non-zero real aperture parameter \( x \in \mathbb { R } \setminus \{ 0 \
 This guarantees strict conservation of light flux and geometric scale invariance across all real transformations within the Counting-Iris Number System.
 
 [#chap-the-multiscale-resolution-numbers]
-== The Multiscale Resolution Numbers
+
+= The Multiscale Resolution Numbers
 
 Constructing multiscale resolution numbers as measurement quantities evaluated across finer and finer vernier scales on the Iris aperture grid, establishing Multiscale Resolution Analysis (MSRA) with exact finite-duration observation steps and extended temporal scale parameters without external non-constructive set mappings.
 
@@ -456,7 +461,8 @@ This eliminates division-by-zero ambiguities by expressing all derivatives as co
 ====
 
 [#chap-complex-numbers-and-quaternions]
-== Complex Numbers and Quaternions
+
+= Complex Numbers and Quaternions
 
 Constructing complex numbers and quaternions directly within the Counting-Iris framework, establishing complex numbers via the fundamental Iris aperture generator \( \iota \) and quaternions as the spatial bivector subalgebra of \( Cl ( 4 , 1 , 1 ) \) without introducing non-constructive sets or ungrounded imaginary abstractions.
 
@@ -539,7 +545,8 @@ This proves that quaternions in Counting-Iris are exact spatial bivector rotatio
 ====
 
 [#chap-how-to-do-differential-calculus]
-== How to do Differential Calculus
+
+= How to do Differential Calculus
 
 Constructing differential calculus and real analysis within Multiscale Resolution Analysis (MSRA) without continuum limit paradoxes or uncountably infinite point-sets. Derivatives are defined as exact vernier aperture difference ratios projected onto the main-scale real domain via the Main Scale Projection operator \( ( \downarrow ) \).
 
@@ -652,7 +659,8 @@ To illustrate the MSRA vernier derivative in practice, consider the multiscale a
 This demonstrates how MSRA derivatives compute exact standard values purely through discrete algebraic steps without continuum limits or indeterminate forms.
 
 [#chap-how-to-do-integral-calculus]
-== How to do Integral Calculus
+
+= How to do Integral Calculus
 
 Constructing indefinite and definite integration within Multiscale Resolution Analysis (MSRA) as exact vernier aperture summations over discrete partition grids \( \mathcal { G } _ \omega \), proving the Fundamental Theorem of MSRA Calculus without infinite measure theory.
 
@@ -735,7 +743,8 @@ To illustrate discrete MSRA integration, evaluate \( \int _ 0 ^ 1 x \, dx \) dir
 This matches the anti-derivative calculation \( \left [ \frac { x ^ 2 } { 2 } \right ] _ 0 ^ 1 = \frac { 1 } { 2 } \).
 
 [#chap-how-to-compute-a-contour-integral]
-== How to Compute a Contour Integral
+
+= How to Compute a Contour Integral
 
 Formulating line integrals and contour integration across multivector paths in \( Cl ( 4 , 1 , 1 ) \) Clifford space, establishing the discrete MSRA Cauchy-Goursat analogue on ultra-refined vernier grids and residue-free aperture loop circulations.
 
@@ -847,7 +856,8 @@ The residue at simple pole \( z _ 1 = i \) is: \[ \text { Res } \left ( \Psi , i
 This explicitly verifies the MSRA Residue Theorem for rational aperture field functions.
 
 [#chap-the-master-field-equation]
-== The Master Field Equation
+
+= The Master Field Equation
 
 Formulation of the Master Field Equation in \( Cl ( 4 , 1 , 1 ) \) Clifford space, establishing unified field dynamics, basis vector definitions, self-generated mass, electromagnetic gravitation, and steady-state cosmological flux conservation under finite-duration observation processes.
 
@@ -911,7 +921,8 @@ In the unified multivector field \( F _ { \text { total } } = E e _ 4 + c B ( e 
 . **Newtonian Inertial Kinematics of Wave Propagation**: Due to the convective temporal operator \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) inside the Clifford Dirac-Iris differential operator \( D \), electromagnetic field perturbations propagate inertially across the discrete grid according to Newton's laws of motion via vector advection \( c + u \), rather than obeying an invariant speed constraint across coordinate transformations.
 
 [#chap-completion-of-the-tautological-postulate-system]
-== Completion of the Tautological Postulate System
+
+= Completion of the Tautological Postulate System
 
 In this chapter, the foundational postulates introduced in Chapter 3 are synthesized with the differential, integral, and multivector calculus developed across the preceding chapters, including the Master Field Equation. We establish that the Counting-Iris framework constitutes a closed, complete, and self-consistent tautological inference engine, and provide explicit, self-contained proofs for every structural component within the system—including the formal derivation of Clifford algebra \( Cl ( 4 , 1 , 1 ) \).
 
@@ -1063,11 +1074,12 @@ By grounding all analysis in discrete Multiscale Resolution Analysis (MSRA) and 
 . **Non-Measurable Sets**: Because every set of physical or mathematical interest is constructed via finite discrete counting operations, non-measurable sets (such as those in the Banach-Tarski paradox) cannot be formulated within the Iris number system.
 
 [#chap-index]
-== Index of Formal Statements
+
+= Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-=== Index of Formal Statements
+== Index of Formal Statements
 
 This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 

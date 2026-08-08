@@ -1,4 +1,4 @@
-= The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
+= The Iris Number System: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
 :subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
 :author: Frédéric Blondel Custer
 :doctype: book
@@ -9,8 +9,7 @@
 
 A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
 
-[#chap-constructive-clifford-geometry-and-aperture-metrics]
-== Constructive Clifford Geometry and Aperture Metrics
+= Constructive Clifford Geometry and Aperture Metrics
 
 In this chapter, geometry is constructed strictly within the Iris number system and \( Cl ( 4 , 1 , 1 ) \) multivector space without appealing to uncountable geometric continua. 2D Euclidean Geometric Algebra \( Cl ( 2 , 0 ) \), 3D Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \), and 4D Homogeneous Projective Geometric Algebra \( Cl ( 3 , 0 , 1 ) \) are constructed directly as sub-algebras, along with metric spaces and conformal null-geometries on discrete rational partition grids \( \mathcal { G } _ N \).
 
@@ -203,7 +202,8 @@ Every conformal transformation on discrete grid \( \mathcal { G } _ N \) is repr
 ====
 
 [#chap-multivector-algebra-and-structural-tautologies]
-== Multivector Algebra and Structural Tautologies
+
+= Multivector Algebra and Structural Tautologies
 
 In this chapter, algebraic structures—including Clifford modules, blade ideals, constructive rational polynomial factorization, ring homomorphisms, and invariant multivector submanifolds—are formally proved within \( Cl ( 4 , 1 , 1 ) \).
 
@@ -1263,7 +1263,8 @@ The Broyden–Fletcher–Goldfarb–Shanno (BFGS) quasi-Newton algorithm and its
 * **Shanno, D. F., & Kettler, P. C. (1970).** "Optimal conditioning of quasi-Newton methods." *Mathematics of Computation*, 24(111), 657–664. link:https://doi.org/10.1090/S0025-5718-1970-0274030-6[DOI: 10.1090/S0025-5718-1970-0274030-6].
 
 [#chap-geometric-algebraic-polynomial-curve-intersections-and-s-power-b-zier-clipping]
-== Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
+
+= Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping
 
 In this chapter, the traditional dichotomy between algebra (polynomial equations and root finding) and geometry (curves, projections, and fat-line enclosures) is unified within the Iris number system. Building upon the seminal work of Thomas W. Sederberg (Sederberg & Nishita, 1990) on Bézier clipping and fat-line enclosures, and Javier Sánchez-Reyes (1997, 2000) on the symmetric \( s \)-power basis representation for polynomial curves, polynomial root finding is rendered equivalent to geometric fat-line clipping, and geometric clipping is executed via exact quadratic algebraic solutions.
 
@@ -1602,7 +1603,8 @@ end.
 ----
 
 [#chap-multivector-representation-theory-and-character-orthogonality]
-== Multivector Representation Theory and Character Orthogonality
+
+= Multivector Representation Theory and Character Orthogonality
 
 In this chapter, representation theory is constructed for finite matrix and multivector groups acting on Clifford modules in \( Cl ( 4 , 1 , 1 ) \). Complete reducibility, character orthogonality, and Schur's Lemma are formally proved.
 
@@ -1643,7 +1645,8 @@ Let \( \chi _ i , \chi _ j \) be the multivector characters of two irreducible r
 ====
 
 [#chap-constructive-discrete-topology-and-aperture-coverings]
-== Constructive Discrete Topology and Aperture Coverings
+
+= Constructive Discrete Topology and Aperture Coverings
 
 In this chapter, topology is developed without infinite point sets. Open sets, neighborhood bases, Vernier compactness, and discrete fixed-point contractive theorems are established on finite rational partition grids \( \mathcal { G } _ N \).
 
@@ -1772,7 +1775,8 @@ When evaluating topological invariants, helicity sums, and defect indices on dis
 ====
 
 [#chap-order-theory-and-discrete-iris-lattices]
-== Order Theory and Discrete Iris Lattices
+
+= Order Theory and Discrete Iris Lattices
 
 In this chapter, order theory and lattice structures are established on finite rational grids \( \mathcal { G } _ N \), defining join (\( \vee \)), meet (\( \wedge \)), and Boolean sublattices.
 
@@ -1998,7 +2002,8 @@ The extremal antichain theorem on finite Boolean lattices was established by:
 * **Sperner, E. (1928).** "Ein Satz über Untermengen einer endlichen Menge." *Mathematische Zeitschrift*, 27(1), pp. 544–548.
 
 [#chap-constructive-categories-and-multivector-functors]
-== Constructive Categories and Multivector Functors
+
+= Constructive Categories and Multivector Functors
 
 In this chapter, category theory is constructed over finite rational aperture spaces, multivector functors, Yoneda aperture embedding, and monoidal coherence.
 
@@ -2080,7 +2085,8 @@ The adjoint functor theorem establishing necessary and sufficient conditions for
 * **Mac Lane, S. (1971).** *Categories for the Working Mathematician*. Graduate Texts in Mathematics, Vol. 5. Springer-Verlag.
 
 [#chap-constructive-discrete-combinatorics-and-partition-tautologies]
-== Constructive Discrete Combinatorics and Partition Tautologies
+
+= Constructive Discrete Combinatorics and Partition Tautologies
 
 In this chapter, discrete combinatorics, multivector permutations, and partition enumeration identities are derived on finite rational grids \( \mathcal { G } _ N \).
 
@@ -2388,11 +2394,12 @@ where ties in minimax aperture value are resolved strictly by discrete lexicogra
 ====
 
 [#chap-index]
-== Index of Formal Statements
+
+= Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-=== Index of Formal Statements
+== Index of Formal Statements
 
 This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 

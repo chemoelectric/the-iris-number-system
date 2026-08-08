@@ -1,4 +1,4 @@
-= The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics
+= The Iris Number System: Applications to Number Theory, Analysis, Probability Theory, Statistics
 :subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
 :author: Frédéric Blondel Custer
 :doctype: book
@@ -9,8 +9,7 @@
 
 A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics
 
-[#chap-tautological-proofs-in-number-theory]
-== Tautological Proofs in Number Theory
+= Tautological Proofs in Number Theory
 
 In this chapter, classical conjectures and fundamental theorems of number theory and arithmetic analysis are established as exact tautological deductions strictly within the Counting-Iris framework, utilizing \( Cl ( 4 , 1 , 1 ) \) multivector parity conservation, bounded discrete rational partition grids \( \mathcal { G } _ N \), and Jaynesian Maximum Entropy (MaxEnt) priors.
 
@@ -759,7 +758,8 @@ Because the algorithm relies on the sub-linear \( \pi _ { \mathcal { I } } ( x )
 |===
 
 [#chap-applications-to-constructive-analysis]
-== Applications to Constructive Analysis
+
+= Applications to Constructive Analysis
 
 In this chapter, fundamental concepts of mathematical analysis—including measure theory, spectral decomposition, and function spaces—are systematically established on finite rational partition grids \( \mathcal { G } _ N \) without appealing to non-constructive uncountably infinite continua.
 
@@ -920,7 +920,8 @@ On discrete grid \( \mathcal { G } _ N \), the MSRA vernier derivative norm \( \
 ====
 
 [#chap-applications-to-probability-theory]
-== Applications to Probability Theory
+
+= Applications to Probability Theory
 
 In this chapter, probability theory is strictly reformulated on finite operational measurement spaces, treating probabilities as objective Jaynesian Maximum Entropy states constrained by physical aperture measurements rather than unconstructive infinite measure spaces.
 
@@ -1008,7 +1009,8 @@ Under unitary multivector gauge transformations in \( Cl ( 4 , 1 , 1 ) \), the t
 ====
 
 [#chap-applications-to-constructive-statistics]
-== Applications to Constructive Statistics
+
+= Applications to Constructive Statistics
 
 In this chapter, statistical inference and hypothesis testing are reformulated as exact operational gauging procedures on finite discrete measurement data, establishing optimal parameter estimation and information criteria.
 
@@ -1079,7 +1081,8 @@ where \( I _ { \mathcal { I } } ( \theta ) \) is the Fisher aperture information
 ====
 
 [#chap-applications-to-conventional-statistics]
-== Applications to Conventional Statistics
+
+= Applications to Conventional Statistics
 
 In this chapter, classical methods of conventional statistics—such as hypothesis testing via \( p \)-values, confidence intervals, analysis of variance (ANOVA), and linear regression estimation—are rigorously mapped into exact operational gauge operations within the discrete Iris framework. We demonstrate how conventional statistical formulas arise as finite-aperture projections of \( Cl ( 4 , 1 , 1 ) \) multivector distributions under Jaynesian Maximum Entropy constraints, eliminating reliance on infinite continuum distributions while strictly preserving operational sampling bounds.
 
@@ -1141,11 +1144,12 @@ Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite
 ====
 
 [#chap-index]
-== Index of Formal Statements
+
+= Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-=== Index of Formal Statements
+== Index of Formal Statements
 
 This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 
@@ -1164,7 +1168,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-recursive-grover-factorization[**Theorem: Recursive Digital Grover Search Factorization Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
 * xref:theorem-oeis-rsa-prior-factorization[**Theorem: Prior-Information OEIS Product Tree Factorization and Deterministic Primality Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prior-Information OEIS Database Integration and Fast Sub-Linear Factorization*
 * xref:theorem-goldbach-proof[**Theorem: Goldbach Partition Tautology in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Goldbach Partition Theorem*
-* xref:theorem-riemann-proof[**Theorem: Strict Critical Line Zero Spectrum of the Iris Zeta Operator**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Riemann Hypothesis Spectral Theorem*
+* xref:theorem-riemann-proof[**Theorem: Strict Critical Line Zero Spectrum of the Iris Zeta Operator**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Goldbach Partition Theorem*
 * xref:theorem-twin-prime-proof[**Theorem: Infinitude of Discrete Twin Prime Pairs**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Twin Prime Infinitude Theorem*
 * xref:theorem-collatz-proof[**Theorem: Universal Collatz Orbit Convergence to Origin State 1**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *The Collatz Orbit Convergence Theorem*
 * xref:theorem-fermat-proof[**Theorem: Non-Existence of Integer Solutions to Fermat's Equation for n > 2**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fermat's Last Theorem in Iris Arithmetic*
@@ -1174,7 +1178,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-mersenne-prime-infinitude[**Theorem: Infinitude of Discrete Mersenne Primes**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Infinitude of Mersenne Primes*
 * xref:theorem-gilbreath-proof[**Theorem: Gilbreath's Leading Term Invariance for Ordered Primes**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Gilbreath's Successive Prime Difference Theorem*
 * xref:theorem-lychrel-nonexistence[**Theorem: Universal Reverse-and-Add Palindrome Convergence**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Lychrel Number Non-Existence Theorem*
-* xref:theorem-nth-prime-inversion[**Theorem: Sub-Linear \( n \)-th Prime Inversion and Segmented Vernier Extraction Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fast Sub-Linear Algorithm for the n-th Prime Number*
+* xref:theorem-nth-prime-inversion[**Theorem: Sub-Linear \( n \)-th Prime Inversion and Segmented Vernier Extraction Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fast Sub-Linear Algorithm for the \( n \)-th Prime Number*
 * xref:theorem-ftc-msra[**Theorem: The Fundamental Theorem of MSRA Constructive Calculus**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
 * xref:theorem-mvt-msra[**Theorem: The MSRA Vernier Mean Value Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
 * xref:theorem-taylor-msra[**Theorem: The Discrete Taylor-Vernier Expansion Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
