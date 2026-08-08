@@ -24,6 +24,7 @@
 - Maintain ample spacing between operators, variables, and delimiters in math expressions (e.g., `\( a \cdot x \pmod p \)`), but avoid adding spaces inside LaTeX environment commands or macro keywords (such as `\begin{array}`, `\end{array}`, `\begin{cases}`, or `\text{...}`) to preserve exact syntactic parsing.
 - In prose and textbook text, use directional double quotes (“ and ”) for quotation marks instead of straight double quotes ("), to ensure proper English quotation mark styling in rendering and PDF production.
 - Always avoid the term “concrete” to mean “objective”; exemplars are “objective”, not “concrete”.
+- Always use the terms “digital signals” and “analog signals” (or “m-res signals”) rather than “discrete signals” or “continuous signals”.
 
 ## Computer Programming Guidelines
 
