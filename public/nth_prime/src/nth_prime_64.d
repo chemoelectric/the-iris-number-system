@@ -1,5 +1,6 @@
 module nth_prime_64;
 
+import std.bigint : BigInt;
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
 import core.stdc.string : memset;
@@ -7,7 +8,7 @@ import core.bitop : popcnt;
 import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
-import std.parallelism : parallel, TaskPool;
+import std.parallelism : parallel;
 
 alias u64 = ulong;
 
@@ -152,24 +153,26 @@ u64 piFast(u64 w, const(uint)[] primes) {
         u64 k = (w - 1) / 2;
         size_t wordIdx = cast(size_t) (k / 64);
         size_t bitIdx = cast(size_t) (k % 64);
-        uint baseCount = popCntBlock[wordIdx];
-        u64 wVal = isSubprimeBit[wordIdx];
+
+        uint baseCnt = popCntBlock[wordIdx];
+        u64 curWord = isSubprimeBit[wordIdx];
         u64 mask = (1UL << bitIdx) | ((1UL << bitIdx) - 1UL);
-        u64 masked = wVal & mask;
-        int inWord = cast(int) popcnt(masked);
-        count = cast(u64) (baseCount + inWord);
+        u64 maskedWord = curWord & mask;
+        int subCnt = cast(int) popcnt(maskedWord);
+
+        count = cast(u64) (baseCnt + subCnt);
     } else {
-        u64 c = 0;
-        size_t idx = 0;
-        while (idx < primes.length) {
-            if (cast(u64) primes[idx] <= w) {
-                c = c + 1;
-                idx = idx + 1;
+        size_t low = 0;
+        size_t high = primes.length;
+        while (low < high) {
+            size_t mid = (low + high) / 2;
+            if (cast(u64) primes[mid] <= w) {
+                low = mid + 1;
             } else {
-                idx = primes.length;
+                high = mid;
             }
         }
-        count = c;
+        count = cast(u64) low;
     }
     return count;
 }
@@ -427,6 +430,26 @@ u64 getNthPrime(u64 n) {
     return pn;
 }
 
+BigInt getNthPrime(BigInt n) {
+    BigInt res = BigInt(0);
+    if (n > 0) {
+        ulong uVal = cast(ulong) n;
+        ulong p = getNthPrime(uVal);
+        res = BigInt(p);
+    }
+    return res;
+}
+
+ucent getNthPrime(ucent n) {
+    ucent res = 0;
+    if (n > 0) {
+        ulong uVal = cast(ulong) n;
+        ulong p = getNthPrime(uVal);
+        res = cast(ucent) p;
+    }
+    return res;
+}
+
 u64 parseDigits(string str) {
     u64 val = 0;
     size_t i = 0;
@@ -492,26 +515,37 @@ void printResult(u64 val) {
     printf("The calculated nth prime number value is: %llu\n", val);
 }
 
-int main(string[] args) {
-    u64 targetN = 0;
-    if (args.length > 1) {
-        targetN = parseInputString(args[1]);
-    } else {
-        char[256] buffer;
-        char* inputLine = fgets(buffer.ptr, cast(int) buffer.length,
-                                stdin);
-        if (inputLine !is null) {
-            string rawStr = to!string(buffer.ptr);
-            targetN = parseInputString(rawStr);
+version (standalone) {
+    enum HAS_MAIN = true;
+} else version (demo) {
+    enum HAS_MAIN = true;
+} else {
+    enum HAS_MAIN = false;
+}
+
+static if (HAS_MAIN) {
+    int main(string[] args) {
+        u64 targetN = 0;
+        if (args.length > 1) {
+            targetN = parseInputString(args[1]);
+        } else {
+            char[256] buffer;
+            char* inputLine = fgets(buffer.ptr,
+                                    cast(int) buffer.length,
+                                    stdin);
+            if (inputLine !is null) {
+                string rawStr = to!string(buffer.ptr);
+                targetN = parseInputString(rawStr);
+            }
         }
-    }
 
-    if (targetN > 0) {
-        u64 nthPrimeVal = getNthPrime(targetN);
-        printResult(nthPrimeVal);
-    } else {
-        printf("Invalid input or N must be positive.\n");
-    }
+        if (targetN > 0) {
+            u64 nthPrimeVal = getNthPrime(targetN);
+            printResult(nthPrimeVal);
+        } else {
+            printf("Invalid input or N must be positive.\n");
+        }
 
-    return 0;
+        return 0;
+    }
 }

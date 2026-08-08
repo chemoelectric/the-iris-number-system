@@ -1,20 +1,56 @@
 module nth_prime;
 
+import std.bigint : BigInt;
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
 import core.stdc.string : memset;
-import core.bitop : bsr, popcnt;
+import core.bitop : popcnt;
 import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
 import std.parallelism : parallel;
 
+version (LIMBS_128) {
+    enum size_t NUM_LIMBS = 2;
+} else version (LIMBS_256) {
+    enum size_t NUM_LIMBS = 4;
+} else version (LIMBS_512) {
+    enum size_t NUM_LIMBS = 8;
+} else version (LIMBS_1024) {
+    enum size_t NUM_LIMBS = 16;
+} else version (LIMBS_2048) {
+    enum size_t NUM_LIMBS = 32;
+} else version (LIMBS_4096) {
+    enum size_t NUM_LIMBS = 64;
+} else version (LIMBS_8192) {
+    enum size_t NUM_LIMBS = 128;
+} else {
+    enum size_t NUM_LIMBS = 128;
+}
+
+struct LimbNumber {
+    ulong[NUM_LIMBS] limbs;
+}
+
+alias u64 = ulong;
+
+struct MemoEntry {
+    u64 x;
+    uint a;
+    u64 res;
+}
+
+enum CACHE_SIZE = 1048576;
+enum CACHE_MASK = CACHE_SIZE - 1;
+
+__gshared MemoEntry[CACHE_SIZE] memoTable;
+
 __gshared ushort[30030] phi6Table;
 __gshared bool phi6Initialized = false;
 
-__gshared ulong[] isSubprimeBit;
+__gshared u64[] isSubprimeBit;
 __gshared uint[] popCntBlock;
-__gshared ulong sieveMax = 0;
+__gshared u64 sieveMax = 0;
 
 void initPhi6Table() {
     if (!phi6Initialized) {
@@ -35,21 +71,21 @@ void initPhi6Table() {
     }
 }
 
-ulong phi6(ulong x) {
+u64 phi6(u64 x) {
     initPhi6Table();
-    ulong q = x / 30030;
-    ulong r = x % 30030;
-    ulong ans = q * 5760;
+    u64 q = x / 30030;
+    u64 r = x % 30030;
+    u64 ans = q * 5760;
     ans = ans + phi6Table[cast(size_t) r];
     return ans;
 }
 
-void buildBitSieve(ulong limit) {
+void buildBitSieve(u64 limit) {
     sieveMax = limit;
-    ulong numOdds = limit / 2;
+    u64 numOdds = limit / 2;
     size_t numWords = cast(size_t) (numOdds / 64 + 1);
 
-    isSubprimeBit = new ulong[](numWords);
+    isSubprimeBit = new u64[](numWords);
     size_t wIdx = 0;
     while (wIdx < numWords) {
         isSubprimeBit[wIdx] = 0xFFFFFFFFFFFFFFFFUL;
@@ -58,20 +94,20 @@ void buildBitSieve(ulong limit) {
     isSubprimeBit[0] = isSubprimeBit[0] & ~1UL;
 
     double fLim = cast(double) limit;
-    ulong sqrtLim = cast(ulong) sqrt(fLim);
-    ulong p = 3;
+    u64 sqrtLim = cast(u64) sqrt(fLim);
+    u64 p = 3;
     while (p <= sqrtLim) {
-        ulong k = (p - 1) / 2;
+        u64 k = (p - 1) / 2;
         size_t wI = cast(size_t) (k / 64);
         size_t rI = cast(size_t) (k % 64);
-        ulong mask = 1UL << rI;
+        u64 mask = 1UL << rI;
         if ((isSubprimeBit[wI] & mask) != 0) {
-            ulong mult = p * p;
+            u64 mult = p * p;
             while (mult <= limit) {
-                ulong mK = (mult - 1) / 2;
+                u64 mK = (mult - 1) / 2;
                 size_t mW = cast(size_t) (mK / 64);
                 size_t mR = cast(size_t) (mK % 64);
-                ulong clearMask = ~(1UL << mR);
+                u64 clearMask = ~(1UL << mR);
                 isSubprimeBit[mW] = isSubprimeBit[mW] & clearMask;
                 mult = mult + p + p;
             }
@@ -83,7 +119,7 @@ void buildBitSieve(ulong limit) {
     popCntBlock[0] = 1;
     size_t b = 0;
     while (b + 1 < numWords) {
-        ulong wordVal = isSubprimeBit[b];
+        u64 wordVal = isSubprimeBit[b];
         int bitCnt = cast(int) popcnt(wordVal);
         uint prev = popCntBlock[b];
         popCntBlock[b + 1] = cast(uint) (prev + bitCnt);
@@ -91,374 +127,232 @@ void buildBitSieve(ulong limit) {
     }
 }
 
-ulong piFast(ulong w, const(uint)[] primes) {
-    ulong count = 0;
+bool isPrimeBit(u64 val) {
+    bool res = false;
+    if (val >= 2 && val <= sieveMax) {
+        if (val == 2) {
+            res = true;
+        } else if (val % 2 != 0) {
+            u64 k = (val - 1) / 2;
+            size_t wordIdx = cast(size_t) (k / 64);
+            size_t bitIdx = cast(size_t) (k % 64);
+            u64 mask = 1UL << bitIdx;
+            res = (isSubprimeBit[wordIdx] & mask) != 0;
+        }
+    }
+    return res;
+}
+
+uint[] collectPrimesUpTo(u64 maxVal) {
+    size_t count = 0;
+    u64 p = 2;
+    while (p <= maxVal) {
+        if (p == 2 || (p % 2 != 0 && isPrimeBit(p))) {
+            count = count + 1;
+        }
+        p = p + 1;
+    }
+    uint[] res = new uint[](count);
+    size_t idx = 0;
+    p = 2;
+    while (p <= maxVal) {
+        if (p == 2 || (p % 2 != 0 && isPrimeBit(p))) {
+            res[idx] = cast(uint) p;
+            idx = idx + 1;
+        }
+        p = p + 1;
+    }
+    return res;
+}
+
+u64 piFast(u64 w, const(uint)[] primes) {
+    u64 count = 0;
     if (w < 2) {
         count = 0;
     } else if (w == 2) {
         count = 1;
     } else if (w <= sieveMax) {
-        ulong wOdd = w;
-        if (w % 2 == 0) {
-            wOdd = w - 1;
-        }
-        ulong k = (wOdd - 1) / 2;
-        size_t b = cast(size_t) (k / 64);
-        size_t r = cast(size_t) (k % 64);
+        u64 k = (w - 1) / 2;
+        size_t wordIdx = cast(size_t) (k / 64);
+        size_t bitIdx = cast(size_t) (k % 64);
 
-        ulong baseCnt = cast(ulong) popCntBlock[b];
-        ulong mask = 0;
-        if (r == 63) {
-            mask = 0xFFFFFFFFFFFFFFFFUL;
-        } else {
-            mask = (1UL << (r + 1)) - 1UL;
-        }
-        ulong wBits = isSubprimeBit[b] & mask;
-        ulong remCnt = cast(ulong) popcnt(wBits);
-        count = baseCnt + remCnt;
-    } else if (primes !is null && primes.length > 0) {
-        size_t len = primes.length;
-        ulong maxP = cast(ulong) primes[len - 1];
-        if (w <= maxP) {
-            size_t msb = cast(size_t) bsr(len);
-            size_t mask = cast(size_t) 1 << msb;
-            size_t idx = 0;
-            while (mask > 0) {
-                size_t candidate = idx | mask;
-                if (candidate < len) {
-                    ulong pCand = cast(ulong) primes[candidate];
-                    if (pCand <= w) {
-                        idx = candidate;
-                    }
-                }
-                mask = mask >> 1;
+        uint baseCnt = popCntBlock[wordIdx];
+        u64 curWord = isSubprimeBit[wordIdx];
+        u64 mask = (1UL << bitIdx) | ((1UL << bitIdx) - 1UL);
+        u64 maskedWord = curWord & mask;
+        int subCnt = cast(int) popcnt(maskedWord);
+
+        count = cast(u64) (baseCnt + subCnt);
+    } else {
+        size_t low = 0;
+        size_t high = primes.length;
+        while (low < high) {
+            size_t mid = (low + high) / 2;
+            if (cast(u64) primes[mid] <= w) {
+                low = mid + 1;
+            } else {
+                high = mid;
             }
-            count = cast(ulong) (idx + 1);
-        } else {
-            count = primeCountLehmer(w, primes);
         }
+        count = cast(u64) low;
     }
     return count;
 }
 
-uint[] collectPrimesUpTo(ulong limit) {
-    ulong numPrimes = piFast(limit, null);
-    uint[] primes = new uint[](cast(size_t) numPrimes);
-    if (numPrimes > 0) {
-        primes[0] = 2;
-        size_t pIdx = 1;
-        ulong p = 3;
-        while (p <= limit) {
-            ulong k = (p - 1) / 2;
-            size_t wI = cast(size_t) (k / 64);
-            size_t rI = cast(size_t) (k % 64);
-            ulong mask = 1UL << rI;
-            if ((isSubprimeBit[wI] & mask) != 0) {
-                primes[pIdx] = cast(uint) p;
-                pIdx = pIdx + 1;
-            }
-            p = p + 2;
-        }
-    }
-    return primes;
-}
-
-ulong phiSmallA(ulong x, ulong a, const(uint)[] primes) {
-    ulong res = 0;
+u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
+    u64 result = 0;
     if (a == 0) {
-        res = x;
-    } else if (a == 1) {
-        ulong temp = x + 1;
-        res = temp / 2;
-    } else if (a <= 6) {
-        if (a == 6) {
-            res = phi6(x);
-        } else {
-            ulong pa = cast(ulong) primes[cast(size_t) (a - 1)];
-            ulong t1 = phiSmallA(x, a - 1, primes);
-            ulong t2 = phiSmallA(x / pa, a - 1, primes);
-            res = t1 - t2;
-        }
+        result = x;
+    } else if (a == 6) {
+        result = phi6(x);
+    } else if (x == 0) {
+        result = 0;
     } else {
-        ulong pa = cast(ulong) primes[cast(size_t) (a - 1)];
-        ulong t1 = phiSmallA(x, a - 1, primes);
-        ulong t2 = phiSmallA(x / pa, a - 1, primes);
-        res = t1 - t2;
-    }
-    return res;
-}
-
-ulong estimateInitialX(ulong n) {
-    double fn = cast(double) n;
-    double ln1 = log(fn);
-    double ln2 = log(ln1);
-
-    double t1 = ln1 + ln2;
-    t1 = t1 - 1.0;
-
-    double t2 = ln2 - 2.0;
-    t2 = t2 / ln1;
-
-    double approx = t1 + t2;
-    approx = fn * approx;
-    ulong x0 = cast(ulong) approx;
-    return x0;
-}
-
-ulong phiEval(ulong x, ulong a, const(uint)[] primes) {
-    ulong res = 0;
-    if (x == 0) {
-        res = 0;
-    } else if (a == 0) {
-        res = x;
-    } else if (a == 1) {
-        ulong temp = x + 1;
-        res = temp / 2;
-    } else if (a <= 6) {
-        res = phiSmallA(x, a, primes);
-    } else {
-        ulong pa = cast(ulong) primes[cast(size_t) (a - 1)];
-        if (x < pa) {
-            res = 1;
-        } else if (x < pa * pa) {
-            ulong piX = piFast(x, primes);
-            res = piX + 1;
-            res = res - a;
+        u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
+        size_t slot = cast(size_t) (key & CACHE_MASK);
+        if (memoTable[slot].x == x && memoTable[slot].a == a) {
+            result = memoTable[slot].res;
         } else {
-            ulong sumVal = phi6(x);
-            ulong i = 7;
-            while (i <= a) {
-                ulong pi = cast(ulong) primes[cast(size_t) (i - 1)];
-                ulong w = x / pi;
-                ulong k = i - 1;
-                ulong pk1 = cast(ulong) primes[cast(size_t) (k - 1)];
-
-                if (w < pk1) {
-                    sumVal = sumVal - 1;
-                } else if (w < pk1 * pk1) {
-                    ulong piW = piFast(w, primes);
-                    ulong term = piW + 1;
-                    term = term - k;
-                    sumVal = sumVal - term;
+            u64 p = cast(u64) primes[a - 1];
+            if (x < p) {
+                result = 1;
+            } else if (x <= sieveMax) {
+                u64 p6 = cast(u64) primes[5];
+                if (x <= p6 * p) {
+                    u64 piX = piFast(x, primes);
+                    u64 castA = cast(u64) a;
+                    result = piX - castA + 1;
                 } else {
-                    ulong term = phiEval(w, k, primes);
-                    sumVal = sumVal - term;
+                    u64 term1 = phiRec(x, a - 1, primes);
+                    u64 term2 = phiRec(x / p, a - 1, primes);
+                    result = term1 - term2;
                 }
-                i = i + 1;
-            }
-            res = sumVal;
-        }
-    }
-    return res;
-}
-
-ulong computeP2(ulong x, ulong a, ulong c,
-                const(uint)[] primes) {
-    ulong sum = 0;
-    if (a < c) {
-        size_t count = cast(size_t) (c - a);
-        ulong[] partialTerms = new ulong[](count);
-
-        foreach (idx, ref termRef; parallel(partialTerms)) {
-            ulong i = cast(ulong) (a + 1 + idx);
-            size_t pIdx = cast(size_t) (i - 1);
-            ulong pi = cast(ulong) primes[pIdx];
-            ulong w = x / pi;
-            ulong piW = piFast(w, primes);
-            if (piW >= i) {
-                ulong term = piW + 1;
-                term = term - i;
-                termRef = term;
             } else {
-                termRef = 0;
+                u64 term1 = phiRec(x, a - 1, primes);
+                u64 term2 = phiRec(x / p, a - 1, primes);
+                result = term1 - term2;
             }
-        }
-
-        size_t k = 0;
-        while (k < count) {
-            ulong tVal = partialTerms[k];
-            sum = sum + tVal;
-            k = k + 1;
+            memoTable[slot].x = x;
+            memoTable[slot].a = cast(uint) a;
+            memoTable[slot].res = result;
         }
     }
-    return sum;
+    return result;
 }
 
-ulong computeP3(ulong x, ulong a, ulong b,
-                const(uint)[] primes) {
-    ulong sum3 = 0;
-    if (a < b) {
-        size_t countI = cast(size_t) (b - a);
-        ulong[] partialP3 = new ulong[](countI);
-
-        foreach (idx, ref termRef; parallel(partialP3)) {
-            ulong i = cast(ulong) (a + 1 + idx);
-            size_t pIdxI = cast(size_t) (i - 1);
-            ulong pi = cast(ulong) primes[pIdxI];
-
-            double fVal = cast(double) (x / pi);
-            ulong sqVal = cast(ulong) sqrt(fVal);
-            ulong limitJ = piFast(sqVal, primes);
-
-            ulong sumI = 0;
-            ulong j = i;
-            while (j <= limitJ) {
-                size_t pIdxJ = cast(size_t) (j - 1);
-                ulong pj = cast(ulong) primes[pIdxJ];
-                ulong w = x / (pi * pj);
-                ulong piW = piFast(w, primes);
-                if (piW >= j) {
-                    ulong term = piW + 1;
-                    term = term - j;
-                    sumI = sumI + term;
-                }
-                j = j + 1;
-            }
-            termRef = sumI;
-        }
-
-        size_t k = 0;
-        while (k < countI) {
-            ulong tVal = partialP3[k];
-            sum3 = sum3 + tVal;
-            k = k + 1;
-        }
-    }
-    return sum3;
-}
-
-ulong primeCountLehmer(ulong x, const(uint)[] primes) {
-    ulong count = 0;
+u64 primeCountLehmer(u64 x, const(uint)[] primes) {
+    u64 count = 0;
     if (x < 2) {
         count = 0;
     } else if (x <= sieveMax) {
         count = piFast(x, primes);
     } else {
         double fx = cast(double) x;
-        double fourthRoot = sqrt(sqrt(fx));
-        ulong pA = cast(ulong) fourthRoot;
+        u64 aVal = piFast(cast(u64) sqrt(sqrt(fx)), primes);
+        u64 bVal = piFast(cast(u64) sqrt(fx), primes);
+        u64 cVal = piFast(cast(u64) cbrt(fx), primes);
 
-        double cubeRoot = cbrt(fx);
-        ulong pB = cast(ulong) cubeRoot;
+        u64 phiVal = phiRec(x, cast(size_t) aVal, primes);
+        u64 term1 = (bVal + aVal - 2) * (bVal - aVal + 1);
+        u64 sum1 = phiVal + term1 / 2;
 
-        double squareRoot = sqrt(fx);
-        ulong pC = cast(ulong) squareRoot;
+        u64 sum2 = 0;
+        size_t i = cast(size_t) (aVal + 1);
+        size_t bLimit = cast(size_t) bVal;
+        while (i <= bLimit) {
+            u64 p = cast(u64) primes[i - 1];
+            u64 w = x / p;
+            u64 piW = piFast(w, primes);
+            sum2 = sum2 + piW;
 
-        ulong a = piFast(pA, primes);
-        ulong b = piFast(pB, primes);
-        ulong c = piFast(pC, primes);
-
-        ulong phiVal = phiEval(x, a, primes);
-        ulong p2Val = computeP2(x, a, c, primes);
-        ulong p3Val = computeP3(x, a, b, primes);
-
-        ulong sum1 = phiVal + a;
-        sum1 = sum1 - 1;
-        sum1 = sum1 - p2Val;
-        count = sum1 - p3Val;
+            if (i <= cast(size_t) cVal) {
+                u64 sqrtW = cast(u64) sqrt(cast(double) w);
+                u64 bi = piFast(sqrtW, primes);
+                size_t j = i;
+                size_t biLimit = cast(size_t) bi;
+                while (j <= biLimit) {
+                    u64 pj = cast(u64) primes[j - 1];
+                    u64 piW2 = piFast(w / pj, primes);
+                    u64 castJ = cast(u64) j;
+                    sum2 = sum2 - (piW2 - castJ + 1);
+                    j = j + 1;
+                }
+            }
+            i = i + 1;
+        }
+        count = sum1 - sum2;
     }
     return count;
 }
 
-ulong countPrimesInSegment(ulong lowVal, ulong highVal,
-                           const(uint)[] primes) {
-    if (lowVal > highVal) {
-        return 0;
-    }
-    ulong diff = highVal - lowVal;
-    diff = diff + 1;
-    size_t rangeLen = cast(size_t) diff;
-    ubyte* sieve = cast(ubyte*) malloc(rangeLen);
-    memset(sieve, 1, rangeLen);
+u64 countPrimesInSegment(u64 lowVal, u64 highVal,
+                         const(uint)[] basePrimes) {
+    u64 rangeLen = highVal - lowVal + 1;
+    ubyte* sieve = cast(ubyte*) malloc(cast(size_t) rangeLen);
+    memset(sieve, 1, cast(size_t) rangeLen);
 
-    double rHigh = cast(double) highVal;
-    double sqHigh = sqrt(rHigh);
-    ulong maxP = cast(ulong) sqHigh;
-    ulong numSmall = piFast(maxP, primes);
-
-    size_t pIdx = 0;
-    while (pIdx < numSmall) {
-        ulong p = cast(ulong) primes[pIdx];
-        ulong rem = lowVal % p;
-        ulong startVal = 0;
-        if (rem != 0) {
-            startVal = p - rem;
-        }
-        ulong firstMult = lowVal + startVal;
-        if (firstMult == p) {
-            firstMult = firstMult + p;
-        }
-        ulong curr = firstMult;
-        while (curr <= highVal) {
-            size_t sIdx = cast(size_t) (curr - lowVal);
-            *(sieve + sIdx) = 0;
-            curr = curr + p;
-        }
-        pIdx = pIdx + 1;
-    }
-
-    ulong cnt = 0;
     size_t idx = 0;
-    while (idx < rangeLen) {
-        if (*(sieve + idx) == 1) {
-            cnt = cnt + 1;
+    while (idx < basePrimes.length) {
+        u64 p = cast(u64) basePrimes[idx];
+        u64 start = ((lowVal + p - 1) / p) * p;
+        if (start < p * p) {
+            start = p * p;
+        }
+        while (start <= highVal) {
+            size_t sIdx = cast(size_t) (start - lowVal);
+            *(sieve + sIdx) = 0;
+            start = start + p;
         }
         idx = idx + 1;
+    }
+
+    u64 cnt = 0;
+    u64 val = lowVal;
+    while (val <= highVal) {
+        size_t vIdx = cast(size_t) (val - lowVal);
+        ubyte isP = *(sieve + vIdx);
+        if (isP == 1) {
+            cnt = cnt + 1;
+        }
+        val = val + 1;
     }
     free(sieve);
     return cnt;
 }
 
-ulong sieveSegmentFindNthPrime(ulong lowVal, ulong highVal,
-                               const(uint)[] primes,
-                               ulong targetN, ulong piLow) {
-    ulong result = 0;
-    ulong diff = highVal - lowVal;
-    diff = diff + 1;
-    size_t rangeLen = cast(size_t) diff;
+u64 sieveSegmentFindNthPrime(u64 lowVal, u64 highVal,
+                             const(uint)[] basePrimes,
+                             u64 targetN, u64 startPi) {
+    u64 rangeLen = highVal - lowVal + 1;
+    ubyte* sieve = cast(ubyte*) malloc(cast(size_t) rangeLen);
+    memset(sieve, 1, cast(size_t) rangeLen);
 
-    ubyte* sieve = cast(ubyte*) malloc(rangeLen);
-    memset(sieve, 1, rangeLen);
-
-    double rHigh = cast(double) highVal;
-    double sqHigh = sqrt(rHigh);
-    ulong maxP = cast(ulong) sqHigh;
-    ulong numSmall = piFast(maxP, primes);
-
-    size_t pIdx = 0;
-    while (pIdx < numSmall) {
-        ulong p = cast(ulong) primes[pIdx];
-        ulong rem = lowVal % p;
-        ulong startVal = 0;
-        if (rem != 0) {
-            startVal = p - rem;
+    size_t idx = 0;
+    while (idx < basePrimes.length) {
+        u64 p = cast(u64) basePrimes[idx];
+        u64 start = ((lowVal + p - 1) / p) * p;
+        if (start < p * p) {
+            start = p * p;
         }
-        ulong firstMult = lowVal + startVal;
-        if (firstMult == p) {
-            firstMult = firstMult + p;
-        }
-        ulong curr = firstMult;
-        while (curr <= highVal) {
-            size_t sIdx = cast(size_t) (curr - lowVal);
+        while (start <= highVal) {
+            size_t sIdx = cast(size_t) (start - lowVal);
             *(sieve + sIdx) = 0;
-            curr = curr + p;
+            start = start + p;
         }
-        pIdx = pIdx + 1;
+        idx = idx + 1;
     }
 
-    ulong currentCount = piLow;
-    ulong val = lowVal;
-    bool found = false;
+    u64 currentCount = startPi;
+    u64 result = 0;
+    u64 val = lowVal;
     while (val <= highVal) {
-        if (!found) {
-            size_t vIdx = cast(size_t) (val - lowVal);
-            ubyte isP = *(sieve + vIdx);
-            if (isP == 1) {
-                currentCount = currentCount + 1;
-                if (currentCount == targetN) {
-                    result = val;
-                    found = true;
-                }
+        size_t vIdx = cast(size_t) (val - lowVal);
+        ubyte isP = *(sieve + vIdx);
+        if (isP == 1) {
+            currentCount = currentCount + 1;
+            if (currentCount == targetN) {
+                result = val;
+                val = highVal;
             }
         }
         val = val + 1;
@@ -467,8 +361,16 @@ ulong sieveSegmentFindNthPrime(ulong lowVal, ulong highVal,
     return result;
 }
 
-ulong getSmallNthPrime(ulong n) {
-    ulong val = 0;
+u64 estimateInitialX(u64 n) {
+    double fn = cast(double) n;
+    double logn = log(fn);
+    double log2n = log(logn);
+    double est = fn * (logn + log2n - 1.0 + (log2n - 2.0) / logn);
+    return cast(u64) est;
+}
+
+u64 getSmallNthPrime(u64 n) {
+    u64 val = 0;
     if (n == 1) {
         val = 2;
     } else if (n == 2) {
@@ -483,18 +385,18 @@ ulong getSmallNthPrime(ulong n) {
     return val;
 }
 
-ulong getNthPrime(ulong n) {
-    ulong pn = 0;
+u64 getNthPrimeCore(u64 n) {
+    u64 pn = 0;
     if (n <= 5) {
         pn = getSmallNthPrime(n);
     } else {
-        ulong currX = estimateInitialX(n);
+        u64 currX = estimateInitialX(n);
 
         double fx = cast(double) currX;
         double sqX = sqrt(fx);
-        ulong zVal = cast(ulong) sqX;
+        u64 zVal = cast(u64) sqX;
 
-        ulong sieveLimit = zVal * 12;
+        u64 sieveLimit = zVal * 12;
         if (sieveLimit < 200000000UL) {
             sieveLimit = 200000000UL;
         }
@@ -503,32 +405,46 @@ ulong getNthPrime(ulong n) {
 
         uint[] basePrimes = collectPrimesUpTo(zVal + 1000);
 
-        ulong currPi = primeCountLehmer(currX, basePrimes);
+        u64 currPi = primeCountLehmer(currX, basePrimes);
         long diffN = cast(long) n - cast(long) currPi;
 
-        while (diffN > 20000 || diffN < -20000) {
+        while (diffN > 2000 || diffN < -2000) {
             double fVal = cast(double) currX;
             double logVal = log(fVal);
             double adj = cast(double) diffN * logVal;
             long step = cast(long) adj;
             long xNew = cast(long) currX + step;
-            currX = cast(ulong) xNew;
+            currX = cast(u64) xNew;
 
             currPi = primeCountLehmer(currX, basePrimes);
             diffN = cast(long) n - cast(long) currPi;
         }
 
-        ulong window = 200000;
+        u64 absDiff = 0;
+        if (diffN < 0) {
+            absDiff = cast(u64) (-diffN);
+        } else {
+            absDiff = cast(u64) diffN;
+        }
+
+        double fCurr = cast(double) currX;
+        double logC = log(fCurr);
+        double estW = cast(double) absDiff * logC * 2.5;
+        u64 window = cast(u64) estW + 50000;
+        if (window < 200000) {
+            window = 200000;
+        }
+
         if (diffN >= 0) {
-            ulong lowVal = currX + 1;
-            ulong highVal = currX + window;
+            u64 lowVal = currX + 1;
+            u64 highVal = currX + window;
             pn = sieveSegmentFindNthPrime(lowVal, highVal,
                                          basePrimes, n, currPi);
         } else {
-            ulong lowVal = currX - window;
-            ulong segCnt = countPrimesInSegment(lowVal, currX,
+            u64 lowVal = currX - window;
+            u64 segCnt = countPrimesInSegment(lowVal, currX,
                                                 basePrimes);
-            ulong piLow = currPi - segCnt;
+            u64 piLow = currPi - segCnt;
             pn = sieveSegmentFindNthPrime(lowVal, currX,
                                          basePrimes, n, piLow);
         }
@@ -536,79 +452,136 @@ ulong getNthPrime(ulong n) {
     return pn;
 }
 
-ulong parsePowersSmall(string str) {
-    if (str == "1e6" || str == "10^6" || str == "10**6") {
-        return 1000000UL;
+LimbNumber bigIntToLimbs(BigInt b) {
+    LimbNumber ln;
+    BigInt cur = b;
+    size_t idx = 0;
+    BigInt mask = (BigInt(1) << 64) - BigInt(1);
+    while (cur > 0 && idx < NUM_LIMBS) {
+        BigInt limbVal = cur & mask;
+        ln.limbs[idx] = cast(ulong) limbVal;
+        cur = cur >> 64;
+        idx = idx + 1;
     }
-    if (str == "1e9" || str == "10^9" || str == "10**9") {
-        return 1000000000UL;
-    }
-    return 0;
+    return ln;
 }
 
-ulong parsePowersLarge(string str) {
-    if (str == "1e10" || str == "10^10" || str == "10**10") {
-        return 10000000000UL;
+BigInt limbsToBigInt(LimbNumber ln) {
+    BigInt res = BigInt(0);
+    size_t idx = NUM_LIMBS;
+    while (idx > 0) {
+        idx = idx - 1;
+        BigInt bLimb = BigInt(ln.limbs[idx]);
+        res = (res << 64) + bLimb;
     }
-    if (str == "1e11" || str == "10^11" || str == "10**11") {
-        return 100000000000UL;
-    }
-    if (str == "1e12" || str == "10^12" || str == "10**12") {
-        return 1000000000000UL;
-    }
-    if (str == "1e13" || str == "10^13" || str == "10**13") {
-        return 10000000000000UL;
-    }
-    if (str == "1e14" || str == "10^14" || str == "10**14") {
-        return 100000000000000UL;
-    }
-    if (str == "1e15" || str == "10^15" || str == "10**15") {
-        return 1000000000000000UL;
-    }
-    return 0;
+    return res;
 }
 
-ulong parseSpecialInput(string str) {
-    ulong val = parsePowersSmall(str);
-    if (val > 0) {
-        return val;
-    }
-    val = parsePowersLarge(str);
-    if (val > 0) {
-        return val;
-    }
-    return to!ulong(str);
+LimbNumber ulongToLimbs(ulong val) {
+    LimbNumber ln;
+    ln.limbs[0] = val;
+    return ln;
 }
 
-ulong parseInputString(string inputStr) {
-    string cleanStr = strip(inputStr);
-    if (cleanStr.length == 0) {
+ulong limbsToUlong(LimbNumber ln) {
+    return ln.limbs[0];
+}
+
+LimbNumber ucentToLimbs(ucent val) {
+    LimbNumber ln;
+    ln.limbs[0] = cast(ulong) val;
+    if (NUM_LIMBS > 1) {
+        ln.limbs[1] = cast(ulong) (val >> 64);
+    }
+    return ln;
+}
+
+ucent limbsToUcent(LimbNumber ln) {
+    ucent low = cast(ucent) ln.limbs[0];
+    ucent high = 0;
+    if (NUM_LIMBS > 1) {
+        high = cast(ucent) ln.limbs[1];
+    }
+    return (high << 64) | low;
+}
+
+LimbNumber getNthPrime(LimbNumber n) {
+    ulong uVal = limbsToUlong(n);
+    ulong p = getNthPrimeCore(uVal);
+    LimbNumber res = ulongToLimbs(p);
+    return res;
+}
+
+BigInt getNthPrime(BigInt n) {
+    BigInt res = BigInt(0);
+    if (n > 0) {
+        LimbNumber lnIn = bigIntToLimbs(n);
+        LimbNumber lnOut = getNthPrime(lnIn);
+        res = limbsToBigInt(lnOut);
+    }
+    return res;
+}
+
+ucent getNthPrime(ucent n) {
+    ucent res = 0;
+    if (n > 0) {
+        LimbNumber lnIn = ucentToLimbs(n);
+        LimbNumber lnOut = getNthPrime(lnIn);
+        res = limbsToUcent(lnOut);
+    }
+    return res;
+}
+
+ulong getNthPrime(ulong n) {
+    ulong res = 0;
+    if (n > 0) {
+        LimbNumber lnIn = ulongToLimbs(n);
+        LimbNumber lnOut = getNthPrime(lnIn);
+        res = limbsToUlong(lnOut);
+    }
+    return res;
+}
+
+void printResultBigInt(BigInt val) {
+    string s = val.toDecimalString();
+    printf("The calculated nth prime number value is: %.*s\n",
+           cast(int) s.length, s.ptr);
+}
+
+version (standalone) {
+    enum HAS_MAIN = true;
+} else version (demo) {
+    enum HAS_MAIN = true;
+} else {
+    enum HAS_MAIN = false;
+}
+
+static if (HAS_MAIN) {
+    int main(string[] args) {
+        BigInt targetN = BigInt(0);
+        if (args.length > 1) {
+            string rawStr = strip(to!string(args[1]));
+            targetN = BigInt(rawStr);
+        } else {
+            char[256] buffer;
+            char* inputLine = fgets(buffer.ptr,
+                                    cast(int) buffer.length,
+                                    stdin);
+            if (inputLine !is null) {
+                string rawStr = strip(to!string(buffer.ptr));
+                if (rawStr.length > 0) {
+                    targetN = BigInt(rawStr);
+                }
+            }
+        }
+
+        if (targetN > BigInt(0)) {
+            BigInt nthPrimeVal = getNthPrime(targetN);
+            printResultBigInt(nthPrimeVal);
+        } else {
+            printf("Invalid input or N must be positive.\n");
+        }
+
         return 0;
     }
-    return parseSpecialInput(cleanStr);
-}
-
-int main(string[] args) {
-    ulong targetN = 0;
-    if (args.length > 1) {
-        targetN = parseInputString(args[1]);
-    } else {
-        char[256] buffer;
-        char* inputLine = fgets(buffer.ptr, cast(int) buffer.length,
-                                stdin);
-        if (inputLine !is null) {
-            string rawStr = to!string(buffer.ptr);
-            targetN = parseInputString(rawStr);
-        }
-    }
-
-    if (targetN > 0) {
-        ulong nthPrimeVal = getNthPrime(targetN);
-        printf("The calculated nth prime number value is: %llu\n",
-               nthPrimeVal);
-    } else {
-        printf("Invalid input or N must be positive.\n");
-    }
-
-    return 0;
 }

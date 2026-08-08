@@ -95,14 +95,14 @@ scientific notation, and power expressions:
 - **Icon Procedure Implementation**: Clean, standalone `nth_prime(n)`
   procedure implemented in `nth_prime.icn` for string input filtering,
   asymptotic estimation, and prime calculation.
-- **D Implementations**: Standalone, sub-linear Meissel algorithm
-  implementations in `src/nth_prime.d`, `src/nth_prime_64.d`, and
-  `src/nth_prime_128.d`. The 64-bit version (`nth_prime_64.d`)
-  uses direct hardware register arithmetic (`ulong`) for maximum CPU
-  throughput, while `nth_prime_128.d` uses native 128-bit scalar
-  register arithmetic (`ucent` / `u128`). Both include memoized
-  \(\phi(x, a)\) evaluations, adaptive secant interval stepping,
-  and localized segmented sieving.
+- **D Modules and Demo Programs**: Reusable D modules in
+  `src/nth_prime.d`, `src/nth_prime_64.d`, and
+  `src/nth_prime_128.d`. Function overloads support `std.bigint.BigInt`,
+  native `ucent`, and `ulong` values directly without ASCII conversions.
+  The multi-limb module (`nth_prime.d`) supports compile-time limb count
+  parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,
+  defaulting to 8192 bits). Each module includes an optionally
+  compiled built-in demo program via `-fversion=standalone`.
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
   subprogram, max line length \(\le 72\) characters, and single
   operation per statement.
