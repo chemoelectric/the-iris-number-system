@@ -20,6 +20,7 @@ To build the D implementations:
 
 ```bash
 make -f GNUmakefile d
+make -f GNUmakefile d64
 make -f GNUmakefile d128
 ```
 
@@ -95,11 +96,13 @@ scientific notation, and power expressions:
   procedure implemented in `nth_prime.icn` for string input filtering,
   asymptotic estimation, and prime calculation.
 - **D Implementations**: Standalone, sub-linear Meissel algorithm
-  implementations in `src/nth_prime.d` and `src/nth_prime_128.d` using
-  native 128-bit scalar register arithmetic (`ucent` / `u128`),
-  zero BigInt limb structures, `-O3` compilation with `gdc`,
-  memoized \(\phi(x, a)\) evaluations, adaptive secant interval
-  stepping, and localized segmented sieving.
+  implementations in `src/nth_prime.d`, `src/nth_prime_64.d`, and
+  `src/nth_prime_128.d`. The 64-bit version (`nth_prime_64.d`)
+  uses direct hardware register arithmetic (`ulong`) for maximum CPU
+  throughput, while `nth_prime_128.d` uses native 128-bit scalar
+  register arithmetic (`ucent` / `u128`). Both include memoized
+  \(\phi(x, a)\) evaluations, adaptive secant interval stepping,
+  and localized segmented sieving.
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
   subprogram, max line length \(\le 72\) characters, and single
   operation per statement.

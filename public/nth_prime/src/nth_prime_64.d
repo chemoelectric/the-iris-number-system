@@ -1,4 +1,4 @@
-module nth_prime_128;
+module nth_prime_64;
 
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
@@ -7,17 +7,14 @@ import core.bitop : popcnt;
 import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
+import std.parallelism : parallel, TaskPool;
 
-static if (is(ucent)) {
-    alias u128 = ucent;
-} else {
-    alias u128 = ulong;
-}
+alias u64 = ulong;
 
 struct MemoEntry {
-    u128 x;
+    u64 x;
     uint a;
-    u128 res;
+    u64 res;
 }
 
 enum CACHE_SIZE = 1048576;
@@ -28,9 +25,9 @@ __gshared MemoEntry[CACHE_SIZE] memoTable;
 __gshared ushort[30030] phi6Table;
 __gshared bool phi6Initialized = false;
 
-__gshared ulong[] isSubprimeBit;
+__gshared u64[] isSubprimeBit;
 __gshared uint[] popCntBlock;
-__gshared u128 sieveMax = 0;
+__gshared u64 sieveMax = 0;
 
 void initPhi6Table() {
     if (!phi6Initialized) {
@@ -51,21 +48,21 @@ void initPhi6Table() {
     }
 }
 
-u128 phi6(u128 x) {
+u64 phi6(u64 x) {
     initPhi6Table();
-    u128 q = x / 30030;
-    u128 r = x % 30030;
-    u128 ans = q * 5760;
+    u64 q = x / 30030;
+    u64 r = x % 30030;
+    u64 ans = q * 5760;
     ans = ans + phi6Table[cast(size_t) r];
     return ans;
 }
 
-void buildBitSieve(u128 limit) {
+void buildBitSieve(u64 limit) {
     sieveMax = limit;
-    u128 numOdds = limit / 2;
+    u64 numOdds = limit / 2;
     size_t numWords = cast(size_t) (numOdds / 64 + 1);
 
-    isSubprimeBit = new ulong[](numWords);
+    isSubprimeBit = new u64[](numWords);
     size_t wIdx = 0;
     while (wIdx < numWords) {
         isSubprimeBit[wIdx] = 0xFFFFFFFFFFFFFFFFUL;
@@ -74,20 +71,20 @@ void buildBitSieve(u128 limit) {
     isSubprimeBit[0] = isSubprimeBit[0] & ~1UL;
 
     double fLim = cast(double) limit;
-    u128 sqrtLim = cast(u128) sqrt(fLim);
-    u128 p = 3;
+    u64 sqrtLim = cast(u64) sqrt(fLim);
+    u64 p = 3;
     while (p <= sqrtLim) {
-        u128 k = (p - 1) / 2;
+        u64 k = (p - 1) / 2;
         size_t wI = cast(size_t) (k / 64);
         size_t rI = cast(size_t) (k % 64);
-        ulong mask = 1UL << rI;
+        u64 mask = 1UL << rI;
         if ((isSubprimeBit[wI] & mask) != 0) {
-            u128 mult = p * p;
+            u64 mult = p * p;
             while (mult <= limit) {
-                u128 mK = (mult - 1) / 2;
+                u64 mK = (mult - 1) / 2;
                 size_t mW = cast(size_t) (mK / 64);
                 size_t mR = cast(size_t) (mK % 64);
-                ulong clearMask = ~(1UL << mR);
+                u64 clearMask = ~(1UL << mR);
                 isSubprimeBit[mW] = isSubprimeBit[mW] & clearMask;
                 mult = mult + p + p;
             }
@@ -99,7 +96,7 @@ void buildBitSieve(u128 limit) {
     popCntBlock[0] = 1;
     size_t b = 0;
     while (b + 1 < numWords) {
-        ulong wordVal = isSubprimeBit[b];
+        u64 wordVal = isSubprimeBit[b];
         int bitCnt = cast(int) popcnt(wordVal);
         uint prev = popCntBlock[b];
         popCntBlock[b + 1] = cast(uint) (prev + bitCnt);
@@ -107,29 +104,25 @@ void buildBitSieve(u128 limit) {
     }
 }
 
-bool isPrimeBit(u128 val) {
-    if (val < 2) {
-        return false;
+bool isPrimeBit(u64 val) {
+    bool res = false;
+    if (val >= 2 && val <= sieveMax) {
+        if (val == 2) {
+            res = true;
+        } else if (val % 2 != 0) {
+            u64 k = (val - 1) / 2;
+            size_t wordIdx = cast(size_t) (k / 64);
+            size_t bitIdx = cast(size_t) (k % 64);
+            u64 mask = 1UL << bitIdx;
+            res = (isSubprimeBit[wordIdx] & mask) != 0;
+        }
     }
-    if (val == 2) {
-        return true;
-    }
-    if (val % 2 == 0) {
-        return false;
-    }
-    if (val > sieveMax) {
-        return false;
-    }
-    u128 k = (val - 1) / 2;
-    size_t wordIdx = cast(size_t) (k / 64);
-    size_t bitIdx = cast(size_t) (k % 64);
-    ulong mask = 1UL << bitIdx;
-    return (isSubprimeBit[wordIdx] & mask) != 0;
+    return res;
 }
 
-uint[] collectPrimesUpTo(u128 maxVal) {
+uint[] collectPrimesUpTo(u64 maxVal) {
     size_t count = 0;
-    u128 p = 2;
+    u64 p = 2;
     while (p <= maxVal) {
         if (p == 2 || (p % 2 != 0 && isPrimeBit(p))) {
             count = count + 1;
@@ -149,27 +142,27 @@ uint[] collectPrimesUpTo(u128 maxVal) {
     return res;
 }
 
-u128 piFast(u128 w, const(uint)[] primes) {
-    u128 count = 0;
+u64 piFast(u64 w, const(uint)[] primes) {
+    u64 count = 0;
     if (w < 2) {
         count = 0;
     } else if (w == 2) {
         count = 1;
     } else if (w <= sieveMax) {
-        u128 k = (w - 1) / 2;
+        u64 k = (w - 1) / 2;
         size_t wordIdx = cast(size_t) (k / 64);
         size_t bitIdx = cast(size_t) (k % 64);
         uint baseCount = popCntBlock[wordIdx];
-        ulong wVal = isSubprimeBit[wordIdx];
-        ulong mask = (1UL << bitIdx) | ((1UL << bitIdx) - 1UL);
-        ulong masked = wVal & mask;
+        u64 wVal = isSubprimeBit[wordIdx];
+        u64 mask = (1UL << bitIdx) | ((1UL << bitIdx) - 1UL);
+        u64 masked = wVal & mask;
         int inWord = cast(int) popcnt(masked);
-        count = cast(u128) (baseCount + inWord);
+        count = cast(u64) (baseCount + inWord);
     } else {
-        u128 c = 0;
+        u64 c = 0;
         size_t idx = 0;
         while (idx < primes.length) {
-            if (cast(u128) primes[idx] <= w) {
+            if (cast(u64) primes[idx] <= w) {
                 c = c + 1;
                 idx = idx + 1;
             } else {
@@ -181,8 +174,8 @@ u128 piFast(u128 w, const(uint)[] primes) {
     return count;
 }
 
-u128 phiRec(u128 x, size_t a, const(uint)[] primes) {
-    u128 result = 0;
+u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
+    u64 result = 0;
     if (a == 0) {
         result = x;
     } else if (a == 6) {
@@ -190,28 +183,28 @@ u128 phiRec(u128 x, size_t a, const(uint)[] primes) {
     } else if (x == 0) {
         result = 0;
     } else {
-        u128 key = (x ^ (cast(u128) a * 0x9e3779b97f4a7c15UL));
+        u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
         size_t slot = cast(size_t) (key & CACHE_MASK);
         if (memoTable[slot].x == x && memoTable[slot].a == a) {
             result = memoTable[slot].res;
         } else {
-            u128 p = cast(u128) primes[a - 1];
+            u64 p = cast(u64) primes[a - 1];
             if (x < p) {
                 result = 1;
             } else if (x <= sieveMax) {
-                u128 p6 = cast(u128) primes[5];
+                u64 p6 = cast(u64) primes[5];
                 if (x <= p6 * p) {
-                    u128 piX = piFast(x, primes);
-                    u128 castA = cast(u128) a;
+                    u64 piX = piFast(x, primes);
+                    u64 castA = cast(u64) a;
                     result = piX - castA + 1;
                 } else {
-                    u128 term1 = phiRec(x, a - 1, primes);
-                    u128 term2 = phiRec(x / p, a - 1, primes);
+                    u64 term1 = phiRec(x, a - 1, primes);
+                    u64 term2 = phiRec(x / p, a - 1, primes);
                     result = term1 - term2;
                 }
             } else {
-                u128 term1 = phiRec(x, a - 1, primes);
-                u128 term2 = phiRec(x / p, a - 1, primes);
+                u64 term1 = phiRec(x, a - 1, primes);
+                u64 term2 = phiRec(x / p, a - 1, primes);
                 result = term1 - term2;
             }
             memoTable[slot].x = x;
@@ -222,41 +215,40 @@ u128 phiRec(u128 x, size_t a, const(uint)[] primes) {
     return result;
 }
 
-u128 primeCountLehmer(u128 x, const(uint)[] primes) {
-    u128 count = 0;
+u64 primeCountLehmer(u64 x, const(uint)[] primes) {
+    u64 count = 0;
     if (x < 2) {
         count = 0;
     } else if (x <= sieveMax) {
         count = piFast(x, primes);
     } else {
         double fx = cast(double) x;
-        u128 aVal = cast(u128) piFast(cast(u128) sqrt(sqrt(fx)),
-                                      primes);
-        u128 bVal = cast(u128) piFast(cast(u128) sqrt(fx), primes);
-        u128 cVal = cast(u128) piFast(cast(u128) cbrt(fx), primes);
+        u64 aVal = piFast(cast(u64) sqrt(sqrt(fx)), primes);
+        u64 bVal = piFast(cast(u64) sqrt(fx), primes);
+        u64 cVal = piFast(cast(u64) cbrt(fx), primes);
 
-        u128 phiVal = phiRec(x, cast(size_t) aVal, primes);
-        u128 term1 = (bVal + aVal - 2) * (bVal - aVal + 1);
-        u128 sum1 = phiVal + term1 / 2;
+        u64 phiVal = phiRec(x, cast(size_t) aVal, primes);
+        u64 term1 = (bVal + aVal - 2) * (bVal - aVal + 1);
+        u64 sum1 = phiVal + term1 / 2;
 
-        u128 sum2 = 0;
+        u64 sum2 = 0;
         size_t i = cast(size_t) (aVal + 1);
         size_t bLimit = cast(size_t) bVal;
         while (i <= bLimit) {
-            u128 p = cast(u128) primes[i - 1];
-            u128 w = x / p;
-            u128 piW = piFast(w, primes);
+            u64 p = cast(u64) primes[i - 1];
+            u64 w = x / p;
+            u64 piW = piFast(w, primes);
             sum2 = sum2 + piW;
 
             if (i <= cast(size_t) cVal) {
-                u128 sqrtW = cast(u128) sqrt(cast(double) w);
-                u128 bi = cast(u128) piFast(sqrtW, primes);
+                u64 sqrtW = cast(u64) sqrt(cast(double) w);
+                u64 bi = piFast(sqrtW, primes);
                 size_t j = i;
                 size_t biLimit = cast(size_t) bi;
                 while (j <= biLimit) {
-                    u128 pj = cast(u128) primes[j - 1];
-                    u128 piW2 = piFast(w / pj, primes);
-                    u128 castJ = cast(u128) j;
+                    u64 pj = cast(u64) primes[j - 1];
+                    u64 piW2 = piFast(w / pj, primes);
+                    u64 castJ = cast(u64) j;
                     sum2 = sum2 - (piW2 - castJ + 1);
                     j = j + 1;
                 }
@@ -268,16 +260,16 @@ u128 primeCountLehmer(u128 x, const(uint)[] primes) {
     return count;
 }
 
-u128 countPrimesInSegment(u128 lowVal, u128 highVal,
-                          const(uint)[] basePrimes) {
-    u128 rangeLen = highVal - lowVal + 1;
+u64 countPrimesInSegment(u64 lowVal, u64 highVal,
+                         const(uint)[] basePrimes) {
+    u64 rangeLen = highVal - lowVal + 1;
     ubyte* sieve = cast(ubyte*) malloc(cast(size_t) rangeLen);
     memset(sieve, 1, cast(size_t) rangeLen);
 
     size_t idx = 0;
     while (idx < basePrimes.length) {
-        u128 p = cast(u128) basePrimes[idx];
-        u128 start = ((lowVal + p - 1) / p) * p;
+        u64 p = cast(u64) basePrimes[idx];
+        u64 start = ((lowVal + p - 1) / p) * p;
         if (start < p * p) {
             start = p * p;
         }
@@ -289,8 +281,8 @@ u128 countPrimesInSegment(u128 lowVal, u128 highVal,
         idx = idx + 1;
     }
 
-    u128 cnt = 0;
-    u128 val = lowVal;
+    u64 cnt = 0;
+    u64 val = lowVal;
     while (val <= highVal) {
         size_t vIdx = cast(size_t) (val - lowVal);
         ubyte isP = *(sieve + vIdx);
@@ -303,17 +295,17 @@ u128 countPrimesInSegment(u128 lowVal, u128 highVal,
     return cnt;
 }
 
-u128 sieveSegmentFindNthPrime(u128 lowVal, u128 highVal,
-                              const(uint)[] basePrimes,
-                              u128 targetN, u128 startPi) {
-    u128 rangeLen = highVal - lowVal + 1;
+u64 sieveSegmentFindNthPrime(u64 lowVal, u64 highVal,
+                             const(uint)[] basePrimes,
+                             u64 targetN, u64 startPi) {
+    u64 rangeLen = highVal - lowVal + 1;
     ubyte* sieve = cast(ubyte*) malloc(cast(size_t) rangeLen);
     memset(sieve, 1, cast(size_t) rangeLen);
 
     size_t idx = 0;
     while (idx < basePrimes.length) {
-        u128 p = cast(u128) basePrimes[idx];
-        u128 start = ((lowVal + p - 1) / p) * p;
+        u64 p = cast(u64) basePrimes[idx];
+        u64 start = ((lowVal + p - 1) / p) * p;
         if (start < p * p) {
             start = p * p;
         }
@@ -325,9 +317,9 @@ u128 sieveSegmentFindNthPrime(u128 lowVal, u128 highVal,
         idx = idx + 1;
     }
 
-    u128 currentCount = startPi;
-    u128 result = 0;
-    u128 val = lowVal;
+    u64 currentCount = startPi;
+    u64 result = 0;
+    u64 val = lowVal;
     bool found = false;
     while (val <= highVal) {
         if (!found) {
@@ -347,16 +339,16 @@ u128 sieveSegmentFindNthPrime(u128 lowVal, u128 highVal,
     return result;
 }
 
-u128 estimateInitialX(u128 n) {
+u64 estimateInitialX(u64 n) {
     double fn = cast(double) n;
     double logn = log(fn);
     double log2n = log(logn);
     double est = fn * (logn + log2n - 1.0 + (log2n - 2.0) / logn);
-    return cast(u128) est;
+    return cast(u64) est;
 }
 
-u128 getSmallNthPrime(u128 n) {
-    u128 val = 0;
+u64 getSmallNthPrime(u64 n) {
+    u64 val = 0;
     if (n == 1) {
         val = 2;
     } else if (n == 2) {
@@ -371,18 +363,18 @@ u128 getSmallNthPrime(u128 n) {
     return val;
 }
 
-u128 getNthPrime(u128 n) {
-    u128 pn = 0;
+u64 getNthPrime(u64 n) {
+    u64 pn = 0;
     if (n <= 5) {
         pn = getSmallNthPrime(n);
     } else {
-        u128 currX = estimateInitialX(n);
+        u64 currX = estimateInitialX(n);
 
         double fx = cast(double) currX;
         double sqX = sqrt(fx);
-        u128 zVal = cast(u128) sqX;
+        u64 zVal = cast(u64) sqX;
 
-        u128 sieveLimit = zVal * 12;
+        u64 sieveLimit = zVal * 12;
         if (sieveLimit < 200000000UL) {
             sieveLimit = 200000000UL;
         }
@@ -391,7 +383,7 @@ u128 getNthPrime(u128 n) {
 
         uint[] basePrimes = collectPrimesUpTo(zVal + 1000);
 
-        u128 currPi = primeCountLehmer(currX, basePrimes);
+        u64 currPi = primeCountLehmer(currX, basePrimes);
         long diffN = cast(long) n - cast(long) currPi;
 
         while (diffN > 2000 || diffN < -2000) {
@@ -400,37 +392,37 @@ u128 getNthPrime(u128 n) {
             double adj = cast(double) diffN * logVal;
             long step = cast(long) adj;
             long xNew = cast(long) currX + step;
-            currX = cast(u128) xNew;
+            currX = cast(u64) xNew;
 
             currPi = primeCountLehmer(currX, basePrimes);
             diffN = cast(long) n - cast(long) currPi;
         }
 
-        u128 absDiff = 0;
+        u64 absDiff = 0;
         if (diffN < 0) {
-            absDiff = cast(u128) (-diffN);
+            absDiff = cast(u64) (-diffN);
         } else {
-            absDiff = cast(u128) diffN;
+            absDiff = cast(u64) diffN;
         }
 
         double fCurr = cast(double) currX;
         double logC = log(fCurr);
         double estW = cast(double) absDiff * logC * 2.5;
-        u128 window = cast(u128) estW + 50000;
+        u64 window = cast(u64) estW + 50000;
         if (window < 200000) {
             window = 200000;
         }
 
         if (diffN >= 0) {
-            u128 lowVal = currX + 1;
-            u128 highVal = currX + window;
+            u64 lowVal = currX + 1;
+            u64 highVal = currX + window;
             pn = sieveSegmentFindNthPrime(lowVal, highVal,
                                          basePrimes, n, currPi);
         } else {
-            u128 lowVal = currX - window;
-            u128 segCnt = countPrimesInSegment(lowVal, currX,
+            u64 lowVal = currX - window;
+            u64 segCnt = countPrimesInSegment(lowVal, currX,
                                                 basePrimes);
-            u128 piLow = currPi - segCnt;
+            u64 piLow = currPi - segCnt;
             pn = sieveSegmentFindNthPrime(lowVal, currX,
                                          basePrimes, n, piLow);
         }
@@ -438,92 +430,73 @@ u128 getNthPrime(u128 n) {
     return pn;
 }
 
-u128 parseDigits(string str) {
-    u128 val = 0;
+u64 parseDigits(string str) {
+    u64 val = 0;
     size_t i = 0;
     while (i < str.length) {
         char c = str[i];
         if (c >= '0' && c <= '9') {
-            val = val * 10 + (cast(u128) (c - '0'));
+            val = val * 10 + (cast(u64) (c - '0'));
         }
         i = i + 1;
     }
     return val;
 }
 
-u128 parsePowersSmall(string str) {
+u64 parsePowersSmall(string str) {
+    u64 res = 0;
     if (str == "1e6" || str == "10^6" || str == "10**6") {
-        return 1000000;
+        res = 1000000;
+    } else if (str == "1e9" || str == "10^9" || str == "10**9") {
+        res = 1000000000;
     }
-    if (str == "1e9" || str == "10^9" || str == "10**9") {
-        return 1000000000;
-    }
-    return 0;
+    return res;
 }
 
-u128 parsePowersLarge(string str) {
+u64 parsePowersLarge(string str) {
+    u64 res = 0;
     if (str == "1e10" || str == "10^10" || str == "10**10") {
-        return 10000000000UL;
+        res = 10000000000UL;
+    } else if (str == "1e11" || str == "10^11" || str == "10**11") {
+        res = 100000000000UL;
+    } else if (str == "1e12" || str == "10^12" || str == "10**12") {
+        res = 1000000000000UL;
+    } else if (str == "1e13" || str == "10^13" || str == "10**13") {
+        res = 10000000000000UL;
+    } else if (str == "1e14" || str == "10^14" || str == "10**14") {
+        res = 100000000000000UL;
+    } else if (str == "1e15" || str == "10^15" || str == "10**15") {
+        res = 1000000000000000UL;
     }
-    if (str == "1e11" || str == "10^11" || str == "10**11") {
-        return 100000000000UL;
-    }
-    if (str == "1e12" || str == "10^12" || str == "10**12") {
-        return 1000000000000UL;
-    }
-    if (str == "1e13" || str == "10^13" || str == "10**13") {
-        return 10000000000000UL;
-    }
-    if (str == "1e14" || str == "10^14" || str == "10**14") {
-        return 100000000000000UL;
-    }
-    if (str == "1e15" || str == "10^15" || str == "10**15") {
-        return 1000000000000000UL;
-    }
-    return 0;
+    return res;
 }
 
-u128 parseSpecialInput(string str) {
-    u128 val = parsePowersSmall(str);
-    if (val > 0) {
-        return val;
+u64 parseSpecialInput(string str) {
+    u64 val = parsePowersSmall(str);
+    if (val == 0) {
+        val = parsePowersLarge(str);
     }
-    val = parsePowersLarge(str);
-    if (val > 0) {
-        return val;
+    if (val == 0) {
+        val = parseDigits(str);
     }
-    return parseDigits(str);
+    return val;
 }
 
-u128 parseInputString(string inputStr) {
+u64 parseInputString(string inputStr) {
     string cleanStr = strip(inputStr);
-    if (cleanStr.length == 0) {
-        return 0;
+    u64 val = 0;
+    if (cleanStr.length > 0) {
+        val = parseSpecialInput(cleanStr);
     }
-    return parseSpecialInput(cleanStr);
+    return val;
 }
 
-void printResult(u128 val) {
-    static if (u128.sizeof > ulong.sizeof) {
-        ulong lowPart = cast(ulong) val;
-        ulong highPart = cast(ulong) (val >> 64);
-        if (highPart > 0) {
-            printf("The calculated nth prime " ~
-                   "number value is: %llu%019llu\n",
-                   highPart, lowPart);
-        } else {
-            printf("The calculated nth prime number value is: %llu\n",
-                   lowPart);
-        }
-    } else {
-        ulong lowPart = cast(ulong) val;
-        printf("The calculated nth prime number value is: %llu\n",
-               lowPart);
-    }
+void printResult(u64 val) {
+    printf("The calculated nth prime number value is: %llu\n", val);
 }
 
 int main(string[] args) {
-    u128 targetN = 0;
+    u64 targetN = 0;
     if (args.length > 1) {
         targetN = parseInputString(args[1]);
     } else {
@@ -537,7 +510,7 @@ int main(string[] args) {
     }
 
     if (targetN > 0) {
-        u128 nthPrimeVal = getNthPrime(targetN);
+        u64 nthPrimeVal = getNthPrime(targetN);
         printResult(nthPrimeVal);
     } else {
         printf("Invalid input or N must be positive.\n");
