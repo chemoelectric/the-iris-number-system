@@ -25,9 +25,9 @@ DOPTSFLAGS += -march=native -mtune=native
 DOPTSFLAGS += -Ofast
 #DOPTSFLAGS += -ffast-math
 DOPTSFLAGS += -funroll-loops
-DOPTSFLAGS += -flto
+#DOPTSFLAGS += -flto
 DOPTSFLAGS += -mprefer-vector-width=512
-DOPTSFLAGS += -fopt-info-vec-optimized
+#DOPTSFLAGS += -fopt-info-vec-optimized
 
 WARNFLAGS =
 WARNFLAGS += -Wall
@@ -42,10 +42,10 @@ $(D_TARGET): $(SRC_DIR)/nth_prime.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
-	$(DC) $(DFLAGS) -o $(@) $(<)
+	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 $(D128_TARGET): $(SRC_DIR)/nth_prime_128.d
-	$(DC) $(DFLAGS) -o $(@) $(<)
+	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 .PHONY: d d64 d128
 d:: $(D_TARGET)
