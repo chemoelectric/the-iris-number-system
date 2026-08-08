@@ -1,5 +1,6 @@
 module nth_prime_128;
 
+import std.bigint : BigInt;
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
 import core.stdc.string : memset;
@@ -7,12 +8,9 @@ import core.bitop : popcnt;
 import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
+import std.parallelism : parallel;
 
-static if (is(ucent)) {
-    alias u128 = ucent;
-} else {
-    alias u128 = ulong;
-}
+alias u128 = ucent;
 
 struct MemoEntry {
     u128 x;
@@ -108,23 +106,19 @@ void buildBitSieve(u128 limit) {
 }
 
 bool isPrimeBit(u128 val) {
-    if (val < 2) {
-        return false;
+    bool res = false;
+    if (val >= 2 && val <= sieveMax) {
+        if (val == 2) {
+            res = true;
+        } else if (val % 2 != 0) {
+            u128 k = (val - 1) / 2;
+            size_t wordIdx = cast(size_t) (k / 64);
+            size_t bitIdx = cast(size_t) (k % 64);
+            ulong mask = 1UL << bitIdx;
+            res = (isSubprimeBit[wordIdx] & mask) != 0;
+        }
     }
-    if (val == 2) {
-        return true;
-    }
-    if (val % 2 == 0) {
-        return false;
-    }
-    if (val > sieveMax) {
-        return false;
-    }
-    u128 k = (val - 1) / 2;
-    size_t wordIdx = cast(size_t) (k / 64);
-    size_t bitIdx = cast(size_t) (k % 64);
-    ulong mask = 1UL << bitIdx;
-    return (isSubprimeBit[wordIdx] & mask) != 0;
+    return res;
 }
 
 uint[] collectPrimesUpTo(u128 maxVal) {
@@ -159,24 +153,26 @@ u128 piFast(u128 w, const(uint)[] primes) {
         u128 k = (w - 1) / 2;
         size_t wordIdx = cast(size_t) (k / 64);
         size_t bitIdx = cast(size_t) (k % 64);
-        uint baseCount = popCntBlock[wordIdx];
-        ulong wVal = isSubprimeBit[wordIdx];
+
+        uint baseCnt = popCntBlock[wordIdx];
+        ulong curWord = isSubprimeBit[wordIdx];
         ulong mask = (1UL << bitIdx) | ((1UL << bitIdx) - 1UL);
-        ulong masked = wVal & mask;
-        int inWord = cast(int) popcnt(masked);
-        count = cast(u128) (baseCount + inWord);
+        ulong maskedWord = curWord & mask;
+        int subCnt = cast(int) popcnt(maskedWord);
+
+        count = cast(u128) (baseCnt + subCnt);
     } else {
-        u128 c = 0;
-        size_t idx = 0;
-        while (idx < primes.length) {
-            if (cast(u128) primes[idx] <= w) {
-                c = c + 1;
-                idx = idx + 1;
+        size_t low = 0;
+        size_t high = primes.length;
+        while (low < high) {
+            size_t mid = (low + high) / 2;
+            if (cast(u128) primes[mid] <= w) {
+                low = mid + 1;
             } else {
-                idx = primes.length;
+                high = mid;
             }
         }
-        count = c;
+        count = cast(u128) low;
     }
     return count;
 }
@@ -190,7 +186,8 @@ u128 phiRec(u128 x, size_t a, const(uint)[] primes) {
     } else if (x == 0) {
         result = 0;
     } else {
-        u128 key = (x ^ (cast(u128) a * 0x9e3779b97f4a7c15UL));
+        ulong xLow = cast(ulong) x;
+        u128 key = (xLow ^ (cast(ulong) a * 0x9e3779b97f4a7c15UL));
         size_t slot = cast(size_t) (key & CACHE_MASK);
         if (memoTable[slot].x == x && memoTable[slot].a == a) {
             result = memoTable[slot].res;
@@ -230,10 +227,9 @@ u128 primeCountLehmer(u128 x, const(uint)[] primes) {
         count = piFast(x, primes);
     } else {
         double fx = cast(double) x;
-        u128 aVal = cast(u128) piFast(cast(u128) sqrt(sqrt(fx)),
-                                      primes);
-        u128 bVal = cast(u128) piFast(cast(u128) sqrt(fx), primes);
-        u128 cVal = cast(u128) piFast(cast(u128) cbrt(fx), primes);
+        u128 aVal = piFast(cast(u128) sqrt(sqrt(fx)), primes);
+        u128 bVal = piFast(cast(u128) sqrt(fx), primes);
+        u128 cVal = piFast(cast(u128) cbrt(fx), primes);
 
         u128 phiVal = phiRec(x, cast(size_t) aVal, primes);
         u128 term1 = (bVal + aVal - 2) * (bVal - aVal + 1);
@@ -250,7 +246,7 @@ u128 primeCountLehmer(u128 x, const(uint)[] primes) {
 
             if (i <= cast(size_t) cVal) {
                 u128 sqrtW = cast(u128) sqrt(cast(double) w);
-                u128 bi = cast(u128) piFast(sqrtW, primes);
+                u128 bi = piFast(sqrtW, primes);
                 size_t j = i;
                 size_t biLimit = cast(size_t) bi;
                 while (j <= biLimit) {
@@ -435,7 +431,49 @@ u128 getNthPrime(u128 n) {
     return pn;
 }
 
-u128 parseDigits(string str) {
+u128 bigIntToU128(BigInt b) {
+    u128 res = 0;
+    if (b > 0) {
+        BigInt mask = (BigInt(1) << 64) - BigInt(1);
+        BigInt lowB = b & mask;
+        ulong low = cast(ulong) lowB;
+        BigInt highB = (b >> 64) & mask;
+        ulong high = cast(ulong) highB;
+        res = (cast(u128) high << 64) | cast(u128) low;
+    }
+    return res;
+}
+
+BigInt u128ToBigInt(u128 val) {
+    ulong low = cast(ulong) val;
+    ulong high = cast(ulong) (val >> 64);
+    BigInt bHigh = BigInt(high);
+    BigInt bLow = BigInt(low);
+    BigInt res = (bHigh << 64) + bLow;
+    return res;
+}
+
+BigInt getNthPrime(BigInt n) {
+    BigInt res = BigInt(0);
+    if (n > 0) {
+        u128 uVal = bigIntToU128(n);
+        u128 p = getNthPrime(uVal);
+        res = u128ToBigInt(p);
+    }
+    return res;
+}
+
+ulong getNthPrime(ulong n) {
+    ulong res = 0;
+    if (n > 0) {
+        u128 uVal = cast(u128) n;
+        u128 p = getNthPrime(uVal);
+        res = cast(ulong) p;
+    }
+    return res;
+}
+
+u128 parseDigits128(string str) {
     u128 val = 0;
     size_t i = 0;
     while (i < str.length) {
@@ -448,97 +486,96 @@ u128 parseDigits(string str) {
     return val;
 }
 
-u128 parsePowersSmall(string str) {
+u128 parsePowersSmall128(string str) {
+    u128 res = 0;
     if (str == "1e6" || str == "10^6" || str == "10**6") {
-        return 1000000;
+        res = 1000000;
+    } else if (str == "1e9" || str == "10^9" || str == "10**9") {
+        res = 1000000000;
     }
-    if (str == "1e9" || str == "10^9" || str == "10**9") {
-        return 1000000000;
-    }
-    return 0;
+    return res;
 }
 
-u128 parsePowersLarge(string str) {
+u128 parsePowersLarge128(string str) {
+    u128 res = 0;
     if (str == "1e10" || str == "10^10" || str == "10**10") {
-        return 10000000000UL;
+        res = 10000000000UL;
+    } else if (str == "1e11" || str == "10^11" || str == "10**11") {
+        res = 100000000000UL;
+    } else if (str == "1e12" || str == "10^12" || str == "10**12") {
+        res = 1000000000000UL;
+    } else if (str == "1e13" || str == "10^13" || str == "10**13") {
+        res = 10000000000000UL;
+    } else if (str == "1e14" || str == "10^14" || str == "10**14") {
+        res = 100000000000000UL;
+    } else if (str == "1e15" || str == "10^15" || str == "10**15") {
+        res = 1000000000000000UL;
     }
-    if (str == "1e11" || str == "10^11" || str == "10**11") {
-        return 100000000000UL;
-    }
-    if (str == "1e12" || str == "10^12" || str == "10**12") {
-        return 1000000000000UL;
-    }
-    if (str == "1e13" || str == "10^13" || str == "10**13") {
-        return 10000000000000UL;
-    }
-    if (str == "1e14" || str == "10^14" || str == "10**14") {
-        return 100000000000000UL;
-    }
-    if (str == "1e15" || str == "10^15" || str == "10**15") {
-        return 1000000000000000UL;
-    }
-    return 0;
+    return res;
 }
 
-u128 parseSpecialInput(string str) {
-    u128 val = parsePowersSmall(str);
-    if (val > 0) {
-        return val;
+u128 parseSpecialInput128(string str) {
+    u128 val = parsePowersSmall128(str);
+    if (val == 0) {
+        val = parsePowersLarge128(str);
     }
-    val = parsePowersLarge(str);
-    if (val > 0) {
-        return val;
+    if (val == 0) {
+        val = parseDigits128(str);
     }
-    return parseDigits(str);
+    return val;
 }
 
-u128 parseInputString(string inputStr) {
+u128 parseInputString128(string inputStr) {
     string cleanStr = strip(inputStr);
-    if (cleanStr.length == 0) {
+    u128 val = 0;
+    if (cleanStr.length > 0) {
+        val = parseSpecialInput128(cleanStr);
+    }
+    return val;
+}
+
+void printResult128(u128 val) {
+    ulong low = cast(ulong) val;
+    ulong high = cast(ulong) (val >> 64);
+    if (high > 0) {
+        printf("The calculated nth prime number value is: " ~
+               "%llu%019llu\n", high, low);
+    } else {
+        printf("The calculated nth prime number value is: %llu\n", low);
+    }
+}
+
+version (standalone) {
+    enum HAS_MAIN = true;
+} else version (demo) {
+    enum HAS_MAIN = true;
+} else {
+    enum HAS_MAIN = false;
+}
+
+static if (HAS_MAIN) {
+    int main(string[] args) {
+        u128 targetN = 0;
+        if (args.length > 1) {
+            targetN = parseInputString128(args[1]);
+        } else {
+            char[256] buffer;
+            char* inputLine = fgets(buffer.ptr,
+                                    cast(int) buffer.length,
+                                    stdin);
+            if (inputLine !is null) {
+                string rawStr = to!string(buffer.ptr);
+                targetN = parseInputString128(rawStr);
+            }
+        }
+
+        if (targetN > 0) {
+            u128 nthPrimeVal = getNthPrime(targetN);
+            printResult128(nthPrimeVal);
+        } else {
+            printf("Invalid input or N must be positive.\n");
+        }
+
         return 0;
     }
-    return parseSpecialInput(cleanStr);
-}
-
-void printResult(u128 val) {
-    static if (u128.sizeof > ulong.sizeof) {
-        ulong lowPart = cast(ulong) val;
-        ulong highPart = cast(ulong) (val >> 64);
-        if (highPart > 0) {
-            printf("The calculated nth prime " ~
-                   "number value is: %llu%019llu\n",
-                   highPart, lowPart);
-        } else {
-            printf("The calculated nth prime number value is: %llu\n",
-                   lowPart);
-        }
-    } else {
-        ulong lowPart = cast(ulong) val;
-        printf("The calculated nth prime number value is: %llu\n",
-               lowPart);
-    }
-}
-
-int main(string[] args) {
-    u128 targetN = 0;
-    if (args.length > 1) {
-        targetN = parseInputString(args[1]);
-    } else {
-        char[256] buffer;
-        char* inputLine = fgets(buffer.ptr, cast(int) buffer.length,
-                                stdin);
-        if (inputLine !is null) {
-            string rawStr = to!string(buffer.ptr);
-            targetN = parseInputString(rawStr);
-        }
-    }
-
-    if (targetN > 0) {
-        u128 nthPrimeVal = getNthPrime(targetN);
-        printResult(nthPrimeVal);
-    } else {
-        printf("Invalid input or N must be positive.\n");
-    }
-
-    return 0;
 }

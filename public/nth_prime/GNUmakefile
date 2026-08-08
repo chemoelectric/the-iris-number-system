@@ -39,7 +39,7 @@ OBJ_DIR = build
 .PHONY: clean
 
 $(D_TARGET): $(SRC_DIR)/nth_prime.d
-	$(DC) $(DFLAGS) -o $(@) $(<)
+	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -o $(@) $(<)
