@@ -216,7 +216,7 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
     {
       u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
       size_t slot = cast(size_t) (key & CACHE_MASK);
-      if (memoTable[slot].x == x && memoTable[slot].a == a) {
+      if ((memoTable[slot].x == x) * (memoTable[slot].a == a)) {
         retval = memoTable[slot].res;
       } else {
         u64 p = cast(u64) primes[a - 1];
