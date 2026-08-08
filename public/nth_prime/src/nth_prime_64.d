@@ -194,9 +194,10 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
         break;
     case 2:
         {
-            u64 x_half = (x >> 1);
-            retval = x - x_half;
-            retval -= (retval / 3);
+            u64 div2 = x >> 1;
+            u64 div3 = x / 3;
+            u64 div6 = x / 6;
+            retval = x - div2 - div3 + div6;
         }
         break;
     case 3, 4, 5:
