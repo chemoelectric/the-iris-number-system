@@ -26,14 +26,14 @@ struct u128 {
     }
 
     this(Cent c) {
-        low = c.low;
-        high = cast(ulong) c.high;
+        low = c.lo;
+        high = cast(ulong) c.hi;
     }
 
     Cent toCent() const {
         Cent c;
-        c.low = low;
-        c.high = high;
+        c.lo = low;
+        c.hi = high;
         return c;
     }
 
@@ -638,9 +638,9 @@ BigInt getNthPrime(BigInt n) {
 
 Cent getNthPrime(Cent n) {
     Cent res;
-    res.low = 0;
-    res.high = 0;
-    if (n.low != 0 || n.high != 0) {
+    res.lo = 0;
+    res.hi = 0;
+    if (n.lo != 0 || n.hi != 0) {
         u128 uVal = u128(n);
         u128 p = getNthPrime(uVal);
         res = p.toCent();
