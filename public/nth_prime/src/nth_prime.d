@@ -593,8 +593,7 @@ Cent getNthPrime(Cent n) {
 
 void printResultBigInt(BigInt val) {
     string s = to!string(val);
-    printf("The calculated nth prime number value is: %.*s\n",
-           cast(int) s.length, s.ptr);
+    printf("%.*s\n", cast(int) s.length, s.ptr);
 }
 
 version (standalone) {
