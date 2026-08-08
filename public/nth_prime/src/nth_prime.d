@@ -490,20 +490,20 @@ ulong limbsToUlong(LimbNumber ln) {
 
 LimbNumber centToLimbs(Cent val) {
     LimbNumber ln;
-    ln.limbs[0] = val.low;
+    ln.limbs[0] = val.lo;
     if (NUM_LIMBS > 1) {
-        ln.limbs[1] = cast(ulong) val.high;
+        ln.limbs[1] = cast(ulong) val.hi;
     }
     return ln;
 }
 
 Cent limbsToCent(LimbNumber ln) {
     Cent c;
-    c.low = ln.limbs[0];
+    c.lo = ln.limbs[0];
     if (NUM_LIMBS > 1) {
-        c.high = ln.limbs[1];
+        c.hi = ln.limbs[1];
     } else {
-        c.high = 0;
+        c.hi = 0;
     }
     return c;
 }
@@ -527,9 +527,9 @@ BigInt getNthPrime(BigInt n) {
 
 Cent getNthPrime(Cent n) {
     Cent res;
-    res.low = 0;
-    res.high = 0;
-    if (n.low != 0 || n.high != 0) {
+    res.lo = 0;
+    res.hi = 0;
+    if (n.lo != 0 || n.hi != 0) {
         LimbNumber lnIn = centToLimbs(n);
         LimbNumber lnOut = getNthPrime(lnIn);
         res = limbsToCent(lnOut);
