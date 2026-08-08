@@ -21,7 +21,6 @@ To build the D implementations:
 ```bash
 make -f GNUmakefile d
 make -f GNUmakefile d64
-make -f GNUmakefile d128
 ```
 
 To compile with custom compiler flags or standard specifications:
@@ -96,9 +95,9 @@ scientific notation, and power expressions:
   procedure implemented in `nth_prime.icn` for string input filtering,
   asymptotic estimation, and prime calculation.
 - **D Modules and Demo Programs**: Reusable D modules in
-  `src/nth_prime.d`, `src/nth_prime_64.d`, and
-  `src/nth_prime_128.d`. Function overloads support `std.bigint.BigInt`,
-  native `core.int128.Cent`, and `ulong` values directly without
+  `src/nth_prime.d` and `src/nth_prime_64.d`. Function
+  overloads support `std.bigint.BigInt`, native
+  `core.int128.Cent`, and `ulong` values directly without
   ASCII conversions.
   The multi-limb module (`nth_prime.d`) supports compile-time limb count
   parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,

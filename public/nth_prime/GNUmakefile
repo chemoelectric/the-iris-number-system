@@ -17,7 +17,6 @@ endif
 
 D_TARGET = nth-prime-d
 D64_TARGET = nth-prime-64-d
-D128_TARGET = nth-prime-128-d
 
 DOPTSFLAGS =
 DOPTSFLAGS += -frelease
@@ -44,19 +43,15 @@ $(D_TARGET): $(SRC_DIR)/nth_prime.d
 $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
-$(D128_TARGET): $(SRC_DIR)/nth_prime_128.d
-	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
-
-.PHONY: d d64 d128
+.PHONY: d d64
 d:: $(D_TARGET)
 d64:: $(D64_TARGET)
-d128:: $(D128_TARGET)
 clean::
-	-rm -f $(D_TARGET) $(D64_TARGET) $(D128_TARGET)
+	-rm -f $(D_TARGET) $(D64_TARGET)
 
 .PHONY: default all
 default:: all
-all:: d d64 d128
+all:: d d64
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)

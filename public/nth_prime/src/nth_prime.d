@@ -145,23 +145,27 @@ bool isPrimeBit(u64 val) {
 }
 
 uint[] collectPrimesUpTo(u64 maxVal) {
-    size_t count = 0;
-    u64 p = 2;
+    if (maxVal < 2) {
+        return [];
+    }
+    size_t count = 1;
+    u64 p = 3;
     while (p <= maxVal) {
-        if (p == 2 || (p % 2 != 0 && isPrimeBit(p))) {
+        if (isPrimeBit(p)) {
             count = count + 1;
         }
-        p = p + 1;
+        p = p + 2;
     }
     uint[] res = new uint[](count);
-    size_t idx = 0;
-    p = 2;
+    res[0] = 2;
+    size_t idx = 1;
+    p = 3;
     while (p <= maxVal) {
-        if (p == 2 || (p % 2 != 0 && isPrimeBit(p))) {
+        if (isPrimeBit(p)) {
             res[idx] = cast(uint) p;
             idx = idx + 1;
         }
-        p = p + 1;
+        p = p + 2;
     }
     return res;
 }
@@ -201,43 +205,52 @@ u64 piFast(u64 w, const(uint)[] primes) {
 }
 
 u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
-    u64 result = 0;
-    if (a == 0) {
-        result = x;
-    } else if (a == 6) {
-        result = phi6(x);
-    } else if (x == 0) {
-        result = 0;
-    } else {
-        u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
-        size_t slot = cast(size_t) (key & CACHE_MASK);
-        if (memoTable[slot].x == x && memoTable[slot].a == a) {
-            result = memoTable[slot].res;
-        } else {
-            u64 p = cast(u64) primes[a - 1];
-            if (x < p) {
-                result = 1;
-            } else if (x <= sieveMax) {
-                u64 p6 = cast(u64) primes[5];
-                if (x <= p6 * p) {
-                    u64 piX = piFast(x, primes);
-                    u64 castA = cast(u64) a;
-                    result = piX - castA + 1;
-                } else {
-                    u64 term1 = phiRec(x, a - 1, primes);
-                    u64 term2 = phiRec(x / p, a - 1, primes);
-                    result = term1 - term2;
-                }
-            } else {
-                u64 term1 = phiRec(x, a - 1, primes);
-                u64 term2 = phiRec(x / p, a - 1, primes);
-                result = term1 - term2;
-            }
-            memoTable[slot].x = x;
-            memoTable[slot].a = cast(uint) a;
-            memoTable[slot].res = result;
-        }
+    if (x == 0) {
+        return 0;
     }
+    if (a == 0) {
+        return x;
+    }
+    if (a == 1) {
+        return x - x / 2;
+    }
+    if (a == 2) {
+        return x - x / 2 - x / 3 + x / 6;
+    }
+    if (a == 6) {
+        return phi6(x);
+    }
+    if (a < 6) {
+        u64 p = cast(u64) primes[a - 1];
+        return phiRec(x, a - 1, primes) -
+               phiRec(x / p, a - 1, primes);
+    }
+    u64 key = (x ^ (cast(u64) a * 0x9e3779b97f4a7c15UL));
+    size_t slot = cast(size_t) (key & CACHE_MASK);
+    if (memoTable[slot].x == x && memoTable[slot].a == a) {
+        return memoTable[slot].res;
+    }
+    u64 p = cast(u64) primes[a - 1];
+    u64 result = 0;
+    if (x < p) {
+        result = 1;
+    } else if (x <= sieveMax) {
+        u64 p6 = cast(u64) primes[5];
+        if (x <= p6 * p) {
+            u64 piX = piFast(x, primes);
+            u64 castA = cast(u64) a;
+            result = piX - castA + 1;
+        } else {
+            result = phiRec(x, a - 1, primes) -
+                   phiRec(x / p, a - 1, primes);
+        }
+    } else {
+        result = phiRec(x, a - 1, primes) -
+               phiRec(x / p, a - 1, primes);
+    }
+    memoTable[slot].x = x;
+    memoTable[slot].a = cast(uint) a;
+    memoTable[slot].res = result;
     return result;
 }
 
@@ -295,6 +308,9 @@ u64 countPrimesInSegment(u64 lowVal, u64 highVal,
     size_t idx = 0;
     while (idx < basePrimes.length) {
         u64 p = cast(u64) basePrimes[idx];
+        if (p * p > highVal) {
+            break;
+        }
         u64 start = ((lowVal + p - 1) / p) * p;
         if (start < p * p) {
             start = p * p;
@@ -331,6 +347,9 @@ u64 sieveSegmentFindNthPrime(u64 lowVal, u64 highVal,
     size_t idx = 0;
     while (idx < basePrimes.length) {
         u64 p = cast(u64) basePrimes[idx];
+        if (p * p > highVal) {
+            break;
+        }
         u64 start = ((lowVal + p - 1) / p) * p;
         if (start < p * p) {
             start = p * p;
