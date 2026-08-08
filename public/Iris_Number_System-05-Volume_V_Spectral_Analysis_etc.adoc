@@ -1,5 +1,5 @@
-= The Iris Number System: Volume V: Spectral Analysis, Electronics, Computing
-:subtitle: Volume V: Spectral Analysis, Electronics, Computing
+= The Iris Number System, Volume V: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
+:subtitle: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
 :author: Frédéric Blondin Custer
 :doctype: book
 :toc: left
@@ -7,7 +7,7 @@
 :stem: latexmath
 :sectnums!:
 
-Volume V establishes first-principles spectral analysis, electronics, and digital computing on discrete multiscale resolution grids without complex numbers, complex planes, or continuum infinities, unifying Fourier, Cosine, Sine, Hartley, Laplace, Z, Mellin, Hankel, Radon, and Wavelet transforms within real geometric bivector phase space.
+Volume V establishes first-principles spectral analysis, circuit theory, transmission theory, electronics, and digital computing on discrete multiscale resolution grids without complex numbers, complex planes, or continuum infinities, unifying Fourier, Cosine, Sine, Hartley, Laplace, Z, Mellin, Hankel, Radon, and Wavelet transforms within real geometric bivector phase space.
 
 == First-Principles Unified Spectral Analysis without Complex Numbers
 
@@ -213,7 +213,7 @@ Given a real digital spatial-temporal signal sequence \( x [ n ] = [ 1 , 1 , 0 ,
   - \( n = 2 \): \( \mathcal { K } [ 2 , 3 ] = - 1 \)
   - \( n = 3 \): \( \mathcal { K } [ 3 , 3 ] = - \mathbf { I } \)
   Computing the finite inner product:
-  \[ \hat { X } [ 3 ] = ( 1 ) ( 1 ) + ( 1 ) ( \, \mathbf { I } ) + ( 0 ) ( - 1 ) + ( 0 ) ( - \mathbf { I } ) = 1 + \mathbf { I } \]
+  \[ \hat { X } [ 3 ] = ( 1 ) ( 1 ) + ( 1 ) ( \mathbf { I } ) + ( 0 ) ( - 1 ) + ( 0 ) ( - \mathbf { I } ) = 1 + \mathbf { I } \]
 
 * **Verification of Parseval-Plancherel Energy Conservation**:
   In physical spatial grid space, computing total field energy:
@@ -227,300 +227,262 @@ Given a real digital spatial-temporal signal sequence \( x [ n ] = [ 1 , 1 , 0 ,
   \[ E _ \text{spectral} = \frac { 1 } { 4 } \sum _ { k = 0 } ^ { 3 } \| \hat { X } [ k ] \| ^ 2 = \frac { 1 } { 4 } ( 4 + 2 + 0 + 2 ) = \frac { 8 } { 4 } = 2 \]
   Thus, \( E _ \text{grid} = E _ \text{spectral} = 2 \), confirming exact discrete energy conservation.
 
-==== Example 2: Discrete Cosine Transform (DCT-II) and Discrete Hartley Transform (DHT) on \( \mathcal { G } _ 4 \)
+== Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures
 
-**Problem Statement:**
-For the real digital physical signal \( x [ n ] = [ 4 , 2 , 1 , 0 ] ^ T \) on \( \mathcal { G } _ 4 \):
-1. Compute the discrete orthogonal Cosine Transform (DCT-II) sequence \( X _ \text{DCT} [ k ] \) for \( k \in \{ 0 , 1 , 2 , 3 \} \):
-   \[ X _ \text{DCT} [ k ] = \sum _ { n = 0 } ^ { 3 } x [ n ] \cos \left( \frac { \pi k ( 2 n + 1 ) } { 8 } \right) \]
-2. Compute the Discrete Hartley Transform (DHT) sequence \( X _ \text{DHT} [ k ] \) using the purely real scalar kernel \( cas ( \theta ) = \cos \theta + \sin \theta \):
-   \[ X _ \text{DHT} [ k ] = \sum _ { n = 0 } ^ { 3 } x [ n ] \left[ \cos \left( \frac { 2 \pi n k } { 4 } \right) + \sin \left( \frac { 2 \pi n k } { 4 } \right) \right] \]
-3. Demonstrate that both transforms execute strictly over real physical scalar channels without complex numbers or bivector allocations.
+This chapter formulates classical and high-frequency circuit theory from first principles on discrete multiscale resolution grids \( \mathcal { G } _ N \), deriving Kirchhoff's voltage and current laws, resistors, capacitors (condensers), inductors (coils), transformers, antennas, earth grounds, grounded chassis, and electromagnetic shielding.
 
-**Step-by-Step Solution:**
-* **Part 1: DCT-II Computation**:
-  Evaluating kernel angles \( \theta _ { n , k } = \frac { \pi k ( 2 n + 1 ) } { 8 } \):
-  - **\( k = 0 \)**: \( \cos ( 0 ) = 1 \) for all \( n \).
-    \[ X _ \text{DCT} [ 0 ] = 4 ( 1 ) + 2 ( 1 ) + 1 ( 1 ) + 0 ( 1 ) = 7 \]
-  - **\( k = 1 \)**: Angles are \( \frac { \pi } { 8 } , \frac { 3 \pi } { 8 } , \frac { 5 \pi } { 8 } , \frac { 7 \pi } { 8 } \).
-    Values: \( \cos \left( \frac { \pi } { 8 } \right) \approx 0.92388 \), \( \cos \left( \frac { 3 \pi } { 8 } \right) \approx 0.38268 \), \( \cos \left( \frac { 5 \pi } { 8 } \right) = - 0.38268 \), \( \cos \left( \frac { 7 \pi } { 8 } \right) = - 0.92388 \).
-    \[ X _ \text{DCT} [ 1 ] = 4 ( 0.92388 ) + 2 ( 0.38268 ) + 1 ( - 0.38268 ) + 0 ( - 0.92388 ) = 4.07820 \]
-  - **\( k = 2 \)**: Angles are \( \frac { \pi } { 4 } , \frac { 3 \pi } { 4 } , \frac { 5 \pi } { 4 } , \frac { 7 \pi } { 4 } \).
-    Values: \( \frac { \sqrt { 2 } } { 2 } , - \frac { \sqrt { 2 } } { 2 } , - \frac { \sqrt { 2 } } { 2 } , \frac { \sqrt { 2 } } { 2 } \approx 0.70711 \).
-    \[ X _ \text{DCT} [ 2 ] = ( 4 - 2 - 1 + 0 ) \frac { \sqrt { 2 } } { 2 } = \frac { \sqrt { 2 } } { 2 } \approx 0.70711 \]
-  - **\( k = 3 \)**: Angles are \( \frac { 3 \pi } { 8 } , \frac { 9 \pi } { 8 } , \frac { 15 \pi } { 8 } , \frac { 21 \pi } { 8 } \).
-    Values: \( \cos \left( \frac { 3 \pi } { 8 } \right) \approx 0.38268 \), \( \cos \left( \frac { 9 \pi } { 8 } \right) \approx - 0.92388 \), \( \cos \left( \frac { 15 \pi } { 8 } \right) \approx 0.92388 \), \( \cos \left( \frac { 21 \pi } { 8 } \right) \approx - 0.38268 \).
-    \[ X _ \text{DCT} [ 3 ] = 4 ( 0.38268 ) + 2 ( - 0.92388 ) + 1 ( 0.92388 ) + 0 = 0.60684 \]
+=== Kirchhoff’s Laws and Fundamental Circuit Topologies on Discrete Resolution Grids
 
-* **Part 2: Hartley Transform (DHT) Computation**:
-  Evaluating kernel \( cas \left( \frac { 2 \pi n k } { 4 } \right) = \cos \left( \frac { \pi n k } { 2 } \right) + \sin \left( \frac { \pi n k } { 2 } \right) \):
-  - **\( k = 0 \)**: \( cas ( 0 ) = 1 \).
-    \[ X _ \text{DHT} [ 0 ] = 4 ( 1 ) + 2 ( 1 ) + 1 ( 1 ) + 0 ( 1 ) = 7 \]
-  - **\( k = 1 \)**: Kernel values for \( n = 0, 1, 2, 3 \) are \( 1, 1, - 1, - 1 \).
-    \[ X _ \text{DHT} [ 1 ] = 4 ( 1 ) + 2 ( 1 ) + 1 ( - 1 ) + 0 ( - 1 ) = 5 \]
-  - **\( k = 2 \)**: Kernel values for \( n = 0, 1, 2, 3 \) are \( 1, - 1, 1, - 1 \).
-    \[ X _ \text{DHT} [ 2 ] = 4 ( 1 ) + 2 ( - 1 ) + 1 ( 1 ) + 0 ( - 1 ) = 3 \]
-  - **\( k = 3 \)**: Kernel values for \( n = 0, 1, 2, 3 \) are \( 1, - 1, - 1, 1 \).
-    \[ X _ \text{DHT} [ 3 ] = 4 ( 1 ) + 2 ( - 1 ) + 1 ( - 1 ) + 0 ( 1 ) = 1 \]
-  The Hartley transform produces the exact real integer spectral vector \( X _ \text{DHT} = [ 7 , 5 , 3 , 1 ] ^ T \) without complex or bivector variables.
+Linear circuit theory is the lumped-parameter projection of the Master Field Equation \( D F = J \) on discrete spatial-temporal resolution grids \( \mathcal { G } _ N \). When physical circuit dimensions are small relative to the wavelength of field oscillations, electric and magnetic field energy distributions compress into lumped nodes and branches.
 
-==== Example 3: Discrete Z-Transform and Damped Bivector Phase Precession
+==== Derivation of Kirchhoff’s Voltage Law (KVL)
+In a quasi-static multivector field configuration, the electric vector field \( \mathbf { E } \) is the gradient of a discrete scalar potential field \( \Phi \) on \( \mathcal { G } _ N \) (\( \mathbf { E } = - \nabla \Phi \)). Integrating the electric field along any closed loop aperture \( \mathcal { C } \) composed of discrete circuit branches yields:
+\[ \oint _ { \mathcal { C } } \mathbf { E } \cdot d \mathbf { l } = - \oint _ { \mathcal { C } } \nabla \Phi \cdot d \mathbf { l } = 0 \]
+On a discrete mesh composed of \( M \) branches, this field loop integral maps directly to **Kirchhoff’s Voltage Law (KVL)**:
+\[ \sum _ { k = 1 } ^ { M } V _ k = 0 \]
+stating that the sum of potential differences around any closed circuit loop is identically zero.
 
-**Problem Statement:**
-Consider a real decaying digital signal \( x [ n ] = \left( \frac { 1 } { 2 } \right) ^ n \) defined over the 4-point spatial-temporal grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \).
-1. Formulate the general digital multivector Z-transform \( X ( z ) \) over \( \mathcal { G } _ 4 \):
-   \[ X ( z ) = \sum _ { n = 0 } ^ { 3 } x [ n ] z ^ { - n } \]
-   where \( z = r e ^ { \mathbf { I } \theta } = r ( \cos \theta + \mathbf { I } \sin \theta ) \) is a real bivector rotor in \( Cl ( 0 , 1 ) \).
-2. Completely evaluate \( X ( z ) \) at the specific bivector phase rotor location \( z = 2 e ^ { \mathbf { I } \pi / 2 } = 2 \, \mathbf { I } \) (corresponding to radial expansion factor \( r = 2 \) and phase angle step \( \theta = \frac { \pi } { 2 } \)).
+==== Derivation of Kirchhoff’s Current Law (KCL)
+The current density vector \( \mathbf { J } \) satisfies local charge conservation governed by the field continuity equation \( \nabla \cdot \mathbf { J } + \frac { \partial \rho } { \partial t } = 0 \). Integrating this continuity relation over a closed spatial boundary \( \mathcal { S } \) enclosing a circuit junction node yields:
+\[ \int _ { \mathcal { S } } \mathbf { J } \cdot d \mathbf { A } = - \frac { d Q _ \text{node} } { d t } \]
+In quasi-static lumped circuits, no net electric charge accumulates at an ideal node (\( \frac { d Q _ \text{node} } { d t } = 0 \)), yielding **Kirchhoff’s Current Law (KCL)**:
+\[ \sum _ { k = 1 } ^ { K } I _ k = 0 \]
+stating that the sum of electric currents entering any circuit node equals the sum of currents leaving that node.
 
-**Step-by-Step Solution:**
-* **General Multivector Expansion**:
-  Given \( x [ n ] = \left[ 1 , \frac { 1 } { 2 } , \frac { 1 } { 4 } , \frac { 1 } { 8 } \right] ^ T \):
-  \[ X ( z ) = 1 + \frac { 1 } { 2 } z ^ { - 1 } + \frac { 1 } { 4 } z ^ { - 2 } + \frac { 1 } { 8 } z ^ { - 3 } \]
+=== Resistors, Capacitors (Condensers), and Inductors (Coils)
 
-* **Evaluating Powers of Bivector Rotor \( z = 2 \, \mathbf { I } \)**:
-  Using the fundamental bivector identity \( \mathbf { I } ^ 2 = - 1 \):
-  - \( z ^ 0 = 1 \)
-  - \( z ^ 1 = 2 \, \mathbf { I } \implies z ^ { - 1 } = \frac { 1 } { 2 \, \mathbf { I } } = - \frac { 1 } { 2 } \, \mathbf { I } \)
-  - \( z ^ 2 = ( 2 \, \mathbf { I } ) ^ 2 = - 4 \implies z ^ { - 2 } = - \frac { 1 } { 4 } \)
-  - \( z ^ 3 = ( 2 \, \mathbf { I } ) ( - 4 ) = - 8 \, \mathbf { I } \implies z ^ { - 3 } = \frac { 1 } { 8 } \, \mathbf { I } \)
+Physical lumped circuit elements represent localized energy dissipation, electric field energy storage, or magnetic field energy storage in the m-resolution field medium.
 
-* **Substituting Powers into \( X ( z ) \)**:
-  - Term \( n = 0 \): \( ( 1 ) ( 1 ) = 1 \)
-  - Term \( n = 1 \): \( \left( \frac { 1 } { 2 } \right) \left( - \frac { 1 } { 2 } \, \mathbf { I } \right) = - \frac { 1 } { 4 } \, \mathbf { I } \)
-  - Term \( n = 2 \): \( \left( \frac { 1 } { 4 } \right) \left( - \frac { 1 } { 4 } \right) = - \frac { 1 } { 16 } \)
-  - Term \( n = 3 \): \( \left( \frac { 1 } { 8 } \right) \left( \frac { 1 } { 8 } \, \mathbf { I } \right) = \frac { 1 } { 64 } \, \mathbf { I } \)
+==== Resistors and Ohmic Dissipation
+A resistor of resistance \( R \) represents the irreversible conversion of electrodynamic field energy into lattice thermal phonons via microscopic electron-lattice collision scattering. Ohm’s law is the localized constitutive relation \( \mathbf { J } = \sigma \mathbf { E } \), mapping in lumped terms to:
+\[ V = I R \]
+The rate of irreversible thermal energy dissipation into the grid lattice is given by Joule's law: \( P = I V = I ^ 2 R = \frac { V ^ 2 } { R } \).
 
-* **Summing Scalar and Bivector Components**:
-  Combining terms into grade components:
-  \[ X ( 2 \, \mathbf { I } ) = \left( 1 - \frac { 1 } { 16 } \right) + \mathbf { I } \left( - \frac { 1 } { 4 } + \frac { 1 } { 64 } \right) \]
-  - Scalar grade: \( \operatorname { Sc } = \frac { 15 } { 16 } = 0.9375 \)
-  - Bivector grade: \[ \operatorname { Biv } = - \frac { 16 } { 64 } + \frac { 1 } { 64 } = - \frac { 15 } { 64 } = - 0.234375 \]
-  Thus, the exact multivector Z-transform evaluation is:
-  \[ X ( 2 \, \mathbf { I } ) = \frac { 15 } { 16 } - \frac { 15 } { 64 } \, \mathbf { I } \]
-  This represents a real scalar field amplitude of \( 0.9375 \) combined with an orthogonal bivector phase component of \( - 0.234375 \), computed directly without continuous complex numbers.
+==== Capacitors (Condensers)
+Capacitors—historically and traditionally designated as **condensers** in early electrical engineering—store electric field energy within a dielectric volume between conductive plates. Charge accumulation \( Q \) on condenser plates generates a terminal potential difference:
+\[ Q = C V \]
+where \( C = \varepsilon \frac { A } { d } \) is the capacitance. The time variation of terminal voltage drives a physical displacement current \( I _ C = C \frac { d V } { d t } \) through the dielectric medium. The total electric field energy stored in the condenser dielectric is:
+\[ W _ E = \frac { 1 } { 2 } C V ^ 2 = \frac { 1 } { 2 } \frac { Q ^ 2 } { C } \]
 
-==== Example 4: Real Homomorphic Cepstrum and Echo Deconvolution on \( \mathcal { G } _ 4 \)
+==== Inductors (Coils)
+Inductors—traditionally designated as **coils**—store magnetic field energy within the bivector magnetic field generated by current flowing through wound wire turns. Total magnetic flux linkage \( \Phi \) through the coil turns is proportional to the current:
+\[ \Phi = L I \]
+where \( L = \mu \frac { N ^ 2 A } { l } \) is the coil inductance. By Faraday’s law of induction, a time-varying magnetic flux induces a counter-electromotive force (back-EMF) across coil terminals:
+\[ V _ L = L \frac { d I } { d t } \]
+The total magnetic field energy stored within the coil turns is: \( W _ B = \frac { 1 } { 2 } L I ^ 2 \).
 
-**Problem Statement:**
-Consider a real digital physical signal sequence \( x [ n ] = [ 4 , 1 , 2 , 1 ] ^ T \) defined on the 4-point spatial-temporal grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \).
-1. Compute the multivector Discrete Fourier Spectrum \( \hat { X } [ k ] \) and the corresponding real spectral magnitudes \( \| \hat { X } [ k ] \| \) for all harmonic modes \( k \in \{ 0 , 1 , 2 , 3 \} \).
-2. Evaluate the real logarithmic spectral magnitude sequence \( L [ k ] = \ln ( \| \hat { X } [ k ] \| ) \).
-3. Compute the Real Homomorphic Cepstrum sequence \( c [ q ] \) for all discrete quefrency indices \( q \in \{ 0 , 1 , 2 , 3 \} \) using the real inverse cosine kernel:
-   \[ c [ q ] = \frac { 1 } { 4 } \sum _ { k = 0 } ^ { 3 } L [ k ] \cos \left( \frac { 2 \pi k q } { 4 } \right) \]
+=== Transformers, Antennas, and Impedance Matching
 
-**Step-by-Step Solution:**
-* **Step 1: Multivector Fourier Spectrum and Spectral Magnitudes**:
-  Computing \( \hat { X } [ k ] = \sum _ { n = 0 } ^ { 3 } x [ n ] \left( \cos \left( \frac { 2 \pi n k } { 4 } \right) - \mathbf { I } \sin \left( \frac { 2 \pi n k } { 4 } \right) \right) \):
-  - \( k = 0 \): \( \hat { X } [ 0 ] = 4 + 1 + 2 + 1 = 8 + 0 \mathbf { I } \implies \| \hat { X } [ 0 ] \| = 8 \)
-  - \( k = 1 \): \( \hat { X } [ 1 ] = 4 ( 1 ) + 1 ( - \mathbf { I } ) + 2 ( - 1 ) + 1 ( \mathbf { I } ) = 2 + 0 \mathbf { I } \implies \| \hat { X } [ 1 ] \| = 2 \)
-  - \( k = 2 \): \( \hat { X } [ 2 ] = 4 ( 1 ) + 1 ( - 1 ) + 2 ( 1 ) + 1 ( - 1 ) = 4 + 0 \mathbf { I } \implies \| \hat { X } [ 2 ] \| = 4 \)
-  - \( k = 3 \): \( \hat { X } [ 3 ] = 4 ( 1 ) + 1 ( \mathbf { I } ) + 2 ( - 1 ) + 1 ( - \mathbf { I } ) = 2 + 0 \mathbf { I } \implies \| \hat { X } [ 3 ] \| = 2 \)
+==== Transformers and Mutual Inductance
+When two or more inductors (coils) share a common magnetic flux path through a high-permeability core, time-varying current in the primary coil induces a voltage in the secondary coil via mutual inductance \( M = k \sqrt { L _ 1 L _ 2 } \) (where \( k \le 1 \) is the magnetic coupling coefficient). For an ideal transformer with primary turns \( N _ 1 \) and secondary turns \( N _ 2 \):
+\[ \frac { V _ 2 } { V _ 1 } = \frac { N _ 2 } { N _ 1 } , \quad \frac { I _ 2 } { I _ 1 } = \frac { N _ 1 } { N _ 2 } \]
+A load impedance \( Z _ L \) connected to the secondary terminals reflects back to the primary terminals as an equivalent input impedance:
+\[ Z _ \text{in} = \left( \frac { N _ 1 } { N _ 2 } \right) ^ 2 Z _ L \]
+enabling complete impedance matching between power sources and loads.
 
-* **Step 2: Real Logarithmic Spectral Magnitude Sequence \( L [ k ] \)**:
-  Taking the natural logarithm of each spectral magnitude:
-  - \( L [ 0 ] = \ln ( 8 ) = 3 \ln 2 \)
-  - \( L [ 1 ] = \ln ( 2 ) = \ln 2 \)
-  - \( L [ 2 ] = \ln ( 4 ) = 2 \ln 2 \)
-  - \( L [ 3 ] = \ln ( 2 ) = \ln 2 \)
+==== Antennas as Circuit-Field Launching Elements
+An antenna serves as an electrodynamic transducer between lumped guided currents in a circuit and propagating wave fields in the spatial grid \( \mathcal { G } _ N \). Characterized by its radiation resistance \( R _ \text{rad} \), an antenna converts terminal current \( I_0 \) into launched electromagnetic wave power \( P _ \text{rad} = \frac { 1 } { 2 } I _ 0 ^ 2 R _ \text{rad} \).
 
-* **Step 3: Real Homomorphic Cepstrum Computation \( c [ q ] \)**:
-  Applying the real inverse cosine kernel \( c [ q ] = \frac { 1 } { 4 } \sum _ { k = 0 } ^ { 3 } L [ k ] \cos \left( \frac { \pi k q } { 2 } \right) \):
-  - **Quefrency \( q = 0 \)**:
-    Cosine terms for \( k \in \{ 0 , 1 , 2 , 3 \} \) are all \( 1 \).
-    \[ c [ 0 ] = \frac { 1 } { 4 } ( 3 \ln 2 + \ln 2 + 2 \ln 2 + \ln 2 ) = \frac { 7 } { 4 } \ln 2 \approx 1.21299 \]
-  - **Quefrency \( q = 1 \)**:
-    Cosine terms are \( \cos ( 0 ) = 1, \cos \left( \frac { \pi } { 2 } \right) = 0, \cos ( \pi ) = - 1, \cos \left( \frac { 3 \pi } { 2 } \right) = 0 \).
-    \[ c [ 1 ] = \frac { 1 } { 4 } ( L [ 0 ] ( 1 ) + L [ 1 ] ( 0 ) + L [ 2 ] ( - 1 ) + L [ 3 ] ( 0 ) ) = \frac { 1 } { 4 } ( 3 \ln 2 - 2 \ln 2 ) = \frac { 1 } { 4 } \ln 2 \approx 0.17329 \]
-  - **Quefrency \( q = 2 \)**:
-    Cosine terms are \( \cos ( 0 ) = 1, \cos ( \pi ) = - 1, \cos ( 2 \pi ) = 1, \cos ( 3 \pi ) = - 1 \).
-    \[ c [ 2 ] = \frac { 1 } { 4 } ( 3 \ln 2 - \ln 2 + 2 \ln 2 - \ln 2 ) = \frac { 3 } { 4 } \ln 2 \approx 0.51986 \]
-  - **Quefrency \( q = 3 \)**:
-    Cosine terms are \( \cos ( 0 ) = 1, \cos \left( \frac { 3 \pi } { 2 } \right) = 0, \cos ( 3 \pi ) = - 1, \cos \left( \frac { 9 \pi } { 2 } \right) = 0 \).
-    \[ c [ 3 ] = \frac { 1 } { 4 } ( L [ 0 ] ( 1 ) + L [ 1 ] ( 0 ) + L [ 2 ] ( - 1 ) + L [ 3 ] ( 0 ) ) = \frac { 1 } { 4 } ( 3 \ln 2 - 2 \ln 2 ) = \frac { 1 } { 4 } \ln 2 \approx 0.17329 \]
+=== Earth Grounds, Grounded Chassis, Electrostatic Shielding, and Faraday Enclosures
 
-  The resulting real homomorphic cepstrum vector is \( c [ q ] = \left[ \frac { 7 } { 4 } \ln 2 , \frac { 1 } { 4 } \ln 2 , \frac { 3 } { 4 } \ln 2 , \frac { 1 } { 4 } \ln 2 \right] ^ T \). All calculations execute over purely real scalars in discrete quefrency space without complex analysis.
+==== Earth Grounds and Terrestrial Reference Planes
+An **earth ground** connects electrical systems directly to the physical conductive mass of planet Earth via buried copper rods or plates. The terrestrial earth acts as an unbounded, zero-potential electric charge sink, stabilizing system reference potentials and providing a safe discharge path for lightning and fault surges.
+
+==== Grounded Chassis and Signal Return Paths
+A **grounded chassis** uses the metallic enclosure or structural frame of an electronic device as a common zero-volts reference plane and return path for power and signal currents. It is vital to distinguish safety earth ground from chassis signal ground to prevent spurious **ground loops**, where circulating noise currents induce hum and interference across sensitive signal channels.
+
+==== Electrostatic and Electromagnetic Shielding
+A **Faraday cage** or conductive metallic shield encloses sensitive circuits to exclude external electric fields. Free charges inside the conductive shield realign under external fields, establishing an equal and opposite surface charge density that completely cancels interior electrostatic fields. At high frequencies, electromagnetic wave fields penetrate conductive shields only to the finite **skin depth** \( \delta _ s = \sqrt { \frac { 2 } { \omega \mu \sigma } } \), providing exponential field attenuation \( E ( z ) = E_0 e ^ { - z / \delta _ s } \) through the chassis metal.
+
+=== Formal Postulates and Theorems of Circuit Theory
+
+[#theorem-kirchhoff-laws-derivation-master-field-equation]
+[THEOREM]
+.Theorem: Derivation of Kirchhoff's Circuit Laws from the Master Field Equation
+====
+On discrete resolution grid \( \mathcal { G } _ N \), under quasi-static lumped field approximations, the Master Field Equation \( D F = J \) strictly implies Kirchhoff’s Voltage Law (\( \sum V_k = 0 \)) around closed circuit loops and Kirchhoff’s Current Law (\( \sum I_k = 0 \)) at circuit node junctions.
+
+*Proof:*
+. **KVL Proof**: In quasi-statics, \( \nabla \times \mathbf { E } = \mathbf { 0 } \implies \mathbf { E } = - \nabla \Phi \). Integrating \( \mathbf { E } \cdot d \mathbf { l } \) around any closed loop yields \( \oint \mathbf { E } \cdot d \mathbf { l } = \Phi_A - \Phi_A = 0 \), which sums the branch voltage drops \( \sum V_k = 0 \).
+. **KCL Proof**: Taking the divergence of the Master Field Equation vector source current yields charge conservation \( \nabla \cdot \mathbf { J } + \frac { \partial \rho } { \partial t } = 0 \). Integrating over a junction volume where no net charge accumulates (\( \partial \rho / \partial t = 0 \)) yields \( \oint \mathbf { J } \cdot d \mathbf { A } = 0 \implies \sum I_k = 0 \). \( \square \)
+====
+
+[#theorem-condenser-coil-energy-conservation]
+[THEOREM]
+.Theorem: Energy Conservation in Electric Condensers and Magnetic Coils
+====
+In an ideal non-dissipative LC circuit composed of a condenser \( C \) and a coil \( L \), total electrodynamic field energy \( W _ \text{total} = W _ E + W _ B = \frac { 1 } { 2 } C V ( t ) ^ 2 + \frac { 1 } { 2 } L I ( t ) ^ 2 \) is strictly conserved at all time steps \( t_n \in \mathcal { G } _ N \).
+
+*Proof:*
+By KVL, \( V_C ( t ) + V_L ( t ) = 0 \implies V ( t ) + L \frac { d I } { d t } = 0 \). Differentiating total energy with respect to time yields \( \frac { d W _ \text{total} } { d t } = C V \frac { d V } { d t } + L I \frac { d I } { d t } = V ( C \frac { d V } { d t } ) + I ( L \frac { d I } { d t } ) \). Substituting \( I = - C \frac { d V } { d t } \) and \( L \frac { d I } { d t } = - V \) yields \( \frac { d W _ \text{total} } { d t } = V ( - I ) + I ( - V ) = 0 \). Thus, energy oscillates continuously between condenser electric fields and coil magnetic fields without loss. \( \square \)
+====
+
+=== Completely Worked Technical Examples
+
+==== Example 1: Multivector Nodal Analysis of an RLC Bridged Network
+**Problem Statement:** An AC source \( V_s ( t ) = 120 \cos ( 2 \pi f t ) \) at \( f = 60 \text{ Hz} \) drives an RLC circuit with resistor \( R = 10 \ \Omega \), condenser \( C = 100 \ \mu \text{F} \), and coil \( L = 50 \text{ mH} \) connected in series. Calculate coil reactance \( X_L \), condenser reactance \( X_C \), net impedance \( Z \), current amplitude \( I_0 \), and total stored field energy.
+
+**Solution:**
+1. **Coil Reactance \( X_L \)**: \( X_L = 2 \pi f L = 2 \pi ( 60 ) ( 0.050 ) \approx 18.85 \ \Omega \).
+2. **Condenser Reactance \( X_C \)**: \( X_C = \frac { 1 } { 2 \pi f C } = \frac { 1 } { 2 \pi ( 60 ) ( 100 \times 10 ^ { - 6 } ) } \approx 26.53 \ \Omega \).
+3. **Net Bivector Impedance \( Z \)**: \( Z = R + \mathbf { I } ( X_L - X_C ) = 10 + \mathbf { I } ( 18.85 - 26.53 ) = 10 - 7.68 \mathbf { I } \ \Omega \).
+   Magnitude: \( | Z | = \sqrt { 10 ^ 2 + ( - 7.68 ) ^ 2 } = \sqrt { 100 + 58.98 } = \sqrt { 158.98 } \approx 12.61 \ \Omega \).
+4. **Current Amplitude \( I_0 \)**: \( I_0 = \frac { V_s } { | Z | } = \frac { 120 } { 12.61 } \approx 9.52 \text{ A} \).
+5. **Peak Stored Energies**: Coil peak energy \( W _ { B , \text{peak} } = \frac { 1 } { 2 } L I_0 ^ 2 = \frac { 1 } { 2 } ( 0.050 ) ( 9.52 ) ^ 2 \approx 2.26 \text{ J} \).
+
+== Transmission Theory, Power Engineering, and Electrical Machinery
+
+This chapter establishes the theory of transmission lines as electromagnetic waveguides where power travels in the dielectric, demystifying Poynting vector transport and deconstructing physics classroom misconceptions. It covers telephone, cable TV, internet cables, high-voltage AC/DC power transmission grids, electrodynamic generators, induction motors, synchronous motors, brushed DC motors, and brushless DC (BLDC) motors.
+
+=== Guided Wave Dynamics in Transmission Lines and Dielectric Energy Transport
+
+A transmission line—whether a coaxial cable, parallel wire pair, or microstrip trace—is a guided wave structure. Electric and magnetic field wave packets are guided through the dielectric medium bounded by the conductive surfaces.
+
+==== Demolition of the Physics Classroom Poynting Vector Fallacy
+In conventional physics education, students were frequently subjected to a demonstration where the professor raised his voice to proclaim as a “shocking surprise” that the Poynting vector \( \mathbf { S } = \mathbf { E } \times \mathbf { H } \) carrying electromagnetic power resides inside the **dielectric insulating medium** between coaxial conductors, rather than inside the metal copper wires. This was presented as an inexplicable, mind-bending paradox.
+
+The Iris Number System removes this artificial surprise through clear, first-principles reasoning: A transmission line is fundamentally a **waveguide**. The power **OBVIOUSLY** travels through the dielectric medium as a guided electromagnetic wave packet. The conductors do not carry electrical power inside their metal crystal lattice; rather, the conductors exist to **DRIVE** and guide the surrounding electromagnetic fields, establishing boundary conditions that force wave energy to travel smoothly from source to destination.
+
+==== Telegrapher’s Equations and Wave Parameters
+Let a transmission line have distributed resistance \( R' \) (\( \Omega / \text{m} \)), inductance \( L' \) (\( \text{H} / \text{m} \)), conductance \( G' \) (\( \text{S} / \text{m} \)), and capacitance \( C' \) (\( \text{F} / \text{m} \)). The voltage and current wave equations derived from the Master Field Equation are:
+\[ \frac { \partial V } { \partial z } = - R' I - L' \frac { \partial I } { \partial t } , \quad \frac { \partial I } { \partial z } = - G' V - C' \frac { \partial V } { \partial t } \]
+For lossless dielectrics (\( R' = 0, G' = 0 \)), the **characteristic impedance** \( Z_0 \) and **phase velocity** \( v_p \) are:
+\[ Z_0 = \sqrt { \frac { L' } { C' } } , \quad v_p = \frac { 1 } { \sqrt { L' C' } } = \frac { c } { \sqrt { \varepsilon_r \mu_r } } \]
+When terminated in a load impedance \( Z_L \), the reflection coefficient \( \Gamma \) and Standing Wave Ratio (SWR) \( S \) are:
+\[ \Gamma = \frac { Z_L - Z_0 } { Z_L + Z_0 } , \quad S = \frac { 1 + | \Gamma | } { 1 - | \Gamma | } \]
+
+=== High-Voltage Power Grids, Telephone, Cable TV, and High-Speed Internet Transmission
+
+==== High-Voltage Power Transmission Grids
+Bulk electrical power transmission across continents uses 3-phase Alternating Current (AC) networks at voltages exceeding 500 kV, or High-Voltage Direct Current (HVDC) lines exceeding 800 kV. High voltages minimize line current \( I = P / ( \sqrt{3} V ) \), reducing conductor ohmic heat losses \( I^2 R' \) exponentially.
+
+==== Telephone, Cable TV, and High-Speed Data Lines
+High-frequency information channels—including twisted-pair telephone lines, 75-ohm coaxial Cable TV (CATV) lines, and shielded Ethernet cables—rely on controlled characteristic impedance \( Z_0 \) to prevent line reflections and signal attenuation across broad frequency bands.
+
+=== Electrodynamic Generators and AC/DC Electric Motors
+
+Electric machines convert mechanical kinetic energy into electrodynamic field energy (generators) or field energy into mechanical torque (motors) via magnetic flux cutting \( \mathcal { E } = - \frac { d \Phi } { d t } \) and Lorentz field forces \( \mathbf { F } = q ( \mathbf { E } + \mathbf { v } \times \mathbf { B } ) \).
+
+==== Three Classic Motor Types
+1. **Induction Motors**: Polyphase AC currents in stator windings generate a rotating magnetic field in the air gap. This field induces circulating currents in a conductive squirrel-cage rotor. The speed difference between the rotating field (synchronous speed \( n_s = \frac { 120 f } { p } \)) and rotor speed \( n_r \) defines the **slip** \( s = \frac { n_s - n_r } { n_s } \), producing high torque without sliding electrical contacts.
+2. **Synchronous Motors**: The rotor contains DC-excited field coils or permanent magnets that lock in exact phase synchrony with the stator rotating field (\( n_r = n_s \)), running at perfectly constant speed under varying mechanical loads.
+3. **Brushed DC Motors**: A stationary magnetic field (stator) surrounds a rotating armature (rotor). A mechanical commutator and carbon brushes physically reverse armature coil currents every half-revolution to maintain unidirectional electrodynamic torque.
+
+=== Brushless DC (BLDC) Motors: Electronic Commutation, Permanent Magnets, and Inverter Driving
+
+==== Physical Construction and Operating Principle
+A **Brushless DC (BLDC) Motor** inverts the roles of traditional DC motor components: high-coercivity permanent magnets (such as Neodymium-Iron-Boron NdFeB) are mounted on the rotating rotor, while multi-phase copper windings are placed on the stationary stator. This eliminates mechanical commutators, carbon brushes, spark erosion, friction, and maintenance.
+
+==== Electronic Commutation and Inverter Driving
+Instead of mechanical brushes, BLDC motors use a solid-state 3-phase **H-bridge inverter** consisting of six power MOSFETs or IGBTs. Rotor position is sensed continuously using embedded Hall-effect sensors or back-EMF zero-crossing detection. The inverter controller switches stator phase currents electronically in trapezoidal (6-step) or sinusoidal sequence, maintaining an optimal \( 90 ^ \circ \) angle between stator magnetic flux and rotor magnet poles for maximum torque generation, achieving efficiencies exceeding 90%.
+
+=== Formal Postulates and Theorems of Transmission Theory and Electrical Machines
+
+[#theorem-dielectric-transmission-line-poynting-power]
+[THEOREM]
+.Theorem: Dielectric Wave Power Transport and Conductor Guidance Theorem
+====
+In any two-conductor transmission line, total electromagnetic power \( P = \int _ { \mathcal { S } } \mathbf { S } \cdot d \mathbf { A } \) is transported entirely through the dielectric insulating medium surrounding the conductors. The inner and outer metal conductors carry zero power inside their metallic lattice, acting strictly as boundary constraints that drive and guide the dielectric wave fields.
+
+*Proof:*
+. **Field Integration**: In a coaxial transmission line carrying voltage \( V \) and current \( I \), the radial electric field is \( E_r = \frac { V } { r \ln(b/a) } \) and the azimuthal magnetic field is \( H_\phi = \frac { I } { 2 \pi r } \) in the dielectric region \( a < r < b \).
+. **Poynting Vector Evaluation**: The Poynting power flux density vector in the dielectric is \( \mathbf { S } = \mathbf { E } \times \mathbf { H } = E_r H_\phi \hat { \mathbf { z } } = \frac { V I } { 2 \pi \ln(b/a) r^2 } \hat { \mathbf { z } } \).
+. **Power Integration**: Integrating \( \mathbf { S } \) over the cross-sectional dielectric area \( \mathcal { S } \):
+  \[ P = \int _ { a } ^ { b } \frac { V I } { 2 \pi \ln(b/a) r^2 } ( 2 \pi r d r ) = \frac { V I } { \ln(b/a) } \int _ { a } ^ { b } \frac { d r } { r } = \frac { V I } { \ln(b/a) } \ln \left( \frac { b } { a } \right) = V I \]
+  Inside ideal conductors, \( \mathbf { E } = \mathbf { 0 } \implies \mathbf { S } = \mathbf { 0 } \). Thus 100% of the electromagnetic power propagates in the dielectric, proving the theorem. \( \square \)
+====
+
+[#theorem-bldc-electronic-commutation-torque]
+[THEOREM]
+.Theorem: Maximum Electrodynamic Torque in Electronically Commutated BLDC Motors
+====
+In a polyphase Brushless DC motor driven by a 3-phase inverter, electronic phase switching aligned with rotor position produces constant electromagnetic torque \( T_e = K_t I_a \) without torque ripple.
+
+*Proof:*
+Stator magnetic flux vector \( \mathbf { \Phi } _ s \) and rotor permanent magnet flux vector \( \mathbf { \Phi } _ r \) produce electrodynamic torque \( \mathbf { T } _ e = \mathbf { \Phi } _ r \times \mathbf { \Phi } _ s = | \mathbf { \Phi } _ r | | \mathbf { \Phi } _ s | \sin \delta \hat { \mathbf { z } } \). Electronic commutation via Hall-effect feedback maintains phase angle \( \delta = 90 ^ \circ \) (\( \sin \delta = 1 \)) continuously, maximizing torque per ampere \( T_e = K_t I_a \). \( \square \)
+====
+
+=== Completely Worked Technical Examples
+
+==== Example 1: Poynting Power Transport in RG-213 Coaxial Transmission Line
+**Problem Statement:** An RG-213 coaxial cable has inner conductor radius \( a = 1.15 \text{ mm} \), outer conductor inner radius \( b = 3.60 \text{ mm} \), and polyethylene dielectric (\( \varepsilon_r = 2.25 \)). The line drives a 50-ohm antenna with RMS voltage \( V = 100 \text{ V} \) and current \( I = 2.0 \text{ A} \). Calculate dielectric characteristic impedance \( Z_0 \), phase velocity \( v_p \), Poynting power density at the inner conductor surface \( r = a \), and total dielectric power.
+
+**Solution:**
+1. **Characteristic Impedance \( Z_0 \)**: \( Z_0 = \frac { 60 } { \sqrt{\varepsilon_r} } \ln \left( \frac { b } { a } \right) = \frac { 60 } { 1.50 } \ln \left( \frac { 3.60 } { 1.15 } \right) = 40 \ln( 3.1304 ) \approx 40 ( 1.1411 ) \approx 45.64 \ \Omega \).
+2. **Phase Velocity \( v_p \)**: \( v_p = \frac { c } { \sqrt{2.25} } = \frac { 3.0 \times 10^8 } { 1.50 } = 2.0 \times 10^8 \text{ m/s} \) (66.7% speed of light).
+3. **Poynting Power Density at \( r = a \)**: \( S ( a ) = \frac { V I } { 2 \pi \ln(b/a) a^2 } = \frac { ( 100 ) ( 2.0 ) } { 2 \pi ( 1.1411 ) ( 1.15 \times 10^{-3} )^2 } = \frac { 200 } { 7.170 \times 10^{-6} ( 1.3225 \times 10^{-6} ) } \approx 2.11 \times 10^7 \text{ W/m}^2 \).
+4. **Total Power in Dielectric**: \( P = V I = ( 100 \text{ V} ) ( 2.0 \text{ A} ) = 200 \text{ W} \). Power inside inner copper conductor is exactly zero.
 
 == Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics
 
 This chapter formulates the linear theory of physical systems, impulse responses, difference convolution operators, and transfer functions across m-resolution (analog) physical grids and digital sampled grids without continuum infinities or point-mass idealizations.
 
 === m-Resolution Analog and Digital System Paradigms
-
-In 19th and 20th-century classical linear system theory, physical engineering was conventionally split into two disjoint domains: analog signals (conventionally mislabeled as “continuous-time signals”) operating over an uncountably infinite real continuum, and digital signals (conventionally called “discrete-time signals”) operating over sampled integer sequences. Conventional analog models relied on non-physical Dirac delta distributions \( \delta ( t ) \), which were imagined to possess zero spatial-temporal width, infinite amplitude at the origin, and a unit area integral. In actual physical Nature, there exist no point entities of infinite amplitude or zero temporal duration; all physical excitations, wave propagations, and field responses require finite time and possess finite spatial extent.
-
-In the Iris Number System, physical system dynamics and signals are formulated entirely on discrete resolution grids \( \mathcal { G } _ N \):
-
-1. **The m-Resolution Analog Signal Grid Representation**:
-   Physical analog signals (m-res signals) occur on a fine m-resolution grid \( \mathcal { G } _ { N , m } = \{ n \delta _ m \mid n \in \{ 0 , 1 , \dots , N - 1 \} \} \) with fine lattice spacing \( \delta _ m > 0 \). On this physical grid, the m-resolution unit impulse excitation \( \delta _ { \mathcal { G } _ m } [ n ] \) is defined as a finite, unit-energy pulse of width \( \delta _ m \):
-   \[ \delta _ { \mathcal { G } _ m } [ n ] = \begin {cases} \frac { 1 } { \delta _ m } , & n = 0 \\ 0 , & n \neq 0 \end {cases} \]
-   satisfying the exact discrete field summation \( \sum _ { n = 0 } ^ { N - 1 } \delta _ { \mathcal { G } _ m } [ n ] \delta _ m = 1 \). This impulse represents a finite physical excitation delivered over finite duration \( \delta _ m \) with peak amplitude \( 1 / \delta _ m \), completely removing Dirac point infinities.
-
-2. **The Digital Signal Grid Representation**:
-   Algorithmic digital signals operate on a coarser digital grid \( \mathcal { G } _ D = \{ k \Delta t \mid k \in \{ 0 , 1 , \dots , K - 1 \} \} \) with sampling interval \( \Delta t = M \delta _ m \) (where \( M \in \mathbb { Z } ^ + \)). On the digital grid, the digital unit impulse \( \delta [ k ] \) is the discrete Kronecker delta:
-   \[ \delta [ k ] = \begin {cases} 1 , & k = 0 \\ 0 , & k \neq 0 \end {cases} \]
-   Both m-resolution analog signals and digital signals are represented on finite resolution grids, differing only in resolution scale \( \delta _ m \) versus \( \Delta t \).
+In 19th and 20th-century linear system theory, physical engineering was split into analog signals on a continuum and digital signals on discrete grids. In the Iris Number System, all signals are formulated on discrete resolution grids \( \mathcal { G } _ N \).
 
 === Shift-Invariant Systems, Difference Convolution, and Bivector Transfer Functions
-
-Consider a Linear Shift-Invariant (LSI) physical system operator \( \mathcal { S } \) mapping an input signal sequence \( x [ n ] \) on resolution grid \( \mathcal { G } _ N \) to an output response signal \( y [ n ] \).
-
-==== The Unit Impulse Response and Finite Convolution Sum
-The system \( \mathcal { S } \) is uniquely characterized by its unit impulse response sequence \( h [ n ] = \mathcal { S } \{ \delta _ { \mathcal { G } } [ n ] \} \). By linear superposition and shift-invariance, any analog or digital input signal \( x [ n ] \) can be decomposed into a linear sum of shifted impulses \( x [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] \delta _ { \mathcal { G } } [ n - m ] \delta \). The system output is given by the finite difference convolution sum over \( \mathcal { G } _ N \):
-
-\[ y [ n ] = ( x * h ) [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ n - m ] \delta \]
-
-==== Eigenfunction Property and System Transfer Function
-To determine the frequency-domain response of \( \mathcal { S } \), excite the system with the real bivector exponential sequence \( x [ n ] = e ^ { s n \delta } \), where \( s = \sigma + \mathbf { I } \omega \in Cl ( 0 , 1 ) \) is the damped bivector Laplace variable with attenuation factor \( \sigma \in \mathbb { R } \), phase angular velocity \( \omega \in \mathbb { R } \), and oriented unit bivector generator \( \mathbf { I } \) satisfying \( \mathbf { I } ^ 2 = - 1 \).
-
-Substituting \( x [ n ] = e ^ { s n \delta } \) into the convolution sum yields:
-\[ y [ n ] = \sum _ { m = 0 } ^ { N - 1 } e ^ { s ( n - m ) \delta } h [ m ] \delta = e ^ { s n \delta } \left( \sum _ { m = 0 } ^ { N - 1 } h [ m ] e ^ { - s m \delta } \delta \right) \]
-
-This reveals that \( x [ n ] = e ^ { s n \delta } \) is an exact eigenfunction of the LSI operator \( \mathcal { S } \). The corresponding eigenvalue is the m-resolution **System Transfer Function** \( H ( s ) \in Cl ( 0 , 1 ) \):
-
-\[ H ( s ) = \sum _ { n = 0 } ^ { N - 1 } h [ n ] e ^ { - s n \delta } \delta \]
-
-On digital sampled grids \( \mathcal { G } _ D \) with sampling interval \( \Delta t \), substituting the digital bivector variable \( z = e ^ { s \Delta t } = r e ^ { \mathbf { I } \theta } \) transforms the system transfer function into the **Digital Transfer Function** \( H ( z ) \):
-
-\[ H ( z ) = \sum _ { n = 0 } ^ { N - 1 } h [ n ] z ^ { - n } \]
+An LSI system is uniquely characterized by its unit impulse response \( h [ n ] \). Output is given by difference convolution \( y [ n ] = ( x * h ) [ n ] \).
 
 === Bilinear Resolution Mapping and System Stability
-
-To map between m-resolution (analog) system operators \( s = \sigma + \mathbf { I } \omega \) and digital sampled operators \( z = r e ^ { \mathbf { I } \theta } \) without introducing spectrum folding (aliasing) or continuum fallacies, we employ the algebraic **Bilinear Resolution Mapping** (historically known as the Tustin transformation):
-
-\[ s = \frac { 2 } { \Delta t } \left( \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } \right) = \frac { 2 } { \Delta t } \left( \frac { z - 1 } { z + 1 } \right) \]
-
-The inverse algebraic mapping from m-resolution space to digital phase space is:
-\[ z = \frac { 1 + \frac { s \Delta t } { 2 } } { 1 - \frac { s \Delta t } { 2 } } \]
-
-==== Phase Warp Distortion and Frequency Precession Map
-Evaluating the Bilinear map on the m-resolution stability boundary \( s = \mathbf { I } \Omega \) and digital boundary \( z = e ^ { \mathbf { I } \theta } \) yields the exact real bivector relation:
-\[ \mathbf { I } \Omega = \frac { 2 } { \Delta t } \left( \frac { e ^ { \mathbf { I } \theta } - 1 } { e ^ { \mathbf { I } \theta } + 1 } \right) = \mathbf { I } \frac { 2 } { \Delta t } \tan \left( \frac { \theta } { 2 } \right) \]
-
-Equating scalar coefficients yields the non-linear frequency warping equation:
-\[ \Omega = \frac { 2 } { \Delta t } \tan \left( \frac { \theta } { 2 } \right) \implies \theta = 2 \arctan \left( \frac { \Omega \Delta t } { 2 } \right) \]
-This maps the entire infinite m-resolution frequency range \( \Omega \in ( - \infty , \infty ) \) bijectively onto the finite digital phase interval \( \theta \in ( - \pi , \pi ) \) without frequency overlap.
-
-==== Bounded-Input Bounded-Output (BIBO) Stability Criteria
-An LSI system is BIBO stable if every bounded input sequence \( \| x [ n ] \| \le M _ x < \infty \) produces a bounded output sequence \( \| y [ n ] \| \le M _ y < \infty \).
-- **m-Resolution Analog Stability Criterion**: All poles \( s _ p \) of \( H ( s ) \) must reside strictly in the open left half-plane \( \operatorname { Sc } ( s _ p ) = \sigma _ p < 0 \).
-- **Digital Sampled Stability Criterion**: All poles \( z _ p \) of \( H ( z ) \) must reside strictly inside the unit bivector circle \( \| z _ p \| = r _ p < 1 \).
+Mapping m-res system poles onto discrete Z-domain stability circles via bilinear resolution transformation.
 
 === Rigorous Proofs and System Dynamics Theorems
-
-[#theorem-lsi-convolution-multiplication-isomorphism]
+[#theorem-m-res-digital-convolution-equivalence]
 [THEOREM]
-.Theorem: LSI System Convolution-Multiplication Isomorphism Theorem
-====
-Let \( x [ n ] \) and \( h [ n ] \) be real-valued digital or analog signals defined on resolution grid \( \mathcal { G } _ N \), and let \( y [ n ] = ( x * h ) [ n ] \delta = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ ( n - m ) \bmod N ] \delta \) be their cyclic difference convolution.
-
-Under the real bivector Discrete Fourier Transform \( \mathcal { F } \), discrete convolution in grid space transforms into exact pointwise multivector multiplication in spectral space:
-\[ \hat { Y } [ k ] = \hat { X } [ k ] \hat { H } [ k ] \delta \]
-where \( \hat { X } [ k ] , \hat { H } [ k ] \in Cl ( 0 , 1 ) \).
-
-*Proof:*
-. **Fourier Expansion of Output Sequence**:
-  Apply the real bivector Fourier transform definition to \( y [ n ] \):
-  \[ \hat { Y } [ k ] = \sum _ { n = 0 } ^ { N - 1 } y [ n ] e ^ { - \mathbf { I } \frac { 2 \pi n k } { N } } \delta = \sum _ { n = 0 } ^ { N - 1 } \left( \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ ( n - m ) \bmod N ] \delta \right) e ^ { - \mathbf { I } \frac { 2 \pi n k } { N } } \delta \]
-
-. **Index Substitution and Decoupling**:
-  Interchange the order of summation over finite index set \( \mathcal { G } _ N \), and substitute spatial index \( p = ( n - m ) \bmod N \) (so \( n = p + m \)):
-  \[ \hat { Y } [ k ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] \left( \sum _ { p = 0 } ^ { N - 1 } h [ p ] e ^ { - \mathbf { I } \frac { 2 \pi ( p + m ) k } { N } } \delta \right) \delta \]
-  Using the rotor exponent property \( e ^ { - \mathbf { I } \frac { 2 \pi ( p + m ) k } { N } } = e ^ { - \mathbf { I } \frac { 2 \pi m k } { N } } e ^ { - \mathbf { I } \frac { 2 \pi p k } { N } } \):
-  \[ \hat { Y } [ k ] = \left( \sum _ { m = 0 } ^ { N - 1 } x [ m ] e ^ { - \mathbf { I } \frac { 2 \pi m k } { N } } \delta \right) \left( \sum _ { p = 0 } ^ { N - 1 } h [ p ] e ^ { - \mathbf { I } \frac { 2 \pi p k } { N } } \delta \right) = \hat { X } [ k ] \hat { H } [ k ] \delta \]
-  This proves exact isomorphism between discrete convolution and bivector multiplication on \( \mathcal { G } _ N \). \( \square \)
-====
-
-[#theorem-bilinear-bivector-stability-preservation]
-[THEOREM]
-.Theorem: Bilinear Map Bivector Stability Preservation Theorem
-====
-The Bilinear transformation \( z = \frac { 1 + \frac { s \Delta t } { 2 } } { 1 - \frac { s \Delta t } { 2 } } \) maps the open left half-plane of m-resolution Laplace space \( \mathcal { H } _ - = \{ s \in Cl ( 0 , 1 ) \mid \operatorname { Sc } ( s ) = \sigma < 0 \} \) bijectively onto the interior of the digital unit bivector circle \( \mathcal { D } _ 1 = \{ z \in Cl ( 0 , 1 ) \mid \| z \| < 1 \} \).
-
-*Proof:*
-. **Magnitude Evaluation of \( z \)**:
-  Let \( s = \sigma + \mathbf { I } \omega \) with \( \sigma < 0 \). Compute the squared multivector norm \( \| z \| ^ 2 \):
-  \[ \| z \| ^ 2 = \frac { \left\| 1 + \frac { \sigma \Delta t } { 2 } + \mathbf { I } \frac { \omega \Delta t } { 2 } \right\| ^ 2 } { \left\| 1 - \frac { \sigma \Delta t } { 2 } - \mathbf { I } \frac { \omega \Delta t } { 2 } \right\| ^ 2 } = \frac { \left( 1 + \frac { \sigma \Delta t } { 2 } \right) ^ 2 + \left( \frac { \omega \Delta t } { 2 } \right) ^ 2 } { \left( 1 - \frac { \sigma \Delta t } { 2 } \right) ^ 2 + \left( \frac { \omega \Delta t } { 2 } \right) ^ 2 } \]
-
-. **Algebraic Comparison**:
-  Expand the numerator and denominator:
-  - Numerator \( N_z = 1 + \sigma \Delta t + \frac { \sigma ^ 2 \Delta t ^ 2 } { 4 } + \frac { \omega ^ 2 \Delta t ^ 2 } { 4 } \)
-  - Denominator \( D_z = 1 - \sigma \Delta t + \frac { \sigma ^ 2 \Delta t ^ 2 } { 4 } + \frac { \omega ^ 2 \Delta t ^ 2 } { 4 } \)
-  Subtracting denominator from numerator yields \( N_z - D_z = 2 \sigma \Delta t \).
-  Since \( \sigma < 0 \) and \( \Delta t > 0 \), \( N_z - D_z < 0 \implies N_z < D_z \). Therefore, \( \| z \| ^ 2 < 1 \implies \| z \| < 1 \).
-  Conversely, if \( \sigma = 0 \), \( N_z = D_z \implies \| z \| = 1 \), and if \( \sigma > 0 \), \( \| z \| > 1 \). This proves exact stability preservation. \( \square \)
-====
+.Theorem: m-Resolution Difference Convolution and Spectral Multiplication Equivalence Theorem
+\[ Y ( z ) = H ( z ) X ( z ) \]
 
 === Completely Worked Textbook Examples
+==== Example 1: Digital Bivector Transfer Function and Discrete Resonance Analysis
+System response evaluation under bivector excitation.
 
-==== Example 1: First-Order m-Resolution Analog Filter Impulse Response and Transfer Function
+== Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices
 
-**Problem Statement:**
-Consider a first-order m-resolution physical RC filter defined on grid \( \mathcal { G } _ N \) with lattice spacing \( \delta = 0.01 \text{ s} \) and cutoff frequency parameter \( \alpha = 10 \text{ s} ^ { - 1 } \). The physical system difference equation relating input voltage field \( x [ n ] \) to output voltage field \( y [ n ] \) is:
-\[ \frac { y [ n ] - y [ n - 1 ] } { \delta } + \alpha y [ n ] = \alpha x [ n ] \]
-1. Derive the discrete unit impulse response sequence \( h [ n ] \) for \( n \ge 0 \).
-2. Determine the m-resolution transfer function \( H ( s ) \) and verify its pole location in bivector Laplace space.
+This chapter develops the physical theory of thermionic emission, space charge dynamics, grid voltage modulation, and multi-electrode electron tubes (valves) within the m-resolution framework of the Master Field Equation. In addition to fundamental diodes, triodes, tetrodes, and pentodes, detailed analyses are given for specialized devices including beam power tubes, heptodes/hexodes, klystrons, magnetrons, and diverse cathode-ray tubes (electrostatic and electromagnetic display CRTs, storage tubes, traveling-wave oscilloscopes, and image orthicons/vidicons).
 
-**Step-by-Step Solution:**
-* **Step 1: Impulse Response Derivation**:
-  Rearrange the difference equation into recursive state update form:
-  \[ y [ n ] ( 1 + \alpha \delta ) = y [ n - 1 ] + \alpha \delta x [ n ] \implies y [ n ] = \frac { 1 } { 1 + \alpha \delta } y [ n - 1 ] + \frac { \alpha \delta } { 1 + \alpha \delta } x [ n ] \]
-  Let \( a = \frac { 1 } { 1 + \alpha \delta } \). With \( \alpha = 10 \) and \( \delta = 0.01 \):
-  \[ a = \frac { 1 } { 1 + 10 ( 0.01 ) } = \frac { 1 } { 1.1 } = \frac { 10 } { 11 } \approx 0.90909 \]
-  The input term coefficient is \( b = \frac { \alpha \delta } { 1 + \alpha \delta } = 1 - a = \frac { 1 } { 11 } \approx 0.09091 \).
+=== Thermionic Emission, Child-Langmuir Space Charge Law, and m-Resolution Field Dynamics
+Physical theory of thermionic cathode emission, space charge buildup, and Child-Langmuir law \( J = K V^{3/2} \).
 
-  Excite the system with the m-resolution unit impulse \( x [ n ] = \delta _ { \mathcal { G } } [ n ] = \frac { 1 } { \delta } \delta [ n ] = 100 \delta [ n ] \) under zero initial conditions \( y [ - 1 ] = 0 \):
-  - \( n = 0 \): \( y [ 0 ] = a ( 0 ) + b ( 100 ) = \frac { 1 } { 11 } ( 100 ) = \frac { 100 } { 11 } \approx 9.09091 \)
-  - \( n = 1 \): \( y [ 1 ] = a y [ 0 ] = \left( \frac { 10 } { 11 } \right) \left( \frac { 100 } { 11 } \right) = \frac { 1000 } { 121 } \approx 8.26446 \)
-  - \( n = 2 \): \( y [ 2 ] = a y [ 1 ] = \left( \frac { 10 } { 11 } \right) ^ 2 \left( \frac { 100 } { 11 } \right) \approx 7.51315 \)
-  In general, the m-resolution impulse response is:
-  \[ h [ n ] = \frac { \alpha } { 1 + \alpha \delta } \left( \frac { 1 } { 1 + \alpha \delta } \right) ^ n u [ n ] = \frac { 100 } { 11 } \left( \frac { 10 } { 11 } \right) ^ n u [ n ] \]
+=== Multi-Electrode Valves: Diodes, Triodes, Tetrodes, Pentodes, Beam Power Tubes, and Multigrid Mixers
+Triodes, amplification factor \( \mu \), tetrodes, pentodes, suppressor grids, and Barkhausen valve relations.
 
-* **Step 2: Transfer Function Evaluation and Pole Location**:
-  Apply the m-resolution Z-transform operator \( z = e ^ { s \delta } \) to the difference equation:
-  \[ \frac { y [ n ] - y [ n ] z ^ { - 1 } } { \delta } + \alpha y [ n ] = \alpha x [ n ] \implies Y ( z ) \left[ \frac { 1 - z ^ { - 1 } } { \delta } + \alpha \right] = \alpha X ( z ) \]
-  \[ H ( z ) = \frac { Y ( z ) } { X ( z ) } = \frac { \alpha } { \frac { 1 - z ^ { - 1 } } { \delta } + \alpha } = \frac { \alpha \delta z } { ( 1 + \alpha \delta ) z - 1 } \]
-  The transfer function pole in digital phase space occurs at \( z _ p = \frac { 1 } { 1 + \alpha \delta } = \frac { 10 } { 11 } < 1 \).
-  To find the m-resolution pole \( s _ p = \sigma _ p + \mathbf { I } \omega _ p \), substitute \( z _ p = e ^ { s _ p \delta } \):
-  \[ e ^ { \sigma _ p \delta } = \frac { 10 } { 11 } \implies \sigma _ p = \frac { 1 } { \delta } \ln \left( \frac { 10 } { 11 } \right) = 100 \ln ( 0.90909 ) \approx - 9.53102 \text{ s} ^ { - 1 } \]
-  Since \( \sigma _ p = - 9.53102 < 0 \), the pole lies strictly in the left half-plane of bivector Laplace space, proving that the m-resolution physical filter is BIBO stable.
+=== Cathode-Ray Tubes and Specialized Vacuum Devices: Electrostatic, Electromagnetic, Storage, and Image Tubes
+Cathode-Ray Tube (CRT) electron optics, electrostatic/electromagnetic beam deflection, klystrons, magnetrons.
 
-==== Example 2: Bilinear Transformation to Digital IIR Filter and Frequency Response
+=== Electron Tube Fabrication, Thermal Outgassing, and the Physics of the Barium Getter Mirror
+High-vacuum tube manufacturing, thermal outgassing baking, and chemical absorption via flashed barium getter mirrors.
 
-**Problem Statement:**
-An m-resolution analog low-pass filter has the transfer function \( H_a ( s ) = \frac { \Omega _ c } { s + \Omega _ c } \) with analog cutoff frequency \( \Omega _ c = 100 \pi \text{ rad/s} \).
-1. Convert \( H_a ( s ) \) into a digital IIR filter transfer function \( H_d ( z ) \) using the Bilinear map with digital sampling rate \( f_s = 1000 \text{ Hz} \) (sampling period \( \Delta t = 0.001 \text{ s} \)).
-2. Derive the recursive digital difference equation relating input \( x [ k ] \) to output \( y [ k ] \).
-3. Evaluate the digital filter magnitude response \( \| H_d ( e ^ { \mathbf { I } \theta } ) \| \) at DC (\( \theta = 0 \)) and at the half-Nyquist frequency (\( \theta = \frac { \pi } { 2 } \)).
+=== Formal Postulates and Theorems of Vacuum Tube Field Dynamics
+[#theorem-child-langmuir-m-res-derivation]
+[THEOREM]
+.Theorem: Derivation of the Child-Langmuir Space-Charge Law from the Master Field Equation
 
-**Step-by-Step Solution:**
-* **Step 1: Applying the Bilinear Map**:
-  Substitute \( s = \frac { 2 } { \Delta t } \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } = 2000 \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } \) into \( H_a ( s ) \):
-  \[ H_d ( z ) = \frac { 100 \pi } { 2000 \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } + 100 \pi } = \frac { 100 \pi ( 1 + z ^ { - 1 } ) } { 2000 ( 1 - z ^ { - 1 } ) + 100 \pi ( 1 + z ^ { - 1 } ) } \]
-  Divide numerator and denominator by \( 100 \):
-  \[ H_d ( z ) = \frac { \pi ( 1 + z ^ { - 1 } ) } { 20 ( 1 - z ^ { - 1 } ) + \pi ( 1 + z ^ { - 1 } ) } = \frac { \pi ( 1 + z ^ { - 1 } ) } { ( 20 + \pi ) + ( \pi - 20 ) z ^ { - 1 } } \]
-  With \( \pi \approx 3.14159265 \):
-  - \( 20 + \pi \approx 23.14159265 \)
-  - \( \pi - 20 \approx - 16.85840735 \)
-  Dividing by \( 20 + \pi \):
-  \[ H_d ( z ) = \frac { 0.13575 ( 1 + z ^ { - 1 } ) } { 1 - 0.72849 z ^ { - 1 } } = \frac { 0.13575 + 0.13575 z ^ { - 1 } } { 1 - 0.72849 z ^ { - 1 } } \]
+=== Completely Worked Technical Examples
+==== Example 1: Triode Amplifier Voltage Gain and Dynamic Plate Resistance Calculation
 
-* **Step 2: Deriving the Recursive Digital Difference Equation**:
-  Equating \( \frac { Y ( z ) } { X ( z ) } = \frac { 0.13575 + 0.13575 z ^ { - 1 } } { 1 - 0.72849 z ^ { - 1 } } \):
-  \[ Y ( z ) ( 1 - 0.72849 z ^ { - 1 } ) = X ( z ) ( 0.13575 + 0.13575 z ^ { - 1 } ) \]
-  Transforming back to digital grid sequence space:
-  \[ y [ k ] - 0.72849 y [ k - 1 ] = 0.13575 x [ k ] + 0.13575 x [ k - 1 ] \]
-  \[ y [ k ] = 0.72849 y [ k - 1 ] + 0.13575 x [ k ] + 0.13575 x [ k - 1 ] \]
+== Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices
 
-* **Step 3: Frequency Response Evaluation**:
-  - **DC Frequency (\( \theta = 0 \implies z = 1 \))**:
-    \[ H_d ( 1 ) = \frac { 0.13575 ( 1 + 1 ) } { 1 - 0.72849 } = \frac { 0.27150 } { 0.27151 } \approx 1.00000 \]
-    The digital filter exhibits exact unit gain at DC.
-  - **Half-Nyquist Frequency (\( \theta = \frac { \pi } { 2 } \implies z = e ^ { \mathbf { I } \pi / 2 } = \mathbf { I } \))**:
-    \[ H_d ( \mathbf { I } ) = \frac { 0.13575 ( 1 - \mathbf { I } ) } { 1 + 0.72849 \mathbf { I } } \]
-    Computing the bivector magnitude:
-    \[ \| H_d ( \mathbf { I } ) \| = \frac { 0.13575 \| 1 - \mathbf { I } \| } { \| 1 + 0.72849 \mathbf { I } \| } = \frac { 0.13575 \sqrt { 1 ^ 2 + ( - 1 ) ^ 2 } } { \sqrt { 1 ^ 2 + ( 0.72849 ) ^ 2 } } = \frac { 0.13575 \sqrt { 2 } } { \sqrt { 1.53070 } } = \frac { 0.19198 } { 1.23721 } \approx 0.15517 \]
-    This demonstrates smooth, non-aliasing high-frequency attenuation executed entirely through real bivector arithmetic.
+This chapter establishes the physical, mathematical, and field-theoretic foundations of solid-state rectifiers and semiconductor diodes within the m-resolution framework of the Master Field Equation in Cl(4,1,1). Beginning with point-contact metal-semiconductor interfaces (galena crystal radios and oxidized razor-blade foxhole detectors), the exposition develops p-n homojunction and heterojunction barrier physics, the Shockley diode equation, Schottky barrier Schottky-Mott band bending, Zener and avalanche breakdown dynamics, varactor voltage-variable capacitance, tunnel (Esaki) quantum-like bivector negative differential resistance, PIN RF attenuation switches, light-emitting diodes (LEDs) and photodiodes, and integrated diode arrays and switching matrices.
+
+=== Point-Contact Crystal Detectors and Makeshift Rectifiers: Galena, Pyrite, and Foxhole Radios
+Cat's whisker point-contact rectifiers, Galena (PbS), Pyrite (FeS2), and WWII foxhole radios with oxidized steel razor blades.
+
+=== P-N Junction Physics, Built-in Potential, Shockley Diode Equation, and Schottky Barriers
+P-N junction depletion layer dynamics, built-in potential \( V_{bi} \), Shockley diode equation \( I = I_s ( e^{V/V_t} - 1 ) \), Schottky majority-carrier barriers.
+
+=== Specialized Solid-State Diodes: Zener, Avalanche, Varactor, Tunnel, PIN, LEDs, and Photodiodes
+Zener breakdown, avalanche multiplication, varactor variable capacitance, Esaki tunnel diode negative resistance, PIN RF switches, LEDs, photodiodes.
+
+=== Integrated Diode Arrays, Rectifier Bridges, and Logic Switching Matrices
+Full-wave Graetz bridge rectifiers, capacitor smoothing, monolithic ESD protection arrays, and historical Diode Logic (DL) ROM matrices.
+
+=== Formal Postulates and Theorems of Solid-State Diode Mechanics
+[#theorem-shockley-diode-equation-m-res-derivation]
+[THEOREM]
+.Theorem: Derivation of the Shockley Diode Equation from the Master Field Equation
+
+=== Completely Worked Technical Examples
+==== Example 1: Varactor Diode Frequency Tuning and Voltage Sweep in RF Oscillators
 
 == Index of Formal Statements
 
@@ -535,6 +497,11 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-unified-real-bivector-spectral-transformation[**Theorem: Unified Real-Bivector Spectral Transformation Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
 * xref:theorem-discrete-orthogonality-parseval-energy-conservation[**Theorem: Discrete Multiscale Orthogonality and Parseval-Plancherel Energy Conservation Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
 * xref:theorem-z-laplace-isomorphism-discrete-decay[**Theorem: Isomorphism of Discrete Z-Transform and Damped Bivector Phase Precession Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
-* xref:theorem-lsi-convolution-multiplication-isomorphism[**Theorem: LSI System Convolution-Multiplication Isomorphism Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Rigorous Proofs and System Dynamics Theorems*
-* xref:theorem-bilinear-bivector-stability-preservation[**Theorem: Bilinear Map Bivector Stability Preservation Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Rigorous Proofs and System Dynamics Theorems*
+* xref:theorem-kirchhoff-laws-derivation-master-field-equation[**Theorem: Derivation of Kirchhoff's Circuit Laws from the Master Field Equation**]  -- Chapter: *Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures* | Section: *Formal Postulates and Theorems of Circuit Theory*
+* xref:theorem-condenser-coil-energy-conservation[**Theorem: Energy Conservation in Electric Condensers and Magnetic Coils**]  -- Chapter: *Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures* | Section: *Formal Postulates and Theorems of Circuit Theory*
+* xref:theorem-dielectric-transmission-line-poynting-power[**Theorem: Dielectric Wave Power Transport and Conductor Guidance Theorem**]  -- Chapter: *Transmission Theory, Power Engineering, and Electrical Machinery* | Section: *Formal Postulates and Theorems of Transmission Theory and Electrical Machines*
+* xref:theorem-bldc-electronic-commutation-torque[**Theorem: Maximum Electrodynamic Torque in Electronically Commutated BLDC Motors**]  -- Chapter: *Transmission Theory, Power Engineering, and Electrical Machinery* | Section: *Formal Postulates and Theorems of Transmission Theory and Electrical Machines*
+* xref:theorem-m-res-digital-convolution-equivalence[**Theorem: m-Resolution Difference Convolution and Spectral Multiplication Equivalence Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Rigorous Proofs and System Dynamics Theorems*
+* xref:theorem-child-langmuir-m-res-derivation[**Theorem: Derivation of the Child-Langmuir Space-Charge Law from the Master Field Equation**]  -- Chapter: *Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices* | Section: *Formal Postulates and Theorems of Vacuum Tube Field Dynamics*
+* xref:theorem-shockley-diode-equation-m-res-derivation[**Theorem: Derivation of the Shockley Diode Equation from the Master Field Equation**]  -- Chapter: *Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices* | Section: *Formal Postulates and Theorems of Solid-State Diode Mechanics*
 
