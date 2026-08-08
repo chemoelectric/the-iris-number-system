@@ -10,6 +10,7 @@ import std.math : log, sqrt, cbrt;
 import std.conv : to;
 import std.string : strip;
 import std.parallelism : parallel;
+import std.traits : isIntegral;
 
 struct u128 {
     ulong low = 0;
@@ -30,8 +31,8 @@ struct u128 {
         high = cast(ulong) c.hi;
     }
 
-    void opAssign(ulong val) {
-        low = val;
+    void opAssign(T)(T val) if (isIntegral!T) {
+        low = cast(ulong) val;
         high = 0;
     }
 
@@ -93,9 +94,7 @@ struct u128 {
         return res;
     }
 
-    int opCmp(T)(T rhs) const
-        if (is(T == ulong) || is(T == long) ||
-            is(T == int) || is(T == uint)) {
+    int opCmp(T)(T rhs) const if (isIntegral!T) {
         return opCmp(u128(cast(ulong) rhs));
     }
 
@@ -103,9 +102,7 @@ struct u128 {
         return low == rhs.low && high == rhs.high;
     }
 
-    bool opEquals(T)(T rhs) const
-        if (is(T == ulong) || is(T == long) ||
-            is(T == int) || is(T == uint)) {
+    bool opEquals(T)(T rhs) const if (isIntegral!T) {
         return high == 0 && low == cast(ulong) rhs;
     }
 
@@ -118,10 +115,19 @@ struct u128 {
 
     u128 opBinary(string op, T)(T rhs) const
         if ((op == "+" || op == "-" || op == "*" ||
-             op == "/" || op == "%") &&
-            (is(T == ulong) || is(T == long) ||
-             is(T == int) || is(T == uint))) {
+             op == "/" || op == "%") && isIntegral!T) {
         return opBinary!op(u128(cast(ulong) rhs));
+    }
+
+    u128 opBinaryRight(string op, T)(T lhs) const
+        if ((op == "+" || op == "*" || op == "&" ||
+             op == "|" || op == "^") && isIntegral!T) {
+        return opBinary!op(lhs);
+    }
+
+    u128 opBinaryRight(string op, T)(T lhs) const
+        if ((op == "-" || op == "/" || op == "%") && isIntegral!T) {
+        return u128(cast(ulong) lhs).opBinary!op(this);
     }
 
     u128 opBinary(string op)(const u128 rhs) const if (op == "-") {
@@ -194,9 +200,7 @@ struct u128 {
     }
 
     u128 opBinary(string op, T)(T rhs) const
-        if ((op == "^" || op == "&" || op == "|") &&
-            (is(T == ulong) || is(T == long) ||
-             is(T == int) || is(T == uint))) {
+        if ((op == "^" || op == "&" || op == "|") && isIntegral!T) {
         return opBinary!op(u128(cast(ulong) rhs));
     }
 
