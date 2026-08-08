@@ -20,6 +20,7 @@ D64_TARGET = nth-prime-64-d
 D128_TARGET = nth-prime-128-d
 
 DOPTSFLAGS =
+DOPTSFLAGS += -frelease
 DOPTSFLAGS += -march=native -mtune=native
 DOPTSFLAGS += -Ofast
 #DOPTSFLAGS += -ffast-math
