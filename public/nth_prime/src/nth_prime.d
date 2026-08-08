@@ -508,43 +508,68 @@ Cent limbsToCent(LimbNumber ln) {
     return c;
 }
 
-LimbNumber getNthPrime(LimbNumber n) {
-    ulong uVal = limbsToUlong(n);
-    ulong p = getNthPrimeCore(uVal);
-    LimbNumber res = ulongToLimbs(p);
-    return res;
+BigInt centToBigInt(Cent val) {
+    BigInt loB = BigInt(val.lo);
+    BigInt hiB = BigInt(val.hi);
+    return (hiB << 64) + loB;
 }
 
-BigInt getNthPrime(BigInt n) {
-    BigInt res = BigInt(0);
-    if (n > 0) {
-        LimbNumber lnIn = bigIntToLimbs(n);
-        LimbNumber lnOut = getNthPrime(lnIn);
-        res = limbsToBigInt(lnOut);
-    }
-    return res;
-}
-
-Cent getNthPrime(Cent n) {
-    Cent res;
-    res.lo = 0;
-    res.hi = 0;
-    if (n.lo != 0 || n.hi != 0) {
-        LimbNumber lnIn = centToLimbs(n);
-        LimbNumber lnOut = getNthPrime(lnIn);
-        res = limbsToCent(lnOut);
-    }
-    return res;
+Cent bigIntToCent(BigInt b) {
+    Cent c;
+    BigInt mask = (BigInt(1) << 64) - BigInt(1);
+    BigInt loB = b & mask;
+    BigInt hiB = (b >> 64) & mask;
+    c.lo = cast(ulong) loB;
+    c.hi = cast(ulong) hiB;
+    return c;
 }
 
 ulong getNthPrime(ulong n) {
-    ulong res = 0;
-    if (n > 0) {
-        LimbNumber lnIn = ulongToLimbs(n);
-        LimbNumber lnOut = getNthPrime(lnIn);
-        res = limbsToUlong(lnOut);
+    if (n == 0) {
+        return 0;
     }
-    return res;
+    return getNthPrimeCore(n);
+}
+
+BigInt getNthPrime(BigInt n) {
+    if (n <= BigInt(0)) {
+        return BigInt(0);
+    }
+    if (n <= BigInt(ulong.max)) {
+        ulong uVal = cast(ulong) n;
+        ulong p = getNthPrimeCore(uVal);
+        return BigInt(p);
+    }
+    LimbNumber lnIn = bigIntToLimbs(n);
+    LimbNumber lnOut = getNthPrime(lnIn);
+    return limbsToBigInt(lnOut);
+}
+
+LimbNumber getNthPrime(LimbNumber n) {
+    BigInt bIn = limbsToBigInt(n);
+    if (bIn <= BigInt(0)) {
+        return LimbNumber();
+    }
+    if (bIn <= BigInt(ulong.max)) {
+        ulong uVal = cast(ulong) bIn;
+        ulong p = getNthPrimeCore(uVal);
+        return ulongToLimbs(p);
+    }
+    ulong uVal = cast(ulong) (bIn & ((BigInt(1) << 64) - BigInt(1)));
+    ulong p = getNthPrimeCore(uVal);
+    return ulongToLimbs(p);
+}
+
+Cent getNthPrime(Cent n) {
+    if (n.lo == 0 && n.hi == 0) {
+        Cent res;
+        res.lo = 0;
+        res.hi = 0;
+        return res;
+    }
+    BigInt bIn = centToBigInt(n);
+    BigInt bOut = getNthPrime(bIn);
+    return bigIntToCent(bOut);
 }
 
 void printResultBigInt(BigInt val) {
