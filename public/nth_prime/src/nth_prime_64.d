@@ -320,17 +320,14 @@ u64 sieveSegmentFindNthPrime(u64 lowVal, u64 highVal,
     u64 currentCount = startPi;
     u64 result = 0;
     u64 val = lowVal;
-    bool found = false;
     while (val <= highVal) {
-        if (!found) {
-            size_t vIdx = cast(size_t) (val - lowVal);
-            ubyte isP = *(sieve + vIdx);
-            if (isP == 1) {
-                currentCount = currentCount + 1;
-                if (currentCount == targetN) {
-                    result = val;
-                    found = true;
-                }
+        size_t vIdx = cast(size_t) (val - lowVal);
+        ubyte isP = *(sieve + vIdx);
+        if (isP == 1) {
+            currentCount = currentCount + 1;
+            if (currentCount == targetN) {
+                result = val;
+                val = highVal;
             }
         }
         val = val + 1;
