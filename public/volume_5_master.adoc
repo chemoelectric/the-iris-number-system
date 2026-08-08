@@ -1,5 +1,5 @@
-= The Iris Number System: Volume V: Spectral Analysis, Electronics, Computing
-:subtitle: Volume V: Spectral Analysis, Electronics, Computing
+= The Iris Number System: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
+:subtitle: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
 :author: Frédéric Blondin Custer
 :doctype: book
 :toc: left

@@ -1707,7 +1707,7 @@ export const PHYSICS_CHEMISTRY_TEXTBOOK: Textbook = {
 export const SPECTRAL_ELECTRONICS_TEXTBOOK: Textbook = {
   "id": "volume-5-spectral-electronics-computing",
   "title": "The Iris Number System",
-  "subtitle": "Volume V: Spectral Analysis, Electronics, Computing",
+  "subtitle": "Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing",
   "author": "Frédéric Blondin Custer",
   "version": "1.0.0",
   "lastUpdated": "2026-08-08",

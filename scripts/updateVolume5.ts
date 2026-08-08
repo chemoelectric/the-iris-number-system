@@ -1127,7 +1127,7 @@ const chap4Sec6Content = [
 const volume5Object = {
   id: "volume-5-spectral-electronics-computing",
   title: "The Iris Number System",
-  subtitle: "Volume V: Spectral Analysis, Electronics, Computing",
+  subtitle: "Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing",
   author: "Frédéric Blondin Custer",
   version: "1.0.0",
   lastUpdated: "2026-08-08",
