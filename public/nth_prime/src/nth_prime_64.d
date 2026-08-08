@@ -220,22 +220,22 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
         retval = memoTable[slot].res;
       } else {
         u64 p = cast(u64) primes[a - 1];
-        u64 result = 0;
-        if (x < p) {
-          result = 1;
-        } else if (x <= sieveMax) {
-          u64 p6 = cast(u64) primes[5];
-          if (x <= p6 * p) {
-            u64 piX = piFast(x, primes);
-            u64 castA = cast(u64) a;
-            result = piX - castA + 1;
+        u64 result = 1;
+        if (p <= x) {
+          if (x <= sieveMax) {
+            u64 p6 = cast(u64) primes[5];
+            if (x <= p6 * p) {
+              u64 piX = piFast(x, primes);
+              u64 castA = cast(u64) a;
+              result = piX - castA + 1;
+            } else {
+              result = phiRec(x, a - 1, primes) -
+                phiRec(x / p, a - 1, primes);
+            }
           } else {
             result = phiRec(x, a - 1, primes) -
               phiRec(x / p, a - 1, primes);
           }
-        } else {
-          result = phiRec(x, a - 1, primes) -
-            phiRec(x / p, a - 1, primes);
         }
         memoTable[slot].x = x;
         memoTable[slot].a = cast(uint) a;

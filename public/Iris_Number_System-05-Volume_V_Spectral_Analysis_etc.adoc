@@ -213,7 +213,7 @@ Given a real discrete spatial-temporal signal sequence \( x [ n ] = [ 1 , 1 , 0 
   - \( n = 2 \): \( \mathcal { K } [ 2 , 3 ] = - 1 \)
   - \( n = 3 \): \( \mathcal { K } [ 3 , 3 ] = - \mathbf { I } \)
   Computing the finite inner product:
-  \[ \hat { X } [ 3 ] = ( 1 ) ( 1 ) + ( 1 ) ( \mathbf { I } ) + ( 0 ) ( - 1 ) + ( 0 ) ( - \mathbf { I } ) = 1 + \mathbf { I } \]
+  \[ \hat { X } [ 3 ] = ( 1 ) ( 1 ) + ( 1 ) ( \, \mathbf { I } ) + ( 0 ) ( - 1 ) + ( 0 ) ( - \mathbf { I } ) = 1 + \mathbf { I } \]
 
 * **Verification of Parseval-Plancherel Energy Conservation**:
   In physical spatial grid space, computing total field energy:
@@ -271,34 +271,33 @@ Consider a real decaying discrete signal \( x [ n ] = \left( \frac { 1 } { 2 } \
 1. Formulate the general discrete multivector Z-transform \( X ( z ) \) over \( \mathcal { G } _ 4 \):
    \[ X ( z ) = \sum _ { n = 0 } ^ { 3 } x [ n ] z ^ { - n } \]
    where \( z = r e ^ { \mathbf { I } \theta } = r ( \cos \theta + \mathbf { I } \sin \theta ) \) is a real bivector rotor in \( Cl ( 0 , 1 ) \).
-2. Completely evaluate \( X ( z ) \) at the specific bivector phase rotor location \( z = 2 e ^ { \mathbf { I } \pi / 2 } = 2 \mathbf { I } \) (corresponding to radial expansion factor \( r = 2 \) and phase angle step \( \theta = \frac { \pi } { 2 } \)).
+2. Completely evaluate \( X ( z ) \) at the specific bivector phase rotor location \( z = 2 e ^ { \mathbf { I } \pi / 2 } = 2 \, \mathbf { I } \) (corresponding to radial expansion factor \( r = 2 \) and phase angle step \( \theta = \frac { \pi } { 2 } \)).
 
 **Step-by-Step Solution:**
 * **General Multivector Expansion**:
   Given \( x [ n ] = \left[ 1 , \frac { 1 } { 2 } , \frac { 1 } { 4 } , \frac { 1 } { 8 } \right] ^ T \):
   \[ X ( z ) = 1 + \frac { 1 } { 2 } z ^ { - 1 } + \frac { 1 } { 4 } z ^ { - 2 } + \frac { 1 } { 8 } z ^ { - 3 } \]
 
-* **Evaluating Powers of Bivector Rotor \( z = 2 \mathbf { I } \)**:
+* **Evaluating Powers of Bivector Rotor \( z = 2 \, \mathbf { I } \)**:
   Using the fundamental bivector identity \( \mathbf { I } ^ 2 = - 1 \):
   - \( z ^ 0 = 1 \)
-  - \( z ^ 1 = 2 \mathbf { I } \implies z ^ { - 1 } = \frac { 1 } { 2 \mathbf { I } } = - \frac { 1 } { 2 } \mathbf { I } \)
-  - \( z ^ 2 = ( 2 \mathbf { I } ) ^ 2 = - 4 \implies z ^ { - 2 } = - \frac { 1 } { 4 } \)
-  - \( z ^ 3 = ( 2 \mathbf { I } ) ( - 4 ) = - 8 \mathbf { I } \implies z ^ { - 3 } = \frac { 1 } { 8 } \mathbf { I } \)
+  - \( z ^ 1 = 2 \, \mathbf { I } \implies z ^ { - 1 } = \frac { 1 } { 2 \, \mathbf { I } } = - \frac { 1 } { 2 } \, \mathbf { I } \)
+  - \( z ^ 2 = ( 2 \, \mathbf { I } ) ^ 2 = - 4 \implies z ^ { - 2 } = - \frac { 1 } { 4 } \)
+  - \( z ^ 3 = ( 2 \, \mathbf { I } ) ( - 4 ) = - 8 \, \mathbf { I } \implies z ^ { - 3 } = \frac { 1 } { 8 } \, \mathbf { I } \)
 
 * **Substituting Powers into \( X ( z ) \)**:
   - Term \( n = 0 \): \( ( 1 ) ( 1 ) = 1 \)
-  - Term \( n = 1 \): \( \left( \frac { 1 } { 2 } \right) \left( - \frac { 1 } { 2 } \mathbf { I } \right) = - \frac { 1 } { 4 } \mathbf { I } \)
+  - Term \( n = 1 \): \( \left( \frac { 1 } { 2 } \right) \left( - \frac { 1 } { 2 } \, \mathbf { I } \right) = - \frac { 1 } { 4 } \, \mathbf { I } \)
   - Term \( n = 2 \): \( \left( \frac { 1 } { 4 } \right) \left( - \frac { 1 } { 4 } \right) = - \frac { 1 } { 16 } \)
-  - Term \( n = 3 \): \( \left( \frac { 1 } { 8 } \right) \left( \frac { 1 } { 8 } \mathbf { I } \right) = \frac { 1 } { 64 } \mathbf { I } \)
+  - Term \( n = 3 \): \( \left( \frac { 1 } { 8 } \right) \left( \frac { 1 } { 8 } \, \mathbf { I } \right) = \frac { 1 } { 64 } \, \mathbf { I } \)
 
 * **Summing Scalar and Bivector Components**:
   Combining terms into grade components:
-  \[ X ( 2 \mathbf { I } ) = \left( 1 - \frac { 1 } { 16 } \right) + \mathbf { I } \left( - \frac { 1 } { 4 } + \frac { 1 } { 64 } \right) \]
+  \[ X ( 2 \, \mathbf { I } ) = \left( 1 - \frac { 1 } { 16 } \right) + \mathbf { I } \left( - \frac { 1 } { 4 } + \frac { 1 } { 64 } \right) \]
   - Scalar grade: \( \operatorname { Sc } = \frac { 15 } { 16 } = 0.9375 \)
-  - Bivector grade: \( \operatorname { Biv } = - \frac { 16 } { 64 } + \frac { 1 } { 64 } = - \frac { 15 } { 64 } = - 0.234375 \)
-
+  - Bivector grade: \[ \operatorname { Biv } = - \frac { 16 } { 64 } + \frac { 1 } { 64 } = - \frac { 15 } { 64 } = - 0.234375 \]
   Thus, the exact multivector Z-transform evaluation is:
-  \[ X ( 2 \mathbf { I } ) = \frac { 15 } { 16 } - \frac { 15 } { 64 } \mathbf { I } \]
+  \[ X ( 2 \, \mathbf { I } ) = \frac { 15 } { 16 } - \frac { 15 } { 64 } \, \mathbf { I } \]
   This represents a real scalar field amplitude of \( 0.9375 \) combined with an orthogonal bivector phase component of \( - 0.234375 \), computed directly without continuous complex numbers.
 
 ==== Example 4: Real Homomorphic Cepstrum and Echo Deconvolution on \( \mathcal { G } _ 4 \)
