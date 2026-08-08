@@ -523,6 +523,254 @@ An m-resolution analog low-pass filter has the transfer function \( H_a ( s ) = 
     \[ \| H_d ( \mathbf { I } ) \| = \frac { 0.13575 \| 1 - \mathbf { I } \| } { \| 1 + 0.72849 \mathbf { I } \| } = \frac { 0.13575 \sqrt { 1 ^ 2 + ( - 1 ) ^ 2 } } { \sqrt { 1 ^ 2 + ( 0.72849 ) ^ 2 } } = \frac { 0.13575 \sqrt { 2 } } { \sqrt { 1.53070 } } = \frac { 0.19198 } { 1.23721 } \approx 0.15517 \]
     This demonstrates smooth, non-aliasing high-frequency attenuation executed entirely through real bivector arithmetic.
 
+== Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices
+
+This chapter develops the physical theory of thermionic emission, space charge dynamics, grid voltage modulation, and multi-electrode electron tubes (valves) within the m-resolution framework of the Master Field Equation. In addition to fundamental diodes, triodes, tetrodes, and pentodes, detailed analyses are given for specialized devices including beam power tubes, heptodes/hexodes, klystrons, magnetrons, and diverse cathode-ray tubes (electrostatic and electromagnetic display CRTs, storage tubes, traveling-wave oscilloscopes, and image orthicons/vidicons).
+
+=== Thermionic Emission, Child-Langmuir Space Charge Law, and m-Resolution Field Dynamics
+
+Thermionic vacuum devices operate by regulating the movement of charges liberated from a heated metallic cathode inside an evacuated enclosure. When thermal kinetic excitation overcomes the electrostatic binding work function \( W_k \) of the cathode conductor, electrons emerge into the surrounding vacuum gap. On the discrete multiscale resolution grid \( \mathcal { G } _ N \) with spatial step \( \delta \), these liberated charges form a volumetric charge density distribution \( \rho [ n ] < 0 \) in front of the cathode.
+
+==== Visual and Physical Mechanism of the Space-Charge Barrier
+
+As electrons enter the vacuum space, their combined negative charge density produces an electrostatic potential minimum—a potential valley—immediately adjacent to the cathode surface. This negative space-charge cloud establishes a self-regulating electrical barrier:
+
+1. **Potential Valley Formation**: Emitted electrons that leave the cathode with low initial thermal velocities are repelled by the negative potential valley and return to the cathode surface.
+2. **Anode Field Penetration**: When a positive potential \( V_p > 0 \) is applied to the anode (plate), the resulting electrostatic field penetrates the vacuum gap, lifting the potential profile across \( \mathcal { G } _ N \) and lowering the potential valley barrier.
+3. **Equilibrium Flux**: Only electrons possessing sufficient kinetic energy to cross the potential minimum are accelerated across the inter-electrode gap toward the anode, establishing a stable, space-charge limited current.
+
+==== Derivation of the Child-Langmuir 3/2-Power Law on Grid \( \mathcal { G } _ N \)
+
+Consider a planar vacuum diode with cathode situated at grid position \( n = 0 \) (at potential \( \Phi [ 0 ] = 0 \)) and anode at grid position \( n = N_d \) corresponding to gap distance \( d = N_d \delta \) (at potential \( \Phi [ N_d ] = V_p \)). The discrete electrostatic potential \( \Phi [ n ] \) satisfies the discrete 1D Poisson equation on \( \mathcal { G } _ N \):
+
+\[ \Delta _ { \delta } \Phi [ n ] = \frac { \Phi [ n + 1 ] - 2 \Phi [ n ] + \Phi [ n - 1 ] } { \delta ^ 2 } = - \frac { \rho [ n ] } { \epsilon _ 0 } \]
+
+An electron accelerated from potential minimum \( \Phi = 0 \) to grid position \( n \) converts electrostatic energy into kinetic energy over finite duration \( \tau \):
+
+\[ \frac { 1 } { 2 } m _ e v [ n ] ^ 2 = q \Phi [ n ] \implies v [ n ] = \sqrt { \frac { 2 q \Phi [ n ] } { m _ e } } \]
+
+Under steady space-charge limited flow, current continuity requires a constant charge flux density \( J = - \rho [ n ] v [ n ] \). Expressing charge density as \( \rho [ n ] = - J \sqrt { \frac { m _ e } { 2 q \Phi [ n ] } } \) and passing to the fine resolution limit on \( \mathcal { G } _ N \) yields:
+
+\[ \frac { \mathrm { d } ^ 2 \Phi } { \mathrm { d } z ^ 2 } = \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \Phi ^ { - 1 / 2 } \]
+
+Multiplying both sides by \( 2 \frac { \mathrm { d } \Phi } { \mathrm { d } z } \) and integrating with respect to \( z \) with boundary conditions \( \Phi ( 0 ) = 0 \) and \( \left. \frac { \mathrm { d } \Phi } { \mathrm { d } z } \right| _ { 0 } = 0 \):
+
+\[ \left( \frac { \mathrm { d } \Phi } { \mathrm { d } z } \right) ^ 2 = \frac { 4 J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \Phi ^ { 1 / 2 } \implies \frac { \mathrm { d } \Phi } { \mathrm { d } z } = 2 \left( \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \right) ^ { 1 / 2 } \Phi ^ { 1 / 4 } \]
+
+Separating variables and integrating from \( z = 0 \) to \( z = d \) (where \( \Phi ( d ) = V_p \)):
+
+\[ \int _ 0 ^ { V_p } \Phi ^ { - 1 / 4 } \mathrm { d } \Phi = 2 \left( \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \right) ^ { 1 / 2 } \int _ 0 ^ d \mathrm { d } z \]
+
+\[ \frac { 4 } { 3 } V_p ^ { 3 / 4 } = 2 d \left( \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \right) ^ { 1 / 2 } \]
+
+Squaring both sides and solving for current density \( J \) yields the exact **Child-Langmuir 3/2-Power Law**:
+
+\[ J = \frac { 4 \epsilon _ 0 } { 9 } \sqrt { \frac { 2 q } { m _ e } } \frac { V_p ^ { 3 / 2 } } { d ^ 2 } \]
+
+==== Triode Parameters and Small-Signal Linearization
+
+Inserting a wire mesh control grid close to the cathode at distance \( d _ { cg } \ll d \) modifies the effective electrostatic potential driving cathode emission:
+
+\[ V _ { eff } = V_g + \frac { V_p } { \mu } \]
+
+where \( \mu \) is the electrostatic amplification factor determined by the geometric grid wire pitch and spacing. The plate current follows:
+
+\[ I_p = K \left( V_g + \frac { V_p } { \mu } \right) ^ { 3 / 2 } \]
+
+Small-signal linear variations around a stable operating point \( ( V_g , V_p , I_p ) \) are governed by three fundamental parameters:
+
+1. **Transconductance \( g_m \)**: \( g_m = \left. \frac { \partial I_p } { \partial V_g } \right| _ { V_p } = \frac { 3 } { 2 } K \left( V_g + \frac { V_p } { \mu } \right) ^ { 1 / 2 } \)
+2. **Dynamic Plate Resistance \( r_p \)**: \( r_p = \left( \left. \frac { \partial I_p } { \partial V_p } \right| _ { V_g } \right) ^ { - 1 } = \frac { \mu } { g_m } \)
+3. **Amplification Factor \( \mu \)**: \( \mu = g_m \cdot r_p \) (the Barkhausen Triode Relation).
+
+=== Multi-Electrode Thermionic Valves: Diodes, Triodes, Tetrodes, Pentodes, Beam Power Tubes, and Multigrid Mixers
+
+The evolution of thermionic devices from simple rectifiers to complex signal processors reflects the progressive introduction of specialized electrostatic control grids.
+
+==== Thermionic Diodes and Triodes
+
+* **Vacuum Diodes**: Comprise a heated cathode and an anode. Used exclusively as unidirectional high-voltage rectifiers and envelope detectors. Below space-charge saturation, current follows the Child-Langmuir 3/2 law; at extremely high temperatures, current saturates at the Richardson emission limit.
+* **Vacuum Triodes**: Introduce a control grid mesh between cathode and plate. While offering high voltage amplification, triodes suffer from significant inter-electrode capacitance \( C _ { gp } \) between grid and plate. Under high voltage gain \( A_v \), the **Miller Effect** multiplies the effective input capacitance to \( C _ { in } = C _ { gk } + C _ { gp } ( 1 + | A_v | ) \), severely restricting high-frequency bandwidth.
+
+==== The Tetrode and Secondary Emission Dynamics
+
+To eliminate high inter-electrode capacitance \( C _ { gp } \), the **Tetrode** inserts a second grid—the **Screen Grid** (held at a fixed positive DC potential \( V _ { g2 } \))—between control grid and anode. The screen grid acts as an electrostatic shield, reducing \( C _ { gp } \) by more than two orders of magnitude.
+
+However, primary electrons accelerated toward the anode arrive with substantial kinetic energy, knocking loose **secondary electrons** from the metallic anode surface. When the anode potential drops below the screen potential (\( V_p < V _ { g2 } \)), the positive screen grid attracts these secondary electrons away from the anode. This produces a negative differential resistance region—the **tetrode dynatron kink**—where increasing plate voltage causes plate current to fall, inducing parametric instability in power amplifiers.
+
+==== The Pentode and Suppressor Grid Action
+
+The **Pentode** overcomes secondary emission by introducing a third grid—the **Suppressor Grid**—located between screen grid and anode. Connected directly to the cathode (zero potential), the suppressor grid establishes an electrostatic potential barrier in front of the anode:
+
+1. High-velocity primary electrons from the cathode easily pass through the coarse suppressor mesh to strike the anode.
+2. Low-velocity secondary electrons knocked loose from the anode face a repulsive electrostatic potential hill created by the zero-volt suppressor grid.
+3. Secondary electrons are turned back and re-collected by the anode, eliminating the dynatron kink and producing smooth, monotonic plate characteristic curves with exceptionally high dynamic plate resistance \( r_p \).
+
+==== Beam Power Tubes and Virtual Cathode Space-Charge Suppression
+
+Rather than using a physical suppressor wire mesh—which intercepts electrons and wastes screen current—the **Beam Power Tube** uses specialized beam-forming deflector plates combined with aligned control and screen grid wires.
+
+The deflector plates compress the electron stream into dense, highly concentrated electron sheets. In the space between screen grid and anode, the concentrated negative charge density of the electron beam produces its own deep potential minimum—a **virtual cathode**—at low plate voltages. This virtual cathode repels secondary electrons back into the anode without physical grid wires, yielding lower screen current dissipation, higher power conversion efficiency, and significantly lower third-harmonic distortion in power output stages.
+
+==== Multigrid Frequency Converters and Mixers
+
+For superheterodyne radio reception, specialized multigrid valves incorporate up to five grids (**Hexodes, Heptodes, Octodes, and Pentagrid Mixers**). Two independent control grids—Grid 1 (RF signal \( v _ { RF } \)) and Grid 3 (Local Oscillator \( v _ { LO } \))—are separated and shielded by screen grids (Grids 2 and 4).
+
+The resulting plate current is directly proportional to the multiplicative product of both control signals:
+
+\[ I_p ( t ) = g_c \, v _ { RF } ( t ) \, v _ { LO } ( t ) \]
+
+By trigonometric bivector decomposition, \( \cos ( \omega _ { RF } t ) \cos ( \omega _ { LO } t ) = \frac { 1 } { 2 } [ \cos ( ( \omega _ { RF } - \omega _ { LO } ) t ) + \cos ( ( \omega _ { RF } + \omega _ { LO } ) t ) ] \). This multiplicative mixing executes frequency translation to a fixed Intermediate Frequency (IF) with complete isolation between input signal channels.
+
+=== Cathode-Ray Tubes and Specialized Vacuum Devices: Electrostatic, Electromagnetic, Storage, and Image Tubes
+
+Cathode-Ray Tubes (CRTs) and specialized beam devices manipulate accelerated electron beams to display visual information, store electrical charges, or generate microwave signals.
+
+==== Electron Gun Optics and Focusing Mechanisms
+
+An electron gun generates, accelerates, and focuses a narrow electron beam toward a display screen or target anode:
+
+1. **Thermionic Cathode and Wehnelt Cylinder**: A heated cathode emits electrons inside a cylindrical control grid (Wehnelt cylinder) held at negative bias. Varying the grid bias modulates electron beam intensity (brightness z-axis modulation).
+2. **Electrostatic Immersion Lenses**: Consecutive cylindrical anodes held at ascending positive potentials (\( V_1 < V_2 < V_a \)) create curved electrostatic equipotential surfaces. The electrostatic force field bends electron trajectories toward the central longitudinal axis, focusing the beam to a fine spot.
+3. **Magnetic Lens Focusing**: An axial solenoid coil generates a longitudinal magnetic field \( \mathbf { B } = B_z e_3 \). Electrons possessing radial velocity components \( v_r \) experience a transverse Lorentz force \( \mathbf { F } = q ( \mathbf { v } \times \mathbf { B } ) \), driving them into helical trajectories. The cyclotron precession frequency \( \omega_c = \frac { q B_z } { m_e } \) forces all diverging electrons to complete a full revolution during transit period \( \tau_c = \frac { 2 \pi m_e } { q B_z } \), converging to a sharp focal point on the screen.
+
+==== Deflection Dynamics: Electrostatic vs. Electromagnetic Steering
+
+* **Electrostatic Deflection**: Uses parallel deflection plates of length \( l \), separation \( d \), with applied deflection voltage \( V_d \). Electrons with axial velocity \( v_z = \sqrt { \frac { 2 q V_a } { m_e } } \) experience transverse acceleration \( a_y = \frac { q V_d } { m_e d } \) over transit time \( \tau = \frac { l } { v_z } \). On a screen at distance \( L \), total beam spot displacement is:
+  \[ y = \frac { L \, l \, V_d } { 2 \, d \, V_a } \]
+  The electrostatic deflection sensitivity \( S_e = \frac { y } { V_d } = \frac { L \, l } { 2 \, d \, V_a } \) is inversely proportional to acceleration potential \( V_a \). Electrostatic deflection is preferred for high-speed laboratory oscilloscopes due to its high input impedance and fast signal response.
+
+* **Electromagnetic Deflection**: Uses external magnetic deflection yokes generating a transverse magnetic field \( B_x \). The transverse Lorentz force curves the electron trajectory into a circular arc of radius \( R = \frac { m_e v_z } { q B_x } \). On a screen at distance \( L \), the spot deflection is:
+  \[ y \approx \frac { q \, L \, l \, B_x } { \sqrt { 2 \, q \, m_e \, V_a } } \]
+  Because magnetic deflection sensitivity \( S_m \propto \frac { 1 } { \sqrt { V_a } } \) decreases much slower with acceleration voltage than electrostatic sensitivity, electromagnetic deflection allows very high acceleration potentials (yielding intense screen brightness) and wide deflection angles (up to \( 110 ^ \circ \)) in television CRTs and radar display monitors.
+
+==== Specialized Cathode-Ray Tubes
+
+1. **Direct-View Storage Tubes (DVST)**:
+   Incorporate two distinct electron guns: a high-resolution focused **Writing Gun** and a wide-angle **Flood Gun**. The writing gun deposits a high-density positive charge pattern onto a fine dielectric storage mesh via secondary electron emission ratio \( \delta > 1 \). Low-velocity flood gun electrons pass through positively charged mesh apertures to strike the phosphor screen while being repelled by uncharged negative mesh apertures, displaying bright, flicker-free traces for hours without requiring electronic digital refresh memory.
+
+2. **Post-Deflection Acceleration (PDA) and Traveling-Wave CRTs**:
+   High-frequency analog oscilloscopes maintain low accelerating voltage in the deflection plate region to maximize deflection sensitivity, followed by a high-resistance spiral anode band (PDA) that post-accelerates electrons to high impact velocity at the screen. For gigahertz-bandwidth transients, **traveling-wave deflection structures** replace solid plates with helical or meander-line delay lines whose electrical signal phase velocity matches electron beam velocity (\( v_p = v_z \)), eliminating transit-time signal blurring.
+
+3. **Image Pick-up Tubes (Image Orthicon and Vidicon)**:
+   Convert optical images into video signals. The **Vidicon** uses a photoconductive target layer whose localized electrical resistance drops proportionally to incident light intensity; a scanning electron beam recharges the target, generating an output current signal across a load resistor. The **Image Orthicon** combines a photoemissive photocathode, target mesh storage, and an internal multi-stage secondary electron multiplier surrounding the electron gun, enabling high-sensitivity television camera capture in low-light environments.
+
+==== Microwave Vacuum Devices: Klystrons and Magnetrons
+
+* **Klystrons**: Utilize **velocity modulation**. An input RF signal across a resonant cavity gap accelerates or decelerates electrons passing through. In a downstream drift tube, faster electrons overtake slower electrons, producing dense electron bunches (**density modulation**). The bunched beam excites high-power microwave oscillations in an output resonant cavity.
+* **Magnetrons**: High-power crossed-field microwave generators (\( \mathbf { E } \perp \mathbf { B } \)). A central cylindrical cathode surrounded by an anode block containing resonant cavity vanes creates radial electric fields and axial magnetic fields. Electrons execute cycloidal drift orbits, forming rotating space-charge spokes that transfer kinetic energy to the resonant microwave fields of the anode cavities with efficiency exceeding 70%.
+
+=== Formal Postulates and Theorems of Vacuum Tube Field Dynamics
+
+[#postulate-space-charge-minimum]
+[POSTULATE]
+.Postulate: Thermionic Space Charge Potential Minimum
+In any evacuated inter-electrode gap bounded by a heated thermionic cathode at potential \( \Phi_k = 0 \) and an anode at potential \( V_p > 0 \), the equilibrium space-charge distribution \( \rho [ n ] \le 0 \) on resolution grid \( \mathcal { G } _ N \) produces a strictly non-positive potential minimum \( \Phi _ { min } \le 0 \) situated in the immediate spatial vicinity of the cathode surface, regulating electron flow into the acceleration field.
+
+[#theorem-child-langmuir-law]
+[THEOREM]
+.Theorem: Child-Langmuir 3/2-Power Space Charge Law on Grid \( \mathcal { G } _ N \)
+Under space-charge limited operation across an evacuated planar gap of width \( d \) on resolution grid \( \mathcal { G } _ N \), the current density \( J \) drawn by anode potential \( V_p \) satisfies:
+\[ J = \frac { 4 \epsilon _ 0 } { 9 } \sqrt { \frac { 2 q } { m _ e } } \frac { V_p ^ { 3 / 2 } } { d ^ 2 } \]
+
+*Proof*:
+Let \( \Phi [ n ] \) be the electrostatic potential on \( \mathcal { G } _ N \). Energy conservation for an electron accelerated from potential minimum \( \Phi = 0 \) gives velocity \( v [ n ] = \sqrt { \frac { 2 q \Phi [ n ] } { m _ e } } \). Current continuity requires constant charge flux \( J = - \rho [ n ] v [ n ] \). Substituting \( \rho [ n ] = - J \sqrt { \frac { m _ e } { 2 q \Phi [ n ] } } \) into the discrete Poisson equation \( \Delta _ { \delta } \Phi [ n ] = - \frac { \rho [ n ] } { \epsilon _ 0 } \) yields in the fine grid limit:
+\[ \frac { \mathrm { d } ^ 2 \Phi } { \mathrm { d } z ^ 2 } = \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \Phi ^ { - 1 / 2 } \]
+Multiplying both sides by \( 2 \frac { \mathrm { d } \Phi } { \mathrm { d } z } \) and integrating with respect to \( z \) using boundary conditions \( \Phi ( 0 ) = 0 \) and \( \left. \frac { \mathrm { d } \Phi } { \mathrm { d } z } \right| _ { 0 } = 0 \):
+\[ \left( \frac { \mathrm { d } \Phi } { \mathrm { d } z } \right) ^ 2 = \frac { 4 J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \Phi ^ { 1 / 2 } \implies \frac { \mathrm { d } \Phi } { \mathrm { d } z } = 2 \left( \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \right) ^ { 1 / 2 } \Phi ^ { 1 / 4 } \]
+Separating variables and integrating from \( z = 0 \) to \( z = d \):
+\[ \int _ 0 ^ { V_p } \Phi ^ { - 1 / 4 } \mathrm { d } \Phi = 2 \left( \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \right) ^ { 1 / 2 } \int _ 0 ^ d \mathrm { d } z \]
+\[ \frac { 4 } { 3 } V_p ^ { 3 / 4 } = 2 d \left( \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \right) ^ { 1 / 2 } \]
+Squaring both sides:
+\[ \frac { 16 } { 9 } V_p ^ { 3 / 2 } = 4 d ^ 2 \frac { J } { \epsilon _ 0 } \sqrt { \frac { m _ e } { 2 q } } \implies J = \frac { 4 \epsilon _ 0 } { 9 } \sqrt { \frac { 2 q } { m _ e } } \frac { V_p ^ { 3 / 2 } } { d ^ 2 } \]
+This completes the formal proof. \(\blacksquare\)
+
+[#theorem-barkhausen-relation]
+[THEOREM]
+.Theorem: Barkhausen Triode Parameter Relation Theorem
+For any triode tube operating in its linear small-signal region, the amplification factor \( \mu \), transconductance \( g_m \), and dynamic plate resistance \( r_p \) satisfy the exact identity:
+\[ \mu = g_m \cdot r_p \]
+
+*Proof*:
+The total differential of plate current \( I_p = f ( V_g , V_p ) \) is given by:
+\[ \mathrm { d } I_p = \left. \frac { \partial I_p } { \partial V_g } \right| _ { V_p } \mathrm { d } V_g + \left. \frac { \partial I_p } { \partial V_p } \right| _ { V_g } \mathrm { d } V_p \]
+By definition, \( g_m = \left. \frac { \partial I_p } { \partial V_g } \right| _ { V_p } \) and \( \frac { 1 } { r_p } = \left. \frac { \partial I_p } { \partial V_p } \right| _ { V_g } \). Holding plate current constant (\( \mathrm { d } I_p = 0 \)):
+\[ 0 = g_m \mathrm { d } V_g + \frac { 1 } { r_p } \mathrm { d } V_p \implies \left. - \frac { \mathrm { d } V_p } { \mathrm { d } V_g } \right| _ { I_p } = g_m \cdot r_p \]
+Since the amplification factor is defined as \( \mu = \left. - \frac { \mathrm { d } V_p } { \mathrm { d } V_g } \right| _ { I_p } \), we obtain \( \mu = g_m \cdot r_p \). \(\blacksquare\)
+
+[#theorem-crt-deflection-sensitivity]
+[THEOREM]
+.Theorem: Electrostatic CRT Deflection Sensitivity Theorem
+For an electrostatic CRT with acceleration voltage \( V_a \), deflection plate length \( l \), plate separation \( d \), and plate-to-screen distance \( L \), the deflection sensitivity \( S_e = \frac { y } { V_d } \) is inversely proportional to acceleration voltage \( V_a \):
+\[ S_e = \frac { L \, l } { 2 \, d \, V_a } \]
+
+*Proof*:
+Electron axial velocity is \( v_z = \sqrt { \frac { 2 q V_a } { m _ e } } \). Transit duration through deflection plates is \( \tau = \frac { l } { v_z } \). The uniform electric field between plates is \( E_y = \frac { V_d } { d } \), producing transverse acceleration \( a_y = \frac { q V_d } { m _ e d } \). Exit transverse velocity is \( v_y = a_y \tau = \frac { q V_d l } { m _ e d v_z } \). The exit deflection angle \( \theta \) satisfies \( \tan \theta = \frac { v_y } { v_z } = \frac { q V_d l } { m _ e d v_z ^ 2 } = \frac { q V_d l } { m _ e d ( 2 q V_a / m _ e ) } = \frac { V_d l } { 2 d V_a } \). On a screen at distance \( L \), total beam displacement is \( y = L \tan \theta = \frac { L l V_d } { 2 d V_a } \). Dividing by \( V_d \) yields \( S_e = \frac { L l } { 2 d V_a } \). \(\blacksquare\)
+
+=== Completely Worked Technical Examples
+
+==== Example 1: Triode Small-Signal Amplifier Analysis with Miller Effect
+
+**Problem Statement:**
+A triode vacuum tube operates with amplification factor \( \mu = 50 \), dynamic plate resistance \( r_p = 10 \text{ k} \Omega \), load resistance \( R_L = 40 \text{ k} \Omega \), grid-to-cathode capacitance \( C _ { gk } = 3.0 \text{ pF} \), and grid-to-plate capacitance \( C _ { gp } = 2.5 \text{ pF} \).
+1. Calculate the triode transconductance \( g_m \).
+2. Calculate the small-signal voltage gain \( A_v \) of the amplifier stage.
+3. Determine the total effective input capacitance \( C _ { in } \) seen by the signal source driving the grid.
+
+**Step-by-Step Solution:**
+* **Step 1: Calculating Transconductance \( g_m \)**:
+  By the Barkhausen relation theorem, \( g_m = \frac { \mu } { r_p } \):
+  \[ g_m = \frac { 50 } { 10000 \text{ } \Omega } = 0.0050 \text{ S} = 5.0 \text{ mA/V} \]
+
+* **Step 2: Calculating Small-Signal Voltage Gain \( A_v \)**:
+  The small-signal equivalent circuit yields voltage gain:
+  \[ A_v = - \frac { \mu R_L } { r_p + R_L } = - \frac { 50 \times 40000 } { 10000 + 40000 } = - \frac { 2000000 } { 50000 } = - 40.0 \]
+
+* **Step 3: Calculating Miller Input Capacitance \( C _ { in } \)**:
+  Applying the Miller Effect transformation:
+  \[ C _ { in } = C _ { gk } + C _ { gp } ( 1 + | A_v | ) = 3.0 \text{ pF} + 2.5 \text{ pF} \times ( 1 + 40.0 ) = 3.0 + 2.5 \times 41.0 = 3.0 + 102.5 = 105.5 \text{ pF} \]
+  The Miller multiplication increases effective input capacitance by over a factor of 20.
+
+==== Example 2: High-Bandwidth Electrostatic Cathode-Ray Tube Analysis
+
+**Problem Statement:**
+An electrostatic CRT operates with acceleration voltage \( V_a = 2000 \text{ V} \), deflection plate length \( l = 0.03 \text{ m} \), plate separation \( d = 0.005 \text{ m} \), and screen distance \( L = 0.25 \text{ m} \). (Given: \( q / m_e = 1.7588 \times 10 ^ { 11 } \text{ C/kg} \)).
+1. Calculate electron axial velocity \( v_z \).
+2. Calculate electron transit duration \( \tau \) through the deflection plates.
+3. Calculate deflection sensitivity \( S_e \) in mm/V.
+4. Determine the upper 3 dB bandwidth limit \( f _ { max } \) imposed by transit-time signal degradation where \( \omega \tau = \pi \).
+
+**Step-by-Step Solution:**
+* **Step 1: Axial Velocity \( v_z \)**:
+  \[ v_z = \sqrt { 2 \left( \frac { q } { m_e } \right) V_a } = \sqrt { 2 \times 1.7588 \times 10 ^ { 11 } \times 2000 } = \sqrt { 7.0352 \times 10 ^ { 14 } } \approx 2.6524 \times 10 ^ 7 \text{ m/s} \]
+
+* **Step 2: Transit Duration \( \tau \)**:
+  \[ \tau = \frac { l } { v_z } = \frac { 0.03 \text{ m} } { 2.6524 \times 10 ^ 7 \text{ m/s} } \approx 1.1310 \times 10 ^ { - 9 } \text{ s} = 1.131 \text{ ns} \]
+
+* **Step 3: Deflection Sensitivity \( S_e \)**:
+  \[ S_e = \frac { L \, l } { 2 \, d \, V_a } = \frac { 0.25 \times 0.03 } { 2 \times 0.005 \times 2000 } = \frac { 0.0075 } { 20 } = 0.000375 \text{ m/V} = 0.375 \text{ mm/V} \]
+
+* **Step 4: Bandwidth Limit \( f _ { max } \)**:
+  \[ \omega _ { max } \tau = \pi \implies f _ { max } = \frac { 1 } { 2 \tau } = \frac { 1 } { 2 \times 1.1310 \times 10 ^ { - 9 } \text{ s} } \approx 4.421 \times 10 ^ 8 \text{ Hz} = 442.1 \text{ MHz} \]
+
+==== Example 3: Beam Power Tube Virtual Cathode Suppression and Efficiency
+
+**Problem Statement:**
+A beam power tube operates at plate potential \( V_p = 250 \text{ V} \) and screen grid potential \( V _ { g2 } = 250 \text{ V} \). Space-charge concentration creates a virtual cathode potential dip \( \Delta V = 60 \text{ V} \) between screen and plate. Total cathode emission current is \( I_k = 100 \text{ mA} \).
+1. Determine the minimum potential \( V _ { min } \) between screen grid and plate.
+2. Explain why secondary electrons emitted from the anode (energies \( 5 - 15 \text{ eV} \)) are fully repelled.
+3. Compare screen grid power loss between the beam power tube (5% screen current) and an unsuppressed tetrode (25% screen current).
+
+**Step-by-Step Solution:**
+* **Step 1: Minimum Potential \( V _ { min } \)**:
+  \[ V _ { min } = V_p - \Delta V = 250 \text{ V} - 60 \text{ V} = 190 \text{ V} \]
+* **Step 2: Secondary Electron Repulsion Mechanism**:
+  Secondary electrons emitted from the anode face an electrostatic potential hill rising from \( V_p = 250 \text{ V} \) down to \( V _ { min } = 190 \text{ V} \) (a potential hill of \( 60 \text{ V} \)). Since secondary electron initial kinetic energies (\( \le 15 \text{ eV} \)) are far lower than the 60 eV potential barrier, 100% of secondary electrons are repelled back into the anode.
+* **Step 3: Screen Power Dissipation Comparison**:
+  - **Tetrode**: Screen current \( I _ { g2 } = 0.25 \times 100 \text{ mA} = 25 \text{ mA} \). Screen power dissipation \( P _ { g2 } = 0.025 \text{ A} \times 250 \text{ V} = 6.25 \text{ W} \). Useful plate current \( I_p = 75 \text{ mA} \).
+  - **Beam Power Tube**: Screen current \( I _ { g2 } = 0.05 \times 100 \text{ mA} = 5 \text{ mA} \). Screen power dissipation \( P _ { g2 } = 0.005 \text{ A} \times 250 \text{ V} = 1.25 \text{ W} \). Useful plate current \( I_p = 95 \text{ mA} \).
+  The beam power tube saves 5.0 W of wasted screen heat while delivering 26.7% higher plate current to the output load.
+
 == Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
@@ -531,6 +779,10 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 
 This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 
+=== Postulates
+
+* xref:postulate-space-charge-minimum[**Postulate: Thermionic Space Charge Potential Minimum**]  -- Chapter: *Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices* | Section: *Formal Postulates and Theorems of Vacuum Tube Field Dynamics*
+
 === Theorems
 
 * xref:theorem-unified-real-bivector-spectral-transformation[**Theorem: Unified Real-Bivector Spectral Transformation Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
@@ -538,4 +790,7 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-z-laplace-isomorphism-discrete-decay[**Theorem: Isomorphism of Discrete Z-Transform and Damped Bivector Phase Precession Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
 * xref:theorem-lsi-convolution-multiplication-isomorphism[**Theorem: LSI System Convolution-Multiplication Isomorphism Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Rigorous Proofs and System Dynamics Theorems*
 * xref:theorem-bilinear-bivector-stability-preservation[**Theorem: Bilinear Map Bivector Stability Preservation Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Rigorous Proofs and System Dynamics Theorems*
+* xref:theorem-child-langmuir-law[**Theorem: Child-Langmuir 3/2-Power Space Charge Law on Grid \( \mathcal { G } _ N \)**]  -- Chapter: *Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices* | Section: *Formal Postulates and Theorems of Vacuum Tube Field Dynamics*
+* xref:theorem-barkhausen-relation[**Theorem: Barkhausen Triode Parameter Relation Theorem**]  -- Chapter: *Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices* | Section: *Formal Postulates and Theorems of Vacuum Tube Field Dynamics*
+* xref:theorem-crt-deflection-sensitivity[**Theorem: Electrostatic CRT Deflection Sensitivity Theorem**]  -- Chapter: *Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices* | Section: *Formal Postulates and Theorems of Vacuum Tube Field Dynamics*
 
