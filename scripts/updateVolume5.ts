@@ -21,14 +21,14 @@ const sec1Content = [
   "In 19th and 20th-century mathematical analysis and electrical engineering, linear signal processing was built upon the algebraic convention of the “complex plane” \\( \\mathbb { C } \\) and the imaginary unit \\( i = \\sqrt { - 1 } \\). While computationally effective as an algorithmic shorthand for handling two-dimensional rotations and phase shifts, the conventional interpretation of \\( \\mathbb { C } \\) introduced major epistemological and ontological fallacies:",
   "",
   "1. **The Continuum Fallacy of Imaginary Quantities**:",
-  "   Conventional analysis treats \\( i \\) as an abstract, non-physical scalar existing outside the real number line, operating over an uncountably infinite continuum of complex values. In physical Nature, there exist no imaginary quantities or continuum infinities; physical observations consist exclusively of discrete, real-valued measurements (such as charge densities, field amplitudes, pressure values, and voltage differences) measured over discrete spatial-temporal resolution grids \\( \\mathcal { G } _ N \\).",
+  "   Conventional analysis treats \\( i \\) as an abstract, non-physical scalar existing outside the real number line, operating over an uncountably infinite continuum of complex values. In the actual conduct of science and engineering, there are no imaginary quantities or continuum infinities; physical observations consist of measurements over discrete spatial-temporal resolution grids \\( \\mathcal { G } _ N \\). Examples include voltages, currents, temperatures, pressures, lengths, angles, etc.",
   "",
   "2. **Geometric Interpretation: Unit Oriented Bivectors**:",
-  "   In real Geometric Algebra, the algebraic entity satisfying \\( \\mathbf { I } ^ 2 = - 1 \\) is not an imaginary scalar, but a real, oriented **unit bivector** \\( \\mathbf { I } \\) representing a oriented 2D plane segment. In a two-dimensional real space \\( \\mathbb { R } ^ 2 \\) spanned by orthogonal unit vectors \\( e _ 1, e _ 2 \\) (with \\( e _ 1 ^ 2 = 1 \\), \\( e _ 2 ^ 2 = 1 \\)), the unit bivector is defined by the geometric product:",
+  "   In real Geometric Algebra, the algebraic entity satisfying \\( \\mathbf { I } ^ 2 = - 1 \\) is not an imaginary scalar, but a real, oriented **unit bivector** \\( \\mathbf { I } \\) representing an oriented 2D plane segment. In a two-dimensional real space \\( \\mathbb { R } ^ 2 \\) spanned by orthogonal unit vectors \\( e _ 1, e _ 2 \\) (with \\( e _ 1 ^ 2 = 1 \\), \\( e _ 2 ^ 2 = 1 \\)), the unit bivector is defined by the geometric product:",
   "   \\[ \\mathbf { I } = e _ 1 e _ 2 = e _ 1 \\wedge e _ 2 \\]",
   "   By the fundamental anti-commutativity of orthogonal vectors (\\( e _ 1 e _ 2 = - e _ 2 e _ 1 \\)), computing the square of \\( \\mathbf { I } \\) yields a purely real result:",
   "   \\[ \\mathbf { I } ^ 2 = ( e _ 1 e _ 2 ) ( e _ 1 e _ 2 ) = - e _ 1 ( e _ 1 e _ 2 ) e _ 2 = - ( e _ 1 e _ 1 ) ( e _ 2 e _ 2 ) = - 1 \\]",
-  "   Multiplying a real vector \\( \\mathbf { v } = v _ 1 e _ 1 + v _ 2 e _ 2 \\) by \\( \\mathbf { I } \\) rotates \\( \\mathbf { v } \\) by \\( 90 ^ \\circ \\) in the \\( e _ 1 \\wedge e _ 2 \\) plane. Thus, Euler’s relation \\( e ^ { \\mathbf { I } \\theta } = \\cos \\theta + \\mathbf { I } \\sin \\theta \\) is an exact real geometric rotor that precesses real vectors in a real two-dimensional subspace, completely removing the need for imaginary numbers or complex planes.",
+  "   Multiplying a real vector \\( \\mathbf { v } = v _ 1 e _ 1 + v _ 2 e _ 2 \\) by \\( \\mathbf { I } \\) rotates \\( \\mathbf { v } \\) by \\( 90 ^ \\circ \\) in the \\( e _ 1 \\wedge e _ 2 \\) plane. Thus, Euler’s relation \\( e ^ { \\mathbf { I } \\theta } = \\cos \\theta + \\mathbf { I } \\sin \\theta \\) is an exact real geometric rotor that precesses real vectors in a real two-dimensional subspace, removing the need for imaginary numbers or complex planes.",
   "",
   "3. **Sufficiency of Lightweight Geometric Algebras**:",
   "   While field dynamics on discrete multiscale resolution grids is fully described by the 64-dimensional Clifford Algebra \\( Cl ( 4 , 1 , 1 ) \\) under the Master Field Equation \\( D F = J \\), planar signal analysis requires far lighter geometric structures. For example:",
@@ -38,7 +38,7 @@ const sec1Content = [
   "",
   "4. **Matrix Operator Representation without Geometric Algebra**:",
   "   Even without Geometric Algebra, any discrete linear signal vector \\( \\mathbf { x } = [ x [ 0 ] , x [ 1 ] , \\dots , x [ N - 1 ] ] ^ T \\in \\mathbb { R } ^ N \\) on a finite discrete grid \\( \\mathcal { G } _ N \\) can be processed using purely real orthogonal matrix operators. The bivector rotation operator \\( \\mathbf { I } \\) maps directly to the real anti-symmetric block generator matrix:",
-  "   \\[ J = \\begin { pmatrix } 0 & - 1 \\\\ 1 & 0 \\end { pmatrix } \\]",
+  "   \\[ J = \\begin {pmatrix} 0 & - 1 \\\\ 1 & 0 \\end {pmatrix} \\]",
   "   satisfying \\( J ^ 2 = - I _ 2 \\). Consequently, all classical transforms can be executed as real matrix-vector operations on real physical signal channels."
 ].join("\n");
 
