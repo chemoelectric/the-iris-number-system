@@ -98,7 +98,8 @@ scientific notation, and power expressions:
 - **D Modules and Demo Programs**: Reusable D modules in
   `src/nth_prime.d`, `src/nth_prime_64.d`, and
   `src/nth_prime_128.d`. Function overloads support `std.bigint.BigInt`,
-  native `ucent`, and `ulong` values directly without ASCII conversions.
+  native `core.int128.Cent`, and `ulong` values directly without
+  ASCII conversions.
   The multi-limb module (`nth_prime.d`) supports compile-time limb count
   parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,
   defaulting to 8192 bits). Each module includes an optionally

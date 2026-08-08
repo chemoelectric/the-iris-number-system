@@ -1,6 +1,7 @@
 module nth_prime;
 
 import std.bigint : BigInt;
+import core.int128 : Cent;
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
 import core.stdc.string : memset;
@@ -487,22 +488,26 @@ ulong limbsToUlong(LimbNumber ln) {
     return ln.limbs[0];
 }
 
-LimbNumber ucentToLimbs(ucent val) {
+LimbNumber centToLimbs(Cent val) {
     LimbNumber ln;
-    ln.limbs[0] = cast(ulong) val;
+    ulong low = cast(ulong) val;
+    ulong high = cast(ulong) (val >> 64);
+    ln.limbs[0] = low;
     if (NUM_LIMBS > 1) {
-        ln.limbs[1] = cast(ulong) (val >> 64);
+        ln.limbs[1] = high;
     }
     return ln;
 }
 
-ucent limbsToUcent(LimbNumber ln) {
-    ucent low = cast(ucent) ln.limbs[0];
-    ucent high = 0;
+Cent limbsToCent(LimbNumber ln) {
+    ulong low = ln.limbs[0];
+    ulong high = 0;
     if (NUM_LIMBS > 1) {
-        high = cast(ucent) ln.limbs[1];
+        high = ln.limbs[1];
     }
-    return (high << 64) | low;
+    Cent cLow = Cent(low);
+    Cent cHigh = Cent(high);
+    return (cHigh << 64) | cLow;
 }
 
 LimbNumber getNthPrime(LimbNumber n) {
@@ -522,12 +527,12 @@ BigInt getNthPrime(BigInt n) {
     return res;
 }
 
-ucent getNthPrime(ucent n) {
-    ucent res = 0;
-    if (n > 0) {
-        LimbNumber lnIn = ucentToLimbs(n);
+Cent getNthPrime(Cent n) {
+    Cent res = Cent(0);
+    if (n > Cent(0)) {
+        LimbNumber lnIn = centToLimbs(n);
         LimbNumber lnOut = getNthPrime(lnIn);
-        res = limbsToUcent(lnOut);
+        res = limbsToCent(lnOut);
     }
     return res;
 }

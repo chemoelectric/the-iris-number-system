@@ -1,6 +1,7 @@
 module nth_prime_64;
 
 import std.bigint : BigInt;
+import core.int128 : Cent;
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
 import core.stdc.string : memset;
@@ -440,12 +441,12 @@ BigInt getNthPrime(BigInt n) {
     return res;
 }
 
-ucent getNthPrime(ucent n) {
-    ucent res = 0;
-    if (n > 0) {
+Cent getNthPrime(Cent n) {
+    Cent res = Cent(0);
+    if (n > Cent(0)) {
         ulong uVal = cast(ulong) n;
         ulong p = getNthPrime(uVal);
-        res = cast(ucent) p;
+        res = Cent(p);
     }
     return res;
 }

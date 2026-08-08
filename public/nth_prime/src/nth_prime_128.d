@@ -1,6 +1,7 @@
 module nth_prime_128;
 
 import std.bigint : BigInt;
+import core.int128 : Cent;
 import core.stdc.stdio : printf, fgets, stdin;
 import core.stdc.stdlib : malloc, free;
 import core.stdc.string : memset;
@@ -10,7 +11,7 @@ import std.conv : to;
 import std.string : strip;
 import std.parallelism : parallel;
 
-alias u128 = ucent;
+alias u128 = Cent;
 
 struct MemoEntry {
     u128 x;
@@ -432,14 +433,14 @@ u128 getNthPrime(u128 n) {
 }
 
 u128 bigIntToU128(BigInt b) {
-    u128 res = 0;
+    u128 res = Cent(0);
     if (b > 0) {
         BigInt mask = (BigInt(1) << 64) - BigInt(1);
         BigInt lowB = b & mask;
         ulong low = cast(ulong) lowB;
         BigInt highB = (b >> 64) & mask;
         ulong high = cast(ulong) highB;
-        res = (cast(u128) high << 64) | cast(u128) low;
+        res = (Cent(high) << 64) | Cent(low);
     }
     return res;
 }
@@ -466,7 +467,7 @@ BigInt getNthPrime(BigInt n) {
 ulong getNthPrime(ulong n) {
     ulong res = 0;
     if (n > 0) {
-        u128 uVal = cast(u128) n;
+        u128 uVal = Cent(n);
         u128 p = getNthPrime(uVal);
         res = cast(ulong) p;
     }
@@ -474,12 +475,12 @@ ulong getNthPrime(ulong n) {
 }
 
 u128 parseDigits128(string str) {
-    u128 val = 0;
+    u128 val = Cent(0);
     size_t i = 0;
     while (i < str.length) {
         char c = str[i];
         if (c >= '0' && c <= '9') {
-            val = val * 10 + (cast(u128) (c - '0'));
+            val = val * 10 + (c - '0');
         }
         i = i + 1;
     }
@@ -487,39 +488,39 @@ u128 parseDigits128(string str) {
 }
 
 u128 parsePowersSmall128(string str) {
-    u128 res = 0;
+    u128 res = Cent(0);
     if (str == "1e6" || str == "10^6" || str == "10**6") {
-        res = 1000000;
+        res = Cent(1000000);
     } else if (str == "1e9" || str == "10^9" || str == "10**9") {
-        res = 1000000000;
+        res = Cent(1000000000);
     }
     return res;
 }
 
 u128 parsePowersLarge128(string str) {
-    u128 res = 0;
+    u128 res = Cent(0);
     if (str == "1e10" || str == "10^10" || str == "10**10") {
-        res = 10000000000UL;
+        res = Cent(10000000000UL);
     } else if (str == "1e11" || str == "10^11" || str == "10**11") {
-        res = 100000000000UL;
+        res = Cent(100000000000UL);
     } else if (str == "1e12" || str == "10^12" || str == "10**12") {
-        res = 1000000000000UL;
+        res = Cent(1000000000000UL);
     } else if (str == "1e13" || str == "10^13" || str == "10**13") {
-        res = 10000000000000UL;
+        res = Cent(10000000000000UL);
     } else if (str == "1e14" || str == "10^14" || str == "10**14") {
-        res = 100000000000000UL;
+        res = Cent(100000000000000UL);
     } else if (str == "1e15" || str == "10^15" || str == "10**15") {
-        res = 1000000000000000UL;
+        res = Cent(1000000000000000UL);
     }
     return res;
 }
 
 u128 parseSpecialInput128(string str) {
     u128 val = parsePowersSmall128(str);
-    if (val == 0) {
+    if (val == Cent(0)) {
         val = parsePowersLarge128(str);
     }
-    if (val == 0) {
+    if (val == Cent(0)) {
         val = parseDigits128(str);
     }
     return val;
@@ -527,7 +528,7 @@ u128 parseSpecialInput128(string str) {
 
 u128 parseInputString128(string inputStr) {
     string cleanStr = strip(inputStr);
-    u128 val = 0;
+    u128 val = Cent(0);
     if (cleanStr.length > 0) {
         val = parseSpecialInput128(cleanStr);
     }
@@ -555,7 +556,7 @@ version (standalone) {
 
 static if (HAS_MAIN) {
     int main(string[] args) {
-        u128 targetN = 0;
+        u128 targetN = Cent(0);
         if (args.length > 1) {
             targetN = parseInputString128(args[1]);
         } else {
@@ -569,7 +570,7 @@ static if (HAS_MAIN) {
             }
         }
 
-        if (targetN > 0) {
+        if (targetN > Cent(0)) {
             u128 nthPrimeVal = getNthPrime(targetN);
             printResult128(nthPrimeVal);
         } else {
