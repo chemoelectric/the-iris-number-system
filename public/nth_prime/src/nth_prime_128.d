@@ -30,6 +30,16 @@ struct u128 {
         high = cast(ulong) c.hi;
     }
 
+    void opAssign(ulong val) {
+        low = val;
+        high = 0;
+    }
+
+    void opAssign(const u128 rhs) {
+        low = rhs.low;
+        high = rhs.high;
+    }
+
     Cent toCent() const {
         Cent c;
         c.lo = low;
@@ -37,22 +47,36 @@ struct u128 {
         return c;
     }
 
-    T opCast(T)() const if (is(T == ulong)) {
-        return low;
+    static u128 fromDouble(double d) {
+        if (d <= 0.0) return u128(0, 0);
+        double two64 = 18446744073709551616.0;
+        double h = d / two64;
+        ulong highVal = cast(ulong) h;
+        double rem = d - (cast(double) highVal * two64);
+        ulong lowVal = cast(ulong) rem;
+        return u128(lowVal, highVal);
     }
 
-    T opCast(T)() const if (is(T == double)) {
-        double dHigh = cast(double) high;
-        double dLow = cast(double) low;
-        return dHigh * 18446744073709551616.0 + dLow;
+    static u128 fromReal(real r) {
+        return fromDouble(cast(double) r);
     }
 
-    T opCast(T)() const if (is(T == Cent)) {
-        return toCent();
-    }
-
-    T opCast(T)() const if (is(T == bool)) {
-        return low != 0 || high != 0;
+    T opCast(T)() const {
+        static if (is(T == bool)) {
+            return low != 0 || high != 0;
+        } else static if (is(T == double)) {
+            double dHigh = cast(double) high;
+            double dLow = cast(double) low;
+            return dHigh * 18446744073709551616.0 + dLow;
+        } else static if (is(T == real)) {
+            real rHigh = cast(real) high;
+            real rLow = cast(real) low;
+            return rHigh * 18446744073709551616.0L + rLow;
+        } else static if (is(T == Cent)) {
+            return toCent();
+        } else {
+            return cast(T) low;
+        }
     }
 
     int opCmp(const u128 rhs) const {
@@ -69,16 +93,20 @@ struct u128 {
         return res;
     }
 
-    int opCmp(ulong rhs) const {
-        return opCmp(u128(rhs));
+    int opCmp(T)(T rhs) const
+        if (is(T == ulong) || is(T == long) ||
+            is(T == int) || is(T == uint)) {
+        return opCmp(u128(cast(ulong) rhs));
     }
 
     bool opEquals(const u128 rhs) const {
         return low == rhs.low && high == rhs.high;
     }
 
-    bool opEquals(ulong rhs) const {
-        return high == 0 && low == rhs;
+    bool opEquals(T)(T rhs) const
+        if (is(T == ulong) || is(T == long) ||
+            is(T == int) || is(T == uint)) {
+        return high == 0 && low == cast(ulong) rhs;
     }
 
     u128 opBinary(string op)(const u128 rhs) const if (op == "+") {
@@ -88,8 +116,12 @@ struct u128 {
         return u128(resLow, resHigh);
     }
 
-    u128 opBinary(string op)(ulong rhs) const if (op == "+") {
-        return this + u128(rhs);
+    u128 opBinary(string op, T)(T rhs) const
+        if ((op == "+" || op == "-" || op == "*" ||
+             op == "/" || op == "%") &&
+            (is(T == ulong) || is(T == long) ||
+             is(T == int) || is(T == uint))) {
+        return opBinary!op(u128(cast(ulong) rhs));
     }
 
     u128 opBinary(string op)(const u128 rhs) const if (op == "-") {
@@ -99,18 +131,10 @@ struct u128 {
         return u128(resLow, resHigh);
     }
 
-    u128 opBinary(string op)(ulong rhs) const if (op == "-") {
-        return this - u128(rhs);
-    }
-
     u128 opBinary(string op)(const u128 rhs) const if (op == "*") {
         BigInt a = this.toBigInt();
         BigInt b = rhs.toBigInt();
         return u128.fromBigInt(a * b);
-    }
-
-    u128 opBinary(string op)(ulong rhs) const if (op == "*") {
-        return this * u128(rhs);
     }
 
     u128 opBinary(string op)(const u128 rhs) const if (op == "/") {
@@ -119,18 +143,10 @@ struct u128 {
         return u128.fromBigInt(a / b);
     }
 
-    u128 opBinary(string op)(ulong rhs) const if (op == "/") {
-        return this / u128(rhs);
-    }
-
     u128 opBinary(string op)(const u128 rhs) const if (op == "%") {
         BigInt a = this.toBigInt();
         BigInt b = rhs.toBigInt();
         return u128.fromBigInt(a % b);
-    }
-
-    u128 opBinary(string op)(ulong rhs) const if (op == "%") {
-        return this % u128(rhs);
     }
 
     u128 opBinary(string op)(int shift) const if (op == ">>") {
@@ -175,6 +191,13 @@ struct u128 {
 
     u128 opBinary(string op)(const u128 rhs) const if (op == "|") {
         return u128(low | rhs.low, high | rhs.high);
+    }
+
+    u128 opBinary(string op, T)(T rhs) const
+        if ((op == "^" || op == "&" || op == "|") &&
+            (is(T == ulong) || is(T == long) ||
+             is(T == int) || is(T == uint))) {
+        return opBinary!op(u128(cast(ulong) rhs));
     }
 
     u128 opUnary(string op)() const if (op == "~") {
@@ -259,7 +282,7 @@ void buildBitSieve(u128 limit) {
     isSubprimeBit[0] = isSubprimeBit[0] & ~1UL;
 
     double fLim = cast(double) limit;
-    u128 sqrtLim = cast(u128) sqrt(fLim);
+    u128 sqrtLim = u128.fromDouble(sqrt(fLim));
     u128 p = 3;
     while (p <= sqrtLim) {
         u128 k = (p - 1) / 2;
@@ -414,9 +437,9 @@ u128 primeCountLehmer(u128 x, const(uint)[] primes) {
         count = piFast(x, primes);
     } else {
         double fx = cast(double) x;
-        u128 aVal = piFast(cast(u128) sqrt(sqrt(fx)), primes);
-        u128 bVal = piFast(cast(u128) sqrt(fx), primes);
-        u128 cVal = piFast(cast(u128) cbrt(fx), primes);
+        u128 aVal = piFast(u128.fromDouble(sqrt(sqrt(fx))), primes);
+        u128 bVal = piFast(u128.fromDouble(sqrt(fx)), primes);
+        u128 cVal = piFast(u128.fromReal(cbrt(fx)), primes);
 
         u128 phiVal = phiRec(x, cast(size_t) aVal, primes);
         u128 term1 = (bVal + aVal - 2) * (bVal - aVal + 1);
@@ -432,7 +455,7 @@ u128 primeCountLehmer(u128 x, const(uint)[] primes) {
             sum2 = sum2 + piW;
 
             if (i <= cast(size_t) cVal) {
-                u128 sqrtW = cast(u128) sqrt(cast(double) w);
+                u128 sqrtW = u128.fromDouble(sqrt(cast(double) w));
                 u128 bi = piFast(sqrtW, primes);
                 size_t j = i;
                 size_t biLimit = cast(size_t) bi;
@@ -532,7 +555,7 @@ u128 estimateInitialX(u128 n) {
     double logn = log(fn);
     double log2n = log(logn);
     double est = fn * (logn + log2n - 1.0 + (log2n - 2.0) / logn);
-    return cast(u128) est;
+    return u128.fromDouble(est);
 }
 
 u128 getSmallNthPrime(u128 n) {
@@ -560,7 +583,7 @@ u128 getNthPrime(u128 n) {
 
         double fx = cast(double) currX;
         double sqX = sqrt(fx);
-        u128 zVal = cast(u128) sqX;
+        u128 zVal = u128.fromDouble(sqX);
 
         u128 sieveLimit = zVal * 12;
         if (sieveLimit < 200000000UL) {
@@ -572,31 +595,31 @@ u128 getNthPrime(u128 n) {
         uint[] basePrimes = collectPrimesUpTo(zVal + 1000);
 
         u128 currPi = primeCountLehmer(currX, basePrimes);
-        long diffN = cast(long) n - cast(long) currPi;
+        long diffN = cast(long) n.low - cast(long) currPi.low;
 
         while (diffN > 2000 || diffN < -2000) {
             double fVal = cast(double) currX;
             double logVal = log(fVal);
             double adj = cast(double) diffN * logVal;
             long step = cast(long) adj;
-            long xNew = cast(long) currX + step;
-            currX = cast(u128) xNew;
+            long xNew = cast(long) currX.low + step;
+            currX = u128(cast(ulong) xNew);
 
             currPi = primeCountLehmer(currX, basePrimes);
-            diffN = cast(long) n - cast(long) currPi;
+            diffN = cast(long) n.low - cast(long) currPi.low;
         }
 
         u128 absDiff = 0;
         if (diffN < 0) {
-            absDiff = cast(u128) (-diffN);
+            absDiff = u128(cast(ulong) (-diffN));
         } else {
-            absDiff = cast(u128) diffN;
+            absDiff = u128(cast(ulong) diffN);
         }
 
         double fCurr = cast(double) currX;
         double logC = log(fCurr);
-        double estW = cast(double) absDiff * logC * 2.5;
-        u128 window = cast(u128) estW + 50000;
+        double estW = cast(double) absDiff.low * logC * 2.5;
+        u128 window = u128.fromDouble(estW) + 50000;
         if (window < 200000) {
             window = 200000;
         }
