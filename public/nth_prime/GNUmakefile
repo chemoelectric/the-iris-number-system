@@ -24,7 +24,7 @@ DOPTSFLAGS += -march=native -mtune=native
 DOPTSFLAGS += -Ofast
 #DOPTSFLAGS += -ffast-math
 DOPTSFLAGS += -funroll-loops
-DOPTSFLAGS += -flto
+DOPTSFLAGS += -flto=auto
 DOPTSFLAGS += -mprefer-vector-width=512
 #DOPTSFLAGS += -fopt-info-vec-optimized
 
