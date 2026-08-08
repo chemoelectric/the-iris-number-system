@@ -1,4 +1,4 @@
-.DELETE_ON_ERROR:
+dgŕu.DELETE_ON_ERROR:
 .DEFAULT_GOAL := default
 
 SED = sed
@@ -31,6 +31,9 @@ clean:: clean-html
 	          -t pdf \
 	          --pdf-engine=$(PDF_ENGINE) \
 	          --lua-filter=fix-greek.lua \
+	          --lua-filter=chapter-newpage.lua \
+	          -V documentclass=book \
+	          -V classoption=oneside \
 	          -H header.tex \
 	          -V fontsize=12pt \
 	          --metadata title="" \
