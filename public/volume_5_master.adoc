@@ -34,9 +34,9 @@ In 19th and 20th-century mathematical analysis and electrical engineering, linea
    * **The Three-Dimensional Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \)** (often designated as the Spatial Vector Algebra): Spanned by three spatial basis vectors \( e _ 1, e _ 2, e _ 3 \), avoiding relativistic continuum assumptions and frames of reference. In this algebra, the pseudoscalar \( \mathbf { I } = e _ 1 e _ 2 e _ 3 \) satisfies \( \mathbf { I } ^ 2 = - 1 \) and commutes with all grade elements, serving as an intrinsic 3D phase-rotation operator.
 
 4. **Matrix Operator Representation without Geometric Algebra**:
-   Even without Geometric Algebra, any discrete linear signal vector \( \mathbf { x } = [ x [ 0 ] , x [ 1 ] , \dots , x [ N - 1 ] ] ^ T \in \mathbb { R } ^ N \) on a finite discrete grid \( \mathcal { G } _ N \) can be processed using purely real orthogonal matrix operators. The bivector rotation operator \( \mathbf { I } \) maps directly to the real anti-symmetric block generator matrix:
+   Even without Geometric Algebra, any digital signal vector \( \mathbf { x } = [ x [ 0 ] , x [ 1 ] , \dots , x [ N - 1 ] ] ^ T \in \mathbb { R } ^ N \) on a finite resolution grid \( \mathcal { G } _ N \) can be processed using purely real orthogonal matrix operators. The bivector rotation operator \( \mathbf { I } \) maps directly to the real anti-symmetric block generator matrix:
    \[ J = \begin {pmatrix} 0 & - 1 \\ 1 & 0 \end {pmatrix} \]
-   satisfying \( J ^ 2 = - I _ 2 \). Consequently, all classical transforms can be executed as real matrix-vector operations on real physical signal channels.
+   satisfying \( J ^ 2 = - I _ 2 \). Consequently, all classical transforms can be executed as real matrix-vector operations on real physical analog or digital signal channels.
 
 === Unified Operator Kernel Formulation for Conventional Transforms
 
@@ -46,7 +46,7 @@ Let \( \mathcal { G } _ N = \{ n \delta \mid n \in \{ 0 , 1 , \dots , N - 1 \} \
 
 where \( r [ k ] > 0 \) is a real radial scaling factor, \( \theta _ k = \frac { 2 \pi k } { N } \) is the discrete fundamental phase angle step, and \( \mathbf { I } \) is an oriented unit bivector satisfying \( \mathbf { I } ^ 2 = - 1 \).
 
-The unified transformation of a discrete real signal \( x [ n ] \) into its multivector spectral representation \( \hat { X } [ k ] \) is given by the finite inner product on \( \mathcal { G } _ N \):
+The unified transformation of a real analog or digital signal \( x [ n ] \) into its multivector spectral representation \( \hat { X } [ k ] \) is given by the finite inner product on \( \mathcal { G } _ N \):
 
 \[ \hat { X } [ k ] = \sum _ { n = 0 } ^ { N - 1 } x [ n ] \mathcal { K } _ { \mathcal { G } _ N } [ n , k ] \delta \]
 
@@ -97,7 +97,7 @@ The unified transformation of a discrete real signal \( x [ n ] \) into its mult
 [THEOREM]
 .Theorem: Unified Real-Bivector Spectral Transformation Theorem
 ====
-Let \( \mathcal { G } _ N = \{ n \delta \mid n \in \{ 0 , 1 , \dots , N - 1 \} \} \) be a finite discrete spatial-temporal resolution grid, and let \( x [ n ] \in \mathbb { R } \) be a real-valued discrete signal.
+Let \( \mathcal { G } _ N = \{ n \delta \mid n \in \{ 0 , 1 , \dots , N - 1 \} \} \) be a finite discrete spatial-temporal resolution grid, and let \( x [ n ] \in \mathbb { R } \) be a real-valued digital or m-res signal.
 
 Every conventional linear integral and discrete transform (Fourier, Cosine, Sine, Hartley, Laplace, Z, Mellin, Hankel, Radon, and Wavelet) is an exact specialization or projection of the Universal Discrete Kernel Operator:
 \[ \mathcal { K } _ { \mathcal { G } _ N } [ n , k ] = r [ k ] ^ n \left( \cos \left( \frac { 2 \pi n k } { N } \right) + \mathbf { I } \sin \left( \frac { 2 \pi n k } { N } \right) \right) \]
@@ -175,7 +175,7 @@ where the discrete radial expansion factor is \( r = e ^ { \sigma \delta } \) an
 ==== Example 1: Real Bivector Discrete Fourier Spectrum and Energy Conservation on \( \mathcal { G } _ 4 \)
 
 **Problem Statement:**
-Given a real discrete spatial-temporal signal sequence \( x [ n ] = [ 1 , 1 , 0 , 0 ] ^ T \) defined on the 4-point resolution grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \) with grid spacing \( \delta = 1 \):
+Given a real digital spatial-temporal signal sequence \( x [ n ] = [ 1 , 1 , 0 , 0 ] ^ T \) defined on the 4-point resolution grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \) with grid spacing \( \delta = 1 \):
 1. Compute the multivector Discrete Fourier Spectrum \( \hat { X } [ k ] \) for all harmonic modes \( k \in \{ 0 , 1 , 2 , 3 \} \) using the real bivector rotor kernel:
    \[ \mathcal { K } _ \text{DFT} [ n , k ] = \cos \left( \frac { 2 \pi n k } { 4 } \right) - \mathbf { I } \sin \left( \frac { 2 \pi n k } { 4 } \right) \]
    where \( \mathbf { I } \) is the unit bivector in \( Cl ( 0 , 1 ) \) satisfying \( \mathbf { I } ^ 2 = - 1 \).
@@ -230,7 +230,7 @@ Given a real discrete spatial-temporal signal sequence \( x [ n ] = [ 1 , 1 , 0 
 ==== Example 2: Discrete Cosine Transform (DCT-II) and Discrete Hartley Transform (DHT) on \( \mathcal { G } _ 4 \)
 
 **Problem Statement:**
-For the real discrete physical signal \( x [ n ] = [ 4 , 2 , 1 , 0 ] ^ T \) on \( \mathcal { G } _ 4 \):
+For the real digital physical signal \( x [ n ] = [ 4 , 2 , 1 , 0 ] ^ T \) on \( \mathcal { G } _ 4 \):
 1. Compute the discrete orthogonal Cosine Transform (DCT-II) sequence \( X _ \text{DCT} [ k ] \) for \( k \in \{ 0 , 1 , 2 , 3 \} \):
    \[ X _ \text{DCT} [ k ] = \sum _ { n = 0 } ^ { 3 } x [ n ] \cos \left( \frac { \pi k ( 2 n + 1 ) } { 8 } \right) \]
 2. Compute the Discrete Hartley Transform (DHT) sequence \( X _ \text{DHT} [ k ] \) using the purely real scalar kernel \( cas ( \theta ) = \cos \theta + \sin \theta \):
@@ -267,8 +267,8 @@ For the real discrete physical signal \( x [ n ] = [ 4 , 2 , 1 , 0 ] ^ T \) on \
 ==== Example 3: Discrete Z-Transform and Damped Bivector Phase Precession
 
 **Problem Statement:**
-Consider a real decaying discrete signal \( x [ n ] = \left( \frac { 1 } { 2 } \right) ^ n \) defined over the 4-point spatial-temporal grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \).
-1. Formulate the general discrete multivector Z-transform \( X ( z ) \) over \( \mathcal { G } _ 4 \):
+Consider a real decaying digital signal \( x [ n ] = \left( \frac { 1 } { 2 } \right) ^ n \) defined over the 4-point spatial-temporal grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \).
+1. Formulate the general digital multivector Z-transform \( X ( z ) \) over \( \mathcal { G } _ 4 \):
    \[ X ( z ) = \sum _ { n = 0 } ^ { 3 } x [ n ] z ^ { - n } \]
    where \( z = r e ^ { \mathbf { I } \theta } = r ( \cos \theta + \mathbf { I } \sin \theta ) \) is a real bivector rotor in \( Cl ( 0 , 1 ) \).
 2. Completely evaluate \( X ( z ) \) at the specific bivector phase rotor location \( z = 2 e ^ { \mathbf { I } \pi / 2 } = 2 \mathbf { I } \) (corresponding to radial expansion factor \( r = 2 \) and phase angle step \( \theta = \frac { \pi } { 2 } \)).
@@ -304,7 +304,7 @@ Consider a real decaying discrete signal \( x [ n ] = \left( \frac { 1 } { 2 } \
 ==== Example 4: Real Homomorphic Cepstrum and Echo Deconvolution on \( \mathcal { G } _ 4 \)
 
 **Problem Statement:**
-Consider a discrete real physical signal sequence \( x [ n ] = [ 4 , 1 , 2 , 1 ] ^ T \) defined on the 4-point spatial-temporal grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \).
+Consider a real digital physical signal sequence \( x [ n ] = [ 4 , 1 , 2 , 1 ] ^ T \) defined on the 4-point spatial-temporal grid \( \mathcal { G } _ 4 = \{ 0 , 1 , 2 , 3 \} \).
 1. Compute the multivector Discrete Fourier Spectrum \( \hat { X } [ k ] \) and the corresponding real spectral magnitudes \( \| \hat { X } [ k ] \| \) for all harmonic modes \( k \in \{ 0 , 1 , 2 , 3 \} \).
 2. Evaluate the real logarithmic spectral magnitude sequence \( L [ k ] = \ln ( \| \hat { X } [ k ] \| ) \).
 3. Compute the Real Homomorphic Cepstrum sequence \( c [ q ] \) for all discrete quefrency indices \( q \in \{ 0 , 1 , 2 , 3 \} \) using the real inverse cosine kernel:
@@ -348,26 +348,26 @@ This chapter formulates the linear theory of physical systems, impulse responses
 
 === m-Resolution Analog and Digital System Paradigms
 
-In 19th and 20th-century classical linear system theory, physical engineering was conventionally split into two disjoint domains: “continuous-time” systems operating over an uncountably infinite real continuum, and “discrete-time” systems operating over sampled integer sequences. Conventional continuous models relied on non-physical Dirac delta distributions \( \delta ( t ) \), which were imagined to possess zero spatial-temporal width, infinite amplitude at the origin, and a unit area integral. In actual physical Nature, there exist no point entities of infinite amplitude or zero temporal duration; all physical excitations, wave propagations, and field responses require finite time and possess finite spatial extent.
+In 19th and 20th-century classical linear system theory, physical engineering was conventionally split into two disjoint domains: analog signals (conventionally mislabeled as “continuous-time signals”) operating over an uncountably infinite real continuum, and digital signals (conventionally called “discrete-time signals”) operating over sampled integer sequences. Conventional analog models relied on non-physical Dirac delta distributions \( \delta ( t ) \), which were imagined to possess zero spatial-temporal width, infinite amplitude at the origin, and a unit area integral. In actual physical Nature, there exist no point entities of infinite amplitude or zero temporal duration; all physical excitations, wave propagations, and field responses require finite time and possess finite spatial extent.
 
-In the Iris Number System, physical system dynamics is formulated entirely on discrete resolution grids \( \mathcal { G } _ N \):
+In the Iris Number System, physical system dynamics and signals are formulated entirely on discrete resolution grids \( \mathcal { G } _ N \):
 
-1. **The m-Resolution Analog Grid Representation**:
-   Physical (analog) field dynamics occurs on a fine m-resolution grid \( \mathcal { G } _ { N , m } = \{ n \delta _ m \mid n \in \{ 0 , 1 , \dots , N - 1 \} \} \) with fine lattice spacing \( \delta _ m > 0 \). On this physical grid, the m-resolution unit impulse excitation \( \delta _ { \mathcal { G } _ m } [ n ] \) is defined as a finite, unit-energy pulse of width \( \delta _ m \):
+1. **The m-Resolution Analog Signal Grid Representation**:
+   Physical analog signals (m-res signals) occur on a fine m-resolution grid \( \mathcal { G } _ { N , m } = \{ n \delta _ m \mid n \in \{ 0 , 1 , \dots , N - 1 \} \} \) with fine lattice spacing \( \delta _ m > 0 \). On this physical grid, the m-resolution unit impulse excitation \( \delta _ { \mathcal { G } _ m } [ n ] \) is defined as a finite, unit-energy pulse of width \( \delta _ m \):
    \[ \delta _ { \mathcal { G } _ m } [ n ] = \begin {cases} \frac { 1 } { \delta _ m } , & n = 0 \\ 0 , & n \neq 0 \end {cases} \]
-   satisfying the exact discrete field summation \( \sum _ { n = 0 } ^ { N - 1 } \delta _ { \mathcal { G } _ m } [ n ] \delta _ m = 1 \). This discrete impulse represents a finite physical excitation delivered over finite duration \( \delta _ m \) with peak amplitude \( 1 / \delta _ m \), completely removing Dirac point infinities.
+   satisfying the exact discrete field summation \( \sum _ { n = 0 } ^ { N - 1 } \delta _ { \mathcal { G } _ m } [ n ] \delta _ m = 1 \). This impulse represents a finite physical excitation delivered over finite duration \( \delta _ m \) with peak amplitude \( 1 / \delta _ m \), completely removing Dirac point infinities.
 
-2. **The Digital Sampled Grid Representation**:
-   Algorithmic digital systems operate on a coarser digital grid \( \mathcal { G } _ D = \{ k \Delta t \mid k \in \{ 0 , 1 , \dots , K - 1 \} \} \) with sampling interval \( \Delta t = M \delta _ m \) (where \( M \in \mathbb { Z } ^ + \)). On the digital grid, the digital unit impulse \( \delta [ k ] \) is the discrete Kronecker delta:
+2. **The Digital Signal Grid Representation**:
+   Algorithmic digital signals operate on a coarser digital grid \( \mathcal { G } _ D = \{ k \Delta t \mid k \in \{ 0 , 1 , \dots , K - 1 \} \} \) with sampling interval \( \Delta t = M \delta _ m \) (where \( M \in \mathbb { Z } ^ + \)). On the digital grid, the digital unit impulse \( \delta [ k ] \) is the discrete Kronecker delta:
    \[ \delta [ k ] = \begin {cases} 1 , & k = 0 \\ 0 , & k \neq 0 \end {cases} \]
-   Both m-resolution analog physical systems and digital sampled processing systems are discrete linear models on finite grids, differing only in resolution scale \( \delta _ m \) versus \( \Delta t \).
+   Both m-resolution analog signals and digital signals are represented on finite resolution grids, differing only in resolution scale \( \delta _ m \) versus \( \Delta t \).
 
 === Shift-Invariant Systems, Difference Convolution, and Bivector Transfer Functions
 
-Consider a discrete Linear Shift-Invariant (LSI) physical system operator \( \mathcal { S } \) mapping an input field sequence \( x [ n ] \) on resolution grid \( \mathcal { G } _ N \) to an output response sequence \( y [ n ] \).
+Consider a Linear Shift-Invariant (LSI) physical system operator \( \mathcal { S } \) mapping an input signal sequence \( x [ n ] \) on resolution grid \( \mathcal { G } _ N \) to an output response signal \( y [ n ] \).
 
 ==== The Unit Impulse Response and Finite Convolution Sum
-The system \( \mathcal { S } \) is uniquely characterized by its unit impulse response sequence \( h [ n ] = \mathcal { S } \{ \delta _ { \mathcal { G } } [ n ] \} \). By linear superposition and shift-invariance, any discrete input field \( x [ n ] \) can be decomposed into a linear sum of shifted impulses \( x [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] \delta _ { \mathcal { G } } [ n - m ] \delta \). The system output is given by the finite difference convolution sum over \( \mathcal { G } _ N \):
+The system \( \mathcal { S } \) is uniquely characterized by its unit impulse response sequence \( h [ n ] = \mathcal { S } \{ \delta _ { \mathcal { G } } [ n ] \} \). By linear superposition and shift-invariance, any analog or digital input signal \( x [ n ] \) can be decomposed into a linear sum of shifted impulses \( x [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] \delta _ { \mathcal { G } } [ n - m ] \delta \). The system output is given by the finite difference convolution sum over \( \mathcal { G } _ N \):
 
 \[ y [ n ] = ( x * h ) [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ n - m ] \delta \]
 
@@ -413,7 +413,7 @@ An LSI system is BIBO stable if every bounded input sequence \( \| x [ n ] \| \l
 [THEOREM]
 .Theorem: LSI System Convolution-Multiplication Isomorphism Theorem
 ====
-Let \( x [ n ] \) and \( h [ n ] \) be real-valued discrete signals defined on resolution grid \( \mathcal { G } _ N \), and let \( y [ n ] = ( x * h ) [ n ] \delta = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ ( n - m ) \bmod N ] \delta \) be their cyclic difference convolution.
+Let \( x [ n ] \) and \( h [ n ] \) be real-valued digital or analog signals defined on resolution grid \( \mathcal { G } _ N \), and let \( y [ n ] = ( x * h ) [ n ] \delta = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ ( n - m ) \bmod N ] \delta \) be their cyclic difference convolution.
 
 Under the real bivector Discrete Fourier Transform \( \mathcal { F } \), discrete convolution in grid space transforms into exact pointwise multivector multiplication in spectral space:
 \[ \hat { Y } [ k ] = \hat { X } [ k ] \hat { H } [ k ] \delta \]
