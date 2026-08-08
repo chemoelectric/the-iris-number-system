@@ -91,7 +91,10 @@ const sec2Content = [
   "   Applying localized multiscale bandpass windowing \\( \\psi _ { a , b } [ n ] = \\frac { 1 } { \\sqrt { a } } \\psi \\left( \\frac { n \\delta - b } { a } \\right) \\) to the discrete kernel, providing joint spatial-temporal and spectral-resolution localization over multiscale grid tiers.",
   "",
   "10. **Hilbert Transform**:",
-  "    Applying a quadrature phase-shift operator that rotates every bivector component by \\( 90 ^ \\circ \\) (multiplying by \\( \\mathbf { I } \\)), converting scalar cosine modes into bivector sine modes to generate analytic real signal pairs."
+  "    Applying a quadrature phase-shift operator that rotates every bivector component by \\( 90 ^ \\circ \\) (multiplying by \\( \\mathbf { I } \\)), converting scalar cosine modes into bivector sine modes to generate analytic real signal pairs.",
+  "",
+  "11. **Homomorphic Cepstral Analysis**:",
+  "    Evaluating the real natural logarithm of the bivector spectral magnitude \\( \\| \\hat { X } [ k ] \\| = \\sqrt { ( \\operatorname { Sc } ( \\hat { X } [ k ] ) ) ^ 2 + ( \\operatorname { Biv } ( \\hat { X } [ k ] ) ) ^ 2 } \\) yields a purely real logarithmic scalar sequence \\( L [ k ] = \\ln ( \\| \\hat { X } [ k ] \\| ) \\). Inverse-transforming \\( L [ k ] \\) back to the spatial-temporal grid via the real cosine kernel maps multiplicative system operations (such as lattice echo reflections or vocal tract filtering) into additive linear components in the discrete quefrency domain \\( q \\in \\mathcal { G } _ N \\), completely avoiding complex logarithms and multi-valued phase branch cuts."
 ].join("\n");
 
 const sec3Content = [
@@ -305,7 +308,48 @@ const sec4Content = [
   "",
   "  Thus, the exact multivector Z-transform evaluation is:",
   "  \\[ X ( 2 \\mathbf { I } ) = \\frac { 15 } { 16 } - \\frac { 15 } { 64 } \\mathbf { I } \\]",
-  "  This represents a real scalar field amplitude of \\( 0.9375 \\) combined with an orthogonal bivector phase component of \\( - 0.234375 \\), computed directly without continuous complex numbers."
+  "  This represents a real scalar field amplitude of \\( 0.9375 \\) combined with an orthogonal bivector phase component of \\( - 0.234375 \\), computed directly without continuous complex numbers.",
+  "",
+  "==== Example 4: Real Homomorphic Cepstrum and Echo Deconvolution on \\( \\mathcal { G } _ 4 \\)",
+  "",
+  "**Problem Statement:**",
+  "Consider a discrete real physical signal sequence \\( x [ n ] = [ 4 , 1 , 2 , 1 ] ^ T \\) defined on the 4-point spatial-temporal grid \\( \\mathcal { G } _ 4 = \\{ 0 , 1 , 2 , 3 \\} \\).",
+  "1. Compute the multivector Discrete Fourier Spectrum \\( \\hat { X } [ k ] \\) and the corresponding real spectral magnitudes \\( \\| \\hat { X } [ k ] \\| \\) for all harmonic modes \\( k \\in \\{ 0 , 1 , 2 , 3 \\} \\).",
+  "2. Evaluate the real logarithmic spectral magnitude sequence \\( L [ k ] = \\ln ( \\| \\hat { X } [ k ] \\| ) \\).",
+  "3. Compute the Real Homomorphic Cepstrum sequence \\( c [ q ] \\) for all discrete quefrency indices \\( q \\in \\{ 0 , 1 , 2 , 3 \\} \\) using the real inverse cosine kernel:",
+  "   \\[ c [ q ] = \\frac { 1 } { 4 } \\sum _ { k = 0 } ^ { 3 } L [ k ] \\cos \\left( \\frac { 2 \\pi k q } { 4 } \\right) \\]",
+  "",
+  "**Step-by-Step Solution:**",
+  "* **Step 1: Multivector Fourier Spectrum and Spectral Magnitudes**:",
+  "  Computing \\( \\hat { X } [ k ] = \\sum _ { n = 0 } ^ { 3 } x [ n ] \\left( \\cos \\left( \\frac { 2 \\pi n k } { 4 } \\right) - \\mathbf { I } \\sin \\left( \\frac { 2 \\pi n k } { 4 } \\right) \\right) \\):",
+  "  - \\( k = 0 \\): \\( \\hat { X } [ 0 ] = 4 + 1 + 2 + 1 = 8 + 0 \\mathbf { I } \\implies \\| \\hat { X } [ 0 ] \\| = 8 \\)",
+  "  - \\( k = 1 \\): \\( \\hat { X } [ 1 ] = 4 ( 1 ) + 1 ( - \\mathbf { I } ) + 2 ( - 1 ) + 1 ( \\mathbf { I } ) = 2 + 0 \\mathbf { I } \\implies \\| \\hat { X } [ 1 ] \\| = 2 \\)",
+  "  - \\( k = 2 \\): \\( \\hat { X } [ 2 ] = 4 ( 1 ) + 1 ( - 1 ) + 2 ( 1 ) + 1 ( - 1 ) = 4 + 0 \\mathbf { I } \\implies \\| \\hat { X } [ 2 ] \\| = 4 \\)",
+  "  - \\( k = 3 \\): \\( \\hat { X } [ 3 ] = 4 ( 1 ) + 1 ( \\mathbf { I } ) + 2 ( - 1 ) + 1 ( - \\mathbf { I } ) = 2 + 0 \\mathbf { I } \\implies \\| \\hat { X } [ 3 ] \\| = 2 \\)",
+  "",
+  "* **Step 2: Real Logarithmic Spectral Magnitude Sequence \\( L [ k ] \\)**:",
+  "  Taking the natural logarithm of each spectral magnitude:",
+  "  - \\( L [ 0 ] = \\ln ( 8 ) = 3 \\ln 2 \\)",
+  "  - \\( L [ 1 ] = \\ln ( 2 ) = \\ln 2 \\)",
+  "  - \\( L [ 2 ] = \\ln ( 4 ) = 2 \\ln 2 \\)",
+  "  - \\( L [ 3 ] = \\ln ( 2 ) = \\ln 2 \\)",
+  "",
+  "* **Step 3: Real Homomorphic Cepstrum Computation \\( c [ q ] \\)**:",
+  "  Applying the real inverse cosine kernel \\( c [ q ] = \\frac { 1 } { 4 } \\sum _ { k = 0 } ^ { 3 } L [ k ] \\cos \\left( \\frac { \\pi k q } { 2 } \\right) \\):",
+  "  - **Quefrency \\( q = 0 \\)**:",
+  "    Cosine terms for \\( k \\in \\{ 0 , 1 , 2 , 3 \\} \\) are all \\( 1 \\).",
+  "    \\[ c [ 0 ] = \\frac { 1 } { 4 } ( 3 \\ln 2 + \\ln 2 + 2 \\ln 2 + \\ln 2 ) = \\frac { 7 } { 4 } \\ln 2 \\approx 1.21299 \\]",
+  "  - **Quefrency \\( q = 1 \\)**:",
+  "    Cosine terms are \\( \\cos ( 0 ) = 1, \\cos \\left( \\frac { \\pi } { 2 } \\right) = 0, \\cos ( \\pi ) = - 1, \\cos \\left( \\frac { 3 \\pi } { 2 } \\right) = 0 \\).",
+  "    \\[ c [ 1 ] = \\frac { 1 } { 4 } ( L [ 0 ] ( 1 ) + L [ 1 ] ( 0 ) + L [ 2 ] ( - 1 ) + L [ 3 ] ( 0 ) ) = \\frac { 1 } { 4 } ( 3 \\ln 2 - 2 \\ln 2 ) = \\frac { 1 } { 4 } \\ln 2 \\approx 0.17329 \\]",
+  "  - **Quefrency \\( q = 2 \\)**:",
+  "    Cosine terms are \\( \\cos ( 0 ) = 1, \\cos ( \\pi ) = - 1, \\cos ( 2 \\pi ) = 1, \\cos ( 3 \\pi ) = - 1 \\).",
+  "    \\[ c [ 2 ] = \\frac { 1 } { 4 } ( 3 \\ln 2 - \\ln 2 + 2 \\ln 2 - \\ln 2 ) = \\frac { 3 } { 4 } \\ln 2 \\approx 0.51986 \\]",
+  "  - **Quefrency \\( q = 3 \\)**:",
+  "    Cosine terms are \\( \\cos ( 0 ) = 1, \\cos \\left( \\frac { 3 \\pi } { 2 } \\right) = 0, \\cos ( 3 \\pi ) = - 1, \\cos \\left( \\frac { 9 \\pi } { 2 } \\right) = 0 \\).",
+  "    \\[ c [ 3 ] = \\frac { 1 } { 4 } ( L [ 0 ] ( 1 ) + L [ 1 ] ( 0 ) + L [ 2 ] ( - 1 ) + L [ 3 ] ( 0 ) ) = \\frac { 1 } { 4 } ( 3 \\ln 2 - 2 \\ln 2 ) = \\frac { 1 } { 4 } \\ln 2 \\approx 0.17329 \\]",
+  "",
+  "  The resulting real homomorphic cepstrum vector is \\( c [ q ] = \\left[ \\frac { 7 } { 4 } \\ln 2 , \\frac { 1 } { 4 } \\ln 2 , \\frac { 3 } { 4 } \\ln 2 , \\frac { 1 } { 4 } \\ln 2 \\right] ^ T \\). All calculations execute over purely real scalars in discrete quefrency space without complex analysis."
 ].join("\n");
 
 const volume5Object = {
