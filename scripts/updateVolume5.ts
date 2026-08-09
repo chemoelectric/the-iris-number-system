@@ -251,7 +251,7 @@ const circuitSec2Content = [
   "\\[ \\Phi = L I \\]",
   "where \\( L = \\frac { \\mu_0 \\mu_r N ^ 2 A } { l } \\) is the coil inductance for a long solenoid of \\( N \\) turns. By Faraday’s law of induction, a time-varying magnetic flux induces a counter-electromotive force (back-EMF) across coil terminals:",
   "\\[ V _ L = L \\frac { d I } { d t } \\]",
-  "The total magnetic field energy stored within the coil turns is: \\( W _ B = \\frac { 1 } { 2 } L I ^ 2 \\). Magnetic core materials display non-linear hysteresis magnetization curves \\( B ( H ) \\), magnetic saturation \\( B_\\text{sat} \\), and core losses composed of hysteresis loss \\( P_h = k_h f B_\\max ^ { 1.6 } \\) and eddy current loss \\( P_e = k_e f ^ 2 B_\\max ^ 2 t^2 \\)."
+  "The total magnetic field energy stored within the coil turns is: \\( W _ B = \\frac { 1 } { 2 } L I ^ 2 \\). Magnetic core materials display non-linear hysteresis magnetization curves \\( B ( H ) \\), magnetic saturation \\( B_\\text{sat} \\), and core losses composed of hysteresis loss \\( P_h = k_h f B_\\text{max} ^ { 1.6 } \\) and eddy current loss \\( P_e = k_e f ^ 2 B_\\text{max} ^ 2 t^2 \\)."
 ].join("\n");
 
 const circuitSec3Content = [
@@ -315,7 +315,7 @@ const circuitSec5Content = [
   "For an AC source with generator internal impedance \\( Z_S = R_S + \\mathbf { I } X_S \\), maximum real average power is delivered to a load \\( Z_L = R_L + \\mathbf { I } X_L \\) if and only if \\( R_L = R_S \\) and \\( X_L = - X_S \\) (the conjugate match condition \\( Z_L = Z_S ^ * \\)).",
   "",
   "*Proof:*",
-  "Total circuit impedance is \\( Z_\\text{total} = ( R_S + R_L ) + \\mathbf { I } ( X_S + X_L ) \\). The current amplitude squared is \\( I_0 ^ 2 = \\frac { V_0 ^ 2 } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \\). Average real power dissipated in the load is \\( P_L = \\frac { 1 } { 2 } I_0 ^ 2 R_L = \\frac { 1 } { 2 } \\frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \\). To maximize \\( P_L \\) with respect to \\( X_L \\), set \\( X_L = - X_S \\), rendering the denominator purely resistive. Then differentiating \\( P_L = \\frac { 1 } { 2 } \\frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 } \\) with respect to \\( R_L \\) and setting to zero yields \\( R_L = R_S \\). Thus \\( Z_L = Z_S ^ * \\), achieving maximum power transfer \\( P_\\max = \\frac { V_0 ^ 2 } { 8 R_S } \\). \\( \\square \\)",
+  "Total circuit impedance is \\( Z_\\text{total} = ( R_S + R_L ) + \\mathbf { I } ( X_S + X_L ) \\). The current amplitude squared is \\( I_0 ^ 2 = \\frac { V_0 ^ 2 } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \\). Average real power dissipated in the load is \\( P_L = \\frac { 1 } { 2 } I_0 ^ 2 R_L = \\frac { 1 } { 2 } \\frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \\). To maximize \\( P_L \\) with respect to \\( X_L \\), set \\( X_L = - X_S \\), rendering the denominator purely resistive. Then differentiating \\( P_L = \\frac { 1 } { 2 } \\frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 } \\) with respect to \\( R_L \\) and setting to zero yields \\( R_L = R_S \\). Thus \\( Z_L = Z_S ^ * \\), achieving maximum power transfer \\( P_\\text{max} = \\frac { V_0 ^ 2 } { 8 R_S } \\). \\( \\square \\)",
   "===="
 ].join("\n");
 
@@ -416,7 +416,7 @@ const transmissionSec3Content = [
   "==== Three Classic Motor Families",
   "1. **Induction Motors (Asynchronous Motors)**: Polyphase AC currents in stator windings generate a revolving magnetic field of synchronous speed \\( n_s = \\frac { 120 f } { p } \\) (rpm). This field cuts conductive rotor bars in a squirrel-cage rotor, inducing rotor currents and electrodynamic torque. The speed difference defines the **slip** \\( s = \\frac { n_s - n_r } { n_s } \\). The mechanical torque output derived from the equivalent circuit is:",
   "   \\[ T_e = \\frac { 3 p } { 2 \\omega_s } \\frac { V_1 ^ 2 \\left( \\frac { R_2' } { s } \\right) } { \\left( R_1 + \\frac { R_2' } { s } \\right) ^ 2 + ( X_1 + X_2' ) ^ 2 } \\]",
-  "   Maximum (breakdown) torque \\( T_\\max \\) occurs at slip \\( s_\\max = \\frac { R_2' } { \\sqrt { R_1 ^ 2 + ( X_1 + X_2' ) ^ 2 } } \\). Variable Frequency Drives (VFDs) adjust stator frequency \\( f \\) and voltage \\( V_1 \\) proportionally (constant V/f control) to regulate speed efficiently.",
+  "   Maximum (breakdown) torque \\( T_\\text{max} \\) occurs at slip \\( s_\\text{max} = \\frac { R_2' } { \\sqrt { R_1 ^ 2 + ( X_1 + X_2' ) ^ 2 } } \\). Variable Frequency Drives (VFDs) adjust stator frequency \\( f \\) and voltage \\( V_1 \\) proportionally (constant V/f control) to regulate speed efficiently.",
   "2. **Synchronous Motors**: The rotor contains DC-excited field coils or permanent magnets that lock in exact phase synchrony with the stator rotating field (\\( n_r = n_s \\)), operating at zero slip. Operating at over-excited field current causes the synchronous motor to draw leading reactive power, acting as a synchronous condenser for power factor correction.",
   "3. **Brushed DC Motors**: A stationary stator field surrounds a rotating armature. A mechanical commutator and carbon brushes physically reverse armature coil currents every half-revolution to maintain unidirectional electrodynamic torque \\( T_e = K_T \\Phi I_a \\). Speed is controlled via armature voltage: \\( \\omega_m = \\frac { V_a - I_a R_a } { K_a \\Phi } \\)."
 ].join("\n");
