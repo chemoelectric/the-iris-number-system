@@ -105,18 +105,19 @@ scientific notation, and power expressions:
   parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,
   defaulting to 8192 bits). Each module includes an optionally
   compiled built-in demo program via `-fversion=standalone`.
-- **C23 Arbitrary-Precision \(n\)-th Prime Engines**: Reusable C23
-  engines and standalone programs in `src/nth_prime.c`
+- **C23 Hardware and Arbitrary-Precision \(n\)-th Prime Engines**:
+  Reusable C23 engines and standalone programs in `src/nth_prime.c`
   (`nth-prime-c` target) and `src/nth_prime_64.c`
-  (`nth-prime-64-c` target) built from scratch to match
-  `nth_prime.d` and `nth_prime_64.d`. Feature compile-time
-  arbitrary fixed-limb arithmetic (`LimbNumber`) parameterized via
-  `-DNUM_LIMBS=...` or version macros (`-DLIMBS_64`, `-DLIMBS_128`,
-  etc.), GNU MP (`gmp.h`) bignum interface routines with uniquely
-  named typed entry points (`get_nth_prime_u64`, `get_nth_prime_u32`,
-  `get_nth_prime_limb`, `get_nth_prime_mpz`, `get_nth_prime_str`),
-  sublinear Lehmer prime counting, segmented sieve extraction, and
-  OpenMP multithreading.
+  (`nth-prime-64-c` target) matching `nth_prime.d` and
+  `nth_prime_64.d`. `src/nth_prime_64.c` operates purely on
+  standard hardware 64-bit unsigned integers (`uint64_t`).
+  `src/nth_prime.c` features compile-time arbitrary fixed-limb
+  arithmetic (`LimbNumber`) parameterized via `-DNUM_LIMBS=...` or
+  version macros (`-DLIMBS_128`, `-DLIMBS_256`, etc.) and GNU MP
+  (`gmp.h`) bignum interface routines. Both engines feature
+  typed entry points (`get_nth_prime_u64`, `get_nth_prime_u32`,
+  `get_nth_prime_str`), sublinear Lehmer prime counting, segmented
+  sieve extraction, and OpenMP multithreading.
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
   subprogram, max line length \(\le 72\) characters, and single
   operation per statement.

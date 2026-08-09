@@ -1,6 +1,6 @@
-/* nth_prime_64.c - C23 / GNU23 64-bit / arbitrary-precision nth-prime
- * engine using Lehmer's sublinear method, OpenMP multi-threading,
- * compile-time fixed-limb arithmetic (LimbNumber), and GNU MP.
+/* nth_prime_64.c - C23 / GNU23 64-bit hardware integer nth-prime
+ * engine using Lehmer's sublinear method and OpenMP multi-threading.
+ * Operates purely on standard hardware 64-bit unsigned integers.
  */
 
 #include <stdio.h>
@@ -15,44 +15,6 @@
 #ifdef _OPENMP
 #include <omp.h>
 #endif
-
-#if __has_include(<gmp.h>) || defined(USE_GMP)
-#include <gmp.h>
-#define HAS_GMP 1
-#else
-typedef struct {
-    int _mp_alloc;
-    int _mp_size;
-    uint64_t *_mp_d;
-} mpz_t[1];
-#define HAS_GMP 0
-#endif
-
-#ifndef NUM_LIMBS
-#if defined(LIMBS_64)
-#define NUM_LIMBS 1
-#elif defined(LIMBS_128)
-#define NUM_LIMBS 2
-#elif defined(LIMBS_256)
-#define NUM_LIMBS 4
-#elif defined(LIMBS_512)
-#define NUM_LIMBS 8
-#elif defined(LIMBS_1024)
-#define NUM_LIMBS 16
-#elif defined(LIMBS_2048)
-#define NUM_LIMBS 32
-#elif defined(LIMBS_4096)
-#define NUM_LIMBS 64
-#elif defined(LIMBS_8192)
-#define NUM_LIMBS 128
-#else
-#define NUM_LIMBS 1
-#endif
-#endif
-
-typedef struct {
-    uint64_t limbs[NUM_LIMBS];
-} LimbNumber;
 
 #define CACHE_SIZE 1048576
 #define CACHE_MASK (CACHE_SIZE - 1)
@@ -710,84 +672,6 @@ uint32_t get_nth_prime_u32(uint32_t n) {
     uint64_t res = get_nth_prime_u64(u64_n);
     return (uint32_t)res;
 }
-
-LimbNumber limb_number_from_u64(uint64_t val) {
-    LimbNumber ln;
-    memset(&ln, 0, sizeof(LimbNumber));
-    ln.limbs[0] = val;
-    return ln;
-}
-
-uint64_t limb_number_to_u64(LimbNumber ln) {
-    return ln.limbs[0];
-}
-
-#if HAS_GMP
-LimbNumber limb_number_from_mpz(const mpz_t n) {
-    LimbNumber ln;
-    memset(&ln, 0, sizeof(LimbNumber));
-    mpz_t cur;
-    mpz_init_set(cur, n);
-    size_t idx = 0;
-
-    while (mpz_cmp_ui(cur, 0) > 0 && idx < NUM_LIMBS) {
-        unsigned long limb_val = mpz_get_ui(cur);
-        ln.limbs[idx] = (uint64_t)limb_val;
-        mpz_fdiv_q_2exp(cur, cur, 64);
-        idx = idx + 1;
-    }
-    mpz_clear(cur);
-    return ln;
-}
-
-void limb_number_to_mpz(mpz_t rop, LimbNumber ln) {
-    mpz_set_ui(rop, 0);
-    size_t idx = NUM_LIMBS;
-    while (idx > 0) {
-        idx = idx - 1;
-        mpz_mul_2exp(rop, rop, 64);
-        uint64_t l_val = ln.limbs[idx];
-        mpz_add_ui(rop, rop, (unsigned long)l_val);
-    }
-}
-#else
-LimbNumber limb_number_from_mpz(const mpz_t n) {
-    (void)n;
-    LimbNumber ln;
-    memset(&ln, 0, sizeof(LimbNumber));
-    return ln;
-}
-
-void limb_number_to_mpz(mpz_t rop, LimbNumber ln) {
-    (void)rop;
-    (void)ln;
-}
-#endif
-
-LimbNumber get_nth_prime_limb(LimbNumber n) {
-    uint64_t u_val = n.limbs[0];
-    uint64_t p = get_nth_prime_u64(u_val);
-    LimbNumber res = limb_number_from_u64(p);
-    return res;
-}
-
-#if HAS_GMP
-void get_nth_prime_mpz(mpz_t rop, const mpz_t n) {
-    int cmp_zero = mpz_cmp_ui(n, 0);
-    if (cmp_zero <= 0) {
-        mpz_set_ui(rop, 0);
-    } else {
-        LimbNumber ln_in = limb_number_from_mpz(n);
-        LimbNumber ln_out = get_nth_prime_limb(ln_in);
-        limb_number_to_mpz(rop, ln_out);
-    }
-}
-#else
-void get_nth_prime_mpz(mpz_t rop, const mpz_t n) {
-    (void)rop;
-    (void)n;
-}
-#endif
 
 static uint64_t parse_digits(const char *str) {
     uint64_t val = 0;

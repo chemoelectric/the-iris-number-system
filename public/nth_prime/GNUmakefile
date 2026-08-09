@@ -58,7 +58,7 @@ $(C_TARGET): $(SRC_DIR)/nth_prime.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_128 -o $(@) $(<) -lm $(GMP_LIBS)
 
 $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
-	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_64 -o $(@) $(<) -lm $(GMP_LIBS)
+	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm
 
 .PHONY: d d64 c c64
 d:: $(D_TARGET)
