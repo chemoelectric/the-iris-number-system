@@ -1,6 +1,6 @@
 /* nth_prime_64.c - C23 / GNU23 64-bit hardware integer nth-prime
- * engine using Lehmer's sublinear method and OpenMP multi-threading.
- * Operates purely on standard hardware 64-bit unsigned integers.
+ * engine using Lehmer's sublinear method, OpenMP multi-threading,
+ * and GNU MP (GMP) bignum interface routines.
  */
 
 #include <stdio.h>
@@ -14,6 +14,18 @@
 
 #ifdef _OPENMP
 #include <omp.h>
+#endif
+
+#if __has_include(<gmp.h>) || defined(USE_GMP)
+#include <gmp.h>
+#define HAS_GMP 1
+#else
+typedef struct {
+    int _mp_alloc;
+    int _mp_size;
+    uint64_t *_mp_d;
+} mpz_t[1];
+#define HAS_GMP 0
 #endif
 
 #define CACHE_SIZE 1048576
@@ -96,7 +108,6 @@ static void alloc_sieve_buffers(size_t num_words) {
     g_is_subprime_bit = (uint64_t *)malloc(sz_bit);
     size_t sz_pop = num_words * sizeof(uint32_t);
     g_popcnt_block = (uint32_t *)malloc(sz_pop);
-
     size_t w_idx = 0;
     while (w_idx < num_words) {
         g_is_subprime_bit[w_idx] = 0xFFFFFFFFFFFFFFFFULL;
@@ -108,10 +119,9 @@ static void alloc_sieve_buffers(size_t num_words) {
 
 static void mark_sieve_multiples(uint64_t limit) {
     double f_lim = (double)limit;
-    double sq_lim_f = sqrt(f_lim);
-    uint64_t sqrt_lim = (uint64_t)sq_lim_f;
+    double sq_f = sqrt(f_lim);
+    uint64_t sqrt_lim = (uint64_t)sq_f;
     uint64_t p = 3;
-
     while (p <= sqrt_lim) {
         uint64_t p_minus_1 = p - 1;
         uint64_t k = p_minus_1 >> 1;
@@ -120,7 +130,6 @@ static void mark_sieve_multiples(uint64_t limit) {
         uint64_t mask = 1ULL << r_i;
         uint64_t word_val = g_is_subprime_bit[w_i];
         uint64_t bit_val = word_val & mask;
-
         if (bit_val != 0) {
             uint64_t mult = p * p;
             uint64_t p_two = p + p;
@@ -131,8 +140,8 @@ static void mark_sieve_multiples(uint64_t limit) {
                 size_t m_r = (size_t)(m_k & 63);
                 uint64_t bit_m = 1ULL << m_r;
                 uint64_t clear_mask = ~bit_m;
-                uint64_t cur_sub = g_is_subprime_bit[m_w];
-                g_is_subprime_bit[m_w] = cur_sub & clear_mask;
+                uint64_t cur_w = g_is_subprime_bit[m_w];
+                g_is_subprime_bit[m_w] = cur_w & clear_mask;
                 mult = mult + p_two;
             }
         }
@@ -148,9 +157,8 @@ static void build_popcnt_blocks(size_t num_words) {
         uint64_t word_val = g_is_subprime_bit[b];
         int bit_cnt = __builtin_popcountll(word_val);
         uint32_t prev = g_popcnt_block[b];
-        uint32_t next_cnt = prev + (uint32_t)bit_cnt;
         size_t b_next = b + 1;
-        g_popcnt_block[b_next] = next_cnt;
+        g_popcnt_block[b_next] = prev + (uint32_t)bit_cnt;
         b = b + 1;
     }
 }
@@ -158,9 +166,8 @@ static void build_popcnt_blocks(size_t num_words) {
 static void build_bit_sieve(uint64_t limit) {
     g_sieve_max = limit;
     uint64_t num_odds = limit >> 1;
-    uint64_t words_minus_1 = num_odds >> 6;
-    size_t num_words = (size_t)(words_minus_1 + 1);
-
+    uint64_t shift_odds = num_odds >> 6;
+    size_t num_words = (size_t)(shift_odds + 1);
     alloc_sieve_buffers(num_words);
     mark_sieve_multiples(limit);
     build_popcnt_blocks(num_words);
@@ -443,8 +450,8 @@ static uint64_t count_primes_in_segment(uint64_t low_val,
                                          uint64_t high_val,
                                          const uint32_t *base_primes,
                                          size_t base_count) {
-    uint64_t range_diff = high_val - low_val;
-    uint64_t range_len = range_diff + 1;
+    uint64_t diff_lh = high_val - low_val;
+    uint64_t range_len = diff_lh + 1;
     size_t sz_sieve = (size_t)range_len;
     uint8_t *sieve = (uint8_t *)malloc(sz_sieve);
     memset(sieve, 1, sz_sieve);
@@ -494,8 +501,8 @@ static uint64_t sieve_segment_find_nth(uint64_t low_val,
                                         size_t base_count,
                                         uint64_t target_n,
                                         uint64_t start_pi) {
-    uint64_t range_diff = high_val - low_val;
-    uint64_t range_len = range_diff + 1;
+    uint64_t diff_lh = high_val - low_val;
+    uint64_t range_len = diff_lh + 1;
     size_t sz_sieve = (size_t)range_len;
     uint8_t *sieve = (uint8_t *)malloc(sz_sieve);
     memset(sieve, 1, sz_sieve);
@@ -673,76 +680,60 @@ uint32_t get_nth_prime_u32(uint32_t n) {
     return (uint32_t)res;
 }
 
-static uint64_t parse_digits(const char *str) {
+#if HAS_GMP
+void get_nth_prime_mpz(mpz_t rop, const mpz_t n) {
+    int cmp_zero = mpz_cmp_ui(n, 0);
+    if (cmp_zero <= 0) {
+        mpz_set_ui(rop, 0);
+    } else {
+        unsigned long u_val = mpz_get_ui(n);
+        uint64_t p = get_nth_prime_u64((uint64_t)u_val);
+        mpz_set_ui(rop, (unsigned long)p);
+    }
+}
+#else
+void get_nth_prime_mpz(mpz_t rop, const mpz_t n) {
+    (void)rop;
+    (void)n;
+}
+#endif
+
+void get_nth_prime_str(char *out_str,
+                       size_t max_len,
+                       const char *n_str) {
+#if HAS_GMP
+    mpz_t n;
+    mpz_t p;
+    mpz_init(n);
+    mpz_init(p);
+    int parse_res = mpz_set_str(n, n_str, 10);
+    if (parse_res == 0) {
+        get_nth_prime_mpz(p, n);
+        gmp_snprintf(out_str, max_len, "%Zu", p);
+    } else {
+        snprintf(out_str, max_len, "0");
+    }
+    mpz_clear(n);
+    mpz_clear(p);
+#else
     uint64_t val = 0;
     size_t i = 0;
-    size_t len = strlen(str);
+    size_t len = strlen(n_str);
     while (i < len) {
-        char c = str[i];
+        char c = n_str[i];
         if (c >= '0' && c <= '9') {
-            uint64_t d = (uint64_t)(c - '0');
-            uint64_t v10 = val * 10;
-            val = v10 + d;
+            uint64_t digit = (uint64_t)(c - '0');
+            uint64_t val_x_10 = val * 10;
+            val = val_x_10 + digit;
         }
         i = i + 1;
     }
-    return val;
+    uint64_t p = get_nth_prime_u64(val);
+    snprintf(out_str, max_len, "%" PRIu64, p);
+#endif
 }
 
-static uint64_t parse_powers_small(const char *str) {
-    uint64_t res = 0;
-    if (strcmp(str, "1e6") == 0 ||
-        strcmp(str, "10^6") == 0 ||
-        strcmp(str, "10**6") == 0) {
-        res = 1000000ULL;
-    } else if (strcmp(str, "1e9") == 0 ||
-               strcmp(str, "10^9") == 0 ||
-               strcmp(str, "10**9") == 0) {
-        res = 1000000000ULL;
-    }
-    return res;
-}
-
-static uint64_t parse_powers_large(const char *str) {
-    uint64_t res = 0;
-    if (strcmp(str, "1e10") == 0 ||
-        strcmp(str, "10^10") == 0 ||
-        strcmp(str, "10**10") == 0) {
-        res = 10000000000ULL;
-    } else if (strcmp(str, "1e11") == 0 ||
-               strcmp(str, "10^11") == 0 ||
-               strcmp(str, "10**11") == 0) {
-        res = 100000000000ULL;
-    } else if (strcmp(str, "1e12") == 0 ||
-               strcmp(str, "10^12") == 0 ||
-               strcmp(str, "10**12") == 0) {
-        res = 1000000000000ULL;
-    } else if (strcmp(str, "1e13") == 0 ||
-               strcmp(str, "10^13") == 0 ||
-               strcmp(str, "10**13") == 0) {
-        res = 10000000000000ULL;
-    } else if (strcmp(str, "1e14") == 0 ||
-               strcmp(str, "10^14") == 0 ||
-               strcmp(str, "10**14") == 0) {
-        res = 100000000000000ULL;
-    } else if (strcmp(str, "1e15") == 0 ||
-               strcmp(str, "10^15") == 0 ||
-               strcmp(str, "10**15") == 0) {
-        res = 1000000000000000ULL;
-    }
-    return res;
-}
-
-static uint64_t parse_special_input(const char *str) {
-    uint64_t val = parse_powers_small(str);
-    if (val == 0) {
-        val = parse_powers_large(str);
-    }
-    if (val == 0) {
-        val = parse_digits(str);
-    }
-    return val;
-}
+#if defined(STANDALONE) && STANDALONE
 
 static void clean_str(const char *raw, char *clean, size_t max_len) {
     size_t i = 0;
@@ -762,22 +753,6 @@ static void clean_str(const char *raw, char *clean, size_t max_len) {
     clean[j] = '\0';
 }
 
-void get_nth_prime_str(char *out_str,
-                       size_t max_len,
-                       const char *n_str) {
-    char clean[512];
-    clean_str(n_str, clean, sizeof(clean));
-    uint64_t n_val = parse_special_input(clean);
-    if (n_val > 0) {
-        uint64_t p = get_nth_prime_u64(n_val);
-        snprintf(out_str, max_len, "%" PRIu64, p);
-    } else {
-        snprintf(out_str, max_len, "0");
-    }
-}
-
-#if defined(STANDALONE) && STANDALONE
-
 int main(int argc, char **argv) {
     char n_raw[512];
     n_raw[0] = '\0';
@@ -794,11 +769,12 @@ int main(int argc, char **argv) {
 
     char n_clean[512];
     clean_str(n_raw, n_clean, sizeof(n_clean));
-    uint64_t target_n = parse_special_input(n_clean);
+    size_t clean_len = strlen(n_clean);
 
-    if (target_n > 0) {
-        uint64_t nth_prime_val = get_nth_prime_u64(target_n);
-        printf("%" PRIu64 "\n", nth_prime_val);
+    if (clean_len > 0) {
+        char out_str[512];
+        get_nth_prime_str(out_str, sizeof(out_str), n_clean);
+        printf("%s\n", out_str);
     } else {
         printf("Invalid input or N must be positive.\n");
     }
