@@ -458,7 +458,7 @@ Stator magnetic flux vector \( \mathbf { \Phi } _ s \) and rotor permanent magne
 
 **Solution:**
 1. **Characteristic Impedance \( Z_0 \)**: \( Z_0 = \frac { 60 } { \sqrt{\varepsilon_r} } \ln \left( \frac { b } { a } \right) = \frac { 60 } { 1.50 } \ln \left( \frac { 3.60 } { 1.15 } \right) = 40 \ln( 3.1304 ) \approx 40 ( 1.1411 ) \approx 45.64 \ \Omega \).
-2. **Phase Velocity \( v_p \)**: \( v_p = \frac { c } { \sqrt{2.25} } = \frac { 3.0 \times 10^8 } { 1.50 } = 2.0 \times 10^8 \text{ m/s} \) (66.7% speed of light).
+2. **Phase Velocity \( v_p \)**: \( v_p = \frac { c } { \sqrt{2.25} } = \frac { 3.0 \times 10^8 } { 1.50 } = 2.0 \times 10^8 \text{ m/s} \) (66.7% of wave speed \( c \)).
 3. **Poynting Power Density at \( r = a \)**: \( S ( a ) = \frac { V I } { 2 \pi \ln(b/a) a^2 } = \frac { ( 100 ) ( 2.0 ) } { 2 \pi ( 1.1411 ) ( 1.15 \times 10^{-3} )^2 } = \frac { 200 } { 7.170 \times 10^{-6} ( 1.3225 \times 10^{-6} ) } \approx 2.11 \times 10^7 \text{ W/m}^2 \).
 4. **Total Power in Dielectric**: \( P = V I = ( 100 \text{ V} ) ( 2.0 \text{ A} ) = 200 \text{ W} \). Power inside inner copper conductor is zero.
 
