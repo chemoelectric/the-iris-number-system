@@ -21,6 +21,9 @@ endif
 D_TARGET = nth-prime-d
 D64_TARGET = nth-prime-64-d
 C_ROOT_TARGET = nth-root-c
+C_PRIME_TARGET = nth-prime-c
+
+GMP_LIBS := $(shell pkg-config --libs gmp 2>/dev/null || echo "")
 
 DOPTSFLAGS =
 DOPTSFLAGS += -frelease
@@ -54,17 +57,21 @@ $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 $(C_ROOT_TARGET): $(SRC_DIR)/nth_root.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_8192=1 -o $(@) $(<) -lm
 
-.PHONY: d d64 c-root
+$(C_PRIME_TARGET): $(SRC_DIR)/nth_prime.c
+	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
+
+.PHONY: d d64 c-root c-prime
 d:: $(D_TARGET)
 d64:: $(D64_TARGET)
 c-root:: $(C_ROOT_TARGET)
+c-prime:: $(C_PRIME_TARGET)
 
 clean::
-	-rm -f $(D_TARGET) $(D64_TARGET) $(C_ROOT_TARGET)
+	-rm -f $(D_TARGET) $(D64_TARGET) $(C_ROOT_TARGET) $(C_PRIME_TARGET)
 
 .PHONY: default all
 default:: all
-all:: d d64 c-root
+all:: d d64 c-root c-prime
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)

@@ -22,6 +22,7 @@ To build the D and C implementations:
 make -f GNUmakefile d
 make -f GNUmakefile d64
 make -f GNUmakefile c-root
+make -f GNUmakefile c-prime
 ```
 
 To compile with custom compiler flags or standard specifications:
@@ -109,6 +110,12 @@ scientific notation, and power expressions:
   multithreading, multi-limb integer arithmetic (`LimbNumber`),
   parameterized limb precision (`-DLIMBS_8192=1`), and exact
   integer \(n\)-th root calculation \(\lfloor A^{1/n} \rfloor\).
+- **C23 Arbitrary-Precision \(n\)-th Prime Program**: Reusable C23 engine
+  and standalone program in `src/nth_prime.c` (`nth-prime-c` target)
+  utilizing GNU MP (`gmp.h`) bignum interface routines with uniquely named
+  typed entry points (`get_nth_prime_u64`, `get_nth_prime_mpz`,
+  `get_nth_prime_str`, `get_nth_prime_u32`), sublinear Lehmer prime counting,
+  segmented sieve extraction, and OpenMP multithreading.
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
   subprogram, max line length \(\le 72\) characters, and single
   operation per statement.
