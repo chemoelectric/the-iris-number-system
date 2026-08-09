@@ -12,16 +12,12 @@ import std.string : strip;
 
 alias u64 = ulong;
 
-struct MemoEntry {
-    u64 x;
-    uint a;
-    u64 res;
-}
-
 enum CACHE_SIZE = 1048576;
 enum CACHE_MASK = CACHE_SIZE - 1;
 
-MemoEntry[CACHE_SIZE] memoTable;
+align(64) __gshared u64[CACHE_SIZE] memoX;
+align(64) __gshared uint[CACHE_SIZE] memoA;
+align(64) __gshared u64[CACHE_SIZE] memoRes;
 
 __gshared ushort[30030] phi6Table;
 
@@ -181,16 +177,17 @@ u64 piFast(u64 w, const(uint)[] primes) {
     return count;
 }
 
+pragma(inline, true)
 u64 phiMemoized(u64 x, size_t a, const(uint)[] primes) {
     u64 multVal = cast(u64) a * 0x9e3779b97f4a7c15UL;
     u64 key = x ^ multVal;
     size_t slot = cast(size_t) (key & CACHE_MASK);
-    u64 cachedX = memoTable[slot].x;
-    uint cachedA = memoTable[slot].a;
+    u64 cachedX = memoX[slot];
+    uint cachedA = memoA[slot];
     u64 result = 0;
 
     if (cachedX == x && cachedA == cast(uint) a) {
-        result = memoTable[slot].res;
+        result = memoRes[slot];
     } else {
         u64 p = cast(u64) primes[a - 1];
         if (p > x) {
@@ -214,9 +211,9 @@ u64 phiMemoized(u64 x, size_t a, const(uint)[] primes) {
             u64 right = phiRec(divP, a - 1, primes);
             result = left - right;
         }
-        memoTable[slot].x = x;
-        memoTable[slot].a = cast(uint) a;
-        memoTable[slot].res = result;
+        memoX[slot] = x;
+        memoA[slot] = cast(uint) a;
+        memoRes[slot] = result;
     }
     return result;
 }
