@@ -1,5 +1,3 @@
-module nth_root;
-
 /* nth_root.c - Arbitrary-precision integer n-th root implementation
  * targeting C23 / GNU23 with OpenMP, multi-limb arithmetic,
  * and standalone executable support.
@@ -481,11 +479,8 @@ void get_nth_roots_parallel(const LimbNumber *inputs,
 #ifdef _OPENMP
     #pragma omp parallel for schedule(dynamic)
 #endif
-    size_t i = 0;
-    while (i < count) {
+    for (size_t i = 0; i < count; i += 1)
         outputs[i] = get_nth_root_limb(inputs[i], n);
-        i = i + 1;
-    }
 }
 
 void clean_input_str(const char *raw, char *clean, size_t max_len) {
