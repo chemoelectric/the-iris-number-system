@@ -552,6 +552,17 @@ In truth, the observed facts regarding semiconductors—such as discrete energy 
 
 However, twentieth-century physics engaged in a fraudulent **term coöptation of 'fundamental principle'**. Facts that were discovered experimentally and awaited derivation from first principles were mislabeled as 'fundamental quantum principles'. What was actually meant by these observed facts was **empirical law**.
 
+==== The Myth of the 'Quantum Model of a Transistor' and Practical Engineering Reality
+A ubiquitous artifact of this verbal trickery is the popular claim that solid-state transistors—such as Junction Field-Effect Transistors (JFETs), Bipolar Junction Transistors (BJTs), and Metal-Oxide-Semiconductor Field-Effect Transistors (MOSFETs)—depend upon or are designed using a 'quantum model'. In popular discourse, commentators frequently challenge skeptics by asking: “How do you explain the quantum model of a transistor?”
+
+The rigorous answer from electrical engineering is simple and direct: **there is no such model**. Practical semiconductor devices are not designed, modeled, or analyzed using 'quantum' models. In actual engineering practice, a transistor—such as an n-channel JFET—is modeled strictly as a beam of charge carriers (electrons or holes) moving through a solid semiconductor crystal lattice under the influence of classical electric and magnetic fields, governed by Poisson's equation, carrier drift, diffusion, and current continuity equations:
+\[ \nabla^2 V = - \frac { \rho } { \varepsilon }, \quad \mathbf { J }_n = q n \mu_n \mathbf { E } + q D_n \nabla n, \quad \frac { \partial n } { \partial t } = \frac { 1 } { q } \nabla \cdot \mathbf { J }_n + G_n - R_n \]
+
+In an n-channel JFET, for example, a reverse-biased p-n junction gate controls the effective cross-sectional channel width through classical electrostatic depletion layer expansion. The pinch-off voltage \( V_P \) and drain saturation current \( I_{DSS} \) follow directly from boundary electrostatic potential analysis across the physical channel width:
+\[ V_P = \frac { q N_D a^2 } { 2 \varepsilon }, \quad I_D = I_{DSS} \left( 1 - \frac { V_{GS} } { V_P } \right)^2 \]
+
+Where experimental parameters appear—such as effective carrier masses, scattering relaxation times, or energy band gaps—they were historically known **strictly from experiment**. These empirical parameters were facts discovered in the laboratory and mislabeled as 'quantum' through term coöptation, despite being nothing more than empirical laws governing discrete crystalline lattices.
+
 ==== Niels Bohr, the Solvay Conference of 1927, and Verbal Trickery
 This systematic term coöptation originated formally with **Niels Bohr** and his so-called **'complementarity principle'**—the anti-rational doctrine asserting that a physical scientist must simultaneously believe mutually contradictory propositions (such as asserting that an entity is simultaneously a continuous wave and a zero-volume point particle, or that physical transitions occur as uncaused 'quantum jumps' without finite duration).
 
