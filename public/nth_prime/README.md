@@ -21,8 +21,8 @@ To build the D and C implementations:
 ```bash
 make -f GNUmakefile d
 make -f GNUmakefile d64
-make -f GNUmakefile c-root
-make -f GNUmakefile c-prime
+make -f GNUmakefile c
+make -f GNUmakefile c64
 ```
 
 To compile with custom compiler flags or standard specifications:
@@ -105,16 +105,18 @@ scientific notation, and power expressions:
   parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,
   defaulting to 8192 bits). Each module includes an optionally
   compiled built-in demo program via `-fversion=standalone`.
-- **C23 Arbitrary-Precision \(n\)-th Prime Engine**: Reusable C23
-  engine and standalone program in `src/nth_prime.c` (`nth-prime-c`
-  target) built from scratch to match `nth_prime.d`. Features
-  compile-time arbitrary fixed-limb arithmetic (`LimbNumber`)
-  parameterized via `-DNUM_LIMBS=...` or version macros
-  (`-DLIMBS_128`, `-DLIMBS_256`, etc.), GNU MP (`gmp.h`) bignum
-  interface routines with uniquely named typed entry points
-  (`get_nth_prime_u64`, `get_nth_prime_u32`, `get_nth_prime_limb`,
-  `get_nth_prime_mpz`, `get_nth_prime_str`), sublinear Lehmer prime
-  counting, segmented sieve extraction, and OpenMP multithreading.
+- **C23 Arbitrary-Precision \(n\)-th Prime Engines**: Reusable C23
+  engines and standalone programs in `src/nth_prime.c`
+  (`nth-prime-c` target) and `src/nth_prime_64.c`
+  (`nth-prime-64-c` target) built from scratch to match
+  `nth_prime.d` and `nth_prime_64.d`. Feature compile-time
+  arbitrary fixed-limb arithmetic (`LimbNumber`) parameterized via
+  `-DNUM_LIMBS=...` or version macros (`-DLIMBS_64`, `-DLIMBS_128`,
+  etc.), GNU MP (`gmp.h`) bignum interface routines with uniquely
+  named typed entry points (`get_nth_prime_u64`, `get_nth_prime_u32`,
+  `get_nth_prime_limb`, `get_nth_prime_mpz`, `get_nth_prime_str`),
+  sublinear Lehmer prime counting, segmented sieve extraction, and
+  OpenMP multithreading.
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
   subprogram, max line length \(\le 72\) characters, and single
   operation per statement.

@@ -21,6 +21,7 @@ endif
 D_TARGET = nth-prime-d
 D64_TARGET = nth-prime-64-d
 C_TARGET = nth-prime-c
+C64_TARGET = nth-prime-64-c
 
 GMP_LIBS := $(shell pkg-config --libs gmp 2>/dev/null || echo "")
 
@@ -56,17 +57,21 @@ $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 $(C_TARGET): $(SRC_DIR)/nth_prime.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_128 -o $(@) $(<) -lm $(GMP_LIBS)
 
-.PHONY: d d64 c
+$(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
+	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_64 -o $(@) $(<) -lm $(GMP_LIBS)
+
+.PHONY: d d64 c c64
 d:: $(D_TARGET)
 d64:: $(D64_TARGET)
 c:: $(C_TARGET)
+c64:: $(C64_TARGET)
 
 clean::
-	-rm -f $(D_TARGET) $(D64_TARGET) $(C_TARGET)
+	-rm -f $(D_TARGET) $(D64_TARGET) $(C_TARGET) $(C64_TARGET)
 
 .PHONY: default all
 default:: all
-all:: d d64 c
+all:: d d64 c c64
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)
