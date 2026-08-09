@@ -196,7 +196,7 @@ where \( \left\| \hat { X } [ k ] \right\| ^ 2 = \left( \operatorname { Sc } ( \
 
 == Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures
 
-This chapter formulates classical and high-frequency circuit theory from first principles on discrete multiscale resolution grids \( \mathcal { G } _ N \), deriving Kirchhoff's voltage and current laws, resistors, capacitors (condensers), inductors (coils), transformers, antennas, earth grounds, grounded chassis, and electromagnetic shielding.
+This chapter formulates classical and high-frequency circuit theory from first principles on discrete multiscale resolution grids \( \mathcal { G } _ N \), deriving Kirchhoff's voltage and current laws, resistors, capacitors (condensers), inductors (coils), transient RC and LC circuit dynamics, the tuning section of crystal radios, the full practical crystal receiver circuit with 0.25V threshold rectifier and 4000 ohm headphones, transformers, antennas, earth grounds as active RF counterpoises, grounded chassis, and electromagnetic shielding.
 
 === Kirchhoff’s Laws and Fundamental Circuit Topologies on Discrete Resolution Grids
 
@@ -243,6 +243,20 @@ where \( L = \frac { \mu_0 \mu_r N ^ 2 A } { l } \) is the coil inductance for a
 \[ V _ L = L \frac { d I } { d t } \]
 The total magnetic field energy stored within the coil turns is: \( W _ B = \frac { 1 } { 2 } L I ^ 2 \). Magnetic core materials display non-linear hysteresis magnetization curves \( B ( H ) \), magnetic saturation \( B_\text{sat} \), and core losses composed of hysteresis loss \( P_h = k_h f B_\text{max} ^ { 1.6 } \) and eddy current loss \( P_e = k_e f ^ 2 B_\text{max} ^ 2 t^2 \).
 
+==== Transient Dynamics and Frequency Response in RC and LC Circuits
+The temporal evolution and frequency response of circuits containing combinations of resistors, condensers, and coils govern signal filtering, energy storage, and resonant selectivity on the discrete resolution grid \( \mathcal { G } _ N \).
+
+. **RC Transient and Filtering Dynamics**: When a constant source voltage \( V_s \) is applied to a series resistor \( R \) and condenser \( C \), Kirchhoff’s Voltage Law yields the first-order differential equation:
+\[ R C \frac { d V_C ( t ) } { d t } + V_C ( t ) = V_s \]
+  Defining the characteristic time constant \( \tau = R C \), the charging step response across the condenser dielectric is \( V_C ( t ) = V_s \left( 1 - e ^ { - t / \tau } \right) \), with charging current decay \( I ( t ) = \frac { V_s } { R } e ^ { - t / \tau } \). In the frequency domain, the series RC network operates as a first-order low-pass filter with transfer function \( H ( f ) = \frac { 1 } { 1 + \mathbf { I } ( f / f_c ) } \), exhibiting a \( - 3 \text{ dB} \) cutoff frequency at:
+\[ f_c = \frac { 1 } { 2 \pi R C } \]
+
+. **LC Undamped Harmonic Resonance**: In an ideal lossless LC tank circuit comprising a coil \( L \) and condenser \( C \), charge conservation and magnetic back-EMF govern the second-order harmonic oscillator equation:
+\[ L \frac { d ^ 2 Q ( t ) } { d t ^ 2 } + \frac { Q ( t ) } { C } = 0 \]
+  The exact natural angular resonant frequency is \( \omega_0 = \frac { 1 } { \sqrt { L C } } \), yielding the natural resonant frequency:
+\[ f_0 = \frac { 1 } { 2 \pi \sqrt { L C } } \]
+  The stored energy alternates back and forth between electric field energy \( W_E ( t ) = \frac { 1 } { 2 } C V ( t ) ^ 2 \) in the condenser dielectric and magnetic field energy \( W_B ( t ) = \frac { 1 } { 2 } L I ( t ) ^ 2 \) inside the coil turns, keeping total field energy \( W_\text{total} = W_E + W_B \) strictly conserved.
+
 === Transformers, Antennas, and Impedance Matching
 
 ==== Transformers and Mutual Inductance
@@ -257,6 +271,17 @@ An antenna serves as an electrodynamic transducer between lumped guided currents
 
 ==== Impedance Matching Networks
 To maximize real power transfer from a source with complex bivector internal impedance \( Z_S = R_S + \mathbf { I } X_S \) to a load \( Z_L = R_L + \mathbf { I } X_L \), the conjugate matching condition \( Z_L = Z_S ^ * = R_S - \mathbf { I } X_S \) must be satisfied. Impedance matching networks—utilizing L-sections, Pi-sections, T-sections, and quarter-wave transmission lines—transform arbitrary load impedances to match generator source impedances.
+
+==== Electrodynamic Tuning Section and Full Practical Crystal Receiver Circuit
+A classic, practical application of LC resonance, impedance matching, and non-linear signal rectification is the **crystal radio receiver**. Operating without external batteries or power supplies, a crystal radio extracts both acoustic sound power and signal intelligence directly from incoming amplitude-modulated (AM) electromagnetic wave fields.
+
+. **The Resonant LC Tuning Tank and Frequency Selectivity**: Intercepted RF signal current from an elevated long-wire antenna and active earth ground counterpoise drives a parallel LC tuning tank consisting of a high-Q tuning coil \( L \) and a variable tuning condenser \( C \). At the targeted carrier frequency \( f_0 = \frac { 1 } { 2 \pi \sqrt { L C } } \), the parallel tank exhibits maximum equivalent parallel resistance \( R_p = Q \omega_0 L \) (where \( Q = \frac { \omega_0 L } { r_s } \) is the tank quality factor and \( r_s \) is coil wire resistance). This parallel resonance produces a high peak RF voltage \( V_\text{tank} \) across the tuning terminals while shorting off-resonance channels to ground. The selectivity bandwidth is \( \Delta f = \frac { f_0 } { Q } \).
+
+. **Non-Linear Detection with Threshold Rectifier**: The tuned RF voltage \( V_\text{rf} ( t ) = V_m ( 1 + m \cos \omega_a t ) \cos \omega_c t \) is applied across a point-contact crystal detector (such as a Galena, Pyrite, or germanium diode). The detector operates as an ideal threshold rectifier with a characteristic forward turn-on voltage threshold \( V_\text{th} = 0.25 \text{ V} \) (reflecting the localized metal-semiconductor Schottky barrier potential drop). Current flows through the rectifier junction only during positive half-cycles where \( V_\text{rf} ( t ) > V_\text{th} = 0.25 \text{ V} \), stripping the negative half-cycles and converting the high-frequency AC carrier into a series of unidirectional, amplitude-modulated current pulses.
+
+. **High-Impedance \( 4000 \ \Omega \) Headphones and RF Bypass Condenser Load Stage**: The rectified current pulses drive a load stage comprising high-impedance magnetic headphones (with winding DC resistance \( R_\text{phones} = 4000 \ \Omega \)) connected in parallel with an RF bypass condenser \( C_\text{bypass} \approx 1.5 \text{ nF} \).
+  * **RF Carrier Bypass Action**: At the carrier radio frequency (e.g. \( f_c = 1.0 \text{ MHz} \)), the bypass condenser presents low reactance \( X_{C,\text{rf}} = \frac { 1 } { 2 \pi f_c C_\text{bypass}} \approx 106.1 \ \Omega \ll 4000 \ \Omega \). Consequently, \( 97.4\% \) of the residual high-frequency RF carrier current bypasses harmlessly through \( C_\text{bypass} \) directly to ground, preventing high-frequency inductive choking in the headphone coils.
+  * **Audio Modulation Current Demodulation**: At audio modulation frequencies (e.g. \( f_a = 1.0 \text{ kHz} \)), the bypass condenser presents very high reactance \( X_{C,\text{audio}} = \frac { 1 } { 2 \pi f_a C_\text{bypass}} \approx 106.1 \text{ k}\Omega \gg 4000 \ \Omega \). Thus, \( 96.4\% \) of the low-frequency rectified audio envelope current \( I_\text{audio} ( t ) \approx \frac { V_m ( 1 + m \cos \omega_a t ) - V_\text{th} } { \pi R_\text{phones} } \) is driven directly through the \( 4000 \ \Omega \) magnetic headphone windings, generating magnetic force variations that actuate the headphone diaphragm and produce clear acoustic sound.
 
 === Earth Grounds, Grounded Chassis, Electrostatic Shielding, and Faraday Enclosures
 
@@ -335,6 +360,34 @@ Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X
 3. **At \( f = 1 \text{ GHz} \)**:
    \( \delta_s = \sqrt { \frac { 2 } { 2 \pi ( 10 ^ 9 ) ( 4 \pi \times 10 ^ { - 7 } ) ( 5.8 \times 10 ^ 7 ) } } \approx 2.09 \ \mu \text{m} \).
    Absorption loss: \( A = 8.686 \left( \frac { 1.0 \text{ mm} } { 0.00209 \text{ mm} } \right) \approx 4156 \text{ dB} \) (complete field exclusion).
+
+==== Example 3: Comprehensive Electrodynamic Analysis of a Full Practical Crystal Receiver Circuit
+**Problem Statement:** An elevated long-wire AM antenna and active earth ground counterpoise drive an AM broadcast signal at carrier frequency \( f_c = 1.0 \text{ MHz} \) with audio modulation index \( m = 0.50 \) at \( f_a = 1.0 \text{ kHz} \). The antenna-ground system models as an RF source of peak amplitude \( V_\text{ant} = 1.60 \text{ V} \) with internal source resistance \( R_\text{ant} = 20 \text{ k}\Omega \) connected across a parallel tuned LC tank consisting of a coil \( L = 250 \ \mu\text{H} \) (wire resistance \( r_s = 10 \ \Omega \)) and variable tuning condenser \( C = 101.321 \text{ pF} \) (tuned to \( f_0 = 1.0 \text{ MHz} \)). The tuned RF voltage drives a germanium point-contact detector with an ideal threshold rectifier having a turn-on threshold \( V_\text{th} = 0.25 \text{ V} \), connected to \( R_\text{phones} = 4000 \ \Omega \) high-impedance headphones in parallel with an RF bypass condenser \( C_\text{bypass} = 1.5 \text{ nF} \). Calculate:
+1. The tank resonant frequency \( f_0 \), coil reactance \( X_L \), unloaded quality factor \( Q_0 \), and parallel equivalent resistance \( R_p \).
+2. The loaded peak RF tank voltage \( V_\text{tank} \) delivered across the detector, verifying that \( V_\text{tank} > V_\text{th} = 0.25 \text{ V} \).
+3. The peak rectified current \( I_\text{peak} \), average audio current \( I_\text{audio} \), and net audio power \( P_\text{audio} \) delivered to the \( 4000 \ \Omega \) headphones.
+4. The bypass condenser reactances \( X_{C,\text{rf}} \) at \( 1.0 \text{ MHz} \) and \( X_{C,\text{audio}} \) at \( 1.0 \text{ kHz} \), demonstrating RF carrier shorting vs audio current drive into the \( 4000 \ \Omega \) headphone windings.
+
+**Solution:**
+1. **Tank Resonance and Quality Factor \( Q_0 \)**:
+   * Resonant frequency: \( f_0 = \frac { 1 } { 2 \pi \sqrt { L C } } = \frac { 1 } { 2 \pi \sqrt { ( 250 \times 10 ^ { - 6 } ) ( 101.321 \times 10 ^ { - 12 } ) } } = 1.00 \times 10 ^ 6 \text{ Hz} = 1.00 \text{ MHz} \).
+   * Angular frequency: \( \omega_0 = 2 \pi f_0 = 6.2832 \times 10 ^ 6 \text{ rad/s} \).
+   * Coil reactance: \( X_L = \omega_0 L = ( 6.2832 \times 10 ^ 6 ) ( 250 \times 10 ^ { - 6 } ) = 1570.8 \ \Omega \).
+   * Unloaded Quality Factor: \( Q_0 = \frac { X_L } { r_s } = \frac { 1570.8 } { 10 } = 157.08 \).
+   * Parallel Equivalent Resistance: \( R_p = Q_0 X_L = ( 157.08 ) ( 1570.8 ) \approx 246.7 \text{ k}\Omega \).
+2. **Loaded Peak RF Tank Voltage \( V_\text{tank} \)**:
+   * The effective load resistance presented by the half-wave rectifier driving the \( 4000 \ \Omega \) headphones is \( R_\text{load,eff} \approx \pi R_\text{phones} = \pi ( 4000 ) \approx 12.57 \text{ k}\Omega \).
+   * Parallel combination of tank parallel resistance and load: \( R_\text{tank,loaded} = \frac { R_p R_\text{load,eff} } { R_p + R_\text{load,eff} } = \frac { ( 246.7 ) ( 12.57 ) } { 246.7 + 12.57 } \approx 11.96 \text{ k}\Omega \).
+   * Peak RF tank voltage: \( V_\text{tank} = V_\text{ant} \cdot \frac { R_\text{tank,loaded} } { R_\text{ant} + R_\text{tank,loaded} } = 1.60 \cdot \frac { 11.96 } { 20 + 11.96 } \approx 0.600 \text{ V} \).
+   * Since \( V_\text{tank} = 0.600 \text{ V} > V_\text{th} = 0.250 \text{ V} \), the rectifier turns on during each positive RF peak.
+3. **Rectified Currents and Net Audio Power to \( 4000 \ \Omega \) Headphones**:
+   * Peak differential voltage driving current: \( V_\text{diff} = V_\text{tank} - V_\text{th} = 0.600 - 0.250 = 0.350 \text{ V} \).
+   * Peak rectified current: \( I_\text{peak} = \frac { V_\text{diff} } { R_\text{phones} } = \frac { 0.350 \text{ V} } { 4000 \ \Omega } = 8.750 \times 10 ^ { - 5 } \text{ A} = 87.50 \ \mu\text{A} \).
+   * Average rectified audio current: \( I_\text{audio} = \frac { I_\text{peak} } { \pi } = \frac { 87.50 \ \mu\text{A} } { \pi } \approx 27.85 \ \mu\text{A} \).
+   * Net audio power delivered to \( 4000 \ \Omega \) headphones: \( P_\text{audio} = I_\text{audio} ^ 2 R_\text{phones} = ( 27.85 \times 10 ^ { - 6 } ) ^ 2 ( 4000 ) \approx 3.10 \times 10 ^ { - 6 } \text{ W} = 3.10 \ \mu\text{W} \).
+4. **Frequency-Selective Action of the \( C_\text{bypass} = 1.5 \text{ nF} \) Condenser**:
+   * At carrier frequency \( f_c = 1.0 \text{ MHz} \): \( X_{C,\text{rf}} = \frac { 1 } { 2 \pi ( 1.0 \times 10 ^ 6 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \ \Omega \). Since \( X_{C,\text{rf}} = 106.1 \ \Omega \ll 4000 \ \Omega \) (\( R_\text{phones} \)), \( 97.4\% \) of the RF carrier ripple passes safely through the bypass condenser, protecting the headphone coils from high-frequency reactive choking.
+   * At audio frequency \( f_a = 1.0 \text{ kHz} \): \( X_{C,\text{audio}} = \frac { 1 } { 2 \pi ( 1000 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \text{ k}\Omega \). Since \( X_{C,\text{audio}} = 106.1 \text{ k}\Omega \gg 4000 \ \Omega \) (\( R_\text{phones} \)), \( 96.4\% \) of the low-frequency rectified audio envelope current flows directly through the \( 4000 \ \Omega \) headphone windings, driving clear acoustic sound output.
 
 == Transmission Theory, Power Engineering, and Electrical Machinery
 
