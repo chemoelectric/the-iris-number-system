@@ -16,11 +16,12 @@ Build the parallelized `nth-prime` binary using GNU Make:
 make -f GNUmakefile
 ```
 
-To build the D implementations:
+To build the D and C implementations:
 
 ```bash
 make -f GNUmakefile d
 make -f GNUmakefile d64
+make -f GNUmakefile c-root
 ```
 
 To compile with custom compiler flags or standard specifications:
@@ -103,6 +104,11 @@ scientific notation, and power expressions:
   parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,
   defaulting to 8192 bits). Each module includes an optionally
   compiled built-in demo program via `-fversion=standalone`.
+- **Arbitrary-Precision C \(n\)-th Root Program**: Reusable C23 module
+  and standalone program in `src/nth_root.c` supporting OpenMP
+  multithreading, multi-limb integer arithmetic (`LimbNumber`),
+  parameterized limb precision (`-DLIMBS_8192=1`), and exact
+  integer \(n\)-th root calculation \(\lfloor A^{1/n} \rfloor\).
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
   subprogram, max line length \(\le 72\) characters, and single
   operation per statement.
