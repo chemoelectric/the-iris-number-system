@@ -49,16 +49,16 @@ OBJ_DIR = build
 .PHONY: clean
 
 $(D_TARGET): $(SRC_DIR)/nth_prime.d
-	$(DC) $(DFLAGS) -fversion=standalone -fversion=LIMBS_128 -o $(@) $(<)
+	$(DC) $(DFLAGS) -fversion=standalone -fversion=LIMBS_256 -o $(@) $(<)
 
 $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 $(C_TARGET): $(SRC_DIR)/nth_prime.c
-	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_128 -o $(@) $(<) -lm $(GMP_LIBS)
+	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_256 -o $(@) $(<) -lm $(GMP_LIBS)
 
 $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
-	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm
+	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
 
 .PHONY: d d64 c c64
 d:: $(D_TARGET)

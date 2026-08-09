@@ -447,7 +447,7 @@ u64 getNthPrimeCore(u64 n) {
         u64 zVal = cast(u64) sqX;
 
         u64 sieveLimit = zVal * 12;
-        double pow34 = pow(fx, 0.75);
+        double pow34 = fx ^^ 0.75;
         u64 s34 = cast(u64)(pow34 + 10000.0);
         if (sieveLimit < s34) {
             sieveLimit = s34;
