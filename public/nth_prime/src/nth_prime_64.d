@@ -161,18 +161,7 @@ u64 piFast(u64 w, const(uint)[] primes) {
 
         count = cast(u64) (baseCnt + subCnt);
     } else {
-        size_t low = 0;
-        size_t high = primes.length;
-        while (low < high) {
-            size_t mid = (low + high) / 2;
-            uint pVal = primes[mid];
-            if (cast(u64) pVal <= w) {
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
-        }
-        count = cast(u64) low;
+        count = primeCountLehmer(w, primes);
     }
     return count;
 }
@@ -275,37 +264,43 @@ u64 primeCountLehmer(u64 x, const(uint)[] primes) {
         u64 cVal = piFast(cast(u64) cbrt(fx), primes);
 
         u64 phiVal = phiRec(x, cast(size_t) aVal, primes);
-        u64 term1 = (bVal + aVal - 2) * (bVal - aVal + 1);
-        u64 halfTerm = term1 / 2;
-        u64 sum1 = phiVal + halfTerm;
 
-        u64 sum2 = 0;
+        u64 p2 = 0;
         size_t i = cast(size_t) (aVal + 1);
         size_t bLimit = cast(size_t) bVal;
         while (i <= bLimit) {
             u64 p = cast(u64) primes[i - 1];
             u64 w = x / p;
             u64 piW = piFast(w, primes);
-            sum2 = sum2 + piW;
+            u64 castI = cast(u64) i;
+            u64 termI = piW - (castI - 1UL);
+            p2 = p2 + termI;
+            i = i + 1;
+        }
 
-            if (i <= cast(size_t) cVal) {
-                u64 sqrtW = cast(u64) sqrt(cast(double) w);
-                u64 bi = piFast(sqrtW, primes);
-                size_t j = i;
-                size_t biLimit = cast(size_t) bi;
-                while (j <= biLimit) {
-                    u64 pj = cast(u64) primes[j - 1];
-                    u64 divPj = w / pj;
-                    u64 piW2 = piFast(divPj, primes);
-                    u64 castJ = cast(u64) j;
-                    u64 termJ = piW2 - castJ + 1;
-                    sum2 = sum2 - termJ;
-                    j = j + 1;
-                }
+        u64 p3 = 0;
+        i = cast(size_t) (aVal + 1);
+        size_t cLimit = cast(size_t) cVal;
+        while (i <= cLimit) {
+            u64 p = cast(u64) primes[i - 1];
+            u64 w = x / p;
+            u64 sqrtW = cast(u64) sqrt(cast(double) w);
+            u64 bi = piFast(sqrtW, primes);
+            size_t j = i;
+            size_t biLimit = cast(size_t) bi;
+            while (j <= biLimit) {
+                u64 pj = cast(u64) primes[j - 1];
+                u64 divPj = w / pj;
+                u64 piW2 = piFast(divPj, primes);
+                u64 castJ = cast(u64) j;
+                u64 termJ = piW2 - (castJ - 1UL);
+                p3 = p3 + termJ;
+                j = j + 1;
             }
             i = i + 1;
         }
-        count = sum1 - sum2;
+
+        count = phiVal + aVal - 1UL - p2 - p3;
     }
     return count;
 }
@@ -430,6 +425,11 @@ u64 getNthPrime(u64 n) {
         u64 zVal = cast(u64) sqX;
 
         u64 sieveLimit = zVal * 12;
+        double pow34 = pow(fx, 0.75);
+        u64 s34 = cast(u64)(pow34 + 10000.0);
+        if (sieveLimit < s34) {
+            sieveLimit = s34;
+        }
         if (sieveLimit < 200000000UL) {
             sieveLimit = 200000000UL;
         }

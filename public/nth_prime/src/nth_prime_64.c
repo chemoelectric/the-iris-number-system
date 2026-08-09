@@ -228,6 +228,10 @@ static uint32_t *collect_primes_up_to(uint64_t max_val,
     return res;
 }
 
+static uint64_t prime_count_lehmer(uint64_t x,
+                                    const uint32_t *primes,
+                                    size_t prime_count);
+
 static uint64_t pi_fast(uint64_t w,
                         const uint32_t *primes,
                         size_t prime_count) {
@@ -252,20 +256,7 @@ static uint64_t pi_fast(uint64_t w,
         uint32_t total_u32 = base_cnt + sub_u32;
         count = (uint64_t)total_u32;
     } else {
-        size_t low = 0;
-        size_t high = prime_count;
-        while (low < high) {
-            size_t sum_lh = low + high;
-            size_t mid = sum_lh / 2;
-            uint32_t p_val = primes[mid];
-            uint64_t p_u64 = (uint64_t)p_val;
-            if (p_u64 <= w) {
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
-        }
-        count = (uint64_t)low;
+        count = prime_count_lehmer(w, primes, prime_count);
     }
     return count;
 }
@@ -371,7 +362,7 @@ static uint64_t lehmer_sum2(uint64_t x,
                             uint64_t c_val,
                             const uint32_t *primes,
                             size_t prime_count) {
-    uint64_t sum2 = 0;
+    uint64_t p2 = 0;
     size_t i = (size_t)(a_val + 1);
     size_t b_limit = (size_t)b_val;
     while (i <= b_limit) {
@@ -379,31 +370,39 @@ static uint64_t lehmer_sum2(uint64_t x,
         uint64_t p = (uint64_t)primes[idx_i];
         uint64_t w = x / p;
         uint64_t pi_w = pi_fast(w, primes, prime_count);
-        sum2 = sum2 + pi_w;
+        uint64_t cast_i = (uint64_t)i;
+        uint64_t term_i = pi_w - (cast_i - 1ULL);
+        p2 = p2 + term_i;
+        i = i + 1;
+    }
 
-        if (i <= (size_t)c_val) {
-            double fw = (double)w;
-            double sq_w_f = sqrt(fw);
-            uint64_t sqrt_w = (uint64_t)sq_w_f;
-            uint64_t bi = pi_fast(sqrt_w, primes, prime_count);
-            size_t j = i;
-            size_t bi_limit = (size_t)bi;
-            while (j <= bi_limit) {
-                size_t idx_j = j - 1;
-                uint64_t pj = (uint64_t)primes[idx_j];
-                uint64_t div_pj = w / pj;
-                uint64_t pi_w2 = pi_fast(div_pj, primes,
-                                         prime_count);
-                uint64_t cast_j = (uint64_t)j;
-                uint64_t sub_j = pi_w2 - cast_j;
-                uint64_t term_j = sub_j + 1;
-                sum2 = sum2 - term_j;
-                j = j + 1;
-            }
+    uint64_t p3 = 0;
+    i = (size_t)(a_val + 1);
+    size_t c_limit = (size_t)c_val;
+    while (i <= c_limit) {
+        size_t idx_i = i - 1;
+        uint64_t p = (uint64_t)primes[idx_i];
+        uint64_t w = x / p;
+        double fw = (double)w;
+        double sq_w_f = sqrt(fw);
+        uint64_t sqrt_w = (uint64_t)sq_w_f;
+        uint64_t bi = pi_fast(sqrt_w, primes, prime_count);
+        size_t j = i;
+        size_t bi_limit = (size_t)bi;
+        while (j <= bi_limit) {
+            size_t idx_j = j - 1;
+            uint64_t pj = (uint64_t)primes[idx_j];
+            uint64_t div_pj = w / pj;
+            uint64_t pi_w2 = pi_fast(div_pj, primes,
+                                     prime_count);
+            uint64_t cast_j = (uint64_t)j;
+            uint64_t term_j = pi_w2 - (cast_j - 1ULL);
+            p3 = p3 + term_j;
+            j = j + 1;
         }
         i = i + 1;
     }
-    return sum2;
+    return p2 + p3;
 }
 
 static uint64_t prime_count_lehmer(uint64_t x,
@@ -431,17 +430,10 @@ static uint64_t prime_count_lehmer(uint64_t x,
         size_t a_size = (size_t)a_val;
         uint64_t phi_val = phi_rec(x, a_size,
                                    primes, prime_count);
-        uint64_t sum_ba = b_val + a_val;
-        uint64_t t1 = sum_ba - 2;
-        uint64_t diff_ba = b_val - a_val;
-        uint64_t t2 = diff_ba + 1;
-        uint64_t term1 = t1 * t2;
-        uint64_t half_term = term1 / 2;
-        uint64_t sum1 = phi_val + half_term;
 
-        uint64_t sum2 = lehmer_sum2(x, a_val, b_val, c_val,
-                                    primes, prime_count);
-        count = sum1 - sum2;
+        uint64_t sum_p2_p3 = lehmer_sum2(x, a_val, b_val, c_val,
+                                         primes, prime_count);
+        count = (phi_val + a_val - 1ULL) - sum_p2_p3;
     }
     return count;
 }
@@ -659,6 +651,11 @@ uint64_t get_nth_prime_u64(uint64_t n) {
         uint64_t z_val = (uint64_t)sq_x;
 
         uint64_t sieve_limit = z_val * 12;
+        double pow34 = pow(fx, 0.75);
+        uint64_t s_34 = (uint64_t)(pow34 + 10000.0);
+        if (sieve_limit < s_34) {
+            sieve_limit = s_34;
+        }
         if (sieve_limit < 200000000ULL) {
             sieve_limit = 200000000ULL;
         }
