@@ -218,14 +218,14 @@ const circuitSec1Content = [
   "stating that the sum of potential differences around any closed circuit loop is zero. When time-varying magnetic flux cuts across the loop aperture, Faraday's law of induction produces a non-conservative loop electromotive force \\( \\mathcal { E } _ \\text{loop} = - \\frac { d \\Phi _ B } { d t } \\).",
   "",
   "==== Derivation of Kirchhoff’s Current Law (KCL)",
-  "The current density vector \\( \\mathbf { J } \\) satisfies local charge conservation governed by the field continuity equation \\( \\nabla \\cdot \\mathbf { J } + \\frac { \\partial \\rho } { \\partial t } = 0 \\). Integrating this continuity relation over a closed spatial surface \\( \\mathcal { S } \\) enclosing a circuit junction node yields:",
+  "The current density vector \\( \\mathbf { J } \\) satisfies local charge conservation governed by the discrete charge-conservation balance equation \\( \\nabla \\cdot \\mathbf { J } + \\frac { \\partial \\rho } { \\partial t } = 0 \\) on the discrete grid \\( \\mathcal { G } _ N \\). Integrating this charge-conservation relation over a closed spatial surface \\( \\mathcal { S } \\) enclosing a circuit junction node yields:",
   "\\[ \\iint _ { \\mathcal { S } } \\mathbf { J } \\cdot d \\mathbf { A } = - \\frac { d Q _ \\text{node} } { d t } \\]",
   "In quasi-static lumped circuits, no net electric charge accumulates at an ideal node (\\( \\frac { d Q _ \\text{node} } { d t } = 0 \\)), yielding Kirchhoff’s Current Law (KCL):",
   "\\[ \\sum _ { k = 1 } ^ { K } I _ k = 0 \\]",
   "stating that the sum of electric currents entering any circuit node equals the sum of currents leaving that node. At higher frequencies, parasitic capacitance between nodes and ground introduces stray displacement current leakage \\( I_c = C_s \\frac { d V } { d t } \\).",
   "",
   "==== Graph-Theoretic Circuit Topologies and Tellegen’s Power Conservation",
-  "A circuit network composed of \\( N \\) nodes and \\( B \\) branches is fully represented by its reduced incidence matrix \\( \\mathbf { A } \\in \\mathbb { R } ^ { ( N - 1 ) \\times B } \\), fundamental loop matrix \\( \\mathbf { B } \\in \\mathbb { R } ^ { ( B - N + 1 ) \\times B } \\), and fundamental cutset matrix \\( \\mathbf { Q } \\). Tellegen's theorem proves that for any arbitrary network topology, total instantaneous power is conserved:",
+  "A circuit network composed of \\( N \\) nodes and \\( B \\) branches is fully represented by its reduced incidence matrix \\( \\mathbf { A } \\in \\mathbb { R } ^ { ( N - 1 ) \\times B } \\), fundamental loop matrix \\( \\mathbf { B } \\in \\mathbb { R } ^ { ( B - N + 1 ) \\times B } \\), and fundamental cutset matrix \\( \\mathbf { Q } \\). Tellegen's theorem proves that for any arbitrary network topology, total power at each m-resolution time step is conserved:",
   "\\[ \\sum _ { k = 1 } ^ { B } v _ k ( t ) i _ k ( t ) = 0 \\]"
 ].join("\n");
 
@@ -305,7 +305,7 @@ const circuitSec5Content = [
   "In an ideal non-dissipative LC circuit composed of a condenser \\( C \\) and a coil \\( L \\), total electrodynamic field energy \\( W _ \\text{total} = W _ E + W _ B = \\frac { 1 } { 2 } C V ( t ) ^ 2 + \\frac { 1 } { 2 } L I ( t ) ^ 2 \\) is strictly conserved at all time steps \\( t_n \\in \\mathcal { G } _ N \\).",
   "",
   "*Proof:*",
-  "By KVL, \\( V_C ( t ) + V_L ( t ) = 0 \\implies V ( t ) + L \\frac { d I } { d t } = 0 \\). Differentiating total energy with respect to time yields \\( \\frac { d W _ \\text{total} } { d t } = C V \\frac { d V } { d t } + L I \\frac { d I } { d t } = V ( C \\frac { d V } { d t } ) + I ( L \\frac { d I } { d t } ) \\). Substituting \\( I = - C \\frac { d V } { d t } \\) and \\( L \\frac { d I } { d t } = - V \\) yields \\( \\frac { d W _ \\text{total} } { d t } = V ( - I ) + I ( - V ) = 0 \\). Thus, energy oscillates continuously between condenser electric fields and coil magnetic fields without loss. \\( \\square \\)",
+  "By KVL, \\( V_C ( t ) + V_L ( t ) = 0 \\implies V ( t ) + L \\frac { d I } { d t } = 0 \\). Differentiating total energy with respect to time yields \\( \\frac { d W _ \\text{total} } { d t } = C V \\frac { d V } { d t } + L I \\frac { d I } { d t } = V ( C \\frac { d V } { d t } ) + I ( L \\frac { d I } { d t } ) \\). Substituting \\( I = - C \\frac { d V } { d t } \\) and \\( L \\frac { d I } { d t } = - V \\) yields \\( \\frac { d W _ \\text{total} } { d t } = V ( - I ) + I ( - V ) = 0 \\). Thus, energy oscillates persistently between condenser electric fields and coil magnetic fields without loss. \\( \\square \\)",
   "====",
   "",
   "[#theorem-maximum-power-transfer-bivector-impedance]",
@@ -428,7 +428,7 @@ const transmissionSec4Content = [
   "A **Brushless DC (BLDC) Motor** inverts the roles of traditional DC motor components: high-coercivity permanent magnets (such as Neodymium-Iron-Boron NdFeB) are mounted on the rotating rotor, while multi-phase copper windings are placed on the stationary stator. This eliminates mechanical commutators, carbon brushes, spark erosion, friction, and maintenance.",
   "",
   "==== Electronic Commutation and Inverter Driving",
-  "Instead of mechanical brushes, BLDC motors use a solid-state 3-phase **H-bridge inverter** consisting of six power MOSFETs or IGBTs. Rotor position is sensed continuously using embedded Hall-effect sensors or back-EMF zero-crossing detection. The inverter controller switches stator phase currents electronically in trapezoidal (6-step) or sinusoidal sequence, maintaining an optimal \\( 90 ^ \\circ \\) angle between stator magnetic flux and rotor magnet poles for maximum torque generation, achieving efficiencies exceeding 90%.",
+  "Instead of mechanical brushes, BLDC motors use a solid-state 3-phase **H-bridge inverter** consisting of six power MOSFETs or IGBTs. Rotor position is sensed synchronously using embedded Hall-effect sensors or back-EMF zero-crossing detection. The inverter controller switches stator phase currents electronically in trapezoidal (6-step) or sinusoidal sequence, maintaining an optimal \\( 90 ^ \\circ \\) angle between stator magnetic flux and rotor magnet poles for maximum torque generation, achieving efficiencies exceeding 90%.",
   "",
   "==== Field-Oriented Control (FOC) and Space Vector Modulation",
   "For Permanent Magnet Synchronous Motors (PMSM) with sinusoidal back-EMF, Field-Oriented Control (FOC) transforms 3-phase stationary stator currents \\( ( i_a, i_b, i_c ) \\) into a rotating orthogonal direct-quadrature \\( ( d - q ) \\) coordinate frame locked to the rotor magnet angle \\( \\theta_r \\):",
@@ -473,7 +473,7 @@ const transmissionSec5Content = [
   "In a polyphase Brushless DC motor driven by a 3-phase inverter, electronic phase switching aligned with rotor position produces constant electromagnetic torque \\( T_e = K_t I_a \\) without torque ripple.",
   "",
   "*Proof:*",
-  "Stator magnetic flux vector \\( \\mathbf { \\Phi } _ s \\) and rotor permanent magnet flux vector \\( \\mathbf { \\Phi } _ r \\) produce electrodynamic torque \\( \\mathbf { T } _ e = \\mathbf { \\Phi } _ r \\times \\mathbf { \\Phi } _ s = | \\mathbf { \\Phi } _ r | | \\mathbf { \\Phi } _ s | \\sin \\delta \\hat { \\mathbf { z } } \\). Electronic commutation via Hall-effect feedback maintains phase angle \\( \\delta = 90 ^ \\circ \\) (\\( \\sin \\delta = 1 \\)) continuously, maximizing torque per ampere \\( T_e = K_t I_a \\). \\( \\square \\)",
+  "Stator magnetic flux vector \\( \\mathbf { \\Phi } _ s \\) and rotor permanent magnet flux vector \\( \\mathbf { \\Phi } _ r \\) produce electrodynamic torque \\( \\mathbf { T } _ e = \\mathbf { \\Phi } _ r \\times \\mathbf { \\Phi } _ s = | \\mathbf { \\Phi } _ r | | \\mathbf { \\Phi } _ s | \\sin \\delta \\hat { \\mathbf { z } } \\). Electronic commutation via Hall-effect feedback maintains phase angle \\( \\delta = 90 ^ \\circ \\) (\\( \\sin \\delta = 1 \\)) dynamically at each step, maximizing torque per ampere \\( T_e = K_t I_a \\). \\( \\square \\)",
   "===="
 ].join("\n");
 
@@ -589,7 +589,7 @@ const chap4Sec2Content = [
   "==== The Myth of the 'Quantum Model of a Transistor' and Practical Engineering Reality",
   "A ubiquitous artifact of this verbal trickery is the popular claim that solid-state transistors—such as Junction Field-Effect Transistors (JFETs), Bipolar Junction Transistors (BJTs), and Metal-Oxide-Semiconductor Field-Effect Transistors (MOSFETs)—depend upon or are designed using a 'quantum model'. In popular discourse, commentators frequently challenge skeptics by asking: “How do you explain the quantum model of a transistor?”",
   "",
-  "The rigorous answer from electrical engineering is simple and direct: **there is no such model**. Practical semiconductor devices are not designed, modeled, or analyzed using 'quantum' models. In actual engineering practice, a transistor—such as an n-channel JFET—is modeled strictly as a beam of charge carriers (electrons or holes) moving through a solid semiconductor crystal lattice under the influence of classical electric and magnetic fields, governed by Poisson's equation, carrier drift, diffusion, and current continuity equations:",
+  "The rigorous answer from electrical engineering is simple and direct: **there is no such model**. Practical semiconductor devices are not designed, modeled, or analyzed using 'quantum' models. In actual engineering practice, a transistor—such as an n-channel JFET—is modeled strictly as a beam of charge carriers (electrons or holes) moving through a solid semiconductor crystal lattice under the influence of classical electric and magnetic fields, governed by Poisson's equation, carrier drift, diffusion, and charge conservation balance equations:",
   "\\[ \\nabla^2 V = - \\frac { \\rho } { \\varepsilon }, \\quad \\mathbf { J }_n = q n \\mu_n \\mathbf { E } + q D_n \\nabla n, \\quad \\frac { \\partial n } { \\partial t } = \\frac { 1 } { q } \\nabla \\cdot \\mathbf { J }_n + G_n - R_n \\]",
   "",
   "In an n-channel JFET, for example, a reverse-biased p-n junction gate controls the effective cross-sectional channel width through classical electrostatic depletion layer expansion. The pinch-off voltage \\( V_P \\) and drain saturation current \\( I_{DSS} \\) follow directly from boundary electrostatic potential analysis across the physical channel width:",
@@ -598,7 +598,7 @@ const chap4Sec2Content = [
   "Where experimental parameters appear—such as effective carrier masses, scattering relaxation times, or energy band gaps—they were historically known **strictly from experiment**. These empirical parameters were facts discovered in the laboratory and mislabeled as 'quantum' through term coöptation, despite being nothing more than empirical laws governing discrete crystalline lattices.",
   "",
   "==== Niels Bohr, the Solvay Conference of 1927, and Verbal Trickery",
-  "This systematic term coöptation originated formally with **Niels Bohr** and his so-called **'complementarity principle'**—the anti-rational doctrine asserting that a physical scientist must simultaneously believe mutually contradictory propositions (such as asserting that an entity is simultaneously a continuous wave and a zero-volume point particle, or that physical transitions occur as uncaused 'quantum jumps' without finite duration).",
+  "This systematic term coöptation originated formally with **Niels Bohr** and his so-called **'complementarity principle'**—the anti-rational doctrine asserting that a physical scientist must simultaneously believe mutually contradictory propositions (such as asserting that an entity is simultaneously an uncountably infinite wave and a zero-volume point particle, or that physical transitions occur as uncaused 'quantum jumps' without finite duration).",
   "",
   "At the Fifth Solvay International Conference of 1927, this doctrine was dogmatized into standard physics terminology. When Bohr insisted that physical reality is defined strictly by the specific experimental arrangement set up by an observer and the instrumental measurements recorded within that arrangement, he was, in an obfuscated way, proclaiming: “We should abandon theoretical physics. Let us merely collect empirical laws.”",
   "",
@@ -631,7 +631,7 @@ const chap4Sec3Content = [
   "==== Derivation of the Shockley Diode Equation",
   "Applying an external forward bias voltage \\( V \\) lowers the potential barrier to \\( V_{bi} - V \\), allowing exponential carrier diffusion across the junction. Applying a reverse bias voltage \\( V = - V_R \\) widens the barrier to \\( V_{bi} + V_R \\), choking off diffusion and leaving only a minute minority carrier thermal generation current \\( I_s \\).",
   "",
-  "Solving the continuity equation for minority carrier diffusion in the neutral regions yields the celebrated **Shockley Diode Equation**:",
+  "Solving the discrete charge-conservation balance equation for minority carrier diffusion in the neutral regions yields the celebrated **Shockley Diode Equation**:",
   "\\[ I ( V ) = I_s \\left( e ^ { \\frac { V } { n V_t } } - 1 \\right) \\]",
   "where \\( I_s = q A \\left( \\frac { D_p p_{n0} } { L_p } + \\frac { D_n n_{p0} } { L_n } \\right) \\) is the reverse saturation current, and \\( n \\approx 1.0 \\text{--} 2.0 \\) is the diode ideality factor.",
   "",
@@ -655,7 +655,7 @@ const chap4Sec4Content = [
   "where \\( m = 0.5 \\) for abrupt junctions and \\( m = 0.33 \\) for hyperabrupt junctions. Varactors serve as solid-state voltage-controlled capacitors in RF voltage-controlled oscillators (VCOs) and frequency synthesizers.",
   "",
   "==== Esaki Tunnel Diodes and Bivector Wave Packet Resonance",
-  "In degenerate p-n junctions (doping \\( > 10^{19} \\text{ cm}^{-3} \\)), the depletion barrier is under 10 nm wide. Under small forward bias, overlapping energy states allow bivector electromagnetic wave packets to transmit continuously across the thin lattice barrier. As forward bias increases, state alignment shifts, causing current to drop with increasing voltage. This produces **Negative Differential Resistance (NDR)** (\\( d I / d V < 0 \\)), enabling microwave oscillations up to hundreds of gigahertz without uncaused 'quantum tunneling' magic.",
+  "In degenerate p-n junctions (doping \\( > 10^{19} \\text{ cm}^{-3} \\)), the depletion barrier is under 10 nm wide. Under small forward bias, overlapping energy states allow bivector electromagnetic wave packets to transmit smoothly across the thin lattice barrier. As forward bias increases, state alignment shifts, causing current to drop with increasing voltage. This produces **Negative Differential Resistance (NDR)** (\\( d I / d V < 0 \\)), enabling microwave oscillations up to hundreds of gigahertz without uncaused 'quantum tunneling' magic.",
   "",
   "==== PIN Diodes, LEDs, and Photodiodes",
   "* **PIN Diodes**: An undoped intrinsic (I) layer is sandwiched between P and N regions. At RF frequencies, the injected charge in the I-layer acts as a linear voltage-variable RF resistor, used in high-power RF switches and attenuators.",
@@ -707,7 +707,7 @@ const chap4Sec6Content = [
   "",
   ". **Barrier Lowering and Carrier Injection**: An applied forward bias \\( V \\) reduces the potential step to \\( V_{bi} - V \\). Minority carrier concentrations at the boundary edges of the depletion region scale exponentially according to the Boltzmann multivector factor \\( n ( x_p ) = n_{p0} e^{V / V_t} \\).",
   "",
-  ". **Diffusion Current Integration**: Integrating the minority carrier diffusion continuity equation \\( D_n \\frac { d^2 n } { d x^2 } - \\frac { n - n_{p0} } { \\tau_n } = 0 \\) over the neutral p and n regions yields exact exponential current \\( I = I_s ( e^{V / V_t} - 1 ) \\). \\( \\square \\)",
+  ". **Diffusion Current Integration**: Integrating the minority carrier diffusion conservation equation \\( D_n \\frac { d^2 n } { d x^2 } - \\frac { n - n_{p0} } { \\tau_n } = 0 \\) over the neutral p and n regions yields exact exponential current \\( I = I_s ( e^{V / V_t} - 1 ) \\). \\( \\square \\)",
   "===="
 ].join("\n");
 
