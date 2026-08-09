@@ -105,17 +105,16 @@ scientific notation, and power expressions:
   parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,
   defaulting to 8192 bits). Each module includes an optionally
   compiled built-in demo program via `-fversion=standalone`.
-- **Arbitrary-Precision C \(n\)-th Root Program**: Reusable C23 module
-  and standalone program in `src/nth_root.c` supporting OpenMP
-  multithreading, multi-limb integer arithmetic (`LimbNumber`),
-  parameterized limb precision (`-DLIMBS_8192=1`), and exact
-  integer \(n\)-th root calculation \(\lfloor A^{1/n} \rfloor\).
-- **C23 Arbitrary-Precision \(n\)-th Prime Program**: Reusable C23 engine
-  and standalone program in `src/nth_prime.c` (`nth-prime-c` target)
-  utilizing GNU MP (`gmp.h`) bignum interface routines with uniquely named
-  typed entry points (`get_nth_prime_u64`, `get_nth_prime_mpz`,
-  `get_nth_prime_str`, `get_nth_prime_u32`), sublinear Lehmer prime counting,
-  segmented sieve extraction, and OpenMP multithreading.
+- **C23 Arbitrary-Precision \(n\)-th Prime Engine**: Reusable C23
+  engine and standalone program in `src/nth_prime.c` (`nth-prime-c`
+  target) built from scratch to match `nth_prime.d`. Features
+  compile-time arbitrary fixed-limb arithmetic (`LimbNumber`)
+  parameterized via `-DNUM_LIMBS=...` or version macros
+  (`-DLIMBS_128`, `-DLIMBS_256`, etc.), GNU MP (`gmp.h`) bignum
+  interface routines with uniquely named typed entry points
+  (`get_nth_prime_u64`, `get_nth_prime_u32`, `get_nth_prime_limb`,
+  `get_nth_prime_mpz`, `get_nth_prime_str`), sublinear Lehmer prime
+  counting, segmented sieve extraction, and OpenMP multithreading.
 - **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
   subprogram, max line length \(\le 72\) characters, and single
   operation per statement.

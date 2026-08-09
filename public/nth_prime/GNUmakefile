@@ -54,7 +54,7 @@ $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 $(C_TARGET): $(SRC_DIR)/nth_prime.c
-	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
+	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_128 -o $(@) $(<) -lm $(GMP_LIBS)
 
 .PHONY: d d64 c
 d:: $(D_TARGET)
