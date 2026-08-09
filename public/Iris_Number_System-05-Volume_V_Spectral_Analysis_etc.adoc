@@ -568,6 +568,8 @@ This systematic term coöptation originated formally with **Niels Bohr** and his
 
 At the Fifth Solvay International Conference of 1927, this doctrine was dogmatized into standard physics terminology. When Bohr insisted that physical reality is defined strictly by the specific experimental arrangement set up by an observer and the instrumental measurements recorded within that arrangement, he was, in an obfuscated way, proclaiming: “We should abandon theoretical physics. Let us merely collect empirical laws.”
 
+As a result of this historical inversion, the very term **'theoretical physics'** was coöpted to mean, in practice, the **abandonment of theoretical physics**. Rather than seeking first-principles electrodynamic causes for physical phenomena, twentieth-century 'theoretical physics' became an enterprise of constructing mathematical curves to fit empirical observations, asserting that the underlying mechanisms were intrinsically unknowable.
+
 Prior to 1927, an unexplained experimental observation was correctly designated as an **empirical law**—a physical regularity whose underlying first-principles cause remained to be discovered through rigorous field analysis. After 1927, through systematic verbal trickery, empirical laws were rebranded as 'fundamental quantum principles', transforming physical regularities into inexplicable, uncaused mysteries that were forbidden to be questioned or derived.
 
 ==== Restoration of First Principles via the Master Field Equation
