@@ -177,48 +177,47 @@ u64 piFast(u64 w, const(uint)[] primes) {
     return count;
 }
 
-pragma(inline, true)
-u64 phiMemoized(u64 x, size_t a, const(uint)[] primes) {
-    u64 multVal = cast(u64) a * 0x9e3779b97f4a7c15UL;
-    u64 key = x ^ multVal;
-    size_t slot = cast(size_t) (key & CACHE_MASK);
-    u64 cachedX = memoX[slot];
-    uint cachedA = memoA[slot];
-    u64 result = 0;
+u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
+    u64 phiMemoized(u64 xVal, size_t aVal) {
+        u64 multVal = cast(u64) aVal * 0x9e3779b97f4a7c15UL;
+        u64 key = xVal ^ multVal;
+        size_t slot = cast(size_t) (key & CACHE_MASK);
+        u64 cachedX = memoX[slot];
+        uint cachedA = memoA[slot];
+        u64 result = 0;
 
-    if (cachedX == x && cachedA == cast(uint) a) {
-        result = memoRes[slot];
-    } else {
-        u64 p = cast(u64) primes[a - 1];
-        if (p > x) {
-            result = 1;
-        } else if (x <= sieveMax) {
-            u64 p6 = cast(u64) primes[5];
-            u64 prod = p6 * p;
-            if (x <= prod) {
-                u64 piX = piFast(x, primes);
-                u64 castA = cast(u64) a;
-                result = piX - castA + 1;
+        if (cachedX == xVal && cachedA == cast(uint) aVal) {
+            result = memoRes[slot];
+        } else {
+            u64 p = cast(u64) primes[aVal - 1];
+            if (p > xVal) {
+                result = 1;
+            } else if (xVal <= sieveMax) {
+                u64 p6 = cast(u64) primes[5];
+                u64 prod = p6 * p;
+                if (xVal <= prod) {
+                    u64 piX = piFast(xVal, primes);
+                    u64 castA = cast(u64) aVal;
+                    result = piX - castA + 1;
+                } else {
+                    u64 divP = xVal / p;
+                    u64 left = phiRec(xVal, aVal - 1, primes);
+                    u64 right = phiRec(divP, aVal - 1, primes);
+                    result = left - right;
+                }
             } else {
-                u64 divP = x / p;
-                u64 left = phiRec(x, a - 1, primes);
-                u64 right = phiRec(divP, a - 1, primes);
+                u64 divP = xVal / p;
+                u64 left = phiRec(xVal, aVal - 1, primes);
+                u64 right = phiRec(divP, aVal - 1, primes);
                 result = left - right;
             }
-        } else {
-            u64 divP = x / p;
-            u64 left = phiRec(x, a - 1, primes);
-            u64 right = phiRec(divP, a - 1, primes);
-            result = left - right;
+            memoX[slot] = xVal;
+            memoA[slot] = cast(uint) aVal;
+            memoRes[slot] = result;
         }
-        memoX[slot] = x;
-        memoA[slot] = cast(uint) a;
-        memoRes[slot] = result;
+        return result;
     }
-    return result;
-}
 
-u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
     u64 res = 0;
     if (x == 0) {
         res = 0;
@@ -256,7 +255,7 @@ u64 phiRec(u64 x, size_t a, const(uint)[] primes) {
             res = phi6(x);
             break;
         default:
-            res = phiMemoized(x, a, primes);
+            res = phiMemoized(x, a);
             break;
         }
     }
