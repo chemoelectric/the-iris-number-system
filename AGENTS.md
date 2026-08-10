@@ -23,7 +23,7 @@
 - Use `\[ ` and ` \]` for display math blocks with padded spaces inside delimiters.
 - Maintain ample spacing between operators, variables, and delimiters in math expressions (e.g., `\( a \cdot x \pmod p \)`), but avoid adding spaces inside LaTeX environment commands or macro keywords (such as `\begin{array}`, `\end{array}`, `\begin{cases}`, or `\text{...}`) to preserve exact syntactic parsing.
 - In prose and textbook text, use directional double quotes (“ and ”) for quotation marks instead of straight double quotes ("), to ensure proper English quotation mark styling in rendering and PDF production.
-- Always avoid the term “concrete” to mean “objective”; exemplars are “objective”, not “concrete”.
+- Always avoid the term “concrete” to mean “objective”; the term is usually “objective” (referring to Korzybski’s objective level of abstractions that is not words, but is abstractions) and not “concrete”; exemplars are “objective”, not “concrete”.
 - Always use the terms “digital signals” and “analog signals” (or “m-res signals”) rather than “discrete signals” or “continuous signals”.
 - We may speak _about_ the phrase “speed of light”, but never _use_ the phrase “speed of light” to describe physical propagation. Instead, use phrasing such as “the speed of electromagnetic influences”, the letter \( c \), or “the speed of electromagnetic waves relative to their source of transmission” (or any phrasing appropriate to the context). The short designation for it is \( c \).
 - Remember that famous scientists and mathematicians are just ordinary people like everyone else.
