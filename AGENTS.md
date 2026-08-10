@@ -26,6 +26,7 @@
 - Always avoid the term “concrete” to mean “objective”; exemplars are “objective”, not “concrete”.
 - Always use the terms “digital signals” and “analog signals” (or “m-res signals”) rather than “discrete signals” or “continuous signals”.
 - We may speak _about_ the phrase “speed of light”, but never _use_ the phrase “speed of light” to describe physical propagation. Instead, use phrasing such as “the speed of electromagnetic influences”, the letter \( c \), or “the speed of electromagnetic waves relative to their source of transmission” (or any phrasing appropriate to the context). The short designation for it is \( c \).
+- Remember that famous scientists and mathematicians are just ordinary people like everyone else.
 
 ## Computer Programming Guidelines
 
