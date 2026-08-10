@@ -37,10 +37,11 @@ In 19th and 20th-century mathematical analysis and electrical engineering, linea
      \[ \mathbf { I } e_2 = ( e_1 e_2 ) e_2 = e_1 ( e_2 e_2 ) = e_1 \]
      For an arbitrary vector \( \mathbf { v } = v_1 e_1 + v_2 e_2 \), left-multiplying by \( \mathbf { I } \) yields \( \mathbf { I } \mathbf { v } = ( e_1 e_2 ) ( v_1 e_1 + v_2 e_2 ) = v_2 e_1 - v_1 e_2 = - \mathbf { v } \mathbf { I } \). This maps \( ( v_1 , v_2 ) \mapsto ( v_2 , - v_1 ) \), executing a \( - 90 ^ \circ \) **clockwise** rotation.
 
-4. **Orientation: \( \mathbf { I } \) versus \( - \mathbf { I } \), Right-Hand versus Left-Hand Rule**:
+4. **Orientation: \( \mathbf { I } \) versus \( - \mathbf { I } \), Right-Hand versus Left-Hand Rule, and Isomorphism to Square Roots of \( - 1 \)**:
    There exist two distinct unit bivectors in the plane: \( \mathbf { I } = e_1 e_2 \) and \( - \mathbf { I } = e_2 e_1 \). Both satisfy the quadratic identity \( \mathbf { I } ^ 2 = ( - \mathbf { I } ) ^ 2 = - 1 \).
    * The generator \( \mathbf { I } = e_1 e_2 \) defines a counterclockwise sense of rotation, establishing a **right-hand rule** orientation from \( e_1 \) into \( e_2 \).
    * The generator \( - \mathbf { I } = e_2 e_1 \) defines a clockwise sense of rotation, establishing a **left-hand rule** orientation from \( e_1 \) into \( e_2 \).
+   In conventional complex analysis, the polynomial equation \( x ^ 2 + 1 = 0 \) possesses two algebraic roots, conventionally designated \( + i = + \sqrt { - 1 } \) and \( - i = - \sqrt { - 1 } \). In real geometric algebra, \( \mathbf { I } \) and \( - \mathbf { I } \) provide the exact real, geometric isomorphism to \( + \sqrt { - 1 } \) and \( - \sqrt { - 1 } \). The formal algebraic duality between the two roots of \( - 1 \) corresponds directly to the choice of spatial orientation (counterclockwise versus clockwise rotation in the plane).
    In Euler’s geometric rotor \( e ^ { \mathbf { I } \theta } = \cos \theta + \mathbf { I } \sin \theta \), a positive angle parameter \( \theta \) precesses vectors counterclockwise under right-hand orientation \( \mathbf { I } = e_1 e_2 \), and clockwise under left-hand orientation \( - \mathbf { I } = e_2 e_1 \).
 
 5. **Planar Restriction of Direct Multiplication Rotations**:
@@ -54,7 +55,7 @@ In 19th and 20th-century mathematical analysis and electrical engineering, linea
    * **The Two-Dimensional Clifford Algebra \( Cl ( 2 , 0 ) \)**: Spanned by real orthogonal vectors \( e _ 1, e _ 2 \) with \( e _ 1 ^ 2 = 1, e _ 2 ^ 2 = 1 \). The even subalgebra \( Cl ^ + ( 2 , 0 ) \) consists of elements \( a + b e _ { 1 2 } \), providing a complete, coordinate-free real geometric phase plane.
    * **The Three-Dimensional Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \)** (often designated as the Spatial Vector Algebra): Spanned by three spatial basis vectors \( e _ 1, e _ 2, e _ 3 \), avoiding relativistic continuum assumptions and frames of reference. In this algebra, the pseudoscalar \( \mathbf { I } = e _ 1 e _ 2 e _ 3 \) satisfies \( \mathbf { I } ^ 2 = - 1 \) and commutes with all grade elements, serving as an intrinsic 3D phase-rotation operator.
 
-4. **Matrix Operator Representation without Geometric Algebra**:
+7. **Matrix Operator Representation without Geometric Algebra**:
    Even without Geometric Algebra, any digital signal vector \( \mathbf { x } = [ x [ 0 ] , x [ 1 ] , \dots , x [ N - 1 ] ] ^ T \in \mathbb { R } ^ N \) on a finite resolution grid \( \mathcal { G } _ N \) can be processed using purely real orthogonal matrix operators. The bivector rotation operator \( \mathbf { I } \) maps directly to the real anti-symmetric block generator matrix:
    \[ J = \begin {pmatrix} 0 & - 1 \\ 1 & 0 \end {pmatrix} \]
    satisfying \( J ^ 2 = - I _ 2 \). Consequently, all classical transforms can be executed as real matrix-vector operations on real physical analog or digital signal channels.
@@ -243,10 +244,10 @@ is strictly minimized over single-page layout topologies via microtypographic pe
   Vertical whitespace rivers and diagonal periodic gap alignments correspond to localized spectral energy concentration spikes at spatial frequency vectors \( \mathbf { k } = ( k_x , k_y ) \).
 
 . **Microtypographic Perturbation Response**: Applying microtypographic adjustments—OpenType kerning shifts \( \Delta x _ { i j } \), line tracking factors \( \alpha _ l \), and glyph outline shape profile modifications \( \beta _ g \in [ 0.98 , 1.02 ] \)—shifts the spatial coordinates of whitespace centroids by \( ( \Delta x_n , 0 ) \). The perturbed 2D Fourier spectrum satisfies:
-  \[ \hat { F } _ \mathbf { p } [ k_x , k_y ] = \hat { F } [ k_x , k_y ] + \sum _ { n , m } \left( \nabla f ( x_n , y_m ) \cdot \Delta \mathbf { r } _ n \right) e ^ { \mathbf { I } ( \frac { 2 \pi k_x n } { N_x } + \frac { 2 \pi k_y m } { N_y } ) } \]
+  \[ \hat { F } _ {\mathbf { p }} [ k_x , k_y ] = \hat { F } [ k_x , k_y ] + \sum _ { n , m } \left( \nabla f ( x_n , y_m ) \cdot \Delta \mathbf { r } _ n \right) e ^ { \mathbf { I } ( \frac { 2 \pi k_x n } { N_x } + \frac { 2 \pi k_y m } { N_y } ) } \]
   Adjusting glyph outline shape profiles \( \beta _ g \) modulates the spatial gradient \( \nabla f ( x_n , y_m ) \) directly at letterform aperture edges.
 
-. **Spectral Energy Minimization**: Setting the gradient of the Human Visual weighted action functional \( \nabla _ \mathbf { p } U _ \text{spectral} = \mathbf { 0 } \) establishes a convex quadratic minimization over the bounded microtypographic search space \( | \beta _ g - 1 | \le 0.02 \). Because the perturbation disrupts phase alignment across adjacent lines \( m \) and \( m + 1 \), the peak interference spectral density drops below the human visual perception threshold \( H _ \text{CSF} ( k_x , k_y ) \), eliminating 2D rivers and spatial noise. \( \square \)
+. **Spectral Energy Minimization**: Setting the gradient of the Human Visual weighted action functional \( \nabla _ {\mathbf { p }} U _ \text{spectral} = \mathbf { 0 } \) establishes a convex quadratic minimization over the bounded microtypographic search space \( | \beta _ g - 1 | \le 0.02 \). Because the perturbation disrupts phase alignment across adjacent lines \( m \) and \( m + 1 \), the peak interference spectral density drops below the human visual perception threshold \( H _ \text{CSF} ( k_x , k_y ) \), eliminating 2D rivers and spatial noise. \( \square \)
 ====
 
 === Completely Worked Textbook Examples
@@ -308,6 +309,7 @@ is strictly minimized over single-page layout topologies via microtypographic pe
 Compute the new 2D spectrum \( \hat { F } ' [ k_x , k_y ] \) and show the reduction in peak vertical river spectral energy at spatial frequency \( ( k_x = 2 , k_y = 0 ) \).
 
 **Solution:**
+
 1. **Unadjusted 2D Spectrum \( \hat { F } [ k_x , k_y ] \)**:
    Evaluating the 2D transform over \( f ( x_n , y_m ) = 1 \) for \( n = 2 \) across all lines \( m \in \{ 0 , 1 , 2 , 3 \} \):
    \[ \hat { F } [ k_x , k_y ] = \sum _ { m = 0 } ^ { 3 } ( 1 ) e ^ { \mathbf { I } \left( \frac { 2 \pi k_x ( 2 ) } { 4 } + \frac { 2 \pi k_y m } { 4 } \right) } = e ^ { \mathbf { I } \pi k_x } \sum _ { m = 0 } ^ { 3 } e ^ { \mathbf { I } \frac { \pi k_y m } { 2 } } \]
@@ -781,6 +783,7 @@ A causal linear shift-invariant system with real bivector transfer function \( H
 3. Compute the unit impulse response \( h [ n ] \) for the first 4 grid steps (\( n = 0, 1, 2, 3 \)).
 
 **Solution:**
+
 1. **Transfer Function Formulation**:
    Taking the real bivector Z-transform of the difference equation:
    \[ Y ( z ) \left( 1 - 1.2728 z ^ { - 1 } + 0.81 z ^ { - 2 } \right) = X ( z ) \]
@@ -807,6 +810,7 @@ A causal linear shift-invariant system with real bivector transfer function \( H
 **Problem Statement:** An analog low-pass RC filter has cutoff frequency \( f_c = 1000 \text{ Hz} \), corresponding to time constant \( \tau = R C = \frac { 1 } { 2 \pi f_c } \approx 1.5915 \times 10 ^ { - 4 } \text{ s} \). The continuous-like differential transfer function is \( H ( s ) = \frac { 1 } { 1 + s R C } \). Transform this filter onto a discrete resolution grid with step \( \delta = 0.2 \text{ ms} \) (\( 5000 \text{ Hz} \) sampling rate) using the bilinear resolution transformation, and determine the discrete difference equation coefficients.
 
 **Solution:**
+
 1. **Bilinear Substitution**:
    Substitute \( s = \frac { 2 } { \delta } \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } \) into \( H ( s ) \):
    \[ H ( z ) = \frac { 1 } { 1 + \left( \frac { 2 R C } { \delta } \right) \frac { 1 - z ^ { - 1 } } { 1 + z ^ { - 1 } } } = \frac { 1 + z ^ { - 1 } } { ( 1 + z ^ { - 1 } ) + K ( 1 - z ^ { - 1 } ) } \]
@@ -978,6 +982,7 @@ For any multi-electrode thermionic valve operating in its linear space-charge re
 3. Determine the peak AC output voltage swing produced by a \( 0.50 \text{ V} \) peak AC input signal.
 
 **Solution:**
+
 1. **Dynamic Plate Resistance \( r_p \)**:
    Using the Barkhausen relation \( \mu = g_m r_p \):
    \[ r_p = \frac { \mu } { g_m } = \frac { 20.0 } { 0.00260 \text{ A/V} } \approx \mathbf { 7692 \ \Omega } \quad ( 7.69 \text{ k}\Omega ) \]
@@ -997,6 +1002,7 @@ For any multi-electrode thermionic valve operating in its linear space-charge re
 3. Compute the electron transit time \( \tau \) through the deflection plates, and find the upper frequency limit \( f_\text{limit} \) at which transit-time phase blurring reduces deflection sensitivity by 10%.
 
 **Solution:**
+
 1. **Electron Beam Velocity \( v_z \)**:
    \[ v_z = \sqrt { \frac { 2 q V_a } { m } } = \sqrt { \frac { 2 ( 1.602 \times 10 ^ { - 19 } ) ( 2000 ) } { 9.109 \times 10 ^ { - 31 } } } = \sqrt { \frac { 6.408 \times 10 ^ { - 16 } } { 9.109 \times 10 ^ { - 31 } } } = \sqrt { 7.0348 \times 10 ^ { 14 } } \approx \mathbf { 2.652 \times 10 ^ 7 \text{ m/s} } \]
    (representing 8.84% of wave speed \( c \)).
@@ -1017,6 +1023,7 @@ For any multi-electrode thermionic valve operating in its linear space-charge re
 2. Calculate the optimum field-free drift length \( L_\text{opt} \) to position the catcher cavity at maximum electron bunching (\( X = 1.84 \) on Bessel function \( J_1 ( X ) \)).
 
 **Solution:**
+
 1. **DC Beam Velocity \( u_0 \)**:
    \[ u_0 = \sqrt { \frac { 2 q V_0 } { m } } = \sqrt { \frac { 2 ( 1.602 \times 10 ^ { - 19 } ) ( 5000 ) } { 9.109 \times 10 ^ { - 31 } } } = \sqrt { 1.7587 \times 10 ^ { 15 } } \approx \mathbf { 4.1937 \times 10 ^ 7 \text{ m/s} } \]
 

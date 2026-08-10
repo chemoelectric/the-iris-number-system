@@ -37,10 +37,11 @@ In 19th and 20th-century mathematical analysis and electrical engineering, linea
      \[ \mathbf { I } e_2 = ( e_1 e_2 ) e_2 = e_1 ( e_2 e_2 ) = e_1 \]
      For an arbitrary vector \( \mathbf { v } = v_1 e_1 + v_2 e_2 \), left-multiplying by \( \mathbf { I } \) yields \( \mathbf { I } \mathbf { v } = ( e_1 e_2 ) ( v_1 e_1 + v_2 e_2 ) = v_2 e_1 - v_1 e_2 = - \mathbf { v } \mathbf { I } \). This maps \( ( v_1 , v_2 ) \mapsto ( v_2 , - v_1 ) \), executing a \( - 90 ^ \circ \) **clockwise** rotation.
 
-4. **Orientation: \( \mathbf { I } \) versus \( - \mathbf { I } \), Right-Hand versus Left-Hand Rule**:
+4. **Orientation: \( \mathbf { I } \) versus \( - \mathbf { I } \), Right-Hand versus Left-Hand Rule, and Isomorphism to Square Roots of \( - 1 \)**:
    There exist two distinct unit bivectors in the plane: \( \mathbf { I } = e_1 e_2 \) and \( - \mathbf { I } = e_2 e_1 \). Both satisfy the quadratic identity \( \mathbf { I } ^ 2 = ( - \mathbf { I } ) ^ 2 = - 1 \).
    * The generator \( \mathbf { I } = e_1 e_2 \) defines a counterclockwise sense of rotation, establishing a **right-hand rule** orientation from \( e_1 \) into \( e_2 \).
    * The generator \( - \mathbf { I } = e_2 e_1 \) defines a clockwise sense of rotation, establishing a **left-hand rule** orientation from \( e_1 \) into \( e_2 \).
+   In conventional complex analysis, the polynomial equation \( x ^ 2 + 1 = 0 \) possesses two algebraic roots, conventionally designated \( + i = + \sqrt { - 1 } \) and \( - i = - \sqrt { - 1 } \). In real geometric algebra, \( \mathbf { I } \) and \( - \mathbf { I } \) provide the exact real, geometric isomorphism to \( + \sqrt { - 1 } \) and \( - \sqrt { - 1 } \). The formal algebraic duality between the two roots of \( - 1 \) corresponds directly to the choice of spatial orientation (counterclockwise versus clockwise rotation in the plane).
    In Euler’s geometric rotor \( e ^ { \mathbf { I } \theta } = \cos \theta + \mathbf { I } \sin \theta \), a positive angle parameter \( \theta \) precesses vectors counterclockwise under right-hand orientation \( \mathbf { I } = e_1 e_2 \), and clockwise under left-hand orientation \( - \mathbf { I } = e_2 e_1 \).
 
 5. **Planar Restriction of Direct Multiplication Rotations**:
