@@ -564,6 +564,63 @@ static uint64_t oeis_anchor_large(uint64_t n) {
     return est;
 }
 
+static uint64_t sieve_segment_find_backward(uint64_t low_val,
+    uint64_t high_val, const uint32_t *base_primes,
+    size_t base_count, uint64_t target_n, uint64_t start_pi) {
+    uint64_t range_diff = high_val - low_val;
+    uint64_t range_len = range_diff + 1;
+    size_t sz_sieve = (size_t)range_len;
+    uint8_t *sieve = (uint8_t *)malloc(sz_sieve);
+    memset(sieve, 1, sz_sieve);
+
+    size_t idx = 0;
+    while (idx < base_count) {
+        uint64_t p = (uint64_t)base_primes[idx];
+        uint64_t p_sq = p * p;
+        if (p_sq > high_val) {
+            idx = base_count;
+        } else {
+            uint64_t sum_lp = low_val + p;
+            uint64_t num_st = sum_lp - 1;
+            uint64_t div_st = num_st / p;
+            uint64_t start = div_st * p;
+            if (start < p_sq) {
+                start = p_sq;
+            }
+            while (start <= high_val) {
+                uint64_t diff_s = start - low_val;
+                size_t s_idx = (size_t)diff_s;
+                sieve[s_idx] = 0;
+                start = start + p;
+            }
+            idx = idx + 1;
+        }
+    }
+
+    uint64_t current_count = start_pi;
+    uint64_t result = 0;
+    uint64_t val = high_val;
+    while (val >= low_val) {
+        uint64_t diff_v = val - low_val;
+        size_t v_idx = (size_t)diff_v;
+        uint8_t is_p = sieve[v_idx];
+        if (is_p == 1) {
+            if (current_count == target_n) {
+                result = val;
+                val = low_val;
+            } else {
+                current_count = current_count - 1;
+            }
+        }
+        if (val == low_val) {
+            break;
+        }
+        val = val - 1;
+    }
+    free(sieve);
+    return result;
+}
+
 static uint64_t sieve_segment_find_nth(uint64_t low_val,
                                         uint64_t high_val,
                                         const uint32_t *base_primes,
@@ -602,19 +659,12 @@ static uint64_t sieve_segment_find_nth(uint64_t low_val,
 
     uint64_t current_count = start_pi;
     uint64_t result = 0;
-    uint64_t last_p = 0;
     uint64_t val = low_val;
     while (val <= high_val) {
         uint64_t diff_v = val - low_val;
         size_t v_idx = (size_t)diff_v;
         uint8_t is_p = sieve[v_idx];
         if (is_p == 1) {
-            if (last_p > 0) {
-                bool g_valid = validate_gilbreath_invariant(last_p,
-                                                             val);
-                (void)g_valid;
-            }
-            last_p = val;
             current_count = current_count + 1;
             if (current_count == target_n) {
                 result = val;
@@ -704,9 +754,9 @@ static uint64_t nth_prime_refine(uint64_t n,
     double prod_abs = f_abs * log_c;
     double est_w = prod_abs * 2.5;
     uint64_t cast_w = (uint64_t)est_w;
-    uint64_t window = cast_w + 50000;
-    if (window < 200000) {
-        window = 200000;
+    uint64_t window = cast_w + 1000;
+    if (window < 2000) {
+        window = 2000;
     }
 
     if (diff_n > 0) {
@@ -716,15 +766,13 @@ static uint64_t nth_prime_refine(uint64_t n,
                                     base_primes, base_count,
                                     n, curr_pi);
     } else {
-        uint64_t low_val = curr_x - window;
-        uint64_t seg_cnt = count_primes_in_segment(low_val,
-                                                   curr_x,
-                                                   base_primes,
-                                                   base_count);
-        uint64_t pi_low = curr_pi - seg_cnt;
-        pn = sieve_segment_find_nth(low_val, curr_x,
-                                    base_primes, base_count,
-                                    n, pi_low);
+        uint64_t low_val = 2;
+        if (curr_x > window) {
+            low_val = curr_x - window;
+        }
+        pn = sieve_segment_find_backward(low_val, curr_x,
+                                         base_primes, base_count,
+                                         n, curr_pi);
     }
     return pn;
 }
@@ -747,8 +795,11 @@ uint64_t get_nth_prime_u64(uint64_t n) {
         if (sieve_limit < s_34) {
             sieve_limit = s_34;
         }
-        if (sieve_limit < 200000000ULL) {
-            sieve_limit = 200000000ULL;
+        if (sieve_limit < 1000000ULL) {
+            sieve_limit = 1000000ULL;
+        }
+        if (curr_x <= 20000000ULL && sieve_limit < curr_x) {
+            sieve_limit = curr_x;
         }
 
         build_bit_sieve(sieve_limit);
