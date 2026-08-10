@@ -256,17 +256,15 @@ To demonstrate the direct BBP spigot operator without evaluating prior digits, c
    * \( S_1 = \frac{1}{1} + \frac{1}{16 \cdot 9} + \frac{1}{256 \cdot 17} + \dots \approx 1.000000000 + 0.006944444 + 0.000229779 = 1.007174224 \)
    * \( S_4 = \frac{1}{4} + \frac{1}{16 \cdot 12} + \frac{1}{256 \cdot 20} + \dots \approx 0.250000000 + 0.005208333 + 0.000195313 = 0.255403646 \)
    * \( S_5 = \frac{1}{5} + \frac{1}{16 \cdot 13} + \frac{1}{256 \cdot 21} + \dots \approx 0.200000000 + 0.004807692 + 0.000185997 = 0.204993689 \)
-   * \( S_6 = \frac{1}{6} + \frac{1}{16 \cdot 14} + \frac{1}{256 \cdot 22} + \dots \approx 0.166666667 + 0.004464286 + 0.000177557 = 0.171308509 \)
-
+   * \( S_6 = \frac{1}{6} + \frac{1}{16 \cdot 14} + \frac{1}{256 \cdot 22} + \dots \approx 0.166666667 + 0.004464286 + 0.000177557 = 0.171308509 \) +
+    +
    Forming the BBP multivector combination:
    \[ \{ \pi \} \equiv 4 S_1 - 2 S_4 - S_5 - S_6 \pmod 1 \]
    \[ \{ \pi \} \equiv 4 ( 1.007174224 ) - 2 ( 0.255403646 ) - 0.204993689 - 0.171308509 \pmod 1 \]
    \[ \{ \pi \} \equiv 4.028696896 - 0.510807292 - 0.204993689 - 0.171308509 \pmod 1 \]
    \[ \{ \pi \} \equiv 3.141587406 \pmod 1 \approx 0.141587406 \]
-
    Multiplying by radix \( b = 16 \):
    \[ 16 \times \{ \pi \} \approx 16 \times 0.141587406 = 2.265398496 \]
-
    Taking the integer floor:
    \[ d_{-1} = \lfloor 2.265398496 \rfloor = \mathbf{2} \]
    This matches the exact first hexadecimal fractional digit of \( \pi \) (\( 0.2_{16} \)).
@@ -276,16 +274,14 @@ To demonstrate the direct BBP spigot operator without evaluating prior digits, c
    * \( 16 S_1 \pmod 1 \equiv \frac{16^1 \pmod 1}{1} + \frac{16^0 \pmod 9}{9} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+1} \approx 0 + 0.111111111 + 0.003840119 = 0.114951230 \)
    * \( 16 S_4 \pmod 1 \equiv \frac{16^1 \pmod 4}{4} + \frac{16^0 \pmod{12}}{12} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+4} \approx 0 + 0.083333333 + 0.003271291 = 0.086604624 \)
    * \( 16 S_5 \pmod 1 \equiv \frac{16^1 \pmod 5}{5} + \frac{16^0 \pmod{13}}{13} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+5} \approx 0.200000000 + 0.076923077 + 0.003117487 = 0.280040564 \)
-   * \( 16 S_6 \pmod 1 \equiv \frac{16^1 \pmod 6}{6} + \frac{16^0 \pmod{14}}{14} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+6} \approx 0.666666667 + 0.071428571 + 0.002977542 = 0.741072780 \)
-
+   * \( 16 S_6 \pmod 1 \equiv \frac{16^1 \pmod 6}{6} + \frac{16^0 \pmod{14}}{14} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+6} \approx 0.666666667 + 0.071428571 + 0.002977542 = 0.741072780 \) +
+    +
    Combining terms:
    \[ \{ 16 \pi \} \equiv 4 ( 0.114951230 ) - 2 ( 0.086604624 ) - 0.280040564 - 0.741072780 \pmod 1 \]
    \[ \{ 16 \pi \} \equiv 0.459804920 - 0.173209248 - 0.280040564 - 0.741072780 \pmod 1 \]
    \[ \{ 16 \pi \} \equiv -0.734517672 \equiv 0.265482328 \pmod 1 \]
-
    Multiplying by radix \( b = 16 \):
    \[ 16 \times \{ 16 \pi \} \approx 16 \times 0.265482328 = 4.247717248 \]
-
    Taking the integer floor:
    \[ d_{-2} = \lfloor 4.247717248 \rfloor = \mathbf{4} \]
    This extracts the second hexadecimal fractional digit “4” (\( 0.24_{16} \)) directly without prior accumulation.
