@@ -54,7 +54,7 @@ In 19th and 20th-century mathematical analysis and electrical engineering, linea
    * **The Two-Dimensional Clifford Algebra \( Cl ( 2 , 0 ) \)**: Spanned by real orthogonal vectors \( e _ 1, e _ 2 \) with \( e _ 1 ^ 2 = 1, e _ 2 ^ 2 = 1 \). The even subalgebra \( Cl ^ + ( 2 , 0 ) \) consists of elements \( a + b e _ { 1 2 } \), providing a complete, coordinate-free real geometric phase plane.
    * **The Three-Dimensional Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \)** (often designated as the Spatial Vector Algebra): Spanned by three spatial basis vectors \( e _ 1, e _ 2, e _ 3 \), avoiding relativistic continuum assumptions and frames of reference. In this algebra, the pseudoscalar \( \mathbf { I } = e _ 1 e _ 2 e _ 3 \) satisfies \( \mathbf { I } ^ 2 = - 1 \) and commutes with all grade elements, serving as an intrinsic 3D phase-rotation operator.
 
-4. **Matrix Operator Representation without Geometric Algebra**:
+7. **Matrix Operator Representation without Geometric Algebra**:
    Even without Geometric Algebra, any digital signal vector \( \mathbf { x } = [ x [ 0 ] , x [ 1 ] , \dots , x [ N - 1 ] ] ^ T \in \mathbb { R } ^ N \) on a finite resolution grid \( \mathcal { G } _ N \) can be processed using purely real orthogonal matrix operators. The bivector rotation operator \( \mathbf { I } \) maps directly to the real anti-symmetric block generator matrix:
    \[ J = \begin {pmatrix} 0 & - 1 \\ 1 & 0 \end {pmatrix} \]
    satisfying \( J ^ 2 = - I _ 2 \). Consequently, all classical transforms can be executed as real matrix-vector operations on real physical analog or digital signal channels.
