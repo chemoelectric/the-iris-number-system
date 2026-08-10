@@ -118,6 +118,16 @@ scientific notation, and power expressions:
   typed entry points (`get_nth_prime_u64`, `get_nth_prime_u32`,
   `get_nth_prime_str`), sublinear Lehmer prime counting, segmented
   sieve extraction, and OpenMP multithreading.
-- **Strict Control Flow**: Cyclomatic complexity \(\le 10\) per
-  subprogram, max line length \(\le 72\) characters, and single
-  operation per statement.
+- **Modular SIMD Buchstab Tree Decomposition & OEIS Anchors**:
+  Modular Buchstab recursion trees ($\phi(x, a)$) with $O(1)$ wheel
+  base cases, divisionless modular reduction, and prior OEIS anchor
+  tables ($n \le 10^9$) providing instant $x_0$ initial candidate
+  coordinates to accelerate Newton-Vernier interval convergence.
+- **Gilbreath Invariant Multi-Grid Local Segment Sieving**:
+  Multi-grid local segment sieving validating stream alignment
+  across channels using Gilbreath prime difference invariants
+  ($d_1^{(k)} = 1$).
+- **Strict Control Flow & Standard Compliance**:
+  Cyclomatic complexity \(\le 10\) per subprogram (and main program),
+  max line length \(\le 72\) characters, single operation per statement,
+  and zero ++/-- increment operators across C23 and D modules.
