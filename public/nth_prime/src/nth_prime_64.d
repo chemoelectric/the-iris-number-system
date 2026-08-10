@@ -521,7 +521,7 @@ u64 getNthPrime(u64 n) {
             window = 200000;
         }
 
-        if (diffN >= 0) {
+        if (diffN > 0) {
             u64 lowVal = currX + 1;
             u64 highVal = currX + window;
             pn = sieveSegmentFindNthPrime(lowVal, highVal,

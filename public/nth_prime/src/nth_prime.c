@@ -709,7 +709,7 @@ static uint64_t nth_prime_refine(uint64_t n,
         window = 200000;
     }
 
-    if (diff_n >= 0) {
+    if (diff_n > 0) {
         uint64_t low_val = curr_x + 1;
         uint64_t high_val = curr_x + window;
         pn = sieve_segment_find_nth(low_val, high_val,
