@@ -917,15 +917,15 @@ Achieving reliable thermionic operation requires maintaining an ultra-high vacuu
 2. **The Physics and Chemistry of the Barium Getter Mirror**:
    Even after flame sealing, microscopic amounts of residual gases (oxygen, nitrogen, carbon dioxide, water vapor) slowly evolve from internal components during operation. To maintain a hard vacuum throughout the operating life of the valve, a **getter assembly** is incorporated.
 
-   A typical getter consists of a small metallic ring containing a stable barium-aluminum alloy (\( \text{BaAl}_4 \)) paired with nickel powder. After the tube is sealed and evacuated, an external RF induction coil flashes the getter ring, heating it to over \( 1100 ^ \circ \text{C} \). The barium alloy vaporizes, spraying a brilliant, silver-like metallic **barium getter mirror** onto the cool inner glass envelope wall.
+A typical getter consists of a small metallic ring containing a stable barium-aluminum alloy (\( \text{BaAl}_4 \)) paired with nickel powder. After the tube is sealed and evacuated, an external RF induction coil flashes the getter ring, heating it to over \( 1100 ^ \circ \text{C} \). The barium alloy vaporizes, spraying a brilliant, silver-like metallic **barium getter mirror** onto the cool inner glass envelope wall.
 
-   The flashed barium metal coating acts as an active chemical vacuum pump through continuous gas absorption and chemisorption:
+The flashed barium metal coating acts as an active chemical vacuum pump through continuous gas absorption and chemisorption:
    * **Oxygen Absorption**: \( 2 \text{Ba} + \text{O}_2 \to 2 \text{BaO} \)
    * **Nitrogen Absorption**: \( 3 \text{Ba} + \text{N}_2 \to \text{Ba}_3 \text{N}_2 \)
    * **Carbon Dioxide Reaction**: \( 5 \text{Ba} + 2 \text{CO}_2 \to 2 \text{BaO} + \text{Ba}_3 \text{C}_2 \)
    * **Water Vapor Decomposition**: \( \text{Ba} + \text{H}_2 \text{O} \to \text{BaO} + \text{H}_2 \) (with hydrogen absorbed into the barium lattice)
 
-   This chemical absorption permanently traps free gas molecules, maintaining an ultra-clean high-vacuum environment (\( 10 ^ { - 8 } \text{ Torr} \)) and protecting the delicate thermionic cathode from ion degradation.
+This chemical absorption permanently traps free gas molecules, maintaining an ultra-clean high-vacuum environment (\( 10 ^ { - 8 } \text{ Torr} \)) and protecting the delicate thermionic cathode from ion degradation.
 
 === Formal Postulates and Theorems of Vacuum Tube Field Dynamics
 
@@ -1093,14 +1093,14 @@ At the Fifth Solvay International Conference of 1927, this doctrine was dogmatiz
 As a result of this historical inversion, the very term **'theoretical physics'** was coöpted to mean, in practice, the **abandonment of theoretical physics**. Rather than seeking first-principles electrodynamic causes for physical phenomena, twentieth-century 'theoretical physics' became an enterprise of constructing mathematical curves to fit empirical observations, asserting that the underlying mechanisms were intrinsically unknowable.
 
 ==== Neuro-Physiological Consequences of Phase-Reversed Terminology
-From a Korzybskian structural semantics perspective, existing under the prolonged influence of phase-reversed terminology—where fundamental terms are inverted to signify their direct opposites and anti-rational contradictions are dogmatized as fundamental principles—creates a persistent, subconscious nervous tension that is unhealthy for the human organism. The human central nervous system requires semantic structural alignment between symbolic language and physical field reality in order to evaluate facts calmly and rationally without cognitive dissonance. Consequently, absorbing, mastering, and employing correct theoretical physics—which replaces mystical verbal evasions with transparent, deterministic multivector field dynamics—eliminates this unnecessary nervous strain, restoring intellectual tranquility and improving neuro-physiological health at least a little.
+Prolonged living under the influence of phase-reversed terminology—where fundamental terms are inverted to signify their “opposites” and contradictions are dogmatized as fundamental principles—creates a persistent, subconscious nervous tension that is unhealthy for the human organism. The human central nervous system requires similarity of structure between symbolic and objective realities, to evaluate facts calmly and rationally without cognitive dissonance. Consequently, absorbing, mastering, and employing correct theoretical physics—which replaces mystical verbal evasions with transparent, deterministic multivector field dynamics—eliminates this unnecessary nervous strain, restoring intellectual tranquility and improving neuro-physiological health.footnote:[This is not a claim that diseases will be cured. Any relief from unnecessary tension, however, is an improvement.]
 
-Prior to 1927, an unexplained experimental observation was correctly designated as an **empirical law**—a physical regularity whose underlying first-principles cause remained to be discovered through rigorous field analysis. After 1927, through systematic verbal trickery, empirical laws were rebranded as 'fundamental quantum principles', transforming physical regularities into inexplicable, uncaused mysteries that were forbidden to be questioned or derived.
+Before 1927, an unexplained experimental observation was correctly designated as an **empirical law**—a physical regularity whose underlying first-principles cause remained to be discovered through rigorous field analysis. After 1927, through systematic verbal trickery, empirical laws were rebranded as 'fundamental quantum principles', transforming physical regularities into inexplicable, uncaused mysteries that were forbidden to be questioned or derived.
 
 ==== Restoration of First Principles via the Master Field Equation
 The Master Field Equation \( D F = J \) in Clifford algebra \( Cl ( 4 , 1 , 1 ) \) on discrete multiscale resolution grid \( \mathcal { G } _ N \) changes that completely. Semiconductor phenomena are not uncaused 'quantum magic'; they are explicit, deterministic multivector field stress-energy dynamics occurring within discrete atomic crystal lattices.
 
-By replacing unphysical continuum point-particle singularities with non-singular Clifford multivector wave packets co-propagating across discrete lattice grid cells, the facts of solid-state physics are restored to their proper status: empirical laws that are rigorously derived from first principles. The 'quantum' semiconductor fallacy is eliminated, re-establishing solid-state engineering on a firm, transparent electrodynamic foundation.
+By replacing unphysical continuum point-particle singularities with non-singular Clifford multivector wave packets co-propagating across discrete lattice grid cells, the facts of solid-state physics are restored to their proper status: empirical laws that are later rigorously derived from first principles. The 'quantum' semiconductor fallacy is eliminated, re-establishing solid-state engineering on a firm, transparent electrodynamic foundation.
 
 === P-N Junction Physics, Built-in Potential, Shockley Diode Equation, and Schottky Barriers
 
