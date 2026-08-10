@@ -260,15 +260,19 @@ To demonstrate the direct BBP spigot operator without evaluating prior digits, c
 
    Forming the BBP multivector combination:
    \[ \{ \pi \} \equiv 4 S_1 - 2 S_4 - S_5 - S_6 \pmod 1 \]
-   \[ = 4 ( 1.007174224 ) - 2 ( 0.255403646 ) - 0.204993689 - 0.171308509 \pmod 1 \]
-   \[ = 4.028696896 - 0.510807292 - 0.204993689 - 0.171308509 = 3.141587406 \pmod 1 \]
-   \[ \{ \pi \} \approx 0.141587406 \]
+   \[ \{ \pi \} \equiv 4 ( 1.007174224 ) - 2 ( 0.255403646 ) - 0.204993689 - 0.171308509 \pmod 1 \]
+   \[ \{ \pi \} \equiv 4.028696896 - 0.510807292 - 0.204993689 - 0.171308509 \pmod 1 \]
+   \[ \{ \pi \} \equiv 3.141587406 \pmod 1 \approx 0.141587406 \]
+
    Multiplying by radix \( b = 16 \):
    \[ 16 \times \{ \pi \} \approx 16 \times 0.141587406 = 2.265398496 \]
-   Taking the integer floor yields \( \lfloor 2.265398496 \rfloor = \mathbf{2} \), matching the exact first hexadecimal fractional digit of \( \pi \).
+
+   Taking the integer floor:
+   \[ d_{-1} = \lfloor 2.265398496 \rfloor = \mathbf{2} \]
+   This matches the exact first hexadecimal fractional digit of \( \pi \) (\( 0.2_{16} \)).
 
 2. **Extraction of the Second Fractional Digit (\( j = 1 \))**:
-   For offset \( j = 1 \), multiply the series by \( 16^1 \) and compute modulo 1 using modular exponentiation for the head terms \( k \le 1 \):
+   For offset \( j = 1 \), multiply the series by \( 16^1 \) and compute modulo 1 using modular exponentiation for head terms \( k \le 1 \):
    * \( 16 S_1 \pmod 1 \equiv \frac{16^1 \pmod 1}{1} + \frac{16^0 \pmod 9}{9} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+1} \approx 0 + 0.111111111 + 0.003840119 = 0.114951230 \)
    * \( 16 S_4 \pmod 1 \equiv \frac{16^1 \pmod 4}{4} + \frac{16^0 \pmod{12}}{12} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+4} \approx 0 + 0.083333333 + 0.003271291 = 0.086604624 \)
    * \( 16 S_5 \pmod 1 \equiv \frac{16^1 \pmod 5}{5} + \frac{16^0 \pmod{13}}{13} + \sum_{k=2}^{\infty} \frac{16^{1-k}}{8k+5} \approx 0.200000000 + 0.076923077 + 0.003117487 = 0.280040564 \)
@@ -276,10 +280,15 @@ To demonstrate the direct BBP spigot operator without evaluating prior digits, c
 
    Combining terms:
    \[ \{ 16 \pi \} \equiv 4 ( 0.114951230 ) - 2 ( 0.086604624 ) - 0.280040564 - 0.741072780 \pmod 1 \]
-   \[ = 0.459804920 - 0.173209248 - 0.280040564 - 0.741072780 = -0.734517672 \equiv 0.265482328 \pmod 1 \]
-   Multiplying by radix 16:
+   \[ \{ 16 \pi \} \equiv 0.459804920 - 0.173209248 - 0.280040564 - 0.741072780 \pmod 1 \]
+   \[ \{ 16 \pi \} \equiv -0.734517672 \equiv 0.265482328 \pmod 1 \]
+
+   Multiplying by radix \( b = 16 \):
    \[ 16 \times \{ 16 \pi \} \approx 16 \times 0.265482328 = 4.247717248 \]
-   Taking the floor yields \( \lfloor 4.247717248 \rfloor = \mathbf{4} \), extracting the second hexadecimal digit '4' directly without prior accumulation.
+
+   Taking the integer floor:
+   \[ d_{-2} = \lfloor 4.247717248 \rfloor = \mathbf{4} \]
+   This extracts the second hexadecimal fractional digit “4” (\( 0.24_{16} \)) directly without prior accumulation.
 ====
 
 === Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic
