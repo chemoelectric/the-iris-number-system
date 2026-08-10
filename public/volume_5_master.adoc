@@ -25,9 +25,30 @@ In 19th and 20th-century mathematical analysis and electrical engineering, linea
    \[ \mathbf { I } = e _ 1 e _ 2 = e _ 1 \wedge e _ 2 \]
    By the fundamental anti-commutativity of orthogonal vectors (\( e _ 1 e _ 2 = - e _ 2 e _ 1 \)), computing the square of \( \mathbf { I } \) yields a purely real result:
    \[ \mathbf { I } ^ 2 = ( e _ 1 e _ 2 ) ( e _ 1 e _ 2 ) = - e _ 1 ( e _ 1 e _ 2 ) e _ 2 = - ( e _ 1 e _ 1 ) ( e _ 2 e _ 2 ) = - 1 \]
-   Multiplying a real vector \( \mathbf { v } = v _ 1 e _ 1 + v _ 2 e _ 2 \) by \( \mathbf { I } \) rotates \( \mathbf { v } \) by \( 90 ^ \circ \) in the \( e _ 1 \wedge e _ 2 \) plane. Thus, Euler’s relation \( e ^ { \mathbf { I } \theta } = \cos \theta + \mathbf { I } \sin \theta \) is an exact real geometric rotor that precesses real vectors in a real two-dimensional subspace, removing the need for imaginary numbers or complex planes.
 
-3. **Sufficiency of Lightweight Geometric Algebras**:
+3. **Order of Multiplication and Directional Precession**:
+   The exact geometric action of \( \mathbf { I } \) on planar basis vectors depends strictly on the order of multiplication:
+   * **Right-Multiplication by \( \mathbf { I } \)**:
+     \[ e_1 \mathbf { I } = e_1 ( e_1 e_2 ) = ( e_1 e_1 ) e_2 = e_2 \]
+     \[ e_2 \mathbf { I } = e_2 ( e_1 e_2 ) = - e_1 ( e_2 e_2 ) = - e_1 \]
+     For an arbitrary vector \( \mathbf { v } = v_1 e_1 + v_2 e_2 \), right-multiplying by \( \mathbf { I } \) yields \( \mathbf { v } \mathbf { I } = ( v_1 e_1 + v_2 e_2 ) ( e_1 e_2 ) = - v_2 e_1 + v_1 e_2 \). This maps \( ( v_1 , v_2 ) \mapsto ( - v_2 , v_1 ) \), executing a \( + 90 ^ \circ \) **counterclockwise** rotation in the \( ( e_1 , e_2 ) \) plane.
+   * **Left-Multiplication by \( \mathbf { I } \)**:
+     \[ \mathbf { I } e_1 = ( e_1 e_2 ) e_1 = - e_2 ( e_1 e_1 ) = - e_2 \]
+     \[ \mathbf { I } e_2 = ( e_1 e_2 ) e_2 = e_1 ( e_2 e_2 ) = e_1 \]
+     For an arbitrary vector \( \mathbf { v } = v_1 e_1 + v_2 e_2 \), left-multiplying by \( \mathbf { I } \) yields \( \mathbf { I } \mathbf { v } = ( e_1 e_2 ) ( v_1 e_1 + v_2 e_2 ) = v_2 e_1 - v_1 e_2 = - \mathbf { v } \mathbf { I } \). This maps \( ( v_1 , v_2 ) \mapsto ( v_2 , - v_1 ) \), executing a \( - 90 ^ \circ \) **clockwise** rotation.
+
+4. **Orientation: \( \mathbf { I } \) versus \( - \mathbf { I } \), Right-Hand versus Left-Hand Rule**:
+   There exist two distinct unit bivectors in the plane: \( \mathbf { I } = e_1 e_2 \) and \( - \mathbf { I } = e_2 e_1 \). Both satisfy the quadratic identity \( \mathbf { I } ^ 2 = ( - \mathbf { I } ) ^ 2 = - 1 \).
+   * The generator \( \mathbf { I } = e_1 e_2 \) defines a counterclockwise sense of rotation, establishing a **right-hand rule** orientation from \( e_1 \) into \( e_2 \).
+   * The generator \( - \mathbf { I } = e_2 e_1 \) defines a clockwise sense of rotation, establishing a **left-hand rule** orientation from \( e_1 \) into \( e_2 \).
+   In Euler’s geometric rotor \( e ^ { \mathbf { I } \theta } = \cos \theta + \mathbf { I } \sin \theta \), a positive angle parameter \( \theta \) precesses vectors counterclockwise under right-hand orientation \( \mathbf { I } = e_1 e_2 \), and clockwise under left-hand orientation \( - \mathbf { I } = e_2 e_1 \).
+
+5. **Planar Restriction of Direct Multiplication Rotations**:
+   It is crucial to note that such simple methods of rotation—where multiplying a vector directly by a unit bivector \( \mathbf { I } \) or complex-like exponential rotor \( e ^ { \mathbf { I } \theta } \) yields a rotated vector—apply **strictly and exclusively to planar geometric algebra** (such as \( Cl ( 2 , 0 ) \) or \( Cl ( 0 , 1 ) \)).
+   In three-dimensional Euclidean space \( Cl ( 3 , 0 ) \) or higher-dimensional spaces (such as \( Cl ( 4 , 1 , 1 ) \) under the Master Field Equation), a general vector \( \mathbf { v } \) possesses components orthogonal to the plane of bivector \( \mathbf { B } \). Direct multiplication \( \mathbf { v } \mathbf { B } \) yields a mixed multivector containing both scalar/vector contractions and trivector volume elements (\( \mathbf { v } \mathbf { B } = \mathbf { v } \cdot \mathbf { B } + \mathbf { v } \wedge \mathbf { B } \)), rather than a pure rotated vector.
+   Consequently, in three or more dimensions, vector rotations cannot be performed by simple direct multiplication; they require double-sided rotor transformations \( \mathbf { v } \mapsto R \mathbf { v } \tilde { R } \), where \( R = e ^ { - \mathbf { B } \theta / 2 } \) and \( \tilde { R } = e ^ { + \mathbf { B } \theta / 2 } \) is its reversion. The collapse of the double-sided rotor transformation into single direct multiplication \( \mathbf { v } e ^ { \mathbf { I } \theta } \) is an exceptional property unique to planar geometric algebra.
+
+6. **Sufficiency of Lightweight Geometric Algebras**:
    While field dynamics on discrete multiscale resolution grids is fully described by the 64-dimensional Clifford Algebra \( Cl ( 4 , 1 , 1 ) \) under the Master Field Equation \( D F = J \), planar signal analysis requires far lighter geometric structures. For example:
    * **The One-Dimensional Clifford Algebra \( Cl ( 0 , 1 ) \)**: Spanned by a single generator \( e _ 1 \) with \( e _ 1 ^ 2 = - 1 \). Elements are real linear combinations \( a + b e _ 1 \). This algebra is naturally isomorphic to \( \mathbb { C } \) as a vector space, but every term remains a purely real multivector.
    * **The Two-Dimensional Clifford Algebra \( Cl ( 2 , 0 ) \)**: Spanned by real orthogonal vectors \( e _ 1, e _ 2 \) with \( e _ 1 ^ 2 = 1, e _ 2 ^ 2 = 1 \). The even subalgebra \( Cl ^ + ( 2 , 0 ) \) consists of elements \( a + b e _ { 1 2 } \), providing a complete, coordinate-free real geometric phase plane.
