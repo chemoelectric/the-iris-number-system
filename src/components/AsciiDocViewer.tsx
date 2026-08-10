@@ -554,8 +554,8 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
         continue;
       }
 
-      // Callout Blocks: [NOTE], [IMPORTANT], [POSTULATE], [DEFINITION], [THEOREM]
-      if (line.startsWith('[NOTE]') || line.startsWith('[IMPORTANT]') || line.startsWith('[POSTULATE]') || line.startsWith('[DEFINITION]') || line.startsWith('[THEOREM]')) {
+      // Callout Blocks: [NOTE], [IMPORTANT], [POSTULATE], [DEFINITION], [THEOREM], [EXAMPLE]
+      if (line.startsWith('[NOTE]') || line.startsWith('[IMPORTANT]') || line.startsWith('[POSTULATE]') || line.startsWith('[DEFINITION]') || line.startsWith('[THEOREM]') || line.startsWith('[EXAMPLE]')) {
         const blockType = line.match(/\[(.*?)\]/)?.[1] || 'NOTE';
         let blockTitle = '';
         let blockContentLines: string[] = [];
@@ -600,6 +600,10 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
           boxStyles = 'bg-[#181818] text-purple-100';
           badgeStyles = 'bg-purple-500/20 text-purple-300';
           titleColor = 'text-purple-300';
+        } else if (blockType === 'EXAMPLE') {
+          boxStyles = 'bg-[#181818] text-emerald-100';
+          badgeStyles = 'bg-emerald-500/20 text-emerald-300';
+          titleColor = 'text-emerald-300';
         } else if (blockType === 'IMPORTANT') {
           boxStyles = 'bg-[#181818] text-rose-100';
           badgeStyles = 'bg-rose-500/20 text-rose-300';
@@ -639,7 +643,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
 
       // Unordered list items starting with *, -, or **
       if (line.startsWith('* ') || line.startsWith('- ') || line.startsWith('** ')) {
-        const listItems: { text: string; extraNodes?: React.ReactNode[] }[] = [];
+        const listItems: { nodes: React.ReactNode[] }[] = [];
         
         while (i < lines.length) {
           const curr = lines[i].trim();
@@ -658,7 +662,11 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
 
           if (curr.startsWith('* ') || curr.startsWith('- ') || curr.startsWith('** ')) {
             const itemText = curr.replace(/^(\*\*|\*|\-)\s+/, '');
-            listItems.push({ text: itemText });
+            listItems.push({
+              nodes: [
+                <div key={`ul-head-${i}`}>{renderMathInline(itemText)}</div>
+              ]
+            });
             i++;
           } else if (listItems.length > 0 && (curr.startsWith('\\[') || curr.startsWith('$$'))) {
             const mathLines: string[] = [];
@@ -695,7 +703,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                 />
               );
               const lastItem = listItems[listItems.length - 1];
-              lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+              lastItem.nodes.push(mathNode);
             } catch {
               // fallback
             }
@@ -738,7 +746,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                     />
                   );
                   const lastItem = listItems[listItems.length - 1];
-                  lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+                  lastItem.nodes.push(mathNode);
                 } catch {
                   // fallback
                 }
@@ -749,13 +757,27 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                   </div>
                 );
                 const lastItem = listItems[listItems.length - 1];
-                lastItem.extraNodes = [...(lastItem.extraNodes || []), paraNode];
+                lastItem.nodes.push(paraNode);
                 i++;
               }
             }
           } else if (listItems.length > 0 && (lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
             const lastItem = listItems[listItems.length - 1];
-            lastItem.text += ' ' + curr.replace(/^\+\s*/, '');
+            if (curr.startsWith('* ') || curr.startsWith('- ')) {
+              const subBullet = (
+                <div key={`ul-sub-${i}`} className="my-1.5 pl-4 border-l-2 border-amber-500/40 text-slate-200 font-serif">
+                  {renderMathInline(curr.replace(/^(\*|\-)\s+/, ''))}
+                </div>
+              );
+              lastItem.nodes.push(subBullet);
+            } else {
+              const paraNode = (
+                <div key={`ul-ind-para-${i}`} className="my-2 text-slate-200 font-serif">
+                  {renderMathInline(curr.replace(/^\+\s*/, ''))}
+                </div>
+              );
+              lastItem.nodes.push(paraNode);
+            }
             i++;
           } else {
             break;
@@ -772,9 +794,8 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             className="my-5 space-y-3 list-disc list-outside pl-6 text-sm sm:text-base text-slate-200 font-serif leading-relaxed"
           >
             {listItems.map((li, liIdx) => (
-              <li key={`li-${liIdx}`} className="leading-relaxed pl-1">
-                <div>{renderMathInline(li.text)}</div>
-                {li.extraNodes}
+              <li key={`li-${liIdx}`} className="leading-relaxed pl-1 space-y-2">
+                {li.nodes}
               </li>
             ))}
           </ul>
@@ -785,7 +806,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
       // Ordered list items starting with . or 1.
       const isOrderedItem = line.startsWith('. ') || /^\d+\.\s+/.test(line);
       if (isOrderedItem) {
-        const listItems: { text: string; extraNodes?: React.ReactNode[] }[] = [];
+        const listItems: { nodes: React.ReactNode[] }[] = [];
         
         while (i < lines.length) {
           const curr = lines[i].trim();
@@ -804,7 +825,11 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
 
           if (curr.startsWith('. ') || /^\d+\.\s+/.test(curr)) {
             const itemText = curr.replace(/^(\.|\d+\.)\s+/, '');
-            listItems.push({ text: itemText });
+            listItems.push({
+              nodes: [
+                <div key={`ol-head-${i}`}>{renderMathInline(itemText)}</div>
+              ]
+            });
             i++;
           } else if (listItems.length > 0 && (curr.startsWith('\\[') || curr.startsWith('$$'))) {
             const mathLines: string[] = [];
@@ -841,7 +866,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                 />
               );
               const lastItem = listItems[listItems.length - 1];
-              lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+              lastItem.nodes.push(mathNode);
             } catch {
               // fallback
             }
@@ -884,7 +909,7 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                     />
                   );
                   const lastItem = listItems[listItems.length - 1];
-                  lastItem.extraNodes = [...(lastItem.extraNodes || []), mathNode];
+                  lastItem.nodes.push(mathNode);
                 } catch {
                   // fallback
                 }
@@ -895,13 +920,27 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                   </div>
                 );
                 const lastItem = listItems[listItems.length - 1];
-                lastItem.extraNodes = [...(lastItem.extraNodes || []), paraNode];
+                lastItem.nodes.push(paraNode);
                 i++;
               }
             }
           } else if (listItems.length > 0 && (lines[i].startsWith('  ') || lines[i].startsWith('\t'))) {
             const lastItem = listItems[listItems.length - 1];
-            lastItem.text += ' ' + curr.replace(/^\+\s*/, '');
+            if (curr.startsWith('* ') || curr.startsWith('- ')) {
+              const subBullet = (
+                <div key={`ol-sub-${i}`} className="my-1.5 pl-4 border-l-2 border-amber-500/40 text-slate-200 font-serif">
+                  {renderMathInline(curr.replace(/^(\*|\-)\s+/, ''))}
+                </div>
+              );
+              lastItem.nodes.push(subBullet);
+            } else {
+              const paraNode = (
+                <div key={`ol-ind-para-${i}`} className="my-2 text-slate-200 font-serif">
+                  {renderMathInline(curr.replace(/^\+\s*/, ''))}
+                </div>
+              );
+              lastItem.nodes.push(paraNode);
+            }
             i++;
           } else {
             break;
@@ -918,9 +957,8 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             className="my-5 space-y-3 list-decimal list-outside pl-6 text-sm sm:text-base text-slate-200 font-serif leading-relaxed"
           >
             {listItems.map((li, liIdx) => (
-              <li key={`ol-li-${liIdx}`} className="leading-relaxed pl-1">
-                <div>{renderMathInline(li.text)}</div>
-                {li.extraNodes}
+              <li key={`ol-li-${liIdx}`} className="leading-relaxed pl-1 space-y-2">
+                {li.nodes}
               </li>
             ))}
           </ol>
