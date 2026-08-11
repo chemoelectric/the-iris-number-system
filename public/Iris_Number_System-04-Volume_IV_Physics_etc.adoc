@@ -112,7 +112,7 @@ This explicitly derives the usual Heaviside differential form of Maxwell's equat
 
 === Simple Geometric Proof of the Non-Existence of Magnetic Monopoles
 
-The second Maxwell equation, \( \nabla \cdot \mathbf { B } = 0 \), is historically designated as Gauss's Law for Magnetism. In conventional physics textbooks, this law is frequently introduced as an empirical observation: “no isolated magnetic monopoles have ever been observed.” Within the Iris Number System and Geometric Algebra, the non-existence of magnetic monopoles is not an empirical mystery, an ad hoc postulate, or a lucky coincidence, but a simple geometric necessity.
+The second Maxwell equation, \( \nabla \cdot \mathbf { B } = 0 \), is historically designated as Gauss's Law for Magnetism. In conventional physics textbooks, this law is frequently introduced as an empirical observation: “no isolated magnetic monopoles have ever been observed.” Within the Iris Number System and Geometric Algebra, the non-existence of magnetic monopoles is not an empirical mystery, an ad hoc postulate, or a lucky coincidence, but a simple geometric necessity. Indeed, with Maxwell’s equations written in multivectors, it is not even possible to imagine a magnetic monopole—the notion itself is a category error resulting from forcing a planar bivector circulation into a scalar point-source template.
 
 [#theorem-non-existence-of-magnetic-monopoles]
 [THEOREM]
@@ -132,7 +132,7 @@ where the inner product \( \nabla \cdot \mathbf { B } \) is a vector (dual to \(
 
 . **Vector Potential Boundary Identity**: Expressing the bivector magnetic field as the exterior derivative of a vector potential \( \mathbf { A } \), \( \mathbf { B } = \nabla \wedge \mathbf { A } \), taking the divergence yields \( \nabla \cdot \mathbf { B } = \nabla \cdot ( \nabla \wedge \mathbf { A } ) = 0 \). The identity \( \nabla \cdot \mathbf { B } = 0 \) is thus the vector calculus manifestation of the fundamental geometric principle that “the boundary of a boundary is zero” (\( d ^ 2 = 0 \)).
 
-Therefore, magnetic monopoles do not exist, and Gauss's Law for Magnetism \( \nabla \cdot \mathbf { B } = 0 \) is a geometric necessity. \( \square \)
+Therefore, with Maxwell’s equations written in multivectors, a magnetic monopole cannot even be conceived, and Gauss's Law for Magnetism \( \nabla \cdot \mathbf { B } = 0 \) is a geometric necessity. \( \square \)
 ====
 
 === Derivation of the Law of Universal Gravitation in Gauss's and Newton's Forms
