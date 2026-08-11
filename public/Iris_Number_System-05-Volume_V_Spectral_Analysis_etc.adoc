@@ -1215,13 +1215,21 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 
 == Field-Effect Transistors
 
+=== Complementary Metal-Oxide-Semiconductor (CMOS) Technology in Analog and Digital Circuits
+
+Complementary Metal-Oxide-Semiconductor (CMOS) structures—pairing n-channel and p-channel MOSFETs on a single silicon substrate—form the foundational architecture of modern integrated circuits across both analog and digital domains. While standard digital CMOS gates (such as the 4000-series and 74HC-series) are designed for complementary rail-to-rail switching with near-zero static power dissipation, biasing a digital CMOS inverter or unbuffered gate in its linear transition region converts the complementary MOSFET pair into a high-transconductance, high-input-impedance linear analog amplifier. In addition to general-purpose digital logic, dedicated analog CMOS integrated circuits employ precision-matched MOSFET pairs to form operational amplifiers, sample-and-hold circuits, switched-capacitor filters, and low-noise operational transconductance amplifiers (OTAs).
+
 == Point-Contact and Bipolar Junction Transistors
 
 == Other Semiconductor Devices
 
 == Analog Integrated Circuits
 
+=== Analog CMOS and Linear IC Architectures
+
 == Digital Gates, Flip-Flops, and Sequential Logic
+
+=== Digital CMOS Logic Families and Switching Dynamics
 
 == Digital Computer Programs Are Electronic Circuits
 
