@@ -1213,6 +1213,24 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 1. **Negative Differential Resistance \( R_N \)**: \( R_N = \frac { V_v - V_p } { I_v - I_p } = \frac { 0.350 - 0.050 } { 0.001 - 0.010 } = \frac { 0.300 } { - 0.009 } \approx - 33.33 \ \Omega \).
 2. **Resonant Oscillation Frequency**: \( f_0 = \frac { 1 } { 2 \pi \sqrt{L C} } = \frac { 1 } { 2 \pi \sqrt{ 10 \times 10^{-9} \times 5 \times 10^{-12} } } = \frac { 1 } { 2 \pi \sqrt{ 5 \times 10^{-20} } } = \frac { 1 } { 2 \pi \times 2.236 \times 10^{-10} } \approx 711.8 \text{ MHz} \).
 
+== Field-Effect Transistors
+
+== Point-Contact and Bipolar Junction Transistors
+
+== Other Semiconductor Devices
+
+== Analog Integrated Circuits
+
+== Digital Gates, Flip-Flops, and Sequential Logic
+
+== Digital Computer Programs Are Electronic Circuits
+
+Digital computer programs are physical electronic circuits. A persistent misconception—often asserted by advocates of mystical interpretations of physics—is that software code or algorithmic programs represent abstract, non-physical “Platonic ideals” detached from physical causality and material contact action. Critics have sometimes insisted that computer programs could not be considered empirical experiments that refute flawed physical theories, claiming instead that software operates in a non-material realm. In reality, a digital computer program is a specific physical configuration and dynamic state sequence of contact-action electronic switching circuits executing on physical semiconductor lattices.
+
+When a digital computer program runs, it operates entirely as a physical electrodynamic experiment governed by the Master Field Equation \( D F = J \). The execution of instructions causes physical movement of charge currents, charge storage across capacitive gate oxides, and state switching across billions of physical semiconductor junction transistors. Running a computer program draws real electric power from an external power supply, generates ohmic resistive dissipation, radiates thermal heat into the surrounding environment, performs mechanical and optical work in driving physical display screens, and propagates electrodynamic wave packets across physical copper traces, fiber-optic conductors, and wireless channels to transmit data over the Internet.
+
+To claim that a computer program is a “Platonic ideal” rather than an empirical contact-action experiment is a category error that ignores the physical hardware upon which all digital computation resides. When a computer program executes an algorithm—such as simulating physical field dynamics or running digital factorizations—it acts as a physical, contact-action electronic circuit executing physical state transitions. Any empirical outcome produced by running such a program is the direct physical result of deterministic electrodynamic circuit operations.
+
 == Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
