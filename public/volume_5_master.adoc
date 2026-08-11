@@ -1215,9 +1215,93 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 
 == Field-Effect Transistors
 
+=== First-Principles Electrodynamics of Field-Effect Transduction
+
+Field-Effect Transistors (FETs) represent a fundamental class of semiconductor active devices in which the electrical conductivity of a solid-state conduction channel is modulated purely by an applied transverse electric field, rather than by minority-carrier injection across a forward-biased P-N junction. Governed by the Master Field Equation \( D F = J \), the applied gate potential establishes an electrostatic aperture field \( E_\perp \) within the dielectric or depletion boundary layer, altering the local free carrier density \( n \) (or \( p \)) and channel cross-sectional area without drawing a continuous static gate current.
+
+Because field-effect conduction relies strictly on majority carriers—electrons in n-channel devices and holes in p-channel devices—FETs exhibit complete freedom from minority-carrier storage time delays and reverse recovery phenomena. This majority-carrier mechanism yields extremely high input impedance (\( R_{\text{in}} \approx 10^9 \ \Omega \) for JFETs, \( R_{\text{in}} > 10^{14} \ \Omega \) for MOSFETs), thermal stability, and low noise figures in high-frequency analog signal processing and ultra-low power digital signal switching.
+
+=== Junction Field-Effect Transistors (JFETs)
+
+A Junction Field-Effect Transistor (JFET) consists of a doped semiconductor channel (n-type or p-type silicon) flanked by heavily doped, oppositely biased gate regions forming metallurgical P-N junctions. In an n-channel JFET, current flows longitudinally between the drain terminal and the source terminal under an applied drain-source voltage \( V_{DS} \).
+
+Applying a reverse bias voltage \( V_{GS} \) to the gate-source P-N junction expands the space-charge depletion region into the conducting channel. Because the depletion layer contains no mobile carriers, expanding its width restricts the effective cross-sectional area \( A_{\text{channel}} \) of the conductive path, increasing the channel resistance \( R_{\text{channel}} \).
+
+When the reverse gate bias or drain-to-gate potential reaches the *pinch-off voltage* \( V_p \), the depletion regions from opposite gate boundaries meet, constricting the conducting channel to a narrow pinch-off neck. Beyond pinch-off, further increases in \( V_{DS} \) do not increase the drain current \( I_D \); instead, the electric field across the pinch-off region accelerates carriers at their maximum drift velocity, establishing a saturated drain current \( I_{D, \text{sat}} \).
+
+In the saturation region (\( V_{DS} \ge V_{GS} - V_p \)), the relationship between drain current \( I_D \) and gate-source voltage \( V_{GS} \) is governed by Shockley's square-law transfer equation:
+\[ I_D = I_{DSS} \left( 1 - \frac { V_{GS} } { V_p } \right)^2 \]
+where \( I_{DSS} \) is the saturation drain current at zero gate bias (\( V_{GS} = 0 \)), and \( V_p \) is the negative pinch-off voltage for an n-channel device (or positive for a p-channel device).
+
+The small-signal transconductance \( g_m \), defined as the rate of change of drain current with respect to gate-source voltage, is obtained by differentiating Shockley's equation:
+\[ g_m = \frac { \partial I_D } { \partial V_{GS} } = \frac { 2 I_{DSS} } { | V_p | } \left( 1 - \frac { V_{GS} } { V_p } \right) = g_{m0} \left( 1 - \frac { V_{GS} } { V_p } \right) \]
+where \( g_{m0} = \frac { 2 I_{DSS} } { | V_p | } \) represents the maximum transconductance at zero gate bias.
+
+Below pinch-off (\( V_{DS} < V_{GS} - V_p \)), the JFET operates in the *ohmic* or *triode* region, behaving as a voltage-controlled linear resistor whose drain-source resistance \( r_{ds} \) is modulated by \( V_{GS} \):
+\[ r_{ds} = \frac { r_0 } { \left( 1 - \frac { V_{GS} } { V_p } \right)^2 } \]
+where \( r_0 = \frac { | V_p | } { 2 I_{DSS} } \) is the minimum drain-source resistance at \( V_{GS} = 0 \).
+
+=== Metal-Oxide-Semiconductor Field-Effect Transistors (MOSFETs)
+
+In a Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET), the conducting channel is separated from the metallic or poly-silicon gate electrode by a thin dielectric insulator, typically silicon dioxide (\( \text{SiO}_2 \)). This insulated-gate construction eliminates static DC gate current entirely, providing an input resistance exceeding \( 10^{14} \ \Omega \).
+
+MOSFETs are categorized into *enhancement-mode* (normally-off) and *depletion-mode* (normally-on) devices across both N-channel (NMOS) and P-channel (PMOS) polarities.
+
+In an N-channel enhancement-mode MOSFET constructed on a P-type silicon substrate, no conductive channel exists at zero gate bias (\( V_{GS} = 0 \)). When a positive gate voltage \( V_{GS} \) exceeding the threshold voltage \( V_{th} \) is applied, the vertical electric field repels mobile holes from the substrate surface and attracts free electrons, forming an *inversion layer*—a thin N-type conductive channel connecting the heavily doped N+ source and drain diffusion regions.
+
+The drain current dynamics are divided into three distinct operational regions:
+
+1. **Cut-off Region** (\( V_{GS} < V_{th} \)): No inversion layer is formed, and the channel current is zero:
+\[ I_D = 0 \]
+
+2. **Triode (Ohmic) Region** (\( V_{GS} \ge V_{th} \) and \( V_{DS} < V_{GS} - V_{th} \)): The inversion layer extends continuously from source to drain, and current varies non-linearly with drain-source voltage:
+\[ I_D = \mu_n C_{ox} \frac { W } { L } \left[ \left( V_{GS} - V_{th} \right) V_{DS} - \frac { 1 } { 2 } V_{DS}^2 \right] \]
+where \( \mu_n \) is the electron surface mobility, \( C_{ox} = \frac { \varepsilon_{ox} } { t_{ox} } \) is the gate-oxide capacitance per unit area, \( W \) is the channel width, and \( L \) is the channel length.
+
+3. **Saturation Region** (\( V_{GS} \ge V_{th} \) and \( V_{DS} \ge V_{GS} - V_{th} \)): The inversion layer pinches off at the drain end when the local channel-to-gate potential falls below \( V_{th} \). Taking into account channel-length modulation parameter \( \lambda \), the saturated drain current is expressed as:
+\[ I_D = \frac { 1 } { 2 } \mu_n C_{ox} \frac { W } { L } \left( V_{GS} - V_{th} \right)^2 \left( 1 + \lambda V_{DS} \right) \]
+
+The small-signal transconductance \( g_m \) in saturation is given by:
+\[ g_m = \frac { \partial I_D } { \partial V_{GS} } = \mu_n C_{ox} \frac { W } { L } \left( V_{GS} - V_{th} \right) = \sqrt{ 2 \mu_n C_{ox} \frac { W } { L } I_D } \]
+
+=== Power MOSFETs and Advanced Field-Effect Architectures
+
+To handle high voltage, high current, and high switching speeds in industrial power conversion, specialized power MOSFET geometries have been developed, including Vertical Double-Diffused MOS (VDMOS) and Trench MOS structures.
+
+In VDMOS devices, current flows vertically from a bottom drain substrate through a short, diffuse lateral channel into top-surface source metallization. This vertical current path optimizes silicon area utilization, minimizes on-state resistance \( R_{DS(\text{on})} \), and distributes high off-state electric fields across a lightly doped drift region.
+
+For microwave and millimeter-wave high-frequency applications, Metal-Semiconductor Field-Effect Transistors (MESFETs) replace the insulated gate oxide with a direct Schottky barrier contact on gallium arsenide (GaAs) or silicon carbide (SiC) substrates. The absence of oxide-interface traps and the high electron mobility of compound semiconductors allow MESFETs to achieve low-noise amplification and power switching into the tens of gigahertz regime.
+
 === Complementary Metal-Oxide-Semiconductor (CMOS) Technology in Analog and Digital Circuits
 
 Complementary Metal-Oxide-Semiconductor (CMOS) structures—pairing n-channel and p-channel MOSFETs on a single silicon substrate—form the foundational architecture of modern integrated circuits across both analog and digital domains. While standard digital CMOS gates (such as the 4000-series and 74HC-series) are designed for complementary rail-to-rail switching with near-zero static power dissipation, biasing a digital CMOS inverter or unbuffered gate in its linear transition region converts the complementary MOSFET pair into a high-transconductance, high-input-impedance linear analog amplifier. In addition to general-purpose digital logic, dedicated analog CMOS integrated circuits employ precision-matched MOSFET pairs to form operational amplifiers, sample-and-hold circuits, switched-capacitor filters, and low-noise operational transconductance amplifiers (OTAs).
+
+=== Worked Example Problems in Field-Effect Transistor Circuits
+
+**Problem Statement 1:** An N-channel JFET has a zero-bias saturation current \( I_{DSS} = 12.0 \text{ mA} \) and a pinch-off voltage \( V_p = - 4.0 \text{ V} \). Calculate the drain current \( I_D \) and small-signal transconductance \( g_m \) when operated in the saturation region at a gate-source bias voltage \( V_{GS} = - 1.5 \text{ V} \).
+
+**Solution:**
+1. **Saturation Drain Current \( I_D \)**:
+\[ I_D = I_{DSS} \left( 1 - \frac { V_{GS} } { V_p } \right)^2 = 12.0 \times 10^{-3} \left( 1 - \frac { - 1.5 } { - 4.0 } \right)^2 = 12.0 \times 10^{-3} \left( 1 - 0.375 \right)^2 \]
+\[ I_D = 12.0 \times 10^{-3} \times (0.625)^2 = 12.0 \times 10^{-3} \times 0.390625 = 4.6875 \text{ mA} \]
+
+2. **Maximum Transconductance \( g_{m0} \)**:
+\[ g_{m0} = \frac { 2 I_{DSS} } { | V_p | } = \frac { 2 \times 12.0 \times 10^{-3} } { 4.0 } = 6.0 \text{ mS} \]
+
+3. **Small-Signal Transconductance \( g_m \)**:
+\[ g_m = g_{m0} \left( 1 - \frac { V_{GS} } { V_p } \right) = 6.0 \times 10^{-3} \times (1 - 0.375) = 6.0 \times 10^{-3} \times 0.625 = 3.75 \text{ mS} \]
+
+**Problem Statement 2:** An N-channel enhancement-mode MOSFET operates in saturation with threshold voltage \( V_{th} = 1.2 \text{ V} \), process transconductance parameter \( k_n' = \mu_n C_{ox} = 100 \ \mu \text{A/V}^2 \), channel aspect ratio \( W / L = 20 \), and channel-length modulation parameter \( \lambda = 0.02 \ \text{V}^{-1} \). Calculate the drain current \( I_D \) and small-signal output resistance \( r_o \) when biased at \( V_{GS} = 2.5 \text{ V} \) and \( V_{DS} = 5.0 \text{ V} \).
+
+**Solution:**
+1. **Saturation Drain Current \( I_D \)**:
+\[ I_D = \frac { 1 } { 2 } k_n' \frac { W } { L } ( V_{GS} - V_{th} )^2 ( 1 + \lambda V_{DS} ) \]
+\[ I_D = \frac { 1 } { 2 } \times (100 \times 10^{-6}) \times 20 \times (2.5 - 1.2)^2 \times (1 + 0.02 \times 5.0) \]
+\[ I_D = 10^{-3} \times (1.3)^2 \times (1 + 0.10) = 10^{-3} \times 1.69 \times 1.10 = 1.859 \text{ mA} \]
+
+2. **Small-Signal Output Resistance \( r_o \)**:
+\[ r_o = \frac { 1 } { \lambda I_{D0} } = \frac { 1 } { 0.02 \times (10^{-3} \times 1.69) } = \frac { 1 } { 0.02 \times 1.69 \times 10^{-3} } = \frac { 1 } { 3.38 \times 10^{-5} } \approx 29,586 \ \Omega \approx 29.59 \text{ k}\Omega \]
+
 
 == Point-Contact and Bipolar Junction Transistors
 
@@ -1257,38 +1341,6 @@ Digital computer programs are physical electronic circuits. A persistent misconc
 When a digital computer program runs, it operates entirely as a physical electrodynamic experiment governed by the Master Field Equation \( D F = J \). The execution of instructions causes physical movement of charge currents, charge storage across capacitive gate oxides, and state switching across billions of physical semiconductor junction transistors. Running a computer program draws real electric power from an external power supply, generates ohmic resistive dissipation, radiates thermal heat into the surrounding environment, performs mechanical and optical work in driving physical display screens, and propagates electrodynamic wave packets across physical copper traces, fiber-optic conductors, and wireless channels to transmit data over the Internet.
 
 To claim that a computer program is a “Platonic ideal” rather than an empirical contact-action experiment is a category error that ignores the physical hardware upon which all digital computation resides. When a computer program executes an algorithm—such as simulating physical field dynamics or running digital factorizations—it acts as a physical, contact-action electronic circuit executing physical state transitions. Any empirical outcome produced by running such a program is the direct physical result of deterministic electrodynamic circuit operations.
-
-== Making Electrical Power Safer
-
-=== Physical Hazards of Conventional Alternating-Current Power Distribution
-
-Legacy electric power distribution systems—designed in the late nineteenth and early twentieth centuries—rely on high-voltage alternating-current (AC) distribution (typically 120 V or 230 V single-phase mains at 50 Hz or 60 Hz) delivered through exposed mechanical contacts, socket receptacles, and screw-base lamp fixtures. In these legacy architectures, a single accidental touch by a human body bridging an uninsulated live conductor to an earth ground or neutral conductor completes a low-impedance electrodynamic circuit path across living tissue.
-
-Because human skin impedance drops rapidly under moisture or high voltage (falling from hundreds of kilohms down to several hundred ohms), AC mains voltages drive fatal shock currents through vital organs. Electrodynamic shock currents as low as 10 mA to 50 mA through the human torso exceed the fibrillation threshold of cardiac tissue, triggering lethal ventricular fibrillation and muscular paralysis within a fraction of a second. Furthermore, mechanical screw-shell lamp sockets, bare terminal screws, and non-polarized wall plugs present exposed metallic surfaces where human fingers, metal tools, or moisture can easily establish direct galvanic contact with line-potential conductors.
-
-=== Limitations of Conventional Protective Devices
-
-Modern building codes have incrementally added protective devices to mitigate these legacy hazards:
-
-1. **Equipment Grounding Conductor (EGC)**: Provides a low-impedance metallic return path to trip magnetic circuit breakers during direct dead-short line-to-chassis faults, but offers zero protection if a human touches an ungrounded live conductor directly.
-2. **Ground Fault Circuit Interrupters (GFCI) / Residual Current Devices (RCD)**: Monitor the differential current balance between line and neutral conductors using a toroidal current transformer. While GFCI devices interrupt current when a differential leakage \( \Delta I > 4 \text{ mA} - 6 \text{ mA} \) to ground is detected, their electro-mechanical relay trip times require 25 ms to 100 ms—during which time a human victim still experiences a painful and potentially dangerous electrodynamic surge.
-3. **Arc Fault Circuit Interrupters (AFCI)**: High-frequency digital signal processors analyze current waveforms to detect hazardous series or parallel arcing, mitigating electrical fire risks but not preventing human contact shock.
-
-=== First-Principles Electrodynamic Architectures for Intrinsically Safe Electrical Power
-
-To establish intrinsically safe power distribution where electrodynamic shock, arc flash, and electrical fires are physically impossible, power engineering must move beyond legacy mechanical contacts and raw high-voltage AC mains. The Master Field Equation \( D F = J \) governs four key technological paradigms for intrinsically safe power:
-
-==== 1. Touch-Safe Resonant Contactless Power Transfer
-By replacing exposed metallic contacts, prongs, and screw-base sockets with high-frequency resonant magnetic or capacitive field coupling, power is transferred entirely through dielectric and magnetic flux vectors across sealed, non-conductive polymer or ceramic enclosures. Transmitters operate at ultrasonic frequencies (100 kHz to 13.56 MHz), where electric and magnetic energy couples efficiently across millimeter dielectric gaps. Because there are no exposed metallic conductors at line potential, direct galvanic human contact is physically impossible, making light bulb replacement and fixture handling completely safe even in wet environments.
-
-==== 2. Active Impedance Negotiation and Smart Sensing
-Before an outlet or fixture energizes its internal driver, an active digital handshake circuit injects a low-voltage, micro-ampere sensing signal to evaluate the complex bivector impedance of the attached load. Human tissue exhibits a characteristic complex impedance spectrum dominated by capacitive cell membrane dispersion and high resistive skin layers. If the sensing handshake detects human skin or an improper load impedance rather than a validated appliance signature, the terminal remains completely de-energized, maintaining zero voltage at the exposed contact points.
-
-==== 3. Solid-State Sub-Microsecond Electronic Interruption
-Legacy electro-mechanical relays rely on moving mechanical armatures constrained by mass and inertia, requiring tens of milliseconds to open. Modern wide-bandgap solid-state power switches (Gallium Nitride GaN and Silicon Carbide SiC MOSFETs) operated by high-speed hardware logic monitor line currents and dielectric leakage at nanosecond sampling rates. Upon detecting any current anomaly or unexpected ground leakage, solid-state switches interrupt power within less than 500 nanoseconds—stopping charge transport long before electrodynamic current can build up to human perception or cardiac hazard thresholds.
-
-==== 4. Safety Extra-Low Voltage (SELV) Direct-Current Local Microgrids
-By stepping down high-voltage AC grid power at a central, double-insulated isolation transformer or solid-state converter to a high-efficiency Safety Extra-Low Voltage DC bus (such as 24 V or 48 V DC), local building power is distributed entirely at voltages below the human skin breakdown threshold (\( V < 60 \text{ V} \text{ DC} \)). At 24 V to 48 V DC, galvanic contact with live conductors cannot drive dangerous currents through human skin, eliminating shock hazards at the point of use while providing high-efficiency direct DC power for solid-state LED lighting, digital computing equipment, and variable-frequency motor drives.
 
 == Index of Formal Statements
 
