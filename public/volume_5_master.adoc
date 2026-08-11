@@ -1221,6 +1221,14 @@ Complementary Metal-Oxide-Semiconductor (CMOS) structures—pairing n-channel an
 
 == Point-Contact and Bipolar Junction Transistors
 
+=== Early Germanium Transistors, Hermetic Metal Cans, and Tin Whisker Short-Circuit Failures
+
+Early germanium bipolar junction transistors (such as the European AF114–AF117 series, OC-series, and early American metal-can PNP and NPN devices packaged in TO-1, TO-5, TO-7, and TO-12 metal enclosures) were susceptible to a notorious and self-destructive internal failure mechanism: spontaneous tin whisker short-circuiting to the grounded metal case. To prevent environmental corrosion and facilitate hermetic soldering, the inner walls of the steel or brass cans and headers were heavily electroplated with pure, bright tin.
+
+Over time—driven by compressive mechanical residual stresses within the electroplated metal layer, thermal expansion cycling, and local electric field gradients—microscopic single-crystal whiskers of pure metallic tin began growing spontaneously from the interior can surface. Extending across the millimeter-scale internal clearance gap, these filamentary tin growths eventually made contact with the delicate germanium crystal die or its uninsulated emitter, base, and collector whisker leads. Because the external metal enclosure was frequently tied to chassis ground or an AC signal ground, a bridging tin whisker caused a total electrical short circuit, instantly disabling the circuit or causing intermittent noise and bias shifts.
+
+This failure mode was often misdiagnosed in early electronics servicing as intrinsic semiconductor decay or junction degradation. In reality, it was a electro-mechanical lattice transport phenomenon of the pure tin plating on the metal package. Recognizing tin whisker filament growth led to major changes in metallurgy and component packaging, including the addition of lead or copper alloy additives to tin plating baths, internal silicone gel potting, and the transition to glass-passivated silicon planar transistors in plastic or lead-alloy packages.
+
 == Other Semiconductor Devices
 
 == Analog Integrated Circuits
