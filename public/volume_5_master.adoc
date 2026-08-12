@@ -1855,7 +1855,7 @@ Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set cont
 The search algorithm initializes a uniform real normalized state vector \( v_0 \in \mathbb { R } ^ N \):
 \[ v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N = \frac { 1 } { \sqrt { N } } \begin {pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end {pmatrix} \]
 
-Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v_0 \|_2 = \sqrt{ \sum_{i=0}^{N-1} (1/N) } = 1 \).
+Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v _ 0 \| _ 2 = \sqrt { \sum _ { i = 0 } ^ { N - 1 } ( 1 / N ) } = 1 \).
 
 Physically, this initial uniform vector \( v_0 \) corresponds directly to an array of \( N \) vertical hydraulic fluid columns connected at their base and filled to equal head pressure \( h_0 = 1 / \sqrt{N} \), or an optical wave distributed with uniform phase and amplitude across \( N \) discrete spatial channels.
 
@@ -1984,7 +1984,7 @@ Verifying orthonormality:
 
 ==== Decomposing the Initial State Vector \( v_0 \)
 
-Initial vector \( v_0 = \frac{1}{\sqrt{N}} \sum_{i=0}^{N-1} e_i \) can be written as:
+Initial vector \( v _ 0 = \frac { 1 }{ \sqrt { N } } \sum _ { i = 0 } ^ { N - 1 } e _ i \) can be written as:
 \[ v_0 = \frac { 1 } { \sqrt { N } } e _ { x^* } + \frac { 1 } { \sqrt { N } } \sum _ { x \neq x^* } e_x = \frac { 1 } { \sqrt { N } } e _ { x^* } + \sqrt { \frac { N - 1 } { N } } w \]
 
 Define geometric step angle \( \theta \) such that:
@@ -2088,30 +2088,31 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 
 **Solution:**
 
-1. **Explicit Matrix Representations for \( N = 4 \)**:
-   Target index is \( x^* = 2 \). Unit vectors are \( e_2 = \begin{pmatrix} 0 & 0 & 1 & 0 \end{pmatrix}^T \) and \( v_0 = \begin{pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end{pmatrix}^T \).
-
-   Oracle reflection matrix \( R_\text{oracle} = I_4 - 2 e_2 e_2^T \):
-   \[ R_\text{oracle} = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \]
-
-   Mean reflection matrix \( R_\text{mean} = \frac{2}{4} \mathbf{J}_4 - I_4 = \frac{1}{2} \mathbf{J}_4 - I_4 \):
+. **Explicit Matrix Representations for \( N = 4 \)**:
+     +
+    Target index is \( x^* = 2 \). Unit vectors are \( e_2 = \begin{pmatrix} 0 & 0 & 1 & 0 \end{pmatrix}^T \) and \( v_0 = \begin{pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end{pmatrix}^T \). +
+     +
+    Oracle reflection matrix \( R_\text{oracle} = I_4 - 2 e_2 e_2^T \):
+   \[ R_\text{oracle} = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \] +
+     +
+    Mean reflection matrix \( R_\text{mean} = \frac{2}{4} \mathbf{J}_4 - I_4 = \frac{1}{2} \mathbf{J}_4 - I_4 \):
    \[ R_\text{mean} = \begin {pmatrix} - 1/2 & 1/2 & 1/2 & 1/2 \\ 1/2 & - 1/2 & 1/2 & 1/2 \\ 1/2 & 1/2 & - 1/2 & 1/2 \\ 1/2 & 1/2 & 1/2 & - 1/2 \end {pmatrix} \]
 
-2. **Step 1a: Oracle Application \( v'_0 = R_\text{oracle} v_0 \)**:
+. **Step 1a: Oracle Application \( v'_0 = R_\text{oracle} v_0 \)**:
    Multiplying matrix \( R_\text{oracle} \) by initial vector \( v_0 \):
    \[ v'_0 = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \begin {pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end {pmatrix} = \begin {pmatrix} 1/2 \\ 1/2 \\ - 1/2 \\ 1/2 \end {pmatrix} \]
 
-3. **Step 1b: Arithmetic Mean Computation**:
+. **Step 1b: Arithmetic Mean Computation**:
    Sum of entries in \( v'_0 \): \( ( 1/2 ) + ( 1/2 ) + ( - 1/2 ) + ( 1/2 ) = 1.0 \).
    Mean value: \( \bar{v}' = \frac{1.0}{4} = 0.25 \implies 2 \bar{v}' = 0.50 \).
 
-4. **Step 1c: Inversion About the Mean \( v_1 = R_\text{mean} v'_0 \)**:
-   Evaluating matrix product \( R_\text{mean} v'_0 \) or scalar rule \( v_1 ( i ) = 2 \bar{v}' - v'_0 ( i ) \):
+. **Step 1c: Inversion About the Mean \( v _ 1 = R _ \text{mean} v' _ 0 \)**:
+  Evaluating matrix product \( R_\text{mean} v'_0 \) or scalar rule \( v_1 ( i ) = 2 \bar{v}' - v'_0 ( i ) \):
    * Entry 0: \( v_1 ( 0 ) = 0.50 - 0.50 = 0.0 \)
    * Entry 1: \( v_1 ( 1 ) = 0.50 - 0.50 = 0.0 \)
    * Entry 2: \( v_1 ( 2 ) = 0.50 - ( - 0.50 ) = 1.0 \)
-   * Entry 3: \( v_1 ( 3 ) = 0.50 - 0.50 = 0.0 \)
-
+   * Entry 3: \( v_1 ( 3 ) = 0.50 - 0.50 = 0.0 \) +
+     +
    Resulting state vector \( v_1 \):
    \[ v_1 = \begin {pmatrix} 0 \\ 0 \\ 1 \\ 0 \end {pmatrix} = e_2 \]
    This proves 100% exact single-step numerical convergence (\( k = 1 \)) to target basis vector \( e_2 \)!
@@ -2120,41 +2121,41 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 
 **Solution:**
 
-1. **Optimal Iteration Count \( k_\text{opt} \)**:
+. **Optimal Iteration Count \( k_\text{opt} \)**:
    For \( N = 16 \), angle parameter satisfies \( \sin ( \theta / 2 ) = 1 / \sqrt{16} = 0.25 \implies \theta = 2 \arcsin ( 0.25 ) \approx 0.50536 \text{ rad} \).
    \[ k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt { 16 } \right\rfloor = \lfloor \pi \rfloor = 3 \text{ iterations} \]
 
-2. **Step-by-Step Numerical State Evolution**:
+. **Step-by-Step Numerical State Evolution**:
 
-   * **Initial State (\( k = 0 \))**:
+   * **Initial State (\( k = 0 \))**:   
      Uniform vector \( v_0(x) = 1 / \sqrt{16} = 0.2500 \) for all \( x \in \{ 0 , \dots , 15 \} \).
      Target entry \( v_0(7) = 0.2500 \), non-target entries \( v_0(x) = 0.2500 \).
      Target probability energy \( P_0(7) = (0.2500)^2 = 0.0625 \) (6.25%).
 
    * **Iteration 1 (\( k = 1 \))**:
-     1. Oracle inversion: \( v'_0(7) = -0.2500 \), non-targets \( v'_0(x) = 0.2500 \).
-     2. Mean calculation: \( \bar{v}' = \frac{15(0.2500) - 0.2500}{16} = \frac{3.50}{16} = 0.21875 \implies 2 \bar{v}' = 0.4375 \).
-     3. Mean inversion:
+     .. Oracle inversion: \( v'_0(7) = -0.2500 \), non-targets \( v'_0(x) = 0.2500 \).
+     .. Mean calculation: \( \bar{v}' = \frac{15(0.2500) - 0.2500}{16} = \frac{3.50}{16} = 0.21875 \implies 2 \bar{v}' = 0.4375 \).
+     .. Mean inversion:
         - Target: \( v_1(7) = 0.4375 - ( -0.2500 ) = 0.6875 \).
         - Non-targets: \( v_1(x) = 0.4375 - 0.2500 = 0.1875 \).
-     4. Target probability energy: \( P_1(7) = (0.6875)^2 = 0.47265625 \) (47.27%).
+     .. Target probability energy: \( P_1(7) = (0.6875)^2 = 0.47265625 \) (47.27%).
 
    * **Iteration 2 (\( k = 2 \))**:
-     1. Oracle inversion: \( v'_1(7) = -0.6875 \), non-targets \( v'_1(x) = 0.1875 \).
-     2. Mean calculation: \( \bar{v}' = \frac{15(0.1875) - 0.6875}{16} = \frac{2.125}{16} = 0.1328125 \implies 2 \bar{v}' = 0.265625 \).
-     3. Mean inversion:
+     .. Oracle inversion: \( v'_1(7) = -0.6875 \), non-targets \( v'_1(x) = 0.1875 \).
+     .. Mean calculation: \( \bar{v}' = \frac{15(0.1875) - 0.6875}{16} = \frac{2.125}{16} = 0.1328125 \implies 2 \bar{v}' = 0.265625 \).
+     .. Mean inversion:
         - Target: \( v_2(7) = 0.265625 - ( -0.6875 ) = 0.953125 \).
         - Non-targets: \( v_2(x) = 0.265625 - 0.1875 = 0.078125 \).
-     4. Target probability energy: \( P_2(7) = (0.953125)^2 \approx 0.908447 \) (90.84%).
+     .. Target probability energy: \( P_2(7) = (0.953125)^2 \approx 0.908447 \) (90.84%).
 
    * **Iteration 3 (\( k = 3 \))**:
-     1. Oracle inversion: \( v'_2(7) = -0.953125 \), non-targets \( v'_2(x) = 0.078125 \).
-     2. Mean calculation: \( \bar{v}' = \frac{15(0.078125) - 0.953125}{16} = \frac{0.21875}{16} = 0.013671875 \implies 2 \bar{v}' = 0.02734375 \).
-     3. Mean inversion:
+     .. Oracle inversion: \( v'_2(7) = -0.953125 \), non-targets \( v'_2(x) = 0.078125 \).
+     .. Mean calculation: \( \bar{v}' = \frac{15(0.078125) - 0.953125}{16} = \frac{0.21875}{16} = 0.013671875 \implies 2 \bar{v}' = 0.02734375 \).
+     .. Mean inversion:
         - Target: \( v_3(7) = 0.02734375 - ( -0.953125 ) = 0.98046875 \).
         - Non-targets: \( v_3(x) = 0.02734375 - 0.078125 = -0.05078125 \).
-     4. Target probability energy: \( P_3(7) = (0.98046875)^2 \approx 0.9613 \) (96.13%).
-
+     .. Target probability energy: \( P_3(7) = (0.98046875)^2 \approx 0.9613 \) (96.13%). +
+       +
    Notice that exact trigonometric angle calculation gives \( \sin(7 \theta / 2) = \sin(7 \times 0.25268) = \sin(1.76876 \text{ rad}) \approx 0.98046875 \). Target concentration surges to 96.13% in 3 numerical iterations!
 
 == Index of Formal Statements
