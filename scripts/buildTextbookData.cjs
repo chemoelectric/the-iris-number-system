@@ -129,10 +129,22 @@ const vol4 = parseAdocFile(
   "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding"
 );
 
+const vol5 = parseAdocFile(
+  fs.existsSync("public/Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc")
+    ? "public/Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc"
+    : "public/volume_5_master.adoc",
+  "textbook-iris-spectral-circuits-etc",
+  "The Iris Number System",
+  "Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing",
+  "Frédéric Blondel Custer",
+  "Advanced Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, and Computing in Cl(4,1,1)"
+);
+
 vol1.filename = "Iris_Number_System-01-Volume_I_Fundamentals.adoc";
 vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
 vol3.filename = "Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc";
 vol4.filename = "Iris_Number_System-04-Volume_IV_Physics_etc.adoc";
+vol5.filename = "Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc";
 
 function generateFormalIndexChapterObj(chapters) {
   const entries = [];
@@ -224,6 +236,7 @@ vol1.chapters.push(generateFormalIndexChapterObj(vol1.chapters));
 vol2.chapters.push(generateFormalIndexChapterObj(vol2.chapters));
 vol3.chapters.push(generateFormalIndexChapterObj(vol3.chapters));
 vol4.chapters.push(generateFormalIndexChapterObj(vol4.chapters));
+vol5.chapters.push(generateFormalIndexChapterObj(vol5.chapters));
 
 const fileHeader = `import { TextbookChapter, Textbook } from "../types";
 
@@ -338,7 +351,9 @@ export const GEOMETRY_ALGEBRA_TEXTBOOK: Textbook = ${JSON.stringify(vol3, null, 
 
 export const PHYSICS_CHEMISTRY_TEXTBOOK: Textbook = ${JSON.stringify(vol4, null, 2)};
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK];
+export const SPECTRAL_CIRCUITS_TEXTBOOK: Textbook = ${JSON.stringify(vol5, null, 2)};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
