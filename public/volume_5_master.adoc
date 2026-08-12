@@ -1334,13 +1334,17 @@ In an N-channel enhancement-mode MOSFET constructed on a P-type silicon substrat
 The drain current dynamics are divided into three distinct operational regions:
 
 1. **Cut-off Region** (\( V_{GS} < V_{th} \)): No inversion layer is formed, and the channel current is zero:
++
 \[ I_D = 0 \]
 
 2. **Triode (Ohmic) Region** (\( V_{GS} \ge V_{th} \) and \( V_{DS} < V_{GS} - V_{th} \)): The inversion layer extends continuously from source to drain, and current varies non-linearly with drain-source voltage:
++
 \[ I_D = \mu_n C_{ox} \frac { W } { L } \left[ \left( V_{GS} - V_{th} \right) V_{DS} - \frac { 1 } { 2 } V_{DS}^2 \right] \]
++
 where \( \mu_n \) is the electron surface mobility, \( C_{ox} = \frac { \varepsilon_{ox} } { t_{ox} } \) is the gate-oxide capacitance per unit area, \( W \) is the channel width, and \( L \) is the channel length.
 
 3. **Saturation Region** (\( V_{GS} \ge V_{th} \) and \( V_{DS} \ge V_{GS} - V_{th} \)): The inversion layer pinches off at the drain end when the local channel-to-gate potential falls below \( V_{th} \). Taking into account channel-length modulation parameter \( \lambda \), the saturated drain current is expressed as:
++
 \[ I_D = \frac { 1 } { 2 } \mu_n C_{ox} \frac { W } { L } \left( V_{GS} - V_{th} \right)^2 \left( 1 + \lambda V_{DS} \right) \]
 
 The small-signal transconductance \( g_m \) in saturation is given by:
@@ -1838,7 +1842,7 @@ This demonstrates that software execution performs objective physical work on ma
 
 == Digital Grover Search as a Numerical Iterative Method
 
-This chapter presents a complete, rigorous re-formulation of digital Grover search within the framework of conventional numerical analysis and numerical linear algebra, replacing non-physical “quantum” Dirac bra-ket notations, non-material Hilbert spaces, and wave-function collapse with deterministic matrix-vector power iterations, real Householder reflections, 2D planar invariant rotations, Chebyshev polynomial acceleration, Krylov subspace projections, mechanical/fluid dynamics analogies, formal proofs, and worked numerical examples.
+This chapter presents a complete, rigorous re-formulation of digital Grover search within the framework of conventional numerical analysis and numerical linear algebra, replacing non-physical “quantum” Dirac bra-ket notations, non-material Hilbert spaces, and wave-function collapse with deterministic matrix-vector power iterations, real Householder reflections, 2D planar invariant rotations, Chebyshev polynomial acceleration, Krylov subspace projections, mechanical and fluid dynamics analogies, formal proofs, and worked numerical examples.
 
 === Demolition of “Quantum” Mysticism and Reformulation in Classical Numerical Linear Algebra
 
@@ -1850,7 +1854,10 @@ Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set cont
 
 The search algorithm initializes a uniform real normalized state vector \( v_0 \in \mathbb { R } ^ N \):
 \[ v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N = \frac { 1 } { \sqrt { N } } \begin {pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end {pmatrix} \]
+
 Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v_0 \|_2 = \sqrt{ \sum_{i=0}^{N-1} (1/N) } = 1 \).
+
+Physically, this initial uniform vector \( v_0 \) corresponds directly to an array of \( N \) vertical hydraulic fluid columns connected at their base and filled to equal head pressure \( h_0 = 1 / \sqrt{N} \), or an optical wave distributed with uniform phase and amplitude across \( N \) discrete spatial channels.
 
 === Fundamentals of Householder Reflections in Real Vector Spaces
 
@@ -1896,17 +1903,17 @@ The matrix operator \( H ( u ) \) satisfies four fundamental mathematical proper
    Thus every vector in the \( ( N - 1 ) \)-dimensional orthogonal hyperplane \( u^\perp \) is an eigenvector with eigenvalue \( + 1 \). \( \square \)
 ====
 
-==== Geometric Reflection Across Hyperplanes
+==== Geometric Reflection Across Hyperplanes and Mechanical Action
 
 For any arbitrary vector \( x \in \mathbb { R } ^ N \), applying \( H ( u ) x \) decomposes \( x \) into a component parallel to \( u \) and a component orthogonal to \( u \):
 \[ x = ( u^T x ) u + x_\perp \quad \text{where } u^T x_\perp = 0 \]
 Applying \( H ( u ) \):
 \[ H ( u ) x = ( I_N - 2 u u^T ) ( ( u^T x ) u + x_\perp ) = ( u^T x ) u + x_\perp - 2 ( u^T x ) u = - ( u^T x ) u + x_\perp \]
-Thus, \( H ( u ) \) selectively reverses the projection along \( u \) while leaving the orthogonal subspace \( x_\perp \) completely untouched. Geometrically, this reflects vector \( x \) across the \( ( N - 1 ) \)-dimensional hyperplane orthogonal to \( u \).
+Thus, \( H ( u ) \) selectively reverses the projection along \( u \) while leaving the orthogonal subspace \( x_\perp \) completely untouched. Geometrically, this reflects vector \( x \) across the \( ( N - 1 ) \)-dimensional hyperplane orthogonal to \( u \). In mechanical and optical physics, a Householder reflection acts as a planar phase-reversing mirror or a directional fluid barrier that reverses force, pressure, or field components along normal vector \( u \) while leaving transverse equilibrium undisturbed.
 
 === Detailed Mechanics of the Grover Iteration Operators
 
-The digital Grover iteration is governed by an operator matrix \( G \in \mathbb { R } ^ { N \times N } \) formed by composing two distinct Householder reflection operators:
+The digital Grover iteration is governed by an operator matrix \( G \in \mathbb { R } ^ { N \times N } \) formed by composing two distinct Householder reflection operators, which possess direct, physical counterparts in optical reflection cavities and hydraulic fluid manifolds:
 
 ==== 1. Target Oracle Sign Inversion Matrix \( R_\text{oracle} \)
 
@@ -1915,8 +1922,15 @@ The target oracle operator is a Householder reflection associated with the targe
 
 In matrix notation, \( R_\text{oracle} \) is a diagonal matrix where every diagonal entry is \( + 1 \), except for the \( x^* \)-th entry on the main diagonal, which is \( - 1 \):
 \[ R_\text{oracle} = \begin {pmatrix} 1 & & & & \\ & \ddots & & & \\ & & - 1 & & \\ & & & \ddots & \\ & & & & 1 \end {pmatrix} \]
+
 Applying \( R_\text{oracle} \) to any vector \( v \in \mathbb { R } ^ N \) leaves all non-target coordinates invariant while negating the target coordinate:
 \[ ( R_\text{oracle} v ) _ { x^* } = - v _ { x^* } , \quad ( R_\text{oracle} v ) _ x = v_x \ \text{for all } x \neq x^* \]
+
+*Physical Mechanics of the Oracle Action*:
+
+- **Optical Phase Inversion Mirror**: The oracle \( R_\text{oracle} \) acts as a localized phase-inverting mirror positioned at spatial slot \( x^* \). Optical wave components striking slot \( x^* \) undergo a \( 180^\circ \) phase shift (\( -1 \) multiplier), while light in all other slots passes without phase distortion.
+
+- **Hydraulic Pressure Pulse**: In a hydraulic column array, the oracle action corresponds to a brief suction pulse applied at bottom tap \( x^* \). This pulse momentarily drops local pressure head from \( + v(x^*) \) to \( - v(x^*) \), creating a localized pressure depression while preserving total fluid energy.
 
 ==== 2. Inversion About the Mean Matrix \( R_\text{mean} \)
 
@@ -1926,7 +1940,7 @@ The mean inversion operator is a Householder reflection across the uniform vecto
 Noting that \( v_0 v_0^T = \left( \frac{1}{\sqrt{N}} \mathbf{1}_N \right) \left( \frac{1}{\sqrt{N}} \mathbf{1}_N^T \right) = \frac{1}{N} \mathbf{J}_N \), where \( \mathbf{J}_N \) is the matrix of all ones, we obtain the explicit matrix formula:
 \[ R_\text{mean} = \frac { 2 } { N } \mathbf { J } _ N - I_N \]
 
-==== Step-by-Step Arithmetic Mechanics of Inversion About the Mean
+==== Step-by-Step Arithmetic Mechanics and Fluid/Optical Equalization Dynamics
 
 To understand how \( R_\text{mean} \) acts on a state vector \( v \), consider computing the matrix-vector product \( v' = R_\text{mean} v \):
 \[ v'_i = \left( \left( \frac{2}{N} \mathbf{J}_N - I_N \right) v \right)_i = \frac{2}{N} \sum_{j=0}^{N-1} v_j - v_i \]
@@ -1935,19 +1949,23 @@ Defining the scalar arithmetic mean \( \bar{v} \) of all vector components:
 the update rule simplifies to:
 \[ v'_i = 2 \bar { v } - v_i \]
 
-This equation reveals the precise numerical mechanism of signal amplification:
+This equation reveals the precise numerical and physical mechanism of signal amplification:
 
-1. When \( v_i \) is equal to the mean \( \bar{v} \), \( 2 \bar{v} - \bar{v} = \bar{v} \), leaving the entry unchanged.
+1. **Equilibrium State**: When \( v_i \) is equal to the mean \( \bar{v} \), \( 2 \bar{v} - \bar{v} = \bar{v} \), leaving the entry unchanged.
 
-2. When the target coordinate \( v_{x^*} \) has been negated by the oracle (\( v_{x^*} < 0 \)), the mean \( \bar{v} \) decreases slightly below the non-target baseline.
+2. **Mean Shift via Oracle Inversion**: When the target coordinate \( v_{x^*} \) has been negated by the oracle (\( v_{x^*} < 0 \)), the mean \( \bar{v} \) drops slightly below the non-target baseline level.
 
-3. Evaluating \( 2 \bar{v} - v_{x^*} = 2 \bar{v} - ( - | v_{x^*} | ) = 2 \bar{v} + | v_{x^*} | \) flips the negative sign back to positive while adding twice the mean to its magnitude.
+3. **Inversion Reflection**: Evaluating \( 2 \bar{v} - v_{x^*} = 2 \bar{v} - ( - | v_{x^*} | ) = 2 \bar{v} + | v_{x^*} | \) flips the negative sign back to positive while adding twice the mean to its magnitude.
 
-4. Meanwhile, non-target entries \( v_x > 0 \) are updated as \( 2 \bar{v} - v_x \); because \( 2 \bar{v} < v_x \), non-target amplitudes decrease. Total energy is conserved while probability density surges dramatically into the target coordinate.
+4. **Hydraulic Manifold Pressure Equalization**: In a hydraulic manifold, \( R_\text{mean} \) represents opening a high-speed equalization valve across all columns. Because column \( x^* \) has negative head pressure \( - |v_{x^*}| \), fluid surges out of all high-pressure non-target columns (\( v_x > 0 \)) into column \( x^* \). The level in non-target columns drops to \( 2 \bar{v} - v_x < v_x \), while fluid head surges dramatically into target column \( x^* \). Total fluid volume and energy are strictly conserved while hydraulic energy concentrates into the target tap.
 
-=== 2D Planar Geometry and Composition of Householder Reflections
+5. **Optical Parabolic Focus Mechanics**: In an optical cavity, \( R_\text{mean} \) behaves as a parabolic focusing mirror aligned with the uniform beam axis. Diffused optical wave energy reflecting off this mirror interferes constructively at slot \( x^* \) and destructively at non-target slots, focusing total beam power into detector slot \( x^* \).
+
+=== 2D Planar Geometry, Optical Cavity Precession, and Householder Reflection Composition
 
 A classical theorem in Euclidean geometry states that the product of two reflections across hyperplanes intersecting at an angle \( \theta / 2 \) is an exact planar rotation by angle \( \theta \) in the 2D plane orthogonal to the intersection of the two hyperplanes.
+
+Physically, this composition is isomorphic to a dual-gimbal optical reflector cavity or a two-stage hydraulic impulse loop. Bouncing an optical wavefront or hydraulic pressure wave between oracle reflection \( R_\text{oracle} \) and mean reflection \( R_\text{mean} \) precesses the state vector by exact angular increment \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \) per iteration bounce, steadily concentrating total wave energy into the target coordinate like a resonant optical cavity focusing light into a pinpoint spot.
 
 ==== Construction of the Invariant 2D Orthonormal Subspace
 
@@ -1974,7 +1992,7 @@ Define geometric step angle \( \theta \) such that:
 This allows initial vector \( v_0 \) to be expressed concisely in 2D angle parameterization:
 \[ v_0 = \sin \left( \frac { \theta } { 2 } \right) e _ { x^* } + \cos \left( \frac { \theta } { 2 } \right) w = \begin {pmatrix} \sin ( \theta / 2 ) \\ \cos ( \theta / 2 ) \end {pmatrix} _ { V_2 } \]
 
-==== Exact $2 \times 2$ Matrix Representation of Operators in $V_2$
+==== Exact \( 2 \times 2 \) Matrix Representation of Operators in \( V_2 \)
 
 In the basis \( \{ e _ { x^* } , w \} \):
 
@@ -1989,9 +2007,9 @@ In the basis \( \{ e _ { x^* } , w \} \):
 3. **Combined Grover Matrix Product \( G | _ { V_2 } = R_\text{mean} R_\text{oracle} \)**:
    \[ G | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
 
-This proves that \( G | _ { V_2 } \) is an exact, non-singular $2 \times 2$ real rotation matrix that rotates any vector in \( V_2 \) counterclockwise by angle \( \theta \)!
+This proves that \( G | _ { V_2 } \) is an exact, non-singular \( 2 \times 2 \) real rotation matrix that rotates any vector in \( V_2 \) counterclockwise by angle \( \theta \)!
 
-==== Derivation of Quadratic Speedup $O(\sqrt{N})$
+==== Derivation of Quadratic Speedup \( O(\sqrt{N}) \)
 
 Applying \( G \) for \( k \) consecutive iterations applies the matrix power \( G^k | _ { V_2 } \):
 \[ G^k | _ { V_2 } = \begin {pmatrix} \cos ( k \theta ) & \sin ( k \theta ) \\ - \sin ( k \theta ) & \cos ( k \theta ) \end {pmatrix} \]
@@ -2013,22 +2031,22 @@ Whereas classical linear search requires scanning through \( N / 2 \) items on a
 
 Viewing Grover search as an iterative matrix-vector power method opens the door to well-established algorithms from numerical analysis:
 
-==== 1. Chebyshev Polynomial Acceleration (Fixed-Point Search)
+==== 1. Chebyshev Polynomial Acceleration (Fixed-Point Search and Hydraulic Sloshing Damping)
 
-In standard Grover iteration, if iteration count \( k \) exceeds \( k_\text{opt} \), state vector \( v_k \) rotates past target vector \( e _ { x^* } \), causing target amplitude to decay back toward non-target subspace \( w \) in a periodic oscillation. When target count \( M \) is unknown, this overshooting prevents reliable search termination.
+In standard Grover iteration, if iteration count \( k \) exceeds \( k_\text{opt} \), state vector \( v_k \) rotates past target vector \( e _ { x^* } \), causing target amplitude to decay back toward non-target subspace \( w \) in a periodic oscillation. In hydraulic terms, this corresponds to fluid sloshing past the target chamber and oscillating backward. When target count \( M \) is unknown, this overshooting prevents reliable search termination.
 
 To solve this overshooting defect, numerical linear algebra utilizes **Chebyshev polynomial acceleration**. By replacing fixed \( 180^\circ \) Householder reflection angles with variable phase angles \( \phi_1, \phi_2, \dots, \phi_k \) and \( \varphi_1, \varphi_2, \dots, \varphi_k \) derived from the roots of Chebyshev polynomials \( T_k ( x ) = \cos ( k \arccos x ) \), the variable reflection operator sequence:
 \[ G_k = \prod_{j=1}^k R_\text{mean} ( \phi_j ) R_\text{oracle} ( \varphi_j ) \]
-behaves as a numerical low-pass filter. Target coordinate amplitude increases monotonically toward 1 without periodic overshooting, guaranteeing stable fixed-point convergence regardless of target count \( M \).
+behaves as a numerical low-pass filter (or hydraulic fluid damper). Target coordinate amplitude increases monotonically toward 1 without periodic overshooting, guaranteeing stable fixed-point convergence regardless of target count \( M \).
 
 ==== 2. Krylov Subspace Projection and Lanczos Tridiagonalization
 
-Given initial vector \( v_0 \) and matrix \( G \), the sequence of iterations spans the $m$-dimensional Krylov subspace:
+Given initial vector \( v_0 \) and matrix \( G \), the sequence of iterations spans the \( m \)-dimensional Krylov subspace:
 \[ \mathcal { K } _ m ( G , v_0 ) = \text{span} \{ v_0 , G v_0 , G^2 v_0 , \dots , G^{m-1} v_0 \} \]
 
 Applying the Lanczos tridiagonalization algorithm constructs an orthonormal basis for \( \mathcal{K}_m(G, v_0) \), reducing \( G \) to a tridiagonal matrix \( T_m \). Because initial vector \( v_0 \) lies entirely within the 2D invariant subspace \( V_2 \), vector \( G^2 v_0 \) is linearly dependent on \( v_0 \) and \( G v_0 \). The minimal polynomial of \( G \) on \( v_0 \) is:
 \[ P_2 ( \lambda ) = \lambda^2 - 2 \cos \theta \lambda + 1 = 0 \]
-Consequently, Lanczos tridiagonalization terminates **exactly at dimension 2**, yielding a $2 \times 2$ tridiagonal matrix \( T_2 \). Computing the Ritz eigenvectors of \( T_2 \) isolates the exact target basis vector \( e _ { x^* } \) in 2 iterations without requiring high-dimensional vector iteration.
+Consequently, Lanczos tridiagonalization terminates **exactly at dimension 2**, yielding a \( 2 \times 2 \) tridiagonal matrix \( T_2 \). Computing the Ritz eigenvectors of \( T_2 \) isolates the exact target basis vector \( e _ { x^* } \) in 2 iterations without requiring high-dimensional vector iteration.
 
 ==== 3. Newton-Raphson and Secant Angle Optimization
 
@@ -2038,27 +2056,11 @@ where \( v ( \alpha ) \) represents the state vector resulting from step rotatio
 \[ \alpha _ { n + 1 } = \alpha_n - \frac { F ( \alpha_n ) } { F' ( \alpha_n ) } \]
 or two-point Secant updates rapidly tunes adaptive reflection step angles \( \alpha \), achieving quadratic convergence in rotation angle calibration.
 
-==== 4. Dynamic Successive Over-Relaxation (SOR)
+==== 4. Dynamic Successive Over-Relaxation (SOR) and Hydraulic Throttle Control
 
 Introducing an adaptive over-relaxation parameter \( \omega > 1 \) into the mean reflection operator:
 \[ R_\text{mean} ( \omega ) = ( 1 + \omega ) v_0 v_0 ^ T - I_N \]
-modifies the scalar reflection formula to \( v'_i = ( 1 + \omega ) \bar{v} - v_i \). Dynamically adjusting \( \omega \) based on residual feedback \( \| v_k - e _ { x^* } \| \) accelerates energy transfer into target entries during early iterations.
-
-=== Physical Mechanical and Fluid Dynamics Analogies
-
-==== Dual-Gimbal Optical Reflection Analogy
-
-Digital Grover iteration is physically isomorphic to an optical cavity bounded by two specialized mirrors:
-* **Oracle Mirror \( R_\text{oracle} \)**: A planar phase-inversion mirror situated at target position \( x^* \). Light striking slot \( x^* \) undergoes a \( 180^\circ \) phase shift (\( -1 \) multiplier).
-* **Mean Mirror \( R_\text{mean} \)**: A parabolic focusing mirror aligned with the uniform beam axis. Light reflecting off this mirror is spatially redistributed across all slots relative to mean beam intensity.
-* **Angular Precession**: Bouncing an optical wavefront between these two mirrors precesses beam angle by exact increment \( \theta \) per reflection bounce, gradually focusing 100% of optical wave energy onto target detector \( x^* \).
-
-==== Hydraulic Manifold Equalization Analogy
-
-Digital Grover search is physically identical to a hydraulic manifold array:
-* **Hydraulic Columns**: An array of \( N \) vertical fluid columns filled to equal head pressure \( h_0 \).
-* **Oracle Pulse**: A localized suction valve momentarily opens at bottom tap \( x^* \), dropping pressure to \( - h_0 \).
-* **Equalization Manifold**: A high-speed hydraulic valve opens across the manifold, forcing pressure to redistribute according to \( 2 \bar{P} - P_i \). Fluid inertia surges out of non-target columns and fills column \( x^* \).
+modifies the scalar reflection formula to \( v'_i = ( 1 + \omega ) \bar{v} - v_i \). In hydraulic terms, this corresponds to adjusting the manifold throttle nozzle to increase fluid flow velocity into the target channel. Dynamically adjusting \( \omega \) based on residual feedback \( \| v_k - e _ { x^* } \| \) accelerates energy transfer into target entries during early iterations.
 
 === Formal Postulates and Theorems of Digital Search Analysis
 
