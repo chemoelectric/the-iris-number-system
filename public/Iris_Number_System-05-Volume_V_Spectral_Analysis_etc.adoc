@@ -1842,94 +1842,223 @@ This chapter presents a complete, rigorous re-formulation of digital Grover sear
 
 === Demolition of “Quantum” Mysticism and Reformulation in Classical Numerical Linear Algebra
 
-In conventional literature, Grover's search algorithm is frequently obscured behind the formalism of “quantum computation”—employing Dirac bra-ket notation (\( | \psi \rangle \)), complex Hilbert spaces, unphysical "superposition" postulates, and non-deterministic "measurement collapse". When implemented on a digital computer, however, the algorithm is neither "quantum" nor non-deterministic; it is a strictly classical, deterministic numerical iterative method acting on a vector in real Euclidean space \( \mathbb { R } ^ N \).
+In conventional computer science and physics literature, Grover’s search algorithm is frequently obscured behind the opaque formalism of “quantum computation”—employing Dirac bra-ket notation (\( | \psi \rangle \)), complex Hilbert spaces, unphysical "superposition" postulates, and non-deterministic "measurement collapse". When implemented on a digital computer or executed on physical hardware, however, the algorithm is neither "quantum" nor non-deterministic; it is a strictly classical, deterministic numerical iterative method acting on a vector in real Euclidean space \( \mathbb { R } ^ N \).
 
 ==== Formulation of Unstructured Database Search
-Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set of size \( N = 2^m \). Suppose there exists a unique target record index \( x^* \in S \) identified by an indicator function \( f : S \to \{ 0 , 1 \} \) such that \( f ( x^* ) = 1 \) and \( f ( x ) = 0 \) for all \( x \neq x^* \). In vector space terms, target index \( x^* \) corresponds to standard unit basis vector \( e _ { x^* } \in \mathbb { R } ^ N \).
+
+Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set containing \( N = 2^m \) elements. Suppose there exists a unique target record index \( x^* \in S \) identified by a deterministic indicator function (or oracle) \( f : S \to \{ 0 , 1 \} \) such that \( f ( x^* ) = 1 \) and \( f ( x ) = 0 \) for all \( x \neq x^* \). In Euclidean vector space terms, the discrete index set \( S \) maps to the standard orthonormal basis \( \{ e_0 , e_1 , \dots , e_{N-1} \} \subset \mathbb { R } ^ N \), where each basis vector \( e_x \) has entry 1 at index \( x \) and zeros elsewhere. Target index \( x^* \) corresponds precisely to standard unit basis vector \( e _ { x^* } \in \mathbb { R } ^ N \).
 
 The search algorithm initializes a uniform real normalized state vector \( v_0 \in \mathbb { R } ^ N \):
 \[ v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N = \frac { 1 } { \sqrt { N } } \begin {pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end {pmatrix} \]
+Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v_0 \|_2 = \sqrt{ \sum_{i=0}^{N-1} (1/N) } = 1 \).
 
-==== The Grover Iteration as Composed Real Householder Reflections
-The digital Grover iteration is governed by an operator matrix \( G \in \mathbb { R } ^ { N \times N } \) formed by the product of two real orthogonal Householder reflection matrices:
+=== Fundamentals of Householder Reflections in Real Vector Spaces
 
-1. **Target Oracle Sign Inversion Matrix \( R_\text{oracle} \)**: A diagonal Householder reflection that inverts the sign of the target component while leaving all orthogonal coordinates invariant:
-   \[ R_\text{oracle} = I_N - 2 e _ { x^* } e _ { x^* } ^ T \]
+Central to the linear algebraic formulation of digital search is the concept of a **Householder reflection**. Introduced by Alston Scott Householder in 1958, a Householder transformation is an elementary matrix operator that reflects vectors across a hyperplane passing through the origin.
 
-2. **Inversion About the Mean Matrix \( R_\text{mean} \)**: A Householder reflection across the uniform vector \( v_0 \):
-   \[ R_\text{mean} = 2 v_0 v_0 ^ T - I_N = \frac { 2 } { N } \mathbf { J } _ N - I_N \]
-   where \( \mathbf { J } _ N \) is the \( N \times N \) matrix of all ones.
+==== Algebraic and Geometric Definition
 
-The combined Grover matrix operator \( G \) is:
-\[ G = R_\text{mean} R_\text{oracle} = \left( \frac { 2 } { N } \mathbf { J } _ N - I_N \right) \left( I_N - 2 e _ { x^* } e _ { x^* } ^ T \right) \]
+[#theorem-householder-reflection-properties]
+[THEOREM]
+.Theorem: Algebraic and Geometric Properties of Real Householder Reflections
+====
+Given any unit vector \( u \in \mathbb { R } ^ N \) with \( \| u \|_2 = u^T u = 1 \), the Householder reflection matrix \( H ( u ) \in \mathbb { R } ^ { N \times N } \) associated with \( u \) is defined by:
+\[ H ( u ) = I_N - 2 u u^T \]
 
-In numerical computation, applying \( G \) to state vector \( v_k \) consists of three explicit numerical operations:
+The matrix operator \( H ( u ) \) satisfies four fundamental mathematical properties:
 
-1. **Oracle Sign Inversion**: Multiply target coordinate by \( - 1 \):
-   \[ v'_k ( x^* ) = - v_k ( x^* ) , \quad v'_k ( x ) = v_k ( x ) \ \text{for } x \neq x^* \]
+1. **Symmetry**: \( H ( u ) ^ T = H ( u ) \).
 
-2. **Arithmetic Mean Computation**: Compute scalar mean \( \bar { v } ' \):
-   \[ \bar { v } ' = \frac { 1 } { N } \sum _ { i = 0 } ^ { N - 1 } v'_k ( i ) \]
+2. **Orthogonality and Involutory Action**: \( H ( u ) ^ T H ( u ) = H ( u ) ^ 2 = I_N \).
 
-3. **Inversion About the Mean**: Update each vector entry via scalar reflection:
-   \[ v _ { k + 1 } ( i ) = 2 \bar { v } ' - v'_k ( i ) \quad \forall i \in \{ 0 , 1 , \dots , N - 1 \} \]
+3. **Isometry (Norm and Inner Product Conservation)**: \( \| H ( u ) x \|_2 = \| x \|_2 \) for all \( x \in \mathbb { R } ^ N \).
 
-=== Exact 2D Planar Rotation Analysis and Quadratic Speedup Derivation
+4. **Spectral Eigenspace Decomposition**: The spectrum of \( H ( u ) \) consists of eigenvalue \( - 1 \) with multiplicity 1 (eigenvector \( u \)) and eigenvalue \( + 1 \) with multiplicity \( N - 1 \) (eigenspace \( u^\perp \)).
 
-Although \( v_0 \) resides in an \( N \)-dimensional vector space \( \mathbb { R } ^ N \), the iteration sequence \( \{ v_k \} \) is strictly confined to a 2-dimensional real invariant subspace \( V_2 = \text{span} \{ e _ { x^* } , w \} \), where \( w \) is the uniform normalized vector over all non-target elements:
-\[ w = \frac { 1 } { \sqrt { N - 1 } } \sum _ { x \neq x^* } e_x \]
+*Proof:*
 
-==== Matrix Representation in the 2D Invariant Subspace
-In the orthonormal basis \( \{ e _ { x^* } , w \} \), initial state vector \( v_0 \) decomposes as:
-\[ v_0 = \sin \left( \frac { \theta } { 2 } \right) e _ { x^* } + \cos \left( \frac { \theta } { 2 } \right) w \]
-where angle parameter \( \theta \) satisfies:
-\[ \sin \left( \frac { \theta } { 2 } \right) = \frac { 1 } { \sqrt { N } } \]
+1. **Symmetry**: Transposing \( H ( u ) \):
+   \[ H ( u ) ^ T = ( I_N - 2 u u^T ) ^ T = I_N ^ T - 2 ( u u^T ) ^ T = I_N - 2 u u^T = H ( u ) \]
 
-In this 2D invariant subspace, oracle reflection \( R_\text{oracle} \) and mean reflection \( R_\text{mean} \) correspond to \( 2 \times 2 \) matrices:
-\[ R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} , \quad R_\text{mean} | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \]
+2. **Orthogonality and Involutory Action**: Computing \( H ( u ) ^ 2 \):
+   \[ H ( u ) ^ 2 = ( I_N - 2 u u^T ) ( I_N - 2 u u^T ) = I_N - 4 u u^T + 4 u ( u^T u ) u^T \]
+   Since \( u^T u = 1 \), this simplifies to:
+   \[ H ( u ) ^ 2 = I_N - 4 u u^T + 4 u u^T = I_N \]
+   Because \( H ( u ) ^ T = H ( u ) \), orthogonality \( H ( u ) ^ T H ( u ) = I_N \) follows immediately.
 
-Their product yields an exact \( 2 \times 2 \) real rotation matrix \( G | _ { V_2 } \):
-\[ G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
+3. **Isometry**: For any vector \( x \in \mathbb { R } ^ N \):
+   \[ \| H ( u ) x \|_2 ^ 2 = ( H ( u ) x ) ^ T ( H ( u ) x ) = x^T H ( u ) ^ T H ( u ) x = x^T I_N x = \| x \|_2 ^ 2 \]
 
-==== Optimal Iteration Count and Quadratic Complexity
-Applying \( G \) for \( k \) iterations rotates vector \( v_0 \) by angle \( k \theta \):
-\[ v_k = G^k v_0 = \sin \left( \frac { ( 2 k + 1 ) \theta } { 2 } \right) e _ { x^* } + \cos \left( \frac { ( 2 k + 1 ) \theta } { 2 } \right) w \]
+4. **Eigenspace Structure**: Applying \( H ( u ) \) to vector \( u \):
+   \[ H ( u ) u = ( I_N - 2 u u^T ) u = u - 2 u ( u^T u ) = u - 2 u = - u \]
+   Thus \( u \) is an eigenvector with eigenvalue \( - 1 \). For any vector \( y \in \mathbb { R } ^ N \) orthogonal to \( u \) (\( u^T y = 0 \)):
+   \[ H ( u ) y = ( I_N - 2 u u^T ) y = y - 2 u ( u^T y ) = y \]
+   Thus every vector in the \( ( N - 1 ) \)-dimensional orthogonal hyperplane \( u^\perp \) is an eigenvector with eigenvalue \( + 1 \). \( \square \)
+====
 
-To maximize alignment with target vector \( e _ { x^* } \), we require \( \frac { ( 2 k + 1 ) \theta } { 2 } \approx \frac { \pi } { 2 } \). Using small-angle approximation \( \theta \approx \frac { 2 } { \sqrt { N } } \) yields the optimal numerical iteration count:
-\[ k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt { N } \right\rfloor \]
-This proves that the \( O(\sqrt{N}) \) quadratic acceleration is a purely geometric property of Householder reflection angles in 2D invariant vector subspaces.
+==== Geometric Reflection Across Hyperplanes
 
-=== Alternative Numerical Methods for Unstructured Search
+For any arbitrary vector \( x \in \mathbb { R } ^ N \), applying \( H ( u ) x \) decomposes \( x \) into a component parallel to \( u \) and a component orthogonal to \( u \):
+\[ x = ( u^T x ) u + x_\perp \quad \text{where } u^T x_\perp = 0 \]
+Applying \( H ( u ) \):
+\[ H ( u ) x = ( I_N - 2 u u^T ) ( ( u^T x ) u + x_\perp ) = ( u^T x ) u + x_\perp - 2 ( u^T x ) u = - ( u^T x ) u + x_\perp \]
+Thus, \( H ( u ) \) selectively reverses the projection along \( u \) while leaving the orthogonal subspace \( x_\perp \) completely untouched. Geometrically, this reflects vector \( x \) across the \( ( N - 1 ) \)-dimensional hyperplane orthogonal to \( u \).
 
-Viewing Grover search as an iterative numerical linear algebra problem opens the door to alternative numerical methods for vector alignment and root-finding:
+=== Detailed Mechanics of the Grover Iteration Operators
+
+The digital Grover iteration is governed by an operator matrix \( G \in \mathbb { R } ^ { N \times N } \) formed by composing two distinct Householder reflection operators:
+
+==== 1. Target Oracle Sign Inversion Matrix \( R_\text{oracle} \)
+
+The target oracle operator is a Householder reflection associated with the target unit basis vector \( u = e _ { x^* } \):
+\[ R_\text{oracle} = H ( e _ { x^* } ) = I_N - 2 e _ { x^* } e _ { x^* } ^ T \]
+
+In matrix notation, \( R_\text{oracle} \) is a diagonal matrix where every diagonal entry is \( + 1 \), except for the \( x^* \)-th entry on the main diagonal, which is \( - 1 \):
+\[ R_\text{oracle} = \begin {pmatrix} 1 & & & & \\ & \ddots & & & \\ & & - 1 & & \\ & & & \ddots & \\ & & & & 1 \end {pmatrix} \]
+Applying \( R_\text{oracle} \) to any vector \( v \in \mathbb { R } ^ N \) leaves all non-target coordinates invariant while negating the target coordinate:
+\[ ( R_\text{oracle} v ) _ { x^* } = - v _ { x^* } , \quad ( R_\text{oracle} v ) _ x = v_x \ \text{for all } x \neq x^* \]
+
+==== 2. Inversion About the Mean Matrix \( R_\text{mean} \)
+
+The mean inversion operator is a Householder reflection across the uniform vector \( v_0 = \frac{1}{\sqrt{N}} \mathbf{1}_N \). Standard Householder reflection across the hyperplane orthogonal to \( v_0 \) is \( I_N - 2 v_0 v_0^T \). To reflect *across* the line spanned by \( v_0 \) rather than its orthogonal hyperplane, we negate the reflection:
+\[ R_\text{mean} = - ( I_N - 2 v_0 v_0 ^ T ) = 2 v_0 v_0 ^ T - I_N \]
+
+Noting that \( v_0 v_0^T = \left( \frac{1}{\sqrt{N}} \mathbf{1}_N \right) \left( \frac{1}{\sqrt{N}} \mathbf{1}_N^T \right) = \frac{1}{N} \mathbf{J}_N \), where \( \mathbf{J}_N \) is the matrix of all ones, we obtain the explicit matrix formula:
+\[ R_\text{mean} = \frac { 2 } { N } \mathbf { J } _ N - I_N \]
+
+==== Step-by-Step Arithmetic Mechanics of Inversion About the Mean
+
+To understand how \( R_\text{mean} \) acts on a state vector \( v \), consider computing the matrix-vector product \( v' = R_\text{mean} v \):
+\[ v'_i = \left( \left( \frac{2}{N} \mathbf{J}_N - I_N \right) v \right)_i = \frac{2}{N} \sum_{j=0}^{N-1} v_j - v_i \]
+Defining the scalar arithmetic mean \( \bar{v} \) of all vector components:
+\[ \bar { v } = \frac { 1 } { N } \sum _ { j = 0 } ^ { N - 1 } v_j \]
+the update rule simplifies to:
+\[ v'_i = 2 \bar { v } - v_i \]
+
+This equation reveals the precise numerical mechanism of signal amplification:
+
+1. When \( v_i \) is equal to the mean \( \bar{v} \), \( 2 \bar{v} - \bar{v} = \bar{v} \), leaving the entry unchanged.
+
+2. When the target coordinate \( v_{x^*} \) has been negated by the oracle (\( v_{x^*} < 0 \)), the mean \( \bar{v} \) decreases slightly below the non-target baseline.
+
+3. Evaluating \( 2 \bar{v} - v_{x^*} = 2 \bar{v} - ( - | v_{x^*} | ) = 2 \bar{v} + | v_{x^*} | \) flips the negative sign back to positive while adding twice the mean to its magnitude.
+
+4. Meanwhile, non-target entries \( v_x > 0 \) are updated as \( 2 \bar{v} - v_x \); because \( 2 \bar{v} < v_x \), non-target amplitudes decrease. Total energy is conserved while probability density surges dramatically into the target coordinate.
+
+=== 2D Planar Geometry and Composition of Householder Reflections
+
+A classical theorem in Euclidean geometry states that the product of two reflections across hyperplanes intersecting at an angle \( \theta / 2 \) is an exact planar rotation by angle \( \theta \) in the 2D plane orthogonal to the intersection of the two hyperplanes.
+
+==== Construction of the Invariant 2D Orthonormal Subspace
+
+Although state vector \( v_0 \) resides in an \( N \)-dimensional real vector space \( \mathbb { R } ^ N \), the iteration sequence \( \{ v_k \} \) remains strictly confined to a 2-dimensional invariant subspace \( V_2 \).
+
+To construct an orthonormal basis for \( V_2 \), we select:
+
+1. **Target Unit Vector**: Standard basis vector \( e _ { x^* } \).
+
+2. **Normalized Non-Target Vector**: Sum of all non-target basis vectors divided by their norm:
+   \[ w = \frac { 1 } { \sqrt { N - 1 } } \sum _ { x \neq x^* } e_x \]
+
+Verifying orthonormality:
+- \( \| e _ { x^* } \|_2 = 1 \) and \( \| w \|_2 = \sqrt{ \frac{1}{N-1} (N-1) } = 1 \).
+- Inner product \( \langle e _ { x^* } , w \rangle = e _ { x^* } ^ T w = 0 \), establishing mutual orthogonality.
+
+==== Decomposing the Initial State Vector \( v_0 \)
+
+Initial vector \( v_0 = \frac{1}{\sqrt{N}} \sum_{i=0}^{N-1} e_i \) can be written as:
+\[ v_0 = \frac { 1 } { \sqrt { N } } e _ { x^* } + \frac { 1 } { \sqrt { N } } \sum _ { x \neq x^* } e_x = \frac { 1 } { \sqrt { N } } e _ { x^* } + \sqrt { \frac { N - 1 } { N } } w \]
+
+Define geometric step angle \( \theta \) such that:
+\[ \sin \left( \frac { \theta } { 2 } \right) = \frac { 1 } { \sqrt { N } } \quad \text{and} \quad \cos \left( \frac { \theta } { 2 } \right) = \sqrt { \frac { N - 1 } { N } } \]
+This allows initial vector \( v_0 \) to be expressed concisely in 2D angle parameterization:
+\[ v_0 = \sin \left( \frac { \theta } { 2 } \right) e _ { x^* } + \cos \left( \frac { \theta } { 2 } \right) w = \begin {pmatrix} \sin ( \theta / 2 ) \\ \cos ( \theta / 2 ) \end {pmatrix} _ { V_2 } \]
+
+==== Exact $2 \times 2$ Matrix Representation of Operators in $V_2$
+
+In the basis \( \{ e _ { x^* } , w \} \):
+
+1. **Oracle Matrix in \( V_2 \)**: Inverts coordinate along \( e _ { x^* } \) while leaving \( w \) invariant:
+   \[ R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} \]
+
+2. **Mean Matrix in \( V_2 \)**: Evaluated using \( 2 v_0 v_0^T - I_2 \):
+   \[ R_\text{mean} | _ { V_2 } = 2 \begin {pmatrix} \sin( \theta / 2 ) \\ \cos( \theta / 2 ) \end {pmatrix} \begin {pmatrix} \sin( \theta / 2 ) & \cos( \theta / 2 ) \end {pmatrix} - \begin {pmatrix} 1 & 0 \\ 0 & 1 \end {pmatrix} \]
+   Using trigonometric double-angle identities \( 2 \sin^2(\theta/2) - 1 = - \cos\theta \), \( 2 \cos^2(\theta/2) - 1 = \cos\theta \), and \( 2 \sin(\theta/2)\cos(\theta/2) = \sin\theta \):
+   \[ R_\text{mean} | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \]
+
+3. **Combined Grover Matrix Product \( G | _ { V_2 } = R_\text{mean} R_\text{oracle} \)**:
+   \[ G | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
+
+This proves that \( G | _ { V_2 } \) is an exact, non-singular $2 \times 2$ real rotation matrix that rotates any vector in \( V_2 \) counterclockwise by angle \( \theta \)!
+
+==== Derivation of Quadratic Speedup $O(\sqrt{N})$
+
+Applying \( G \) for \( k \) consecutive iterations applies the matrix power \( G^k | _ { V_2 } \):
+\[ G^k | _ { V_2 } = \begin {pmatrix} \cos ( k \theta ) & \sin ( k \theta ) \\ - \sin ( k \theta ) & \cos ( k \theta ) \end {pmatrix} \]
+Applying \( G^k \) to initial vector \( v_0 \):
+\[ v_k = G^k v_0 = \begin {pmatrix} \cos ( k \theta ) & \sin ( k \theta ) \\ - \sin ( k \theta ) & \cos ( k \theta ) \end {pmatrix} \begin {pmatrix} \sin ( \theta / 2 ) \\ \cos ( \theta / 2 ) \end {pmatrix} = \begin {pmatrix} \sin \left( \frac { ( 2 k + 1 ) \theta } { 2 } \right) \\ \cos \left( \frac { ( 2 k + 1 ) \theta } { 2 } \right) \end {pmatrix} \]
+
+To maximize target amplitude along \( e _ { x^* } \), we set the angle argument to \( \pi / 2 \):
+\[ \frac { ( 2 k + 1 ) \theta } { 2 } = \frac { \pi } { 2 } \quad \implies \quad 2 k + 1 = \frac { \pi } { \theta } \]
+
+For large \( N \), small-angle Taylor expansion gives \( \sin(\theta / 2) = 1 / \sqrt{N} \implies \theta \approx 2 / \sqrt{N} \). Substituting \( \theta \):
+\[ 2 k + 1 \approx \frac { \pi } { 2 / \sqrt{N} } = \frac { \pi } { 2 } \sqrt{N} \quad \implies \quad k \approx \frac { \pi } { 4 } \sqrt{N} \]
+
+Optimal integer iteration count is thus:
+\[ k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt{N} \right\rfloor \]
+
+Whereas classical linear search requires scanning through \( N / 2 \) items on average (\( O(N) \) complexity), the Householder reflection power iteration rotates the state vector through 2D space at angular speed \( \theta \approx 2 / \sqrt{N} \), achieving complete target alignment in \( O(\sqrt{N}) \) steps. Quadratic speedup is a purely linear algebraic property of Householder reflection angles in 2D Euclidean vector subspaces.
+
+=== Advanced Numerical Linear Algebra Methods for Unstructured Search
+
+Viewing Grover search as an iterative matrix-vector power method opens the door to well-established algorithms from numerical analysis:
 
 ==== 1. Chebyshev Polynomial Acceleration (Fixed-Point Search)
-When target count \( M \) is unknown, fixed-angle Grover iterations overshoot if \( k \) exceeds \( k_\text{opt} \). To eliminate overshooting, fixed \( 180^\circ \) reflection phase shifts are replaced by variable reflection angles \( \phi_j , \varphi_j \) calculated from the roots of Chebyshev polynomials \( T_k ( x ) \). This provides monotonic "fixed-point" convergence, guaranteeing that target amplitude increases monotonically toward 1 without periodic overshooting (analogous to Chebyshev polynomial acceleration in Richardson iteration).
+
+In standard Grover iteration, if iteration count \( k \) exceeds \( k_\text{opt} \), state vector \( v_k \) rotates past target vector \( e _ { x^* } \), causing target amplitude to decay back toward non-target subspace \( w \) in a periodic oscillation. When target count \( M \) is unknown, this overshooting prevents reliable search termination.
+
+To solve this overshooting defect, numerical linear algebra utilizes **Chebyshev polynomial acceleration**. By replacing fixed \( 180^\circ \) Householder reflection angles with variable phase angles \( \phi_1, \phi_2, \dots, \phi_k \) and \( \varphi_1, \varphi_2, \dots, \varphi_k \) derived from the roots of Chebyshev polynomials \( T_k ( x ) = \cos ( k \arccos x ) \), the variable reflection operator sequence:
+\[ G_k = \prod_{j=1}^k R_\text{mean} ( \phi_j ) R_\text{oracle} ( \varphi_j ) \]
+behaves as a numerical low-pass filter. Target coordinate amplitude increases monotonically toward 1 without periodic overshooting, guaranteeing stable fixed-point convergence regardless of target count \( M \).
 
 ==== 2. Krylov Subspace Projection and Lanczos Tridiagonalization
-Constructing Krylov subspace \( \mathcal { K } _ m ( G , v_0 ) = \text{span} \{ v_0 , G v_0 , G^2 v_0 , \dots , G^{m-1} v_0 \} \) and applying Lanczos tridiagonalization reduces \( G \) to a \( 2 \times 2 \) tridiagonal matrix \( T_2 \). Because the minimal polynomial of \( G \) on \( v_0 \) has degree 2, Lanczos tridiagonalization terminates exactly at dimension 2, allowing immediate extraction of target vector \( e_{x^*} \) via a \( 2 \times 2 \) Ritz eigen-projection.
 
-==== 3. Secant and Newton-Raphson Angle Optimization
-Formulating target vector alignment as finding the zero of residual function \( F ( \alpha ) = \langle v ( \alpha ) , e _ { x^* } \rangle - 1 = 0 \), 1D Newton-Raphson or Secant iterations can be applied to dynamically tune step rotation angles \( \alpha \), achieving quadratic convergence in step angle calibration.
+Given initial vector \( v_0 \) and matrix \( G \), the sequence of iterations spans the $m$-dimensional Krylov subspace:
+\[ \mathcal { K } _ m ( G , v_0 ) = \text{span} \{ v_0 , G v_0 , G^2 v_0 , \dots , G^{m-1} v_0 \} \]
+
+Applying the Lanczos tridiagonalization algorithm constructs an orthonormal basis for \( \mathcal{K}_m(G, v_0) \), reducing \( G \) to a tridiagonal matrix \( T_m \). Because initial vector \( v_0 \) lies entirely within the 2D invariant subspace \( V_2 \), vector \( G^2 v_0 \) is linearly dependent on \( v_0 \) and \( G v_0 \). The minimal polynomial of \( G \) on \( v_0 \) is:
+\[ P_2 ( \lambda ) = \lambda^2 - 2 \cos \theta \lambda + 1 = 0 \]
+Consequently, Lanczos tridiagonalization terminates **exactly at dimension 2**, yielding a $2 \times 2$ tridiagonal matrix \( T_2 \). Computing the Ritz eigenvectors of \( T_2 \) isolates the exact target basis vector \( e _ { x^* } \) in 2 iterations without requiring high-dimensional vector iteration.
+
+==== 3. Newton-Raphson and Secant Angle Optimization
+
+We can formulate target coordinate alignment as finding the root of a 1D scalar residual function \( F ( \alpha ) \):
+\[ F ( \alpha ) = 1 - \langle v ( \alpha ) , e _ { x^* } \rangle = 0 \]
+where \( v ( \alpha ) \) represents the state vector resulting from step rotation angle \( \alpha \). Applying 1D Newton-Raphson iterations:
+\[ \alpha _ { n + 1 } = \alpha_n - \frac { F ( \alpha_n ) } { F' ( \alpha_n ) } \]
+or two-point Secant updates rapidly tunes adaptive reflection step angles \( \alpha \), achieving quadratic convergence in rotation angle calibration.
 
 ==== 4. Dynamic Successive Over-Relaxation (SOR)
-Modifying the mean reflection operator with a dynamic relaxation factor \( \omega > 1 \):
-\[ R_\text{mean} ( \omega ) = ( 1 + \omega ) v_0 v_0 ^ T - I_N \]
-allows adaptive over-relaxation to accelerate amplitude accumulation into target entries based on residual feedback.
 
-=== Mechanical and Fluid Dynamics Analogies
+Introducing an adaptive over-relaxation parameter \( \omega > 1 \) into the mean reflection operator:
+\[ R_\text{mean} ( \omega ) = ( 1 + \omega ) v_0 v_0 ^ T - I_N \]
+modifies the scalar reflection formula to \( v'_i = ( 1 + \omega ) \bar{v} - v_i \). Dynamically adjusting \( \omega \) based on residual feedback \( \| v_k - e _ { x^* } \| \) accelerates energy transfer into target entries during early iterations.
+
+=== Physical Mechanical and Fluid Dynamics Analogies
 
 ==== Dual-Gimbal Optical Reflection Analogy
-Digital Grover iteration is physically isomorphic to a dual-gimbal optical mirror system.
-* **Oracle Mirror \( R_\text{oracle} \)**: A planar phase-reversing mirror positioned at target location \( x^* \).
-* **Mean Mirror \( R_\text{mean} \)**: A parabolic focusing mirror centered on the uniform beam axis.
-* **Precession to Target**: Successive reflections between the two mirrors precess the optical beam angle by exact increment \( \theta \) per bounce, progressively focusing total beam energy onto target sensor \( x^* \).
+
+Digital Grover iteration is physically isomorphic to an optical cavity bounded by two specialized mirrors:
+* **Oracle Mirror \( R_\text{oracle} \)**: A planar phase-inversion mirror situated at target position \( x^* \). Light striking slot \( x^* \) undergoes a \( 180^\circ \) phase shift (\( -1 \) multiplier).
+* **Mean Mirror \( R_\text{mean} \)**: A parabolic focusing mirror aligned with the uniform beam axis. Light reflecting off this mirror is spatially redistributed across all slots relative to mean beam intensity.
+* **Angular Precession**: Bouncing an optical wavefront between these two mirrors precesses beam angle by exact increment \( \theta \) per reflection bounce, gradually focusing 100% of optical wave energy onto target detector \( x^* \).
 
 ==== Hydraulic Manifold Equalization Analogy
-Digital Grover search is physically identical to a hydraulic manifold equalization array.
-* **Hydraulic Columns**: An array of \( N \) fluid columns initialized to equal head pressure \( h_0 \).
-* **Oracle Pulse**: A brief suction pulse is applied at bottom tap \( x^* \), dropping local pressure.
-* **Equalization Manifold**: A high-speed equalizing manifold redistributes pressure across all columns according to \( 2 \bar{P} - P_i \). Fluid inertia progressively surges into column \( x^* \).
+
+Digital Grover search is physically identical to a hydraulic manifold array:
+* **Hydraulic Columns**: An array of \( N \) vertical fluid columns filled to equal head pressure \( h_0 \).
+* **Oracle Pulse**: A localized suction valve momentarily opens at bottom tap \( x^* \), dropping pressure to \( - h_0 \).
+* **Equalization Manifold**: A high-speed hydraulic valve opens across the manifold, forcing pressure to redistribute according to \( 2 \bar{P} - P_i \). Fluid inertia surges out of non-target columns and fills column \( x^* \).
 
 === Formal Postulates and Theorems of Digital Search Analysis
 
@@ -1941,8 +2070,10 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 
 *Proof:*
 
-1. **Orthogonality of Operators**: Matrices \( R_\text{oracle} \) and \( R_\text{mean} \) are symmetric (\( R^T = R \)) and orthogonal (\( R^T R = I \)). Their composition \( G = R_\text{mean} R_\text{oracle} \) is a real orthogonal matrix (\( G^T G = I \)).
-2. **Subspace Invariance**: For any vector \( u \in V_2 = \text{span} \{ e _ { x^* } , v_0 \} \), \( R_\text{oracle} u \in V_2 \) because \( R_\text{oracle} \) acts only along \( e _ { x^* } \). Similarly, \( R_\text{mean} u \in V_2 \) because \( R_\text{mean} \) acts only along \( v_0 \). Thus, \( V_2 \) is invariant under \( G \).
+1. **Orthogonality of Operators**: By Theorem `xref:theorem-householder-reflection-properties[Properties of Real Householder Reflections]`, matrices \( R_\text{oracle} \) and \( R_\text{mean} \) are symmetric (\( R^T = R \)) and orthogonal (\( R^T R = I \)). Their composition \( G = R_\text{mean} R_\text{oracle} \) is a real orthogonal matrix (\( G^T G = I \)).
+
+2. **Subspace Invariance**: For any vector \( u \in V_2 = \text{span} \{ e _ { x^* } , v_0 \} \), \( R_\text{oracle} u \in V_2 \) because \( R_\text{oracle} \) acts only along \( e _ { x^* } \). Similarly, \( R_\text{mean} u \in V_2 \) because \( R_\text{mean} \) acts only along \( v_0 \). Thus, \( V_2 \) is strictly invariant under \( G \).
+
 3. **2D Rotation Matrix**: In orthonormal basis \( \{ e _ { x^* } , w \} \), matrix multiplication verifies:
    \[ G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
 
@@ -1951,61 +2082,78 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 
 === Worked Example Problems in Digital Search Analysis
 
-**Problem Statement 1:** Perform a complete step-by-step numerical calculation of the digital Grover search algorithm for a 4-element database (\( N = 4 \)) with target index \( x^* = 2 \). Show that initial state vector \( v_0 = \begin {pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end {pmatrix} ^ T \) achieves 100% exact single-step convergence to target basis vector \( e_2 = \begin {pmatrix} 0 & 0 & 1 & 0 \end {pmatrix} ^ T \).
+**Problem Statement 1:** Perform a complete step-by-step numerical calculation of the digital Grover search algorithm for a 4-element database (\( N = 4 \)) with target index \( x^* = 2 \). Show explicit $4 \times 4$ Householder matrices \( R_\text{oracle} \) and \( R_\text{mean} \), compute initial state vector \( v_0 = \begin {pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end {pmatrix} ^ T \), and demonstrate 100% exact single-step convergence to target basis vector \( e_2 = \begin {pmatrix} 0 & 0 & 1 & 0 \end {pmatrix} ^ T \).
 
 **Solution:**
 
-1. **Initial State Vector \( v_0 \)**:
-\[ v_0 = \begin {pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end {pmatrix} \]
+1. **Explicit Matrix Representations for \( N = 4 \)**:
+   Target index is \( x^* = 2 \). Unit vectors are \( e_2 = \begin{pmatrix} 0 & 0 & 1 & 0 \end{pmatrix}^T \) and \( v_0 = \begin{pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end{pmatrix}^T \).
 
-2. **Step 1a: Oracle Sign Inversion \( R_\text{oracle} v_0 \)**:
-Target index is \( x^* = 2 \). Inverting the sign of entry 2 gives:
-\[ v'_0 = R_\text{oracle} v_0 = \begin {pmatrix} 1/2 \\ 1/2 \\ - 1/2 \\ 1/2 \end {pmatrix} \]
+   Oracle reflection matrix \( R_\text{oracle} = I_4 - 2 e_2 e_2^T \):
+   \[ R_\text{oracle} = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \]
 
-3. **Step 1b: Compute Arithmetic Mean \( \bar { v } ' \)**:
-\[ \bar { v } ' = \frac { ( 1/2 ) + ( 1/2 ) + ( - 1/2 ) + ( 1/2 ) } { 4 } = \frac { 1/2 } { 4 } = \frac { 1 } { 8 } \quad \implies \quad 2 \bar { v } ' = \frac { 1 } { 4 } \]
+   Mean reflection matrix \( R_\text{mean} = \frac{2}{4} \mathbf{J}_4 - I_4 = \frac{1}{2} \mathbf{J}_4 - I_4 \):
+   \[ R_\text{mean} = \begin {pmatrix} - 1/2 & 1/2 & 1/2 & 1/2 \\ 1/2 & - 1/2 & 1/2 & 1/2 \\ 1/2 & 1/2 & - 1/2 & 1/2 \\ 1/2 & 1/2 & 1/2 & - 1/2 \end {pmatrix} \]
+
+2. **Step 1a: Oracle Application \( v'_0 = R_\text{oracle} v_0 \)**:
+   Multiplying matrix \( R_\text{oracle} \) by initial vector \( v_0 \):
+   \[ v'_0 = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \begin {pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end {pmatrix} = \begin {pmatrix} 1/2 \\ 1/2 \\ - 1/2 \\ 1/2 \end {pmatrix} \]
+
+3. **Step 1b: Arithmetic Mean Computation**:
+   Sum of entries in \( v'_0 \): \( ( 1/2 ) + ( 1/2 ) + ( - 1/2 ) + ( 1/2 ) = 1.0 \).
+   Mean value: \( \bar{v}' = \frac{1.0}{4} = 0.25 \implies 2 \bar{v}' = 0.50 \).
 
 4. **Step 1c: Inversion About the Mean \( v_1 = R_\text{mean} v'_0 \)**:
-Applying \( v_1 ( i ) = 2 \bar { v } ' - v'_0 ( i ) \):
-* Entry 0: \( v_1 ( 0 ) = ( 1/4 ) - ( 1/2 ) = - 1/4 \)
-* Entry 1: \( v_1 ( 1 ) = ( 1/4 ) - ( 1/2 ) = - 1/4 \)
-* Entry 2: \( v_1 ( 2 ) = ( 1/4 ) - ( - 1/2 ) = 3/4 \)
-* Entry 3: \( v_1 ( 3 ) = ( 1/4 ) - ( 1/2 ) = - 1/4 \)
+   Evaluating matrix product \( R_\text{mean} v'_0 \) or scalar rule \( v_1 ( i ) = 2 \bar{v}' - v'_0 ( i ) \):
+   * Entry 0: \( v_1 ( 0 ) = 0.50 - 0.50 = 0.0 \)
+   * Entry 1: \( v_1 ( 1 ) = 0.50 - 0.50 = 0.0 \)
+   * Entry 2: \( v_1 ( 2 ) = 0.50 - ( - 0.50 ) = 1.0 \)
+   * Entry 3: \( v_1 ( 3 ) = 0.50 - 0.50 = 0.0 \)
 
-Notice that squared magnitude at target entry 2 is \( ( 3/4 ) ^ 2 = 9/16 = 56.25\% \).
-Wait, let's re-verify step 1b arithmetic:
-Sum of entries in \( v'_0 \): \( 1/2 + 1/2 - 1/2 + 1/2 = 1.0 \).
-Mean \( \bar{v}' = \frac{1.0}{4} = 1/4 = 0.25 \).
-\( 2 \bar{v}' = 0.50 \).
-Applying \( v_1(i) = 2 \bar{v}' - v'_0(i) \):
-* Entry 0: \( 0.50 - 0.50 = 0.0 \)
-* Entry 1: \( 0.50 - 0.50 = 0.0 \)
-* Entry 2: \( 0.50 - ( - 0.50 ) = 1.0 \)
-* Entry 3: \( 0.50 - 0.50 = 0.0 \)
+   Resulting state vector \( v_1 \):
+   \[ v_1 = \begin {pmatrix} 0 \\ 0 \\ 1 \\ 0 \end {pmatrix} = e_2 \]
+   This proves 100% exact single-step numerical convergence (\( k = 1 \)) to target basis vector \( e_2 \)!
 
-Resulting vector \( v_1 \):
-\[ v_1 = \begin {pmatrix} 0 \\ 0 \\ 1 \\ 0 \end {pmatrix} = e_2 \]
-This demonstrates 100% exact single-step numerical convergence (\( k = 1 \)) to target vector \( e_2 \)!
-
-**Problem Statement 2:** For a 16-element database (\( N = 16 \)) with target index \( x^* = 7 \), calculate optimal iteration count \( k_\text{opt} \) and compute state vector entries for iterations \( k = 1, 2, 3 \).
+**Problem Statement 2:** For a 16-element database (\( N = 16 \)) with target index \( x^* = 7 \), calculate optimal iteration count \( k_\text{opt} \) and compute complete state vector entries, mean values, and target probability concentrations for iterations \( k = 0, 1, 2, 3 \).
 
 **Solution:**
 
 1. **Optimal Iteration Count \( k_\text{opt} \)**:
-\[ k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt { 16 } \right\rfloor = \lfloor \pi \rfloor = 3 \text{ iterations} \]
+   For \( N = 16 \), angle parameter satisfies \( \sin ( \theta / 2 ) = 1 / \sqrt{16} = 0.25 \implies \theta = 2 \arcsin ( 0.25 ) \approx 0.50536 \text{ rad} \).
+   \[ k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt { 16 } \right\rfloor = \lfloor \pi \rfloor = 3 \text{ iterations} \]
 
 2. **Step-by-Step Numerical State Evolution**:
-* **Initial State \( v_0 \)**: Target \( v_0(7) = 0.2500 \), 15 non-targets \( v_0(x) = 0.2500 \).
-* **Iteration 1**:
-  - After Oracle: \( v'_0(7) = -0.2500 \), non-targets \( 0.2500 \). Mean \( \bar{v}' = \frac{15(0.2500) - 0.2500}{16} = \frac{3.50}{16} = 0.21875 \).
-  - After Mean Inversion: \( 2\bar{v}' = 0.4375 \).
-  - Target: \( v_1(7) = 0.4375 - (-0.2500) = 0.6875 \). Non-targets: \( v_1(x) = 0.4375 - 0.2500 = 0.1875 \).
-* **Iteration 2**:
-  - After Oracle: \( v'_1(7) = -0.6875 \), non-targets \( 0.1875 \). Mean \( \bar{v}' = \frac{15(0.1875) - 0.6875}{16} = \frac{2.125}{16} = 0.1328125 \).
-  - After Mean Inversion: \( 2\bar{v}' = 0.265625 \).
-  - Target: \( v_2(7) = 0.265625 - (-0.6875) = 0.953125 \). Non-targets: \( v_2(x) = 0.265625 - 0.1875 = 0.078125 \).
-* **Iteration 3**:
-  - Target magnitude reaches \( v_3(7) \approx 0.9531 \), representing squared coordinate probability \( (0.953125)^2 \approx 0.9084 \) (90.84% target concentration).
+
+   * **Initial State (\( k = 0 \))**:
+     Uniform vector \( v_0(x) = 1 / \sqrt{16} = 0.2500 \) for all \( x \in \{ 0 , \dots , 15 \} \).
+     Target entry \( v_0(7) = 0.2500 \), non-target entries \( v_0(x) = 0.2500 \).
+     Target probability energy \( P_0(7) = (0.2500)^2 = 0.0625 \) (6.25%).
+
+   * **Iteration 1 (\( k = 1 \))**:
+     1. Oracle inversion: \( v'_0(7) = -0.2500 \), non-targets \( v'_0(x) = 0.2500 \).
+     2. Mean calculation: \( \bar{v}' = \frac{15(0.2500) - 0.2500}{16} = \frac{3.50}{16} = 0.21875 \implies 2 \bar{v}' = 0.4375 \).
+     3. Mean inversion:
+        - Target: \( v_1(7) = 0.4375 - ( -0.2500 ) = 0.6875 \).
+        - Non-targets: \( v_1(x) = 0.4375 - 0.2500 = 0.1875 \).
+     4. Target probability energy: \( P_1(7) = (0.6875)^2 = 0.47265625 \) (47.27%).
+
+   * **Iteration 2 (\( k = 2 \))**:
+     1. Oracle inversion: \( v'_1(7) = -0.6875 \), non-targets \( v'_1(x) = 0.1875 \).
+     2. Mean calculation: \( \bar{v}' = \frac{15(0.1875) - 0.6875}{16} = \frac{2.125}{16} = 0.1328125 \implies 2 \bar{v}' = 0.265625 \).
+     3. Mean inversion:
+        - Target: \( v_2(7) = 0.265625 - ( -0.6875 ) = 0.953125 \).
+        - Non-targets: \( v_2(x) = 0.265625 - 0.1875 = 0.078125 \).
+     4. Target probability energy: \( P_2(7) = (0.953125)^2 \approx 0.908447 \) (90.84%).
+
+   * **Iteration 3 (\( k = 3 \))**:
+     1. Oracle inversion: \( v'_2(7) = -0.953125 \), non-targets \( v'_2(x) = 0.078125 \).
+     2. Mean calculation: \( \bar{v}' = \frac{15(0.078125) - 0.953125}{16} = \frac{0.21875}{16} = 0.013671875 \implies 2 \bar{v}' = 0.02734375 \).
+     3. Mean inversion:
+        - Target: \( v_3(7) = 0.02734375 - ( -0.953125 ) = 0.98046875 \).
+        - Non-targets: \( v_3(x) = 0.02734375 - 0.078125 = -0.05078125 \).
+     4. Target probability energy: \( P_3(7) = (0.98046875)^2 \approx 0.9613 \) (96.13%).
+
+   Notice that exact trigonometric angle calculation gives \( \sin(7 \theta / 2) = \sin(7 \times 0.25268) = \sin(1.76876 \text{ rad}) \approx 0.98046875 \). Target concentration surges to 96.13% in 3 numerical iterations!
 
 == Index of Formal Statements
 
@@ -2030,5 +2178,6 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-opamp-feedback-stability[**Theorem: Op-Amp Closed-Loop Gain Stability and Negative Feedback Desensitization**]  -- Chapter: *Analog Integrated Circuits* | Section: *Formal Postulates and Theorems of Analog Integrated Circuits*
 * xref:theorem-cmos-switching-power[**Theorem: CMOS Switching Power Dissipation and Maximum Dynamic Frequency Limit**]  -- Chapter: *Digital Gates, Flip-Flops, and Sequential Logic* | Section: *Formal Postulates and Theorems of Digital CMOS Dynamics*
 * xref:theorem-physical-software-execution[**Theorem: Physical Equivalence of Digital Software Execution and Contact-Action Electrodynamic State Transitions**]  -- Chapter: *Digital Computer Programs Are Electronic Circuits* | Section: *Formal Postulates and Theorems of Physical Software Execution*
+* xref:theorem-householder-reflection-properties[**Theorem: Algebraic and Geometric Properties of Real Householder Reflections**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Fundamentals of Householder Reflections in Real Vector Spaces*
 * xref:theorem-digital-grover-numerical-householder[**Theorem: Digital Grover Iteration as Householder Reflection Power Iteration in Real 2D Subspaces**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
 
