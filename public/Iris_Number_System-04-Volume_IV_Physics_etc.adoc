@@ -1740,6 +1740,7 @@ Let \( P _ 0 \) be the total transmitted electromagnetic power emitted at source
 
 1. **Power Density Attenuation**: The received signal power density \( P ( r ) \) at radial distance \( r \) obeys the physical attenuation law:
 \[ P ( r ) = \frac { P _ 0 e ^ { - \alpha r } } { 4 \pi r ^ 2 } \]
+
 2. **Finite Information Horizon**: There exists a finite physical radial horizon \( R _ \text{horizon} \in \mathbb { R } ^ + \) at which the signal-to-noise ratio drops strictly below unity (\( \text{SNR} ( R _ \text{horizon} ) < 1 \)). Beyond \( R _ \text{horizon} \), the discrete Shannon channel capacity collapses to zero (\( C _ \text{channel} \to 0 \)), rendering bit-aperture reconstruction physically impossible.
 
 *Proof:*
@@ -1793,6 +1794,7 @@ Human civilization has possessed radio transmitting technology for approximately
 Consequently, any receiving civilization possessing the massive astronomical collector arrays, sub-microsecond signal processing, and deep mathematical pattern analysis required to detect faint interstellar radio pulses is almost certainly millions or billions of time-binding steps beyond a newly emerging emitting civilization. Relative to such an advanced receiver, the emitting species occupies a primitive developmental stage—analogous to early ancestors using stone tools attempting to communicate with an advanced technological society.
 
 When an advanced receiving civilization detects a faint, narrow-band signal containing a sequence of prime numbers, it evaluates candidate source models using formal abductive reasoning:
+
 1. **Natural Astronomical Source**: The receiver evaluates whether the signal originates from a pulsar, magnetar, or plasma resonance. The presence of discrete, non-random prime-number pulse counts excludes purely natural, non-cognitive astrophysical mechanisms.
 2. **Advanced Peer Construct**: The receiver evaluates whether the signal represents an intentional communication or energy transmission from a peer or higher technological civilization. The receiver recognizes that an advanced society would utilize vastly higher energy density, multi-channel multivector phase modulation, or direct contact field dynamics rather than primitive, low-energy electromagnetic radio waves that attenuate exponentially into thermal noise.
 3. **Primitive Artificial Emitter**: The receiver concludes, by process of elimination and abductive inference, that the signal originates from a newly emerging, primitive technological civilization broadcasting basic mathematical patterns in a naive attempt to announce its presence to the galaxy.
@@ -1807,6 +1809,7 @@ Let Civilization \( A \) be a primitive emitting civilization at time-binding ev
 
 1. **Abductive Model Selection**: Civilization \( B \)'s inference engine evaluates the likelihood of candidate source hypotheses \( \mathcal { H } = \{ H _ \text{nat} , H _ \text{peer} , H _ \text{prim} \} \) given signal parameters \( S \). Because \( S \) exhibits low algorithmic entropy relative to thermal noise but extremely low energy density and primitive single-channel modulation, the posterior probability satisfies:
 \[ P ( H _ \text{prim} \mid S ) \approx 1 , \quad P ( H _ \text{nat} \mid S ) \approx 0 , \quad P ( H _ \text{peer} \mid S ) \approx 0 \]
+
 2. **Asymmetric Realization**: Civilization \( B \) correctly infers the existence of a primitive artificial emitter at Civilization \( A \)'s coordinates, but this one-way inference yields zero reciprocal operational understanding (\( I ( M _ B ; M _ A \mid S ) = 0 \)) and zero interactive dialogic throughput.
 
 *Proof:*
@@ -1854,6 +1857,7 @@ Let \( d \) be the spatial separation distance between transmitting civilization
 
 1. **Round-Trip Delay Bound**: The minimum temporal duration required for a closed-loop interactive signal exchange is:
 \[ \Delta t _ \text{roundtrip} = \frac { 2 d } { c } \]
+
 2. **Interactive Disconnect**: For all interstellar distances \( d \ge d _ \text{horizon} = \frac { 1 } { 2 } c T _ \text{soc} \), the round-trip signal delay strictly exceeds societal operational lifespan (\( \Delta t _ \text{roundtrip} > T _ \text{soc} \)). Closed-loop feedback, error-correcting re-transmission, and conversational dialogue are physically impossible.
 
 *Proof:*
@@ -1876,6 +1880,7 @@ Let \( \mathcal { I } _ \text{CETI} \) represent the net information throughput 
 
 1. **Triple Horizon Elimination**: The net information throughput \( \mathcal { I } _ \text{CETI} \) is constrained by the conjunction of independent zero-aperture horizon conditions:
 \[ \mathcal { I } _ \text{CETI} \le \text{SNR} ( d ) \cdot I ( M _ A ; M _ B \mid S ) \cdot \mathbf { 1 } _ { \{ \Delta t _ \text{roundtrip} \le T _ \text{soc} \} } = 0 \]
+
 2. **Universal Interstellar Isolation**: Conscious technological civilizations in the physical universe exist in a state of fundamental, deterministic, and permanent physical isolation.
 
 *Proof:*
@@ -2045,8 +2050,10 @@ Let a source emitting periodic multivector field waves at intrinsic frequency \(
 
 1. **Complete Oblique Shift**: The received wave frequency \( f ( \theta ) \) at a spatial coordinate incorporates both geometric wave front compression and multivector field rotor phase retardation:
 \[ f ( \theta ) = f _ 0 \frac { \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } } { 1 - \frac { v } { c } \cos \theta } \]
+
 2. **Rotational Coupling**: If the source spins with angular velocity \( \Omega \) and orbital receiver frequency \( \omega _ \text{orbit} \), the total received frequency is:
 \[ f _ \text{total} ( \theta ) = f _ 0 \frac { \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } } { 1 - \frac { v } { c } \cos \theta } + \frac { m ( \Omega - \omega _ \text{orbit} ) } { 2 \pi } \]
+
 3. **Phase Barrier Limit**: As \( v \to c \), the forward frequency diverges (\( f ( 0 ) \to \infty \)) while the rearward frequency vanishes (\( f ( \pi ) \to 0 \)), proving that apparent speeds approaching \( c \) manifest as infinite Doppler frequency transformations rather than hyper-light physical transport.
 
 *Proof:*

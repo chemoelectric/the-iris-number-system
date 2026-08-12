@@ -324,6 +324,7 @@ is strictly minimized over single-page layout topologies via microtypographic pe
 ==== Example 2: 2D Bivector Spectral Analysis and Microtypographic Interference Mitigation of a Page Aperture Snippet
 **Problem Statement:** Consider a 2D page aperture grid snippet \( \mathcal { G } _ { 4 \times 4 } \) containing a 4-line text layout. The rendered whitespace field \( f ( x_n , y_m ) \) across grid coordinates \( n \in \{ 0 , 1 , 2 , 3 \} \) (horizontal) and \( m \in \{ 0 , 1 , 2 , 3 \} \) (vertical lines) exhibits a vertical whitespace river along column index \( n = 2 \), where inter-word gaps align perfectly:
 \[ f ( x_n , y_m ) = \begin {pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \end {pmatrix} \]
+
 1. Compute the 2D real bivector Fourier spectrum \( \hat { F } [ k_x , k_y ] \) of this unadjusted layout and demonstrate the presence of the vertical river spectral spike.
 2. Apply a microtypographic perturbation vector \( \mathbf { p } \) that shifts the whitespace gap on line \( m = 1 \) by one grid unit to \( n = 1 \) via OpenType kerning and glyph width adaptation \( \beta _ g \), producing the adjusted whitespace field:
 \[ f ' ( x_n , y_m ) = \begin {pmatrix} 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \end {pmatrix} \]
@@ -511,10 +512,12 @@ Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X
 **Problem Statement:** An AC source \( V_s ( t ) = 120 \cos ( 2 \pi f t ) \) at \( f = 60 \text{ Hz} \) drives an RLC circuit with resistor \( R = 10 \ \Omega \), condenser \( C = 100 \ \mu \text{F} \), and coil \( L = 50 \text{ mH} \) connected in series. Calculate coil reactance \( X_L \), condenser reactance \( X_C \), net impedance \( Z \), current amplitude \( I_0 \), phase angle \( \phi \), real power \( P \), reactive power \( Q \), and total stored field energy.
 
 **Solution:**
+
 1. **Coil Reactance \( X_L \)**: \( X_L = 2 \pi f L = 2 \pi ( 60 ) ( 0.050 ) \approx 18.85 \ \Omega \).
 2. **Condenser Reactance \( X_C \)**: \( X_C = \frac { 1 } { 2 \pi f C } = \frac { 1 } { 2 \pi ( 60 ) ( 100 \times 10 ^ { - 6 } ) } \approx 26.53 \ \Omega \).
 3. **Net Bivector Impedance \( Z \)**: \( Z = R + \mathbf { I } ( X_L - X_C ) = 10 + \mathbf { I } ( 18.85 - 26.53 ) = 10 - 7.68 \mathbf { I } \ \Omega \).
    Magnitude: \( | Z | = \sqrt { 10 ^ 2 + ( - 7.68 ) ^ 2 } = \sqrt { 100 + 58.98 } = \sqrt { 158.98 } \approx 12.61 \ \Omega \).
+
 4. **Current Amplitude \( I_0 \)**: \( I_0 = \frac { V_s } { | Z | } = \frac { 120 } { 12.61 } \approx 9.52 \text{ A} \). RMS current \( I_\text{rms} = \frac { 9.52 } { \sqrt{2} } \approx 6.73 \text{ A} \).
 5. **Phase Angle \( \phi \)**: \( \phi = \arctan \left( \frac { - 7.68 } { 10 } \right) \approx - 37.52 ^ \circ \) (leading current).
 6. **Power Metrics**: Real power \( P = I_\text{rms} ^ 2 R = ( 6.73 ) ^ 2 ( 10 ) \approx 453.0 \text{ W} \). Reactive power \( Q = I_\text{rms} ^ 2 ( X_L - X_C ) = ( 6.73 ) ^ 2 ( - 7.68 ) \approx - 347.8 \text{ VAR} \).
@@ -524,40 +527,48 @@ Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X
 **Problem Statement:** A copper Faraday shield of thickness \( t = 1.0 \text{ mm} \) (conductivity \( \sigma = 5.8 \times 10 ^ 7 \text{ S/m} \), relative permeability \( \mu_r = 1.0 \)) encloses sensitive electronics. Calculate the skin depth \( \delta_s \) and absorption loss \( A \) at signal frequencies of \( f = 60 \text{ Hz} \), \( f = 1 \text{ MHz} \), and \( f = 1 \text{ GHz} \).
 
 **Solution:**
+
 1. **At \( f = 60 \text{ Hz} \)**:
    \( \delta_s = \sqrt { \frac { 2 } { 2 \pi ( 60 ) ( 4 \pi \times 10 ^ { - 7 } ) ( 5.8 \times 10 ^ 7 ) } } = \sqrt { \frac { 2 } { 2.748 \times 10 ^ 2 } } = \sqrt { 7.278 \times 10 ^ { - 5 } } \approx 8.53 \text{ mm} \).
    Absorption loss: \( A = 8.686 \left( \frac { 1.0 \text{ mm} } { 8.53 \text{ mm} } \right) \approx 1.02 \text{ dB} \).
+
 2. **At \( f = 1 \text{ MHz} \)**:
    \( \delta_s = \sqrt { \frac { 2 } { 2 \pi ( 10 ^ 6 ) ( 4 \pi \times 10 ^ { - 7 } ) ( 5.8 \times 10 ^ 7 ) } } \approx 0.0661 \text{ mm} = 66.1 \ \mu \text{m} \).
    Absorption loss: \( A = 8.686 \left( \frac { 1.0 \text{ mm} } { 0.0661 \text{ mm} } \right) \approx 131.4 \text{ dB} \).
+
 3. **At \( f = 1 \text{ GHz} \)**:
    \( \delta_s = \sqrt { \frac { 2 } { 2 \pi ( 10 ^ 9 ) ( 4 \pi \times 10 ^ { - 7 } ) ( 5.8 \times 10 ^ 7 ) } } \approx 2.09 \ \mu \text{m} \).
    Absorption loss: \( A = 8.686 \left( \frac { 1.0 \text{ mm} } { 0.00209 \text{ mm} } \right) \approx 4156 \text{ dB} \) (complete field exclusion).
 
 ==== Example 3: Comprehensive Electrodynamic Analysis of a Full Practical Crystal Receiver Circuit
 **Problem Statement:** An elevated long-wire AM antenna and active earth ground counterpoise drive an AM broadcast signal at carrier frequency \( f_c = 1.0 \text{ MHz} \) with audio modulation index \( m = 0.50 \) at \( f_a = 1.0 \text{ kHz} \). The antenna-ground system models as an RF source of peak amplitude \( V_\text{ant} = 1.60 \text{ V} \) with internal source resistance \( R_\text{ant} = 20 \text{ k}\Omega \) connected across a parallel tuned LC tank consisting of a coil \( L = 250 \ \mu\text{H} \) (wire resistance \( r_s = 10 \ \Omega \)) and variable tuning condenser \( C = 101.321 \text{ pF} \) (tuned to \( f_0 = 1.0 \text{ MHz} \)). The tuned RF voltage drives a germanium point-contact detector with an ideal threshold rectifier having a turn-on threshold \( V_\text{th} = 0.25 \text{ V} \), connected to \( R_\text{phones} = 4000 \ \Omega \) high-impedance headphones in parallel with an RF bypass condenser \( C_\text{bypass} = 1.5 \text{ nF} \). Calculate:
+
 1. The tank resonant frequency \( f_0 \), coil reactance \( X_L \), unloaded quality factor \( Q_0 \), and parallel equivalent resistance \( R_p \).
 2. The loaded peak RF tank voltage \( V_\text{tank} \) delivered across the detector, verifying that \( V_\text{tank} > V_\text{th} = 0.25 \text{ V} \).
 3. The peak rectified current \( I_\text{peak} \), average audio current \( I_\text{audio} \), and net audio power \( P_\text{audio} \) delivered to the \( 4000 \ \Omega \) headphones.
 4. The bypass condenser reactances \( X_{C,\text{rf}} \) at \( 1.0 \text{ MHz} \) and \( X_{C,\text{audio}} \) at \( 1.0 \text{ kHz} \), demonstrating RF carrier shorting vs audio current drive into the \( 4000 \ \Omega \) headphone windings.
 
 **Solution:**
+
 1. **Tank Resonance and Quality Factor \( Q_0 \)**:
    * Resonant frequency: \( f_0 = \frac { 1 } { 2 \pi \sqrt { L C } } = \frac { 1 } { 2 \pi \sqrt { ( 250 \times 10 ^ { - 6 } ) ( 101.321 \times 10 ^ { - 12 } ) } } = 1.00 \times 10 ^ 6 \text{ Hz} = 1.00 \text{ MHz} \).
    * Angular frequency: \( \omega_0 = 2 \pi f_0 = 6.2832 \times 10 ^ 6 \text{ rad/s} \).
    * Coil reactance: \( X_L = \omega_0 L = ( 6.2832 \times 10 ^ 6 ) ( 250 \times 10 ^ { - 6 } ) = 1570.8 \ \Omega \).
    * Unloaded Quality Factor: \( Q_0 = \frac { X_L } { r_s } = \frac { 1570.8 } { 10 } = 157.08 \).
    * Parallel Equivalent Resistance: \( R_p = Q_0 X_L = ( 157.08 ) ( 1570.8 ) \approx 246.7 \text{ k}\Omega \).
+
 2. **Loaded Peak RF Tank Voltage \( V_\text{tank} \)**:
    * The effective load resistance presented by the half-wave rectifier driving the \( 4000 \ \Omega \) headphones is \( R_\text{load,eff} \approx \pi R_\text{phones} = \pi ( 4000 ) \approx 12.57 \text{ k}\Omega \).
    * Parallel combination of tank parallel resistance and load: \( R_\text{tank,loaded} = \frac { R_p R_\text{load,eff} } { R_p + R_\text{load,eff} } = \frac { ( 246.7 ) ( 12.57 ) } { 246.7 + 12.57 } \approx 11.96 \text{ k}\Omega \).
    * Peak RF tank voltage: \( V_\text{tank} = V_\text{ant} \cdot \frac { R_\text{tank,loaded} } { R_\text{ant} + R_\text{tank,loaded} } = 1.60 \cdot \frac { 11.96 } { 20 + 11.96 } \approx 0.600 \text{ V} \).
    * Since \( V_\text{tank} = 0.600 \text{ V} > V_\text{th} = 0.250 \text{ V} \), the rectifier turns on during each positive RF peak.
+
 3. **Rectified Currents and Net Audio Power to \( 4000 \ \Omega \) Headphones**:
    * Peak differential voltage driving current: \( V_\text{diff} = V_\text{tank} - V_\text{th} = 0.600 - 0.250 = 0.350 \text{ V} \).
    * Peak rectified current: \( I_\text{peak} = \frac { V_\text{diff} } { R_\text{phones} } = \frac { 0.350 \text{ V} } { 4000 \ \Omega } = 8.750 \times 10 ^ { - 5 } \text{ A} = 87.50 \ \mu\text{A} \).
    * Average rectified audio current: \( I_\text{audio} = \frac { I_\text{peak} } { \pi } = \frac { 87.50 \ \mu\text{A} } { \pi } \approx 27.85 \ \mu\text{A} \).
    * Net audio power delivered to \( 4000 \ \Omega \) headphones: \( P_\text{audio} = I_\text{audio} ^ 2 R_\text{phones} = ( 27.85 \times 10 ^ { - 6 } ) ^ 2 ( 4000 ) \approx 3.10 \times 10 ^ { - 6 } \text{ W} = 3.10 \ \mu\text{W} \).
+
 4. **Frequency-Selective Action of the \( C_\text{bypass} = 1.5 \text{ nF} \) Condenser**:
    * At carrier frequency \( f_c = 1.0 \text{ MHz} \): \( X_{C,\text{rf}} = \frac { 1 } { 2 \pi ( 1.0 \times 10 ^ 6 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \ \Omega \). Since \( X_{C,\text{rf}} = 106.1 \ \Omega \ll 4000 \ \Omega \) (\( R_\text{phones} \)), \( 97.4\% \) of the RF carrier ripple passes safely through the bypass condenser, protecting the headphone coils from high-frequency reactive choking.
    * At audio frequency \( f_a = 1.0 \text{ kHz} \): \( X_{C,\text{audio}} = \frac { 1 } { 2 \pi ( 1000 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \text{ k}\Omega \). Since \( X_{C,\text{audio}} = 106.1 \text{ k}\Omega \gg 4000 \ \Omega \) (\( R_\text{phones} \)), \( 96.4\% \) of the low-frequency rectified audio envelope current flows directly through the \( 4000 \ \Omega \) headphone windings, driving clear acoustic sound output.
@@ -578,6 +589,7 @@ The local volume density of electromagnetic field energy is defined by \( u = \f
 The metallic conductors perform a crucial structural function: they provide physical boundary surfaces supporting surface charge density \( \sigma_s = \hat { \mathbf { n } } \cdot \mathbf { D } \) and surface current density \( \mathbf { K } _ s = \hat { \mathbf { n } } \times \mathbf { H } \). These surface sources enforce boundary conditions that confine, shape, and guide the dielectric wave packet along the length of the transmission structure without significant radiation leakage.
 
 ==== Poynting Power Integration Across Transmission Geometries
+
 1. **Coaxial Cable Geometry (Inner Radius \( a \), Outer Radius \( b \))**:
    In the dielectric region \( a < r < b \), the radial electric field is \( E_r = \frac { V } { r \ln ( b / a ) } \) and the azimuthal magnetic field is \( H_\phi = \frac { I } { 2 \pi r } \). The axial Poynting vector in the dielectric is:
    \[ S_z = E_r H_\phi = \frac { V I } { 2 \pi \ln ( b / a ) r ^ 2 } \]
@@ -624,9 +636,11 @@ Electric machines convert mechanical kinetic energy into electrodynamic field en
 In a 3-phase AC synchronous generator (alternator), a mechanical prime mover rotates a DC-excited rotor magnetic field inside a stationary stator containing polyphase armature windings. The induced RMS phase electromotive force is \( E_p = 4.44 f N_p \Phi K_w \). Armature reaction flux interacts with rotor field flux to establish terminal voltage regulation.
 
 ==== Three Classic Motor Families
+
 1. **Induction Motors (Asynchronous Motors)**: Polyphase AC currents in stator windings generate a revolving magnetic field of synchronous speed \( n_s = \frac { 120 f } { p } \) (rpm). This field cuts conductive rotor bars in a squirrel-cage rotor, inducing rotor currents and electrodynamic torque. The speed difference defines the **slip** \( s = \frac { n_s - n_r } { n_s } \). The mechanical torque output derived from the equivalent circuit is:
    \[ T_e = \frac { 3 p } { 2 \omega_s } \frac { V_1 ^ 2 \left( \frac { R_2' } { s } \right) } { \left( R_1 + \frac { R_2' } { s } \right) ^ 2 + ( X_1 + X_2' ) ^ 2 } \]
    Maximum (breakdown) torque \( T_\text{max} \) occurs at slip \( s_\text{max} = \frac { R_2' } { \sqrt { R_1 ^ 2 + ( X_1 + X_2' ) ^ 2 } } \). Variable Frequency Drives (VFDs) adjust stator frequency \( f \) and voltage \( V_1 \) proportionally (constant V/f control) to regulate speed efficiently.
+
 2. **Synchronous Motors**: The rotor contains DC-excited field coils or permanent magnets that lock in exact phase synchrony with the stator rotating field (\( n_r = n_s \)), operating at zero slip. Operating at over-excited field current causes the synchronous motor to draw leading reactive power, acting as a synchronous condenser for power factor correction.
 3. **Brushed DC Motors**: A stationary stator field surrounds a rotating armature. A mechanical commutator and carbon brushes physically reverse armature coil currents every half-revolution to maintain unidirectional electrodynamic torque \( T_e = K_T \Phi I_a \). Speed is controlled via armature voltage: \( \omega_m = \frac { V_a - I_a R_a } { K_a \Phi } \).
 
@@ -688,6 +702,7 @@ Stator magnetic flux vector \( \mathbf { \Phi } _ s \) and rotor permanent magne
 **Problem Statement:** An RG-213 coaxial cable has inner conductor radius \( a = 1.15 \text{ mm} \), outer conductor inner radius \( b = 3.60 \text{ mm} \), and polyethylene dielectric (\( \varepsilon_r = 2.25 \)). The line drives a 50-ohm antenna with RMS voltage \( V = 100 \text{ V} \) and current \( I = 2.0 \text{ A} \). Calculate dielectric characteristic impedance \( Z_0 \), phase velocity \( v_p \), Poynting power density at the inner conductor surface \( r = a \), and total dielectric power.
 
 **Solution:**
+
 1. **Characteristic Impedance \( Z_0 \)**: \( Z_0 = \frac { 60 } { \sqrt{\varepsilon_r} } \ln \left( \frac { b } { a } \right) = \frac { 60 } { 1.50 } \ln \left( \frac { 3.60 } { 1.15 } \right) = 40 \ln( 3.1304 ) \approx 40 ( 1.1411 ) \approx 45.64 \ \Omega \).
 2. **Phase Velocity \( v_p \)**: \( v_p = \frac { c } { \sqrt{2.25} } = \frac { 3.0 \times 10^8 } { 1.50 } = 2.0 \times 10^8 \text{ m/s} \) (66.7% of wave speed \( c \)).
 3. **Poynting Power Density at \( r = a \)**: \( S ( a ) = \frac { V I } { 2 \pi \ln(b/a) a^2 } = \frac { ( 100 ) ( 2.0 ) } { 2 \pi ( 1.1411 ) ( 1.15 \times 10^{-3} )^2 } = \frac { 200 } { 7.170 \times 10^{-6} ( 1.3225 \times 10^{-6} ) } \approx 2.11 \times 10^7 \text{ W/m}^2 \).
@@ -697,12 +712,15 @@ Stator magnetic flux vector \( \mathbf { \Phi } _ s \) and rotor permanent magne
 **Problem Statement:** A 3-phase Permanent Magnet Synchronous Motor (PMSM) drive operates at rotor angle \( \theta_r = 30^circ \) (\( \cos 30^circ = 0.866 \), \( \sin 30^circ = 0.500 \)). The measured 3-phase stator currents are \( i_a = 10.0 \text{ A} \), \( i_b = - 5.0 \text{ A} \), \( i_c = - 5.0 \text{ A} \). Calculate the stationary two-axis currents \( ( i_\alpha, i_\beta ) \) via Clarke transformation, and the rotating direct-quadrature currents \( ( i_d, i_q ) \) via Park transformation.
 
 **Solution:**
+
 1. **Clarke Transformation**:
    \[ i_\alpha = i_a = 10.0 \text{ A} \]
    \[ i_\beta = \frac { \sqrt{3} } { 2 } ( i_b - i_c ) = \frac { 1.732 } { 2 } ( - 5.0 - ( - 5.0 ) ) = 0.0 \text{ A} \]
+
 2. **Park Transformation**:
    \[ i_d = i_\alpha \cos \theta_r + i_\beta \sin \theta_r = ( 10.0 ) ( 0.866 ) + ( 0.0 ) ( 0.500 ) = 8.66 \text{ A} \]
    \[ i_q = - i_\alpha \sin \theta_r + i_\beta \cos \theta_r = - ( 10.0 ) ( 0.500 ) + ( 0.0 ) ( 0.866 ) = - 5.00 \text{ A} \]
+
 3. **Physical Interpretation**: The direct current component \( i_d = 8.66 \text{ A} \) produces magnetic flux along the rotor pole axis, while the quadrature current component \( i_q = - 5.00 \text{ A} \) produces orthogonal electrodynamic torque.
 
 == Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics
@@ -814,6 +832,7 @@ A causal linear shift-invariant system with real bivector transfer function \( H
 ==== Example 1: Digital Bivector Transfer Function and Discrete Resonance Analysis
 **Problem Statement:** A second-order digital filter operating at sampling step \( \delta = 1 \text{ ms} \) is governed by the difference equation:
 \[ y [ n ] - 1.2728 y [ n - 1 ] + 0.81 y [ n - 2 ] = x [ n ] \]
+
 1. Determine the system transfer function \( H ( z ) \) and calculate its complex-free bivector poles \( p_1, p_2 \).
 2. Calculate the pole magnitude \( | p_1 | \), the resonant frequency \( f_0 \), and verify system BIBO stability.
 3. Compute the unit impulse response \( h [ n ] \) for the first 4 grid steps (\( n = 0, 1, 2, 3 \)).
@@ -1013,6 +1032,7 @@ For any multi-electrode thermionic valve operating in its linear space-charge re
 
 ==== Example 1: Triode Amplifier Voltage Gain and Dynamic Plate Resistance Calculation
 **Problem Statement:** A 6SN7 dual triode tube stage operates at plate bias voltage \( V_p = 250 \text{ V} \) and grid bias \( V_g = - 8.0 \text{ V} \). At this operating point, measured parameters are transconductance \( g_m = 2.60 \text{ mA/V} \) (\( 0.00260 \text{ A/V} \)) and amplification factor \( \mu = 20.0 \).
+
 1. Calculate the dynamic plate resistance \( r_p \).
 2. Calculate the small-signal voltage gain \( A_v \) when driving an anode load resistor \( R_L = 47.0 \text{ k}\Omega \).
 3. Determine the peak AC output voltage swing produced by a \( 0.50 \text{ V} \) peak AC input signal.
@@ -1033,6 +1053,7 @@ For any multi-electrode thermionic valve operating in its linear space-charge re
 
 ==== Example 2: CRT Electrostatic Beam Deflection and Transit-Time Frequency Limit Analysis
 **Problem Statement:** An electrostatic CRT oscilloscope tube has accelerating anode voltage \( V_a = 2000 \text{ V} \). Deflection plates have length \( l = 3.0 \text{ cm} \), separation \( d = 5.0 \text{ mm} \), and distance to phosphor screen \( L = 25.0 \text{ cm} \). Electron mass is \( m = 9.109 \times 10 ^ { - 31 } \text{ kg} \) and charge is \( q = 1.602 \times 10 ^ { - 19 } \text{ C} \).
+
 1. Calculate the electron beam velocity \( v_z \) entering the deflection region.
 2. Calculate the deflection factor \( S = y / V_d \) (in mm/V).
 3. Compute the electron transit time \( \tau \) through the deflection plates, and find the upper frequency limit \( f_\text{limit} \) at which transit-time phase blurring reduces deflection sensitivity by 10%.
@@ -1055,6 +1076,7 @@ For any multi-electrode thermionic valve operating in its linear space-charge re
 
 ==== Example 3: Klystron Velocity Modulation and Electron Bunching Distance Calculation
 **Problem Statement:** A 2-cavity power klystron amplifier operates at beam voltage \( V_0 = 5000 \text{ V} \) and RF frequency \( f = 3.0 \text{ GHz} \) (\( \omega = 2 \pi \times 3.0 \times 10 ^ 9 = 1.885 \times 10 ^ { 10 } \text{ rad/s} \)). The input buncher cavity applies a small AC RF voltage gap peak \( V_1 = 250 \text{ V} \), creating a velocity modulation index \( \beta_1 = \frac { V_1 } { 2 V_0 } = \frac { 250 } { 10000 } = 0.025 \).
+
 1. Calculate DC electron beam velocity \( u_0 \).
 2. Calculate the optimum field-free drift length \( L_\text{opt} \) to position the catcher cavity at maximum electron bunching (\( X = 1.84 \) on Bessel function \( J_1 ( X ) \)).
 
@@ -1227,6 +1249,7 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 **Problem Statement:** A phosphor-bronze wire point contact (work function \( \Phi_m = 4.50 \text{ eV} \)) is pressed against an n-type galena (\( \text{PbS} \)) crystal (electron affinity \( \chi_s = 3.80 \text{ eV} \)). Calculate the built-in barrier height \( \Phi_{BN} \) and the reverse saturation current density \( J_s \) at \( T = 300 \text{ K} \) assuming Richardson constant \( A^* = 120 \text{ A/(cm}^2 \text{K}^2) \).
 
 **Solution:**
+
 1. **Schottky Barrier Height**: \( \Phi_{BN} = \Phi_m - \chi_s = 4.50 \text{ eV} - 3.80 \text{ eV} = 0.70 \text{ eV} \).
 2. **Reverse Saturation Current Density**: \( J_s = A^* T^2 e^{ - \frac { \Phi_{BN} } { V_t } } = 120 \times ( 300 )^2 e^{ - \frac { 0.70 } { 0.02585 } } = 1.08 \times 10^7 \times e^{-27.08} \approx 1.08 \times 10^7 \times 1.74 \times 10^{-12} \approx 1.88 \times 10^{-5} \text{ A/cm}^2 \) (\( 18.8 \ \mu\text{A/cm}^2 \)).
 
@@ -1234,6 +1257,7 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 **Problem Statement:** A silicon p-n junction diode has acceptor doping \( N_A = 10^{17} \text{ cm}^{-3} \), donor doping \( N_D = 10^{16} \text{ cm}^{-3} \), intrinsic carrier density \( n_i = 1.5 \times 10^{10} \text{ cm}^{-3} \), cross-sectional area \( A = 1.0 \text{ mm}^2 \), and reverse saturation current \( I_s = 1.0 \text{ pA} \) at 300 K. Calculate built-in potential \( V_{bi} \) and forward current at \( V = 0.65 \text{ V} \).
 
 **Solution:**
+
 1. **Built-in Potential \( V_{bi} \)**: \( V_{bi} = ( 0.02585 ) \ln \left( \frac { 10^{17} \times 10^{16} } { ( 1.5 \times 10^{10} )^2 } \right) = 0.02585 \ln \left( \frac { 10^{33} } { 2.25 \times 10^{20} } \right) = 0.02585 \ln ( 4.444 \times 10^{12} ) = 0.02585 \times ( 29.12 ) \approx 0.753 \text{ V} \).
 2. **Forward Bias Current at \( V = 0.65 \text{ V} \)**: \( I = I_s e^{V / V_t} = 1.0 \times 10^{-12} e^{0.65 / 0.02585} = 1.0 \times 10^{-12} e^{25.145} \approx 1.0 \times 10^{-12} \times ( 8.32 \times 10^{10} ) = 83.2 \text{ mA} \).
 
@@ -1241,6 +1265,7 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 **Problem Statement:** An Esaki tunnel diode exhibits peak current \( I_p = 10.0 \text{ mA} \) at peak voltage \( V_p = 50 \text{ mV} \) and valley current \( I_v = 1.0 \text{ mA} \) at valley voltage \( V_v = 350 \text{ mV} \). Calculate the average Negative Differential Resistance (NDR) \( R_N \) in the tunneling decay region and the resonant frequency when connected across a 10 nH inductor and 5 pF tuning condenser.
 
 **Solution:**
+
 1. **Negative Differential Resistance \( R_N \)**: \( R_N = \frac { V_v - V_p } { I_v - I_p } = \frac { 0.350 - 0.050 } { 0.001 - 0.010 } = \frac { 0.300 } { - 0.009 } \approx - 33.33 \ \Omega \).
 2. **Resonant Oscillation Frequency**: \( f_0 = \frac { 1 } { 2 \pi \sqrt{L C} } = \frac { 1 } { 2 \pi \sqrt{ 10 \times 10^{-9} \times 5 \times 10^{-12} } } = \frac { 1 } { 2 \pi \sqrt{ 5 \times 10^{-20} } } = \frac { 1 } { 2 \pi \times 2.236 \times 10^{-10} } \approx 711.8 \text{ MHz} \).
 
@@ -1263,6 +1288,7 @@ The field-effect transistor is the solid-state direct counterpart of the thermio
 Applying a negative electrostatic potential to the control grid establishes a transverse electric field that repels incoming electrons back toward the cathode, constricting the space-charge current flowing to the plate. Because the control grid is biased negatively with respect to the cathode, no electrons land on grid wires, resulting in near-zero static grid current and exceptionally high input impedance.
 
 The JFET and depletion-mode MOSFET operate on precisely this principle in solid-state silicon:
+
 1. **Source \(\leftrightarrow\) Cathode**: The majority-carrier emitter terminal.
 2. **Drain \(\leftrightarrow\) Anode (Plate)**: The majority-carrier collector terminal.
 3. **Gate \(\leftrightarrow\) Control Grid**: The electrostatic field-control electrode restricting carrier flux through space-charge or depletion-region expansion.
@@ -1337,6 +1363,7 @@ Complementary Metal-Oxide-Semiconductor (CMOS) structures—pairing n-channel an
 **Problem Statement 1:** An N-channel JFET has a zero-bias saturation current \( I_{DSS} = 12.0 \text{ mA} \) and a pinch-off voltage \( V_p = - 4.0 \text{ V} \). Calculate the drain current \( I_D \) and small-signal transconductance \( g_m \) when operated in the saturation region at a gate-source bias voltage \( V_{GS} = - 1.5 \text{ V} \).
 
 **Solution:**
+
 1. **Saturation Drain Current \( I_D \)**:
 \[ I_D = I_{DSS} \left( 1 - \frac { V_{GS} } { V_p } \right)^2 = 12.0 \times 10^{-3} \left( 1 - \frac { - 1.5 } { - 4.0 } \right)^2 = 12.0 \times 10^{-3} \left( 1 - 0.375 \right)^2 \]
 \[ I_D = 12.0 \times 10^{-3} \times (0.625)^2 = 12.0 \times 10^{-3} \times 0.390625 = 4.6875 \text{ mA} \]
@@ -1350,6 +1377,7 @@ Complementary Metal-Oxide-Semiconductor (CMOS) structures—pairing n-channel an
 **Problem Statement 2:** An N-channel enhancement-mode MOSFET operates in saturation with threshold voltage \( V_{th} = 1.2 \text{ V} \), process transconductance parameter \( k_n' = \mu_n C_{ox} = 100 \ \mu \text{A/V}^2 \), channel aspect ratio \( W / L = 20 \), and channel-length modulation parameter \( \lambda = 0.02 \ \text{V}^{-1} \). Calculate the drain current \( I_D \) and small-signal output resistance \( r_o \) when biased at \( V_{GS} = 2.5 \text{ V} \) and \( V_{DS} = 5.0 \text{ V} \).
 
 **Solution:**
+
 1. **Saturation Drain Current \( I_D \)**:
 \[ I_D = \frac { 1 } { 2 } k_n' \frac { W } { L } ( V_{GS} - V_{th} )^2 ( 1 + \lambda V_{DS} ) \]
 \[ I_D = \frac { 1 } { 2 } \times (100 \times 10^{-6}) \times 20 \times (2.5 - 1.2)^2 \times (1 + 0.02 \times 5.0) \]
@@ -1414,8 +1442,10 @@ In a bipolar junction transistor governed by the Master Field Equation \( D F = 
 \[ \alpha_F = \gamma_e \alpha_T \approx \left( 1 - \frac { 1 } { 2 } \left( \frac { W_b } { L_n } \right) ^ 2 \right) \quad \implies \quad \beta \approx 2 \left( \frac { L_n } { W_b } \right) ^ 2 \]
 
 *Proof:*
+
 1. **Steady-State Neutral Base Diffusion**: Solving the 1D steady-state minority electron diffusion equation \( D_n \frac { d^2 n_p ( x ) } { d x^2 } - \frac { n_p ( x ) - n_{p0} } { \tau_n } = 0 \) across base coordinates \( x \in [ 0 , W_b ] \) with boundary conditions \( n_p ( 0 ) = n_{p0} e ^ { V_{BE} / V_T } \) and \( n_p ( W_b ) = 0 \) gives:
    \[ n_p ( x ) = n_{p0} \left( e ^ { V_{BE} / V_T } - 1 \right) \frac { \sinh \left( \frac { W_b - x } { L_n } \right) } { \sinh \left( \frac { W_b } { L_n } \right) } \]
+
 2. **Current Integration at Junction Boundaries**: Differentiating \( n_p ( x ) \) yields collector diffusion current \( I_C = q A D_n \left. \frac { d n_p } { d x } \right| _ { x = W_b } = \frac { q A D_n n_{p0} } { L_n \sinh ( W_b / L_n ) } \left( e ^ { V_{BE} / V_T } - 1 \right) \).
 3. **Small Base Approximation**: Expanding \( \sinh ( W_b / L_n ) \approx \frac { W_b } { L_n } + \frac { 1 } { 6 } \left( \frac { W_b } { L_n } \right) ^ 3 \) yields base transport factor \( \alpha_T = \frac { 1 } { \cosh ( W_b / L_n ) } \approx 1 - \frac { 1 } { 2 } \left( \frac { W_b } { L_n } \right) ^ 2 \). Substituting into \( \beta = \frac { \alpha_F } { 1 - \alpha_F } \) gives \( \beta \approx 2 \left( \frac { L_n } { W_b } \right) ^ 2 \). \( \square \)
 ====
@@ -1425,6 +1455,7 @@ In a bipolar junction transistor governed by the Master Field Equation \( D F = 
 **Problem Statement 1:** An NPN silicon BJT with common-emitter current gain \( \beta = 100 \) and Early voltage \( V_A = 100 \text{ V} \) is biased in a fixed-base bias circuit with supply voltage \( V_{CC} = 12.0 \text{ V} \), collector resistor \( R_C = 2.2 \text{ k}\Omega \), and base resistor \( R_B = 470 \text{ k}\Omega \). Assuming \( V_{BE} = 0.70 \text{ V} \), calculate base current \( I_B \), collector current \( I_C \), collector-emitter voltage \( V_{CE} \), and the small-signal output resistance \( r_o \).
 
 **Solution:**
+
 1. **Base Current \( I_B \)**:
 \[ I_B = \frac { V_{CC} - V_{BE} } { R_B } = \frac { 12.0 - 0.70 } { 470 \times 10 ^ 3 } = \frac { 11.30 \text{ V} } { 470,000 \ \Omega } \approx 2.404 \times 10 ^ { - 5 } \text{ A} = 24.04 \ \mu\text{A} \]
 
@@ -1441,6 +1472,7 @@ Since \( V_{CE} = 6.711 \text{ V} > V_{CE,\text{sat}} \approx 0.2 \text{ V} \), 
 **Problem Statement 2:** In an early AF117 germanium PNP transistor packaged in a TO-7 metal can, a tin whisker grows from the interior electroplated tin can wall across a clearance gap of \( d = 0.85 \text{ mm} \). If the local electric field between the biased collector lead (\( V_C = - 9.0 \text{ V} \)) and grounded metal can (\( V_\text{case} = 0 \text{ V} \)) accelerates tin ion lattice transport, calculate the mean electric field strength \( E_\text{gap} \) across the clearance gap and determine the minimum whisker growth velocity required to bridge the gap in 3 years.
 
 **Solution:**
+
 1. **Mean Electric Field Strength \( E_\text{gap} \)**:
 \[ E_\text{gap} = \frac { | V_C - V_\text{case} | } { d } = \frac { 9.0 \text{ V} } { 0.85 \times 10 ^ { - 3 } \text{ m} } \approx 10,588 \text{ V/m} = 10.59 \text{ kV/m} \]
 
@@ -1509,10 +1541,13 @@ In a four-layer \( p-n-p-n \) semiconductor structure governed by the Master Fie
 \[ \alpha_1 ( I_A , V_{J2} ) + \alpha_2 ( I_A , V_{J2} ) = 1 \]
 
 *Proof:*
+
 1. **Coupled Transistor Equations**: Total anode current passing through reverse-biased central junction \( J_2 \) is the sum of collector currents from constituent PNP (\( Q_1 \)) and NPN (\( Q_2 \)) transistors plus junction leakage current \( I_{C0} \):
    \[ I_A = \alpha_1 I_A + \alpha_2 I_A + I_G \alpha_2 + I_{C0} \]
+
 2. **Anode Current Solution**: Solving explicitly for anode current \( I_A \):
    \[ I_A = \frac { \alpha_2 I_G + I_{C0} } { 1 - ( \alpha_1 + \alpha_2 ) } \]
+
 3. **Latching Singularity**: As gate current \( I_G \) increases carrier injection, current gains \( \alpha_1 \) and \( \alpha_2 \) increase with current density. When \( \alpha_1 + \alpha_2 \to 1 \), the denominator vanishes, driving regenerative anode current escalation limited only by external circuit resistance. \( \square \)
 ====
 
@@ -1521,6 +1556,7 @@ In a four-layer \( p-n-p-n \) semiconductor structure governed by the Master Fie
 **Problem Statement 1:** An SCR has a critical latching current \( I_L = 25 \text{ mA} \), holding current \( I_H = 10 \text{ mA} \), and gate trigger voltage \( V_{GT} = 0.75 \text{ V} \). It is used to switch a load resistance \( R_L = 20 \ \Omega \) from a supply voltage \( V_S = 100 \text{ V}_\text{DC} \). Calculate the minimum gate pulse duration \( t_g \) required to successfully latch the SCR if load inductance is \( L_L = 150 \text{ mH} \).
 
 **Solution:**
+
 1. **Inductive Anode Current Growth**:
    When gate current triggers the SCR, anode current grows exponentially in the RL load circuit:
    \[ I_A ( t ) = \frac { V_S } { R_L } \left( 1 - e ^ { - \frac { R_L } { L_L } t } \right) \]
@@ -1533,6 +1569,7 @@ In a four-layer \( p-n-p-n \) semiconductor structure governed by the Master Fie
 **Problem Statement 2:** A GaAs Hall-effect sensor with thickness \( t = 10 \ \mu\text{m} \) and electron concentration \( n = 1.5 \times 10 ^ { 21 } \text{ m}^{-3} \) carries a control current \( I = 5.0 \text{ mA} \). Calculate the Hall coefficient \( R_H \) and the resulting Hall voltage \( V_H \) generated when a magnetic B-field of \( B = 0.25 \text{ T} \) is applied perpendicular to the sensor element.
 
 **Solution:**
+
 1. **Hall Coefficient \( R_H \)**:
 \[ R_H = \frac { 1 } { q n } = \frac { 1 } { ( 1.602 \times 10 ^ { - 19 } \text{ C} ) ( 1.5 \times 10 ^ { 21 } \text{ m}^{-3} ) } = \frac { 1 } { 240.3 } \approx 4.161 \times 10 ^ { - 3 } \text{ m}^3 / \text{C} \]
 
@@ -1556,6 +1593,7 @@ An Operational Amplifier (Op-Amp) is a high-gain, direct-coupled differential am
 An ideal operational amplifier exhibits infinite open-loop gain (\( A_{OL} \to \infty \)), infinite input impedance (\( R_\text{in} \to \infty \)), zero output impedance (\( R_\text{out} = 0 \)), and infinite bandwidth. Applying negative feedback drives differential input voltage to zero (\( V_+ - V_- = 0 \)), creating a **virtual ground** at the inverting terminal.
 
 ==== Fundamental Op-Amp Topologies
+
 1. **Inverting Amplifier**: Closed-loop voltage gain \( A_v = - \frac { R_f } { R_1 } \).
 2. **Non-Inverting Amplifier**: Closed-loop voltage gain \( A_v = 1 + \frac { R_f } { R_1 } \).
 3. **Integrating Amplifier**: \( V_\text{out} ( t ) = - \frac { 1 } { R C } \int_0^t V_\text{in} ( \tau ) d \tau + V_\text{initial} \).
@@ -1606,6 +1644,7 @@ In an analog integrated circuit governed by the Master Field Equation \( D F = J
 \[ A_{CL} = \frac { A_{OL} } { 1 + A_{OL} \beta_f } \quad \implies \quad \frac { d A_{CL} } { A_{CL} } = \frac { 1 } { 1 + A_{OL} \beta_f } \left( \frac { d A_{OL} } { A_{OL} } \right) \]
 
 *Proof:*
+
 1. **Closed-Loop Transfer Relation**: Summing potentials at the differential input \( V_d = V_\text{in} - \beta_f V_\text{out} \) gives \( V_\text{out} = A_{OL} ( V_\text{in} - \beta_f V_\text{out} ) \).
 2. **Algebraic Isolation**: Factoring \( V_\text{out} ( 1 + A_{OL} \beta_f ) = A_{OL} V_\text{in} \) yields \( A_{CL} = \frac { V_\text{out} } { V_\text{in} } = \frac { A_{OL} } { 1 + A_{OL} \beta_f } \).
 3. **Logarithmic Differentiation**: Taking natural logs \( \ln A_{CL} = \ln A_{OL} - \ln ( 1 + A_{OL} \beta_f ) \) and differentiating with respect to \( A_{OL} \) yields \( \frac { d A_{CL} } { A_{CL} } = \frac { d A_{OL} } { A_{OL} } - \frac { \beta_f d A_{OL} } { 1 + A_{OL} \beta_f } = \frac { 1 } { 1 + A_{OL} \beta_f } \left( \frac { d A_{OL} } { A_{OL} } \right) \). \( \square \)
@@ -1616,6 +1655,7 @@ In an analog integrated circuit governed by the Master Field Equation \( D F = J
 **Problem Statement 1:** A non-inverting operational amplifier is designed using an Op-Amp with open-loop gain \( A_{OL} = 100,000 \) (100 dB) and Gain-Bandwidth Product \( \text{GBW} = 10.0 \text{ MHz} \). The feedback network consists of \( R_f = 90 \text{ k}\Omega \) and \( R_1 = 10 \text{ k}\Omega \). Calculate ideal closed-loop gain \( A_{CL,\text{ideal}} \), exact closed-loop gain \( A_{CL,\text{exact}} \), gain error percentage, and closed-loop \( -3 \text{ dB} \) bandwidth \( f_{CL} \).
 
 **Solution:**
+
 1. **Ideal Closed-Loop Gain \( A_{CL,\text{ideal}} \)**:
 \[ A_{CL,\text{ideal}} = 1 + \frac { R_f } { R_1 } = 1 + \frac { 90 \text{ k}\Omega } { 10 \text{ k}\Omega } = 1 + 9 = 10.00 \ (20 \text{ dB}) \]
 
@@ -1633,6 +1673,7 @@ Gain error is \( \frac { 10.00 - 9.9990 } { 10.00 } \times 100\% = 0.010\% \).
 **Problem Statement 2:** A CMOS 555 timer (ICM7555) operating from supply voltage \( V_{CC} = 5.0 \text{ V} \) is configured as a linear ramp pulse generator. The timing condenser \( C = 100 \text{ nF} \) is charged by an active PNP constant-current source supplying constant current \( I_0 = 50.0 \ \mu\text{A} \). Calculate the slope of the linear ramp \( \frac { d V_C } { d t } \), the ramp duration \( t_\text{ramp} \) required to charge from \( \frac { 1 } { 3 } V_{CC} \) to \( \frac { 2 } { 3 } V_{CC} \), and the total pulse repetition frequency \( f_\text{osc} \) assuming rapid discharge time \( t_\text{discharge} = 2.0 \ \mu\text{s} \).
 
 **Solution:**
+
 1. **Ramp Slope \( \frac { d V_C } { d t } \)**:
 \[ \frac { d V_C } { d t } = \frac { I_0 } { C } = \frac { 50.0 \times 10 ^ { - 6 } \text{ A} } { 100 \times 10 ^ { - 9 } \text{ F} } = 500.0 \text{ V/s} = 0.500 \text{ V/ms} \]
 
@@ -1704,6 +1745,7 @@ In a complementary metal-oxide-semiconductor (CMOS) logic circuit governed by th
 \[ P_\text{dyn} = f C_L V_{DD}^2 \]
 
 *Proof:*
+
 1. **Charge Transfer per Transition**: Raising output node capacitance \( C_L \) from \( 0 \) to \( V_{DD} \) draws total electric charge \( Q = C_L V_{DD} \) from the supply terminal.
 2. **Total Energy Supply**: Energy delivered by the supply source during charging is \( E_\text{supply} = \int V_{DD} i ( t ) d t = V_{DD} Q = C_L V_{DD}^2 \).
 3. **Stored vs. Dissipated Energy**: Electric field energy stored in capacitive dielectric is \( W_E = \frac { 1 } { 2 } C_L V_{DD}^2 \). By energy conservation, remaining energy \( E_\text{heat} = E_\text{supply} - W_E = \frac { 1 } { 2 } C_L V_{DD}^2 \) is dissipated as thermal heat in the charging PMOS channel. Discharging through NMOS dissipates the stored \( \frac { 1 } { 2 } C_L V_{DD}^2 \). Total heat per full cycle is \( E_\text{cycle} = C_L V_{DD}^2 \).
@@ -1715,6 +1757,7 @@ In a complementary metal-oxide-semiconductor (CMOS) logic circuit governed by th
 **Problem Statement 1:** A high-speed digital CMOS clock distribution network operates at supply voltage \( V_{DD} = 3.3 \text{ V} \) and clock frequency \( f = 500 \text{ MHz} \). The total effective capacitive load of all driven gate inputs and interconnect traces is \( C_L = 180 \text{ pF} \). Calculate total dynamic power dissipation \( P_\text{dyn} \) and the thermal heat energy dissipated per second.
 
 **Solution:**
+
 1. **Dynamic Power Dissipation \( P_\text{dyn} \)**:
 \[ P_\text{dyn} = f C_L V_{DD}^2 = ( 500 \times 10 ^ 6 \text{ Hz} ) ( 180 \times 10 ^ { - 12 } \text{ F} ) ( 3.3 \text{ V} ) ^ 2 \]
 \[ P_\text{dyn} = ( 0.090 \text{ A} ) \times 10.89 \text{ V}^2 = 0.9801 \text{ W} = 980.1 \text{ mW} \]
@@ -1725,6 +1768,7 @@ By first-principles energy conservation, 100% of electrical power drawn by dynam
 **Problem Statement 2:** A synchronous 4-bit binary counter constructed from D flip-flops has a maximum propagation clock-to-Q delay \( t_{c2q} = 1.2 \text{ ns} \), combinational logic gate delay \( t_\text{logic} = 1.8 \text{ ns} \), and flip-flop setup time requirement \( t_\text{setup} = 0.8 \text{ ns} \). Calculate the minimum clock period \( T_\text{clk,min} \) and maximum allowable clock frequency \( f_\text{clk,max} \).
 
 **Solution:**
+
 1. **Minimum Clock Period \( T_\text{clk,min} \)**:
 \[ T_\text{clk,min} = t_{c2q} + t_\text{logic} + t_\text{setup} = 1.2 \text{ ns} + 1.8 \text{ ns} + 0.8 \text{ ns} = 3.8 \text{ ns} \]
 
@@ -1754,6 +1798,7 @@ To eliminate mystical confusion and establish the objective physical nature of s
 In any digital computer architecture executing software instructions under the Master Field Equation \( D F = J \), every software state transition maps one-to-one to a physical contact-action electrodynamic process drawing electric energy \( E_e > 0 \), generating thermal dissipation \( Q_\text{heat} = \int I^2 R d t \), and performing physical work \( W_\text{work} \) on external output transducers.
 
 *Proof:*
+
 1. **Instruction Physical Realization**: An instruction in memory consists of localized charge patterns in capacitive floating gates or DRAM condensers.
 2. **Fetch and Decode State Transition**: Clock pulse propagation drives charge currents across silicon bus lines, altering gate potentials on ALU transistors.
 3. **Energy Dissipation and Work**: By Theorem `xref:theorem-cmos-switching-power[CMOS Switching Power Dissipation]`, switching \( N_\text{trans} \) logic gates draws physical energy \( E = N_\text{trans} C_L V_{DD}^2 \). Ohmic loss dissipates thermal heat \( Q_\text{heat} \), while driving display pixels and network lines performs physical work \( W_\text{work} \). Software is material contact-action physics. \( \square \)
@@ -1764,6 +1809,7 @@ In any digital computer architecture executing software instructions under the M
 **Problem Statement 1:** A 64-bit CPU executing a computational loop at a clock frequency \( f = 4.0 \text{ GHz} \) draws a supply current \( I = 25.0 \text{ A} \) from a supply rail \( V_{DD} = 1.2 \text{ V} \). The loop executes for 10 minutes. Calculate total electric energy consumed \( E_\text{total} \), total thermal heat energy dissipated \( Q_\text{heat} \), and the mean energy consumed per clock cycle \( E_\text{cycle} \).
 
 **Solution:**
+
 1. **Total Electric Power \( P_\text{total} \)**:
 \[ P_\text{total} = V_{DD} I = ( 1.2 \text{ V} ) ( 25.0 \text{ A} ) = 30.0 \text{ W} \]
 
@@ -1780,6 +1826,7 @@ By conservation of energy, 100% of electrical energy drawn by internal switching
 **Problem Statement 2:** A server network interface card (NIC) transmits digital data software packets across a 10-Gigabit Ethernet copper trace of length \( L = 15 \text{ m} \). The trace has characteristic impedance \( Z_0 = 50 \ \Omega \) and differential voltage swing \( V_\text{pp} = 1.0 \text{ V} \). Calculate the physical electrodynamic power \( P_\text{net} \) carried by the Poynting vector in the dielectric trace during packet transmission and the physical work performed in driving display monitor pixels emitting \( 50.0 \text{ W} \) of optical/thermal energy for 1 hour.
 
 **Solution:**
+
 1. **Electrodynamic Network Wave Power \( P_\text{net} \)**:
 Using RMS voltage \( V_\text{rms} = \frac { V_\text{pp} } { 2 \sqrt{2} } = \frac { 1.0 } { 2.8284 } \approx 0.3536 \text{ V} \):
 \[ P_\text{net} = \frac { V_\text{rms} ^ 2 } { Z_0 } = \frac { ( 0.3536 ) ^ 2 } { 50 } = \frac { 0.1250 } { 50 } = 0.00250 \text{ W} = 2.50 \text{ mW} \]
@@ -1805,8 +1852,10 @@ The search algorithm initializes a uniform real normalized state vector \( v_0 \
 
 ==== The Grover Iteration as Composed Real Householder Reflections
 The digital Grover iteration is governed by an operator matrix \( G \in \mathbb { R } ^ { N \times N } \) formed by the product of two real orthogonal Householder reflection matrices:
+
 1. **Target Oracle Sign Inversion Matrix \( R_\text{oracle} \)**: A diagonal Householder reflection that inverts the sign of the target component while leaving all orthogonal coordinates invariant:
    \[ R_\text{oracle} = I_N - 2 e _ { x^* } e _ { x^* } ^ T \]
+
 2. **Inversion About the Mean Matrix \( R_\text{mean} \)**: A Householder reflection across the uniform vector \( v_0 \):
    \[ R_\text{mean} = 2 v_0 v_0 ^ T - I_N = \frac { 2 } { N } \mathbf { J } _ N - I_N \]
    where \( \mathbf { J } _ N \) is the \( N \times N \) matrix of all ones.
@@ -1815,10 +1864,13 @@ The combined Grover matrix operator \( G \) is:
 \[ G = R_\text{mean} R_\text{oracle} = \left( \frac { 2 } { N } \mathbf { J } _ N - I_N \right) \left( I_N - 2 e _ { x^* } e _ { x^* } ^ T \right) \]
 
 In numerical computation, applying \( G \) to state vector \( v_k \) consists of three explicit numerical operations:
+
 1. **Oracle Sign Inversion**: Multiply target coordinate by \( - 1 \):
    \[ v'_k ( x^* ) = - v_k ( x^* ) , \quad v'_k ( x ) = v_k ( x ) \ \text{for } x \neq x^* \]
+
 2. **Arithmetic Mean Computation**: Compute scalar mean \( \bar { v } ' \):
    \[ \bar { v } ' = \frac { 1 } { N } \sum _ { i = 0 } ^ { N - 1 } v'_k ( i ) \]
+
 3. **Inversion About the Mean**: Update each vector entry via scalar reflection:
    \[ v _ { k + 1 } ( i ) = 2 \bar { v } ' - v'_k ( i ) \quad \forall i \in \{ 0 , 1 , \dots , N - 1 \} \]
 
@@ -1888,10 +1940,12 @@ Digital Grover search is physically identical to a hydraulic manifold equalizati
 In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dots , N - 1 \} \), the Grover iteration operator \( G = R_\text{mean} R_\text{oracle} \) composed of real Householder reflections \( R_\text{oracle} = I_N - 2 e _ { x^* } e _ { x^* } ^ T \) and \( R_\text{mean} = 2 v_0 v_0 ^ T - I_N \) leaves the 2D real subspace \( V_2 = \text{span} \{ e _ { x^* } , v_0 \} \) strictly invariant. Within \( V_2 \), operator \( G \) is an exact 2D real rotation matrix with step angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \), achieving maximum alignment with target vector \( e _ { x^* } \) in exactly \( k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt{N} \right\rfloor \) iterations without complex numbers or non-deterministic collapse.
 
 *Proof:*
+
 1. **Orthogonality of Operators**: Matrices \( R_\text{oracle} \) and \( R_\text{mean} \) are symmetric (\( R^T = R \)) and orthogonal (\( R^T R = I \)). Their composition \( G = R_\text{mean} R_\text{oracle} \) is a real orthogonal matrix (\( G^T G = I \)).
 2. **Subspace Invariance**: For any vector \( u \in V_2 = \text{span} \{ e _ { x^* } , v_0 \} \), \( R_\text{oracle} u \in V_2 \) because \( R_\text{oracle} \) acts only along \( e _ { x^* } \). Similarly, \( R_\text{mean} u \in V_2 \) because \( R_\text{mean} \) acts only along \( v_0 \). Thus, \( V_2 \) is invariant under \( G \).
 3. **2D Rotation Matrix**: In orthonormal basis \( \{ e _ { x^* } , w \} \), matrix multiplication verifies:
    \[ G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
+
 4. **Step Convergence**: $k$-fold application gives angle $(2k+1)\theta/2$. Setting $(2k+1)\theta/2 = \pi/2$ yields $k = \frac{\pi}{2\theta} - \frac{1}{2} \approx \frac{\pi}{4} \sqrt{N}$. Integer truncation gives $k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N} \rfloor$. \( \square \)
 ====
 
@@ -1900,6 +1954,7 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 **Problem Statement 1:** Perform a complete step-by-step numerical calculation of the digital Grover search algorithm for a 4-element database (\( N = 4 \)) with target index \( x^* = 2 \). Show that initial state vector \( v_0 = \begin {pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end {pmatrix} ^ T \) achieves 100% exact single-step convergence to target basis vector \( e_2 = \begin {pmatrix} 0 & 0 & 1 & 0 \end {pmatrix} ^ T \).
 
 **Solution:**
+
 1. **Initial State Vector \( v_0 \)**:
 \[ v_0 = \begin {pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end {pmatrix} \]
 
@@ -1935,6 +1990,7 @@ This demonstrates 100% exact single-step numerical convergence ($k = 1$) to targ
 **Problem Statement 2:** For a 16-element database (\( N = 16 \)) with target index \( x^* = 7 \), calculate optimal iteration count \( k_\text{opt} \) and compute state vector entries for iterations $k = 1, 2, 3$.
 
 **Solution:**
+
 1. **Optimal Iteration Count \( k_\text{opt} \)**:
 \[ k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt { 16 } \right\rfloor = \lfloor \pi \rfloor = 3 \text{ iterations} \]
 
