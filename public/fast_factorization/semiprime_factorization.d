@@ -2,8 +2,13 @@
  * Fast Parallel Semiprime Factorization Engine Module
  *
  * Implements parallel semiprime factorization N = p * q using
- * parallel Pollard's rho with multiple polynomial seeds, parallel
- * Fermat quadratic difference search, and Wheel-30 factor testing.
+ * known-factorization heuristics including:
+ *   - Primorial product and small prime pre-screening
+ *   - Pollard's p - 1 smoothness exponent search
+ *   - Parallel Pollard's rho with multiple polynomial seeds
+ *   - Parallel Fermat quadratic difference search with
+ *     quadratic residue filtering (mod 64)
+ *   - Wheel-30 factor testing for multi-limb inputs
  *
  * Precision is selected at compile time via version flags:
  *   -fversion=LIMB_64   (64-bit integer precision)
@@ -375,6 +380,56 @@ ulong mulModUlong(ulong a, ulong b, ulong m)
     return res;
 }
 
+ulong modPow(ulong baseVal, ulong expVal, ulong modVal)
+{
+    ulong res = 1;
+    ulong b = baseVal % modVal;
+    ulong e = expVal;
+    while (e > 0)
+    {
+        ulong rem = e % 2;
+        if (rem == 1)
+        {
+            res = mulModUlong(res, b, modVal);
+        }
+        b = mulModUlong(b, b, modVal);
+        e = e / 2;
+    }
+    return res;
+}
+
+bool isQuadResidue64(ulong val)
+{
+    ulong r = val % 64;
+    static immutable ulong MASK_LO =
+        (1UL << 0)  | (1UL << 1)  | (1UL << 4)  | (1UL << 9)  |
+        (1UL << 16) | (1UL << 17) | (1UL << 25);
+    static immutable ulong MASK_HI =
+        (1UL << (33 - 32)) | (1UL << (36 - 32)) |
+        (1UL << (41 - 32)) | (1UL << (49 - 32)) |
+        (1UL << (57 - 32));
+
+    bool isRes = false;
+    if (r < 32)
+    {
+        ulong bit = (MASK_LO >> r) & 1UL;
+        if (bit != 0)
+        {
+            isRes = true;
+        }
+    }
+    else
+    {
+        ulong shiftR = r - 32;
+        ulong bit = (MASK_HI >> shiftR) & 1UL;
+        if (bit != 0)
+        {
+            isRes = true;
+        }
+    }
+    return isRes;
+}
+
 bool bifFitsUlong(const ref BigIntFixed a, ref ulong outVal)
 {
     bool fits = true;
@@ -507,6 +562,69 @@ bool testSmallPrimes(const ref BigIntFixed nVal,
     return isDivisible;
 }
 
+void pollardP1Worker(ulong n64,
+                     ulong boundB,
+                     ulong baseA,
+                     shared bool* pStop,
+                     shared ulong* pFactor)
+{
+    static immutable ulong[25] PRIMES_P1 = [
+        2UL, 3UL, 5UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL,
+        31UL, 37UL, 41UL, 43UL, 47UL, 53UL, 59UL, 61UL, 67UL, 71UL,
+        73UL, 79UL, 83UL, 89UL, 97UL
+    ];
+
+    ulong a = baseA;
+    size_t idx = 0;
+    bool done = false;
+
+    while (idx < 25)
+    {
+        if (done == false)
+        {
+            bool isStopped = atomicLoad(*pStop);
+            if (isStopped == true)
+            {
+                done = true;
+            }
+            else
+            {
+                ulong q = PRIMES_P1[idx];
+                ulong qk = q;
+                while (qk * q <= boundB)
+                {
+                    qk = qk * q;
+                }
+                a = modPow(a, qk, n64);
+                ulong diff = 0;
+                if (a >= 1)
+                {
+                    diff = a - 1;
+                }
+                else
+                {
+                    diff = n64 - 1;
+                }
+                ulong g = ulongGcd(diff, n64);
+                if (g > 1)
+                {
+                    if (g < n64)
+                    {
+                        atomicStore(*pFactor, g);
+                        atomicStore(*pStop, true);
+                        done = true;
+                    }
+                }
+                idx = idx + 1;
+            }
+        }
+        else
+        {
+            idx = 25;
+        }
+    }
+}
+
 void pollardRhoWorker(ulong n64,
                       ulong seedC,
                       ulong startX,
@@ -584,17 +702,21 @@ void fermatWorker(ulong n64,
             if (a2 >= n64)
             {
                 ulong b2 = a2 - n64;
-                ulong b = ulongSqrt(b2);
-                if (b * b == b2)
+                bool isQR = isQuadResidue64(b2);
+                if (isQR == true)
                 {
-                    ulong p = a - b;
-                    if (p > 1)
+                    ulong b = ulongSqrt(b2);
+                    if (b * b == b2)
                     {
-                        if (p < n64)
+                        ulong p = a - b;
+                        if (p > 1)
                         {
-                            atomicStore(*pFactor, p);
-                            atomicStore(*pStop, true);
-                            step = maxSteps;
+                            if (p < n64)
+                            {
+                                atomicStore(*pFactor, p);
+                                atomicStore(*pStop, true);
+                                step = maxSteps;
+                            }
                         }
                     }
                 }
@@ -686,7 +808,14 @@ SemiprimeFactorResult parallelSemiprimeFactorization(
             size_t tIdx = 0;
             while (tIdx < nCPUs)
             {
-                if (tIdx < 4)
+                if (tIdx == 0)
+                {
+                    auto tP1 = task!pollardP1Worker(
+                        n64, 10000UL, 2UL,
+                        &stopFlag, &sharedFactor);
+                    pool.put(tP1);
+                }
+                else if (tIdx < 4)
                 {
                     ulong seedC = SEEDS_C[tIdx];
                     ulong startX = 2 + tIdx;
