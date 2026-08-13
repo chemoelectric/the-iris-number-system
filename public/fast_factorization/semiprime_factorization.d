@@ -82,7 +82,7 @@ BigIntFixed bifFromUlong(ulong val)
     return res;
 }
 
-bool bifIsZero(const ref BigIntFixed a)
+bool bifIsZero(const BigIntFixed a)
 {
     bool isZ = true;
     size_t idx = 0;
@@ -98,7 +98,7 @@ bool bifIsZero(const ref BigIntFixed a)
     return isZ;
 }
 
-bool bifIsOne(const ref BigIntFixed a)
+bool bifIsOne(const BigIntFixed a)
 {
     bool isO = false;
     ulong l0 = a.limbs[0];
@@ -123,7 +123,7 @@ bool bifIsOne(const ref BigIntFixed a)
     return isO;
 }
 
-bool bifIsEven(const ref BigIntFixed a)
+bool bifIsEven(const BigIntFixed a)
 {
     ulong l0 = a.limbs[0];
     ulong rem = l0 % 2;
@@ -135,7 +135,7 @@ bool bifIsEven(const ref BigIntFixed a)
     return res;
 }
 
-int bifCompare(const ref BigIntFixed a, const ref BigIntFixed b)
+int bifCompare(const BigIntFixed a, const BigIntFixed b)
 {
     int cmpRes = 0;
     bool found = false;
@@ -166,8 +166,8 @@ int bifCompare(const ref BigIntFixed a, const ref BigIntFixed b)
     return cmpRes;
 }
 
-ulong bifAdd(const ref BigIntFixed a,
-             const ref BigIntFixed b,
+ulong bifAdd(const BigIntFixed a,
+             const BigIntFixed b,
              ref BigIntFixed res)
 {
     ulong carry = 0;
@@ -195,8 +195,8 @@ ulong bifAdd(const ref BigIntFixed a,
     return carry;
 }
 
-ulong bifSub(const ref BigIntFixed a,
-             const ref BigIntFixed b,
+ulong bifSub(const BigIntFixed a,
+             const BigIntFixed b,
              ref BigIntFixed res)
 {
     ulong borrow = 0;
@@ -224,7 +224,7 @@ ulong bifSub(const ref BigIntFixed a,
     return borrow;
 }
 
-ulong bifShiftLeft1(const ref BigIntFixed a, ref BigIntFixed res)
+ulong bifShiftLeft1(const BigIntFixed a, ref BigIntFixed res)
 {
     ulong carry = 0;
     size_t idx = 0;
@@ -241,7 +241,7 @@ ulong bifShiftLeft1(const ref BigIntFixed a, ref BigIntFixed res)
     return carry;
 }
 
-void bifShiftRight1(const ref BigIntFixed a, ref BigIntFixed res)
+void bifShiftRight1(const BigIntFixed a, ref BigIntFixed res)
 {
     ulong carry = 0;
     size_t idx = NUM_LIMBS;
@@ -259,7 +259,7 @@ void bifShiftRight1(const ref BigIntFixed a, ref BigIntFixed res)
     }
 }
 
-ulong bifModUlong32(const ref BigIntFixed a, ulong m)
+ulong bifModUlong32(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     size_t idx = NUM_LIMBS;
@@ -281,7 +281,7 @@ ulong bifModUlong32(const ref BigIntFixed a, ulong m)
     return rem;
 }
 
-ulong bifModUlong16(const ref BigIntFixed a, ulong m)
+ulong bifModUlong16(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     size_t idx = NUM_LIMBS;
@@ -303,7 +303,7 @@ ulong bifModUlong16(const ref BigIntFixed a, ulong m)
     return rem;
 }
 
-ulong bifModUlongBit(const ref BigIntFixed a, ulong m)
+ulong bifModUlongBit(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     size_t idx = NUM_LIMBS;
@@ -330,7 +330,7 @@ ulong bifModUlongBit(const ref BigIntFixed a, ulong m)
     return rem;
 }
 
-ulong bifModUlong(const ref BigIntFixed a, ulong m)
+ulong bifModUlong(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     static if (NUM_LIMBS == 1)
@@ -355,8 +355,8 @@ ulong bifModUlong(const ref BigIntFixed a, ulong m)
     return rem;
 }
 
-void bifDivMod(const ref BigIntFixed a,
-               const ref BigIntFixed b,
+void bifDivMod(const BigIntFixed a,
+               const BigIntFixed b,
                ref BigIntFixed quo,
                ref BigIntFixed rem)
 {
@@ -399,16 +399,16 @@ void bifDivMod(const ref BigIntFixed a,
     }
 }
 
-void bifMod(const ref BigIntFixed a,
-            const ref BigIntFixed b,
+void bifMod(const BigIntFixed a,
+            const BigIntFixed b,
             ref BigIntFixed rem)
 {
     BigIntFixed dummyQuo = bifZero();
     bifDivMod(a, b, dummyQuo, rem);
 }
 
-void bifGcd(const ref BigIntFixed a,
-            const ref BigIntFixed b,
+void bifGcd(const BigIntFixed a,
+            const BigIntFixed b,
             ref BigIntFixed gcdRes)
 {
     BigIntFixed x = a;
@@ -432,9 +432,9 @@ void bifGcd(const ref BigIntFixed a,
     }
 }
 
-void bifMulMod(const ref BigIntFixed a,
-               const ref BigIntFixed b,
-               const ref BigIntFixed m,
+void bifMulMod(const BigIntFixed a,
+               const BigIntFixed b,
+               const BigIntFixed m,
                ref BigIntFixed res)
 {
     res = bifZero();
@@ -492,9 +492,9 @@ void bifMulMod(const ref BigIntFixed a,
     }
 }
 
-void bifModPow(const ref BigIntFixed baseVal,
-               const ref BigIntFixed expVal,
-               const ref BigIntFixed modVal,
+void bifModPow(const BigIntFixed baseVal,
+               const BigIntFixed expVal,
+               const BigIntFixed modVal,
                ref BigIntFixed res)
 {
     res = bifFromUlong(1);
@@ -523,7 +523,7 @@ void bifModPow(const ref BigIntFixed baseVal,
     }
 }
 
-void bifSqrt(const ref BigIntFixed a, ref BigIntFixed res)
+void bifSqrt(const BigIntFixed a, ref BigIntFixed res)
 {
     bool isZ = bifIsZero(a);
     if (isZ == true)
@@ -680,7 +680,7 @@ bool isQuadResidue64(ulong val)
     return isRes;
 }
 
-bool bifFitsUlong(const ref BigIntFixed a, ref ulong outVal)
+bool bifFitsUlong(const BigIntFixed a, ref ulong outVal)
 {
     bool fits = true;
     size_t idx = 1;
@@ -699,7 +699,7 @@ bool bifFitsUlong(const ref BigIntFixed a, ref ulong outVal)
     return fits;
 }
 
-string bifToHexString(const ref BigIntFixed a)
+string bifToHexString(const BigIntFixed a)
 {
     string res = "0x";
     size_t idx = NUM_LIMBS;
@@ -780,7 +780,7 @@ BigIntFixed bifFromHexString(string hexStr)
     return res;
 }
 
-bool testSmallPrimes(const ref BigIntFixed nVal,
+bool testSmallPrimes(const BigIntFixed nVal,
                      ref ulong foundFactor)
 {
     static immutable ulong[48] SMALL_PRIMES = [
@@ -1222,7 +1222,7 @@ void wheelSearchWorker(const BigIntFixed nVal,
 }
 
 SemiprimeFactorResult parallelSemiprimeFactorization(
-    const ref BigIntFixed n,
+    const BigIntFixed n,
     ulong maxSteps)
 {
     SemiprimeFactorResult result;
