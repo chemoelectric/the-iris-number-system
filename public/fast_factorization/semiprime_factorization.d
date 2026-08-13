@@ -2,13 +2,12 @@
  * Fast Parallel Semiprime Factorization Engine Module
  *
  * Implements parallel semiprime factorization N = p * q using
- * known-factorization heuristics including:
+ * multi-limb modular arithmetic algorithms including:
  *   - Primorial product and small prime pre-screening
  *   - Pollard's p - 1 smoothness exponent search
  *   - Parallel Pollard's rho with multiple polynomial seeds
- *   - Parallel Fermat quadratic difference search with
- *     quadratic residue filtering (mod 64)
- *   - Wheel-30 factor testing for multi-limb inputs
+ *   - Parallel Fermat quadratic difference search
+ *   - Wheel-30 factor testing fallback
  *
  * Precision is selected at compile time via version flags:
  *   -fversion=LIMB_64   (64-bit integer precision)
@@ -225,6 +224,41 @@ ulong bifSub(const ref BigIntFixed a,
     return borrow;
 }
 
+ulong bifShiftLeft1(const ref BigIntFixed a, ref BigIntFixed res)
+{
+    ulong carry = 0;
+    size_t idx = 0;
+    while (idx < NUM_LIMBS)
+    {
+        ulong val = a.limbs[idx];
+        ulong nextCarry = val >> 63;
+        ulong shifted = val << 1;
+        shifted = shifted | carry;
+        res.limbs[idx] = shifted;
+        carry = nextCarry;
+        idx = idx + 1;
+    }
+    return carry;
+}
+
+void bifShiftRight1(const ref BigIntFixed a, ref BigIntFixed res)
+{
+    ulong carry = 0;
+    size_t idx = NUM_LIMBS;
+    while (idx > 0)
+    {
+        size_t cIdx = idx - 1;
+        ulong val = a.limbs[cIdx];
+        ulong nextCarry = val & 1UL;
+        nextCarry = nextCarry << 63;
+        ulong shifted = val >> 1;
+        shifted = shifted | carry;
+        res.limbs[cIdx] = shifted;
+        carry = nextCarry;
+        idx = idx - 1;
+    }
+}
+
 ulong bifModUlong32(const ref BigIntFixed a, ulong m)
 {
     ulong rem = 0;
@@ -319,6 +353,222 @@ ulong bifModUlong(const ref BigIntFixed a, ulong m)
         }
     }
     return rem;
+}
+
+void bifDivMod(const ref BigIntFixed a,
+               const ref BigIntFixed b,
+               ref BigIntFixed quo,
+               ref BigIntFixed rem)
+{
+    quo = bifZero();
+    rem = bifZero();
+    size_t lIdx = NUM_LIMBS;
+    while (lIdx > 0)
+    {
+        size_t cIdx = lIdx - 1;
+        ulong limbVal = a.limbs[cIdx];
+        size_t bitIdx = 64;
+        while (bitIdx > 0)
+        {
+            size_t bShift = bitIdx - 1;
+            ulong bitVal = limbVal >> bShift;
+            bitVal = bitVal & 1UL;
+
+            ulong c = bifShiftLeft1(rem, rem);
+            rem.limbs[0] = rem.limbs[0] | bitVal;
+
+            bifShiftLeft1(quo, quo);
+
+            int cmp = bifCompare(rem, b);
+            if (c > 0)
+            {
+                bifSub(rem, b, rem);
+                quo.limbs[0] = quo.limbs[0] | 1UL;
+            }
+            else
+            {
+                if (cmp >= 0)
+                {
+                    bifSub(rem, b, rem);
+                    quo.limbs[0] = quo.limbs[0] | 1UL;
+                }
+            }
+            bitIdx = bitIdx - 1;
+        }
+        lIdx = lIdx - 1;
+    }
+}
+
+void bifMod(const ref BigIntFixed a,
+            const ref BigIntFixed b,
+            ref BigIntFixed rem)
+{
+    BigIntFixed dummyQuo = bifZero();
+    bifDivMod(a, b, dummyQuo, rem);
+}
+
+void bifGcd(const ref BigIntFixed a,
+            const ref BigIntFixed b,
+            ref BigIntFixed gcdRes)
+{
+    BigIntFixed x = a;
+    BigIntFixed y = b;
+    BigIntFixed tempRem = bifZero();
+    bool done = false;
+    while (done == false)
+    {
+        bool isZ = bifIsZero(y);
+        if (isZ == true)
+        {
+            gcdRes = x;
+            done = true;
+        }
+        else
+        {
+            bifMod(x, y, tempRem);
+            x = y;
+            y = tempRem;
+        }
+    }
+}
+
+void bifMulMod(const ref BigIntFixed a,
+               const ref BigIntFixed b,
+               const ref BigIntFixed m,
+               ref BigIntFixed res)
+{
+    res = bifZero();
+    BigIntFixed x = bifZero();
+    bifMod(a, m, x);
+    BigIntFixed y = b;
+
+    bool done = false;
+    while (done == false)
+    {
+        bool isZ = bifIsZero(y);
+        if (isZ == true)
+        {
+            done = true;
+        }
+        else
+        {
+            bool isEv = bifIsEven(y);
+            if (isEv == false)
+            {
+                BigIntFixed sumVal = bifZero();
+                ulong c = bifAdd(res, x, sumVal);
+                int cmp = bifCompare(sumVal, m);
+                if (c > 0)
+                {
+                    bifSub(sumVal, m, sumVal);
+                }
+                else
+                {
+                    if (cmp >= 0)
+                    {
+                        bifSub(sumVal, m, sumVal);
+                    }
+                }
+                res = sumVal;
+            }
+
+            BigIntFixed doubleX = bifZero();
+            ulong cX = bifAdd(x, x, doubleX);
+            int cmpX = bifCompare(doubleX, m);
+            if (cX > 0)
+            {
+                bifSub(doubleX, m, doubleX);
+            }
+            else
+            {
+                if (cmpX >= 0)
+                {
+                    bifSub(doubleX, m, doubleX);
+                }
+            }
+            x = doubleX;
+            bifShiftRight1(y, y);
+        }
+    }
+}
+
+void bifModPow(const ref BigIntFixed baseVal,
+               const ref BigIntFixed expVal,
+               const ref BigIntFixed modVal,
+               ref BigIntFixed res)
+{
+    res = bifFromUlong(1);
+    BigIntFixed b = bifZero();
+    bifMod(baseVal, modVal, b);
+    BigIntFixed e = expVal;
+
+    bool done = false;
+    while (done == false)
+    {
+        bool isZ = bifIsZero(e);
+        if (isZ == true)
+        {
+            done = true;
+        }
+        else
+        {
+            bool isEv = bifIsEven(e);
+            if (isEv == false)
+            {
+                bifMulMod(res, b, modVal, res);
+            }
+            bifMulMod(b, b, modVal, b);
+            bifShiftRight1(e, e);
+        }
+    }
+}
+
+void bifSqrt(const ref BigIntFixed a, ref BigIntFixed res)
+{
+    bool isZ = bifIsZero(a);
+    if (isZ == true)
+    {
+        res = bifZero();
+    }
+    else
+    {
+        BigIntFixed low = bifFromUlong(1);
+        BigIntFixed high = a;
+        BigIntFixed ans = bifFromUlong(1);
+
+        bool done = false;
+        while (done == false)
+        {
+            int cmp = bifCompare(low, high);
+            if (cmp > 0)
+            {
+                done = true;
+            }
+            else
+            {
+                BigIntFixed mid = bifZero();
+                BigIntFixed sumLH = bifZero();
+                bifAdd(low, high, sumLH);
+                bifShiftRight1(sumLH, mid);
+
+                BigIntFixed quo = bifZero();
+                BigIntFixed rem = bifZero();
+                bifDivMod(a, mid, quo, rem);
+
+                int cmpMQ = bifCompare(mid, quo);
+                if (cmpMQ <= 0)
+                {
+                    ans = mid;
+                    bifAdd(mid, bifFromUlong(1), low);
+                }
+                else
+                {
+                    bifSub(mid, bifFromUlong(1), high);
+                }
+            }
+        }
+        res = ans;
+    }
 }
 
 ulong ulongGcd(ulong a, ulong b)
@@ -563,10 +813,10 @@ bool testSmallPrimes(const ref BigIntFixed nVal,
 }
 
 void pollardP1Worker(ulong n64,
-                     ulong boundB,
-                     ulong baseA,
-                     shared bool* pStop,
-                     shared ulong* pFactor)
+                      ulong boundB,
+                      ulong baseA,
+                      shared bool* pStop,
+                      shared ulong* pFactor)
 {
     static immutable ulong[25] PRIMES_P1 = [
         2UL, 3UL, 5UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL,
@@ -727,6 +977,218 @@ void fermatWorker(ulong n64,
     }
 }
 
+void pollardP1WorkerBif(const BigIntFixed nBif,
+                        ulong boundB,
+                        ulong baseA,
+                        shared bool* pStop,
+                        shared ulong* pSharedLimbs)
+{
+    static immutable ulong[25] PRIMES_P1 = [
+        2UL, 3UL, 5UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL,
+        31UL, 37UL, 41UL, 43UL, 47UL, 53UL, 59UL, 61UL, 67UL, 71UL,
+        73UL, 79UL, 83UL, 89UL, 97UL
+    ];
+
+    BigIntFixed a = bifFromUlong(baseA);
+    size_t idx = 0;
+    bool done = false;
+
+    while (idx < 25)
+    {
+        if (done == false)
+        {
+            bool isStopped = atomicLoad(*pStop);
+            if (isStopped == true)
+            {
+                done = true;
+            }
+            else
+            {
+                ulong q = PRIMES_P1[idx];
+                ulong qk = q;
+                while (qk * q <= boundB)
+                {
+                    qk = qk * q;
+                }
+                BigIntFixed qkBif = bifFromUlong(qk);
+                bifModPow(a, qkBif, nBif, a);
+
+                BigIntFixed diff = bifZero();
+                int cmpA1 = bifCompare(a, bifFromUlong(1));
+                if (cmpA1 >= 0)
+                {
+                    bifSub(a, bifFromUlong(1), diff);
+                }
+                else
+                {
+                    bifSub(nBif, bifFromUlong(1), diff);
+                }
+
+                BigIntFixed g = bifZero();
+                bifGcd(diff, nBif, g);
+
+                bool isGOne = bifIsOne(g);
+                bool isGEqualN = (bifCompare(g, nBif) == 0);
+
+                if (isGOne == false)
+                {
+                    if (isGEqualN == false)
+                    {
+                        size_t lIdx = 0;
+                        while (lIdx < NUM_LIMBS)
+                        {
+                            pSharedLimbs[lIdx] = g.limbs[lIdx];
+                            lIdx = lIdx + 1;
+                        }
+                        atomicStore(*pStop, true);
+                        done = true;
+                    }
+                }
+                idx = idx + 1;
+            }
+        }
+        else
+        {
+            idx = 25;
+        }
+    }
+}
+
+void pollardRhoWorkerBif(const BigIntFixed nBif,
+                         ulong seedC,
+                         ulong startX,
+                         ulong maxSteps,
+                         shared bool* pStop,
+                         shared ulong* pSharedLimbs)
+{
+    BigIntFixed x = bifFromUlong(startX);
+    BigIntFixed y = bifFromUlong(startX);
+    BigIntFixed cBif = bifFromUlong(seedC);
+    BigIntFixed d = bifFromUlong(1);
+    ulong step = 0;
+
+    while (step < maxSteps)
+    {
+        bool isStopped = atomicLoad(*pStop);
+        if (isStopped == true)
+        {
+            step = maxSteps;
+        }
+        else
+        {
+            BigIntFixed x2 = bifZero();
+            bifMulMod(x, x, nBif, x2);
+            BigIntFixed sumX = bifZero();
+            bifAdd(x2, cBif, sumX);
+            bifMod(sumX, nBif, x);
+
+            BigIntFixed y2a = bifZero();
+            bifMulMod(y, y, nBif, y2a);
+            BigIntFixed sumY1 = bifZero();
+            bifAdd(y2a, cBif, sumY1);
+            BigIntFixed y1 = bifZero();
+            bifMod(sumY1, nBif, y1);
+
+            BigIntFixed y2b = bifZero();
+            bifMulMod(y1, y1, nBif, y2b);
+            BigIntFixed sumY2 = bifZero();
+            bifAdd(y2b, cBif, sumY2);
+            bifMod(sumY2, nBif, y);
+
+            BigIntFixed diff = bifZero();
+            int cmpXY = bifCompare(x, y);
+            if (cmpXY >= 0)
+            {
+                bifSub(x, y, diff);
+            }
+            else
+            {
+                bifSub(y, x, diff);
+            }
+
+            bifGcd(diff, nBif, d);
+            bool isDOne = bifIsOne(d);
+            bool isDEqualN = (bifCompare(d, nBif) == 0);
+
+            if (isDOne == false)
+            {
+                if (isDEqualN == false)
+                {
+                    size_t lIdx = 0;
+                    while (lIdx < NUM_LIMBS)
+                    {
+                        pSharedLimbs[lIdx] = d.limbs[lIdx];
+                        lIdx = lIdx + 1;
+                    }
+                    atomicStore(*pStop, true);
+                    step = maxSteps;
+                }
+            }
+            step = step + 1;
+        }
+    }
+}
+
+void fermatWorkerBif(const BigIntFixed nBif,
+                     const BigIntFixed startA,
+                     ulong stride,
+                     ulong maxSteps,
+                     shared bool* pStop,
+                     shared ulong* pSharedLimbs)
+{
+    BigIntFixed a = startA;
+    BigIntFixed strideBif = bifFromUlong(stride);
+    ulong step = 0;
+
+    while (step < maxSteps)
+    {
+        bool isStopped = atomicLoad(*pStop);
+        if (isStopped == true)
+        {
+            step = maxSteps;
+        }
+        else
+        {
+            BigIntFixed a2 = bifZero();
+            bifMulMod(a, a, nBif, a2);
+            BigIntFixed b2 = a2;
+
+            BigIntFixed b = bifZero();
+            bifSqrt(b2, b);
+
+            BigIntFixed bSq = bifZero();
+            bifMulMod(b, b, nBif, bSq);
+
+            int cmpBSq = bifCompare(bSq, b2);
+            if (cmpBSq == 0)
+            {
+                BigIntFixed pFactor = bifZero();
+                bifSub(a, b, pFactor);
+
+                bool isP1 = bifIsOne(pFactor);
+                bool isPEqualN = (bifCompare(pFactor, nBif) == 0);
+                if (isP1 == false)
+                {
+                    if (isPEqualN == false)
+                    {
+                        size_t lIdx = 0;
+                        while (lIdx < NUM_LIMBS)
+                        {
+                            pSharedLimbs[lIdx] = pFactor.limbs[lIdx];
+                            lIdx = lIdx + 1;
+                        }
+                        atomicStore(*pStop, true);
+                        step = maxSteps;
+                    }
+                }
+            }
+
+            bifAdd(a, strideBif, a);
+            step = step + 1;
+        }
+    }
+}
+
 void wheelSearchWorker(const BigIntFixed nVal,
                        ulong startDiv,
                        ulong stride,
@@ -780,13 +1242,12 @@ SemiprimeFactorResult parallelSemiprimeFactorization(
     else
     {
         shared bool stopFlag = false;
-        shared ulong sharedFactor = 0;
-
         ulong n64 = 0;
         bool fits64 = bifFitsUlong(n, n64);
 
         if (fits64 == true)
         {
+            shared ulong sharedFactor = 0;
             size_t nCPUs = totalCPUs;
             if (nCPUs == 0)
             {
@@ -855,9 +1316,13 @@ SemiprimeFactorResult parallelSemiprimeFactorization(
         }
         else
         {
-            static immutable ulong[8] WHEEL_SPOKES = [
-                1UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL
-            ];
+            shared ulong[NUM_LIMBS] sharedLimbs;
+            size_t lIdx = 0;
+            while (lIdx < NUM_LIMBS)
+            {
+                sharedLimbs[lIdx] = 0;
+                lIdx = lIdx + 1;
+            }
 
             size_t nCPUs = totalCPUs;
             if (nCPUs == 0)
@@ -866,30 +1331,100 @@ SemiprimeFactorResult parallelSemiprimeFactorization(
             }
 
             TaskPool pool = new TaskPool(nCPUs);
-            size_t sIdx = 0;
-            while (sIdx < 8)
+            BigIntFixed sqrtN = bifZero();
+            bifSqrt(n, sqrtN);
+
+            BigIntFixed a0 = sqrtN;
+            BigIntFixed sqTest = bifZero();
+            bifMulMod(sqrtN, sqrtN, n, sqTest);
+            if (bifIsZero(sqTest) == false)
             {
-                ulong spoke = WHEEL_SPOKES[sIdx];
-                ulong startD = spoke;
-                if (spoke == 1)
+                bifAdd(a0, bifFromUlong(1), a0);
+            }
+
+            static immutable ulong[8] SEEDS_C = [
+                1UL, 3UL, 5UL, 7UL, 11UL, 13UL, 17UL, 19UL
+            ];
+
+            size_t tIdx = 0;
+            while (tIdx < nCPUs)
+            {
+                if (tIdx == 0)
                 {
-                    startD = 31;
+                    auto tP1 = task!pollardP1WorkerBif(
+                        n, 10000UL, 2UL,
+                        &stopFlag, sharedLimbs.ptr);
+                    pool.put(tP1);
                 }
-                ulong strideD = 30;
-                auto t = task!wheelSearchWorker(
-                    n, startD, strideD, maxSteps,
-                    &stopFlag, &sharedFactor);
-                pool.put(t);
-                sIdx = sIdx + 1;
+                else if (tIdx < 4)
+                {
+                    ulong seedC = SEEDS_C[tIdx];
+                    ulong startX = 2 + tIdx;
+                    auto tRho = task!pollardRhoWorkerBif(
+                        n, seedC, startX, maxSteps,
+                        &stopFlag, sharedLimbs.ptr);
+                    pool.put(tRho);
+                }
+                else
+                {
+                    ulong offsetA = tIdx - 4;
+                    BigIntFixed startA = bifZero();
+                    bifAdd(a0, bifFromUlong(offsetA), startA);
+                    ulong strideA = nCPUs - 4;
+                    if (strideA == 0)
+                    {
+                        strideA = 1;
+                    }
+                    auto tFerm = task!fermatWorkerBif(
+                        n, startA, strideA, maxSteps,
+                        &stopFlag, sharedLimbs.ptr);
+                    pool.put(tFerm);
+                }
+                tIdx = tIdx + 1;
             }
             pool.finish(true);
 
-            ulong fVal = atomicLoad(sharedFactor);
-            if (fVal > 0)
+            BigIntFixed fVal = bifZero();
+            size_t idx = 0;
+            while (idx < NUM_LIMBS)
             {
-                result.found = true;
-                result.factor1 = fVal;
-                result.factor2 = 0;
+                fVal.limbs[idx] = sharedLimbs[idx];
+                idx = idx + 1;
+            }
+
+            bool isFZero = bifIsZero(fVal);
+            bool isFOne = bifIsOne(fVal);
+            if (isFZero == false)
+            {
+                if (isFOne == false)
+                {
+                    result.found = true;
+                    ulong outU = 0;
+                    bool fFits = bifFitsUlong(fVal, outU);
+                    if (fFits == true)
+                    {
+                        result.factor1 = outU;
+                    }
+                    else
+                    {
+                        result.factor1 = fVal.limbs[0];
+                    }
+
+                    BigIntFixed qVal = bifZero();
+                    BigIntFixed remVal = bifZero();
+                    bifDivMod(n, fVal, qVal, remVal);
+
+                    ulong qOut = 0;
+                    bool qFits = bifFitsUlong(qVal, qOut);
+                    if (qFits == true)
+                    {
+                        result.factor2 = qOut;
+                    }
+                    else
+                    {
+                        result.factor2 = qVal.limbs[0];
+                    }
+                }
             }
         }
     }
