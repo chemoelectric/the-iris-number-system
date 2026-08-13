@@ -2,7 +2,8 @@
  * Fast Parallel Factorization Inference Engine Module
  *
  * Implements parallel factor search using m-resolution modular
- * arithmetic and parallel range decomposition.
+ * arithmetic, wheel-30 range decomposition, and fast radix modular
+ * reduction.
  *
  * Precision is selected at compile time via version flags:
  *   -fversion=LIMB_64   (64-bit integer precision)
@@ -218,7 +219,51 @@ ulong bifSub(const ref BigIntFixed a,
     return borrow;
 }
 
-ulong bifModUlong(const ref BigIntFixed a, ulong m)
+ulong bifModUlong32(const ref BigIntFixed a, ulong m)
+{
+    ulong rem = 0;
+    size_t idx = NUM_LIMBS;
+    while (idx > 0)
+    {
+        size_t cIdx = idx - 1;
+        ulong limbVal = a.limbs[cIdx];
+        ulong hiWord = limbVal >> 32;
+        ulong loWord = limbVal & 0xFFFFFFFF_UL;
+
+        ulong val1 = (rem << 32) | hiWord;
+        rem = val1 % m;
+
+        ulong val2 = (rem << 32) | loWord;
+        rem = val2 % m;
+
+        idx = idx - 1;
+    }
+    return rem;
+}
+
+ulong bifModUlong16(const ref BigIntFixed a, ulong m)
+{
+    ulong rem = 0;
+    size_t idx = NUM_LIMBS;
+    while (idx > 0)
+    {
+        size_t cIdx = idx - 1;
+        ulong limbVal = a.limbs[cIdx];
+        size_t shiftCount = 64;
+        while (shiftCount > 0)
+        {
+            size_t currentShift = shiftCount - 16;
+            ulong w16 = (limbVal >> currentShift) & 0xFFFF_UL;
+            ulong val = (rem << 16) | w16;
+            rem = val % m;
+            shiftCount = shiftCount - 16;
+        }
+        idx = idx - 1;
+    }
+    return rem;
+}
+
+ulong bifModUlongBit(const ref BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     size_t idx = NUM_LIMBS;
@@ -243,6 +288,79 @@ ulong bifModUlong(const ref BigIntFixed a, ulong m)
         idx = idx - 1;
     }
     return rem;
+}
+
+ulong bifModUlong(const ref BigIntFixed a, ulong m)
+{
+    ulong rem = 0;
+    static if (NUM_LIMBS == 1)
+    {
+        rem = a.limbs[0] % m;
+    }
+    else
+    {
+        if (m <= 0xFFFFFFFF_UL)
+        {
+            rem = bifModUlong32(a, m);
+        }
+        else if (m <= 0xFFFFFFFFFFFF_UL)
+        {
+            rem = bifModUlong16(a, m);
+        }
+        else
+        {
+            rem = bifModUlongBit(a, m);
+        }
+    }
+    return rem;
+}
+
+ulong ulongSqrt(ulong val)
+{
+    ulong res = 0;
+    if (val > 0)
+    {
+        ulong x0 = val / 2;
+        if (x0 == 0)
+        {
+            x0 = 1;
+        }
+        bool done = false;
+        while (done == false)
+        {
+            ulong x1 = (x0 + val / x0) / 2;
+            if (x1 >= x0)
+            {
+                res = x0;
+                done = true;
+            }
+            else
+            {
+                x0 = x1;
+            }
+        }
+    }
+    return res;
+}
+
+ulong bifSqrt64(const ref BigIntFixed a)
+{
+    ulong res = ulong.max;
+    bool fits64 = true;
+    size_t idx = 1;
+    while (idx < NUM_LIMBS)
+    {
+        if (a.limbs[idx] != 0)
+        {
+            fits64 = false;
+        }
+        idx = idx + 1;
+    }
+    if (fits64 == true)
+    {
+        res = ulongSqrt(a.limbs[0]);
+    }
+    return res;
 }
 
 string bifToHexString(const ref BigIntFixed a)
@@ -326,12 +444,44 @@ BigIntFixed bifFromHexString(string hexStr)
     return res;
 }
 
-void searchWorker(const BigIntFixed nVal,
-                  ulong startDiv,
-                  ulong stride,
-                  ulong limitDiv,
-                  shared bool* pStop,
-                  shared ulong* pFactor)
+bool testSmallPrimes(const ref BigIntFixed nVal,
+                     ref ulong foundFactor)
+{
+    static immutable ulong[48] SMALL_PRIMES = [
+        2UL, 3UL, 5UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL,
+        31UL, 37UL, 41UL, 43UL, 47UL, 53UL, 59UL, 61UL, 67UL, 71UL,
+        73UL, 79UL, 83UL, 89UL, 97UL, 101UL, 103UL, 107UL, 109UL, 113UL,
+        127UL, 131UL, 137UL, 139UL, 149UL, 151UL, 157UL,
+        163UL, 167UL, 173UL,
+        179UL, 181UL, 191UL, 193UL, 197UL, 199UL, 211UL, 223UL
+    ];
+
+    bool isDivisible = false;
+    foundFactor = 0;
+    size_t idx = 0;
+    while (idx < 48)
+    {
+        if (isDivisible == false)
+        {
+            ulong p = SMALL_PRIMES[idx];
+            ulong rem = bifModUlong(nVal, p);
+            if (rem == 0)
+            {
+                foundFactor = p;
+                isDivisible = true;
+            }
+        }
+        idx = idx + 1;
+    }
+    return isDivisible;
+}
+
+void wheelSearchWorker(const BigIntFixed nVal,
+                       ulong startDiv,
+                       ulong stride,
+                       ulong limitDiv,
+                       shared bool* pStop,
+                       shared ulong* pFactor)
 {
     ulong d = startDiv;
     while (d <= limitDiv)
@@ -365,16 +515,29 @@ FactorSearchResult parallelFactorSearch(const ref BigIntFixed n,
     result.found = false;
     result.factor = 0;
 
-    bool isEv = bifIsEven(n);
-    if (isEv == true)
+    ulong primeFactor = 0;
+    bool hasSmallFactor = testSmallPrimes(n, primeFactor);
+    if (hasSmallFactor == true)
     {
         result.found = true;
-        result.factor = 2;
+        result.factor = primeFactor;
     }
     else
     {
+        ulong sqrtLimit = bifSqrt64(n);
+        ulong limitDiv = maxTrial;
+        if (sqrtLimit < limitDiv)
+        {
+            limitDiv = sqrtLimit;
+        }
+
         shared bool stopFlag = false;
         shared ulong sharedFactor = 0;
+
+        static immutable ulong[8] WHEEL_SPOKES = [
+            1UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL
+        ];
+
         size_t nCPUs = totalCPUs;
         if (nCPUs == 0)
         {
@@ -382,19 +545,24 @@ FactorSearchResult parallelFactorSearch(const ref BigIntFixed n,
         }
 
         TaskPool pool = new TaskPool(nCPUs);
-        size_t tIdx = 0;
-        while (tIdx < nCPUs)
+        size_t sIdx = 0;
+        while (sIdx < 8)
         {
-            ulong startD = 3 + 2 * tIdx;
-            ulong strideD = 2 * nCPUs;
-            auto t = task!searchWorker(n,
-                                       startD,
-                                       strideD,
-                                       maxTrial,
-                                       &stopFlag,
-                                       &sharedFactor);
+            ulong spoke = WHEEL_SPOKES[sIdx];
+            ulong startD = spoke;
+            if (spoke == 1)
+            {
+                startD = 31;
+            }
+            ulong strideD = 30;
+            auto t = task!wheelSearchWorker(n,
+                                            startD,
+                                            strideD,
+                                            limitDiv,
+                                            &stopFlag,
+                                            &sharedFactor);
             pool.put(t);
-            tIdx = tIdx + 1;
+            sIdx = sIdx + 1;
         }
         pool.finish(true);
 
@@ -431,7 +599,6 @@ version (standalone)
             BigIntFixed val = bifFromHexString(inputStr);
             writeln("Input Number (Hex) : ", bifToHexString(val));
 
-            //ulong maxTrial = 10000000UL;
             ulong maxTrial = ulong.max;
             StopWatch sw;
             sw.start();
@@ -468,7 +635,7 @@ else version (demo)
         string valHex = bifToHexString(val);
         writeln("Target Number (Hex) : ", valHex);
 
-        ulong maxTrial = 5000000UL;
+        ulong maxTrial = ulong.max;
         StopWatch sw;
         sw.start();
         FactorSearchResult res =
