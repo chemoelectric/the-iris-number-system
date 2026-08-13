@@ -3,7 +3,7 @@
  *
  * Implements parallel factor search using m-resolution modular
  * arithmetic, wheel-30 range decomposition, and fast radix modular
- * reduction.
+ * reduction to extract all prime factors of an integer.
  *
  * Precision is selected at compile time via version flags:
  *   -fversion=LIMB_64   (64-bit integer precision)
@@ -58,6 +58,12 @@ struct FactorSearchResult
     ulong factor;
 }
 
+struct PrimeFactorizationResult
+{
+    BigIntFixed[] factors;
+    bool complete;
+}
+
 BigIntFixed bifZero()
 {
     BigIntFixed res;
@@ -77,7 +83,7 @@ BigIntFixed bifFromUlong(ulong val)
     return res;
 }
 
-bool bifIsZero(const ref BigIntFixed a)
+bool bifIsZero(const BigIntFixed a)
 {
     bool isZ = true;
     size_t idx = 0;
@@ -93,7 +99,7 @@ bool bifIsZero(const ref BigIntFixed a)
     return isZ;
 }
 
-bool bifIsOne(const ref BigIntFixed a)
+bool bifIsOne(const BigIntFixed a)
 {
     bool isO = false;
     ulong l0 = a.limbs[0];
@@ -118,7 +124,7 @@ bool bifIsOne(const ref BigIntFixed a)
     return isO;
 }
 
-bool bifIsEven(const ref BigIntFixed a)
+bool bifIsEven(const BigIntFixed a)
 {
     ulong l0 = a.limbs[0];
     ulong rem = l0 % 2;
@@ -130,7 +136,7 @@ bool bifIsEven(const ref BigIntFixed a)
     return res;
 }
 
-int bifCompare(const ref BigIntFixed a, const ref BigIntFixed b)
+int bifCompare(const BigIntFixed a, const BigIntFixed b)
 {
     int cmpRes = 0;
     bool found = false;
@@ -161,8 +167,8 @@ int bifCompare(const ref BigIntFixed a, const ref BigIntFixed b)
     return cmpRes;
 }
 
-ulong bifAdd(const ref BigIntFixed a,
-             const ref BigIntFixed b,
+ulong bifAdd(const BigIntFixed a,
+             const BigIntFixed b,
              ref BigIntFixed res)
 {
     ulong carry = 0;
@@ -190,8 +196,8 @@ ulong bifAdd(const ref BigIntFixed a,
     return carry;
 }
 
-ulong bifSub(const ref BigIntFixed a,
-             const ref BigIntFixed b,
+ulong bifSub(const BigIntFixed a,
+             const BigIntFixed b,
              ref BigIntFixed res)
 {
     ulong borrow = 0;
@@ -219,7 +225,66 @@ ulong bifSub(const ref BigIntFixed a,
     return borrow;
 }
 
-ulong bifModUlong32(const ref BigIntFixed a, ulong m)
+ulong bifShiftLeft1(const BigIntFixed a, ref BigIntFixed res)
+{
+    ulong carry = 0;
+    size_t idx = 0;
+    while (idx < NUM_LIMBS)
+    {
+        ulong val = a.limbs[idx];
+        ulong newCarry = val >> 63;
+        res.limbs[idx] = (val << 1) | carry;
+        carry = newCarry;
+        idx = idx + 1;
+    }
+    return carry;
+}
+
+void bifDivMod(const BigIntFixed a,
+               const BigIntFixed b,
+               ref BigIntFixed quo,
+               ref BigIntFixed rem)
+{
+    quo = bifZero();
+    rem = bifZero();
+    size_t lIdx = NUM_LIMBS;
+    while (lIdx > 0)
+    {
+        size_t cIdx = lIdx - 1;
+        ulong limbVal = a.limbs[cIdx];
+        size_t bitIdx = 64;
+        while (bitIdx > 0)
+        {
+            size_t bShift = bitIdx - 1;
+            ulong bitVal = limbVal >> bShift;
+            bitVal = bitVal & 1UL;
+
+            ulong c = bifShiftLeft1(rem, rem);
+            rem.limbs[0] = rem.limbs[0] | bitVal;
+
+            bifShiftLeft1(quo, quo);
+
+            int cmp = bifCompare(rem, b);
+            if (c > 0)
+            {
+                bifSub(rem, b, rem);
+                quo.limbs[0] = quo.limbs[0] | 1UL;
+            }
+            else
+            {
+                if (cmp >= 0)
+                {
+                    bifSub(rem, b, rem);
+                    quo.limbs[0] = quo.limbs[0] | 1UL;
+                }
+            }
+            bitIdx = bitIdx - 1;
+        }
+        lIdx = lIdx - 1;
+    }
+}
+
+ulong bifModUlong32(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     size_t idx = NUM_LIMBS;
@@ -241,7 +306,7 @@ ulong bifModUlong32(const ref BigIntFixed a, ulong m)
     return rem;
 }
 
-ulong bifModUlong16(const ref BigIntFixed a, ulong m)
+ulong bifModUlong16(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     size_t idx = NUM_LIMBS;
@@ -263,7 +328,7 @@ ulong bifModUlong16(const ref BigIntFixed a, ulong m)
     return rem;
 }
 
-ulong bifModUlongBit(const ref BigIntFixed a, ulong m)
+ulong bifModUlongBit(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     size_t idx = NUM_LIMBS;
@@ -290,7 +355,7 @@ ulong bifModUlongBit(const ref BigIntFixed a, ulong m)
     return rem;
 }
 
-ulong bifModUlong(const ref BigIntFixed a, ulong m)
+ulong bifModUlong(const BigIntFixed a, ulong m)
 {
     ulong rem = 0;
     static if (NUM_LIMBS == 1)
@@ -343,7 +408,7 @@ ulong ulongSqrt(ulong val)
     return res;
 }
 
-ulong bifSqrt64(const ref BigIntFixed a)
+ulong bifSqrt64(const BigIntFixed a)
 {
     ulong res = ulong.max;
     bool fits64 = true;
@@ -363,7 +428,26 @@ ulong bifSqrt64(const ref BigIntFixed a)
     return res;
 }
 
-string bifToHexString(const ref BigIntFixed a)
+bool bifFitsUlong(const BigIntFixed a, ref ulong outVal)
+{
+    bool fits = true;
+    size_t idx = 1;
+    while (idx < NUM_LIMBS)
+    {
+        if (a.limbs[idx] != 0)
+        {
+            fits = false;
+        }
+        idx = idx + 1;
+    }
+    if (fits == true)
+    {
+        outVal = a.limbs[0];
+    }
+    return fits;
+}
+
+string bifToHexString(const BigIntFixed a)
 {
     string res = "0x";
     size_t idx = NUM_LIMBS;
@@ -444,7 +528,7 @@ BigIntFixed bifFromHexString(string hexStr)
     return res;
 }
 
-bool testSmallPrimes(const ref BigIntFixed nVal,
+bool testSmallPrimes(const BigIntFixed nVal,
                      ref ulong foundFactor)
 {
     static immutable ulong[48] SMALL_PRIMES = [
@@ -508,7 +592,7 @@ void wheelSearchWorker(const BigIntFixed nVal,
     }
 }
 
-FactorSearchResult parallelFactorSearch(const ref BigIntFixed n,
+FactorSearchResult parallelFactorSearch(const BigIntFixed n,
                                          ulong maxTrial)
 {
     FactorSearchResult result;
@@ -576,13 +660,102 @@ FactorSearchResult parallelFactorSearch(const ref BigIntFixed n,
     return result;
 }
 
+void extractSmallPrimeFactors(ref BigIntFixed currentN,
+                              ref BigIntFixed[] factors)
+{
+    static immutable ulong[48] SMALL_PRIMES = [
+        2UL, 3UL, 5UL, 7UL, 11UL, 13UL, 17UL, 19UL, 23UL, 29UL,
+        31UL, 37UL, 41UL, 43UL, 47UL, 53UL, 59UL, 61UL, 67UL, 71UL,
+        73UL, 79UL, 83UL, 89UL, 97UL, 101UL, 103UL, 107UL, 109UL,
+        113UL, 127UL, 131UL, 137UL, 139UL, 149UL, 151UL, 157UL,
+        163UL, 167UL, 173UL, 179UL, 181UL, 191UL, 193UL, 197UL,
+        199UL, 211UL, 223UL
+    ];
+
+    size_t spIdx = 0;
+    while (spIdx < 48)
+    {
+        ulong p = SMALL_PRIMES[spIdx];
+        bool keepDividing = true;
+        while (keepDividing == true)
+        {
+            ulong remP = bifModUlong(currentN, p);
+            if (remP == 0)
+            {
+                factors ~= bifFromUlong(p);
+                BigIntFixed pBif = bifFromUlong(p);
+                BigIntFixed quoBif = bifZero();
+                BigIntFixed remBif = bifZero();
+                bifDivMod(currentN, pBif, quoBif, remBif);
+                currentN = quoBif;
+            }
+            else
+            {
+                keepDividing = false;
+            }
+        }
+        spIdx = spIdx + 1;
+    }
+}
+
+PrimeFactorizationResult parallelPrimeFactorization(
+    const BigIntFixed nInput,
+    ulong maxTrial)
+{
+    PrimeFactorizationResult result;
+    result.complete = false;
+
+    BigIntFixed currentN = nInput;
+    BigIntFixed zeroVal = bifZero();
+    int cmpZero = bifCompare(currentN, zeroVal);
+
+    if (cmpZero > 0)
+    {
+        bool isOne = bifIsOne(currentN);
+        if (isOne == true)
+        {
+            result.complete = true;
+        }
+        else
+        {
+            extractSmallPrimeFactors(currentN, result.factors);
+
+            bool done = bifIsOne(currentN);
+            while (done == false)
+            {
+                FactorSearchResult searchRes =
+                    parallelFactorSearch(currentN, maxTrial);
+
+                if (searchRes.found == true)
+                {
+                    ulong fVal = searchRes.factor;
+                    result.factors ~= bifFromUlong(fVal);
+                    BigIntFixed fBif = bifFromUlong(fVal);
+                    BigIntFixed quoBif = bifZero();
+                    BigIntFixed remBif = bifZero();
+                    bifDivMod(currentN, fBif, quoBif, remBif);
+                    currentN = quoBif;
+                    done = bifIsOne(currentN);
+                }
+                else
+                {
+                    result.factors ~= currentN;
+                    done = true;
+                }
+            }
+            result.complete = true;
+        }
+    }
+    return result;
+}
+
 version (standalone)
 {
     int main(string[] args)
     {
         int exitCode = 0;
         writeln("==================================================");
-        writeln("  Parallel Fast Factorization Engine");
+        writeln("  Parallel Fast Prime Factorization Engine");
         writeln("  Precision Mode : ", PRECISION_NAME);
         writeln("==================================================");
 
@@ -602,21 +775,35 @@ version (standalone)
             ulong maxTrial = ulong.max;
             StopWatch sw;
             sw.start();
-            FactorSearchResult res =
-                parallelFactorSearch(val, maxTrial);
+            PrimeFactorizationResult res =
+                parallelPrimeFactorization(val, maxTrial);
             sw.stop();
 
             double elapsedMs = sw.peek().total!"msecs"();
-            if (res.found == true)
+            writeln("----------------------------------------");
+            writeln("Prime Factors Found (",
+                    res.factors.length, " total):");
+            size_t fIdx = 0;
+            while (fIdx < res.factors.length)
             {
-                writeln("Factor Found       : ", res.factor);
-                writeln("Search Time (ms)   : ", elapsedMs);
+                BigIntFixed fVal = res.factors[fIdx];
+                ulong decVal = 0;
+                bool fits64 = bifFitsUlong(fVal, decVal);
+                if (fits64 == true)
+                {
+                    writeln("  Factor [", fIdx + 1, "] : ",
+                            bifToHexString(fVal),
+                            " (Dec: ", decVal, ")");
+                }
+                else
+                {
+                    writeln("  Factor [", fIdx + 1, "] : ",
+                            bifToHexString(fVal));
+                }
+                fIdx = fIdx + 1;
             }
-            else
-            {
-                writeln("No factor found up to limit ", maxTrial);
-                writeln("Search Time (ms)   : ", elapsedMs);
-            }
+            writeln("----------------------------------------");
+            writeln("Factorization Time (ms) : ", elapsedMs);
         }
         return exitCode;
     }
@@ -626,7 +813,7 @@ else version (demo)
     void runFactorizationDemo()
     {
         writeln("==================================================");
-        writeln("  Parallel Factorization Engine Demonstration");
+        writeln("  Parallel Prime Factorization Engine Demo");
         writeln("  Precision Mode : ", PRECISION_NAME);
         writeln("==================================================");
 
@@ -638,21 +825,35 @@ else version (demo)
         ulong maxTrial = ulong.max;
         StopWatch sw;
         sw.start();
-        FactorSearchResult res =
-            parallelFactorSearch(val, maxTrial);
+        PrimeFactorizationResult res =
+            parallelPrimeFactorization(val, maxTrial);
         sw.stop();
 
         double elapsedMs = sw.peek().total!"msecs"();
-        if (res.found == true)
+        writeln("----------------------------------------");
+        writeln("Prime Factors Found (",
+                res.factors.length, " total):");
+        size_t fIdx = 0;
+        while (fIdx < res.factors.length)
         {
-            writeln("Factor Found        : ", res.factor);
-            writeln("Search Time (ms)    : ", elapsedMs);
+            BigIntFixed fVal = res.factors[fIdx];
+            ulong decVal = 0;
+            bool fits64 = bifFitsUlong(fVal, decVal);
+            if (fits64 == true)
+            {
+                writeln("  Factor [", fIdx + 1, "] : ",
+                        bifToHexString(fVal),
+                        " (Dec: ", decVal, ")");
+            }
+            else
+            {
+                writeln("  Factor [", fIdx + 1, "] : ",
+                        bifToHexString(fVal));
+            }
+            fIdx = fIdx + 1;
         }
-        else
-        {
-            writeln("No factor found up to limit ", maxTrial);
-            writeln("Search Time (ms)    : ", elapsedMs);
-        }
+        writeln("----------------------------------------");
+        writeln("Factorization Time (ms) : ", elapsedMs);
     }
 
     int main(string[] args)
