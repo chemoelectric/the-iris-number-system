@@ -431,7 +431,8 @@ version (standalone)
             BigIntFixed val = bifFromHexString(inputStr);
             writeln("Input Number (Hex) : ", bifToHexString(val));
 
-            ulong maxTrial = 10000000UL;
+            //ulong maxTrial = 10000000UL;
+            ulong maxTrial = ulong.max;
             StopWatch sw;
             sw.start();
             FactorSearchResult res =
