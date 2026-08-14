@@ -2062,6 +2062,19 @@ Introducing an adaptive over-relaxation parameter \( \omega > 1 \) into the mean
 \[ R_\text{mean} ( \omega ) = ( 1 + \omega ) v_0 v_0 ^ T - I_N \]
 modifies the scalar reflection formula to \( v'_i = ( 1 + \omega ) \bar{v} - v_i \). In hydraulic terms, this corresponds to adjusting the manifold throttle nozzle to increase fluid flow velocity into the target channel. Dynamically adjusting \( \omega \) based on residual feedback \( \| v_k - e _ { x^* } \| \) accelerates energy transfer into target entries during early iterations.
 
+==== 5. Localized Givens Rotations Decomposition and Fine-Grained Concurrent Scaling
+
+While full \( N \times N \) Householder reflections \( R_\text{oracle} \) and \( R_\text{mean} \) provide a global mathematical formulation, evaluating global vector means requires all parallel processing cores to synchronize at every step count. In numerical analysis and high-performance numerical linear algebra, Householder reflections are decomposed into localized **Givens rotations** acting on 2D coordinate pairs:
+\[ G ( i , j , \theta ) = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
+In the 2D invariant subspace \( V_2 = \text{span} \{ e _ { x^* } , v_0 \} \), the combined Grover iteration matrix \( G | _ { V_2 } = R_\text{mean} R_\text{oracle} \) is an exact Givens rotation with step angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). 
+
+Decomposing high-dimensional operations into sequence networks of \( 2 \times 2 \) Givens rotations offers distinct software and hardware advantages:
+* **Fine-Grained Parallel Pipeline**: Independent Givens rotations on disjoint coordinate pairs \( ( i_1 , j_1 ) \) and \( ( i_2 , j_2 ) \) execute concurrently in hardware SIMD vector units without shared memory lock contention or global synchronization barriers.
+* **Numerical Stability**: Givens rotations are strictly orthogonal plane transformations (\( G^T G = I_2 \)), preserving vector norm \( \| v \| = 1 \) and preventing roundoff error accumulation across thousands of iteration steps.
+* **Granular Pipeline Updating**: In embedded streaming architectures, individual state coordinates update locally as sensor data arrives, eliminating the need to re-compute global array averages across the entire search space.
+
+The standalone Ada 2022 implementation in `public/grover_search_givens/` demonstrates this formulation, performing 2D Givens rotations directly in the invariant subspace using `Ada.Numerics.Generic_Elementary_Functions`.
+
 === Formal Postulates and Theorems of Digital Search Analysis
 
 [#theorem-digital-grover-numerical-householder]
@@ -2080,6 +2093,28 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
    \[ G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
 
 4. **Step Convergence**: \( k \)-fold application gives angle \( (2k+1)\theta/2 \). Setting \( (2k+1)\theta/2 = \pi/2 \) yields \( k = \frac{\pi}{2\theta} - \frac{1}{2} \approx \frac{\pi}{4} \sqrt{N} \). Integer truncation gives \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N} \rfloor \). \( \square \)
+====
+
+[#theorem-digital-grover-givens-rotation]
+[THEOREM]
+.Theorem: Equivalence of Grover Householder Reflection Pairs and Localized Givens Rotations Theorem
+====
+Let \( G = R_\text{mean} R_\text{oracle} \) be the Grover iteration operator acting on Euclidean state space \( \mathbb { R } ^ N \) with initial uniform state vector \( v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N \) and target basis vector \( e _ { x^* } \). The restriction of \( G \) to the 2D invariant subspace \( V_2 = \text{span} \{ e _ { x^* } , v_0 \} \) is identically equal to an exact 2D Givens rotation operator \( R ( \theta ) \):
+\[ G | _ { V_2 } = R ( \theta ) = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
+with exact step rotation angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). Furthermore, applying \( k \) iterations of the Givens rotation maps initial state \( v_0 \) to target state \( e _ { x^* } \) in exactly \( k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt{N} \right\rfloor \) steps with zero norm drift and fine-grained parallel concurrency across coordinate pairs.
+
+*Proof:*
+
+1. **2D Invariant Subspace Projection**: Let \( w = \frac{1}{\sqrt{N-1}} \sum_{x \neq x^*} e_x \) be the unit vector orthogonal to target vector \( e_{x^*} \) in \( \mathbb{R}^N \). Initial vector \( v_0 \) decomposes in basis \( \{ e_{x^*} , w \} \) as:
+   \[ v_0 = \sin \left( \frac { \theta } { 2 } \right) e _ { x^* } + \cos \left( \frac { \theta } { 2 } \right) w \]
+   where \( \sin ( \theta / 2 ) = 1 / \sqrt{N} \).
+
+2. **Householder Reflection Product**: The oracle reflection operator \( R_\text{oracle} = I_N - 2 e_{x^*} e_{x^*}^T \) acts on \( \{ e_{x^*} , w \} \) as matrix \( \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \). The mean reflection operator \( R_\text{mean} = 2 v_0 v_0^T - I_N \) acts on \( \{ e_{x^*} , w \} \) as matrix \( \begin{pmatrix} -\cos\theta & \sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \). Composing the two matrices gives:
+   \[ G | _ { V_2 } = R_\text{mean} | _ { V_2 } R_\text{oracle} | _ { V_2 } = \begin {pmatrix} -\cos\theta & \sin\theta \\ \sin\theta & \cos\theta \end {pmatrix} \begin {pmatrix} -1 & 0 \\ 0 & 1 \end {pmatrix} = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} = R ( \theta ) \]
+
+3. **Givens Plane Rotation**: The matrix \( R ( \theta ) \) is an exact 2D Givens rotation in the plane \( \text{span} \{ e_{x^*} , w \} \). Because Givens rotations are orthogonal transformations (\( R(\theta)^T R(\theta) = I_2 \)), vector norm is preserved identically (\( \| v_k \| = 1 \)) for all iteration step counts \( k \in \mathbb{Z}^+ \).
+
+4. **Optimal Step Alignment**: Applying \( R(\theta) \) for \( k \) steps advances the state angle to \( (2k+1)\theta/2 \). Setting \( (2k+1)\theta/2 = \pi/2 \) gives \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N} \rfloor \), establishing exact mathematical equivalence between Householder reflection pairs and Givens rotations. \( \square \)
 ====
 
 === Worked Example Problems in Digital Search Analysis
@@ -2183,4 +2218,5 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-physical-software-execution[**Theorem: Physical Equivalence of Digital Software Execution and Contact-Action Electrodynamic State Transitions**]  -- Chapter: *Digital Computer Programs Are Electronic Circuits* | Section: *Formal Postulates and Theorems of Physical Software Execution*
 * xref:theorem-householder-reflection-properties[**Theorem: Algebraic and Geometric Properties of Real Householder Reflections**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Fundamentals of Householder Reflections in Real Vector Spaces*
 * xref:theorem-digital-grover-numerical-householder[**Theorem: Digital Grover Iteration as Householder Reflection Power Iteration in Real 2D Subspaces**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
+* xref:theorem-digital-grover-givens-rotation[**Theorem: Equivalence of Grover Householder Reflection Pairs and Localized Givens Rotations Theorem**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
 
