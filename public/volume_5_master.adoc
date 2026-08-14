@@ -2073,8 +2073,6 @@ Decomposing high-dimensional operations into sequence networks of \( 2 \times 2 
 * **Numerical Stability**: Givens rotations are strictly orthogonal plane transformations (\( G^T G = I_2 \)), preserving vector norm \( \| v \| = 1 \) and preventing roundoff error accumulation across thousands of iteration steps.
 * **Granular Pipeline Updating**: In embedded streaming architectures, individual state coordinates update locally as sensor data arrives, eliminating the need to re-compute global array averages across the entire search space.
 
-The standalone Ada 2022 implementation in `public/grover_search_givens/` demonstrates this formulation, performing 2D Givens rotations directly in the invariant subspace using `Ada.Numerics.Generic_Elementary_Functions`.
-
 === Formal Postulates and Theorems of Digital Search Analysis
 
 [#theorem-digital-grover-numerical-householder]
