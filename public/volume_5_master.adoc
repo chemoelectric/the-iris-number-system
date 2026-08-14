@@ -1,15 +1,15 @@
-= The Iris Number System, Volume V: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
+= The Iris Number System: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
 :subtitle: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
-:author: Frédéric Blondin Custer
+:author: Frédéric Blondel Custer
 :doctype: book
 :toc: left
 :toc-title: Table of Contents
 :stem: latexmath
 :sectnums!:
 
-Volume V establishes first-principles spectral analysis, circuit theory, transmission theory, electronics, and digital computing on discrete multiscale resolution grids without complex numbers, complex planes, or continuum infinities, unifying Fourier, Cosine, Sine, Hartley, Laplace, Z, Mellin, Hankel, Radon, and Wavelet transforms within real geometric bivector phase space.
+Advanced Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, and Computing in Cl(4,1,1)
 
-== First-Principles Unified Spectral Analysis without Complex Numbers
+= First-Principles Unified Spectral Analysis without Complex Numbers
 
 This chapter establishes a unified mathematical framework for all major linear spectral transforms on discrete multiscale resolution grids \( \mathcal { G } _ N \), demonstrating that complex numbers and continuum planes are unnecessary contrivances when signals and operators are represented via real geometric bivectors and linear difference matrices.
 
@@ -353,8 +353,8 @@ Compute the new 2D spectrum \( \hat { F } ' [ k_x , k_y ] \) and show the reduct
 3. **Conclusion**:
    The single microtypographic shift reduced the peak vertical river spectral energy from **16** down to **4** (a 75% energy reduction), successfully disrupting the 2D spatial interference pattern and demonstrating the power of Master Field Equation spectral typography on discrete aperture grids.
 
-== Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures
- 
+= Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures
+
 This chapter formulates classical and high-frequency circuit theory from first principles on discrete multiscale resolution grids \( \mathcal { G } _ N \), deriving Kirchhoff's voltage and current laws, resistors, capacitors (condensers), inductors (coils), transient RC and LC circuit dynamics, the tuning section of crystal radios, the full practical crystal receiver circuit with 0.25V threshold rectifier and 4000 ohm headphones, transformers, antennas, earth grounds as active RF counterpoises, grounded chassis, and electromagnetic shielding.
 
 === Kirchhoff’s Laws and Fundamental Circuit Topologies on Discrete Resolution Grids
@@ -573,7 +573,7 @@ Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X
    * At carrier frequency \( f_c = 1.0 \text{ MHz} \): \( X_{C,\text{rf}} = \frac { 1 } { 2 \pi ( 1.0 \times 10 ^ 6 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \ \Omega \). Since \( X_{C,\text{rf}} = 106.1 \ \Omega \ll 4000 \ \Omega \) (\( R_\text{phones} \)), \( 97.4\% \) of the RF carrier ripple passes safely through the bypass condenser, protecting the headphone coils from high-frequency reactive choking.
    * At audio frequency \( f_a = 1.0 \text{ kHz} \): \( X_{C,\text{audio}} = \frac { 1 } { 2 \pi ( 1000 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \text{ k}\Omega \). Since \( X_{C,\text{audio}} = 106.1 \text{ k}\Omega \gg 4000 \ \Omega \) (\( R_\text{phones} \)), \( 96.4\% \) of the low-frequency rectified audio envelope current flows directly through the \( 4000 \ \Omega \) headphone windings, driving clear acoustic sound output.
 
-== Transmission Theory, Power Engineering, and Electrical Machinery
+= Transmission Theory, Power Engineering, and Electrical Machinery
 
 This chapter establishes the theory of transmission lines as electromagnetic waveguides where power travels in the dielectric, demystifying Poynting vector transport through first-principles electrodynamics. It covers telephone, cable TV, internet cables, high-voltage AC/DC power transmission grids, electrodynamic generators, induction motors, synchronous motors, brushed DC motors, and brushless DC (BLDC) motors.
 
@@ -723,7 +723,7 @@ Stator magnetic flux vector \( \mathbf { \Phi } _ s \) and rotor permanent magne
 
 3. **Physical Interpretation**: The direct current component \( i_d = 8.66 \text{ A} \) produces magnetic flux along the rotor pole axis, while the quadrature current component \( i_q = - 5.00 \text{ A} \) produces orthogonal electrodynamic torque.
 
-== Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics
+= Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics
 
 This chapter formulates the linear theory of physical systems, impulse responses, difference convolution operators, and transfer functions across m-resolution (analog) physical grids and digital sampled grids without continuum infinities or point-mass idealizations.
 
@@ -884,7 +884,7 @@ A causal linear shift-invariant system with real bivector transfer function \( H
    \[ y [ n ] = 0.2282 y [ n - 1 ] + 0.3859 x [ n ] + 0.3859 x [ n - 1 ] \]
    This discrete m-resolution algorithm replicates the analog low-pass RC response with exact stability and zero drift on discrete grid \( \mathcal { G } _ N \).
 
-== Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices
+= Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices
 
 This chapter develops the physical theory of thermionic emission, space charge dynamics, grid voltage modulation, and multi-electrode electron tubes (valves) within the m-resolution framework of the Master Field Equation. In addition to fundamental diodes, triodes, tetrodes, and pentodes, detailed analyses are given for specialized devices including beam power tubes, heptodes/hexodes, klystrons, magnetrons, and diverse cathode-ray tubes (electrostatic and electromagnetic display CRTs, storage tubes, traveling-wave oscilloscopes, and image orthicons/vidicons).
 
@@ -1091,7 +1091,7 @@ For any multi-electrode thermionic valve operating in its linear space-charge re
    \[ L_\text{opt} = \frac { X u_0 } { \omega \beta_1 } = \frac { ( 1.84 ) ( 4.1937 \times 10 ^ 7 \text{ m/s} ) } { ( 1.885 \times 10 ^ { 10 } \text{ rad/s} ) ( 0.025 ) } = \frac { 7.7164 \times 10 ^ 7 } { 4.7125 \times 10 ^ 8 } \approx \mathbf { 0.1637 \text{ m} } \quad ( 16.37 \text{ cm} ) \]
    Placing the catcher cavity exactly \( 16.37 \text{ cm} \) downstream from the buncher cavity maximizes kinetic-to-RF field power conversion.
 
-== Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices
+= Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices
 
 This chapter establishes the physical, mathematical, and field-theoretic foundations of solid-state rectifiers and semiconductor diodes within the m-resolution framework of the Master Field Equation in Cl(4,1,1). Beginning with point-contact metal-semiconductor interfaces (galena crystal radios and oxidized razor-blade foxhole detectors), the exposition deconstructs the popular misconception that solid-state devices are 'quantum' magic by revealing how facts known strictly from experiment were historically mislabeled as 'fundamental quantum principles'—a term coöptation initiated by Niels Bohr and Solvay 1927 that replaced empirical law with inexplicable mystery. The chapter then rigorously derives p-n homojunction and heterojunction barrier physics, the Shockley diode equation, Schottky barriers, breakdown dynamics, varactors, tunnel (Esaki) negative differential resistance, PIN switches, LEDs, photodiodes, and integrated diode matrices directly from the Master Field Equation.
 
@@ -1191,8 +1191,42 @@ A **varactor diode** exploits the voltage-variable junction capacitance \( C_j \
 \[ C_j ( V_R ) = \frac { C_0 } { \left( 1 + \frac { V_R } { V_{bi} } \right) ^ m } \]
 where \( m = 0.5 \) for abrupt junctions and \( m = 0.33 \) for hyperabrupt junctions. Varactors serve as solid-state voltage-controlled capacitors in RF voltage-controlled oscillators (VCOs) and frequency synthesizers.
 
-==== Esaki Tunnel Diodes and Bivector Wave Packet Resonance
-In degenerate p-n junctions (doping \( > 10^{19} \text{ cm}^{-3} \)), the depletion barrier is under 10 nm wide. Under small forward bias, overlapping energy states allow bivector electromagnetic wave packets to transmit smoothly across the thin lattice barrier. As forward bias increases, state alignment shifts, causing current to drop with increasing voltage. This produces **Negative Differential Resistance (NDR)** (\( d I / d V < 0 \)), enabling microwave oscillations up to hundreds of gigahertz without uncaused 'quantum tunneling' magic.
+==== Esaki Tunnel Diodes: Degenerate Doping, Jaynes MaxEnt, and Wave Packet Resonance
+Discovered empirically by Reona Esaki in 1957, the **Esaki tunnel diode** is a heavily doped p-n homojunction operating entirely outside the classical Shockley diffusion regime. Its operating mechanism illustrates how solid-state boundary transport follows deterministically from Jaynes Maximum Entropy (MaxEnt) partitioning and bivector wave packet propagation under the Master Field Equation \( D F = J \) in Clifford algebra \( Cl ( 4 , 1 , 1 ) \).
+
+1. **Degenerate Semiconductor Doping and MaxEnt State Distribution**:
+In standard p-n diodes, acceptor and donor doping levels (\( N_A, N_D \approx 10^{15} \text{--} 10^{17} \text{ cm}^{-3} \)) remain non-degenerate, placing the equilibrium Fermi potential \( E_F \) deep within the forbidden energy bandgap \( E_g \). In an Esaki diode, both sides of the metallurgical junction are doped degenerately to extreme concentrations (\( N_A, N_D > 10^{19} \text{ cm}^{-3} \)), exceeding the effective density of states.
+Under Jaynes MaxEnt partitioning on the discrete crystal grid \( \mathcal { G } _ N \), maximizing entropy subject to local energy and charge conservation constraints yields the Fermi-Dirac occupation probability for carrier states at energy \( E \):
+\[ f ( E ) = \frac { 1 } { 1 + \exp \left( \frac { E - E_F } { V_t } \right) } \]
+Because of degenerate doping, the Fermi potential on the n-side (\( E_{Fn} \)) penetrates above the conduction band edge (\( E_{Fn} > E_c \)), filling the lower conduction band states with a dense sea of mobile electrons. Simultaneously, the Fermi potential on the p-side (\( E_{Fp} \)) penetrates below the valence band edge (\( E_{Fp} < E_v \)), leaving the upper valence band states empty (a dense concentration of holes).
+
+2. **Ultra-Thin Depletion Barrier and Multivector Field Transmission**:
+Integrating Poisson’s electrostatic divergence \( \nabla \cdot \mathbf { E } = \frac { \rho } { \varepsilon } \) across the space-charge region reveals that degenerate doping contracts the depletion layer width \( W \) to sub-10-nanometer dimensions:
+\[ W = \sqrt { \frac { 2 \varepsilon ( N_A + N_D ) V_{bi} } { q N_A N_D } } < 10 \text{ nm} \quad ( 5 \text{--} 8 \text{ nm} ) \]
+This produces an intense built-in electric vector field exceeding \( \mathbf { E } _ \text{max} > 10^6 \text{ V/cm} \).
+In twentieth-century physics, carrier transit across this sub-10 nm gap was asserted to be an uncaused “quantum mechanical tunneling jump”. In the Iris number system, electrons are non-singular multivector wave packets \( F \in Cl ( 4 , 1 , 1 ) \) satisfying \( D F = J \). Across a sub-10 nm lattice barrier, the bivector field tail preserves deterministic phase coherence. The multivector transmission coefficient \( T_B ( E ) \) across the discrete space-charge gap is derived from the WKB-like field action integral over grid cells \( \mathcal { G } _ N \):
+\[ T_B ( E ) \approx \exp \left( - \frac { 4 \sqrt { 2 m^* } } { 3 q \hbar \mathbf { E } _ \text{max} } E_g ^ { 3 / 2 } \right) \]
+Because \( W \) is under 10 nm, \( T_B ( E ) \) is extraordinarily large (\( 10^{-3} \text{--} 10^{-1} \)), enabling immense field transmission current densities (\( 10^3 \text{--} 10^5 \text{ A/cm}^2 \)).
+
+3. **Voltage-Dependent Energy Band Alignment and Negative Differential Resistance (NDR)**:
+The net field transmission current density \( I_\text{tunnel} ( V ) \) under applied forward bias voltage \( V \) is governed by the energy state overlap integral between filled n-side conduction states and empty p-side valence states:
+\[ I_\text{tunnel} ( V ) = \frac { A q m^* } { 2 \pi^2 \hbar^3 } \int _ { E_c } ^ { E_v } \rho_c ( E ) \rho_v ( E ) \left[ f_c ( E ) - f_v ( E ) \right] T_B ( E ) , d E \]
+
+The resulting current-voltage (\( I \text{--} V \)) curve traces three distinct physical operational regimes:
+
+* **Reverse Bias (\( V < 0 \))**: Applied reverse bias pulls the n-side energy levels downward relative to the p-side, aligning filled valence band states on the p-side directly opposite empty conduction band states on the n-side. Field transmission current rises rapidly without saturation, causing the Esaki diode to act as a highly conductive “backward diode” in reverse bias.
+* **Zero Bias (\( V = 0 \))**: At thermal equilibrium, the filled n-side conduction states align exactly with filled p-side valence states, while empty states align with empty states. Forward wave packet transmission balances reverse wave packet transmission identically (\( I_{n \to p} = I_{p \to n} \)), yielding zero net current (\( I = 0 \)).
+* **Peak Current Regime (\( 0 < V \le V_p \))**: Applying a small forward bias \( V \) raises the n-side energy levels upward by \( q V \). Filled n-side conduction band states now face empty p-side valence band states across a broad overlapping energy window \( \Delta E = ( E_v - E_c ) + q V \). Current increases rapidly with voltage, reaching a maximum **peak current** \( I_p \) at **peak voltage** \( V_p \approx 50 \text{--} 100 \text{ mV} \).
+* **Negative Differential Resistance (NDR) Regime (\( V_p < V < V_v \))**: As forward bias increases beyond \( V_p \), the bottom of the n-side conduction band \( E_c \) is pushed above the top of the p-side valence band \( E_v \). Filled n-side conduction states are now forced to face the unpopulated forbidden energy bandgap \( E_g \) on the p-side, where zero energy states exist. The overlapping state window shrinks continuously. Consequently, despite the increase in applied voltage, the net current drops precipitously toward a minimum **valley current** \( I_v \) at **valley voltage** \( V_v \approx 350 \text{--} 500 \text{ mV} \). In this interval, the incremental slope is negative:
+\[ R_N = \left( \frac { d I } { d V } \right) ^ { - 1 } < 0 \]
+establishing a true physical **Negative Differential Resistance (NDR)**.
+* **Thermal Diffusion and Excess Current Regime (\( V > V_v \))**: Beyond valley voltage \( V_v \), direct band-to-band overlap collapses to zero. Current is maintained at a small non-zero valley value \( I_v \) by localized defect-state “excess current”. As forward bias increases further (\( V > 0.6 \text{ V} \)), conventional thermionic injection over the reduced depletion barrier takes over, and current rises exponentially according to the standard Shockley diode equation.
+
+4. **High-Frequency Microwave Oscillation and Equivalent Circuit**:
+Because NDR relies on ultra-fast bivector wave packet transmission across a 5–8 nm lattice gap rather than slow minority carrier diffusion, response times are on the order of picoseconds. Connected across a tuned LC resonant tank, the negative conductance \( - G_N = - 1 / | R_N | \) cancels the positive resistance loss of the tank, converting DC power into sustained microwave oscillations up to hundreds of gigahertz.
+The maximum resistive cutoff frequency \( f_x \) of an Esaki diode is given by:
+\[ f_x = \frac { 1 } { 2 \pi | R_N | C_j } \sqrt { \frac { | R_N | } { R_s } - 1 } \]
+where \( C_j \) is the junction capacitance and \( R_s \) is the parasitic series lead resistance.
 
 ==== PIN Diodes, LEDs, and Photodiodes
 * **PIN Diodes**: An undoped intrinsic (I) layer is sandwiched between P and N regions. At RF frequencies, the injected charge in the I-layer acts as a linear voltage-variable RF resistor, used in high-power RF switches and attenuators.
@@ -1243,6 +1277,28 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 . **Diffusion Current Integration**: Integrating the minority carrier diffusion conservation equation \( D_n \frac { d^2 n } { d x^2 } - \frac { n - n_{p0} } { \tau_n } = 0 \) over the neutral p and n regions yields exact exponential current \( I = I_s ( e^{V / V_t} - 1 ) \). \( \square \)
 ====
 
+[#theorem-esaki-ndr-maxent-derivation]
+[THEOREM]
+.Theorem: First-Principles Derivation of Esaki Tunneling Mechanics and Negative Differential Resistance
+====
+In a degenerately doped p-n junction on discrete lattice grid \( \mathcal { G } _ N \), carrier state distribution follows Jaynes MaxEnt partitioning. Under applied forward bias \( V \), net bivector wave packet transmission current across the sub-10 nm space-charge barrier obeys:
+\[ I ( V ) = C_0 \int _ { E_c } ^ { E_v } \rho_c ( E ) \rho_v ( E ) \left[ f_c ( E ) - f_v ( E ) \right] T_B ( E ) , d E \]
+In the voltage range \( V_p < V < V_v \), the derivative of current with respect to voltage is strictly negative:
+\[ \frac { d I } { d V } < 0 \]
+proving the existence of deterministic Negative Differential Resistance (NDR) from first principles.
+
+*Proof:*
+. **MaxEnt Degenerate State Occupation**: For degenerate acceptor doping \( N_A > 10^{19} \text{ cm}^{-3} \) and donor doping \( N_D > 10^{19} \text{ cm}^{-3} \), Jaynes MaxEnt subject to energy and particle constraints sets Fermi level \( E_{Fn} > E_c \) on the n-side and \( E_{Fp} < E_v \) on the p-side, filling conduction states and emptying valence states near the junction.
+
+. **Bivector Wave Packet Barrier Transmission**: Integration of Poisson's field equation yields a sub-10 nm depletion width \( W = \sqrt{ 2 \varepsilon ( N_A + N_D ) V_{bi} / ( q N_A N_D ) } \). Across this ultra-thin space-charge region, multivector wave packet field solutions \( F \in Cl ( 4 , 1 , 1 ) \) of \( D F = J \) retain bivector phase coherence, yielding finite transmission factor \( T_B ( E ) \approx \exp ( - \frac { 4 \sqrt{2 m^*} } { 3 q \hbar \mathbf{E}_{max} } E_g^{3/2} ) > 0 \).
+
+. **Band-to-Band Overlap Integration**: Applying forward bias \( V \) shifts n-side energy levels upward by \( q V \). Overlapping energy states exist only in the band overlap window \( \Delta E = E_v - ( E_c - q V ) \). Integrating state densities over this window gives total transmission current \( I ( V ) \).
+
+. **Derivative Evaluation for NDR**: Differentiating \( I ( V ) \) with respect to \( V \) in the interval where \( q V > E_{Fn} - E_c \):
+  \[ \frac { d I } { d V } = C_0 \frac { d } { d V } \left[ \int _ { E_c - q V } ^ { E_v } \rho_c ( E + q V ) \rho_v ( E ) [ f_c ( E + q V ) - f_v ( E ) ] T_B , d E \right] \]
+  As \( V \) increases past peak voltage \( V_p \), the upper energy limit of available valence states \( E_v \) is exceeded by the shifting conduction band edge \( E_c - q V \), forcing n-side electrons to face the unpopulated bandgap \( E_g \). The reduction in available overlap area dominates the integrand, forcing \( \frac { d I } { d V } < 0 \) in the interval \( V_p < V < V_v \), proving deterministic NDR. \( \square \)
+====
+
 === Completely Worked Technical Examples
 
 ==== Example 1: Cat’s Whisker Point-Contact Rectifier Work Function and Junction Resistance
@@ -1261,15 +1317,45 @@ where saturation current \( I_s \) is determined by minority carrier diffusion l
 1. **Built-in Potential \( V_{bi} \)**: \( V_{bi} = ( 0.02585 ) \ln \left( \frac { 10^{17} \times 10^{16} } { ( 1.5 \times 10^{10} )^2 } \right) = 0.02585 \ln \left( \frac { 10^{33} } { 2.25 \times 10^{20} } \right) = 0.02585 \ln ( 4.444 \times 10^{12} ) = 0.02585 \times ( 29.12 ) \approx 0.753 \text{ V} \).
 2. **Forward Bias Current at \( V = 0.65 \text{ V} \)**: \( I = I_s e^{V / V_t} = 1.0 \times 10^{-12} e^{0.65 / 0.02585} = 1.0 \times 10^{-12} e^{25.145} \approx 1.0 \times 10^{-12} \times ( 8.32 \times 10^{10} ) = 83.2 \text{ mA} \).
 
-==== Example 3: Esaki Tunnel Diode Negative Differential Resistance and Oscillator Tuning
-**Problem Statement:** An Esaki tunnel diode exhibits peak current \( I_p = 10.0 \text{ mA} \) at peak voltage \( V_p = 50 \text{ mV} \) and valley current \( I_v = 1.0 \text{ mA} \) at valley voltage \( V_v = 350 \text{ mV} \). Calculate the average Negative Differential Resistance (NDR) \( R_N \) in the tunneling decay region and the resonant frequency when connected across a 10 nH inductor and 5 pF tuning condenser.
+==== Example 3: Degenerate Germanium Esaki Tunnel Diode Characterization, NDR, and Microwave Cutoff Frequency
+**Problem Statement:** A degenerate germanium (\( \text{Ge} \)) Esaki tunnel diode has acceptor doping \( N_A = 2.0 \times 10^{19} \text{ cm}^{-3} \), donor doping \( N_D = 2.0 \times 10^{19} \text{ cm}^{-3} \), bandgap \( E_g = 0.66 \text{ eV} \), dielectric permittivity \( \varepsilon = 1.42 \times 10^{-10} \text{ F/m} \), and junction area \( A = 1.0 \times 10^{-5} \text{ cm}^2 \) (\( 1.0 \times 10^{-9} \text{ m}^2 \)). Measured DC characteristics at 300 K are peak current \( I_p = 10.0 \text{ mA} \) at peak voltage \( V_p = 50.0 \text{ mV} \), and valley current \( I_v = 1.0 \text{ mA} \) at valley voltage \( V_v = 350.0 \text{ mV} \). Parasitic series resistance is \( R_s = 1.5 \ \Omega \).
+
+1. Calculate the built-in potential \( V_{bi} \) and zero-bias depletion width \( W \).
+2. Calculate the Peak-to-Valley Current Ratio (PVCR), the average Negative Differential Resistance \( R_N \), and the small-signal negative conductance \( - G_N \).
+3. Calculate the junction capacitance \( C_j \) at zero bias.
+4. Compute the maximum resistive cutoff frequency \( f_x \) above which the diode cannot amplify or oscillate.
 
 **Solution:**
 
-1. **Negative Differential Resistance \( R_N \)**: \( R_N = \frac { V_v - V_p } { I_v - I_p } = \frac { 0.350 - 0.050 } { 0.001 - 0.010 } = \frac { 0.300 } { - 0.009 } \approx - 33.33 \ \Omega \).
-2. **Resonant Oscillation Frequency**: \( f_0 = \frac { 1 } { 2 \pi \sqrt{L C} } = \frac { 1 } { 2 \pi \sqrt{ 10 \times 10^{-9} \times 5 \times 10^{-12} } } = \frac { 1 } { 2 \pi \sqrt{ 5 \times 10^{-20} } } = \frac { 1 } { 2 \pi \times 2.236 \times 10^{-10} } \approx 711.8 \text{ MHz} \).
+1. **Built-in Potential \( V_{bi} \) and Depletion Width \( W \)**:
+   * For germanium at 300 K, intrinsic density is \( n_i = 2.4 \times 10^{13} \text{ cm}^{-3} \). Built-in potential is:
+     \[ V_{bi} = V_t \ln \left( \frac { N_A N_D } { n_i^2 } \right) = ( 0.02585 ) \ln \left( \frac { ( 2.0 \times 10^{19} )^2 } { ( 2.4 \times 10^{13} )^2 } \right) = 0.02585 \ln ( 6.944 \times 10^{11} ) \approx \mathbf { 0.705 \text{ V} } \]
+   * Depletion width \( W \):
+     \[ W = \sqrt { \frac { 2 \varepsilon ( N_A + N_D ) V_{bi} } { q N_A N_D } } \]
+     Using \( N_A = N_D = 2.0 \times 10^{25} \text{ m}^{-3} \):
+     \[ W = \sqrt { \frac { 2 ( 1.42 \times 10^{-10} ) ( 4.0 \times 10^{25} ) ( 0.705 ) } { ( 1.602 \times 10^{-19} ) ( 2.0 \times 10^{25} )^2 } } = \sqrt { \frac { 8.009 \times 10^{-15} } { 6.408 \times 10^{31} } } = \sqrt { 1.2498 \times 10^{-16} } \approx \mathbf { 1.118 \times 10^{-8} \text{ m} } \quad ( 11.2 \text{ nm} ) \]
 
-== Field-Effect Transistors
+2. **Peak-to-Valley Ratio (PVCR), NDR \( R_N \), and Conductance \( -G_N \)**:
+   * Peak-to-Valley Current Ratio:
+     \[ \text{PVCR} = \frac { I_p } { I_v } = \frac { 10.0 \text{ mA} } { 1.0 \text{ mA} } = \mathbf { 10.0 } \]
+   * Average Negative Differential Resistance \( R_N \):
+     \[ R_N = \frac { V_v - V_p } { I_v - I_p } = \frac { 0.350 - 0.050 } { 0.001 - 0.010 } = \frac { 0.300 } { -0.009 } = \mathbf { -33.33 \ \Omega } \]
+   * Small-signal negative conductance:
+     \[ - G_N = \frac { 1 } { R_N } = \frac { 1 } { -33.33 } \approx \mathbf { -0.030 \text{ S} } \quad ( -30.0 \text{ mS} ) \]
+
+3. **Junction Capacitance \( C_j \)**:
+   \[ C_j = \frac { \varepsilon A } { W } = \frac { ( 1.42 \times 10^{-10} \text{ F/m} ) ( 1.0 \times 10^{-9} \text{ m}^2 ) } { 1.118 \times 10^{-8} \text{ m} } = \frac { 1.42 \times 10^{-19} } { 1.118 \times 10^{-8} } \approx \mathbf { 1.27 \times 10^{-11} \text{ F} } \quad ( 12.7 \text{ pF} ) \]
+
+4. **Maximum Resistive Cutoff Frequency \( f_x \)**:
+   Applying the resistive cutoff frequency formula:
+   \[ f_x = \frac { 1 } { 2 \pi | R_N | C_j } \sqrt { \frac { | R_N | } { R_s } - 1 } \]
+   Substitute \( | R_N | = 33.33 \ \Omega \), \( C_j = 12.7 \text{ pF} \), and \( R_s = 1.5 \ \Omega \):
+   \[ \frac { | R_N | } { R_s } - 1 = \frac { 33.33 } { 1.5 } - 1 = 22.22 - 1 = 21.22 \implies \sqrt { 21.22 } \approx 4.606 \]
+   \[ 2 \pi | R_N | C_j = 2 \times 3.14159 \times 33.33 \times ( 12.7 \times 10^{-12} ) \approx 2.660 \times 10^{-9} \text{ s} \]
+   \[ f_x = \frac { 4.606 } { 2.660 \times 10^{-9} \text{ s} } \approx 1.731 \times 10^9 \text{ Hz} = \mathbf { 1.731 \text{ GHz} } \]
+   The diode provides negative resistance amplification and self-oscillation up to its resistive cutoff limit of \( 1.731 \text{ GHz} \).
+
+= Field-Effect Transistors
 
 === First-Principles Electrodynamics of Field-Effect Transduction
 
@@ -1334,17 +1420,13 @@ In an N-channel enhancement-mode MOSFET constructed on a P-type silicon substrat
 The drain current dynamics are divided into three distinct operational regions:
 
 1. **Cut-off Region** (\( V_{GS} < V_{th} \)): No inversion layer is formed, and the channel current is zero:
-+
 \[ I_D = 0 \]
 
 2. **Triode (Ohmic) Region** (\( V_{GS} \ge V_{th} \) and \( V_{DS} < V_{GS} - V_{th} \)): The inversion layer extends continuously from source to drain, and current varies non-linearly with drain-source voltage:
-+
 \[ I_D = \mu_n C_{ox} \frac { W } { L } \left[ \left( V_{GS} - V_{th} \right) V_{DS} - \frac { 1 } { 2 } V_{DS}^2 \right] \]
-+
 where \( \mu_n \) is the electron surface mobility, \( C_{ox} = \frac { \varepsilon_{ox} } { t_{ox} } \) is the gate-oxide capacitance per unit area, \( W \) is the channel width, and \( L \) is the channel length.
 
 3. **Saturation Region** (\( V_{GS} \ge V_{th} \) and \( V_{DS} \ge V_{GS} - V_{th} \)): The inversion layer pinches off at the drain end when the local channel-to-gate potential falls below \( V_{th} \). Taking into account channel-length modulation parameter \( \lambda \), the saturated drain current is expressed as:
-+
 \[ I_D = \frac { 1 } { 2 } \mu_n C_{ox} \frac { W } { L } \left( V_{GS} - V_{th} \right)^2 \left( 1 + \lambda V_{DS} \right) \]
 
 The small-signal transconductance \( g_m \) in saturation is given by:
@@ -1390,8 +1472,7 @@ Complementary Metal-Oxide-Semiconductor (CMOS) structures—pairing n-channel an
 2. **Small-Signal Output Resistance \( r_o \)**:
 \[ r_o = \frac { 1 } { \lambda I_{D0} } = \frac { 1 } { 0.02 \times (10^{-3} \times 1.69) } = \frac { 1 } { 0.02 \times 1.69 \times 10^{-3} } = \frac { 1 } { 3.38 \times 10^{-5} } \approx 29,586 \ \Omega \approx 29.59 \text{ k}\Omega \]
 
-
-== Point-Contact and Bipolar Junction Transistors
+= Point-Contact and Bipolar Junction Transistors
 
 This chapter establishes the first-principles electrodynamics of point-contact and bipolar junction transistors (BJTs) on discrete multiscale resolution grids \( \mathcal { G } _ N \), deriving carrier transport across neutral base regions, Ebers-Moll equations, Early effect base-width modulation, current gain factors, mechanical and fluid dynamics analogies, historical germanium metal-can tin whisker failures, formal theorems, and worked textbook examples.
 
@@ -1484,7 +1565,7 @@ Since \( V_{CE} = 6.711 \text{ V} > V_{CE,\text{sat}} \approx 0.2 \text{ V} \), 
 Time period \( T = 3 \text{ years} = 3 \times 365.25 \times 86,400 \text{ s} \approx 9.467 \times 10 ^ 7 \text{ s} \).
 \[ v_\text{growth} = \frac { d } { T } = \frac { 0.85 \times 10 ^ { - 3 } \text{ m} } { 9.467 \times 10 ^ 7 \text{ s} } \approx 8.979 \times 10 ^ { - 12 } \text{ m/s} \approx 0.283 \text{ mm/year} \]
 
-== Other Semiconductor Devices
+= Other Semiconductor Devices
 
 This chapter covers specialized four-layer and negative-resistance semiconductor devices, including thyristors (SCRs, TRIACs), Insulated-Gate Bipolar Transistors (IGBTs), Unijunction Transistors (UJTs), optoelectronic phototransistors and optocouplers, Hall-effect sensors, and microwave Gunn and IMPATT diodes, establishing their operation from first principles alongside fluid dynamics analogies and worked examples.
 
@@ -1580,7 +1661,7 @@ In a four-layer \( p-n-p-n \) semiconductor structure governed by the Master Fie
 2. **Hall Voltage \( V_H \)**:
 \[ V_H = \frac { R_H I B } { t } = \frac { ( 4.161 \times 10 ^ { - 3 } ) ( 5.0 \times 10 ^ { - 3 } \text{ A} ) ( 0.25 \text{ T} ) } { 10 \times 10 ^ { - 6 } \text{ m} } = \frac { 5.201 \times 10 ^ { - 6 } } { 10 ^ { - 5 } } = 0.5201 \text{ V} = 520.1 \text{ mV} \]
 
-== Analog Integrated Circuits
+= Analog Integrated Circuits
 
 This chapter develops first-principles operational amplifier (Op-Amp) architectures, linear and analog CMOS integrated circuits, linear unbuffered CMOS dropout amplifier stages, and the NE555/CMOS 555 timer family, including constant-current linear ramp generators, pulse circuits, mechanical analogies, formal proofs, and worked textbook examples.
 
@@ -1691,7 +1772,7 @@ Gain error is \( \frac { 10.00 - 9.9990 } { 10.00 } \times 100\% = 0.010\% \).
 Total period \( T_\text{total} = t_\text{ramp} + t_\text{discharge} = 3.3333 \text{ ms} + 0.0020 \text{ ms} = 3.3353 \text{ ms} \).
 \[ f_\text{osc} = \frac { 1 } { T_\text{total} } = \frac { 1 } { 3.3353 \times 10 ^ { - 3 } \text{ s} } \approx 299.8 \text{ Hz} \]
 
-== Digital Gates, Flip-Flops, and Sequential Logic
+= Digital Gates, Flip-Flops, and Sequential Logic
 
 This chapter establishes the physics of digital CMOS logic gates, switching dynamics, power dissipation, bistable flip-flops, sequential registers, synchronous counters, and finite state machines from first principles, incorporating mechanical analogies, formal proofs, and worked examples.
 
@@ -1779,7 +1860,7 @@ By first-principles energy conservation, 100% of electrical power drawn by dynam
 2. **Maximum Allowable Clock Frequency \( f_\text{clk,max} \)**:
 \[ f_\text{clk,max} = \frac { 1 } { T_\text{clk,min} } = \frac { 1 } { 3.8 \times 10 ^ { - 9 } \text{ s} } \approx 263.16 \text{ MHz} \]
 
-== Digital Computer Programs Are Electronic Circuits
+= Digital Computer Programs Are Electronic Circuits
 
 Digital computer programs are physical electronic circuits. A persistent misconception—often asserted by advocates of mystical interpretations of physics—is that software code or algorithmic programs represent abstract, non-physical “Platonic ideals” detached from physical causality and material contact action. Critics have sometimes insisted that computer programs could not be considered empirical experiments that refute flawed physical theories, claiming instead that software operates in a non-material realm. In reality, a digital computer program is a specific physical configuration and dynamic state sequence of contact-action electronic switching circuits executing on physical semiconductor lattices.
 
@@ -1840,9 +1921,9 @@ Time duration \( t = 1 \text{ hour} = 3600 \text{ seconds} \).
 \[ W_\text{display} = P_\text{display} t = ( 50.0 \text{ W} ) ( 3600 \text{ s} ) = 180,000 \text{ J} = 180.0 \text{ kJ} \]
 This demonstrates that software execution performs objective physical work on material hardware and external fields.
 
-== Digital Grover Search as a Numerical Iterative Method
+= Digital Grover Search as a Numerical Iterative Method
 
-This chapter presents a complete, rigorous re-formulation of digital Grover search within the framework of conventional numerical analysis and numerical linear algebra, replacing non-physical “quantum” Dirac bra-ket notations, non-material Hilbert spaces, and wave-function collapse with deterministic matrix-vector power iterations, real Householder reflections, 2D planar invariant rotations, Chebyshev polynomial acceleration, Krylov subspace projections, mechanical and fluid dynamics analogies, formal proofs, and worked numerical examples.
+This chapter presents a complete, rigorous re-formulation of digital Grover search within the framework of conventional numerical analysis and numerical linear algebra, replacing non-physical “quantum” Dirac bra-ket notations, non-material Hilbert spaces, and wave-function collapse with deterministic matrix-vector power iterations, real Householder reflections, 2D planar invariant rotations, Chebyshev polynomial acceleration, Krylov subspace projections, mechanical/fluid dynamics analogies, formal proofs, and worked numerical examples.
 
 === Demolition of “Quantum” Mysticism and Reformulation in Classical Numerical Linear Algebra
 
@@ -1854,10 +1935,7 @@ Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set cont
 
 The search algorithm initializes a uniform real normalized state vector \( v_0 \in \mathbb { R } ^ N \):
 \[ v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N = \frac { 1 } { \sqrt { N } } \begin {pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end {pmatrix} \]
-
-Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v _ 0 \| _ 2 = \sqrt { \sum _ { i = 0 } ^ { N - 1 } ( 1 / N ) } = 1 \).
-
-Physically, this initial uniform vector \( v_0 \) corresponds directly to an array of \( N \) vertical hydraulic fluid columns connected at their base and filled to equal head pressure \( h_0 = 1 / \sqrt{N} \), or an optical wave distributed with uniform phase and amplitude across \( N \) discrete spatial channels.
+Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v_0 \|_2 = \sqrt{ \sum_{i=0}^{N-1} (1/N) } = 1 \).
 
 === Fundamentals of Householder Reflections in Real Vector Spaces
 
@@ -1903,17 +1981,17 @@ The matrix operator \( H ( u ) \) satisfies four fundamental mathematical proper
    Thus every vector in the \( ( N - 1 ) \)-dimensional orthogonal hyperplane \( u^\perp \) is an eigenvector with eigenvalue \( + 1 \). \( \square \)
 ====
 
-==== Geometric Reflection Across Hyperplanes and Mechanical Action
+==== Geometric Reflection Across Hyperplanes
 
 For any arbitrary vector \( x \in \mathbb { R } ^ N \), applying \( H ( u ) x \) decomposes \( x \) into a component parallel to \( u \) and a component orthogonal to \( u \):
 \[ x = ( u^T x ) u + x_\perp \quad \text{where } u^T x_\perp = 0 \]
 Applying \( H ( u ) \):
 \[ H ( u ) x = ( I_N - 2 u u^T ) ( ( u^T x ) u + x_\perp ) = ( u^T x ) u + x_\perp - 2 ( u^T x ) u = - ( u^T x ) u + x_\perp \]
-Thus, \( H ( u ) \) selectively reverses the projection along \( u \) while leaving the orthogonal subspace \( x_\perp \) completely untouched. Geometrically, this reflects vector \( x \) across the \( ( N - 1 ) \)-dimensional hyperplane orthogonal to \( u \). In mechanical and optical physics, a Householder reflection acts as a planar phase-reversing mirror or a directional fluid barrier that reverses force, pressure, or field components along normal vector \( u \) while leaving transverse equilibrium undisturbed.
+Thus, \( H ( u ) \) selectively reverses the projection along \( u \) while leaving the orthogonal subspace \( x_\perp \) completely untouched. Geometrically, this reflects vector \( x \) across the \( ( N - 1 ) \)-dimensional hyperplane orthogonal to \( u \).
 
 === Detailed Mechanics of the Grover Iteration Operators
 
-The digital Grover iteration is governed by an operator matrix \( G \in \mathbb { R } ^ { N \times N } \) formed by composing two distinct Householder reflection operators, which possess direct, physical counterparts in optical reflection cavities and hydraulic fluid manifolds:
+The digital Grover iteration is governed by an operator matrix \( G \in \mathbb { R } ^ { N \times N } \) formed by composing two distinct Householder reflection operators:
 
 ==== 1. Target Oracle Sign Inversion Matrix \( R_\text{oracle} \)
 
@@ -1922,15 +2000,8 @@ The target oracle operator is a Householder reflection associated with the targe
 
 In matrix notation, \( R_\text{oracle} \) is a diagonal matrix where every diagonal entry is \( + 1 \), except for the \( x^* \)-th entry on the main diagonal, which is \( - 1 \):
 \[ R_\text{oracle} = \begin {pmatrix} 1 & & & & \\ & \ddots & & & \\ & & - 1 & & \\ & & & \ddots & \\ & & & & 1 \end {pmatrix} \]
-
 Applying \( R_\text{oracle} \) to any vector \( v \in \mathbb { R } ^ N \) leaves all non-target coordinates invariant while negating the target coordinate:
 \[ ( R_\text{oracle} v ) _ { x^* } = - v _ { x^* } , \quad ( R_\text{oracle} v ) _ x = v_x \ \text{for all } x \neq x^* \]
-
-*Physical Mechanics of the Oracle Action*:
-
-- **Optical Phase Inversion Mirror**: The oracle \( R_\text{oracle} \) acts as a localized phase-inverting mirror positioned at spatial slot \( x^* \). Optical wave components striking slot \( x^* \) undergo a \( 180^\circ \) phase shift (\( -1 \) multiplier), while light in all other slots passes without phase distortion.
-
-- **Hydraulic Pressure Pulse**: In a hydraulic column array, the oracle action corresponds to a brief suction pulse applied at bottom tap \( x^* \). This pulse momentarily drops local pressure head from \( + v(x^*) \) to \( - v(x^*) \), creating a localized pressure depression while preserving total fluid energy.
 
 ==== 2. Inversion About the Mean Matrix \( R_\text{mean} \)
 
@@ -1940,7 +2011,7 @@ The mean inversion operator is a Householder reflection across the uniform vecto
 Noting that \( v_0 v_0^T = \left( \frac{1}{\sqrt{N}} \mathbf{1}_N \right) \left( \frac{1}{\sqrt{N}} \mathbf{1}_N^T \right) = \frac{1}{N} \mathbf{J}_N \), where \( \mathbf{J}_N \) is the matrix of all ones, we obtain the explicit matrix formula:
 \[ R_\text{mean} = \frac { 2 } { N } \mathbf { J } _ N - I_N \]
 
-==== Step-by-Step Arithmetic Mechanics and Fluid/Optical Equalization Dynamics
+==== Step-by-Step Arithmetic Mechanics of Inversion About the Mean
 
 To understand how \( R_\text{mean} \) acts on a state vector \( v \), consider computing the matrix-vector product \( v' = R_\text{mean} v \):
 \[ v'_i = \left( \left( \frac{2}{N} \mathbf{J}_N - I_N \right) v \right)_i = \frac{2}{N} \sum_{j=0}^{N-1} v_j - v_i \]
@@ -1949,23 +2020,19 @@ Defining the scalar arithmetic mean \( \bar{v} \) of all vector components:
 the update rule simplifies to:
 \[ v'_i = 2 \bar { v } - v_i \]
 
-This equation reveals the precise numerical and physical mechanism of signal amplification:
+This equation reveals the precise numerical mechanism of signal amplification:
 
-1. **Equilibrium State**: When \( v_i \) is equal to the mean \( \bar{v} \), \( 2 \bar{v} - \bar{v} = \bar{v} \), leaving the entry unchanged.
+1. When \( v_i \) is equal to the mean \( \bar{v} \), \( 2 \bar{v} - \bar{v} = \bar{v} \), leaving the entry unchanged.
 
-2. **Mean Shift via Oracle Inversion**: When the target coordinate \( v_{x^*} \) has been negated by the oracle (\( v_{x^*} < 0 \)), the mean \( \bar{v} \) drops slightly below the non-target baseline level.
+2. When the target coordinate \( v_{x^*} \) has been negated by the oracle (\( v_{x^*} < 0 \)), the mean \( \bar{v} \) decreases slightly below the non-target baseline.
 
-3. **Inversion Reflection**: Evaluating \( 2 \bar{v} - v_{x^*} = 2 \bar{v} - ( - | v_{x^*} | ) = 2 \bar{v} + | v_{x^*} | \) flips the negative sign back to positive while adding twice the mean to its magnitude.
+3. Evaluating \( 2 \bar{v} - v_{x^*} = 2 \bar{v} - ( - | v_{x^*} | ) = 2 \bar{v} + | v_{x^*} | \) flips the negative sign back to positive while adding twice the mean to its magnitude.
 
-4. **Hydraulic Manifold Pressure Equalization**: In a hydraulic manifold, \( R_\text{mean} \) represents opening a high-speed equalization valve across all columns. Because column \( x^* \) has negative head pressure \( - |v_{x^*}| \), fluid surges out of all high-pressure non-target columns (\( v_x > 0 \)) into column \( x^* \). The level in non-target columns drops to \( 2 \bar{v} - v_x < v_x \), while fluid head surges dramatically into target column \( x^* \). Total fluid volume and energy are strictly conserved while hydraulic energy concentrates into the target tap.
+4. Meanwhile, non-target entries \( v_x > 0 \) are updated as \( 2 \bar{v} - v_x \); because \( 2 \bar{v} < v_x \), non-target amplitudes decrease. Total energy is conserved while probability density surges dramatically into the target coordinate.
 
-5. **Optical Parabolic Focus Mechanics**: In an optical cavity, \( R_\text{mean} \) behaves as a parabolic focusing mirror aligned with the uniform beam axis. Diffused optical wave energy reflecting off this mirror interferes constructively at slot \( x^* \) and destructively at non-target slots, focusing total beam power into detector slot \( x^* \).
-
-=== 2D Planar Geometry, Optical Cavity Precession, and Householder Reflection Composition
+=== 2D Planar Geometry and Composition of Householder Reflections
 
 A classical theorem in Euclidean geometry states that the product of two reflections across hyperplanes intersecting at an angle \( \theta / 2 \) is an exact planar rotation by angle \( \theta \) in the 2D plane orthogonal to the intersection of the two hyperplanes.
-
-Physically, this composition is isomorphic to a dual-gimbal optical reflector cavity or a two-stage hydraulic impulse loop. Bouncing an optical wavefront or hydraulic pressure wave between oracle reflection \( R_\text{oracle} \) and mean reflection \( R_\text{mean} \) precesses the state vector by exact angular increment \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \) per iteration bounce, steadily concentrating total wave energy into the target coordinate like a resonant optical cavity focusing light into a pinpoint spot.
 
 ==== Construction of the Invariant 2D Orthonormal Subspace
 
@@ -1984,7 +2051,7 @@ Verifying orthonormality:
 
 ==== Decomposing the Initial State Vector \( v_0 \)
 
-Initial vector \( v _ 0 = \frac { 1 }{ \sqrt { N } } \sum _ { i = 0 } ^ { N - 1 } e _ i \) can be written as:
+Initial vector \( v_0 = \frac{1}{\sqrt{N}} \sum_{i=0}^{N-1} e_i \) can be written as:
 \[ v_0 = \frac { 1 } { \sqrt { N } } e _ { x^* } + \frac { 1 } { \sqrt { N } } \sum _ { x \neq x^* } e_x = \frac { 1 } { \sqrt { N } } e _ { x^* } + \sqrt { \frac { N - 1 } { N } } w \]
 
 Define geometric step angle \( \theta \) such that:
@@ -2027,51 +2094,21 @@ Optimal integer iteration count is thus:
 
 Whereas classical linear search requires scanning through \( N / 2 \) items on average (\( O(N) \) complexity), the Householder reflection power iteration rotates the state vector through 2D space at angular speed \( \theta \approx 2 / \sqrt{N} \), achieving complete target alignment in \( O(\sqrt{N}) \) steps. Quadratic speedup is a purely linear algebraic property of Householder reflection angles in 2D Euclidean vector subspaces.
 
-=== Advanced Numerical Linear Algebra Methods for Unstructured Search
+=== Physical Mechanical and Fluid Dynamics Analogies
 
-Viewing Grover search as an iterative matrix-vector power method opens the door to well-established algorithms from numerical analysis:
+==== Dual-Gimbal Optical Reflection Analogy
 
-==== 1. Chebyshev Polynomial Acceleration (Fixed-Point Search and Hydraulic Sloshing Damping)
+Digital Grover iteration is physically isomorphic to an optical cavity bounded by two specialized mirrors:
+* **Oracle Mirror \( R_\text{oracle} \)**: A planar phase-inversion mirror situated at target position \( x^* \). Light striking slot \( x^* \) undergoes a \( 180^\circ \) phase shift (\( -1 \) multiplier).
+* **Mean Mirror \( R_\text{mean} \)**: A parabolic focusing mirror aligned with the uniform beam axis. Light reflecting off this mirror is spatially redistributed across all slots relative to mean beam intensity.
+* **Angular Precession**: Bouncing an optical wavefront between these two mirrors precesses beam angle by exact increment \( \theta \) per reflection bounce, gradually focusing 100% of optical wave energy onto target detector \( x^* \).
 
-In standard Grover iteration, if iteration count \( k \) exceeds \( k_\text{opt} \), state vector \( v_k \) rotates past target vector \( e _ { x^* } \), causing target amplitude to decay back toward non-target subspace \( w \) in a periodic oscillation. In hydraulic terms, this corresponds to fluid sloshing past the target chamber and oscillating backward. When target count \( M \) is unknown, this overshooting prevents reliable search termination.
+==== Hydraulic Manifold Equalization Analogy
 
-To solve this overshooting defect, numerical linear algebra utilizes **Chebyshev polynomial acceleration**. By replacing fixed \( 180^\circ \) Householder reflection angles with variable phase angles \( \phi_1, \phi_2, \dots, \phi_k \) and \( \varphi_1, \varphi_2, \dots, \varphi_k \) derived from the roots of Chebyshev polynomials \( T_k ( x ) = \cos ( k \arccos x ) \), the variable reflection operator sequence:
-\[ G_k = \prod_{j=1}^k R_\text{mean} ( \phi_j ) R_\text{oracle} ( \varphi_j ) \]
-behaves as a numerical low-pass filter (or hydraulic fluid damper). Target coordinate amplitude increases monotonically toward 1 without periodic overshooting, guaranteeing stable fixed-point convergence regardless of target count \( M \).
-
-==== 2. Krylov Subspace Projection and Lanczos Tridiagonalization
-
-Given initial vector \( v_0 \) and matrix \( G \), the sequence of iterations spans the \( m \)-dimensional Krylov subspace:
-\[ \mathcal { K } _ m ( G , v_0 ) = \text{span} \{ v_0 , G v_0 , G^2 v_0 , \dots , G^{m-1} v_0 \} \]
-
-Applying the Lanczos tridiagonalization algorithm constructs an orthonormal basis for \( \mathcal{K}_m(G, v_0) \), reducing \( G \) to a tridiagonal matrix \( T_m \). Because initial vector \( v_0 \) lies entirely within the 2D invariant subspace \( V_2 \), vector \( G^2 v_0 \) is linearly dependent on \( v_0 \) and \( G v_0 \). The minimal polynomial of \( G \) on \( v_0 \) is:
-\[ P_2 ( \lambda ) = \lambda^2 - 2 \cos \theta \lambda + 1 = 0 \]
-Consequently, Lanczos tridiagonalization terminates **exactly at dimension 2**, yielding a \( 2 \times 2 \) tridiagonal matrix \( T_2 \). Computing the Ritz eigenvectors of \( T_2 \) isolates the exact target basis vector \( e _ { x^* } \) in 2 iterations without requiring high-dimensional vector iteration.
-
-==== 3. Newton-Raphson and Secant Angle Optimization
-
-We can formulate target coordinate alignment as finding the root of a 1D scalar residual function \( F ( \alpha ) \):
-\[ F ( \alpha ) = 1 - \langle v ( \alpha ) , e _ { x^* } \rangle = 0 \]
-where \( v ( \alpha ) \) represents the state vector resulting from step rotation angle \( \alpha \). Applying 1D Newton-Raphson iterations:
-\[ \alpha _ { n + 1 } = \alpha_n - \frac { F ( \alpha_n ) } { F' ( \alpha_n ) } \]
-or two-point Secant updates rapidly tunes adaptive reflection step angles \( \alpha \), achieving quadratic convergence in rotation angle calibration.
-
-==== 4. Dynamic Successive Over-Relaxation (SOR) and Hydraulic Throttle Control
-
-Introducing an adaptive over-relaxation parameter \( \omega > 1 \) into the mean reflection operator:
-\[ R_\text{mean} ( \omega ) = ( 1 + \omega ) v_0 v_0 ^ T - I_N \]
-modifies the scalar reflection formula to \( v'_i = ( 1 + \omega ) \bar{v} - v_i \). In hydraulic terms, this corresponds to adjusting the manifold throttle nozzle to increase fluid flow velocity into the target channel. Dynamically adjusting \( \omega \) based on residual feedback \( \| v_k - e _ { x^* } \| \) accelerates energy transfer into target entries during early iterations.
-
-==== 5. Localized Givens Rotations Decomposition and Fine-Grained Concurrent Scaling
-
-While full \( N \times N \) Householder reflections \( R_\text{oracle} \) and \( R_\text{mean} \) provide a global mathematical formulation, evaluating global vector means requires all parallel processing cores to synchronize at every step count. In numerical analysis and high-performance numerical linear algebra, Householder reflections are decomposed into localized **Givens rotations** acting on 2D coordinate pairs:
-\[ G ( i , j , \theta ) = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
-In the 2D invariant subspace \( V_2 = \text{span} \{ e _ { x^* } , v_0 \} \), the combined Grover iteration matrix \( G | _ { V_2 } = R_\text{mean} R_\text{oracle} \) is an exact Givens rotation with step angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). 
-
-Decomposing high-dimensional operations into sequence networks of \( 2 \times 2 \) Givens rotations offers distinct software and hardware advantages:
-* **Fine-Grained Parallel Pipeline**: Independent Givens rotations on disjoint coordinate pairs \( ( i_1 , j_1 ) \) and \( ( i_2 , j_2 ) \) execute concurrently in hardware SIMD vector units without shared memory lock contention or global synchronization barriers.
-* **Numerical Stability**: Givens rotations are strictly orthogonal plane transformations (\( G^T G = I_2 \)), preserving vector norm \( \| v \| = 1 \) and preventing roundoff error accumulation across thousands of iteration steps.
-* **Granular Pipeline Updating**: In embedded streaming architectures, individual state coordinates update locally as sensor data arrives, eliminating the need to re-compute global array averages across the entire search space.
+Digital Grover search is physically identical to a hydraulic manifold array:
+* **Hydraulic Columns**: An array of \( N \) vertical fluid columns filled to equal head pressure \( h_0 \).
+* **Oracle Pulse**: A localized suction valve momentarily opens at bottom tap \( x^* \), dropping pressure to \( - h_0 \).
+* **Equalization Manifold**: A high-speed hydraulic valve opens across the manifold, forcing pressure to redistribute according to \( 2 \bar{P} - P_i \). Fluid inertia surges out of non-target columns and fills column \( x^* \).
 
 === Formal Postulates and Theorems of Digital Search Analysis
 
@@ -2091,28 +2128,6 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
    \[ G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
 
 4. **Step Convergence**: \( k \)-fold application gives angle \( (2k+1)\theta/2 \). Setting \( (2k+1)\theta/2 = \pi/2 \) yields \( k = \frac{\pi}{2\theta} - \frac{1}{2} \approx \frac{\pi}{4} \sqrt{N} \). Integer truncation gives \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N} \rfloor \). \( \square \)
-====
-
-[#theorem-digital-grover-givens-rotation]
-[THEOREM]
-.Theorem: Equivalence of Grover Householder Reflection Pairs and Localized Givens Rotations Theorem
-====
-Let \( G = R_\text{mean} R_\text{oracle} \) be the Grover iteration operator acting on Euclidean state space \( \mathbb { R } ^ N \) with initial uniform state vector \( v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N \) and target basis vector \( e _ { x^* } \). The restriction of \( G \) to the 2D invariant subspace \( V_2 = \text{span} \{ e _ { x^* } , v_0 \} \) is identically equal to an exact 2D Givens rotation operator \( R ( \theta ) \):
-\[ G | _ { V_2 } = R ( \theta ) = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
-with exact step rotation angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). Furthermore, applying \( k \) iterations of the Givens rotation maps initial state \( v_0 \) to target state \( e _ { x^* } \) in exactly \( k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt{N} \right\rfloor \) steps with zero norm drift and fine-grained parallel concurrency across coordinate pairs.
-
-*Proof:*
-
-1. **2D Invariant Subspace Projection**: Let \( w = \frac{1}{\sqrt{N-1}} \sum_{x \neq x^*} e_x \) be the unit vector orthogonal to target vector \( e_{x^*} \) in \( \mathbb{R}^N \). Initial vector \( v_0 \) decomposes in basis \( \{ e_{x^*} , w \} \) as:
-   \[ v_0 = \sin \left( \frac { \theta } { 2 } \right) e _ { x^* } + \cos \left( \frac { \theta } { 2 } \right) w \]
-   where \( \sin ( \theta / 2 ) = 1 / \sqrt{N} \).
-
-2. **Householder Reflection Product**: The oracle reflection operator \( R_\text{oracle} = I_N - 2 e_{x^*} e_{x^*}^T \) acts on \( \{ e_{x^*} , w \} \) as matrix \( \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \). The mean reflection operator \( R_\text{mean} = 2 v_0 v_0^T - I_N \) acts on \( \{ e_{x^*} , w \} \) as matrix \( \begin{pmatrix} -\cos\theta & \sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \). Composing the two matrices gives:
-   \[ G | _ { V_2 } = R_\text{mean} | _ { V_2 } R_\text{oracle} | _ { V_2 } = \begin {pmatrix} -\cos\theta & \sin\theta \\ \sin\theta & \cos\theta \end {pmatrix} \begin {pmatrix} -1 & 0 \\ 0 & 1 \end {pmatrix} = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} = R ( \theta ) \]
-
-3. **Givens Plane Rotation**: The matrix \( R ( \theta ) \) is an exact 2D Givens rotation in the plane \( \text{span} \{ e_{x^*} , w \} \). Because Givens rotations are orthogonal transformations (\( R(\theta)^T R(\theta) = I_2 \)), vector norm is preserved identically (\( \| v_k \| = 1 \)) for all iteration step counts \( k \in \mathbb{Z}^+ \).
-
-4. **Optimal Step Alignment**: Applying \( R(\theta) \) for \( k \) steps advances the state angle to \( (2k+1)\theta/2 \). Setting \( (2k+1)\theta/2 = \pi/2 \) gives \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N} \rfloor \), establishing exact mathematical equivalence between Householder reflection pairs and Givens rotations. \( \square \)
 ====
 
 === Worked Example Problems in Digital Search Analysis
@@ -2160,7 +2175,7 @@ with exact step rotation angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). Furthe
 
 . **Step-by-Step Numerical State Evolution**:
 
-   * **Initial State (\( k = 0 \))**:   
+   * **Initial State (\( k = 0 \))**:
      Uniform vector \( v_0(x) = 1 / \sqrt{16} = 0.2500 \) for all \( x \in \{ 0 , \dots , 15 \} \).
      Target entry \( v_0(7) = 0.2500 \), non-target entries \( v_0(x) = 0.2500 \).
      Target probability energy \( P_0(7) = (0.2500)^2 = 0.0625 \) (6.25%).
@@ -2191,6 +2206,10 @@ with exact step rotation angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). Furthe
        +
    Notice that exact trigonometric angle calculation gives \( \sin(7 \theta / 2) = \sin(7 \times 0.25268) = \sin(1.76876 \text{ rad}) \approx 0.98046875 \). Target concentration surges to 96.13% in 3 numerical iterations!
 
+= Index of Formal Statements
+
+Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
+
 == Index of Formal Statements
 
 This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
@@ -2199,16 +2218,20 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 
 * xref:theorem-unified-real-bivector-spectral-transformation[**Theorem: Unified Real-Bivector Spectral Transformation Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
 * xref:theorem-discrete-orthogonality-parseval-energy-conservation[**Theorem: Discrete Multiscale Orthogonality and Parseval-Plancherel Energy Conservation Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
+* xref:theorem-spectral-typography-interference-mitigation[**Theorem: Master Field Equation Optimization of Single-Page 2D Spectral Typography and Spatial Interference Mitigation Theorem**]  -- Chapter: *First-Principles Unified Spectral Analysis without Complex Numbers* | Section: *Rigorous Proofs and Mathematical Theorems*
 * xref:theorem-kirchhoff-laws-derivation-master-field-equation[**Theorem: Derivation of Kirchhoff's Circuit Laws from the Master Field Equation**]  -- Chapter: *Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures* | Section: *Formal Postulates and Theorems of Circuit Theory*
 * xref:theorem-condenser-coil-energy-conservation[**Theorem: Energy Conservation in Electric Condensers and Magnetic Coils**]  -- Chapter: *Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures* | Section: *Formal Postulates and Theorems of Circuit Theory*
 * xref:theorem-maximum-power-transfer-bivector-impedance[**Theorem: Maximum Power Transfer Theorem for Complex Bivector Impedances**]  -- Chapter: *Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures* | Section: *Formal Postulates and Theorems of Circuit Theory*
 * xref:theorem-dielectric-transmission-line-poynting-power[**Theorem: Dielectric Wave Power Transport and Conductor Guidance Theorem**]  -- Chapter: *Transmission Theory, Power Engineering, and Electrical Machinery* | Section: *Formal Postulates and Theorems of Transmission Theory and Electrical Machines*
 * xref:theorem-heaviside-distortionless-line-condition[**Theorem: Heaviside Distortionless Transmission Line Condition Theorem**]  -- Chapter: *Transmission Theory, Power Engineering, and Electrical Machinery* | Section: *Formal Postulates and Theorems of Transmission Theory and Electrical Machines*
 * xref:theorem-bldc-electronic-commutation-torque[**Theorem: Maximum Electrodynamic Torque in Electronically Commutated BLDC Motors**]  -- Chapter: *Transmission Theory, Power Engineering, and Electrical Machinery* | Section: *Formal Postulates and Theorems of Transmission Theory and Electrical Machines*
-* xref:theorem-m-res-digital-convolution-equivalence[**Theorem: m-Resolution Difference Convolution and Spectral Multiplication Equivalence Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Rigorous Proofs and System Dynamics Theorems*
+* xref:theorem-m-res-digital-convolution-equivalence[**Theorem: m-Resolution Difference Convolution and Spectral Multiplication Equivalence Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Formal Postulates and Theorems of System Dynamics*
+* xref:theorem-m-res-system-stability-criterion[**Theorem: Discrete Bivector System Stability and Bounded-Input Bounded-Output Invariance Theorem**]  -- Chapter: *Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics* | Section: *Formal Postulates and Theorems of System Dynamics*
 * xref:theorem-child-langmuir-m-res-derivation[**Theorem: Derivation of the Child-Langmuir Space-Charge Law from the Master Field Equation**]  -- Chapter: *Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices* | Section: *Formal Postulates and Theorems of Vacuum Tube Field Dynamics*
+* xref:theorem-triode-barkhausen-relation[**Theorem: Triode Barkhausen Relation and Voltage Gain Theorem**]  -- Chapter: *Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices* | Section: *Formal Postulates and Theorems of Vacuum Tube Field Dynamics*
 * xref:theorem-deconstruction-quantum-semiconductor-fallacy[**Theorem: Epistemological Demolition of the ‘Quantum’ Semiconductor Fallacy and Derivation of Solid-State Empirical Laws**]  -- Chapter: *Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices* | Section: *Formal Postulates and Theorems of Solid-State Diode Mechanics*
 * xref:theorem-shockley-diode-equation-m-res-derivation[**Theorem: Derivation of the Shockley Diode Equation from the Master Field Equation**]  -- Chapter: *Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices* | Section: *Formal Postulates and Theorems of Solid-State Diode Mechanics*
+* xref:theorem-esaki-ndr-maxent-derivation[**Theorem: First-Principles Derivation of Esaki Tunneling Mechanics and Negative Differential Resistance**]  -- Chapter: *Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices* | Section: *Formal Postulates and Theorems of Solid-State Diode Mechanics*
 * xref:theorem-bjt-ebers-moll-base-transport[**Theorem: BJT Ebers-Moll Minority Carrier Base Transport and Current Gain Relation**]  -- Chapter: *Point-Contact and Bipolar Junction Transistors* | Section: *Formal Postulates and Theorems of Bipolar Transistor Electrodynamics*
 * xref:theorem-four-layer-thyristor-latching[**Theorem: Regenerative Latching Condition for Four-Layer Thyristors**]  -- Chapter: *Other Semiconductor Devices* | Section: *Formal Postulates and Theorems of Four-Layer Devices*
 * xref:theorem-opamp-feedback-stability[**Theorem: Op-Amp Closed-Loop Gain Stability and Negative Feedback Desensitization**]  -- Chapter: *Analog Integrated Circuits* | Section: *Formal Postulates and Theorems of Analog Integrated Circuits*
@@ -2216,5 +2239,4 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-physical-software-execution[**Theorem: Physical Equivalence of Digital Software Execution and Contact-Action Electrodynamic State Transitions**]  -- Chapter: *Digital Computer Programs Are Electronic Circuits* | Section: *Formal Postulates and Theorems of Physical Software Execution*
 * xref:theorem-householder-reflection-properties[**Theorem: Algebraic and Geometric Properties of Real Householder Reflections**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Fundamentals of Householder Reflections in Real Vector Spaces*
 * xref:theorem-digital-grover-numerical-householder[**Theorem: Digital Grover Iteration as Householder Reflection Power Iteration in Real 2D Subspaces**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
-* xref:theorem-digital-grover-givens-rotation[**Theorem: Equivalence of Grover Householder Reflection Pairs and Localized Givens Rotations Theorem**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
 
