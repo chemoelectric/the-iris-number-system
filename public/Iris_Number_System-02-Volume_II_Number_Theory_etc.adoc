@@ -432,8 +432,8 @@ Aperture \( N \) passes the Vernier phase trajectory test for base \( a \) if an
 . **Fermat Aperture Field Requirement**: If \( N \) is a prime step count \( p \), the residue ring \( \mathbb{Z} / p \mathbb{Z} \) forms a finite field. By Fermat's Little Theorem (Theorem 15), \( a^{p-1} \equiv 1 \cdot \mathbf{1}_{Cl} \pmod p \).
 
 . **Square-Root Eigenspace Factorization**: Factoring the difference of squares in field \( \mathbb{Z} / p \mathbb{Z} \) yields:
-\[ a^{p-1} - 1 = (a^{2^{s-1} d} - 1)(a^{2^{s-1} d} + 1) \equiv 0 \pmod p \]
-Continuing this recursive square-root decomposition down to \( a^d - 1 \) forces at least one term in the chain \( a^d \pmod p, a^{2d} \pmod p, \dots, a^{2^{s-1} d} \pmod p \) to evaluate to \( -1 \equiv p - 1 \pmod p \), unless the initial term \( x_0 = a^d \) is already \( 1 \pmod p \).
+   \[ a ^ { p - 1 } - 1 = ( a ^ { 2 ^ { s - 1 } d } - 1 ) (a ^ { 2 ^ { s -1 } d } + 1 ) \equiv 0 \pmod p \]
+Continuing this recursive square-root decomposition down to \( a ^ d - 1 \) forces at least one term in the chain \( a ^ d \pmod p, a ^ { 2 d } \pmod p, \dots, a ^ { 2 ^ { s - 1 } d } \pmod p \) to evaluate to \( -1 \equiv p - 1 \pmod p \), unless the initial term \( x _ 0 = a ^ d \) is already \( 1 \pmod p \).
 
 . **Phase Failure for Composite Apertures**: If \( N \) is composite, the ring \( \mathbb{Z} / N \mathbb{Z} \) contains non-trivial zero divisors. The equation \( x^2 \equiv 1 \pmod N \) possesses at least four distinct solutions modulo \( N \). Unless \( N \) is a strong pseudoprime to base \( a \), the trajectory fails to reach \( N - 1 \) prior to collapsing, rejecting composite numbers in \( \mathcal{O} ( \log N ) \) squaring operations.
 
@@ -513,7 +513,7 @@ This transformation replaces all hardware division instructions in modular expon
 
 === Hardware Benchmarks and Execution Speed Estimates
 
-The unified implementation of prior-information product tree factorization, OEIS-assisted wheel sieving, Montgomery-Barrett modular reduction, and AVX-512 vectorized Vernier Difference-of-Squares search yields the following performance profiles across modern digital hardware architectures:
+The unified implementation of prior-information product tree factorization, OEIS-assisted wheel sieving, Montgomery-Barrett modular reduction, and AVX-512 vectorized Vernier Difference-of-Squares search yields the following estimates of performance profiles across modern digital hardware architectures:
 
 1. **High-End Mini PC Hardware (AMD Ryzen AI 9 HX 370, Zen 5 Architecture, 24 Execution Threads/Cores, Radeon 890M iGPU)**:
    - **Deterministic 64-Bit Primality Testing**: **1.85 billion tests/second** across 24 Zen 5 threads using AVX-512 vectorized Miller-Rabin and OEIS succinct bitset filter.
