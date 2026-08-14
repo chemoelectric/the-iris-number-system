@@ -9,7 +9,7 @@
 
 Advanced Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, and Computing in Cl(4,1,1)
 
-= First-Principles Unified Spectral Analysis without Complex Numbers
+== First-Principles Unified Spectral Analysis without Complex Numbers
 
 This chapter establishes a unified mathematical framework for all major linear spectral transforms on discrete multiscale resolution grids \( \mathcal { G } _ N \), demonstrating that complex numbers and continuum planes are unnecessary contrivances when signals and operators are represented via real geometric bivectors and linear difference matrices.
 
@@ -353,7 +353,7 @@ Compute the new 2D spectrum \( \hat { F } ' [ k_x , k_y ] \) and show the reduct
 3. **Conclusion**:
    The single microtypographic shift reduced the peak vertical river spectral energy from **16** down to **4** (a 75% energy reduction), successfully disrupting the 2D spatial interference pattern and demonstrating the power of Master Field Equation spectral typography on discrete aperture grids.
 
-= Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures
+== Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures
 
 This chapter formulates classical and high-frequency circuit theory from first principles on discrete multiscale resolution grids \( \mathcal { G } _ N \), deriving Kirchhoff's voltage and current laws, resistors, capacitors (condensers), inductors (coils), transient RC and LC circuit dynamics, the tuning section of crystal radios, the full practical crystal receiver circuit with 0.25V threshold rectifier and 4000 ohm headphones, transformers, antennas, earth grounds as active RF counterpoises, grounded chassis, and electromagnetic shielding.
 
@@ -573,7 +573,7 @@ Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X
    * At carrier frequency \( f_c = 1.0 \text{ MHz} \): \( X_{C,\text{rf}} = \frac { 1 } { 2 \pi ( 1.0 \times 10 ^ 6 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \ \Omega \). Since \( X_{C,\text{rf}} = 106.1 \ \Omega \ll 4000 \ \Omega \) (\( R_\text{phones} \)), \( 97.4\% \) of the RF carrier ripple passes safely through the bypass condenser, protecting the headphone coils from high-frequency reactive choking.
    * At audio frequency \( f_a = 1.0 \text{ kHz} \): \( X_{C,\text{audio}} = \frac { 1 } { 2 \pi ( 1000 ) ( 1.5 \times 10 ^ { - 9 } ) } \approx 106.1 \text{ k}\Omega \). Since \( X_{C,\text{audio}} = 106.1 \text{ k}\Omega \gg 4000 \ \Omega \) (\( R_\text{phones} \)), \( 96.4\% \) of the low-frequency rectified audio envelope current flows directly through the \( 4000 \ \Omega \) headphone windings, driving clear acoustic sound output.
 
-= Transmission Theory, Power Engineering, and Electrical Machinery
+== Transmission Theory, Power Engineering, and Electrical Machinery
 
 This chapter establishes the theory of transmission lines as electromagnetic waveguides where power travels in the dielectric, demystifying Poynting vector transport through first-principles electrodynamics. It covers telephone, cable TV, internet cables, high-voltage AC/DC power transmission grids, electrodynamic generators, induction motors, synchronous motors, brushed DC motors, and brushless DC (BLDC) motors.
 
@@ -723,7 +723,7 @@ Stator magnetic flux vector \( \mathbf { \Phi } _ s \) and rotor permanent magne
 
 3. **Physical Interpretation**: The direct current component \( i_d = 8.66 \text{ A} \) produces magnetic flux along the rotor pole axis, while the quadrature current component \( i_q = - 5.00 \text{ A} \) produces orthogonal electrodynamic torque.
 
-= Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics
+== Theory of Impulse Responses and Transfer Functions: m-Resolution Analog and Digital System Dynamics
 
 This chapter formulates the linear theory of physical systems, impulse responses, difference convolution operators, and transfer functions across m-resolution (analog) physical grids and digital sampled grids without continuum infinities or point-mass idealizations.
 
@@ -884,7 +884,7 @@ A causal linear shift-invariant system with real bivector transfer function \( H
    \[ y [ n ] = 0.2282 y [ n - 1 ] + 0.3859 x [ n ] + 0.3859 x [ n - 1 ] \]
    This discrete m-resolution algorithm replicates the analog low-pass RC response with exact stability and zero drift on discrete grid \( \mathcal { G } _ N \).
 
-= Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices
+== Theory of Electron Tubes and Thermionic Valves: Field Physics, Grid Control, and Specialized Cathode-Ray Devices
 
 This chapter develops the physical theory of thermionic emission, space charge dynamics, grid voltage modulation, and multi-electrode electron tubes (valves) within the m-resolution framework of the Master Field Equation. In addition to fundamental diodes, triodes, tetrodes, and pentodes, detailed analyses are given for specialized devices including beam power tubes, heptodes/hexodes, klystrons, magnetrons, and diverse cathode-ray tubes (electrostatic and electromagnetic display CRTs, storage tubes, traveling-wave oscilloscopes, and image orthicons/vidicons).
 
@@ -1041,7 +1041,7 @@ In a planar vacuum diode with inter-electrode spacing \( d \) and applied anode 
    \[ A_v = - \frac { \mu R_L } { r_p + R_L } = - \frac { 23.8 \times 22000 } { 8500 + 22000 } = - \frac { 523600 } { 30500 } = \mathbf { - 17.17 } \]
    The negative sign represents a 180° phase inversion between grid input voltage and anode output voltage.
 
-= Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices
+== Theory of Solid-State Diodes and Semiconductor Rectifiers: Point-Contact Crystals, Junction Dynamics, and Integrated Diode Matrices
 
 This chapter establishes the physical, mathematical, and field-theoretic foundations of solid-state rectifiers and semiconductor diodes within the m-resolution framework of the Master Field Equation in Cl(4,1,1). Beginning with point-contact metal-semiconductor interfaces (galena crystal radios and oxidized razor-blade foxhole detectors), the exposition deconstructs the popular misconception that solid-state devices are 'quantum' magic by revealing how facts known strictly from experiment were historically mislabeled as 'fundamental quantum principles'—a term coöptation initiated by Niels Bohr and Solvay 1927 that replaced empirical law with inexplicable mystery. The chapter establishes the first-principles physical definition of a hole as a valence band vacancy wave packet and topological charge defect, and then rigorously derives p-n homojunction and heterojunction barrier physics, the Shockley diode equation, Schottky barriers, breakdown dynamics, varactors, tunnel (Esaki) negative differential resistance, PIN switches, LEDs, photodiodes, and integrated diode matrices directly from the Master Field Equation.
 
@@ -1409,7 +1409,7 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
    \[ \tau_p = \frac { m_h^* \mu_p } { q } = \frac { ( 3.4614 \times 10^{-31} \text{ kg} ) ( 0.045 \text{ m}^2 / ( \text{V} \cdot \text{s} ) ) } { 1.602 \times 10^{-19} \text{ C} } = \frac { 1.5576 \times 10^{-32} } { 1.602 \times 10^{-19} } \approx \mathbf { 9.72 \times 10^{-14} \text{ s} } \quad ( 97.2 \text{ fs} ) \]
    This proves that valence band vacancies scatter every ~97 femtoseconds while collectively maintaining a positive Hall voltage of +1.00 mV across the sample.
 
-= Field-Effect Transistors
+== Field-Effect Transistors
 
 === First-Principles Electrodynamics of Field-Effect Transduction
 
@@ -1546,7 +1546,7 @@ Adjacent NMOS and PMOS structures form parasitic four-layer \( p-n-p-n \) thyris
 2. **Saturation Region (\( V_{DS} = 3.00 \text{ V} > 1.30 \text{ V} \))**:
    \[ I_D = \frac { 1 } { 2 } k_n^ me ( V_{GS} - V_{th} )^2 = \frac { 1 } { 2 } ( 5.0 ) ( 2.50 - 1.20 )^2 = 2.5 \times ( 1.30 )^2 = 2.5 \times 1.69 = \mathbf { 4.225 \text{ mA} } \]
 
-= Point-Contact and Bipolar Junction Transistors
+== Point-Contact and Bipolar Junction Transistors
 
 This chapter establishes the first-principles electrodynamics of point-contact and bipolar junction transistors (BJTs) on discrete multiscale resolution grids \( \mathcal { G } _ N \), deriving carrier transport across neutral base regions, Ebers-Moll equations, Early effect base-width modulation, current gain factors, mechanical and fluid dynamics analogies, historical germanium metal-can tin whisker failures, formal theorems, and worked textbook examples.
 
@@ -1655,7 +1655,7 @@ For any bipolar junction transistor on grid \( \mathcal{G}_N \), the forward com
    \[ \gamma = \frac { 1 } { 1 + \frac { I_{pE} } { I_{nE} } } = \frac { 1 } { 1 + 0.007548 } = \frac { 1 } { 1.007548 } \approx \mathbf { 0.9925 } \]
    Despite the base being 10 times more heavily doped than the emitter, the SiGe bandgap offset preserves an ultra-high injection efficiency of 99.25%.
 
-= Other Semiconductor Devices
+== Other Semiconductor Devices
 
 This chapter covers specialized four-layer and negative-resistance semiconductor devices, including thyristors (SCRs, TRIACs), Insulated-Gate Bipolar Transistors (IGBTs), Unijunction Transistors (UJTs), optoelectronic phototransistors and optocouplers, Hall-effect sensors, and microwave Gunn and IMPATT diodes, establishing their operation from first principles alongside fluid dynamics analogies and worked examples.
 
@@ -1773,7 +1773,7 @@ In a four-layer \( p-n-p-n \) semiconductor structure governed by the Master Fie
 2. **Hall Voltage \( V_H \)**:
    \[ V_H = \frac { | R_H | I B } { t } = \frac { ( 4.161 \times 10 ^ { - 3 } ) ( 5.0 \times 10 ^ { - 3 } \text{ A} ) ( 0.25 \text{ T} ) } { 10 \times 10 ^ { - 6 } \text{ m} } = \frac { 5.201 \times 10 ^ { - 6 } } { 10 ^ { - 5 } } = 0.5201 \text{ V} = 520.1 \text{ mV} \]
 
-= Analog Integrated Circuits
+== Analog Integrated Circuits
 
 This chapter develops first-principles operational amplifier (Op-Amp) architectures, linear and analog CMOS integrated circuits, linear unbuffered CMOS dropout amplifier stages, and the NE555/CMOS 555 timer family, including constant-current linear ramp generators, pulse circuits, mechanical analogies, formal proofs, and worked textbook examples.
 
@@ -1884,7 +1884,7 @@ Gain error is \( \frac { 10.00 - 9.9990 } { 10.00 } \times 100\% = 0.010\% \).
 Total period \( T_\text{total} = t_\text{ramp} + t_\text{discharge} = 3.3333 \text{ ms} + 0.0020 \text{ ms} = 3.3353 \text{ ms} \).
 \[ f_\text{osc} = \frac { 1 } { T_\text{total} } = \frac { 1 } { 3.3353 \times 10 ^ { - 3 } \text{ s} } \approx 299.8 \text{ Hz} \]
 
-= Digital Gates, Flip-Flops, and Sequential Logic
+== Digital Gates, Flip-Flops, and Sequential Logic
 
 This chapter establishes the physics of digital CMOS logic gates, switching dynamics, power dissipation, bistable flip-flops, sequential registers, synchronous counters, and finite state machines from first principles, incorporating mechanical analogies, formal proofs, and worked examples.
 
@@ -1972,7 +1972,7 @@ By first-principles energy conservation, 100% of electrical power drawn by dynam
 2. **Maximum Allowable Clock Frequency \( f_\text{clk,max} \)**:
 \[ f_\text{clk,max} = \frac { 1 } { T_\text{clk,min} } = \frac { 1 } { 3.8 \times 10 ^ { - 9 } \text{ s} } \approx 263.16 \text{ MHz} \]
 
-= Digital Computer Programs Are Electronic Circuits
+== Digital Computer Programs Are Electronic Circuits
 
 Digital computer programs are physical electronic circuits. A persistent misconception—often asserted by advocates of mystical interpretations of physics—is that software code or algorithmic programs represent abstract, non-physical “Platonic ideals” detached from physical causality and material contact action. Critics have sometimes insisted that computer programs could not be considered empirical experiments that refute flawed physical theories, claiming instead that software operates in a non-material realm. In reality, a digital computer program is a specific physical configuration and dynamic state sequence of contact-action electronic switching circuits executing on physical semiconductor lattices.
 
@@ -2033,7 +2033,7 @@ Time duration \( t = 1 \text{ hour} = 3600 \text{ seconds} \).
 \[ W_\text{display} = P_\text{display} t = ( 50.0 \text{ W} ) ( 3600 \text{ s} ) = 180,000 \text{ J} = 180.0 \text{ kJ} \]
 This demonstrates that software execution performs objective physical work on material hardware and external fields.
 
-= Digital Grover Search as a Numerical Iterative Method
+== Digital Grover Search as a Numerical Iterative Method
 
 This chapter presents a complete, rigorous re-formulation of digital Grover search within the framework of conventional numerical analysis and numerical linear algebra, replacing non-physical “quantum” Dirac bra-ket notations, non-material Hilbert spaces, and wave-function collapse with deterministic matrix-vector power iterations, real Householder reflections, 2D planar invariant rotations, Chebyshev polynomial acceleration, Krylov subspace projections, mechanical/fluid dynamics analogies, formal proofs, and worked numerical examples.
 
@@ -2318,7 +2318,7 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
        +
    Notice that exact trigonometric angle calculation gives \( \sin(7 \theta / 2) = \sin(7 \times 0.25268) = \sin(1.76876 \text{ rad}) \approx 0.98046875 \). Target concentration surges to 96.13% in 3 numerical iterations!
 
-= Index of Formal Statements
+== Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
