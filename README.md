@@ -111,6 +111,8 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc # Volume II: Applications to Number Theory (AsciiDoc)
 │   ├── Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc # Volume III: Geometry & Algebra (AsciiDoc)
 │   ├── Iris_Number_System-04-Volume_IV_Physics_etc.adoc # Volume IV: Physics, Chemistry, Engineering (AsciiDoc)
+│   ├── wave_queens_8.adb        # Wave-mechanical 8-queens phase-locking engine in Ada 2022
+│   ├── grover_search_givens/    # Standalone Grover search Ada program using Givens rotations
 │   ├── primality_test/          # Standalone vectorizable D primality engine (Baillie-PSW & Montgomery reduction)
 │   └── bezclip.mp               # MetaPost illustration of s-power Bézier clipping
 ├── src/
