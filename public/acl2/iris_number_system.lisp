@@ -276,24 +276,23 @@
                   :verify-guards nil
                   :measure (nfix steps)))
   (if (zp steps)
-      (mod (nfix base) m)
+      (nfix (mod (nfix base) m))
     (if (zp exp)
-        (mod 1 m)
+        (nfix (mod 1 m))
       (if (equal (mod (nfix exp) 2) 1)
-          (mod (* (mod (nfix base) m)
-                  (mod-expt-fast (mod (* (nfix base) (nfix base)) m)
-                                 (floor (nfix exp) 2)
-                                 m
-                                 (- steps 1)))
-               m)
-        (mod-expt-fast (mod (* (nfix base) (nfix base)) m)
-                       (floor (nfix exp) 2)
-                       m
-                       (- steps 1))))))
+          (nfix (mod (* (nfix (mod (nfix base) m))
+                        (mod-expt-fast (nfix (mod (* (nfix base) (nfix base)) m))
+                                       (floor (nfix exp) 2)
+                                       m
+                                       (- steps 1)))
+                     m))
+        (nfix (mod-expt-fast (nfix (mod (* (nfix base) (nfix base)) m))
+                             (floor (nfix exp) 2)
+                             m
+                             (- steps 1)))))))
 
 (defthm mod-expt-fast-is-natp
-  (implies (posp m)
-           (natp (mod-expt-fast base exp m steps)))
+  (natp (mod-expt-fast base exp m steps))
   :rule-classes (:rewrite :type-prescription))
 
 ;; 3d. Vernier Multi-Grid Phase Trajectory (Miller-Rabin Base a Test)
