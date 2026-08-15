@@ -217,3 +217,19 @@ The monumental experimental treatise that discovered electromagnetic induction, 
 *Annotation:*
 Presents the definitive industrial chemical synthesis, discrete moisture agglomeration control, and thermal calcination kinetics for manufacturing low-frangibility, medium-density granular sodium tripolyphosphate (\( \mathrm{Na_5P_3O_{10}} \)). Demonstrates the rigorous control of multi-phase crystal transitions (Form I high-temperature phase and Form II low-temperature phase) and moisture saturation thresholds during particulate bed agitation and calcination at \( 320^\circ \text{C} \text{--} 550^\circ \text{C} \), producing bulk densities in the optimal range of \( 0.45 \text{--} 0.59 \text{ g/cm}^3 \). Serves as a foundational exemplar of discrete chemical kinetic modeling and industrial material phase control in applied physical chemistry and condensed matter engineering (Volume IV).
 
+== Structural Mechanics, Engineering Forensics, and the Human Ascent
+
+[#entry-ressler-2012]
+=== Ressler, Stephen (2012)
+*Understanding the Secrets of Human Achievement: When Science and Engineering Fail* (also issued as *Understanding the Secrets of Great Civilizations: Engineering Failures and Successes* and *Great Inventions and Failures: Understanding Engineering*). Chantilly, VA: The Teaching Company / The Great Courses.
+
+*Annotation:*
+A rigorous pedagogical and forensic investigation of engineering mechanics and structural failure modes. Utilizing physical demonstrations, stress-strain analysis, moment of inertia principles, and load-path decompositions, Ressler examines why real-world physical structures fail under tension, compression, shear, buckling, and creep. Rather than relying on superficial retrospective narratives or scholastic mathematical abstractions, this course establishes the foundational discipline of physical engineering: understanding that materials deform and fail according to invariant physical and geometric constraints. Essential for extrapolating practical composite fabrication principles—such as preventing long-term viscoelastic polymer sagging and creep through the strategic embedding of rebar, tubular trusses, and high-tensile longitudinal reinforcement.
+
+[#entry-bronowski-1973]
+=== Bronowski, Jacob (1973)
+*The Ascent of Man*. London: British Broadcasting Corporation (BBC) / Boston: Little, Brown and Company. (Thirteen-part television series and companion volume).
+
+*Annotation:*
+A monumental historical and philosophical exposition of the human ascent through constructive craft, metallurgy, architecture, physics, and mathematical geometry. Bronowski presents scientific discovery not as an insular academic bureaucracy or static body of dogmatic knowledge, but as an ongoing, creative, and humane time-binding endeavor rooted in direct physical engagement with material reality and tool-making. Bronowski’s exposition provides an inspiring epistemological demonstration of humanity's capacity to transcend animal limits through the cumulative evaluation, transmission, and refinement of structural and intellectual abstractions.
+
