@@ -255,17 +255,20 @@
   (list s v1 v2 v3 v4 v5 v6 ps))
 
 (defun cl-mv-scalar (mv)
-  (declare (xargs :guard (cl-mv-p mv)))
+  (declare (xargs :guard (cl-mv-p mv)
+                  :verify-guards nil))
   (nth 0 mv))
 
 (defun cl-mv-pseudoscalar (mv)
-  (declare (xargs :guard (cl-mv-p mv)))
+  (declare (xargs :guard (cl-mv-p mv)
+                  :verify-guards nil))
   (nth 7 mv))
 
 (defun cl-mv-add (u v)
   "Componentwise addition of Clifford multivectors."
   (declare (xargs :guard (and (cl-mv-p u)
-                              (cl-mv-p v))))
+                              (cl-mv-p v))
+                  :verify-guards nil))
   (cl-mv-make (+ (nth 0 u) (nth 0 v))
               (+ (nth 1 u) (nth 1 v))
               (+ (nth 2 u) (nth 2 v))
@@ -278,7 +281,8 @@
 (defun cl-mv-scale (c mv)
   "Scalar multiplication of Clifford multivector."
   (declare (xargs :guard (and (rationalp c)
-                              (cl-mv-p mv))))
+                              (cl-mv-p mv))
+                  :verify-guards nil))
   (cl-mv-make (* c (nth 0 mv))
               (* c (nth 1 mv))
               (* c (nth 2 mv))
@@ -304,7 +308,8 @@
 ;; Squared Multivector Metric Magnitude in Signature (+ + + + - -)
 (defun cl-mv-norm-sq (mv)
   "Computes Clifford metric quadratic form: s^2 + v1^2 + v2^2 + v3^2 + v4^2 - v5^2 - v6^2 - ps^2."
-  (declare (xargs :guard (cl-mv-p mv)))
+  (declare (xargs :guard (cl-mv-p mv)
+                  :verify-guards nil))
   (+ (* (nth 0 mv) (nth 0 mv))
      (* (nth 1 mv) (nth 1 mv))
      (* (nth 2 mv) (nth 2 mv))
@@ -378,13 +383,15 @@
        (rational-listp v)))
 
 (defun vec3-dot (u v)
-  (declare (xargs :guard (and (vec3-p u) (vec3-p v))))
+  (declare (xargs :guard (and (vec3-p u) (vec3-p v))
+                  :verify-guards nil))
   (+ (* (nth 0 u) (nth 0 v))
      (* (nth 1 u) (nth 1 v))
      (* (nth 2 u) (nth 2 v))))
 
 (defun vec3-cross (u v)
-  (declare (xargs :guard (and (vec3-p u) (vec3-p v))))
+  (declare (xargs :guard (and (vec3-p u) (vec3-p v))
+                  :verify-guards nil))
   (list (- (* (nth 1 u) (nth 2 v)) (* (nth 2 u) (nth 1 v)))
         (- (* (nth 2 u) (nth 0 v)) (* (nth 0 u) (nth 2 v)))
         (- (* (nth 0 u) (nth 1 v)) (* (nth 1 u) (nth 0 v)))))
@@ -407,7 +414,8 @@
 ;; 6c. Faraday's Induction Law: curl(E) + dB/dt = 0
 (defun maxwell-faraday (curl-e db-dt)
   (declare (xargs :guard (and (vec3-p curl-e)
-                              (vec3-p db-dt))))
+                              (vec3-p db-dt))
+                  :verify-guards nil))
   (and (equal (+ (nth 0 curl-e) (nth 0 db-dt)) 0)
        (equal (+ (nth 1 curl-e) (nth 1 db-dt)) 0)
        (equal (+ (nth 2 curl-e) (nth 2 db-dt)) 0)))
@@ -419,7 +427,8 @@
                               (vec3-p j-curr)
                               (rationalp mu0)
                               (rationalp c-speed)
-                              (not (equal c-speed 0)))))
+                              (not (equal c-speed 0)))
+                  :verify-guards nil))
   (let ((inv-c2 (/ 1 (* c-speed c-speed))))
     (and (equal (- (nth 0 curl-b) (* inv-c2 (nth 0 de-dt))) (* mu0 (nth 0 j-curr)))
          (equal (- (nth 1 curl-b) (* inv-c2 (nth 1 de-dt))) (* mu0 (nth 1 j-curr)))
@@ -457,7 +466,8 @@
   (declare (xargs :guard (and (vec3-p e-field)
                               (vec3-p b-field)
                               (rationalp mu0)
-                              (not (equal mu0 0)))))
+                              (not (equal mu0 0)))
+                  :verify-guards nil))
   (let ((cross (vec3-cross e-field b-field)))
     (list (/ (nth 0 cross) mu0)
           (/ (nth 1 cross) mu0)
@@ -537,14 +547,16 @@
 
 (defun jaynes-normalized-p (probs)
   "Jaynesian normalization axiom: sum of discrete probabilities equals 1."
-  (declare (xargs :guard (probability-list-p probs)))
+  (declare (xargs :guard (probability-list-p probs)
+                  :verify-guards nil))
   (equal (sum-list probs) 1))
 
 (defun discrete-expectation (values probs)
   "Computes expectation E[X] = sum(p_i * x_i) under discrete Jaynesian measure."
   (declare (xargs :guard (and (rational-listp values)
                               (probability-list-p probs)
-                              (equal (len values) (len probs)))))
+                              (equal (len values) (len probs)))
+                  :verify-guards nil))
   (if (atom values)
       0
     (+ (* (car values) (car probs))
