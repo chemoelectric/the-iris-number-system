@@ -180,16 +180,24 @@
                               (natp b)
                               (natp steps))))
   (if (zp steps)
-      a
+      (nfix a)
     (if (zp b)
-        a
-      (iris-gcd-helper b (mod a b) (- steps 1)))))
+        (nfix a)
+      (iris-gcd-helper (nfix b) (mod (nfix a) (nfix b)) (- steps 1)))))
+
+(defthm iris-gcd-helper-natp
+  (natp (iris-gcd-helper a b steps))
+  :rule-classes (:rewrite :type-prescription))
 
 (defun iris-gcd (a b)
   "Greatest Common Divisor of two natural numbers."
   (declare (xargs :guard (and (natp a)
                               (natp b))))
-  (iris-gcd-helper a b (+ a b 1)))
+  (iris-gcd-helper a b (+ (nfix a) (nfix b) 1)))
+
+(defthm iris-gcd-is-natp
+  (natp (iris-gcd a b))
+  :rule-classes (:rewrite :type-prescription))
 
 (defthm iris-gcd-zero-right
   (implies (natp a)
@@ -542,12 +550,17 @@
 (defun maxent-uniform-p (probs n)
   "Checks if probability distribution matches unconstrained MaxEnt (p_i = 1/n)."
   (declare (xargs :guard (and (probability-list-p probs)
-                              (posp n)
-                              (equal (len probs) n))))
+                              (posp n))))
   (if (atom probs)
       t
     (and (equal (car probs) (/ 1 n))
          (maxent-uniform-p (cdr probs) n))))
+
+(defthm sum-list-of-maxent-uniform
+  (implies (and (posp n)
+                (maxent-uniform-p probs n))
+           (equal (sum-list probs)
+                  (* (len probs) (/ 1 n)))))
 
 ;; Proves that uniform MaxEnt distribution is identically normalized.
 (defthm maxent-uniform-is-normalized
