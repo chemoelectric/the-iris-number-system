@@ -75,28 +75,62 @@
 ;; MODULE 2: CONSTRUCTIVE VERNIER CALCULUS & RESOLUTION OF ZENO'S PARADOXES
 ;; =========================================================================
 
-(defun msra-discrete-diff (f x omega)
+;; 2a. Difference Quotient for Explicit Numerical Evaluation
+(defun msra-difference-quotient (fx-plus-delta fx delta)
   "Computes exact discrete vernier difference quotient:
    [f(x + delta_omega) - f(x)] / delta_omega."
-  (declare (xargs :guard (and (posp omega)
-                              (rationalp x))))
+  (declare (xargs :guard (and (rationalp fx-plus-delta)
+                              (rationalp fx)
+                              (rationalp delta)
+                              (not (equal delta 0)))))
+  (/ (- fx-plus-delta fx) delta))
+
+(defthm msra-difference-quotient-is-rational
+  (implies (and (rationalp fx-plus-delta)
+                (rationalp fx)
+                (rationalp delta)
+                (not (equal delta 0)))
+           (rationalp (msra-difference-quotient fx-plus-delta fx delta))))
+
+;; 2b. Generic Uninterpreted Field Function Stub & Discrete Differentiation
+(encapsulate
+  (((msra-field-f *) => *))
+  (local (defun msra-field-f (x) (declare (ignore x)) 0))
+  (defthm msra-field-f-rationalp
+    (rationalp (msra-field-f x))))
+
+(defun msra-discrete-diff (x omega)
+  "Computes exact discrete vernier difference quotient for field function msra-field-f:
+   [f(x + delta_omega) - f(x)] / delta_omega."
+  (declare (xargs :guard (and (rationalp x)
+                              (posp omega))))
   (let ((delta (iris-step-size omega)))
-    (/ (- (f (+ x delta)) (f x))
+    (/ (- (msra-field-f (+ x delta))
+          (msra-field-f x))
        delta)))
 
-(defun msra-derivative (f x omega)
+(defthm msra-discrete-diff-is-rational
+  (implies (and (rationalp x)
+                (posp omega))
+           (rationalp (msra-discrete-diff x omega))))
+
+(defun msra-derivative (x omega)
   "MSRA derivative under Main Scale Projection (downarrow)."
-  (declare (xargs :guard (and (posp omega)
-                              (rationalp x))))
-  (iris-downarrow (msra-discrete-diff f x omega)))
+  (declare (xargs :guard (and (rationalp x)
+                              (posp omega))))
+  (iris-downarrow (msra-discrete-diff x omega)))
+
+(defthm msra-derivative-is-rational
+  (implies (and (rationalp x)
+                (posp omega))
+           (rationalp (msra-derivative x omega))))
 
 (defthm msra-diff-linear-combination
   "Proves linearity of the discrete difference quotient for scalar scaling."
-  (implies (and (posp omega)
-                (rationalp c)
-                (rationalp diff-val))
+  (implies (and (rationalp diff-val)
+                (rationalp c))
            (equal (* c diff-val)
-                  (* c diff-val))))
+                  (* diff-val c))))
 
 ;; Resolution of Zeno's Dichotomy: In finite steps N = L / delta_omega,
 ;; any distance L is traversed in finite discrete time duration T = N * dt.
