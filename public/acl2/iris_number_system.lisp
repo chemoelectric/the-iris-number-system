@@ -178,7 +178,8 @@
   "Constructive Euclidean algorithm with explicit step bound for termination."
   (declare (xargs :guard (and (natp a)
                               (natp b)
-                              (natp steps))))
+                              (natp steps))
+                  :measure (nfix steps)))
   (if (zp steps)
       (nfix a)
     (if (zp b)
