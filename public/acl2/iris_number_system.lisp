@@ -349,12 +349,16 @@
 (defthm minus-times-minus
   (implies (and (rationalp x) (rationalp y))
            (equal (* (- x) (- y))
-                  (* x y))))
+                  (* x y)))
+  :hints (("Goal" :in-theory (enable functional-commutativity-of-minus-*-left
+                                     functional-commutativity-of-minus-*-right
+                                     inverse-of-unary--))))
 
 (defthm minus-times-plus
   (implies (and (rationalp x) (rationalp y))
            (equal (* (- x) y)
-                  (- (* x y)))))
+                  (- (* x y))))
+  :hints (("Goal" :in-theory (enable functional-commutativity-of-minus-*-left))))
 
 ;; 2D Unitary State Vector (alpha, beta) for Grover target vs non-target space
 (defun grover-state-p (st)
@@ -378,7 +382,8 @@
 (defthm grover-oracle-preserves-norm
   (implies (grover-state-p st)
            (equal (grover-norm-sq (grover-target-oracle st))
-                  (grover-norm-sq st))))
+                  (grover-norm-sq st)))
+  :hints (("Goal" :in-theory (enable grover-norm-sq grover-target-oracle grover-state-p))))
 
 ;; Givens Rotation Step: Rotates state by discrete angle theta with cos=c, sin=s (c^2 + s^2 = 1)
 (defun givens-rotate (st c s)
@@ -396,7 +401,8 @@
                 (rationalp s)
                 (equal (+ (* c c) (* s s)) 1))
            (equal (grover-norm-sq (givens-rotate st c s))
-                  (grover-norm-sq st))))
+                  (grover-norm-sq st)))
+  :hints (("Goal" :in-theory (enable grover-norm-sq givens-rotate grover-state-p))))
 
 ;; =========================================================================
 ;; MODULE 6: MASTER FIELD EQUATION (D F = J) & MAXWELL ELECTRODYNAMICS
@@ -545,7 +551,8 @@
                 (rationalp dt)
                 (not (equal dt 0))
                 (equal (force-from-momentum-change mass v1 v2 dt) 0))
-           (equal v1 v2)))
+           (equal v1 v2))
+  :hints (("Goal" :in-theory (enable force-from-momentum-change momentum-state))))
 
 ;; Newton's Second Law: F = m * a where a = (v2 - v1) / dt.
 (defthm newton-second-law-f-equals-ma
@@ -555,7 +562,8 @@
                 (rationalp dt)
                 (not (equal dt 0)))
            (equal (force-from-momentum-change mass v1 v2 dt)
-                  (* mass (/ (- v2 v1) dt)))))
+                  (* mass (/ (- v2 v1) dt))))
+  :hints (("Goal" :in-theory (enable force-from-momentum-change momentum-state))))
 
 ;; Newton's Third Law: Action and reaction forces are equal in magnitude and opposite in sign.
 (defthm newton-third-law-action-reaction
