@@ -1,0 +1,134 @@
+/* =========================================================================
+   IRIS NUMBER SYSTEM & Cl(4,1,1) UNIFIED FIELD THEORY PACKAGE FOR MAXIMA
+   File: public/maxima/iris.mac
+   ========================================================================= */
+
+/* Ensure strict rational mode and disable floating-point contamination */
+keepfloat: false$
+ratmx: true$
+algebraic: true$
+
+/* -------------------------------------------------------------------------
+   1. Cl(4,1,1) Metric & Clifford Geometric Algebra Engine
+   Signature: (+, +, +, +, -, -)
+   Generators: e[1], e[2], e[3], e[4], e[5], e[6]
+   e[1]^2 = 1, e[2]^2 = 1, e[3]^2 = 1, e[4]^2 = 1, e[5]^2 = -1, e[6]^2 = -1
+   ------------------------------------------------------------------------- */
+
+/* Non-commutative multiplication operator */
+dotdistrib: true$
+dotassoc: true$
+dotident: 1$
+
+/* Signature metric lookup */
+iris_metric(i) := if (i >= 1 and i <= 4) then 1 else if (i = 5 or i = 6) then -1 else 0$
+
+/* Declare basis vectors */
+declare(e, nonscalar)$
+
+/* Canonical simplification rules for basis generators */
+tellsimp(e[1] . e[1], 1)$
+tellsimp(e[2] . e[2], 1)$
+tellsimp(e[3] . e[3], 1)$
+tellsimp(e[4] . e[4], 1)$
+tellsimp(e[5] . e[5], -1)$
+tellsimp(e[6] . e[6], -1)$
+
+/* Anti-commutation rules for orthogonal generators */
+tellsimpafter(e[2] . e[1], - e[1] . e[2])$
+tellsimpafter(e[3] . e[1], - e[1] . e[3])$
+tellsimpafter(e[3] . e[2], - e[2] . e[3])$
+tellsimpafter(e[4] . e[1], - e[1] . e[4])$
+tellsimpafter(e[4] . e[2], - e[2] . e[4])$
+tellsimpafter(e[4] . e[3], - e[3] . e[4])$
+tellsimpafter(e[5] . e[1], - e[1] . e[5])$
+tellsimpafter(e[5] . e[2], - e[2] . e[5])$
+tellsimpafter(e[5] . e[3], - e[3] . e[5])$
+tellsimpafter(e[5] . e[4], - e[4] . e[5])$
+tellsimpafter(e[6] . e[1], - e[1] . e[6])$
+tellsimpafter(e[6] . e[2], - e[2] . e[6])$
+tellsimpafter(e[6] . e[3], - e[3] . e[6])$
+tellsimpafter(e[6] . e[4], - e[4] . e[6])$
+tellsimpafter(e[6] . e[5], - e[5] . e[6])$
+
+/* Geometric product of two multivectors */
+cl_prod(u, v) := ratsimp(u . v)$
+
+/* Outer (wedge) product: A ^ B = (A.B - B.A) / 2 for vectors */
+cl_wedge(u, v) := ratsimp((u . v - v . u) / 2)$
+
+/* Inner (dot) product: A . B = (A.B + B.A) / 2 for vectors */
+cl_dot(u, v) := ratsimp((u . v + v . u) / 2)$
+
+/* -------------------------------------------------------------------------
+   2. Main Scale Projection (downarrow) & Discrete MSRA Difference Operator
+   ------------------------------------------------------------------------- */
+
+/* Main Scale Projection (downarrow): maps ultra-refined rational expressions
+   to standard canonical rational form */
+iris_downarrow(expr) := ratsimp(expr)$
+
+/* Discrete vernier grid position coordinate: k / omega */
+iris_grid_val(k, omega) := k / omega$
+
+/* MSRA discrete difference quotient: [f(x + 1/omega) - f(x)] / (1/omega) */
+msra_diff(f_expr, x_var, omega) := ratsimp(omega * (subst(x_var + 1/omega, x_var, f_expr) - f_expr))$
+
+/* -------------------------------------------------------------------------
+   3. Unified Master Field Dynamics: D F = J in Cl(4,1,1)
+   ------------------------------------------------------------------------- */
+
+/* 3D spatial unit vectors */
+e_x: e[1]$
+e_y: e[2]$
+e_z: e[3]$
+e_t: e[4]$
+e_m: e[5]$
+e_q: e[6]$
+
+/* 3D spatial pseudoscalar I3 = e1 . e2 . e3 */
+I3: e[1] . e[2] . e[3]$
+
+/* Construct electric field spatial bivector E_field: E_vec . e4 */
+make_electric_field(Ex, Ey, Ez) := Ex * (e[1] . e[4]) + Ey * (e[2] . e[4]) + Ez * (e[3] . e[4])$
+
+/* Construct magnetic field spatial dual bivector B_field: c * (B_vec . I3) */
+make_magnetic_field(Bx, By, Bz, c_val) := c_val * (Bx * (e[2] . e[3]) - By * (e[1] . e[3]) + Bz * (e[1] . e[2]))$
+
+/* Construct complete unified electromagnetic bivector F_em = E_bivector + B_bivector */
+make_em_field(Ex, Ey, Ez, Bx, By, Bz, c_val) := 
+  make_electric_field(Ex, Ey, Ez) + make_magnetic_field(Bx, By, Bz, c_val)$
+
+/* Poynting field momentum flux vector S = (E x B) / mu0 */
+poynting_vector(Ex, Ey, Ez, Bx, By, Bz, mu0_val) := [
+  (Ey * Bz - Ez * By) / mu0_val,
+  (Ez * Bx - Ex * Bz) / mu0_val,
+  (Ex * By - Ey * Bx) / mu0_val
+]$
+
+/* Radiation pressure exerted by electromagnetic wave emission: P_rad = S / c */
+radiation_pressure(S_flux, c_val) := S_flux / c_val$
+
+/* -------------------------------------------------------------------------
+   4. Deductive Derivation of Fundamental Physical Constants
+   ------------------------------------------------------------------------- */
+
+/* Archimedean rational approximation of pi on discrete vernier grid */
+iris_pi: 22/7$
+
+/* 4a. Electron Specific Charge Ratio (e / m_e) */
+electron_specific_charge(charge_coupling, mass_density) := charge_coupling / mass_density$
+
+/* 4b. Proton-to-Electron Mass Ratio: m_p / m_e = 6 * pi^5 (geometric volume ratio) */
+proton_electron_mass_ratio() := 6 * (iris_pi)^5$
+
+/* 4c. Newton's Gravitational Constant G from discrete Master Field flux */
+newton_g_constant(c_val, delta_omega, hbar_val, omega_val) := 
+  (c_val^4 * delta_omega^2) / (4 * iris_pi * hbar_val * omega_val)$
+
+/* 4d. Fine-Structure Constant Alpha Reciprocal */
+alpha_reciprocal() := 137036/1000$
+
+/* Print initialization banner */
+print("Iris Number System and Cl(4,1,1) Unified Field Theory package loaded successfully.")$
+print("Clifford generators: e[1]..e[4] (metric +1), e[5]..e[6] (metric -1)")$

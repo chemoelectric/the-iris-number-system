@@ -113,6 +113,7 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc # Volume III: Geometry & Algebra (AsciiDoc)
 │   ├── Iris_Number_System-04-Volume_IV_Physics_etc.adoc # Volume IV: Physics, Chemistry, Engineering (AsciiDoc)
 │   ├── acl2/                    # Certified ACL2 formal verification book (iris_number_system.lisp) covering MSRA, Cl(4,1,1), Master Field, Grover quantum walks, antenna radiation pressure & momentum flux, Newton mechanics, MaxEnt statistics, and fundamental physical constant derivations
+│   ├── maxima/                  # Maxima package (iris.mac) for Cl(4,1,1) geometric algebra, MSRA discrete calculus, and field equation derivations
 │   ├── wave_queens_8.adb        # Wave-mechanical 8-queens phase-locking engine in Ada 2022
 │   ├── grover_search_givens/    # Standalone Grover search Ada program using Givens rotations
 │   ├── primality_test/          # Standalone vectorizable D primality engine (Baillie-PSW & Montgomery reduction)

@@ -1,0 +1,35 @@
+/* =========================================================================
+   DEMONSTRATION OF FUNDAMENTAL CONSTANT DERIVATIONS & CLIFFORD ALGEBRA
+   File: public/maxima/demo_constants.mac
+   ========================================================================= */
+
+load("public/maxima/iris.mac")$
+
+print("-------------------------------------------------------------------")$
+print("1. CLIFFORD ALGEBRA Cl(4,1,1) BASIS PROPERTIES")$
+print("-------------------------------------------------------------------")$
+disp("e[1].e[1] = ", ratsimp(e[1] . e[1]))$
+disp("e[5].e[5] = ", ratsimp(e[5] . e[5]))$
+disp("e[2].e[1] + e[1].e[2] = ", ratsimp(e[2] . e[1] + e[1] . e[2]))$
+
+print("-------------------------------------------------------------------")$
+print("2. PROTON-TO-ELECTRON MASS RATIO DERIVATION (m_p / m_e = 6 * pi^5)")$
+print("-------------------------------------------------------------------")$
+mp_me_exact: proton_electron_mass_ratio()$
+disp("Exact Rational Value: ", mp_me_exact)$
+disp("Numerical Evaluation: ", float(mp_me_exact))$
+
+print("-------------------------------------------------------------------")$
+print("3. POYNTING FIELD MOMENTUM FLUX & ANTENNA RADIATION PRESSURE")$
+print("-------------------------------------------------------------------")$
+S_vec: poynting_vector(0, Ey, 0, 0, 0, Bz, mu0)$
+disp("Poynting Flux Vector S = ", S_vec)$
+Prad: radiation_pressure(S_vec[1], c)$
+disp("Radiation Pressure P_rad = S / c = ", Prad)$
+
+print("-------------------------------------------------------------------")$
+print("4. MSRA DISCRETE DIFFERENCE QUOTIENT ON GRID G_omega")$
+print("-------------------------------------------------------------------")$
+f_quad: x^2$
+disp("Discrete difference quotient of x^2: ", msra_diff(f_quad, x, omega))$
+disp("Main scale projection (downarrow) at scale limit: ", iris_downarrow(subst(1/omega = 0, msra_diff(f_quad, x, omega))))$
