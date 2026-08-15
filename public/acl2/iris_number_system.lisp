@@ -179,6 +179,7 @@
   (declare (xargs :guard (and (natp a)
                               (natp b)
                               (natp steps))
+                  :verify-guards nil
                   :measure (nfix steps)))
   (if (zp steps)
       (nfix a)
