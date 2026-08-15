@@ -531,6 +531,32 @@
            (vec3-p (poynting-vector e-field b-field mu0)))
   :hints (("Goal" :in-theory (enable poynting-vector vec3-cross vec3-p))))
 
+;; Antenna Radiation Pressure & Field Momentum Transfer:
+;; Radiation pressure P_rad = S / c = (E * B) / (mu0 * c) = u_em > 0 for non-zero radiating fields.
+(defun antenna-radiation-pressure (poynting-flux c-speed)
+  "Computes radiation pressure exerted by electromagnetic wave emission: P_rad = S / c."
+  (declare (xargs :guard (and (rationalp poynting-flux)
+                              (rationalp c-speed)
+                              (not (equal c-speed 0)))))
+  (/ poynting-flux c-speed))
+
+(defthm antenna-radiation-pressure-strictly-positive
+  (implies (and (rationalp s-flux)
+                (> s-flux 0)
+                (rationalp c-speed)
+                (> c-speed 0))
+           (> (antenna-radiation-pressure s-flux c-speed) 0))
+  :hints (("Goal" :in-theory (enable antenna-radiation-pressure))))
+
+;; Proves that radiating antenna field momentum flux delivers net mechanical thrust/pressure
+(defthm antenna-radiation-exerts-pressure
+  (implies (and (rationalp s-flux)
+                (rationalp c-speed)
+                (not (equal c-speed 0))
+                (not (equal s-flux 0)))
+           (not (equal (antenna-radiation-pressure s-flux c-speed) 0)))
+  :hints (("Goal" :in-theory (enable antenna-radiation-pressure))))
+
 ;; Newton's Laws of Motion Derived from Momentum Exchange:
 (defun momentum-state (mass vel)
   "Discrete linear momentum p = m * v."
