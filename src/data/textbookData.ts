@@ -2286,6 +2286,8 @@ export const BIBLIOGRAPHY_TEXTBOOK: Textbook = {
   id: "volume-0-bibliography",
   title: "The Iris Number System: Annotated Bibliography and Epistemological Foundations",
   subtitle: "Annotated Bibliography & Epistemology",
+  version: "1.0.0",
+  lastUpdated: "2026-08-14",
   author: "Frédéric Blondin Custer",
   description: "Comprehensive annotated bibliography and epistemological roadmap for the Iris Number System. Details foundational works in mathematical philosophy, constructive analysis, Bayesian inference, and lateral thinking.",
   chapters: [

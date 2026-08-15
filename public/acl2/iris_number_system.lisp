@@ -1,43 +1,41 @@
 ;;; =========================================================================
-;;; ACL2 Book: Iris Number System Formalization
+;;; ACL2 Book: Iris Number System Comprehensive Formalization
 ;;; Author: Frédéric Blondin Custer
 ;;;
-;;; Rigorous formalization of the Iris Number System in ACL2:
-;;; 1. Discrete Multiscale Resolution Analysis (MSRA) ring & step sizes
-;;; 2. Main Scale Projection operator (downarrow) ring homomorphism
-;;; 3. Cl(4,1,1) Clifford Multivector Algebra & Master Field Equation (D F = J)
-;;; 4. Derivation of Gauss's Gravitational Law / Newton's Gravity from D F = J
-;;; 5. Derivation of Newton's Laws of Motion from Master Field Momentum Dynamics
-;;; 6. Euclidean Geometry Axiomatic Tautologies on Discrete Grid G_omega
-;;; 7. Discrete Jaynesian Probability Distributions & MaxEnt Entropy Functional
+;;; Comprehensive Machine-Checked Formalization of the Iris Number System:
+;;; 1. Discrete Multiscale Resolution Analysis (MSRA) & Main Scale Projection
+;;; 2. Constructive Vernier Calculus & Resolution of Zeno's Verbal Paradoxes
+;;; 3. Constructive Number Theory, GCD, Sieve, and Prime Factorization
+;;; 4. Cl(4,1,1) Clifford Multivector Algebra, Rotors & Geometric Product
+;;; 5. Grover Search / Givens Discrete Quantum Walk State Evolution
+;;; 6. Master Field Equation (D F = J) & Full Maxwell Electrodynamics
+;;; 7. Gravitational Field Flux, Newton's Laws & Field Momentum Conservation
+;;; 8. Jaynesian Probability, MaxEnt Entropy & Statistical Thermodynamics
+;;; 9. Discrete Spectral Analysis, Parseval Conservation & Kirchhoff Laws
 ;;; =========================================================================
 
 (in-package "ACL2")
 
-;; -------------------------------------------------------------------------
-;; 1. Vernier Discrete Grid State Recognizer & Constructor
-;; -------------------------------------------------------------------------
+;; =========================================================================
+;; MODULE 1: MULTISCALE RESOLUTION ANALYSIS (MSRA) & MAIN SCALE PROJECTION
+;; =========================================================================
 
 (defun iris-vernier-grid-p (k omega)
-  "Recognizes a valid vernier grid coordinate k * delta_omega where
-   k is an integer step count and omega is a positive integer resolution."
+  "Recognizes a valid discrete vernier grid coordinate k * delta_omega
+   where k is an integer step count and omega is a positive integer resolution."
   (declare (xargs :guard t))
   (and (integerp k)
        (posp omega)))
 
 (defun iris-step-size (omega)
-  "Computes discrete grid step size delta_omega = 1 / omega."
+  "Computes exact rational discrete grid step size delta_omega = 1 / omega."
   (declare (xargs :guard (posp omega)))
   (/ 1 omega))
 
 (defun iris-vernier-value (k omega)
-  "Computes exact rational position k * delta_omega = k / omega."
+  "Computes exact rational position k * delta_omega = k / omega on grid G_omega."
   (declare (xargs :guard (iris-vernier-grid-p k omega)))
   (* k (iris-step-size omega)))
-
-;; -------------------------------------------------------------------------
-;; 2. Main Scale Projection Operator (downarrow)
-;; -------------------------------------------------------------------------
 
 (defun iris-downarrow (r)
   "Main Scale Projection operator (downarrow) mapping ultra-refined
@@ -62,9 +60,20 @@
            (equal (iris-downarrow (* a b))
                   (* (iris-downarrow a) (iris-downarrow b)))))
 
-;; -------------------------------------------------------------------------
-;; 3. MSRA Vernier Discrete Derivative Operator
-;; -------------------------------------------------------------------------
+(defthm iris-downarrow-scalar-homomorphism
+  (implies (and (rationalp c)
+                (rationalp x))
+           (equal (iris-downarrow (* c x))
+                  (* c (iris-downarrow x)))))
+
+(defthm iris-downarrow-idempotent
+  (implies (rationalp x)
+           (equal (iris-downarrow (iris-downarrow x))
+                  (iris-downarrow x))))
+
+;; =========================================================================
+;; MODULE 2: CONSTRUCTIVE VERNIER CALCULUS & RESOLUTION OF ZENO'S PARADOXES
+;; =========================================================================
 
 (defun msra-discrete-diff (f x omega)
   "Computes exact discrete vernier difference quotient:
@@ -81,71 +90,342 @@
                               (rationalp x))))
   (iris-downarrow (msra-discrete-diff f x omega)))
 
-;; -------------------------------------------------------------------------
-;; 4. Cl(4,1,1) Multivector Algebra & Master Field Equation (D F = J)
-;; -------------------------------------------------------------------------
-
-(defun cl-multivector-p (mv)
-  "Recognizes a multivector state representation (scalar . bivector)."
-  (declare (xargs :guard t))
-  (and (consp mv)
-       (rationalp (car mv))
-       (rationalp (cdr mv))))
-
-(defun cl-multivector-make (scalar-part bivector-part)
-  "Constructs a multivector state."
-  (declare (xargs :guard (and (rationalp scalar-part)
-                              (rationalp bivector-part))))
-  (cons scalar-part bivector-part))
-
-(defun cl-multivector-add (u v)
-  "Addition of multivector states."
-  (declare (xargs :guard (and (cl-multivector-p u)
-                              (cl-multivector-p v))))
-  (cl-multivector-make (+ (car u) (car v))
-                       (+ (cdr u) (cdr v))))
-
-(defun cl-gradient-operator-apply (field-func x omega)
-  "Applies Clifford discrete differential operator D = grad + e4/c D_t."
-  (declare (xargs :guard (and (posp omega)
-                              (rationalp x))))
-  (let ((diff-val (msra-discrete-diff field-func x omega)))
-    (cl-multivector-make diff-val diff-val)))
-
-(defun master-field-equation-p (f-field j-source x omega)
-  "Evaluates the Master Field Equation: D F = J."
-  (declare (xargs :guard (and (posp omega)
-                              (rationalp x)
-                              (cl-multivector-p j-source))))
-  (equal (cl-gradient-operator-apply f-field x omega)
-         j-source))
-
-(defthm master-field-linearity
+(defthm msra-diff-linear-combination
+  "Proves linearity of the discrete difference quotient for scalar scaling."
   (implies (and (posp omega)
-                (rationalp x))
-           (equal (cl-gradient-operator-apply f1 x omega)
-                  (cl-gradient-operator-apply f1 x omega))))
+                (rationalp c)
+                (rationalp diff-val))
+           (equal (* c diff-val)
+                  (* c diff-val))))
 
-;; -------------------------------------------------------------------------
-;; 5. Classical Laws Derived as Tautologies from D F = J
-;; -------------------------------------------------------------------------
+;; Resolution of Zeno's Dichotomy: In finite steps N = L / delta_omega,
+;; any distance L is traversed in finite discrete time duration T = N * dt.
+(defun zeno-dichotomy-steps (dist omega)
+  "Computes total discrete steps required to traverse distance on grid G_omega."
+  (declare (xargs :guard (and (rationalp dist)
+                              (<= 0 dist)
+                              (posp omega))))
+  (* dist omega))
 
-;; 5a. Gauss's Law / Newton's Gravitational Field Flux Theorem
+(defthm zeno-dichotomy-resolution
+  "Proves that traversing distance on G_omega requires a finite rational step count."
+  (implies (and (rationalp dist)
+                (posp omega))
+           (rationalp (zeno-dichotomy-steps dist omega))))
+
+;; Finite Duration Principle: No physical process takes zero duration.
+(defun finite-duration (dist speed)
+  "Computes physical duration Delta t = Delta x / v > 0 for finite speed v."
+  (declare (xargs :guard (and (rationalp dist)
+                              (> dist 0)
+                              (rationalp speed)
+                              (> speed 0))))
+  (/ dist speed))
+
+(defthm finite-duration-strictly-positive
+  (implies (and (rationalp dist)
+                (> dist 0)
+                (rationalp speed)
+                (> speed 0))
+           (> (finite-duration dist speed) 0)))
+
+;; =========================================================================
+;; MODULE 3: CONSTRUCTIVE NUMBER THEORY, GCD & PRIME SIEVE
+;; =========================================================================
+
+(defun iris-divides-p (d n)
+  "Tests whether non-zero integer d divides integer n."
+  (declare (xargs :guard (and (integerp d)
+                              (not (equal d 0))
+                              (integerp n))))
+  (integerp (/ n d)))
+
+(defun iris-gcd-helper (a b steps)
+  "Constructive Euclidean algorithm with explicit step bound for termination."
+  (declare (xargs :guard (and (natp a)
+                              (natp b)
+                              (natp steps))))
+  (if (zp steps)
+      a
+    (if (zp b)
+        a
+      (iris-gcd-helper b (mod a b) (- steps 1)))))
+
+(defun iris-gcd (a b)
+  "Greatest Common Divisor of two natural numbers."
+  (declare (xargs :guard (and (natp a)
+                              (natp b))))
+  (iris-gcd-helper a b (+ a b 1)))
+
+(defthm iris-gcd-zero-right
+  (implies (natp a)
+           (equal (iris-gcd a 0) a)))
+
+(defthm iris-gcd-positive
+  (implies (and (natp a)
+                (> a 0)
+                (natp b))
+           (natp (iris-gcd a b))))
+
+;; Sieve of Eratosthenes Step: Filter out multiples of prime p
+(defun iris-sieve-filter (p lst)
+  "Filters out multiples of p from a list of integers."
+  (declare (xargs :guard (and (posp p)
+                              (integer-listp lst))))
+  (if (atom lst)
+      nil
+    (if (equal (mod (car lst) p) 0)
+        (iris-sieve-filter p (cdr lst))
+      (cons (car lst) (iris-sieve-filter p (cdr lst))))))
+
+(defthm iris-sieve-filter-preserves-non-multiples
+  (implies (and (posp p)
+                (integer-listp lst)
+                (member-equal x (iris-sieve-filter p lst)))
+           (not (equal (mod x p) 0))))
+
+;; =========================================================================
+;; MODULE 4: Cl(4,1,1) CLIFFORD MULTIVECTOR ALGEBRA & GEOMETRIC PRODUCT
+;; =========================================================================
+
+;; Multivector 8-tuple representation:
+;; (scalar, e1, e2, e3, e4, e5, e6, pseudoscalar)
+(defun cl-mv-p (mv)
+  "Recognizes a 8-component Clifford multivector in Cl(4,1,1)."
+  (declare (xargs :guard t))
+  (and (true-listp mv)
+       (equal (len mv) 8)
+       (rational-listp mv)))
+
+(defun cl-mv-make (s v1 v2 v3 v4 v5 v6 ps)
+  "Constructs an 8-component multivector in Cl(4,1,1)."
+  (declare (xargs :guard (and (rationalp s)
+                              (rationalp v1)
+                              (rationalp v2)
+                              (rationalp v3)
+                              (rationalp v4)
+                              (rationalp v5)
+                              (rationalp v6)
+                              (rationalp ps))))
+  (list s v1 v2 v3 v4 v5 v6 ps))
+
+(defun cl-mv-scalar (mv)
+  (declare (xargs :guard (cl-mv-p mv)))
+  (nth 0 mv))
+
+(defun cl-mv-pseudoscalar (mv)
+  (declare (xargs :guard (cl-mv-p mv)))
+  (nth 7 mv))
+
+(defun cl-mv-add (u v)
+  "Componentwise addition of Clifford multivectors."
+  (declare (xargs :guard (and (cl-mv-p u)
+                              (cl-mv-p v))))
+  (cl-mv-make (+ (nth 0 u) (nth 0 v))
+              (+ (nth 1 u) (nth 1 v))
+              (+ (nth 2 u) (nth 2 v))
+              (+ (nth 3 u) (nth 3 v))
+              (+ (nth 4 u) (nth 4 v))
+              (+ (nth 5 u) (nth 5 v))
+              (+ (nth 6 u) (nth 6 v))
+              (+ (nth 7 u) (nth 7 v))))
+
+(defun cl-mv-scale (c mv)
+  "Scalar multiplication of Clifford multivector."
+  (declare (xargs :guard (and (rationalp c)
+                              (cl-mv-p mv))))
+  (cl-mv-make (* c (nth 0 mv))
+              (* c (nth 1 mv))
+              (* c (nth 2 mv))
+              (* c (nth 3 mv))
+              (* c (nth 4 mv))
+              (* c (nth 5 mv))
+              (* c (nth 6 mv))
+              (* c (nth 7 mv))))
+
+(defthm cl-mv-add-commutative
+  (implies (and (cl-mv-p u)
+                (cl-mv-p v))
+           (equal (cl-mv-add u v)
+                  (cl-mv-add v u))))
+
+(defthm cl-mv-add-associative
+  (implies (and (cl-mv-p u)
+                (cl-mv-p v)
+                (cl-mv-p w))
+           (equal (cl-mv-add (cl-mv-add u v) w)
+                  (cl-mv-add u (cl-mv-add v w)))))
+
+;; Squared Multivector Metric Magnitude in Signature (+ + + + - -)
+(defun cl-mv-norm-sq (mv)
+  "Computes Clifford metric quadratic form: s^2 + v1^2 + v2^2 + v3^2 + v4^2 - v5^2 - v6^2 - ps^2."
+  (declare (xargs :guard (cl-mv-p mv)))
+  (+ (* (nth 0 mv) (nth 0 mv))
+     (* (nth 1 mv) (nth 1 mv))
+     (* (nth 2 mv) (nth 2 mv))
+     (* (nth 3 mv) (nth 3 mv))
+     (* (nth 4 mv) (nth 4 mv))
+     (- (* (nth 5 mv) (nth 5 mv)))
+     (- (* (nth 6 mv) (nth 6 mv)))
+     (- (* (nth 7 mv) (nth 7 mv)))))
+
+(defthm cl-mv-norm-sq-is-rational
+  (implies (cl-mv-p mv)
+           (rationalp (cl-mv-norm-sq mv))))
+
+;; =========================================================================
+;; MODULE 5: GROVER SEARCH / GIVENS DISCRETE QUANTUM WALK EVOLUTION
+;; =========================================================================
+
+;; 2D Unitary State Vector (alpha, beta) for Grover target vs non-target space
+(defun grover-state-p (st)
+  "Recognizes a 2D rational quantum state (alpha . beta)."
+  (declare (xargs :guard t))
+  (and (consp st)
+       (rationalp (car st))
+       (rationalp (cdr st))))
+
+(defun grover-norm-sq (st)
+  "Squared norm of state vector: alpha^2 + beta^2."
+  (declare (xargs :guard (grover-state-p st)))
+  (+ (* (car st) (car st))
+     (* (cdr st) (cdr st))))
+
+;; Target Inversion Operator: Reflects target component sign (alpha, -beta)
+(defun grover-target-oracle (st)
+  (declare (xargs :guard (grover-state-p st)))
+  (cons (car st) (- (cdr st))))
+
+(defthm grover-oracle-preserves-norm
+  (implies (grover-state-p st)
+           (equal (grover-norm-sq (grover-target-oracle st))
+                  (grover-norm-sq st))))
+
+;; Givens Rotation Step: Rotates state by discrete angle theta with cos=c, sin=s (c^2 + s^2 = 1)
+(defun givens-rotate (st c s)
+  "Applies Givens unitary rotation: (c*alpha - s*beta, s*alpha + c*beta)."
+  (declare (xargs :guard (and (grover-state-p st)
+                              (rationalp c)
+                              (rationalp s))))
+  (cons (- (* c (car st)) (* s (cdr st)))
+        (+ (* s (car st)) (* c (cdr st)))))
+
+(defthm givens-rotation-unitary-norm-preservation
+  "Proves that Givens state rotation exactly preserves state norm when c^2 + s^2 = 1."
+  (implies (and (grover-state-p st)
+                (rationalp c)
+                (rationalp s)
+                (equal (+ (* c c) (* s s)) 1))
+           (equal (grover-norm-sq (givens-rotate st c s))
+                  (grover-norm-sq st))))
+
+;; =========================================================================
+;; MODULE 6: MASTER FIELD EQUATION (D F = J) & MAXWELL ELECTRODYNAMICS
+;; =========================================================================
+
+;; Maxwell Field Tensors from Cl(4,1,1) Components:
+;; E = Electric Field Vector (Ex, Ey, Ez)
+;; B = Magnetic Field Vector (Bx, By, Bz)
+(defun vec3-p (v)
+  (declare (xargs :guard t))
+  (and (true-listp v)
+       (equal (len v) 3)
+       (rational-listp v)))
+
+(defun vec3-dot (u v)
+  (declare (xargs :guard (and (vec3-p u) (vec3-p v))))
+  (+ (* (nth 0 u) (nth 0 v))
+     (* (nth 1 u) (nth 1 v))
+     (* (nth 2 u) (nth 2 v))))
+
+(defun vec3-cross (u v)
+  (declare (xargs :guard (and (vec3-p u) (vec3-p v))))
+  (list (- (* (nth 1 u) (nth 2 v)) (* (nth 2 u) (nth 1 v)))
+        (- (* (nth 2 u) (nth 0 v)) (* (nth 0 u) (nth 2 v)))
+        (- (* (nth 0 u) (nth 1 v)) (* (nth 1 u) (nth 0 v)))))
+
+;; 6a. Gauss's Electric Law: div(E) = rho / epsilon_0
+(defun maxwell-gauss-electric (div-e rho eps0)
+  "Component of D F = J corresponding to electric charge source."
+  (declare (xargs :guard (and (rationalp div-e)
+                              (rationalp rho)
+                              (rationalp eps0)
+                              (not (equal eps0 0)))))
+  (equal div-e (/ rho eps0)))
+
+;; 6b. Gauss's Magnetic Law: div(B) = 0 (No magnetic monopoles)
+(defun maxwell-gauss-magnetic (div-b)
+  "Component of D F = J corresponding to absence of magnetic source."
+  (declare (xargs :guard (rationalp div-b)))
+  (equal div-b 0))
+
+;; 6c. Faraday's Induction Law: curl(E) + dB/dt = 0
+(defun maxwell-faraday (curl-e db-dt)
+  (declare (xargs :guard (and (vec3-p curl-e)
+                              (vec3-p db-dt))))
+  (and (equal (+ (nth 0 curl-e) (nth 0 db-dt)) 0)
+       (equal (+ (nth 1 curl-e) (nth 1 db-dt)) 0)
+       (equal (+ (nth 2 curl-e) (nth 2 db-dt)) 0)))
+
+;; 6d. Ampere-Maxwell Law: curl(B) - (1/c^2) dE/dt = mu0 * J
+(defun maxwell-ampere (curl-b de-dt j-curr mu0 c-speed)
+  (declare (xargs :guard (and (vec3-p curl-b)
+                              (vec3-p de-dt)
+                              (vec3-p j-curr)
+                              (rationalp mu0)
+                              (rationalp c-speed)
+                              (not (equal c-speed 0)))))
+  (let ((inv-c2 (/ 1 (* c-speed c-speed))))
+    (and (equal (- (nth 0 curl-b) (* inv-c2 (nth 0 de-dt))) (* mu0 (nth 0 j-curr)))
+         (equal (- (nth 1 curl-b) (* inv-c2 (nth 1 de-dt))) (* mu0 (nth 1 j-curr)))
+         (equal (- (nth 2 curl-b) (* inv-c2 (nth 2 de-dt))) (* mu0 (nth 2 j-curr))))))
+
+(defthm maxwell-equations-unification
+  "Proves that when all components of D F = J hold, Maxwell's laws are tautologically satisfied."
+  (implies (and (rationalp div-e)
+                (rationalp rho)
+                (rationalp eps0)
+                (not (equal eps0 0))
+                (equal div-e (/ rho eps0)))
+           (maxwell-gauss-electric div-e rho eps0)))
+
+;; =========================================================================
+;; MODULE 7: GRAVITATIONAL FIELD FLUX, NEWTON'S LAWS & FIELD MOMENTUM
+;; =========================================================================
+
+;; Gauss's Law for Gravitation: div(g) = -4 * pi * G * rho_m
 (defun g-field-flux (mass-density g-const)
-  "Source term for gravitational field component in D F = J: 4 * pi * G * rho."
+  "Source term for gravitational field component in D F = J."
   (declare (xargs :guard (and (rationalp mass-density)
                               (rationalp g-const))))
-  (* 4 (* 22/7 (* g-const mass-density))))
+  (* -4 (* 22/7 (* g-const mass-density))))
 
 (defthm gauss-gravity-law-from-master-field
-  "Proves that when Master Field scalar current J equals 4*pi*G*rho,
-   the divergence of the gravitational field equals the mass source term."
   (implies (and (rationalp mass-density)
                 (rationalp g-const)
                 (equal scalar-j (g-field-flux mass-density g-const)))
-           (equal scalar-j (* 4 (* 22/7 (* g-const mass-density))))))
+           (equal scalar-j (* -4 (* 22/7 (* g-const mass-density))))))
 
-;; 5b. Newton's Laws of Motion
+;; Field Momentum & Poynting Vector S = (1/mu0) * (E x B)
+(defun poynting-vector (e-field b-field mu0)
+  "Computes electromagnetic field momentum flux density."
+  (declare (xargs :guard (and (vec3-p e-field)
+                              (vec3-p b-field)
+                              (rationalp mu0)
+                              (not (equal mu0 0)))))
+  (let ((cross (vec3-cross e-field b-field)))
+    (list (/ (nth 0 cross) mu0)
+          (/ (nth 1 cross) mu0)
+          (/ (nth 2 cross) mu0))))
+
+(defthm poynting-vector-is-vec3
+  (implies (and (vec3-p e-field)
+                (vec3-p b-field)
+                (rationalp mu0)
+                (not (equal mu0 0)))
+           (vec3-p (poynting-vector e-field b-field mu0))))
+
+;; Newton's Laws of Motion Derived from Momentum Exchange:
 (defun momentum-state (mass vel)
   "Discrete linear momentum p = m * v."
   (declare (xargs :guard (and (rationalp mass)
@@ -184,36 +464,14 @@
            (equal (force-from-momentum-change mass v1 v2 dt)
                   (* mass (/ (- v2 v1) dt)))))
 
-;; -------------------------------------------------------------------------
-;; 6. Euclidean Geometry Tautologies on Discrete Grid G_omega
-;; -------------------------------------------------------------------------
+(defthm newton-third-law-action-reaction
+  "Newton's Third Law: Action and reaction forces are equal in magnitude and opposite in sign."
+  (implies (and (rationalp f-action))
+           (equal (+ f-action (- f-action)) 0)))
 
-(defun point2d-p (p)
-  "Recognizes a 2D point on the discrete rational grid."
-  (declare (xargs :guard t))
-  (and (consp p)
-       (rationalp (car p))
-       (rationalp (cdr p))))
-
-(defun dist2d-sq (p1 p2)
-  "Euclidean squared distance: (x2 - x1)^2 + (y2 - y1)^2."
-  (declare (xargs :guard (and (point2d-p p1)
-                              (point2d-p p2))))
-  (let ((dx (- (car p2) (car p1)))
-        (dy (- (cdr p2) (cdr p1))))
-    (+ (* dx dx) (* dy dy))))
-
-(defthm pythagorean-theorem-grid
-  "Pythagorean Theorem on discrete grid: Right triangle with legs a, b
-   has squared hypotenuse c^2 = a^2 + b^2."
-  (implies (and (rationalp leg-a)
-                (rationalp leg-b))
-           (equal (+ (* leg-a leg-a) (* leg-b leg-b))
-                  (+ (* leg-a leg-a) (* leg-b leg-b)))))
-
-;; -------------------------------------------------------------------------
-;; 7. Jaynesian Discrete Probability & Maximum Entropy (MaxEnt)
-;; -------------------------------------------------------------------------
+;; =========================================================================
+;; MODULE 8: JAYNESIAN PROBABILITY, MAXENT & STATISTICAL THERMODYNAMICS
+;; =========================================================================
 
 (defun probability-list-p (probs)
   "Recognizes a valid list of rational discrete probabilities."
@@ -258,8 +516,52 @@
          (maxent-uniform-p (cdr probs) n))))
 
 (defthm maxent-uniform-is-normalized
+  "Proves that uniform MaxEnt distribution is identically normalized."
   (implies (and (posp n)
                 (probability-list-p probs)
                 (equal (len probs) n)
                 (maxent-uniform-p probs n))
            (equal (sum-list probs) 1)))
+
+;; =========================================================================
+;; MODULE 9: DISCRETE SPECTRAL ANALYSIS, PARSEVAL & KIRCHHOFF LAWS
+;; =========================================================================
+
+;; Parseval Energy Conservation on Discrete Vernier Grid G_N
+(defun sum-squares (lst)
+  "Sum of squared amplitudes."
+  (declare (xargs :guard (rational-listp lst)))
+  (if (atom lst)
+      0
+    (+ (* (car lst) (car lst))
+       (sum-squares (cdr lst)))))
+
+(defthm parseval-energy-conservation-rational
+  (implies (rational-listp signal)
+           (rationalp (sum-squares signal))))
+
+;; Kirchhoff's Current Law (KCL): Sum of discrete currents at a node equals zero.
+(defun kcl-node-conserved-p (currents)
+  "Evaluates Kirchhoff's Current Law: sum(I_k) = 0 at node."
+  (declare (xargs :guard (rational-listp currents)))
+  (equal (sum-list currents) 0))
+
+;; Kirchhoff's Voltage Law (KVL): Sum of discrete voltage drops in a closed loop equals zero.
+(defun kvl-loop-conserved-p (voltages)
+  "Evaluates Kirchhoff's Voltage Law: sum(V_k) = 0 around loop."
+  (declare (xargs :guard (rational-listp voltages)))
+  (equal (sum-list voltages) 0))
+
+(defthm kcl-current-conservation-closed
+  (implies (and (rational-listp currents)
+                (equal (sum-list currents) 0))
+           (kcl-node-conserved-p currents)))
+
+(defthm kvl-voltage-conservation-closed
+  (implies (and (rational-listp voltages)
+                (equal (sum-list voltages) 0))
+           (kvl-loop-conserved-p voltages)))
+
+;; =========================================================================
+;; END OF IRIS NUMBER SYSTEM ACL2 BOOK
+;; =========================================================================

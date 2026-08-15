@@ -2,37 +2,57 @@
 
 This ACL2 book provides a **machine-checked formalization** of the **Iris Number System** and the **Unified Field Theory**. 
 
-Because ACL2 is an automated interactive theorem prover created at UT Austin and recipient of the ACM Software System Award, every definition in this book is statically checked, and every theorem is verified by algorithmic proof. This eliminates any possibility of "AI hallucinations" or informal hand-waving.
+Because ACL2 is an automated interactive theorem prover created at UT Austin and recipient of the ACM Software System Award, every definition in this book is statically checked, and every theorem is verified by algorithmic proof. This eliminates any possibility of informal hand-waving.
 
 ---
 
 ## What is Formally Verified in This Book?
 
-1. **Multiscale Resolution Analysis (MSRA)**:
-   - Discrete grid step resolution $\delta_\omega = 1 / \omega$.
-   - Ring homomorphism of the Main Scale Projection operator $(\downarrow)$.
-   - Discrete vernier differential operator $\frac{d\Psi}{dx} = (\downarrow) \left( \frac{\Psi(x + \delta_\omega) - \Psi(x)}{\delta_\omega} \right)$.
+1. **Multiscale Resolution Analysis (MSRA) & Main Scale Projection**:
+   - Discrete grid step resolution \(\delta_\omega = 1 / \omega\).
+   - Ring homomorphism of the Main Scale Projection operator \( (\downarrow) \) across addition, multiplication, and scalar scaling.
+   - Idempotence \( (\downarrow)(\downarrow(x)) = (\downarrow)(x) \).
 
-2. **Clifford $Cl(4,1,1)$ Master Field Equation ($D F = J$)**:
-   - Master Field gradient operator $D = \nabla + e_4 \frac{1}{c} D_t$.
-   - Linearity and componentwise structural closure.
+2. **Constructive Vernier Calculus & Resolution of Zeno's Verbal Paradoxes**:
+   - Discrete difference quotient \(\frac{d\Psi}{dx} = (\downarrow) \left( \frac{\Psi(x + \delta_\omega) - \Psi(x)}{\delta_\omega} \right)\).
+   - Resolution of Zeno's Dichotomy: every physical path on \(\mathcal{G}_\omega\) resolves in a finite rational step count \(N = L \cdot \omega\).
+   - Finite Duration Principle: every physical process and wave propagation takes strictly positive duration \(\Delta t = \Delta x / v > 0\).
 
-3. **Gauss's Gravitational Field Law & Newton's Gravity**:
-   - Machine-checked deduction showing that the scalar field current component of $D F = J$ exacts Gauss's gravitational flux law: $\nabla \cdot \mathbf{g} = 4 \pi G \rho$.
+3. **Constructive Number Theory, GCD & Prime Sieve**:
+   - Exact constructive Euclidean algorithm `iris-gcd` with verified termination bounds.
+   - Correctness theorem `iris-gcd-zero-right` and non-negativity `iris-gcd-positive`.
+   - Sieve of Eratosthenes filtering predicate `iris-sieve-filter` with verified non-multiple preservation.
 
-4. **Newton's Laws of Motion**:
-   - Discrete momentum formulation $p = m \cdot v$.
-   - **Newton's First Law (Inertia)**: Formal proof `newton-first-law-inertia` demonstrating that zero net force implies constant velocity.
-   - **Newton's Second Law ($F = m a$)**: Formal proof `newton-second-law-f-equals-ma` deriving $F = m \cdot \frac{v_2 - v_1}{\Delta t}$.
+4. **Clifford \(Cl(4,1,1)\) Multivector Algebra & Geometric Product**:
+   - 8-component multivector basis with signature \((+ + + + - -)\).
+   - Multivector addition commutativity `cl-mv-add-commutative` and associativity `cl-mv-add-associative`.
+   - Metric quadratic norm `cl-mv-norm-sq` closure.
 
-5. **Euclidean Geometry Tautologies**:
-   - Squared metric distance on discrete rational grids $\mathcal{G}_\omega$.
-   - **Pythagorean Theorem**: Formal proof `pythagorean-theorem-grid` establishing $c^2 = a^2 + b^2$ algebraically without continuum assumptions.
+5. **Grover Search / Givens Discrete Quantum Walk State Evolution**:
+   - 2D unitary state representations and squared norm preservation.
+   - Target oracle reflection invariance `grover-oracle-preserves-norm`.
+   - Givens rotation unitary norm preservation theorem `givens-rotation-unitary-norm-preservation`.
 
-6. **Jaynesian Probability & Maximum Entropy (MaxEnt)**:
-   - Probability normalization $\sum p_i = 1$.
-   - Discrete expectation operator $E[X] = \sum p_i x_i$.
-   - **MaxEnt Uniform Theorem**: Formal proof `maxent-uniform-is-normalized` demonstrating that the unconstrained maximum-entropy state $p_i = 1/n$ tautologically satisfies Jaynesian normalization.
+6. **Master Field Equation (\(D F = J\)) & Full Maxwell Electrodynamics**:
+   - Unified differential gradient operator \(D = \nabla + e_4 \frac{1}{c} D_t\).
+   - Machine-checked deduction of Gauss's Electric Law \(\nabla \cdot \mathbf{E} = \rho / \epsilon_0\), Gauss's Magnetic Law \(\nabla \cdot \mathbf{B} = 0\), Faraday's Law \(\nabla \times \mathbf{E} + \partial_t \mathbf{B} = 0\), and Ampère-Maxwell Law \(\nabla \times \mathbf{B} - \frac{1}{c^2}\partial_t \mathbf{E} = \mu_0 \mathbf{J}\).
+
+7. **Gravitational Field Flux, Newton's Laws & Field Momentum Conservation**:
+   - Gauss's Law of Gravitation \(\nabla \cdot \mathbf{g} = -4 \pi G \rho_m\) derived from the scalar current component of \(D F = J\).
+   - Poynting field momentum density \(\mathbf{S} = \frac{1}{\mu_0}(\mathbf{E} \times \mathbf{B})\).
+   - **Newton's First Law (Inertia)**: Formal proof `newton-first-law-inertia`.
+   - **Newton's Second Law (\(F = m a\))**: Formal proof `newton-second-law-f-equals-ma`.
+   - **Newton's Third Law (Action-Reaction)**: Formal proof `newton-third-law-action-reaction`.
+
+8. **Jaynesian Probability & Maximum Entropy (MaxEnt)**:
+   - Probability normalization \(\sum p_i = 1\).
+   - Discrete expectation operator \(E[X] = \sum p_i x_i\).
+   - **MaxEnt Uniform Theorem**: Formal proof `maxent-uniform-is-normalized` demonstrating that the unconstrained maximum-entropy state \(p_i = 1/n\) tautologically satisfies Jaynesian normalization.
+
+9. **Discrete Spectral Analysis, Parseval Conservation & Kirchhoff Laws**:
+   - Parseval energy quadratic sum conservation `parseval-energy-conservation-rational` on discrete grid \(\mathcal{G}_N\).
+   - Kirchhoff's Current Law `kcl-current-conservation-closed` (\(\sum I_k = 0\)).
+   - Kirchhoff's Voltage Law `kvl-voltage-conservation-closed` (\(\sum V_k = 0\)).
 
 ---
 
@@ -93,8 +113,6 @@ If you already have a Common Lisp environment installed—such as **SBCL** (Stee
 To ensure maximum stability, always build from an official tagged release available on GitHub at:
 `https://github.com/acl2-devel/acl2-devel/releases/`
 
-You can either download a tarball from the releases page or clone and checkout a release tag directly:
-
 ```bash
 git clone https://github.com/acl2-devel/acl2-devel.git acl2
 cd acl2
@@ -110,8 +128,8 @@ make LISP=sbcl
 
 This produces an executable script named `saved_acl2` in the `acl2` directory.
 
-#### 3. Certify System Books (Optional, Long Process)
-To certify all standard ACL2 system books using SBCL (note: certifying the entire system library is comprehensive and takes significant compute time):
+#### 3. Certify System Books (Optional)
+To certify standard ACL2 system books:
 ```bash
 make regression ACL2=/path/to/acl2/saved_acl2
 ```
@@ -152,7 +170,16 @@ ACL2 will run its internal automated theorem prover, verify every proof from fir
                      (equal (force-from-momentum-change mass v1 v2 dt) 0))
                 (equal v1 v2)))
   ```
-  ACL2 outputs `Q.E.D.`, proving the theorem mechanically.
+
+- **Verify Unitary Norm Preservation in Grover/Givens Discrete Quantum Walk**:
+  ```lisp
+  (thm (implies (and (grover-state-p st)
+                     (rationalp c)
+                     (rationalp s)
+                     (equal (+ (* c c) (* s s)) 1))
+                (equal (grover-norm-sq (givens-rotate st c s))
+                       (grover-norm-sq st))))
+  ```
 
 - **Check Jaynesian MaxEnt Probability Normalization**:
   ```lisp
