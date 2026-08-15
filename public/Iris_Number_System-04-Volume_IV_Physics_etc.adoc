@@ -160,18 +160,6 @@ The Clifford multivector field equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \) 
 This explicitly derives the usual Heaviside differential form of Maxwell's equations as taught in engineering electromagnetics. \( \square \)
 ====
 
-=== Machine-Checked Verification of Electrodynamics and Field Laws in ACL2
-
-Every physical derivation presented above—from the decomposition of the Master Field Equation \( \mathcal{D}\mathcal{F} = \mathcal{J} \) in \( Cl(4,1,1) \) to Maxwell's four equations, Poynting radiation momentum flux, and Newton's three laws of motion—is formally machine-checked in the project's certified **ACL2** formal verification book (`public/acl2/iris_number_system.lisp`):
-
-1. **Maxwell Differential Field Laws**: Formally verified via algebraic reduction over the 8-component rational multivector basis, validating Gauss's electric law (\( \nabla \cdot \mathbf{E} = \rho / \epsilon_0 \)), Gauss's magnetic law (\( \nabla \cdot \mathbf{B} = 0 \)), Faraday induction (\( \nabla \times \mathbf{E} + \partial_t \mathbf{B} = 0 \)), and the Ampère-Maxwell law (\( \nabla \times \mathbf{B} - \frac{1}{c^2}\partial_t \mathbf{E} = \mu_0 \mathbf{J} \)).
-2. **Poynting Field Momentum and Radiation Pressure**: Machine-checked theorem `poynting-vector` confirming that radiated wave packets carry an exact momentum density \( \mathbf{S} = \frac{1}{\mu_0}(\mathbf{E} \times \mathbf{B}) \), exerting outward radiation pressure \( P_\text{rad} = \|\mathbf{S}\| / c \) upon absorption or reflection.
-3. **Newtonian Mechanics from Field Invariance**:
-   - **Newton's First Law (Inertia)**: Verified by theorem `newton-first-law-inertia` (\( \mathbf{F} = \mathbf{0} \implies \Delta \mathbf{v} = \mathbf{0} \)).
-   - **Newton's Second Law (\( \mathbf{F} = m\mathbf{a} \))**: Verified by theorem `newton-second-law-f-equals-ma` over discrete finite differences.
-   - **Newton's Third Law (Action-Reaction)**: Verified by theorem `newton-third-law-action-reaction` (\( \mathbf{F}_{12} + \mathbf{F}_{21} = \mathbf{0} \)).
-4. **Refutation of Bell / CHSH Factorizability**: Theorem `bell-factorability-fails-for-common-source` proves in ACL2 that Bell's factorizability condition \( P(A,B \mid a,b,\lambda) = P(A \mid a,\lambda) P(B \mid b,\lambda) \) fails for phase-correlated common-source classical wave packets, eliminating any requirement for superluminal or non-local action.
-
 === Simple Geometric Proof of the Non-Existence of Magnetic Monopoles
 
 The second Maxwell equation, \( \nabla \cdot \mathbf { B } = 0 \), is historically designated as Gauss's Law for Magnetism. In conventional physics textbooks, this law is frequently introduced as an empirical observation: “no isolated magnetic monopoles have ever been observed.” Within the Iris Number System and Geometric Algebra, the non-existence of magnetic monopoles is not an empirical mystery, an ad hoc postulate, or a lucky coincidence, but a simple geometric necessity. 

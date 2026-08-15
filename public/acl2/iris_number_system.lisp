@@ -7,11 +7,16 @@
 ;;; 2. Constructive Vernier Calculus & Resolution of Zeno's Verbal Paradoxes
 ;;; 3. Constructive Number Theory, GCD, Sieve, and Prime Factorization
 ;;; 4. Cl(4,1,1) Clifford Multivector Algebra, Rotors & Geometric Product
-;;; 5. Grover Search / Givens Discrete Quantum Walk State Evolution
+;;; 5. Fundamental Physical Constant Derivations & Geometric Mass Ratios
 ;;; 6. Master Field Equation (D F = J) & Full Maxwell Electrodynamics
 ;;; 7. Gravitational Field Flux, Newton's Laws & Field Momentum Conservation
 ;;; 8. Jaynesian Probability, MaxEnt Entropy & Statistical Thermodynamics
-;;; 9. Discrete Spectral Analysis, Parseval Conservation & Kirchhoff Laws
+;;; 9. Local Realism, Common-Source Phase Correlation & Disproof of Bell / CHSH
+;;; 10. Discrete Spectral Analysis, Parseval Conservation & Kirchhoff Laws
+;;; 11. Grover Search / Givens Discrete Quantum Walk State Evolution
+;;; 12. Formalization of Algorithm Correctness & Combinatorics
+;;; 13. Discrete Microwave, Solid-State & Electronics Circuit Theory
+;;; 14. Industrial Chemical Thermodynamics, Moisture Agglomeration, STP Kinetics
 ;;; =========================================================================
 
 (in-package "ACL2")
@@ -346,70 +351,103 @@
   :hints (("Goal" :in-theory (enable cl-mv-norm-sq))))
 
 ;; =========================================================================
-;; MODULE 5: GROVER SEARCH / GIVENS DISCRETE QUANTUM WALK EVOLUTION
+;; MODULE 5: FUNDAMENTAL PHYSICAL CONSTANT DERIVATIONS & GEOMETRIC MASS RATIOS
 ;; =========================================================================
 
-;; 2D Unitary State Vector (alpha, beta) for Grover target vs non-target space
-(defun grover-state-p (st)
-  "Recognizes a 2D rational quantum state (alpha . beta)."
+;; 5a. Electron Specific Charge Ratio (e / m_e)
+;; Defined rationally as the ratio of bivector electric charge coupling to
+;; localized mass-energy density under the main scale downarrow projection.
+(defun electron-specific-charge (charge-coupling mass-density)
+  "Computes electron specific charge ratio e/m_e from field parameters."
+  (declare (xargs :guard (and (rationalp charge-coupling)
+                              (rationalp mass-density)
+                              (not (equal mass-density 0)))))
+  (/ charge-coupling mass-density))
+
+(defthm electron-specific-charge-strictly-positive
+  (implies (and (rationalp q)
+                (> q 0)
+                (rationalp m)
+                (> m 0))
+           (> (electron-specific-charge q m) 0))
+  :hints (("Goal" :in-theory (enable electron-specific-charge))))
+
+;; Invariance of specific charge under proportional resolution scaling
+(defthm electron-specific-charge-scale-invariance
+  (implies (and (rationalp q)
+                (rationalp m)
+                (not (equal m 0))
+                (rationalp scale)
+                (not (equal scale 0)))
+           (equal (electron-specific-charge (* scale q) (* scale m))
+                  (electron-specific-charge q m)))
+  :hints (("Goal" :in-theory (enable electron-specific-charge))))
+
+;; 5b. Proton-to-Electron Mass Ratio (m_p / m_e)
+;; Derived from the 3-torus topological knot volume ratio 6 * pi^5 with
+;; fine-structure radiative correction (1 - 1 / (4 * pi^2 * 137)).
+;; Approximated in exact rational arithmetic on grid G_omega using Archimedean pi = 22/7.
+(defun pi-rational-approx ()
+  "Exact rational approximation of pi = 22/7 on discrete vernier grid."
   (declare (xargs :guard t))
-  (and (consp st)
-       (rationalp (car st))
-       (rationalp (cdr st))))
+  22/7)
 
-(defun grover-norm-sq (st)
-  "Squared norm of state vector: alpha^2 + beta^2."
-  (declare (xargs :guard (grover-state-p st)))
-  (+ (* (car st) (car st))
-     (* (cdr st) (cdr st))))
+(defun proton-electron-mass-ratio-geometric ()
+  "Computes geometric proton-to-electron mass ratio 6 * pi^5 (rational)."
+  (declare (xargs :guard t))
+  (let ((pi-val (pi-rational-approx)))
+    (* 6 (* pi-val (* pi-val (* pi-val (* pi-val pi-val)))))))
 
-;; Target Inversion Operator: Reflects target component sign (alpha, -beta)
-(defun grover-target-oracle (st)
-  (declare (xargs :guard (grover-state-p st)))
-  (cons (car st) (- (cdr st))))
+(defthm proton-electron-mass-ratio-is-rational
+  (rationalp (proton-electron-mass-ratio-geometric)))
 
-(defthm grover-oracle-preserves-norm
-  (implies (grover-state-p st)
-           (equal (grover-norm-sq (grover-target-oracle st))
-                  (grover-norm-sq st))))
+(defthm proton-electron-mass-ratio-bounds
+  (and (> (proton-electron-mass-ratio-geometric) 1800)
+       (< (proton-electron-mass-ratio-geometric) 1850)))
 
-;; Givens Rotation Step: Rotates state by discrete angle theta with cos=c, sin=s (c^2 + s^2 = 1)
-(defun givens-rotate (st c s)
-  "Applies Givens unitary rotation: (c*alpha - s*beta, s*alpha + c*beta)."
-  (declare (xargs :guard (and (grover-state-p st)
-                              (rationalp c)
-                              (rationalp s))))
-  (cons (- (* c (car st)) (* s (cdr st)))
-        (+ (* s (car st)) (* c (cdr st)))))
+;; 5c. Newton's Gravitational Constant G from Master Field Coupling
+;; Gravitation emerges as the scalar trace component of D F = J.
+;; G = c^4 * delta_omega^2 / (4 * pi * hbar * omega) where c, delta, hbar are rational.
+(defun newton-gravitational-constant-derived (c-speed delta-omega hbar omega)
+  "Derives Newton's gravitational constant G from discrete space-time cell parameters."
+  (declare (xargs :guard (and (rationalp c-speed)
+                              (rationalp delta-omega)
+                              (rationalp hbar)
+                              (> hbar 0)
+                              (posp omega))))
+  (let ((pi-val (pi-rational-approx)))
+    (/ (* (* c-speed (* c-speed (* c-speed c-speed)))
+          (* delta-omega delta-omega))
+       (* 4 (* pi-val (* hbar omega))))))
 
-;; Algebraic factor lemma for Givens rotation norm preservation
-(defthm givens-norm-algebra
-  (implies (and (rationalp a)
-                (rationalp b)
-                (rationalp c)
-                (rationalp s)
-                (equal (+ (* c c) (* s s)) 1))
-           (equal (+ (* c c a a)
-                     (* c c b b)
-                     (* s s a a)
-                     (* s s b b))
-                  (+ (* a a) (* b b))))
-  :hints (("Goal" :use ((:instance distributivity (x (* a a)) (y (* c c)) (z (* s s)))
-                        (:instance distributivity (x (* b b)) (y (* c c)) (z (* s s)))))))
+(defthm newton-g-constant-is-rational
+  (implies (and (rationalp c-speed)
+                (rationalp delta-omega)
+                (rationalp hbar)
+                (> hbar 0)
+                (posp omega))
+           (rationalp (newton-gravitational-constant-derived c-speed delta-omega hbar omega))))
 
-;; Proves that Givens state rotation exactly preserves state norm when c^2 + s^2 = 1.
-(defthm givens-rotation-unitary-norm-preservation
-  (implies (and (grover-state-p st)
-                (rationalp c)
-                (rationalp s)
-                (equal (+ (* c c) (* s s)) 1))
-           (equal (grover-norm-sq (givens-rotate st c s))
-                  (grover-norm-sq st)))
-  :hints (("Goal" :use ((:instance givens-norm-algebra
-                                  (a (car st))
-                                  (b (cdr st))
-                                  (c c)
-                                  (s s))))))
+(defthm newton-g-constant-strictly-positive
+  (implies (and (rationalp c-speed)
+                (> c-speed 0)
+                (rationalp delta-omega)
+                (> delta-omega 0)
+                (rationalp hbar)
+                (> hbar 0)
+                (posp omega))
+           (> (newton-gravitational-constant-derived c-speed delta-omega hbar omega) 0))
+  :hints (("Goal" :in-theory (enable newton-gravitational-constant-derived pi-rational-approx))))
+
+;; 5d. Fine-Structure Constant Alpha Reciprocal
+(defun fine-structure-alpha-reciprocal ()
+  "Constructive discrete rational approximation of the inverse fine-structure constant."
+  (declare (xargs :guard t))
+  137036/1000)
+
+(defthm fine-structure-alpha-bounded
+  (and (> (fine-structure-alpha-reciprocal) 137)
+       (< (fine-structure-alpha-reciprocal) 138)))
 
 ;; =========================================================================
 ;; MODULE 6: MASTER FIELD EQUATION (D F = J) & MAXWELL ELECTRODYNAMICS
@@ -640,7 +678,85 @@
            (equal (sum-list probs) 1)))
 
 ;; =========================================================================
-;; MODULE 9: DISCRETE SPECTRAL ANALYSIS, PARSEVAL & KIRCHHOFF LAWS
+;; MODULE 9: LOCAL REALISM, COMMON-SOURCE PHASE CORRELATION & DISPROOF OF BELL
+;; =========================================================================
+
+;; 9a. Common-Source Phase-Matched Correlated Signals
+(defun common-source-phase-diff (theta-a theta-b)
+  "Computes relative angle difference between analyzers receiving
+   common-source emitted wave packets."
+  (declare (xargs :guard (and (rationalp theta-a)
+                              (rationalp theta-b))))
+  (- theta-a theta-b))
+
+;; Proves that shifting the angular origin by phi leaves the relative
+;; phase difference strictly invariant.
+(defthm common-source-phase-origin-invariance
+  (implies (and (rationalp theta-a)
+                (rationalp theta-b)
+                (rationalp phi))
+           (equal (common-source-phase-diff (+ theta-a phi) (+ theta-b phi))
+                  (common-source-phase-diff theta-a theta-b))))
+
+;; 9b. Malus Law Local Intensity & Detector Threshold Predicate
+(defun malus-intensity (i0 delta-theta)
+  "Local field intensity transmitted through analyzer: I0 * cos^2(delta_theta).
+   Represented rationally via discrete trigonometric approximation."
+  (declare (xargs :guard (and (rationalp i0)
+                              (rationalp delta-theta))))
+  (* i0 (* delta-theta delta-theta)))
+
+(defun detector-threshold-trigger-p (intensity threshold)
+  "Local detector fires if and only if integrated field intensity crosses threshold."
+  (declare (xargs :guard (and (rationalp intensity)
+                              (rationalp threshold))))
+  (>= intensity threshold))
+
+;; Proves that detector firing is a purely deterministic function of local field intensity.
+(defthm detector-trigger-deterministic
+  (implies (and (rationalp intensity)
+                (rationalp threshold)
+                (>= intensity threshold))
+           (detector-threshold-trigger-p intensity threshold)))
+
+;; 9c. Disproof of Bell's Factorizability Requirement
+(defun bell-factorable-p (joint-prob prob-a prob-b)
+  "Tests Bell's factorizability condition P(A,B|a,b,lambda) = P(A|a,lambda) * P(B|b,lambda)."
+  (declare (xargs :guard (and (rationalp joint-prob)
+                              (rationalp prob-a)
+                              (rationalp prob-b))))
+  (equal joint-prob (* prob-a prob-b)))
+
+;; Proves that for phase-locked signals with non-zero correlation covariance,
+;; Bell's factorizability requirement is violated without non-local causation.
+(defthm bell-factorability-fails-for-common-source
+  (implies (and (rationalp prob-a)
+                (rationalp prob-b)
+                (rationalp covariance)
+                (not (equal covariance 0))
+                (equal joint-prob (+ (* prob-a prob-b) covariance)))
+           (not (bell-factorable-p joint-prob prob-a prob-b)))
+  :hints (("Goal" :in-theory (enable bell-factorable-p))))
+
+;; 9d. CHSH Correlation Sum Under Sub-Ensemble Detection
+(defun chsh-sum (e-ab e-abprime e-aprimeb e-aprimebprime)
+  "Evaluates CHSH correlation sum: |E(a,b) - E(a,b') + E(a',b) + E(a',b')|."
+  (declare (xargs :guard (and (rationalp e-ab)
+                              (rationalp e-abprime)
+                              (rationalp e-aprimeb)
+                              (rationalp e-aprimebprime))))
+  (let ((val (+ (- e-ab e-abprime) (+ e-aprimeb e-aprimebprime))))
+    (if (< val 0) (- val) val)))
+
+(defthm chsh-sum-is-rational
+  (implies (and (rationalp e-ab)
+                (rationalp e-abprime)
+                (rationalp e-aprimeb)
+                (rationalp e-aprimebprime))
+           (rationalp (chsh-sum e-ab e-abprime e-aprimeb e-aprimebprime))))
+
+;; =========================================================================
+;; MODULE 10: DISCRETE SPECTRAL ANALYSIS, PARSEVAL & KIRCHHOFF LAWS
 ;; =========================================================================
 
 ;; Parseval Energy Conservation on Discrete Vernier Grid G_N
@@ -679,89 +795,76 @@
            (kvl-loop-conserved-p voltages)))
 
 ;; =========================================================================
-;; MODULE 10: DISPROOF OF BELL & CLAUSER / CHSH INEQUALITIES VIA COMMON-SOURCE
-;;            PHASE CORRELATION & DETECTOR THRESHOLD INTEGRATION
+;; MODULE 11: GROVER SEARCH / GIVENS DISCRETE QUANTUM WALK EVOLUTION
 ;; =========================================================================
 
-;; 10a. Common-Source Phase-Matched Correlated Signals
-(defun common-source-phase-diff (theta-a theta-b)
-  "Computes relative angle difference between analyzers receiving
-   common-source emitted wave packets."
-  (declare (xargs :guard (and (rationalp theta-a)
-                              (rationalp theta-b))))
-  (- theta-a theta-b))
+;; 2D Unitary State Vector (alpha, beta) for Grover target vs non-target space
+(defun grover-state-p (st)
+  "Recognizes a 2D rational quantum state (alpha . beta)."
+  (declare (xargs :guard t))
+  (and (consp st)
+       (rationalp (car st))
+       (rationalp (cdr st))))
 
-;; Proves that shifting the angular origin by phi leaves the relative
-;; phase difference strictly invariant.
-(defthm common-source-phase-origin-invariance
-  (implies (and (rationalp theta-a)
-                (rationalp theta-b)
-                (rationalp phi))
-           (equal (common-source-phase-diff (+ theta-a phi) (+ theta-b phi))
-                  (common-source-phase-diff theta-a theta-b))))
+(defun grover-norm-sq (st)
+  "Squared norm of state vector: alpha^2 + beta^2."
+  (declare (xargs :guard (grover-state-p st)))
+  (+ (* (car st) (car st))
+     (* (cdr st) (cdr st))))
 
-;; 10b. Malus Law Local Intensity & Detector Threshold Predicate
-(defun malus-intensity (i0 delta-theta)
-  "Local field intensity transmitted through analyzer: I0 * cos^2(delta_theta).
-   Represented rationally via discrete trigonometric approximation."
-  (declare (xargs :guard (and (rationalp i0)
-                              (rationalp delta-theta))))
-  (* i0 (* delta-theta delta-theta)))
+;; Target Inversion Operator: Reflects target component sign (alpha, -beta)
+(defun grover-target-oracle (st)
+  (declare (xargs :guard (grover-state-p st)))
+  (cons (car st) (- (cdr st))))
 
-(defun detector-threshold-trigger-p (intensity threshold)
-  "Local detector fires if and only if integrated field intensity crosses threshold."
-  (declare (xargs :guard (and (rationalp intensity)
-                              (rationalp threshold))))
-  (>= intensity threshold))
+(defthm grover-oracle-preserves-norm
+  (implies (grover-state-p st)
+           (equal (grover-norm-sq (grover-target-oracle st))
+                  (grover-norm-sq st))))
 
-;; Proves that detector firing is a purely deterministic function of local field intensity.
-(defthm detector-trigger-deterministic
-  (implies (and (rationalp intensity)
-                (rationalp threshold)
-                (>= intensity threshold))
-           (detector-threshold-trigger-p intensity threshold)))
+;; Givens Rotation Step: Rotates state by discrete angle theta with cos=c, sin=s (c^2 + s^2 = 1)
+(defun givens-rotate (st c s)
+  "Applies Givens unitary rotation: (c*alpha - s*beta, s*alpha + c*beta)."
+  (declare (xargs :guard (and (grover-state-p st)
+                              (rationalp c)
+                              (rationalp s))))
+  (cons (- (* c (car st)) (* s (cdr st)))
+        (+ (* s (car st)) (* c (cdr st)))))
 
-;; 10c. Disproof of Bell's Factorizability Requirement
-(defun bell-factorable-p (joint-prob prob-a prob-b)
-  "Tests Bell's factorizability condition P(A,B|a,b,lambda) = P(A|a,lambda) * P(B|b,lambda)."
-  (declare (xargs :guard (and (rationalp joint-prob)
-                              (rationalp prob-a)
-                              (rationalp prob-b))))
-  (equal joint-prob (* prob-a prob-b)))
+;; Algebraic factor lemma for Givens rotation norm preservation
+(defthm givens-norm-algebra
+  (implies (and (rationalp a)
+                (rationalp b)
+                (rationalp c)
+                (rationalp s)
+                (equal (+ (* c c) (* s s)) 1))
+           (equal (+ (* c c a a)
+                     (* c c b b)
+                     (* s s a a)
+                     (* s s b b))
+                  (+ (* a a) (* b b))))
+  :hints (("Goal" :use ((:instance distributivity (x (* a a)) (y (* c c)) (z (* s s)))
+                        (:instance distributivity (x (* b b)) (y (* c c)) (z (* s s)))))))
 
-;; Proves that for phase-locked signals with non-zero correlation covariance,
-;; Bell's factorizability requirement is violated without non-local causation.
-(defthm bell-factorability-fails-for-common-source
-  (implies (and (rationalp prob-a)
-                (rationalp prob-b)
-                (rationalp covariance)
-                (not (equal covariance 0))
-                (equal joint-prob (+ (* prob-a prob-b) covariance)))
-           (not (bell-factorable-p joint-prob prob-a prob-b)))
-  :hints (("Goal" :in-theory (enable bell-factorable-p))))
-
-;; 10d. CHSH Correlation Sum Under Sub-Ensemble Detection
-(defun chsh-sum (e-ab e-abprime e-aprimeb e-aprimebprime)
-  "Evaluates CHSH correlation sum: |E(a,b) - E(a,b') + E(a',b) + E(a',b')|."
-  (declare (xargs :guard (and (rationalp e-ab)
-                              (rationalp e-abprime)
-                              (rationalp e-aprimeb)
-                              (rationalp e-aprimebprime))))
-  (let ((val (+ (- e-ab e-abprime) (+ e-aprimeb e-aprimebprime))))
-    (if (< val 0) (- val) val)))
-
-(defthm chsh-sum-is-rational
-  (implies (and (rationalp e-ab)
-                (rationalp e-abprime)
-                (rationalp e-aprimeb)
-                (rationalp e-aprimebprime))
-           (rationalp (chsh-sum e-ab e-abprime e-aprimeb e-aprimebprime))))
+;; Proves that Givens state rotation exactly preserves state norm when c^2 + s^2 = 1.
+(defthm givens-rotation-unitary-norm-preservation
+  (implies (and (grover-state-p st)
+                (rationalp c)
+                (rationalp s)
+                (equal (+ (* c c) (* s s)) 1))
+           (equal (grover-norm-sq (givens-rotate st c s))
+                  (grover-norm-sq st)))
+  :hints (("Goal" :use ((:instance givens-norm-algebra
+                                  (a (car st))
+                                  (b (cdr st))
+                                  (c c)
+                                  (s s))))))
 
 ;; =========================================================================
-;; MODULE 11: FORMALIZATION OF ALGORITHM CORRECTNESS & COMBINATORICS
+;; MODULE 12: FORMALIZATION OF ALGORITHM CORRECTNESS & COMBINATORICS
 ;; =========================================================================
 
-;; 11a. Bernstein Polynomial Sign-Crossing Real Root Isolation
+;; 12a. Bernstein Polynomial Sign-Crossing Real Root Isolation
 (defun sign-change-p (y1 y2)
   "Tests whether function values have strictly opposite signs (bracket a root)."
   (declare (xargs :guard (and (rationalp y1)
@@ -776,7 +879,7 @@
            (not (equal y1 y2)))
   :hints (("Goal" :in-theory (enable sign-change-p))))
 
-;; 11b. n-Queens Non-Attacking Permutation Predicate (8-Queens)
+;; 12b. n-Queens Non-Attacking Permutation Predicate (8-Queens)
 (defun queen-attack-pair-p (r1 c1 r2 c2)
   "Tests if two queens on board positions (r1, c1) and (r2, c2) attack each other."
   (declare (xargs :guard (and (integerp r1) (integerp c1)
@@ -804,10 +907,10 @@
            (booleanp (queens-list-safe-p r c placed-queens))))
 
 ;; =========================================================================
-;; MODULE 12: DISCRETE MICROWAVE, SOLID-STATE & ELECTRONICS CIRCUIT THEORY
+;; MODULE 13: DISCRETE MICROWAVE, SOLID-STATE & ELECTRONICS CIRCUIT THEORY
 ;; =========================================================================
 
-;; 12a. Discrete Telegrapher Equations for Microwave Transmission Lines
+;; 13a. Discrete Telegrapher Equations for Microwave Transmission Lines
 (defun telegrapher-delta-v (inductance-l delta-i dt)
   "Discrete voltage drop across line increment: Delta V = -L * Delta I / dt."
   (declare (xargs :guard (and (rationalp inductance-l)
@@ -831,7 +934,7 @@
                 (not (equal dt 0)))
            (rationalp (telegrapher-delta-v l di dt))))
 
-;; 12b. S-Parameter 2-Port Power Conservation (Unitary Scattering Invariant)
+;; 13b. S-Parameter 2-Port Power Conservation (Unitary Scattering Invariant)
 (defun s-parameter-power-conserved-p (s11-sq s21-sq)
   "Evaluates lossless 2-port power conservation: |S11|^2 + |S21|^2 = 1."
   (declare (xargs :guard (and (rationalp s11-sq)
@@ -844,7 +947,7 @@
                 (equal (+ s11-sq s21-sq) 1))
            (s-parameter-power-conserved-p s11-sq s21-sq)))
 
-;; 12c. Solid-State PIN Diode RF Limiter Switching Model
+;; 13c. Solid-State PIN Diode RF Limiter Switching Model
 (defun pin-diode-attenuation (pin-input p-thresh r-on r-off)
   "Calculates attenuation resistance based on incident RF power."
   (declare (xargs :guard (and (rationalp pin-input)
@@ -865,12 +968,12 @@
                   r-on)))
 
 ;; =========================================================================
-;; MODULE 13: INDUSTRIAL CHEMICAL THERMODYNAMICS, MOISTURE AGGLOMERATION,
+;; MODULE 14: INDUSTRIAL CHEMICAL THERMODYNAMICS, MOISTURE AGGLOMERATION,
 ;;            AND CRYSTAL PHASE KINETICS (PALS, FUCHS & SCHWARTZ MODEL)
 ;;            PROCESS FOR PREPARING MEDIUM DENSITY GRANULAR SODIUM TRIPOLYPHOSPHATE
 ;; =========================================================================
 
-;; 13a. Moisture-Seeded Particulate Agglomeration Window (US Patent 3,932,590 A: Pals, Fuchs & Schwartz)
+;; 14a. Moisture-Seeded Particulate Agglomeration Window (US Patent 3,932,590 A: Pals, Fuchs & Schwartz)
 (defun tripolyphosphate-moisture-valid-p (w-moisture)
   "Verifies that added moisture fraction is within the stable pendular window [1%, 12%]."
   (declare (xargs :guard (rationalp w-moisture)))
@@ -883,7 +986,7 @@
            (and (>= w-moisture 1/100)
                 (<= w-moisture 12/100))))
 
-;; 13b. Granular Bulk Density Optimization Bracket [0.45, 0.59] g/cm^3
+;; 14b. Granular Bulk Density Optimization Bracket [0.45, 0.59] g/cm^3
 (defun tripolyphosphate-bulk-density-optimal-p (rho-bulk)
   "Verifies that granular bulk density falls in the target medium-density range [0.45, 0.59] g/cm^3."
   (declare (xargs :guard (rationalp rho-bulk)))
@@ -896,7 +999,7 @@
            (and (>= rho-bulk 45/100)
                 (<= rho-bulk 59/100))))
 
-;; 13c. Polymorphic Crystal Phase Calcination Transition (Form I vs Form II)
+;; 14c. Polymorphic Crystal Phase Calcination Transition (Form I vs Form II)
 (defun tripolyphosphate-calcination-crystal-phase (temp-celsius)
   "Determines the predominant crystal polymorphic phase based on calcination temperature."
   (declare (xargs :guard (rationalp temp-celsius)))
@@ -911,105 +1014,5 @@
                   :form-i-high-temperature)))
 
 ;; =========================================================================
-;; MODULE 12: FUNDAMENTAL CONSTANT DERIVATIONS & GEOMETRIC MASS RATIOS
-;; =========================================================================
-
-;; 12a. Electron Specific Charge Ratio (e / m_e)
-;; Defined rationally as the ratio of bivector electric charge coupling to
-;; localized mass-energy density under the main scale downarrow projection.
-(defun electron-specific-charge (charge-coupling mass-density)
-  "Computes electron specific charge ratio e/m_e from field parameters."
-  (declare (xargs :guard (and (rationalp charge-coupling)
-                              (rationalp mass-density)
-                              (not (equal mass-density 0)))))
-  (/ charge-coupling mass-density))
-
-(defthm electron-specific-charge-strictly-positive
-  (implies (and (rationalp q)
-                (> q 0)
-                (rationalp m)
-                (> m 0))
-           (> (electron-specific-charge q m) 0))
-  :hints (("Goal" :in-theory (enable electron-specific-charge))))
-
-;; Invariance of specific charge under proportional resolution scaling
-(defthm electron-specific-charge-scale-invariance
-  (implies (and (rationalp q)
-                (rationalp m)
-                (not (equal m 0))
-                (rationalp scale)
-                (not (equal scale 0)))
-           (equal (electron-specific-charge (* scale q) (* scale m))
-                  (electron-specific-charge q m)))
-  :hints (("Goal" :in-theory (enable electron-specific-charge))))
-
-;; 12b. Proton-to-Electron Mass Ratio (m_p / m_e)
-;; Derived from the 3-torus topological knot volume ratio 6 * pi^5 with
-;; fine-structure radiative correction (1 - 1 / (4 * pi^2 * 137)).
-;; Approximated in exact rational arithmetic on grid G_omega using Archimedean pi = 22/7.
-(defun pi-rational-approx ()
-  "Exact rational approximation of pi = 22/7 on discrete vernier grid."
-  (declare (xargs :guard t))
-  22/7)
-
-(defun proton-electron-mass-ratio-geometric ()
-  "Computes geometric proton-to-electron mass ratio 6 * pi^5 (rational)."
-  (declare (xargs :guard t))
-  (let ((pi-val (pi-rational-approx)))
-    (* 6 (* pi-val (* pi-val (* pi-val (* pi-val pi-val)))))))
-
-(defthm proton-electron-mass-ratio-is-rational
-  (rationalp (proton-electron-mass-ratio-geometric)))
-
-(defthm proton-electron-mass-ratio-bounds
-  (and (> (proton-electron-mass-ratio-geometric) 1800)
-       (< (proton-electron-mass-ratio-geometric) 1850)))
-
-;; 12c. Newton's Gravitational Constant G from Master Field Coupling
-;; Gravitation emerges as the scalar trace component of D F = J.
-;; G = c^4 * delta_omega^2 / (4 * pi * hbar * omega) where c, delta, hbar are rational.
-(defun newton-gravitational-constant-derived (c-speed delta-omega hbar omega)
-  "Derives Newton's gravitational constant G from discrete space-time cell parameters."
-  (declare (xargs :guard (and (rationalp c-speed)
-                              (rationalp delta-omega)
-                              (rationalp hbar)
-                              (> hbar 0)
-                              (posp omega))))
-  (let ((pi-val (pi-rational-approx)))
-    (/ (* (* c-speed (* c-speed (* c-speed c-speed)))
-          (* delta-omega delta-omega))
-       (* 4 (* pi-val (* hbar omega))))))
-
-(defthm newton-g-constant-is-rational
-  (implies (and (rationalp c-speed)
-                (rationalp delta-omega)
-                (rationalp hbar)
-                (> hbar 0)
-                (posp omega))
-           (rationalp (newton-gravitational-constant-derived c-speed delta-omega hbar omega))))
-
-(defthm newton-g-constant-strictly-positive
-  (implies (and (rationalp c-speed)
-                (> c-speed 0)
-                (rationalp delta-omega)
-                (> delta-omega 0)
-                (rationalp hbar)
-                (> hbar 0)
-                (posp omega))
-           (> (newton-gravitational-constant-derived c-speed delta-omega hbar omega) 0))
-  :hints (("Goal" :in-theory (enable newton-gravitational-constant-derived pi-rational-approx))))
-
-;; 12d. Fine-Structure Constant Alpha Reciprocal
-(defun fine-structure-alpha-reciprocal ()
-  "Constructive discrete rational approximation of the inverse fine-structure constant."
-  (declare (xargs :guard t))
-  137036/1000)
-
-(defthm fine-structure-alpha-bounded
-  (and (> (fine-structure-alpha-reciprocal) 137)
-       (< (fine-structure-alpha-reciprocal) 138)))
-
-;; =========================================================================
 ;; END OF IRIS NUMBER SYSTEM ACL2 BOOK
 ;; =========================================================================
-

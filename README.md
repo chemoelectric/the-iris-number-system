@@ -50,39 +50,9 @@ The **Iris Number System Deduction & Inference Engine** provides a constructive 
    - Numerical zero candidate search and phase spectrum density analysis.
    - Iris Prime Distribution spiral and residue distribution modeling.
 
-7. **Theorem Library & Axiom Workbench**
+6. **Theorem Library & Axiom Workbench**
    - Complete repository of formal axioms, postulates, definitions, and proven theorems.
    - Filterable by domain (*Tautological Discrete Arithmetic*, *Clifford Algebra Cl(4,1,1)*, *Jaynesian MaxEnt Probability*, *Spectral Topology*, etc.).
-
-8. **Certified ACL2 Formal Verification Book** (`public/acl2/iris_number_system.lisp`)
-   - Machine-checked formalization in the automated interactive theorem prover ACL2 (UT Austin / ACM Software System Award).
-   - Automated induction proofs verifying MSRA ring homomorphism, Vernier calculus, \( Cl(4,1,1) \) multivector algebra, Grover/Givens walks, the Master Field Equation \( \mathcal{D}\mathcal{F} = \mathcal{J} \), Newton's three laws, Jaynesian MaxEnt normalization, Parseval energy conservation, Kirchhoff's laws, refutation of Bell/CHSH factorizability, Bernstein root isolation, and chemical phase kinetics.
-
----
-
-## 🔬 Machine-Checked ACL2 Formal Verification
-
-The project includes a certified **ACL2** book in `public/acl2/iris_number_system.lisp` providing machine-checked mathematical verification from first principles.
-
-### Certifying the ACL2 Book
-```bash
-cd public/acl2
-acl2
-```
-Inside the ACL2 REPL:
-```lisp
-(certify-book "iris_number_system" 0 t)
-```
-
-### Key Machine-Checked Proof Domains:
-- **Multiscale Resolution Analysis (MSRA)**: Ring homomorphism and idempotence of the Main Scale Projection operator \( ( \downarrow ) \).
-- **Constructive Vernier Calculus**: Discrete difference quotients, finite step resolution of Zeno's dichotomy, and strictly positive physical duration.
-- **Clifford \( Cl(4,1,1) \) Multivector Algebra**: Metric quadratic forms, associativity, commutativity, and 8-component multivector basis closure.
-- **Unified Master Field Equation (\( \mathcal{D}\mathcal{F} = \mathcal{J} \))**: Derivation of Heaviside's four differential Maxwell equations, radiation pressure momentum flux (\( \mathbf{S} = \frac{1}{\mu_0}(\mathbf{E} \times \mathbf{B}) \)), and Gauss's law for gravitation.
-- **Newton's Laws of Motion**: First Law (Inertia), Second Law (\( \mathbf{F} = m\mathbf{a} \)), and Third Law (Action-Reaction).
-- **Jaynesian Maximum Entropy**: Exact discrete normalization and expectation.
-- **Disproof of Bell/CHSH Factorizability**: Proves that Bell factorizability fails for common-source phase-locked wave packets without non-locality.
-- **Industrial Chemical Kinetics**: Pals, Fuchs & Schwartz model (US Patent 3,932,590 A) for granular sodium tripolyphosphate crystal phase transitions.
 
 ---
 
