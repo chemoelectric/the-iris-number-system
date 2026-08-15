@@ -2282,7 +2282,206 @@ export const SPECTRAL_CIRCUITS_TEXTBOOK: Textbook = {
   "filename": "Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc"
 };
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK];
+export const BIBLIOGRAPHY_TEXTBOOK: Textbook = {
+  id: "volume-0-bibliography",
+  title: "The Iris Number System: Annotated Bibliography and Epistemological Foundations",
+  subtitle: "Annotated Bibliography & Epistemology",
+  author: "Frédéric Blondin Custer",
+  description: "Comprehensive annotated bibliography and epistemological roadmap for the Iris Number System. Details foundational works in mathematical philosophy, constructive analysis, Bayesian inference, and lateral thinking.",
+  chapters: [
+    {
+      id: "chap-bib-epistemology",
+      title: "Epistemology, Semantics, and Axiomatic Foundations",
+      summary: "Foundational treatises establishing postulation-deduction chains, conceptual pragmatism, and semantic evaluation.",
+      sections: [
+        {
+          id: "sec-bib-epistemology",
+          title: "Epistemology, Semantics, and Axiomatic Foundations",
+          contentAsciiDoc: `== Epistemology, Semantics, and Axiomatic Foundations
+
+[#entry-keyser-1922]
+=== Keyser, Cassius Jackson (1922)
+*Mathematical Philosophy: A Study of Fate and Freedom (Lectures for Educated Laymen)*. New York: E.P. Dutton & Company.
+
+*Annotation:*
+Keyser establishes the concept of autonomous postulation-deduction chains and tautological completeness within formal mathematical systems. Keyser demonstrates that the validity of a mathematical structure depends entirely upon its internal consistency under declared postulates, rather than external empirical consensus. This work provided the foundational blueprint for establishing the tautological completeness of the Iris Number System.
+
+[#entry-korzybski-1921]
+=== Korzybski, Alfred (1921)
+*Manhood of Humanity: The Science and Art of Human Engineering*. New York: E.P. Dutton & Company.
+
+*Annotation:*
+Establishes the fundamental distinction between energy-binding, space-binding, and time-binding classes of life. Defines human capacity as the ability to summarize, evaluate, and transmit abstractions across generations. Groundwork for recognizing that human evaluations ("semantic reactions") encompass non-verbal, low-order objective abstractions that precede higher-order verbal formulations.
+
+[#entry-lewis-1929]
+=== Lewis, Clarence Irving (1929)
+*Mind and the World-Order: Outline of a Theory of Knowledge*. New York: Charles Scribner's Sons.
+
+*Annotation:*
+Formulates conceptual pragmatism: the principle that the a priori consists of chosen conceptual frameworks through which experience is interpreted and organized. Lewis demonstrates that logical and mathematical systems are not forced upon mind by objective reality, but are constructed systems for organizing data.
+
+[#entry-orwell-1949]
+=== Orwell, George (1949)
+*Nineteen Eighty-Four*. London: Secker & Warburg.
+
+*Annotation:*
+The definitive literary depiction of “Newspeak”—an artificial reduction of vocabulary, designed to diminish the range of human evaluation and render unauthorized abstractions impossible. Newspeak illustrates the extreme danger of restricting evaluation to within a degraded symbolic system.`
+        }
+      ]
+    },
+    {
+      id: "chap-bib-heuristics",
+      title: "Mathematical Heuristics, Problem Solving, and Plausible Reasoning",
+      summary: "Treatises on formal algorithm correctness, heuristics, and constructive physics.",
+      sections: [
+        {
+          id: "sec-bib-heuristics",
+          title: "Mathematical Heuristics and Plausible Reasoning",
+          contentAsciiDoc: `== Mathematical Heuristics, Problem Solving, and Plausible Reasoning
+
+[#entry-polya-1945]
+=== Pólya, George (1945)
+*How to Solve It: A New Aspect of Mathematical Method*. Princeton, NJ: Princeton University Press.
+
+*Annotation:*
+The definitive treatise on mathematical heuristics. Outlines systematic strategies for problem decomposition, working backward, pattern identification, and discovering intermediate constructive representations.
+
+[#entry-polya-1954]
+=== Pólya, George (1954)
+*Mathematics and Plausible Reasoning*. Princeton, NJ: Princeton University Press.
+
+*Annotation:*
+Demonstrates that mathematical discovery relies upon plausible inference, geometric analogy, and inductive hypothesis generation before formal postulation-deduction chains can be established.
+
+[#entry-dijkstra-1976]
+=== Dijkstra, Edsger Wybe (1976)
+*A Discipline of Programming*. Englewood Cliffs, NJ: Prentice-Hall.
+
+*Annotation:*
+The foundational treatise on formal program correctness, guarded commands, and weakest preconditions. Dijkstra establishes that program construction must be treated as a mathematical discipline where algorithms and their correctness proofs are developed hand-in-hand.
+
+[#entry-hofer-2017]
+=== Hofer, Werner A. (2017)
+*Mathematical Creationists*.
+
+*Annotation:*
+Provides a critical epistemological analysis of “mathematical creationism”—the practice of inventing abstract mathematical structures (such as unobservable Hilbert spaces) and asserting physical reality must conform to them. Hofer argues for re-grounding quantum phenomena in local, classical field structures.
+
+[#entry-debono-1970]
+=== de Bono, Edward (1970)
+*Lateral Thinking: Creativity Step by Step*. London: Harper & Row.
+
+*Annotation:*
+Formulates deliberate methods for escaping rigid vertical thinking patterns and restructuring conceptual frameworks.`
+        }
+      ]
+    },
+    {
+      id: "chap-bib-neuro",
+      title: "Neurophilosophy, Somatic Kinematics, and Non-Verbal Action",
+      summary: "Treatises on perceptual neurobiology, motor-learning, and time-binding throughput.",
+      sections: [
+        {
+          id: "sec-bib-neuro",
+          title: "Neurophilosophy and Somatic Kinematics",
+          contentAsciiDoc: `== Neurophilosophy, Somatic Kinematics, and Non-Verbal Action
+
+[#entry-gregory-1966]
+=== Gregory, Richard Langton (1966/2015)
+*Eye and Brain: The Psychology of Seeing*. London: Weidenfeld & Nicolson / Princeton University Press.
+
+*Annotation:*
+Demonstrates that vision is an active, hypothesis-driven neurobiological abstraction process.
+
+[#entry-churchland-1986]
+=== Churchland, Patricia Smith (1986)
+*Neurophilosophy: Toward a Unified Science of the Mind-Brain*. Cambridge, MA: MIT Press.
+
+*Annotation:*
+Demonstrates that neuroscience and philosophy of mind can be unified when grounded in physically correct, structural theories.
+
+[#entry-churchland-1989]
+=== Churchland, Paul Montgomery (1989)
+*A Neurocomputational Perspective: The Nature of Mind and the Structure of Science*. Cambridge, MA: MIT Press.
+
+*Annotation:*
+Formulates scientific theories and cognitive representations as high-dimensional vector-space state transformations.
+
+[#entry-sacks-1984]
+=== Sacks, Oliver Wolf (1984)
+*A Leg to Stand On*. London: Gerald Duckworth & Co. / New York: Summit Books.
+
+*Annotation:*
+Autobiographical clinical narrative documenting Sacks's experience with severe proprioceptive alienation following nerve trauma. Sacks's colleagues dismissed his symptoms until he found a doctor who understood somatic body-image integration. Demonstrates the reality of an institutional "cerebral paralysis" that blocks time-binding and prevents progress from advancing at its proper exponential rate—an ominous sign warned against in *Manhood of Humanity*.
+
+[#entry-feldenkrais-1981]
+=== Feldenkrais, Moshe (1981)
+*The Elusive Obvious*. Cupertino, CA: Meta Publications.
+
+*Annotation:*
+Examines habituated neuro-muscular blind spots that prevent individuals from perceiving direct objective-level realities.`
+        }
+      ]
+    },
+    {
+      id: "chap-bib-prob",
+      title: "Bayesian Probability, Logical Inference, and Information Theory",
+      summary: "Foundational treatises on objective Bayesian probability, MaxEnt, and information theory.",
+      sections: [
+        {
+          id: "sec-bib-prob",
+          title: "Bayesian Probability and Inference",
+          contentAsciiDoc: `== Bayesian Probability, Logical Inference, and Information Theory
+
+[#entry-jaynes-2003]
+=== Jaynes, Edwin Thompson (2003)
+*Probability Theory: The Logic of Science*. Cambridge: Cambridge University Press.
+
+*Annotation:*
+Formulates probability theory as an extension of logic under uncertainty. Demonstrates that probability measures reflect state of knowledge given incomplete information.
+
+[#entry-jeffreys-1939]
+=== Jeffreys, Harold (1939/1961)
+*Theory of Probability*. Oxford: Clarendon Press.
+
+*Annotation:*
+Re-establishes objective Bayesian probability, invariant priors (Jeffreys priors), and hypothesis testing via Bayes factors.
+
+[#entry-jeffreys-1931]
+=== Jeffreys, Harold (1931/1973)
+*Scientific Inference*. Cambridge: Cambridge University Press.
+
+*Annotation:*
+Epistemological foundations of scientific law discovery, simplicity criteria, and induction.
+
+[#entry-cox-1961]
+=== Cox, Richard Threlkeld (1961)
+*The Algebra of Probable Inference*. Baltimore: Johns Hopkins University Press.
+
+*Annotation:*
+Derives the sum and product rules of probability as the unique consistent algebra for plausible reasoning from minimal consistency axioms.
+
+[#entry-tribus-1961]
+=== Tribus, Myron (1961)
+*Thermostatistics and Thermodynamics*. Princeton, NJ: D. Van Nostrand Company.
+
+*Annotation:*
+Derives thermodynamics entirely from Jaynes's Maximum Entropy (MaxEnt) principle, proving thermodynamic entropy is a special case of information uncertainty.`
+        }
+      ]
+    }
+  ],
+  filename: "Iris_Number_System-00-Bibliography.adoc"
+};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [
+  BIBLIOGRAPHY_TEXTBOOK,
+  INITIAL_TEXTBOOK,
+  NUMBER_THEORY_TEXTBOOK,
+  GEOMETRY_ALGEBRA_TEXTBOOK,
+  PHYSICS_CHEMISTRY_TEXTBOOK,
+  SPECTRAL_CIRCUITS_TEXTBOOK
+];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);

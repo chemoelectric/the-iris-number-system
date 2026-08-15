@@ -9,9 +9,11 @@ import {
   ShieldAlert,
   Wind,
   Download,
-  Info
+  Info,
+  Archive
 } from 'lucide-react';
 import { ActiveView } from '../types';
+import { exportCompleteWorkspaceZip } from '../lib/exportProjectZip';
 
 interface NavbarProps {
   activeTab: ActiveView['tab'];
@@ -130,6 +132,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Quick Actions */}
           <div className="flex items-center space-x-2">
+            <button
+              onClick={() => exportCompleteWorkspaceZip()}
+              title="Download Complete Workspace (.zip)"
+              className="flex items-center space-x-1.5 px-3 py-1.5 bg-[#242424] hover:bg-[#333333] border border-neutral-700 text-slate-200 text-xs font-semibold transition"
+            >
+              <Archive className="w-3.5 h-3.5 text-slate-200" />
+              <span>Download Project ZIP</span>
+            </button>
             <button
               onClick={onOpenInfoModal}
               title="Iris Number System Foundations"

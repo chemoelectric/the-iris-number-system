@@ -1,0 +1,193 @@
+= The Iris Number System: Annotated Bibliography and Epistemological Foundations
+Frédéric Blondin Custer
+:doctype: book
+:toc: left
+:toclevels: 3
+:sectnums:
+:stem: latexmath
+:icons: font
+
+[preface]
+== Preface and Scope
+
+This companion volume provides an annotated bibliography and critical epistemological roadmap for the five volumes of *The Iris Number System*. The works referenced herein represent foundational contributions to mathematical philosophy, constructive analysis, neurobiology, motor-learning kinematics, and lateral thinking that informed the development of Multiscale Resolution Analysis (MSRA), the Main Scale Projection operator \( ( \downarrow ) \), and the \( Cl(4,1,1) \) Master Field Equation.
+
+In accordance with strict operational discipline, works burdened with internal contradictions or unconstructive continuum abstractions are omitted or explicitly annotated to distinguish formal symbolic structures from the non-verbal physical plenum and low-order objective abstractions.
+
+== Epistemology, Semantics, and Axiomatic Foundations
+
+[#entry-keyser-1922]
+=== Keyser, Cassius Jackson (1922)
+*Mathematical Philosophy: A Study of Fate and Freedom (Lectures for Educated Laymen)*. New York: E.P. Dutton & Company. Available on the Internet Archive.
+
+*Annotation:*
+Keyser establishes the concept of autonomous postulation-deduction chains and tautological completeness within formal mathematical systems. Keyser demonstrates that the validity of a mathematical structure depends entirely upon its internal consistency under declared postulates, rather than external empirical consensus. This work provided the foundational blueprint for establishing the tautological completeness of the Iris Number System.
+
+[#entry-korzybski-1921]
+=== Korzybski, Alfred (1921)
+*Manhood of Humanity: The Science and Art of Human Engineering*. New York: E.P. Dutton & Company. Available on Project Gutenberg and the Internet Archive.
+
+*Annotation:*
+Establishes the fundamental distinction between energy-binding, space-binding, and time-binding classes of life. Defines human capacity as the ability to summarize, evaluate, and transmit abstractions across generations. Groundwork for recognizing that human evaluations ("semantic reactions") encompass non-verbal, low-order objective abstractions that precede higher-order verbal formulations. (Note: Korzybski's later 1933 work *Science and Sanity* is intentionally omitted due to its sprawling, non-rigorous verbiage and technical inaccuracies; the essential mathematical insights are more cleanly derived from Keyser).
+
+[#entry-lewis-1929]
+=== Lewis, Clarence Irving (1929)
+*Mind and the World-Order: Outline of a Theory of Knowledge*. New York: Charles Scribner's Sons. Recommended by Walter Shewhart; available on the Internet Archive.
+
+*Annotation:*
+Formulates conceptual pragmatism: the principle that the a priori consists of chosen conceptual frameworks through which experience is interpreted and organized. Lewis demonstrates that logical and mathematical systems are not forced upon mind by objective reality, but are constructed systems for organizing data. Annotated to note that Lewis's reliance on classical philosophical terminology (such as "sense data") is modernized in the Iris framework by recognizing the neurobiological abstraction processes described in modern visual neuroscience.
+
+[#entry-orwell-1949]
+=== Orwell, George (1949)
+*Nineteen Eighty-Four*. London: Secker & Warburg.
+
+*Annotation:*
+The definitive literary depiction of “Newspeak”—an artificial reduction of vocabulary, designed to diminish the range of human evaluation and render unauthorized abstractions impossible. Newspeak illustrates the extreme danger of restricting evaluation to within a degraded symbolic system.
+
+== Mathematical Heuristics, Problem Solving, and Plausible Reasoning
+
+[#entry-polya-1945]
+=== Pólya, George (1945)
+*How to Solve It: A New Aspect of Mathematical Method*. Princeton, NJ: Princeton University Press.
+
+*Annotation:*
+The definitive treatise on mathematical heuristics. Outlines systematic strategies for problem decomposition, working backward, pattern identification, and discovering intermediate constructive representations before formalizing axiomatic proofs.
+
+[#entry-polya-1954]
+=== Pólya, George (1954)
+*Mathematics and Plausible Reasoning* (2 Volumes: Vol. 1 *Induction and Analogy in Mathematics*; Vol. 2 *Patterns of Plausible Inference*). Princeton, NJ: Princeton University Press.
+
+*Annotation:*
+Demonstrates that mathematical discovery and theoretical unification rely upon plausible inference, geometric analogy, and inductive hypothesis generation before formal postulation-deduction chains can be established. Essential reading for understanding how the discrete MSRA grid and Master Field Equation were discovered prior to formal ACL2 verification.
+
+[#entry-dijkstra-1976]
+=== Dijkstra, Edsger Wybe (1976)
+*A Discipline of Programming*. Englewood Cliffs, NJ: Prentice-Hall.
+
+*Annotation:*
+The foundational treatise on formal program correctness, guarded commands, weakest preconditions \( \text{wp}(S, R) \), and non-deterministic execution. Dijkstra establishes that program construction must be treated as a mathematical discipline where algorithms and their correctness proofs are developed hand-in-hand, rather than writing unverified code and testing empirically. This principle directly informed the formal verification of the core Iris engine algorithms in ACL2 and Ada 2022.
+
+[#entry-hofer-2017]
+=== Hofer, Werner A. (2017)
+*Mathematical Creationists*.
+
+*Annotation:*
+Provides a critical epistemological analysis of “mathematical creationism”—the widespread practice in theoretical physics of inventing abstract mathematical structures (such as unobservable Hilbert spaces or non-local wave functions) and asserting that physical reality must conform to them. Hofer argues for re-grounding quantum phenomena in local, classical field structures and real-space physical constraints, aligning with the rejection of Hilbert space in favor of local \( Cl(4,1,1) \) Clifford bivector fields on discrete MSRA grids.
+
+[#entry-debono-1970]
+=== de Bono, Edward (1970)
+*Lateral Thinking: Creativity Step by Step*. London: Harper & Row.
+
+*Annotation:*
+Formulates deliberate methods for escaping rigid vertical thinking patterns and institutional cognitive channeling. Lateral thinking enables the restructuring of conceptual frameworks—such as abandoning continuum assumptions and infinite point-sets in favor of discrete vernier steps \( k_\omega \cdot \delta_\omega \).
+
+== Neurophilosophy, Somatic Kinematics, and Non-Verbal Action
+
+[#entry-gregory-1966]
+=== Gregory, Richard Langton (1966/2015)
+*Eye and Brain: The Psychology of Seeing*. London: Weidenfeld & Nicolson / Princeton University Press.
+
+*Annotation:*
+Modernizes early philosophical concepts of perception by demonstrating that vision is an active, hypothesis-driven neurobiological abstraction process. Replaces vague terms like "sense data" with explicit neural processing loops and spatial scale projections.
+
+[#entry-churchland-1986]
+=== Churchland, Patricia Smith (1986)
+*Neurophilosophy: Toward a Unified Science of the Mind-Brain*. Cambridge, MA: MIT Press / Bradford Books.
+
+*Annotation:*
+Demonstrates that two historically distinct fields—neuroscience and philosophy of mind—can be unified when grounded in physically correct, structural theories. Eliminates folk-psychology abstractions in favor of direct neurobiological vector-space representations.
+
+[#entry-churchland-1989]
+=== Churchland, Paul Montgomery (1989)
+*A Neurocomputational Perspective: The Nature of Mind and the Structure of Science*. Cambridge, MA: MIT Press.
+
+*Annotation:*
+Formulates scientific theories and cognitive representations as high-dimensional vector-space state transformations. Demonstrates that cognitive processing operates via parallel state space trajectories rather than serial sentence processing.
+
+[#entry-churchland-1995]
+=== Churchland, Paul Montgomery (1995)
+*The Engine of Reason, the Seat of the Soul: A Philosophical Journey into the Brain*. Cambridge, MA: MIT Press.
+
+*Annotation:*
+Explores how artificial neural networks and biological brains map sensory inputs onto activation spaces, providing an empirical bridge between neurobiology, computational vector spaces, and low-order non-verbal objective abstractions.
+
+[#entry-herrigel-1953]
+=== Herrigel, Eugen (1953)
+*Zen in the Art of Archery*. New York: Pantheon Books.
+
+*Annotation:*
+Documents non-verbal motor integration and subconscious target acquisition. Demonstrates that motor trajectory execution occurs at lower-order, non-verbal objective feedback loops before higher-order conscious monitoring takes place. Confirmed by experimental verification (racquetball-staircase non-aimed target acquisition loops).
+
+[#entry-feldenkrais-1972]
+=== Feldenkrais, Moshe (1972)
+*Awareness Through Movement: Health Exercises for Personal Growth*. New York: Harper & Row.
+
+*Annotation:*
+Formulates somatic movement education through refined neuromuscular feedback loops. Demonstrates how micro-movements organize the self-image and motor control at the non-verbal objective level.
+
+[#entry-feldenkrais-1977]
+=== Feldenkrais, Moshe (1977)
+*The Case of Nora: Recovery from Stroke*. New York: Harper & Row.
+
+*Annotation:*
+Clinical documentation of stroke rehabilitation achieved by working directly at the non-verbal, low-order objective level of somatic perception. Proves that when higher-order verbal/symbolic pathways are damaged, the silent objective nervous system reorganizes motor trajectories through direct structural feedback.
+
+[#entry-sacks-1984]
+=== Sacks, Oliver Wolf (1984)
+*A Leg to Stand On*. London: Gerald Duckworth & Co. / New York: Summit Books.
+
+*Annotation:*
+Autobiographical clinical narrative documenting Sacks's experience with severe proprioceptive alienation and neurological scotoma following a traumatic leg injury. Despite Sacks's professional status as a world-renowned neurologist, his medical colleagues dismissed his symptoms until he found the one doctor who understood somatic body-image integration. This case demonstrates the reality of an institutional "cerebral paralysis" that prevents people and organizations from functioning at their proper throughput. This institutional paralysis blocks time-binding and prevents technological and social progress from advancing at its natural exponential rate—an ominous sign warned against in *Manhood of Humanity*.
+
+[#entry-feldenkrais-1981]
+=== Feldenkrais, Moshe (1981)
+*The Elusive Obvious*. Cupertino, CA: Meta Publications.
+
+*Annotation:*
+Examines the habituated neuro-muscular blind spots ("the elusive obvious") that prevent individuals from perceiving direct objective-level realities.
+
+== Nonstandard Analysis and Model Theory (Comparative Literature)
+
+[#entry-robinson-1966]
+=== Robinson, Abraham (1966)
+*Non-standard Analysis*. Amsterdam: North-Holland Publishing Company. ("The Red Book").
+
+*Annotation:*
+Formalizes nonstandard analysis using model-theoretic hyperreal extensions \( {}^\ast \mathbb{R} \). Cited in comparative analysis to contrast Robinson's non-constructive continuum extensions (relying on ultrafilters and completed infinities) with the Iris Number System's constructive Multiscale Resolution Analysis (MSRA), which resolves analysis using finite discrete vernier step sequences \( k_\omega \cdot \delta_\omega \) under Main Scale Projection \( ( \downarrow ) \).
+
+== Bayesian Probability, Logical Inference, and Information Theory
+
+[#entry-jaynes-2003]
+=== Jaynes, Edwin Thompson (2003)
+*Probability Theory: The Logic of Science*. Cambridge: Cambridge University Press.
+
+*Annotation:*
+Formulates probability theory as an extension of Aristotelian logic under uncertainty. Demonstrates that probability measures reflect state of knowledge (plausibility) given incomplete information, rather than physical frequency ensembles. Annotated to note that while Jaynes's MaxEnt principle is foundational for discrete state spaces, Jaynes unwittingly trapped EPR analysis in statistical ensembles by assuming quantum mechanics required underlying scalar "hidden variables."
+
+[#entry-jeffreys-1939]
+=== Jeffreys, Harold (1939/1961)
+*Theory of Probability*. Oxford: Clarendon Press.
+
+*Annotation:*
+The pioneering treatise re-establishing objective Bayesian probability as a formal extension of logic. Formulates invariant prior distributions (Jeffreys priors) and hypothesis testing via Bayes factors, grounding probability as the mathematical logic of scientific inference.
+
+[#entry-jeffreys-1931]
+=== Jeffreys, Harold (1931/1973)
+*Scientific Inference*. Cambridge: Cambridge University Press.
+
+*Annotation:*
+Develops the epistemological foundations of scientific law discovery, simplicity criteria, and induction. Jeffreys demonstrates that scientific laws are chosen conceptual frameworks evaluated by their predictive consistency and parsimony.
+
+[#entry-cox-1961]
+=== Cox, Richard Threlkeld (1961)
+*The Algebra of Probable Inference*. Baltimore: Johns Hopkins University Press.
+
+*Annotation:*
+Derives the fundamental rules of probability theory (the sum and product rules) as the unique, consistent algebra for plausible reasoning from a minimal set of consistency axioms. Cox's Theorem proves that any system of plausible reasoning that satisfies basic logical consistency must be isomorphic to standard probability theory.
+
+[#entry-tribus-1961]
+=== Tribus, Myron (1961)
+*Thermostatistics and Thermodynamics: An Introduction to Energy, Information and States of Matter, with Engineering Applications*. Princeton, NJ: D. Van Nostrand Company.
+
+*Annotation:*
+The pioneering engineering textbook deriving classical and statistical thermodynamics entirely from Jaynes's Maximum Entropy (MaxEnt) information theory principle. Tribus replaces traditional ad-hoc thermodynamic cycles with a rigorous, information-centric foundation, proving that thermodynamic entropy is a special case of Shannon/Jaynes information uncertainty. Directly informs the MaxEnt probability distributions formalized in ACL2 and Volume IV.

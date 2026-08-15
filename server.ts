@@ -161,6 +161,19 @@ Return JSON format:
     }
   });
 
+  // Direct download endpoint for backup archive
+  app.get(["/download-backup", "/api/download-backup"], (req, res) => {
+    try {
+      const backupPath = path.join(process.cwd(), "public", "iris_number_system_complete_backup.tar.gz");
+      res.setHeader("Content-Type", "application/gzip");
+      res.setHeader("Content-Disposition", 'attachment; filename="iris_number_system_complete_backup.tar.gz"');
+      return res.sendFile(backupPath);
+    } catch (err: any) {
+      console.error("Backup serving error:", err);
+      return res.status(500).send("Error serving backup archive.");
+    }
+  });
+
   // Vite middleware in development mode
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

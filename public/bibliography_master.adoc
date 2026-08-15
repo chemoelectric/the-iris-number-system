@@ -1,0 +1,10 @@
+= The Iris Number System: Annotated Bibliography and Epistemological Foundations
+Frédéric Blondin Custer
+:doctype: book
+:toc: left
+:toclevels: 3
+:sectnums:
+:stem: latexmath
+:icons: font
+
+include::Iris_Number_System-00-Bibliography.adoc[]
