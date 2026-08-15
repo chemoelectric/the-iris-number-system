@@ -506,9 +506,9 @@
 
 (defthm gauss-gravity-law-from-master-field
   (implies (and (rationalp mass-density)
-                (rationalp g-const)
-                (equal scalar-j (g-field-flux mass-density g-const)))
-           (equal scalar-j (* -4 (* 22/7 (* g-const mass-density))))))
+                (rationalp g-const))
+           (equal (g-field-flux mass-density g-const)
+                  (* -4 (* 22/7 (* g-const mass-density))))))
 
 ;; Field Momentum & Poynting Vector S = (1/mu0) * (E x B)
 (defun poynting-vector (e-field b-field mu0)
@@ -559,6 +559,7 @@
                 (not (equal dt 0))
                 (equal (force-from-momentum-change mass v1 v2 dt) 0))
            (equal v1 v2))
+  :rule-classes nil
   :hints (("Goal" :in-theory (enable force-from-momentum-change momentum-state))))
 
 ;; Newton's Second Law: F = m * a where a = (v2 - v1) / dt.
