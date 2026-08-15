@@ -16,6 +16,8 @@
 
 (in-package "ACL2")
 
+(include-book "arithmetic/top-with-meta" :dir :system)
+
 ;; =========================================================================
 ;; MODULE 1: MULTISCALE RESOLUTION ANALYSIS (MSRA) & MAIN SCALE PROJECTION
 ;; =========================================================================
