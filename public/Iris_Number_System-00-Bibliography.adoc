@@ -187,6 +187,13 @@ A devastating critique of Bell's theorem and quantum entanglement mysticism from
 *Annotation:*
 Continues the rigorous physical demolition of quantum action-at-a-distance. Kracklauer proves that what modern orthodox quantum mechanics brands as "entangled non-local states" are actually ordinary, classical phase-correlated electromagnetic wave packets propagating under strict local field conservation laws.
 
+[#entry-kracklauer-twin-paradox]
+=== Kracklauer, Aloysius F., and Kracklauer, A. (2000–2006)
+*The “Clock Paradox” and the Physics of Inertial Motion* (also *On the Physical Contradiction of the Relativistic Twin Paradox*). *Galilean Electrodynamics* / *Physics Essays* / *Annales de la Fondation Louis de Broglie*. Bauhaus-Universität Weimar.
+
+*Annotation:*
+A foundational critique exposing the fatal, suppressed contradiction at the heart of Special Relativity's Twin Paradox. Kracklauer demonstrates with rigorous kinematics that because the accumulated time dilation \( \Delta \tau = \frac{2L}{v}(1 - \sqrt{1 - v^2/c^2}) \) scales linearly with the distance \( L \) traversed in unaccelerated, uniform inertial coasting, Special Relativity unavoidably requires that *pure uniform inertial motion produce an asymmetric, irreversible physical effect on clock mechanisms*. Because uniform inertial motion cannot have a physical, asymmetric effect without violating the Principle of Relativity itself, the Twin Paradox demonstrates the physical impossibility and internal inconsistency of Special Relativity. This realization served as an indispensable catalyst for rejecting twentieth-century spacetime metaphysics and constructing the Iris Number System and Master Field Equation.
+
 [#entry-unnikrishnan-2000]
 === Unnikrishnan, C. S. (2000)
 *Proof of Local Realism and the Detection Loophole in Bell-Type Experiments*. *Annales de la Fondation Louis de Broglie*, Vol. 25, No. 3–4, pp. 363–378.
