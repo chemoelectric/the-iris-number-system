@@ -346,6 +346,16 @@
 ;; MODULE 5: GROVER SEARCH / GIVENS DISCRETE QUANTUM WALK EVOLUTION
 ;; =========================================================================
 
+(defthm minus-times-minus
+  (implies (and (rationalp x) (rationalp y))
+           (equal (* (- x) (- y))
+                  (* x y))))
+
+(defthm minus-times-plus
+  (implies (and (rationalp x) (rationalp y))
+           (equal (* (- x) y)
+                  (- (* x y)))))
+
 ;; 2D Unitary State Vector (alpha, beta) for Grover target vs non-target space
 (defun grover-state-p (st)
   "Recognizes a 2D rational quantum state (alpha . beta)."
