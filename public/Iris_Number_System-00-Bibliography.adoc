@@ -162,7 +162,38 @@ Formalizes nonstandard analysis using model-theoretic hyperreal extensions \( {}
 *Probability Theory: The Logic of Science*. Cambridge: Cambridge University Press.
 
 *Annotation:*
-Formulates probability theory as an extension of Aristotelian logic under uncertainty. Demonstrates that probability measures reflect state of knowledge (plausibility) given incomplete information, rather than physical frequency ensembles. Annotated to note that while Jaynes's MaxEnt principle is foundational for discrete state spaces, Jaynes unwittingly trapped EPR analysis in statistical ensembles by assuming quantum mechanics required underlying scalar "hidden variables."
+Formulates probability theory as an extension of Aristotelian logic under uncertainty. Demonstrates that probability measures reflect state of knowledge (plausibility) given incomplete information, rather than physical frequency ensembles. Written with uncompromising clarity and direct respect for the reader, rejecting Bourbakian pseudo-axiomatic obfuscation and exposing the "Mind Projection Fallacy" (the confusion of one's incomplete state of knowledge with an objective physical property of nature).
+
+[#entry-jaynes-1989]
+=== Jaynes, Edwin Thompson (1989)
+*Clearing Up Mysteries: The Original Goal*. In J. Skilling (Ed.), *Maximum Entropy and Bayesian Methods* (Proceedings of the 9th International Maximum Entropy Workshop, Cambridge, UK), pp. 1–27. Dordrecht: Kluwer Academic Publishers.
+
+*Annotation:*
+The landmark keynote address disproving the mystical claims surrounding Bell's theorem and quantum "non-locality." Jaynes demonstrated with rigorous probability algebra that Bell committed a fatal probabilistic blunder: conflating conditional independence (information updating) with physical causality (signaling). Opening an envelope in one city instantly updating one's probability distribution for an envelope in another city involves no superluminal physical interaction; it is merely Bayesian state-of-knowledge conditioning.
+
+== Foundations of Local Realism, Classical Electrodynamics, and Wave Optics
+
+[#entry-kracklauer-2000]
+=== Kracklauer, Aloysius F. (2000)
+*Bell’s Inequalities and EPR–B Correlations: Are They Based on a Misconception?* *Annales de la Fondation Louis de Broglie*, Vol. 25, No. 2, pp. 193–210.
+
+*Annotation:*
+A devastating critique of Bell's theorem and quantum entanglement mysticism from Bauhaus-Universität Weimar. Kracklauer investigated whether Bell's inequalities represent perhaps the most pervasive and misleading error in twentieth-century physics. Demonstrating that Bell's inequality improperly maps disjoint sub-ensembles onto a single non-existent Kolmogorov probability space, Kracklauer showed that optical correlations in Aspect-type experiments are completely explained by local classical wave optics, phase-locked polarization geometry, and detector efficiency thresholds.
+
+[#entry-kracklauer-2002]
+=== Kracklauer, Aloysius F. (2002)
+*Is “Entanglement” Always Entangled?* *Annales de la Fondation Louis de Broglie*, Vol. 27, No. 4, pp. 697–711.
+
+*Annotation:*
+Continues the rigorous physical demolition of quantum action-at-a-distance. Kracklauer proves that what modern orthodox quantum mechanics brands as "entangled non-local states" are actually ordinary, classical phase-correlated electromagnetic wave packets propagating under strict local field conservation laws.
+
+[#entry-unnikrishnan-2000]
+=== Unnikrishnan, C. S. (2000)
+*Proof of Local Realism and the Detection Loophole in Bell-Type Experiments*. *Annales de la Fondation Louis de Broglie*, Vol. 25, No. 3–4, pp. 363–378.
+
+*Annotation:*
+Establishes a rigorous proof of local realism in correlation experiments, demonstrating that when global conservation laws (such as angular momentum and energy conservation) are enforced at the physical emission source, all quantum correlation statistics are derived without invoking non-local influences or hidden-variable paradoxes. Exposes the statistical artifacts and sub-ensemble selection conditioning that produced the illusion of Bell inequality violations.
+
 
 [#entry-jeffreys-1939]
 === Jeffreys, Harold (1939/1961)
