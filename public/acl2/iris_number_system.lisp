@@ -745,5 +745,51 @@
                   r-on)))
 
 ;; =========================================================================
+;; MODULE 13: INDUSTRIAL CHEMICAL THERMODYNAMICS, MOISTURE AGGLOMERATION,
+;;            AND CRYSTAL PHASE KINETICS (PALS & SCHWARTZ MODEL)
+;; =========================================================================
+
+;; 13a. Moisture-Seeded Particulate Agglomeration Window (US Patent 3,932,590)
+(defun tripolyphosphate-moisture-valid-p (w-moisture)
+  "Verifies that added moisture fraction is within the stable pendular window [1%, 12%]."
+  (declare (xargs :guard (rationalp w-moisture)))
+  (and (<= 1/100 w-moisture)
+       (<= w-moisture 12/100)))
+
+(defthm tripolyphosphate-moisture-bounded
+  (implies (and (rationalp w-moisture)
+                (tripolyphosphate-moisture-valid-p w-moisture))
+           (and (>= w-moisture 1/100)
+                (<= w-moisture 12/100))))
+
+;; 13b. Granular Bulk Density Optimization Bracket [0.45, 0.59] g/cm^3
+(defun tripolyphosphate-bulk-density-optimal-p (rho-bulk)
+  "Verifies that granular bulk density falls in the target medium-density range [0.45, 0.59] g/cm^3."
+  (declare (xargs :guard (rationalp rho-bulk)))
+  (and (<= 45/100 rho-bulk)
+       (<= rho-bulk 59/100)))
+
+(defthm tripolyphosphate-density-in-range
+  (implies (and (rationalp rho-bulk)
+                (tripolyphosphate-bulk-density-optimal-p rho-bulk))
+           (and (>= rho-bulk 45/100)
+                (<= rho-bulk 59/100))))
+
+;; 13c. Polymorphic Crystal Phase Calcination Transition (Form I vs Form II)
+(defun tripolyphosphate-calcination-crystal-phase (temp-celsius)
+  "Determines the predominant crystal polymorphic phase based on calcination temperature."
+  (declare (xargs :guard (rationalp temp-celsius)))
+  (if (>= temp-celsius 417)
+      :form-i-high-temperature
+    :form-ii-low-temperature))
+
+(defthm tripolyphosphate-phase-transition-deterministic
+  (implies (and (rationalp temp-celsius)
+                (>= temp-celsius 417))
+           (equal (tripolyphosphate-calcination-crystal-phase temp-celsius)
+                  :form-i-high-temperature)))
+
+;; =========================================================================
 ;; END OF IRIS NUMBER SYSTEM ACL2 BOOK
 ;; =========================================================================
+

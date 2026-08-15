@@ -87,14 +87,25 @@ function parseAdocFile(filePath, id, defaultTitle, defaultSubtitle, author, desc
   };
 }
 
+const vol0 = parseAdocFile(
+  fs.existsSync("public/Iris_Number_System-00-Bibliography.adoc")
+    ? "public/Iris_Number_System-00-Bibliography.adoc"
+    : "public/bibliography_master.adoc",
+  "textbook-iris-bibliography",
+  "The Iris Number System",
+  "Volume 0: Annotated Bibliography & Epistemological Foundations",
+  "Frédéric Blondin Custer",
+  "Annotated Bibliography and Critical Epistemological Roadmap for The Iris Number System"
+);
+
 const vol1 = parseAdocFile(
   fs.existsSync("public/Iris_Number_System-01-Volume_I_Fundamentals.adoc")
     ? "public/Iris_Number_System-01-Volume_I_Fundamentals.adoc"
     : "public/Iris_Number_System.adoc",
   "textbook-iris-number-system",
   "The Iris Number System",
-  "Fundamentals",
-  "Frédéric Blondel Custer",
+  "Volume I: Fundamentals",
+  "Frédéric Blondin Custer",
   "A Rigorous Constructive Foundation for Mathematics and Physics"
 );
 
@@ -104,8 +115,8 @@ const vol2 = parseAdocFile(
     : "public/Iris_Number_System_Applications_to_Number_Theory.adoc",
   "textbook-iris-number-theory",
   "The Iris Number System",
-  "Applications to Number Theory, Analysis, Probability Theory, Statistics",
-  "Frédéric Blondel Custer",
+  "Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics",
+  "Frédéric Blondin Custer",
   "A Rigorous Application of the Counting-Iris Number System to Classical Problems in Number Theory, Analysis, Probability Theory, and Statistics"
 );
 
@@ -115,8 +126,8 @@ const vol3 = parseAdocFile(
     : "public/Iris_Number_System_Geometry_Algebra_etc.adoc",
   "textbook-iris-geometry-algebra",
   "The Iris Number System",
-  "Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics",
-  "Frédéric Blondel Custer",
+  "Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics",
+  "Frédéric Blondin Custer",
   "A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System"
 );
 
@@ -124,8 +135,8 @@ const vol4 = parseAdocFile(
   "public/Iris_Number_System-04-Volume_IV_Physics_etc.adoc",
   "textbook-iris-physics-chemistry-etc",
   "The Iris Number System",
-  "Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
-  "Frédéric Blondel Custer",
+  "Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
+  "Frédéric Blondin Custer",
   "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding"
 );
 
@@ -135,11 +146,12 @@ const vol5 = parseAdocFile(
     : "public/volume_5_master.adoc",
   "textbook-iris-spectral-circuits-etc",
   "The Iris Number System",
-  "Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing",
-  "Frédéric Blondel Custer",
+  "Volume V: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing",
+  "Frédéric Blondin Custer",
   "Advanced Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, and Computing in Cl(4,1,1)"
 );
 
+vol0.filename = "Iris_Number_System-00-Bibliography.adoc";
 vol1.filename = "Iris_Number_System-01-Volume_I_Fundamentals.adoc";
 vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
 vol3.filename = "Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc";
@@ -343,6 +355,8 @@ export function getCompleteChapters(chapters: TextbookChapter[]): TextbookChapte
 `;
 
 const exportStr = `
+export const BIBLIOGRAPHY_TEXTBOOK: Textbook = ${JSON.stringify(vol0, null, 2)};
+
 export const INITIAL_TEXTBOOK: Textbook = ${JSON.stringify(vol1, null, 2)};
 
 export const NUMBER_THEORY_TEXTBOOK: Textbook = ${JSON.stringify(vol2, null, 2)};
@@ -353,7 +367,7 @@ export const PHYSICS_CHEMISTRY_TEXTBOOK: Textbook = ${JSON.stringify(vol4, null,
 
 export const SPECTRAL_CIRCUITS_TEXTBOOK: Textbook = ${JSON.stringify(vol5, null, 2)};
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK];
+export const TEXTBOOK_VOLUMES: Textbook[] = [BIBLIOGRAPHY_TEXTBOOK, INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);

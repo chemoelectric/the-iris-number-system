@@ -69,6 +69,11 @@ Because ACL2 is an automated interactive theorem prover created at UT Austin and
     - S-Parameter 2-port lossless power conservation / unitary scattering invariant theorem `s-parameter-unitary-scattering` (\(|S_{11}|^2 + |S_{21}|^2 = 1\)).
     - Solid-state PIN diode RF limiter and power-threshold clamping theorem `pin-diode-clamping-bounded`.
 
+13. **Industrial Chemical Thermodynamics, Moisture Agglomeration & Crystal Phase Kinetics (Pals & Schwartz Model, US Patent 3,932,590)**:
+    - Moisture-seeded particulate agglomeration stability window `tripolyphosphate-moisture-bounded` (\(0.01 \le w_{\mathrm{H_2O}} \le 0.12\)).
+    - Medium-density granular bulk density optimization range `tripolyphosphate-density-in-range` (\(0.45 \le \rho_\text{bulk} \le 0.59\text{ g/cm}^3\)).
+    - Deterministic thermal calcination polymorphic crystal phase selector `tripolyphosphate-phase-transition-deterministic` mapping bed temperature to Form I / Form II crystalline polymorphs.
+
 ---
 
 ## Comprehensive ACL2 Installation Guide across Linux Distributions & Custom Lisp Hosts

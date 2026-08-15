@@ -207,3 +207,13 @@ The foundational treatise on electrical physics written by an autodidactic inves
 
 *Annotation:*
 The monumental experimental treatise that discovered electromagnetic induction, dielectric polarization, magneto-optical rotation (the Faraday effect), and the physical existence of lines of force (field geometry). Lacking formal mathematical university training, Faraday conceived physical fields as real, spatial strain geometries rather than abstract action-at-a-distance point forces. Faraday's field intuition provided the direct physical precursor to James Clerk Maxwell's field equations and the local Clifford \( Cl(4,1,1) \) Master Field Equation.
+
+== Applied Chemical Kinetics, Materials Science, and Industrial Patents
+
+[#entry-pals-schwartz-1976]
+=== Pals, Charles R., and Schwartz, John C. (1976)
+*Process for Preparing Medium Density Granular Sodium Tripolyphosphate*. United States Patent US 3,932,590 A. Assigned to FMC Corporation. Filed May 6, 1974; Issued January 13, 1976. Google Patents: https://patents.google.com/patent/US3932590A/en
+
+*Annotation:*
+Presents the definitive industrial chemical synthesis, discrete moisture agglomeration control, and thermal calcination kinetics for manufacturing low-frangibility, medium-density granular sodium tripolyphosphate (\( \mathrm{Na_5P_3O_{10}} \)). Demonstrates the rigorous control of multi-phase crystal transitions (Form I high-temperature phase and Form II low-temperature phase) and moisture saturation thresholds during particulate bed agitation and calcination at \( 320^\circ \text{C} \text{--} 550^\circ \text{C} \), producing bulk densities in the optimal range of \( 0.45 \text{--} 0.59 \text{ g/cm}^3 \). Serves as a foundational exemplar of discrete chemical kinetic modeling and industrial material phase control in applied physical chemistry and condensed matter engineering (Volume IV).
+
