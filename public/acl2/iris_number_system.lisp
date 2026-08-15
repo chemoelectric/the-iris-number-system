@@ -560,7 +560,8 @@
                 (equal (force-from-momentum-change mass v1 v2 dt) 0))
            (equal v1 v2))
   :rule-classes nil
-  :hints (("Goal" :in-theory (enable force-from-momentum-change momentum-state))))
+  :hints (("Goal" :in-theory (enable force-from-momentum-change momentum-state)
+                  :use (:instance distributivity (x (* (/ dt) mass)) (y (- v1)) (z v2)))))
 
 ;; Newton's Second Law: F = m * a where a = (v2 - v1) / dt.
 (defthm newton-second-law-f-equals-ma
@@ -738,7 +739,8 @@
                 (rationalp covariance)
                 (not (equal covariance 0))
                 (equal joint-prob (+ (* prob-a prob-b) covariance)))
-           (not (bell-factorable-p joint-prob prob-a prob-b))))
+           (not (bell-factorable-p joint-prob prob-a prob-b)))
+  :hints (("Goal" :in-theory (enable bell-factorable-p))))
 
 ;; 10d. CHSH Correlation Sum Under Sub-Ensemble Detection
 (defun chsh-sum (e-ab e-abprime e-aprimeb e-aprimebprime)
@@ -773,7 +775,8 @@
   (implies (and (rationalp y1)
                 (rationalp y2)
                 (sign-change-p y1 y2))
-           (not (equal y1 y2))))
+           (not (equal y1 y2)))
+  :hints (("Goal" :in-theory (enable sign-change-p))))
 
 ;; 11b. n-Queens Non-Attacking Permutation Predicate (8-Queens)
 (defun queen-attack-pair-p (r1 c1 r2 c2)
