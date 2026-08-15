@@ -746,10 +746,11 @@
 
 ;; =========================================================================
 ;; MODULE 13: INDUSTRIAL CHEMICAL THERMODYNAMICS, MOISTURE AGGLOMERATION,
-;;            AND CRYSTAL PHASE KINETICS (PALS & SCHWARTZ MODEL)
+;;            AND CRYSTAL PHASE KINETICS (PALS, FUCHS & SCHWARTZ MODEL)
+;;            PROCESS FOR PREPARING MEDIUM DENSITY GRANULAR SODIUM TRIPOLYPHOSPHATE
 ;; =========================================================================
 
-;; 13a. Moisture-Seeded Particulate Agglomeration Window (US Patent 3,932,590)
+;; 13a. Moisture-Seeded Particulate Agglomeration Window (US Patent 3,932,590 A: Pals, Fuchs & Schwartz)
 (defun tripolyphosphate-moisture-valid-p (w-moisture)
   "Verifies that added moisture fraction is within the stable pendular window [1%, 12%]."
   (declare (xargs :guard (rationalp w-moisture)))

@@ -210,8 +210,8 @@ The monumental experimental treatise that discovered electromagnetic induction, 
 
 == Applied Chemical Kinetics, Materials Science, and Industrial Patents
 
-[#entry-pals-schwartz-1976]
-=== Pals, Charles R., and Schwartz, John C. (1976)
+[#entry-pals-fuchs-schwartz-1976]
+=== Pals, Raimond; Fuchs, Robert J.; and Schwartz, John C. (1976)
 *Process for Preparing Medium Density Granular Sodium Tripolyphosphate*. United States Patent US 3,932,590 A. Assigned to FMC Corporation. Filed May 6, 1974; Issued January 13, 1976. Google Patents: https://patents.google.com/patent/US3932590A/en
 
 *Annotation:*
