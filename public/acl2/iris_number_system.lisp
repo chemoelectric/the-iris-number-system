@@ -394,9 +394,8 @@
                      (* s s a a)
                      (* s s b b))
                   (+ (* a a) (* b b))))
-  :hints (("Goal" :use ((:instance distributivity (x (* c c)) (y (* s s)) (z (* a a)))
-                        (:instance distributivity (x (* c c)) (y (* s s)) (z (* b b))))
-                  :in-theory (disable distributivity))))
+  :hints (("Goal" :use ((:instance distributivity (x (* a a)) (y (* c c)) (z (* s s)))
+                        (:instance distributivity (x (* b b)) (y (* c c)) (z (* s s)))))))
 
 ;; Proves that Givens state rotation exactly preserves state norm when c^2 + s^2 = 1.
 (defthm givens-rotation-unitary-norm-preservation
