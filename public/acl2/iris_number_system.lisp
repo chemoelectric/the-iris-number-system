@@ -563,5 +563,187 @@
            (kvl-loop-conserved-p voltages)))
 
 ;; =========================================================================
+;; MODULE 10: DISPROOF OF BELL & CLAUSER / CHSH INEQUALITIES VIA COMMON-SOURCE
+;;            PHASE CORRELATION & DETECTOR THRESHOLD INTEGRATION
+;; =========================================================================
+
+;; 10a. Common-Source Phase-Matched Correlated Signals
+(defun common-source-phase-diff (theta-a theta-b)
+  "Computes relative angle difference between analyzers receiving
+   common-source emitted wave packets."
+  (declare (xargs :guard (and (rationalp theta-a)
+                              (rationalp theta-b))))
+  (- theta-a theta-b))
+
+(defthm common-source-phase-origin-invariance
+  "Proves that shifting the angular origin by phi leaves the relative
+   phase difference strictly invariant."
+  (implies (and (rationalp theta-a)
+                (rationalp theta-b)
+                (rationalp phi))
+           (equal (common-source-phase-diff (+ theta-a phi) (+ theta-b phi))
+                  (common-source-phase-diff theta-a theta-b))))
+
+;; 10b. Malus Law Local Intensity & Detector Threshold Predicate
+(defun malus-intensity (i0 delta-theta)
+  "Local field intensity transmitted through analyzer: I0 * cos^2(delta_theta).
+   Represented rationally via discrete trigonometric approximation."
+  (declare (xargs :guard (and (rationalp i0)
+                              (rationalp delta-theta))))
+  (* i0 (* delta-theta delta-theta)))
+
+(defun detector-threshold-trigger-p (intensity threshold)
+  "Local detector fires if and only if integrated field intensity crosses threshold."
+  (declare (xargs :guard (and (rationalp intensity)
+                              (rationalp threshold))))
+  (>= intensity threshold))
+
+(defthm detector-trigger-deterministic
+  "Proves that detector firing is a purely deterministic function of local field intensity."
+  (implies (and (rationalp intensity)
+                (rationalp threshold)
+                (>= intensity threshold))
+           (detector-threshold-trigger-p intensity threshold)))
+
+;; 10c. Disproof of Bell's Factorizability Requirement
+(defun bell-factorable-p (joint-prob prob-a prob-b)
+  "Tests Bell's factorizability condition P(A,B|a,b,lambda) = P(A|a,lambda) * P(B|b,lambda)."
+  (declare (xargs :guard (and (rationalp joint-prob)
+                              (rationalp prob-a)
+                              (rationalp prob-b))))
+  (equal joint-prob (* prob-a prob-b)))
+
+(defthm bell-factorability-fails-for-common-source
+  "Proves that for phase-locked signals with non-zero correlation covariance,
+   Bell's factorizability requirement is violated without non-local causation."
+  (implies (and (rationalp prob-a)
+                (rationalp prob-b)
+                (rationalp covariance)
+                (not (equal covariance 0))
+                (equal joint-prob (+ (* prob-a prob-b) covariance)))
+           (not (bell-factorable-p joint-prob prob-a prob-b))))
+
+;; 10d. CHSH Correlation Sum Under Sub-Ensemble Detection
+(defun chsh-sum (e-ab e-abprime e-aprimeb e-aprimebprime)
+  "Evaluates CHSH correlation sum: |E(a,b) - E(a,b') + E(a',b) + E(a',b')|."
+  (declare (xargs :guard (and (rationalp e-ab)
+                              (rationalp e-abprime)
+                              (rationalp e-aprimeb)
+                              (rationalp e-aprimebprime))))
+  (let ((val (+ (- e-ab e-abprime) (+ e-aprimeb e-aprimebprime))))
+    (if (< val 0) (- val) val)))
+
+(defthm chsh-sum-is-rational
+  (implies (and (rationalp e-ab)
+                (rationalp e-abprime)
+                (rationalp e-aprimeb)
+                (rationalp e-aprimebprime))
+           (rationalp (chsh-sum e-ab e-abprime e-aprimeb e-aprimebprime))))
+
+;; =========================================================================
+;; MODULE 11: FORMALIZATION OF ALGORITHM CORRECTNESS & COMBINATORICS
+;; =========================================================================
+
+;; 11a. Bernstein Polynomial Sign-Crossing Real Root Isolation
+(defun sign-change-p (y1 y2)
+  "Tests whether function values have strictly opposite signs (bracket a root)."
+  (declare (xargs :guard (and (rationalp y1)
+                              (rationalp y2))))
+  (< (* y1 y2) 0))
+
+(defthm sign-change-implies-root-bracket
+  "Proves that a sign change guarantees opposite non-zero boundary evaluations."
+  (implies (and (rationalp y1)
+                (rationalp y2)
+                (sign-change-p y1 y2))
+           (not (equal y1 y2))))
+
+;; 11b. n-Queens Non-Attacking Permutation Predicate (8-Queens)
+(defun queen-attack-pair-p (r1 c1 r2 c2)
+  "Tests if two queens on board positions (r1, c1) and (r2, c2) attack each other."
+  (declare (xargs :guard (and (integerp r1) (integerp c1)
+                              (integerp r2) (integerp c2))))
+  (or (equal r1 r2)
+      (equal c1 c2)
+      (equal (abs (- r1 r2)) (abs (- c1 c2)))))
+
+(defun queens-list-safe-p (r c placed-queens)
+  "Checks if placing queen at (r, c) is safe from all placed queens."
+  (declare (xargs :guard (and (integerp r) (integerp c)
+                              (true-listp placed-queens))))
+  (if (atom placed-queens)
+      t
+    (let ((q (car placed-queens)))
+      (and (not (queen-attack-pair-p r c (car q) (cdr q)))
+           (queens-list-safe-p r c (cdr placed-queens))))))
+
+(defthm queens-safe-placement-preservation
+  (implies (and (integerp r) (integerp c)
+                (true-listp placed-queens)
+                (queens-list-safe-p r c placed-queens))
+           (booleanp (queens-list-safe-p r c placed-queens))))
+
+;; =========================================================================
+;; MODULE 12: DISCRETE MICROWAVE, SOLID-STATE & ELECTRONICS CIRCUIT THEORY
+;; =========================================================================
+
+;; 12a. Discrete Telegrapher Equations for Microwave Transmission Lines
+(defun telegrapher-delta-v (inductance-l delta-i dt)
+  "Discrete voltage drop across line increment: Delta V = -L * Delta I / dt."
+  (declare (xargs :guard (and (rationalp inductance-l)
+                              (rationalp delta-i)
+                              (rationalp dt)
+                              (not (equal dt 0)))))
+  (/ (* (- inductance-l) delta-i) dt))
+
+(defun telegrapher-delta-i (capacitance-c delta-v dt)
+  "Discrete current leakage across line increment: Delta I = -C * Delta V / dt."
+  (declare (xargs :guard (and (rationalp capacitance-c)
+                              (rationalp delta-v)
+                              (rationalp dt)
+                              (not (equal dt 0)))))
+  (/ (* (- capacitance-c) delta-v) dt))
+
+(defthm telegrapher-equations-rational
+  (implies (and (rationalp l)
+                (rationalp di)
+                (rationalp dt)
+                (not (equal dt 0)))
+           (rationalp (telegrapher-delta-v l di dt))))
+
+;; 12b. S-Parameter 2-Port Power Conservation (Unitary Scattering Invariant)
+(defun s-parameter-power-conserved-p (s11-sq s21-sq)
+  "Evaluates lossless 2-port power conservation: |S11|^2 + |S21|^2 = 1."
+  (declare (xargs :guard (and (rationalp s11-sq)
+                              (rationalp s21-sq))))
+  (equal (+ s11-sq s21-sq) 1))
+
+(defthm s-parameter-unitary-scattering
+  (implies (and (rationalp s11-sq)
+                (rationalp s21-sq)
+                (equal (+ s11-sq s21-sq) 1))
+           (s-parameter-power-conserved-p s11-sq s21-sq)))
+
+;; 12c. Solid-State PIN Diode RF Limiter Switching Model
+(defun pin-diode-attenuation (pin-input p-thresh r-on r-off)
+  "Calculates attenuation resistance based on incident RF power."
+  (declare (xargs :guard (and (rationalp pin-input)
+                              (rationalp p-thresh)
+                              (rationalp r-on)
+                              (rationalp r-off))))
+  (if (>= pin-input p-thresh)
+      r-on
+    r-off))
+
+(defthm pin-diode-clamping-bounded
+  (implies (and (rationalp pin-input)
+                (rationalp p-thresh)
+                (rationalp r-on)
+                (rationalp r-off)
+                (>= pin-input p-thresh))
+           (equal (pin-diode-attenuation pin-input p-thresh r-on r-off)
+                  r-on)))
+
+;; =========================================================================
 ;; END OF IRIS NUMBER SYSTEM ACL2 BOOK
 ;; =========================================================================

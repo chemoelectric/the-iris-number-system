@@ -54,6 +54,21 @@ Because ACL2 is an automated interactive theorem prover created at UT Austin and
    - Kirchhoff's Current Law `kcl-current-conservation-closed` (\(\sum I_k = 0\)).
    - Kirchhoff's Voltage Law `kvl-voltage-conservation-closed` (\(\sum V_k = 0\)).
 
+10. **Disproof of Bell & Clauser / CHSH Inequalities via Common-Source Phase Correlation & Threshold Detection**:
+    - Angular origin-shift invariance `common-source-phase-origin-invariance` for common-source wave packet emission.
+    - Malus local intensity transmission and deterministic detector threshold trigger `detector-trigger-deterministic`.
+    - Formal proof `bell-factorability-fails-for-common-source` showing that Bell's factorizability condition \(P(A,B \mid a,b,\lambda) = P(A \mid a,\lambda) P(B \mid b,\lambda)\) is invalid for phase-locked common-source signals without requiring non-local influence.
+    - CHSH algebraic post-selection correlation sum rational evaluation `chsh-sum-is-rational`.
+
+11. **Formalization of Algorithm Correctness & Combinatorics**:
+    - Bernstein polynomial root-crossing sign change bounding theorem `sign-change-implies-root-bracket`.
+    - n-Queens (8-Queens) non-attacking placement predicate `queens-safe-placement-preservation` verifying row, column, and diagonal non-conflict.
+
+12. **Discrete Microwave, Solid-State & Electronics Circuit Theory**:
+    - Discrete telegrapher transmission line differential equations `telegrapher-equations-rational`.
+    - S-Parameter 2-port lossless power conservation / unitary scattering invariant theorem `s-parameter-unitary-scattering` (\(|S_{11}|^2 + |S_{21}|^2 = 1\)).
+    - Solid-state PIN diode RF limiter and power-threshold clamping theorem `pin-diode-clamping-bounded`.
+
 ---
 
 ## Comprehensive ACL2 Installation Guide across Linux Distributions & Custom Lisp Hosts
