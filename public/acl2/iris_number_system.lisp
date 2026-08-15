@@ -130,7 +130,8 @@
   (implies (and (rationalp diff-val)
                 (rationalp c))
            (equal (* c diff-val)
-                  (* diff-val c))))
+                  (* diff-val c)))
+  :rule-classes nil)
 
 ;; Resolution of Zeno's Dichotomy: In finite steps N = L / delta_omega,
 ;; any distance L is traversed in finite discrete time duration T = N * dt.
@@ -346,20 +347,6 @@
 ;; MODULE 5: GROVER SEARCH / GIVENS DISCRETE QUANTUM WALK EVOLUTION
 ;; =========================================================================
 
-(defthm minus-times-minus
-  (implies (and (rationalp x) (rationalp y))
-           (equal (* (- x) (- y))
-                  (* x y)))
-  :hints (("Goal" :in-theory (enable functional-commutativity-of-minus-*-left
-                                     functional-commutativity-of-minus-*-right
-                                     inverse-of-unary--))))
-
-(defthm minus-times-plus
-  (implies (and (rationalp x) (rationalp y))
-           (equal (* (- x) y)
-                  (- (* x y))))
-  :hints (("Goal" :in-theory (enable functional-commutativity-of-minus-*-left))))
-
 ;; 2D Unitary State Vector (alpha, beta) for Grover target vs non-target space
 (defun grover-state-p (st)
   "Recognizes a 2D rational quantum state (alpha . beta)."
@@ -382,8 +369,7 @@
 (defthm grover-oracle-preserves-norm
   (implies (grover-state-p st)
            (equal (grover-norm-sq (grover-target-oracle st))
-                  (grover-norm-sq st)))
-  :hints (("Goal" :in-theory (enable grover-norm-sq grover-target-oracle grover-state-p))))
+                  (grover-norm-sq st))))
 
 ;; Givens Rotation Step: Rotates state by discrete angle theta with cos=c, sin=s (c^2 + s^2 = 1)
 (defun givens-rotate (st c s)
@@ -401,8 +387,7 @@
                 (rationalp s)
                 (equal (+ (* c c) (* s s)) 1))
            (equal (grover-norm-sq (givens-rotate st c s))
-                  (grover-norm-sq st)))
-  :hints (("Goal" :in-theory (enable grover-norm-sq givens-rotate grover-state-p))))
+                  (grover-norm-sq st))))
 
 ;; =========================================================================
 ;; MODULE 6: MASTER FIELD EQUATION (D F = J) & MAXWELL ELECTRODYNAMICS
