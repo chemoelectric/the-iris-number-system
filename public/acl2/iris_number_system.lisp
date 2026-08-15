@@ -125,8 +125,8 @@
                 (posp omega))
            (rationalp (msra-derivative x omega))))
 
+;; Proves linearity of the discrete difference quotient for scalar scaling.
 (defthm msra-diff-linear-combination
-  "Proves linearity of the discrete difference quotient for scalar scaling."
   (implies (and (rationalp diff-val)
                 (rationalp c))
            (equal (* c diff-val)
@@ -141,8 +141,8 @@
                               (posp omega))))
   (* dist omega))
 
+;; Proves that traversing distance on G_omega requires a finite rational step count.
 (defthm zeno-dichotomy-resolution
-  "Proves that traversing distance on G_omega requires a finite rational step count."
   (implies (and (rationalp dist)
                 (posp omega))
            (rationalp (zeno-dichotomy-steps dist omega))))
@@ -344,8 +344,8 @@
   (cons (- (* c (car st)) (* s (cdr st)))
         (+ (* s (car st)) (* c (cdr st)))))
 
+;; Proves that Givens state rotation exactly preserves state norm when c^2 + s^2 = 1.
 (defthm givens-rotation-unitary-norm-preservation
-  "Proves that Givens state rotation exactly preserves state norm when c^2 + s^2 = 1."
   (implies (and (grover-state-p st)
                 (rationalp c)
                 (rationalp s)
@@ -414,8 +414,8 @@
          (equal (- (nth 1 curl-b) (* inv-c2 (nth 1 de-dt))) (* mu0 (nth 1 j-curr)))
          (equal (- (nth 2 curl-b) (* inv-c2 (nth 2 de-dt))) (* mu0 (nth 2 j-curr))))))
 
+;; Proves that when all components of D F = J hold, Maxwell's laws are tautologically satisfied.
 (defthm maxwell-equations-unification
-  "Proves that when all components of D F = J hold, Maxwell's laws are tautologically satisfied."
   (implies (and (rationalp div-e)
                 (rationalp rho)
                 (rationalp eps0)
@@ -477,8 +477,8 @@
         (momentum-state mass v1))
      dt))
 
+;; Newton's First Law: If net force is zero, velocity remains constant.
 (defthm newton-first-law-inertia
-  "Newton's First Law: If net force is zero, velocity remains constant."
   (implies (and (rationalp mass)
                 (not (equal mass 0))
                 (rationalp v1)
@@ -488,8 +488,8 @@
                 (equal (force-from-momentum-change mass v1 v2 dt) 0))
            (equal v1 v2)))
 
+;; Newton's Second Law: F = m * a where a = (v2 - v1) / dt.
 (defthm newton-second-law-f-equals-ma
-  "Newton's Second Law: F = m * a where a = (v2 - v1) / dt."
   (implies (and (rationalp mass)
                 (rationalp v1)
                 (rationalp v2)
@@ -498,8 +498,8 @@
            (equal (force-from-momentum-change mass v1 v2 dt)
                   (* mass (/ (- v2 v1) dt)))))
 
+;; Newton's Third Law: Action and reaction forces are equal in magnitude and opposite in sign.
 (defthm newton-third-law-action-reaction
-  "Newton's Third Law: Action and reaction forces are equal in magnitude and opposite in sign."
   (implies (and (rationalp f-action))
            (equal (+ f-action (- f-action)) 0)))
 
@@ -549,8 +549,8 @@
     (and (equal (car probs) (/ 1 n))
          (maxent-uniform-p (cdr probs) n))))
 
+;; Proves that uniform MaxEnt distribution is identically normalized.
 (defthm maxent-uniform-is-normalized
-  "Proves that uniform MaxEnt distribution is identically normalized."
   (implies (and (posp n)
                 (probability-list-p probs)
                 (equal (len probs) n)
@@ -609,9 +609,9 @@
                               (rationalp theta-b))))
   (- theta-a theta-b))
 
+;; Proves that shifting the angular origin by phi leaves the relative
+;; phase difference strictly invariant.
 (defthm common-source-phase-origin-invariance
-  "Proves that shifting the angular origin by phi leaves the relative
-   phase difference strictly invariant."
   (implies (and (rationalp theta-a)
                 (rationalp theta-b)
                 (rationalp phi))
@@ -632,8 +632,8 @@
                               (rationalp threshold))))
   (>= intensity threshold))
 
+;; Proves that detector firing is a purely deterministic function of local field intensity.
 (defthm detector-trigger-deterministic
-  "Proves that detector firing is a purely deterministic function of local field intensity."
   (implies (and (rationalp intensity)
                 (rationalp threshold)
                 (>= intensity threshold))
@@ -647,9 +647,9 @@
                               (rationalp prob-b))))
   (equal joint-prob (* prob-a prob-b)))
 
+;; Proves that for phase-locked signals with non-zero correlation covariance,
+;; Bell's factorizability requirement is violated without non-local causation.
 (defthm bell-factorability-fails-for-common-source
-  "Proves that for phase-locked signals with non-zero correlation covariance,
-   Bell's factorizability requirement is violated without non-local causation."
   (implies (and (rationalp prob-a)
                 (rationalp prob-b)
                 (rationalp covariance)
@@ -685,8 +685,8 @@
                               (rationalp y2))))
   (< (* y1 y2) 0))
 
+;; Proves that a sign change guarantees opposite non-zero boundary evaluations.
 (defthm sign-change-implies-root-bracket
-  "Proves that a sign change guarantees opposite non-zero boundary evaluations."
   (implies (and (rationalp y1)
                 (rationalp y2)
                 (sign-change-p y1 y2))
