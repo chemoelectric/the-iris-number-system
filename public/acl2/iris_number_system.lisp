@@ -240,39 +240,14 @@
   (declare (xargs :guard t))
   (and (true-listp mv)
        (equal (len mv) 8)
-       (rational-listp mv)))
-
-(defthm rationalp-nth-0
-  (implies (and (rational-listp lst) (consp lst))
-           (rationalp (nth 0 lst))))
-
-(defthm rationalp-nth-1
-  (implies (and (rational-listp lst) (consp (cdr lst)))
-           (rationalp (nth 1 lst))))
-
-(defthm rationalp-nth-2
-  (implies (and (rational-listp lst) (consp (cddr lst)))
-           (rationalp (nth 2 lst))))
-
-(defthm rationalp-nth-3
-  (implies (and (rational-listp lst) (consp (cdddr lst)))
-           (rationalp (nth 3 lst))))
-
-(defthm rationalp-nth-4
-  (implies (and (rational-listp lst) (consp (cddddr lst)))
-           (rationalp (nth 4 lst))))
-
-(defthm rationalp-nth-5
-  (implies (and (rational-listp lst) (consp (cdr (cddddr lst))))
-           (rationalp (nth 5 lst))))
-
-(defthm rationalp-nth-6
-  (implies (and (rational-listp lst) (consp (cddr (cddddr lst))))
-           (rationalp (nth 6 lst))))
-
-(defthm rationalp-nth-7
-  (implies (and (rational-listp lst) (consp (cdddr (cddddr lst))))
-           (rationalp (nth 7 lst))))
+       (rationalp (nth 0 mv))
+       (rationalp (nth 1 mv))
+       (rationalp (nth 2 mv))
+       (rationalp (nth 3 mv))
+       (rationalp (nth 4 mv))
+       (rationalp (nth 5 mv))
+       (rationalp (nth 6 mv))
+       (rationalp (nth 7 mv))))
 
 (defthm cl-mv-p-implies-elements-rational
   (implies (cl-mv-p mv)
@@ -283,8 +258,7 @@
                 (rationalp (nth 4 mv))
                 (rationalp (nth 5 mv))
                 (rationalp (nth 6 mv))
-                (rationalp (nth 7 mv))))
-  :hints (("Goal" :in-theory (enable cl-mv-p len rational-listp nth))))
+                (rationalp (nth 7 mv)))))
 
 (defun cl-mv-make (s v1 v2 v3 v4 v5 v6 ps)
   "Constructs an 8-component multivector in Cl(4,1,1)."
@@ -425,14 +399,15 @@
   (declare (xargs :guard t))
   (and (true-listp v)
        (equal (len v) 3)
-       (rational-listp v)))
+       (rationalp (nth 0 v))
+       (rationalp (nth 1 v))
+       (rationalp (nth 2 v))))
 
 (defthm vec3-p-implies-elements-rational
   (implies (vec3-p v)
            (and (rationalp (nth 0 v))
                 (rationalp (nth 1 v))
-                (rationalp (nth 2 v))))
-  :hints (("Goal" :in-theory (enable vec3-p len rational-listp nth))))
+                (rationalp (nth 2 v)))))
 
 (defun vec3-dot (u v)
   (declare (xargs :guard (and (vec3-p u) (vec3-p v))
