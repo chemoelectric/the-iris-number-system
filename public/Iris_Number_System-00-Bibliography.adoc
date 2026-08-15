@@ -264,6 +264,13 @@ Presents the definitive industrial chemical synthesis, discrete moisture agglome
 *Annotation:*
 The quintessential literature of operational deduction, abductive reasoning, and retroduction (reasoning backwards from observed physical consequences to unique antecedent causes). Holmes’s core epistemic maxims—such as *“It is a capital mistake to theorize before one has data; insensibly one begins to twist facts to suit theories, instead of theories to suit facts”* and *“When you have eliminated the impossible, whatever remains, however improbable, must be the truth”*—directly anticipate the objective Bayesian inference methodology of Harold Jeffreys and E. T. Jaynes. Emphasizes that backwards inference requires acute observation of objective-level physical traces and tools that are fundamentally worthy of respect.
 
+[#entry-christie-poirot]
+=== Christie, Agatha (1920–1975)
+*The Hercule Poirot Canon* (*The Mysterious Affair at Styles*, *The Murder of Roger Ackroyd*, *Murder on the Orient Express*, *The ABC Murders*, *Cards on the Table*, *Death on the Nile*, *Five Little Pigs*, *Curtain*, et al.). London: The Bodley Head / Collins Crime Club.
+
+*Annotation:*
+Exemplifies the supreme convergence of rigorous epistemological verification and uncompromising ethical humanism. Poirot’s foundational investigative methodology rests on strict Cartesian and operational discipline: *“One must not believe what one is told; one must look at the facts, verify everything, and arrange them with method and order”*—demanding that no verbal assertion or social status be accepted as truth without direct physical and psychological verification where every detail fits without contradiction. Crucially, Poirot’s method is inseparable from an absolute ethical commitment to the sanctity of human life (*“I do not approve of murder”*), rejecting utilitarian rationalizations and treating every human life as an irreplaceable, non-expendable end in itself.
+
 [#entry-shokunin-craft]
 === Traditional Japanese Woodworking (*Shokunin Kishitsu*)
 Foundational craft traditions, treatises, and tool mechanics on Japanese hand tools (*Kanna*, *Nomi*, *Nokogiri*), sharpening geometry, and joinery. Exemplified by Toshio Ōdate (1984), *Japanese Woodworking Tools: Their Tradition, Spirit and Use*. Newtown, CT: Taunton Press.
