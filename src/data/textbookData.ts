@@ -2469,6 +2469,32 @@ Derives the sum and product rules of probability as the unique consistent algebr
 Derives thermodynamics entirely from Jaynes's Maximum Entropy (MaxEnt) principle, proving thermodynamic entropy is a special case of information uncertainty.`
         }
       ]
+    },
+    {
+      id: "chap-bib-autodidactic",
+      title: "Autodidactic Physical Foundations and Direct Experimental Field Unification",
+      summary: "Foundational treatises by Franklin and Faraday establishing charge conservation and field geometry.",
+      sections: [
+        {
+          id: "sec-bib-autodidactic",
+          title: "Autodidactic Physical Foundations",
+          contentAsciiDoc: `== Autodidactic Physical Foundations and Direct Experimental Field Unification
+
+[#entry-franklin-1751]
+=== Franklin, Benjamin (1751)
+*Experiments and Observations on Electricity, Made at Philadelphia in America*. London: E. Cave.
+
+*Annotation:*
+The foundational treatise on electrical physics written by an autodidactic investigator unburdened by scholastic dogma. Franklin established conservation of electric charge, positive and negative electrical states, and the single-fluid electrical model through direct physical experimentation. Franklin's work exemplifies the autodidactic discipline of observing physical phenomena directly at the non-verbal objective level rather than accepting inherited institutional authority.
+
+[#entry-faraday-1839]
+=== Faraday, Michael (1839–1855)
+*Experimental Researches in Electricity* (3 Volumes). London: R. and J.E. Taylor / Richard Taylor.
+
+*Annotation:*
+The monumental experimental treatise that discovered electromagnetic induction, dielectric polarization, magneto-optical rotation (the Faraday effect), and the physical existence of lines of force (field geometry). Lacking formal mathematical university training, Faraday conceived physical fields as real, spatial strain geometries rather than abstract action-at-a-distance point forces. Faraday's field intuition provided the direct physical precursor to James Clerk Maxwell's field equations and the local Clifford \( Cl(4,1,1) \) Master Field Equation.`
+        }
+      ]
     }
   ],
   filename: "Iris_Number_System-00-Bibliography.adoc"
