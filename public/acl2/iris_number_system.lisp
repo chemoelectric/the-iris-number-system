@@ -558,7 +558,8 @@
                 (equal (force-from-momentum-change mass v1 v2 dt) 0))
            (equal v1 v2))
   :rule-classes nil
-  :hints (("Goal" :in-theory (enable force-from-momentum-change))))
+  :hints (("Goal" :in-theory (e/d (force-from-momentum-change)
+                                  (distributivity)))))
 
 ;; Newton's Second Law: F = m * a where a = (v2 - v1) / dt.
 (defthm newton-second-law-f-equals-ma
