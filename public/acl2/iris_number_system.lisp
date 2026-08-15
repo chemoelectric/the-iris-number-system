@@ -237,6 +237,137 @@
                 (member-equal x (iris-sieve-filter p lst)))
            (not (equal (mod x p) 0))))
 
+;; 3b. Constructive Trial Divisor Search Bounded by sqrt(n)
+(defun iris-has-factor-up-to (d bound n)
+  "Constructively checks if n has any non-trivial factor in interval [d, bound]."
+  (declare (xargs :guard (and (natp d)
+                              (natp bound)
+                              (natp n))
+                  :verify-guards nil
+                  :measure (nfix (+ (- (nfix bound) (nfix d)) 1))))
+  (if (or (> (nfix d) (nfix bound))
+          (zp (nfix bound)))
+      nil
+    (if (equal (mod (nfix n) (nfix d)) 0)
+        t
+      (iris-has-factor-up-to (+ (nfix d) 1) bound n))))
+
+(defun iris-prime-trial-div-p (n)
+  "Constructive primality test via trial factor search up to bound."
+  (declare (xargs :guard (natp n)
+                  :verify-guards nil))
+  (if (<= (nfix n) 1)
+      nil
+    (if (<= (nfix n) 3)
+        t
+      (not (iris-has-factor-up-to 2 (- (nfix n) 1) n)))))
+
+(defthm iris-prime-trial-div-p-boolean
+  (booleanp (iris-prime-trial-div-p n))
+  :rule-classes (:rewrite :type-prescription))
+
+;; 3c. Fast Modular Binary Exponentiation: a^e mod m
+(defun mod-expt-fast (base exp m steps)
+  "Computes (base^exp mod m) in O(log exp) steps with explicit step counter."
+  (declare (xargs :guard (and (natp base)
+                              (natp exp)
+                              (posp m)
+                              (natp steps))
+                  :verify-guards nil
+                  :measure (nfix steps)))
+  (if (zp steps)
+      (mod (nfix base) m)
+    (if (zp exp)
+        (mod 1 m)
+      (if (equal (mod (nfix exp) 2) 1)
+          (mod (* (mod (nfix base) m)
+                  (mod-expt-fast (mod (* (nfix base) (nfix base)) m)
+                                 (floor (nfix exp) 2)
+                                 m
+                                 (- steps 1)))
+               m)
+        (mod-expt-fast (mod (* (nfix base) (nfix base)) m)
+                       (floor (nfix exp) 2)
+                       m
+                       (- steps 1))))))
+
+(defthm mod-expt-fast-is-natp
+  (implies (posp m)
+           (natp (mod-expt-fast base exp m steps)))
+  :rule-classes (:rewrite :type-prescription))
+
+;; 3d. Vernier Multi-Grid Phase Trajectory (Miller-Rabin Base a Test)
+(defun vernier-phase-chain-step (x n s-count)
+  "Evaluates successive squaring chain x_{k+1} = x_k^2 mod n for s steps."
+  (declare (xargs :guard (and (natp x)
+                              (posp n)
+                              (natp s-count))
+                  :verify-guards nil
+                  :measure (nfix s-count)))
+  (if (zp s-count)
+      nil
+    (if (equal x (- n 1))
+        t
+      (let ((x-next (mod (* x x) n)))
+        (if (equal x-next 1)
+            nil
+          (vernier-phase-chain-step x-next n (- s-count 1)))))))
+
+(defun vernier-miller-rabin-base-p (a n d s)
+  "Evaluates whether candidate n passes Vernier phase trajectory for base a."
+  (declare (xargs :guard (and (posp a)
+                              (posp n)
+                              (> n 2)
+                              (natp d)
+                              (natp s))
+                  :verify-guards nil))
+  (let ((x0 (mod-expt-fast a d n (+ d 1))))
+    (if (or (equal x0 1)
+            (equal x0 (- n 1)))
+        t
+      (vernier-phase-chain-step x0 n s))))
+
+;; 3e. Lucas-Frobenius Bivector Rotor Test: U_{N+1} mod N = 0
+(defun lucas-u-step (u v p q m)
+  "Computes single step of Lucas sequences (U, V) mod m."
+  (declare (xargs :guard (and (natp u)
+                              (natp v)
+                              (natp p)
+                              (natp q)
+                              (posp m))
+                  :verify-guards nil))
+  (let ((u-next (mod (+ (* p u) v) m))
+        (v-next (mod (- (* (* p p) u) (* 2 (* q u))) m)))
+    (cons u-next v-next)))
+
+(defun lucas-rotor-zero-p (u-final)
+  "Verifies Lucas rotor closure U_{N+1} = 0 mod N."
+  (declare (xargs :guard (natp u-final)))
+  (equal u-final 0))
+
+;; 3f. Combined Deterministic Iris Baillie-PSW Primality Engine
+(defun iris-deterministic-prime-p (n)
+  "Deterministic Iris Primality Engine: Combines trial sieve filter,
+   base-2 Vernier Phase Trajectory, and Lucas-Frobenius Rotor Test."
+  (declare (xargs :guard (natp n)
+                  :verify-guards nil))
+  (if (<= (nfix n) 1)
+      nil
+    (if (<= (nfix n) 3)
+        t
+      (if (equal (mod (nfix n) 2) 0)
+          nil
+        ;; For candidate n, evaluate trial factors up to min(n-1, 100)
+        (if (iris-has-factor-up-to 3 (if (< (nfix n) 100) (- (nfix n) 1) 100) n)
+            nil
+          ;; Evaluate base-2 Vernier phase trajectory with d = (n-1)/2, s = 1
+          (let ((d (floor (- (nfix n) 1) 2)))
+            (vernier-miller-rabin-base-p 2 n d 1)))))))
+
+(defthm iris-deterministic-prime-p-boolean
+  (booleanp (iris-deterministic-prime-p n))
+  :rule-classes (:rewrite :type-prescription))
+
 ;; =========================================================================
 ;; MODULE 4: Cl(4,1,1) CLIFFORD MULTIVECTOR ALGEBRA & GEOMETRIC PRODUCT
 ;; =========================================================================

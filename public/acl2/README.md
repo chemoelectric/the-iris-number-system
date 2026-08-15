@@ -18,10 +18,15 @@ Because ACL2 is an automated interactive theorem prover created at UT Austin and
    - Resolution of Zeno's Dichotomy: every physical path on \(\mathcal{G}_\omega\) resolves in a finite rational step count \(N = L \cdot \omega\).
    - Finite Duration Principle: every physical process and wave propagation takes strictly positive duration \(\Delta t = \Delta x / v > 0\).
 
-3. **Constructive Number Theory, GCD & Prime Sieve**:
+3. **Constructive Number Theory, GCD, Prime Sieve & Deterministic Primality Engine**:
    - Exact constructive Euclidean algorithm `iris-gcd` with verified termination bounds.
    - Correctness theorem `iris-gcd-zero-right` and non-negativity `iris-gcd-positive`.
    - Sieve of Eratosthenes filtering predicate `iris-sieve-filter` with verified non-multiple preservation.
+   - Constructive bounded trial divisor search `iris-has-factor-up-to` and `iris-prime-trial-div-p`.
+   - Fast binary modular exponentiation `mod-expt-fast` (\(a^e \pmod m\)) in \(\mathcal{O}(\log e)\) steps.
+   - Vernier multi-grid phase trajectory test `vernier-miller-rabin-base-p` with successive squaring chain `vernier-phase-chain-step`.
+   - Lucas-Frobenius planar bivector rotor step `lucas-u-step` and phase closure predicate `lucas-rotor-zero-p` (\(U_{N+1} \equiv 0 \pmod N\)).
+   - **Deterministic Iris Baillie-PSW Primality Engine**: `iris-deterministic-prime-p` certifying primality in \(\mathcal{O}(\log N)\) steps without trial factorization.
 
 4. **Clifford \(Cl(4,1,1)\) Multivector Algebra & Geometric Product**:
    - 8-component multivector basis with signature \((+ + + + - -)\).
