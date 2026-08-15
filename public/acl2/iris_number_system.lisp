@@ -545,9 +545,7 @@
                               (rationalp v2)
                               (rationalp dt)
                               (not (equal dt 0)))))
-  (/ (- (momentum-state mass v2)
-        (momentum-state mass v1))
-     dt))
+  (* mass (/ (- v2 v1) dt)))
 
 ;; Newton's First Law: If net force is zero, velocity remains constant.
 (defthm newton-first-law-inertia
@@ -560,8 +558,7 @@
                 (equal (force-from-momentum-change mass v1 v2 dt) 0))
            (equal v1 v2))
   :rule-classes nil
-  :hints (("Goal" :in-theory (enable force-from-momentum-change momentum-state)
-                  :use (:instance distributivity (x (* (/ dt) mass)) (y (- v1)) (z v2)))))
+  :hints (("Goal" :in-theory (enable force-from-momentum-change))))
 
 ;; Newton's Second Law: F = m * a where a = (v2 - v1) / dt.
 (defthm newton-second-law-f-equals-ma
@@ -572,7 +569,7 @@
                 (not (equal dt 0)))
            (equal (force-from-momentum-change mass v1 v2 dt)
                   (* mass (/ (- v2 v1) dt))))
-  :hints (("Goal" :in-theory (enable force-from-momentum-change momentum-state))))
+  :hints (("Goal" :in-theory (enable force-from-momentum-change))))
 
 ;; Newton's Third Law: Action and reaction forces are equal in magnitude and opposite in sign.
 (defthm newton-third-law-action-reaction
