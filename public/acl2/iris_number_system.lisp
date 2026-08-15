@@ -382,6 +382,22 @@
   (cons (- (* c (car st)) (* s (cdr st)))
         (+ (* s (car st)) (* c (cdr st)))))
 
+;; Algebraic factor lemma for Givens rotation norm preservation
+(defthm givens-norm-algebra
+  (implies (and (rationalp a)
+                (rationalp b)
+                (rationalp c)
+                (rationalp s)
+                (equal (+ (* c c) (* s s)) 1))
+           (equal (+ (* c c a a)
+                     (* c c b b)
+                     (* s s a a)
+                     (* s s b b))
+                  (+ (* a a) (* b b))))
+  :hints (("Goal" :use ((:instance distributivity (x (* c c)) (y (* s s)) (z (* a a)))
+                        (:instance distributivity (x (* c c)) (y (* s s)) (z (* b b))))
+                  :in-theory (disable distributivity))))
+
 ;; Proves that Givens state rotation exactly preserves state norm when c^2 + s^2 = 1.
 (defthm givens-rotation-unitary-norm-preservation
   (implies (and (grover-state-p st)
@@ -389,7 +405,12 @@
                 (rationalp s)
                 (equal (+ (* c c) (* s s)) 1))
            (equal (grover-norm-sq (givens-rotate st c s))
-                  (grover-norm-sq st))))
+                  (grover-norm-sq st)))
+  :hints (("Goal" :use ((:instance givens-norm-algebra
+                                  (a (car st))
+                                  (b (cdr st))
+                                  (c c)
+                                  (s s))))))
 
 ;; =========================================================================
 ;; MODULE 6: MASTER FIELD EQUATION (D F = J) & MAXWELL ELECTRODYNAMICS
