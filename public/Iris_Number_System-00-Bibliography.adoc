@@ -255,6 +255,22 @@ The monumental experimental treatise that discovered electromagnetic induction, 
 *Annotation:*
 Presents the definitive industrial chemical synthesis, discrete moisture agglomeration control, and thermal calcination kinetics for manufacturing low-frangibility, medium-density granular sodium tripolyphosphate (\( \mathrm{Na_5P_3O_{10}} \)). Demonstrates the rigorous control of multi-phase crystal transitions (Form I high-temperature phase and Form II low-temperature phase) and moisture saturation thresholds during particulate bed agitation and calcination at \( 320^\circ \text{C} \text{--} 550^\circ \text{C} \), producing bulk densities in the optimal range of \( 0.45 \text{--} 0.59 \text{ g/cm}^3 \). Serves as a foundational exemplar of discrete chemical kinetic modeling and industrial material phase control in applied physical chemistry and condensed matter engineering (Volume IV).
 
+== Operational Retroduction, Craft Discipline, and Detective Inference
+
+[#entry-doyle-holmes]
+=== Doyle, Sir Arthur Conan (1887–1927)
+*The Complete Sherlock Holmes* (*A Study in Scarlet*, *The Sign of the Four*, *The Adventures of Sherlock Holmes*, *The Memoirs of Sherlock Holmes*, *The Hound of the Baskervilles*, *The Return of Sherlock Holmes*, *His Last Bow*, *The Case-Book of Sherlock Holmes*). London: Ward, Lock & Co. / George Newnes.
+
+*Annotation:*
+The quintessential literature of operational deduction, abductive reasoning, and retroduction (reasoning backwards from observed physical consequences to unique antecedent causes). Holmes’s core epistemic maxims—such as *“It is a capital mistake to theorize before one has data; insensibly one begins to twist facts to suit theories, instead of theories to suit facts”* and *“When you have eliminated the impossible, whatever remains, however improbable, must be the truth”*—directly anticipate the objective Bayesian inference methodology of Harold Jeffreys and E. T. Jaynes. Emphasizes that backwards inference requires acute observation of objective-level physical traces and tools that are fundamentally worthy of respect.
+
+[#entry-shokunin-craft]
+=== Traditional Japanese Woodworking (*Shokunin Kishitsu*)
+Foundational craft traditions, treatises, and tool mechanics on Japanese hand tools (*Kanna*, *Nomi*, *Nokogiri*), sharpening geometry, and joinery. Exemplified by Toshio Ōdate (1984), *Japanese Woodworking Tools: Their Tradition, Spirit and Use*. Newtown, CT: Taunton Press.
+
+*Annotation:*
+Establishes the fundamental operational and moral imperative: *respect your tools*. In authentic craft disciplines, precision tools are not disposable, sloppy black boxes; they are calibrated extensions of human sensory-motor capability requiring continuous maintenance, true geometry, and deep comprehension of material behavior. Demonstrates that one cannot achieve exact physical joinery with warped or conceptually broken tools—a principle violated by modern software engineering and twentieth-century theoretical physics when relying on non-Euclidean spacetime diagrams rather than sound, Euclidean geometric foundations.
+
 == Structural Mechanics, Engineering Forensics, and the Human Ascent
 
 [#entry-ressler-2012]
