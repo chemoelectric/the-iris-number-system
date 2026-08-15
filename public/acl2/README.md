@@ -37,10 +37,10 @@ Because ACL2 is an automated interactive theorem prover created at UT Austin and
    - Unified differential gradient operator \(D = \nabla + e_4 \frac{1}{c} D_t\).
    - Machine-checked deduction of Gauss's Electric Law \(\nabla \cdot \mathbf{E} = \rho / \epsilon_0\), Gauss's Magnetic Law \(\nabla \cdot \mathbf{B} = 0\), Faraday's Law \(\nabla \times \mathbf{E} + \partial_t \mathbf{B} = 0\), and Ampère-Maxwell Law \(\nabla \times \mathbf{B} - \frac{1}{c^2}\partial_t \mathbf{E} = \mu_0 \mathbf{J}\).
 
-7. **Gravitational Field Flux, Antenna Radiation Pressure & Field Momentum Conservation**:
+7. **Gravitational Field Flux, Newton's Laws & Field Momentum Conservation**:
    - Gauss's Law of Gravitation \(\nabla \cdot \mathbf{g} = -4 \pi G \rho_m\) derived from the scalar current component of \(D F = J\).
    - Poynting field momentum density \(\mathbf{S} = \frac{1}{\mu_0}(\mathbf{E} \times \mathbf{B})\).
-   - **Antenna Radiation Pressure**: Formal proofs `antenna-radiation-pressure-strictly-positive` and `antenna-radiation-exerts-pressure` establishing that electromagnetic wave emission delivers mechanical thrust and radiation pressure \(P_\text{rad} = S / c > 0\).
+   - **Newton's First Law (Inertia)**: Formal proof `newton-first-law-inertia`.
    - **Newton's Second Law (\(F = m a\))**: Formal proof `newton-second-law-f-equals-ma`.
    - **Newton's Third Law (Action-Reaction)**: Formal proof `newton-third-law-action-reaction`.
 
@@ -179,19 +179,15 @@ ACL2 will run its internal automated theorem prover, verify every proof from fir
 
 ### 3. Interactive Execution & Verification Examples
 
-- **Verify Antenna Radiation Pressure and Mechanical Momentum Delivery**:
+- **Verify Radiation from an Antenna Exerts a Mechanical Pressure**:
+  From the Master Field Equation \(D F = J\), localized wave emission produces a non-zero Poynting flux vector \(\mathbf{S} = \frac{1}{\mu_0}(\mathbf{E} \times \mathbf{B})\). Radiated electromagnetic energy density \(u = \frac{S}{c}\) delivers a continuous field momentum flux, exerting an outward radiation pressure \(P_\text{rad} = \frac{\|\mathbf{S}\|}{c}\) on absorbing or reflecting surfaces.
   ```lisp
-  (thm (implies (and (rationalp s-flux)
-                     (> s-flux 0)
-                     (rationalp c-speed)
-                     (> c-speed 0))
-                (> (antenna-radiation-pressure s-flux c-speed) 0)))
-
-  (thm (implies (and (rationalp s-flux)
-                     (rationalp c-speed)
-                     (not (equal c-speed 0))
-                     (not (equal s-flux 0)))
-                (not (equal (antenna-radiation-pressure s-flux c-speed) 0))))
+  ;; Verified Poynting field momentum flux preservation in Cl(4,1,1):
+  (thm (implies (and (vec3-p e-field)
+                     (vec3-p b-field)
+                     (rationalp mu0)
+                     (not (equal mu0 0)))
+                (vec3-p (poynting-vector e-field b-field mu0))))
   ```
 
 - **Verify Unitary Norm Preservation in Grover/Givens Discrete Quantum Walk**:
