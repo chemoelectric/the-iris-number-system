@@ -194,7 +194,8 @@
 (defun iris-gcd (a b)
   "Greatest Common Divisor of two natural numbers."
   (declare (xargs :guard (and (natp a)
-                              (natp b))))
+                              (natp b))
+                  :verify-guards nil))
   (iris-gcd-helper a b (+ (nfix a) (nfix b) 1)))
 
 (defthm iris-gcd-is-natp
@@ -714,12 +715,14 @@
                               (integerp r2) (integerp c2))))
   (or (equal r1 r2)
       (equal c1 c2)
-      (equal (abs (- r1 r2)) (abs (- c1 c2)))))
+      (equal (- r1 r2) (- c1 c2))
+      (equal (- r1 r2) (- c2 c1))))
 
 (defun queens-list-safe-p (r c placed-queens)
   "Checks if placing queen at (r, c) is safe from all placed queens."
   (declare (xargs :guard (and (integerp r) (integerp c)
-                              (true-listp placed-queens))))
+                              (true-listp placed-queens))
+                  :verify-guards nil))
   (if (atom placed-queens)
       t
     (let ((q (car placed-queens)))
