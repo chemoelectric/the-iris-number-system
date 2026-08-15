@@ -242,6 +242,12 @@
        (equal (len mv) 8)
        (rational-listp mv)))
 
+(defthm rationalp-nth-of-rational-listp
+  (implies (and (rational-listp lst)
+                (< (nfix n) (len lst)))
+           (rationalp (nth n lst)))
+  :hints (("Goal" :induct (nth n lst))))
+
 (defun cl-mv-make (s v1 v2 v3 v4 v5 v6 ps)
   "Constructs an 8-component multivector in Cl(4,1,1)."
   (declare (xargs :guard (and (rationalp s)
@@ -575,7 +581,8 @@
   (implies (and (posp n)
                 (maxent-uniform-p probs n))
            (equal (sum-list probs)
-                  (* (len probs) (/ 1 n)))))
+                  (* (len probs) (/ 1 n))))
+  :hints (("Goal" :induct (maxent-uniform-p probs n))))
 
 ;; Proves that uniform MaxEnt distribution is identically normalized.
 (defthm maxent-uniform-is-normalized
