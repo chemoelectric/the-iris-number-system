@@ -508,7 +508,12 @@ u64 estimateInitialX(u64 n) {
         double fn = cast(double) n;
         double logn = log(fn);
         double log2n = log(logn);
-        double factor = logn + log2n - 1.0 + (log2n - 2.0) / logn;
+        double term1 = logn + log2n - 1.0;
+        double term2 = (log2n - 2.0) / logn;
+        double log2nSq = log2n * log2n;
+        double lognSq = logn * logn;
+        double term3 = (log2nSq - 6.0 * log2n + 11.0) / (2.0 * lognSq);
+        double factor = term1 + term2 - term3;
         double rawEst = fn * factor;
         est = cast(u64) rawEst;
     }

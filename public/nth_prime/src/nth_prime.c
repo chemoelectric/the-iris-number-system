@@ -690,7 +690,12 @@ static uint64_t estimate_initial_x(uint64_t n) {
         double term2 = term1 - 1.0;
         double num3 = log2n - 2.0;
         double frac3 = num3 / logn;
-        double factor = term2 + frac3;
+        double log2n_sq = log2n * log2n;
+        double logn_sq = logn * logn;
+        double num4 = log2n_sq - 6.0 * log2n + 11.0;
+        double den4 = 2.0 * logn_sq;
+        double frac4 = num4 / den4;
+        double factor = term2 + frac3 - frac4;
         double raw_est = fn * factor;
         est = (uint64_t)raw_est;
     }
