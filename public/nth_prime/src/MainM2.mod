@@ -6,7 +6,7 @@ MODULE MainM2;
 
 FROM SYSTEM IMPORT CARDINAL64;
 FROM NthPrime64 IMPORT GetNthPrimeU64, GetNthPrimeStr;
-FROM ProgramArgs IMPORT IsArgPresent, NextArg;
+FROM ProgramArgs IMPORT IsArgPresent, NextArg, ReadItem;
 FROM STextIO IMPORT WriteString, WriteLn, ReadString, SkipLine;
 FROM SWholeIO IMPORT WriteCard;
 
@@ -18,7 +18,7 @@ VAR
 BEGIN
   hasArg := IsArgPresent();
   IF hasArg THEN
-    NextArg(argStr);
+    ReadItem(argStr);
   ELSE
     ReadString(argStr);
   END;
