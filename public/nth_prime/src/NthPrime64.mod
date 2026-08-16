@@ -8,7 +8,7 @@ IMPLEMENTATION MODULE NthPrime64;
 
 FROM SYSTEM IMPORT CARDINAL64, CARDINAL32, CARDINAL16, ADDRESS, ADR;
 FROM Storage IMPORT ALLOCATE, DEALLOCATE;
-FROM RealMath IMPORT ln, exp, sqrt, power;
+FROM LongMath IMPORT ln, exp, sqrt, power;
 FROM STextIO IMPORT WriteString, WriteLn;
 FROM SWholeIO IMPORT WriteCard;
 
@@ -174,7 +174,7 @@ BEGIN
   END;
   gIsSubprimeBit^[0] := gIsSubprimeBit^[0] - 1; (* clear bit 0 *)
 
-  sqrtLim := VAL(CARDINAL64, TRUNC(sqrt(VAL(REAL, limit))));
+  sqrtLim := VAL(CARDINAL64, TRUNC(sqrt(VAL(LONGREAL, limit))));
   iVal := 3;
   WHILE iVal <= sqrtLim DO
     iOdd := (iVal - 1) DIV 2;
@@ -326,7 +326,7 @@ BEGIN
   WHILE iIdx <= cVal DO
     pI := primes^[iIdx];
     wVal := xVal DIV pI;
-    sqrtW := VAL(CARDINAL64, TRUNC(sqrt(VAL(REAL, wVal))));
+    sqrtW := VAL(CARDINAL64, TRUNC(sqrt(VAL(LONGREAL, wVal))));
     biVal := PiFast(sqrtW, primes, numPrimes);
     jIdx := iIdx;
     WHILE jIdx <= biVal DO
@@ -347,18 +347,18 @@ PROCEDURE PrimeCountLehmer (xVal : CARDINAL64;
                             numPrimes : CARDINAL) : CARDINAL64;
 VAR
   countVal, aVal, bVal, cVal, phiVal, sumP2P3 : CARDINAL64;
-  sqX, sqSqX, cbX : REAL;
+  sqX, sqSqX, cbX : LONGREAL;
 BEGIN
   IF xVal < 2 THEN
     countVal := 0;
   ELSIF xVal <= gSieveMax THEN
     countVal := PiFast(xVal, primes, numPrimes);
   ELSE
-    sqX := sqrt(VAL(REAL, xVal));
+    sqX := sqrt(VAL(LONGREAL, xVal));
     sqSqX := sqrt(sqX);
     aVal := PiFast(VAL(CARDINAL64, TRUNC(sqSqX)), primes, numPrimes);
     bVal := PiFast(VAL(CARDINAL64, TRUNC(sqX)), primes, numPrimes);
-    cbX := power(VAL(REAL, xVal), 0.3333333333333333);
+    cbX := power(VAL(LONGREAL, xVal), 0.3333333333333333);
     cVal := PiFast(VAL(CARDINAL64, TRUNC(cbX)), primes, numPrimes);
 
     phiVal := PhiRec(xVal, aVal, primes, numPrimes);
@@ -399,15 +399,15 @@ END OEISAnchorLarge;
 PROCEDURE EstimateInitialX (n : CARDINAL64) : CARDINAL64;
 VAR
   x0 : CARDINAL64;
-  fn, logN, logLog, term1, term2, num3, frac3 : REAL;
-  logLogSq, logNSq, num4, den4, frac4, factor, rawEst : REAL;
+  fn, logN, logLog, term1, term2, num3, frac3 : LONGREAL;
+  logLogSq, logNSq, num4, den4, frac4, factor, rawEst : LONGREAL;
 BEGIN
   x0 := OEISAnchorSmall(n);
   IF x0 = 0 THEN
     x0 := OEISAnchorLarge(n);
   END;
   IF x0 = 0 THEN
-    fn := VAL(REAL, n);
+    fn := VAL(LONGREAL, n);
     logN := ln(fn);
     logLog := ln(logN);
     term1 := logN + logLog;
@@ -576,21 +576,21 @@ PROCEDURE NthPrimeRefine (nVal, currXIn : CARDINAL64;
 VAR
   pn, currX, currPi, diffN, absDiff, window : CARDINAL64;
   lowVal, highVal, stepVal : CARDINAL64;
-  fX, logX, estW : REAL;
+  fX, logX, estW : LONGREAL;
 BEGIN
   currX := currXIn;
   currPi := PrimeCountLehmer(currX, basePrimes, baseCount);
 
   WHILE (currPi + 2000 < nVal) OR (nVal + 2000 < currPi) DO
-    fX := VAL(REAL, currX);
+    fX := VAL(LONGREAL, currX);
     logX := ln(fX);
     IF nVal > currPi THEN
       diffN := nVal - currPi;
-      stepVal := VAL(CARDINAL64, TRUNC(VAL(REAL, diffN) * logX));
+      stepVal := VAL(CARDINAL64, TRUNC(VAL(LONGREAL, diffN) * logX));
       currX := currX + stepVal;
     ELSE
       diffN := currPi - nVal;
-      stepVal := VAL(CARDINAL64, TRUNC(VAL(REAL, diffN) * logX));
+      stepVal := VAL(CARDINAL64, TRUNC(VAL(LONGREAL, diffN) * logX));
       IF currX > stepVal THEN
         currX := currX - stepVal;
       ELSE
@@ -606,9 +606,9 @@ BEGIN
     absDiff := currPi - nVal;
   END;
 
-  fX := VAL(REAL, currX);
+  fX := VAL(LONGREAL, currX);
   logX := ln(fX);
-  estW := VAL(REAL, absDiff) * logX * 2.5;
+  estW := VAL(LONGREAL, absDiff) * logX * 2.5;
   window := VAL(CARDINAL64, TRUNC(estW)) + 1000;
   IF window < 2000 THEN window := 2000; END;
 
@@ -629,7 +629,7 @@ VAR
   pn, currX, zVal, sieveLimit, zPlus, piZ : CARDINAL64;
   cand, candOdd, wIdx, bIdx, countP, bitM, s34 : CARDINAL64;
   basePrimes : Card64Array;
-  fX, sqX, pow34 : REAL;
+  fX, sqX, pow34 : LONGREAL;
   allocPrimes : CARDINAL;
 BEGIN
   InitBaseTables;
@@ -641,7 +641,7 @@ BEGIN
   ELSIF nVal = 5 THEN pn := 11;
   ELSE
     currX := EstimateInitialX(nVal);
-    fX := VAL(REAL, currX);
+    fX := VAL(LONGREAL, currX);
     sqX := sqrt(fX);
     zVal := VAL(CARDINAL64, TRUNC(sqX));
 

@@ -4,8 +4,7 @@ MODULE MainM2;
  * ISO Modula-2 standard (gm2 / GCC 16.1).
  *)
 
-FROM SYSTEM IMPORT CARDINAL64;
-FROM NthPrime64 IMPORT GetNthPrimeU64, GetNthPrimeStr;
+FROM NthPrime64 IMPORT GetNthPrimeStr;
 FROM ProgramArgs IMPORT IsArgPresent, NextArg, ArgChan;
 FROM IOChan IMPORT ChanId;
 FROM TextIO IMPORT ReadToken;
@@ -21,6 +20,7 @@ BEGIN
   hasArg := IsArgPresent();
   IF hasArg THEN
     cid := ArgChan();
+    NextArg(cid);
     ReadToken(cid, argStr);
   ELSE
     ReadString(argStr);
