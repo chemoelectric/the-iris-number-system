@@ -77,7 +77,9 @@ $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm
 
 $(M2_TARGET): $(SRC_DIR)/NthPrime64.def $(SRC_DIR)/NthPrime64.mod $(SRC_DIR)/MainM2.mod
-	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -o $(@) $(SRC_DIR)/MainM2.mod
+	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -c $(SRC_DIR)/NthPrime64.mod -o $(SRC_DIR)/NthPrime64.o
+	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -c $(SRC_DIR)/MainM2.mod -o $(SRC_DIR)/MainM2.o
+	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -o $(@) $(SRC_DIR)/MainM2.o $(SRC_DIR)/NthPrime64.o
 
 .PHONY: f64 d64 c64 m2
 f64:: $(F64_TARGET)
@@ -86,7 +88,7 @@ c64:: $(C64_TARGET)
 m2:: $(M2_TARGET)
 
 clean::
-	-rm -f $(F64_TARGET) $(D64_TARGET) $(C64_TARGET) $(M2_TARGET)
+	-rm -f $(F64_TARGET) $(D64_TARGET) $(C64_TARGET) $(M2_TARGET) $(SRC_DIR)/*.o
 
 .PHONY: default all
 default:: all
