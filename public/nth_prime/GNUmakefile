@@ -5,19 +5,23 @@ MKDIR_P = mkdir -p
 
 DC = gdc
 CC = gcc
+FC = gfortran
 
 ifeq ($(COVERAGE),1)
 # We strip -O3 and -march so lcov can accurately map assembly back to
 # lines.
 DFLAGS = -g -O0 --coverage
 CFLAGS = -g -O0 --coverage
+FCFLAGS = -g -O0 --coverage
 LDFLAGS = --coverage
 else
 DFLAGS = $(DOPTSFLAGS) $(WARNFLAGS)
 CFLAGS = $(COPTSFLAGS) $(WARNFLAGS)
+FCFLAGS = $(FCOPTSFLAGS) $(WARNFLAGS)
 LDFLAGS =
 endif
 
+F64_TARGET = nth-prime-64-f
 D64_TARGET = nth-prime-64-d
 C64_TARGET = nth-prime-64-c
 
@@ -37,6 +41,14 @@ COPTSFLAGS += -fopenmp
 COPTSFLAGS += -funroll-loops
 COPTSFLAGS += -flto=auto
 
+FCOPTSFLAGS =
+FCOPTSFLAGS += -std=f2023
+FCOPTSFLAGS += -O3
+FCOPTSFLAGS += -march=native -mtune=native
+FCOPTSFLAGS += -fopenmp
+FCOPTSFLAGS += -funroll-loops
+FCOPTSFLAGS += -flto=auto
+
 WARNFLAGS =
 WARNFLAGS += -Wall
 WARNFLAGS += -Wextra
@@ -46,22 +58,26 @@ OBJ_DIR = build
 
 .PHONY: clean
 
+$(F64_TARGET): $(SRC_DIR)/types_mod.f90 $(SRC_DIR)/nth_prime_64.f90 $(SRC_DIR)/main.f90
+	$(FC) $(FCFLAGS) -o $(@) $(^)
+
 $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
 
-.PHONY: d64 c64
+.PHONY: f64 d64 c64
+f64:: $(F64_TARGET)
 d64:: $(D64_TARGET)
 c64:: $(C64_TARGET)
 
 clean::
-	-rm -f $(D64_TARGET) $(C64_TARGET)
+	-rm -f $(F64_TARGET) $(D64_TARGET) $(C64_TARGET)
 
 .PHONY: default all
 default:: all
-all:: d64 c64
+all:: f64 d64 c64
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)

@@ -1,7 +1,7 @@
 program main_program
   use, intrinsic :: iso_fortran_env, only : input_unit, output_unit
+  use nth_prime_64_mod, only : get_nth_prime_u64
   use types_mod, only : i64, r128
-  use nth_prime_mod, only : get_nth_prime
   implicit none
 
   integer :: arg_count, ios
@@ -22,7 +22,7 @@ program main_program
 
   if (ios == 0) then
     if (n_val > 0_i64) then
-      result_prime = get_nth_prime(n_val)
+      result_prime = get_nth_prime_u64(n_val)
       write(output_unit, "(i0)") result_prime
     end if
   end if

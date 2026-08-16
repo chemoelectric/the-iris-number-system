@@ -16,9 +16,10 @@ Build the parallelized 64-bit binaries using GNU Make:
 make -f GNUmakefile
 ```
 
-To build the D and C 64-bit implementations:
+To build individual Fortran 2023, D, and C23 64-bit implementations:
 
 ```bash
+make -f GNUmakefile f64
 make -f GNUmakefile d64
 make -f GNUmakefile c64
 ```
@@ -27,6 +28,8 @@ To compile with custom compiler flags or standard specifications:
 
 ```bash
 CC=gcc CFLAGS="-std=gnu23 -O3 -fopenmp -march=native" \
+FC=gfortran FCFLAGS="-std=f2023 -O3 -fopenmp -march=native" \
+DC=gdc DFLAGS="-O3 -march=native" \
 make -f GNUmakefile
 ```
 
@@ -93,6 +96,12 @@ scientific notation, and power expressions:
 - **Icon Procedure Implementation**: Clean, standalone `nth_prime(n)`
   procedure implemented in `nth_prime.icn` for string input filtering,
   asymptotic estimation, and prime calculation.
+- **Fortran 2023 Hardware 64-Bit \(n\)-th Prime Engine**:
+  Standalone Fortran 2023 engine in `src/nth_prime_64.f90`
+  (`nth-prime-64-f` target) using native IEEE 754 128-bit Quad
+  Precision (`real128`), hardware bitwise intrinsics (`popcnt`,
+  `iand`, `ishft`, `ieor`), recursive memoized Buchstab decomposition,
+  and bit-packed 64-bit word segmented window extraction.
 - **D 64-Bit Engine and Demo Program**: Reusable D module in
   `src/nth_prime_64.d` (`nth-prime-64-d` target). Function
   overloads support `std.bigint.BigInt`, native
