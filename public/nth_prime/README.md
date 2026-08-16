@@ -115,6 +115,14 @@ scientific notation, and power expressions:
   (`get_nth_prime_u64`, `get_nth_prime_u32`, `get_nth_prime_str`),
   sublinear Lehmer prime counting, bit-packed segmented sieve
   extraction, and OpenMP multithreading.
+- **Modula-2 ISO Hardware 64-Bit \(n\)-th Prime Engine**:
+  High-performance ISO Modula-2 engine (`NthPrime64.def`,
+  `NthPrime64.mod`, `MainM2.mod` targeting `gm2` in GCC 16.1 via
+  `nth-prime-64-m2`). Implements full sublinear Lehmer prime counting,
+  $O(1)$ primorial wheel ($P_6 = 30030$) periodic acceleration,
+  dynamic heap allocation (`Storage.ALLOCATE`), bit-packed word sieving,
+  hardware popcount emulation/intrinsics, and memoized Buchstab
+  recursion.
 - **Modular SIMD Buchstab Tree Decomposition & OEIS Anchors**:
   Modular Buchstab recursion trees ($\phi(x, a)$) with $O(1)$ wheel
   base cases, divisionless modular reduction, and prior OEIS anchor
