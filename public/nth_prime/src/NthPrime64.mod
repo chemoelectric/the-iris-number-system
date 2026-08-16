@@ -30,68 +30,61 @@ VAR
   gPhi6Table : ARRAY [0..PrimeWheelMod-1] OF CARDINAL16;
   gPhi6Initialized : BOOLEAN;
 
+  gPow2 : ARRAY [0..63] OF CARDINAL64;
+  gBytePopcnt : ARRAY [0..255] OF CARDINAL;
+  gTablesInitialized : BOOLEAN;
+
   gIsSubprimeBit : Word64Array;
   gPopcntBlock : Card64Array;
   gSieveMax : CARDINAL64;
 
+PROCEDURE InitBaseTables;
+VAR
+  i, v, b, c : CARDINAL;
+  p : CARDINAL64;
+BEGIN
+  IF NOT gTablesInitialized THEN
+    p := 1;
+    i := 0;
+    WHILE i < 64 DO
+      gPow2[i] := p;
+      IF i < 63 THEN
+        p := p * 2;
+      END;
+      i := i + 1;
+    END;
+
+    v := 0;
+    WHILE v < 256 DO
+      c := 0;
+      b := v;
+      WHILE b > 0 DO
+        IF (b MOD 2) = 1 THEN
+          c := c + 1;
+        END;
+        b := b DIV 2;
+      END;
+      gBytePopcnt[v] := c;
+      v := v + 1;
+    END;
+    gTablesInitialized := TRUE;
+  END;
+END InitBaseTables;
+
 PROCEDURE PopCount64 (w : CARDINAL64) : CARDINAL64;
 VAR
-  c : CARDINAL64;
-  wVal : CARDINAL64;
-  mask0 : CARDINAL64;
-  mask1 : CARDINAL64;
-  mask2 : CARDINAL64;
-  mask3 : CARDINAL64;
+  cnt, temp : CARDINAL64;
+  byteVal : CARDINAL;
 BEGIN
-  wVal := w;
-  mask0 := 6148914691236517205; (* 0x5555555555555555 *)
-  wVal := wVal - ((wVal DIV 2) * mask0);
-  mask1 := 3689348814741910323; (* 0x3333333333333333 *)
-  wVal := (wVal * mask1) + ((wVal DIV 4) * mask1);
-  mask2 := 1085102592571150095; (* 0x0F0F0F0F0F0F0F0F *)
-  wVal := (wVal + (wVal DIV 16)) * mask2;
-  mask3 := 72340172838076673;   (* 0x0101010101010101 *)
-  wVal := (wVal * mask3) DIV 72057594037927936; (* >> 56 *)
-  c := wVal;
-  RETURN c;
+  cnt := 0;
+  temp := w;
+  WHILE temp > 0 DO
+    byteVal := VAL(CARDINAL, temp MOD 256);
+    cnt := cnt + VAL(CARDINAL64, gBytePopcnt[byteVal]);
+    temp := temp DIV 256;
+  END;
+  RETURN cnt;
 END PopCount64;
-
-PROCEDURE BitShiftLeft (val : CARDINAL64; shift : CARDINAL) : CARDINAL64;
-VAR
-  res : CARDINAL64;
-  s : CARDINAL;
-BEGIN
-  res := val;
-  s := 0;
-  WHILE s < shift DO
-    res := res * 2;
-    s := s + 1;
-  END;
-  RETURN res;
-END BitShiftLeft;
-
-PROCEDURE BitXor (a, b : CARDINAL64) : CARDINAL64;
-VAR
-  res, p : CARDINAL64;
-  aRem, bRem : CARDINAL64;
-  i : CARDINAL;
-BEGIN
-  res := 0;
-  p := 1;
-  i := 0;
-  WHILE i < 64 DO
-    aRem := a MOD 2;
-    bRem := b MOD 2;
-    IF aRem # bRem THEN
-      res := res + p;
-    END;
-    a := a DIV 2;
-    b := b DIV 2;
-    p := p * 2;
-    i := i + 1;
-  END;
-  RETURN res;
-END BitXor;
 
 PROCEDURE IsCoprimeTo30030 (iVal : CARDINAL64) : BOOLEAN;
 VAR
@@ -135,14 +128,13 @@ END InitPhi6Table;
 
 PROCEDURE Phi6 (xVal : CARDINAL64) : CARDINAL64;
 VAR
-  qVal, rVal, ans : CARDINAL64;
-  tblVal : CARDINAL64;
+  qVal, rVal, ans, tblVal : CARDINAL64;
 BEGIN
   qVal := xVal DIV PrimeWheelMod;
   rVal := xVal MOD PrimeWheelMod;
   ans := qVal * PrimeWheelCount;
   IF rVal > 0 THEN
-    tblVal := CARDINAL64(gPhi6Table[rVal - 1]);
+    tblVal := VAL(CARDINAL64, gPhi6Table[rVal - 1]);
     ans := ans + tblVal;
   END;
   RETURN ans;
@@ -152,7 +144,7 @@ PROCEDURE BuildBitSieve (limit : CARDINAL64);
 VAR
   numOdds, numWords, iVal, iOdd, wIdx, bIdx : CARDINAL64;
   i2Val, jVal, jOdd, jw, jb, wVal, wIter : CARDINAL64;
-  sqrtLim, clrMask, mask, prevCnt, bitM : CARDINAL64;
+  sqrtLim, mask, prevCnt, bitM : CARDINAL64;
   allocSize : CARDINAL;
 BEGIN
   IF (limit <= gSieveMax) AND (gIsSubprimeBit # NIL) THEN
@@ -162,7 +154,7 @@ BEGIN
   IF gIsSubprimeBit # NIL THEN
     numOdds := gSieveMax DIV 2;
     numWords := (numOdds DIV 64) + 1;
-    allocSize := CARDINAL(numWords * 8);
+    allocSize := VAL(CARDINAL, numWords * 8);
     DEALLOCATE(gIsSubprimeBit, allocSize);
     DEALLOCATE(gPopcntBlock, allocSize);
   END;
@@ -170,7 +162,7 @@ BEGIN
   gSieveMax := limit;
   numOdds := limit DIV 2;
   numWords := (numOdds DIV 64) + 1;
-  allocSize := CARDINAL(numWords * 8);
+  allocSize := VAL(CARDINAL, numWords * 8);
 
   ALLOCATE(gIsSubprimeBit, allocSize);
   ALLOCATE(gPopcntBlock, allocSize);
@@ -180,15 +172,15 @@ BEGIN
     gIsSubprimeBit^[wIter] := 18446744073709551615; (* 0xFFFFFFFFFFFFFFFF *)
     wIter := wIter + 1;
   END;
-  gIsSubprimeBit^[0] := gIsSubprimeBit^[0] - 1; (* clear bit 0 (value 1) *)
+  gIsSubprimeBit^[0] := gIsSubprimeBit^[0] - 1; (* clear bit 0 *)
 
-  sqrtLim := CARDINAL64(sqrt(REAL(limit)));
+  sqrtLim := VAL(CARDINAL64, TRUNC(sqrt(VAL(REAL, limit))));
   iVal := 3;
   WHILE iVal <= sqrtLim DO
     iOdd := (iVal - 1) DIV 2;
     wIdx := iOdd DIV 64;
     bIdx := iOdd MOD 64;
-    bitM := BitShiftLeft(1, CARDINAL(bIdx));
+    bitM := gPow2[VAL(CARDINAL, bIdx)];
     wVal := (gIsSubprimeBit^[wIdx] DIV bitM) MOD 2;
     IF wVal = 1 THEN
       i2Val := iVal + iVal;
@@ -197,7 +189,7 @@ BEGIN
         jOdd := (jVal - 1) DIV 2;
         jw := jOdd DIV 64;
         jb := jOdd MOD 64;
-        mask := BitShiftLeft(1, CARDINAL(jb));
+        mask := gPow2[VAL(CARDINAL, jb)];
         IF ((gIsSubprimeBit^[jw] DIV mask) MOD 2) = 1 THEN
           gIsSubprimeBit^[jw] := gIsSubprimeBit^[jw] - mask;
         END;
@@ -221,7 +213,7 @@ PROCEDURE PiFast (wVal : CARDINAL64;
                   numPrimes : CARDINAL) : CARDINAL64;
 VAR
   res, kOdd, wIdx, bIdx, baseCnt, curWord : CARDINAL64;
-  mask, maskedWord, subCnt, bitM : CARDINAL64;
+  mask, maskedWord, subCnt : CARDINAL64;
 BEGIN
   IF wVal <= 2 THEN
     res := wVal DIV 2;
@@ -234,7 +226,7 @@ BEGIN
     IF bIdx = 63 THEN
       maskedWord := curWord;
     ELSE
-      mask := BitShiftLeft(1, CARDINAL(bIdx + 1)) - 1;
+      mask := gPow2[VAL(CARDINAL, bIdx + 1)] - 1;
       maskedWord := curWord MOD (mask + 1);
     END;
     subCnt := PopCount64(maskedWord);
@@ -249,13 +241,12 @@ PROCEDURE PhiMemoized (xVal, aVal : CARDINAL64;
                        primes : Card64Array;
                        numPrimes : CARDINAL) : CARDINAL64;
 VAR
-  res, key, slot, pVal, leftVal, rightVal : CARDINAL64;
+  res, slot, pVal, leftVal, rightVal : CARDINAL64;
   p6, prod, piX : CARDINAL64;
 BEGIN
-  key := BitXor(xVal, aVal * 1140071481932319848);
-  slot := key MOD CacheSize;
+  slot := (xVal + (aVal * 1140071481932319848)) MOD CacheSize;
 
-  IF (gMemoX[slot] = xVal) AND (gMemoA[slot] = CARDINAL32(aVal)) THEN
+  IF (gMemoX[slot] = xVal) AND (gMemoA[slot] = VAL(CARDINAL32, aVal)) THEN
     res := gMemoRes[slot];
     RETURN res;
   END;
@@ -281,7 +272,7 @@ BEGIN
   END;
 
   gMemoX[slot] := xVal;
-  gMemoA[slot] := CARDINAL32(aVal);
+  gMemoA[slot] := VAL(CARDINAL32, aVal);
   gMemoRes[slot] := res;
   RETURN res;
 END PhiMemoized;
@@ -335,7 +326,7 @@ BEGIN
   WHILE iIdx <= cVal DO
     pI := primes^[iIdx];
     wVal := xVal DIV pI;
-    sqrtW := CARDINAL64(sqrt(REAL(wVal)));
+    sqrtW := VAL(CARDINAL64, TRUNC(sqrt(VAL(REAL, wVal))));
     biVal := PiFast(sqrtW, primes, numPrimes);
     jIdx := iIdx;
     WHILE jIdx <= biVal DO
@@ -363,12 +354,12 @@ BEGIN
   ELSIF xVal <= gSieveMax THEN
     countVal := PiFast(xVal, primes, numPrimes);
   ELSE
-    sqX := sqrt(REAL(xVal));
+    sqX := sqrt(VAL(REAL, xVal));
     sqSqX := sqrt(sqX);
-    aVal := PiFast(CARDINAL64(sqSqX), primes, numPrimes);
-    bVal := PiFast(CARDINAL64(sqX), primes, numPrimes);
-    cbX := power(REAL(xVal), 0.3333333333333333);
-    cVal := PiFast(CARDINAL64(cbX), primes, numPrimes);
+    aVal := PiFast(VAL(CARDINAL64, TRUNC(sqSqX)), primes, numPrimes);
+    bVal := PiFast(VAL(CARDINAL64, TRUNC(sqX)), primes, numPrimes);
+    cbX := power(VAL(REAL, xVal), 0.3333333333333333);
+    cVal := PiFast(VAL(CARDINAL64, TRUNC(cbX)), primes, numPrimes);
 
     phiVal := PhiRec(xVal, aVal, primes, numPrimes);
     sumP2P3 := LehmerSum2(xVal, aVal, bVal, cVal, primes, numPrimes);
@@ -377,7 +368,7 @@ BEGIN
   RETURN countVal;
 END PrimeCountLehmer;
 
-PROCEDURE OEISAnchor (n : CARDINAL64) : CARDINAL64;
+PROCEDURE OEISAnchorSmall (n : CARDINAL64) : CARDINAL64;
 VAR
   est : CARDINAL64;
 BEGIN
@@ -387,14 +378,23 @@ BEGIN
   ELSIF n = 100 THEN est := 541;
   ELSIF n = 1000 THEN est := 7919;
   ELSIF n = 10000 THEN est := 104729;
-  ELSIF n = 100000 THEN est := 1299709;
+  END;
+  RETURN est;
+END OEISAnchorSmall;
+
+PROCEDURE OEISAnchorLarge (n : CARDINAL64) : CARDINAL64;
+VAR
+  est : CARDINAL64;
+BEGIN
+  est := 0;
+  IF n = 100000 THEN est := 1299709;
   ELSIF n = 1000000 THEN est := 15485863;
   ELSIF n = 10000000 THEN est := 179424673;
   ELSIF n = 100000000 THEN est := 2038074743;
   ELSIF n = 1000000000 THEN est := 22801763489;
   END;
   RETURN est;
-END OEISAnchor;
+END OEISAnchorLarge;
 
 PROCEDURE EstimateInitialX (n : CARDINAL64) : CARDINAL64;
 VAR
@@ -402,9 +402,12 @@ VAR
   fn, logN, logLog, term1, term2, num3, frac3 : REAL;
   logLogSq, logNSq, num4, den4, frac4, factor, rawEst : REAL;
 BEGIN
-  x0 := OEISAnchor(n);
+  x0 := OEISAnchorSmall(n);
   IF x0 = 0 THEN
-    fn := REAL(n);
+    x0 := OEISAnchorLarge(n);
+  END;
+  IF x0 = 0 THEN
+    fn := VAL(REAL, n);
     logN := ln(fn);
     logLog := ln(logN);
     term1 := logN + logLog;
@@ -418,7 +421,7 @@ BEGIN
     frac4 := num4 / den4;
     factor := term2 + frac3 - frac4;
     rawEst := fn * factor;
-    x0 := CARDINAL64(rawEst);
+    x0 := VAL(CARDINAL64, TRUNC(rawEst));
   END;
   RETURN x0;
 END EstimateInitialX;
@@ -439,7 +442,7 @@ BEGIN
   numWords := (rangeLen + 63) DIV 64;
   IF numWords = 0 THEN numWords := 1; END;
 
-  allocSize := CARDINAL(numWords * 8);
+  allocSize := VAL(CARDINAL, numWords * 8);
   ALLOCATE(sieve, allocSize);
 
   wIdx := 0;
@@ -449,11 +452,11 @@ BEGIN
   END;
 
   idx := 1;
-  WHILE idx <= CARDINAL64(baseCount) DO
+  WHILE idx <= VAL(CARDINAL64, baseCount) DO
     pVal := basePrimes^[idx];
     pSq := pVal * pVal;
     IF pSq > highVal THEN
-      idx := CARDINAL64(baseCount) + 1;
+      idx := VAL(CARDINAL64, baseCount) + 1;
     ELSE
       startVal := ((lowVal + pVal - 1) DIV pVal) * pVal;
       IF startVal < pSq THEN startVal := pSq; END;
@@ -461,7 +464,7 @@ BEGIN
         diffS := startVal - lowVal;
         wIdx := diffS DIV 64;
         bIdx := diffS MOD 64;
-        bitM := BitShiftLeft(1, CARDINAL(bIdx));
+        bitM := gPow2[VAL(CARDINAL, bIdx)];
         IF ((sieve^[wIdx] DIV bitM) MOD 2) = 1 THEN
           sieve^[wIdx] := sieve^[wIdx] - bitM;
         END;
@@ -478,7 +481,7 @@ BEGIN
     diffV := val - lowVal;
     wIdx := diffV DIV 64;
     bIdx := diffV MOD 64;
-    bitM := BitShiftLeft(1, CARDINAL(bIdx));
+    bitM := gPow2[VAL(CARDINAL, bIdx)];
     IF ((sieve^[wIdx] DIV bitM) MOD 2) = 1 THEN
       currentCount := currentCount + 1;
       IF currentCount = targetN THEN
@@ -509,7 +512,7 @@ BEGIN
   numWords := (rangeLen + 63) DIV 64;
   IF numWords = 0 THEN numWords := 1; END;
 
-  allocSize := CARDINAL(numWords * 8);
+  allocSize := VAL(CARDINAL, numWords * 8);
   ALLOCATE(sieve, allocSize);
 
   wIdx := 0;
@@ -519,11 +522,11 @@ BEGIN
   END;
 
   idx := 1;
-  WHILE idx <= CARDINAL64(baseCount) DO
+  WHILE idx <= VAL(CARDINAL64, baseCount) DO
     pVal := basePrimes^[idx];
     pSq := pVal * pVal;
     IF pSq > highVal THEN
-      idx := CARDINAL64(baseCount) + 1;
+      idx := VAL(CARDINAL64, baseCount) + 1;
     ELSE
       startVal := ((lowVal + pVal - 1) DIV pVal) * pVal;
       IF startVal < pSq THEN startVal := pSq; END;
@@ -531,7 +534,7 @@ BEGIN
         diffS := startVal - lowVal;
         wIdx := diffS DIV 64;
         bIdx := diffS MOD 64;
-        bitM := BitShiftLeft(1, CARDINAL(bIdx));
+        bitM := gPow2[VAL(CARDINAL, bIdx)];
         IF ((sieve^[wIdx] DIV bitM) MOD 2) = 1 THEN
           sieve^[wIdx] := sieve^[wIdx] - bitM;
         END;
@@ -548,7 +551,7 @@ BEGIN
     diffV := val - lowVal;
     wIdx := diffV DIV 64;
     bIdx := diffV MOD 64;
-    bitM := BitShiftLeft(1, CARDINAL(bIdx));
+    bitM := gPow2[VAL(CARDINAL, bIdx)];
     IF ((sieve^[wIdx] DIV bitM) MOD 2) = 1 THEN
       IF currentCount = targetN THEN
         resultPrime := val;
@@ -579,15 +582,15 @@ BEGIN
   currPi := PrimeCountLehmer(currX, basePrimes, baseCount);
 
   WHILE (currPi + 2000 < nVal) OR (nVal + 2000 < currPi) DO
-    fX := REAL(currX);
+    fX := VAL(REAL, currX);
     logX := ln(fX);
     IF nVal > currPi THEN
       diffN := nVal - currPi;
-      stepVal := CARDINAL64(REAL(diffN) * logX);
+      stepVal := VAL(CARDINAL64, TRUNC(VAL(REAL, diffN) * logX));
       currX := currX + stepVal;
     ELSE
       diffN := currPi - nVal;
-      stepVal := CARDINAL64(REAL(diffN) * logX);
+      stepVal := VAL(CARDINAL64, TRUNC(VAL(REAL, diffN) * logX));
       IF currX > stepVal THEN
         currX := currX - stepVal;
       ELSE
@@ -603,10 +606,10 @@ BEGIN
     absDiff := currPi - nVal;
   END;
 
-  fX := REAL(currX);
+  fX := VAL(REAL, currX);
   logX := ln(fX);
-  estW := REAL(absDiff) * logX * 2.5;
-  window := CARDINAL64(estW) + 1000;
+  estW := VAL(REAL, absDiff) * logX * 2.5;
+  window := VAL(CARDINAL64, TRUNC(estW)) + 1000;
   IF window < 2000 THEN window := 2000; END;
 
   IF nVal >= currPi THEN
@@ -629,6 +632,7 @@ VAR
   fX, sqX, pow34 : REAL;
   allocPrimes : CARDINAL;
 BEGIN
+  InitBaseTables;
   IF nVal = 0 THEN pn := 0;
   ELSIF nVal = 1 THEN pn := 2;
   ELSIF nVal = 2 THEN pn := 3;
@@ -637,13 +641,13 @@ BEGIN
   ELSIF nVal = 5 THEN pn := 11;
   ELSE
     currX := EstimateInitialX(nVal);
-    fX := REAL(currX);
+    fX := VAL(REAL, currX);
     sqX := sqrt(fX);
-    zVal := CARDINAL64(sqX);
+    zVal := VAL(CARDINAL64, TRUNC(sqX));
 
     sieveLimit := zVal * 12;
     pow34 := power(fX, 0.75);
-    s34 := CARDINAL64(pow34 + 10000.0);
+    s34 := VAL(CARDINAL64, TRUNC(pow34 + 10000.0));
     IF sieveLimit < s34 THEN sieveLimit := s34; END;
     IF sieveLimit < 1000000 THEN sieveLimit := 1000000; END;
     IF (currX <= 20000000) AND (sieveLimit < currX) THEN
@@ -654,7 +658,7 @@ BEGIN
     zPlus := zVal + 1000;
     piZ := PiFast(zPlus, NIL, 0);
 
-    allocPrimes := CARDINAL((piZ + 1000) * 8);
+    allocPrimes := VAL(CARDINAL, (piZ + 1000) * 8);
     ALLOCATE(basePrimes, allocPrimes);
 
     basePrimes^[1] := 2;
@@ -664,7 +668,7 @@ BEGIN
       candOdd := (cand - 1) DIV 2;
       wIdx := candOdd DIV 64;
       bIdx := candOdd MOD 64;
-      bitM := BitShiftLeft(1, CARDINAL(bIdx));
+      bitM := gPow2[VAL(CARDINAL, bIdx)];
       IF ((gIsSubprimeBit^[wIdx] DIV bitM) MOD 2) = 1 THEN
         countP := countP + 1;
         basePrimes^[countP] := cand;
@@ -679,7 +683,7 @@ BEGIN
       wIdx := wIdx + 1;
     END;
 
-    pn := NthPrimeRefine(nVal, currX, basePrimes, CARDINAL(countP));
+    pn := NthPrimeRefine(nVal, currX, basePrimes, VAL(CARDINAL, countP));
     DEALLOCATE(basePrimes, allocPrimes);
   END;
   RETURN pn;
@@ -696,11 +700,14 @@ VAR
 BEGIN
   nVal := 0;
   i := 0;
-  len := LENGTH(inStr);
+  len := 0;
+  WHILE (len <= HIGH(inStr)) AND (inStr[len] # 0C) DO
+    len := len + 1;
+  END;
   WHILE i < len DO
     ch := inStr[i];
     IF (ch >= '0') AND (ch <= '9') THEN
-      digit := CARDINAL64(ORD(ch) - ORD('0'));
+      digit := VAL(CARDINAL64, ORD(ch) - ORD('0'));
       nVal := (nVal * 10) + digit;
     END;
     i := i + 1;
@@ -714,7 +721,7 @@ BEGIN
   ELSE
     dIdx := 0;
     WHILE p > 0 DO
-      digits[dIdx] := CHR(ORD('0') + CARDINAL(p MOD 10));
+      digits[dIdx] := CHR(ORD('0') + VAL(CARDINAL, p MOD 10));
       p := p DIV 10;
       dIdx := dIdx + 1;
     END;
@@ -730,6 +737,7 @@ END GetNthPrimeStr;
 
 BEGIN
   gPhi6Initialized := FALSE;
+  gTablesInitialized := FALSE;
   gIsSubprimeBit := NIL;
   gPopcntBlock := NIL;
   gSieveMax := 0;

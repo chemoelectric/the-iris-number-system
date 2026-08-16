@@ -6,7 +6,7 @@ MODULE MainM2;
 
 FROM SYSTEM IMPORT CARDINAL64;
 FROM NthPrime64 IMPORT GetNthPrimeU64, GetNthPrimeStr;
-FROM ProgramArgs IMPORT IsArgPresent, NextArg, ReadArg;
+FROM ProgramArgs IMPORT IsArgPresent, NextArg;
 FROM STextIO IMPORT WriteString, WriteLn, ReadString, SkipLine;
 FROM SWholeIO IMPORT WriteCard;
 
