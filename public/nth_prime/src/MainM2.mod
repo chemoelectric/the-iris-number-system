@@ -20,7 +20,6 @@ BEGIN
   hasArg := IsArgPresent();
   IF hasArg THEN
     cid := ArgChan();
-    NextArg(cid);
     ReadToken(cid, argStr);
   ELSE
     ReadString(argStr);
