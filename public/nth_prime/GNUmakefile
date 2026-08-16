@@ -25,8 +25,6 @@ F64_TARGET = nth-prime-64-f
 D64_TARGET = nth-prime-64-d
 C64_TARGET = nth-prime-64-c
 
-GMP_LIBS := $(shell pkg-config --libs gmp 2>/dev/null || echo "")
-
 DOPTSFLAGS =
 DOPTSFLAGS += -frelease
 DOPTSFLAGS += -march=native -mtune=native
@@ -65,7 +63,7 @@ $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
 
 $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
-	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
+	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm
 
 .PHONY: f64 d64 c64
 f64:: $(F64_TARGET)

@@ -1,7 +1,6 @@
 /* nth_prime_64.c - C23 / GNU23 64-bit hardware integer nth-prime
  * engine using modular SIMD Buchstab trees, prior OEIS anchors,
- * Gilbreath difference invariants, OpenMP multi-threading, and
- * GNU MP (GMP) bignum interface routines.
+ * OpenMP multi-threading, and hardware POPCNT bitsets.
  */
 
 #include <stdio.h>
@@ -15,18 +14,6 @@
 
 #ifdef _OPENMP
 #include <omp.h>
-#endif
-
-#if __has_include(<gmp.h>) || defined(USE_GMP)
-#include <gmp.h>
-#define HAS_GMP 1
-#else
-typedef struct {
-    int _mp_alloc;
-    int _mp_size;
-    uint64_t *_mp_d;
-} mpz_t[1];
-#define HAS_GMP 0
 #endif
 
 #define CACHE_SIZE 1048576
@@ -749,42 +736,9 @@ uint32_t get_nth_prime_u32(uint32_t n) {
     return (uint32_t)res;
 }
 
-#if HAS_GMP
-void get_nth_prime_mpz(mpz_t rop, const mpz_t n) {
-    int cmp_zero = mpz_cmp_ui(n, 0);
-    if (cmp_zero <= 0) {
-        mpz_set_ui(rop, 0);
-    } else {
-        unsigned long u_val = mpz_get_ui(n);
-        uint64_t p = get_nth_prime_u64((uint64_t)u_val);
-        mpz_set_ui(rop, (unsigned long)p);
-    }
-}
-#else
-void get_nth_prime_mpz(mpz_t rop, const mpz_t n) {
-    (void)rop;
-    (void)n;
-}
-#endif
-
 void get_nth_prime_str(char *out_str,
                        size_t max_len,
                        const char *n_str) {
-#if HAS_GMP
-    mpz_t n;
-    mpz_t p;
-    mpz_init(n);
-    mpz_init(p);
-    int parse_res = mpz_set_str(n, n_str, 10);
-    if (parse_res == 0) {
-        get_nth_prime_mpz(p, n);
-        gmp_snprintf(out_str, max_len, "%Zu", p);
-    } else {
-        snprintf(out_str, max_len, "0");
-    }
-    mpz_clear(n);
-    mpz_clear(p);
-#else
     uint64_t val = 0;
     size_t i = 0;
     size_t len = strlen(n_str);
@@ -799,7 +753,6 @@ void get_nth_prime_str(char *out_str,
     }
     uint64_t p = get_nth_prime_u64(val);
     snprintf(out_str, max_len, "%" PRIu64, p);
-#endif
 }
 
 #if defined(STANDALONE) && STANDALONE
