@@ -6,19 +6,22 @@ MODULE MainM2;
 
 FROM SYSTEM IMPORT CARDINAL64;
 FROM NthPrime64 IMPORT GetNthPrimeU64, GetNthPrimeStr;
-FROM ProgramArgs IMPORT IsArgPresent, NextArg, ReadItem;
-FROM STextIO IMPORT WriteString, WriteLn, ReadString, SkipLine;
-FROM SWholeIO IMPORT WriteCard;
+FROM ProgramArgs IMPORT IsArgPresent, NextArg, ArgChan;
+FROM IOChan IMPORT ChanId;
+FROM TextIO IMPORT ReadToken;
+FROM STextIO IMPORT WriteString, WriteLn, ReadString;
 
 VAR
   argStr : ARRAY [0..255] OF CHAR;
   outStr : ARRAY [0..255] OF CHAR;
   hasArg : BOOLEAN;
+  cid    : ChanId;
 
 BEGIN
   hasArg := IsArgPresent();
   IF hasArg THEN
-    ReadItem(argStr);
+    cid := ArgChan();
+    ReadToken(cid, argStr);
   ELSE
     ReadString(argStr);
   END;
@@ -27,3 +30,4 @@ BEGIN
   WriteString(outStr);
   WriteLn;
 END MainM2.
+
