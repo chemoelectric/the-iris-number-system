@@ -106,7 +106,17 @@ By 1905, the theoretical establishment had been thoroughly trained in Cantorian 
 
 Mathematics had been divorced from human agency, tool use, and discrete physical measurement. The Bourbaki school later institutionalized this sterile formalism, attempting to purge all geometry, diagrams, historical context, and physical engineering intuition from mathematical education.
 
-The Iris Number System and the Master Field Equation \( \mathcal{D}\mathcal{F} = \mathcal{J} \) restore mathematics and physics to their sound foundations: a discrete, operational, human-scaled science grounded in finite entities, m-resolution measurements, and physically verifiable field mechanics.
+==== 7. Institutional Reluctance and the Sunk Cost Fallacy in Theoretical Physics
+A persistent question confronts the historian of science: why has the academic establishment exhibited such fierce reluctance to drop these demonstrably flawed twentieth-century theories, even when their internal contradictions (such as the Twin Paradox time dilation coasting contradiction and black hole continuum singularities) have been thoroughly established?
+
+Beyond the psychological inertia of habit and the sociological protection of academic prestige, this stubborn adherence is directly explicable on the grounds of the **sunk cost fallacy**. In economic decision theory and cognitive psychology, the sunk cost fallacy denotes the irrational compulsion to continue investing time, money, and intellectual allegiance into a failing enterprise solely because of the vast resources already expended on it, even when continuing that investment produces guaranteed failure.
+
+In theoretical physics and pure mathematics over the past century:
+1. **Human and Career Capital**: Tens of thousands of academic researchers, professors, and doctoral candidates spent decades of rigorous labor mastering non-Euclidean differential geometry, Riemannian tensor indices, path integrals over continuous manifolds, and unrenormalizable perturbation expansions. Acknowledging that the underlying premise—the uncountable continuum and non-Euclidean spacetime—is structurally flawed would mean confronting the painful evaluation that vast tracts of their specialized technical training and lifetime publications were directed down a blind alley.
+2. **Institutional and Financial Infrastructure**: University departments, funding councils, national laboratories, and academic journals established massive institutional silos around general relativity, string theory, and continuum quantum field theory. Career advancement, tenure evaluation, textbook publishing royalties, and research grants became strictly contingent upon publishing within the accepted continuum formalisms.
+3. **Baroque Epicycles Over Foundation Replacement**: Rather than cutting losses and returning to discrete, constructive Euclidean foundations, the establishment followed the classical pattern of Ptolemaic astronomy: adding increasingly baroque mathematical epicycles (dark matter, dark energy, inflation fields, cosmic strings, and multiverse conjectures) to preserve the illusion of viability.
+
+The Iris Number System breaks through this sunk-cost trap by returning mathematics and physics to their sound, objective foundations: a discrete, operational, human-scaled science grounded in finite entities, m-resolution measurements, and physically verifiable field mechanics.
 
 === First-Principles Unification of Physical Fields via Multivector Algebra
 

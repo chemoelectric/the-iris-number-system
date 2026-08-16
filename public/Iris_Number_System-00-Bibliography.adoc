@@ -44,6 +44,13 @@ Formulates conceptual pragmatism: the principle that the a priori consists of ch
 *Annotation:*
 The definitive literary depiction of “Newspeak”—an artificial reduction of vocabulary, designed to diminish the range of human evaluation and render unauthorized abstractions impossible. Newspeak illustrates the extreme danger of restricting evaluation to within a degraded symbolic system.
 
+[#entry-arkes-blumer-1985]
+=== Arkes, Hal R. and Blumer, Catherine (1985)
+*The Psychology of Sunk Cost*. *Organizational Behavior and Human Decision Processes*, 35(1), pp. 124–140.
+
+*Annotation:*
+The foundational empirical and theoretical treatise establishing the psychological and behavioral mechanisms of the **sunk cost fallacy**: the irrational tendency to persist in an endeavor, policy, or theoretical framework once an initial investment in money, effort, or time has been made, despite overwhelming negative evidence. In the epistemology of science and the history of twentieth-century physics (Volume IV), this cognitive distortion explains why the academic establishment has shown extreme reluctance to abandon bankrupt continuum and relativistic formalisms—such as non-Euclidean spacetime, unrenormalizable continuum quantum field theory, and cosmic dark matter epicycles—long after they have been shown to be mathematically self-contradictory. Having expended immense career capital, funding, textbook publishing, and decades of specialized labor on those formalisms, institutions irrationally protect their sunk investment rather than cutting losses and returning to discrete, constructive Euclidean foundations.
+
 == Mathematical Heuristics, Problem Solving, and Plausible Reasoning
 
 [#entry-polya-1945]
