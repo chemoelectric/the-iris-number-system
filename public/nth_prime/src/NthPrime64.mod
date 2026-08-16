@@ -1,16 +1,14 @@
 IMPLEMENTATION MODULE NthPrime64;
 
-(* NthPrime64.mod - ISO Modula-2 (gm2 / GCC 16.1) 64-bit nth-prime engine.
+(* NthPrime64.mod - ISO Modula-2 (gm2 / GCC 16.1) 64-bit nth-prime.
  * Implements high-performance Lehmer sublinear prime counting,
- * O(1) primorial P_6 = 30030 wheel periodic lookups, memoized
- * Buchstab recursion, and bit-packed segmented window sieving.
+ * O(1) primorial wheel lookups, memoized Buchstab recursion,
+ * and bit-packed segmented window sieving.
  *)
 
-FROM SYSTEM IMPORT CARDINAL64, CARDINAL32, CARDINAL16, ADDRESS, ADR;
+FROM SYSTEM IMPORT CARDINAL64, CARDINAL32, CARDINAL16;
 FROM Storage IMPORT ALLOCATE, DEALLOCATE;
 FROM LongMath IMPORT ln, exp, sqrt, power;
-FROM STextIO IMPORT WriteString, WriteLn;
-FROM SWholeIO IMPORT WriteCard;
 
 CONST
   CacheSize = 1048576;
@@ -140,24 +138,51 @@ BEGIN
   RETURN ans;
 END Phi6;
 
-PROCEDURE BuildBitSieve (limit : CARDINAL64);
+PROCEDURE FreeBitSieve;
 VAR
-  numOdds, numWords, iVal, iOdd, wIdx, bIdx : CARDINAL64;
-  i2Val, jVal, jOdd, jw, jb, wVal, wIter : CARDINAL64;
-  sqrtLim, mask, prevCnt, bitM : CARDINAL64;
+  numOdds, numWords : CARDINAL64;
   allocSize : CARDINAL;
 BEGIN
-  IF (limit <= gSieveMax) AND (gIsSubprimeBit # NIL) THEN
-    RETURN;
-  END;
-
   IF gIsSubprimeBit # NIL THEN
     numOdds := gSieveMax DIV 2;
     numWords := (numOdds DIV 64) + 1;
     allocSize := VAL(CARDINAL, numWords * 8);
     DEALLOCATE(gIsSubprimeBit, allocSize);
     DEALLOCATE(gPopcntBlock, allocSize);
+    gIsSubprimeBit := NIL;
+    gPopcntBlock := NIL;
   END;
+END FreeBitSieve;
+
+PROCEDURE SieveOddMultiples (limit, pVal : CARDINAL64);
+VAR
+  p2Val, multVal, mOdd, mW, mB, mask : CARDINAL64;
+BEGIN
+  p2Val := pVal + pVal;
+  multVal := pVal * pVal;
+  WHILE multVal <= limit DO
+    mOdd := (multVal - 1) DIV 2;
+    mW := mOdd DIV 64;
+    mB := mOdd MOD 64;
+    mask := gPow2[VAL(CARDINAL, mB)];
+    IF ((gIsSubprimeBit^[mW] DIV mask) MOD 2) = 1 THEN
+      gIsSubprimeBit^[mW] := gIsSubprimeBit^[mW] - mask;
+    END;
+    multVal := multVal + p2Val;
+  END;
+END SieveOddMultiples;
+
+PROCEDURE BuildBitSieve (limit : CARDINAL64);
+VAR
+  numOdds, numWords, iVal, iOdd, wIdx, bIdx : CARDINAL64;
+  sqrtLim, prevCnt, bitM, wVal, wIter : CARDINAL64;
+  allocSize : CARDINAL;
+BEGIN
+  IF (limit <= gSieveMax) AND (gIsSubprimeBit # NIL) THEN
+    RETURN;
+  END;
+
+  FreeBitSieve;
 
   gSieveMax := limit;
   numOdds := limit DIV 2;
@@ -169,10 +194,10 @@ BEGIN
 
   wIter := 0;
   WHILE wIter < numWords DO
-    gIsSubprimeBit^[wIter] := 18446744073709551615; (* 0xFFFFFFFFFFFFFFFF *)
+    gIsSubprimeBit^[wIter] := 18446744073709551615;
     wIter := wIter + 1;
   END;
-  gIsSubprimeBit^[0] := gIsSubprimeBit^[0] - 1; (* clear bit 0 *)
+  gIsSubprimeBit^[0] := gIsSubprimeBit^[0] - 1;
 
   sqrtLim := VAL(CARDINAL64, TRUNC(sqrt(VAL(LONGREAL, limit))));
   iVal := 3;
@@ -183,27 +208,17 @@ BEGIN
     bitM := gPow2[VAL(CARDINAL, bIdx)];
     wVal := (gIsSubprimeBit^[wIdx] DIV bitM) MOD 2;
     IF wVal = 1 THEN
-      i2Val := iVal + iVal;
-      jVal := iVal * iVal;
-      WHILE jVal <= limit DO
-        jOdd := (jVal - 1) DIV 2;
-        jw := jOdd DIV 64;
-        jb := jOdd MOD 64;
-        mask := gPow2[VAL(CARDINAL, jb)];
-        IF ((gIsSubprimeBit^[jw] DIV mask) MOD 2) = 1 THEN
-          gIsSubprimeBit^[jw] := gIsSubprimeBit^[jw] - mask;
-        END;
-        jVal := jVal + i2Val;
-      END;
+      SieveOddMultiples(limit, iVal);
     END;
     iVal := iVal + 2;
   END;
 
-  gPopcntBlock^[0] := 1; (* Prime 2 *)
+  gPopcntBlock^[0] := 1;
   wIter := 0;
   WHILE wIter < (numWords - 1) DO
     prevCnt := gPopcntBlock^[wIter];
-    gPopcntBlock^[wIter + 1] := prevCnt + PopCount64(gIsSubprimeBit^[wIter]);
+    gPopcntBlock^[wIter + 1] := prevCnt +
+      PopCount64(gIsSubprimeBit^[wIter]);
     wIter := wIter + 1;
   END;
 END BuildBitSieve;
@@ -242,11 +257,13 @@ PROCEDURE PhiMemoized (xVal, aVal : CARDINAL64;
                        numPrimes : CARDINAL) : CARDINAL64;
 VAR
   res, slot, pVal, leftVal, rightVal : CARDINAL64;
-  p6, prod, piX : CARDINAL64;
+  p6, prod, piX, multA : CARDINAL64;
 BEGIN
-  slot := (xVal + (aVal * 1140071481932319848)) MOD CacheSize;
+  multA := aVal * 1140071481932319848;
+  slot := (xVal + multA) MOD CacheSize;
 
-  IF (gMemoX[slot] = xVal) AND (gMemoA[slot] = VAL(CARDINAL32, aVal)) THEN
+  IF (gMemoX[slot] = xVal) AND
+     (gMemoA[slot] = VAL(CARDINAL32, aVal)) THEN
     res := gMemoRes[slot];
     RETURN res;
   END;
@@ -426,25 +443,14 @@ BEGIN
   RETURN x0;
 END EstimateInitialX;
 
-PROCEDURE SieveSegmentFindNth (lowVal, highVal : CARDINAL64;
-                              basePrimes : Card64Array;
-                              baseCount : CARDINAL;
-                              targetN, startPi : CARDINAL64) : CARDINAL64;
+PROCEDURE InitSegmentSieve (sieve : Word64Array;
+                            numWords : CARDINAL64;
+                            basePrimes : Card64Array;
+                            baseCount : CARDINAL;
+                            lowVal, highVal : CARDINAL64);
 VAR
-  resultPrime, rangeDiff, rangeLen, numWords : CARDINAL64;
-  idx, pVal, pSq, startVal, diffS, wIdx, bIdx, val, diffV : CARDINAL64;
-  currentCount, bitM : CARDINAL64;
-  sieve : Word64Array;
-  allocSize : CARDINAL;
+  wIdx, idx, pVal, pSq, startVal, diffS, bIdx, bitM : CARDINAL64;
 BEGIN
-  rangeDiff := highVal - lowVal;
-  rangeLen := rangeDiff + 1;
-  numWords := (rangeLen + 63) DIV 64;
-  IF numWords = 0 THEN numWords := 1; END;
-
-  allocSize := VAL(CARDINAL, numWords * 8);
-  ALLOCATE(sieve, allocSize);
-
   wIdx := 0;
   WHILE wIdx < numWords DO
     sieve^[wIdx] := 18446744073709551615;
@@ -473,6 +479,29 @@ BEGIN
       idx := idx + 1;
     END;
   END;
+END InitSegmentSieve;
+
+PROCEDURE SieveSegmentFindNth (lowVal, highVal : CARDINAL64;
+                              basePrimes : Card64Array;
+                              baseCount : CARDINAL;
+                              targetN : CARDINAL64;
+                              startPi : CARDINAL64) : CARDINAL64;
+VAR
+  resultPrime, rangeDiff, rangeLen, numWords : CARDINAL64;
+  wIdx, bIdx, val, diffV, currentCount, bitM : CARDINAL64;
+  sieve : Word64Array;
+  allocSize : CARDINAL;
+BEGIN
+  rangeDiff := highVal - lowVal;
+  rangeLen := rangeDiff + 1;
+  numWords := (rangeLen + 63) DIV 64;
+  IF numWords = 0 THEN numWords := 1; END;
+
+  allocSize := VAL(CARDINAL, numWords * 8);
+  ALLOCATE(sieve, allocSize);
+
+  InitSegmentSieve(sieve, numWords, basePrimes, baseCount,
+                   lowVal, highVal);
 
   currentCount := startPi;
   resultPrime := 0;
@@ -486,7 +515,7 @@ BEGIN
       currentCount := currentCount + 1;
       IF currentCount = targetN THEN
         resultPrime := val;
-        val := highVal; (* exit loop *)
+        val := highVal;
       END;
     END;
     val := val + 1;
@@ -497,13 +526,13 @@ BEGIN
 END SieveSegmentFindNth;
 
 PROCEDURE SieveSegmentFindBackward (lowVal, highVal : CARDINAL64;
-                                  basePrimes : Card64Array;
-                                  baseCount : CARDINAL;
-                                  targetN, startPi : CARDINAL64) : CARDINAL64;
+                                    basePrimes : Card64Array;
+                                    baseCount : CARDINAL;
+                                    targetN : CARDINAL64;
+                                    startPi : CARDINAL64) : CARDINAL64;
 VAR
   resultPrime, rangeDiff, rangeLen, numWords : CARDINAL64;
-  idx, pVal, pSq, startVal, diffS, wIdx, bIdx, val, diffV : CARDINAL64;
-  currentCount, bitM : CARDINAL64;
+  wIdx, bIdx, val, diffV, currentCount, bitM : CARDINAL64;
   sieve : Word64Array;
   allocSize : CARDINAL;
 BEGIN
@@ -515,34 +544,8 @@ BEGIN
   allocSize := VAL(CARDINAL, numWords * 8);
   ALLOCATE(sieve, allocSize);
 
-  wIdx := 0;
-  WHILE wIdx < numWords DO
-    sieve^[wIdx] := 18446744073709551615;
-    wIdx := wIdx + 1;
-  END;
-
-  idx := 1;
-  WHILE idx <= VAL(CARDINAL64, baseCount) DO
-    pVal := basePrimes^[idx];
-    pSq := pVal * pVal;
-    IF pSq > highVal THEN
-      idx := VAL(CARDINAL64, baseCount) + 1;
-    ELSE
-      startVal := ((lowVal + pVal - 1) DIV pVal) * pVal;
-      IF startVal < pSq THEN startVal := pSq; END;
-      WHILE startVal <= highVal DO
-        diffS := startVal - lowVal;
-        wIdx := diffS DIV 64;
-        bIdx := diffS MOD 64;
-        bitM := gPow2[VAL(CARDINAL, bIdx)];
-        IF ((sieve^[wIdx] DIV bitM) MOD 2) = 1 THEN
-          sieve^[wIdx] := sieve^[wIdx] - bitM;
-        END;
-        startVal := startVal + pVal;
-      END;
-      idx := idx + 1;
-    END;
-  END;
+  InitSegmentSieve(sieve, numWords, basePrimes, baseCount,
+                   lowVal, highVal);
 
   currentCount := startPi;
   resultPrime := 0;
@@ -555,12 +558,12 @@ BEGIN
     IF ((sieve^[wIdx] DIV bitM) MOD 2) = 1 THEN
       IF currentCount = targetN THEN
         resultPrime := val;
-        val := lowVal; (* exit loop *)
+        val := lowVal;
       END;
       currentCount := currentCount - 1;
     END;
     IF val = 0 THEN
-      val := lowVal - 1; (* prevent underflow *)
+      val := lowVal - 1;
     ELSE
       val := val - 1;
     END;
@@ -612,117 +615,321 @@ BEGIN
   window := VAL(CARDINAL64, TRUNC(estW)) + 1000;
   IF window < 2000 THEN window := 2000; END;
 
-  IF nVal >= currPi THEN
+  IF nVal > currPi THEN
     lowVal := currX + 1;
     highVal := currX + window;
-    pn := SieveSegmentFindNth(lowVal, highVal, basePrimes, baseCount, nVal, currPi);
+    pn := SieveSegmentFindNth(lowVal, highVal, basePrimes,
+                              baseCount, nVal, currPi);
   ELSE
     lowVal := 2;
     IF currX > window THEN lowVal := currX - window; END;
-    pn := SieveSegmentFindBackward(lowVal, currX, basePrimes, baseCount, nVal, currPi);
+    pn := SieveSegmentFindBackward(lowVal, currX, basePrimes,
+                                   baseCount, nVal, currPi);
   END;
   RETURN pn;
 END NthPrimeRefine;
 
+PROCEDURE GetSmallNthPrime (nVal : CARDINAL64) : CARDINAL64;
+VAR
+  p : CARDINAL64;
+BEGIN
+  p := 0;
+  IF nVal = 1 THEN p := 2;
+  ELSIF nVal = 2 THEN p := 3;
+  ELSIF nVal = 3 THEN p := 5;
+  ELSIF nVal = 4 THEN p := 7;
+  ELSIF nVal = 5 THEN p := 11;
+  END;
+  RETURN p;
+END GetSmallNthPrime;
+
+PROCEDURE ComputeSieveLimit (currX, zVal : CARDINAL64) : CARDINAL64;
+VAR
+  sieveLimit, s34 : CARDINAL64;
+  fX, pow34 : LONGREAL;
+BEGIN
+  fX := VAL(LONGREAL, currX);
+  sieveLimit := zVal * 12;
+  pow34 := power(fX, 0.75);
+  s34 := VAL(CARDINAL64, TRUNC(pow34 + 10000.0));
+  IF sieveLimit < s34 THEN sieveLimit := s34; END;
+  IF sieveLimit < 1000000 THEN sieveLimit := 1000000; END;
+  IF (currX <= 20000000) AND (sieveLimit < currX) THEN
+    sieveLimit := currX;
+  END;
+  RETURN sieveLimit;
+END ComputeSieveLimit;
+
+PROCEDURE CollectBasePrimes (VAR basePrimes : Card64Array;
+                             zPlus : CARDINAL64;
+                             VAR countP : CARDINAL);
+VAR
+  cand, candOdd, wIdx, bIdx, bitM : CARDINAL64;
+BEGIN
+  basePrimes^[1] := 2;
+  countP := 1;
+  cand := 3;
+  WHILE cand <= zPlus DO
+    candOdd := (cand - 1) DIV 2;
+    wIdx := candOdd DIV 64;
+    bIdx := candOdd MOD 64;
+    bitM := gPow2[VAL(CARDINAL, bIdx)];
+    IF ((gIsSubprimeBit^[wIdx] DIV bitM) MOD 2) = 1 THEN
+      countP := countP + 1;
+      basePrimes^[countP] := cand;
+    END;
+    cand := cand + 2;
+  END;
+END CollectBasePrimes;
+
+PROCEDURE ClearMemoCache;
+VAR
+  wIdx : CARDINAL;
+BEGIN
+  wIdx := 0;
+  WHILE wIdx < CacheSize DO
+    gMemoX[wIdx] := 0;
+    wIdx := wIdx + 1;
+  END;
+END ClearMemoCache;
+
 PROCEDURE GetNthPrimeU64 (nVal : CARDINAL64) : CARDINAL64;
 VAR
   pn, currX, zVal, sieveLimit, zPlus, piZ : CARDINAL64;
-  cand, candOdd, wIdx, bIdx, countP, bitM, s34 : CARDINAL64;
+  countP : CARDINAL;
   basePrimes : Card64Array;
-  fX, sqX, pow34 : LONGREAL;
+  fX, sqX : LONGREAL;
   allocPrimes : CARDINAL;
 BEGIN
   InitBaseTables;
-  IF nVal = 0 THEN pn := 0;
-  ELSIF nVal = 1 THEN pn := 2;
-  ELSIF nVal = 2 THEN pn := 3;
-  ELSIF nVal = 3 THEN pn := 5;
-  ELSIF nVal = 4 THEN pn := 7;
-  ELSIF nVal = 5 THEN pn := 11;
+  IF nVal = 0 THEN
+    pn := 0;
+  ELSIF nVal <= 5 THEN
+    pn := GetSmallNthPrime(nVal);
   ELSE
     currX := EstimateInitialX(nVal);
     fX := VAL(LONGREAL, currX);
     sqX := sqrt(fX);
     zVal := VAL(CARDINAL64, TRUNC(sqX));
 
-    sieveLimit := zVal * 12;
-    pow34 := power(fX, 0.75);
-    s34 := VAL(CARDINAL64, TRUNC(pow34 + 10000.0));
-    IF sieveLimit < s34 THEN sieveLimit := s34; END;
-    IF sieveLimit < 1000000 THEN sieveLimit := 1000000; END;
-    IF (currX <= 20000000) AND (sieveLimit < currX) THEN
-      sieveLimit := currX;
-    END;
-
+    sieveLimit := ComputeSieveLimit(currX, zVal);
     BuildBitSieve(sieveLimit);
+
     zPlus := zVal + 1000;
     piZ := PiFast(zPlus, NIL, 0);
 
     allocPrimes := VAL(CARDINAL, (piZ + 1000) * 8);
     ALLOCATE(basePrimes, allocPrimes);
 
-    basePrimes^[1] := 2;
-    countP := 1;
-    cand := 3;
-    WHILE cand <= zPlus DO
-      candOdd := (cand - 1) DIV 2;
-      wIdx := candOdd DIV 64;
-      bIdx := candOdd MOD 64;
-      bitM := gPow2[VAL(CARDINAL, bIdx)];
-      IF ((gIsSubprimeBit^[wIdx] DIV bitM) MOD 2) = 1 THEN
-        countP := countP + 1;
-        basePrimes^[countP] := cand;
-      END;
-      cand := cand + 2;
-    END;
+    CollectBasePrimes(basePrimes, zPlus, countP);
 
     InitPhi6Table;
-    wIdx := 0;
-    WHILE wIdx < CacheSize DO
-      gMemoX[wIdx] := 0;
-      wIdx := wIdx + 1;
-    END;
+    ClearMemoCache;
 
-    pn := NthPrimeRefine(nVal, currX, basePrimes, VAL(CARDINAL, countP));
+    pn := NthPrimeRefine(nVal, currX, basePrimes, countP);
     DEALLOCATE(basePrimes, allocPrimes);
   END;
   RETURN pn;
 END GetNthPrimeU64;
 
-PROCEDURE GetNthPrimeStr (VAR outStr : ARRAY OF CHAR;
-                          inStr : ARRAY OF CHAR);
+PROCEDURE ParseDigitsOnly (str : ARRAY OF CHAR;
+                           len : CARDINAL;
+                           VAR nVal : CARDINAL64;
+                           VAR ok : BOOLEAN);
 VAR
-  nVal, digit, p : CARDINAL64;
-  i, len, outIdx : CARDINAL;
+  i : CARDINAL;
   ch : CHAR;
-  digits : ARRAY [0..31] OF CHAR;
-  dIdx : CARDINAL;
+  digit : CARDINAL64;
 BEGIN
   nVal := 0;
+  ok := TRUE;
   i := 0;
-  len := 0;
-  WHILE (len <= HIGH(inStr)) AND (inStr[len] # 0C) DO
-    len := len + 1;
-  END;
   WHILE i < len DO
-    ch := inStr[i];
+    ch := str[i];
     IF (ch >= '0') AND (ch <= '9') THEN
       digit := VAL(CARDINAL64, ORD(ch) - ORD('0'));
       nVal := (nVal * 10) + digit;
+    ELSE
+      ok := FALSE;
+      i := len;
+    END;
+    i := i + 1;
+  END;
+END ParseDigitsOnly;
+
+PROCEDURE ParsePowerExpr (str : ARRAY OF CHAR;
+                          len : CARDINAL;
+                          VAR nVal : CARDINAL64;
+                          VAR ok : BOOLEAN);
+VAR
+  i, pIdx, expLen : CARDINAL;
+  baseVal, expVal, bPow : CARDINAL64;
+  baseOk, expOk : BOOLEAN;
+  baseStr, expStr : ARRAY [0..31] OF CHAR;
+BEGIN
+  ok := FALSE;
+  nVal := 0;
+  pIdx := 0;
+  i := 0;
+  WHILE i < len DO
+    IF str[i] = '^' THEN
+      pIdx := i;
+      i := len;
+    ELSIF (str[i] = '*') AND (i + 1 < len) AND (str[i + 1] = '*') THEN
+      pIdx := i;
+      i := len;
     END;
     i := i + 1;
   END;
 
-  p := GetNthPrimeU64(nVal);
+  IF pIdx > 0 THEN
+    i := 0;
+    WHILE i < pIdx DO
+      baseStr[i] := str[i];
+      i := i + 1;
+    END;
+    baseStr[pIdx] := 0C;
+    ParseDigitsOnly(baseStr, pIdx, baseVal, baseOk);
 
+    IF str[pIdx] = '^' THEN
+      i := pIdx + 1;
+    ELSE
+      i := pIdx + 2;
+    END;
+    expLen := 0;
+    WHILE i < len DO
+      expStr[expLen] := str[i];
+      expLen := expLen + 1;
+      i := i + 1;
+    END;
+    expStr[expLen] := 0C;
+    ParseDigitsOnly(expStr, expLen, expVal, expOk);
+
+    IF baseOk AND expOk THEN
+      bPow := 1;
+      WHILE expVal > 0 DO
+        bPow := bPow * baseVal;
+        expVal := expVal - 1;
+      END;
+      nVal := bPow;
+      ok := TRUE;
+    END;
+  END;
+END ParsePowerExpr;
+
+PROCEDURE ParseScientificExpr (str : ARRAY OF CHAR;
+                               len : CARDINAL;
+                               VAR nVal : CARDINAL64;
+                               VAR ok : BOOLEAN);
+VAR
+  i, eIdx, expLen : CARDINAL;
+  baseVal, expVal, bPow : CARDINAL64;
+  baseOk, expOk : BOOLEAN;
+  baseStr, expStr : ARRAY [0..31] OF CHAR;
+BEGIN
+  ok := FALSE;
+  nVal := 0;
+  eIdx := 0;
+  i := 0;
+  WHILE i < len DO
+    IF (str[i] = 'e') OR (str[i] = 'E') THEN
+      eIdx := i;
+      i := len;
+    END;
+    i := i + 1;
+  END;
+
+  IF eIdx > 0 THEN
+    i := 0;
+    WHILE i < eIdx DO
+      baseStr[i] := str[i];
+      i := i + 1;
+    END;
+    baseStr[eIdx] := 0C;
+    ParseDigitsOnly(baseStr, eIdx, baseVal, baseOk);
+
+    i := eIdx + 1;
+    expLen := 0;
+    WHILE i < len DO
+      expStr[expLen] := str[i];
+      expLen := expLen + 1;
+      i := i + 1;
+    END;
+    expStr[expLen] := 0C;
+    ParseDigitsOnly(expStr, expLen, expVal, expOk);
+
+    IF baseOk AND expOk THEN
+      bPow := 1;
+      WHILE expVal > 0 DO
+        bPow := bPow * 10;
+        expVal := expVal - 1;
+      END;
+      nVal := baseVal * bPow;
+      ok := TRUE;
+    END;
+  END;
+END ParseScientificExpr;
+
+PROCEDURE ParseCleanInput (str : ARRAY OF CHAR;
+                           len : CARDINAL;
+                           VAR nVal : CARDINAL64);
+VAR
+  ok : BOOLEAN;
+BEGIN
+  nVal := 0;
+  IF len > 0 THEN
+    ParseDigitsOnly(str, len, nVal, ok);
+    IF NOT ok THEN
+      ParsePowerExpr(str, len, nVal, ok);
+    END;
+    IF NOT ok THEN
+      ParseScientificExpr(str, len, nVal, ok);
+    END;
+  END;
+END ParseCleanInput;
+
+PROCEDURE CleanInputString (inStr : ARRAY OF CHAR;
+                            VAR cleanStr : ARRAY OF CHAR;
+                            VAR cleanLen : CARDINAL);
+VAR
+  i, inLen, limit : CARDINAL;
+  ch : CHAR;
+BEGIN
+  inLen := 0;
+  WHILE (inLen <= HIGH(inStr)) AND (inStr[inLen] # 0C) DO
+    inLen := inLen + 1;
+  END;
+  cleanLen := 0;
+  limit := HIGH(cleanStr);
+  i := 0;
+  WHILE (i < inLen) AND (cleanLen < limit) DO
+    ch := inStr[i];
+    IF (ch # ',') AND (ch # '_') AND (ch # ' ') AND
+       (ch # 12C) AND (ch # 15C) THEN
+      cleanStr[cleanLen] := ch;
+      cleanLen := cleanLen + 1;
+    END;
+    i := i + 1;
+  END;
+  cleanStr[cleanLen] := 0C;
+END CleanInputString;
+
+PROCEDURE FormatPrimeResult (p : CARDINAL64;
+                             VAR outStr : ARRAY OF CHAR);
+VAR
+  digits : ARRAY [0..31] OF CHAR;
+  dIdx, outIdx : CARDINAL;
+  tempP : CARDINAL64;
+BEGIN
   IF p = 0 THEN
     outStr[0] := '0';
     outStr[1] := 0C;
   ELSE
     dIdx := 0;
-    WHILE p > 0 DO
-      digits[dIdx] := CHR(ORD('0') + VAL(CARDINAL, p MOD 10));
-      p := p DIV 10;
+    tempP := p;
+    WHILE tempP > 0 DO
+      digits[dIdx] := CHR(ORD('0') + VAL(CARDINAL, tempP MOD 10));
+      tempP := tempP DIV 10;
       dIdx := dIdx + 1;
     END;
     outIdx := 0;
@@ -733,6 +940,19 @@ BEGIN
     END;
     outStr[outIdx] := 0C;
   END;
+END FormatPrimeResult;
+
+PROCEDURE GetNthPrimeStr (VAR outStr : ARRAY OF CHAR;
+                          inStr : ARRAY OF CHAR);
+VAR
+  cleanStr : ARRAY [0..255] OF CHAR;
+  cleanLen : CARDINAL;
+  nVal, p : CARDINAL64;
+BEGIN
+  CleanInputString(inStr, cleanStr, cleanLen);
+  ParseCleanInput(cleanStr, cleanLen, nVal);
+  p := GetNthPrimeU64(nVal);
+  FormatPrimeResult(p, outStr);
 END GetNthPrimeStr;
 
 BEGIN

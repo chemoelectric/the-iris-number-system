@@ -1,26 +1,23 @@
 MODULE MainM2;
 
 (* MainM2.mod - Standalone CLI runner for Modula-2 nth-prime engine.
- * ISO Modula-2 standard (gm2 / GCC 16.1).
+ * ISO / GNU Modula-2 standard.
  *)
 
 FROM NthPrime64 IMPORT GetNthPrimeStr;
-FROM ProgramArgs IMPORT IsArgPresent, NextArg, ArgChan;
-FROM IOChan IMPORT ChanId;
-FROM TextIO IMPORT ReadToken;
+FROM Args IMPORT Narg, GetArg;
 FROM STextIO IMPORT WriteString, WriteLn, ReadString;
 
 VAR
   argStr : ARRAY [0..255] OF CHAR;
   outStr : ARRAY [0..255] OF CHAR;
-  hasArg : BOOLEAN;
-  cid    : ChanId;
+  numArgs: CARDINAL;
+  ok     : BOOLEAN;
 
 BEGIN
-  hasArg := IsArgPresent();
-  IF hasArg THEN
-    cid := ArgChan();
-    ReadToken(cid, argStr);
+  numArgs := Narg();
+  IF numArgs > 1 THEN
+    ok := GetArg(argStr, 1);
   ELSE
     ReadString(argStr);
   END;
