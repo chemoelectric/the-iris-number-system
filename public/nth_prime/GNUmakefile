@@ -77,7 +77,7 @@ $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm
 
 $(M2_TARGET): $(SRC_DIR)/NthPrime64.def $(SRC_DIR)/NthPrime64.mod $(SRC_DIR)/MainM2.mod
-	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -o $(@) $(SRC_DIR)/MainM2.mod $(SRC_DIR)/NthPrime64.mod
+	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -o $(@) $(SRC_DIR)/MainM2.mod
 
 .PHONY: f64 d64 c64 m2
 f64:: $(F64_TARGET)
