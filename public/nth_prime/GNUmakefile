@@ -22,6 +22,7 @@ D_TARGET = nth-prime-d
 D64_TARGET = nth-prime-64-d
 C_TARGET = nth-prime-c
 C64_TARGET = nth-prime-64-c
+ZEN5_TARGET = nth-prime-zen5-c
 
 GMP_LIBS := $(shell pkg-config --libs gmp 2>/dev/null || echo "")
 
@@ -38,6 +39,8 @@ COPTSFLAGS += -march=native -mtune=native
 COPTSFLAGS += -fopenmp
 COPTSFLAGS += -funroll-loops
 COPTSFLAGS += -flto=auto
+
+ZEN5_CFLAGS = -O3 -march=znver5 -mtune=znver5 -mavx512f -mbmi2 -mpopcnt -funroll-loops -flto=auto
 
 WARNFLAGS =
 WARNFLAGS += -Wall
@@ -60,18 +63,22 @@ $(C_TARGET): $(SRC_DIR)/nth_prime.c
 $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
 
-.PHONY: d d64 c c64
+$(ZEN5_TARGET): $(SRC_DIR)/nth_prime_zen5.c
+	$(CC) $(ZEN5_CFLAGS) $(WARNFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
+
+.PHONY: d d64 c c64 zen5
 d:: $(D_TARGET)
 d64:: $(D64_TARGET)
 c:: $(C_TARGET)
 c64:: $(C64_TARGET)
+zen5:: $(ZEN5_TARGET)
 
 clean::
-	-rm -f $(D_TARGET) $(D64_TARGET) $(C_TARGET) $(C64_TARGET)
+	-rm -f $(D_TARGET) $(D64_TARGET) $(C_TARGET) $(C64_TARGET) $(ZEN5_TARGET)
 
 .PHONY: default all
 default:: all
-all:: d d64 c c64
+all:: d d64 c c64 zen5
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)
