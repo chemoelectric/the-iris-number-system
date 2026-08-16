@@ -540,9 +540,13 @@ static uint64_t sieve_segment_find_backward(uint64_t low_val,
     size_t base_count, uint64_t target_n, uint64_t start_pi) {
     uint64_t range_diff = high_val - low_val;
     uint64_t range_len = range_diff + 1;
-    size_t sz_sieve = (size_t)range_len;
-    uint8_t *sieve = (uint8_t *)malloc(sz_sieve);
-    memset(sieve, 1, sz_sieve);
+    size_t num_words = (size_t)((range_len + 63) >> 6);
+    if (num_words == 0) {
+        num_words = 1;
+    }
+    size_t sz_sieve = num_words * sizeof(uint64_t);
+    uint64_t *sieve = (uint64_t *)malloc(sz_sieve);
+    memset(sieve, 0xFF, sz_sieve);
 
     size_t idx = 0;
     while (idx < base_count) {
@@ -560,8 +564,10 @@ static uint64_t sieve_segment_find_backward(uint64_t low_val,
             }
             while (start <= high_val) {
                 uint64_t diff_s = start - low_val;
-                size_t s_idx = (size_t)diff_s;
-                sieve[s_idx] = 0;
+                size_t w_idx = (size_t)(diff_s >> 6);
+                size_t b_idx = (size_t)(diff_s & 63);
+                uint64_t mask = ~(1ULL << b_idx);
+                sieve[w_idx] = sieve[w_idx] & mask;
                 start = start + p;
             }
             idx = idx + 1;
@@ -573,9 +579,12 @@ static uint64_t sieve_segment_find_backward(uint64_t low_val,
     uint64_t val = high_val;
     while (val >= low_val) {
         uint64_t diff_v = val - low_val;
-        size_t v_idx = (size_t)diff_v;
-        uint8_t is_p = sieve[v_idx];
-        if (is_p == 1) {
+        size_t w_idx = (size_t)(diff_v >> 6);
+        size_t b_idx = (size_t)(diff_v & 63);
+        uint64_t mask = 1ULL << b_idx;
+        uint64_t w_val = sieve[w_idx];
+        uint64_t is_p = w_val & mask;
+        if (is_p != 0) {
             if (current_count == target_n) {
                 result = val;
                 val = low_val;
@@ -600,9 +609,13 @@ static uint64_t sieve_segment_find_nth(uint64_t low_val,
                                         uint64_t start_pi) {
     uint64_t diff_lh = high_val - low_val;
     uint64_t range_len = diff_lh + 1;
-    size_t sz_sieve = (size_t)range_len;
-    uint8_t *sieve = (uint8_t *)malloc(sz_sieve);
-    memset(sieve, 1, sz_sieve);
+    size_t num_words = (size_t)((range_len + 63) >> 6);
+    if (num_words == 0) {
+        num_words = 1;
+    }
+    size_t sz_sieve = num_words * sizeof(uint64_t);
+    uint64_t *sieve = (uint64_t *)malloc(sz_sieve);
+    memset(sieve, 0xFF, sz_sieve);
 
     size_t idx = 0;
     while (idx < base_count) {
@@ -620,8 +633,10 @@ static uint64_t sieve_segment_find_nth(uint64_t low_val,
             }
             while (start <= high_val) {
                 uint64_t diff_s = start - low_val;
-                size_t s_idx = (size_t)diff_s;
-                sieve[s_idx] = 0;
+                size_t w_idx = (size_t)(diff_s >> 6);
+                size_t b_idx = (size_t)(diff_s & 63);
+                uint64_t mask = ~(1ULL << b_idx);
+                sieve[w_idx] = sieve[w_idx] & mask;
                 start = start + p;
             }
             idx = idx + 1;
@@ -633,9 +648,12 @@ static uint64_t sieve_segment_find_nth(uint64_t low_val,
     uint64_t val = low_val;
     while (val <= high_val) {
         uint64_t diff_v = val - low_val;
-        size_t v_idx = (size_t)diff_v;
-        uint8_t is_p = sieve[v_idx];
-        if (is_p == 1) {
+        size_t w_idx = (size_t)(diff_v >> 6);
+        size_t b_idx = (size_t)(diff_v & 63);
+        uint64_t mask = 1ULL << b_idx;
+        uint64_t w_val = sieve[w_idx];
+        uint64_t is_p = w_val & mask;
+        if (is_p != 0) {
             current_count = current_count + 1;
             if (current_count == target_n) {
                 result = val;

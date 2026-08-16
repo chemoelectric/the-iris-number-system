@@ -387,8 +387,13 @@ u64 sieveSegmentFindBackward(u64 lowVal, u64 highVal,
                              const(uint)[] basePrimes,
                              u64 targetN, u64 startPi) {
     u64 rangeLen = highVal - lowVal + 1;
-    ubyte* sieve = cast(ubyte*) malloc(cast(size_t) rangeLen);
-    memset(sieve, 1, cast(size_t) rangeLen);
+    size_t numWords = cast(size_t) ((rangeLen + 63) >> 6);
+    if (numWords == 0) {
+        numWords = 1;
+    }
+    size_t szSieve = numWords * ulong.sizeof;
+    ulong* sieve = cast(ulong*) malloc(szSieve);
+    memset(sieve, 0xFF, szSieve);
 
     size_t idx = 0;
     while (idx < basePrimes.length) {
@@ -402,8 +407,11 @@ u64 sieveSegmentFindBackward(u64 lowVal, u64 highVal,
             start = pSq;
         }
         while (start <= highVal) {
-            size_t sIdx = cast(size_t) (start - lowVal);
-            *(sieve + sIdx) = 0;
+            u64 diffS = start - lowVal;
+            size_t wIdx = cast(size_t) (diffS >> 6);
+            size_t bIdx = cast(size_t) (diffS & 63);
+            ulong mask = ~(1UL << bIdx);
+            *(sieve + wIdx) = *(sieve + wIdx) & mask;
             start = start + p;
         }
         idx = idx + 1;
@@ -413,9 +421,13 @@ u64 sieveSegmentFindBackward(u64 lowVal, u64 highVal,
     u64 result = 0;
     u64 val = highVal;
     while (val >= lowVal) {
-        size_t vIdx = cast(size_t) (val - lowVal);
-        ubyte isP = *(sieve + vIdx);
-        if (isP == 1) {
+        u64 diffV = val - lowVal;
+        size_t wIdx = cast(size_t) (diffV >> 6);
+        size_t bIdx = cast(size_t) (diffV & 63);
+        ulong mask = 1UL << bIdx;
+        ulong wVal = *(sieve + wIdx);
+        ulong isP = wVal & mask;
+        if (isP != 0) {
             if (currentCount == targetN) {
                 result = val;
                 val = lowVal;
@@ -436,8 +448,13 @@ u64 sieveSegmentFindNthPrime(u64 lowVal, u64 highVal,
                              const(uint)[] basePrimes,
                              u64 targetN, u64 startPi) {
     u64 rangeLen = highVal - lowVal + 1;
-    ubyte* sieve = cast(ubyte*) malloc(cast(size_t) rangeLen);
-    memset(sieve, 1, cast(size_t) rangeLen);
+    size_t numWords = cast(size_t) ((rangeLen + 63) >> 6);
+    if (numWords == 0) {
+        numWords = 1;
+    }
+    size_t szSieve = numWords * ulong.sizeof;
+    ulong* sieve = cast(ulong*) malloc(szSieve);
+    memset(sieve, 0xFF, szSieve);
 
     size_t idx = 0;
     while (idx < basePrimes.length) {
@@ -451,8 +468,11 @@ u64 sieveSegmentFindNthPrime(u64 lowVal, u64 highVal,
             start = pSq;
         }
         while (start <= highVal) {
-            size_t sIdx = cast(size_t) (start - lowVal);
-            *(sieve + sIdx) = 0;
+            u64 diffS = start - lowVal;
+            size_t wIdx = cast(size_t) (diffS >> 6);
+            size_t bIdx = cast(size_t) (diffS & 63);
+            ulong mask = ~(1UL << bIdx);
+            *(sieve + wIdx) = *(sieve + wIdx) & mask;
             start = start + p;
         }
         idx = idx + 1;
@@ -462,9 +482,13 @@ u64 sieveSegmentFindNthPrime(u64 lowVal, u64 highVal,
     u64 result = 0;
     u64 val = lowVal;
     while (val <= highVal) {
-        size_t vIdx = cast(size_t) (val - lowVal);
-        ubyte isP = *(sieve + vIdx);
-        if (isP == 1) {
+        u64 diffV = val - lowVal;
+        size_t wIdx = cast(size_t) (diffV >> 6);
+        size_t bIdx = cast(size_t) (diffV & 63);
+        ulong mask = 1UL << bIdx;
+        ulong wVal = *(sieve + wIdx);
+        ulong isP = wVal & mask;
+        if (isP != 0) {
             currentCount = currentCount + 1;
             if (currentCount == targetN) {
                 result = val;
