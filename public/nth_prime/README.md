@@ -10,18 +10,16 @@ such as AMD Zen 5.
 
 ## Building
 
-Build the parallelized `nth-prime` binary using GNU Make:
+Build the parallelized 64-bit binaries using GNU Make:
 
 ```bash
 make -f GNUmakefile
 ```
 
-To build the D and C implementations:
+To build the D and C 64-bit implementations:
 
 ```bash
-make -f GNUmakefile d
 make -f GNUmakefile d64
-make -f GNUmakefile c
 make -f GNUmakefile c64
 ```
 
@@ -29,7 +27,6 @@ To compile with custom compiler flags or standard specifications:
 
 ```bash
 CC=gcc CFLAGS="-std=gnu23 -O3 -fopenmp -march=native" \
-FC=gfortran FCFLAGS="-std=f2023 -O3 -fopenmp -march=native" \
 make -f GNUmakefile
 ```
 
@@ -96,28 +93,19 @@ scientific notation, and power expressions:
 - **Icon Procedure Implementation**: Clean, standalone `nth_prime(n)`
   procedure implemented in `nth_prime.icn` for string input filtering,
   asymptotic estimation, and prime calculation.
-- **D Modules and Demo Programs**: Reusable D modules in
-  `src/nth_prime.d` and `src/nth_prime_64.d`. Function
+- **D 64-Bit Engine and Demo Program**: Reusable D module in
+  `src/nth_prime_64.d` (`nth-prime-64-d` target). Function
   overloads support `std.bigint.BigInt`, native
   `core.int128.Cent`, and `ulong` values directly without
-  ASCII conversions.
-  The multi-limb module (`nth_prime.d`) supports compile-time limb count
-  parameterization (`-fversion=LIMBS_128`, `-fversion=LIMBS_256`, etc.,
-  defaulting to 8192 bits). Each module includes an optionally
-  compiled built-in demo program via `-fversion=standalone`.
-- **C23 Hardware and Arbitrary-Precision \(n\)-th Prime Engines**:
-  Reusable C23 engines and standalone programs in `src/nth_prime.c`
-  (`nth-prime-c` target) and `src/nth_prime_64.c`
-  (`nth-prime-64-c` target) matching `nth_prime.d` and
-  `nth_prime_64.d`. `src/nth_prime_64.c` operates purely on
-  standard hardware 64-bit unsigned integers (`uint64_t`).
-  `src/nth_prime.c` features compile-time arbitrary fixed-limb
-  arithmetic (`LimbNumber`) parameterized via `-DNUM_LIMBS=...` or
-  version macros (`-DLIMBS_128`, `-DLIMBS_256`, etc.) and GNU MP
-  (`gmp.h`) bignum interface routines. Both engines feature
-  typed entry points (`get_nth_prime_u64`, `get_nth_prime_u32`,
-  `get_nth_prime_str`), sublinear Lehmer prime counting, segmented
-  sieve extraction, and OpenMP multithreading.
+  ASCII conversions. Includes an optionally compiled built-in
+  demo program via `-fversion=standalone`.
+- **C23 Hardware 64-Bit \(n\)-th Prime Engine**:
+  Reusable C23 engine and standalone program in `src/nth_prime_64.c`
+  (`nth-prime-64-c` target) operating purely on standard hardware
+  64-bit unsigned integers (`uint64_t`). Features typed entry points
+  (`get_nth_prime_u64`, `get_nth_prime_u32`, `get_nth_prime_str`),
+  sublinear Lehmer prime counting, bit-packed segmented sieve
+  extraction, and OpenMP multithreading.
 - **Modular SIMD Buchstab Tree Decomposition & OEIS Anchors**:
   Modular Buchstab recursion trees ($\phi(x, a)$) with $O(1)$ wheel
   base cases, divisionless modular reduction, and prior OEIS anchor

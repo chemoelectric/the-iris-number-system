@@ -18,9 +18,7 @@ CFLAGS = $(COPTSFLAGS) $(WARNFLAGS)
 LDFLAGS =
 endif
 
-D_TARGET = nth-prime-d
 D64_TARGET = nth-prime-64-d
-C_TARGET = nth-prime-c
 C64_TARGET = nth-prime-64-c
 
 GMP_LIBS := $(shell pkg-config --libs gmp 2>/dev/null || echo "")
@@ -48,30 +46,22 @@ OBJ_DIR = build
 
 .PHONY: clean
 
-$(D_TARGET): $(SRC_DIR)/nth_prime.d
-	$(DC) $(DFLAGS) -fversion=standalone -fversion=LIMBS_256 -o $(@) $(<)
-
 $(D64_TARGET): $(SRC_DIR)/nth_prime_64.d
 	$(DC) $(DFLAGS) -fversion=standalone -o $(@) $(<)
-
-$(C_TARGET): $(SRC_DIR)/nth_prime.c
-	$(CC) $(CFLAGS) -DSTANDALONE=1 -DLIMBS_256 -o $(@) $(<) -lm $(GMP_LIBS)
 
 $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
 	$(CC) $(CFLAGS) -DSTANDALONE=1 -o $(@) $(<) -lm $(GMP_LIBS)
 
-.PHONY: d d64 c c64
-d:: $(D_TARGET)
+.PHONY: d64 c64
 d64:: $(D64_TARGET)
-c:: $(C_TARGET)
 c64:: $(C64_TARGET)
 
 clean::
-	-rm -f $(D_TARGET) $(D64_TARGET) $(C_TARGET) $(C64_TARGET)
+	-rm -f $(D64_TARGET) $(C64_TARGET)
 
 .PHONY: default all
 default:: all
-all:: d d64 c c64
+all:: d64 c64
 
 $(OBJ_DIR):
 	$(MKDIR_P) $(OBJ_DIR)
