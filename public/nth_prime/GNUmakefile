@@ -79,7 +79,7 @@ $(C64_TARGET): $(SRC_DIR)/nth_prime_64.c
 $(M2_TARGET): $(SRC_DIR)/NthPrime64.def $(SRC_DIR)/NthPrime64.mod $(SRC_DIR)/MainM2.mod
 	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -c $(SRC_DIR)/NthPrime64.mod -o $(SRC_DIR)/NthPrime64.o
 	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -c $(SRC_DIR)/MainM2.mod -o $(SRC_DIR)/MainM2.o
-	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -o $(@) $(SRC_DIR)/MainM2.o $(SRC_DIR)/NthPrime64.o
+	$(M2C) $(M2FLAGS) -I$(SRC_DIR) -fmain -o $(@) $(SRC_DIR)/MainM2.o $(SRC_DIR)/NthPrime64.o
 
 .PHONY: f64 d64 c64 m2
 f64:: $(F64_TARGET)
