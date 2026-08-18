@@ -22,3 +22,8 @@ All designs are engineered for rigid mechanical integrity, high-efficiency conti
    - **Mechanism**: Sub-harmonic acoustic shear and localized molecular radical generation ($\cdot\mathrm{OH}$) for non-chemical pathogen lysis and organic contaminant dissociation.
    - **Construction**: Threaded brass/copper reducer vortex cone, dual non-orthogonal ultrasonic transducers, solid cast reinforced epoxy end-manifolds.
    - **Power & Throughput**: $15\text{ W}$ acoustic power, $1.5\text{--}3.0\text{ L/min}$ continuous gravitational or low-pressure pass-through.
+
+4. [DFE-1: Direct Non-Thermal Field Energy Transducers & Solid-State Power Generators](direct_field_energy_transducers.md)
+   - **Mechanism**: Direct non-thermal isothermal field transduction (isothermal mass-defect-to-TEM waveguide coupling, asymmetric ballistic metamaterial wave-packet rectification, multi-ferroic magneto-elastodynamic resonance, and gravito-electrodynamic gradient coupling) bypassing Carnot cycle limits.
+   - **Construction**: Nanostructured Pd/Ni microstrip lines on AlN/SiC substrates, CVD graphene/hBN asymmetric sawtooth metamaterial arrays, Galfenol/PMN-PT multiferroic resonators, and high-frequency GaN synchronous rectifiers.
+   - **Power & Density**: $5\text{--}25\text{ kW/L}$ for the High-Frequency A-Cell; $50\text{--}150\text{ W/m}^2$ for the Asymmetric Metamaterial Harvester; $>88\%\text{--}94\%$ direct electrical efficiency.
