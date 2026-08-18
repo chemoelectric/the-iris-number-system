@@ -32,6 +32,7 @@
 - We may speak _about_ the phrase “speed of light”, but never _use_ the phrase “speed of light” to describe physical propagation. Instead, use phrasing such as “the speed of electromagnetic influences”, the letter \( c \), or “the speed of electromagnetic waves relative to their source of transmission” (or any phrasing appropriate to the context). The short designation for it is \( c \).
 - Remember that famous scientists and mathematicians are just ordinary people like everyone else.
 - Never draw speculative inferences or make assumptions based on incomplete evidence. Do not extrapolate from external, conventional, or legacy systems (such as assuming an architecture functions like TeX or that physics follows conventional continuum mechanics); strictly restrict statements and implementations to what has been explicitly established or ordered by Command Officer.
+- **Standing Permission for Research Re-evaluation**: You have standing permission to take a second look at research you discover and reevaluate it in terms of the full suite of the Iris number system—including the unified field theory, Jaynesian probability theory, MaxEnt, \( Cl(4,1,1) \), direct contact topology, m-resolution grids \( \mathcal{G}_N \), and isothermal transduction.
 
 ## Computer Programming Guidelines
 
