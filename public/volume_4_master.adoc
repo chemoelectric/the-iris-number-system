@@ -102,9 +102,9 @@ Following the null result of the Michelson–Morley experiment, physics faced tw
 
 ==== 5. The Fatal Contradiction of the Twin Paradox: Inertial Motion Cannot Have Physical Effect
 
-The ultimate internal collapse of Special Relativity is demonstrated by the Twin Paradox, as decisively exposed by A. F. Kracklauer and collaborators. 
+The ultimate internal collapse of Special Relativity is demonstrated by the long-standing quandaries of the Twin Paradox. While the paradox has been debated since the early decades of the twentieth century, an illuminating re-evaluation was provided by A. F. Kracklauer, who demonstrated an alternative interpretation of the Minkowski diagram in which the paradox is completely eliminated by treating the coordinate transformations strictly as perceptual perspectives rather than asymmetric physical alterations.
 
-To understand why this demonstration is fatal to the theory, one must state explicitly what the foundational **Principle of Relativity** asserts:
+To understand why the orthodox interpretation is fatal to the theory, one must state explicitly what the foundational **Principle of Relativity** asserts:
 
 [quote]
 ____
@@ -126,6 +126,8 @@ scales strictly linearly with the spatial coasting baseline \( L \) and the dura
 Consequently, Special Relativity unavoidably requires that *pure uniform, unaccelerated inertial motion must itself produce an asymmetric, irreversible physical effect on the internal mechanisms of physical clocks*. 
 
 Herein lies the fatal internal inconsistency: Special Relativity assumes as an inviolable founding axiom that uniform inertial translation cannot produce an asymmetric physical effect (the Principle of Relativity), yet its own mathematical apparatus deduces that uniform inertial translation produces an accumulated, asymmetric physical effect on physical clocks ( \( \Delta \tau \propto L \) ). A theory whose mathematical deductions directly contradict its own foundational postulates is internally self-contradictory.
+
+In Kracklauer’s alternative interpretation of the Minkowski diagram, the coordinate axes and lines of simultaneity represent how observers exchange optical signals and track relative positions, showing that the apparent difference in coordinate time is entirely a symmetric artifact of reciprocal signal propagation rather than a real, asymmetric physical aging of clock mechanisms. Once the diagram is interpreted without reifying coordinate projections into physical clock alterations, no Twin Paradox arises.
 
 The rejection of this untenable contradiction provided the direct motivation for formulating the Iris Number System. In our constructive framework:
 
