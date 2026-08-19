@@ -2655,6 +2655,346 @@ For a DIY coupled-oscillator state-vector processor with \( N = 2^n \) state cha
      - Non-target channels: \( v_2(i) = 0.0884 - 0.1768 = -0.0884 \ \text{V} \).
    * Target voltage energy concentration: \( (0.9723)^2 = 0.9453 \) (94.53% energy concentrated in target channel 5!). Target LED shines brightly while non-target LEDs dim to near zero.
 
+== Canonical State-Vector Algorithms: Classical Numerical Mechanics, Linear Algebra, and Alternative Rotational Methods
+
+=== Demystification of “Quantum” Algorithms as Classical State-Vector Linear Algebra
+
+Throughout popular computing literature, algorithms such as Grover’s database search, Shor’s integer factorization, and Simon’s periodicity solver are routinely enveloped in metaphysical mystique. They are portrayed as harnessing “parallel universes,” “superposition of reality,” or magical non-material physics.
+
+In the Iris Number System, this entire vocabulary is recognized as empty terminology. A “quantum algorithm” is nothing more and nothing less than a deterministic sequence of **real orthogonal matrix transformations** (rotations and reflections) and **discrete spectral transformations** (Fourier and Walsh-Hadamard filters) acting upon a normalized state-vector:
+\[ \mathbf { v } \in \mathbb { R } ^ N , \quad \| \mathbf { v } \| _ 2 ^ 2 = \sum _ { i = 0 } ^ { N - 1 } v _ i ^ 2 = 1 \]
+on the discrete spatial grid \( \mathcal { G } _ N \).
+
+Under Jaynesian probability theory and Maximum Entropy (MaxEnt), the squared coordinates \( p_i = v_i^2 \) represent our rational state of knowledge regarding the discrete index \( i \) of the system. The time evolution of the state-vector is governed by local contact interactions satisfying the Master Field Equation \( D F = J \). Every canonical algorithm in the literature reduces directly to classical numerical linear algebra, wave-packet interference, and discrete harmonic analysis.
+
+=== Summary of Grover Search and Generalized Numerical Variants
+
+==== Summary of Classical Grover Iteration
+As established in earlier chapters, Grover’s unstructured search algorithm is an iterative numerical power method operating in an invariant two-dimensional subspace \( V_2 = \text{span}( | x^* \rangle , | s \rangle ) \). The algorithm initializes a uniform state-vector:
+\[ \mathbf { v } _ 0 = \frac { 1 } { \sqrt { N } } \sum _ { i = 0 } ^ { N - 1 } \mathbf { e } _ i \]
+and applies repeated composite reflection operators \( G = R _ \text{mean} R _ \text{oracle} \):
+
+1. **Target Oracle Reflection**: A Householder reflection across the hyperplane orthogonal to the target index vector \( \mathbf { e } _ { x^* } \):
+\[ R _ \text{oracle} = I - 2 \mathbf { e } _ { x^* } \mathbf { e } _ { x^* } ^ T \]
+which negates the target coordinate amplitude \( v _ { x^* } \mapsto - v _ { x^* } \) while leaving all other coordinates unaltered.
+
+2. **Inversion About the Mean**: A Householder reflection across the initial uniform state-vector \( \mathbf { v } _ 0 \):
+\[ R _ \text{mean} = 2 \mathbf { v } _ 0 \mathbf { v } _ 0 ^ T - I \]
+which computes the arithmetic mean \( \bar { v } = \frac { 1 } { N } \sum _ { i = 0 } ^ { N - 1 } v _ i \) and updates each channel amplitude according to:
+\[ v _ i \mapsto 2 \bar { v } - v _ i \]
+
+In the 2D planar subspace, the composite operator \( G \) executes an exact planar rotation by angle \( \theta = 2 \arcsin ( 1 / \sqrt { N } ) \). After approximately \( k _ \text{opt} \approx \frac { \pi } { 4 } \sqrt { N } \) iterations, the state-vector aligns with the target coordinate, concentrating over 95% of the total field energy into the target channel.
+
+==== Alternative Numerical Implementations: Householder Reflections vs. Givens Rotations
+While standard textbook presentations formulate Grover’s algorithm using dense global Householder reflections, numerical linear algebra provides multiple alternative formulation methods:
+
+. **Sparse Givens Rotations**:
+   The global reflection operator \( R _ \text{mean} = 2 \mathbf { v } _ 0 \mathbf { v } _ 0 ^ T - I \) is a dense \( N \times N \) matrix that requires an all-to-all summing bus to calculate the global mean \( \bar { v } \). In physical hardware (such as analog op-amp grids or discrete systolic arrays), this central summing junction can introduce parasitic capacitance and routing congestion.
+   +
+   An exact numerical alternative is to replace global Householder reflections with a sequence of localized, sparse **Givens rotations** \( G ( i , j , \theta ) \):
+   \[ G ( i , j , \theta ) = \begin{pmatrix} 1 & \cdots & 0 & \cdots & 0 & \cdots & 0 \\ \vdots & \ddots & \vdots & & \vdots & & \vdots \\ 0 & \cdots & \cos \theta & \cdots & - \sin \theta & \cdots & 0 \\ \vdots & & \vdots & \ddots & \vdots & & \vdots \\ 0 & \cdots & \sin \theta & \cdots & \cos \theta & \cdots & 0 \\ \vdots & & \vdots & & \vdots & \ddots & \vdots \\ 0 & \cdots & 0 & \cdots & 0 & \cdots & 1 \end{pmatrix} \]
+   Because any orthogonal transformation can be factored into at most \( \frac { N ( N - 1 ) } { 2 } \) plane rotations, the Grover step can be executed entirely via nearest-neighbor pairwise coordinate rotations. This eliminates the central summing node and allows local contact interactions across adjacent circuit channels.
+
+. **CORDIC Arithmetic (Coordinate Rotation Digital Computer)**:
+   In digital hardware and micro-controllers, computing trigonometric functions (\( \sin \theta \), \( \cos \theta \)) and multiplications can be computationally expensive. The CORDIC algorithm decomposes each Givens rotation into a sequence of binary shift-and-add operations using elementary angles \( \alpha _ m = \arctan ( 2 ^ { - m } ) \). This allows exact state-vector rotations to be performed on integer and fixed-point Iris grids without dedicated hardware multipliers.
+
+. **Chebyshev Polynomial Spectral Filtering (Quantum Signal Processing)**:
+   Grover iteration is fundamentally a special case of optimal polynomial approximation. By applying a sequence of parameterized phase rotations \( \vec { \phi } = ( \phi _ 1 , \phi _ 2 , \dots , \phi _ d ) \), the composite operator transforms the system Hamiltonian according to a Chebyshev polynomial \( T _ d ( x ) \). This generalized technique—known as quantum signal processing—allows arbitrary spectral filtering, optimal Hamiltonian simulation, and matrix inversion with minimal ripple and optimal convergence bounds.
+
+=== Shor’s Algorithm: Integer Factorization via Discrete Spectral Order-Finding
+
+==== Reduction of Factorization to Modular Order-Finding
+Shor’s algorithm is universally cited as an existential threat to RSA public-key cryptography. In truth, Shor’s algorithm is not a mystical factorization machine; it is a classical number-theoretic reduction of integer factorization to **modular order-finding**, solved via discrete spectral analysis (the Discrete Fourier Transform).
+
+Let \( N = p \cdot q \) be a composite integer to be factored. The algorithm proceeds as follows:
+
+1. **Coprime Selection**: Choose a random integer \( a \) such that \( 1 < a < N \). Compute the greatest common divisor \( \gcd ( a , N ) \) using Euclid’s algorithm on grid \( \mathcal { G } _ N \). If \( \gcd ( a , N ) > 1 \), a non-trivial factor is already found.
+
+2. **Periodic Modular Exponentiation**: If \( \gcd ( a , N ) = 1 \), consider the discrete modular exponentiation sequence:
+\[ f ( x ) = a ^ x \pmod N , \quad x = 0 , 1 , 2 , \dots \]
+By Euler’s totient theorem, the sequence \( f ( x ) \) is strictly periodic on the discrete integer grid. The smallest positive integer \( r \) such that:
+\[ a ^ r \equiv 1 \pmod N \]
+is called the **order** (or period) of \( a \) modulo \( N \).
+
+3. **Algebraic Factor Extraction**: If the period \( r \) is even, we can factor the congruence:
+\[ a ^ r - 1 = \left( a ^ { r / 2 } - 1 \right) \left( a ^ { r / 2 } + 1 \right) \equiv 0 \pmod N \]
+Provided that \( a ^ { r / 2 } \not \equiv - 1 \pmod N \), at least one of the greatest common divisors:
+\[ p = \gcd \left( a ^ { r / 2 } - 1 , N \right) , \quad q = \gcd \left( a ^ { r / 2 } + 1 , N \right) \]
+yields a non-trivial prime factor of \( N \).
+
+==== Discrete Fourier Spectral Analysis (QFT)
+The computational challenge in classical mathematics is that finding the period \( r \) by sequential evaluation requires checking up to \( O ( N ) \) values. Shor’s algorithm solves this by preparing a uniform state-vector over an evaluation register of size \( M = 2 ^ m \) (where \( N ^ 2 \le M < 2 N ^ 2 \)), evaluating \( f ( x ) = a ^ x \pmod N \), and applying the **Discrete Fourier Transform (DFT)**:
+\[ \mathbf { F } _ M = \frac { 1 } { \sqrt { M } } \left[ \omega _ M ^ { j k } \right] _ { j , k = 0 } ^ { M - 1 } , \quad \omega _ M = \exp \left( \frac { 2 \pi \mathrm { i } } { M } \right) \]
+
+In the Iris Number System, the DFT is an orthogonal change of basis from the time-index coordinate frame to the discrete frequency (spectral) coordinate frame. Because the state-vector carries periodic spikes with spatial period \( r \), wave interference causes complete destructive cancellation at all non-harmonic frequencies and constructive reinforcement at the exact spectral peaks:
+\[ k \approx \frac { s M } { r } , \quad s \in \{ 0 , 1 , 2 , \dots , r - 1 \} \]
+
+==== Period Extraction via Continued Fractions
+Once a spectral peak index \( k \) is measured, the rational ratio \( \frac { k } { M } \) serves as an approximation to \( \frac { s } { r } \). Applying the **Continued Fraction Expansion** algorithm on grid \( \mathcal { G } _ N \) produces the unique irreducible fraction \( \frac { s } { r } \) with denominator \( r < N \) in polynomial time \( O ( ( \log N ) ^ 3 ) \).
+
+==== Alternative Numerical Methods for Order-Finding and Factoring
+* **Number Theoretic Transform (NTT)**: The complex roots of unity \( \omega _ M \) can be replaced with primitive roots in finite Galois fields \( \mathbb { F } _ q \), enabling exact integer spectral analysis without round-off error.
+* **Winograd Fast Fourier Transform**: Decomposes large cyclic convolutions into minimal multiplication steps using modular polynomial factorization.
+* **Classical Sieve Methods (General Number Field Sieve)**: In conventional computing, the General Number Field Sieve (GNFS) factors integers in sub-exponential time \( O ( \exp ( c ( \log N ) ^ { 1 / 3 } ( \log \log N ) ^ { 2 / 3 } ) ) \) by finding smooth algebraic squares over polynomial rings.
+
+=== Simon’s Algorithm and the Abelian Hidden Subgroup Problem
+
+==== Problem Formulation
+Simon’s algorithm was the direct mathematical precursor that inspired Shor’s period-finding method. It addresses the **Hidden Subgroup Problem** over the discrete Boolean group \( ( \{ 0 , 1 \} ^ n , \oplus ) \).
+
+Let \( f : \{ 0 , 1 \} ^ n \to \{ 0 , 1 \} ^ n \) be a black-box function guaranteed to satisfy the two-to-one periodicity condition with respect to a secret non-zero bitmask \( \mathbf { s } \in \{ 0 , 1 \} ^ n \):
+\[ f ( \mathbf { x } ) = f ( \mathbf { y } ) \iff \mathbf { x } \oplus \mathbf { y } \in \{ \mathbf { 0 } , \mathbf { s } \} \]
+The objective is to determine the secret string \( \mathbf { s } \) with a minimal number of function queries.
+
+==== Walsh-Hadamard Spectral Interference
+Classically, solving this problem requires querying \( f ( \mathbf { x } ) \) until a collision \( f ( \mathbf { x } ) = f ( \mathbf { y } ) \) is found, which by the birthday paradox requires \( \Omega ( 2 ^ { n / 2 } ) \) evaluations.
+
+Simon’s algorithm executes in \( O ( n ) \) evaluations using the **Walsh-Hadamard Transform** \( H ^ { \otimes n } \). The \( n \)-qubit Hadamard matrix is the tensor product of \( n \) elementary \( 2 \times 2 \) reflection matrices:
+\[ H = \frac { 1 } { \sqrt { 2 } } \begin{pmatrix} 1 & 1 \\ 1 & - 1 \end{pmatrix} \]
+Acting on a discrete bitstring state \( | \mathbf { x } \rangle \), the Walsh-Hadamard transform produces:
+\[ H ^ { \otimes n } | \mathbf { x } \rangle = \frac { 1 } { 2 ^ { n / 2 } } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ n } ( - 1 ) ^ { \mathbf { x } \cdot \mathbf { y } } | \mathbf { y } \rangle \]
+where \( \mathbf { x } \cdot \mathbf { y } = \sum _ { i = 1 } ^ n x _ i y _ i \pmod 2 \) is the Boolean inner product.
+
+When the Hadamard transform is applied to the post-evaluation state-vector \( \frac { 1 } { \sqrt { 2 } } ( | \mathbf { x } _ 0 \rangle + | \mathbf { x } _ 0 \oplus \mathbf { s } \rangle ) \), the resulting amplitude for any output bitstring \( \mathbf { y } \) is proportional to:
+\[ ( - 1 ) ^ { \mathbf { x } _ 0 \cdot \mathbf { y } } + ( - 1 ) ^ { ( \mathbf { x } _ 0 \oplus \mathbf { s } ) \cdot \mathbf { y } } = ( - 1 ) ^ { \mathbf { x } _ 0 \cdot \mathbf { y } } \left( 1 + ( - 1 ) ^ { \mathbf { s } \cdot \mathbf { y } } \right) \]
+
+If \( \mathbf { s } \cdot \mathbf { y } \equiv 1 \pmod 2 \), the amplitude vanishes identically due to complete destructive wave interference (\( 1 + ( - 1 ) = 0 \)).
+If \( \mathbf { s } \cdot \mathbf { y } \equiv 0 \pmod 2 \), constructive reinforcement occurs.
+
+==== Linear System Solution over \( \mathbb { F } _ 2 \)
+Each run of the algorithm samples a bitstring \( \mathbf { y } \) that is strictly orthogonal to the secret period vector:
+\[ \mathbf { s } \cdot \mathbf { y } = s _ 1 y _ 1 \oplus s _ 2 y _ 2 \oplus \dots \oplus s _ n y _ n \equiv 0 \pmod 2 \]
+By repeating the procedure \( O ( n ) \) times, we obtain a system of \( n - 1 \) linearly independent equations in \( n \) unknowns over the Galois field \( \mathbb { F } _ 2 \). Applying classical **Gaussian elimination over \( \mathbb { F } _ 2 \)** determines the secret period \( \mathbf { s } \) uniquely in \( O ( n ^ 3 ) \) classical arithmetic steps.
+
+=== Quantum Phase Estimation (QPE) and Krylov Subspace Spectral Analysis
+
+==== The Eigenvalue Phase Estimation Problem
+Quantum Phase Estimation (QPE) is the central subroutine powering Shor’s algorithm, molecular Hamiltonian simulation, and linear system solvers.
+
+Let \( U \in \mathbb { C } ^ { N \times N } \) be a unitary matrix (or its real orthogonal equivalent \( R _ U \in \mathbb { R } ^ { 2 N \times 2 N } \)), and let \( | \psi \rangle \) be an eigenvector of \( U \) with eigenvalue \( \lambda = e ^ { 2 \pi \mathrm { i } \theta } \), where \( \theta \in [ 0 , 1 ) \) is the unknown phase angle. The goal of QPE is to estimate \( \theta \) to \( m \) bits of binary precision.
+
+==== Algorithmic Mechanics of QPE
+1. **Register Initialization**: Prepare an \( m \)-qubit counting register in the uniform superposition state \( \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } | k \rangle \) and load the state register with eigenvector \( | \psi \rangle \).
+2. **Controlled Unitary Exponentiation**: Apply controlled powers of \( U \) (\( U ^ { 2 ^ 0 } , U ^ { 2 ^ 1 } , \dots , U ^ { 2 ^ { m - 1 } } \)). By the eigenvalue relation \( U ^ { 2 ^ j } | \psi \rangle = e ^ { 2 \pi \mathrm { i } 2 ^ j \theta } | \psi \rangle \), the counting register state transforms into:
+\[ \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } e ^ { 2 \pi \mathrm { i } k \theta } | k \rangle \]
+3. **Inverse Discrete Fourier Transform**: Applying the inverse Discrete Fourier Transform \( \mathbf { F } _ { 2 ^ m } ^ \dagger \) converts the phase-encoded Fourier series into a sharp spectral peak at index \( k = \lfloor 2 ^ m \theta \rceil \), directly reading out the binary digits of \( \theta \).
+
+==== Equivalence to Classical Krylov Subspace and Arnoldi Methods
+In classical numerical analysis, extracting the dominant eigenvalues of a large sparse matrix \( A \) without full diagonalization is performed using **Krylov subspace projections**:
+\[ \mathcal { K } _ m ( A , \mathbf { v } _ 0 ) = \text{span} \left( \mathbf { v } _ 0 , A \mathbf { v } _ 0 , A ^ 2 \mathbf { v } _ 0 , \dots , A ^ { m - 1 } \mathbf { v } _ 0 \right) \]
+The **Arnoldi iteration** uses Gram-Schmidt orthogonalization (or Householder reflections) to reduce \( A \) to an upper Hessenberg matrix \( H _ m \), while the **Lanczos algorithm** reduces symmetric matrices to tridiagonal form. QPE is mathematically identical to projecting a state-vector across a cyclic Krylov subspace generated by powers of \( U \) and extracting the spectral poles via discrete Fourier analysis.
+
+==== Alternative Numerical Methods
+* **Iterative Phase Estimation (Kitaev Algorithm)**: Instead of allocating an \( m \)-qubit counting register, Kitaev’s method uses a single auxiliary channel to estimate the phase bit-by-bit from least significant to most significant bit, dynamically updating rotation angles via classical feedback.
+* **Jacobi Eigenvalue Rotations**: Iteratively applies sequences of \( 2 \times 2 \) Givens rotations to systematically eliminate off-diagonal matrix elements, computing all eigenvalues and eigenvectors with high numerical stability.
+
+=== The Harrow–Hassidim–Lloyd (HHL) Linear Solver and the Classical I/O Bottleneck
+
+==== Formulation of the Matrix Inversion Problem
+The Harrow–Hassidim–Lloyd (HHL) algorithm addresses the solution of large systems of linear equations:
+\[ A \mathbf { x } = \mathbf { b } \]
+where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with condition number \( \kappa = \lambda _ \max / \lambda _ \min \), and \( \mathbf { b } \in \mathbb { R } ^ N \) is a normalized input vector.
+
+==== The HHL Algorithmic Pipeline
+1. **Input State Preparation**: Encode vector \( \mathbf { b } \) as state-vector \( | b \rangle = \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle \), where \( \{ | u _ j \rangle \} \) are the orthonormal eigenvectors of \( A \) with eigenvalues \( \lambda _ j \).
+2. **Phase Estimation on \( A \)**: Simulate the Hamiltonian evolution \( e ^ { \mathrm { i } A t } \) using Trotter-Suzuki product formulas. QPE extracts the eigenvalues into an auxiliary register:
+\[ \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \]
+3. **Controlled Reciprocal Scaling**: Apply a non-unitary rotation to an auxiliary channel proportional to \( C / \lambda _ j \), transforming the state to:
+\[ \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \left( \sqrt { 1 - \frac { C ^ 2 } { \lambda _ j ^ 2 } } | 0 \rangle + \frac { C } { \lambda _ j } | 1 \rangle \right) \]
+4. **Inverse Phase Estimation (Uncomputing)**: Apply inverse QPE to clear the eigenvalue register, leaving the state in the target channel proportional to:
+\[ | x \rangle = A ^ { - 1 } | b \rangle = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } | u _ j \rangle \]
+
+==== Demystification and the Classical Input/Output Bottleneck
+Promoters of HHL often claim an exponential speedup (\( O ( \log N ) \) vs. \( O ( N ) \)). In the objective physical world, this claim is undermined by two unavoidable constraints:
+
+1. **The State Preparation Bottleneck**: Preparing an arbitrary classical input vector \( \mathbf { b } = ( b _ 1 , b _ 2 , \dots , b _ N ) ^ T \) in hardware requires loading \( N \) independent analog amplitudes, which intrinsically consumes \( \Omega ( N ) \) time and physical resources.
+2. **The Readout Bottleneck**: The output of HHL is not the classical numerical vector \( \mathbf { x } \), but a physical state-vector \( | x \rangle \). To extract the actual numerical coordinates \( x _ 1 , x _ 2 , \dots , x _ N \) with precision \( \epsilon \), one must perform \( O ( N / \epsilon ^ 2 ) \) repeated measurements, which completely erases any theoretical computational advantage.
+
+==== Classical Numerical Linear Algebra Equivalents
+For large sparse linear systems, classical numerical mathematics provides highly optimized, deterministic iterative solvers:
+* **Conjugate Gradient (CG) Method**: Solves symmetric positive-definite systems in \( O ( m \sqrt { \kappa } ) \) steps, where \( m \) is the number of non-zero matrix entries.
+* **Preconditioned GMRES (Generalized Minimal Residual)**: Computes optimal least-squares residuals in Krylov subspaces for general non-symmetric matrices.
+* **Chebyshev Semi-Iterative Methods**: Uses Chebyshev polynomial recurrences to minimize residual errors across known eigenvalue spectral bounds without computing inner products at each step.
+
+=== Variational Hybrid Algorithms: VQE and QAOA on Parameterized Manifolds
+
+==== Variational Quantum Eigensolver (VQE)
+The Variational Quantum Eigensolver (VQE) is a hybrid numerical optimization algorithm designed to find the ground-state energy \( E_0 \) of a matrix Hamiltonian \( H \).
+
+VQE is an exact hardware implementation of the classical **Rayleigh-Ritz Variational Principle**:
+\[ E _ 0 = \min _ { \mathbf { v } \neq \mathbf { 0 } } \frac { \mathbf { v } ^ T H \mathbf { v } } { \mathbf { v } ^ T \mathbf { v } } \le \langle H \rangle _ { \vec { \theta } } = \mathbf { v } ( \vec { \theta } ) ^ T H \mathbf { v } ( \vec { \theta } ) \]
+The algorithm functions as a closed-loop optimization cycle:
+1. **Parameterized Ansatz**: A state-vector \( \mathbf { v } ( \vec { \theta } ) \) is generated by applying a sequence of parameterized Givens rotations \( R ( \theta _ k ) \) to an initial state.
+2. **Energy Measurement**: The expectation value \( \langle H \rangle _ { \vec { \theta } } \) is evaluated by summing the channel energies.
+3. **Classical Optimization**: A classical optimization routine (such as Gradient Descent, BFGS, Nelder-Mead, or Adam) updates the parameter vector \( \vec { \theta } \leftarrow \vec { \theta } - \eta \nabla _ { \vec { \theta } } \langle H \rangle \) until energy convergence is reached.
+
+==== Quantum Approximate Optimization Algorithm (QAOA)
+QAOA is a variational method for solving combinatorial optimization problems on graphs (such as Max-Cut, Graph Coloring, and Boolean Satisfiability).
+
+The problem cost function is mapped to a diagonal Ising cost matrix \( H _ C \), and a non-commuting transverse mixing matrix \( H _ B = \sum _ { i = 1 } ^ n X _ i \) is introduced. The QAOA circuit applies alternating unitary layers parameterized by angle vectors \( \vec { \gamma } \) and \( \vec { \beta } \):
+\[ | \psi ( \vec { \gamma } , \vec { \beta } ) \rangle = \prod _ { l = 1 } ^ p e ^ { - \mathrm { i } \beta _ l H _ B } e ^ { - \mathrm { i } \gamma _ l H _ C } | v _ 0 \rangle \]
+A classical optimization loop iteratively tunes \( ( \vec { \gamma } , \vec { \beta } ) \) to maximize the cut weight or constraint satisfaction metric.
+
+==== Classical Numerical Optimization Equivalents
+* **Classical Simulated Annealing**: Exploits thermal Boltzmann-Gibbs fluctuations \( P ( \Delta E ) = \exp ( - \Delta E / k _ B T ) \) to escape local minima in discrete combinatorial landscapes.
+* **Semidefinite Programming (Goemans-Williamson Algorithm)**: Relaxes discrete binary graph variables \( x _ i \in \{ - 1 , + 1 \} \) to unit vectors on a sphere, achieving a guaranteed 0.878-approximation ratio for Max-Cut in polynomial time.
+* **Density Matrix Renormalization Group (DMRG) and Tensor Networks**: Represents state-vectors as Matrix Product States (MPS), efficiently capturing low-entanglement ground states of 1D and 2D Hamiltonians with high precision.
+
+=== Quantum Random Walks: Ballistic Wave Propagation vs. Classical Diffusion
+
+==== Classical Diffusive Walks vs. Discrete State-Vector Walks
+In a classical random walk on a 1D discrete integer grid, a particle at position \( x \) tosses an unbiased coin and steps to \( x + 1 \) or \( x - 1 \) with equal probability \( p = 1/2 \). By the Central Limit Theorem, the probability distribution after \( t \) steps converges to a Gaussian distribution with variance scaling linearly with time:
+\[ \sigma _ \text{classical} ^ 2 = t \implies \Delta x _ \text{classical} \sim \sqrt { t } \]
+This is the hallmark of classical **diffusive propagation**.
+
+In a discrete state-vector walk, the scalar particle is replaced by a two-component multivector wave packet \( \mathbf { v } ( x , t ) = \begin{pmatrix} v _ L ( x , t ) \\ v _ R ( x , t ) \end{pmatrix} \). At each discrete time step \( \Delta t \), the walk applies:
+1. **Coin Transformation Matrix**: A unitary coin operator (such as the Hadamard matrix \( H \) or a Givens rotation \( G ( \theta ) \)) mixes the left-moving and right-moving channel amplitudes:
+\[ \begin{pmatrix} v _ L ' ( x , t ) \\ v _ R ' ( x , t ) \end{pmatrix} = \frac { 1 } { \sqrt { 2 } } \begin{pmatrix} 1 & 1 \\ 1 & - 1 \end{pmatrix} \begin{pmatrix} v _ L ( x , t ) \\ v _ R ( x , t ) \end{pmatrix} \]
+2. **Shift Operator Matrix**: Translates the left-moving component to \( x - 1 \) and the right-moving component to \( x + 1 \):
+\[ v _ L ( x - 1 , t + 1 ) = v _ L ' ( x , t ) , \quad v _ R ( x + 1 , t + 1 ) = v _ R ' ( x , t ) \]
+
+Because amplitudes interfere constructively at the wavefront boundaries and cancel destructively in the interior, the spatial standard deviation scales **linearly** with time:
+\[ \sigma _ \text{quantum} \sim t \implies \Delta x _ \text{quantum} \propto t \]
+This constitutes **ballistic wave propagation**, spreading quadratically faster across spatial graphs than classical random diffusion.
+
+==== Applications and Numerical Implementations
+* **Spatial Search on Graphs**: Searching for a marked node in a \( \sqrt { N } \times \sqrt { N } \) 2D grid takes \( O ( \sqrt { N \log N } ) \) steps with a coined walk, compared to \( O ( N ) \) for classical random walks.
+* **Element Distinctness**: Determines whether all elements in a list of size \( N \) are unique in \( O ( N ^ { 2 / 3 } ) \) steps using discrete graph walks.
+* **Wave-Equation FDTD Simulation**: On discrete grid \( \mathcal { G } _ N \), continuous-time random walks are mathematically identical to solving the discretized telegrapher’s or Maxwell’s wave equations using Finite-Difference Time-Domain (FDTD) schemes.
+
+=== Formal Postulates and Theorems of Canonical State-Vector Algorithms
+
+[#theorem-discrete-qft-spectral-equivalence]
+[THEOREM]
+.Theorem: Exact Equivalence of the Discrete Quantum Fourier Transform to Classical Discrete Spectral Analysis
+====
+Let an \( n \)-qubit evaluation register contain discrete state-vector \( \mathbf { v } \in \mathbb { R } ^ { 2 ^ n } \). The discrete unitary transformation \( \mathbf { F } _ { 2 ^ n } \) implemented by a cascade of Hadamard reflections and controlled phase-shift Givens rotations is mathematically and functionally identical to the classical Discrete Fourier Transform (DFT) matrix over the finite cyclic group \( \mathbb { Z } _ { 2 ^ n } \). The transformation conserves total Euclidean field energy (\( \| \mathbf { F } \mathbf { v } \| _ 2 = \| \mathbf { v } \| _ 2 \)) and maps periodic coordinate sequences of period \( r \) to discrete spectral delta peaks with harmonic spacing \( \Delta k = 2 ^ n / r \).
+
+*Proof:*
+
+1. **Matrix Definition**: The matrix elements of the \( M = 2 ^ n \) dimensional DFT operator are given by \( F _ { j k } = \frac { 1 } { \sqrt { M } } \omega _ M ^ { j k } \), where \( \omega _ M = \exp ( 2 \pi \mathrm { i } / M ) \).
+
+2. **Tensor Factorization**: Any integer \( k \in [ 0 , M - 1 ] \) has unique binary representation \( k = \sum _ { l = 1 } ^ n k _ l 2 ^ { n - l } \). Substituting into the exponential kernel factors \( \mathbf { F } _ M \) into a product of \( n \) single-qubit Hadamard operators and \( \frac { n ( n - 1 ) } { 2 } \) controlled phase rotations:
+\[ \mathbf { F } _ { 2 ^ n } = \prod _ { j = 1 } ^ n \left( H _ j \prod _ { l = j + 1 } ^ n R _ { j l } \left( \frac { 2 \pi } { 2 ^ { l - j + 1 } } \right) \right) \]
+
+3. **Energy Conservation**: Because each Hadamard matrix is a symmetric orthogonal reflection (\( H ^ T H = I \)) and each phase gate is a planar rotation (\( R ^ T R = I \)), the composite product satisfies \( \mathbf { F } ^ \dagger \mathbf { F } = I \). By Parseval’s theorem on discrete grid \( \mathcal { G } _ N \), total field energy is strictly conserved.
+
+4. **Constructive Spectral Peaks**: For an input vector consisting of a periodic train of impulses \( v _ x = \sum _ { m } \delta _ { x , m r + x _ 0 } \), the discrete Fourier sum evaluates to:
+\[ ( \mathbf { F } \mathbf { v } ) _ y = \frac { 1 } { \sqrt { M } } \sum _ { m = 0 } ^ { M / r - 1 } \omega _ M ^ { ( m r + x _ 0 ) y } = \frac { \omega _ M ^ { x _ 0 y } } { \sqrt { M } } \sum _ { m = 0 } ^ { M / r - 1 } \left( \omega _ M ^ { r y } \right) ^ m \]
+When \( r y \equiv 0 \pmod M \implies y = s \frac { M } { r } \), the terms in the geometric series add in phase, producing constructive spectral peaks with amplitude \( \frac { \sqrt { M } } { r } \), while for all non-harmonic frequencies the sum vanishes identically. \( \square \)
+====
+
+[#theorem-householder-givens-isometry]
+[THEOREM]
+.Theorem: Generalized Rotational Equivalence: Isometry Between Householder Reflection Cascades and Sparse Givens Rotation Networks
+====
+Let \( R \in \mathbb { R } ^ { N \times N } \) be any orthogonal transformation acting on discrete state-vector space \( \mathbb { R } ^ N \) on grid \( \mathcal { G } _ N \) with determinant \( \det ( R ) = + 1 \). The transformation can be represented identically as either a product of an even number of Householder hyperplane reflections:
+\[ R = \prod _ { k = 1 } ^ { 2 m } \left( I - 2 \mathbf { u } _ k \mathbf { u } _ k ^ T \right) \]
+or as a structured cascade of at most \( \frac { N ( N - 1 ) } { 2 } \) localized, two-dimensional coordinate-pair Givens rotations:
+\[ R = \prod _ { i = 1 } ^ { N - 1 } \prod _ { j = i + 1 } ^ N G ( i , j , \theta _ { i j } ) \]
+Both representations preserve Euclidean vector length, inner products, and Jaynesian probability normalization, allowing hardware implementations to substitute dense global summing junctions with nearest-neighbor local circuit interactions.
+
+*Proof:*
+
+1. **Cartan-Dieudonné Theorem on \( \mathbb { R } ^ N \)**: By the classical Cartan-Dieudonné theorem, every orthogonal transformation in an \( N \)-dimensional real Euclidean space decomposes into a product of at most \( N \) reflections across hyperplanes. For proper rotations (\( \det ( R ) = + 1 \)), the number of reflections is strictly even.
+
+2. **QR Decomposition via Givens Rotations**: Given the matrix \( R \), there exists an explicit sequence of plane rotations \( G ( i , j , \theta _ { i j } ) \) that systematically eliminates off-diagonal elements in coordinate planes \( ( i , j ) \), reducing \( R \) to the identity matrix \( I \). Inverting the sequence expresses \( R \) as a product of at most \( \frac { N ( N - 1 ) } { 2 } \) sparse Givens rotations.
+
+3. **Subspace Isometry**: Each Givens rotation \( G ( i , j , \theta ) \) is an isometry on the 2D plane \( \text{span}( \mathbf { e } _ i , \mathbf { e } _ j ) \) leaving all orthogonal coordinates unchanged. Because the composition of isometries is an isometry, both representations produce the exact same final state-vector \( \mathbf { v } _ \text{out} = R \mathbf { v } _ \text{in} \). \( \square \)
+====
+
+=== Worked Example Problems in Canonical State-Vector Algorithms
+
+**Problem Statement 1:** Step-by-Step Modular Order-Finding and Factorization of \( N = 15 \) via Discrete Fourier Spectral Peaks and Euclid’s GCD Algorithm.
+
+Let \( N = 15 \) be the composite integer to factor. Select base \( a = 7 \).
+1. Verify that \( \gcd ( 7 , 15 ) = 1 \).
+2. Trace the periodic sequence \( f ( x ) = 7 ^ x \pmod { 15 } \) for \( x = 0 , 1 , 2 , \dots , 7 \).
+3. Determine the period \( r \).
+4. Evaluate the Discrete Fourier Transform spectral peaks on an evaluation register of size \( M = 16 \).
+5. Extract the non-trivial prime factors of \( 15 \) using Euclid’s algorithm on grid \( \mathcal { G } _ N \).
+
+**Solution:**
+
+. **Coprimality Verification**:
+   Applying Euclid's algorithm: \( 15 = 2 \times 7 + 1 \implies \gcd ( 7 , 15 ) = 1 \).
+
+. **Modular Exponentiation Sequence**:
+   * \( x = 0 \implies 7 ^ 0 \pmod { 15 } = 1 \)
+   * \( x = 1 \implies 7 ^ 1 \pmod { 15 } = 7 \)
+   * \( x = 2 \implies 7 ^ 2 \pmod { 15 } = 49 \equiv 4 \pmod { 15 } \)
+   * \( x = 3 \implies 7 ^ 3 \pmod { 15 } = 4 \times 7 = 28 \equiv 13 \pmod { 15 } \)
+   * \( x = 4 \implies 7 ^ 4 \pmod { 15 } = 13 \times 7 = 91 \equiv 1 \pmod { 15 } \) (Sequence repeats!)
+   * \( x = 5 \implies 7 \), \( x = 6 \implies 4 \), \( x = 7 \implies 13 \)
+
+   The sequence is \( ( 1 , 7 , 4 , 13 , 1 , 7 , 4 , 13 , \dots ) \).
+   The period is strictly \( r = 4 \).
+
+. **Discrete Fourier Spectral Peaks on \( M = 16 \)**:
+   The periodic state-vector for value \( f ( x ) = 1 \) has non-zero entries at indices \( x \in \{ 0 , 4 , 8 , 12 \} \):
+   \[ \mathbf { v } = \frac { 1 } { 2 } \begin{pmatrix} 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \end{pmatrix} ^ T \]
+   Applying the 16-point DFT \( \mathbf { F } _ { 16 } \mathbf { v } \):
+   The spectral peaks occur at integer multiples of \( \frac { M } { r } = \frac { 16 } { 4 } = 4 \):
+   \[ k \in \{ 0 , 4 , 8 , 12 \} \]
+   Measuring non-zero spectral peak \( k = 4 \) yields the ratio:
+   \[ \frac { k } { M } = \frac { 4 } { 16 } = \frac { 1 } { 4 } = \frac { s } { r } \implies r = 4 \]
+
+. **Factor Extraction via Greatest Common Divisor**:
+   Because \( r = 4 \) is even, calculate:
+   \[ a ^ { r / 2 } \pmod { 15 } = 7 ^ 2 \pmod { 15 } = 49 \equiv 4 \pmod { 15 } \]
+   Verify non-triviality condition: \( 4 \not \equiv - 1 \equiv 14 \pmod { 15 } \).
+
+   Calculate prime factors:
+   * \( p = \gcd ( a ^ { r / 2 } - 1 , 15 ) = \gcd ( 4 - 1 , 15 ) = \gcd ( 3 , 15 ) = 3 \)
+   * \( q = \gcd ( a ^ { r / 2 } + 1 , 15 ) = \gcd ( 4 + 1 , 15 ) = \gcd ( 5 , 15 ) = 5 \)
+
+   The factors of 15 are found to be \( 3 \) and \( 5 \). The entire reduction is complete and exact.
+
+---
+
+**Problem Statement 2:** Step-by-Step Arithmetic Trace of Simon’s Periodicity Algorithm for \( n = 3 \) with Secret Bitmask \( \mathbf { s } = 110 _ 2 \).
+
+Let \( f : \{ 0 , 1 \} ^ 3 \to \{ 0 , 1 \} ^ 3 \) be a 2-to-1 function with secret period bitmask \( \mathbf { s } = ( 1 , 1 , 0 ) _ 2 \).
+1. Define the 2-to-1 function table for all 8 input bitstrings.
+2. Trace the Walsh-Hadamard transform and show destructive interference for non-orthogonal vectors.
+3. Show that every measured output bitstring \( \mathbf { y } \) satisfies \( \mathbf { s } \cdot \mathbf { y } \equiv 0 \pmod 2 \).
+4. Perform Gaussian elimination over \( \mathbb { F } _ 2 \) to reconstruct \( \mathbf { s } \).
+
+**Solution:**
+
+. **Function Table for \( \mathbf { s } = ( 1 , 1 , 0 ) _ 2 \)**:
+   * \( f ( 000 ) = f ( 000 \oplus 110 ) = f ( 110 ) = 001 \)
+   * \( f ( 001 ) = f ( 001 \oplus 110 ) = f ( 111 ) = 010 \)
+   * \( f ( 010 ) = f ( 010 \oplus 110 ) = f ( 100 ) = 011 \)
+   * \( f ( 011 ) = f ( 011 \oplus 110 ) = f ( 101 ) = 100 \)
+
+. **Walsh-Hadamard Interference Calculation**:
+   Suppose the function evaluation collapses the state register to the pre-image pair for output \( 001 \):
+   \[ | \psi _ 1 \rangle = \frac { 1 } { \sqrt { 2 } } \left( | 000 \rangle + | 110 \rangle \right) \]
+   Applying the 3-qubit Walsh-Hadamard transform \( H ^ { \otimes 3 } \):
+   \[ H ^ { \otimes 3 } | \psi _ 1 \rangle = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( ( - 1 ) ^ { 000 \cdot \mathbf { y } } + ( - 1 ) ^ { 110 \cdot \mathbf { y } } \right) | \mathbf { y } \rangle = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( 1 + ( - 1 ) ^ { y _ 1 \oplus y _ 2 } \right) | \mathbf { y } \rangle \]
+
+. **Evaluating Vector Amplitudes**:
+   * If \( y _ 1 \oplus y _ 2 = 1 \): Amplitude is \( 1 + ( - 1 ) = 0 \) (Destructive cancellation!).
+     Bitstrings \( 100 , 101 , 010 , 011 \) have amplitude **0**.
+   * If \( y _ 1 \oplus y _ 2 = 0 \): Amplitude is \( 1 + 1 = 2 \).
+     Bitstrings \( 000 , 001 , 110 , 111 \) have amplitude \( \frac { 2 } { 4 } = \frac { 1 } { 2 } \).
+
+. **Linear Parity System over \( \mathbb { F } _ 2 \)**:
+   All non-zero output states satisfy the parity constraint:
+   \[ \mathbf { s } \cdot \mathbf { y } = s _ 1 y _ 1 \oplus s _ 2 y _ 2 \oplus s _ 3 y _ 3 \equiv 0 \pmod 2 \]
+
+   Sampling outputs yields linearly independent vectors:
+   * Measurement 1: \( \mathbf { y } ^ { ( 1 ) } = ( 0 , 0 , 1 ) \implies s _ 3 \equiv 0 \pmod 2 \).
+   * Measurement 2: \( \mathbf { y } ^ { ( 2 ) } = ( 1 , 1 , 0 ) \implies s _ 1 \oplus s _ 2 \equiv 0 \implies s _ 1 = s _ 2 \pmod 2 \).
+
+. **Gaussian Elimination**:
+   The system of equations is:
+   \[ \begin{pmatrix} 0 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix} \begin{pmatrix} s _ 1 \\ s _ 2 \\ s _ 3 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \pmod 2 \]
+   The non-zero solution is uniquely \( s _ 3 = 0 \) and \( s _ 1 = s _ 2 = 1 \), yielding:
+   \[ \mathbf { s } = ( 1 , 1 , 0 ) _ 2 \]
+   The secret bitmask is recovered with 100% mathematical certainty in \( O ( n ) \) steps.
+
 == Index of Formal Statements
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
