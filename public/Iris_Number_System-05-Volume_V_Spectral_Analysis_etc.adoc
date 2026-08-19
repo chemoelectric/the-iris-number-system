@@ -384,14 +384,21 @@ A circuit network composed of \( N \) nodes and \( B \) branches is fully repres
 To establish a clear physical picture on the objective level, every lumped circuit element and conservation law maps directly to an exact mechanical or fluid dynamic counterpart.
 
 ==== The Hydraulic Isomorphism for Circuit Quantities
+
 * **Electric Current \( I \) (Amperes)** \(\leftrightarrow\) **Volumetric Fluid Flow Rate \( Q \) (\( \text{m}^3 / \text{s} \))**: The volume of incompressible fluid passing a pipe cross-section per unit time.
+
 * **Electric Potential Difference \( V \) (Volts)** \(\leftrightarrow\) **Hydraulic Head Pressure Difference \( \Delta P \) (\( \text{N/m}^2 \))**: The hydrostatic pressure drop between two pressure taps in a hydraulic conduit.
+
 * **Resistance \( R \) (Ohms)** \(\leftrightarrow\) **Fluid Constriction Orifice / Porous Plug**: Viscous fluid friction against pipe walls or a constricted orifice plate where hydraulic pressure drop obeys \( \Delta P = R_\text{hyd} Q \), irreversibly converting fluid pressure power into thermal heat.
+
 * **Capacitance \( C \) / Condenser (Farads)** \(\leftrightarrow\) **Flexible Elastic Diaphragm / Hydraulic Accumulator**: A fluid chamber bisected by a sealed, flexible rubber diaphragm. Inflowing fluid deforms the diaphragm, storing pressure energy without fluid crossing the rubber barrier: \( Q = C_\text{hyd} \frac { d P } { d t } \). Total hydraulic energy stored in the stretched diaphragm is \( W = \frac { 1 } { 2 } C_\text{hyd} ( \Delta P ) ^ 2 \).
+
 * **Inductance \( L \) / Coil (Henries)** \(\leftrightarrow\) **Heavy Fluid Inertia / Hydraulic Flywheel Turbine**: A long, heavy column of dense fluid in an insulated pipe or a fluid turbine coupled to a heavy mechanical flywheel. The inertia of the fluid mass resists rapid changes in velocity, generating a back-pressure proportional to fluid acceleration: \( \Delta P = L_\text{hyd} \frac { d Q } { d t } \). Total kinetic energy stored in the moving fluid column is \( W = \frac { 1 } { 2 } L_\text{hyd} Q ^ 2 \).
 
 ==== Mechanical Analogies for Kirchhoff’s Laws
+
 * **Kirchhoff’s Current Law (KCL) \(\leftrightarrow\) Hydraulic Fluid Incompressibility at Pipe Junctions**: At any sealed pipe junction node, the total volumetric fluid flow rate entering the junction must equal the total flow rate leaving: \( \sum Q_k = 0 \). Because fluid mass cannot be destroyed or accumulated at an ideal junction, current conservation is fluid continuity.
+
 * **Kirchhoff’s Voltage Law (KVL) \(\leftrightarrow\) Closed Hydraulic Loop Pressure Conservation**: Summing hydrostatic pressure changes around a closed hydraulic loop returns to the starting pressure, ensuring \( \sum \Delta P_k = 0 \).
 
 === Resistors, Capacitors (Condensers), and Inductors (Coils)
@@ -399,11 +406,13 @@ To establish a clear physical picture on the objective level, every lumped circu
 Physical lumped circuit elements represent localized energy dissipation, electric field energy storage, or magnetic field energy storage in the m-resolution field medium.
 
 ==== Resistors and Ohmic Dissipation
+
 A resistor of resistance \( R \) represents the irreversible conversion of electrodynamic field energy into lattice thermal phonons via microscopic electron-lattice collision scattering. Ohm’s law is the localized constitutive relation \( \mathbf { J } = \sigma \mathbf { E } \), mapping for a uniform conductive cylinder of length \( l \) and cross-sectional area \( A \) to \( R = \frac { l } { \sigma A } \):
 \[ V = I R \]
 The rate of irreversible thermal energy dissipation into the grid lattice is given by Joule's law: \( P = I V = I ^ 2 R = \frac { V ^ 2 } { R } \). The resistance varies with temperature according to \( R ( T ) = R_0 ( 1 + \alpha \Delta T ) \), and exhibits frequency-dependent skin effect resistance \( R_\text{ac} = R_\text{dc} \left( \frac { r_0 } { 2 \delta_s } \right) \) at high frequencies.
 
 ==== Capacitors (Condensers)
+
 Capacitors—historically and traditionally designated as **condensers** in early electrical engineering—store electric field energy within a dielectric volume between conductive plates. Charge accumulation \( Q \) on condenser plates generates a terminal potential difference:
 \[ Q = C V \]
 where \( C = \varepsilon_0 \varepsilon_r \frac { A } { d } \) is the capacitance for parallel plates separated by distance \( d \) with relative permittivity \( \varepsilon_r \). The time variation of terminal voltage drives a physical displacement current \( I _ C = C \frac { d V } { d t } \) through the dielectric medium. The total electric field energy stored in the condenser dielectric is:
@@ -411,6 +420,7 @@ where \( C = \varepsilon_0 \varepsilon_r \frac { A } { d } \) is the capacitance
 Dielectric materials exhibit maximum breakdown dielectric strength \( E_\text{break} \) and dielectric dissipation loss tangent \( \tan \delta = \frac { \varepsilon'' } { \varepsilon' } \).
 
 ==== Inductors (Coils)
+
 Inductors—traditionally designated as **coils**—store magnetic field energy within the bivector magnetic field generated by current flowing through wound wire turns. Total magnetic flux linkage \( \Phi \) through the coil turns is proportional to the current:
 \[ \Phi = L I \]
 where \( L = \frac { \mu_0 \mu_r N ^ 2 A } { l } \) is the coil inductance for a long solenoid of \( N \) turns. By Faraday’s law of induction, a time-varying magnetic flux induces a counter-electromotive force (back-EMF) across coil terminals:
@@ -418,6 +428,7 @@ where \( L = \frac { \mu_0 \mu_r N ^ 2 A } { l } \) is the coil inductance for a
 The total magnetic field energy stored within the coil turns is: \( W _ B = \frac { 1 } { 2 } L I ^ 2 \). Magnetic core materials display non-linear hysteresis magnetization curves \( B ( H ) \), magnetic saturation \( B_\text{sat} \), and core losses composed of hysteresis loss \( P_h = k_h f B_\text{max} ^ { 1.6 } \) and eddy current loss \( P_e = k_e f ^ 2 B_\text{max} ^ 2 t^2 \).
 
 ==== Transient Dynamics and Frequency Response in RC and LC Circuits
+
 The temporal evolution and frequency response of circuits containing combinations of resistors, condensers, and coils govern signal filtering, energy storage, and resonant selectivity on the discrete resolution grid \( \mathcal { G } _ N \).
 
 . **RC Transient and Filtering Dynamics**: When a constant source voltage \( V_s \) is applied to a series resistor \( R \) and condenser \( C \), Kirchhoff’s Voltage Law yields the first-order differential equation:
@@ -434,6 +445,7 @@ The temporal evolution and frequency response of circuits containing combination
 === Transformers, Antennas, and Impedance Matching
 
 ==== Transformers and Mutual Inductance
+
 When two or more inductors (coils) share a common magnetic flux path through a high-permeability magnetic core, time-varying current in the primary coil induces a voltage in the secondary coil via mutual inductance \( M = k \sqrt { L _ 1 L _ 2 } \) (where \( k \le 1 \) is the magnetic coupling coefficient). For an ideal transformer with primary turns \( N _ 1 \) and secondary turns \( N _ 2 \):
 \[ \frac { V _ 2 } { V _ 1 } = \frac { N _ 2 } { N _ 1 } , \quad \frac { I _ 2 } { I _ 1 } = \frac { N _ 1 } { N _ 2 } \]
 A load impedance \( Z _ L \) connected to the secondary terminals reflects back to the primary terminals as an equivalent input impedance:
@@ -441,12 +453,15 @@ A load impedance \( Z _ L \) connected to the secondary terminals reflects back 
 enabling complete impedance matching between power sources and loads.
 
 ==== Antennas as Circuit-Field Launching Elements
+
 An antenna serves as an electrodynamic transducer between lumped guided currents in a circuit and propagating wave fields in the spatial grid \( \mathcal { G } _ N \). Characterized by its radiation resistance \( R _ \text{rad} \), an antenna converts terminal current \( I_0 \) into launched electromagnetic wave power \( P _ \text{rad} = \frac { 1 } { 2 } I _ 0 ^ 2 R _ \text{rad} \). A Hertzian dipole of length \( d l \ll \lambda \) has radiation resistance \( R_\text{rad} = 80 \pi ^ 2 \left( \frac { d l } { \lambda } \right) ^ 2 \), while a resonant half-wave dipole antenna in free space exhibits \( R_\text{rad} \approx 73 \ \Omega \).
 
 ==== Impedance Matching Networks
+
 To maximize real power transfer from a source with complex bivector internal impedance \( Z_S = R_S + \mathbf { I } X_S \) to a load \( Z_L = R_L + \mathbf { I } X_L \), the conjugate matching condition \( Z_L = Z_S ^ * = R_S - \mathbf { I } X_S \) must be satisfied. Impedance matching networks—utilizing L-sections, Pi-sections, T-sections, and quarter-wave transmission lines—transform arbitrary load impedances to match generator source impedances.
 
 ==== Electrodynamic Tuning Section and Full Practical Crystal Receiver Circuit
+
 A classic, practical application of LC resonance, impedance matching, and non-linear signal rectification is the **crystal radio receiver**. Operating without external batteries or power supplies, a crystal radio extracts both acoustic sound power and signal intelligence directly from incoming amplitude-modulated (AM) electromagnetic wave fields.
 
 . **The Resonant LC Tuning Tank and Frequency Selectivity**: Intercepted RF signal current from an elevated long-wire antenna and active earth ground counterpoise drives a parallel LC tuning tank consisting of a high-Q tuning coil \( L \) and a variable tuning condenser \( C \). At the targeted carrier frequency \( f_0 = \frac { 1 } { 2 \pi \sqrt { L C } } \), the parallel tank exhibits maximum equivalent parallel resistance \( R_p = Q \omega_0 L \) (where \( Q = \frac { \omega_0 L } { r_s } \) is the tank quality factor and \( r_s \) is coil wire resistance). This parallel resonance produces a high peak RF voltage \( V_\text{tank} \) across the tuning terminals while shorting off-resonance channels to ground. The selectivity bandwidth is \( \Delta f = \frac { f_0 } { Q } \).
@@ -509,21 +524,28 @@ Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X
 === Completely Worked Technical Examples
 
 ==== Example 1: Multivector Nodal Analysis of an RLC Bridged Network
+
 **Problem Statement:** An AC source \( V_s ( t ) = 120 \cos ( 2 \pi f t ) \) at \( f = 60 \text{ Hz} \) drives an RLC circuit with resistor \( R = 10 \ \Omega \), condenser \( C = 100 \ \mu \text{F} \), and coil \( L = 50 \text{ mH} \) connected in series. Calculate coil reactance \( X_L \), condenser reactance \( X_C \), net impedance \( Z \), current amplitude \( I_0 \), phase angle \( \phi \), real power \( P \), reactive power \( Q \), and total stored field energy.
 
 **Solution:**
 
 1. **Coil Reactance \( X_L \)**: \( X_L = 2 \pi f L = 2 \pi ( 60 ) ( 0.050 ) \approx 18.85 \ \Omega \).
+
 2. **Condenser Reactance \( X_C \)**: \( X_C = \frac { 1 } { 2 \pi f C } = \frac { 1 } { 2 \pi ( 60 ) ( 100 \times 10 ^ { - 6 } ) } \approx 26.53 \ \Omega \).
+
 3. **Net Bivector Impedance \( Z \)**: \( Z = R + \mathbf { I } ( X_L - X_C ) = 10 + \mathbf { I } ( 18.85 - 26.53 ) = 10 - 7.68 \mathbf { I } \ \Omega \).
    Magnitude: \( | Z | = \sqrt { 10 ^ 2 + ( - 7.68 ) ^ 2 } = \sqrt { 100 + 58.98 } = \sqrt { 158.98 } \approx 12.61 \ \Omega \).
 
 4. **Current Amplitude \( I_0 \)**: \( I_0 = \frac { V_s } { | Z | } = \frac { 120 } { 12.61 } \approx 9.52 \text{ A} \). RMS current \( I_\text{rms} = \frac { 9.52 } { \sqrt{2} } \approx 6.73 \text{ A} \).
+
 5. **Phase Angle \( \phi \)**: \( \phi = \arctan \left( \frac { - 7.68 } { 10 } \right) \approx - 37.52 ^ \circ \) (leading current).
+
 6. **Power Metrics**: Real power \( P = I_\text{rms} ^ 2 R = ( 6.73 ) ^ 2 ( 10 ) \approx 453.0 \text{ W} \). Reactive power \( Q = I_\text{rms} ^ 2 ( X_L - X_C ) = ( 6.73 ) ^ 2 ( - 7.68 ) \approx - 347.8 \text{ VAR} \).
+
 7. **Peak Stored Energies**: Coil peak energy \( W _ { B , \text{peak} } = \frac { 1 } { 2 } L I_0 ^ 2 = \frac { 1 } { 2 } ( 0.050 ) ( 9.52 ) ^ 2 \approx 2.26 \text{ J} \). Condenser peak energy \( W _ { E , \text{peak} } = \frac { 1 } { 2 } C V_C ^ 2 = \frac { 1 } { 2 } ( 100 \times 10 ^ { - 6 } ) ( 9.52 \times 26.53 ) ^ 2 \approx 3.19 \text{ J} \).
 
 ==== Example 2: Electromagnetic Shielding Effectiveness of a Copper Enclosure
+
 **Problem Statement:** A copper Faraday shield of thickness \( t = 1.0 \text{ mm} \) (conductivity \( \sigma = 5.8 \times 10 ^ 7 \text{ S/m} \), relative permeability \( \mu_r = 1.0 \)) encloses sensitive electronics. Calculate the skin depth \( \delta_s \) and absorption loss \( A \) at signal frequencies of \( f = 60 \text{ Hz} \), \( f = 1 \text{ MHz} \), and \( f = 1 \text{ GHz} \).
 
 **Solution:**
@@ -1223,23 +1245,31 @@ The net field transmission current density \( I_\text{tunnel} ( V ) \) under app
 \[ I_\text{tunnel} ( V ) = \frac { A q m^* } { 2 \pi^2 \hbar^3 } \int _ { E_c } ^ { E_v } \rho_c ( E ) \rho_v ( E ) \left[ f_c ( E ) - f_v ( E ) \right] T_B ( E ) , d E \]
 
 The resulting current-voltage (\( I \text{--} V \)) curve traces three distinct physical operational regimes:
+
 * **Reverse Bias (\( V < 0 \))**: Applied reverse bias pulls the n-side energy levels downward relative to the p-side, aligning filled valence band states on the p-side directly opposite empty conduction band states on the n-side. Field transmission current rises rapidly without saturation, causing the Esaki diode to act as a highly conductive “backward diode” in reverse bias.
+
 * **Zero Bias (\( V = 0 \))**: At thermal equilibrium, the filled n-side conduction states align exactly with filled p-side valence states, while empty states align with empty states. Forward wave packet transmission balances reverse wave packet transmission identically (\( I_{n \to p} = I_{p \to n} \)), yielding zero net current (\( I = 0 \)).
+
 * **Peak Current Regime (\( 0 < V \le V_p \))**: Applying a small forward bias \( V \) raises the n-side energy levels upward by \( q V \). Filled n-side conduction band states now face empty p-side valence band states across a broad overlapping energy window \( \Delta E = ( E_v - E_c ) + q V \). Current increases rapidly with voltage, reaching a maximum **peak current** \( I_p \) at **peak voltage** \( V_p \approx 50 \text{--} 100 \text{ mV} \).
+
 * **Negative Differential Resistance (NDR) Regime (\( V_p < V < V_v \))**: As forward bias increases beyond \( V_p \), the bottom of the n-side conduction band \( E_c \) is pushed above the top of the p-side valence band \( E_v \). Filled n-side conduction states are now forced to face the unpopulated forbidden energy bandgap \( E_g \) on the p-side, where zero energy states exist. The overlapping state window shrinks continuously. Consequently, despite the increase in applied voltage, the net current drops precipitously toward a minimum **valley current** \( I_v \) at **valley voltage** \( V_v \approx 350 \text{--} 500 \text{ mV} \). In this interval, the incremental slope is negative:
   \[ R_N = \left( \frac { d I } { d V } \right) ^ { - 1 } < 0 \]
   establishing a true physical **Negative Differential Resistance (NDR)**.
+
 * **Thermal Diffusion and Excess Current Regime (\( V > V_v \))**: Beyond valley voltage \( V_v \), direct band-to-band overlap collapses to zero. Current is maintained at a small non-zero valley value \( I_v \) by localized defect-state “excess current”. As forward bias increases further (\( V > 0.6 \text{ V} \)), conventional thermionic injection over the reduced depletion barrier takes over, and current rises exponentially according to the standard Shockley diode equation.
 
-4. **High-Frequency Microwave Oscillation and Equivalent Circuit**:
+* **High-Frequency Microwave Oscillation and Equivalent Circuit**:
 Because NDR relies on ultra-fast bivector wave packet transmission across a 5–8 nm lattice gap rather than slow minority carrier diffusion, response times are on the order of picoseconds. Connected across a tuned LC resonant tank, the negative conductance \( - G_N = - 1 / | R_N | \) cancels the positive resistance loss of the tank, converting DC power into sustained microwave oscillations up to hundreds of gigahertz.
 The maximum resistive cutoff frequency \( f_x \) of an Esaki diode is given by:
 \[ f_x = \frac { 1 } { 2 \pi | R_N | C_j } \sqrt { \frac { | R_N | } { R_s } - 1 } \]
 where \( C_j \) is the junction capacitance and \( R_s \) is the parasitic series lead resistance.
 
 ==== PIN Diodes, LEDs, and Photodiodes
+
 * **PIN Diodes**: An undoped intrinsic (I) layer is sandwiched between P and N regions. At RF frequencies, the injected charge in the I-layer acts as a linear voltage-variable RF resistor \( R_i = \frac { W^2 } { ( \mu_n + \mu_p ) Q } \), used in high-power RF switches and attenuators.
+
 * **Light-Emitting Diodes (LEDs)**: Forward bias injects carriers across direct-bandgap heterojunctions (e.g., GaN, GaAs), where radiative recombination \( R = B n p \) transduces electrical current directly into coherent or incoherent optical field energy of photon energy \( h \nu = E_g \).
+
 * **Photodiodes**: Reverse-biased junctions where incident optical wave packets generate electron-hole pairs in the depletion region, generating a photocurrent \( I_{ph} = \mathcal{R} P_{opt} \) proportional to optical power, with responsivity \( \mathcal{R} = \frac { \eta q } { h \nu } \).
 
 === Integrated Diode Arrays, Rectifier Bridges, and Logic Switching Matrices
@@ -1556,15 +1586,16 @@ Bipolar Junction Transistors (BJTs) consist of two closely coupled p-n junctions
 
 ==== Minority Carrier Base Diffusion and Injection Efficiency
 In an NPN transistor operating in the forward active mode, the Emitter-Base junction is forward-biased, while the Collector-Base junction is reverse-biased:
-1. **Emitter Injection Efficiency \( \gamma \)**: The ratio of electron current injected from the emitter into the base to the total emitter current:
+
+. **Emitter Injection Efficiency \( \gamma \)**: The ratio of electron current injected from the emitter into the base to the total emitter current:
    \[ \gamma = \frac { I_{nE} } { I_{nE} + I_{pE} } = \frac { 1 } { 1 + \frac { D_p N_B W_B } { D_n N_E L_p } } \]
    To maximize \( \gamma \approx 1 \), the emitter region is heavily doped (\( N_E \gg N_B \)), ensuring that injected electron current dominates hole back-injection.
 
-2. **Base Transport Factor \( \alpha_T \)**: Injected electrons diffuse across the narrow P-type base region. Under MaxEnt carrier transport equations on \( \mathcal{G}_N \), the fraction of injected electrons surviving recombination across base width \( W_B \) is:
+. **Base Transport Factor \( \alpha_T \)**: Injected electrons diffuse across the narrow P-type base region. Under MaxEnt carrier transport equations on \( \mathcal{G}_N \), the fraction of injected electrons surviving recombination across base width \( W_B \) is:
    \[ \alpha_T = \text{sech} \left( \frac { W_B } { L_n } \right) \approx 1 - \frac { W_B^2 } { 2 L_n^2 } \]
    where \( L_n = \sqrt { D_n \tau_n } \) is electron diffusion length in the base.
 
-3. **Current Amplification Factors**: Total common-base current gain \( \alpha \) and common-emitter current gain \( \beta \) satisfy:
+. **Current Amplification Factors**: Total common-base current gain \( \alpha \) and common-emitter current gain \( \beta \) satisfy:
    \[ \alpha = \gamma \alpha_T, \quad \beta = \frac { \alpha } { 1 - \alpha } \]
    Because \( \alpha \approx 0.99\text{--}0.999 \), common-emitter current gain ranges from \( \beta \approx 100 \) to \( 1000 \).
 
@@ -2689,8 +2720,8 @@ In the 2D planar subspace, the composite operator \( G \) executes an exact plan
 While standard textbook presentations formulate Grover’s algorithm using dense global Householder reflections, numerical linear algebra provides multiple alternative formulation methods:
 
 . **Sparse Givens Rotations**:
-   The global reflection operator \( R _ \text{mean} = 2 \mathbf { v } _ 0 \mathbf { v } _ 0 ^ T - I \) is a dense \( N \times N \) matrix that requires an all-to-all summing bus to calculate the global mean \( \bar { v } \). In physical hardware (such as analog op-amp grids or discrete systolic arrays), this central summing junction can introduce parasitic capacitance and routing congestion.
-   +
+   The global reflection operator \( R _ \text{mean} = 2 \mathbf { v } _ 0 \mathbf { v } _ 0 ^ T - I \) is a dense \( N \times N \) matrix that requires an all-to-all summing bus to calculate the global mean \( \bar { v } \). In physical hardware (such as analog op-amp grids or discrete systolic arrays), this central summing junction can introduce parasitic capacitance and routing congestion. +
+     +
    An exact numerical alternative is to replace global Householder reflections with a sequence of localized, sparse **Givens rotations** \( G ( i , j , \theta ) \):
    \[ G ( i , j , \theta ) = \begin{pmatrix} 1 & \cdots & 0 & \cdots & 0 & \cdots & 0 \\ \vdots & \ddots & \vdots & & \vdots & & \vdots \\ 0 & \cdots & \cos \theta & \cdots & - \sin \theta & \cdots & 0 \\ \vdots & & \vdots & \ddots & \vdots & & \vdots \\ 0 & \cdots & \sin \theta & \cdots & \cos \theta & \cdots & 0 \\ \vdots & & \vdots & & \vdots & \ddots & \vdots \\ 0 & \cdots & 0 & \cdots & 0 & \cdots & 1 \end{pmatrix} \]
    Because any orthogonal transformation can be factored into at most \( \frac { N ( N - 1 ) } { 2 } \) plane rotations, the Grover step can be executed entirely via nearest-neighbor pairwise coordinate rotations. This eliminates the central summing node and allows local contact interactions across adjacent circuit channels.
