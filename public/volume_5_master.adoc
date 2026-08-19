@@ -2648,7 +2648,7 @@ which negates the target coordinate amplitude \( v _ { x^* } \mapsto - v _ { x^*
 which computes the arithmetic mean \( \bar { v } = \frac { 1 } { N } \sum _ { i = 0 } ^ { N - 1 } v _ i \) and updates each channel amplitude according to:
 \[ v _ i \mapsto 2 \bar { v } - v _ i \]
 
-In the 2D planar subspace, the composite operator \( G \) executes an exact planar rotation by angle \( \theta = 2 \arcsin ( 1 / \sqrt { N } ) \). After approximately \( k _ \text{opt} \approx \frac { \pi } { 4 } \sqrt { N } \) iterations, the state-vector aligns with the target coordinate, concentrating over 95% of the total field energy into the target channel.
+In the 2D planar subspace, the composite operator \( G \) executes an exact planar rotation by angle \( \theta = 2 \arcsin ( 1 / \sqrt { N } ) \). By the time \( k _ \text{opt} \approx \frac { \pi } { 4 } \sqrt { N } \) iterations have been executed, the state-vector has reached maximal alignment with the target coordinate, concentrating over 95% of the total field energy into the target channel (such that, under Jaynesian probability theory, register sampling or threshold detection identifies the target index with near certainty).
 
 ==== Alternative Numerical Implementations: Householder Reflections vs. Givens Rotations
 While standard textbook presentations formulate Grover’s algorithm using dense global Householder reflections, numerical linear algebra provides multiple alternative formulation methods:
