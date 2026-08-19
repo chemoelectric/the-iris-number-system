@@ -2500,7 +2500,7 @@ When stripped of institutional jargon and speculative metaphysics, every physica
 
 4. **Entanglement as Structural Mode Coupling**: The term “entanglement” describes the non-separable structural coupling between physical resonators. When two LC tanks or acoustic cavities are linked by a mutual inductance, capacitance, or mechanical spring, the resonant frequencies and mode amplitudes of the combined system can no longer be factored into independent single-oscillator modes. This is a standard property of classical coupled pendulum arrays and electrical wave filters.
 
-5. **Measurement as Transducer Amplitude Sampling**: The non-physical concept of “wave-function collapse” is an artifact of treating probability distributions as material objects. In objective physical reality, “measurement” is simply the physical sampling of a wave amplitude or voltage node using an electronic transducer (such as an ADC, oscilloscope, or LED photo-detector). The finite duration of the sampling process extracts energy from the resonator mode, bringing the transducer into equilibrium with the measured channel.
+5. **Measurement as Transducer Amplitude Sampling**: The non-physical concept of “wave-function collapse” is an artifact of treating probability distributions as material objects. On the objective and physical levels, “measurement” is simply the physical sampling of a wave amplitude or voltage node using an electronic transducer (such as an ADC, oscilloscope, or LED photo-detector). The finite duration of the sampling process extracts energy from the resonator mode, bringing the transducer into equilibrium with the measured channel.
 
 ==== The Epistemological Malfunction of Dirac Notation, Newspeak, and the Agnostic Nature of Mathematics
 
@@ -2954,7 +2954,7 @@ where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with cond
 \[ \mathbf{x} = A ^ { - 1 } \mathbf{b} = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } \mathbf{u}_j \quad \left( \text{in Dirac Newspeak: } | x \rangle = A ^ { - 1 } | b \rangle = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } | u _ j \rangle \right) \]
 
 ==== Demystification and the Classical Input/Output Bottleneck
-Promoters of HHL often claim an exponential speedup (\( O ( \log N ) \) vs. \( O ( N ) \)). In the objective physical world, there is no such thing as a “physical state vector”; a state vector is merely a mathematical list of coordinates or analog channel amplitudes. The theoretical claims of HHL are undermined by two unavoidable physical and computational constraints:
+Promoters of HHL often claim an exponential speedup (\( O ( \log N ) \) vs. \( O ( N ) \)). On the objective and physical levels, there is no such thing as a “physical state vector”; a state vector is merely a mathematical list of coordinates or analog channel amplitudes. The theoretical claims of HHL are undermined by two unavoidable physical and computational constraints:
 
 1. **The State Preparation Bottleneck**: Preparing an arbitrary numerical input vector \( \mathbf { b } = ( b _ 1 , b _ 2 , \dots , b _ N ) ^ T \) in hardware requires loading \( N \) independent analog amplitudes or register values, which intrinsically consumes \( \Omega ( N ) \) time and physical resources.
 
