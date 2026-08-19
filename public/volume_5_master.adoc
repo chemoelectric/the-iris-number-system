@@ -2687,8 +2687,10 @@ Provided that \( a ^ { r / 2 } \not \equiv - 1 \pmod N \), at least one of the g
 \[ p = \gcd \left( a ^ { r / 2 } - 1 , N \right) , \quad q = \gcd \left( a ^ { r / 2 } + 1 , N \right) \]
 yields a non-trivial prime factor of \( N \).
 
-==== Discrete Fourier Spectral Analysis (QFT)
-The computational challenge in classical mathematics is that finding the period \( r \) by sequential evaluation requires checking up to \( O ( N ) \) values. Shor’s algorithm solves this by preparing a uniform state-vector over an evaluation register of size \( M = 2 ^ m \) (where \( N ^ 2 \le M < 2 N ^ 2 \)), evaluating \( f ( x ) = a ^ x \pmod N \), and applying the **Discrete Fourier Transform (DFT)**:
+==== Discrete Fourier Spectral Analysis and the Conventional “Quantum Fourier Transform” (QFT)
+The computational challenge in conventional number theory is that finding the period \( r \) by sequential modular evaluation requires checking up to \( O ( N ) \) candidate values. In quantum computation literature, this bottleneck is addressed using what is termed the **Quantum Fourier Transform (QFT)**. In rigorous numerical linear algebra and applied mathematics, the QFT is identically the classical **Discrete Fourier Transform (DFT)** acting directly on the coordinate amplitudes of an \( M \)-dimensional state-vector.
+
+Shor’s algorithm executes this spectral analysis by preparing a uniform state-vector over an evaluation register of size \( M = 2 ^ m \) (where \( N ^ 2 \le M < 2 N ^ 2 \)), evaluating the modular exponentiation \( f ( x ) = a ^ x \pmod N \), and applying the unitary **Discrete Fourier Transform (DFT / QFT)**:
 \[ \mathbf { F } _ M = \frac { 1 } { \sqrt { M } } \left[ \omega _ M ^ { j k } \right] _ { j , k = 0 } ^ { M - 1 } , \quad \omega _ M = \exp \left( \frac { 2 \pi \mathrm { i } } { M } \right) \]
 
 In the Iris Number System, the DFT is an orthogonal change of basis from the time-index coordinate frame to the discrete frequency (spectral) coordinate frame. Because the state-vector carries periodic spikes with spatial period \( r \), wave interference causes complete destructive cancellation at all non-harmonic frequencies and constructive reinforcement at the exact spectral peaks:
