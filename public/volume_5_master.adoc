@@ -2701,7 +2701,7 @@ Under Jaynesian probability theory and Maximum Entropy (MaxEnt), the squared coo
 === Summary of Grover Search and Generalized Numerical Variants
 
 ==== Summary of Classical Grover Iteration
-As established in earlier chapters, Grover’s unstructured search algorithm is an iterative numerical power method operating in an invariant two-dimensional subspace \( V_2 = \text{span}( | x^* \rangle , | s \rangle ) \). The algorithm initializes a uniform state-vector:
+As established in earlier chapters, Grover’s unstructured search algorithm is an iterative numerical power method operating in an invariant two-dimensional subspace \( V_2 = \text{span}( \mathbf{e}_{x^*}, \mathbf{v}_0 ) \) (written in Dirac Newspeak notation as \( \text{span}( | x^* \rangle , | s \rangle ) \)), where Dirac ket \( | x^* \rangle \) denotes the target standard basis coordinate vector \( \mathbf{e}_{x^*} \in \mathbb{R}^N \) and ket \( | s \rangle \) denotes the initial uniform state vector \( \mathbf{v}_0 \). The algorithm initializes a uniform state-vector:
 \[ \mathbf { v } _ 0 = \frac { 1 } { \sqrt { N } } \sum _ { i = 0 } ^ { N - 1 } \mathbf { e } _ i \]
 and applies repeated composite reflection operators \( G = R _ \text{mean} R _ \text{oracle} \):
 
@@ -2792,14 +2792,14 @@ The objective is to determine the secret string \( \mathbf { s } \) with a minim
 ==== Walsh-Hadamard Spectral Interference
 Classically, solving this problem requires querying \( f ( \mathbf { x } ) \) until a collision \( f ( \mathbf { x } ) = f ( \mathbf { y } ) \) is found, which by the birthday paradox requires \( \Omega ( 2 ^ { n / 2 } ) \) evaluations.
 
-Simon’s algorithm executes in \( O ( n ) \) evaluations using the **Walsh-Hadamard Transform** \( H ^ { \otimes n } \). The \( n \)-qubit Hadamard matrix is the tensor product of \( n \) elementary \( 2 \times 2 \) reflection matrices:
+Simon’s algorithm executes in \( O ( n ) \) evaluations using the **Walsh-Hadamard Transform** \( H ^ { \otimes n } \). The \( n \)-fold Hadamard matrix is the Kronecker / tensor product of \( n \) elementary \( 2 \times 2 \) reflection matrices:
 \[ H = \frac { 1 } { \sqrt { 2 } } \begin{pmatrix} 1 & 1 \\ 1 & - 1 \end{pmatrix} \]
-Acting on a discrete bitstring state \( | \mathbf { x } \rangle \), the Walsh-Hadamard transform produces:
-\[ H ^ { \otimes n } | \mathbf { x } \rangle = \frac { 1 } { 2 ^ { n / 2 } } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ n } ( - 1 ) ^ { \mathbf { x } \cdot \mathbf { y } } | \mathbf { y } \rangle \]
-where \( \mathbf { x } \cdot \mathbf { y } = \sum _ { i = 1 } ^ n x _ i y _ i \pmod 2 \) is the Boolean inner product.
+Acting on a standard Cartesian basis coordinate vector \( \mathbf{e}_{\mathbf{x}} \) (expressed in Dirac Newspeak notation as state ket \( | \mathbf { x } \rangle \)), the \( 2^n \times 2^n \) Walsh-Hadamard matrix \( H^{\otimes n} \) produces:
+\[ H ^ { \otimes n } \mathbf{e}_{\mathbf{x}} = \frac { 1 } { 2 ^ { n / 2 } } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ n } ( - 1 ) ^ { \mathbf { x } \cdot \mathbf { y } } \mathbf{e}_{\mathbf{y}} \quad \left( \text{in Dirac Newspeak: } H ^ { \otimes n } | \mathbf { x } \rangle = \frac { 1 } { 2 ^ { n / 2 } } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ n } ( - 1 ) ^ { \mathbf { x } \cdot \mathbf { y } } | \mathbf { y } \rangle \right) \]
+where \( \mathbf { x } \cdot \mathbf { y } = \sum _ { i = 1 } ^ n x _ i y _ i \pmod 2 \) is the standard Boolean inner product.
 
-When the Hadamard transform is applied to the post-evaluation state-vector \( \frac { 1 } { \sqrt { 2 } } ( | \mathbf { x } _ 0 \rangle + | \mathbf { x } _ 0 \oplus \mathbf { s } \rangle ) \), the resulting amplitude for any output bitstring \( \mathbf { y } \) is proportional to:
-\[ ( - 1 ) ^ { \mathbf { x } _ 0 \cdot \mathbf { y } } + ( - 1 ) ^ { ( \mathbf { x } _ 0 \oplus \mathbf { s } ) \cdot \mathbf { y } } = ( - 1 ) ^ { \mathbf { x } _ 0 \cdot \mathbf { y } } \left( 1 + ( - 1 ) ^ { \mathbf { s } \cdot \mathbf { y } } \right) \]
+When the Hadamard matrix is applied to the two-point coordinate sum \( \mathbf{v} = \frac { 1 } { \sqrt { 2 } } ( \mathbf{e}_{\mathbf{x}_0} + \mathbf{e}_{\mathbf{x}_0 \oplus \mathbf{s}} ) \) (expressed in Dirac notation as state vector \( | \psi \rangle = \frac { 1 } { \sqrt { 2 } } ( | \mathbf { x } _ 0 \rangle + | \mathbf { x } _ 0 \oplus \mathbf { s } \rangle ) \)), the resulting vector amplitude for any output coordinate index \( \mathbf { y } \) is given by the matrix-vector product coordinate:
+\[ ( H^{\otimes n} \mathbf{v} )_{\mathbf{y}} = \frac{1}{2^{(n+1)/2}} \left( ( - 1 ) ^ { \mathbf { x } _ 0 \cdot \mathbf { y } } + ( - 1 ) ^ { ( \mathbf { x } _ 0 \oplus \mathbf { s } ) \cdot \mathbf { y } } \right) = \frac{ ( - 1 ) ^ { \mathbf { x } _ 0 \cdot \mathbf { y } } }{ 2^{(n+1)/2} } \left( 1 + ( - 1 ) ^ { \mathbf { s } \cdot \mathbf { y } } \right) \]
 
 If \( \mathbf { s } \cdot \mathbf { y } \equiv 1 \pmod 2 \), the amplitude vanishes identically due to complete destructive wave interference (\( 1 + ( - 1 ) = 0 \)).
 If \( \mathbf { s } \cdot \mathbf { y } \equiv 0 \pmod 2 \), constructive reinforcement occurs.
@@ -2820,13 +2820,13 @@ Because the Walsh-Hadamard kernel contains only \( \pm 1 \) entries, Simon’s a
 ==== The Eigenvalue Phase and Angle Estimation Problem
 The algorithm currently designated in conventional physics and quantum computing literature as “Quantum Phase Estimation” (QPE) is more accurately defined in numerical linear algebra and the Iris Number System as **Orthogonal Eigenangle Estimation (OEE)**. It serves as a central computational subroutine powering modular order-finding, molecular Hamiltonian simulation, and linear system solvers.
 
-Let \( U \in \mathbb { C } ^ { N \times N } \) be a unitary matrix (or its real orthogonal equivalent \( R _ U \in \mathbb { R } ^ { 2 N \times 2 N } \)), and let \( | \psi \rangle \) be an eigenvector of \( U \) with eigenvalue \( \lambda = e ^ { 2 \pi \mathrm { i } \theta } \), where \( \theta \in [ 0 , 1 ) \) is the unknown rotation angle (eigenangle). The goal of Orthogonal Eigenangle Estimation is to estimate \( \theta \) to \( m \) bits of binary precision.
+Let \( U \in \mathbb { C } ^ { N \times N } \) be a unitary matrix (or its real orthogonal equivalent \( R _ U \in \mathbb { R } ^ { 2 N \times 2 N } \)), and let \( \mathbf{v} \) (conventionally written in Dirac Newspeak as ket \( | \psi \rangle \)) be an eigenvector of \( U \) with eigenvalue \( \lambda = e ^ { 2 \pi \mathrm { i } \theta } \), where \( \theta \in [ 0 , 1 ) \) is the unknown rotation angle (eigenangle). The goal of Orthogonal Eigenangle Estimation is to estimate \( \theta \) to \( m \) bits of binary precision.
 
 ==== Algorithmic Mechanics of Orthogonal Eigenangle Estimation
-1. **Register Initialization**: Prepare an \( m \)-qubit counting register in the uniform superposition state \( \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } | k \rangle \) and load the state register with eigenvector \( | \psi \rangle \).
-2. **Controlled Unitary Exponentiation**: Apply controlled powers of \( U \) (\( U ^ { 2 ^ 0 } , U ^ { 2 ^ 1 } , \dots , U ^ { 2 ^ { m - 1 } } \)). By the eigenvalue relation \( U ^ { 2 ^ j } | \psi \rangle = e ^ { 2 \pi \mathrm { i } 2 ^ j \theta } | \psi \rangle \), the counting register state transforms into:
-\[ \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } e ^ { 2 \pi \mathrm { i } k \theta } | k \rangle \]
-3. **Inverse Discrete Fourier Transform**: Applying the inverse Discrete Fourier Transform \( \mathbf { F } _ { 2 ^ m } ^ \dagger \) converts the phase-encoded Fourier series into a sharp spectral peak at index \( k = \lfloor 2 ^ m \theta \rceil \), directly reading out the binary digits of the rotation angle \( \theta \).
+1. **Register Initialization**: Prepare an \( m \)-channel evaluation register in the uniform normalized coordinate vector \( \mathbf{w}_0 = \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } \mathbf{e}_k \) (written in Dirac notation as \( \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } | k \rangle \)) and load the data register with eigenvector \( \mathbf{v} \) (written as \( | \psi \rangle \)).
+2. **Controlled Unitary Exponentiation**: Apply controlled block-diagonal matrix powers of \( U \) (\( U ^ { 2 ^ 0 } , U ^ { 2 ^ 1 } , \dots , U ^ { 2 ^ { m - 1 } } \)). By the matrix-eigenvector identity \( U ^ { 2 ^ j } \mathbf{v} = e ^ { 2 \pi \mathrm { i } 2 ^ j \theta } \mathbf{v} \) (in Dirac Newspeak: \( U ^ { 2 ^ j } | \psi \rangle = e ^ { 2 \pi \mathrm { i } 2 ^ j \theta } | \psi \rangle \)), the evaluation register state vector transforms into the discrete Fourier phase coordinate vector:
+\[ \mathbf{w} = \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } e ^ { 2 \pi \mathrm { i } k \theta } \mathbf{e}_k \quad \left( \text{in Dirac Newspeak: } \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } e ^ { 2 \pi \mathrm { i } k \theta } | k \rangle \right) \]
+3. **Inverse Discrete Fourier Transform**: Applying the inverse Discrete Fourier Transform matrix \( \mathbf { F } _ { 2 ^ m } ^ \dagger \) converts the phase-encoded Fourier series into a sharp spectral delta peak at index \( k = \lfloor 2 ^ m \theta \rceil \), directly reading out the binary digits of the rotation angle \( \theta \).
 
 ==== Equivalence to Classical Krylov Subspace and Arnoldi Methods
 In classical numerical analysis, extracting the dominant eigenvalues of a large sparse matrix \( A \) without full diagonalization is performed using **Krylov subspace projections**:
@@ -2848,19 +2848,20 @@ The Harrow–Hassidim–Lloyd (HHL) algorithm addresses the solution of large sy
 where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with condition number \( \kappa = \lambda _ {\text {max}} / \lambda _ {\text {min}} \), and \( \mathbf { b } \in \mathbb { R } ^ N \) is a normalized input vector.
 
 ==== The HHL Algorithmic Pipeline
-1. **Input State Preparation**: Encode vector \( \mathbf { b } \) as state-vector \( | b \rangle = \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle \), where \( \{ | u _ j \rangle \} \) are the orthonormal eigenvectors of \( A \) with eigenvalues \( \lambda _ j \).
-2. **Eigenangle Estimation on \( A \)**: Simulate the dynamic evolution \( e ^ { \mathrm { i } A t } \) using Trotter-Suzuki product formulas. Orthogonal Eigenangle Estimation (OEE) extracts the eigenvalues into an auxiliary register:
-\[ \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \]
-3. **Controlled Reciprocal Scaling**: Apply a rotation to an auxiliary channel proportional to \( C / \lambda _ j \), transforming the state to:
-\[ \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \left( \sqrt { 1 - \frac { C ^ 2 } { \lambda _ j ^ 2 } } | 0 \rangle + \frac { C } { \lambda _ j } | 1 \rangle \right) \]
-4. **Inverse Eigenangle Estimation (Uncomputing)**: Apply inverse OEE to clear the eigenvalue register, leaving the state in the target channel proportional to:
-\[ | x \rangle = A ^ { - 1 } | b \rangle = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } | u _ j \rangle \]
+1. **Input State Preparation**: Encode input vector \( \mathbf { b } \) as an expansion across the orthonormal eigenvector basis \( \{ \mathbf{u}_j \} \) of symmetric matrix \( A \) with corresponding real eigenvalues \( \lambda _ j \):
+\[ \mathbf{b} = \sum_{j=1}^N \beta_j \mathbf{u}_j \quad \left( \text{in Dirac Newspeak: } | b \rangle = \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle \right) \]
+2. **Eigenangle Estimation on \( A \)**: Simulate the matrix exponential evolution \( e ^ { \mathrm { i } A t } \) using Trotter-Suzuki product formulas. Orthogonal Eigenangle Estimation (OEE) extracts the eigenvalues into an auxiliary register, yielding the joint product vector:
+\[ \sum_{j=1}^N \beta_j \mathbf{u}_j \otimes \mathbf{e}_{\lambda_j} \quad \left( \text{in Dirac Newspeak: } \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \right) \]
+3. **Controlled Reciprocal Scaling**: Apply a Givens plane rotation to an auxiliary two-channel indicator coordinate proportional to \( C / \lambda _ j \), transforming the state vector to:
+\[ \sum _ { j = 1 } ^ N \beta _ j \mathbf{u}_j \otimes \mathbf{e}_{\lambda_j} \otimes \left( \sqrt { 1 - \frac { C ^ 2 } { \lambda _ j ^ 2 } } \mathbf{e}_0 + \frac { C } { \lambda _ j } \mathbf{e}_1 \right) \quad \left( \text{in Dirac Newspeak: } \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \left( \sqrt { 1 - \frac { C ^ 2 } { \lambda _ j ^ 2 } } | 0 \rangle + \frac { C } { \lambda _ j } | 1 \rangle \right) \right) \]
+4. **Inverse Eigenangle Estimation (Uncomputing)**: Apply inverse OEE to clear the auxiliary eigenvalue register, leaving the solution component in the indicator channel proportional to:
+\[ \mathbf{x} = A ^ { - 1 } \mathbf{b} = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } \mathbf{u}_j \quad \left( \text{in Dirac Newspeak: } | x \rangle = A ^ { - 1 } | b \rangle = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } | u _ j \rangle \right) \]
 
 ==== Demystification and the Classical Input/Output Bottleneck
-Promoters of HHL often claim an exponential speedup (\( O ( \log N ) \) vs. \( O ( N ) \)). In the objective physical world, this claim is undermined by two unavoidable constraints:
+Promoters of HHL often claim an exponential speedup (\( O ( \log N ) \) vs. \( O ( N ) \)). In the objective physical world, there is no such thing as a “physical state vector”; a state vector is merely a mathematical list of coordinates or analog channel amplitudes. The theoretical claims of HHL are undermined by two unavoidable physical and computational constraints:
 
-1. **The State Preparation Bottleneck**: Preparing an arbitrary classical input vector \( \mathbf { b } = ( b _ 1 , b _ 2 , \dots , b _ N ) ^ T \) in hardware requires loading \( N \) independent analog amplitudes, which intrinsically consumes \( \Omega ( N ) \) time and physical resources.
-2. **The Readout Bottleneck**: The output of HHL is not the classical numerical vector \( \mathbf { x } \), but a physical state-vector \( | x \rangle \). To extract the actual numerical coordinates \( x _ 1 , x _ 2 , \dots , x _ N \) with precision \( \epsilon \), one must perform \( O ( N / \epsilon ^ 2 ) \) repeated measurements, which completely erases any theoretical computational advantage.
+1. **The State Preparation Bottleneck**: Preparing an arbitrary numerical input vector \( \mathbf { b } = ( b _ 1 , b _ 2 , \dots , b _ N ) ^ T \) in hardware requires loading \( N \) independent analog amplitudes or register values, which intrinsically consumes \( \Omega ( N ) \) time and physical resources.
+2. **The Readout Bottleneck**: The output produced by the HHL circuit is not an accessible array of classical numbers \( \mathbf { x } \in \mathbb{R}^N \), but merely an unmeasured normalized analog state-vector register (written in Dirac Newspeak as \( | x \rangle \)). To extract the actual numerical coordinates \( x _ 1 , x _ 2 , \dots , x _ N \) to numerical precision \( \epsilon \), one must perform \( O ( N / \epsilon ^ 2 ) \) repeated sampling measurements, which completely erases any theoretical computational advantage.
 
 ==== Fastest Parallel Digital Implementation: Chebyshev Semi-Iterative 3-Term Recurrence
 To solve large sparse linear systems \( A \mathbf{x} = \mathbf{b} \) on parallel digital architectures without the fatal communication bottlenecks of global inner products, we implement the **Chebyshev Semi-Iterative Systolic Mesh**:
@@ -2877,17 +2878,17 @@ where scalar acceleration factors \( \omega_k \) and damping parameter \( \gamma
 The algorithm commonly termed in physics literature as the “Variational Quantum Eigensolver” (VQE) is more accurately formulated in numerical analysis and the Iris Number System as **Variational Rayleigh-Ritz Optimization (VRRO)**. It is a hybrid numerical optimization procedure designed to find the minimal eigenvalue (ground-state energy) \( E_0 \) and corresponding eigenvector of a matrix Hamiltonian or symmetric operator \( H \).
 
 VRRO is a direct execution of the classical **Rayleigh-Ritz Variational Principle**:
-\[ E _ 0 = \min _ { \mathbf { v } \neq \mathbf { 0 } } \frac { \mathbf { v } ^ T H \mathbf { v } } { \mathbf { v } ^ T \mathbf { v } } \le \langle H \rangle _ { \vec { \theta } } = \mathbf { v } ( \vec { \theta } ) ^ T H \mathbf { v } ( \vec { \theta } ) \]
+\[ E _ 0 = \min _ { \mathbf { v } \neq \mathbf { 0 } } \frac { \mathbf { v } ^ T H \mathbf { v } } { \mathbf { v } ^ T \mathbf { v } } \le R_H( \vec { \theta } ) = \mathbf { v } ( \vec { \theta } ) ^ T H \mathbf { v } ( \vec { \theta } ) \quad \left( \text{in Dirac Newspeak: } \langle H \rangle _ { \vec { \theta } } = \langle \psi( \vec{\theta} ) | H | \psi( \vec{\theta} ) \rangle \right) \]
 The algorithm functions as a closed-loop optimization cycle:
-1. **Parameterized Ansatz**: A trial state-vector \( \mathbf { v } ( \vec { \theta } ) \) is generated by applying a sequence of parameterized Givens rotations \( R ( \theta _ k ) \) to an initial reference coordinate.
-2. **Energy Expectation Evaluation**: The Rayleigh quotient expectation \( \langle H \rangle _ { \vec { \theta } } \) is evaluated by summing the channel energies.
-3. **Classical Optimization**: A numerical optimization routine (such as Gradient Descent, BFGS, Nelder-Mead, or Adam) updates the parameter vector \( \vec { \theta } \leftarrow \vec { \theta } - \eta \nabla _ { \vec { \theta } } \langle H \rangle \) until eigenvalue convergence is reached.
+1. **Parameterized Ansatz**: A trial state-vector \( \mathbf { v } ( \vec { \theta } ) \) is generated by applying a sequence of parameterized Givens plane rotations \( R ( \theta _ k ) \) to an initial reference coordinate vector \( \mathbf{v}_0 \).
+2. **Energy Expectation Evaluation**: The quadratic form / Rayleigh quotient \( R_H( \vec { \theta } ) = \mathbf{v}( \vec{\theta} )^T H \mathbf{v}( \vec{\theta} ) \) (Dirac expectation \( \langle H \rangle_{\vec{\theta}} \)) is evaluated by summing the channel energies.
+3. **Classical Optimization**: A numerical optimization routine (such as Gradient Descent, BFGS, Nelder-Mead, or Adam) updates the parameter vector \( \vec { \theta } \leftarrow \vec { \theta } - \eta \nabla _ { \vec { \theta } } R_H( \vec{\theta} ) \) until eigenvalue convergence is reached.
 
 ==== Alternating Operator Phase Optimization (AOPO)
 The method conventionally designated as the “Quantum Approximate Optimization Algorithm” (QAOA) is more accurately classified in numerical optimization as **Alternating Operator Phase Optimization (AOPO)** (or the *Alternating Operator Ansatz*). It is a variational method for solving combinatorial optimization problems on graphs (such as Max-Cut, Graph Coloring, and Boolean Satisfiability).
 
 The problem cost function is mapped to a diagonal Ising cost matrix \( H _ C \), and a non-commuting transverse mixing matrix \( H _ B = \sum _ { i = 1 } ^ n X _ i \) is introduced. The AOPO pipeline applies alternating matrix layers parameterized by angle vectors \( \vec { \gamma } \) and \( \vec { \beta } \):
-\[ | \psi ( \vec { \gamma } , \vec { \beta } ) \rangle = \prod _ { l = 1 } ^ p e ^ { - \mathrm { i } \beta _ l H _ B } e ^ { - \mathrm { i } \gamma _ l H _ C } | v _ 0 \rangle \]
+\[ \mathbf{v}( \vec { \gamma } , \vec { \beta } ) = \left( \prod _ { l = 1 } ^ p e ^ { - \mathrm { i } \beta _ l H _ B } e ^ { - \mathrm { i } \gamma _ l H _ C } \right) \mathbf{v}_0 \quad \left( \text{in Dirac Newspeak: } | \psi ( \vec { \gamma } , \vec { \beta } ) \rangle = \prod _ { l = 1 } ^ p e ^ { - \mathrm { i } \beta _ l H _ B } e ^ { - \mathrm { i } \gamma _ l H _ C } | v _ 0 \rangle \right) \]
 A numerical optimization loop iteratively tunes \( ( \vec { \gamma } , \vec { \beta } ) \) to maximize the cut weight or constraint satisfaction metric.
 
 ==== Fastest Parallel Digital Implementation: Checkerboard Digital Annealing Arrays
@@ -3032,16 +3033,17 @@ Let \( f : \{ 0 , 1 \} ^ 3 \to \{ 0 , 1 \} ^ 3 \) be a 2-to-1 function with secr
    * \( f ( 011 ) = f ( 011 \oplus 110 ) = f ( 101 ) = 100 \)
 
 . **Walsh-Hadamard Interference Calculation**:
-   Suppose the function evaluation collapses the state register to the pre-image pair for output \( 001 \):
-   \[ | \psi _ 1 \rangle = \frac { 1 } { \sqrt { 2 } } \left( | 000 \rangle + | 110 \rangle \right) \]
-   Applying the 3-qubit Walsh-Hadamard transform \( H ^ { \otimes 3 } \):
-   \[ H ^ { \otimes 3 } | \psi _ 1 \rangle = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( ( - 1 ) ^ { 000 \cdot \mathbf { y } } + ( - 1 ) ^ { 110 \cdot \mathbf { y } } \right) | \mathbf { y } \rangle = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( 1 + ( - 1 ) ^ { y _ 1 \oplus y _ 2 } \right) | \mathbf { y } \rangle \]
+   Suppose the function evaluation isolates the pre-image pair of coordinates for output \( 001 \), forming the coordinate vector:
+   \[ \mathbf{v}_1 = \frac { 1 } { \sqrt { 2 } } \left( \mathbf{e}_{000} + \mathbf{e}_{110} \right) \quad \left( \text{in Dirac Newspeak: } | \psi _ 1 \rangle = \frac { 1 } { \sqrt { 2 } } \left( | 000 \rangle + | 110 \rangle \right) \right) \]
+   Applying the 3-bit Walsh-Hadamard transform matrix \( H ^ { \otimes 3 } = H \otimes H \otimes H \):
+   \[ H ^ { \otimes 3 } \mathbf{v}_1 = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( ( - 1 ) ^ { 000 \cdot \mathbf { y } } + ( - 1 ) ^ { 110 \cdot \mathbf { y } } \right) \mathbf{e}_{\mathbf{y}} = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( 1 + ( - 1 ) ^ { y _ 1 \oplus y _ 2 } \right) \mathbf{e}_{\mathbf{y}} \]
+   (written in Dirac Newspeak as \( H ^ { \otimes 3 } | \psi _ 1 \rangle = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( 1 + ( - 1 ) ^ { y _ 1 \oplus y _ 2 } \right) | \mathbf { y } \rangle \)).
 
 . **Evaluating Vector Amplitudes**:
-   * If \( y _ 1 \oplus y _ 2 = 1 \): Amplitude is \( 1 + ( - 1 ) = 0 \) (Destructive cancellation!).
-     Bitstrings \( 100 , 101 , 010 , 011 \) have amplitude **0**.
-   * If \( y _ 1 \oplus y _ 2 = 0 \): Amplitude is \( 1 + 1 = 2 \).
-     Bitstrings \( 000 , 001 , 110 , 111 \) have amplitude \( \frac { 2 } { 4 } = \frac { 1 } { 2 } \).
+   * If \( y _ 1 \oplus y _ 2 = 1 \): Amplitude coordinate is \( 1 + ( - 1 ) = 0 \) (Complete destructive cancellation!).
+     Indices \( 100 , 101 , 010 , 011 \) have amplitude **0**.
+   * If \( y _ 1 \oplus y _ 2 = 0 \): Amplitude coordinate is \( 1 + 1 = 2 \).
+     Indices \( 000 , 001 , 110 , 111 \) have amplitude \( \frac { 2 } { 4 } = \frac { 1 } { 2 } \).
 
 . **Linear Parity System over \( \mathbb { F } _ 2 \)**:
    All non-zero output states satisfy the parity constraint:
