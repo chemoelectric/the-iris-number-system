@@ -774,9 +774,9 @@ As \( v \to c \), \( \mathbf { E } _ \text{long} \to \mathbf { 0 } \). The trail
 
 A persistent misconception in both speculative science fiction and twentieth-century theoretical physics is the treatment of physical objects as idealized “spherical cows”—abstract, indivisible geometric blocks possessing magical, infinite rigidity. Relativists treated length contraction as an empty coordinate illusion where an accelerating vehicle allegedly experiences no deformation in its “own rest frame,” while early critics often dismissed contraction as a mere optical or Doppler artifact.
 
-Both views fail because they ignore what physical matter actually is: an atomic lattice held in equilibrium by electromagnetic field distributions satisfying the Master Field Equation \( D F = J \). In the objective physical world, mechanical rigidity is itself an electromagnetic phenomenon. When a macroscopic spacecraft—such as the fictional _Starship Enterprise_—is propelled through the electromagnetic plenum, FitzGerald-Lorentz contraction is an objective, physical deformation of the time-delayed inter-atomic binding fields.
+Both views fail because they ignore what physical matter actually is: an atomic lattice held in equilibrium by electromagnetic field distributions satisfying the Master Field Equation \( D F = J \). In the physical world, rigidity is itself an electromagnetic phenomenon. When a macroscopic spacecraft—such as the fictional _Starship Enterprise_—is propelled through the electromagnetic plenum, FitzGerald-Lorentz contraction is an actual physical deformation of the inter-atomic binding fields.
 
-Because this contraction acts anisotropically along the longitudinal direction of travel while transverse dimensions do not contract at the same rate, the vehicle does not wait for extreme relativistic speeds or atomic delamination to be destroyed. Long before reaching the speed of electromagnetic influences \( c \), the required longitudinal compressive strain exceeds the ultimate yield strength of any constructible physical alloy, causing the structural bulkheads, spars, and fasteners to buckle and crush the entire vessel into pulverized mechanical scrap.
+Because this contraction acts anisotropically along the direction of travel, whereas transverse dimensions do not contract at the same rate, the vehicle is destroyed before reaching near-\( c \) speeds. Long before the vessel reaches \( c \), the required longitudinal compressive strain exceeds the yield strength of any constructible alloy, causing bulkheads, spars, and fasteners to buckle and be crushed. The entire vessel is pulverized into scrap.
 
 [#theorem-mechanical-crushing-structural-failure]
 [THEOREM]
@@ -813,7 +813,7 @@ Therefore, any real physical vessel (such as a speculative _Starship Enterprise_
 
 === The Catastrophic Destruction of the ‘Warp One’
 
-To illustrate this fundamental physical law with engineering precision, consider the flight test of the experimental vessel *Warp One*.
+But let us suppose the *Warp One* was a vessel that could get past the crushing. All of its occupants (who fortunately were merely pre-programmed robotics) were of course crushed, but the vessel survived long enough to reach the next stage of destruction.
 
 Designed under the speculative illusion that high-intensity resonant multivector field coils could "warp" or contract the spatial grid metric ahead of a ship without affecting the matter occupying that grid, the *Warp One* was a 12,000-tonne vessel constructed with a high-strength titanium-matrix hull. The propulsion system consisted of six high-power toroidal field coils designed to generate a steep forward multivector gradient \( \nabla | \mathbf { E } _ \text{warp} | ^ 2 \).
 
@@ -1010,6 +1010,7 @@ which at room temperature (\( T_H \approx 310 \text{ K} \), \( T_C \approx 295 \
 As Jaynes observed, biological muscles achieve high mechanical efficiency (often \( 60 \% \text{--} 90 \% \) at the molecular cross-bridge level) because they operate as isothermal chemomechanical transducers rather than heat engines. ATP hydrolysis does not heat the muscle fiber to thousands of degrees; rather, the discrete chemical potential change \( \Delta G \) is coupled directly into directional structural deformations of the actomyosin lattice through deterministic electrostatic state transitions.
 
 Applying Pólya’s heuristic of generalizing from the particular, we observe that the biological mechanism is constrained only by its material medium:
+
 . **Frequency Boundedness**: Enzymatic turnover rates in aqueous solutions are bounded by molecular diffusion to \( 10^1 \text{--} 10^3 \text{ Hz} \).
 . **Solvent Viscous Drag**: Aqueous cytoplasm introduces substantial hydrodynamic dissipation.
 . **Low Molecular Energy Density**: ATP carries a molecular weight of \( 507.18 \text{ g/mol} \) for a single terminal phosphate potential of \( \approx 0.5 \text{ eV} \).
