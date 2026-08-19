@@ -1362,6 +1362,7 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
 **Solution:**
 
 1. **Schottky Barrier Height**: \( \Phi_{BN} = \Phi_m - \chi_s = 4.50 \text{ eV} - 3.80 \text{ eV} = 0.70 \text{ eV} \).
+
 2. **Reverse Saturation Current Density**: \( J_s = A ^ { \ast } T^2 e^{ - \frac { \Phi_{BN} } { V_t } } = 120 \times ( 300 )^2 e^{ - \frac { 0.70 } { 0.02585 } } = 1.08 \times 10^7 \times e^{-27.08} \approx 1.08 \times 10^7 \times 1.74 \times 10^{-12} \approx 1.88 \times 10^{-5} \text{ A/cm}^2 \) (\( 18.8 \ \mu\text{A/cm}^2 \)).
 
 ==== Example 2: P-N Junction Built-in Potential, Depletion Width, and Bias Current
@@ -1376,8 +1377,11 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
 **Problem Statement:** A degenerate germanium (\( \text{Ge} \)) Esaki tunnel diode has acceptor doping \( N_A = 2.0 \times 10^{19} \text{ cm}^{-3} \), donor doping \( N_D = 2.0 \times 10^{19} \text{ cm}^{-3} \), bandgap \( E_g = 0.66 \text{ eV} \), dielectric permittivity \( \varepsilon = 1.42 \times 10^{-10} \text{ F/m} \), and junction area \( A = 1.0 \times 10^{-5} \text{ cm}^2 \) (\( 1.0 \times 10^{-9} \text{ m}^2 \)). Measured DC characteristics at 300 K are peak current \( I_p = 10.0 \text{ mA} \) at peak voltage \( V_p = 50.0 \text{ mV} \), and valley current \( I_v = 1.0 \text{ mA} \) at valley voltage \( V_v = 350.0 \text{ mV} \). Parasitic series resistance is \( R_s = 1.5 \ \Omega \).
 
 1. Calculate the built-in potential \( V_{bi} \) and zero-bias depletion width \( W \).
+
 2. Calculate the Peak-to-Valley Current Ratio (PVCR), the average Negative Differential Resistance \( R_N \), and the small-signal negative conductance \( - G_N \).
+
 3. Calculate the junction capacitance \( C_j \) at zero bias.
+
 4. Compute the maximum resistive cutoff frequency \( f_x \) above which the diode cannot amplify or oscillate.
 
 **Solution:**
@@ -1414,7 +1418,9 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
 **Problem Statement:** A p-type silicon sample with acceptor concentration \( N_A = 2.5 \times 10^{16} \text{ cm}^{-3} \) has thickness \( t = 0.50 \text{ mm} \) and width \( W = 2.0 \text{ mm} \). The valence band effective mass of holes is \( m_h ^ { \ast } = 0.38 m_0 \) (where \( m_0 = 9.109 \times 10^{-31} \text{ kg} \)), and hole drift mobility is \( \mu_p = 450 \text{ cm}^2 / ( \text{V} \cdot \text{s} ) \). A longitudinal current \( I_x = 5.0 \text{ mA} \) flows through the sample under a perpendicular magnetic field \( B_z = 0.40 \text{ T} \).
 
 1. Calculate the positive Hall coefficient \( R_H \).
+
 2. Calculate the transverse Hall electric field \( E_y \) and total Hall voltage \( V_H \).
+
 3. Compute the drift velocity \( v_x \) and average relaxation time \( \tau_p \) of the valence band vacancies.
 
 **Solution:**
@@ -1451,8 +1457,11 @@ Under Jaynes Maximum Entropy (MaxEnt) state partitioning, the local mobile charg
 
 ==== Field-Effect Transistor \(\leftrightarrow\) Elastic Hydraulic Pinch Valve
 An N-channel FET is similar in structure to an elastic hydraulic pinch valve controlling fluid flow through a flexible rubber hose.
+
 * **Drain-Source Voltage \( V_{DS} \)**: Hydraulic pressure difference between inlet (source) and outlet (drain) driving fluid throughput.
+
 * **Gate-Source Voltage \( V_{GS} \)**: External mechanical clamping pressure applied to the flexible rubber hose.
+
 * **Pinch-Off \( V_P \)**: When external clamping force exceeds a critical threshold, the flexible hose walls collapse together at the outlet end, pinching off the channel. Beyond pinch-off, fluid flow saturates at a constant maximum rate determined solely by upstream pressure, perfectly mirroring FET drain current saturation.
 
 === Junction Field-Effect Transistors (JFETs)
@@ -1515,8 +1524,11 @@ In **Trench MOSFETs**, the gate electrode is etched vertically into the silicon 
 
 ==== Switching Speed Limits and Gate Charge
 Power MOSFET switching speed is limited by parasitic inter-electrode capacitances:
+
 1. **Input Capacitance \( C_{iss} = C_{gs} + C_{gd} \)**
+
 2. **Output Capacitance \( C_{oss} = C_{ds} + C_{gd} \)**
+
 3. **Reverse Transfer Capacitance \( C_{rss} = C_{gd} \)** (Miller capacitance)
 
 During high-speed turn-on, gate driver circuits must supply total gate charge \( Q_g \) to charge the Miller capacitance \( C_{gd} \) through the voltage transition plateau, dictating switching loss in high-frequency DC-DC converters.
@@ -1527,7 +1539,9 @@ Complementary Metal-Oxide-Semiconductor (CMOS) technology pairs N-channel (NMOS)
 
 ==== Zero Static Power Dissipation
 In a standard CMOS inverter, the NMOS transistor connects between output and ground, while the PMOS transistor connects between output and supply voltage \( V_{DD} \):
+
 * **Input High (\( V_{in} = V_{DD} \))**: NMOS is ON (conducting), PMOS is OFF (cut off). Output is pulled down to 0 V.
+
 * **Input Low (\( V_{in} = 0 \text{ V} \))**: NMOS is OFF (cut off), PMOS is ON (conducting). Output is pulled up to \( V_{DD} \).
 
 In both steady states, one transistor is completely turned off (\( I_{\text{static}} \approx 0 \text{ A} \)). MaxEnt equilibrium bounds confirm that static power dissipation is limited purely to sub-threshold leakage currents (\( P_{\text{static}} = V_{DD} I_{\text{leak}} < 1 \text{ nW} \)).
@@ -1543,8 +1557,11 @@ Adjacent NMOS and PMOS structures form parasitic four-layer \( p-n-p-n \) thyris
 
 ==== Example 1: N-Channel JFET Operating Bias and Transconductance
 **Problem Statement:** An N-channel JFET has maximum saturation current \( I_{DSS} = 12.0 \text{ mA} \) and pinch-off voltage \( V_P = - 4.0 \text{ V} \). The JFET is biased in a common-source amplifier circuit with gate-source voltage \( V_{GS} = - 1.5 \text{ V} \) and drain supply resistor \( R_D = 2.2 \ \text{k}\Omega \) connected to \( V_{DD} = 24.0 \text{ V} \).
+
 1. Calculate the saturation drain current \( I_D \).
+
 2. Compute the small-signal transconductance \( g_m \).
+
 3. Verify that the JFET remains in saturation if drain voltage \( V_D = 13.5 \text{ V} \).
 
 **Solution:**
@@ -1608,8 +1625,11 @@ At extreme collector current densities, injected minority charge density in the 
 
 ==== Bipolar Junction Transistor \(\leftrightarrow\) Dual-Diaphragm Hydraulic Pilot Valve
 An NPN BJT is similar in structure to a dual-diaphragm hydraulic pilot valve controlling high-pressure fluid flow.
+
 * **Emitter \(\leftrightarrow\) Main Fluid Supply Port**: High-pressure fluid reservoir supplying bulk fluid flow.
+
 * **Base \(\leftrightarrow\) Flexible Pilot Diaphragm Control Chamber**: Applying a small pilot fluid current \( I_B \) into the pilot chamber flexes a thin internal diaphragm, opening the main valve gate.
+
 * **Collector \(\leftrightarrow\) Main Fluid Discharge Port**: High-volume fluid stream discharged through the main gate, where discharge current \( I_C = \beta I_B \) is strictly controlled by the small pilot control current.
 
 === Early Germanium Transistors, Hermetic Metal Cans, and Tin Whisker Short-Circuit Failures
@@ -1738,7 +1758,9 @@ This intervalley transfer causes negative differential mobility (\( \frac { d v 
 
 ==== IMPATT Diodes and Impact Ionization Avalanche Transit Time
 IMPATT (Impact Ionization Avalanche Transit Time) diodes combine reverse-bias avalanche breakdown with carrier drift transit-time delay:
+
 1. **Avalanche Phase Delay**: High electric fields trigger impact ionization, delaying peak avalanche current by 90° relative to peak RF voltage.
+
 2. **Transit-Time Phase Delay**: Injected carriers drift across an N-type drift region, introducing an additional 90° transit phase delay.
 
 The combined 180° phase shift creates negative resistance at RF frequencies, enabling high-power microwave signal generation up to 300 GHz.
@@ -1747,14 +1769,20 @@ The combined 180° phase shift creates negative resistance at RF frequencies, en
 
 ==== Thyristor (SCR) \(\leftrightarrow\) Hydraulic Trip-Latch Safety Valve
 An SCR is similar in structure to a spring-loaded hydraulic trip-latch safety valve.
+
 * **Forward Pressure**: Applied hydraulic pressure tries to push open a main valve flapper, but a mechanical latch holds the valve closed.
+
 * **Gate Triggering**: Applying a tiny physical pulse to a small pilot trigger lever trips the mechanical latch. Main fluid pressure pops the flapper wide open.
+
 * **Latching Action**: Fluid flow keeps the flapper held wide open without requiring ongoing force on the trigger lever. The valve snaps closed only when fluid flow drops below the holding threshold \( Q_H \).
 
 ==== UJT Relaxation Oscillator \(\leftrightarrow\) Self-Siphoning Flush Bucket
 A UJT relaxation oscillator is similar in structure to a self-siphoning tipping flush bucket.
+
 * **Charging Phase**: Fluid fills an elevated bucket at a steady rate through a narrow inlet pipe (RC timing).
+
 * **Peak Triggering**: When fluid reaches a critical height threshold \( h_P \), the bucket’s center of gravity shifts past a mechanical pivot point, tipping the bucket forward.
+
 * **Negative Resistance Dump**: Fluid rapidly siphons out through a wide discharge chute, dumping the bucket contents until fluid drops below the hold level \( h_V \), whereupon the bucket resets upright.
 
 === Formal Postulates and Theorems of Four-Layer Devices
@@ -1853,13 +1881,18 @@ Furthermore, combining a CMOS 555 timer with external CMOS digital logic element
 
 ==== Op-Amp \(\leftrightarrow\) Hydraulic Servo-Amplifier with Mechanical Floating Lever
 An operational amplifier with negative feedback is similar in structure to a hydraulic servo-amplifier controlled by a mechanical floating balance lever.
+
 * **Inverting and Non-Inverting Inputs**: The two ends of a mechanical floating lever accept input displacement signals.
+
 * **Spool Valve Actuation**: Pivot deflection drives a high-pressure hydraulic spool valve, directing high-pressure fluid to drive a power actuator cylinder.
+
 * **Negative Feedback Linkage**: A mechanical feedback rod connects the output cylinder position back to the floating lever, automatically re-centering the spool valve to null out error displacement and locking output position strictly proportional to input displacement.
 
 ==== 555 Timer \(\leftrightarrow\) Hydraulic Siphon-Governor Pulse Generator
 A 555 timer pulse circuit is similar in structure to a dual-switch hydraulic siphon tank.
+
 * **Dual Pressure Switches**: Two pressure sensors trigger at \( \frac { 1 } { 3 } H_\text{max} \) and \( \frac { 2 } { 3 } H_\text{max} \).
+
 * **Flip-Flop Dump Valve**: When fluid fills to \( \frac { 2 } { 3 } H_\text{max} \), the upper comparator trips an internal hydraulic flip-flop, opening a large discharge drain. Fluid dumps out until level drops to \( \frac { 1 } { 3 } H_\text{max} \), whereupon the flip-flop resets closed and refill begins anew.
 
 === Formal Postulates and Theorems of Analog Integrated Circuits
@@ -1940,27 +1973,37 @@ As noted in Chapter 10, digital CMOS dropout grab-bags (e.g. 4000-series CD4069U
 Bistable logic elements store a single binary bit using cross-coupled inverter feedback.
 
 ==== SR Latch, D Flip-Flop, and Master-Slave Clocking
+
 * **Cross-Coupled NOR SR Latch**: Two NOR gates with outputs fed back into inputs form a bistable latch with stable resting states \( ( Q , \bar { Q } ) = ( 1 , 0 ) \) or \( ( 0 , 1 ) \).
+
 * **Edge-Triggered D Flip-Flop**: A master-slave configuration combining two gated D latches driven by complementary clock signals. Data at input D is sampled strictly on the rising clock edge, isolating output Q during clock level holds.
+
 * **Timing Constraints**: Reliable flip-flop operation requires data to remain stable for setup time \( t_\text{setup} \) prior to clock edge and hold time \( t_\text{hold} \) following clock edge.
 
 === Sequential Logic Networks and Finite State Machines
 
 Sequential logic systems combine flip-flops and combinational logic to execute state transitions.
+
 * **Synchronous Binary Counters**: A cascade of T flip-flops driven by a common clock line, executing state transitions \( Q_{n+1} = Q_n + 1 \pmod { 2^N } \).
+
 * **Mealy and Moore Finite State Machines**: Moore machine outputs depend strictly on current state; Mealy machine outputs depend on both current state and immediate inputs.
 
 === Mechanical and Fluid Dynamics Analogies
 
 ==== CMOS Inverter \(\leftrightarrow\) Complementary Hydraulic Push-Pull Valves
 A CMOS inverter is similar in structure to a pair of complementary hydraulic valves driving an actuator cylinder.
+
 * **Upper PMOS Valve \(\leftrightarrow\) Normally-Open Hydraulic Valve**: Opens when control rod is relaxed (LOW input), filling actuator cylinder to line pressure \( P_{DD} \).
+
 * **Lower NMOS Valve \(\leftrightarrow\) Normally-Closed Drain Valve**: Opens when control rod is pushed (HIGH input), dumping actuator cylinder pressure to drain.
+
 * **Zero Static Loss**: In both resting positions, one valve is sealed tight, preventing fluid flow at steady state. Energy is spent strictly during fluid transfer across state transitions.
 
 ==== Bistable Flip-Flop \(\leftrightarrow\) Over-Center Mechanical Spring Toggle
 A bistable flip-flop is similar in structure to an over-center mechanical spring toggle mechanism.
+
 * **Bistable Resting States**: A spring-loaded linkage rests in one of two stable physical detent slots (0 or 1).
+
 * **Threshold Switching**: Pushing the toggle lever past the elevated center barrier requires applying a finite physical force pulse. Once past the center barrier, stored spring energy snaps the linkage into the opposite detent slot.
 
 === Formal Postulates and Theorems of Digital CMOS Dynamics
@@ -2263,15 +2306,21 @@ In high-dimensional digital computing systems, global Householder reflections re
 ==== Dual-Gimbal Optical Reflection Analogy
 
 Digital Grover iteration is similar in structure to an optical cavity bounded by two specialized mirrors:
+
 * **Oracle Mirror \( R_\text{oracle} \)**: A planar phase-inversion mirror situated at target position \( x ^ { \ast } \). Light striking slot \( x ^ { \ast } \) undergoes a \( 180^\circ \) phase shift (\( -1 \) multiplier).
+
 * **Mean Mirror \( R_\text{mean} \)**: A parabolic focusing mirror aligned with the uniform beam axis. Light reflecting off this mirror is spatially redistributed across all slots relative to mean beam intensity.
+
 * **Angular Precession**: Bouncing an optical wavefront between these two mirrors precesses beam angle by exact increment \( \theta \) per reflection bounce, gradually focusing 100% of optical wave energy onto target detector \( x ^ { \ast } \).
 
 ==== Hydraulic Manifold Equalization Analogy
 
 Digital Grover search is similar in structure to a hydraulic manifold array:
+
 * **Hydraulic Columns**: An array of \( N \) vertical fluid columns filled to equal head pressure \( h_0 \).
+
 * **Oracle Pulse**: A localized suction valve momentarily opens at bottom tap \( x ^ { \ast } \), dropping pressure to \( - h_0 \).
+
 * **Equalization Manifold**: A high-speed hydraulic valve opens across the manifold, forcing pressure to redistribute according to \( 2 \bar{P} - P_i \). Fluid inertia surges out of non-target columns and fills column \( x ^ { \ast } \).
 
 === Formal Postulates and Theorems of Digital Search Analysis
@@ -2337,9 +2386,13 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
 
 . **Step 1c: Inversion About the Mean \( v _ 1 = R _ \text{mean} v' _ 0 \)**:
   Evaluating matrix product \( R_\text{mean} v'_0 \) or scalar rule \( v_1 ( i ) = 2 \bar{v}' - v'_0 ( i ) \):
+
    * Entry 0: \( v_1 ( 0 ) = 0.50 - 0.50 = 0.0 \)
+
    * Entry 1: \( v_1 ( 1 ) = 0.50 - 0.50 = 0.0 \)
+
    * Entry 2: \( v_1 ( 2 ) = 0.50 - ( - 0.50 ) = 1.0 \)
+
    * Entry 3: \( v_1 ( 3 ) = 0.50 - 0.50 = 0.0 \) +
      +
    Resulting state vector \( v_1 \):
@@ -2362,27 +2415,45 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
      Target probability energy \( P_0(7) = (0.2500)^2 = 0.0625 \) (6.25%).
 
    * **Iteration 1 (\( k = 1 \))**:
+
      .. Oracle inversion: \( v'_0(7) = -0.2500 \), non-targets \( v'_0(x) = 0.2500 \).
+
      .. Mean calculation: \( \bar{v}' = \frac{15(0.2500) - 0.2500}{16} = \frac{3.50}{16} = 0.21875 \implies 2 \bar{v}' = 0.4375 \).
+
      .. Mean inversion:
+
         - Target: \( v_1(7) = 0.4375 - ( -0.2500 ) = 0.6875 \).
+
         - Non-targets: \( v_1(x) = 0.4375 - 0.2500 = 0.1875 \).
+
      .. Target probability energy: \( P_1(7) = (0.6875)^2 = 0.47265625 \) (47.27%).
 
    * **Iteration 2 (\( k = 2 \))**:
+
      .. Oracle inversion: \( v'_1(7) = -0.6875 \), non-targets \( v'_1(x) = 0.1875 \).
+
      .. Mean calculation: \( \bar{v}' = \frac{15(0.1875) - 0.6875}{16} = \frac{2.125}{16} = 0.1328125 \implies 2 \bar{v}' = 0.265625 \).
+
      .. Mean inversion:
+
         - Target: \( v_2(7) = 0.265625 - ( -0.6875 ) = 0.953125 \).
+
         - Non-targets: \( v_2(x) = 0.265625 - 0.1875 = 0.078125 \).
+
      .. Target probability energy: \( P_2(7) = (0.953125)^2 \approx 0.908447 \) (90.84%).
 
    * **Iteration 3 (\( k = 3 \))**:
+   
      .. Oracle inversion: \( v'_2(7) = -0.953125 \), non-targets \( v'_2(x) = 0.078125 \).
+     
      .. Mean calculation: \( \bar{v}' = \frac{15(0.078125) - 0.953125}{16} = \frac{0.21875}{16} = 0.013671875 \implies 2 \bar{v}' = 0.02734375 \).
+     
      .. Mean inversion:
+     
         - Target: \( v_3(7) = 0.02734375 - ( -0.953125 ) = 0.98046875 \).
+        
         - Non-targets: \( v_3(x) = 0.02734375 - 0.078125 = -0.05078125 \).
+        
      .. Target probability energy: \( P_3(7) = (0.98046875)^2 \approx 0.9613 \) (96.13%). +
        +
    Notice that exact trigonometric angle calculation gives \( \sin(7 \theta / 2) = \sin(7 \times 0.25268) = \sin(1.76876 \text{ rad}) \approx 0.98046875 \). Target concentration surges to 96.13% in 3 numerical iterations!
@@ -2411,21 +2482,21 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
 
 == What “Quantum” Computers Really Are and How a Hobbyist Can Make Them at Home
 
-This chapter establishes the physical, mathematical, and practical engineering reality of so-called “quantum” computers, stripping away commercial media hype, unphysical Hilbert space mystification, non-deterministic “measurement collapse”, and multi-world speculations. It proves that state-vector computation is physically implemented as classical coupled-oscillator networks, multi-mode wave interference systems, and analog-digital matrix signal processors executing real Euclidean vector transformations in \( \mathbb{R}^{2^n} \). Furthermore, it provides complete first-principles schematics, parts lists, tuning procedures, and formal Ada 2022 software routines enabling any student, engineer, or hobbyist to construct a fully functional 4-qubit to 8-qubit coupled-oscillator state-vector processor on a desktop workbench using inexpensive off-the-shelf electronic components.
+This chapter establishes the physical, mathematical, and practical engineering reality of so-called “quantum” computers, stripping away commercial media hype, unphysical Hilbert space mystification, non-deterministic “measurement collapse”, and multi-world speculations. It proves that state-vector computation is physically implemented as classical coupled-oscillator networks, multi-mode wave interference systems, and analog-digital matrix signal processors executing real Euclidean vector transformations in \( \mathbb { R } ^ { 2 ^ n } \). Furthermore, it provides complete first-principles schematics, parts lists, tuning procedures, and formal Ada 2022 software routines enabling any student, engineer, or hobbyist to construct a fully functional 4-qubit to 8-qubit coupled-oscillator state-vector processor on a desktop workbench using inexpensive off-the-shelf electronic components.
 
 === Demolition of “Quantum” Computer Hype and the Physical Reality of State-Vector Engines
 
-In contemporary computer science, physics literature, and commercial media, few subjects are as blanketed in sensationalized mystification as the domain of “quantum computing”. Marketing narratives routinely depict multi-billion-dollar cryogenic dilution refrigerators as mystical portals harnessing non-material Hilbert spaces, unphysical “spooky superposition”, non-local action-at-a-distance, and parallel universe branching. These speculative claims are epistemological artifacts arising from the Map-Territory Category Error—confusing abstract mathematical formalisms (such as complex state vectors and Dirac bra-ket notations) with physical objective reality.
+In contemporary computer science, physics literature, and commercial media, few subjects are as blanketed in sensationalized mystification as the domain of “quantum computing”. Marketing narratives routinely depict multi-billion-dollar cryogenic dilution refrigerators as mystical portals harnessing non-material Hilbert spaces, unphysical “spooky superposition”, non-local action-at-a-distance, and parallel universe branching. These speculative claims are epistemological artifacts arising from the Map-Territory Category Error—confusing abstract mathematical formalisms (such as complex-component state vectors and Dirac bra-ket notations) with the physical plenum in which we live.footnote:[The plenum cannot be spoken or written. It exists but is not symbols. In these volumes we describe the plenum as a universal electromagnetic field, but this field is a structural description. It is not the plenum itself.]
 
 ==== What Marketed “Quantum” Computers Physically Are
 
-When stripped of institutional jargon and speculative metaphysics, every physically operational “quantum computer” is a physical system of coupled resonators operating under the Master Field Equation \( D F = J \) in real spacetime. Whether constructed from superconducting Josephson-junction LC circuits, radio-frequency Paul traps for atomic ions, acoustic surface wave cavities, or optical beam-splitters, the physical mechanism remains identical:
+When stripped of institutional jargon and speculative metaphysics, every physically operational “quantum computer” is a physical system of coupled resonators operating under the Master Field Equation \( D F = J \) in real spacetime. Whether constructed from superconducting Josephson-junction LC circuits, radio-frequency Paul traps for atomic ions, acoustic surface wave cavities, or optical beam-splitters, the mechanism is similar:
 
 1. **Physical Qubits as 2-State Harmonic Resonators**: A physical “qubit” is not an abstract metaphysical entity existing in multiple universes simultaneously. It is a physical harmonic or non-linear oscillator possessing two selectable, orthogonal wave modes or resonant voltage/phase states (such as charge states, magnetic flux orientation, or polarization modes).
 
-2. **Registers as Coupled Normal Mode Arrays**: An \( n \)-qubit register is physically a collection of \( n \) coupled resonators whose combined electromagnetic wave modes span a \( 2^n \)-dimensional state space. The state of the register is represented by a real Euclidean vector \( v \in \mathbb{R}^{2^n} \) whose coordinate entries \( v_i \) record the relative wave amplitudes and phase alignments across all \( 2^n \) physical normal modes.
+2. **Registers as Coupled Normal Mode Arrays**: An \( n \)-qubit register is physically a collection of \( n \) coupled resonators whose combined electromagnetic wave modes span a \( 2^n \)-dimensional state space. The state of the register is represented by a real Euclidean vector \( v \in \mathbb { R } ^ { 2 ^ n } \) whose coordinate entries \( v_i \) record the relative wave amplitudes and phase alignments across all \( 2^n \) physical normal modes.
 
-3. **Superposition as Classical Wave Superposition**: The term “superposition” refers to nothing more than the linear superposition principle of classical field theory and acoustic wave mechanics—namely, that the total electric and magnetic field distribution of coupled resonators is the linear sum of its component wave modes: \( F_\text{total} = \sum_{k=0}^{2^n-1} v_k F_k \).
+3. **Superposition as Classical Wave Superposition**: The term “superposition” refers to nothing more than the linear superposition principle of classical field theory and acoustic wave mechanics—namely, that the total electric and magnetic field distribution of coupled resonators is the linear sum of its component wave modes: \( F _ \text { total } = \sum _ { k = 0 } ^ { 2 ^ n - 1 } v _ k F _ k \).
 
 4. **Entanglement as Structural Mode Coupling**: The term “entanglement” describes the non-separable structural coupling between physical resonators. When two LC tanks or acoustic cavities are linked by a mutual inductance, capacitance, or mechanical spring, the resonant frequencies and mode amplitudes of the combined system can no longer be factored into independent single-oscillator modes. This is a standard property of classical coupled pendulum arrays and electrical wave filters.
 
@@ -2435,13 +2506,16 @@ When stripped of institutional jargon and speculative metaphysics, every physica
 
 The extravagant claims surrounding “quantum” computing are not merely marketing hype generated by venture capital promoters; they are the direct consequence of a widespread, contagious cerebral malfunction within the scientific and engineering communities. This intellectual infection is transmitted and propagated by symbolic vectors within the overall framework of so-called quantum “theory”—a framework that is not a genuine theory, but an institutional commitment to avoid doing actual theoretical physics—vectors that are similar to having a virus that hampers cerebral activity.
 
-Paul Dirac’s “bra-ket” notation represents one key aspect of this overall symbolic vector. To understand how this typographical artifice hypnotizes practitioners, let us perform a simple, rigorous translation from Dirac notation back into the ordinary, objective notation used by mathematicians and engineers.
+Paul Dirac’s “bra-ket” notation represents one key aspect of this overall symbolic vector. To understand how this typographical artifice hypnotizes practitioners, let us perform a simple, rigorous translation from the superfluous Dirac notation back into the more straightforward notation used by mathematicians and engineers.
 
 Consider the elementary elements of Dirac notation:
+
 1. A “ket” vector \( | \psi \rangle \) is converted directly into a standard column vector \( \mathbf{v} \in \mathbb{C}^N \):
    \[ \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_N \end{pmatrix} \]
+
 2. A “bra” vector \( \langle \phi | \) is converted directly into a conjugate-transpose row vector \( \mathbf{u}^\dagger \in \mathbb{C}^{1 \times N} \):
    \[ \mathbf{u}^\dagger = \begin{pmatrix} u_1 ^ { \ast } & u_2 ^ { \ast } & \dots & u_N ^ { \ast } \end{pmatrix} \]
+
 3. A linear operator or “observable” \( A \) is converted directly into a standard square matrix \( \mathbf{A} \in \mathbb{C}^{N \times N} \):
    \[ \mathbf{A} = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1N} \\ a_{21} & a_{22} & \dots & a_{2N} \\ \vdots & \vdots & \ddots & \vdots \\ a_{N1} & a_{N2} & \dots & a_{NN} \end{pmatrix} \]
 
@@ -2453,22 +2527,28 @@ Making identical transformations for matrix entries—replacing the physicists�
 Now consider the abstract “Hilbert space” that a “quantum” computation supposedly “physically” takes place in. When rewritten using the standard notation of mathematicians and engineers described above, what remains is revealed to be nothing more than a standard complex-valued tensor space \( V = \mathbb{C}^N \) equipped with an inner product.
 
 Once written in the clear, unvarnished notation of linear algebra, the famous **agnostic nature of mathematics** immediately applies to it. The formal matrix machinery \( \mathbf{u}^\dagger \mathbf{A} \mathbf{v} \) is entirely devoid of any _specific_ physical content. The exact same complex-valued tensor space and matrix operations describe:
+
 * Acoustic wave propagation in multi-cavity architectural halls,
+
 * Coupled electrical oscillations in multi-phase power transmission grids,
+
 * Financial portfolio variance minimization across correlated stock assets,
+
 * Markov state transition probabilities in telecommunication queueing networks,
+
 * Stress-strain tensor distributions in structural elastic media,
+
 * Digital signal filtering in multi-antenna radar arrays.
 
 Out of the indefinite number of problem domains to which this mathematical formalism applies, only a vanishingly small fraction have anything whatsoever to do with atomic micro-physics. There is nothing remotely “spooky”, supernatural, or hyper-dimensional about it.
 
 A Hilbert space is not a physical material entity, nor is it a physical location where computations occur. It is best viewed as a formal symbolic system for arranging logical propositions regarding probability distributions and wave phase alignments. Consequently, Dirac notation should either be abandoned as a source of needless obfuscation or replaced everywhere by standard matrix and vector notation.
 
-The necessity of this replacement becomes obvious when analyzing the structural and functional similarity between Dirac notation and George Orwell’s **Newspeak**. In Orwell’s _Nineteen Eighty-Four_, Newspeak was designed not to expand thought, but to narrow the range of mind, replacing nuanced conceptual awareness with rigid, reified buzzwords that prevented critical analysis. Dirac notation functions as a mathematical Newspeak: by wrapping elementary row and column matrix multiplication in arcane angle brackets and vertical bars, it divorced physicists from recognizing that they were dealing with standard linear algebra. Instead of seeing a simple system of matrix differential equations acting on voltage or mode amplitudes, practitioners came to view symbolic bracket marks as if they were living, breathing physical entities existing on an esoteric, supernatural plane. This linguistic pathology is the ultimate root of the modern “quantum” computer delusion.
+The necessity of this replacement becomes obvious when analyzing the structural and functional similarity between Dirac notation and George Orwell’s **Newspeak**. In Orwell’s _Nineteen Eighty-Four_, Newspeak was designed not to expand thought, but to narrow the range of mind, replacing nuanced conceptual awareness with rigid, reified buzzwords that prevented critical analysis. Dirac notation functions as a mathematical Newspeak: by wrapping elementary row and column matrix multiplication in arcane angle brackets and vertical bars, it divorces physicists from recognizing that they are dealing with standard linear algebra. Instead of seeing a simple system of matrix differential equations acting on voltage or mode amplitudes, practitioners view symbolic bracket marks as if they are living, breathing physical entities existing on an esoteric, supernatural plane. This linguistic pathology is one of the crucial root causes of the delusion that “quantum” computers are anything but a class of hybrid computer.
 
 === Mathematical Mechanics of Coupled Oscillator Arrays and Analog-Digital State-Vector Processors
 
-To establish how state-vector computation operates without non-material Hilbert spaces or complex numbers, consider an \( n \)-qubit system represented by state vector \( v \in \mathbb{R}^{N} \) where \( N = 2^n \). The vector satisfies the real Euclidean energy normalization condition \( \| v \|_2^2 = \sum_{i=0}^{N-1} v_i^2 = 1 \).
+To establish how state-vector computation operates without non-material Hilbert spaces or complex numbers, consider an \( n \)-qubit system represented by state vector \( v \in \mathbb{R}^{N} \) where \( N = 2^n \). The vector satisfies the real Euclidean energy normalization condition \( \| v \| _ 2 ^ 2 = \sum _ { i = 0 } ^ { N - 1 } v _ i ^ 2 = 1 \).
 
 ==== Linear Matrix Operators as Physical Circuit Coupling Networks
 
@@ -2530,7 +2610,7 @@ Any student, hobbyist, or electronics researcher can construct a fully functiona
 
 === Ada 2022 Hardware Control and Emulation Software for the DIY Engine
 
-The following standalone Ada 2022 program (`diy_quantum_engine.adb`) manages both hardware interface DAC/ADC sampling for the physical 4-qubit op-amp manifold and deterministic software state-vector emulation. It is fully compliant with the Ada 2022 standard, utilizes formal subprogram contracts (`with pre => ..., post => ...`), enforces strict structured control flow, and restricts line lengths to 72 characters.
+The following standalone Ada 2022 program (`diy_quantum_engine.adb`) manages both hardware interface DAC/ADC sampling for the physical 4-qubit op-amp manifold and deterministic software state-vector emulation. It is fully compliant with the Ada 2022 standard, utilizes formal subprogram contracts (++with pre => ..., post => ...++), enforces strict structured control flow, and restricts line lengths to 72 characters.
 
 [source,ada]
 ----
@@ -2612,30 +2692,30 @@ end diy_quantum_engine;
 [THEOREM]
 .Theorem: Physical Equivalence of Quantum Computing to Classical Coupled Oscillators
 ====
-Any discrete \( n \)-qubit “quantum” algorithm composed of a sequence of \( M \) unitary gate transformations acting on an initial state vector \( v_0 \in \mathbb{C}^{2^n} \) is mathematically and physically equivalent to a system of \( N = 2^{n+1} \) real coupled classical harmonic oscillators (or analog voltage channels) undergoing real orthogonal matrix transformations in Euclidean space \( \mathbb{R}^{2^{n+1}} \) under the Master Field Equation \( D F = J \).
+Any discrete \( n \)-qubit “quantum” algorithm composed of a sequence of \( M \) unitary gate transformations acting on an initial state vector \( v_0 \in \mathbb{C} ^ { 2 ^ n } \) is mathematically and physically equivalent to a system of \( N = 2^{n+1} \) real coupled classical harmonic oscillators (or analog voltage channels) undergoing real orthogonal matrix transformations in Euclidean space \( \mathbb{R} ^ {2^{n+1}} \) under the Master Field Equation \( D F = J \).
 
 *Proof:*
 
-1. **Real Vector Decomposition**: Any complex state vector \( v \in \mathbb{C}^{2^n} \) decomposes uniquely into real and imaginary vector components \( v = x + \mathrm{i} y \), where \( x , y \in \mathbb{R}^{2^n} \). Defining stacked real vector \( w = \begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R}^{2^{n+1}} \), complex Euclidean norm satisfies \( \| v \|_2^2 = \sum (x_k^2 + y_k^2) = \| w \|_2^2 \).
+1. **Real Vector Decomposition**: Any complex state vector \( v \in \mathbb{C} ^ {2 ^ n} \) decomposes uniquely into real and imaginary vector components \( v = x + \mathrm{i} y \), where \( x , y \in \mathbb{R} ^ {2 ^ n} \). Defining stacked real vector \( w = \begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R} ^ {2 ^ {n+1}} \), complex Euclidean norm satisfies \( \| v \|_2 ^ 2 = \sum (x_k ^ 2 + y_k ^ 2) = \| w \|_2 ^ 2 \).
 
-2. **Unitary to Real Orthogonal Mapping**: Any complex unitary operator \( U = A + \mathrm{i} B \in \mathbb{C}^{2^n \times 2^n} \) satisfies \( U^\dagger U = I \). Mapping \( U \) to block real matrix \( R_U = \begin{pmatrix} A & -B \\ B & A \end{pmatrix} \in \mathbb{R}^{2^{n+1} \times 2^{n+1}} \) preserves matrix multiplication and yields \( R_U^T R_U = I_{2^{n+1}} \). Thus, \( R_U \) is a real orthogonal matrix.
+2. **Unitary to Real Orthogonal Mapping**: Any complex unitary operator \( U = A + \mathrm{i} B \in \mathbb{C} ^ {2 ^ n \times 2 ^ n} \) satisfies \( U ^ \dagger U = I \). Mapping \( U \) to block real matrix \( R_U = \begin{pmatrix} A & -B \\ B & A \end{pmatrix} \in \mathbb{R} ^ {2 ^ {n+1} \times 2 ^ {n+1}} \) preserves matrix multiplication and yields \( R_U ^ T R_U = I_{2 ^ {n+1}} \). Thus, \( R_U \) is a real orthogonal matrix.
 
-3. **Physical Realization**: The real orthogonal matrix \( R_U \) maps directly to a linear coupling network of \( 2^{n+1} \) physical classical resonators or op-amp summing channels. No complex numbers, Hilbert spaces, or non-material physics are required. \( \square \)
+3. **Physical Realization**: The real orthogonal matrix \( R_U \) maps directly to a linear coupling network of \( 2 ^ {n+1} \) physical classical resonators or op-amp summing channels. No complex numbers, Hilbert spaces, or non-material physics are required. \( \square \)
 ====
 
 [#theorem-hobbyist-state-vector-scalability-and-noise-floor]
 [THEOREM]
 .Theorem: Hobbyist State-Vector Scalability and Signal-to-Noise Ratio Invariance Theorem
 ====
-For a DIY coupled-oscillator state-vector processor with \( N = 2^n \) state channels operating at multiscale resolution \( m \)-res aperture precision \( \delta_\omega \), the minimum channel voltage dynamic range required to distinguish target signal amplification from baseline noise scales as \( O(2^{-n/2}) \). A desktop analog-digital processor operating with channel noise floor \( V_\text{noise} < V_\text{ref} / 2^{n/2} \) achieves 100% exact algorithm convergence.
+For a DIY coupled-oscillator state-vector processor with \( N = 2 ^ n \) state channels operating at multiscale resolution \( m \)-res aperture precision \( \delta_\omega \), the minimum channel voltage dynamic range required to distinguish target signal amplification from baseline noise scales as \( O(2 ^ {-n/2}) \). A desktop analog-digital processor operating with channel noise floor \( V_\text{noise} < V_\text{ref} / 2 ^ {n/2} \) achieves 100% exact algorithm convergence.
 
 *Proof:*
 
-1. **Initial Uniform Amplitude**: For an \( n \)-qubit register initialized to uniform state \( v_0 \), each coordinate amplitude is \( v_0(i) = 1 / \sqrt{N} = 1 / 2^{n/2} \).
+1. **Initial Uniform Amplitude**: For an \( n \)-qubit register initialized to uniform state \( v_0 \), each coordinate amplitude is \( v_0(i) = 1 / \sqrt{N} = 1 / 2 ^ {n/2} \).
 
-2. **Oracle Contrast**: Oracle sign inversion flips the target coordinate from \( +1 / 2^{n/2} \) to \( -1 / 2^{n/2} \), producing a differential step size \( \Delta V = 2 / 2^{n/2} \).
+2. **Oracle Contrast**: Oracle sign inversion flips the target coordinate from \( +1 / 2 ^ {n/2} \) to \( -1 / 2 ^ {n/2} \), producing a differential step size \( \Delta V = 2 / 2 ^ {n/2} \).
 
-3. **Noise Floor Condition**: To prevent channel noise from corrupting oracle sign inversion, the noise floor voltage must satisfy \( V_\text{noise} < \Delta V / 2 = 1 / 2^{n/2} \). For a 4-qubit system (\( n = 4 \)), \( 1 / 2^2 = 0.250 \ \text{V} \) on a 1V scale, which is easily achieved by standard op-amps with sub-millivolt noise floors. \( \square \)
+3. **Noise Floor Condition**: To prevent channel noise from corrupting oracle sign inversion, the noise floor voltage must satisfy \( V_\text{noise} < \Delta V / 2 = 1 / 2 ^ {n/2} \). For a 4-qubit system (\( n = 4 \)), \( 1 / 2 ^ 2 = 0.250 \ \text{V} \) on a 1V scale, which is easily achieved by standard op-amps with sub-millivolt noise floors. \( \square \)
 ====
 
 === Worked Example Problems in DIY Coupled-Oscillator Quantum Emulation
@@ -2645,18 +2725,18 @@ For a DIY coupled-oscillator state-vector processor with \( N = 2^n \) state cha
 **Solution:**
 
 . **Circuit Setup for 2-Qubit System**:
-   Channels correspond to 4 state voltages \( v = \begin{pmatrix} v_{00} & v_{01} & v_{10} & v_{11} \end{pmatrix}^T \). Reference supply voltage is \( V_0 = 2.500 \ \text{V} \).
-   Initial Hadamard state is \( v_0 = \begin{pmatrix} 1.250 & 1.250 & 1.250 & 1.250 \end{pmatrix}^T \ \text{V} \).
+   Channels correspond to 4 state voltages \( v = \begin{pmatrix} v_{00} & v_{01} & v_{10} & v_{11} \end{pmatrix} ^ T \). Reference supply voltage is \( V_0 = 2.500 \ \text{V} \).
+   Initial Hadamard state is \( v_0 = \begin{pmatrix} 1.250 & 1.250 & 1.250 & 1.250 \end{pmatrix} ^ T \ \text{V} \).
 
 . **Case A: Constant Oracle \( f_1(x) = 0 \)**:
-   Oracle leaves all channel voltages unchanged: \( v' = v_0 = \begin{pmatrix} 1.250 & 1.250 & 1.250 & 1.250 \end{pmatrix}^T \).
+   Oracle leaves all channel voltages unchanged: \( v' = v_0 = \begin{pmatrix} 1.250 & 1.250 & 1.250 & 1.250 \end{pmatrix} ^ T \).
    Applying final Hadamard transformation matrix \( H_4 = H_2 \otimes H_2 \):
    \[ v_\text{out} = H_4 v' = \begin{pmatrix} 2.500 \\ 0.000 \\ 0.000 \\ 0.000 \end{pmatrix} \ \text{V} \]
    Query decision channel 1 reads \( v_\text{out}(1) = 0.000 \ \text{V} \), proving function is constant!
 
 . **Case B: Balanced Oracle \( f_2(x) = x_0 \)**:
    Oracle flips sign on channels where \( x_0 = 1 \) (channels 1 and 3):
-   \[ v' = \begin{pmatrix} 1.250 & -1.250 & 1.250 & -1.250 \end{pmatrix}^T \ \text{V} \]
+   \[ v' = \begin{pmatrix} 1.250 & -1.250 & 1.250 & -1.250 \end{pmatrix} ^ T \ \text{V} \]
    Applying final Hadamard transformation matrix \( H_4 \):
    \[ v_\text{out} = H_4 v' = \begin{pmatrix} 0.000 \\ 2.500 \\ 0.000 \\ 0.000 \end{pmatrix} \ \text{V} \]
    Query decision channel 1 reads \( v_\text{out}(1) = 2.500 \ \text{V} \), proving function is balanced!
@@ -2702,6 +2782,7 @@ Under Jaynesian probability theory and Maximum Entropy (MaxEnt), the squared coo
 
 ==== Summary of Classical Grover Iteration
 As established in earlier chapters, Grover’s unstructured search algorithm is an iterative numerical power method operating in an invariant two-dimensional subspace \( V_2 = \text{span}( \mathbf{e}_{x ^ { \ast } }, \mathbf{v}_0 ) \) (written in Dirac Newspeak notation as \( \text{span}( | x ^ { \ast } \rangle , | s \rangle ) \)), where Dirac ket \( | x ^ { \ast } \rangle \) denotes the target standard basis coordinate vector \( \mathbf{e}_{x ^ { \ast } } \in \mathbb{R}^N \) and ket \( | s \rangle \) denotes the initial uniform state vector \( \mathbf{v}_0 \). The algorithm initializes a uniform state-vector:
+
 \[ \mathbf { v } _ 0 = \frac { 1 } { \sqrt { N } } \sum _ { i = 0 } ^ { N - 1 } \mathbf { e } _ i \]
 and applies repeated composite reflection operators \( G = R _ \text{mean} R _ \text{oracle} \):
 
@@ -2736,8 +2817,11 @@ While standard textbook presentations formulate Grover’s algorithm using dense
 To execute state-vector search on digital hardware with maximum throughput, we design a dedicated **Tree-Pipelined SIMD Systolic Array**:
 
 * **Processing Architecture**: An array of \( N \) elementary integer or fixed-point arithmetic processing elements (PEs), each storing a single coordinate amplitude \( v_i \) in local registers.
+
 * **Parallel Oracle Step**: In a single clock cycle, the target index \( x ^ { \ast } \) is decoded across the PE array, flipping the sign bit of the target register (\( v_{x ^ { \ast } } \leftarrow - v_{x ^ { \ast } } \)) with zero communication overhead.
+
 * **Pipelined Binary Adder Tree for Global Inversion**: To perform inversion about the mean without bus contention, the PEs feed a binary adder tree of depth \( \log_2 N \). The tree computes the sum \( S = \sum_{i=0}^{N-1} v_i \) in \( \log_2 N \) pipelined clock cycles. A single bit-shift calculates the scaled mean \( 2 \bar{v} = 2 S / N \), which is broadcast back along a balanced binary distribution tree. Each PE then computes \( v_i \leftarrow 2 \bar{v} - v_i \) in parallel during a single clock cycle.
+
 * **Linear Systolic Mesh Alternative**: For ultra-large grids where global distribution wires introduce RC propagation delays, the PEs are arranged in a 1D or 2D mesh communicating strictly via nearest-neighbor contact. Pairwise Givens rotations rotate adjacent channels concurrently in an odd-even transposition pattern, achieving continuous pipelined throughput with zero global broadcast lines.
 
 === Shor’s Algorithm: Integer Factorization via Discrete Spectral Order-Finding
@@ -2777,7 +2861,9 @@ Once a spectral peak index \( k \) is measured, the rational ratio \( \frac { k 
 To execute modular order-finding at maximum hardware speeds without non-physical quantum apparatus, we implement a **Carry-Save Montgomery Exponentiation Pipeline coupled to a Parallel Number-Theoretic Transform (NTT)**:
 
 * **Pipelined Montgomery Modular Multiplication**: Standard modular division \( X \pmod N \) requires slow iterative quotient estimation. We replace division with a 2D systolic array of **Montgomery multipliers** in carry-save arithmetic. Carry propagation is completely eliminated from the critical path: partial sums and carry vectors ripple through adjacent 1-bit full adders in parallel, achieving a constant clock cycle time independent of word length \( n = \log_2 N \).
+
 * **Parallel Number-Theoretic Transform (NTT)**: In digital floating-point implementations of the DFT, trigonometric coefficients \( \omega_M^{jk} \) introduce rounding error and expensive transcendental function evaluations. In our digital implementation on grid \( \mathcal{G}_N \), we replace the complex Fourier matrix with an exact **Number-Theoretic Transform (NTT)** over a Fermat or Mersenne finite field \( \mathbb{F}_q \). A fully pipelined Radix-4 butterfly network processes the \( M \)-point state array in \( \frac{1}{2} \log_2 M \) parallel stages using only integer additions and bit-shifts, delivering exact integer spectral peaks with zero floating-point noise.
+
 * **Parallel Lehmer-Euclid Continued Fraction Unit**: Once the dominant spectral peak \( k \) is identified, a pipelined Lehmer-Euclid GCD unit evaluates the continued fraction convergents in \( O(\log N) \) clock cycles, extracting period \( r \) and the non-trivial prime factors \( p \) and \( q \).
 
 === Simon’s Algorithm and the Abelian Hidden Subgroup Problem
@@ -2813,6 +2899,7 @@ By repeating the procedure \( O ( n ) \) times, we obtain a system of \( n - 1 \
 Because the Walsh-Hadamard kernel contains only \( \pm 1 \) entries, Simon’s algorithm can be executed on digital hardware with extreme efficiency using a **Hypercube SIMD Butterfly Engine + Triangular Systolic \( \mathbb{F}_2 \) Elimination Bit-Array**:
 
 * **Multiplication-Free Fast Walsh-Hadamard Transform (FWHT)**: The \( n \)-dimensional Walsh-Hadamard matrix decomposes into \( n \) stages of pairwise additions and subtractions. On an \( n \)-dimensional binary hypercube array of PEs, each stage computes in a single clock cycle without any floating-point arithmetic or multiplier circuits. The entire transform over all \( 2^n \) basis states completes in exactly \( n \) parallel clock cycles.
+
 * **On-the-Fly Triangular Systolic Bit-Eliminator**: Rather than storing vectors in RAM and executing sequential Gaussian elimination, sampled bitstrings \( \mathbf{y} \) are streamed directly into a triangular 2D systolic array of 1-bit processing elements. Each cell contains a single flip-flop, a multiplexer, and a 1-bit XOR gate. As a bitstring cascades down the triangle, it is reduced against existing pivot rows in real time. If a linearly independent row is identified, it locks into place; otherwise, it is discarded. The full rank-\( (n-1) \) basis is constructed in \( 2n \) clock cycles, and back-substitution yields the secret string \( \mathbf{s} \) in \( n \) cycles using purely parallel XOR logic.
 
 === Orthogonal Eigenangle Estimation (OEE) and Krylov Subspace Spectral Analysis
@@ -2823,9 +2910,12 @@ The algorithm currently designated in conventional physics and quantum computing
 Let \( U \in \mathbb { C } ^ { N \times N } \) be a unitary matrix (or its real orthogonal equivalent \( R _ U \in \mathbb { R } ^ { 2 N \times 2 N } \)), and let \( \mathbf{v} \) (conventionally written in Dirac Newspeak as ket \( | \psi \rangle \)) be an eigenvector of \( U \) with eigenvalue \( \lambda = e ^ { 2 \pi \mathrm { i } \theta } \), where \( \theta \in [ 0 , 1 ) \) is the unknown rotation angle (eigenangle). The goal of Orthogonal Eigenangle Estimation is to estimate \( \theta \) to \( m \) bits of binary precision.
 
 ==== Algorithmic Mechanics of Orthogonal Eigenangle Estimation
+
 1. **Register Initialization**: Prepare an \( m \)-channel evaluation register in the uniform normalized coordinate vector \( \mathbf{w}_0 = \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } \mathbf{e}_k \) (written in Dirac notation as \( \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } | k \rangle \)) and load the data register with eigenvector \( \mathbf{v} \) (written as \( | \psi \rangle \)).
+
 2. **Controlled Unitary Exponentiation**: Apply controlled block-diagonal matrix powers of \( U \) (\( U ^ { 2 ^ 0 } , U ^ { 2 ^ 1 } , \dots , U ^ { 2 ^ { m - 1 } } \)). By the matrix-eigenvector identity \( U ^ { 2 ^ j } \mathbf{v} = e ^ { 2 \pi \mathrm { i } 2 ^ j \theta } \mathbf{v} \) (in Dirac Newspeak: \( U ^ { 2 ^ j } | \psi \rangle = e ^ { 2 \pi \mathrm { i } 2 ^ j \theta } | \psi \rangle \)), the evaluation register state vector transforms into the discrete Fourier phase coordinate vector:
 \[ \mathbf{w} = \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } e ^ { 2 \pi \mathrm { i } k \theta } \mathbf{e}_k \quad \left( \text{in Dirac Newspeak: } \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } e ^ { 2 \pi \mathrm { i } k \theta } | k \rangle \right) \]
+
 3. **Inverse Discrete Fourier Transform**: Applying the inverse Discrete Fourier Transform matrix \( \mathbf { F } _ { 2 ^ m } ^ \dagger \) converts the phase-encoded Fourier series into a sharp spectral delta peak at index \( k = \lfloor 2 ^ m \theta \rceil \), directly reading out the binary digits of the rotation angle \( \theta \).
 
 ==== Equivalence to Classical Krylov Subspace and Arnoldi Methods
@@ -2837,7 +2927,9 @@ The **Arnoldi iteration** uses Gram-Schmidt orthogonalization (or Householder re
 Instead of allocating exponentially large state-vector registers, digital hardware computes rotation spectra directly using a **Pipelined Block Lanczos / Arnoldi Systolic Array with Wilkinson-Shift QR Eigensolver**:
 
 * **Distributed Sparse Matrix-Vector (SpMV) Unit**: Matrix \( A \) is stored in compressed sparse format across distributed SRAM banks. An array of parallel multiply-accumulate (MAC) units evaluates \( \mathbf{w} = A \mathbf{v}_k \) with high memory bandwidth and zero cache thrashing.
+
 * **Pipelined Modified Gram-Schmidt Orthogonalization**: The new vector \( \mathbf{w} \) is orthogonalized against previous Krylov basis vectors \( \mathbf{v}_1, \dots, \mathbf{v}_k \) using parallel dot-product reduction trees. This reduces the large \( N \times N \) operator to an upper Hessenberg or tridiagonal matrix \( T_m \) of small dimension \( m \ll N \) (typically \( m \le 50 \)).
+
 * **Systolic CORDIC QR Diagonalization**: The small tridiagonal matrix \( T_m \) is diagonalized on an attached systolic array of CORDIC Givens rotation units executing the QR algorithm with implicit Wilkinson shifts. All eigenvalue phase angles \( \theta_j \) are extracted to full machine precision in \( O(m) \) clock cycles, eliminating the need for speculative quantum phase circuits entirely.
 
 === The Harrow–Hassidim–Lloyd (HHL) Linear Solver and the Classical I/O Bottleneck
@@ -2848,12 +2940,16 @@ The Harrow–Hassidim–Lloyd (HHL) algorithm addresses the solution of large sy
 where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with condition number \( \kappa = \lambda _ {\text {max}} / \lambda _ {\text {min}} \), and \( \mathbf { b } \in \mathbb { R } ^ N \) is a normalized input vector.
 
 ==== The HHL Algorithmic Pipeline
+
 1. **Input State Preparation**: Encode input vector \( \mathbf { b } \) as an expansion across the orthonormal eigenvector basis \( \{ \mathbf{u}_j \} \) of symmetric matrix \( A \) with corresponding real eigenvalues \( \lambda _ j \):
 \[ \mathbf{b} = \sum_{j=1}^N \beta_j \mathbf{u}_j \quad \left( \text{in Dirac Newspeak: } | b \rangle = \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle \right) \]
+
 2. **Eigenangle Estimation on \( A \)**: Simulate the matrix exponential evolution \( e ^ { \mathrm { i } A t } \) using Trotter-Suzuki product formulas. Orthogonal Eigenangle Estimation (OEE) extracts the eigenvalues into an auxiliary register, yielding the joint product vector:
 \[ \sum_{j=1}^N \beta_j \mathbf{u}_j \otimes \mathbf{e}_{\lambda_j} \quad \left( \text{in Dirac Newspeak: } \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \right) \]
+
 3. **Controlled Reciprocal Scaling**: Apply a Givens plane rotation to an auxiliary two-channel indicator coordinate proportional to \( C / \lambda _ j \), transforming the state vector to:
 \[ \sum _ { j = 1 } ^ N \beta _ j \mathbf{u}_j \otimes \mathbf{e}_{\lambda_j} \otimes \left( \sqrt { 1 - \frac { C ^ 2 } { \lambda _ j ^ 2 } } \mathbf{e}_0 + \frac { C } { \lambda _ j } \mathbf{e}_1 \right) \quad \left( \text{in Dirac Newspeak: } \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \left( \sqrt { 1 - \frac { C ^ 2 } { \lambda _ j ^ 2 } } | 0 \rangle + \frac { C } { \lambda _ j } | 1 \rangle \right) \right) \]
+
 4. **Inverse Eigenangle Estimation (Uncomputing)**: Apply inverse OEE to clear the auxiliary eigenvalue register, leaving the solution component in the indicator channel proportional to:
 \[ \mathbf{x} = A ^ { - 1 } \mathbf{b} = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } \mathbf{u}_j \quad \left( \text{in Dirac Newspeak: } | x \rangle = A ^ { - 1 } | b \rangle = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } | u _ j \rangle \right) \]
 
@@ -2861,15 +2957,18 @@ where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with cond
 Promoters of HHL often claim an exponential speedup (\( O ( \log N ) \) vs. \( O ( N ) \)). In the objective physical world, there is no such thing as a “physical state vector”; a state vector is merely a mathematical list of coordinates or analog channel amplitudes. The theoretical claims of HHL are undermined by two unavoidable physical and computational constraints:
 
 1. **The State Preparation Bottleneck**: Preparing an arbitrary numerical input vector \( \mathbf { b } = ( b _ 1 , b _ 2 , \dots , b _ N ) ^ T \) in hardware requires loading \( N \) independent analog amplitudes or register values, which intrinsically consumes \( \Omega ( N ) \) time and physical resources.
+
 2. **The Readout Bottleneck**: The output produced by the HHL circuit is not an accessible array of classical numbers \( \mathbf { x } \in \mathbb{R}^N \), but merely an unmeasured normalized analog state-vector register (written in Dirac Newspeak as \( | x \rangle \)). To extract the actual numerical coordinates \( x _ 1 , x _ 2 , \dots , x _ N \) to numerical precision \( \epsilon \), one must perform \( O ( N / \epsilon ^ 2 ) \) repeated sampling measurements, which completely erases any theoretical computational advantage.
 
 ==== Fastest Parallel Digital Implementation: Chebyshev Semi-Iterative 3-Term Recurrence
 To solve large sparse linear systems \( A \mathbf{x} = \mathbf{b} \) on parallel digital architectures without the fatal communication bottlenecks of global inner products, we implement the **Chebyshev Semi-Iterative Systolic Mesh**:
 
 * **Elimination of Global Reduction Bottlenecks**: Standard Conjugate Gradient (CG) requires computing global dot products \( \alpha_k = \frac{\mathbf{r}_k^T \mathbf{r}_k}{\mathbf{p}_k^T A \mathbf{p}_k} \) at every iteration, which forces all processors to synchronize across a global bus, stalling clock frequencies.
+
 * **Chebyshev 3-Term Recurrence Engine**: When the spectral bounds \( [\lambda_{\min}, \lambda_{\max}] \) of matrix \( A \) are known (obtained via a quick Lanczos pass), the inverse operator \( A^{-1} \) is synthesized as an optimal minimax Chebyshev polynomial filter \( P_m(A) \mathbf{b} \). Each PE updates its local solution coordinate according to the 3-term recurrence:
 \[ \mathbf{x}^{(k+1)} = \omega_{k+1} \left( \mathbf{x}^{(k)} + \gamma ( \mathbf{b} - A \mathbf{x}^{(k)} ) \right) + ( 1 - \omega_{k+1} ) \mathbf{x}^{(k-1)} \]
 where scalar acceleration factors \( \omega_k \) and damping parameter \( \gamma = \frac{2}{\lambda_{\min} + \lambda_{\max}} \) are precomputed.
+
 * **Pure Nearest-Neighbor Systolic Scaling**: Because the recurrence relies solely on matrix-vector multiplication \( A \mathbf{x}^{(k)} \) and scalar vector updates, each processor in the 2D mesh communicates strictly with adjacent neighbor cells in direct contact. With zero global communication latency, the system achieves linear speedup across millions of parallel cores, solving linear systems to precision \( \epsilon \) in \( O(\sqrt{\kappa} \log(1/\epsilon)) \) clock cycles.
 
 === Parameterized Variational Optimization: Variational Rayleigh-Ritz Optimization (VRRO) and Alternating Operator Phase Optimization (AOPO)
@@ -2880,8 +2979,11 @@ The algorithm commonly termed in physics literature as the “Variational Quantu
 VRRO is a direct execution of the classical **Rayleigh-Ritz Variational Principle**:
 \[ E _ 0 = \min _ { \mathbf { v } \neq \mathbf { 0 } } \frac { \mathbf { v } ^ T H \mathbf { v } } { \mathbf { v } ^ T \mathbf { v } } \le R_H( \vec { \theta } ) = \mathbf { v } ( \vec { \theta } ) ^ T H \mathbf { v } ( \vec { \theta } ) \quad \left( \text{in Dirac Newspeak: } \langle H \rangle _ { \vec { \theta } } = \langle \psi( \vec{\theta} ) | H | \psi( \vec{\theta} ) \rangle \right) \]
 The algorithm functions as a closed-loop optimization cycle:
+
 1. **Parameterized Ansatz**: A trial state-vector \( \mathbf { v } ( \vec { \theta } ) \) is generated by applying a sequence of parameterized Givens plane rotations \( R ( \theta _ k ) \) to an initial reference coordinate vector \( \mathbf{v}_0 \).
+
 2. **Energy Expectation Evaluation**: The quadratic form / Rayleigh quotient \( R_H( \vec { \theta } ) = \mathbf{v}( \vec{\theta} )^T H \mathbf{v}( \vec{\theta} ) \) (Dirac expectation \( \langle H \rangle_{\vec{\theta}} \)) is evaluated by summing the channel energies.
+
 3. **Classical Optimization**: A numerical optimization routine (such as Gradient Descent, BFGS, Nelder-Mead, or Adam) updates the parameter vector \( \vec { \theta } \leftarrow \vec { \theta } - \eta \nabla _ { \vec { \theta } } R_H( \vec{\theta} ) \) until eigenvalue convergence is reached.
 
 ==== Alternating Operator Phase Optimization (AOPO)
@@ -2895,8 +2997,11 @@ A numerical optimization loop iteratively tunes \( ( \vec { \gamma } , \vec { \b
 Variational combinatorial optimization is executed on digital hardware at maximum throughput using a **Checkerboard-Decomposed Digital Annealing / Ising Systolic Matrix**:
 
 * **Massively Parallel Spin Processing Cells**: Graph variables \( s_i \in \{-1, +1\} \) are mapped to a 2D array of digital spin processing cells. Each cell contains a 1-bit register for the spin state and fixed-point accumulators for the coupling weights \( J_{ij} \).
+
 * **Checkerboard Bipartite Partitioning**: To eliminate race conditions during concurrent updates, the graph or lattice is colored with a bipartite checkerboard scheme (even and odd sublattices). All even spins update their states simultaneously in parallel clock cycle 1, and all odd spins update simultaneously in clock cycle 2.
+
 * **Local Effective Field Calculation**: Each spin cell computes its local energy gradient \( h_i = \sum_j J_{ij} s_j + h_i^\text{ext} \) using parallel adder trees. The energy change for a spin flip \( \Delta E_i = 2 s_i h_i \) is evaluated in a single clock cycle.
+
 * **Jaynesian MaxEnt Thermal Acceptance Engine**: In accordance with Maximum Entropy thermodynamics, transition probabilities \( P(\text{flip}) = \min(1, \exp(-\beta \Delta E_i)) \) are evaluated via a precomputed lookup table and compared against pseudo-random numbers generated by on-chip Linear-Feedback Shift Registers (LFSRs). The hardware evaluates hundreds of millions of parallel spin updates per microsecond, converging to the global ground state with high probability.
 
 === Ballistic Discrete Wave Walks: Wave Interference vs. Classical Diffusion
@@ -2907,8 +3012,10 @@ In a classical random walk on a 1D discrete integer grid, a particle at position
 This is the hallmark of classical **diffusive propagation**.
 
 In a coherent discrete wave walk (conventionally designated as a “quantum random walk”), the scalar particle is replaced by a two-component multivector wave packet \( \mathbf { v } ( x , t ) = \begin{pmatrix} v _ L ( x , t ) \\ v _ R ( x , t ) \end{pmatrix} \). At each discrete time step \( \Delta t \), the walk applies:
+
 1. **Coin Transformation Matrix**: A unitary coin operator (such as the Hadamard matrix \( H \) or a Givens rotation \( G ( \theta ) \)) mixes the left-moving and right-moving channel amplitudes:
 \[ \begin{pmatrix} v _ L ' ( x , t ) \\ v _ R ' ( x , t ) \end{pmatrix} = \frac { 1 } { \sqrt { 2 } } \begin{pmatrix} 1 & 1 \\ 1 & - 1 \end{pmatrix} \begin{pmatrix} v _ L ( x , t ) \\ v _ R ( x , t ) \end{pmatrix} \]
+
 2. **Shift Operator Matrix**: Translates the left-moving component to \( x - 1 \) and the right-moving component to \( x + 1 \):
 \[ v _ L ( x - 1 , t + 1 ) = v _ L ' ( x , t ) , \quad v _ R ( x + 1 , t + 1 ) = v _ R ' ( x , t ) \]
 
@@ -2920,9 +3027,11 @@ This constitutes **ballistic wave propagation**, spreading quadratically faster 
 On the discrete grid \( \mathcal{G}_N \), coherent state-vector wave walks are executed with 100% computational efficiency using a **Cellular Automaton Lattice-Gas Systolic Pipeline**:
 
 * **Local State Representation**: Each node \( x \) on the physical grid contains two fixed-point registers storing the left- and right-propagating wave amplitudes \( (v_L(x), v_R(x)) \).
+
 * **Single-Cycle Coin Butterfly**: In each clock cycle, an arithmetic unit at each node executes the Hadamard coin operation using a 2-point butterfly:
 \[ v_L'(x) = \frac{v_L(x) + v_R(x)}{\sqrt{2}}, \quad v_R'(x) = \frac{v_L(x) - v_R(x)}{\sqrt{2}} \]
 Multiplication by \( 1/\sqrt{2} \) is performed via fixed-point shift-and-add constants (e.g. \( 0.707106 \approx 181/256 = (128 + 32 + 16 + 4 + 1)/256 \)) requiring zero multiplier logic.
+
 * **Direct-Contact Spatial Streaming**: During the shift phase, adjacent nodes exchange updated wave amplitudes along direct physical wiring traces: node \( x \) passes \( v_L'(x) \) to node \( x-1 \) and \( v_R'(x) \) to node \( x+1 \). Because all nodes operate in lockstep with purely local direct-contact interconnects, the entire lattice advances one ballistic time step per clock cycle, simulating macroscopic field propagation and graph traversal across billions of spatial nodes per second.
 
 === Formal Postulates and Theorems of Canonical State-Vector Algorithms
@@ -2971,10 +3080,15 @@ Both representations preserve Euclidean vector length, inner products, and Jayne
 **Problem Statement 1:** Step-by-Step Modular Order-Finding and Factorization of \( N = 15 \) via Discrete Fourier Spectral Peaks and Euclid’s GCD Algorithm.
 
 Let \( N = 15 \) be the composite integer to factor. Select base \( a = 7 \).
+
 1. Verify that \( \gcd ( 7 , 15 ) = 1 \).
+
 2. Trace the periodic sequence \( f ( x ) = 7 ^ x \pmod { 15 } \) for \( x = 0 , 1 , 2 , \dots , 7 \).
+
 3. Determine the period \( r \).
+
 4. Evaluate the Discrete Fourier Transform spectral peaks on an evaluation register of size \( M = 16 \).
+
 5. Extract the non-trivial prime factors of \( 15 \) using Euclid’s algorithm on grid \( \mathcal { G } _ N \).
 
 **Solution:**
@@ -2983,13 +3097,20 @@ Let \( N = 15 \) be the composite integer to factor. Select base \( a = 7 \).
    Applying Euclid's algorithm: \( 15 = 2 \times 7 + 1 \implies \gcd ( 7 , 15 ) = 1 \).
 
 . **Modular Exponentiation Sequence**:
-   * \( x = 0 \implies 7 ^ 0 \pmod { 15 } = 1 \)
-   * \( x = 1 \implies 7 ^ 1 \pmod { 15 } = 7 \)
-   * \( x = 2 \implies 7 ^ 2 \pmod { 15 } = 49 \equiv 4 \pmod { 15 } \)
-   * \( x = 3 \implies 7 ^ 3 \pmod { 15 } = 4 \times 7 = 28 \equiv 13 \pmod { 15 } \)
-   * \( x = 4 \implies 7 ^ 4 \pmod { 15 } = 13 \times 7 = 91 \equiv 1 \pmod { 15 } \) (Sequence repeats!)
-   * \( x = 5 \implies 7 \), \( x = 6 \implies 4 \), \( x = 7 \implies 13 \)
 
+   * \( x = 0 \implies 7 ^ 0 \pmod { 15 } = 1 \)
+   
+   * \( x = 1 \implies 7 ^ 1 \pmod { 15 } = 7 \)
+   
+   * \( x = 2 \implies 7 ^ 2 \pmod { 15 } = 49 \equiv 4 \pmod { 15 } \)
+   
+   * \( x = 3 \implies 7 ^ 3 \pmod { 15 } = 4 \times 7 = 28 \equiv 13 \pmod { 15 } \)
+   
+   * \( x = 4 \implies 7 ^ 4 \pmod { 15 } = 13 \times 7 = 91 \equiv 1 \pmod { 15 } \) (Sequence repeats!)
+   
+   * \( x = 5 \implies 7 \), \( x = 6 \implies 4 \), \( x = 7 \implies 13 \)
+     +
+     +
    The sequence is \( ( 1 , 7 , 4 , 13 , 1 , 7 , 4 , 13 , \dots ) \).
    The period is strictly \( r = 4 \).
 
@@ -3009,9 +3130,12 @@ Let \( N = 15 \) be the composite integer to factor. Select base \( a = 7 \).
    Verify non-triviality condition: \( 4 \not \equiv - 1 \equiv 14 \pmod { 15 } \).
 
    Calculate prime factors:
+   
    * \( p = \gcd ( a ^ { r / 2 } - 1 , 15 ) = \gcd ( 4 - 1 , 15 ) = \gcd ( 3 , 15 ) = 3 \)
+   
    * \( q = \gcd ( a ^ { r / 2 } + 1 , 15 ) = \gcd ( 4 + 1 , 15 ) = \gcd ( 5 , 15 ) = 5 \)
-
+      +
+      +
    The factors of 15 are found to be \( 3 \) and \( 5 \). The entire reduction is complete and exact.
 
 ---
@@ -3019,17 +3143,25 @@ Let \( N = 15 \) be the composite integer to factor. Select base \( a = 7 \).
 **Problem Statement 2:** Step-by-Step Arithmetic Trace of Simon’s Periodicity Algorithm for \( n = 3 \) with Secret Bitmask \( \mathbf { s } = 110 _ 2 \).
 
 Let \( f : \{ 0 , 1 \} ^ 3 \to \{ 0 , 1 \} ^ 3 \) be a 2-to-1 function with secret period bitmask \( \mathbf { s } = ( 1 , 1 , 0 ) _ 2 \).
+
 1. Define the 2-to-1 function table for all 8 input bitstrings.
+
 2. Trace the Walsh-Hadamard transform and show destructive interference for non-orthogonal vectors.
+
 3. Show that every measured output bitstring \( \mathbf { y } \) satisfies \( \mathbf { s } \cdot \mathbf { y } \equiv 0 \pmod 2 \).
+
 4. Perform Gaussian elimination over \( \mathbb { F } _ 2 \) to reconstruct \( \mathbf { s } \).
 
 **Solution:**
 
 . **Function Table for \( \mathbf { s } = ( 1 , 1 , 0 ) _ 2 \)**:
+
    * \( f ( 000 ) = f ( 000 \oplus 110 ) = f ( 110 ) = 001 \)
+   
    * \( f ( 001 ) = f ( 001 \oplus 110 ) = f ( 111 ) = 010 \)
+   
    * \( f ( 010 ) = f ( 010 \oplus 110 ) = f ( 100 ) = 011 \)
+   
    * \( f ( 011 ) = f ( 011 \oplus 110 ) = f ( 101 ) = 100 \)
 
 . **Walsh-Hadamard Interference Calculation**:
@@ -3040,17 +3172,21 @@ Let \( f : \{ 0 , 1 \} ^ 3 \to \{ 0 , 1 \} ^ 3 \) be a 2-to-1 function with secr
    (written in Dirac Newspeak as \( H ^ { \otimes 3 } | \psi _ 1 \rangle = \frac { 1 } { 4 } \sum _ { \mathbf { y } \in \{ 0 , 1 \} ^ 3 } \left( 1 + ( - 1 ) ^ { y _ 1 \oplus y _ 2 } \right) | \mathbf { y } \rangle \)).
 
 . **Evaluating Vector Amplitudes**:
+
    * If \( y _ 1 \oplus y _ 2 = 1 \): Amplitude coordinate is \( 1 + ( - 1 ) = 0 \) (Complete destructive cancellation!).
      Indices \( 100 , 101 , 010 , 011 \) have amplitude **0**.
+     
    * If \( y _ 1 \oplus y _ 2 = 0 \): Amplitude coordinate is \( 1 + 1 = 2 \).
      Indices \( 000 , 001 , 110 , 111 \) have amplitude \( \frac { 2 } { 4 } = \frac { 1 } { 2 } \).
 
 . **Linear Parity System over \( \mathbb { F } _ 2 \)**:
    All non-zero output states satisfy the parity constraint:
    \[ \mathbf { s } \cdot \mathbf { y } = s _ 1 y _ 1 \oplus s _ 2 y _ 2 \oplus s _ 3 y _ 3 \equiv 0 \pmod 2 \]
-
+     +
    Sampling outputs yields linearly independent vectors:
+   
    * Measurement 1: \( \mathbf { y } ^ { ( 1 ) } = ( 0 , 0 , 1 ) \implies s _ 3 \equiv 0 \pmod 2 \).
+   
    * Measurement 2: \( \mathbf { y } ^ { ( 2 ) } = ( 1 , 1 , 0 ) \implies s _ 1 \oplus s _ 2 \equiv 0 \implies s _ 1 = s _ 2 \pmod 2 \).
 
 . **Gaussian Elimination**:
