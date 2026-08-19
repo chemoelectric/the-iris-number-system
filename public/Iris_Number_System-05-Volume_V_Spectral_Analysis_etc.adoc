@@ -2815,30 +2815,30 @@ Because the Walsh-Hadamard kernel contains only \( \pm 1 \) entries, Simon’s a
 * **Multiplication-Free Fast Walsh-Hadamard Transform (FWHT)**: The \( n \)-dimensional Walsh-Hadamard matrix decomposes into \( n \) stages of pairwise additions and subtractions. On an \( n \)-dimensional binary hypercube array of PEs, each stage computes in a single clock cycle without any floating-point arithmetic or multiplier circuits. The entire transform over all \( 2^n \) basis states completes in exactly \( n \) parallel clock cycles.
 * **On-the-Fly Triangular Systolic Bit-Eliminator**: Rather than storing vectors in RAM and executing sequential Gaussian elimination, sampled bitstrings \( \mathbf{y} \) are streamed directly into a triangular 2D systolic array of 1-bit processing elements. Each cell contains a single flip-flop, a multiplexer, and a 1-bit XOR gate. As a bitstring cascades down the triangle, it is reduced against existing pivot rows in real time. If a linearly independent row is identified, it locks into place; otherwise, it is discarded. The full rank-\( (n-1) \) basis is constructed in \( 2n \) clock cycles, and back-substitution yields the secret string \( \mathbf{s} \) in \( n \) cycles using purely parallel XOR logic.
 
-=== Quantum Phase Estimation (QPE) and Krylov Subspace Spectral Analysis
+=== Orthogonal Eigenangle Estimation (OEE) and Krylov Subspace Spectral Analysis
 
-==== The Eigenvalue Phase Estimation Problem
-Quantum Phase Estimation (QPE) is the central subroutine powering Shor’s algorithm, molecular Hamiltonian simulation, and linear system solvers.
+==== The Eigenvalue Phase and Angle Estimation Problem
+The algorithm currently designated in conventional physics and quantum computing literature as “Quantum Phase Estimation” (QPE) is more accurately defined in numerical linear algebra and the Iris Number System as **Orthogonal Eigenangle Estimation (OEE)**. It serves as a central computational subroutine powering modular order-finding, molecular Hamiltonian simulation, and linear system solvers.
 
-Let \( U \in \mathbb { C } ^ { N \times N } \) be a unitary matrix (or its real orthogonal equivalent \( R _ U \in \mathbb { R } ^ { 2 N \times 2 N } \)), and let \( | \psi \rangle \) be an eigenvector of \( U \) with eigenvalue \( \lambda = e ^ { 2 \pi \mathrm { i } \theta } \), where \( \theta \in [ 0 , 1 ) \) is the unknown phase angle. The goal of QPE is to estimate \( \theta \) to \( m \) bits of binary precision.
+Let \( U \in \mathbb { C } ^ { N \times N } \) be a unitary matrix (or its real orthogonal equivalent \( R _ U \in \mathbb { R } ^ { 2 N \times 2 N } \)), and let \( | \psi \rangle \) be an eigenvector of \( U \) with eigenvalue \( \lambda = e ^ { 2 \pi \mathrm { i } \theta } \), where \( \theta \in [ 0 , 1 ) \) is the unknown rotation angle (eigenangle). The goal of Orthogonal Eigenangle Estimation is to estimate \( \theta \) to \( m \) bits of binary precision.
 
-==== Algorithmic Mechanics of QPE
+==== Algorithmic Mechanics of Orthogonal Eigenangle Estimation
 1. **Register Initialization**: Prepare an \( m \)-qubit counting register in the uniform superposition state \( \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } | k \rangle \) and load the state register with eigenvector \( | \psi \rangle \).
 2. **Controlled Unitary Exponentiation**: Apply controlled powers of \( U \) (\( U ^ { 2 ^ 0 } , U ^ { 2 ^ 1 } , \dots , U ^ { 2 ^ { m - 1 } } \)). By the eigenvalue relation \( U ^ { 2 ^ j } | \psi \rangle = e ^ { 2 \pi \mathrm { i } 2 ^ j \theta } | \psi \rangle \), the counting register state transforms into:
 \[ \frac { 1 } { 2 ^ { m / 2 } } \sum _ { k = 0 } ^ { 2 ^ m - 1 } e ^ { 2 \pi \mathrm { i } k \theta } | k \rangle \]
-3. **Inverse Discrete Fourier Transform**: Applying the inverse Discrete Fourier Transform \( \mathbf { F } _ { 2 ^ m } ^ \dagger \) converts the phase-encoded Fourier series into a sharp spectral peak at index \( k = \lfloor 2 ^ m \theta \rceil \), directly reading out the binary digits of \( \theta \).
+3. **Inverse Discrete Fourier Transform**: Applying the inverse Discrete Fourier Transform \( \mathbf { F } _ { 2 ^ m } ^ \dagger \) converts the phase-encoded Fourier series into a sharp spectral peak at index \( k = \lfloor 2 ^ m \theta \rceil \), directly reading out the binary digits of the rotation angle \( \theta \).
 
 ==== Equivalence to Classical Krylov Subspace and Arnoldi Methods
 In classical numerical analysis, extracting the dominant eigenvalues of a large sparse matrix \( A \) without full diagonalization is performed using **Krylov subspace projections**:
 \[ \mathcal { K } _ m ( A , \mathbf { v } _ 0 ) = \text{span} \left( \mathbf { v } _ 0 , A \mathbf { v } _ 0 , A ^ 2 \mathbf { v } _ 0 , \dots , A ^ { m - 1 } \mathbf { v } _ 0 \right) \]
-The **Arnoldi iteration** uses Gram-Schmidt orthogonalization (or Householder reflections) to reduce \( A \) to an upper Hessenberg matrix \( H _ m \), while the **Lanczos algorithm** reduces symmetric matrices to tridiagonal form. QPE is mathematically identical to projecting a state-vector across a cyclic Krylov subspace generated by powers of \( U \) and extracting the spectral poles via discrete Fourier analysis.
+The **Arnoldi iteration** uses Gram-Schmidt orthogonalization (or Householder reflections) to reduce \( A \) to an upper Hessenberg matrix \( H _ m \), while the **Lanczos algorithm** reduces symmetric matrices to tridiagonal form. Orthogonal Eigenangle Estimation is mathematically identical to projecting a state-vector across a cyclic Krylov subspace generated by powers of \( U \) and extracting the spectral poles via discrete Fourier analysis.
 
-==== Fastest Parallel Digital Implementation of Krylov Phase Estimation
-Instead of allocating exponentially large Hilbert space registers, digital hardware computes phase spectra using a **Pipelined Block Lanczos / Arnoldi Systolic Array with Wilkinson-Shift QR Eigensolver**:
+==== Fastest Parallel Digital Implementation of Krylov Eigenangle Estimation
+Instead of allocating exponentially large state-vector registers, digital hardware computes rotation spectra directly using a **Pipelined Block Lanczos / Arnoldi Systolic Array with Wilkinson-Shift QR Eigensolver**:
 
 * **Distributed Sparse Matrix-Vector (SpMV) Unit**: Matrix \( A \) is stored in compressed sparse format across distributed SRAM banks. An array of parallel multiply-accumulate (MAC) units evaluates \( \mathbf{w} = A \mathbf{v}_k \) with high memory bandwidth and zero cache thrashing.
 * **Pipelined Modified Gram-Schmidt Orthogonalization**: The new vector \( \mathbf{w} \) is orthogonalized against previous Krylov basis vectors \( \mathbf{v}_1, \dots, \mathbf{v}_k \) using parallel dot-product reduction trees. This reduces the large \( N \times N \) operator to an upper Hessenberg or tridiagonal matrix \( T_m \) of small dimension \( m \ll N \) (typically \( m \le 50 \)).
-* **Systolic CORDIC QR Diagonalization**: The small tridiagonal matrix \( T_m \) is diagonalized on an attached systolic array of CORDIC Givens rotation units executing the QR algorithm with implicit Wilkinson shifts. All eigenvalue phase angles \( \theta_j \) are extracted to full machine precision in \( O(m) \) clock cycles, eliminating the need for quantum phase estimation circuits entirely.
+* **Systolic CORDIC QR Diagonalization**: The small tridiagonal matrix \( T_m \) is diagonalized on an attached systolic array of CORDIC Givens rotation units executing the QR algorithm with implicit Wilkinson shifts. All eigenvalue phase angles \( \theta_j \) are extracted to full machine precision in \( O(m) \) clock cycles, eliminating the need for speculative quantum phase circuits entirely.
 
 === The Harrow–Hassidim–Lloyd (HHL) Linear Solver and the Classical I/O Bottleneck
 
@@ -2849,11 +2849,11 @@ where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with cond
 
 ==== The HHL Algorithmic Pipeline
 1. **Input State Preparation**: Encode vector \( \mathbf { b } \) as state-vector \( | b \rangle = \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle \), where \( \{ | u _ j \rangle \} \) are the orthonormal eigenvectors of \( A \) with eigenvalues \( \lambda _ j \).
-2. **Phase Estimation on \( A \)**: Simulate the Hamiltonian evolution \( e ^ { \mathrm { i } A t } \) using Trotter-Suzuki product formulas. QPE extracts the eigenvalues into an auxiliary register:
+2. **Eigenangle Estimation on \( A \)**: Simulate the dynamic evolution \( e ^ { \mathrm { i } A t } \) using Trotter-Suzuki product formulas. Orthogonal Eigenangle Estimation (OEE) extracts the eigenvalues into an auxiliary register:
 \[ \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \]
-3. **Controlled Reciprocal Scaling**: Apply a non-unitary rotation to an auxiliary channel proportional to \( C / \lambda _ j \), transforming the state to:
+3. **Controlled Reciprocal Scaling**: Apply a rotation to an auxiliary channel proportional to \( C / \lambda _ j \), transforming the state to:
 \[ \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle | \lambda _ j \rangle \left( \sqrt { 1 - \frac { C ^ 2 } { \lambda _ j ^ 2 } } | 0 \rangle + \frac { C } { \lambda _ j } | 1 \rangle \right) \]
-4. **Inverse Phase Estimation (Uncomputing)**: Apply inverse QPE to clear the eigenvalue register, leaving the state in the target channel proportional to:
+4. **Inverse Eigenangle Estimation (Uncomputing)**: Apply inverse OEE to clear the eigenvalue register, leaving the state in the target channel proportional to:
 \[ | x \rangle = A ^ { - 1 } | b \rangle = \sum _ { j = 1 } ^ N \frac { \beta _ j } { \lambda _ j } | u _ j \rangle \]
 
 ==== Demystification and the Classical Input/Output Bottleneck
