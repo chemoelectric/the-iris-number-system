@@ -2663,8 +2663,8 @@ While standard textbook presentations formulate Grover’s algorithm using dense
 . **CORDIC Arithmetic (Coordinate Rotation Digital Computer)**:
    In digital hardware and micro-controllers, computing trigonometric functions (\( \sin \theta \), \( \cos \theta \)) and multiplications can be computationally expensive. The CORDIC algorithm decomposes each Givens rotation into a sequence of binary shift-and-add operations using elementary angles \( \alpha _ m = \arctan ( 2 ^ { - m } ) \). This allows exact state-vector rotations to be performed on integer and fixed-point Iris grids without dedicated hardware multipliers.
 
-. **Chebyshev Polynomial Spectral Filtering (Quantum Signal Processing)**:
-   Grover iteration is fundamentally a special case of optimal polynomial approximation. By applying a sequence of parameterized phase rotations \( \vec { \phi } = ( \phi _ 1 , \phi _ 2 , \dots , \phi _ d ) \), the composite operator transforms the system Hamiltonian according to a Chebyshev polynomial \( T _ d ( x ) \). This generalized technique—known as quantum signal processing—allows arbitrary spectral filtering, optimal Hamiltonian simulation, and matrix inversion with minimal ripple and optimal convergence bounds.
+. **Chebyshev Spectral Filtering**:
+   Grover iteration is fundamentally a special case of optimal polynomial approximation. By applying an interleaved sequence of parameterized 2D phase rotations \( \vec { \phi } = ( \phi _ 1 , \phi _ 2 , \dots , \phi _ d ) \) and operator reflections, the composite operator transforms the system matrix spectrum according to an optimal minimax Chebyshev polynomial \( T _ d ( x ) \). While contemporary literature frequently terms this method “quantum signal processing,” we designate and formulate it objectively as **Chebyshev spectral filtering**. This purely classical polynomial matrix technique allows arbitrary spectral shaping, optimal Hamiltonian simulation, and matrix inversion with minimal ripple and optimal minimax convergence bounds.
 
 === Shor’s Algorithm: Integer Factorization via Discrete Spectral Order-Finding
 
