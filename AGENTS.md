@@ -7,7 +7,7 @@
 - Never recite platitudinous exhortations about social acceptance, validation, popularity, or public reception.
 - Maintain a spare, clean, and uncluttered application interface: strictly avoid launch banners, promotional headers, banner ads, or displaying an excessive number of visual elements simultaneously.
 - Always keep `README.md` and the textbook in sync, and in sync with the rest of the project.
-- Always push changes to the GitHub repository after making modifications (`git add ... && git commit -m "..." && git push origin main`).
+- Always push to the GitHub repository after making any modifications (`git add ... && git commit -m "..." && git push origin main`).
 - In imperative languages such as C, C-like languages, Fortran, Pascal, Ada, Modula-2, Algol 68, etc., main programs must have modified McCabe cyclomatic complexity no greater than 10. (This is in addition to the rule for subprograms.)
 - In Ada, say ‘in’ explicitly for ‘in’ subprogram parameters.
 - In the textbook prose, never hint to the reader that an AI, assistant, or automated generator exists. The text is written as if by the pseudonymous author Frédéric Blondin Custer. Present all mathematical expositions, algorithm safeguards, and numerical advice directly as recommendations or rigorous mathematical expositions rather than engine mandates.
