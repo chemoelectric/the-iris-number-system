@@ -2793,7 +2793,7 @@ The **Arnoldi iteration** uses Gram-Schmidt orthogonalization (or Householder re
 ==== Formulation of the Matrix Inversion Problem
 The Harrow–Hassidim–Lloyd (HHL) algorithm addresses the solution of large systems of linear equations:
 \[ A \mathbf { x } = \mathbf { b } \]
-where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with condition number \( \kappa = \lambda _ \max / \lambda _ \min \), and \( \mathbf { b } \in \mathbb { R } ^ N \) is a normalized input vector.
+where \( A \in \mathbb { R } ^ { N \times N } \) is a Hermitian matrix with condition number \( \kappa = \lambda _ {\text {max}} / \lambda _ {\text {min}} \), and \( \mathbf { b } \in \mathbb { R } ^ N \) is a normalized input vector.
 
 ==== The HHL Algorithmic Pipeline
 1. **Input State Preparation**: Encode vector \( \mathbf { b } \) as state-vector \( | b \rangle = \sum _ { j = 1 } ^ N \beta _ j | u _ j \rangle \), where \( \{ | u _ j \rangle \} \) are the orthonormal eigenvectors of \( A \) with eigenvalues \( \lambda _ j \).
@@ -2932,7 +2932,8 @@ Let \( N = 15 \) be the composite integer to factor. Select base \( a = 7 \).
 
 . **Discrete Fourier Spectral Peaks on \( M = 16 \)**:
    The periodic state-vector for value \( f ( x ) = 1 \) has non-zero entries at indices \( x \in \{ 0 , 4 , 8 , 12 \} \):
-   \[ \mathbf { v } = \frac { 1 } { 2 } \begin{pmatrix} 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \end{pmatrix} ^ T \]
+   \[ \mathbf { v } = \frac { 1 } { 2 }
+   \begin{pmatrix} 1   0   0   0   1   0   0   0   1   0   0   0   1   0   0   0 \end{pmatrix} ^ T \]
    Applying the 16-point DFT \( \mathbf { F } _ { 16 } \mathbf { v } \):
    The spectral peaks occur at integer multiples of \( \frac { M } { r } = \frac { 16 } { 4 } = 4 \):
    \[ k \in \{ 0 , 4 , 8 , 12 \} \]
