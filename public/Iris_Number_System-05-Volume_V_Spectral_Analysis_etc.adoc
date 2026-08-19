@@ -458,7 +458,7 @@ An antenna serves as an electrodynamic transducer between lumped guided currents
 
 ==== Impedance Matching Networks
 
-To maximize real power transfer from a source with complex bivector internal impedance \( Z_S = R_S + \mathbf { I } X_S \) to a load \( Z_L = R_L + \mathbf { I } X_L \), the conjugate matching condition \( Z_L = Z_S ^ * = R_S - \mathbf { I } X_S \) must be satisfied. Impedance matching networks—utilizing L-sections, Pi-sections, T-sections, and quarter-wave transmission lines—transform arbitrary load impedances to match generator source impedances.
+To maximize real power transfer from a source with complex bivector internal impedance \( Z_S = R_S + \mathbf { I } X_S \) to a load \( Z_L = R_L + \mathbf { I } X_L \), the conjugate matching condition \( Z_L = Z_S ^ { \ast } = R_S - \mathbf { I } X_S \) must be satisfied. Impedance matching networks—utilizing L-sections, Pi-sections, T-sections, and quarter-wave transmission lines—transform arbitrary load impedances to match generator source impedances.
 
 ==== Electrodynamic Tuning Section and Full Practical Crystal Receiver Circuit
 
@@ -515,10 +515,10 @@ By KVL, \( V_C ( t ) + V_L ( t ) = 0 \implies V ( t ) + L \frac { d I } { d t } 
 [THEOREM]
 .Theorem: Maximum Power Transfer Theorem for Complex Bivector Impedances
 ====
-For an AC source with generator internal impedance \( Z_S = R_S + \mathbf { I } X_S \), maximum real average power is delivered to a load \( Z_L = R_L + \mathbf { I } X_L \) if and only if \( R_L = R_S \) and \( X_L = - X_S \) (the conjugate match condition \( Z_L = Z_S ^ * \)).
+For an AC source with generator internal impedance \( Z_S = R_S + \mathbf { I } X_S \), maximum real average power is delivered to a load \( Z_L = R_L + \mathbf { I } X_L \) if and only if \( R_L = R_S \) and \( X_L = - X_S \) (the conjugate match condition \( Z_L = Z_S ^ { \ast } \)).
 
 *Proof:*
-Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X_S + X_L ) \). The current amplitude squared is \( I_0 ^ 2 = \frac { V_0 ^ 2 } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \). Average real power dissipated in the load is \( P_L = \frac { 1 } { 2 } I_0 ^ 2 R_L = \frac { 1 } { 2 } \frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \). To maximize \( P_L \) with respect to \( X_L \), set \( X_L = - X_S \), rendering the denominator purely resistive. Then differentiating \( P_L = \frac { 1 } { 2 } \frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 } \) with respect to \( R_L \) and setting to zero yields \( R_L = R_S \). Thus \( Z_L = Z_S ^ * \), achieving maximum power transfer \( P_\text{max} = \frac { V_0 ^ 2 } { 8 R_S } \). \( \square \)
+Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X_S + X_L ) \). The current amplitude squared is \( I_0 ^ 2 = \frac { V_0 ^ 2 } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \). Average real power dissipated in the load is \( P_L = \frac { 1 } { 2 } I_0 ^ 2 R_L = \frac { 1 } { 2 } \frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \). To maximize \( P_L \) with respect to \( X_L \), set \( X_L = - X_S \), rendering the denominator purely resistive. Then differentiating \( P_L = \frac { 1 } { 2 } \frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 } \) with respect to \( R_L \) and setting to zero yields \( R_L = R_S \). Thus \( Z_L = Z_S ^ { \ast } \), achieving maximum power transfer \( P_\text{max} = \frac { V_0 ^ 2 } { 8 R_S } \). \( \square \)
 ====
 
 === Completely Worked Technical Examples
@@ -768,7 +768,7 @@ Any arbitrary input signal \( x [ n ] \) on grid \( \mathcal { G } _ N \) can be
 \[ x [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] \delta_0 [ n - m ] \delta \]
 
 Applying the system operator \( \mathcal{S} \) and invoking linearity and shift-invariance yields the fundamental output relation—the **discrete difference convolution**:
-\[ y [ n ] = \mathcal{S} \{ x [ n ] \} = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ n - m ] \delta = ( x * h ) [ n ] \]
+\[ y [ n ] = \mathcal{S} \{ x [ n ] \} = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ n - m ] \delta = ( x \ast h ) [ n ] \]
 
 To analyze system dynamics without evaluating multi-step summation loops, we apply the real bivector Z-transform to the convolution sum. The real bivector Z-transform maps grid sequences \( x [ n ] \) into the real geometric phase plane via the complex-free rotor kernel \( z ^ { - n } = r ^ { - n } \left( \cos ( n \theta ) - \mathbf { I } \sin ( n \theta ) \right) \):
 \[ X ( z ) = \sum _ { n = 0 } ^ { N - 1 } x [ n ] z ^ { - n } \delta \]
@@ -809,7 +809,7 @@ If any pole lies outside the unit circle (\( | p_j | > 1 \)), the system output 
 [THEOREM]
 .Theorem: m-Resolution Difference Convolution and Spectral Multiplication Equivalence Theorem
 ====
-Let \( x [ n ] \) and \( h [ n ] \) be finite signal sequences defined on the discrete resolution grid \( \mathcal { G } _ N \). The real bivector Z-transform of their difference convolution \( y [ n ] = ( x * h ) [ n ] \) is identically equal to the algebraic product of their individual real bivector Z-transforms:
+Let \( x [ n ] \) and \( h [ n ] \) be finite signal sequences defined on the discrete resolution grid \( \mathcal { G } _ N \). The real bivector Z-transform of their difference convolution \( y [ n ] = ( x \ast h ) [ n ] \) is identically equal to the algebraic product of their individual real bivector Z-transforms:
 \[ Y ( z ) = H ( z ) X ( z ) \]
 
 *Proof:*
@@ -913,8 +913,8 @@ This chapter develops the physical theory of thermionic emission, space charge d
 === Thermionic Emission, Child-Langmuir Space Charge Law, and m-Resolution Field Dynamics
 
 In vacuum electronic devices, electron charge transport is initiated by heating a conductive metallic or oxide-coated surface inside an evacuated envelope. Thermal kinetic energy transfers into electron wave packets on the discrete crystal lattice grid \( \mathcal{G}_N \), enabling energetic carriers to overcome the metal work function barrier \( \Phi \). Under Jaynes Maximum Entropy (MaxEnt) state partitioning subject to lattice energy bounds, the emission current density \( J \) is governed by the Richardson-Dushman thermionic equation:
-\[ J = A^* T^2 e^{ - \frac { \Phi } { k_B T } } \]
-where \( A^* = \frac { 4 \pi q m_e k_B^2 } { h^3 } \approx 120.4 \text{ A/(cm}^2 \text{K}^2) \) is Richardson’s constant, \( T \) is absolute temperature in kelvins, \( k_B \) is Boltzmann’s constant, and \( \Phi \) is the metal work function.
+\[ J = A ^ { \ast } T^2 e^{ - \frac { \Phi } { k_B T } } \]
+where \( A ^ { \ast } = \frac { 4 \pi q m_e k_B^2 } { h^3 } \approx 120.4 \text{ A/(cm}^2 \text{K}^2) \) is Richardson’s constant, \( T \) is absolute temperature in kelvins, \( k_B \) is Boltzmann’s constant, and \( \Phi \) is the metal work function.
 
 ==== Space-Charge Cloud Formation and the Child-Langmuir Law
 When emitted electrons leave the cathode surface, they accumulate in the vacuum gap, forming a negative space-charge cloud. This cloud creates a localized electrostatic potential well that repels subsequently emitted electrons back toward the cathode. The space-charge field is governed by the Master Field Equation \( D F = J \) on the multiscale grid \( \mathcal{G}_N \). In one spatial dimension \( x \) between cathode (\( x = 0 \)) and anode (\( x = d \)), Poisson’s potential equation yields:
@@ -1150,15 +1150,15 @@ This mathematical identity is profound: the collective, coordinated motion of \(
 
 ==== 3. Negative Band Curvature, Negative Electron Mass, and Positive Hole Mass
 The dynamical response of carriers to an applied electric field \( \mathbf { E } \) depends on the curvature of the dispersion relation \( E ( \mathbf { k } ) \) on discrete grid \( \mathcal { G } _ N \), defined by the effective mass tensor:
-\[ ( m^* )^{-1}_{ij} = \frac { 1 } { \hbar^2 } \frac { \partial^2 E ( \mathbf { k } ) } { \partial k_i \partial k_j } \]
+\[ ( m ^ { \ast } )^{-1}_{ij} = \frac { 1 } { \hbar^2 } \frac { \partial^2 E ( \mathbf { k } ) } { \partial k_i \partial k_j } \]
 
 Near the top of the valence band (the valence band maximum \( E_v \)), the band curves downward, so the second derivative is strictly negative:
-\[ \frac { d^2 E_v } { d k^2 } < 0 \implies m_e^* = \frac { \hbar^2 } { \frac { d^2 E_v } { d k^2 } } < 0 \]
+\[ \frac { d^2 E_v } { d k^2 } < 0 \implies m_e ^ { \ast } = \frac { \hbar^2 } { \frac { d^2 E_v } { d k^2 } } < 0 \]
 
-A valence electron located near the top of the valence band therefore possesses a **negative effective mass** (\( m_e^* < 0 \)). Under an applied electric vector field \( \mathbf { E } \), the force on this valence electron produces an acceleration:
-\[ \mathbf { a } _ e = \frac { - q \mathbf { E } } { m_e^* } = \frac { - q \mathbf { E } } { - | m_e^* | } = \frac { + q \mathbf { E } } { | m_e^* | } = \frac { + q \mathbf { E } } { m_h^* } \]
+A valence electron located near the top of the valence band therefore possesses a **negative effective mass** (\( m_e ^ { \ast } < 0 \)). Under an applied electric vector field \( \mathbf { E } \), the force on this valence electron produces an acceleration:
+\[ \mathbf { a } _ e = \frac { - q \mathbf { E } } { m_e ^ { \ast } } = \frac { - q \mathbf { E } } { - | m_e ^ { \ast } | } = \frac { + q \mathbf { E } } { | m_e ^ { \ast } | } = \frac { + q \mathbf { E } } { m_h ^ { \ast } } \]
 
-Because the electron effective mass near the top of the valence band is negative, the electron accelerates in a direction *opposite* to the electrostatic force \( - q \mathbf { E } \). Consequently, the vacant state (the hole) accelerates in the **same direction as the electric field \( \mathbf { E } \)**, behaving in every dynamical aspect as if it were a pseudo-particle with **positive charge \( + q \)** and **positive effective mass \( m_h^* = | m_e^* | > 0 \)**!
+Because the electron effective mass near the top of the valence band is negative, the electron accelerates in a direction *opposite* to the electrostatic force \( - q \mathbf { E } \). Consequently, the vacant state (the hole) accelerates in the **same direction as the electric field \( \mathbf { E } \)**, behaving in every dynamical aspect as if it were a pseudo-particle with **positive charge \( + q \)** and **positive effective mass \( m_h ^ { \ast } = | m_e ^ { \ast } | > 0 \)**!
 
 ==== 4. The Hall Effect Anomaly and Empirical Proof
 The physical reality of hole current transport is conclusively demonstrated by the **Hall Effect**. When a magnetic field \( \mathbf { B } = B_z \hat{\mathbf{z}} \) is applied perpendicular to a longitudinal current density \( J_x \) flowing through a semiconductor slab of width \( W \) and thickness \( t \), the transverse Lorentz force \( \mathbf { F } = q ( \mathbf { v } \times \mathbf { B } ) \) deflects carriers laterally, generating a transverse Hall electric field \( E_y \) and Hall voltage \( V_H = E_y W \).
@@ -1168,15 +1168,15 @@ The physical reality of hole current transport is conclusively demonstrated by t
 * In **p-type semiconductors** (dominated by valence-band holes), experimental measurements reveal a **positive Hall voltage** and **positive Hall coefficient**:
   \[ R_H = + \frac { 1 } { q p } \]
 
-Twentieth-century commentators frequently marveled at this positive Hall sign as a "quantum mystery". In truth, it follows directly from classical electrodynamics under \( D F = J \): because valence band electrons near \( E_v \) have negative effective mass \( m_e^* < 0 \), the Lorentz force deflects them toward the same side of the slab as conduction electrons, leaving an uncompensated positive space-charge accumulation (the vacancy accumulation) on the opposite side. The resulting transverse electric field points in the positive direction, yielding \( R_H = + 1 / ( q p ) \) without requiring physical positive particles inside the crystal.
+Twentieth-century commentators frequently marveled at this positive Hall sign as a "quantum mystery". In truth, it follows directly from classical electrodynamics under \( D F = J \): because valence band electrons near \( E_v \) have negative effective mass \( m_e ^ { \ast } < 0 \), the Lorentz force deflects them toward the same side of the slab as conduction electrons, leaving an uncompensated positive space-charge accumulation (the vacancy accumulation) on the opposite side. The resulting transverse electric field points in the positive direction, yielding \( R_H = + 1 / ( q p ) \) without requiring physical positive particles inside the crystal.
 
 ==== 5. Jaynes MaxEnt State Partitioning and Mass-Action Balance
 Under thermal equilibrium at temperature \( T \), Jaynes Maximum Entropy (MaxEnt) partitioning on discrete grid \( \mathcal { G } _ N \) sets the probability that a valence state at energy \( E \) is vacant (occupied by a hole):
 \[ f_h ( E ) = 1 - f_e ( E ) = 1 - \frac { 1 } { 1 + \exp \left( \frac { E - E_F } { V_t } \right) } = \frac { 1 } { 1 + \exp \left( \frac { E_F - E } { V_t } \right) } \]
 
-Integrating over the valence band density of states \( \rho_v ( E ) = \frac { 1 } { 2 \pi^2 } \left( \frac { 2 m_h^* } { \hbar^2 } \right) ^ { 3/2 } \sqrt { E_v - E } \) yields the equilibrium thermal hole concentration \( p \):
+Integrating over the valence band density of states \( \rho_v ( E ) = \frac { 1 } { 2 \pi^2 } \left( \frac { 2 m_h ^ { \ast } } { \hbar^2 } \right) ^ { 3/2 } \sqrt { E_v - E } \) yields the equilibrium thermal hole concentration \( p \):
 \[ p = N_v \exp \left( - \frac { E_F - E_v } { V_t } \right) \]
-where \( N_v = 2 \left( \frac { 2 \pi m_h^* k_B T } { h^2 } \right) ^ { 3/2 } \) is the effective density of states in the valence band.
+where \( N_v = 2 \left( \frac { 2 \pi m_h ^ { \ast } k_B T } { h^2 } \right) ^ { 3/2 } \) is the effective density of states in the valence band.
 
 Multiplying the MaxEnt electron density \( n = N_c \exp [ - ( E_c - E_F ) / V_t ] \) by the hole density \( p \) eliminates the Fermi potential \( E_F \), yielding the fundamental **mass-action law**:
 \[ n \cdot p = N_c N_v \exp \left( - \frac { E_g } { V_t } \right) = n_i^2 \]
@@ -1208,7 +1208,7 @@ where \( I_s = q A \left( \frac { D_p p_{n0} } { L_p } + \frac { D_n n_{p0} } { 
 
 ==== Metal-Semiconductor Schottky Barriers
 A **Schottky diode** consists of a direct metal-semiconductor interface (e.g., Platinum on n-type Silicon). The Schottky barrier height \( \Phi_{BN} = \Phi_m - \chi_s \) governs current transport via majority-carrier thermionic emission:
-\[ I = A^* A T^2 e ^ { - \frac { \Phi_{BN} } { V_t } } \left( e ^ { \frac { V } { n V_t } } - 1 \right) \]
+\[ I = A ^ { \ast } A T^2 e ^ { - \frac { \Phi_{BN} } { V_t } } \left( e ^ { \frac { V } { n V_t } } - 1 \right) \]
 Because Schottky diodes rely strictly on majority carrier transport, they exhibit zero minority-carrier storage delay, enabling ultra-fast reverse recovery times (< 100 ps) and lower forward voltage drops (0.2–0.3 V compared to 0.6–0.7 V for silicon p-n diodes).
 
 === Specialized Solid-State Diodes: Zener, Avalanche, Varactor, Tunnel, PIN, LEDs, and Photodiodes
@@ -1237,12 +1237,12 @@ Integrating Poisson’s electrostatic divergence \( \nabla \cdot \mathbf { E } =
 \[ W = \sqrt { \frac { 2 \varepsilon ( N_A + N_D ) V_{bi} } { q N_A N_D } } < 10 \text{ nm} \quad ( 5 \text{--} 8 \text{ nm} ) \]
 This produces an intense built-in electric vector field exceeding \( \mathbf { E } _ \text{max} > 10^6 \text{ V/cm} \).
 In twentieth-century physics, carrier transit across this sub-10 nm gap was asserted to be an uncaused “quantum mechanical tunneling jump”. In the Iris number system, electrons are non-singular multivector wave packets \( F \in Cl ( 4 , 1 , 1 ) \) satisfying \( D F = J \). Across a sub-10 nm lattice barrier, the bivector field tail preserves deterministic phase coherence. The multivector transmission coefficient \( T_B ( E ) \) across the discrete space-charge gap is derived from the WKB-like field action integral over grid cells \( \mathcal { G } _ N \):
-\[ T_B ( E ) \approx \exp \left( - \frac { 4 \sqrt { 2 m^* } } { 3 q \hbar \mathbf { E } _ \text{max} } E_g ^ { 3 / 2 } \right) \]
+\[ T_B ( E ) \approx \exp \left( - \frac { 4 \sqrt { 2 m ^ { \ast } } } { 3 q \hbar \mathbf { E } _ \text{max} } E_g ^ { 3 / 2 } \right) \]
 Because \( W \) is under 10 nm, \( T_B ( E ) \) is extraordinarily large (\( 10^{-3} \text{--} 10^{-1} \)), enabling immense field transmission current densities (\( 10^3 \text{--} 10^5 \text{ A/cm}^2 \)).
 
 3. **Voltage-Dependent Energy Band Alignment and Negative Differential Resistance (NDR)**:
 The net field transmission current density \( I_\text{tunnel} ( V ) \) under applied forward bias voltage \( V \) is governed by the energy state overlap integral between filled n-side conduction states and empty p-side valence states:
-\[ I_\text{tunnel} ( V ) = \frac { A q m^* } { 2 \pi^2 \hbar^3 } \int _ { E_c } ^ { E_v } \rho_c ( E ) \rho_v ( E ) \left[ f_c ( E ) - f_v ( E ) \right] T_B ( E ) , d E \]
+\[ I_\text{tunnel} ( V ) = \frac { A q m ^ { \ast } } { 2 \pi^2 \hbar^3 } \int _ { E_c } ^ { E_v } \rho_c ( E ) \rho_v ( E ) \left[ f_c ( E ) - f_v ( E ) \right] T_B ( E ) , d E \]
 
 The resulting current-voltage (\( I \text{--} V \)) curve traces three distinct physical operational regimes:
 
@@ -1290,16 +1290,16 @@ Before transistor-transistor logic (TTL), early digital computing employed **Dio
 [THEOREM]
 .Theorem: First-Principles Derivation of Hole Charge Equivalence and Positive Hall Effect
 ====
-In a solid semiconductor lattice \( \mathcal { G } _ N \), a vacant state (a hole) at wavevector \( \mathbf { k } _ e \) in a valence band near maximum \( E_v \) produces a net electric current density \( \mathbf { J }_\text{val} = ( + q ) \mathbf { v } _ h \). Because the dispersion relation has negative curvature \( \frac { d^2 E_v } { d k^2 } < 0 \), the effective mass of the missing electron is negative \( m_e^* < 0 \), forcing the vacancy to accelerate under electric field \( \mathbf { E } \) as a particle with positive effective mass \( m_h^* = | m_e^* | > 0 \) and positive charge \( + q \). Under magnetic field \( \mathbf { B } \), the resulting Hall coefficient is strictly positive:
+In a solid semiconductor lattice \( \mathcal { G } _ N \), a vacant state (a hole) at wavevector \( \mathbf { k } _ e \) in a valence band near maximum \( E_v \) produces a net electric current density \( \mathbf { J }_\text{val} = ( + q ) \mathbf { v } _ h \). Because the dispersion relation has negative curvature \( \frac { d^2 E_v } { d k^2 } < 0 \), the effective mass of the missing electron is negative \( m_e ^ { \ast } < 0 \), forcing the vacancy to accelerate under electric field \( \mathbf { E } \) as a particle with positive effective mass \( m_h ^ { \ast } = | m_e ^ { \ast } | > 0 \) and positive charge \( + q \). Under magnetic field \( \mathbf { B } \), the resulting Hall coefficient is strictly positive:
 \[ R_H = + \frac { 1 } { q p } \]
 proving positive Hall voltage without physical positive elementary particles.
 
 *Proof:*
 . **Current Summation over Brillouin Zone**: Summing over all \( N \) states of a full valence band gives \( \sum_{i=1}^N ( - q ) \mathbf { v } _ i = 0 \). Subtracting the vacant state \( \mathbf { k } _ e \) yields \( \mathbf { J }_\text{val} = 0 - ( - q ) \mathbf { v } _ e = ( + q ) \mathbf { v } _ h \).
 
-. **Acceleration and Negative Curvature**: Evaluating the force equation \( \mathbf { a } _ e = \frac { - q \mathbf { E } } { m_e^* } \) with \( m_e^* = - | m_e^* | \) gives \( \mathbf { a } _ e = \frac { + q \mathbf { E } } { | m_e^* | } = \frac { + q \mathbf { E } } { m_h^* } \).
+. **Acceleration and Negative Curvature**: Evaluating the force equation \( \mathbf { a } _ e = \frac { - q \mathbf { E } } { m_e ^ { \ast } } \) with \( m_e ^ { \ast } = - | m_e ^ { \ast } | \) gives \( \mathbf { a } _ e = \frac { + q \mathbf { E } } { | m_e ^ { \ast } | } = \frac { + q \mathbf { E } } { m_h ^ { \ast } } \).
 
-. **Lorentz Force Deflection and Positive Hall Coefficient**: Under transverse magnetic field \( B_z \), negative valence electrons with \( m_e^* < 0 \) are deflected toward \( y = 0 \), creating a positive space-charge accumulation on the opposite boundary, establishing positive Hall field \( E_y = + \frac { 1 } { q p } J_x B_z \) and positive Hall coefficient \( R_H = + 1 / ( q p ) \). \( \square \)
+. **Lorentz Force Deflection and Positive Hall Coefficient**: Under transverse magnetic field \( B_z \), negative valence electrons with \( m_e ^ { \ast } < 0 \) are deflected toward \( y = 0 \), creating a positive space-charge accumulation on the opposite boundary, establishing positive Hall field \( E_y = + \frac { 1 } { q p } J_x B_z \) and positive Hall coefficient \( R_H = + 1 / ( q p ) \). \( \square \)
 ====
 
 [#theorem-deconstruction-quantum-semiconductor-fallacy]
@@ -1345,7 +1345,7 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
 *Proof:*
 . **MaxEnt Degenerate State Occupation**: For degenerate acceptor doping \( N_A > 10^{19} \text{ cm}^{-3} \) and donor doping \( N_D > 10^{19} \text{ cm}^{-3} \), Jaynes MaxEnt subject to energy and particle constraints sets Fermi level \( E_{Fn} > E_c \) on the n-side and \( E_{Fp} < E_v \) on the p-side, filling conduction states and emptying valence states near the junction.
 
-. **Bivector Wave Packet Barrier Transmission**: Integration of Poisson's field equation yields a sub-10 nm depletion width \( W = \sqrt{ 2 \varepsilon ( N_A + N_D ) V_{bi} / ( q N_A N_D ) } \). Across this ultra-thin space-charge region, multivector wave packet field solutions \( F \in Cl ( 4 , 1 , 1 ) \) of \( D F = J \) retain bivector phase coherence, yielding finite transmission factor \( T_B ( E ) \approx \exp ( - \frac { 4 \sqrt{2 m^*} } { 3 q \hbar \mathbf{E}_{max} } E_g^{3/2} ) > 0 \).
+. **Bivector Wave Packet Barrier Transmission**: Integration of Poisson's field equation yields a sub-10 nm depletion width \( W = \sqrt{ 2 \varepsilon ( N_A + N_D ) V_{bi} / ( q N_A N_D ) } \). Across this ultra-thin space-charge region, multivector wave packet field solutions \( F \in Cl ( 4 , 1 , 1 ) \) of \( D F = J \) retain bivector phase coherence, yielding finite transmission factor \( T_B ( E ) \approx \exp ( - \frac { 4 \sqrt{2 m ^ { \ast } } } { 3 q \hbar \mathbf{E}_{max} } E_g^{3/2} ) > 0 \).
 
 . **Band-to-Band Overlap Integration**: Applying forward bias \( V \) shifts n-side energy levels upward by \( q V \). Overlapping energy states exist only in the band overlap window \( \Delta E = E_v - ( E_c - q V ) \). Integrating state densities over this window gives total transmission current \( I ( V ) \).
 
@@ -1357,12 +1357,12 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
 === Completely Worked Technical Examples
 
 ==== Example 1: Cat’s Whisker Point-Contact Rectifier Work Function and Junction Resistance
-**Problem Statement:** A phosphor-bronze wire point contact (work function \( \Phi_m = 4.50 \text{ eV} \)) is pressed against an n-type galena (\( \text{PbS} \)) crystal (electron affinity \( \chi_s = 3.80 \text{ eV} \)). Calculate the built-in barrier height \( \Phi_{BN} \) and the reverse saturation current density \( J_s \) at \( T = 300 \text{ K} \) assuming Richardson constant \( A^* = 120 \text{ A/(cm}^2 \text{K}^2) \).
+**Problem Statement:** A phosphor-bronze wire point contact (work function \( \Phi_m = 4.50 \text{ eV} \)) is pressed against an n-type galena (\( \text{PbS} \)) crystal (electron affinity \( \chi_s = 3.80 \text{ eV} \)). Calculate the built-in barrier height \( \Phi_{BN} \) and the reverse saturation current density \( J_s \) at \( T = 300 \text{ K} \) assuming Richardson constant \( A ^ { \ast } = 120 \text{ A/(cm}^2 \text{K}^2) \).
 
 **Solution:**
 
 1. **Schottky Barrier Height**: \( \Phi_{BN} = \Phi_m - \chi_s = 4.50 \text{ eV} - 3.80 \text{ eV} = 0.70 \text{ eV} \).
-2. **Reverse Saturation Current Density**: \( J_s = A^* T^2 e^{ - \frac { \Phi_{BN} } { V_t } } = 120 \times ( 300 )^2 e^{ - \frac { 0.70 } { 0.02585 } } = 1.08 \times 10^7 \times e^{-27.08} \approx 1.08 \times 10^7 \times 1.74 \times 10^{-12} \approx 1.88 \times 10^{-5} \text{ A/cm}^2 \) (\( 18.8 \ \mu\text{A/cm}^2 \)).
+2. **Reverse Saturation Current Density**: \( J_s = A ^ { \ast } T^2 e^{ - \frac { \Phi_{BN} } { V_t } } = 120 \times ( 300 )^2 e^{ - \frac { 0.70 } { 0.02585 } } = 1.08 \times 10^7 \times e^{-27.08} \approx 1.08 \times 10^7 \times 1.74 \times 10^{-12} \approx 1.88 \times 10^{-5} \text{ A/cm}^2 \) (\( 18.8 \ \mu\text{A/cm}^2 \)).
 
 ==== Example 2: P-N Junction Built-in Potential, Depletion Width, and Bias Current
 **Problem Statement:** A silicon p-n junction diode has acceptor doping \( N_A = 10^{17} \text{ cm}^{-3} \), donor doping \( N_D = 10^{16} \text{ cm}^{-3} \), intrinsic carrier density \( n_i = 1.5 \times 10^{10} \text{ cm}^{-3} \), cross-sectional area \( A = 1.0 \text{ mm}^2 \), and reverse saturation current \( I_s = 1.0 \text{ pA} \) at 300 K. Calculate built-in potential \( V_{bi} \) and forward current at \( V = 0.65 \text{ V} \).
@@ -1411,7 +1411,7 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
    The diode provides negative resistance amplification and self-oscillation up to its resistive cutoff limit of \( 1.731 \text{ GHz} \).
 
 ==== Example 4: Hole Effective Mass, Mobility, and Positive Hall Coefficient in P-Type Silicon
-**Problem Statement:** A p-type silicon sample with acceptor concentration \( N_A = 2.5 \times 10^{16} \text{ cm}^{-3} \) has thickness \( t = 0.50 \text{ mm} \) and width \( W = 2.0 \text{ mm} \). The valence band effective mass of holes is \( m_h^* = 0.38 m_0 \) (where \( m_0 = 9.109 \times 10^{-31} \text{ kg} \)), and hole drift mobility is \( \mu_p = 450 \text{ cm}^2 / ( \text{V} \cdot \text{s} ) \). A longitudinal current \( I_x = 5.0 \text{ mA} \) flows through the sample under a perpendicular magnetic field \( B_z = 0.40 \text{ T} \).
+**Problem Statement:** A p-type silicon sample with acceptor concentration \( N_A = 2.5 \times 10^{16} \text{ cm}^{-3} \) has thickness \( t = 0.50 \text{ mm} \) and width \( W = 2.0 \text{ mm} \). The valence band effective mass of holes is \( m_h ^ { \ast } = 0.38 m_0 \) (where \( m_0 = 9.109 \times 10^{-31} \text{ kg} \)), and hole drift mobility is \( \mu_p = 450 \text{ cm}^2 / ( \text{V} \cdot \text{s} ) \). A longitudinal current \( I_x = 5.0 \text{ mA} \) flows through the sample under a perpendicular magnetic field \( B_z = 0.40 \text{ T} \).
 
 1. Calculate the positive Hall coefficient \( R_H \).
 2. Calculate the transverse Hall electric field \( E_y \) and total Hall voltage \( V_H \).
@@ -1435,8 +1435,8 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
    Hole drift velocity \( v_x \):
    \[ v_x = \frac { J_x } { q p } = R_H J_x = ( 2.497 \times 10^{-4} ) ( 5000 ) = \mathbf { 1.2485 \text{ m/s} } \]
    Hole relaxation time \( \tau_p \):
-   Using \( \mu_p = 0.045 \text{ m}^2 / ( \text{V} \cdot \text{s} ) \) and \( m_h^* = 0.38 \times 9.109 \times 10^{-31} \text{ kg} = 3.4614 \times 10^{-31} \text{ kg} \):
-   \[ \tau_p = \frac { m_h^* \mu_p } { q } = \frac { ( 3.4614 \times 10^{-31} \text{ kg} ) ( 0.045 \text{ m}^2 / ( \text{V} \cdot \text{s} ) ) } { 1.602 \times 10^{-19} \text{ C} } = \frac { 1.5576 \times 10^{-32} } { 1.602 \times 10^{-19} } \approx \mathbf { 9.72 \times 10^{-14} \text{ s} } \quad ( 97.2 \text{ fs} ) \]
+   Using \( \mu_p = 0.045 \text{ m}^2 / ( \text{V} \cdot \text{s} ) \) and \( m_h ^ { \ast } = 0.38 \times 9.109 \times 10^{-31} \text{ kg} = 3.4614 \times 10^{-31} \text{ kg} \):
+   \[ \tau_p = \frac { m_h ^ { \ast } \mu_p } { q } = \frac { ( 3.4614 \times 10^{-31} \text{ kg} ) ( 0.045 \text{ m}^2 / ( \text{V} \cdot \text{s} ) ) } { 1.602 \times 10^{-19} \text{ C} } = \frac { 1.5576 \times 10^{-32} } { 1.602 \times 10^{-19} } \approx \mathbf { 9.72 \times 10^{-14} \text{ s} } \quad ( 97.2 \text{ fs} ) \]
    This proves that valence band vacancies scatter every ~97 femtoseconds while collectively maintaining a positive Hall voltage of +1.00 mV across the sample.
 
 == Field-Effect Transistors
@@ -2074,7 +2074,7 @@ In conventional computer science and physics literature, Grover’s search algor
 
 ==== Formulation of Unstructured Database Search
 
-Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set containing \( N = 2^m \) elements. Suppose there exists a unique target record index \( x^* \in S \) identified by a deterministic indicator function (or oracle) \( f : S \to \{ 0 , 1 \} \) such that \( f ( x^* ) = 1 \) and \( f ( x ) = 0 \) for all \( x \neq x^* \). In Euclidean vector space terms, the discrete index set \( S \) maps to the standard orthonormal basis \( \{ e_0 , e_1 , \dots , e_{N-1} \} \subset \mathbb { R } ^ N \), where each basis vector \( e_x \) has entry 1 at index \( x \) and zeros elsewhere. Target index \( x^* \) corresponds precisely to standard unit basis vector \( e _ { x^* } \in \mathbb { R } ^ N \).
+Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set containing \( N = 2^m \) elements. Suppose there exists a unique target record index \( x ^ { \ast } \in S \) identified by a deterministic indicator function (or oracle) \( f : S \to \{ 0 , 1 \} \) such that \( f ( x ^ { \ast } ) = 1 \) and \( f ( x ) = 0 \) for all \( x \neq x ^ { \ast } \). In Euclidean vector space terms, the discrete index set \( S \) maps to the standard orthonormal basis \( \{ e_0 , e_1 , \dots , e_{N-1} \} \subset \mathbb { R } ^ N \), where each basis vector \( e_x \) has entry 1 at index \( x \) and zeros elsewhere. Target index \( x ^ { \ast } \) corresponds precisely to standard unit basis vector \( e _ { x ^ { \ast } } \in \mathbb { R } ^ N \).
 
 The search algorithm initializes a uniform real normalized state vector \( v_0 \in \mathbb { R } ^ N \):
 \[ v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N = \frac { 1 } { \sqrt { N } } \begin {pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end {pmatrix} \]
@@ -2138,13 +2138,13 @@ The digital Grover iteration is governed by an operator matrix \( G \in \mathbb 
 
 ==== 1. Target Oracle Sign Inversion Matrix \( R_\text{oracle} \)
 
-The target oracle operator is a Householder reflection associated with the target unit basis vector \( u = e _ { x^* } \):
-\[ R_\text{oracle} = H ( e _ { x^* } ) = I_N - 2 e _ { x^* } e _ { x^* } ^ T \]
+The target oracle operator is a Householder reflection associated with the target unit basis vector \( u = e _ { x ^ { \ast } } \):
+\[ R_\text{oracle} = H ( e _ { x ^ { \ast } } ) = I_N - 2 e _ { x ^ { \ast } } e _ { x ^ { \ast } } ^ T \]
 
-In matrix notation, \( R_\text{oracle} \) is a diagonal matrix where every diagonal entry is \( + 1 \), except for the \( x^* \)-th entry on the main diagonal, which is \( - 1 \):
+In matrix notation, \( R_\text{oracle} \) is a diagonal matrix where every diagonal entry is \( + 1 \), except for the \( x ^ { \ast } \)-th entry on the main diagonal, which is \( - 1 \):
 \[ R_\text{oracle} = \begin {pmatrix} 1 & & & & \\ & \ddots & & & \\ & & - 1 & & \\ & & & \ddots & \\ & & & & 1 \end {pmatrix} \]
 Applying \( R_\text{oracle} \) to any vector \( v \in \mathbb { R } ^ N \) leaves all non-target coordinates invariant while negating the target coordinate:
-\[ ( R_\text{oracle} v ) _ { x^* } = - v _ { x^* } , \quad ( R_\text{oracle} v ) _ x = v_x \ \text{for all } x \neq x^* \]
+\[ ( R_\text{oracle} v ) _ { x ^ { \ast } } = - v _ { x ^ { \ast } } , \quad ( R_\text{oracle} v ) _ x = v_x \ \text{for all } x \neq x ^ { \ast } \]
 
 ==== 2. Inversion About the Mean Matrix \( R_\text{mean} \)
 
@@ -2167,9 +2167,9 @@ This equation reveals the precise numerical mechanism of signal amplification:
 
 1. When \( v_i \) is equal to the mean \( \bar{v} \), \( 2 \bar{v} - \bar{v} = \bar{v} \), leaving the entry unchanged.
 
-2. When the target coordinate \( v_{x^*} \) has been negated by the oracle (\( v_{x^*} < 0 \)), the mean \( \bar{v} \) decreases slightly below the non-target baseline.
+2. When the target coordinate \( v_{x ^ { \ast } } \) has been negated by the oracle (\( v_{x ^ { \ast } } < 0 \)), the mean \( \bar{v} \) decreases slightly below the non-target baseline.
 
-3. Evaluating \( 2 \bar{v} - v_{x^*} = 2 \bar{v} - ( - | v_{x^*} | ) = 2 \bar{v} + | v_{x^*} | \) flips the negative sign back to positive while adding twice the mean to its magnitude.
+3. Evaluating \( 2 \bar{v} - v_{x ^ { \ast } } = 2 \bar{v} - ( - | v_{x ^ { \ast } } | ) = 2 \bar{v} + | v_{x ^ { \ast } } | \) flips the negative sign back to positive while adding twice the mean to its magnitude.
 
 4. Meanwhile, non-target entries \( v_x > 0 \) are updated as \( 2 \bar{v} - v_x \); because \( 2 \bar{v} < v_x \), non-target amplitudes decrease. Total energy is conserved while probability density surges dramatically into the target coordinate.
 
@@ -2183,30 +2183,30 @@ Although state vector \( v_0 \) resides in an \( N \)-dimensional real vector sp
 
 To construct an orthonormal basis for \( V_2 \), we select:
 
-1. **Target Unit Vector**: Standard basis vector \( e _ { x^* } \).
+1. **Target Unit Vector**: Standard basis vector \( e _ { x ^ { \ast } } \).
 
 2. **Normalized Non-Target Vector**: Sum of all non-target basis vectors divided by their norm:
-   \[ w = \frac { 1 } { \sqrt { N - 1 } } \sum _ { x \neq x^* } e_x \]
+   \[ w = \frac { 1 } { \sqrt { N - 1 } } \sum _ { x \neq x ^ { \ast } } e_x \]
 
 Verifying orthonormality:
-- \( \| e _ { x^* } \|_2 = 1 \) and \( \| w \|_2 = \sqrt{ \frac{1}{N-1} (N-1) } = 1 \).
-- Inner product \( \langle e _ { x^* } , w \rangle = e _ { x^* } ^ T w = 0 \), establishing mutual orthogonality.
+- \( \| e _ { x ^ { \ast } } \|_2 = 1 \) and \( \| w \|_2 = \sqrt{ \frac{1}{N-1} (N-1) } = 1 \).
+- Inner product \( \langle e _ { x ^ { \ast } } , w \rangle = e _ { x ^ { \ast } } ^ T w = 0 \), establishing mutual orthogonality.
 
 ==== Decomposing the Initial State Vector \( v_0 \)
 
 Initial vector \( v_0 = \frac{1}{\sqrt{N}} \sum_{i=0}^{N-1} e_i \) can be written as:
-\[ v_0 = \frac { 1 } { \sqrt { N } } e _ { x^* } + \frac { 1 } { \sqrt { N } } \sum _ { x \neq x^* } e_x = \frac { 1 } { \sqrt { N } } e _ { x^* } + \sqrt { \frac { N - 1 } { N } } w \]
+\[ v_0 = \frac { 1 } { \sqrt { N } } e _ { x ^ { \ast } } + \frac { 1 } { \sqrt { N } } \sum _ { x \neq x ^ { \ast } } e_x = \frac { 1 } { \sqrt { N } } e _ { x ^ { \ast } } + \sqrt { \frac { N - 1 } { N } } w \]
 
 Define geometric step angle \( \theta \) such that:
 \[ \sin \left( \frac { \theta } { 2 } \right) = \frac { 1 } { \sqrt { N } } \quad \text{and} \quad \cos \left( \frac { \theta } { 2 } \right) = \sqrt { \frac { N - 1 } { N } } \]
 This allows initial vector \( v_0 \) to be expressed concisely in 2D angle parameterization:
-\[ v_0 = \sin \left( \frac { \theta } { 2 } \right) e _ { x^* } + \cos \left( \frac { \theta } { 2 } \right) w = \begin {pmatrix} \sin ( \theta / 2 ) \\ \cos ( \theta / 2 ) \end {pmatrix} _ { V_2 } \]
+\[ v_0 = \sin \left( \frac { \theta } { 2 } \right) e _ { x ^ { \ast } } + \cos \left( \frac { \theta } { 2 } \right) w = \begin {pmatrix} \sin ( \theta / 2 ) \\ \cos ( \theta / 2 ) \end {pmatrix} _ { V_2 } \]
 
 ==== Exact \( 2 \times 2 \) Matrix Representation of Operators in \( V_2 \)
 
-In the basis \( \{ e _ { x^* } , w \} \):
+In the basis \( \{ e _ { x ^ { \ast } } , w \} \):
 
-1. **Oracle Matrix in \( V_2 \)**: Inverts coordinate along \( e _ { x^* } \) while leaving \( w \) invariant:
+1. **Oracle Matrix in \( V_2 \)**: Inverts coordinate along \( e _ { x ^ { \ast } } \) while leaving \( w \) invariant:
    \[ R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} \]
 
 2. **Mean Matrix in \( V_2 \)**: Evaluated using \( 2 v_0 v_0^T - I_2 \):
@@ -2226,7 +2226,7 @@ Applying \( G \) for \( k \) consecutive iterations applies the matrix power \( 
 Applying \( G^k \) to initial vector \( v_0 \):
 \[ v_k = G^k v_0 = \begin {pmatrix} \cos ( k \theta ) & \sin ( k \theta ) \\ - \sin ( k \theta ) & \cos ( k \theta ) \end {pmatrix} \begin {pmatrix} \sin ( \theta / 2 ) \\ \cos ( \theta / 2 ) \end {pmatrix} = \begin {pmatrix} \sin \left( \frac { ( 2 k + 1 ) \theta } { 2 } \right) \\ \cos \left( \frac { ( 2 k + 1 ) \theta } { 2 } \right) \end {pmatrix} \]
 
-To maximize target amplitude along \( e _ { x^* } \), we set the angle argument to \( \pi / 2 \):
+To maximize target amplitude along \( e _ { x ^ { \ast } } \), we set the angle argument to \( \pi / 2 \):
 \[ \frac { ( 2 k + 1 ) \theta } { 2 } = \frac { \pi } { 2 } \quad \implies \quad 2 k + 1 = \frac { \pi } { \theta } \]
 
 For large \( N \), small-angle Taylor expansion gives \( \sin(\theta / 2) = 1 / \sqrt{N} \implies \theta \approx 2 / \sqrt{N} \). Substituting \( \theta \):
@@ -2239,7 +2239,7 @@ Whereas classical linear search requires scanning through \( N / 2 \) items on a
 
 ==== Givens Rotation Equivalences and Localized Coordinate-Pair Variants
 
-While the classic Grover search iteration is presented as a pair of global Householder reflections \( R_\text{mean} R_\text{oracle} \), the transformation within the 2D invariant subspace \( V_2 = \text{span} \{ e_{x^*}, v_0 \} \) is identically equal to an elementary **2D Givens rotation**.
+While the classic Grover search iteration is presented as a pair of global Householder reflections \( R_\text{mean} R_\text{oracle} \), the transformation within the 2D invariant subspace \( V_2 = \text{span} \{ e_{x ^ { \ast } }, v_0 \} \) is identically equal to an elementary **2D Givens rotation**.
 
 A Givens rotation matrix \( G ( i , j , \theta ) \in \mathbb { R } ^ { N \times N } \) rotates a vector in the plane spanned by coordinate axes \( i \) and \( j \) through angle \( \theta \), while leaving all other \( N - 2 \) coordinates completely unchanged:
 \[ G ( i , j , \theta ) = \begin {pmatrix} 1 & & & & & & \\ & \ddots & & & & & \\ & & \cos \theta & \cdots & - \sin \theta & & \\ & & \vdots & \ddots & \vdots & & \\ & & \sin \theta & \cdots & \cos \theta & & \\ & & & & & \ddots & \\ & & & & & & 1 \end {pmatrix} \]
@@ -2247,7 +2247,7 @@ A Givens rotation matrix \( G ( i , j , \theta ) \in \mathbb { R } ^ { N \times 
 ===== 1. Planar Givens Formulation in 2D Subspace
 In the 2D invariant subspace \( V_2 \), the composite search operator \( G | _ { V_2 } \) acts as an exact Givens rotation matrix:
 \[ G | _ { V_2 } = R ( \theta ) = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
-where the discrete step angle \( \theta \) satisfies \( \sin ( \theta / 2 ) = 1 / \sqrt{N} \). Every application of \( G \) rotates the state vector towards the target unit axis \( e _ { x^* } \) by exact step angle \( \theta \).
+where the discrete step angle \( \theta \) satisfies \( \sin ( \theta / 2 ) = 1 / \sqrt{N} \). Every application of \( G \) rotates the state vector towards the target unit axis \( e _ { x ^ { \ast } } \) by exact step angle \( \theta \).
 
 ===== 2. Sparse Decomposed Givens Rotation Variant
 In high-dimensional digital computing systems, global Householder reflections require calculating all-to-all coordinate reductions to evaluate the mean \( \bar{v} = \frac{1}{N} \sum v_i \). In contrast, the Givens rotation variant decomposes amplitude diffusion into a sequence or parallel array of localized 2D Givens rotations \( G ( i , j , \theta_{i,j} ) \) operating on disjoint coordinate pairs \( ( i , j ) \):
@@ -2263,16 +2263,16 @@ In high-dimensional digital computing systems, global Householder reflections re
 ==== Dual-Gimbal Optical Reflection Analogy
 
 Digital Grover iteration is similar in structure to an optical cavity bounded by two specialized mirrors:
-* **Oracle Mirror \( R_\text{oracle} \)**: A planar phase-inversion mirror situated at target position \( x^* \). Light striking slot \( x^* \) undergoes a \( 180^\circ \) phase shift (\( -1 \) multiplier).
+* **Oracle Mirror \( R_\text{oracle} \)**: A planar phase-inversion mirror situated at target position \( x ^ { \ast } \). Light striking slot \( x ^ { \ast } \) undergoes a \( 180^\circ \) phase shift (\( -1 \) multiplier).
 * **Mean Mirror \( R_\text{mean} \)**: A parabolic focusing mirror aligned with the uniform beam axis. Light reflecting off this mirror is spatially redistributed across all slots relative to mean beam intensity.
-* **Angular Precession**: Bouncing an optical wavefront between these two mirrors precesses beam angle by exact increment \( \theta \) per reflection bounce, gradually focusing 100% of optical wave energy onto target detector \( x^* \).
+* **Angular Precession**: Bouncing an optical wavefront between these two mirrors precesses beam angle by exact increment \( \theta \) per reflection bounce, gradually focusing 100% of optical wave energy onto target detector \( x ^ { \ast } \).
 
 ==== Hydraulic Manifold Equalization Analogy
 
 Digital Grover search is similar in structure to a hydraulic manifold array:
 * **Hydraulic Columns**: An array of \( N \) vertical fluid columns filled to equal head pressure \( h_0 \).
-* **Oracle Pulse**: A localized suction valve momentarily opens at bottom tap \( x^* \), dropping pressure to \( - h_0 \).
-* **Equalization Manifold**: A high-speed hydraulic valve opens across the manifold, forcing pressure to redistribute according to \( 2 \bar{P} - P_i \). Fluid inertia surges out of non-target columns and fills column \( x^* \).
+* **Oracle Pulse**: A localized suction valve momentarily opens at bottom tap \( x ^ { \ast } \), dropping pressure to \( - h_0 \).
+* **Equalization Manifold**: A high-speed hydraulic valve opens across the manifold, forcing pressure to redistribute according to \( 2 \bar{P} - P_i \). Fluid inertia surges out of non-target columns and fills column \( x ^ { \ast } \).
 
 === Formal Postulates and Theorems of Digital Search Analysis
 
@@ -2280,15 +2280,15 @@ Digital Grover search is similar in structure to a hydraulic manifold array:
 [THEOREM]
 .Theorem: Digital Grover Iteration as Householder Reflection Power Iteration in Real 2D Subspaces
 ====
-In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dots , N - 1 \} \), the Grover iteration operator \( G = R_\text{mean} R_\text{oracle} \) composed of real Householder reflections \( R_\text{oracle} = I_N - 2 e _ { x^* } e _ { x^* } ^ T \) and \( R_\text{mean} = 2 v_0 v_0 ^ T - I_N \) leaves the 2D real subspace \( V_2 = \text{span} \{ e _ { x^* } , v_0 \} \) strictly invariant. Within \( V_2 \), operator \( G \) is an exact 2D real rotation matrix with step angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \), achieving maximum alignment with target vector \( e _ { x^* } \) in exactly \( k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt{N} \right\rfloor \) iterations without complex numbers or non-deterministic collapse.
+In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dots , N - 1 \} \), the Grover iteration operator \( G = R_\text{mean} R_\text{oracle} \) composed of real Householder reflections \( R_\text{oracle} = I_N - 2 e _ { x ^ { \ast } } e _ { x ^ { \ast } } ^ T \) and \( R_\text{mean} = 2 v_0 v_0 ^ T - I_N \) leaves the 2D real subspace \( V_2 = \text{span} \{ e _ { x ^ { \ast } } , v_0 \} \) strictly invariant. Within \( V_2 \), operator \( G \) is an exact 2D real rotation matrix with step angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \), achieving maximum alignment with target vector \( e _ { x ^ { \ast } } \) in exactly \( k_\text{opt} = \left\lfloor \frac { \pi } { 4 } \sqrt{N} \right\rfloor \) iterations without complex numbers or non-deterministic collapse.
 
 *Proof:*
 
 1. **Orthogonality of Operators**: By Theorem `xref:theorem-householder-reflection-properties[Properties of Real Householder Reflections]`, matrices \( R_\text{oracle} \) and \( R_\text{mean} \) are symmetric (\( R^T = R \)) and orthogonal (\( R^T R = I \)). Their composition \( G = R_\text{mean} R_\text{oracle} \) is a real orthogonal matrix (\( G^T G = I \)).
 
-2. **Subspace Invariance**: For any vector \( u \in V_2 = \text{span} \{ e _ { x^* } , v_0 \} \), \( R_\text{oracle} u \in V_2 \) because \( R_\text{oracle} \) acts only along \( e _ { x^* } \). Similarly, \( R_\text{mean} u \in V_2 \) because \( R_\text{mean} \) acts only along \( v_0 \). Thus, \( V_2 \) is strictly invariant under \( G \).
+2. **Subspace Invariance**: For any vector \( u \in V_2 = \text{span} \{ e _ { x ^ { \ast } } , v_0 \} \), \( R_\text{oracle} u \in V_2 \) because \( R_\text{oracle} \) acts only along \( e _ { x ^ { \ast } } \). Similarly, \( R_\text{mean} u \in V_2 \) because \( R_\text{mean} \) acts only along \( v_0 \). Thus, \( V_2 \) is strictly invariant under \( G \).
 
-3. **2D Rotation Matrix**: In orthonormal basis \( \{ e _ { x^* } , w \} \), matrix multiplication verifies:
+3. **2D Rotation Matrix**: In orthonormal basis \( \{ e _ { x ^ { \ast } } , w \} \), matrix multiplication verifies:
    \[ G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
 
 4. **Step Convergence**: \( k \)-fold application gives angle \( (2k+1)\theta/2 \). Setting \( (2k+1)\theta/2 = \pi/2 \) yields \( k = \frac{\pi}{2\theta} - \frac{1}{2} \approx \frac{\pi}{4} \sqrt{N} \). Integer truncation gives \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N} \rfloor \). \( \square \)
@@ -2298,11 +2298,11 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 [THEOREM]
 .Theorem: Equivalence of Digital Grover Search to Localized Givens Rotations and Isometric Subspace Transformations
 ====
-In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 1 \} \), the Grover search iteration operator \( G = R_\text{mean} R_\text{oracle} \) restricted to the 2D invariant subspace \( V_2 = \text{span} \{ e _ { x^* } , v_0 \} \) is mathematically equivalent to an exact 2D planar Givens rotation \( G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \) with rotation angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). Furthermore, \( G \) admits an exact factorized decomposition into a sequence of localized 2D Givens rotations \( \prod_{k=1}^M G ( i_k , j_k , \theta_k ) \) operating on disjoint coordinate pairs, preserving vector norm \( \| v \|_2 = 1 \) strictly across arbitrary discrete step counts.
+In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 1 \} \), the Grover search iteration operator \( G = R_\text{mean} R_\text{oracle} \) restricted to the 2D invariant subspace \( V_2 = \text{span} \{ e _ { x ^ { \ast } } , v_0 \} \) is mathematically equivalent to an exact 2D planar Givens rotation \( G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \) with rotation angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). Furthermore, \( G \) admits an exact factorized decomposition into a sequence of localized 2D Givens rotations \( \prod_{k=1}^M G ( i_k , j_k , \theta_k ) \) operating on disjoint coordinate pairs, preserving vector norm \( \| v \|_2 = 1 \) strictly across arbitrary discrete step counts.
 
 *Proof:*
 
-1. **Planar Equivalence**: In the orthonormal basis \( \{ e _ { x^* } , w \} \) for \( V_2 \), matrix multiplication of Householder reflections \( R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} \) and \( R_\text{mean} | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \) yields:
+1. **Planar Equivalence**: In the orthonormal basis \( \{ e _ { x ^ { \ast } } , w \} \) for \( V_2 \), matrix multiplication of Householder reflections \( R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} \) and \( R_\text{mean} | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \) yields:
    \[ G | _ { V_2 } = R_\text{mean} | _ { V_2 } R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
    This is the standard 2D Givens rotation matrix in real Euclidean space \( \mathbb { R } ^ 2 \).
 
@@ -2313,13 +2313,13 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
 
 === Worked Example Problems in Digital Search Analysis
 
-**Problem Statement 1:** Perform a complete step-by-step numerical calculation of the digital Grover search algorithm for a 4-element database (\( N = 4 \)) with target index \( x^* = 2 \). Show explicit \( 4 \times 4 \) Householder matrices \( R_\text{oracle} \) and \( R_\text{mean} \), compute initial state vector \( v_0 = \begin {pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end {pmatrix} ^ T \), and demonstrate 100% exact single-step convergence to target basis vector \( e_2 = \begin {pmatrix} 0 & 0 & 1 & 0 \end {pmatrix} ^ T \).
+**Problem Statement 1:** Perform a complete step-by-step numerical calculation of the digital Grover search algorithm for a 4-element database (\( N = 4 \)) with target index \( x ^ { \ast } = 2 \). Show explicit \( 4 \times 4 \) Householder matrices \( R_\text{oracle} \) and \( R_\text{mean} \), compute initial state vector \( v_0 = \begin {pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end {pmatrix} ^ T \), and demonstrate 100% exact single-step convergence to target basis vector \( e_2 = \begin {pmatrix} 0 & 0 & 1 & 0 \end {pmatrix} ^ T \).
 
 **Solution:**
 
 . **Explicit Matrix Representations for \( N = 4 \)**:
      +
-    Target index is \( x^* = 2 \). Unit vectors are \( e_2 = \begin{pmatrix} 0 & 0 & 1 & 0 \end{pmatrix}^T \) and \( v_0 = \begin{pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end{pmatrix}^T \). +
+    Target index is \( x ^ { \ast } = 2 \). Unit vectors are \( e_2 = \begin{pmatrix} 0 & 0 & 1 & 0 \end{pmatrix}^T \) and \( v_0 = \begin{pmatrix} 1/2 & 1/2 & 1/2 & 1/2 \end{pmatrix}^T \). +
      +
     Oracle reflection matrix \( R_\text{oracle} = I_4 - 2 e_2 e_2^T \):
    \[ R_\text{oracle} = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \] +
@@ -2346,7 +2346,7 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
    \[ v_1 = \begin {pmatrix} 0 \\ 0 \\ 1 \\ 0 \end {pmatrix} = e_2 \]
    This proves 100% exact single-step numerical convergence (\( k = 1 \)) to target basis vector \( e_2 \)!
 
-**Problem Statement 2:** For a 16-element database (\( N = 16 \)) with target index \( x^* = 7 \), calculate optimal iteration count \( k_\text{opt} \) and compute complete state vector entries, mean values, and target probability concentrations for iterations \( k = 0, 1, 2, 3 \).
+**Problem Statement 2:** For a 16-element database (\( N = 16 \)) with target index \( x ^ { \ast } = 7 \), calculate optimal iteration count \( k_\text{opt} \) and compute complete state vector entries, mean values, and target probability concentrations for iterations \( k = 0, 1, 2, 3 \).
 
 **Solution:**
 
@@ -2387,12 +2387,12 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
        +
    Notice that exact trigonometric angle calculation gives \( \sin(7 \theta / 2) = \sin(7 \times 0.25268) = \sin(1.76876 \text{ rad}) \approx 0.98046875 \). Target concentration surges to 96.13% in 3 numerical iterations!
 
-**Problem Statement 3:** For a 4-element database (\( N = 4 \)) with target index \( x^* = 2 \), construct the exact 2D Givens rotation matrix \( G | _ { V_2 } \) in the invariant subspace basis \( \{ e_2 , w \} \). Apply \( G | _ { V_2 } \) directly to initial state vector \( v_0 \) and demonstrate that 2D Givens rotation achieves exact 100% target convergence in 1 step, matching the \( 4 \times 4 \) Householder result.
+**Problem Statement 3:** For a 4-element database (\( N = 4 \)) with target index \( x ^ { \ast } = 2 \), construct the exact 2D Givens rotation matrix \( G | _ { V_2 } \) in the invariant subspace basis \( \{ e_2 , w \} \). Apply \( G | _ { V_2 } \) directly to initial state vector \( v_0 \) and demonstrate that 2D Givens rotation achieves exact 100% target convergence in 1 step, matching the \( 4 \times 4 \) Householder result.
 
 **Solution:**
 
 . **Angle Parameter and Basis Construction**:
-   For \( N = 4 \), target index \( x^* = 2 \). Orthonormal basis vectors for 2D subspace \( V_2 \) are target unit basis vector \( e_2 = \begin {pmatrix} 0 & 0 & 1 & 0 \end {pmatrix} ^ T \) and normalized non-target vector \( w = \frac{1}{\sqrt{3}} \begin {pmatrix} 1 & 1 & 0 & 1 \end {pmatrix} ^ T \).
+   For \( N = 4 \), target index \( x ^ { \ast } = 2 \). Orthonormal basis vectors for 2D subspace \( V_2 \) are target unit basis vector \( e_2 = \begin {pmatrix} 0 & 0 & 1 & 0 \end {pmatrix} ^ T \) and normalized non-target vector \( w = \frac{1}{\sqrt{3}} \begin {pmatrix} 1 & 1 & 0 & 1 \end {pmatrix} ^ T \).
    Angle parameter satisfies \( \sin ( \theta / 2 ) = 1 / \sqrt{4} = 1 / 2 \implies \theta / 2 = \pi / 6 = 30^\circ \implies \theta = 60^\circ = \pi / 3 \text{ rad} \).
 
 . **Constructing the 2D Givens Rotation Matrix**:
@@ -2441,12 +2441,12 @@ Consider the elementary elements of Dirac notation:
 1. A “ket” vector \( | \psi \rangle \) is converted directly into a standard column vector \( \mathbf{v} \in \mathbb{C}^N \):
    \[ \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_N \end{pmatrix} \]
 2. A “bra” vector \( \langle \phi | \) is converted directly into a conjugate-transpose row vector \( \mathbf{u}^\dagger \in \mathbb{C}^{1 \times N} \):
-   \[ \mathbf{u}^\dagger = \begin{pmatrix} u_1^* & u_2^* & \dots & u_N^* \end{pmatrix} \]
+   \[ \mathbf{u}^\dagger = \begin{pmatrix} u_1 ^ { \ast } & u_2 ^ { \ast } & \dots & u_N ^ { \ast } \end{pmatrix} \]
 3. A linear operator or “observable” \( A \) is converted directly into a standard square matrix \( \mathbf{A} \in \mathbb{C}^{N \times N} \):
    \[ \mathbf{A} = \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1N} \\ a_{21} & a_{22} & \dots & a_{2N} \\ \vdots & \vdots & \ddots & \vdots \\ a_{N1} & a_{N2} & \dots & a_{NN} \end{pmatrix} \]
 
 Now write the full Dirac notation for a quadratic form or expectation value, \( \langle \phi | A | \psi \rangle \). Translating this expression into ordinary matrix algebra yields a row matrix times a square matrix times a column matrix:
-\[ \langle \phi | A | \psi \rangle \implies \mathbf{u}^\dagger \mathbf{A} \mathbf{v} = \begin{pmatrix} u_1^* & u_2^* & \dots & u_N^* \end{pmatrix} \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1N} \\ a_{21} & a_{22} & \dots & a_{2N} \\ \vdots & \vdots & \ddots & \vdots \\ a_{N1} & a_{N2} & \dots & a_{NN} \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_N \end{pmatrix} \]
+\[ \langle \phi | A | \psi \rangle \implies \mathbf{u}^\dagger \mathbf{A} \mathbf{v} = \begin{pmatrix} u_1 ^ { \ast } & u_2 ^ { \ast } & \dots & u_N ^ { \ast } \end{pmatrix} \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1N} \\ a_{21} & a_{22} & \dots & a_{2N} \\ \vdots & \vdots & \ddots & \vdots \\ a_{N1} & a_{N2} & \dots & a_{NN} \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_N \end{pmatrix} \]
 
 Making identical transformations for matrix entries—replacing the physicists’ strange, multi-bracketed matrix elements \( \langle i | A | j \rangle \) with standard indexed matrix coefficients \( a_{ij} \), and basis kets \( | j \rangle \) with standard Cartesian basis vectors \( \mathbf{e}_j \)—entirely strips away the mystical aura.
 
@@ -2513,7 +2513,7 @@ Any student, hobbyist, or electronics researcher can construct a fully functiona
    The 16 state vector components \( v_0, v_1, \dots, v_{15} \) correspond to 16 DC voltage nodes operating between \( -2.5 \text{ V} \) and \( +2.5 \text{ V} \) (centered on a virtual ground of \( 2.5 \text{ V} \) for single-supply 5V operation, or true ground for \( \pm 5 \text{ V} \) dual supplies).
 
 2. **Oracle Sign Inversion Module (\( R_\text{oracle} \))**:
-   Target selection is performed by routing the selected channel \( x^* \) through a 74HC4051 multiplexer into an inverting op-amp buffer with gain \( A_v = -R_f / R_{in} = -10.0 \text{ k}\Omega / 10.0 \text{ k}\Omega = -1.0 \). Non-target channels pass through unity-gain non-inverting buffers (\( A_v = +1.0 \)).
+   Target selection is performed by routing the selected channel \( x ^ { \ast } \) through a 74HC4051 multiplexer into an inverting op-amp buffer with gain \( A_v = -R_f / R_{in} = -10.0 \text{ k}\Omega / 10.0 \text{ k}\Omega = -1.0 \). Non-target channels pass through unity-gain non-inverting buffers (\( A_v = +1.0 \)).
 
 3. **Mean Diffusion Manifold Module (\( R_\text{mean} \))**:
    A quad op-amp summing junction computes the scalar mean voltage \( \bar{v} = \frac{1}{16} \sum_{i=0}^{15} v_i \) by feeding all 16 channel voltages through equal 10 k\(\Omega\) resistors into a virtual-ground summing node with feedback resistor \( R_f = 10 \text{ k}\Omega / 16 = 625 \ \Omega \). The output \( \bar{v} \) is buffered and fed into 16 differential subtraction nodes evaluating \( v'_i = 2 \bar{v} - v_i \).
@@ -2661,7 +2661,7 @@ For a DIY coupled-oscillator state-vector processor with \( N = 2^n \) state cha
    \[ v_\text{out} = H_4 v' = \begin{pmatrix} 0.000 \\ 2.500 \\ 0.000 \\ 0.000 \end{pmatrix} \ \text{V} \]
    Query decision channel 1 reads \( v_\text{out}(1) = 2.500 \ \text{V} \), proving function is balanced!
 
-**Problem Statement 2:** For a 3-qubit (8-channel, \( N = 8 \)) Grover search executed on a DIY coupled-oscillator circuit with target index \( x^* = 5 \) and reference voltage \( V_0 = 1.000 \ \text{V} \), calculate channel voltages, mean summing amplifier node voltages, and LED output power levels for iterations \( k = 0, 1, 2 \).
+**Problem Statement 2:** For a 3-qubit (8-channel, \( N = 8 \)) Grover search executed on a DIY coupled-oscillator circuit with target index \( x ^ { \ast } = 5 \) and reference voltage \( V_0 = 1.000 \ \text{V} \), calculate channel voltages, mean summing amplifier node voltages, and LED output power levels for iterations \( k = 0, 1, 2 \).
 
 **Solution:**
 
@@ -2701,13 +2701,13 @@ Under Jaynesian probability theory and Maximum Entropy (MaxEnt), the squared coo
 === Summary of Grover Search and Generalized Numerical Variants
 
 ==== Summary of Classical Grover Iteration
-As established in earlier chapters, Grover’s unstructured search algorithm is an iterative numerical power method operating in an invariant two-dimensional subspace \( V_2 = \text{span}( \mathbf{e}_{x^*}, \mathbf{v}_0 ) \) (written in Dirac Newspeak notation as \( \text{span}( | x^* \rangle , | s \rangle ) \)), where Dirac ket \( | x^* \rangle \) denotes the target standard basis coordinate vector \( \mathbf{e}_{x^*} \in \mathbb{R}^N \) and ket \( | s \rangle \) denotes the initial uniform state vector \( \mathbf{v}_0 \). The algorithm initializes a uniform state-vector:
+As established in earlier chapters, Grover’s unstructured search algorithm is an iterative numerical power method operating in an invariant two-dimensional subspace \( V_2 = \text{span}( \mathbf{e}_{x ^ { \ast } }, \mathbf{v}_0 ) \) (written in Dirac Newspeak notation as \( \text{span}( | x ^ { \ast } \rangle , | s \rangle ) \)), where Dirac ket \( | x ^ { \ast } \rangle \) denotes the target standard basis coordinate vector \( \mathbf{e}_{x ^ { \ast } } \in \mathbb{R}^N \) and ket \( | s \rangle \) denotes the initial uniform state vector \( \mathbf{v}_0 \). The algorithm initializes a uniform state-vector:
 \[ \mathbf { v } _ 0 = \frac { 1 } { \sqrt { N } } \sum _ { i = 0 } ^ { N - 1 } \mathbf { e } _ i \]
 and applies repeated composite reflection operators \( G = R _ \text{mean} R _ \text{oracle} \):
 
-1. **Target Oracle Reflection**: A Householder reflection across the hyperplane orthogonal to the target index vector \( \mathbf { e } _ { x^* } \):
-\[ R _ \text{oracle} = I - 2 \mathbf { e } _ { x^* } \mathbf { e } _ { x^* } ^ T \]
-which negates the target coordinate amplitude \( v _ { x^* } \mapsto - v _ { x^* } \) while leaving all other coordinates unaltered.
+1. **Target Oracle Reflection**: A Householder reflection across the hyperplane orthogonal to the target index vector \( \mathbf { e } _ { x ^ { \ast } } \):
+\[ R _ \text{oracle} = I - 2 \mathbf { e } _ { x ^ { \ast } } \mathbf { e } _ { x ^ { \ast } } ^ T \]
+which negates the target coordinate amplitude \( v _ { x ^ { \ast } } \mapsto - v _ { x ^ { \ast } } \) while leaving all other coordinates unaltered.
 
 2. **Inversion About the Mean**: A Householder reflection across the initial uniform state-vector \( \mathbf { v } _ 0 \):
 \[ R _ \text{mean} = 2 \mathbf { v } _ 0 \mathbf { v } _ 0 ^ T - I \]
@@ -2736,7 +2736,7 @@ While standard textbook presentations formulate Grover’s algorithm using dense
 To execute state-vector search on digital hardware with maximum throughput, we design a dedicated **Tree-Pipelined SIMD Systolic Array**:
 
 * **Processing Architecture**: An array of \( N \) elementary integer or fixed-point arithmetic processing elements (PEs), each storing a single coordinate amplitude \( v_i \) in local registers.
-* **Parallel Oracle Step**: In a single clock cycle, the target index \( x^* \) is decoded across the PE array, flipping the sign bit of the target register (\( v_{x^*} \leftarrow - v_{x^*} \)) with zero communication overhead.
+* **Parallel Oracle Step**: In a single clock cycle, the target index \( x ^ { \ast } \) is decoded across the PE array, flipping the sign bit of the target register (\( v_{x ^ { \ast } } \leftarrow - v_{x ^ { \ast } } \)) with zero communication overhead.
 * **Pipelined Binary Adder Tree for Global Inversion**: To perform inversion about the mean without bus contention, the PEs feed a binary adder tree of depth \( \log_2 N \). The tree computes the sum \( S = \sum_{i=0}^{N-1} v_i \) in \( \log_2 N \) pipelined clock cycles. A single bit-shift calculates the scaled mean \( 2 \bar{v} = 2 S / N \), which is broadcast back along a balanced binary distribution tree. Each PE then computes \( v_i \leftarrow 2 \bar{v} - v_i \) in parallel during a single clock cycle.
 * **Linear Systolic Mesh Alternative**: For ultra-large grids where global distribution wires introduce RC propagation delays, the PEs are arranged in a 1D or 2D mesh communicating strictly via nearest-neighbor contact. Pairwise Givens rotations rotate adjacent channels concurrently in an odd-even transposition pattern, achieving continuous pipelined throughput with zero global broadcast lines.
 
@@ -2996,7 +2996,7 @@ Let \( N = 15 \) be the composite integer to factor. Select base \( a = 7 \).
 . **Discrete Fourier Spectral Peaks on \( M = 16 \)**:
    The periodic state-vector for value \( f ( x ) = 1 \) has non-zero entries at indices \( x \in \{ 0 , 4 , 8 , 12 \} \):
    \[ \mathbf { v } = \frac { 1 } { 2 }
-   \begin{pmatrix} 1   0   0   0   1   0   0   0   1   0   0   0   1   0   0   0 \end{pmatrix} ^ T \]
+ \begin{pmatrix} 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 \end{pmatrix} ^ T \]
    Applying the 16-point DFT \( \mathbf { F } _ { 16 } \mathbf { v } \):
    The spectral peaks occur at integer multiples of \( \frac { M } { r } = \frac { 16 } { 4 } = 4 \):
    \[ k \in \{ 0 , 4 , 8 , 12 \} \]

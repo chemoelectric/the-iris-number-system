@@ -418,15 +418,15 @@ Just as a physical vernier caliper uses an auxiliary sliding scale aligned with 
 [DEFINITION]
 .Definition: Multiscale Vernier Measurement Number (m-res Number)
 ====
-A multiscale resolution number (or **m-res number**) \( x ^ { \ast } \in \mathbb { R } ^ * \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier aperture grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { > 0 } \): \[ x ^ { \ast } = \frac { k } { \omega } \equiv \text { VernierApertureFlux } _ { \omega } \left ( k \cdot \delta _ \omega \right ) \quad \text { where } \quad \delta _ \omega = \frac { \bullet } { \omega } \]
+A multiscale resolution number (or **m-res number**) \( x ^ { \ast } \in \mathbb { R } ^ { \ast } \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier aperture grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { > 0 } \): \[ x ^ { \ast } = \frac { k } { \omega } \equiv \text { VernierApertureFlux } _ { \omega } \left ( k \cdot \delta _ \omega \right ) \quad \text { where } \quad \delta _ \omega = \frac { \bullet } { \omega } \]
 
 
 
-. **Finite-Duration Observation Step**: A multiscale resolution quantity \( \epsilon ^ * \in \mathbb { R } ^ * \) represents an observation or measurement process conducted over a finite temporal duration \( \tau _ { \text { obs } } \), whose measured flux magnitude is strictly smaller than any standard positive rational step: \[ | \epsilon ^ * | < \frac { 1 } { N } , \quad \forall N \in \mathbb { Z } _ { > 0 } \]
+. **Finite-Duration Observation Step**: A multiscale resolution quantity \( \epsilon ^ { \ast } \in \mathbb { R } ^ { \ast } \) represents an observation or measurement process conducted over a finite temporal duration \( \tau _ { \text { obs } } \), whose measured flux magnitude is strictly smaller than any standard positive rational step: \[ | \epsilon ^ { \ast } | < \frac { 1 } { N } , \quad \forall N \in \mathbb { Z } _ { > 0 } \]
 
 An elementary finite-duration step is executed by a physical measurement process taking a finite time duration to perform across a fine vernier sub-tick step \( \delta _ \omega = \frac { \bullet } { \omega } \).
 
-. **Extended Temporal Measurement Scale**: A multiscale resolution quantity \( \Omega ^ * \in \mathbb { R } ^ * \) represents a cumulative measurement process conducted over an extended series of finite time observation steps whose step count exceeds any standard integer bound: \[ | \Omega ^ * | > M , \quad \forall M \in \mathbb { Z } _ { > 0 } \]
+. **Extended Temporal Measurement Scale**: A multiscale resolution quantity \( \Omega ^ { \ast } \in \mathbb { R } ^ { \ast } \) represents a cumulative measurement process conducted over an extended series of finite time observation steps whose step count exceeds any standard integer bound: \[ | \Omega ^ { \ast } | > M , \quad \forall M \in \mathbb { Z } _ { > 0 } \]
 
 ====
 
@@ -438,13 +438,13 @@ An elementary finite-duration step is executed by a physical measurement process
 
 === Vernier Scale Arithmetic and Main Scale Projection
 
-Arithmetic operations on multiscale resolution numbers \( \mathbb { R } ^ * \) operate under MSRA as composite measurement operations on aligned vernier scales, preserving exact algebraic ring and field properties.
+Arithmetic operations on multiscale resolution numbers \( \mathbb { R } ^ { \ast } \) operate under MSRA as composite measurement operations on aligned vernier scales, preserving exact algebraic ring and field properties.
 
 === Main Scale Projection (Downwards Arrow Operator \( \downarrow ) \))
-Under Multiscale Resolution Analysis (MSRA), every finite multiscale vernier reading \( x ^ { \ast } \in \mathbb { R } ^ * \) decomposes uniquely into a main scale real aperture reading \( r \in \mathbb { R } \) plus a finite-duration observation residual \( \epsilon ^ * \) resulting from a measurement process conducted over a finite temporal duration: \[ x ^ { \ast } = r + \epsilon ^ * , \quad r \in \mathbb { R } , \quad | \epsilon ^ * | < \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { > 0 } ) \]
+Under Multiscale Resolution Analysis (MSRA), every finite multiscale vernier reading \( x ^ { \ast } \in \mathbb { R } ^ { \ast } \) decomposes uniquely into a main scale real aperture reading \( r \in \mathbb { R } \) plus a finite-duration observation residual \( \epsilon ^ { \ast } \) resulting from a measurement process conducted over a finite temporal duration: \[ x ^ { \ast } = r + \epsilon ^ { \ast } , \quad r \in \mathbb { R } , \quad | \epsilon ^ { \ast } | < \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { > 0 } ) \]
 
 
-The **Main Scale Projection** operator \( ( \downarrow ) : \text { Fin } ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) maps the fine vernier reading back to its unique nearest main scale real flux value: \[ ( \downarrow ) ( x ^ { \ast } ) = ( \downarrow ) ( r + \epsilon ^ * ) = r \]
+The **Main Scale Projection** operator \( ( \downarrow ) : \text { Fin } ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) maps the fine vernier reading back to its unique nearest main scale real flux value: \[ ( \downarrow ) ( x ^ { \ast } ) = ( \downarrow ) ( r + \epsilon ^ { \ast } ) = r \]
 
 
 [#theorem-vernier-flux-conservation]

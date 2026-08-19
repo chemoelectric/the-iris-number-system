@@ -253,9 +253,9 @@ The Main Scale Projection operator \( ( \downarrow ) : Cl ( 4 , 1 , 1 ) \to \mat
 
 *Proof:*
 
-. **Additive Invariance**: For any \( x ^ \ast = x \mathbf { 1 } _ { Cl } + \epsilon _ x \) and \( y ^ \ast = y \mathbf { 1 } _ { Cl } + \epsilon _ y \), \( ( \downarrow ) ( x ^ \ast + y ^ \ast ) = ( \downarrow ) ( ( x + y ) \mathbf { 1 } _ { Cl } + \epsilon _ x + \epsilon _ y ) = x + y = ( \downarrow ) ( x ^ \ast ) + ( \downarrow ) ( y ^ \ast ) \).
+. **Additive Invariance**: For any \( x ^ { \ast } = x \mathbf { 1 } _ { Cl } + \epsilon _ x \) and \( y ^ { \ast } = y \mathbf { 1 } _ { Cl } + \epsilon _ y \), \( ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = ( \downarrow ) ( ( x + y ) \mathbf { 1 } _ { Cl } + \epsilon _ x + \epsilon _ y ) = x + y = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) \).
 
-. **Multiplicative Invariance**: \( ( \downarrow ) ( x ^ \ast \cdot y ^ \ast ) = ( \downarrow ) ( x y \mathbf { 1 } _ { Cl } + x \epsilon _ y + y \epsilon _ x + \epsilon _ x \epsilon _ y ) = x y = ( \downarrow ) ( x ^ \ast ) \cdot ( \downarrow ) ( y ^ \ast ) \).
+. **Multiplicative Invariance**: \( ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = ( \downarrow ) ( x y \mathbf { 1 } _ { Cl } + x \epsilon _ y + y \epsilon _ x + \epsilon _ x \epsilon _ y ) = x y = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \).
 
 . **Identity Mapping**: \( ( \downarrow ) ( \mathbf { 1 } _ { Cl } ) = 1 \). Hence \( ( \downarrow ) \) is a ring homomorphism. \( \square \)
 ====
@@ -277,7 +277,7 @@ terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \se
 2. **Exact Real Root Isolation**: For any interval \( [ a , b ] \) on grid \( \mathcal { G } _ N \), let \( V ( c ) \) denote the number of sign variations in the sequence of values \( ( S _ 0 ( c ) , S _ 1 ( c ) , \dots , S _ r ( c ) ) \). The exact number of distinct real roots of \( P ( x ) \) in \( ( a , b ] \) is given strictly by the integer difference:
 \[ N _ { \text { roots } } ( a , b ) = V ( a ) - V ( b ) \]
 
-3. **Vernier Root Refinement and Factorization**: If \( N _ { \text { roots } } ( a , b ) = 1 \), the unique root \( x ^ \ast \in ( a , b ] \) is isolated and refined to aperture precision \( \Delta x = ( b - a ) / 2 ^ k \le 2 ^ { - N } \) via binary interval bisection or quadratic \( s \)-power clipping in at most \( k \le \lceil N + \log _ 2 ( b - a ) \rceil \) steps, factoring \( P ( x ) = ( x - x ^ \ast ) Q ( x ) + \mathbf { 0 } _ { Cl } \) exactly on extended grid \( \mathcal { G } _ { N ' } \).
+3. **Vernier Root Refinement and Factorization**: If \( N _ { \text { roots } } ( a , b ) = 1 \), the unique root \( x ^ { \ast } \in ( a , b ] \) is isolated and refined to aperture precision \( \Delta x = ( b - a ) / 2 ^ k \le 2 ^ { - N } \) via binary interval bisection or quadratic \( s \)-power clipping in at most \( k \le \lceil N + \log _ 2 ( b - a ) \rceil \) steps, factoring \( P ( x ) = ( x - x ^ { \ast } ) Q ( x ) + \mathbf { 0 } _ { Cl } \) exactly on extended grid \( \mathcal { G } _ { N ' } \).
 
 *Proof:*
 
@@ -285,7 +285,7 @@ terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \se
 
 . **Sign Variation Continuity and Crossing Invariance**: At any non-root point \( x \in ( a , b ) \), sign variation \( V ( x ) \) is locally constant. At an intermediate zero \( x_0 \) of \( S_k(x) \) (\( 1 \le k < r \)), neighbor signs satisfy \( S _ { k - 1 } ( x_0 ) = - S _ { k + 1 } ( x_0 ) \neq 0 \), leaving the sign variation count \( V ( x ) \) invariant as \( x \) passes through \( x_0 \).
 
-. **Boundary Sign Drop**: At a zero \( x ^ \ast \) of \( P ( x ) = S_0(x) \), \( S_1(x^\ast) = P'(x^\ast) \). If \( P'(x^\ast) > 0 \), \( S_0(x^\ast - \epsilon) < 0 \) and \( S_1(x^\ast - \epsilon) > 0 \) (one sign change), while \( S_0(x^\ast + \epsilon) > 0 \) and \( S_1(x^\ast + \epsilon) > 0 \) (zero sign changes). Hence \( V ( x ) \) decreases by exactly 1 as \( x \) crosses \( x ^ \ast \) from left to right, proving \( N _ { \text { roots } } ( a , b ) = V ( a ) - V ( b ) \). \( \square \)
+. **Boundary Sign Drop**: At a zero \( x ^ { \ast } \) of \( P ( x ) = S_0(x) \), \( S_1(x ^ { \ast }) = P'(x ^ { \ast }) \). If \( P'(x ^ { \ast }) > 0 \), \( S_0(x ^ { \ast } - \epsilon) < 0 \) and \( S_1(x ^ { \ast } - \epsilon) > 0 \) (one sign change), while \( S_0(x ^ { \ast } + \epsilon) > 0 \) and \( S_1(x ^ { \ast } + \epsilon) > 0 \) (zero sign changes). Hence \( V ( x ) \) decreases by exactly 1 as \( x \) crosses \( x ^ { \ast } \) from left to right, proving \( N _ { \text { roots } } ( a , b ) = V ( a ) - V ( b ) \). \( \square \)
 ====
 
 [#example-font-contour-real-root-finding]
@@ -296,7 +296,7 @@ terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \se
 
 1. Formulate the ray intersection polynomial \( P ( t ) = y ( t ) - 200 = 0 \) on parameter domain \( t \in [ 0 , 1 ] \).
 2. Construct the Sturm-Vernier sequence to isolate all real roots in \( ( 0 , 1 ] \).
-3. Perform Vernier bisection refinement to locate the exact intersection parameter \( t ^ \ast \) within tolerance \( \epsilon = 1 / 1024 \).
+3. Perform Vernier bisection refinement to locate the exact intersection parameter \( t ^ { \ast } \) within tolerance \( \epsilon = 1 / 1024 \).
 
 *Solution*:
 
@@ -328,8 +328,8 @@ terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \se
 4. **Vernier Bisection Refinement**:
    - Midpoint \( t = 1 / 2 = 0.5 \):
      - \( P ( 1 / 2 ) = 6 ( 1 / 8 ) - 9 ( 1 / 4 ) + 5 ( 1 / 2 ) - 1 = 3 / 4 - 9 / 4 + 10 / 4 - 4 / 4 = 0 \).
-   - The exact root is hit immediately at \( t ^ \ast = 1 / 2 = 0.5 \).
-   - Evaluating contour coordinates at \( t ^ \ast = 0.5 \): \( y ( 0.5 ) = 200 \). The horizontal ray intersects the font contour exactly at parameter \( t ^ \ast = 0.5 \), demonstrating zero-error root isolation and refinement.
+   - The exact root is hit immediately at \( t ^ { \ast } = 1 / 2 = 0.5 \).
+   - Evaluating contour coordinates at \( t ^ { \ast } = 0.5 \): \( y ( 0.5 ) = 200 \). The horizontal ray intersects the font contour exactly at parameter \( t ^ { \ast } = 0.5 \), demonstrating zero-error root isolation and refinement.
 ====
 
 === Recursive Bernstein Derivative-Crossing Real Root Isolation and ITP Refinement Theorem
@@ -347,7 +347,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m b _ k B _ { k , m } ( x ) \) be a polynomi
 2. **Monotonic Sub-Interval Partitioning**: Let \( \{ r _ 1 , r _ 2 , \dots , r _ p \} \) be the ordered set of distinct real roots of \( P ' ( x ) \) in \( ( a , b ) \), with endpoints \( r _ 0 = a \) and \( r _ { p + 1 } = b \). By Rolle's Theorem within the discrete rational framework, the original polynomial \( P ( x ) \) is strictly monotonic on each sub-interval \( I _ i = [ r _ i , r _ { i + 1 } ] \) (\( 0 \le i \le p \)).
 
 3. **Sub-Interval Root Isolation and Multiplicity-Free Crossing**: For each sub-interval \( I _ i = [ r _ i , r _ { i + 1 } ] \):
-   - If \( P ( r _ i ) \cdot P ( r _ { i + 1 } ) < 0 \), there exists **exactly one** simple real root \( x ^ \ast \in ( r _ i , r _ { i + 1 } ) \).
+   - If \( P ( r _ i ) \cdot P ( r _ { i + 1 } ) < 0 \), there exists **exactly one** simple real root \( x ^ { \ast } \in ( r _ i , r _ { i + 1 } ) \).
    - If \( P ( r _ i ) = 0 \), \( r _ i \) is identified as a critical root (local extremum touching zero).
    - If \( P ( r _ i ) \cdot P ( r _ { i + 1 } ) > 0 \), \( P ( x ) \) contains no real roots on \( ( r _ i , r _ { i + 1 } ) \).
 
@@ -416,10 +416,10 @@ To guarantee numerical stability and exact topological correctness when implemen
    - Sign changes across sub-intervals:
      - On \( I _ 0 = [ 0 , 0.146447 ] \): \( P ( 0 ) > 0 \) and \( P ( r _ 1 ) > 0 \). No sign change, no roots in \( ( 0 , r _ 1 ) \).
      - On \( I _ 1 = [ 0.146447 , 0.853553 ] \): \( P ( r _ 1 ) \approx 1.707107 > 0 \) and \( P ( r _ 2 ) \approx 0.292893 > 0 \). Both values are positive; no interior sign change on \( I _ 1 \).
-     - On \( I _ 2 = [ 0.853553 , 1 ] \): \( P ( r _ 2 ) > 0 \) and \( P ( 1 ) = 0 \). Boundary root identified exactly at \( t ^ \ast = 1 \).
+     - On \( I _ 2 = [ 0.853553 , 1 ] \): \( P ( r _ 2 ) > 0 \) and \( P ( 1 ) = 0 \). Boundary root identified exactly at \( t ^ { \ast } = 1 \).
 
 4. **Refinement and Conclusion**:
-   - The recursive derivative method isolates the critical points \( r _ 1 , r _ 2 \) and proves that \( P ( t ) > 0 \) on all of \( [ 0 , 1 ) \), with its sole root in \( [ 0 , 1 ] \) located at the endpoint \( t ^ \ast = 1 \), successfully avoiding false root triggers on all interior monotonic branches.
+   - The recursive derivative method isolates the critical points \( r _ 1 , r _ 2 \) and proves that \( P ( t ) > 0 \) on all of \( [ 0 , 1 ) \), with its sole root in \( [ 0 , 1 ] \) located at the endpoint \( t ^ { \ast } = 1 \), successfully avoiding false root triggers on all interior monotonic branches.
 ====
 
 [#ada-2022-bernstein-root-finder-program]
@@ -941,7 +941,7 @@ This section establishes a comprehensive architectural and numerical classificat
 [THEOREM]
 .Theorem: Optimal Real Root Isolation Algorithm Classification and Stability Theorem
 ====
-Let \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) be a square-free polynomial of degree \( m \) with coefficients defined over discrete rational grid \( \mathcal { G } _ N \). The task of real root isolation—determining a set of disjoint open intervals \( I _ j = ( a _ j , b _ j ) \) each containing exactly one real root \( x ^ \ast _ j \) of \( P ( x ) \)—admits optimal algorithmic realizations depending strictly on the execution topology (Serial vs. Parallel SIMD/Multi-Core) and numerical representation (Exact Rational \( \mathbb { Q } \), Fixed-Point Vernier Grid \( \mathcal { G } _ N \), and IEEE 754 Floating-Point with Filtered Interval Bounds):
+Let \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) be a square-free polynomial of degree \( m \) with coefficients defined over discrete rational grid \( \mathcal { G } _ N \). The task of real root isolation—determining a set of disjoint open intervals \( I _ j = ( a _ j , b _ j ) \) each containing exactly one real root \( x ^ { \ast } _ j \) of \( P ( x ) \)—admits optimal algorithmic realizations depending strictly on the execution topology (Serial vs. Parallel SIMD/Multi-Core) and numerical representation (Exact Rational \( \mathbb { Q } \), Fixed-Point Vernier Grid \( \mathcal { G } _ N \), and IEEE 754 Floating-Point with Filtered Interval Bounds):
 
 1. **Case 1: Serial / Exact Arithmetic (\( \mathbb { Q } \))**:
    - *Optimal Algorithm*: Vincent-Akritas-Strzeboński (VAS) Continued Fractions (CF) algorithm with exact rational bounds (Cauchy/Hong bounds) and subresultant polynomial pseudo-GCD square-free reduction.
@@ -988,11 +988,11 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) be a square-free polynomial
 
 *Solution*:
 
-1. **Exact Roots**: The polynomial has a triple root at \( x ^ \ast = 1 / 2 \). Square-free reduction computes \( \gcd ( P , P ' ) = 4 x ^ 2 - 4 x + 1 \), yielding square-free polynomial \( P _ { \text { sf } } ( x ) = 2 x - 1 \).
+1. **Exact Roots**: The polynomial has a triple root at \( x ^ { \ast } = 1 / 2 \). Square-free reduction computes \( \gcd ( P , P ' ) = 4 x ^ 2 - 4 x + 1 \), yielding square-free polynomial \( P _ { \text { sf } } ( x ) = 2 x - 1 \).
 
 2. **Case 1 (Serial / Exact Rational)**:
    - Square-free GCD reduction yields \( P _ { \text { sf } } ( x ) = 2 x - 1 \).
-   - Evaluating sign variation of \( P _ { \text { sf } } \) on \( [ 0 , 1 ] \): \( P _ { \text { sf } } ( 0 ) = - 1 \quad (-) \), \( P _ { \text { sf } } ( 1 ) = + 1 \quad (+) \). Sign variation drop \( V ( 0 ) - V ( 1 ) = 1 - 0 = 1 \). Exact isolated root interval \( ( 0 , 1 ] \), refined to \( x ^ \ast = 1 / 2 \) with 0 error.
+   - Evaluating sign variation of \( P _ { \text { sf } } \) on \( [ 0 , 1 ] \): \( P _ { \text { sf } } ( 0 ) = - 1 \quad (-) \), \( P _ { \text { sf } } ( 1 ) = + 1 \quad (+) \). Sign variation drop \( V ( 0 ) - V ( 1 ) = 1 - 0 = 1 \). Exact isolated root interval \( ( 0 , 1 ] \), refined to \( x ^ { \ast } = 1 / 2 \) with 0 error.
 
 3. **Case 2 (Serial / Fixed-Point Q16.16)**:
    - Representing coefficients in Q16.16 fixed-point on grid \( \mathcal { G } _ { 65536 } \) (\( \delta = 1 / 65536 \)).
@@ -1009,7 +1009,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) be a square-free polynomial
    - Polynomial GCD and Sturm chain are computed concurrently modulo primes \( p _ 1 = 65521 \) and \( p _ 2 = 65537 \).
    - Prime channel 1: \( P _ { \text { sf } } ( x ) \equiv 2 x - 1 \pmod { 65521 } \implies x \equiv 32761 \pmod { 65521 } \).
    - Prime channel 2: \( P _ { \text { sf } } ( x ) \equiv 2 x - 1 \pmod { 65537 } \implies x \equiv 32769 \pmod { 65537 } \).
-   - CRT reconstruction yields exact rational solution \( x ^ \ast = 1 / 2 \) in parallel across 2 CPU cores with zero lock contention.
+   - CRT reconstruction yields exact rational solution \( x ^ { \ast } = 1 / 2 \) in parallel across 2 CPU cores with zero lock contention.
 
 6. **Case 5 (Parallel / Fixed-Point SIMD Zen 5)**:
    - AVX-512 8-lane SIMD register evaluates 8 sub-intervals on \( [ 0 , 1 ] \) concurrently: \( I_0 = [0, 1/8], I_1 = [1/8, 2/8], \dots, I_7 = [7/8, 1] \).
@@ -1020,7 +1020,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m a _ k x ^ k \) be a square-free polynomial
 7. **Case 6 (Parallel / Floating-Point AVX-512 FMA)**:
    - Fused Multiply-Add vector unit evaluates 8 interval midpoints using parallel Horner scheme.
    - Directed rounding modes (`FE_DOWNWARD` and `FE_UPWARD`) compute tight interval bounds in parallel.
-   - Root is isolated at \( x ^ \ast = 0.5 \) with zero vector pipeline stalls, achieving maximum throughput on modern parallel hardware.
+   - Root is isolated at \( x ^ { \ast } = 0.5 \) with zero vector pipeline stalls, achieving maximum throughput on modern parallel hardware.
 ====
 
 === Global Simultaneous Polynomial Root-Finding and Vector Fixed-Point Iteration Theorem
@@ -1031,17 +1031,17 @@ Beyond single-root isolation and interval subdivision, polynomial root finding c
 [THEOREM]
 .Theorem: Global Simultaneous Polynomial Root-Finding and Fixed-Point Contraction Theorem
 ====
-Let \( P ( z ) = z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 \) be a monic polynomial of degree \( m \ge 2 \) over discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \), with distinct simple roots \( \mathbf { z } ^ \ast = ( z _ 1 ^ \ast , z _ 2 ^ \ast , \dots , z _ m ^ \ast ) ^ T \).
+Let \( P ( z ) = z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 \) be a monic polynomial of degree \( m \ge 2 \) over discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \), with distinct simple roots \( \mathbf { z } ^ { \ast } = ( z _ 1 ^ { \ast } , z _ 2 ^ { \ast } , \dots , z _ m ^ { \ast } ) ^ T \).
 
 1. **Durand-Kerner (Weierstrass) Vector Fixed-Point Mapping**:
    The vector iteration \( \mathbf { z } ^ { ( k + 1 ) } = \mathbf { \Phi } _ { \text { DK } } ( \mathbf { z } ^ { ( k ) } ) \) defined component-wise by:
    \[ z _ i ^ { ( k + 1 ) } = z _ i ^ { ( k ) } - \frac { P ( z _ i ^ { ( k ) } ) } { \prod _ { j \neq i } ( z _ i ^ { ( k ) } - z _ j ^ { ( k ) } ) } , \quad i = 1 , 2 , \dots , m \]
-   possesses a fixed point at \( \mathbf { z } ^ \ast \) if and only if \( P ( z _ i ^ \ast ) = 0 \) for all \( i = 1 , \dots , m \). In an open neighborhood of simple roots, the Jacobian matrix \( J _ { \mathbf { \Phi } } ( \mathbf { z } ^ \ast ) = \mathbf { 0 } \), guaranteeing local quadratic convergence \( \| \mathbf { z } ^ { ( k + 1 ) } - \mathbf { z } ^ \ast \| \le C \| \mathbf { z } ^ { ( k ) } - \mathbf { z } ^ \ast \| ^ 2 \).
+   possesses a fixed point at \( \mathbf { z } ^ { \ast } \) if and only if \( P ( z _ i ^ { \ast } ) = 0 \) for all \( i = 1 , \dots , m \). In an open neighborhood of simple roots, the Jacobian matrix \( J _ { \mathbf { \Phi } } ( \mathbf { z } ^ { \ast } ) = \mathbf { 0 } \), guaranteeing local quadratic convergence \( \| \mathbf { z } ^ { ( k + 1 ) } - \mathbf { z } ^ { \ast } \| \le C \| \mathbf { z } ^ { ( k ) } - \mathbf { z } ^ { \ast } \| ^ 2 \).
 
 2. **Aberth-Ehrlich Electrostatic Field Cubic Iteration**:
    Incorporating first-derivative logarithmic field forces yields the Aberth-Ehrlich vector iteration \( \mathbf { z } ^ { ( k + 1 ) } = \mathbf { \Phi } _ { \text { AE } } ( \mathbf { z } ^ { ( k ) } ) \):
    \[ z _ i ^ { ( k + 1 ) } = z _ i ^ { ( k ) } - \frac { \frac { P ( z _ i ^ { ( k ) } ) } { P ' ( z _ i ^ { ( k ) } ) } } { 1 - \frac { P ( z _ i ^ { ( k ) } ) } { P ' ( z _ i ^ { ( k ) } ) } \sum _ { j \neq i } \frac { 1 } { z _ i ^ { ( k ) } - z _ j ^ { ( k ) } } } , \quad i = 1 , 2 , \dots , m \]
-   In an open neighborhood of simple roots, the Jacobian and Hessian matrices vanish at \( \mathbf { z } ^ \ast \), proving local cubic convergence \( \| \mathbf { z } ^ { ( k + 1 ) } - \mathbf { z } ^ \ast \| \le C _ 3 \| \mathbf { z } ^ { ( k ) } - \mathbf { z } ^ \ast \| ^ 3 \).
+   In an open neighborhood of simple roots, the Jacobian and Hessian matrices vanish at \( \mathbf { z } ^ { \ast } \), proving local cubic convergence \( \| \mathbf { z } ^ { ( k + 1 ) } - \mathbf { z } ^ { \ast } \| \le C _ 3 \| \mathbf { z } ^ { ( k ) } - \mathbf { z } ^ { \ast } \| ^ 3 \).
 
 3. **Global Companion Matrix Eigenvalue Equivalence**:
    All \( m \) roots of \( P ( z ) \) coincide exactly with the eigenvalues of the Frobenius companion matrix \( \mathbf { C } _ P \in \mathcal { M } _ { m \times m } ( \mathcal { G } _ N ) \):
@@ -1050,14 +1050,14 @@ Let \( P ( z ) = z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 \
 
 *Proof:*
 
-. **Durand-Kerner Fixed Point Verification**: Let \( \mathbf { z } ^ \ast = ( z _ 1 ^ \ast , \dots , z _ m ^ \ast ) \) be the exact roots of monic \( P ( z ) = \prod _ { k = 1 } ^ m ( z - z _ k ^ \ast ) \). Substituting \( \mathbf { z } ^ \ast \) into \( \mathbf { \Phi } _ { \text { DK } } \):
-   \[ \Phi _ { \text { DK } , i } ( \mathbf { z } ^ \ast ) = z _ i ^ \ast - \frac { P ( z _ i ^ \ast ) } { \prod _ { j \neq i } ( z _ i ^ \ast - z _ j ^ \ast ) } = z _ i ^ \ast - \frac { 0 } { \prod _ { j \neq i } ( z _ i ^ \ast - z _ j ^ \ast ) } = z _ i ^ \ast \]
-   For distinct roots, the denominator is non-zero. Thus \( \mathbf { z } ^ \ast \) is a fixed point. Evaluating partial derivatives \( \frac { \partial \Phi _ { \text { DK } , i } } { \partial z _ j } \) at \( \mathbf { z } ^ \ast \) yields zero for all entries \( i , j \), establishing quadratic convergence by Taylor expansion on grid \( \mathcal { G } _ N \).
+. **Durand-Kerner Fixed Point Verification**: Let \( \mathbf { z } ^ { \ast } = ( z _ 1 ^ { \ast } , \dots , z _ m ^ { \ast } ) \) be the exact roots of monic \( P ( z ) = \prod _ { k = 1 } ^ m ( z - z _ k ^ { \ast } ) \). Substituting \( \mathbf { z } ^ { \ast } \) into \( \mathbf { \Phi } _ { \text { DK } } \):
+   \[ \Phi _ { \text { DK } , i } ( \mathbf { z } ^ { \ast } ) = z _ i ^ { \ast } - \frac { P ( z _ i ^ { \ast } ) } { \prod _ { j \neq i } ( z _ i ^ { \ast } - z _ j ^ { \ast } ) } = z _ i ^ { \ast } - \frac { 0 } { \prod _ { j \neq i } ( z _ i ^ { \ast } - z _ j ^ { \ast } ) } = z _ i ^ { \ast } \]
+   For distinct roots, the denominator is non-zero. Thus \( \mathbf { z } ^ { \ast } \) is a fixed point. Evaluating partial derivatives \( \frac { \partial \Phi _ { \text { DK } , i } } { \partial z _ j } \) at \( \mathbf { z } ^ { \ast } \) yields zero for all entries \( i , j \), establishing quadratic convergence by Taylor expansion on grid \( \mathcal { G } _ N \).
 
-. **Electrostatic Field Equivalence for Aberth-Ehrlich**: The logarithmic derivative \( \frac { P ' ( z ) } { P ( z ) } = \sum _ { j = 1 } ^ m \frac { 1 } { z - z _ j ^ \ast } \) represents the 2D electrostatic force field generated by point charges at roots \( z _ j ^ \ast \). Rewriting for target root \( z _ i \):
-   \[ \frac { P ' ( z _ i ) } { P ( z _ i ) } = \frac { 1 } { z _ i - z _ i ^ \ast } + \sum _ { j \neq i } \frac { 1 } { z _ i - z _ j ^ \ast } \]
-   Approximating exact unknown roots \( z _ j ^ \ast \) by current estimates \( z _ j ^ { ( k ) } \) yields:
-   \[ z _ i ^ \ast \approx z _ i ^ { ( k ) } - \frac { 1 } { \frac { P ' ( z _ i ^ { ( k ) } ) } { P ( z _ i ^ { ( k ) } ) } - \sum _ { j \neq i } \frac { 1 } { z _ i ^ { ( k ) } - z _ j ^ { ( k ) } } } \]
+. **Electrostatic Field Equivalence for Aberth-Ehrlich**: The logarithmic derivative \( \frac { P ' ( z ) } { P ( z ) } = \sum _ { j = 1 } ^ m \frac { 1 } { z - z _ j ^ { \ast } } \) represents the 2D electrostatic force field generated by point charges at roots \( z _ j ^ { \ast } \). Rewriting for target root \( z _ i \):
+   \[ \frac { P ' ( z _ i ) } { P ( z _ i ) } = \frac { 1 } { z _ i - z _ i ^ { \ast } } + \sum _ { j \neq i } \frac { 1 } { z _ i - z _ j ^ { \ast } } \]
+   Approximating exact unknown roots \( z _ j ^ { \ast } \) by current estimates \( z _ j ^ { ( k ) } \) yields:
+   \[ z _ i ^ { \ast } \approx z _ i ^ { ( k ) } - \frac { 1 } { \frac { P ' ( z _ i ^ { ( k ) } ) } { P ( z _ i ^ { ( k ) } ) } - \sum _ { j \neq i } \frac { 1 } { z _ i ^ { ( k ) } - z _ j ^ { ( k ) } } } \]
    Inverting numerator and denominator gives the Aberth-Ehrlich update formula. Vanishing second partial derivatives confirm cubic convergence.
 
 . **Companion Matrix Characteristic Identity**: Computing \( \det ( z \mathbf { I } - \mathbf { C } _ P ) \) via cofactor expansion along the final column yields \( z ^ m + a _ { m - 1 } z ^ { m - 1 } + \dots + a _ 1 z + a _ 0 = P ( z ) \). Eigenvalues are preserved under orthogonal QR similarity transformations \( \mathbf { C } _ { k + 1 } = \mathbf { R } _ k \mathbf { Q } _ k = \mathbf { Q } _ k ^ T \mathbf { C } _ k \mathbf { Q } _ k \), converging to upper triangular Schur fixed points containing all \( m \) roots on the main diagonal. \( \square \)
@@ -1093,7 +1093,7 @@ To prevent numerical stagnation, division-by-zero singularities, and precision l
 1. **Polynomial Analysis and Exact Roots**:
    - Monic polynomial coefficients: \( a _ 2 = - 6 \), \( a _ 1 = 11 \), \( a _ 0 = - 6 \).
    - Centroid of roots: \( c = - a _ 2 / 3 = 2 \).
-   - Exact roots are \( z _ 1 ^ \ast = 1 \), \( z _ 2 ^ \ast = 2 \), \( z _ 3 ^ \ast = 3 \).
+   - Exact roots are \( z _ 1 ^ { \ast } = 1 \), \( z _ 2 ^ { \ast } = 2 \), \( z _ 3 ^ { \ast } = 3 \).
 
 2. **Aberth Initial Seed Generation**:
    - Cauchy root radius bound \( R = 1 + \max ( 6 , 11 , 6 ) = 12 \). For rapid demonstration, set radius scale \( R_0 = 2 \).
@@ -1129,7 +1129,7 @@ This section establishes the information-theoretic foundation of polynomial root
 ====
 Let \( P ( x ) \) be a polynomial of degree \( m \ge 1 \) defined over discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \) on domain \( I = [ a , b ] \).
 
-1. **Root-Finding as an Information-Noisy Query Channel**: The root-location process is modeled as an information-theoretic transmission channel where the input \( X \in \{ x _ 1 ^ \ast , \dots , x _ k ^ \ast \} \) represents the true discrete location of root \( x ^ \ast \) in interval \( I \), and the output \( Y = \text{sgn} ( P ( c ) ) \) represents the 1-bit sign query response evaluated at sample point \( c \in I \).
+1. **Root-Finding as an Information-Noisy Query Channel**: The root-location process is modeled as an information-theoretic transmission channel where the input \( X \in \{ x _ 1 ^ { \ast } , \dots , x _ k ^ { \ast } \} \) represents the true discrete location of root \( x ^ { \ast } \) in interval \( I \), and the output \( Y = \text{sgn} ( P ( c ) ) \) represents the 1-bit sign query response evaluated at sample point \( c \in I \).
 
 2. **Maximum Entropy Sub-Interval Division**: The mutual information \( I ( X ; Y ) = H ( Y ) - H ( Y \mid X ) \) gained per sign query is maximized when the binary query entropy \( H ( Y ) = - p \log _ 2 ( p ) - ( 1 - p ) \log _ 2 ( 1 - p ) \) satisfies \( p = P ( P ( c ) > 0 ) = 1 / 2 \), achieving the maximum channel capacity \( C = 1 \text{ bit per query} \). On monotonic sub-intervals, \( p = 1 / 2 \) corresponds to selecting sample point \( c \) at the median of the prior root probability density, matching Vernier bisection or weighted ITP interpolation.
 
@@ -1187,23 +1187,23 @@ While standard Newton-Raphson iteration provides quadratic convergence \( e _ { 
 [THEOREM]
 .Theorem: Accelerated Higher-Order Newton and BFGS Quasi-Newton Fixed-Point Contraction Theorem
 ====
-Let \( P ( z ) \) be a polynomial or multivector field over discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \), with root \( \mathbf { z } ^ \ast \) satisfying \( P ( \mathbf { z } ^ \ast ) = \mathbf { 0 } \).
+Let \( P ( z ) \) be a polynomial or multivector field over discrete rational grid \( \mathcal { G } _ N \subset Cl ( 4 , 1 , 1 ) \), with root \( \mathbf { z } ^ { \ast } \) satisfying \( P ( \mathbf { z } ^ { \ast } ) = \mathbf { 0 } \).
 
 1. **Scalar Higher-Order Newton-Halley Fixed-Point Mapping**:
    The third-order Halley iteration \( z _ { k + 1 } = \Phi _ { \text { Halley } } ( z _ k ) \) defined by:
    \[ z _ { k + 1 } = z _ k - \frac { 2 P ( z _ k ) P ' ( z _ k ) } { 2 [ P ' ( z _ k ) ] ^ 2 - P ( z _ k ) P '' ( z _ k ) } \]
-   is a fixed-point mapping on \( \mathcal { G } _ N \) with fixed point \( z ^ \ast \). In an open neighborhood of simple root \( z ^ \ast \), the first two derivatives of \( \Phi _ { \text { Halley } } \) vanish at \( z ^ \ast \) (\( \Phi ' ( z ^ \ast ) = 0 \), \( \Phi '' ( z ^ \ast ) = 0 \)), proving cubic convergence \( | z _ { k + 1 } - z ^ \ast | \le C _ 3 | z _ k - z ^ \ast | ^ 3 \).
+   is a fixed-point mapping on \( \mathcal { G } _ N \) with fixed point \( z ^ { \ast } \). In an open neighborhood of simple root \( z ^ { \ast } \), the first two derivatives of \( \Phi _ { \text { Halley } } \) vanish at \( z ^ { \ast } \) (\( \Phi ' ( z ^ { \ast } ) = 0 \), \( \Phi '' ( z ^ { \ast } ) = 0 \)), proving cubic convergence \( | z _ { k + 1 } - z ^ { \ast } | \le C _ 3 | z _ k - z ^ { \ast } | ^ 3 \).
 
 2. **Multivariate BFGS Quasi-Newton Operator (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970])**:
    For multivariate root finding or gradient optimization \( \mathbf { g } ( \mathbf { x } ) = \nabla f ( \mathbf { x } ) = \mathbf { 0 } \) with step vector \( \mathbf { s } _ k = \mathbf { x } _ { k + 1 } - \mathbf { x } _ k \) and gradient change \( \mathbf { y } _ k = \mathbf { g } _ { k + 1 } - \mathbf { g } _ k \), the inverse Hessian approximation matrix \( \mathbf { H } _ k \approx ( \nabla ^ 2 f ) ^ { - 1 } \) updates symmetrically according to the BFGS formula (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970]):
    \[ \mathbf { H } _ { k + 1 } = ( \mathbf { I } - \rho _ k \mathbf { s } _ k \mathbf { y } _ k ^ T ) \mathbf { H } _ k ( \mathbf { I } - \rho _ k \mathbf { y } _ k \mathbf { s } _ k ^ T ) + \rho _ k \mathbf { s } _ k \mathbf { s } _ k ^ T \quad \text{where} \quad \rho _ k = \frac { 1 } { \mathbf { y } _ k ^ T \mathbf { s } _ k } \]
-   The search direction update \( \mathbf { x } _ { k + 1 } = \mathbf { x } _ k - \mathbf { H } _ k \mathbf { g } _ k \) converges superlinearly to fixed point \( \mathbf { x } ^ \ast \) on discrete grid \( \mathcal { G } _ N \), preserving symmetric positive-definiteness of \( \mathbf { H } _ k \) for all iterations satisfying curvature condition \( \mathbf { y } _ k ^ T \mathbf { s } _ k > 0 \).
+   The search direction update \( \mathbf { x } _ { k + 1 } = \mathbf { x } _ k - \mathbf { H } _ k \mathbf { g } _ k \) converges superlinearly to fixed point \( \mathbf { x } ^ { \ast } \) on discrete grid \( \mathcal { G } _ N \), preserving symmetric positive-definiteness of \( \mathbf { H } _ k \) for all iterations satisfying curvature condition \( \mathbf { y } _ k ^ T \mathbf { s } _ k > 0 \).
 
 *Proof:*
 
-. **Cubic Convergence of Halley's Fixed Point**: Substituting \( P ( z ^ \ast ) = 0 \) into \( \Phi _ { \text { Halley } } ( z ^ \ast ) \):
-   \[ \Phi _ { \text { Halley } } ( z ^ \ast ) = z ^ \ast - \frac { 0 } { 2 [ P ' ( z ^ \ast ) ] ^ 2 - 0 } = z ^ \ast \]
-   Differentiating \( \Phi _ { \text { Halley } } ( z ) \) with respect to \( z \) and evaluating at \( z ^ \ast \) yields \( \Phi ' ( z ^ \ast ) = 0 \) and \( \Phi '' ( z ^ \ast ) = 0 \). Taylor expansion on grid \( \mathcal { G } _ N \) confirms cubic convergence \( | z _ { k + 1 } - z ^ \ast | = \mathcal { O } ( | z _ k - z ^ \ast | ^ 3 ) \).
+. **Cubic Convergence of Halley's Fixed Point**: Substituting \( P ( z ^ { \ast } ) = 0 \) into \( \Phi _ { \text { Halley } } ( z ^ { \ast } ) \):
+   \[ \Phi _ { \text { Halley } } ( z ^ { \ast } ) = z ^ { \ast } - \frac { 0 } { 2 [ P ' ( z ^ { \ast } ) ] ^ 2 - 0 } = z ^ { \ast } \]
+   Differentiating \( \Phi _ { \text { Halley } } ( z ) \) with respect to \( z \) and evaluating at \( z ^ { \ast } \) yields \( \Phi ' ( z ^ { \ast } ) = 0 \) and \( \Phi '' ( z ^ { \ast } ) = 0 \). Taylor expansion on grid \( \mathcal { G } _ N \) confirms cubic convergence \( | z _ { k + 1 } - z ^ { \ast } | = \mathcal { O } ( | z _ k - z ^ { \ast } | ^ 3 ) \).
 
 . **Positive-Definiteness and Secant Equation in BFGS (Shanno, 1970)**: Multiplying \( \mathbf { H } _ { k + 1 } \) by \( \mathbf { y } _ k \):
    \[ \mathbf { H } _ { k + 1 } \mathbf { y } _ k = ( \mathbf { I } - \rho _ k \mathbf { s } _ k \mathbf { y } _ k ^ T ) \mathbf { H } _ k ( \mathbf { y } _ k - \rho _ k \mathbf { y } _ k ( \mathbf { s } _ k ^ T \mathbf { y } _ k ) ) + \rho _ k \mathbf { s } _ k ( \mathbf { s } _ k ^ T \mathbf { y } _ k ) \]
@@ -1232,7 +1232,7 @@ To guarantee numerical stability and exact aperture convergence when executing B
 
 1. **Gradient Vector Field**:
    \[ \mathbf { g } ( \mathbf { x } ) = \nabla f ( \mathbf { x } ) = \begin{bmatrix} 2 x_1 - 2 x_2 - 2 \\ 4 x_2 - 2 x_1 \end{bmatrix} \]
-   - Exact root of gradient is \( \mathbf { x } ^ \ast = ( 2 , 1 ) ^ T \).
+   - Exact root of gradient is \( \mathbf { x } ^ { \ast } = ( 2 , 1 ) ^ T \).
 
 2. **Iteration 1**:
    - Initial gradient: \( \mathbf { g } _ 0 = \mathbf { g } ( 0 , 0 ) = ( - 2 , 0 ) ^ T \).
@@ -1251,7 +1251,7 @@ To guarantee numerical stability and exact aperture convergence when executing B
    - New search direction: \( \mathbf { d } _ 1 = - \mathbf { H } _ 1 \mathbf { g } _ 1 = - \begin{bmatrix} 1 / 2 & 1 / 2 \\ 1 / 2 & 1 \end{bmatrix} \begin{bmatrix} 0 \\ - 2 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} \).
    - Step update: \( \mathbf { x } _ 2 = \mathbf { x } _ 1 + \mathbf { d } _ 1 = ( 1 , 0 ) ^ T + ( 1 , 1 ) ^ T = ( 2 , 1 ) ^ T \).
    - Gradient at \( \mathbf { x } _ 2 \): \( \mathbf { g } ( 2 , 1 ) = ( 0 , 0 ) ^ T \).
-   - Exact fixed point \( \mathbf { x } ^ \ast = ( 2 , 1 ) ^ T \) is reached in 2 iterations, illustrating superlinear convergence of Shanno's BFGS quasi-Newton algorithm.
+   - Exact fixed point \( \mathbf { x } ^ { \ast } = ( 2 , 1 ) ^ T \) is reached in 2 iterations, illustrating superlinear convergence of Shanno's BFGS quasi-Newton algorithm.
 ====
 
 [#references-bfgs-quasi-newton]
@@ -1408,7 +1408,7 @@ Expanding \( ( 1 - t ) t { Q _ { 1 , y } ' } ^ { \Delta } = ( t - t ^ 2 ) { Q _ 
    - Equating \( y _ Q ( t _ q ) = y _ P ( t _ p ) \): \( 1 + 2 t _ q = 20 t _ p ( 1 - t _ p ) \).
    - At symmetry point \( t _ q = 1 / 2 \): \( x _ Q ( 1 / 2 ) = 2 - 10 + 5 = - 3 \); \( y _ Q ( 1 / 2 ) = 2 \).
    - Solving yields exact intersection parameter pair \( t _ p = 0 . 5 \), \( t _ q = 0 . 5 \), giving exact intersection coordinates:
-\[ ( x ^ \ast , y ^ \ast ) = ( 0 , 5 ) \]
+\[ ( x ^ { \ast } , y ^ { \ast } ) = ( 0 , 5 ) \]
 ====
 
 [#example-flatness-testing-intersection]
@@ -1693,7 +1693,7 @@ Every subset \( K \subseteq \mathcal { G } _ N \) on a finite discrete partition
 [THEOREM]
 .Theorem: Discrete Vernier Fixed-Point Invariance Theorem
 ====
-Let \( f : \mathcal { G } _ N \to \mathcal { G } _ N \) be a contractive mapping on finite rational grid \( \mathcal { G } _ N \) satisfying \( d _ { \mathcal { I } } ( f ( x ) , f ( y ) ) \le \gamma d _ { \mathcal { I } } ( x , y ) \) with rational contraction constant \( \gamma < 1 \). Then \( f \) possesses a unique fixed point \( x ^ \ast \in \mathcal { G } _ N \) reached in a finite number of iterative evaluation steps \( M \le \lceil \log _ \gamma ( \delta / \text { diam } ( \mathcal { G } _ N ) ) \rceil \).
+Let \( f : \mathcal { G } _ N \to \mathcal { G } _ N \) be a contractive mapping on finite rational grid \( \mathcal { G } _ N \) satisfying \( d _ { \mathcal { I } } ( f ( x ) , f ( y ) ) \le \gamma d _ { \mathcal { I } } ( x , y ) \) with rational contraction constant \( \gamma < 1 \). Then \( f \) possesses a unique fixed point \( x ^ { \ast } \in \mathcal { G } _ N \) reached in a finite number of iterative evaluation steps \( M \le \lceil \log _ \gamma ( \delta / \text { diam } ( \mathcal { G } _ N ) ) \rceil \).
 
 *Proof:*
 
@@ -1701,7 +1701,7 @@ Let \( f : \mathcal { G } _ N \to \mathcal { G } _ N \) be a contractive mapping
 
 . **Finite Resolution Threshold**: Since all non-zero distances on \( \mathcal { G } _ N \) are bounded below by grid step resolution \( \delta = 1 / N \), there exists finite integer \( M \) such that \( \gamma ^ M d _ { \mathcal { I } } ( x _ 1 , x _ 0 ) < \delta \).
 
-. **Exact Fixed Point Invariance**: Therefore, \( d _ { \mathcal { I } } ( x _ { M + 1 } , x _ M ) = 0 \), proving \( x _ { M + 1 } = x _ M = x ^ \ast \). Uniqueness follows directly from contraction inequality. \( \square \)
+. **Exact Fixed Point Invariance**: Therefore, \( d _ { \mathcal { I } } ( x _ { M + 1 } , x _ M ) = 0 \), proving \( x _ { M + 1 } = x _ M = x ^ { \ast } \). Uniqueness follows directly from contraction inequality. \( \square \)
 ====
 
 === Practical Multivector Field Topology for Plasmas, Media, and Engineering Dynamics
@@ -2023,7 +2023,7 @@ The category \( \mathbf { Iris } _ N \) whose objects are finite discrete grids 
 
 . **Identity and Composition**: For any object \( \mathcal { G } _ N \), identity morphism \( \text { id } _ { \mathcal { G } } \) maps elements identically. Morphism composition of linear MSRA operators is associative.
 
-. **Dual Functor Action**: Define \( T ( \mathcal { G } _ N ) = \mathcal { G } _ N ^ \ast \) and for morphism \( f : \mathcal { G } _ M \to \mathcal { G } _ N \), define dual transpose \( T ( f ) = f ^ \ast : \mathcal { G } _ N ^ \ast \to \mathcal { G } _ M ^ \ast \).
+. **Dual Functor Action**: Define \( T ( \mathcal { G } _ N ) = \mathcal { G } _ N ^ { \ast } \) and for morphism \( f : \mathcal { G } _ M \to \mathcal { G } _ N \), define dual transpose \( T ( f ) = f ^ { \ast } : \mathcal { G } _ N ^ { \ast } \to \mathcal { G } _ M ^ { \ast } \).
 
 . **Functoriality Tautology**: \( T ( \text { id } ) = \text { id } \) and \( T ( g \circ f ) = T ( f ) \circ T ( g ) \), establishing exact category duality. \( \square \)
 ====
@@ -2349,8 +2349,8 @@ where \( A ( s ) \) denotes the finite set of legal candidate moves at state \( 
 
 3. **Alpha-Beta Aperture Pruning Invariance**: During depth-first tree traversal over search interval \( [ \alpha , \beta ] \), if candidate moves \( a \in A ( s ) \) are ordered by descending immediate move mobility \( | A ( \text{succ} ( s , a ) ) | \), any subtree branch where current value exceeds \( \beta \) is pruned without altering the minimax evaluation \( V ( s , d ) \). The pruning optimization reduces evaluated nodes from \( O ( b ^ d ) \) to \( O ( b ^ { d / 2 } ) \) while maintaining exact algebraic equivalence.
 
-4. **Deterministic Optimal Move Decision**: The optimal move \( a ^ \ast \in A ( s ) \) is selected as:
-\[ a ^ \ast = \arg\max _ { a \in A ( s ) } \{ - V ( \text{succ} ( s , a ) , d - 1 ) \} \]
+4. **Deterministic Optimal Move Decision**: The optimal move \( a ^ { \ast } \in A ( s ) \) is selected as:
+\[ a ^ { \ast } = \arg\max _ { a \in A ( s ) } \{ - V ( \text{succ} ( s , a ) , d - 1 ) \} \]
 where ties in minimax aperture value are resolved strictly by discrete lexicographical orientation ordering in \( Cl ( 4 , 1 , 1 ) \).
 
 *Proof:*
@@ -2370,7 +2370,7 @@ where ties in minimax aperture value are resolved strictly by discrete lexicogra
 
 1. Evaluate leaf position multivectors for each successor branch.
 2. Apply alpha-beta pruning to omit redundant subtrees.
-3. Determine the exact optimal root move \( a ^ \ast \) and minimax value \( V ( s _ 0 , 2 ) \).
+3. Determine the exact optimal root move \( a ^ { \ast } \) and minimax value \( V ( s _ 0 , 2 ) \).
 
 *Solution*:
 
@@ -2397,7 +2397,7 @@ where ties in minimax aperture value are resolved strictly by discrete lexicogra
 4. **Optimal Decision**:
    - Comparing root move evaluations: \( V ( s _ 1 ) = +0.80 \), \( V ( s _ 2 ) = +1.75 \), \( V ( s _ 3 ) \le +0.40 \).
    - Maximum value is achieved by move \( a _ 2 \).
-   - Optimal move decision: \( a ^ \ast = a _ 2 \) with exact minimax aperture value \( V ( s _ 0 , 2 ) = +1.75 \cdot \mathbf { 1 } _ { Cl } \).
+   - Optimal move decision: \( a ^ { \ast } = a _ 2 \) with exact minimax aperture value \( V ( s _ 0 , 2 ) = +1.75 \cdot \mathbf { 1 } _ { Cl } \).
 ====
 
 [#chap-index]

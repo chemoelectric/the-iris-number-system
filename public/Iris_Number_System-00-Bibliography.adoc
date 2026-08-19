@@ -160,7 +160,7 @@ Examines the habituated neuro-muscular blind spots ("the elusive obvious") that 
 *Non-standard Analysis*. Amsterdam: North-Holland Publishing Company. ("The Red Book").
 
 *Annotation:*
-Formalizes nonstandard analysis using model-theoretic hyperreal extensions \( {}^\ast \mathbb{R} \). Cited in comparative analysis to contrast Robinson's non-constructive continuum extensions (relying on ultrafilters and completed infinities) with the Iris Number System's constructive Multiscale Resolution Analysis (MSRA), which resolves analysis using finite discrete vernier step sequences \( k_\omega \cdot \delta_\omega \) under Main Scale Projection \( ( \downarrow ) \).
+Formalizes nonstandard analysis using model-theoretic hyperreal extensions \( {} ^ { \ast } \mathbb{R} \). Cited in comparative analysis to contrast Robinson's non-constructive continuum extensions (relying on ultrafilters and completed infinities) with the Iris Number System's constructive Multiscale Resolution Analysis (MSRA), which resolves analysis using finite discrete vernier step sequences \( k_\omega \cdot \delta_\omega \) under Main Scale Projection \( ( \downarrow ) \).
 
 == Bayesian Probability, Logical Inference, and Information Theory
 
