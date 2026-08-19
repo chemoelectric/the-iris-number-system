@@ -738,7 +738,7 @@ Let a physical spacecraft governed by multivector field stress tensor \( T \) mo
 
 *Proof:*
 
-. **Longitudinal Force Transmission Decoupling**: Consider two adjacent atomic nodes along the direction of motion \( \mathbf { v } \), separated by lattice vector \( \Delta \mathbf { r } \). The electromagnetic restoring force \( \mathbf { F } _ \text{restore} \) exerted by the trailing electron shell on the leading nucleus depends on the retarded electromagnetic potential propagating forward at speed \( c \). The effective longitudinal binding field intensity scales as:
+. **Longitudinal Force Transmission Decoupling**: Consider two adjacent atomic nodes along the direction of motion \( \mathbf { v } \), separated by lattice vector \( \Delta \mathbf { r } \). The electromagnetic restoring force \( \mathbf { F } _ \text{restore} \) exerted by the trailing electron shell on the leading nucleus depends on the time-delayed electromagnetic potential propagating forward at speed \( c \). The effective longitudinal binding field intensity scales as:
 \[ \mathbf { E } _ \text{long} ( v ) = \mathbf { E } _ 0 \left( 1 - \frac { v ^ 2 } { c ^ 2 } \right) \]
 As \( v \to c \), \( \mathbf { E } _ \text{long} \to \mathbf { 0 } \). The trailing electron shells can no longer exert forward binding forces on the leading nuclei, causing complete longitudinal force decoupling.
 
@@ -752,7 +752,7 @@ As \( v \to c \), \( \mathbf { E } _ \text{long} \to \mathbf { 0 } \). The trail
 
 A persistent misconception in both speculative science fiction and twentieth-century theoretical physics is the treatment of physical objects as idealized “spherical cows”—abstract, indivisible geometric blocks possessing magical, infinite rigidity. Relativists treated length contraction as an empty coordinate illusion where an accelerating vehicle allegedly experiences no deformation in its “own rest frame,” while early critics often dismissed contraction as a mere optical or Doppler artifact.
 
-Both views fail because they ignore what physical matter actually is: an atomic lattice held in equilibrium by electromagnetic field distributions satisfying the retarded Master Field Equation \( D F = J \). In the objective physical world, mechanical rigidity is itself an electromagnetic phenomenon. When a macroscopic spacecraft—such as the fictional _Starship Enterprise_—is propelled through the electromagnetic plenum, FitzGerald-Lorentz contraction is an objective, physical deformation of the retarded inter-atomic binding fields.
+Both views fail because they ignore what physical matter actually is: an atomic lattice held in equilibrium by electromagnetic field distributions satisfying the Master Field Equation \( D F = J \). In the objective physical world, mechanical rigidity is itself an electromagnetic phenomenon. When a macroscopic spacecraft—such as the fictional _Starship Enterprise_—is propelled through the electromagnetic plenum, FitzGerald-Lorentz contraction is an objective, physical deformation of the time-delayed inter-atomic binding fields.
 
 Because this contraction acts anisotropically along the longitudinal direction of travel while transverse dimensions do not contract at the same rate, the vehicle does not wait for extreme relativistic speeds or atomic delamination to be destroyed. Long before reaching the speed of electromagnetic influences \( c \), the required longitudinal compressive strain exceeds the ultimate yield strength of any constructible physical alloy, causing the structural bulkheads, spars, and fasteners to buckle and crush the entire vessel into pulverized mechanical scrap.
 
@@ -760,11 +760,11 @@ Because this contraction acts anisotropically along the longitudinal direction o
 [THEOREM]
 .Theorem: Anisotropic Electrodynamic Contraction, Bulkhead Buckling, and Mechanical Crushing of Relativistic Spacecraft
 ====
-Let a macroscopic spacecraft of finite spatial extent \( L_0 \) along its axis of motion be constructed from a physical metallic or composite alloy characterized by elastic modulus \( Y \) and ultimate compressive yield strength \( \sigma _ \text{yield} \). When propelled through the electromagnetic field plenum at velocity \( \mathbf { v } = v \hat { \mathbf { x } } \), the retarded inter-atomic binding fields contract the equilibrium lattice spacing along the direction of travel, inducing an axial compressive strain \( \varepsilon _ \parallel ( v ) = 1 - \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } \). The spacecraft undergoes catastrophic mechanical crushing, structural buckling, and physical pulverization at a threshold velocity \( v _ \text{crush} \ll c \), long before reaching the extreme regimes of atomic electron-shell decoupling.
+Let a macroscopic spacecraft of finite spatial extent \( L_0 \) along its axis of motion be constructed from a physical metallic or composite alloy characterized by elastic modulus \( Y \) and ultimate compressive yield strength \( \sigma _ \text{yield} \). When propelled through the electromagnetic field plenum at velocity \( \mathbf { v } = v \hat { \mathbf { x } } \), the time-delayed inter-atomic binding fields contract the equilibrium lattice spacing along the direction of travel, inducing an axial compressive strain \( \varepsilon _ \parallel ( v ) = 1 - \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } \). The spacecraft undergoes catastrophic mechanical crushing, structural buckling, and physical pulverization at a threshold velocity \( v _ \text{crush} \ll c \), long before reaching the extreme regimes of atomic electron-shell decoupling.
 
 *Proof:*
 
-. **Retarded Binding Field Contraction**: In the Master Field Equation \( D F = J \), the longitudinal equilibrium distance \( d _ \parallel ( v ) \) between adjacent atomic lattice nodes in the moving frame is established by the forward and rearward retarded electromagnetic potentials propagating at characteristic speed \( c \). The physical longitudinal dimension scales as \( L ( v ) = L_0 \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } \), generating an effective longitudinal compressive engineering strain:
+. **Time-Delayed Binding Field Contraction**: In the Master Field Equation \( D F = J \), the longitudinal equilibrium distance \( d _ \parallel ( v ) \) between adjacent atomic lattice nodes in the moving frame is established by the forward and rearward time-delayed electromagnetic potentials propagating at characteristic speed \( c \). The physical longitudinal dimension scales as \( L ( v ) = L_0 \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } \), generating an effective longitudinal compressive engineering strain:
 \[ \varepsilon _ \parallel ( v ) = \frac { L_0 - L ( v ) } { L_0 } = 1 - \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } \]
 
 . **Anisotropic Stress Tensor and Mechanical Yield Threshold**: Because transverse dimensions \( L _ \perp \) maintain their equilibrium spacing, the structural frame experiences severe anisotropic shear and axial compressive stress:
@@ -2072,7 +2072,7 @@ When re-evaluated through the unified field theory—governed by the Master Fiel
 
 * **J. J. Thomson (1906)**: Thomson’s measurement of the charge-to-mass ratio \( e / m \) established the extensional reality of the electron. In \( Cl ( 4 , 1 , 1 ) \), the electron is not an unphysical point singularity, but a localized, finite-volume toroidal electromagnetic vortex plasmoid whose topological charge is defined by the closed contour integral \( Q = \oint \star F \).
 
-* **Albert A. Michelson (1907)**: The Michelson interferometer demonstrated optical wave packet phase interference. When the apparatus moves through the electromagnetic field plenum, the material rods undergo real physical FitzGerald-Lorentz contraction (\( \gamma = \sqrt { 1 - v ^ 2 / c ^ 2 } \)) because the inter-atomic binding fields of the solid apparatus satisfy the retarded Master Field Equation \( D F = J \). (Similarly, a real _Starship Enterprise_ would never reach the speed \( c \), but instead crush itself.)
+* **Albert A. Michelson (1907)**: The Michelson interferometer demonstrated optical wave packet phase interference. When the apparatus moves through the electromagnetic field plenum, the material rods undergo real physical FitzGerald-Lorentz contraction (\( \gamma = \sqrt { 1 - v ^ 2 / c ^ 2 } \)) because the inter-atomic binding fields of the solid apparatus satisfy the Master Field Equation \( D F = J \). (Similarly, a real _Starship Enterprise_ would never reach the speed \( c \), but instead crush itself.)
 
 * **Gabriel Lippmann (1908)**: Direct macroscopic demonstration of stationary standing wave packets in light-sensitive emulsions, exhibiting pure classical wave superposition and contact field action.
 
@@ -2474,7 +2474,7 @@ The sole notable historical exception to this confusion was the Swiss physicist 
 On discrete resolution grid \( \mathcal { G } _ N \), spatial cells govern wave packet progression. Consider a localized multivector field wave source emitting periodic field crests. Along a line-of-sight unit vector \( \hat { \mathbf { n } } ( \theta ) \) making an angle \( \theta \) relative to the velocity vector \( \mathbf { v } \), the spatial distance \( \Delta r ( \theta ) \) between consecutive wavefronts is shortened or lengthened according to the spatial displacement of the source during the intrinsic emission period \( T _ \text{source} \):
 \[ \Delta r ( \theta ) = ( c - v \cos \theta ) T _ \text{source} \]
 
-In the Iris Number System, physical matter and wave sources consist of self-bound multivector field plasmoids. The internal oscillation rate of an atomic or electromagnetic source is governed by its internal multivector rotor phase evolution under the Master Field Equation \( D F = J \). As established in Chapter 4, a material source moving across grid cells at velocity \( \mathbf { v } \) experiences an internal field rotor phase retardation, adjusting its intrinsic emission period to \( T _ \text{source} = T _ 0 / \sqrt { 1 - v ^ 2 / c ^ 2 } \), corresponding to intrinsic emission frequency \( f _ \text{source} = f _ 0 \sqrt { 1 - v ^ 2 / c ^ 2 } \).
+In the Iris Number System, physical matter and wave sources consist of self-bound multivector field plasmoids. The internal oscillation rate of an atomic or electromagnetic source is governed by its internal multivector rotor phase evolution under the Master Field Equation \( D F = J \). As established in Chapter 4, a material source moving across grid cells at velocity \( \mathbf { v } \) experiences an internal field rotor phase delay, adjusting its intrinsic emission period to \( T _ \text{source} = T _ 0 / \sqrt { 1 - v ^ 2 / c ^ 2 } \), corresponding to intrinsic emission frequency \( f _ \text{source} = f _ 0 \sqrt { 1 - v ^ 2 / c ^ 2 } \).
 
 Because wave fronts propagate through grid cells at invariant wave speed \( c = \frac { 1 } { \sqrt { \mu _ 0 \varepsilon _ 0 } } \), the rate at which wave crests cross a stationary spatial reception coordinate yields the universal multivector Doppler frequency shift:
 \[ f ( \theta ) = \frac { c } { \Delta r ( \theta ) } = \frac { c f _ \text{source} } { c - v \cos \theta } = f _ 0 \frac { \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } } { 1 - \frac { v } { c } \cos \theta } \]
@@ -2496,12 +2496,12 @@ Evaluating the universal multivector Doppler equation across spatial orientation
    Visualizing this regime: wave crests are stretched widely apart across spatial grid cells, lowering the arrival frequency toward zero as velocity approaches \( c \).
 
 3. **Pure Transverse Shift (\( \theta = \pi / 2 \))**:
-   When the source passes laterally at an angle perpendicular to the line of sight (\( \theta = \pi / 2 \)), \( \cos \theta = 0 \). The geometric wave front compression vanishes, leaving purely the internal multivector field rotor phase retardation:
+   When the source passes laterally at an angle perpendicular to the line of sight (\( \theta = \pi / 2 \)), \( \cos \theta = 0 \). The geometric wave front compression vanishes, leaving purely the internal multivector field rotor phase delay:
    \[ f \left( \frac { \pi } { 2 } \right) = f _ 0 \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } \]
-   This pure transverse Doppler redshift arises directly from the field stress energy retardation of moving multivector structures on grid \( \mathcal { G } _ N \).
+   This pure transverse Doppler redshift arises directly from the field stress-energy phase delay of moving multivector structures on grid \( \mathcal { G } _ N \).
 
 4. **Neutral Shift Critical Angle (\( \theta _ 0 \))**:
-   Setting \( f ( \theta _ 0 ) = f _ 0 \) determines the precise oblique angle where forward geometric wave compression exactly balances internal multivector field rotor phase retardation:
+   Setting \( f ( \theta _ 0 ) = f _ 0 \) determines the precise oblique angle where forward geometric wave compression exactly balances internal multivector field rotor phase delay:
    \[ \frac { \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } } { 1 - \frac { v } { c } \cos \theta _ 0 } = 1 \implies \cos \theta _ 0 = \frac { 1 - \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } } { \frac { v } { c } } \]
    For low speeds (\( v \ll c \)), series expansion yields \( \cos \theta _ 0 \approx \frac { v } { 2 c } \), corresponding to an angle slightly acute of perpendicular (\( \theta _ 0 \approx 90^\circ - \frac { v } { 2 c } \text{ rad} \)).
 
@@ -2531,7 +2531,7 @@ For a source moving with constant longitudinal acceleration \( a = d v / d t \),
 
 The rate of frequency change \( \dot { f } = \frac { d f } { d t } \approx f _ 0 \frac { a \cos \theta } { c } \) represents linear frequency modulation (FM chirp).
 
-Furthermore, in the presence of a multivector field potential gradient \( \nabla \Phi \) (such as the gravitational acceleration field \( \mathbf { g } = - \nabla \Phi \) surrounding a massive stellar body), field stress exerts a continuous retardation force on propagating wave packets. As a wavefront traverses a spatial potential difference \( \Delta \Phi \), work is performed against the background field stress tensor \( T \), altering the wave packet frequency according to the gravitational Doppler shift:
+Furthermore, in the presence of a multivector field potential gradient \( \nabla \Phi \) (such as the gravitational acceleration field \( \mathbf { g } = - \nabla \Phi \) surrounding a massive stellar body), field stress exerts continuous redshifting work on propagating wave packets. As a wavefront traverses a spatial potential difference \( \Delta \Phi \), work is performed against the background field stress tensor \( T \), altering the wave packet frequency according to the gravitational Doppler shift:
 \[ f _ \text{grav} = f _ 0 \left( 1 - \frac { \Delta \Phi } { c ^ 2 } \right) \]
 
 Visualizing gravitational Doppler shifts: as a wave packet climbs outward from a deep gravitational potential well, its energy density decreases, widening the spatial gap between successive wave crests and shifting the received spectrum toward lower frequencies.
@@ -2560,7 +2560,7 @@ Consequently, “speeds faster than \( c \)” cannot exist as physical translat
 ====
 Let a source emitting periodic multivector field waves at intrinsic frequency \( f _ 0 \) move at velocity \( \mathbf { v } \) along a discrete spatial resolution grid \( \mathcal { G } _ N \). Let \( \theta \) be the angle between \( \mathbf { v } \) and the line-of-sight propagation vector \( \hat { \mathbf { n } } \), and let the source rotate with angular velocity \( \Omega \) carrying topological phase winding number \( m \in \mathbb { Z } \).
 
-1. **Complete Oblique Shift**: The received wave frequency \( f ( \theta ) \) at a spatial coordinate incorporates both geometric wave front compression and multivector field rotor phase retardation:
+1. **Complete Oblique Shift**: The received wave frequency \( f ( \theta ) \) at a spatial coordinate incorporates both geometric wave front compression and multivector field rotor phase delay:
 \[ f ( \theta ) = f _ 0 \frac { \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } } { 1 - \frac { v } { c } \cos \theta } \]
 
 2. **Rotational Coupling**: If the source spins with angular velocity \( \Omega \) and orbital receiver frequency \( \omega _ \text{orbit} \), the total received frequency is:
@@ -2572,7 +2572,7 @@ Let a source emitting periodic multivector field waves at intrinsic frequency \(
 
 . **Geometric Wavefront Spacing**: On discrete grid \( \mathcal { G } _ N \), wave crests emitted at intrinsic time interval \( T _ \text{source} \) propagate at grid wave speed \( c \). In time interval \( T _ \text{source} \), the source advances by spatial displacement \( \Delta \mathbf { r } = \mathbf { v } T _ \text{source} \). The spatial separation between consecutive wavefronts along direction \( \hat { \mathbf { n } } ( \theta ) \) is \( \Delta r ( \theta ) = c T _ \text{source} - v T _ \text{source} \cos \theta = ( c - v \cos \theta ) T _ \text{source} \).
 
-. **Multivector Field Rotor Phase Retardation**: By the Master Field Equation \( D F = J \), internal field oscillations of a moving bound plasmoid undergo rotor phase retardation by factor \( \gamma = ( 1 - v ^ 2 / c ^ 2 ) ^ { - 1 / 2 } \). The intrinsic emission frequency of the source is \( f _ \text{source} = f _ 0 / \gamma = f _ 0 \sqrt { 1 - v ^ 2 / c ^ 2 } \), corresponding to emission period \( T _ \text{source} = 1 / f _ \text{source} \).
+. **Multivector Field Rotor Phase Delay**: By the Master Field Equation \( D F = J \), internal field oscillations of a moving bound plasmoid undergo rotor phase delay by factor \( \gamma = ( 1 - v ^ 2 / c ^ 2 ) ^ { - 1 / 2 } \). The intrinsic emission frequency of the source is \( f _ \text{source} = f _ 0 / \gamma = f _ 0 \sqrt { 1 - v ^ 2 / c ^ 2 } \), corresponding to emission period \( T _ \text{source} = 1 / f _ \text{source} \).
 
 . **Oblique Combination**: Substituting \( T _ \text{source} \) into the wavefront spacing equation yields received frequency \( f ( \theta ) = \frac { c } { \Delta r ( \theta ) } = \frac { c f _ \text{source} } { c - v \cos \theta } = f _ 0 \frac { \sqrt { 1 - \frac { v ^ 2 } { c ^ 2 } } } { 1 - \frac { v } { c } \cos \theta } \).
 
