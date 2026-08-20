@@ -46,16 +46,15 @@ The quadratic iterator with constant offset parameter \( c = c _ x + c _ y \, e 
 \[ z _ 0 = 0 , \quad z _ { n + 1 } = z _ n ^ 2 + c \pmod { \mathcal { G } _ N } \]
 
 [#theorem-mandelbrot-bounded-orbit-cl20]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Discrete Bounded Orbit Criterion and Escape Radius in \( Cl(2,0) \)
+====
 Let \( c = c _ x + c _ y \, e _ { 12 } \in Cl ( 2 , 0 ) \) be a parameter multivector on the discrete resolution grid \( \mathcal { G } _ N \) with lattice step \( h = 2 ^ { - N } \). If at iteration step \( k \in \mathbb { N } \), the Euclidean magnitude of the state multivector satisfies:
 \[ \| z _ k \| = \sqrt { x _ k ^ 2 + y _ k ^ 2 } > \max ( 2 , \| c \| ) \]
 then for all subsequent iteration steps \( m > k \), the magnitude sequence \( \| z _ m \| \) diverges monotonically beyond the bounded region, and the parameter \( c \) belongs strictly to the exterior escape domain \( \mathcal { E } _ N \).
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Reverse Triangle Inequality in \( Cl(2,0) \)**: By the reverse triangle inequality for multivector magnitudes:
 \[ \| z _ { n + 1 } \| = \| z _ n ^ 2 + c \| \ge \| z _ n ^ 2 \| - \| c \| = \| z _ n \| ^ 2 - \| c \| \]
 
@@ -74,16 +73,15 @@ This chapter establishes the internal algebraic structure of the Mandelbrot set 
 A point \( c = c _ x + c _ y \, e _ { 12 } \) belongs to the period-1 interior domain if the fixed-point equation \( z ^ 2 + c = z \) admits a stable attracting solution in \( Cl ( 2 , 0 ) \).
 
 [#theorem-mandelbrot-main-cardioid-exact-cl20]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Geometric Algebraic Boundary of the Main Cardioid in \( Cl(2,0) \)
+====
 The boundary of the primary period-1 component of the Mandelbrot set in \( Cl ( 2 , 0 ) \) is parameterized algebraically by the unit planar rotor \( R ( \theta ) = \cos \theta + \sin \theta \, e _ { 12 } \) according to the exact identity:
 \[ c ( \theta ) = \frac { 1 } { 2 } R ( \theta ) - \frac { 1 } { 4 } R ( 2 \theta ) = \left ( \frac { 1 } { 2 } \cos \theta - \frac { 1 } { 4 } \cos ( 2 \theta ) \right ) + \left ( \frac { 1 } { 2 } \sin \theta - \frac { 1 } { 4 } \sin ( 2 \theta ) \right ) e _ { 12 } \]
 for \( \theta \in [ 0 , 2 \pi ) \).
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Fixed Point Condition**: The fixed point equation is \( z _ \ast ^ 2 - z _ \ast + c = 0 \). The multiplier of the orbit is the multivector derivative:
 \[ \lambda = 2 z _ \ast \]
 
@@ -100,15 +98,14 @@ The period-2 circular bulb tangent to the main cardioid at \( c = - 3 / 4 \) is 
 \[ z _ 2 = z _ 1 ^ 2 + c , \quad z _ 1 = z _ 2 ^ 2 + c \]
 
 [#theorem-period-2-bulb-geometry]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Exact Circular Geometry of the Period-2 Hyperbolic Component
+====
 The period-2 bulb of the Mandelbrot set in \( Cl ( 2 , 0 ) \) is an exact disk centered at \( c _ 0 = - 1 \) with radius \( r = 1 / 4 \):
 \[ \mathcal { B } _ 2 = \left \{ c \in Cl ( 2 , 0 ) : \| c - ( - 1 ) \| < \frac { 1 } { 4 } \right \} \]
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Period-2 Polynomial**: The period-2 cycle satisfies \( ( z ^ 2 + c ) ^ 2 + c = z \). Factoring out the period-1 fixed points yields:
 \[ z ^ 2 + z + ( c + 1 ) = 0 \]
 
@@ -127,16 +124,15 @@ This chapter examines filled-in Julia sets \( \mathcal { K } _ c \) as discrete 
 For every parameter \( c \in Cl ( 2 , 0 ) \), the discrete Julia set \( \mathcal { J } _ c \) is the boundary of the basin of attraction of the point at infinity.
 
 [#theorem-julia-connectedness-discrete-dichotomy]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Discrete Connectedness Dichotomy of Julia Sets
+====
 Let \( c \in Cl ( 2 , 0 ) \) on discrete grid \( \mathcal { G } _ N \). The filled Julia set \( \mathcal { K } _ c \) is connected on \( \mathcal { G } _ N \) if and only if the critical orbit originating at \( z _ 0 = 0 \) remains bounded:
 \[ c \in \mathcal { M } _ N \iff \mathcal { K } _ c \text { is topologically connected on } \mathcal { G } _ N \]
 If \( c \notin \mathcal { M } _ N \), then \( \mathcal { K } _ c \) decomposes into a discrete Cantor set of disconnected grid clusters.
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Critical Orbit Confinement**: The point \( z _ 0 = 0 \) is the unique critical point of the quadratic mapping \( z \mapsto z ^ 2 + c \) where the derivative \( 2 z \) vanishes.
 
 . **Böttcher Coordinate Isomorphism on Grids**: If the critical orbit remains bounded, the Riemann-Böttcher mapping establishes a conformal homeomorphism between the exterior of \( \mathcal { K } _ c \) and the exterior of the unit disk on \( \mathcal { G } _ N \), guaranteeing topological path-connectedness.
@@ -156,9 +152,9 @@ Let \( \{ w _ 1 , \dots , w _ M \} \) be a family of affine contraction operator
 where each \( A _ j \) satisfies \( \| A _ j \| \le s _ j < 1 \).
 
 [#theorem-banach-fixed-point-discrete-multivector]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Banach Fixed-Point Theorem on Discrete Multivector Metric Spaces
+====
 Let \( ( X , d ) \) be a complete discrete multivector metric space on resolution grid \( \mathcal { G } _ N \), where the metric \( d ( x , y ) = \| x - y \| \) is evaluated via the Clifford norm in \( Cl ( 2 , 0 ) \). Let \( T : X \to X \) be a strict contraction operator with Lipschitz contraction factor \( s \in [ 0 , 1 ) \) satisfying:
 \[ d ( T ( x ) , T ( y ) ) \le s \cdot d ( x , y ) \quad \forall \, x , y \in X \]
 Then:
@@ -170,10 +166,9 @@ Then:
 
 3. **Finite-Step Termination on Grids**: On the discrete lattice grid \( \mathcal { G } _ N \) with minimum step \( h = 2 ^ { - N } \), convergence to the resolution limit occurs in a finite number of steps \( n _ \text{term} \):
 \[ n _ \text{term} \le \left\lceil \frac { \ln ( 1 - s ) + \ln h - \ln d ( x _ 0 , x _ 1 ) } { \ln s } \right\rceil \]
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Geometric Step Contraction**: Let \( x _ { k + 1 } = T ( x _ k ) \) for \( k \ge 0 \). By induction on the contraction property:
 \[ d ( x _ k , x _ { k + 1 } ) \le s \cdot d ( x _ { k - 1 } , x _ k ) \le \dots \le s ^ k d ( x _ 0 , x _ 1 ) \]
 
@@ -192,15 +187,14 @@ which implies \( ( 1 - s ) d ( x _ \ast , y _ \ast ) \le 0 \). Since \( s < 1 \)
 ====
 
 [#theorem-hutchinson-vernier-attractor]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Existence and Uniqueness of Discrete IFS Attractors
+====
 For any finite contractive IFS on \( Cl ( 2 , 0 ) \), there exists a unique, nonempty compact discrete set \( \mathcal { A } _ N \subset \mathcal { G } _ N \) satisfying the invariant fixed-point identity:
 \[ \mathcal { A } _ N = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { A } _ N ) \pmod { \mathcal { G } _ N } \]
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Metric Space of Discrete Sets**: Define the Hausdorff metric \( d _ H \) on the space of nonempty compact subsets of \( \mathcal { G } _ N \).
 
 . **Hutchinson Operator Contraction**: The set-valued operator \( \mathcal { W } ( \mathcal { S } ) = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { S } ) \) satisfies:
@@ -223,16 +217,15 @@ This chapter derives fractal patterns in physical nature directly from the Maste
 In an insulating medium subjected to a steep electric potential gradient \( E = - \nabla \phi \), dielectric breakdown occurs when the local electric field exceeds the dielectric threshold \( E _ { \text { crit } } \).
 
 [#theorem-dielectric-breakdown-dla-dimension]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments
+====
 On a 2D discrete grid \( \mathcal { G } _ N \), the growth probability of an electric discharge filament at boundary node \( x \) is proportional to the local field gradient \( P ( x ) \propto \| \nabla \phi ( x ) \| ^ \eta \). For linear dielectric breakdown (\( \eta = 1 \)), the resulting branching filament tree has an exact asymptotic Vernier box dimension:
 \[ D _ { \text { box } } = \frac { 7 } { 4 } = 1.75 \]
 governed by discrete harmonic measure conservation.
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Harmonic Potential Field**: Outside the discharge cluster, the electric potential satisfies the discrete Laplace equation \( \nabla ^ 2 \phi = 0 \) with boundary conditions \( \phi = 0 \) on the cluster and \( \phi = 1 \) at the outer electrode boundary.
 
 . **Conformal Invariance and SLE Duality**: In discrete geometric algebra \( Cl ( 2 , 0 ) \), harmonic measure on the boundary scales as the local Beurling estimate. Conformal field invariance over discrete grid cells maps Diffusion-Limited Aggregation (DLA) directly to Schramm-Loewner Evolution with parameter \( \kappa = 6 \), yielding fractal dimension:
@@ -250,16 +243,15 @@ This chapter presents production-grade, highly parallel computational architectu
 By processing 8 double-precision or 16 single-precision coordinates simultaneously via AVX-512 / Zen 5 vector registers, discrete Mandelbrot and Julia set evaluation achieves arithmetic throughput exceeding 25 billion iterations per second on contemporary desktop microprocessors.
 
 [#theorem-simd-fractal-throughput]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Computational Complexity and Memory Bound of Multi-Grid Fractal Rasterization
+====
 Let an \( M \times M \) image grid be rasterized to maximum iteration depth \( K \) on discrete grid \( \mathcal { G } _ N \). Using adaptive bounding box decimation and SIMD vector lane packing, the total arithmetic operation count satisfies:
 \[ \mathcal { O } _ { \text { total } } \le \mathcal { O } \left ( M ^ { D _ { \text { box } } } \cdot K + M ^ 2 \right ) \]
 reducing computational workload by over 80% compared to brute-force pixel-by-pixel iteration.
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Interior and Exterior Decimation**: By the Bounded Orbit Theorem, grid cells inside the main cardioid and period-2 bulb are classified in \( \mathcal { O } ( 1 ) \) time via algebraic boundary tests.
 
 . **Boundary Layer Scaling**: The remaining unclassified pixels are restricted to a boundary band of thickness \( \epsilon = 1 / M \). The number of such active boundary cells scales as \( \mathcal { N } _ { \text { boundary } } \propto M ^ { D _ { \text { box } } } \). Multiplying by the maximum iteration depth \( K \) yields the bounded asymptotic operation complexity, completing the proof. \( \square \)
@@ -529,9 +521,9 @@ Every polished solid surface consists of microscopic hills, valleys, and ridges 
 3. **Sub-Microscopic Ridges**: Each micrometer peak is in turn composed of stepped atomic crystal terraces.
 
 [#def-discrete-asperity-mesh]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Discrete Asperity Contact Network
+====
 Let two macroscopic solid surfaces \( \mathcal { S } _ 1 \) and \( \mathcal { S } _ 2 \) be brought into mechanical proximity under compressive load \( P \). The true physical contact zone \( \mathcal { C } _ \text { real } \) is the discrete set of touching peak junctions across resolution grid \( \mathcal { G } _ N \):
 \[ \mathcal { C } _ \text { real } = \left \{ \mathbf { x } \in \mathcal { G } _ N \mid d ( \mathcal { S } _ 1 ( \mathbf { x } ) , \mathcal { S } _ 2 ( \mathbf { x } ) ) \le \epsilon _ 0 \right \} \]
 where \( \epsilon _ 0 \) is the discrete inter-atomic lattice spacing.
@@ -589,16 +581,15 @@ If water is poured into a cylinder, the pressure at the bottom increases smoothl
 3. **Unloaded Pockets**: Between these load-bearing chains lie pockets of grains that carry virtually no load at all.
 
 [#thm-granular-force-chain-fractal]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Discrete Fractal Scaling of Force Chains in Granular Media
+====
 Let a granular bed of \( N \) particles be subjected to a boundary load \( F _ 0 \). The network of contact vectors carrying stress greater than the mean stress \( \langle \sigma \rangle \) forms a connected sub-graph on the discrete contact lattice whose box dimension satisfies:
 \[ D _ \text { chain } \approx 1.65 \text{ to } 1.75 < d \]
 where \( d \) is the spatial embedding dimension (\( d = 2 \) or \( d = 3 \)).
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Force Balance at Particle Junctions**: At each particle vertex \( i \), static equilibrium demands \( \sum _ j \mathbf { f } _ { i j } = 0 \). Because contact forces can only push (granules cannot exert tension), the transmission of force is directed downward and laterally along branching contact vectors.
 
 . **Hierarchical Load Splitting**: At each particle layer, a downward force vector \( \mathbf { f } \) splits into \( k \) branch vectors with random geometric split ratios determined by grain packing geometry. This is structurally identical to a discrete branching process.
@@ -691,17 +682,16 @@ Let us trace a single observed point \( z_0 \) backward:
 \[ f ^ { - k } ( z_0 ) = \left \{ w \in \mathcal { G } _ N \mid f ^ k ( w ) = z_0 \right \} \]
 
 [#thm-preimage-fractal-convergence]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Discrete Pre-Image Tree Convergence to Julia Basin Boundaries
+====
 Let \( f ( z ) = z ^ 2 + c \) be a discrete multivector mapping in \( Cl ( 2 , 0 ) \) and let \( z_0 \) be any point in the bounded state region. The union of all backward pre-images:
 \[ \mathcal { T } _ \text { pre } ( z_0 ) = \bigcup _ { k = 1 } ^ \infty f ^ { - k } ( z_0 ) \]
 is dense on the discrete boundary of the attractor basin (the Julia boundary \( \mathcal { J } _ c \)). The box dimension of the candidate ancestral tree equals the fractal dimension of the boundary:
 \[ D _ \text { tree } = D ( \mathcal { J } _ c ) \]
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Inverse Root Branches**: For the multivector squaring map \( w ^ 2 + c = z \), the backward step is \( w = \pm \sqrt { z - c } \). In \( Cl ( 2 , 0 ) \), taking the square root of a multivector \( u = u_0 + u _ { 1 2 } e _ { 1 2 } \) halves the rotor angle \( \theta = \arctan ( u _ { 1 2 } / u_0 ) \) and scales the magnitude by \( \sqrt { | u | } \).
 
 . **Contractive Backward Metric**: While the forward map expands distances near the repelling boundary, the inverse mapping \( f ^ { - 1 } \) is strictly contractive toward the boundary. By the Banach fixed-point theorem on discrete metric spaces (Theorem 4.1), the sequence of pre-image sets converges to the unique invariant boundary set \( \mathcal { J } _ c \).
@@ -748,16 +738,15 @@ Human abductive reasoning succeeds because background knowledge (Jaynesian prior
 3. **Logarithmic Search**: Because the hypothesis space is a self-similar fractal tree, hierarchical pruning reduces an exponential search over \( N \) leaves to an efficient path traversal of length \( \mathcal { O } ( \log N ) \).
 
 [#thm-hierarchical-abduction-complexity]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Hierarchical Aperture Pruning Complexity on Discrete Pre-Image Trees
+====
 Let a discrete dynamical system have average backward branching factor \( b > 1 \), so that the unconstrained historical state space at past depth \( K \) contains \( N = b ^ K \) candidate trajectories. If an abductive inference engine applies discrete evidence aperture tests of selectivity \( \sigma \) (\( 0 < \sigma < 1 \)) at each backward step, the expected number of surviving candidate histories \( M ( K ) \) scales as:
 \[ M ( K ) = ( \sigma \cdot b ) ^ K \]
 When \( \sigma < 1 / b \), the search space contracts exponentially to a single, uniquely determined historical trajectory in \( \mathcal { O } ( K ) = \mathcal { O } ( \log N ) \) computational operations.
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Step-by-Step Propagation**: At step 1, \( b \) parent states are generated. Applying the evidence filter with pass rate \( \sigma \) leaves \( \sigma \cdot b \) valid parents.
 . **Inductive Step**: Repeating this process across \( K \) hierarchical levels yields \( ( \sigma \cdot b ) ^ K \) surviving paths.
 . **Contraction Condition**: If \( \sigma \cdot b < 1 \), then \( \lim _ { K \to \infty } ( \sigma \cdot b ) ^ K = 0 \), meaning all spurious branches are eliminated, leaving only the physically consistent causal path. The number of evaluated tree nodes is bounded by the geometric series:
@@ -843,14 +832,13 @@ The Ishikawa architecture is an explicit realization of a discrete backward pre-
 3. **Secondary and Tertiary Sub-Ribs**: Each major rib branches recursively into specific sub-factors (e.g., *Machine* \( \to \) *Spindle* \( \to \) *Bearing* \( \to \) *Race Pitting*), forming a multi-tier tree where each branch is self-similar in logical form to the parent trunk.
 
 [#thm-ishikawa-fractal-pruning]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Discrete Ishikawa Tree Abductive Pruning and Root-Cause Isolation
+====
 Let an observed manufacturing defect \( \Delta \) be represented as a root node on a discrete causal grid. Let each causal node branch backward with average branching factor \( b \ge 2 \) across \( K \) operational depth tiers. If an investigator applies discrete operational tests of selectivity \( \sigma < 1 / b \) at each tier, the Ishikawa cause-and-effect graph contracts from an exponential search space of \( N = b ^ K \) potential failure modes to a unique, isolated physical root cause in \( \mathcal { O } ( K ) = \mathcal { O } ( \log N ) \) diagnostic inspections.
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Formal Tree Representation**: Let the causal operator be \( \mathcal { I } ^ { - 1 } : \mathcal { Q } \to \mathcal { P } ( \mathcal { Q } ) \), where \( \mathcal { I } ^ { - 1 } ( Q ) \) maps a quality characteristic to its set of \( b \) direct contributing factors.
 . **Recursive Tier Expansion**: After \( K \) tiers of backward expansion, the total number of candidate micro-causes is \( N_K = b ^ K \).
 . **Aperture Filtering**: At each tier \( j \), an operational test (e.g., verifying metallurgical composition with a spectrometer) either confirms or rejects that branch. With selectivity \( \sigma < 1 / b \), the expected number of surviving branches after \( K \) tiers is:
@@ -885,18 +873,17 @@ From the viewpoint of the Iris number system:
 * **Non-Random Run Rules as Topological Apertures**: Runs of 8 consecutive points on one side of the centerline, or 6 consecutive increasing points, detect scale-breaking trends on grid \( \mathcal { G } _ N \) before individual points cross the \( \pm 3 \sigma \) limits.
 
 [#thm-shewhart-multiscale-invariance]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Multiscale Self-Similarity of Stable Common-Cause Variation
+====
 Let \( \{ x_j \} \) be a stationary sequence of discrete process measurements on grid \( \mathcal { G } _ N \) generated by a system in statistical control. Let the aggregate process at scale \( m \) be defined by the block-average:
 \[ X_k ^ { ( m ) } = \frac { 1 } { m } \sum _ { j = ( k - 1 ) m + 1 } ^ { k m } x_j \]
 Then the variance scales as:
 \[ \operatorname { Var } \left ( X ^ { ( m ) } \right ) = \frac { \sigma ^ 2 } { m ^ { 2 - 2 H } } \]
 where \( H \in [ 0.5 , 1.0 ) \) is the Hurst exponent characterizing the discrete fractal memory of the process. For uncorrelated white noise, \( H = 0.5 \) and variance scales as \( \sigma ^ 2 / m \). The Shewhart control chart preserves invariant operational decision boundaries across all aggregation scales \( m \).
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Autocovariance Summation**: The variance of the block average is given by:
 \[ \operatorname { Var } \left ( X ^ { ( m ) } \right ) = \frac { 1 } { m ^ 2 } \sum _ { i = 1 } ^ m \sum _ { j = 1 } ^ m \gamma ( | i - j | ) \]
 where \( \gamma ( k ) \) is the discrete autocorrelation function on \( \mathcal { G } _ N \).
@@ -934,18 +921,17 @@ In an industrial or scientific enterprise, the PDSA cycle does not operate as a 
 Each tier in the hierarchy executes the identical four-stage topological contraction mapping over its respective characteristic temporal scale.
 
 [#thm-pdsa-contraction-convergence]
-[NOTE]
-====
+[THEOREM]
 .Theorem: PDSA Operational Contraction and Convergence to Target Invariants
+====
 Let the composite PDSA operator be \( T _ \text { PDSA } = \mathcal { A } \circ \mathcal { S } _ \text { study } \circ \mathcal { D } \circ \mathcal { P } : \mathcal { S } \to \mathcal { S } \). If the operational gain \( \Gamma \) satisfies the spectral radius condition:
 \[ \rho ( I - \Gamma \cdot \nabla_\theta f ) < 1 \]
 then \( T _ \text { PDSA } \) is a strict contraction mapping on the metric space \( ( \mathcal { S } , d ) \). The process parameters \( \theta_k \) converge exponentially to the unique invariant fixed point \( \theta ^ * \):
 \[ d ( \theta_k , \theta ^ * ) \le \frac { \kappa ^ k } { 1 - \kappa } \cdot d ( \theta_1 , \theta_0 ) \]
 where \( \kappa = \rho ( I - \Gamma \cdot \nabla_\theta f ) < 1 \).
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Linearized Error Dynamics**: Expanding the parameter update around the target state \( \theta ^ * \) where \( f ( \theta ^ * ) = y _ \text { target } \):
 \[ \theta _ { k + 1 } - \theta ^ * = \theta_k - \theta ^ * - \Gamma \left ( f ( \theta_k ) - f ( \theta ^ * ) \right ) \approx \left ( I - \Gamma \cdot \nabla_\theta f \right ) ( \theta_k - \theta ^ * ) \]
 . **Metric Contraction**: Under the operator norm induced by the discrete Euclidean metric, for all \( \theta_1 , \theta_2 \in \mathcal { S } \):
@@ -994,14 +980,13 @@ The system undergoes **undamped period-2 oscillations**, generating an expanding
 The system becomes a non-stationary brownian random walk, drifting off the table as \( k \to \infty \).
 
 [#thm-tampering-feigenbaum-instability]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Tampering-Induced Feigenbaum Period-Doubling and Chaotic Variance Explosion
+====
 Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with common-cause noise \( \epsilon_k \) be subjected to continuous proportional feedback adjustment \( x _ { k + 1 } = x_k - \beta \cdot ( z_k - z _ \text { target } ) \). As the tampering gain \( \beta \) increases beyond the critical threshold \( \beta _ \text { crit } = 2 / | F ' ( x ^ * ) | \), the process undergoes a sequence of Feigenbaum period-doubling bifurcations on discrete grid \( \mathcal { G } _ N \), culminating in deterministic chaotic variance explosion where the process scatter spans the entire physical boundary aperture.
-====
 
-==== Proof
-====
+*Proof:*
+
 . **Discrete Map Formulation**: The closed-loop state dynamics can be written as:
 \[ x _ { k + 1 } = x_k - \beta \left ( F ( x_k ) - z _ \text { target } \right ) - \beta \epsilon_k \equiv g _ \beta ( x_k ) - \beta \epsilon_k \]
 . **Linear Stability Analysis**: The fixed point \( x ^ * \) satisfies \( g _ \beta ( x ^ * ) = x ^ * \). The derivative of the map at the fixed point is:
