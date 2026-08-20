@@ -256,3 +256,244 @@ reducing computational workload by over 80% compared to brute-force pixel-by-pix
 
 . **Boundary Layer Scaling**: The remaining unclassified pixels are restricted to a boundary band of thickness \( \epsilon = 1 / M \). The number of such active boundary cells scales as \( \mathcal { N } _ { \text { boundary } } \propto M ^ { D _ { \text { box } } } \). Multiplying by the maximum iteration depth \( K \) yields the bounded asymptotic operation complexity, completing the proof. \( \square \)
 ====
+
+=== Discrete Multivector Escape-Time Algorithm in Cl(2,0)
+
+The standard escape-time algorithm is formulated directly over the discrete real Clifford algebra \( Cl ( 2 , 0 ) \), avoiding any reliance on the imaginary unit.
+
+[#listing-mandelbrot-ada]
+[source,ada]
+----
+pragma ada_2022;
+
+with ada.text_io;
+with ada.numerics.generic_elementary_functions;
+
+procedure discrete_fractal_engine is
+   type real is digits 15;
+   package math is new ada.numerics.generic_elementary_functions (real);
+
+   -- multivector in cl(2,0): z = x + y * e_12
+   type cl20_even is record
+      s : real; -- scalar component (x)
+      b : real; -- bivector component (y * e_12)
+   end record;
+
+   -- cl(2,0) multivector squaring: (x + y e_12)^2 = (x^2 - y^2) + (2xy) e_12
+   function square (in_z : in cl20_even) return cl20_even with
+      inline,
+      post => square'result.s = in_z.s * in_z.s - in_z.b * in_z.b
+   is
+      res : cl20_even;
+   begin
+      res.s := in_z.s * in_z.s - in_z.b * in_z.b;
+      res.b := 2.0 * in_z.s * in_z.b;
+      return res;
+   end square;
+
+   -- multivector addition
+   function add (in_a : in cl20_even; in_b : in cl20_even) return cl20_even with
+      inline
+   is
+      res : cl20_even;
+   begin
+      res.s := in_a.s + in_b.s;
+      res.b := in_a.b + in_b.b;
+      return res;
+   end add;
+
+   -- squared clifford norm ||z||^2 = x^2 + y^2
+   function norm_sq (in_z : in cl20_even) return real with
+      inline
+   is
+   begin
+      return in_z.s * in_z.s + in_z.b * in_z.b;
+   end norm_sq;
+
+   -- check main cardioid and period-2 bulb early containment
+   function in_main_cardioid (in_c : in cl20_even) return boolean is
+      x_off : constant real := in_c.s - 0.25;
+      q     : constant real := x_off * x_off + in_c.b * in_c.b;
+      in_card : boolean;
+      in_bulb : boolean;
+   begin
+      in_card := (q * (q + x_off) <= 0.25 * in_c.b * in_c.b);
+      in_bulb := ((in_c.s + 1.0) * (in_c.s + 1.0) + in_c.b * in_c.b <= 0.0625);
+      return in_card or in_bulb;
+   end in_main_cardioid;
+
+   -- escape-time kernel with maximum iteration bound
+   function iterate_cell
+     (in_c     : in cl20_even;
+      max_iter : in natural) return natural
+   is
+      z     : cl20_even;
+      count : natural;
+   begin
+      if in_main_cardioid (in_c) then
+         return max_iter;
+      end if;
+
+      z.s := 0.0;
+      z.b := 0.0;
+      count := 0;
+
+      while count < max_iter loop
+         if norm_sq (z) > 4.0 then
+            return count;
+         end if;
+         z := add (square (z), in_c);
+         count := count + 1;
+      end loop;
+
+      return max_iter;
+   end iterate_cell;
+
+   width    : constant natural := 64;
+   height   : constant natural := 32;
+   max_k    : constant natural := 200;
+   row      : natural;
+   col      : natural;
+   c_pt     : cl20_even;
+   k_res    : natural;
+   x_min    : constant real := -2.1;
+   x_max    : constant real := 0.7;
+   y_min    : constant real := -1.2;
+   y_max    : constant real := 1.2;
+   dx       : constant real := (x_max - x_min) / real (width - 1);
+   dy       : constant real := (y_max - y_min) / real (height - 1);
+begin
+   ada.text_io.put_line ("================================================");
+   ada.text_io.put_line (" discrete cl(2,0) mandelbrot vernier rasterizer ");
+   ada.text_io.put_line ("================================================");
+
+   row := 0;
+   while row < height loop
+      c_pt.b := y_max - real (row) * dy;
+      col := 0;
+      while col < width loop
+         c_pt.s := x_min + real (col) * dx;
+         k_res := iterate_cell (c_pt, max_k);
+         if k_res = max_k then
+            ada.text_io.put ("#");
+         elsif k_res > 15 then
+            ada.text_io.put ("*");
+         elsif k_res > 5 then
+            ada.text_io.put (".");
+         else
+            ada.text_io.put (" ");
+         end if;
+         col := col + 1;
+      end loop;
+      ada.text_io.new_line;
+      row := row + 1;
+   end loop;
+end discrete_fractal_engine;
+----
+
+=== Discrete Iterated Function System (IFS) Generator
+
+Iterated function systems on discrete grids \( \mathcal { G } _ N \) generate deterministic self-similar attractors (such as the Barnsley fern, Sierpiński gasket, and dragon curves) through contractive affine transformations in \( Cl ( 2 , 0 ) \).
+
+[#listing-ifs-ada]
+[source,ada]
+----
+pragma ada_2022;
+
+with ada.text_io;
+
+procedure discrete_ifs_generator is
+   type real is digits 15;
+
+   type affine_map is record
+      a, b, c, d, e, f : real;
+      prob_accum       : real;
+   end record;
+
+   type ifs_table is array (1 .. 4) of affine_map;
+
+   -- barnsley fern affine map table in cl(2,0)
+   fern : constant ifs_table :=
+     (1 => (0.00,  0.00,  0.00, 0.16, 0.0, 0.00, 0.01),
+      2 => (0.85,  0.04, -0.04, 0.85, 0.0, 1.60, 0.86),
+      3 => (0.20, -0.26,  0.23, 0.22, 0.0, 1.60, 0.93),
+      4 => (-0.15, 0.28,  0.26, 0.24, 0.0, 0.44, 1.00));
+
+   -- lcg pseudorandom generator for deterministic grid chaos game
+   seed : natural := 42;
+   function next_rand return real is
+   begin
+      seed := (seed * 1103515245 + 12345) mod 2147483648;
+      return real (seed) / 2147483648.0;
+   end next_rand;
+
+   grid_w : constant natural := 60;
+   grid_h : constant natural := 30;
+   type char_grid is array (0 .. grid_h - 1, 0 .. grid_w - 1) of character;
+   display : char_grid := [others => [others => ' ']];
+
+   x       : real := 0.0;
+   y       : real := 0.0;
+   nxt_x   : real;
+   nxt_y   : real;
+   r       : real;
+   map_idx : natural;
+   step    : natural := 0;
+   px      : integer;
+   py      : integer;
+   r_idx   : natural;
+   c_idx   : natural;
+begin
+   ada.text_io.put_line ("================================================");
+   ada.text_io.put_line ("   discrete ifs barnsley fern generator (ada)   ");
+   ada.text_io.put_line ("================================================");
+
+   while step < 50000 loop
+      r := next_rand;
+      if r < fern (1).prob_accum then
+         map_idx := 1;
+      elsif r < fern (2).prob_accum then
+         map_idx := 2;
+      elsif r < fern (3).prob_accum then
+         map_idx := 3;
+      else
+         map_idx := 4;
+      end if;
+
+      nxt_x := fern (map_idx).a * x + fern (map_idx).b * y + fern (map_idx).e;
+      nxt_y := fern (map_idx).c * x + fern (map_idx).d * y + fern (map_idx).f;
+      x := nxt_x;
+      y := nxt_y;
+
+      if step > 20 then
+         px := integer (real'floor ((x + 2.5) / 5.5 * real (grid_w - 1)));
+         py := integer (real'floor ((10.0 - y) / 10.0 * real (grid_h - 1)));
+         if px in 0 .. grid_w - 1 and py in 0 .. grid_h - 1 then
+            display (py, px) := '#';
+         end if;
+      end if;
+      step := step + 1;
+   end loop;
+
+   r_idx := 0;
+   while r_idx < grid_h loop
+      c_idx := 0;
+      while c_idx < grid_w loop
+         ada.text_io.put (display (r_idx, c_idx));
+         c_idx := c_idx + 1;
+      end loop;
+      ada.text_io.new_line;
+      r_idx := r_idx + 1;
+   end loop;
+end discrete_ifs_generator;
+----
+
+=== Boundary Tracing and Multi-Grid Sub-Division Algorithm
+
+Rather than evaluating all \( M \times M \) grid cells exhaustively, the Multi-Grid Boundary Tracing algorithm evaluates cells hierarchically across scale levels:
+
+1. **Coarse Grid Bounding**: Evaluate cell vertices at resolution step \( H = 2 ^ { - N + 3 } \).
+2. **Homogeneity Testing**: If all 4 vertices of a tile share identical escape signatures (e.g. all escaped at \( k < 3 \) or all inside the main cardioid), fill the entire tile homogeneously.
+3. **Boundary Edge Refinement**: If vertex signatures differ, subdivide the tile into 4 sub-tiles at resolution \( h = H / 2 \) and recurse down to target resolution \( \mathcal { G } _ N \).
+4. **SIMD Vector Lane Batching**: Group active boundary cells into contiguous 8-lane or 16-lane blocks for SIMD fused multiply-add (FMA) execution.
+
