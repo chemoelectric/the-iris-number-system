@@ -174,16 +174,17 @@ Then:
 
 . **Cauchy Sequence Property**: For any integer \( p \ge 1 \), applying the triangle inequality yields:
 \[ d ( x _ n , x _ { n + p } ) \le \sum _ { j = 0 } ^ { p - 1 } d ( x _ { n + j } , x _ { n + j + 1 } ) \le d ( x _ 0 , x _ 1 ) \sum _ { j = 0 } ^ { p - 1 } s ^ { n + j } = s ^ n d ( x _ 0 , x _ 1 ) \frac { 1 - s ^ p } { 1 - s } \]
-Because \( 0 \le s < 1 \), \( s ^ n \to 0 \) as \( n \to \infty \). Thus \( ( x _ n ) \) is a Cauchy sequence in \( X \).
+Because \( 0 \le s < 1 \), the upper bound contracts below any chosen grid aperture \( h = 2 ^ { - N } \) after finite index \( n _ \text{term} \). Thus \( ( x _ n ) \) forms an aperture-contracting sequence in \( X \).
 
-. **Existence by Completeness**: Since \( ( X , d ) \) is complete on \( \mathcal { G } _ N \), the sequence converges to a limit \( x _ \ast = \lim _ { n \to \infty } x _ n \). By continuity of \( T \):
-\[ T ( x _ \ast ) = T \left ( \lim _ { n \to \infty } x _ n \right ) = \lim _ { n \to \infty } T ( x _ n ) = \lim _ { n \to \infty } x _ { n + 1 } = x _ \ast \]
+. **Existence and Invariance by MSRA Aperture Completeness**: By MSRA aperture completeness on \( \mathcal { G } _ N \) (Volume I), the nested sequence of metric intervals isolates a unique grid invariant \( x _ \ast \). By the Lipschitz contraction property:
+\[ d ( T ( x _ \ast ) , x _ \ast ) \le d ( T ( x _ \ast ) , T ( x _ n ) ) + d ( x _ { n + 1 } , x _ n ) + d ( x _ n , x _ \ast ) \le ( 1 + s ) d ( x _ n , x _ \ast ) + s ^ n d ( x _ 0 , x _ 1 ) \]
+Evaluating at \( n = n _ \text{term} \) yields \( d ( T ( x _ \ast ) , x _ \ast ) \le h \), which identifies \( T ( x _ \ast ) = x _ \ast \) on \( \mathcal { G } _ N \).
 
 . **Uniqueness by Contradiction**: Suppose there exists another fixed point \( y _ \ast \in X \) such that \( T ( y _ \ast ) = y _ \ast \) with \( x _ \ast \neq y _ \ast \). Then:
 \[ d ( x _ \ast , y _ \ast ) = d ( T ( x _ \ast ) , T ( y _ \ast ) ) \le s \cdot d ( x _ \ast , y _ \ast ) \]
 which implies \( ( 1 - s ) d ( x _ \ast , y _ \ast ) \le 0 \). Since \( s < 1 \), \( 1 - s > 0 \), forcing \( d ( x _ \ast , y _ \ast ) = 0 \), so \( x _ \ast = y _ \ast \).
 
-. **A-Priori Error Estimate and Finite Termination**: Taking the limit as \( p \to \infty \) in the triangle sum gives \( d ( x _ n , x _ \ast ) \le \frac { s ^ n } { 1 - s } d ( x _ 0 , x _ 1 ) \). Setting \( d ( x _ n , x _ \ast ) \le h = 2 ^ { - N } \) and solving for \( n \) produces the finite grid termination bound \( n _ \text{term} \), completing the proof. \( \square \)
+. **A-Priori Error Estimate and Finite Termination**: The triangle sum yields \( d ( x _ n , x _ \ast ) \le \frac { s ^ n } { 1 - s } d ( x _ 0 , x _ 1 ) \). Setting \( d ( x _ n , x _ \ast ) \le h = 2 ^ { - N } \) and solving for \( n \) produces the finite grid termination bound \( n _ \text{term} \), completing the proof. \( \square \)
 ====
 
 [#theorem-hutchinson-vernier-attractor]
@@ -204,8 +205,8 @@ Because \( \max s _ j < 1 \), \( \mathcal { W } \) is a strict contraction on a 
 
 === The Vernier Box Dimension
 
-On discrete grid \( \mathcal { G } _ N \) with grid step \( \epsilon = 2 ^ { - N } \), let \( \mathcal { N } ( \epsilon ) \) denote the minimal number of grid boxes of side length \( \epsilon \) required to cover set \( \mathcal { S } \). The Vernier Box Dimension \( D _ { \text { box } } \) is defined constructively as:
-\[ D _ { \text { box } } ( \mathcal { S } ) = \lim _ { N \to \infty } \frac { \ln \mathcal { N } ( 2 ^ { - N } ) } { N \ln 2 } \]
+On discrete grid \( \mathcal { G } _ N \) with grid step \( \epsilon = 2 ^ { - N } \), let \( \mathcal { N } ( \epsilon ) \) denote the minimal number of grid boxes of side length \( \epsilon \) required to cover set \( \mathcal { S } \). The Vernier Box Dimension \( D _ { \text { box } } \) is evaluated across successive resolution grid levels \( N \) as the constant scaling exponent:
+\[ D _ { \text { box } } ( \mathcal { S } ) = \frac { \ln \mathcal { N } ( 2 ^ { - N } ) } { N \ln 2 } \pmod { \mathcal { G } _ N } \]
 
 [#chap-physical-fractals-phase-fronts]
 == Physical Fractals: Non-Equilibrium Phase Fronts, Dendritic Growth, and Dielectric Breakdown
@@ -855,7 +856,7 @@ Because \( K = \log _ b N \), the computational and physical search complexity i
 Walter Shewhart recognized that physical variation is fundamentally divided into two distinct classes, which cannot be treated with the same mathematical tools:
 
 1. **Common-Cause Variation (Chance Causes / State of Statistical Control)**:
-   * Arises from the cumulative superposition of uncountably many microscopic, independent physical perturbations on grid \( \mathcal { G } _ N \) (thermal agitation, microscopic surface roughness, ambient electrical ripple).
+   * Arises from the cumulative superposition of a multitude of microscopic, independent physical perturbations on grid \( \mathcal { G } _ N \) (thermal agitation, microscopic surface roughness, ambient electrical ripple).
    * Exhibits **discrete \( 1 / f ^ \alpha \) spectral scaling and self-similarity**: whether sampled hourly, daily, or weekly, the normalized distribution of common-cause noise retains the identical scale-invariant form.
    * A process in statistical control is not variationless; it is in a stable, predictable stationary state governed by a deterministic entropy envelope.
 2. **Special-Cause Variation (Assignable Causes / Scale-Breaking Singularities)**:
@@ -998,9 +999,9 @@ Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with commo
 . **Bifurcation Cascade**:
   * For \( | 1 - \beta F ' ( x ^ * ) | < 1 \) (i.e., \( 0 < \beta < 2 / F ' ( x ^ * ) \)), the fixed point is stable.
   * At \( \beta _ 1 = 2 / F ' ( x ^ * ) \), \( g ' _ \beta ( x ^ * ) = - 1 \), triggering a flip (period-doubling) bifurcation into a period-2 cycle.
-  * Successive increases in tampering intensity \( \beta \) induce the universal Feigenbaum bifurcation cascade \( \beta_n \to \beta_\infty \) with scaling ratio:
-\[ \delta = \lim _ { n \to \infty } \frac { \beta_n - \beta _ { n - 1 } } { \beta _ { n + 1 } - \beta_n } \approx 4.6692016 \]
-. **Chaotic Variance**: Beyond \( \beta_\infty \), the process trajectory fills a strange attractor on \( \mathcal { G } _ N \), demonstrating that attempting to compensate for common-cause noise mechanically induces macroscopic chaos. \( \square \)
+  * Successive increases in tampering intensity \( \beta \) induce the universal Feigenbaum bifurcation cascade \( \beta_n \to \beta _ \text{crit} \) on grid \( \mathcal { G } _ N \) with geometric scaling ratio:
+\[ \delta = \frac { \beta_n - \beta _ { n - 1 } } { \beta _ { n + 1 } - \beta_n } \approx 4.6692016 \]
+. **Chaotic Variance**: Beyond \( \beta _ \text{crit} \), the process trajectory fills a strange attractor on \( \mathcal { G } _ N \), demonstrating that attempting to compensate for common-cause noise mechanically induces macroscopic chaos. \( \square \)
 ====
 
 === Synthesis: The Epistemological Ladder of Variation and Invariance
@@ -1015,7 +1016,7 @@ Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with commo
 | **Level 4** | Formulational Synthesis | PDSA Process Improvement | Contraction to higher-order fixed point \( \theta ^ * \) | Standardize new operational baseline
 |===
 
-This completes the mathematical and epistemological unification: the extraction of order from variation is the systematic navigation of discrete fractal trees, distinguishing scale-invariant background noise from assignable causes, and driving continuous operational convergence via nested contractive learning cycles.
+This completes the mathematical and epistemological unification: the extraction of order from variation is the systematic navigation of discrete fractal trees, distinguishing scale-invariant background noise from assignable causes, and driving operational convergence via nested contractive learning cycles.
 
 == Index of Formal Statements
 
