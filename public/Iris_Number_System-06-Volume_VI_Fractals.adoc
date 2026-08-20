@@ -552,7 +552,7 @@ The physical effectiveness of wet polyvinyl acetate (PVA) wood glue under mechan
 1. **Hydrodynamic Wetting and Capillary Pressure**:
 Wet water-borne PVA glue possesses low dynamic viscosity and high polar affinity for the hydrophilic cellulose and lignin matrix. By the Young-Laplace relation on discrete aperture grid \( \mathcal { G } _ N \), the capillary suction pressure \( \Delta P _ \text{cap} \) inside a porous cell lumen of effective radius \( r \) is:
 \[ \Delta P _ \text{cap} = \frac { 2 \gamma \cos \theta } { r } \]
-where \( \gamma \) is the surface tension of the aqueous emulsion and \( \theta \) is the contact wetting angle. Because cell lumens and microscopic surface fissures have small effective radii (\( r \sim 1 \text{ \mu m} \) to \( 50 \text{ \mu m} \)), capillary forces actively draw the aqueous PVA dispersion deep into the open fractured tracheids.
+where \( \gamma \) is the surface tension of the aqueous emulsion and \( \theta \) is the contact wetting angle. Because cell lumens and microscopic surface fissures have small effective radii (\( r \sim 1 \mu\text{m} \) to \( 50 \mu\text{m} \)), capillary forces actively draw the aqueous PVA dispersion deep into the open fractured tracheids.
 
 2. **Mechanical Clamping and Compression of Fractal Void Apertures**:
 Unassisted capillary action alone leaves macroscopic pockets between misaligned asperities. Applying external mechanical clamping pressure accomplishes two essential mechanical functions:
