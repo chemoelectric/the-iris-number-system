@@ -191,16 +191,20 @@ which implies \( ( 1 - s ) d ( x _ \ast , y _ \ast ) \le 0 \). Since \( s < 1 \)
 [THEOREM]
 .Theorem: Existence and Uniqueness of Discrete IFS Attractors
 ====
-For any finite contractive IFS on \( Cl ( 2 , 0 ) \), there exists a unique, nonempty compact discrete set \( \mathcal { A } _ N \subset \mathcal { G } _ N \) satisfying the invariant fixed-point identity:
+For any finite contractive IFS on \( Cl ( 2 , 0 ) \) defined over resolution grid \( \mathcal { G } _ N \), there exists a unique, nonempty finite grid configuration \( \mathcal { A } _ N \subset \mathcal { G } _ N \) satisfying the invariant fixed-point identity:
 \[ \mathcal { A } _ N = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { A } _ N ) \pmod { \mathcal { G } _ N } \]
 
 *Proof:*
 
-. **Metric Space of Discrete Sets**: Define the Hausdorff metric \( d _ H \) on the space of nonempty compact subsets of \( \mathcal { G } _ N \).
+. **Grid Mask Distance**: Let \( \mathcal { P } ( \mathcal { G } _ N ) \) be the collection of finite grid configurations within a bounded domain on \( \mathcal { G } _ N \). Define the discrete aperture metric \( d _ \text{grid} ( \mathcal { A } , \mathcal { B } ) \) as the maximum coordinate separation between matching occupied cells on grid \( \mathcal { G } _ N \).
 
-. **Hutchinson Operator Contraction**: The set-valued operator \( \mathcal { W } ( \mathcal { S } ) = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { S } ) \) satisfies:
-\[ d _ H ( \mathcal { W } ( \mathcal { S } _ 1 ) , \mathcal { W } ( \mathcal { S } _ 2 ) ) \le \left ( \max _ { 1 \le j \le M } s _ j \right ) d _ H ( \mathcal { S } _ 1 , \mathcal { S } _ 2 ) \]
-Because \( \max s _ j < 1 \), \( \mathcal { W } \) is a strict contraction on a complete discrete metric space. By the Banach fixed-point theorem on \( \mathcal { G } _ N \), there exists a unique invariant attractor \( \mathcal { A } _ N \), completing the proof. \( \square \)
+. **Hutchinson Operator Contraction**: The set-valued union operator \( \mathcal { W } ( \mathcal { S } ) = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { S } ) \pmod { \mathcal { G } _ N } \) maps cell configurations under contractive affine mappings \( w_j \). For any two cell configurations \( \mathcal { A } , \mathcal { B } \):
+\[ d _ \text{grid} ( \mathcal { W } ( \mathcal { A } ) , \mathcal { W } ( \mathcal { B } ) ) \le s _ \text{max} \cdot d _ \text{grid} ( \mathcal { A } , \mathcal { B } ) \]
+where \( s _ \text{max} = \max _ { 1 \le j \le M } s _ j < 1 \).
+
+. **Finite Iteration Invariance**: Because \( s _ \text{max} < 1 \) and the grid has finite minimum lattice spacing \( h = 2 ^ { - N } \), the sequence of iterated cell masks \( \mathcal { A } ^ { ( k + 1 ) } = \mathcal { W } ( \mathcal { A } ^ { ( k ) } ) \) contracts at each step. By the discrete multivector fixed-point theorem, the iteration terminates after at most \( k _ \text{term} = \lceil \frac { \ln h - \ln d _ \text{grid} ( \mathcal { A } ^ { ( 0 ) } , \mathcal { W } ( \mathcal { A } ^ { ( 0 ) } ) ) } { \ln s _ \text{max} } \rceil \) steps at the unique invariant grid configuration \( \mathcal { A } _ N \).
+
+. **Scale Self-Similarity**: The resulting configuration \( \mathcal { A } _ N \) is invariant under the union of its sub-affine reductions down to the single grid-cell resolution limit. \( \square \)
 ====
 
 === The Vernier Box Dimension
