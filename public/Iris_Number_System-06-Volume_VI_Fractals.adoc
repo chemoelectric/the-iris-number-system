@@ -541,6 +541,29 @@ As compressive force increases, existing contact points deform plastically and s
 * **Fractal Dimension**: The true contact zone forms a discrete fractal island system with box dimension typically between \( D \approx 1.3 \) and \( D \approx 1.6 \).
 * **Physical Consequence (Friction and Electrical Resistance)**: Because the true contact area scales proportionally with the applied load rather than the macroscopic size of the object, dry mechanical friction (Amontons' law) and electrical constriction resistance across switch contacts remain strictly independent of the nominal block dimensions. The electric current and mechanical load are forced through a self-similar bottleneck network of discrete contact bridges.
 
+=== Wood Adhesion, Fractal Porosity, and PVA Capillary Penetration
+
+Wood is an anisotropic biological cellular network consisting of tubular tracheids, vessels, fibers, and microscopic ray cells spanning orders of magnitude (from growth rings down to micrometer-scale cell lumens and nanometer-scale microfibril voids).
+
+When joining two surfaces of machined timber, the nominal planar joint consists of two rough fractal surfaces confronting one another. In dry contact, real contact occurs only at scattered asperity summits, leaving substantial open void space across the interface.
+
+The physical effectiveness of wet polyvinyl acetate (PVA) wood glue under mechanical clamping arises from discrete multiscale capillary and contact dynamics:
+
+1. **Hydrodynamic Wetting and Capillary Pressure**:
+Wet water-borne PVA glue possesses low dynamic viscosity and high polar affinity for the hydrophilic cellulose and lignin matrix. By the Young-Laplace relation on discrete aperture grid \( \mathcal { G } _ N \), the capillary suction pressure \( \Delta P _ \text{cap} \) inside a porous cell lumen of effective radius \( r \) is:
+\[ \Delta P _ \text{cap} = \frac { 2 \gamma \cos \theta } { r } \]
+where \( \gamma \) is the surface tension of the aqueous emulsion and \( \theta \) is the contact wetting angle. Because cell lumens and microscopic surface fissures have small effective radii (\( r \sim 1 \text{ \mu m} \) to \( 50 \text{ \mu m} \)), capillary forces actively draw the aqueous PVA dispersion deep into the open fractured tracheids.
+
+2. **Mechanical Clamping and Compression of Fractal Void Apertures**:
+Unassisted capillary action alone leaves macroscopic pockets between misaligned asperities. Applying external mechanical clamping pressure accomplishes two essential mechanical functions:
+   * It compresses macroscopic waviness and yields microscopic asperity summits, reducing the inter-surface gap down to the scale of the fluid emulsion boundary layer.
+   * It expels excess bulk glue out of the macroscopic seam (preventing thick, brittle glue lines) while driving the adhesive into the hierarchical pores of both adjoining timber faces under hydrostatic pressure.
+
+3. **Drying, Hydrogen Bonding, and Mechanical Micro-Interlocking**:
+As moisture leaves the PVA emulsion—absorbed through the porous cellular walls into the surrounding timber matrix—the suspended vinyl acetate polymer chains coalesce and cross-link. The solidified PVA forms an extensive network of microscopic polymeric rootlets anchored deep within the cellular lumens of both pieces of wood. On the molecular scale, the acetate groups form dense hydrogen bonds with the hydroxyl (\( -\text{OH} \)) groups of the wood cellulose.
+
+Because the cured polymer rootlets interlock within a three-dimensional fractal cellular volume rather than merely adhering to a two-dimensional boundary plane, the shear strength of a properly clamped, thin PVA glue line exceeds the transverse shear strength of the wood fibers themselves. Under destructive mechanical testing, structural failure occurs within the cellular timber substrate rather than along the adhesive bond line.
+
 === Dielectric Memory and Viscoelastic Relaxation Cascades
 
 In electrical engineering and polymer physics, materials exhibit long-term memory. When an electric voltage step is applied across a ceramic capacitor or an oil dielectric, the charging current does not drop off in a simple exponential curve \( e ^ { - t / \tau } \). Instead, it decays according to a gentle power-law curve:
