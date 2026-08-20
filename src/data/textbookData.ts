@@ -2817,8 +2817,8 @@ export const FRACTALS_TEXTBOOK: Textbook = {
       ]
     },
     {
-      "id": "chap-chapter-7-physical-manifestations-of-discrete-fractals-in-the-material-world",
-      "title": "Chapter 7: Physical Manifestations of Discrete Fractals in the Material World",
+      "id": "chap-physical-manifestations-of-discrete-fractals-in-the-material-world",
+      "title": "Physical Manifestations of Discrete Fractals in the Material World",
       "summary": "",
       "sections": [
         {
@@ -2869,8 +2869,8 @@ export const FRACTALS_TEXTBOOK: Textbook = {
       ]
     },
     {
-      "id": "chap-chapter-8-inverse-dynamical-systems-pre-image-trees-and-reasoning-backwards",
-      "title": "Chapter 8: Inverse Dynamical Systems, Pre-Image Trees, and Reasoning Backwards",
+      "id": "chap-inverse-dynamical-systems-pre-image-trees-and-reasoning-backwards",
+      "title": "Inverse Dynamical Systems, Pre-Image Trees, and Reasoning Backwards",
       "summary": "",
       "sections": [
         {
@@ -2911,8 +2911,8 @@ export const FRACTALS_TEXTBOOK: Textbook = {
       ]
     },
     {
-      "id": "chap-chapter-9-the-extraction-of-order-from-variation-shewhart-deming-c-i-lewis-and-discrete-fractal-epistemology",
-      "title": "Chapter 9: The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology",
+      "id": "chap-the-extraction-of-order-from-variation-shewhart-deming-c-i-lewis-and-discrete-fractal-epistemology",
+      "title": "The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology",
       "summary": "",
       "sections": [
         {

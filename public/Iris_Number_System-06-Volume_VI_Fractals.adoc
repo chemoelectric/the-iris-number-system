@@ -500,7 +500,7 @@ Rather than evaluating all \( M \times M \) grid cells exhaustively, the Multi-G
 3. **Boundary Edge Refinement**: If vertex signatures differ, subdivide the tile into 4 sub-tiles at resolution \( h = H / 2 \) and recurse down to target resolution \( \mathcal { G } _ N \).
 4. **SIMD Vector Lane Batching**: Group active boundary cells into contiguous 8-lane or 16-lane blocks for SIMD fused multiply-add (FMA) execution.
 
-== Chapter 7: Physical Manifestations of Discrete Fractals in the Material World
+== Physical Manifestations of Discrete Fractals in the Material World
 
 === Beyond Abstract Geometry: Nature as a Discrete Scale-Invariant Engine
 
@@ -655,7 +655,7 @@ These engineered networks adopt discrete scale-invariant branching because it mi
 | **Utility Infrastructure** | Power, water, and clock distribution trees | \( D \approx 1.8 - 2.0 \) | Minimum-loss spatial impedance matching across area grids
 |===
 
-== Chapter 8: Inverse Dynamical Systems, Pre-Image Trees, and Reasoning Backwards
+== Inverse Dynamical Systems, Pre-Image Trees, and Reasoning Backwards
 
 === The Forward-Backward Asymmetry of Physical Processes
 
@@ -802,7 +802,7 @@ The mathematics of backward fractal trees applies directly across numerous pract
 | **Optimal Algorithm** | Forward time-stepping (Runge-Kutta / Vernier) | Hierarchical tree pruning \( \mathcal { O } ( \log N ) \)
 |===
 
-== Chapter 9: The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology
+== The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology
 
 === Epistemological Foundations: C. I. Lewis, Walter Shewhart, and the Act of Abstraction
 
