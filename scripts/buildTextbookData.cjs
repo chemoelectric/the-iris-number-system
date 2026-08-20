@@ -135,9 +135,9 @@ const vol4 = parseAdocFile(
   "public/Iris_Number_System-04-Volume_IV_Physics_etc.adoc",
   "textbook-iris-physics-chemistry-etc",
   "The Iris Number System",
-  "Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding",
+  "Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding",
   "Frédéric Blondin Custer",
-  "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding"
+  "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, and Time-Binding"
 );
 
 const vol5 = parseAdocFile(
