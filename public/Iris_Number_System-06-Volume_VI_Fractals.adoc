@@ -259,7 +259,7 @@ reducing computational workload by over 80% compared to brute-force pixel-by-pix
 
 === Discrete Multivector Escape-Time Algorithm in Cl(2,0)
 
-The standard escape-time algorithm is formulated directly over the discrete real Clifford algebra \( Cl ( 2 , 0 ) \), avoiding any reliance on the imaginary unit. A standalone compilation unit is provided in `public/fractals/discrete_fractal_engine.adb`.
+The standard escape-time algorithm is formulated directly over the discrete real Clifford algebra \( Cl ( 2 , 0 ) \), avoiding any reliance on the imaginary unit.
 
 [#listing-mandelbrot-ada]
 [source,ada]
@@ -393,7 +393,7 @@ end discrete_fractal_engine;
 
 === Discrete Iterated Function System (IFS) Generator
 
-Iterated function systems on discrete grids \( \mathcal { G } _ N \) generate deterministic self-similar attractors (such as the Barnsley fern, Sierpiński gasket, and dragon curves) through contractive affine transformations in \( Cl ( 2 , 0 ) \). A standalone compilation unit is provided in `public/fractals/discrete_ifs_generator.adb`.
+Iterated function systems on discrete grids \( \mathcal { G } _ N \) generate deterministic self-similar attractors (such as the Barnsley fern, Sierpiński gasket, and dragon curves) through contractive affine transformations in \( Cl ( 2 , 0 ) \).
 
 [#listing-ifs-ada]
 [source,ada]
