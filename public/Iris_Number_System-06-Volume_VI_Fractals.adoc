@@ -805,13 +805,15 @@ The mathematics of backward fractal trees applies directly across numerous pract
 
 In _Mind and the World Order: Outline of a Theory of Knowledge_ (1929), Clarence Irving Lewis formulated an operational epistemology that directly influenced the founders of modern industrial quality engineering—Walter A. Shewhart (_Economic Control of Quality of Manufactured Product_, 1931) and W. Edwards Deming (_Out of the Crisis_, 1986).
 
-Lewis established that all empirical knowledge involves three distinct elements:
+Lewis described empirical knowledge as follows. (_The exposition is interleaved with a rough translation into yours truly’s system of epistemology, which is actually more thorough and complicated in its details._)
 
-1. **The Given**: The immediate, raw, uninterpreted sensuous presentation. In the Iris number system, this corresponds to the raw discrete field sensor measurements and contact signals \( y ( \mathbf { x } , t ) \) recorded on the discrete spatial-temporal grid \( \mathcal { G } _ N \).
-2. **The Concept**: The active, a priori mental construct or operational definition that asserts a verifiable relational invariant (e.g., “this machined shaft has an effective diameter of \( d_0 \pm \delta \) and will seat without binding in a standard bushing”).
-3. **The Act of Abstraction**: The operational process by which an organism or inference engine separates the invariant structural signal from extraneous, fluctuating background variation across scales.
+1. **The “Given”**: The immediate, raw, uninterpreted sensuous presentation. In the Iris number system, this corresponds to the raw discrete field sensor measurements and contact signals \( y ( \mathbf { x } , t ) \) recorded on the discrete spatial-temporal grid \( \mathcal { G } _ N \). _It is already an abstraction, which in the Iris system we call an **“Object”** or **“the Objective Levels.”**_
 
-Order is not an uninterpreted property lying naked in raw sensation; order is the invariant conceptual structure extracted through scale-invariant aperture filtering.
+2. **The “Concept”**: The active cognitive construction or operational definition that asserts a verifiable relational invariant (e.g., “this machined shaft has an effective diameter of \( d_0 \pm \delta \) and will seat without binding in a standard bushing”). _A better term for this, more indicative that it is itself a result of abstracting, would not be “Concept” but **“Formulation.”**_
+
+3. **The Act of (_further_) Abstraction**: The operational process by which an organism or inference engine separates the invariant structural signal from extraneous, fluctuating background variation across scales. _In the Iris numbers system, this is recognized as application of abstractions (2) to abstractions (1), resulting in yet newer abstractions._
+
+Order is not an uninterpreted property lying naked in raw sensation; order is the invariant formulational structure extracted through scale-invariant aperture filtering.
 
 === The Ishikawa Diagram as an Explicit Backward Pre-Image Fractal Tree
 
@@ -1007,10 +1009,10 @@ Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with commo
 |===
 | Level | Epistemological Status (C. I. Lewis) | Physical System State (Shewhart / Deming) | Fractal Geometric Manifestation | Operational Action
 | **Level 0** | Uninterpreted Given | Raw unmonitored process | High-dimensional uncalibrated noise | Apply sensor grid \( \mathcal { G } _ N \)
-| **Level 1** | Conceptual Baseline | System in Statistical Control | Stationary self-similar \( 1/f^\alpha \) noise | Maintain standard process (Do not tamper!)
+| **Level 1** | Formulational Baseline | System in Statistical Control | Stationary self-similar \( 1/f^\alpha \) noise | Maintain standard process (Do not tamper!)
 | **Level 2** | Anomaly Detection | Assignable Special Cause | Scale-breaking boundary breach (\( \pm 3 \sigma \)) | Trigger backward Ishikawa pre-image search
 | **Level 3** | Abductive Deduction | Root-Cause Isolation | Hierarchical aperture tree pruning | Eliminate assignable physical cause
-| **Level 4** | Conceptual Synthesis | PDSA Process Improvement | Contraction to higher-order fixed point \( \theta ^ * \) | Standardize new operational baseline
+| **Level 4** | Formulational Synthesis | PDSA Process Improvement | Contraction to higher-order fixed point \( \theta ^ * \) | Standardize new operational baseline
 |===
 
 This completes the mathematical and epistemological unification: the extraction of order from variation is the systematic navigation of discrete fractal trees, distinguishing scale-invariant background noise from assignable causes, and driving continuous operational convergence via nested contractive learning cycles.
