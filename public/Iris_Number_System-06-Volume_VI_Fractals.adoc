@@ -575,7 +575,6 @@ Conventional topology models knots as idealized one-dimensional curves in abstra
 Let a flexible filament bundle have a hierarchical helical construction of \( K \) discrete structural tiers (fibers \( k = 1 \), yarns \( k = 2 \), strands \( k = 3 \), rope \( k = K \)) on discrete grid \( \mathcal { G } _ N \). Under applied axial line tension \( T _ \text{load} \), if the orthogonal topological crossing geometry imposes a self-pinching normal force coefficient \( \kappa = \frac { d N } { d T _ \text{load} } \) such that \( \mu _ \text{eff} \cdot \kappa \ge 1 \), then the discrete contact friction satisfies a hierarchical exponential capstan cascade:
 \[ T _ \text{hold} \le T _ \text{load} \cdot \exp \left ( - \sum _ { k = 1 } ^ K \mu_k \theta_k \right ) \]
 and the knot enters a deterministic self-locking state where slip displacement is strictly bounded within a finite number of lattice intervals on \( \mathcal { G } _ N \).
-====
 
 *Proof:*
 
@@ -1077,7 +1076,7 @@ Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with commo
 
 === Synthesis: The Epistemological Ladder of Variation and Invariance
 
-[cols="2,3,3,2", options="header"]
+[cols="2,3,3,3,3", options="header"]
 |===
 | Level | Epistemological Status (C. I. Lewis) | Physical System State (Shewhart / Deming) | Fractal Geometric Manifestation | Operational Action
 | **Level 0** | Uninterpreted Given | Raw unmonitored process | High-dimensional uncalibrated noise | Apply sensor grid \( \mathcal { G } _ N \)
@@ -1107,6 +1106,7 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:theorem-hutchinson-vernier-attractor[**Theorem: Existence and Uniqueness of Discrete IFS Attractors**] -- Section: *Contraction Mappings in Clifford Algebra*
 * xref:theorem-dielectric-breakdown-dla-dimension[**Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments**] -- Section: *Dielectric Breakdown and Laplacian Growth*
 * xref:theorem-simd-fractal-throughput[**Theorem: Computational Complexity and Memory Bound of Multi-Grid Fractal Rasterization**] -- Section: *SIMD Vectorized Multi-Grid Escape Iteration*
+* xref:theorem-knot-capstan-cascade[**Theorem: Multiscale Capstan Friction Cascade and Topological Self-Locking**] -- Section: *Hierarchical Topological Friction, Capstan Cascades, and the Discrete Mechanics of Knots*
 * xref:thm-granular-force-chain-fractal[**Theorem: Discrete Fractal Scaling of Force Chains in Granular Media**] -- Section: *Granular Force Chains and Compaction Arches*
 * xref:thm-preimage-fractal-convergence[**Theorem: Discrete Pre-Image Tree Convergence to Julia Basin Boundaries**] -- Section: *The Geometry of Pre-Image Trees*
 * xref:thm-hierarchical-abduction-complexity[**Theorem: Hierarchical Aperture Pruning Complexity on Discrete Pre-Image Trees**] -- Section: *Sherlock Holmes and the Geometry of Abductive Tree Pruning*
