@@ -564,6 +564,50 @@ As moisture leaves the PVA emulsion—absorbed through the porous cellular walls
 
 Because the cured polymer rootlets interlock within a three-dimensional fractal cellular volume rather than merely adhering to a two-dimensional boundary plane, the shear strength of a properly clamped, thin PVA glue line exceeds the transverse shear strength of the wood fibers themselves. Under destructive mechanical testing, structural failure occurs within the cellular timber substrate rather than along the adhesive bond line.
 
+=== Hierarchical Topological Friction, Capstan Cascades, and the Discrete Mechanics of Knots
+
+Conventional topology models knots as idealized one-dimensional curves in abstract continuum space, stripping away thickness, friction, and elastodynamic stress distributions. In the physical realm governed by the discrete resolution grid \( \mathcal { G } _ N \) and the Master Field Equation \( D F = J \), a knot is a non-linear, self-pinching contact transducer that locks applied tensile energy into discrete transverse compression fields across a nested hierarchy of fiber tiers.
+
+[#theorem-knot-capstan-cascade]
+[THEOREM]
+.Theorem: Multiscale Capstan Friction Cascade and Topological Self-Locking
+====
+Let a flexible filament bundle have a hierarchical helical construction of \( K \) discrete structural tiers (fibers \( k = 1 \), yarns \( k = 2 \), strands \( k = 3 \), rope \( k = K \)) on discrete grid \( \mathcal { G } _ N \). Under applied axial line tension \( T _ \text{load} \), if the orthogonal topological crossing geometry imposes a self-pinching normal force coefficient \( \kappa = \frac { d N } { d T _ \text{load} } \) such that \( \mu _ \text{eff} \cdot \kappa \ge 1 \), then the discrete contact friction satisfies a hierarchical exponential capstan cascade:
+\[ T _ \text{hold} \le T _ \text{load} \cdot \exp \left ( - \sum _ { k = 1 } ^ K \mu_k \theta_k \right ) \]
+and the knot enters a deterministic self-locking state where slip displacement is strictly bounded within a finite number of lattice intervals on \( \mathcal { G } _ N \).
+====
+
+*Proof:*
+
+. **Discrete Stress-Energy Multivector and Master Field Conservation**: In the geometric space-time algebra \( Cl ( 4 , 1 , 1 ) \), the local mechanical stress distribution within the contacting fibers is represented by the symmetric stress-energy multivector \( \mathcal { T } ( x ) \). Conservation of mechanical momentum across discrete contact boundaries on grid \( \mathcal { G } _ N \) is governed by the divergence of the stress field:
+\[ D \cdot \mathcal { T } = 0 \pmod { \mathcal { G } _ N } \]
+Decomposing \( \mathcal { T } \) along the local Frenet-Serret frame of the filament centerline yields the tangential tensile stress \( \sigma _ \parallel = T ( s ) / A ( s ) \) and the transverse normal contact stress \( \sigma _ \perp = N ( s ) / w ( s ) \).
+
+. **Topological Self-Pinching Feedback**: In any closed knot topology (such as a sheet bend, figure-eight, or clove hitch), the working end wraps across one or more adjacent rope bights. The curvature \( \kappa_0 \) of the crossing path converts axial line tension \( T ( s ) \) into a transverse normal contact load \( N ( s ) \) pressing the crossing strands together:
+\[ d N ( s ) = \kappa_0 \, T ( s ) \, d s \pmod { \mathcal { G } _ N } \]
+Because this normal clamping force is linearly driven by the tension itself, the available static frictional resistance per unit arc length is:
+\[ d F _ \text{fric} ( s ) = \mu_0 \, d N ( s ) = \mu_0 \, \kappa_0 \, T ( s ) \, d s \]
+
+. **MaxEnt Discrete Contact Probability and Asperity Micro-Interlocking**: By Jaynesian Maximum Entropy (MaxEnt) subjected to the mean normal contact pressure constraint on \( \mathcal { G } _ N \), the microscopic contact spots between adjoining polymer filaments follow an exponential distribution of contact patch sizes. The true contact area \( A _ \text{real} \) follows the discrete fractal asperity scaling law:
+\[ A _ \text{real} \propto \left ( \frac { N } { E _ \text{eff} } \right ) ^ { \frac { D } { 2 } } \]
+where \( D \) is the fractal dimension of the fiber surface profile (\( 1 < D < 2 \)). As the self-pinching tension increases, microscopic asperity summits undergo discrete plastic yielding, and individual fiber filaments jam into the discrete interstitial triangular voids between strands (a state of discrete geometric fiber jamming).
+
+. **Hierarchical Capstan Cascade Across Structural Tiers**: At each structural tier \( k \in \{ 1 , \dots , K \} \), the filament follows a helical trajectory of pitch angle \( \alpha_k \) and wrap angle \( \theta_k \). Integrating the differential force balance along the discrete path on \( \mathcal { G } _ N \):
+\[ \frac { d T } { d \theta } = - \mu_k \, T ( \theta ) \implies T ( \theta ) = T ( 0 ) \cdot \exp ( - \mu_k \, \theta_k ) \]
+Because each tier \( k \) is nested within the curved envelope of tier \( k + 1 \), the attenuation of tensile slip multiplies across all \( K \) structural scales:
+\[ T _ \text{hold} = T _ \text{load} \prod _ { k = 1 } ^ K \exp ( - \mu_k \theta_k ) = T _ \text{load} \exp \left ( - \sum _ { k = 1 } ^ K \mu_k \theta_k \right ) \]
+
+. **Self-Locking Stability Criterion**: When the transverse pinching gain satisfies \( \mu_0 \kappa_0 \ge 1 \), any increment in applied tension \( \Delta T _ \text{load} \) generates a resistive frictional force \( \Delta F _ \text{fric} = \mu_0 \kappa_0 \Delta T _ \text{load} \ge \Delta T _ \text{load} \). The net driving force tending to cause axial slippage satisfies:
+\[ \Delta F _ \text{net} = \Delta T _ \text{load} - \Delta F _ \text{fric} = ( 1 - \mu_0 \kappa_0 ) \Delta T _ \text{load} \le 0 \]
+The system is unconditionally stable against macroscopic axial displacement. Residual microscopic slip is strictly bounded within a finite number of discrete lattice steps \( n _ \text{slip} \le \lceil h ^ { - 1 } \Delta x \rceil \) on \( \mathcal { G } _ N \), completing the proof. \( \square \)
+====
+
+=== Practical Mechanics of Knot Security and Jamming Resistance
+
+The discrete mathematical formulation above explains why knots exhibit distinct mechanical behaviors depending on rope construction:
+* **Braided vs. Twisted Ropes**: Braided ropes distribute the contact wrap angles \( \theta_k \) symmetrically around the central core, preventing the unbalanced untwisting torque that causes simple twisted hawsers to roll and capsize under high tension.
+* **Synthetic vs. Natural Fibers**: Highly crystalline synthetic fibers (such as UHMWPE or PTFE) possess exceptionally low friction coefficients \( \mu_0 \), requiring additional topological crossing wraps \( \sum \theta_k \) or modified hitch geometries to satisfy the self-locking criterion \( \mu _ \text{eff} \kappa \ge 1 \). Conversely, compliant natural fibers (manila, cotton) possess high surface roughness fractal dimensions \( D \), locking securely at lower wrap numbers.
+
 === Dielectric Memory and Viscoelastic Relaxation Cascades
 
 In electrical engineering and polymer physics, materials exhibit long-term memory. When an electric voltage step is applied across a ceramic capacitor or an oil dielectric, the charging current does not drop off in a simple exponential curve \( e ^ { - t / \tau } \). Instead, it decays according to a gentle power-law curve:
