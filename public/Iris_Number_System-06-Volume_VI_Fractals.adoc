@@ -553,7 +553,7 @@ and the knot enters a deterministic self-locking state where slip displacement i
 
 *Proof:*
 
-. **Discrete Stress-Energy Multivector and Master Field Conservation**: In the geometric space-time algebra \( Cl ( 4 , 1 , 1 ) \), the local mechanical stress distribution within the contacting fibers is represented by the symmetric stress-energy multivector \( \mathcal { T } ( x ) \). Conservation of mechanical momentum across discrete contact boundaries on grid \( \mathcal { G } _ N \) is described by the divergence of the stress field:
+. **Discrete Stress-Energy Multivector and Master Field Conservation**: Under the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \), the local mechanical stress distribution within the contacting fibers is represented by the symmetric stress-energy multivector \( \mathcal { T } ( x ) \). Conservation of mechanical momentum across discrete contact boundaries on grid \( \mathcal { G } _ N \) is described by the divergence of the stress field:
 \[ D \cdot \mathcal { T } = 0 \pmod { \mathcal { G } _ N } \]
 Decomposing \( \mathcal { T } \) along the local Frenet-Serret frame of the filament centerline yields the tangential tensile stress \( \sigma _ \parallel = T ( s ) / A ( s ) \) and the transverse normal contact stress \( \sigma _ \perp = N ( s ) / w ( s ) \).
 

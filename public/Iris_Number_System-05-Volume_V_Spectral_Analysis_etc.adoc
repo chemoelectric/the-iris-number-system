@@ -968,7 +968,7 @@ Specialized vacuum valves featuring five or six grids allow independent control 
 Cathode-Ray Tubes (CRTs) transform electronic signals into two-dimensional visual displays by forming, accelerating, focusing, and deflecting electron wave beams inside an evacuated glass funnel target.
 
 ==== Deflection Physics under Clifford Field Forces
-Electrons emitted from an electron gun assembly pass through orthogonal deflection fields governed by the spacetime Master Field Equation \( D F = J \).
+Electrons emitted from an electron gun assembly pass through orthogonal deflection fields governed by the Master Field Equation \( D F = J \).
 
 1. **Electrostatic Deflection**: An axial beam with axial velocity \( v_x = \sqrt { \frac { 2 q V_A } { m_e } } \) enters parallel deflection plates of length \( L \) and separation \( d \) bearing potential difference \( V_d \). The transverse electric field \( E_y = \frac { V_d } { d } \) imparts constant acceleration \( a_y = \frac { q V_d } { m_e d } \) during transit time \( t = \frac { L } { v_x } \). The net angular deflection \( \theta \) is:
    \[ \tan \theta = \frac { v_y } { v_x } = \frac { a_y L } { v_x^2 } = \frac { q V_d L } { m_e d \left( \frac { 2 q V_A } { m_e } \right) } = \frac { L V_d } { 2 d V_A } \]
@@ -1449,7 +1449,7 @@ proving the existence of deterministic Negative Differential Resistance (NDR) fr
 
 === First-Principles Electrodynamics of Field-Effect Transduction
 
-Field-Effect Transistors (FETs) modulate channel charge transport using transverse electrostatic field bivectors generated across an insulating barrier or reverse-biased p-n junction, eliminating the DC gate current required by bipolar junction devices. Charge transport along the longitudinal channel axis \( x \) is governed by the spacetime Master Field Equation \( D F = J \) on the discrete spatial lattice \( \mathcal{G}_N \).
+Field-Effect Transistors (FETs) modulate channel charge transport using transverse electrostatic field bivectors generated across an insulating barrier or reverse-biased p-n junction, eliminating the DC gate current required by bipolar junction devices. Charge transport along the longitudinal channel axis \( x \) is governed by the Master Field Equation \( D F = J \) on the discrete spatial lattice \( \mathcal{G}_N \).
 
 Under Jaynes Maximum Entropy (MaxEnt) state partitioning, the local mobile charge density \( Q_{\text{channel}} ( x ) \) inside the semiconductor channel responds to the local electrostatic potential \( V ( x ) \) relative to the controlling gate electrode potential \( V_{GS} \). Field transduction translates transverse gate potential variations into proportional longitudinal conductance changes without requiring physical carrier injection across the gate interface.
 
@@ -1599,7 +1599,7 @@ This chapter establishes the first-principles electrodynamics of point-contact a
 
 === First-Principles Electrodynamics of Bipolar Transistors and Carrier Transport
 
-Bipolar Junction Transistors (BJTs) consist of two closely coupled p-n junctions sharing a ultra-thin central base region (thickness \( W_B < 0.5 \ \mu\text{m} \)). Current conduction involves both majority and minority carriers governed by the spacetime Master Field Equation \( D F = J \) on the discrete grid \( \mathcal{G}_N \).
+Bipolar Junction Transistors (BJTs) consist of two closely coupled p-n junctions sharing a ultra-thin central base region (thickness \( W_B < 0.5 \ \mu\text{m} \)). Current conduction involves both majority and minority carriers governed by the Master Field Equation \( D F = J \) on the discrete grid \( \mathcal{G}_N \).
 
 ==== Minority Carrier Base Diffusion and Injection Efficiency
 In an NPN transistor operating in the forward active mode, the Emitter-Base junction is forward-biased, while the Collector-Base junction is reverse-biased:
@@ -1715,7 +1715,7 @@ This chapter covers specialized four-layer and negative-resistance semiconductor
 Thyristors are four-layer \( p-n-p-n \) solid-state semiconductor switches that toggle between a non-conducting forward blocking state and a low-resistance forward conducting state through internal regenerative positive feedback.
 
 ==== Regenerative Feedback and Latching Condition
-A Silicon Controlled Rectifier (SCR) can be modeled as two cross-coupled transistors—a PNP transistor \( Q_1 \) and an NPN transistor \( Q_2 \). Under the spacetime Master Field Equation \( D F = J \), total anode current \( I_A \) passing through the reverse-biased central junction \( J_2 \) satisfies:
+A Silicon Controlled Rectifier (SCR) can be modeled as two cross-coupled transistors—a PNP transistor \( Q_1 \) and an NPN transistor \( Q_2 \). Under the Master Field Equation \( D F = J \), total anode current \( I_A \) passing through the reverse-biased central junction \( J_2 \) satisfies:
 \[ I_A = \alpha_1 I_A + \alpha_2 I_A + I_G \alpha_2 + I_{C0} \implies I_A = \frac { \alpha_2 I_G + I_{C0} } { 1 - ( \alpha_1 + \alpha_2 ) } \]
 where \( \alpha_1 \) and \( \alpha_2 \) are the common-base current gains of \( Q_1 \) and \( Q_2 \).
 
@@ -2490,7 +2490,7 @@ In contemporary computer science, physics literature, and commercial media, few 
 
 ==== What Marketed “Quantum” Computers Physically Are
 
-When stripped of institutional jargon and speculative metaphysics, every physically operational “quantum computer” is a physical system of coupled resonators operating under the Master Field Equation \( D F = J \) in real spacetime. Whether constructed from superconducting Josephson-junction LC circuits, radio-frequency Paul traps for atomic ions, acoustic surface wave cavities, or optical beam-splitters, the mechanism is similar:
+When stripped of institutional jargon and speculative metaphysics, every physically operational “quantum computer” is a physical system of coupled resonators operating under the Master Field Equation \( D F = J \) on discrete physical lattices. Whether constructed from superconducting Josephson-junction LC circuits, radio-frequency Paul traps for atomic ions, acoustic surface wave cavities, or optical beam-splitters, the mechanism is similar:
 
 1. **Physical Qubits as 2-State Harmonic Resonators**: A physical “qubit” is not an abstract metaphysical entity existing in multiple universes simultaneously. It is a physical harmonic or non-linear oscillator possessing two selectable, orthogonal wave modes or resonant voltage/phase states (such as charge states, magnetic flux orientation, or polarization modes).
 
