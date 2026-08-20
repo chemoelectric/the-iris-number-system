@@ -23,7 +23,7 @@ In this unified framework:
 
 3. **Constructive Boundary Decidability and Finite Stopping Orbits**: The boundary of a discrete Julia or Mandelbrot set is defined by finite Shannon channel capacity and maximum entropy stopping times. Every boundary cell on grid \( \mathcal { G } _ N \) possesses a finite, deterministic orbit signature, resolving the alleged undecidability of fractal boundaries into exact polynomial-time root isolation and interval containment.
 
-4. **Physical Structural Similarity to Field Dynamics and Phase-Change Fronts**: Fractal morphologies are the exact discrete configurations assumed by non-equilibrium field interfaces governed by the Master Field Equation \( D F = J \). Dielectric breakdown branching (lightning), dendritic crystal solidification in metallurgy, viscous fingering in porous media, and turbulent vorticity cascades in fluid mechanics are physical manifestations of discrete contact-action boundary dynamics on \( \mathcal { G } _ N \).
+4. **Physical Structural Similarity to Field Dynamics and Phase-Change Fronts**: Fractal morphologies are the exact discrete configurations assumed by non-equilibrium field interfaces described by the Master Field Equation \( D F = J \). Dielectric breakdown branching (lightning), dendritic crystal solidification in metallurgy, viscous fingering in porous media, and turbulent vorticity cascades in fluid mechanics are physical manifestations of discrete contact-action boundary dynamics on \( \mathcal { G } _ N \).
 
 Volume VI provides the rigorous theorems, constructive algorithms, and physical derivations establishing the foundations of discrete fractal dynamics.
 
@@ -486,7 +486,7 @@ Rather than evaluating all \( M \times M \) grid cells exhaustively, the Multi-G
 
 In conventional mathematical literature, fractals are often introduced as ornamental curiosities or abstract geometrical abstractions with infinite detail on continuous spaces. When physical reality is understood as a finite collection of finite entities operating under the Master Field Equation \( DF = J \) on discrete resolution grids \( \mathcal { G } _ N \), fractals cease to be mysterious paradoxes. They are the natural, mathematically necessary configurations that physical systems adopt whenever energy, mechanical stress, or electric charge must flow through a medium that balances minimal resistance against finite volume constraints.
 
-In this chapter, we examine real-world physical systems where discrete self-similarity and fractal branching govern observed behavior, highlighting domains that conventional textbooks rarely describe in fractal terms.
+In this chapter, we examine real-world physical systems where discrete self-similarity and fractal branching describe observed behavior, highlighting domains that conventional textbooks rarely describe in fractal terms.
 
 === Microscopic Solid Contact: The Asperity Network
 
@@ -541,7 +541,7 @@ Because the cured polymer rootlets interlock within a three-dimensional fractal 
 
 === Hierarchical Topological Friction, Capstan Cascades, and the Discrete Mechanics of Knots
 
-Conventional topology models knots as idealized one-dimensional curves in abstract continuum space, stripping away thickness, friction, and elastodynamic stress distributions. In the physical realm governed by the discrete resolution grid \( \mathcal { G } _ N \) and the Master Field Equation \( D F = J \), a knot is a non-linear, self-pinching contact transducer that locks applied tensile energy into discrete transverse compression fields across a nested hierarchy of fiber tiers.
+Conventional topology models knots as idealized one-dimensional curves in abstract continuum space, stripping away thickness, friction, and elastodynamic stress distributions. In the physical realm described by the discrete resolution grid \( \mathcal { G } _ N \) and the Master Field Equation \( D F = J \), a knot is a non-linear, self-pinching contact transducer that locks applied tensile energy into discrete transverse compression fields across a nested hierarchy of fiber tiers.
 
 [#theorem-knot-capstan-cascade]
 [THEOREM]
@@ -553,7 +553,7 @@ and the knot enters a deterministic self-locking state where slip displacement i
 
 *Proof:*
 
-. **Discrete Stress-Energy Multivector and Master Field Conservation**: In the geometric space-time algebra \( Cl ( 4 , 1 , 1 ) \), the local mechanical stress distribution within the contacting fibers is represented by the symmetric stress-energy multivector \( \mathcal { T } ( x ) \). Conservation of mechanical momentum across discrete contact boundaries on grid \( \mathcal { G } _ N \) is governed by the divergence of the stress field:
+. **Discrete Stress-Energy Multivector and Master Field Conservation**: In the geometric space-time algebra \( Cl ( 4 , 1 , 1 ) \), the local mechanical stress distribution within the contacting fibers is represented by the symmetric stress-energy multivector \( \mathcal { T } ( x ) \). Conservation of mechanical momentum across discrete contact boundaries on grid \( \mathcal { G } _ N \) is described by the divergence of the stress field:
 \[ D \cdot \mathcal { T } = 0 \pmod { \mathcal { G } _ N } \]
 Decomposing \( \mathcal { T } \) along the local Frenet-Serret frame of the filament centerline yields the tangential tensile stress \( \sigma _ \parallel = T ( s ) / A ( s ) \) and the transverse normal contact stress \( \sigma _ \perp = N ( s ) / w ( s ) \).
 
@@ -592,7 +592,7 @@ In an insulating medium subjected to a steep electric potential gradient \( E = 
 ====
 On a 2D discrete grid \( \mathcal { G } _ N \), the growth probability of an electric discharge filament at boundary node \( x \) is proportional to the local field gradient \( P ( x ) \propto \| \nabla \phi ( x ) \| ^ \eta \). For linear dielectric breakdown (\( \eta = 1 \)), the resulting branching filament tree has an exact asymptotic Vernier box dimension:
 \[ D _ { \text { box } } = \frac { 7 } { 4 } = 1.75 \]
-governed by discrete harmonic measure conservation.
+described by discrete harmonic measure conservation.
 
 *Proof:*
 
@@ -711,7 +711,7 @@ These engineered networks adopt discrete scale-invariant branching because it mi
 
 [cols="2,3,2,3", options="header"]
 |===
-| Physical Domain | Manifestation Structure | Typical Dimension \( D \) | Primary Governing Mechanism
+| Physical Domain | Manifestation Structure | Typical Dimension \( D \) | Primary Mechanism
 | **Solid Contact** | Asperity island junctions | \( D \approx 1.3 - 1.6 \) | Scale-invariant surface roughness under mechanical compression
 | **Electrical Discharge** | Dielectric breakdown and spark channels | \( D = 1.75 \) | Harmonic measure gradient scaling and discrete SLE duality (\( \kappa = 6 \))
 | **Dielectrics & Polymers** | Temporal memory / relaxation current | \( \alpha \approx 0.2 - 0.8 \) | Hierarchical tree of molecular and domain relaxation modes
@@ -925,7 +925,7 @@ Walter Shewhart recognized that physical variation is fundamentally divided into
 1. **Common-Cause Variation (Chance Causes / State of Statistical Control)**:
    * Arises from the cumulative superposition of a multitude of microscopic, independent physical perturbations on grid \( \mathcal { G } _ N \) (thermal agitation, microscopic surface roughness, ambient electrical ripple).
    * Exhibits **discrete \( 1 / f ^ \alpha \) spectral scaling and self-similarity**: whether sampled hourly, daily, or weekly, the normalized distribution of common-cause noise retains the identical scale-invariant form.
-   * A process in statistical control is not variationless; it is in a stable, predictable stationary state governed by a deterministic entropy envelope.
+   * A process in statistical control is not variationless; it is in a stable, predictable stationary state described by a deterministic entropy envelope.
 2. **Special-Cause Variation (Assignable Causes / Scale-Breaking Singularities)**:
    * Arises from a specific, localized physical occurrence that alters the underlying system equations (a fractured cutting insert, a blocked cooling nozzle, an uncalibrated batch of reagent).
    * Represents a **topological boundary breach** that violates scale invariance.
