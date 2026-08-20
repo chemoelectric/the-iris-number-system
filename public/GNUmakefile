@@ -12,6 +12,7 @@ VOLUMES += Iris_Number_System-02-Volume_II_Number_Theory_etc
 VOLUMES += Iris_Number_System-03-Volume_III_Geometry_Algebra_etc
 VOLUMES += Iris_Number_System-04-Volume_IV_Physics_etc
 VOLUMES += Iris_Number_System-05-Volume_V_Spectral_Analysis_etc
+VOLUMES += Iris_Number_System-06-Volume_VI_Fractals
 
 
 default: all
