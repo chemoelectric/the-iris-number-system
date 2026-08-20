@@ -152,7 +152,7 @@ const vol5 = parseAdocFile(
 );
 
 const vol6 = parseAdocFile(
-  "public/Iris_Number_System-06-Volume_VI-Fractals.adoc",
+  "public/Iris_Number_System-06-Volume_VI_Fractals.adoc",
   "textbook-iris-fractals",
   "The Iris Number System",
   "Volume VI: Applications to Fractals",
@@ -166,7 +166,7 @@ vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
 vol3.filename = "Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc";
 vol4.filename = "Iris_Number_System-04-Volume_IV_Physics_etc.adoc";
 vol5.filename = "Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc";
-vol6.filename = "Iris_Number_System-06-Volume_VI-Fractals.adoc";
+vol6.filename = "Iris_Number_System-06-Volume_VI_Fractals.adoc";
 
 function generateFormalIndexChapterObj(chapters) {
   const entries = [];
