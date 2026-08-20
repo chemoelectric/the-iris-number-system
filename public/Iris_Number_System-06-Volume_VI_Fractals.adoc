@@ -23,7 +23,7 @@ In this unified framework:
 
 3. **Constructive Boundary Decidability and Finite Stopping Orbits**: The boundary of a discrete Julia or Mandelbrot set is defined by finite Shannon channel capacity and maximum entropy stopping times. Every boundary cell on grid \( \mathcal { G } _ N \) possesses a finite, deterministic orbit signature, resolving the alleged undecidability of fractal boundaries into exact polynomial-time root isolation and interval containment.
 
-4. **Physical Isomorphism to Field Dynamics and Phase-Change Fronts**: Fractal morphologies are the exact discrete configurations assumed by non-equilibrium field interfaces governed by the Master Field Equation \( \mathcal { D } \mathcal { F } = \mathcal { J } \). Dielectric breakdown branching (lightning), dendritic crystal solidification in metallurgy, viscous fingering in porous media, and turbulent vorticity cascades in fluid mechanics are physical manifestations of discrete contact-action boundary dynamics on \( \mathcal { G } _ N \).
+4. **Physical Isomorphism to Field Dynamics and Phase-Change Fronts**: Fractal morphologies are the exact discrete configurations assumed by non-equilibrium field interfaces governed by the Master Field Equation \( D F = J \). Dielectric breakdown branching (lightning), dendritic crystal solidification in metallurgy, viscous fingering in porous media, and turbulent vorticity cascades in fluid mechanics are physical manifestations of discrete contact-action boundary dynamics on \( \mathcal { G } _ N \).
 
 Volume VI provides the rigorous theorems, constructive algorithms, and physical derivations establishing the foundations of discrete fractal dynamics.
 
@@ -175,7 +175,7 @@ On discrete grid \( \mathcal { G } _ N \) with grid step \( \epsilon = 2 ^ { - N
 [#chap-physical-fractals-phase-fronts]
 == Physical Fractals: Non-Equilibrium Phase Fronts, Dendritic Growth, and Dielectric Breakdown
 
-This chapter derives fractal patterns in physical nature directly from the Master Field Equation \( \mathcal { D } \mathcal { F } = \mathcal { J } \) on discrete spatial grids.
+This chapter derives fractal patterns in physical nature directly from the Master Field Equation \( D F = J \) on discrete spatial grids.
 
 === Dielectric Breakdown and Laplacian Growth
 
