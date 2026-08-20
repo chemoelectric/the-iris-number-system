@@ -400,9 +400,12 @@ Iterated function systems on discrete grids \( \mathcal { G } _ N \) generate de
 ----
 pragma ada_2022;
 
+with interfaces;
 with ada.text_io;
 
 procedure discrete_ifs_generator is
+   use interfaces;
+
    type real is digits 15;
 
    type affine_map is record
@@ -420,7 +423,7 @@ procedure discrete_ifs_generator is
       4 => (-0.15, 0.28,  0.26, 0.24, 0.0, 0.44, 1.00));
 
    -- lcg pseudorandom generator for deterministic grid chaos game
-   seed : natural := 42;
+   seed : unsigned_64 := 42;
    function next_rand return real is
    begin
       seed := (seed * 1103515245 + 12345) mod 2147483648;
