@@ -1,5 +1,5 @@
-= The Iris Number System: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
-:subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, Time-Binding
+= The Iris Number System: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding
+:subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding
 :author: Frédéric Blondel Custer
 :doctype: book
 :toc: left
@@ -7,7 +7,7 @@
 :stem: latexmath
 :sectnums!:
 
-A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, Computing, and Time-Binding
+A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Physics, Chemistry, Astronomy, Engineering, Communications, and Time-Binding
 
 == Prelude: The Electromagnetic Field
 
