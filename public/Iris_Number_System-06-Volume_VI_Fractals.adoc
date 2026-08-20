@@ -212,31 +212,6 @@ where \( s _ \text{max} = \max _ { 1 \le j \le M } s _ j < 1 \).
 On discrete grid \( \mathcal { G } _ N \) with grid step \( \epsilon = 2 ^ { - N } \), let \( \mathcal { N } ( \epsilon ) \) denote the minimal number of grid boxes of side length \( \epsilon \) required to cover set \( \mathcal { S } \). The Vernier Box Dimension \( D _ { \text { box } } \) is evaluated across successive resolution grid levels \( N \) as the constant scaling exponent:
 \[ D _ { \text { box } } ( \mathcal { S } ) = \frac { \ln \mathcal { N } ( 2 ^ { - N } ) } { N \ln 2 } \pmod { \mathcal { G } _ N } \]
 
-[#chap-physical-fractals-phase-fronts]
-== Physical Fractals: Non-Equilibrium Phase Fronts, Dendritic Growth, and Dielectric Breakdown
-
-This chapter derives fractal patterns in physical nature directly from the Master Field Equation \( D F = J \) on discrete spatial grids.
-
-=== Dielectric Breakdown and Laplacian Growth
-
-In an insulating medium subjected to a steep electric potential gradient \( E = - \nabla \phi \), dielectric breakdown occurs when the local electric field exceeds the dielectric threshold \( E _ { \text { crit } } \).
-
-[#theorem-dielectric-breakdown-dla-dimension]
-[THEOREM]
-.Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments
-====
-On a 2D discrete grid \( \mathcal { G } _ N \), the growth probability of an electric discharge filament at boundary node \( x \) is proportional to the local field gradient \( P ( x ) \propto \| \nabla \phi ( x ) \| ^ \eta \). For linear dielectric breakdown (\( \eta = 1 \)), the resulting branching filament tree has an exact asymptotic Vernier box dimension:
-\[ D _ { \text { box } } = \frac { 7 } { 4 } = 1.75 \]
-governed by discrete harmonic measure conservation.
-
-*Proof:*
-
-. **Harmonic Potential Field**: Outside the discharge cluster, the electric potential satisfies the discrete Laplace equation \( \nabla ^ 2 \phi = 0 \) with boundary conditions \( \phi = 0 \) on the cluster and \( \phi = 1 \) at the outer electrode boundary.
-
-. **Conformal Invariance and SLE Duality**: In discrete geometric algebra \( Cl ( 2 , 0 ) \), harmonic measure on the boundary scales as the local Beurling estimate. Conformal field invariance over discrete grid cells maps Diffusion-Limited Aggregation (DLA) directly to Schramm-Loewner Evolution with parameter \( \kappa = 6 \), yielding fractal dimension:
-\[ D = 1 + \frac { \kappa } { 8 } = 1 + \frac { 6 } { 8 } = 1.75 \]
-which matches physical lightning discharges and spark channel branchings exactly, completing the proof. \( \square \)
-====
 
 [#chap-high-performance-fractal-algorithms]
 == High-Performance Parallel Fractal Algorithms and Hardware Accelerators
@@ -607,6 +582,27 @@ The discrete mathematical formulation above explains why knots exhibit distinct 
 * **Braided vs. Twisted Ropes**: Braided ropes distribute the contact wrap angles \( \theta_k \) symmetrically around the central core, preventing the unbalanced untwisting torque that causes simple twisted hawsers to roll and capsize under high tension.
 * **Synthetic vs. Natural Fibers**: Highly crystalline synthetic fibers (such as UHMWPE or PTFE) possess exceptionally low friction coefficients \( \mu_0 \), requiring additional topological crossing wraps \( \sum \theta_k \) or modified hitch geometries to satisfy the self-locking criterion \( \mu _ \text{eff} \kappa \ge 1 \). Conversely, compliant natural fibers (manila, cotton) possess high surface roughness fractal dimensions \( D \), locking securely at lower wrap numbers.
 
+=== Dielectric Breakdown and Laplacian Growth
+
+In an insulating medium subjected to a steep electric potential gradient \( E = - \nabla \phi \), dielectric breakdown occurs when the local electric field exceeds the dielectric threshold \( E _ { \text { crit } } \).
+
+[#theorem-dielectric-breakdown-dla-dimension]
+[THEOREM]
+.Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments
+====
+On a 2D discrete grid \( \mathcal { G } _ N \), the growth probability of an electric discharge filament at boundary node \( x \) is proportional to the local field gradient \( P ( x ) \propto \| \nabla \phi ( x ) \| ^ \eta \). For linear dielectric breakdown (\( \eta = 1 \)), the resulting branching filament tree has an exact asymptotic Vernier box dimension:
+\[ D _ { \text { box } } = \frac { 7 } { 4 } = 1.75 \]
+governed by discrete harmonic measure conservation.
+
+*Proof:*
+
+. **Harmonic Potential Field**: Outside the discharge cluster, the electric potential satisfies the discrete Laplace equation \( \nabla ^ 2 \phi = 0 \) with boundary conditions \( \phi = 0 \) on the cluster and \( \phi = 1 \) at the outer electrode boundary.
+
+. **Conformal Invariance and SLE Duality**: In discrete geometric algebra \( Cl ( 2 , 0 ) \), harmonic measure on the boundary scales as the local Beurling estimate. Conformal field invariance over discrete grid cells maps Diffusion-Limited Aggregation (DLA) directly to Schramm-Loewner Evolution with parameter \( \kappa = 6 \), yielding fractal dimension:
+\[ D = 1 + \frac { \kappa } { 8 } = 1 + \frac { 6 } { 8 } = 1.75 \]
+which matches physical lightning discharges and spark channel branchings exactly, completing the proof. \( \square \)
+====
+
 === Dielectric Memory and Viscoelastic Relaxation Cascades
 
 In electrical engineering and polymer physics, materials exhibit long-term memory. When an electric voltage step is applied across a ceramic capacitor or an oil dielectric, the charging current does not drop off in a simple exponential curve \( e ^ { - t / \tau } \). Instead, it decays according to a gentle power-law curve:
@@ -717,6 +713,7 @@ These engineered networks adopt discrete scale-invariant branching because it mi
 |===
 | Physical Domain | Manifestation Structure | Typical Dimension \( D \) | Primary Governing Mechanism
 | **Solid Contact** | Asperity island junctions | \( D \approx 1.3 - 1.6 \) | Scale-invariant surface roughness under mechanical compression
+| **Electrical Discharge** | Dielectric breakdown and spark channels | \( D = 1.75 \) | Harmonic measure gradient scaling and discrete SLE duality (\( \kappa = 6 \))
 | **Dielectrics & Polymers** | Temporal memory / relaxation current | \( \alpha \approx 0.2 - 0.8 \) | Hierarchical tree of molecular and domain relaxation modes
 | **Ferromagnetism** | Barkhausen domain wall avalanches | \( \tau \approx 1.5 \) | Discontinuous unpinning from discrete crystal lattice defects
 | **Granular Solids** | Force chains and pressure arches | \( D \approx 1.7 - 2.4 \) | Contact force vector splitting through discrete granular packs
