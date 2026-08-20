@@ -867,9 +867,11 @@ The Shewhart control chart establishes upper and lower control limits (tradition
 where \( n \) is the subgroup sample size.
 
 From the viewpoint of the Iris number system:
+
 * **The \( 3 \sigma \) Aperture**: The \( 3 \sigma \) boundary is not a magical probabilistic constant; it is an **economic aperture filter** that balances two opposing costs:
   1. *Type I Error Cost (Alpha Risk / Over-reaction)*: The cost of looking for an assignable cause when only common-cause fractal noise is present (tampering).
   2. *Type II Error Cost (Beta Risk / Under-reaction)*: The cost of failing to look for an assignable cause when the physical process has actually suffered a structural shift.
+
 * **Non-Random Run Rules as Topological Apertures**: Runs of 8 consecutive points on one side of the centerline, or 6 consecutive increasing points, detect scale-breaking trends on grid \( \mathcal { G } _ N \) before individual points cross the \( \pm 3 \sigma \) limits.
 
 [#thm-shewhart-multiscale-invariance]
