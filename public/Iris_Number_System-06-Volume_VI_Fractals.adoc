@@ -46,15 +46,16 @@ The quadratic iterator with constant offset parameter \( c = c _ x + c _ y \, e 
 \[ z _ 0 = 0 , \quad z _ { n + 1 } = z _ n ^ 2 + c \pmod { \mathcal { G } _ N } \]
 
 [#theorem-mandelbrot-bounded-orbit-cl20]
-[THEOREM]
-.Theorem: Discrete Bounded Orbit Criterion and Escape Radius in \( Cl(2,0) \)
+[NOTE]
 ====
+.Theorem: Discrete Bounded Orbit Criterion and Escape Radius in \( Cl(2,0) \)
 Let \( c = c _ x + c _ y \, e _ { 12 } \in Cl ( 2 , 0 ) \) be a parameter multivector on the discrete resolution grid \( \mathcal { G } _ N \) with lattice step \( h = 2 ^ { - N } \). If at iteration step \( k \in \mathbb { N } \), the Euclidean magnitude of the state multivector satisfies:
 \[ \| z _ k \| = \sqrt { x _ k ^ 2 + y _ k ^ 2 } > \max ( 2 , \| c \| ) \]
 then for all subsequent iteration steps \( m > k \), the magnitude sequence \( \| z _ m \| \) diverges monotonically beyond the bounded region, and the parameter \( c \) belongs strictly to the exterior escape domain \( \mathcal { E } _ N \).
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Reverse Triangle Inequality in \( Cl(2,0) \)**: By the reverse triangle inequality for multivector magnitudes:
 \[ \| z _ { n + 1 } \| = \| z _ n ^ 2 + c \| \ge \| z _ n ^ 2 \| - \| c \| = \| z _ n \| ^ 2 - \| c \| \]
 
@@ -73,15 +74,16 @@ This chapter establishes the internal algebraic structure of the Mandelbrot set 
 A point \( c = c _ x + c _ y \, e _ { 12 } \) belongs to the period-1 interior domain if the fixed-point equation \( z ^ 2 + c = z \) admits a stable attracting solution in \( Cl ( 2 , 0 ) \).
 
 [#theorem-mandelbrot-main-cardioid-exact-cl20]
-[THEOREM]
-.Theorem: Geometric Algebraic Boundary of the Main Cardioid in \( Cl(2,0) \)
+[NOTE]
 ====
+.Theorem: Geometric Algebraic Boundary of the Main Cardioid in \( Cl(2,0) \)
 The boundary of the primary period-1 component of the Mandelbrot set in \( Cl ( 2 , 0 ) \) is parameterized algebraically by the unit planar rotor \( R ( \theta ) = \cos \theta + \sin \theta \, e _ { 12 } \) according to the exact identity:
 \[ c ( \theta ) = \frac { 1 } { 2 } R ( \theta ) - \frac { 1 } { 4 } R ( 2 \theta ) = \left ( \frac { 1 } { 2 } \cos \theta - \frac { 1 } { 4 } \cos ( 2 \theta ) \right ) + \left ( \frac { 1 } { 2 } \sin \theta - \frac { 1 } { 4 } \sin ( 2 \theta ) \right ) e _ { 12 } \]
 for \( \theta \in [ 0 , 2 \pi ) \).
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Fixed Point Condition**: The fixed point equation is \( z _ \ast ^ 2 - z _ \ast + c = 0 \). The multiplier of the orbit is the multivector derivative:
 \[ \lambda = 2 z _ \ast \]
 
@@ -98,14 +100,15 @@ The period-2 circular bulb tangent to the main cardioid at \( c = - 3 / 4 \) is 
 \[ z _ 2 = z _ 1 ^ 2 + c , \quad z _ 1 = z _ 2 ^ 2 + c \]
 
 [#theorem-period-2-bulb-geometry]
-[THEOREM]
-.Theorem: Exact Circular Geometry of the Period-2 Hyperbolic Component
+[NOTE]
 ====
+.Theorem: Exact Circular Geometry of the Period-2 Hyperbolic Component
 The period-2 bulb of the Mandelbrot set in \( Cl ( 2 , 0 ) \) is an exact disk centered at \( c _ 0 = - 1 \) with radius \( r = 1 / 4 \):
 \[ \mathcal { B } _ 2 = \left \{ c \in Cl ( 2 , 0 ) : \| c - ( - 1 ) \| < \frac { 1 } { 4 } \right \} \]
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Period-2 Polynomial**: The period-2 cycle satisfies \( ( z ^ 2 + c ) ^ 2 + c = z \). Factoring out the period-1 fixed points yields:
 \[ z ^ 2 + z + ( c + 1 ) = 0 \]
 
@@ -124,15 +127,16 @@ This chapter examines filled-in Julia sets \( \mathcal { K } _ c \) as discrete 
 For every parameter \( c \in Cl ( 2 , 0 ) \), the discrete Julia set \( \mathcal { J } _ c \) is the boundary of the basin of attraction of the point at infinity.
 
 [#theorem-julia-connectedness-discrete-dichotomy]
-[THEOREM]
-.Theorem: Discrete Connectedness Dichotomy of Julia Sets
+[NOTE]
 ====
+.Theorem: Discrete Connectedness Dichotomy of Julia Sets
 Let \( c \in Cl ( 2 , 0 ) \) on discrete grid \( \mathcal { G } _ N \). The filled Julia set \( \mathcal { K } _ c \) is connected on \( \mathcal { G } _ N \) if and only if the critical orbit originating at \( z _ 0 = 0 \) remains bounded:
 \[ c \in \mathcal { M } _ N \iff \mathcal { K } _ c \text { is topologically connected on } \mathcal { G } _ N \]
 If \( c \notin \mathcal { M } _ N \), then \( \mathcal { K } _ c \) decomposes into a discrete Cantor set of disconnected grid clusters.
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Critical Orbit Confinement**: The point \( z _ 0 = 0 \) is the unique critical point of the quadratic mapping \( z \mapsto z ^ 2 + c \) where the derivative \( 2 z \) vanishes.
 
 . **Böttcher Coordinate Isomorphism on Grids**: If the critical orbit remains bounded, the Riemann-Böttcher mapping establishes a conformal homeomorphism between the exterior of \( \mathcal { K } _ c \) and the exterior of the unit disk on \( \mathcal { G } _ N \), guaranteeing topological path-connectedness.
@@ -152,9 +156,9 @@ Let \( \{ w _ 1 , \dots , w _ M \} \) be a family of affine contraction operator
 where each \( A _ j \) satisfies \( \| A _ j \| \le s _ j < 1 \).
 
 [#theorem-banach-fixed-point-discrete-multivector]
-[THEOREM]
-.Theorem: Banach Fixed-Point Theorem on Discrete Multivector Metric Spaces
+[NOTE]
 ====
+.Theorem: Banach Fixed-Point Theorem on Discrete Multivector Metric Spaces
 Let \( ( X , d ) \) be a complete discrete multivector metric space on resolution grid \( \mathcal { G } _ N \), where the metric \( d ( x , y ) = \| x - y \| \) is evaluated via the Clifford norm in \( Cl ( 2 , 0 ) \). Let \( T : X \to X \) be a strict contraction operator with Lipschitz contraction factor \( s \in [ 0 , 1 ) \) satisfying:
 \[ d ( T ( x ) , T ( y ) ) \le s \cdot d ( x , y ) \quad \forall \, x , y \in X \]
 Then:
@@ -166,9 +170,10 @@ Then:
 
 3. **Finite-Step Termination on Grids**: On the discrete lattice grid \( \mathcal { G } _ N \) with minimum step \( h = 2 ^ { - N } \), convergence to the resolution limit occurs in a finite number of steps \( n _ \text{term} \):
 \[ n _ \text{term} \le \left\lceil \frac { \ln ( 1 - s ) + \ln h - \ln d ( x _ 0 , x _ 1 ) } { \ln s } \right\rceil \]
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Geometric Step Contraction**: Let \( x _ { k + 1 } = T ( x _ k ) \) for \( k \ge 0 \). By induction on the contraction property:
 \[ d ( x _ k , x _ { k + 1 } ) \le s \cdot d ( x _ { k - 1 } , x _ k ) \le \dots \le s ^ k d ( x _ 0 , x _ 1 ) \]
 
@@ -187,14 +192,15 @@ which implies \( ( 1 - s ) d ( x _ \ast , y _ \ast ) \le 0 \). Since \( s < 1 \)
 ====
 
 [#theorem-hutchinson-vernier-attractor]
-[THEOREM]
-.Theorem: Existence and Uniqueness of Discrete IFS Attractors
+[NOTE]
 ====
+.Theorem: Existence and Uniqueness of Discrete IFS Attractors
 For any finite contractive IFS on \( Cl ( 2 , 0 ) \), there exists a unique, nonempty compact discrete set \( \mathcal { A } _ N \subset \mathcal { G } _ N \) satisfying the invariant fixed-point identity:
 \[ \mathcal { A } _ N = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { A } _ N ) \pmod { \mathcal { G } _ N } \]
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Metric Space of Discrete Sets**: Define the Hausdorff metric \( d _ H \) on the space of nonempty compact subsets of \( \mathcal { G } _ N \).
 
 . **Hutchinson Operator Contraction**: The set-valued operator \( \mathcal { W } ( \mathcal { S } ) = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { S } ) \) satisfies:
@@ -217,15 +223,16 @@ This chapter derives fractal patterns in physical nature directly from the Maste
 In an insulating medium subjected to a steep electric potential gradient \( E = - \nabla \phi \), dielectric breakdown occurs when the local electric field exceeds the dielectric threshold \( E _ { \text { crit } } \).
 
 [#theorem-dielectric-breakdown-dla-dimension]
-[THEOREM]
-.Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments
+[NOTE]
 ====
+.Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments
 On a 2D discrete grid \( \mathcal { G } _ N \), the growth probability of an electric discharge filament at boundary node \( x \) is proportional to the local field gradient \( P ( x ) \propto \| \nabla \phi ( x ) \| ^ \eta \). For linear dielectric breakdown (\( \eta = 1 \)), the resulting branching filament tree has an exact asymptotic Vernier box dimension:
 \[ D _ { \text { box } } = \frac { 7 } { 4 } = 1.75 \]
 governed by discrete harmonic measure conservation.
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Harmonic Potential Field**: Outside the discharge cluster, the electric potential satisfies the discrete Laplace equation \( \nabla ^ 2 \phi = 0 \) with boundary conditions \( \phi = 0 \) on the cluster and \( \phi = 1 \) at the outer electrode boundary.
 
 . **Conformal Invariance and SLE Duality**: In discrete geometric algebra \( Cl ( 2 , 0 ) \), harmonic measure on the boundary scales as the local Beurling estimate. Conformal field invariance over discrete grid cells maps Diffusion-Limited Aggregation (DLA) directly to Schramm-Loewner Evolution with parameter \( \kappa = 6 \), yielding fractal dimension:
@@ -243,15 +250,16 @@ This chapter presents production-grade, highly parallel computational architectu
 By processing 8 double-precision or 16 single-precision coordinates simultaneously via AVX-512 / Zen 5 vector registers, discrete Mandelbrot and Julia set evaluation achieves arithmetic throughput exceeding 25 billion iterations per second on contemporary desktop microprocessors.
 
 [#theorem-simd-fractal-throughput]
-[THEOREM]
-.Theorem: Computational Complexity and Memory Bound of Multi-Grid Fractal Rasterization
+[NOTE]
 ====
+.Theorem: Computational Complexity and Memory Bound of Multi-Grid Fractal Rasterization
 Let an \( M \times M \) image grid be rasterized to maximum iteration depth \( K \) on discrete grid \( \mathcal { G } _ N \). Using adaptive bounding box decimation and SIMD vector lane packing, the total arithmetic operation count satisfies:
 \[ \mathcal { O } _ { \text { total } } \le \mathcal { O } \left ( M ^ { D _ { \text { box } } } \cdot K + M ^ 2 \right ) \]
 reducing computational workload by over 80% compared to brute-force pixel-by-pixel iteration.
+====
 
-*Proof:*
-
+==== Proof
+====
 . **Interior and Exterior Decimation**: By the Bounded Orbit Theorem, grid cells inside the main cardioid and period-2 bulb are classified in \( \mathcal { O } ( 1 ) \) time via algebraic boundary tests.
 
 . **Boundary Layer Scaling**: The remaining unclassified pixels are restricted to a boundary band of thickness \( \epsilon = 1 / M \). The number of such active boundary cells scales as \( \mathcal { N } _ { \text { boundary } } \propto M ^ { D _ { \text { box } } } \). Multiplying by the maximum iteration depth \( K \) yields the bounded asymptotic operation complexity, completing the proof. \( \square \)
@@ -1019,6 +1027,32 @@ Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with commo
 |===
 
 This completes the mathematical and epistemological unification: the extraction of order from variation is the systematic navigation of discrete fractal trees, distinguishing scale-invariant background noise from assignable causes, and driving continuous operational convergence via nested contractive learning cycles.
+
+== Index of Formal Statements
+
+This index lists all formal Definitions and Theorems established across this volume.
+
+=== Definitions
+
+* xref:def-discrete-asperity-mesh[**Definition: Discrete Asperity Contact Network**] -- Section: *Microscopic Solid Contact: The Asperity Network*
+
+=== Theorems
+
+* xref:theorem-mandelbrot-bounded-orbit-cl20[**Theorem: Discrete Bounded Orbit Criterion and Escape Radius in \( Cl(2,0) \)**] -- Section: *Discrete Iteration and Geometric Algebra in \( Cl(2,0) \)*
+* xref:theorem-mandelbrot-main-cardioid-exact-cl20[**Theorem: Geometric Algebraic Boundary of the Main Cardioid in \( Cl(2,0) \)**] -- Section: *The Main Cardioid as Period-1 Limit Cycle Equilibrium*
+* xref:theorem-period-2-bulb-geometry[**Theorem: Exact Circular Geometry of the Period-2 Hyperbolic Component**] -- Section: *Period-2 Bulb and Higher-Order Rotational Resonance*
+* xref:theorem-julia-connectedness-discrete-dichotomy[**Theorem: Discrete Connectedness Dichotomy of Julia Sets**] -- Section: *Dichotomy of Discrete Julia Sets*
+* xref:theorem-banach-fixed-point-discrete-multivector[**Theorem: Banach Fixed-Point Theorem on Discrete Multivector Metric Spaces**] -- Section: *Contraction Mappings in Clifford Algebra*
+* xref:theorem-hutchinson-vernier-attractor[**Theorem: Existence and Uniqueness of Discrete IFS Attractors**] -- Section: *Contraction Mappings in Clifford Algebra*
+* xref:theorem-dielectric-breakdown-dla-dimension[**Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments**] -- Section: *Dielectric Breakdown and Laplacian Growth*
+* xref:theorem-simd-fractal-throughput[**Theorem: Computational Complexity and Memory Bound of Multi-Grid Fractal Rasterization**] -- Section: *SIMD Vectorized Multi-Grid Escape Iteration*
+* xref:thm-granular-force-chain-fractal[**Theorem: Discrete Fractal Scaling of Force Chains in Granular Media**] -- Section: *Granular Force Chains and Compaction Arches*
+* xref:thm-preimage-fractal-convergence[**Theorem: Discrete Pre-Image Tree Convergence to Julia Basin Boundaries**] -- Section: *The Geometry of Pre-Image Trees*
+* xref:thm-hierarchical-abduction-complexity[**Theorem: Hierarchical Aperture Pruning Complexity on Discrete Pre-Image Trees**] -- Section: *Sherlock Holmes and the Geometry of Abductive Tree Pruning*
+* xref:thm-ishikawa-fractal-pruning[**Theorem: Discrete Ishikawa Tree Abductive Pruning and Root-Cause Isolation**] -- Section: *The Ishikawa Diagram as an Explicit Backward Pre-Image Fractal Tree*
+* xref:thm-shewhart-multiscale-invariance[**Theorem: Multiscale Self-Similarity of Stable Common-Cause Variation**] -- Section: *Shewhart Quality Control and Multiscale Physical Noise*
+* xref:thm-pdsa-contraction-convergence[**Theorem: PDSA Operational Contraction and Convergence to Target Invariants**] -- Section: *The Shewhart-Deming Cycle (PDSA) as a Discrete Contraction Iteration*
+* xref:thm-tampering-feigenbaum-instability[**Theorem: Tampering-Induced Feigenbaum Period-Doubling and Chaotic Variance Explosion**] -- Section: *The Deming Funnel Experiment and the Dynamics of Tampering*
 
 
 
