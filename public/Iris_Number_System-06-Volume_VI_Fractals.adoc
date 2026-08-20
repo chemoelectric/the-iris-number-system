@@ -942,7 +942,7 @@ with \( \kappa < 1 \).
 
 === The Deming Funnel Experiment and the Dynamics of Tampering
 
-W. Edwards Deming designed the **Funnel Experiment** to demonstrate the catastrophic physical consequences of failing to distinguish common-cause fractal variation from assignable special causes.
+{empty}W. Edwards Deming designed the **Funnel Experiment** to demonstrate the catastrophic physical consequences of failing to distinguish common-cause fractal variation from assignable special causes.
 
 ==== The Four Rules of the Funnel Experiment
 
