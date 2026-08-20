@@ -151,6 +151,41 @@ Let \( \{ w _ 1 , \dots , w _ M \} \) be a family of affine contraction operator
 \[ w _ j ( x ) = A _ j x + b _ j \]
 where each \( A _ j \) satisfies \( \| A _ j \| \le s _ j < 1 \).
 
+[#theorem-banach-fixed-point-discrete-multivector]
+[THEOREM]
+.Theorem: Banach Fixed-Point Theorem on Discrete Multivector Metric Spaces
+====
+Let \( ( X , d ) \) be a complete discrete multivector metric space on resolution grid \( \mathcal { G } _ N \), where the metric \( d ( x , y ) = \| x - y \| \) is evaluated via the Clifford norm in \( Cl ( 2 , 0 ) \). Let \( T : X \to X \) be a strict contraction operator with Lipschitz contraction factor \( s \in [ 0 , 1 ) \) satisfying:
+\[ d ( T ( x ) , T ( y ) ) \le s \cdot d ( x , y ) \quad \forall \, x , y \in X \]
+Then:
+
+1. **Existence and Uniqueness**: There exists a unique fixed-point state \( x _ \ast \in X \) such that \( T ( x _ \ast ) = x _ \ast \pmod { \mathcal { G } _ N } \).
+
+2. **Constructive Geometric Convergence**: For any arbitrary initial seed \( x _ 0 \in X \), the discrete iterative sequence \( x _ { n + 1 } = T ( x _ n ) \) converges to \( x _ \ast \) with strict error bound:
+\[ d ( x _ n , x _ \ast ) \le \frac { s ^ n } { 1 - s } d ( x _ 0 , x _ 1 ) \]
+
+3. **Finite-Step Termination on Grids**: On the discrete lattice grid \( \mathcal { G } _ N \) with minimum step \( h = 2 ^ { - N } \), convergence to the resolution limit occurs in a finite number of steps \( n _ \text{term} \):
+\[ n _ \text{term} \le \left\lceil \frac { \ln ( 1 - s ) + \ln h - \ln d ( x _ 0 , x _ 1 ) } { \ln s } \right\rceil \]
+
+*Proof:*
+
+. **Geometric Step Contraction**: Let \( x _ { k + 1 } = T ( x _ k ) \) for \( k \ge 0 \). By induction on the contraction property:
+\[ d ( x _ k , x _ { k + 1 } ) \le s \cdot d ( x _ { k - 1 } , x _ k ) \le \dots \le s ^ k d ( x _ 0 , x _ 1 ) \]
+
+. **Cauchy Sequence Property**: For any integer \( p \ge 1 \), applying the triangle inequality yields:
+\[ d ( x _ n , x _ { n + p } ) \le \sum _ { j = 0 } ^ { p - 1 } d ( x _ { n + j } , x _ { n + j + 1 } ) \le d ( x _ 0 , x _ 1 ) \sum _ { j = 0 } ^ { p - 1 } s ^ { n + j } = s ^ n d ( x _ 0 , x _ 1 ) \frac { 1 - s ^ p } { 1 - s } \]
+Because \( 0 \le s < 1 \), \( s ^ n \to 0 \) as \( n \to \infty \). Thus \( ( x _ n ) \) is a Cauchy sequence in \( X \).
+
+. **Existence by Completeness**: Since \( ( X , d ) \) is complete on \( \mathcal { G } _ N \), the sequence converges to a limit \( x _ \ast = \lim _ { n \to \infty } x _ n \). By continuity of \( T \):
+\[ T ( x _ \ast ) = T \left ( \lim _ { n \to \infty } x _ n \right ) = \lim _ { n \to \infty } T ( x _ n ) = \lim _ { n \to \infty } x _ { n + 1 } = x _ \ast \]
+
+. **Uniqueness by Contradiction**: Suppose there exists another fixed point \( y _ \ast \in X \) such that \( T ( y _ \ast ) = y _ \ast \) with \( x _ \ast \neq y _ \ast \). Then:
+\[ d ( x _ \ast , y _ \ast ) = d ( T ( x _ \ast ) , T ( y _ \ast ) ) \le s \cdot d ( x _ \ast , y _ \ast ) \]
+which implies \( ( 1 - s ) d ( x _ \ast , y _ \ast ) \le 0 \). Since \( s < 1 \), \( 1 - s > 0 \), forcing \( d ( x _ \ast , y _ \ast ) = 0 \), so \( x _ \ast = y _ \ast \).
+
+. **A-Priori Error Estimate and Finite Termination**: Taking the limit as \( p \to \infty \) in the triangle sum gives \( d ( x _ n , x _ \ast ) \le \frac { s ^ n } { 1 - s } d ( x _ 0 , x _ 1 ) \). Setting \( d ( x _ n , x _ \ast ) \le h = 2 ^ { - N } \) and solving for \( n \) produces the finite grid termination bound \( n _ \text{term} \), completing the proof. \( \square \)
+====
+
 [#theorem-hutchinson-vernier-attractor]
 [THEOREM]
 .Theorem: Existence and Uniqueness of Discrete IFS Attractors
