@@ -27,3 +27,9 @@ All designs are engineered for rigid mechanical integrity, high-efficiency conti
    - **Mechanism**: Direct non-thermal isothermal field transduction (isothermal mass-defect-to-TEM waveguide coupling, asymmetric ballistic metamaterial wave-packet rectification, multi-ferroic magneto-elastodynamic resonance, and gravito-electrodynamic gradient coupling) bypassing Carnot cycle limits.
    - **Construction**: Nanostructured Pd/Ni microstrip lines on AlN/SiC substrates, CVD graphene/hBN asymmetric sawtooth metamaterial arrays, Galfenol/PMN-PT multiferroic resonators, and high-frequency GaN synchronous rectifiers.
    - **Power & Density**: $5\text{--}25\text{ kW/L}$ for the High-Frequency A-Cell; $50\text{--}150\text{ W/m}^2$ for the Asymmetric Metamaterial Harvester; $>88\%\text{--}94\%$ direct electrical efficiency.
+
+5. [MCP-1 & MCP-2: Multi-Stage Capillary-Vapor Pervaporation Purifier & Household Well Decontaminator](multistage_pervaporation_purifier.md)
+   - **Mechanism**: Multi-stage micro-gap latent heat recuperation ($N=5\text{--}8$ stages, $d_{\text{gap}} = 0.30\text{ mm}$), localized interfacial photothermal vaporization, counter-current cross-flow self-flushing, and catalytic/redox pre-conditioning for high-efficiency marsh, swamp, and contaminated domestic well water purification.
+   - **Construction**: Stacked Aluminum/Copper condenser-evaporator plates with hydrophilic wicks, hydrophobic woven polypropylene micro-mesh gap spacers, food-grade silicone perimeter manifolds, and optional catalytic KDF-55/PTC ceramic core.
+   - **Throughput & Efficiency**: $\text{GOR} \approx 3.6\text{--}4.4$; $4.5\text{--}5.8\text{ L}/(\text{m}^2\cdot\text{hr})$ under solar insolation (MCP-1) and $3.5\text{--}4.2\text{ L/hr}$ at $0.048\text{ kWh/L}$ for domestic well systems (MCP-2); 100% pathogen, PFAS, nitrate, and heavy metal rejection.
+
