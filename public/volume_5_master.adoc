@@ -207,6 +207,7 @@ Every conventional linear integral and discrete transform (Fourier, Cosine, Sine
 where \( r [ k ] > 0 \) is a real radial scaling factor, \( \mathbf { I } \) is a real unit bivector generator satisfying \( \mathbf { I } ^ 2 = - 1 \), and no complex plane or imaginary numbers are required.
 
 *Proof:*
+
 . **Deconstruction of the Complex Imaginary Generator**:
   In conventional analysis, the kernel is written as \( e ^ { - i 2 \pi n k / N } \). In real Geometric Algebra \( Cl ( 0 , 1 ) \) or \( Cl ( 2 , 0 ) \), substitute \( i \to - \mathbf { I } \) where \( \mathbf { I } = e _ 1 e _ 2 \). By Euler’s real geometric identity, \( e ^ { - \mathbf { I } \theta } = \cos \theta - \mathbf { I } \sin \theta \). Every term in the expansion is a linear combination of a real scalar and a real oriented bivector.
 
@@ -235,6 +236,7 @@ where \( \dagger \) denotes bivector reversion (\( \mathbf { I } ^ \dagger = - \
 where \( \left\| \hat { X } [ k ] \right\| ^ 2 = \left( \operatorname { Sc } ( \hat { X } [ k ] ) \right) ^ 2 + \left( \operatorname { Biv } ( \hat { X } [ k ] ) \right) ^ 2 \).
 
 *Proof:*
+
 . **Bivector Basis Orthogonality**:
   Compute the bivector inner product sum for indices \( k, m \):
   \[ \sum _ { n = 0 } ^ { N - 1 } \mathcal { E } _ k [ n ] \mathcal { E } _ m ^ \dagger [ n ] = \frac { 1 } { N } \sum _ { n = 0 } ^ { N - 1 } \left( \cos \frac { 2 \pi n k } { N } + \mathbf { I } \sin \frac { 2 \pi n k } { N } \right) \left( \cos \frac { 2 \pi n m } { N } - \mathbf { I } \sin \frac { 2 \pi n m } { N } \right) \]
@@ -258,6 +260,7 @@ The 2D spatial visual interference field energy \( U _ \text{spectral} \) weight
 is strictly minimized over single-page layout topologies via microtypographic perturbation vectors \( \mathbf { p } = ( \Delta x _ { i j } , \alpha _ l , \beta _ g ) \) acting on OpenType kerning, line tracking, and horizontal glyph outline shapes. On single-page boundaries, this spectral field optimization destroys periodic 2D whitespace rivers and spatial interference patterns in parallel \( \mathcal { O } ( N_x N_y \log ( N_x N_y ) ) \) computational time per page candidate.
 
 *Proof:*
+
 . **Single-Page Aperture Domain Isolation**: Because a human reader processes text within a single-page visual boundary, the spatial field distribution \( f ( x_n , y_m ) \) vanishes outside \( \mathcal { G } _ \text{page} \). Page layout optimization is decoupled into independent single-page field domains, enabling parallel evaluation across vector units.
 
 . **2D Real Bivector Spectral Representation**: The 2D Discrete Fourier Transform of the page whitespace field \( f ( x_n , y_m ) \) in real Clifford algebra \( Cl ( 2 , 0 ) \) is given by:
@@ -497,6 +500,7 @@ A **Faraday cage** or conductive metallic shield encloses sensitive circuits to 
 On discrete resolution grid \( \mathcal { G } _ N \), under quasi-static lumped field approximations (\( d / \lambda \ll 1 \)), the Master Field Equation \( D F = J \) strictly implies Kirchhoff’s Voltage Law (\( \sum V_k = 0 \)) around closed circuit loops and Kirchhoff’s Current Law (\( \sum I_k = 0 \)) at circuit node junctions.
 
 *Proof:*
+
 . **KVL Proof**: In quasi-statics, \( \nabla \times \mathbf { E } = \mathbf { 0 } \implies \mathbf { E } = - \nabla \Phi \). Integrating \( \mathbf { E } \cdot d \mathbf { l } \) around any closed loop yields \( \oint \mathbf { E } \cdot d \mathbf { l } = \Phi_A - \Phi_A = 0 \), which sums the branch voltage drops \( \sum V_k = 0 \).
 . **KCL Proof**: Taking the divergence of the Master Field Equation vector source current yields charge conservation \( \nabla \cdot \mathbf { J } + \frac { \partial \rho } { \partial t } = 0 \). Integrating over a junction volume where no net charge accumulates (\( \partial \rho / \partial t = 0 \)) yields \( \oint \mathbf { J } \cdot d \mathbf { A } = 0 \implies \sum I_k = 0 \). \( \square \)
 ====
@@ -508,6 +512,7 @@ On discrete resolution grid \( \mathcal { G } _ N \), under quasi-static lumped 
 In an ideal non-dissipative LC circuit composed of a condenser \( C \) and a coil \( L \), total electrodynamic field energy \( W _ \text{total} = W _ E + W _ B = \frac { 1 } { 2 } C V ( t ) ^ 2 + \frac { 1 } { 2 } L I ( t ) ^ 2 \) is strictly conserved at all time steps \( t_n \in \mathcal { G } _ N \).
 
 *Proof:*
+
 By KVL, \( V_C ( t ) + V_L ( t ) = 0 \implies V ( t ) + L \frac { d I } { d t } = 0 \). Differentiating total energy with respect to time yields \( \frac { d W _ \text{total} } { d t } = C V \frac { d V } { d t } + L I \frac { d I } { d t } = V ( C \frac { d V } { d t } ) + I ( L \frac { d I } { d t } ) \). Substituting \( I = - C \frac { d V } { d t } \) and \( L \frac { d I } { d t } = - V \) yields \( \frac { d W _ \text{total} } { d t } = V ( - I ) + I ( - V ) = 0 \). Thus, energy oscillates persistently between condenser electric fields and coil magnetic fields without loss. \( \square \)
 ====
 
@@ -518,6 +523,7 @@ By KVL, \( V_C ( t ) + V_L ( t ) = 0 \implies V ( t ) + L \frac { d I } { d t } 
 For an AC source with generator internal impedance \( Z_S = R_S + \mathbf { I } X_S \), maximum real average power is delivered to a load \( Z_L = R_L + \mathbf { I } X_L \) if and only if \( R_L = R_S \) and \( X_L = - X_S \) (the conjugate match condition \( Z_L = Z_S ^ { \ast } \)).
 
 *Proof:*
+
 Total circuit impedance is \( Z_\text{total} = ( R_S + R_L ) + \mathbf { I } ( X_S + X_L ) \). The current amplitude squared is \( I_0 ^ 2 = \frac { V_0 ^ 2 } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \). Average real power dissipated in the load is \( P_L = \frac { 1 } { 2 } I_0 ^ 2 R_L = \frac { 1 } { 2 } \frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 + ( X_S + X_L ) ^ 2 } \). To maximize \( P_L \) with respect to \( X_L \), set \( X_L = - X_S \), rendering the denominator purely resistive. Then differentiating \( P_L = \frac { 1 } { 2 } \frac { V_0 ^ 2 R_L } { ( R_S + R_L ) ^ 2 } \) with respect to \( R_L \) and setting to zero yields \( R_L = R_S \). Thus \( Z_L = Z_S ^ { \ast } \), achieving maximum power transfer \( P_\text{max} = \frac { V_0 ^ 2 } { 8 R_S } \). \( \square \)
 ====
 
@@ -691,6 +697,7 @@ The quadrature current \( i_q \) controls electromagnetic torque \( T_e = \frac 
 In any two-conductor transmission line, total electromagnetic power \( P = \int _ { \mathcal { S } } \mathbf { S } \cdot d \mathbf { A } \) is transported entirely through the dielectric insulating medium surrounding the conductors. The inner and outer metal conductors carry zero power inside their metallic lattice, acting strictly as boundary constraints that drive and guide the dielectric wave fields.
 
 *Proof:*
+
 . **Field Integration**: In a coaxial transmission line carrying voltage \( V \) and current \( I \), the radial electric field is \( E_r = \frac { V } { r \ln(b/a) } \) and the azimuthal magnetic field is \( H_\phi = \frac { I } { 2 \pi r } \) in the dielectric region \( a < r < b \).
 . **Poynting Vector Evaluation**: The Poynting power flux density vector in the dielectric is \( \mathbf { S } = \mathbf { E } \times \mathbf { H } = E_r H_\phi \hat { \mathbf { z } } = \frac { V I } { 2 \pi \ln(b/a) r^2 } \hat { \mathbf { z } } \).
 . **Power Integration**: Integrating \( \mathbf { S } \) over the cross-sectional dielectric area \( \mathcal { S } \):
@@ -705,6 +712,7 @@ In any two-conductor transmission line, total electromagnetic power \( P = \int 
 A lossy transmission line with distributed parameters \( R', L', G', C' \) preserves signal wave shapes without phase velocity dispersion if and only if \( \frac { R' } { L' } = \frac { G' } { C' } \).
 
 *Proof:*
+
 The propagation constant is \( \gamma = \sqrt { ( R' + \mathbf { I } \omega L' ) ( G' + \mathbf { I } \omega C' ) } \). Factoring yields \( \gamma = \sqrt { L' C' ( R'/L' + \mathbf { I } \omega ) ( G'/C' + \mathbf { I } \omega ) } \). Setting \( \frac { R' } { L' } = \frac { G' } { C' } = \alpha_0 \) gives \( \gamma = \sqrt { L' C' } ( \alpha_0 + \mathbf { I } \omega ) = \sqrt { R' G' } + \mathbf { I } \omega \sqrt { L' C' } \). Thus \( \alpha = \sqrt { R' G' } \) is independent of frequency, and phase velocity \( v_p = \frac { \omega } { \beta } = \frac { 1 } { \sqrt { L' C' } } \) is strictly constant across all harmonic modes, eliminating dispersion. \( \square \)
 ====
 
@@ -715,6 +723,7 @@ The propagation constant is \( \gamma = \sqrt { ( R' + \mathbf { I } \omega L' )
 In a polyphase Brushless DC motor driven by a 3-phase inverter, electronic phase switching aligned with rotor position produces constant electromagnetic torque \( T_e = K_t I_a \) without torque ripple.
 
 *Proof:*
+
 Stator magnetic flux vector \( \mathbf { \Phi } _ s \) and rotor permanent magnet flux vector \( \mathbf { \Phi } _ r \) produce electrodynamic torque \( \mathbf { T } _ e = \mathbf { \Phi } _ r \times \mathbf { \Phi } _ s = | \mathbf { \Phi } _ r | | \mathbf { \Phi } _ s | \sin \delta \hat { \mathbf { z } } \). Electronic commutation via Hall-effect feedback maintains phase angle \( \delta = 90 ^ \circ \) (\( \sin \delta = 1 \)) dynamically at each step, maximizing torque per ampere \( T_e = K_t I_a \). \( \square \)
 ====
 
@@ -813,6 +822,7 @@ Let \( x [ n ] \) and \( h [ n ] \) be finite signal sequences defined on the di
 \[ Y ( z ) = H ( z ) X ( z ) \]
 
 *Proof:*
+
 . **Convolution Substitution**: Express the Z-transform of \( y [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ n - m ] \delta \) directly:
   \[ Y ( z ) = \sum _ { n = 0 } ^ { N - 1 } \left( \sum _ { m = 0 } ^ { N - 1 } x [ m ] h [ n - m ] \delta \right) z ^ { - n } \delta \]
 
@@ -834,6 +844,7 @@ Let \( x [ n ] \) and \( h [ n ] \) be finite signal sequences defined on the di
 A causal linear shift-invariant system with real bivector transfer function \( H ( z ) = \frac { B ( z ) } { A ( z ) } \) is Bounded-Input Bounded-Output (BIBO) stable on discrete grid \( \mathcal { G } _ N \) if and only if all roots \( p_j \) of the characteristic polynomial \( A ( z ) = 0 \) satisfy \( | p_j | < 1 \).
 
 *Proof:*
+
 . **Partial Fraction Decomposition**: Expand the rational transfer function \( H ( z ) \) into partial fractions over its distinct bivector poles \( p_j \):
   \[ H ( z ) = \sum _ { j = 1 } ^ { N_a } \frac { r_j } { 1 - p_j z ^ { - 1 } } \]
 
@@ -996,6 +1007,7 @@ During manufacturing assembly, internal metallic elements (anodes, grids, suppor
 Even after mechanical seal-off, residual gas molecules desorb slowly from glass surfaces during cathode operation. To maintain permanent ultra-high vacuum, a **barium getter assembly**—consisting of a metallic ring filled with a stable barium alloy (such as \( \text{BaAl}_4 \) combined with nickel)—is flashed via high-frequency induction heating.
 
 Flashing vaporizes pure metallic barium, which condenses on the cool inner glass envelope wall to form a bright, mirror-like **barium getter mirror**. Metallic barium is an ultra-reactive chemical scavenger that binds residual gas molecules through irreversible surface reactions:
+
 1. **Oxygen Scavenging**: \( 2 \text{Ba} + \text{O}_2 \to 2 \text{BaO} \)
 2. **Nitrogen Scavenging**: \( 3 \text{Ba} + \text{N}_2 \to \text{Ba}_3\text{N}_2 \)
 3. **Carbon Dioxide Scavenging**: \( 5 \text{Ba} + 2 \text{CO}_2 \to 4 \text{BaO} + \text{BaC}_2 \)
@@ -1021,6 +1033,7 @@ In a planar vacuum diode with inter-electrode spacing \( d \) and applied anode 
 
 *Proof:*
 
+
 1. **Poisson-Ampère Equation**: One-dimensional Poisson field relation on \( \mathcal{G}_N \) gives \( \frac { d^2 V } { d x^2 } = - \frac { \rho ( x ) } { \varepsilon_0 } \).
 2. **Current Continuity and Conservation**: \( J = - \rho ( x ) v ( x ) \) and energy conservation \( \frac { 1 } { 2 } m_e v ( x )^2 = q V ( x ) \).
 3. **Differential Equation**: \( \frac { d^2 V } { d x^2 } = \frac { J } { \varepsilon_0 } \sqrt { \frac { m_e } { 2 q V ( x ) } } \).
@@ -1038,13 +1051,13 @@ In a planar vacuum diode with inter-electrode spacing \( d \) and applied anode 
 
 1. **Child-Langmuir Current Density \( J \)**:
    \[ J = \frac { 4 } { 9 } \varepsilon_0 \sqrt { \frac { 2 q } { m_e } } \frac { V_P^{3/2} } { d^2 } \]
-   Substitute \( \varepsilon_0 = 8.854 \times 10^{-12} \text{ F/m} \), \( \sqrt { \frac { 2 q } { m_e } } = \sqrt { \frac { 2 \times 1.602 \times 10^{-19} } { 9.109 \times 10^{-31} } } = 5.931 \times 10^5 \text{ C}^{1/2}/\text{kg}^{1/2} \):
-   \[ J = \frac { 4 } { 9 } ( 8.854 \times 10^{-12} ) ( 5.931 \times 10^5 ) \frac { ( 250 )^{3/2} } { ( 0.002 )^2 } \]
-   \[ ( 250 )^{3/2} = 3952.84, \quad ( 0.002 )^2 = 4.0 \times 10^{-6} \text{ m}^2 \]
-   \[ J = ( 2.334 \times 10^{-6} ) \times \frac { 3952.84 } { 4.0 \times 10^{-6} } = 2.334 \times 10^{-6} \times 9.8821 \times 10^8 \approx \mathbf { 2306 \text{ A/m}^2 } \quad ( 0.2306 \text{ A/cm}^2 ) \]
+   Substitute \( \varepsilon_0 = 8.854 \times 10 ^ {-12} \text{ F/m} \), \( \sqrt { \frac { 2 q } { m_e } } = \sqrt { \frac { 2 \times 1.602 \times 10 ^ {-19} } { 9.109 \times 10 ^ {-31} } } = 5.931 \times 10 ^ 5 \text{ C} ^ {1/2}/\text{kg} ^ {1/2} \):
+   \[ J = \frac { 4 } { 9 } ( 8.854 \times 10 ^ {-12} ) ( 5.931 \times 10 ^ 5 ) \frac { ( 250 ) ^ {3/2} } { ( 0.002 ) ^ 2 } \]
+   \[ ( 250 ) ^ {3/2} = 3952.84, \quad ( 0.002 ) ^ 2 = 4.0 \times 10 ^ {-6} \text{ m} ^ 2 \]
+   \[ J = ( 2.334 \times 10 ^ {-6} ) \times \frac { 3952.84 } { 4.0 \times 10 ^ {-6} } = 2.334 \times 10 ^ {-6} \times 9.8821 \times 10 ^ 8 \approx \mathbf { 2306 \text{ A/m} ^ 2 } \quad ( 0.2306 \text{ A/cm} ^ 2 ) \]
 
 2. **Total Anode Current \( I_P \)**:
-   \[ I_P = J \cdot A = ( 2306 \text{ A/m}^2 ) \times ( 2.5 \times 10^{-4} \text{ m}^2 ) = \mathbf { 0.5765 \text{ A} } \quad ( 576.5 \text{ mA} ) \]
+   \[ I_P = J \cdot A = ( 2306 \text{ A/m} ^ 2 ) \times ( 2.5 \times 10 ^ {-4} \text{ m} ^ 2 ) = \mathbf { 0.5765 \text{ A} } \quad ( 576.5 \text{ mA} ) \]
 
 3. **Anode Thermal Dissipation Power \( P_A \)**:
    \[ P_A = I_P \cdot V_P = ( 0.5765 \text{ A} ) \times ( 250 \text{ V} ) = \mathbf { 144.1 \text{ W} } \]
@@ -1057,7 +1070,7 @@ In a planar vacuum diode with inter-electrode spacing \( d \) and applied anode 
 **Solution:**
 
 1. **Amplification Factor \( \mu \)**:
-   \[ \mu = g_m \cdot r_p = ( 2.8 \times 10^{-3} \text{ A/V} ) \times ( 8500 \ \Omega ) = \mathbf { 23.8 } \]
+   \[ \mu = g_m \cdot r_p = ( 2.8 \times 10 ^ {-3} \text{ A/V} ) \times ( 8500 \ \Omega ) = \mathbf { 23.8 } \]
 
 2. **Voltage Gain \( A_v \)**:
    \[ A_v = - \frac { \mu R_L } { r_p + R_L } = - \frac { 23.8 \times 22000 } { 8500 + 22000 } = - \frac { 523600 } { 30500 } = \mathbf { - 17.17 } \]
@@ -1103,10 +1116,10 @@ However, twentieth-century physics engaged in a fraudulent **term coöptation of
 A ubiquitous artifact of this verbal trickery is the popular claim that solid-state transistors—such as Junction Field-Effect Transistors (JFETs), Bipolar Junction Transistors (BJTs), and Metal-Oxide-Semiconductor Field-Effect Transistors (MOSFETs)—depend upon or are designed using a 'quantum model'. In popular discourse, commentators frequently challenge skeptics by asking: “How do you explain the quantum model of a transistor?”
 
 The rigorous answer from electrical engineering is simple and direct: **there is no such model**. Practical semiconductor devices are not designed, modeled, or analyzed using 'quantum' models. In actual engineering practice, a transistor—such as an n-channel JFET—is modeled strictly as a beam of charge carriers (electrons or holes) moving through a solid semiconductor crystal lattice under the influence of classical electric and magnetic fields, governed by Poisson's equation, carrier drift, diffusion, and charge conservation balance equations:
-\[ \nabla^2 V = - \frac { \rho } { \varepsilon }, \quad \mathbf { J }_n = q n \mu_n \mathbf { E } + q D_n \nabla n, \quad \frac { \partial n } { \partial t } = \frac { 1 } { q } \nabla \cdot \mathbf { J }_n + G_n - R_n \]
+\[ \nabla ^ 2 V = - \frac { \rho } { \varepsilon }, \quad \mathbf { J }_n = q n \mu_n \mathbf { E } + q D_n \nabla n, \quad \frac { \partial n } { \partial t } = \frac { 1 } { q } \nabla \cdot \mathbf { J }_n + G_n - R_n \]
 
 In an n-channel JFET, for example, a reverse-biased p-n junction gate controls the effective cross-sectional channel width through classical electrostatic depletion layer expansion. The pinch-off voltage \( V_P \) and drain saturation current \( I_{DSS} \) follow directly from boundary electrostatic potential analysis across the physical channel width:
-\[ V_P = \frac { q N_D a^2 } { 2 \varepsilon }, \quad I_D = I_{DSS} \left( 1 - \frac { V_{GS} } { V_P } \right)^2 \]
+\[ V_P = \frac { q N_D a ^ 2 } { 2 \varepsilon }, \quad I_D = I_{DSS} \left( 1 - \frac { V_{GS} } { V_P } \right) ^ 2 \]
 
 Where experimental parameters appear—such as effective carrier masses, scattering relaxation times, or energy band gaps—they were historically known **strictly from experiment**. These empirical parameters were facts discovered in the laboratory and mislabeled as 'quantum' through term coöptation, despite being nothing more than empirical laws governing discrete crystalline lattices.
 
@@ -1137,16 +1150,16 @@ Twentieth-century popular accounts frequently portrayed a hole as an actual elem
 In a solid semiconductor crystal (such as Silicon or Germanium), the periodic lattice of atomic nuclei and core electron shells creates a discrete periodic potential grid \( \mathcal { G } _ N \). Under the Master Field Equation \( D F = J \) in Clifford algebra \( Cl ( 4 , 1 , 1 ) \), valence electrons occupy a dense set of single-particle multivector field states forming the valence energy band.
 
 At absolute zero temperature (\( T = 0 \text{ K} \)), the valence band is completely full: every single-particle state across the symmetric Brillouin zone grid is occupied by a valence electron. Because the Brillouin zone is symmetric around the origin in wavevector space (\( \mathbf { k } \)), for every valence electron moving with wavevector \( \mathbf { k } _ i \) and group velocity \( \mathbf { v } _ i = \frac { 1 } { \hbar } \nabla_{\mathbf { k }} E ( \mathbf { k } ) \), there exists an oppositely moving valence electron at \( - \mathbf { k } _ i \) with velocity \( - \mathbf { v } _ i \). Summing the current density over all \( N \) states in a completely filled valence band yields exactly zero net current:
-\[ \mathbf { J }_\text{full} = \sum_{i=1}^N ( - q ) \mathbf { v } _ i = 0 \]
+\[ \mathbf { J }_\text{full} = \sum_{i=1} ^ N ( - q ) \mathbf { v } _ i = 0 \]
 
 When thermal agitation, optical field absorption, or an external electric bias promotes a single valence electron out of the valence band into the conduction band (or extracts it at an ohmic contact), it leaves an **empty state** (a vacancy) at wavevector \( \mathbf { k } _ e \).
 
 ==== 2. Mathematical Equivalence of Valence Current and Positive Charge Motion
 With one valence electron missing from state \( \mathbf { k } _ e \), the net electrical current density contributed by the remaining \( N - 1 \) valence electrons is given by subtracting the missing electron's current contribution from the full-band zero sum:
-\[ \mathbf { J }_\text{val} = \sum_{i \neq e} ( - q ) \mathbf { v } _ i = \sum_{i=1}^N ( - q ) \mathbf { v } _ i - ( - q ) \mathbf { v } _ e = 0 + q \mathbf { v } _ e = ( + q ) \mathbf { v } _ h \]
+\[ \mathbf { J }_\text{val} = \sum_{i \neq e} ( - q ) \mathbf { v } _ i = \sum_{i=1} ^ N ( - q ) \mathbf { v } _ i - ( - q ) \mathbf { v } _ e = 0 + q \mathbf { v } _ e = ( + q ) \mathbf { v } _ h \]
 where \( \mathbf { v } _ h = \mathbf { v } _ e \) and \( \mathbf { k } _ h = - \mathbf { k } _ e \).
 
-This mathematical identity is profound: the collective, coordinated motion of \( N - 1 \) negative valence electrons moving through a crystal lattice with one vacancy produces an electric current density **identically equal to that of a single fictive particle possessing positive charge \( + q = + 1.602 \times 10^{-19} \text{ C} \)** moving at velocity \( \mathbf { v } _ h \)!
+This mathematical identity is profound: the collective, coordinated motion of \( N - 1 \) negative valence electrons moving through a crystal lattice with one vacancy produces an electric current density **identically equal to that of a single fictive particle possessing positive charge \( + q = + 1.602 \times 10 ^ {-19} \text{ C} \)** moving at velocity \( \mathbf { v } _ h \)!
 
 ==== 3. Negative Band Curvature, Negative Electron Mass, and Positive Hole Mass
 The dynamical response of carriers to an applied electric field \( \mathbf { E } \) depends on the curvature of the dispersion relation \( E ( \mathbf { k } ) \) on discrete grid \( \mathcal { G } _ N \), defined by the effective mass tensor:
@@ -1215,6 +1228,7 @@ Because Schottky diodes rely strictly on majority carrier transport, they exhibi
 
 ==== Zener and Avalanche Breakdown Diodes
 Under reverse bias, a p-n junction eventually undergoes electrical breakdown at voltage \( V_{BR} \):
+
 * **Zener Breakdown (< 5 V)**: In heavily doped junctions (\( N_A, N_D > 10^{18} \text{ cm}^{-3} \)), the depletion layer width is extremely thin (\( W < 10 \text{ nm} \)). High reverse electric fields (\( E > 10^6 \text{ V/cm} \)) induce direct internal field emission across the narrow lattice barrier.
 * **Avalanche Breakdown (> 6 V)**: In moderately doped junctions, thermally generated carriers accelerating through the high reverse field acquire sufficient kinetic energy to impact-ionize lattice atoms, liberating secondary electron-hole pairs in a multiplying avalanche cascade governed by multiplication factor \( M = \frac { 1 } { 1 - ( V / V_{BR} )^n } \).
 
@@ -1295,6 +1309,7 @@ In a solid semiconductor lattice \( \mathcal { G } _ N \), a vacant state (a hol
 proving positive Hall voltage without physical positive elementary particles.
 
 *Proof:*
+
 . **Current Summation over Brillouin Zone**: Summing over all \( N \) states of a full valence band gives \( \sum_{i=1}^N ( - q ) \mathbf { v } _ i = 0 \). Subtracting the vacant state \( \mathbf { k } _ e \) yields \( \mathbf { J }_\text{val} = 0 - ( - q ) \mathbf { v } _ e = ( + q ) \mathbf { v } _ h \).
 
 . **Acceleration and Negative Curvature**: Evaluating the force equation \( \mathbf { a } _ e = \frac { - q \mathbf { E } } { m_e ^ { \ast } } \) with \( m_e ^ { \ast } = - | m_e ^ { \ast } | \) gives \( \mathbf { a } _ e = \frac { + q \mathbf { E } } { | m_e ^ { \ast } | } = \frac { + q \mathbf { E } } { m_h ^ { \ast } } \).
@@ -1309,6 +1324,7 @@ proving positive Hall voltage without physical positive elementary particles.
 Solid-state semiconductor devices—including point-contact rectifiers, p-n junction diodes, and Schottky barriers—are classical physical electrodynamic structures governed by multivector field stress-energy tensor states \( T \in Cl ( 4 , 1 , 1 ) \) co-propagating on discrete atomic crystal lattices \( \mathcal { G } _ N \). The assertion that solid-state devices rely on uncaused 'quantum principles' or Bohr's 'complementarity' is an epistemological defect arising from term coöptation. Facts previously cataloged as empirical laws are derived directly from the Master Field Equation \( D F = J \) without 'quantum' mysticism.
 
 *Proof:*
+
 . **Solid-State Lattice Field Structure**: In a solid crystal, atomic nuclei and electron shell clouds form a discrete periodic field grid \( \mathcal { G } _ N \). The local charge density \( \rho ( \mathbf { r } ) \) and current density \( \mathbf { J } ( \mathbf { r } ) \) satisfy the Master Field Equation \( D F = J \).
 
 . **Demolition of Term Coöptation**: Prior to the Master Field Equation, experimental observations regarding energy band gaps, built-in potential barriers, and junction currents were empirical regularities awaiting first-principles derivation. Mislabeling these empirical laws as 'fundamental quantum principles' through Bohr's complementarity principle substituted verbal trickery for physical causality. In \( Cl ( 4 , 1 , 1 ) \), all carrier transport (drift, diffusion, barrier transmission) is proven to be deterministic multivector wave packet propagation across finite spatial grid boundaries.
@@ -1325,6 +1341,7 @@ On a discrete lattice grid \( \mathcal { G } _ N \), the total current density \
 where saturation current \( I_s \) is determined by minority carrier diffusion length and thermal generation rate.
 
 *Proof:*
+
 . **Space Charge and Built-in Potential**: The divergence of the electric field in the depletion layer \( \nabla \cdot \mathbf { E } = \frac { \rho } { \varepsilon } \) establishes built-in potential \( V_{bi} = V_t \ln ( N_A N_D / n_i^2 ) \).
 
 . **Barrier Lowering and Carrier Injection**: An applied forward bias \( V \) reduces the potential step to \( V_{bi} - V \). Minority carrier concentrations at the boundary edges of the depletion region scale exponentially according to the Boltzmann multivector factor \( n ( x_p ) = n_{p0} e^{V / V_t} \).
@@ -1343,6 +1360,7 @@ In the voltage range \( V_p < V < V_v \), the derivative of current with respect
 proving the existence of deterministic Negative Differential Resistance (NDR) from first principles.
 
 *Proof:*
+
 . **MaxEnt Degenerate State Occupation**: For degenerate acceptor doping \( N_A > 10^{19} \text{ cm}^{-3} \) and donor doping \( N_D > 10^{19} \text{ cm}^{-3} \), Jaynes MaxEnt subject to energy and particle constraints sets Fermi level \( E_{Fn} > E_c \) on the n-side and \( E_{Fp} < E_v \) on the p-side, filling conduction states and emptying valence states near the junction.
 
 . **Bivector Wave Packet Barrier Transmission**: Integration of Poisson's field equation yields a sub-10 nm depletion width \( W = \sqrt{ 2 \varepsilon ( N_A + N_D ) V_{bi} / ( q N_A N_D ) } \). Across this ultra-thin space-charge region, multivector wave packet field solutions \( F \in Cl ( 4 , 1 , 1 ) \) of \( D F = J \) retain bivector phase coherence, yielding finite transmission factor \( T_B ( E ) \approx \exp ( - \frac { 4 \sqrt{2 m ^ { \ast } } } { 3 q \hbar \mathbf{E}_{max} } E_g^{3/2} ) > 0 \).
@@ -1662,6 +1680,7 @@ For any bipolar junction transistor on grid \( \mathcal{G}_N \), the forward com
 
 *Proof:*
 
+
 1. **Coupled Junction Equations**: Expressing total emitter and collector currents using back-to-back diode equations on \( \mathcal{G}_N \):
    \[ I_E = I_{ES} \left( e^{V_{BE}/V_t} - 1 \right) - \alpha_R I_{CS} \left( e^{V_{BC}/V_t} - 1 \right) \]
    \[ I_C = \alpha_F I_{ES} \left( e^{V_{BE}/V_t} - 1 \right) - I_{CS} \left( e^{V_{BC}/V_t} - 1 \right) \]
@@ -1673,8 +1692,9 @@ For any bipolar junction transistor on grid \( \mathcal{G}_N \), the forward com
 
 ==== Example 1: NPN BJT Collector Current, Base Current, and Power Dissipation
 **Problem Statement:** An NPN silicon transistor operates in forward active mode with common-emitter current gain \( \beta = 150 \) and base-emitter voltage drop \( V_{BE} = 0.70 \text{ V} \). The transistor is biased with base resistor \( R_B = 100 \ \text{k}\Omega \) connected to \( V_{CC} = 15.0 \text{ V} \) and collector load resistor \( R_C = 1.2 \ \text{k}\Omega \).
-1. Calculate base current \( I_B \), collector current \( I_C \), and common-base gain \( \alpha \).
-2. Compute collector-emitter voltage \( V_{CE} \) and total transistor power dissipation \( P_D \).
+
+1. Calculate base current{nbsp}\( I_B \), collector current{nbsp}\( I_C \), and common-base gain{nbsp}\( \alpha \).
+2. Compute collector-emitter voltage{nbsp}\( V_{CE} \) and total transistor power dissipation{nbsp}\( P_D \).
 
 **Solution:**
 
@@ -1796,6 +1816,7 @@ In a four-layer \( p-n-p-n \) semiconductor structure governed by the Master Fie
 
 *Proof:*
 
+
 1. **Coupled Transistor Equations**: Total anode current passing through reverse-biased central junction \( J_2 \) is the sum of collector currents from constituent PNP (\( Q_1 \)) and NPN (\( Q_2 \)) transistors plus junction leakage current \( I_{C0} \):
    \[ I_A = \alpha_1 I_A + \alpha_2 I_A + I_G \alpha_2 + I_{C0} \]
 
@@ -1905,6 +1926,7 @@ In an analog integrated circuit governed by the Master Field Equation \( D F = J
 \[ A_{CL} = \frac { A_{OL} } { 1 + A_{OL} \beta_f } \quad \implies \quad \frac { d A_{CL} } { A_{CL} } = \frac { 1 } { 1 + A_{OL} \beta_f } \left( \frac { d A_{OL} } { A_{OL} } \right) \]
 
 *Proof:*
+
 
 1. **Closed-Loop Transfer Relation**: Summing potentials at the differential input \( V_d = V_\text{in} - \beta_f V_\text{out} \) gives \( V_\text{out} = A_{OL} ( V_\text{in} - \beta_f V_\text{out} ) \).
 2. **Algebraic Isolation**: Factoring \( V_\text{out} ( 1 + A_{OL} \beta_f ) = A_{OL} V_\text{in} \) yields \( A_{CL} = \frac { V_\text{out} } { V_\text{in} } = \frac { A_{OL} } { 1 + A_{OL} \beta_f } \).
@@ -2017,6 +2039,7 @@ In a complementary metal-oxide-semiconductor (CMOS) logic circuit governed by th
 
 *Proof:*
 
+
 1. **Charge Transfer per Transition**: Raising output node capacitance \( C_L \) from \( 0 \) to \( V_{DD} \) draws total electric charge \( Q = C_L V_{DD} \) from the supply terminal.
 2. **Total Energy Supply**: Energy delivered by the supply source during charging is \( E_\text{supply} = \int V_{DD} i ( t ) d t = V_{DD} Q = C_L V_{DD}^2 \).
 3. **Stored vs. Dissipated Energy**: Electric field energy stored in capacitive dielectric is \( W_E = \frac { 1 } { 2 } C_L V_{DD}^2 \). By energy conservation, remaining energy \( E_\text{heat} = E_\text{supply} - W_E = \frac { 1 } { 2 } C_L V_{DD}^2 \) is dissipated as thermal heat in the charging PMOS channel. Discharging through NMOS dissipates the stored \( \frac { 1 } { 2 } C_L V_{DD}^2 \). Total heat per full cycle is \( E_\text{cycle} = C_L V_{DD}^2 \).
@@ -2070,6 +2093,7 @@ In any digital computer architecture executing software instructions under the M
 
 *Proof:*
 
+
 1. **Instruction Physical Realization**: An instruction in memory consists of localized charge patterns in capacitive floating gates or DRAM condensers.
 2. **Fetch and Decode State Transition**: Clock pulse propagation drives charge currents across silicon bus lines, altering gate potentials on ALU transistors.
 3. **Energy Dissipation and Work**: By Theorem `xref:theorem-cmos-switching-power[CMOS Switching Power Dissipation]`, switching \( N_\text{trans} \) logic gates draws physical energy \( E = N_\text{trans} C_L V_{DD}^2 \). Ohmic loss dissipates thermal heat \( Q_\text{heat} \), while driving display pixels and network lines performs physical work \( W_\text{work} \). Software is material contact-action physics. \( \square \)
@@ -2121,7 +2145,7 @@ Let \( S = \{ 0 , 1 , \dots , N - 1 \} \) be an unsorted discrete index set cont
 
 The search algorithm initializes a uniform real normalized state vector \( v_0 \in \mathbb { R } ^ N \):
 \[ v_0 = \frac { 1 } { \sqrt { N } } \mathbf { 1 } _ N = \frac { 1 } { \sqrt { N } } \begin {pmatrix} 1 \\ 1 \\ \vdots \\ 1 \end {pmatrix} \]
-Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v_0 \|_2 = \sqrt{ \sum_{i=0}^{N-1} (1/N) } = 1 \).
+Every coordinate entry of \( v_0 \) is initially equal to \( 1 / \sqrt{N} \). The Euclidean norm is \( \| v_0 \| _ 2 = \sqrt{ \sum_{i=0} ^ {N-1} (1/N) } = 1 \).
 
 === Fundamentals of Householder Reflections in Real Vector Spaces
 
@@ -2133,7 +2157,7 @@ Central to the linear algebraic formulation of digital search is the concept of 
 [THEOREM]
 .Theorem: Algebraic and Geometric Properties of Real Householder Reflections
 ====
-Given any unit vector \( u \in \mathbb { R } ^ N \) with \( \| u \|_2 = u^T u = 1 \), the Householder reflection matrix \( H ( u ) \in \mathbb { R } ^ { N \times N } \) associated with \( u \) is defined by:
+Given any unit vector \( u \in \mathbb { R } ^ N \) with \( \| u \| _ 2 = u ^ T u = 1 \), the Householder reflection matrix \( H ( u ) \in \mathbb { R } ^ { N \times N } \) associated with \( u \) is defined by:
 \[ H ( u ) = I_N - 2 u u^T \]
 
 The matrix operator \( H ( u ) \) satisfies four fundamental mathematical properties:
@@ -2147,6 +2171,7 @@ The matrix operator \( H ( u ) \) satisfies four fundamental mathematical proper
 4. **Spectral Eigenspace Decomposition**: The spectrum of \( H ( u ) \) consists of eigenvalue \( - 1 \) with multiplicity 1 (eigenvector \( u \)) and eigenvalue \( + 1 \) with multiplicity \( N - 1 \) (eigenspace \( u^\perp \)).
 
 *Proof:*
+
 
 1. **Symmetry**: Transposing \( H ( u ) \):
    \[ H ( u ) ^ T = ( I_N - 2 u u^T ) ^ T = I_N ^ T - 2 ( u u^T ) ^ T = I_N - 2 u u^T = H ( u ) \]
@@ -2297,9 +2322,9 @@ In high-dimensional digital computing systems, global Householder reflections re
 \[ G_N = \prod _ { k = 1 } ^ { M } G ( i_k , j_k , \theta_k ) \]
 
 ===== 3. Computational and Hardware Advantages of Givens Rotations
+
 * **Exact Isometry and Numerical Stability**: Elementary Givens rotations are strictly orthogonal matrices (\( G^T G = I \)). In discrete \( m \)-resolution fixed-point arithmetic, Givens rotations preserve vector norm \( \| v \|_2 = 1 \) strictly across arbitrary step counts, eliminating numerical drift and rounding divergence.
 * **Zero-Communication Granular Parallelism**: Because each Givens rotation updates only two coordinate registers \( ( v_i , v_j ) \), operations on disjoint coordinate pairs execute concurrently without shared-memory lock contention, global summation barriers, or pipeline stalls.
-* **Deterministic Inference Engine Execution**: Implemented in Ada 2022 (as in the `grover_search_givens` inference engine module), Givens rotation variants execute as deterministic, highly parallelizable matrix updates without complex numbers, non-material Hilbert spaces, or unphysical "measurement collapse".
 
 === Physical Mechanical and Fluid Dynamics Analogies
 
@@ -2333,6 +2358,7 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 
 *Proof:*
 
+
 1. **Orthogonality of Operators**: By Theorem `xref:theorem-householder-reflection-properties[Properties of Real Householder Reflections]`, matrices \( R_\text{oracle} \) and \( R_\text{mean} \) are symmetric (\( R^T = R \)) and orthogonal (\( R^T R = I \)). Their composition \( G = R_\text{mean} R_\text{oracle} \) is a real orthogonal matrix (\( G^T G = I \)).
 
 2. **Subspace Invariance**: For any vector \( u \in V_2 = \text{span} \{ e _ { x ^ { \ast } } , v_0 \} \), \( R_\text{oracle} u \in V_2 \) because \( R_\text{oracle} \) acts only along \( e _ { x ^ { \ast } } \). Similarly, \( R_\text{mean} u \in V_2 \) because \( R_\text{mean} \) acts only along \( v_0 \). Thus, \( V_2 \) is strictly invariant under \( G \).
@@ -2350,6 +2376,7 @@ In an unstructured discrete search problem over index set \( S = \{ 0 , 1 , \dot
 In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 1 \} \), the Grover search iteration operator \( G = R_\text{mean} R_\text{oracle} \) restricted to the 2D invariant subspace \( V_2 = \text{span} \{ e _ { x ^ { \ast } } , v_0 \} \) is mathematically equivalent to an exact 2D planar Givens rotation \( G | _ { V_2 } = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \) with rotation angle \( \theta = 2 \arcsin ( 1 / \sqrt{N} ) \). Furthermore, \( G \) admits an exact factorized decomposition into a sequence of localized 2D Givens rotations \( \prod_{k=1}^M G ( i_k , j_k , \theta_k ) \) operating on disjoint coordinate pairs, preserving vector norm \( \| v \|_2 = 1 \) strictly across arbitrary discrete step counts.
 
 *Proof:*
+
 
 1. **Planar Equivalence**: In the orthonormal basis \( \{ e _ { x ^ { \ast } } , w \} \) for \( V_2 \), matrix multiplication of Householder reflections \( R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} \) and \( R_\text{mean} | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \) yields:
    \[ G | _ { V_2 } = R_\text{mean} | _ { V_2 } R_\text{oracle} | _ { V_2 } = \begin {pmatrix} - \cos \theta & \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \begin {pmatrix} - 1 & 0 \\ 0 & 1 \end {pmatrix} = \begin {pmatrix} \cos \theta & \sin \theta \\ - \sin \theta & \cos \theta \end {pmatrix} \]
@@ -2376,16 +2403,16 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
     Mean reflection matrix \( R_\text{mean} = \frac{2}{4} \mathbf{J}_4 - I_4 = \frac{1}{2} \mathbf{J}_4 - I_4 \):
    \[ R_\text{mean} = \begin {pmatrix} - 1/2 & 1/2 & 1/2 & 1/2 \\ 1/2 & - 1/2 & 1/2 & 1/2 \\ 1/2 & 1/2 & - 1/2 & 1/2 \\ 1/2 & 1/2 & 1/2 & - 1/2 \end {pmatrix} \]
 
-. **Step 1a: Oracle Application \( v'_0 = R_\text{oracle} v_0 \)**:
+. **Step 1a: Oracle Application \( v'_ 0 = R _ { \text{oracle} } v _ 0 \)**:
    Multiplying matrix \( R_\text{oracle} \) by initial vector \( v_0 \):
-   \[ v'_0 = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \begin {pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end {pmatrix} = \begin {pmatrix} 1/2 \\ 1/2 \\ - 1/2 \\ 1/2 \end {pmatrix} \]
+   \[ v'_ 0 = \begin {pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & - 1 & 0 \\ 0 & 0 & 0 & 1 \end {pmatrix} \begin {pmatrix} 1/2 \\ 1/2 \\ 1/2 \\ 1/2 \end {pmatrix} = \begin {pmatrix} 1/2 \\ 1/2 \\ - 1/2 \\ 1/2 \end {pmatrix} \]
 
 . **Step 1b: Arithmetic Mean Computation**:
-   Sum of entries in \( v'_0 \): \( ( 1/2 ) + ( 1/2 ) + ( - 1/2 ) + ( 1/2 ) = 1.0 \).
+   Sum of entries in \( v'_ 0 \): \( ( 1/2 ) + ( 1/2 ) + ( - 1/2 ) + ( 1/2 ) = 1.0 \).
    Mean value: \( \bar{v}' = \frac{1.0}{4} = 0.25 \implies 2 \bar{v}' = 0.50 \).
 
 . **Step 1c: Inversion About the Mean \( v _ 1 = R _ \text{mean} v' _ 0 \)**:
-  Evaluating matrix product \( R_\text{mean} v'_0 \) or scalar rule \( v_1 ( i ) = 2 \bar{v}' - v'_0 ( i ) \):
+  Evaluating matrix product \( R_\text{mean} v'_ 0 \) or scalar rule \( v_1 ( i ) = 2 \bar{v}' - v'_ 0 ( i ) \):
 
    * Entry 0: \( v_1 ( 0 ) = 0.50 - 0.50 = 0.0 \)
 
@@ -2416,7 +2443,7 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
 
    * **Iteration 1 (\( k = 1 \))**:
 
-     .. Oracle inversion: \( v'_0(7) = -0.2500 \), non-targets \( v'_0(x) = 0.2500 \).
+     .. Oracle inversion: \( v'_ 0(7) = -0.2500 \), non-targets \( v'_ 0(x) = 0.2500 \).
 
      .. Mean calculation: \( \bar{v}' = \frac{15(0.2500) - 0.2500}{16} = \frac{3.50}{16} = 0.21875 \implies 2 \bar{v}' = 0.4375 \).
 
@@ -2696,6 +2723,7 @@ Any discrete \( n \)-qubit “quantum” algorithm composed of a sequence of \( 
 
 *Proof:*
 
+
 1. **Real Vector Decomposition**: Any complex state vector \( v \in \mathbb{C} ^ {2 ^ n} \) decomposes uniquely into real and imaginary vector components \( v = x + \mathrm{i} y \), where \( x , y \in \mathbb{R} ^ {2 ^ n} \). Defining stacked real vector \( w = \begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R} ^ {2 ^ {n+1}} \), complex Euclidean norm satisfies \( \| v \|_2 ^ 2 = \sum (x_k ^ 2 + y_k ^ 2) = \| w \|_2 ^ 2 \).
 
 2. **Unitary to Real Orthogonal Mapping**: Any complex unitary operator \( U = A + \mathrm{i} B \in \mathbb{C} ^ {2 ^ n \times 2 ^ n} \) satisfies \( U ^ \dagger U = I \). Mapping \( U \) to block real matrix \( R_U = \begin{pmatrix} A & -B \\ B & A \end{pmatrix} \in \mathbb{R} ^ {2 ^ {n+1} \times 2 ^ {n+1}} \) preserves matrix multiplication and yields \( R_U ^ T R_U = I_{2 ^ {n+1}} \). Thus, \( R_U \) is a real orthogonal matrix.
@@ -2710,6 +2738,7 @@ Any discrete \( n \)-qubit “quantum” algorithm composed of a sequence of \( 
 For a DIY coupled-oscillator state-vector processor with \( N = 2 ^ n \) state channels operating at multiscale resolution \( m \)-res aperture precision \( \delta_\omega \), the minimum channel voltage dynamic range required to distinguish target signal amplification from baseline noise scales as \( O(2 ^ {-n/2}) \). A desktop analog-digital processor operating with channel noise floor \( V_\text{noise} < V_\text{ref} / 2 ^ {n/2} \) achieves 100% exact algorithm convergence.
 
 *Proof:*
+
 
 1. **Initial Uniform Amplitude**: For an \( n \)-qubit register initialized to uniform state \( v_0 \), each coordinate amplitude is \( v_0(i) = 1 / \sqrt{N} = 1 / 2 ^ {n/2} \).
 
@@ -2751,7 +2780,7 @@ For a DIY coupled-oscillator state-vector processor with \( N = 2 ^ n \) state c
    LED power across 1 k\(\Omega\) resistor: \( P_0 = (0.3536)^2 / 1000 = 0.125 \ \text{mW} \).
 
 . **Iteration 1 (\( k = 1 \))**:
-   * Oracle flips target channel 5: \( v'_0(5) = -0.3536 \ \text{V} \); non-targets remain \( +0.3536 \ \text{V} \).
+   * Oracle flips target channel 5: \( v'_ 0(5) = -0.3536 \ \text{V} \); non-targets remain \( +0.3536 \ \text{V} \).
    * Summing amplifier node evaluates mean: \( \bar{v}_1 = \frac{7(0.3536) - 0.3536}{8} = 0.2652 \ \text{V} \implies 2 \bar{v}_1 = 0.5303 \ \text{V} \).
    * Differential output nodes:
      - Target channel 5: \( v_1(5) = 0.5303 - (-0.3536) = 0.8839 \ \text{V} \).
@@ -3044,6 +3073,7 @@ Let an \( n \)-dimensional evaluation register contain discrete state-vector \( 
 
 *Proof:*
 
+
 1. **Matrix Definition**: The matrix elements of the \( M = 2 ^ n \) dimensional DFT operator are given by \( F _ { j k } = \frac { 1 } { \sqrt { M } } \omega _ M ^ { j k } \), where \( \omega _ M = \exp ( 2 \pi \mathrm { i } / M ) \).
 
 2. **Tensor Factorization**: Any integer \( k \in [ 0 , M - 1 ] \) has unique binary representation \( k = \sum _ { l = 1 } ^ n k _ l 2 ^ { n - l } \). Substituting into the exponential kernel factors \( \mathbf { F } _ M \) into a product of \( n \) single-qubit Hadamard operators and \( \frac { n ( n - 1 ) } { 2 } \) controlled phase rotations:
@@ -3067,6 +3097,7 @@ or as a structured cascade of at most \( \frac { N ( N - 1 ) } { 2 } \) localize
 Both representations preserve Euclidean vector length, inner products, and Jaynesian probability normalization, allowing hardware implementations to substitute dense global summing junctions with nearest-neighbor local circuit interactions.
 
 *Proof:*
+
 
 1. **Cartan-Dieudonné Theorem on \( \mathbb { R } ^ N \)**: By the classical Cartan-Dieudonné theorem, every orthogonal transformation in an \( N \)-dimensional real Euclidean space decomposes into a product of at most \( N \) reflections across hyperplanes. For proper rotations (\( \det ( R ) = + 1 \)), the number of reflections is strictly even.
 
