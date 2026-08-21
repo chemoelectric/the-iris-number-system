@@ -1,6 +1,7 @@
 .DELETE_ON_ERROR:
 .DEFAULT_GOAL := default
 
+AWK = nawk
 SED = sed
 ASCIIDOCTOR = asciidoctor
 PANDOC = pandoc
@@ -21,11 +22,21 @@ all: $(addsuffix .pdf, $(VOLUMES))
 
 .PHONY: clean
 
+define preprocess-adoc
+$(AWK) < $(1) > $(2) ' \
+/^\*Proof:\*$$/ { print; print ""; next } \
+/^\* **[^[:space:]]/ { print ""; print; next } \
+{ print } \
+'
+endef
+
 %.html: %.adoc
-	$(ASCIIDOCTOR) -S safe -b html5 $(<) -o $(@)
+	$(call preprocess-adoc,$(<),$(*).preproc.adoc)
+	$(ASCIIDOCTOR) -S safe -b html5 $(*).preproc.adoc -o $(@)
+	rm $(*).preproc.adoc
 .PHONY: clean-html
 clean-html::
-	-rm -f *.html
+	-rm -f *.html *.preproc.adoc
 clean:: clean-html
 
 %.pdf: %.html header.tex fix-greek.lua GNUmakefile
@@ -38,7 +49,8 @@ clean:: clean-html
 	          -V classoption=oneside \
 	          -H header.tex \
 	          -V fontsize=12pt \
-	          --metadata title="" \
+	          -V classoption=fleqn \
+	          -M title="" \
 	          $(<) -o $(@)
 .PHONY: clean-pdf
 clean-pdf::

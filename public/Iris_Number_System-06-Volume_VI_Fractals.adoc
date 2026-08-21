@@ -584,7 +584,7 @@ The discrete mathematical formulation above explains why knots exhibit distinct 
 
 === Dielectric Breakdown and Laplacian Growth
 
-In an insulating medium subjected to a steep electric potential gradient \( E = - \nabla \phi \), dielectric breakdown occurs when the local electric field exceeds the dielectric threshold \( E _ { \text { crit } } \).
+In an insulating medium subjected to a steep electric potential gradient{nbsp}\( E = - \nabla \phi \), dielectric breakdown occurs when the local electric field exceeds the dielectric threshold{nbsp}\( E _ { \text { crit } } \).
 
 [#theorem-dielectric-breakdown-dla-dimension]
 [THEOREM]
@@ -873,13 +873,13 @@ The mathematics of backward fractal trees applies directly across numerous pract
 
 In _Mind and the World Order: Outline of a Theory of Knowledge_ (1929), Clarence Irving Lewis formulated an operational epistemology that directly influenced the founders of modern industrial quality engineering—Walter A. Shewhart (_Economic Control of Quality of Manufactured Product_, 1931) and W. Edwards Deming (_Out of the Crisis_, 1986).
 
-Lewis described empirical knowledge as follows. (_The exposition is interleaved with a rough translation into yours truly’s system of epistemology, which is actually more thorough and complicated in its details._)
+Lewis described empirical knowledge as follows. [_The exposition is interleaved with a rough translation into Frédéric Custer’s somewhat different epistemological terminology._]
 
-1. **The “Given”**: The immediate, raw, uninterpreted sensuous presentation. In the Iris number system, this corresponds to the raw discrete field sensor measurements and contact signals \( y ( \mathbf { x } , t ) \) recorded on the discrete spatial-temporal grid \( \mathcal { G } _ N \). _It is already an abstraction, which in the Iris system we call an **“Object”** or **“the Objective Levels.”**_
+1. **The “Given”**: The immediate, raw, uninterpreted sensuous presentation. In the Iris number system, this corresponds to the raw discrete field sensor measurements and contact signals \( y ( \mathbf { x } , t ) \) recorded on the discrete spatial-temporal grid \( \mathcal { G } _ N \). [_It is already an abstraction, which in the Iris system we call an **“Object”** or **“the Objective Levels.”**_]
 
-2. **The “Concept”**: The active cognitive construction or operational definition that asserts a verifiable relational invariant (e.g., “this machined shaft has an effective diameter of \( d_0 \pm \delta \) and will seat without binding in a standard bushing”). _A better term for this, more indicative that it is itself a result of abstracting, would not be “Concept” but **“Formulation.”**_
+2. **The “Concept”**: The active cognitive construction or operational definition that asserts a verifiable relational invariant (e.g., “this machined shaft has an effective diameter of \( d_0 \pm \delta \) and will seat without binding in a standard bushing”). [_A better term for this, more indicative that it is itself a result of abstracting, would not be “Concept” but **“Formulation.”**_]
 
-3. **The Act of (_further_) Abstraction**: The operational process by which an organism or inference engine separates the invariant structural signal from extraneous, fluctuating background variation across scales. _In the Iris numbers system, this is recognized as application of abstractions (2) to abstractions (1), resulting in yet newer abstractions._
+3. **The Act of [_further_] Abstraction**: The operational process by which an organism or inference engine separates the invariant structural signal from extraneous, fluctuating background variation across scales. [_In the Iris numbers system, this is recognized as application of abstractions (2) to abstractions (1), resulting in yet newer abstractions._]
 
 Order is not an uninterpreted property lying naked in raw sensation; order is the invariant formulational structure extracted through scale-invariant aperture filtering.
 
@@ -1111,7 +1111,3 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:thm-shewhart-multiscale-invariance[**Theorem: Multiscale Self-Similarity of Stable Common-Cause Variation**] -- Section: *Shewhart Quality Control and Multiscale Physical Noise*
 * xref:thm-pdsa-contraction-convergence[**Theorem: PDSA Operational Contraction and Convergence to Target Invariants**] -- Section: *The Shewhart-Deming Cycle (PDSA) as a Discrete Contraction Iteration*
 * xref:thm-tampering-feigenbaum-instability[**Theorem: Tampering-Induced Feigenbaum Period-Doubling and Chaotic Variance Explosion**] -- Section: *The Deming Funnel Experiment and the Dynamics of Tampering*
-
-
-
-
