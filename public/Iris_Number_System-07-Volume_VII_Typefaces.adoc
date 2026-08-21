@@ -11,7 +11,7 @@ A Rigorous Application of the Counting-Iris Number System and the Master Field E
 
 == Prelude: Foundations of Digital Typeface Design in the Iris Framework
 
-Digital typeface design and font outline geometry operate inherently within discrete coordinate grids and multiscale rasterization apertures. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization within the Counting-Iris framework.
+Digital typeface design and font outline geometry operate inherently within discrete coordinate grids \( \mathcal{G}_N \) and multiscale rasterization apertures. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization strictly within the Counting-Iris framework and the planar geometric algebra \( Cl(2,0) \).
 
 == Smooth Spline Interpolation: Hobby’s Algorithm and its Extension via Singular Value Decomposition
 
@@ -19,12 +19,12 @@ Digital typeface design and font outline geometry operate inherently within disc
 
 Every digital typeface designer knows the intimate friction of shaping a curve. When drawing the outer swell of a capital *O*, the fluid spine of an *S*, or the delicate teardrop terminal of a lowercase *a*, the designer works with two distinct kinds of points:
 
-1. **On-curve knots** (or master nodes): The anchors through which the curve must pass, typically placed at optical extrema (top, bottom, left, and right baselines and apexes) and inflection points.
+1. **On-curve knots** (or master nodes): The anchors through which the curve must pass, typically placed at optical extrema (top, bottom, left, and right baselines and apexes) and inflection points on the discrete design grid \( \mathcal{G}_N \).
 2. **Off-curve control points** (often called handles or direction points): The levers that govern the slope and speed of the curve as it departs from and arrives at each anchor.
 
-In standard PostScript and OpenType font formats (CFF, CFF2, and TrueType), every smooth outline is encoded as a sequence of polynomial segments—predominantly cubic Bézier curves. 
+In standard digital font formats, every smooth outline is encoded as a sequence of polynomial segments—predominantly cubic Bézier curves. 
 
-Adjusting hundreds of individual control handles manually across multiple masters (light, regular, bold, condensed) is exhausting and error-prone. A designer instinctively wants to place the key anchor knots and let the software compute the most natural, harmonious curve through them. 
+Adjusting hundreds of individual control handles manually across multiple masters (light, regular, bold, condensed) is exhausting and error-prone. A designer instinctively wants to place the key anchor knots on the discrete design grid and let the software compute the most natural, harmonious curve through them. 
 
 However, standard mathematical curve-fitting techniques often fail the typographic eye:
 
@@ -39,11 +39,11 @@ In the mid-1980s, computer scientist John D. Hobby (working closely with Donald 
 
 To understand how Hobby’s method works, we consider a single segment running between two consecutive on-curve knots, which we denote as \( z_0 \) and \( z_1 \).
 
-In the planar Clifford algebra \( Cl(2,0) \), each point is a 2D position multivector:
+In the planar Clifford algebra \( Cl(2,0) \), each point is a 2D position multivector on the discrete resolution grid \( \mathcal{G}_N \):
 \[ z = x \, \mathbf{e}_1 + y \, \mathbf{e}_2 \]
 A cubic Bézier curve running from \( z_0 \) to \( z_1 \) is governed by two intermediate off-curve control points, \( u_0 \) (the first handle, pulling from \( z_0 \)) and \( v_1 \) (the second handle, pulling toward \( z_1 \)). 
 
-The curve is parameterized by a progress variable \( t \), ranging from \( 0 \) (at \( z_0 \)) to \( 1 \) (at \( z_1 \)):
+The curve is parameterized by a progress variable \( t \in [0, 1] \) on the discrete evaluation grid:
 \[ z(t) = (1 - t)^3 z_0 + 3 (1 - t)^2 t \, u_0 + 3 (1 - t) t^2 \, v_1 + t^3 z_1 \]
 
 ==== The Straight Chord and Turning Angles
@@ -51,7 +51,7 @@ The curve is parameterized by a progress variable \( t \), ranging from \( 0 \) 
 Let \( \Delta z_0 = z_1 - z_0 \) be the straight chord vector connecting the two knots. 
 
 * The chord length is \( d_0 = | \Delta z_0 | = \sqrt{ (x_1 - x_0)^2 + (y_1 - y_0)^2 } \).
-* The chord angle relative to the horizontal axis is \( \phi_0 = \operatorname{atan2}(y_1 - y_0, \, x_1 - x_0) \).
+* The chord angle relative to the horizontal basis vector \( \mathbf{e}_1 \) is \( \phi_0 = \operatorname{atan2}(y_1 - y_0, \, x_1 - x_0) \).
 
 The direction of the curve as it leaves \( z_0 \) makes an angle \( \theta_0 \) with the chord. Similarly, as the curve enters \( z_1 \), its direction makes an angle \( \psi_1 \) with the chord.
 
@@ -68,23 +68,23 @@ Hobby discovered that the optimal handle lengths depend on both turning angles t
 \[ u_0 = z_0 + \frac{d_0 \cdot \rho(\theta_0, \psi_1)}{3 \, \tau_0} \, \mathbf{R}(\phi_0 + \theta_0) \, \mathbf{e}_1 \]
 \[ v_1 = z_1 - \frac{d_0 \cdot \sigma(\theta_0, \psi_1)}{3 \, \tau_1'} \, \mathbf{R}(\phi_0 - \psi_1) \, \mathbf{e}_1 \]
 where:
-* \( \mathbf{R}(\alpha) = \cos \alpha + \sin \alpha \, \mathbf{e}_{12} \) is the planar rotor that rotates a vector by angle \( \alpha \).
+* \( \mathbf{R}(\alpha) = \cos \alpha + \sin \alpha \, \mathbf{e}_{12} \) is the planar rotor in \( Cl(2,0) \) that rotates a vector by angle \( \alpha \) in the oriented plane \( \mathbf{e}_{12} \).
 * \( \tau_0 \) and \( \tau_1' \) are user-adjustable tension parameters (where \( \tau = 1.0 \) represents standard optical fullness, \( \tau > 1.0 \) tightens the curve toward the chord, and \( \tau < 1.0 \) relaxes the curve).
 * The velocity function \( \rho(\theta, \psi) \) is given by:
 \[ \rho(\theta, \psi) = \frac{2 + \sqrt{2} \left( \sin \theta - \frac{1}{16} \sin \psi \right) \left( \sin \psi - \frac{1}{16} \sin \theta \right) (\cos \theta - \cos \psi)}{1 + \left( \frac{\sqrt{5} - 1}{2} \right) \cos \theta + \left( \frac{3 - \sqrt{5}}{2} \right) \cos \psi} \]
 and the complementary velocity function is symmetric:
 \[ \sigma(\theta, \psi) = \rho(\psi, \theta) \]
 
-These formulas ensure that when four knots are placed at the corners of a square, the resulting curve matches a true circle to within \( 0.06\% \) optical error—an imperceptible deviation in digital typography.
+These formulas ensure that when four knots are placed at the corners of a square, the resulting curve matches a true circle to within \( 0.06\% \) optical aperture deviation—an imperceptible discrepancy in digital typography.
 
 === Curvature Continuity: The Mathematics of Optical Smoothness
 
 Why do type designers care about curvature continuity? 
 
-In geometry, continuity is classified by degrees:
+In discrete geometry, continuity is classified by degrees across adjacent segments:
 
-* **\( C^0 \) / \( G^0 \) (Positional continuity)**: The curve segments meet at the knot without a gap.
-* **\( C^1 \) / \( G^1 \) (Tangent continuity)**: The incoming and outgoing handles lie on the exact same straight line across the knot. There is no sharp corner, but there may be an abrupt jump in the tightness of the bend. In glossy text or high-resolution display, this sudden change produces an optical “flat spot” or “knee”.
+* **\( C^0 \) / \( G^0 \) (Positional continuity)**: The curve segments meet at the knot without a spatial gap on \( \mathcal{G}_N \).
+* **\( C^1 \) / \( G^1 \) (Tangent continuity)**: The incoming and outgoing handles lie on the exact same collinear line across the knot. There is no sharp corner, but there may be an abrupt jump in the tightness of the bend. In high-resolution display, this sudden change produces an optical “flat spot” or “knee”.
 * **\( C^2 \) / \( G^2 \) (Curvature continuity)**: The rate of turning (the radius of curvature \( \kappa \)) matches continuously across the knot. The highlight flows seamlessly, creating the serene, fluid curves characteristic of master letterforms.
 
 By setting the incoming curvature of segment \( k-1 \) equal to the outgoing curvature of segment \( k \) at knot \( z_k \), Hobby derived the fundamental linear relationship:
@@ -100,25 +100,25 @@ For a closed loop of \( n \) knots (such as the outer contour of an *o*), this p
 
 === Where Classical Solvers Fail: The Reality of Glyph Design
 
-In textbooks and basic implementations, this system of equations is solved using the Thomas algorithm (a fast variant of Gaussian elimination for tridiagonal matrices). In an idealized world where every knot is neatly spaced and distinct, this runs in \( \mathcal{O}(n) \) linear time.
+In conventional implementations, this system of equations is solved using the Thomas algorithm (Gaussian elimination for tridiagonal matrices). In an idealized setting where every knot is distinctly separated, this runs in \( \mathcal{O}(n) \) linear time.
 
-However, in professional font design software, font editors, and font interpolation engines, the input data is rarely ideal. Classical tridiagonal solvers break down in several common scenarios:
+However, in professional font design tools, font interpolation engines, and glyph optimization pipelines, the input data is rarely ideal. Classical tridiagonal solvers break down in several common scenarios:
 
-1. **Coincident Knots (\( d_k \to 0 \))**: A designer accidentally double-clicks or places two nodes at the exact same coordinate. Or, in a variable font interpolation, a serif feature collapses down to a single point at the hairline master. Because \( d_k = 0 \) appears in the denominator of \( A_k, B_k, C_k \), classical division produces infinity (`+Inf` or `NaN`), crashing the program or corrupting the outline.
-2. **Colinear Knots and Flat Stretches**: When three or more knots sit on an exact straight horizontal line (such as the crossbar of an *H* or *t*), the turning angles \( \psi_k \) vanish, and the matrix rows become linearly dependent. The matrix determinant drops to zero, and Gaussian elimination fails with a singular matrix exception.
-3. **Overdetermined Tangent Locks**: A type designer frequently wants to lock a handle’s angle explicitly (e.g., “this stem must enter the baseline at an exact vertical \( 90^\circ \) tangent”) while simultaneously demanding that other knots maintain smooth curvature. Forcing exact angles introduces extra constraint rows, making the matrix rectangular and breaking the tridiagonal structure.
-4. **Conflicting Constraints**: In complex glyph outlines, a designer might specify a tension of infinity on one side and a locked angle on the other, creating mathematically contradictory requirements. A classical solver either throws an unhandled error or outputs wildly distorted Bézier handles that loop across the screen.
+1. **Coincident Knots (\( d_k \to 0 \))**: A designer accidentally places two nodes at the exact same coordinate, or in a variable font interpolation, a serif feature collapses down to a single point at a hairline master. Because \( d_k = 0 \) appears in the denominator of \( A_k, B_k, C_k \), division by zero occurs, producing `NaN` or unhandled exceptions.
+2. **Colinear Knots and Flat Stretches**: When three or more knots sit on an exact straight horizontal line (such as the crossbar of an *H* or *t*), the turning angles \( \psi_k \) vanish, and the matrix rows become linearly dependent. The matrix determinant drops to zero, and Gaussian elimination fails with a singular matrix error.
+3. **Overdetermined Tangent Locks**: A type designer frequently wants to lock a handle’s angle explicitly (e.g., forcing a stem to enter the baseline at an exact vertical \( 90^\circ \) tangent) while simultaneously demanding that other knots maintain smooth curvature. Forcing exact angles introduces extra constraint rows, making the matrix rectangular and breaking the tridiagonal structure.
+4. **Conflicting Constraints**: In complex glyph outlines, a designer might specify a tension of infinity on one side and a locked angle on the other, creating contradictory requirements. A classical solver either fails outright or outputs distorted Bézier handles that loop across the coordinate space.
 
 === The SVD Extension: Finding the Best Harmony in Every Situation
 
-To resolve all these failure modes, we generalize Hobby’s formulation into an arbitrary constraint matrix:
+To resolve all these failure modes, we generalize Hobby’s formulation into an arbitrary rectangular constraint matrix over the discrete parameter space:
 \[ \mathbf{K} \, \boldsymbol{\theta} = \mathbf{b} \]
 where \( \mathbf{K} \in \mathbb{R}^{m \times n} \) contains:
 * Curvature continuity rows for all smooth internal knots.
 * Direction lock rows pinning specific angles: \( \theta_k = \theta_{\text{locked}} \).
 * Boundary condition rows for open contours (curl conditions or fixed terminal slopes).
 
-Instead of assuming that \( \mathbf{K} \) is square, non-singular, and invertible, we compute its **Singular Value Decomposition (SVD)**:
+Instead of assuming that \( \mathbf{K} \) is square and invertible, we compute its **Singular Value Decomposition (SVD)**:
 \[ \mathbf{K} = \mathbf{U} \, \mathbf{\Sigma} \, \mathbf{V}^T \]
 where:
 * \( \mathbf{U} \) is an \( m \times m \) orthogonal matrix whose columns represent the fundamental modes of the constraint space.
@@ -127,7 +127,7 @@ where:
 
 ==== The Moore-Penrose Pseudoinverse
 
-The Moore-Penrose pseudoinverse \( \mathbf{K}^+ \) is computed by inverting only the non-zero singular values:
+The Moore-Penrose pseudoinverse \( \mathbf{K}^+ \) is computed by inverting only the non-zero singular values exceeding the finite m-resolution aperture \( \varepsilon_{\text{tol}} \):
 \[ \mathbf{K}^+ = \mathbf{V} \, \mathbf{\Sigma}^+ \, \mathbf{U}^T \]
 where:
 \[ \Sigma^+_{ii} = \begin{cases} \frac{1}{\sigma_i} & \text{if } \sigma_i > \varepsilon_{\text{tol}} \\ 0 & \text{if } \sigma_i \le \varepsilon_{\text{tol}} \end{cases} \]
@@ -139,20 +139,20 @@ The optimal turning angle vector is then:
 
 [#thm-svd-hobby-least-squares]
 [THEOREM]
-.Theorem: Universal Existence, Uniqueness, and Least-Squares Optimality of SVD-Hobby Splines
+.Theorem: Universal Existence, Uniqueness, and Least-Squares Optimality of SVD-Hobby Splines in the Iris Number System
 ====
-Let an arbitrary configuration of \( n \) knots \( \{ z_k \} \) and \( m \) typographic constraints be represented by the linear system \( \mathbf{K} \boldsymbol{\theta} = \mathbf{b} \).
+Let an arbitrary configuration of \( n \) knots \( \{ z_k \} \) on the discrete design grid \( \mathcal{G}_N \) and \( m \) typographic constraints be represented by the linear system \( \mathbf{K} \boldsymbol{\theta} = \mathbf{b} \).
 
-1. **Universal Solvability**: The solution \( \boldsymbol{\theta}^* = \mathbf{K}^+ \mathbf{b} \) exists and is unique for *every* possible input, regardless of whether \( \mathbf{K} \) is square, singular, rank-deficient, underdetermined, or overdetermined.
+1. **Universal Solvability**: The solution \( \boldsymbol{\theta}^* = \mathbf{K}^+ \mathbf{b} \) exists and is uniquely determined for *every* possible input, regardless of whether \( \mathbf{K} \) is square, singular, rank-deficient, underdetermined, or overdetermined.
 2. **Least-Squares Error Minimization**: If the designer's constraints are contradictory or overdetermined, \( \boldsymbol{\theta}^* \) minimizes the total residual discrepancy:
 \[ \| \mathbf{K} \boldsymbol{\theta}^* - \mathbf{b} \|_2 = \min_{\boldsymbol{\theta}} \| \mathbf{K} \boldsymbol{\theta} - \mathbf{b} \|_2 \]
-3. **Minimum-Strain Regularization**: If the constraints are underdetermined (such as on a straight line or unconstrained contour), \( \boldsymbol{\theta}^* \) selects the unique solution with the smallest Euclidean norm \( \| \boldsymbol{\theta}^* \|_2 \). This corresponds to the smoothest possible curve that avoids unnecessary turning, buckling, or inflection.
+3. **Minimum-Strain Regularization**: If the constraints are underdetermined (such as on a straight line or unconstrained contour), \( \boldsymbol{\theta}^* \) selects the unique solution with the smallest Euclidean norm \( \| \boldsymbol{\theta}^* \|_2 \). In the Iris number system, this corresponds to the minimal-strain contour that minimizes unnecessary angular displacement across knots.
 
 *Proof:*
 
-. **Orthogonal Direct Sum**: By the Singular Value Decomposition theorem, the domain \( \mathbb{R}^n \) is the direct sum of the row space \( \operatorname{row}(\mathbf{K}) \) and the null space \( \operatorname{null}(\mathbf{K}) \).
+. **Orthogonal Direct Sum**: By the Singular Value Decomposition in real Euclidean space, the domain \( \mathbb{R}^n \) is the direct sum of the row space \( \operatorname{row}(\mathbf{K}) \) and the null space \( \operatorname{null}(\mathbf{K}) \).
 
-. **Projection Optimality**: The vector \( \mathbf{K} \boldsymbol{\theta}^* = \mathbf{U} \mathbf{\Sigma} \mathbf{\Sigma}^+ \mathbf{U}^T \mathbf{b} \) is the exact orthogonal projection of \( \mathbf{b} \) onto the range \( \operatorname{col}(\mathbf{K}) \). By the classical projection theorem in real Euclidean space, this uniquely minimizes the Euclidean distance \( \| \mathbf{K} \boldsymbol{\theta} - \mathbf{b} \|_2 \).
+. **Projection Optimality**: The vector \( \mathbf{K} \boldsymbol{\theta}^* = \mathbf{U} \mathbf{\Sigma} \mathbf{\Sigma}^+ \mathbf{U}^T \mathbf{b} \) is the exact orthogonal projection of \( \mathbf{b} \) onto the range \( \operatorname{col}(\mathbf{K}) \). By the projection theorem on discrete Euclidean inner-product spaces, this uniquely minimizes the distance \( \| \mathbf{K} \boldsymbol{\theta} - \mathbf{b} \|_2 \).
 
 . **Null-Space Elimination**: Any other vector \( \boldsymbol{\theta} \) that achieves the same minimal residual must satisfy \( \mathbf{K} \boldsymbol{\theta} = \mathbf{K} \boldsymbol{\theta}^* \), meaning \( \boldsymbol{\theta} = \boldsymbol{\theta}^* + \mathbf{w} \) for some vector \( \mathbf{w} \in \operatorname{null}(\mathbf{K}) \). Because \( \boldsymbol{\theta}^* = \mathbf{V} \mathbf{\Sigma}^+ \mathbf{U}^T \mathbf{b} \in \operatorname{row}(\mathbf{K}) \), we have the orthogonality condition \( \langle \boldsymbol{\theta}^*, \mathbf{w} \rangle = 0 \). Therefore:
 \[ \| \boldsymbol{\theta} \|_2^2 = \| \boldsymbol{\theta}^* \|_2^2 + \| \mathbf{w} \|_2^2 \ge \| \boldsymbol{\theta}^* \|_2^2 \]
@@ -161,7 +161,7 @@ with equality if and only if \( \mathbf{w} = \mathbf{0} \). Hence, \( \boldsymbo
 
 === IEEE-754 Arithmetic Safeguards and Exception Handling
 
-In production software, mathematical elegance must be backed by strict floating-point hygiene. The SVD-Hobby engine implements five specific defensive safeguards:
+In production software, mathematical elegance must be backed by strict floating-point hygiene. The SVD-Hobby engine implements four specific defensive safeguards:
 
 1. **Aperture Coalescence for Coincident Knots**: If the distance between two consecutive knots is less than an aperture threshold \( d_k < 10^{-10} \), the engine does not perform division. It collapses the duplicate knot and sets the corresponding row in \( \mathbf{K} \) to an identity constraint \( \theta_k = 0 \).
 2. **Velocity Clamping against Singular Angles**: If a designer creates an extreme acute fold (\( \theta \to \pi \) or \( \psi \to \pi \)), the denominator of Hobby’s velocity function \( \rho(\theta, \psi) \) can approach zero. The engine clamps the computed velocity:
