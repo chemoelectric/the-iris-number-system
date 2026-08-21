@@ -114,7 +114,9 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc # Volume II: Applications to Number Theory (AsciiDoc)
 │   ├── Iris_Number_System-03-Volume_III_Geometry_Algebra_etc.adoc # Volume III: Geometry & Algebra (AsciiDoc)
 │   ├── Iris_Number_System-04-Volume_IV_Physics_etc.adoc # Volume IV: Physics, Chemistry, Engineering (AsciiDoc)
+│   ├── Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc # Volume V: Spectral Analysis, Information Theory, Signal Processing, Algorithms (AsciiDoc)
 │   ├── Iris_Number_System-06-Volume_VI_Fractals.adoc    # Volume VI: Discrete Fractals, Nonlinear Dynamics, and Hardware Systems (AsciiDoc)
+│   ├── Iris_Number_System-07-Volume_VII_Typefaces.adoc  # Volume VII: Typefaces, Glyphs, Bézier Geometry (AsciiDoc)
 │   ├── acl2/                    # Certified ACL2 formal verification book (iris_number_system.lisp)
 │   ├── devices/                 # Mechanical engineering blueprints for novel solid experimental devices (ADISC-1, MTE-1, VSH-1)
 │   ├── maxima/                  # Maxima package (iris.mac) for Cl(4,1,1) geometric algebra and field equations
