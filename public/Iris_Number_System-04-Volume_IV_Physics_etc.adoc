@@ -2057,6 +2057,8 @@ In this historical exchange, Bohr executed an “I'm rubber, you're glue” sema
 
 In Chapter 6, human language was established as a deterministic, physical signal processing system wherein internal organismal meanings \( M \in \mathcal { M } \subset Cl ( 4 , 1 , 1 ) \) are transmitted via physical transducer carrier signals \( s ( t ) \), filtered through digital syntax and grammar matrices \( \mathbf { H } _ g \), and protected by discrete Hamming block redundancy \( d _ \text{min} \ge 2 e + 1 \).
 
+A foundational cause of the twentieth-century degeneration of theoretical physics was the deliberate substitution of an *empirical* orientation with an *operational* one, spearheaded by Niels Bohr and the Copenhagen school. Whereas an empirical orientation anchors physical thought in direct, non-verbal physical facts, objective field dynamics, and extensional exemplars, an operational orientation reduces physics to measuring-device recipes and procedural rules—telling the practitioner merely “do this, do that” without providing or requiring physical *meaning*. Operational definitions are devoid of ontological meaning; they replace physical reality with instrumentalist rituals. By disconnecting mathematical symbols from underlying field reality and direct contact mechanics, Bohr's operationalism allowed ungrounded mystical abstractions to masquerade as fundamental physical principles.
+
 Niels Bohr's principle of complementarity ("*Contraria sunt complementa*") asserts that two mutually exclusive physical descriptions—such as \( P \) ("Energy propagates as a local wave field") and \( \neg P \) ("Energy transfers as a non-wave localized particle point")—are simultaneously valid descriptions of a single physical universe depending on experimental context, mandating the joint endorsement of \( P \land \neg P \).
 
 From the perspective of signal processing theory, forcing a receiving organism to process the self-contradictory signal \( P \land \neg P \) introduces a deliberate **zero-Hamming-distance semantic collision** into the linguistic filter bank. In a healthy linguistic communication channel, mutually exclusive semantic state code-words \( P \) and \( \neg P \) are separated by a non-zero Hamming distance \( d _ \text{min} > 0 \), enabling the syntactic filter matrix \( \mathbf { H } _ g \) to detect and reject corrupted token transitions. Mandating \( P \land \neg P \) forces the syntax filter \( \mathbf { H } _ g \) into an all-pass degenerate state, collapsing the channel's error-detecting aperture to zero (\( d _ \text{min} \to 0 \)).
@@ -2067,7 +2069,7 @@ This deliberate jamming of the linguistic signal processing channel bypasses the
 [THEOREM]
 .Theorem: Socio-Linguistic Invalidation of Bohr's Complementarity via Signal Processing Theory
 ====
-Niels Bohr's principle of complementarity—asserting that mutually exclusive physical descriptions \( P \) and \( \neg P \) are simultaneously valid complementary aspects of the physical universe—is a structural violation of the Law of Non-Contradiction. Under the Signal Processing Theory of Human Language, complementarity acts as a deliberate channel-jamming signal that collapses the minimum Hamming distance of the linguistic filter bank (\( d _ \text{min} \to 0 \)), functioning as an institutional mechanism of Doublethink rather than a valid physical postulate.
+Niels Bohr's principle of complementarity—asserting that mutually exclusive physical descriptions \( P \) and \( \neg P \) are simultaneously valid complementary aspects of the physical universe—is a structural violation of the Law of Non-Contradiction. By substituting an operational recipe for an empirical orientation, complementarity acts as a deliberate channel-jamming signal that collapses the minimum Hamming distance of the linguistic filter bank (\( d _ \text{min} \to 0 \)), functioning as an institutional mechanism of Doublethink rather than a valid physical postulate.
 
 *Proof:*
 
@@ -2077,7 +2079,7 @@ Niels Bohr's principle of complementarity—asserting that mutually exclusive ph
 
 . **Channel Jamming and Doublethink**: In communication signal processing, a zero-Hamming-distance signal collision renders the receiver's error-detection and error-correction sub-routines non-functional. By corrupting the organismal transduction channel \( T _ \text{recv} \), complementarity disables logical error-filtering, compelling the recipient organism to accept an unresolvable signal collision—a technique of institutional Doublethink that enforces compliance by degrading linguistic signal processing capacity.
 
-. **Deterministic Multivector Resolution**: In the Iris Number System, physical fields are deterministic multivectors \( F \in Cl ( 4 , 1 , 1 ) \). Wave-like spatial distribution and particle-like discrete momentum transfer are exact, deterministic topological properties of localized wave-packet solutions. Eliminating the artificial signal collision \( P \land \neg P \) restores non-zero Hamming separation \( d _ \text{min} > 0 \), re-establishing strict logical consistency and operational integrity to physical science. \( \square \)
+. **Deterministic Multivector Resolution**: In the Iris Number System, physical fields are deterministic multivectors \( F \in Cl ( 4 , 1 , 1 ) \). Wave-like spatial distribution and particle-like discrete momentum transfer are exact, deterministic topological properties of localized wave-packet solutions. Eliminating the artificial signal collision \( P \land \neg P \) restores non-zero Hamming separation \( d _ \text{min} > 0 \), re-establishing strict logical consistency and empirical integrity to physical science. \( \square \)
 ====
 
 === Modern Case Study: The Creed of Quantum Superposition vs. Mid-Circuit Register Sampling in Recursive Digital Grover Factorization
@@ -2123,7 +2125,7 @@ This consensus creed suffers from fatal logical and epistemological defects:
 ====
 Let \( \mathcal { C } = \{ A _ 1 , A _ 2 , \dots , A _ M \} \) be a finite set of institutional actors, and let \( P \) be a propositional multivector statement evaluated over discrete resolution grid \( \mathcal { G } _ N \).
 
-1. **Invariance to Consensus Vector**: The truth value of a physical or mathematical proposition \( P \in Cl ( 4 , 1 , 1 ) \) is determined exclusively by its operational consistency with physical step counts on grid \( \mathcal { G } _ N \) and its deductive validity within the Iris number system, entirely independent of the voting vector \( V ( \mathcal { C } ) = \sum _ m w _ m \text{Vote} ( A _ m ) \).
+1. **Invariance to Consensus Vector**: The truth value of a physical or mathematical proposition \( P \in Cl ( 4 , 1 , 1 ) \) is determined exclusively by its empirical consistency with physical step counts on grid \( \mathcal { G } _ N \) and its deductive validity within the Iris number system, entirely independent of the voting vector \( V ( \mathcal { C } ) = \sum _ m w _ m \text{Vote} ( A _ m ) \).
 2. **Galilean-Deductive Refutation**: Any social creed asserting that \( P \equiv \text{True} \iff V ( \mathcal { C } ) > \theta \) is an intensional fallacy. If consensus contradicts a rigorous deductive proof or extensional observation, the consensus vector evaluates to a null cognitive aperture \( \langle V ( \mathcal { C } ) \rangle = 0 \).
 
 *Proof:*
@@ -2141,7 +2143,7 @@ An examination of the historical track record of the Nobel Prize in Physics reve
 
 ==== Phase I: The Early Awards (1901–1933) — Extensional Engineering vs. The Inception of Quantum Creeds
 
-When re-evaluated through the unified field theory—governed by the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \), discrete multiscale resolution grids \( \mathcal { G } _ N \), direct contact topology, and Jaynesian maximum entropy inference—the early awards (1901–1933) divide sharply between genuine operational apparatus discoveries and the institutional canonization of fatal category errors:
+When re-evaluated through the unified field theory—governed by the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \), discrete multiscale resolution grids \( \mathcal { G } _ N \), direct contact topology, and Jaynesian maximum entropy inference—the early awards (1901–1933) divide sharply between genuine empirical apparatus discoveries and the institutional canonization of fatal category errors:
 
 1. **Extensional Apparatus Discoveries and Physical Field Dynamics**:
 +
@@ -2197,11 +2199,11 @@ This social role operates through four primary structural mechanisms:
 
 1. **Socio-Ecclesiastical Canonization**: By bestowing an ultimate secular sainthood, the Nobel committee establishes an infallible institutional priesthood. Seeking or receiving the award creates a dominant incentive vector \( V _ \text{Nobel} \) that governs university appointments, grant allocations, textbook curricula, and journal peer review. Research that aligns with canonized creeds is rewarded with prestige and funding, while research that challenges canonized postulates is denied institutional resources.
 
-2. **Sanctification of Unobservable Entity Contrivances**: The prize has repeatedly been weaponized to sanctify post hoc, ad hoc entity patches designed to rescue flawed continuum equations. Rather than requiring extensional constructibility or operational grid detection, the award converts intensional dictionary definitions—such as unobservable scalar fields, ghost particles, color-confined quarks, and singular creation events—into unquestionable “facts” through institutional acclamation.
+2. **Sanctification of Unobservable Entity Contrivances**: The prize has repeatedly been weaponized to sanctify post hoc, ad hoc entity patches designed to rescue flawed continuum equations. Rather than requiring extensional constructibility or empirical grid detection, the award converts intensional dictionary definitions—such as unobservable scalar fields, ghost particles, color-confined quarks, and singular creation events—into unquestionable “facts” through institutional acclamation.
 
 3. **Institutional Validation of Data Erasure and Fallacious Reasoning**: A prime modern demonstration of this social role occurred in the 2022 Nobel Prize in Physics (awarded for “entangled photon” experiments). As proven in Volume IV Chapter 3, these experimental protocols rely on sub-ensemble post-selection data erasure (discarding over 90% of uncoincident detector events) and commit the causation-correlation fallacy in conditional probability substitution. Bestowing the Nobel Prize upon these flawed protocols served a purely socio-ecclesiastical function: using supreme institutional authority to validate data erasure, protect non-local action-at-a-distance from extensional empirical auditing, and marginalize rigorous deductive critique.
 
-4. **Suppression of the Time-Binding Immune System**: By freezing the collective postulate set \( \Pi _ t \) around canonized creeds, the Nobel prize mechanism suppresses the natural time-binding immune system of human civilization. It penalizes researchers who demand operational extensionalism while rewarding those who multiply unobservable intensional entities, driving academic physics into self-referential stagnation.
+4. **Suppression of the Time-Binding Immune System**: By freezing the collective postulate set \( \Pi _ t \) around canonized creeds, the Nobel prize mechanism suppresses the natural time-binding immune system of human civilization. It penalizes researchers who demand empirical extensionalism and an empirical orientation while rewarding those who multiply unobservable intensional entities, driving academic physics into self-referential stagnation.
 
 [#theorem-nobel-prize-social-role]
 [THEOREM]
@@ -2209,14 +2211,14 @@ This social role operates through four primary structural mechanisms:
 ====
 Let \( \mathcal { A } \) be a centralized award committee, and let \( V _ \text{Nobel} ( P ) \) be the socio-financial reward vector assigned to a physical proposition or model \( P \) on discrete resolution grid \( \mathcal { G } _ N \).
 
-1. **Epistemological Independence**: The operational truth value or mathematical consistency of proposition \( P \in Cl ( 4 , 1 , 1 ) \) is strictly invariant under the award vector \( V _ \text{Nobel} ( P ) \). An institutional award confers zero deductive validity upon a mathematical fallacy or non-operational construct:
+1. **Epistemological Independence**: The empirical truth value or mathematical consistency of proposition \( P \in Cl ( 4 , 1 , 1 ) \) is strictly invariant under the award vector \( V _ \text{Nobel} ( P ) \). An institutional award confers zero deductive validity upon a mathematical fallacy or unphysical construct:
 \[ \frac { \partial P } { \partial V _ \text{Nobel} } = 0 \]
 
-2. **Socio-Ecclesiastical Monopoly & Data Erasure Validation**: When committee \( \mathcal { A } \) bestows award \( V _ \text{Nobel} ( P ) \) upon a model \( P \) that depends on sub-ensemble post-selection data erasure or intensional dictionary substitution, the social function of the award is not empirical discovery, but the institutional enforcement of a creedal monopoly that suppresses operational time-binding.
+2. **Socio-Ecclesiastical Monopoly & Data Erasure Validation**: When committee \( \mathcal { A } \) bestows award \( V _ \text{Nobel} ( P ) \) upon a model \( P \) that depends on sub-ensemble post-selection data erasure or intensional dictionary substitution, the social function of the award is not empirical discovery, but the institutional enforcement of a creedal monopoly that suppresses empirical time-binding.
 
 *Proof:*
 
-. **Invariance to Institutional Bestowal**: Let \( P \) be a physical assertion. By the Master Field Equation \( D F = J \) and Keyser's Theorem of Logical Destiny, the truth of \( P \) is determined strictly by its operational step counts on grid \( \mathcal { G } _ N \) and its deductive agreement with explicit postulates. Because \( \frac { \partial P } { \partial V _ \text{Nobel} } = 0 \), no award, medal, or committee resolution can convert a conditional probability substitution fallacy into a valid physical law.
+. **Invariance to Institutional Bestowal**: Let \( P \) be a physical assertion. By the Master Field Equation \( D F = J \) and Keyser's Theorem of Logical Destiny, the truth of \( P \) is determined strictly by its empirical step counts on grid \( \mathcal { G } _ N \) and its deductive agreement with explicit postulates. Because \( \frac { \partial P } { \partial V _ \text{Nobel} } = 0 \), no award, medal, or committee resolution can convert a conditional probability substitution fallacy into a valid physical law.
 
 . **Validation of Sub-Ensemble Data Erasure**: In the 2022 Nobel Prize award for “quantum entanglement,” the underlying experimental protocols discarded over 90% of raw detection events via coincidence-window post-selection, creating an artificial sub-ensemble correlation (Volume IV Chapter 3). Bestowing the award \( V _ \text{Nobel} \) upon this protocol validated data erasure as an acceptable methodology, using social prestige to override extensional auditing.
 
@@ -2227,13 +2229,13 @@ Let \( \mathcal { A } \) be a centralized award committee, and let \( V _ \text{
 
 To understand the decay of modern physical theory into creedal dogma, it is highly instructive to contrast the epistemological character and institutional incentives of ancient astronomical models with contemporary particle physics and cosmology.
 
-The fundamental divergence lies in the operational criteria governing the two eras. Ancient Ptolemaic astronomers operated under an *engineering imperative of precision*. Their primary objective was to calculate navigation tables, predict eclipses, and determine seasonal calendars with exact, repeatable accuracy. Because their models had to function in real-world navigational and observational practice, Ptolemaic astronomers employed a mathematically rigorous, highly structured application of discrete geometry. By constructing epicycles, deferents, and equants, Ptolemy developed a finite trigonometric series expansion of observed celestial trajectories projected onto an observational sphere. In modern mathematical terms, the Ptolemaic framework was an early, explicit application of discrete Fourier series analysis:
+The fundamental divergence lies in the empirical criteria and practical demands governing the two eras. Ancient Ptolemaic astronomers operated under an *engineering imperative of precision*. Their primary objective was to calculate navigation tables, predict eclipses, and determine seasonal calendars with exact, repeatable accuracy. Because their models had to function in real-world navigational and observational practice, Ptolemaic astronomers employed a mathematically rigorous, highly structured application of discrete geometry. By constructing epicycles, deferents, and equants, Ptolemy developed a finite trigonometric series expansion of observed celestial trajectories projected onto an observational sphere. In modern mathematical terms, the Ptolemaic framework was an early, explicit application of discrete Fourier series analysis:
 
 \[ \theta ( t ) = \sum _ { k = 1 } ^ K A _ k \cos ( \omega _ k t + \phi _ k ) \]
 
-The Ptolemaic model provided genuine operational and engineering utility: given a finite set of radii \( A _ k \) and angular frequencies \( \omega _ k \), astronomers could deliver predictive accuracy tailored to their practical needs. Ptolemy's system made no pretense of introducing unobservable, mystical entities; it offered a transparent, deterministic mathematical curve-fitting tool anchored in direct geometric observation.
+The Ptolemaic model provided genuine practical and engineering utility: given a finite set of radii \( A _ k \) and angular frequencies \( \omega _ k \), astronomers could deliver predictive accuracy tailored to their practical needs. Ptolemy's system made no pretense of introducing unobservable, mystical entities; it offered a transparent, deterministic mathematical curve-fitting tool anchored in direct geometric observation.
 
-By stark contrast, modern "basic science" operates under an entirely different set of institutional incentives. Academic practitioners are under no obligation to meet engineering criteria of constructibility, physical accuracy, or operational utility. Instead, the primary institutional driver is academic careerism: publishing papers, accumulating citation portfolios, securing grant funding, and inflating institutional prestige metrics. Under this incentive structure, inventing ad hoc, unobservable physical constructs carries no penalty; on the contrary, it generates self-sustaining industries of speculative literature and institutional funding.
+By stark contrast, modern "basic science" operates under an entirely different set of institutional incentives. Academic practitioners are under no obligation to meet engineering criteria of constructibility, physical accuracy, or practical empirical utility. Instead, the primary institutional driver is academic careerism: publishing papers, accumulating citation portfolios, securing grant funding, and inflating institutional prestige metrics. Under this incentive structure, inventing ad hoc, unobservable physical constructs carries no penalty; on the contrary, it generates self-sustaining industries of speculative literature and institutional funding.
 
 Whenever continuum equations conflict with physical observations, modern institutional science routinely reacts not by revising its flawed mathematical postulates, but by inventing ad hoc unobservable entities and declaring them to be "facts" through institutional consensus:
 
@@ -2344,22 +2346,22 @@ Let \( P _ 0 \) be the total transmitted electromagnetic power emitted at source
 Because \( f ( r ) = \frac { e ^ { - \alpha r } } { r ^ 2 } \) is strictly monotonically decreasing for all \( r > 0 \), a unique finite positive root \( R _ \text{horizon} \) exists. For all \( r > R _ \text{horizon} \), \( \text{SNR} ( r ) < 1 \). By Theorem 8.3 (Shannon Channel Capacity), the maximum achievable information rate satisfies \( C = W \log _ 2 ( 1 + \text{SNR} ) \to 0 \) as the signal dissolves into background noise. This proves that physical electromagnetic propagation is strictly bounded by a finite Thermodynamic-Information Horizon. \( \square \)
 ====
 
-=== The Operational Interpretation Horizon: Structure Detection versus Meaning
+=== The Empirical Interpretation Horizon: Structure Detection versus Meaning
 
-Even if an interstellar signal is transmitted with sufficient power to breach the Thermodynamic-Information Horizon, CETI encounters a fundamental barrier of meaning and context: the **Operational Interpretation Horizon**.
+Even if an interstellar signal is transmitted with sufficient power to breach the Thermodynamic-Information Horizon, CETI encounters a fundamental barrier of meaning and context: the **Empirical Interpretation Horizon**.
 
 As established in Chapter 10 (Signal Processing Theory of Human Language) and Chapter 11 (Creeds and the Coöptation of Terms), human language and mathematical symbols do not possess intrinsic, self-contained meaning. Meanings are internal organismal abstractions residing in an organism's cognitive lattice, grounded strictly through **definitions by extension**—that is, by direct reference to shared physical measurement procedures, objective exemplars, and a common physical directrix horizon.
 
 Proponents of interstellar communication often argue that transmitting mathematical sequences—such as a sequence of prime numbers—provides a universal Rosetta Stone. However, there is a crucial distinction between **structure detection** and **meaning interpretation**:
 
 * **Structure Detection**: A receiving civilization can analyze the statistical pattern, spectral purity, and algorithmic complexity of an incoming signal. By observing pulses representing prime numbers (2, 3, 5, 7, 11, ...), the receiver can recognize that the signal exhibits non-random algorithmic order and low statistical entropy relative to background cosmic noise. This allows the receiver to establish that the signal was artificially generated rather than produced by a natural astronomical process such as a pulsar.
-* **Meaning Interpretation**: Recognizing that a signal is artificial is completely different from understanding what the sender intends to communicate. Abstract mathematical symbols without shared physical calibration equipment and common operational measurement history are pure intensional definitions—circular symbol-to-symbol loops.
+* **Meaning Interpretation**: Recognizing that a signal is artificial is completely different from understanding what the sender intends to communicate. Abstract mathematical symbols without shared physical calibration equipment and common empirical measurement history are pure intensional definitions—circular symbol-to-symbol loops.
 
-Civilizations originating on separate planetary systems across light-years possess completely disjoint physical measurement histories, distinct anatomical sensorium apertures, and unaligned coordinate frames. Without a shared physical directrix horizon, transmitted mathematical sequences cannot be mapped to operational physical steps, creating an impassable Operational Interpretation Horizon.
+Civilizations originating on separate planetary systems across light-years possess completely disjoint physical measurement histories, distinct anatomical sensorium apertures, and unaligned coordinate frames. Without a shared physical directrix horizon, transmitted mathematical sequences cannot be mapped to empirical physical steps, creating an impassable Empirical Interpretation Horizon.
 
 [#theorem-conformal-semiotic-horizon]
 [THEOREM]
-.Theorem: Operational Interpretation Horizon and Operational Context Un-translatability Theorem
+.Theorem: Empirical Interpretation Horizon and Contextual Un-translatability Theorem
 ====
 Let \( \mathcal { M } _ A \subset Cl ( 4 , 1 , 1 ) \) be the cognitive multivector meaning space of civilization \( A \), and let \( \mathcal { M } _ B \subset Cl ( 4 , 1 , 1 ) \) be the cognitive meaning space of civilization \( B \). Let civilization \( A \) emit a symbolic signal sequence \( S \in A ^ L \).
 
@@ -2374,7 +2376,7 @@ Let \( \mathcal { M } _ A \subset Cl ( 4 , 1 , 1 ) \) be the cognitive multivect
 
 . **Kernel Degeneracy**: The linear system \( \mathbf { H } _ B ( S ) = M _ B \) possesses an infinite family of non-isomorphic solutions \( M _ B (\theta) = M _ 0 + \sum _ k c _ k K _ k \), where \( K _ k \in \text{ker} ( \mathbf { H } _ B ) \). Every candidate interpretation \( M _ B (\theta) \) is equally consistent with the ungrounded symbol string \( S \). Consequently, the expectation value of semantic mutual information vanishes:
 \[ I ( M _ A ; M _ B \mid S ) = H ( M _ B \mid S ) - H ( M _ B \mid M _ A , S ) = 0 \]
-This proves that abstract mathematical signals sent across interstellar space convey zero invariant semantic information, establishing the Operational Interpretation Horizon. \( \square \)
+This proves that abstract mathematical signals sent across interstellar space convey zero invariant semantic information, establishing the Empirical Interpretation Horizon. \( \square \)
 ====
 
 === Evolutionary Asymmetry, Time-Binding, and Asymmetric Abductive Inference
@@ -2391,7 +2393,7 @@ When an advanced receiving civilization detects a faint, narrow-band signal cont
 2. **Advanced Peer Construct**: The receiver evaluates whether the signal represents an intentional communication or energy transmission from a peer or higher technological civilization. The receiver recognizes that an advanced society would utilize vastly higher energy density, multi-channel multivector phase modulation, or direct contact field dynamics rather than primitive, low-energy electromagnetic radio waves that attenuate exponentially into thermal noise.
 3. **Primitive Artificial Emitter**: The receiver concludes, by process of elimination and abductive inference, that the signal originates from a newly emerging, primitive technological civilization broadcasting basic mathematical patterns in a naive attempt to announce its presence to the galaxy.
 
-Through this abductive inference, the advanced receiving civilization correctly deduces the existence, crude technological stage, and primitive nature of the emitting species. However, this one-way realization by the receiver does not establish two-way communication or mutual understanding. The primitive emitting civilization remains incapable of comprehending the advanced society's operational context, and the multi-millennial spatial-temporal delay renders interactive dialogue impossible.
+Through this abductive inference, the advanced receiving civilization correctly deduces the existence, crude technological stage, and primitive nature of the emitting species. However, this one-way realization by the receiver does not establish two-way communication or mutual understanding. The primitive emitting civilization remains incapable of comprehending the advanced society's empirical context, and the multi-millennial spatial-temporal delay renders interactive dialogue impossible.
 
 [#theorem-asymmetric-abductive-inference]
 [THEOREM]
@@ -2402,7 +2404,7 @@ Let Civilization \( A \) be a primitive emitting civilization at time-binding ev
 1. **Abductive Model Selection**: Civilization \( B \)'s inference engine evaluates the likelihood of candidate source hypotheses \( \mathcal { H } = \{ H _ \text{nat} , H _ \text{peer} , H _ \text{prim} \} \) given signal parameters \( S \). Because \( S \) exhibits low algorithmic entropy relative to thermal noise but extremely low energy density and primitive single-channel modulation, the posterior probability satisfies:
 \[ P ( H _ \text{prim} \mid S ) \approx 1 , \quad P ( H _ \text{nat} \mid S ) \approx 0 , \quad P ( H _ \text{peer} \mid S ) \approx 0 \]
 
-2. **Asymmetric Realization**: Civilization \( B \) correctly infers the existence of a primitive artificial emitter at Civilization \( A \)'s coordinates, but this one-way inference yields zero reciprocal operational understanding (\( I ( M _ B ; M _ A \mid S ) = 0 \)) and zero interactive dialogic throughput.
+2. **Asymmetric Realization**: Civilization \( B \) correctly infers the existence of a primitive artificial emitter at Civilization \( A \)'s coordinates, but this one-way inference yields zero reciprocal empirical understanding (\( I ( M _ B ; M _ A \mid S ) = 0 \)) and zero interactive dialogic throughput.
 
 *Proof:*
 
@@ -2410,7 +2412,7 @@ Let Civilization \( A \) be a primitive emitting civilization at time-binding ev
 
 . **Abductive Hypothesis Evaluation**: Civilization \( B \) computes the algorithmic Kolmogorov complexity \( K ( S ) \) and spectral energy density \( E ( S ) \). Natural sources \( H _ \text{nat} \) yield high algorithmic entropy (\( K ( S ) \sim | S | \)), contradicting the structured prime-number sequence. Peer constructs \( H _ \text{peer} \) utilize high-density multivector field phase-locking, contradicting the faint radio wave carrier. The primitive emitter hypothesis \( H _ \text{prim} \) uniquely matches a low-energy, basic mathematical pattern broadcast by a species at early technological inception.
 
-. **Unilateral Observation**: While Civilization \( B \) correctly classifies Civilization \( A \) as a primitive artificial source, Theorem 12.2 (Operational Interpretation Horizon) dictates that Civilization \( B \) cannot derive Civilization \( A \)'s internal subjective meanings, nor can Civilization \( A \) process or comprehend any response emitted by Civilization \( B \). The relationship reduces to passive, one-way astronomical observation, proving that time-binding asymmetry prevents two-way CETI dialogue. \( \square \)
+. **Unilateral Observation**: While Civilization \( B \) correctly classifies Civilization \( A \) as a primitive artificial source, Theorem 12.2 (Empirical Interpretation Horizon) dictates that Civilization \( B \) cannot derive Civilization \( A \)'s internal subjective meanings, nor can Civilization \( A \) process or comprehend any response emitted by Civilization \( B \). The relationship reduces to passive, one-way astronomical observation, proving that time-binding asymmetry prevents two-way CETI dialogue. \( \square \)
 ====
 
 === Interstellar Temporal Disconnect and Round-Trip Boundedness
@@ -2423,35 +2425,35 @@ For interstellar distances separating star systems (\( d \ge 10 \text{ light-yea
 \[ \Delta t _ \text{roundtrip} \ge \frac { 2 d } { c } \ge 20 \text{ years} \]
 For typical galactic distances (\( d \sim 10 ^ 3 - 10 ^ 5 \text{ light-years} \)), the round-trip signal delay spans thousands to hundreds of thousands of years.
 
-The central argument against interstellar dialogue is not merely that physical hardware decays or institutional funding wanes over millennia; it is that the emitting species itself becomes fundamentally incapable of comprehending or contextualizing the conversation across such immense temporal gulfs. Over spans of thousands of years, the language, cultural framework, scientific paradigms, political structures, and subjective operational motivations of the transmitting civilization undergo complete transformation or extinction. Consequently, when a response arrives, the receiving population possesses no living, operational connection to the original inquiry.
+The central argument against interstellar dialogue is not merely that physical hardware decays or institutional funding wanes over millennia; it is that the emitting species itself becomes fundamentally incapable of comprehending or contextualizing the conversation across such immense temporal gulfs. Over spans of thousands of years, the language, cultural framework, scientific paradigms, political structures, and practical motivations of the transmitting civilization undergo complete transformation or extinction. Consequently, when a response arrives, the receiving population possesses no living, empirical connection to the original inquiry.
 
 To grasp the magnitude of this temporal disconnect, consider a historical analogy. Suppose an interstellar query-and-response round trip required a span of 2,000 years. If an incoming response signal were detected and decoded by radio astronomers today, that message would be a reply to an outgoing query emitted in the year 26 CE—during the reign of the Roman Emperor Tiberius.
 
-Consider the operational context of such an ancient query:
-* Which Roman magistrate, emperor, or provincial governor ordered the transmission, and what were its operational contents?
+Consider the practical and historical context of such an ancient query:
+* Which Roman magistrate, emperor, or provincial governor ordered the transmission, and what were its empirical contents?
 * Did the outgoing message inquire about the proper ritual sacrifices required to placate Jupiter, Juno, or Minerva? Did it concern Roman military legion movements, trireme galley navigation, or agricultural auguries?
 * How could modern engineers and scientists in the present era connect an incoming sequence of pulses back to the theological, administrative, or practical preoccupations of a society that existed two millennia ago?
 
-In the intervening twenty centuries, the Latin language evolved and transformed, the Roman Empire collapsed, entire scientific and technological revolutions reshaped human civilization, and the underlying cultural and operational worldview was replaced multiple times. Modern human society possesses zero cognitive or institutional continuity with an operational inquiry formulated in 26 CE. The incoming message, even if successfully demodulated, arrives as a detached historical artifact rather than an active component of a two-way dialogue.
+In the intervening twenty centuries, the Latin language evolved and transformed, the Roman Empire collapsed, entire scientific and technological revolutions reshaped human civilization, and the underlying cultural and empirical worldview was replaced multiple times. Modern human society possesses zero cognitive or institutional continuity with an inquiry formulated in 26 CE. The incoming message, even if successfully demodulated, arrives as a detached historical artifact rather than an active component of a two-way dialogue.
 
 Furthermore, bridging the 2,000-year gap backward from 2026 CE to 26 CE is far simpler than bridging the 2,000-year gap forward from 2026 CE to 4026 CE. The historic rate of developmental divergence prior to the modern industrial era was constrained by linear or slow polynomial knowledge transmission. In contrast, modern technological evolution and linguistic abstraction operate under the law of geometric time-binding, where capacity and structural complexity expand exponentially with time:
 \[ \mathcal { C } ( t ) = \mathcal { C } _ 0 e ^ { k t } \]
 Crucially, every derivative of an exponential function with respect to time is itself an exponential function:
 \[ \frac { d ^ n \mathcal { C } ( t ) } { d t ^ n } = k ^ n \mathcal { C } _ 0 e ^ { k t } \]
-Because the velocity, acceleration, and all higher-order derivatives of structural and formulational divergence increase exponentially, the developmental gap between 2026 CE and 4026 CE is vastly greater than the gap between 26 CE and 2026 CE. A query transmitted in 2026 CE whose response arrives in 4026 CE will return to a society whose cognitive tools, mathematical paradigms, and physical apertures have undergone thousands of compounding exponential doubling periods. To the inhabitants of 4026 CE, an inquiry formulated with 2026 CE technology will appear as primitive, irrelevant, and operationally uninterpretable as a paleolithic stone arrangement.
+Because the velocity, acceleration, and all higher-order derivatives of structural and formulational divergence increase exponentially, the developmental gap between 2026 CE and 4026 CE is vastly greater than the gap between 26 CE and 2026 CE. A query transmitted in 2026 CE whose response arrives in 4026 CE will return to a society whose cognitive tools, mathematical paradigms, and physical apertures have undergone thousands of compounding exponential doubling periods. To the inhabitants of 4026 CE, an inquiry formulated with 2026 CE technology will appear as primitive, irrelevant, and empirically uninterpretable as a paleolithic stone arrangement.
 
-Because closed-loop communication requires sustained temporal continuity of the cognitive, operational, and institutional framework between the sender of a query and the recipient of its reply, multi-millennial light-travel delays render true conversational dialogue physically and semiotically impossible.
+Because closed-loop communication requires sustained temporal continuity of the cognitive, empirical, and institutional framework between the sender of a query and the recipient of its reply, multi-millennial light-travel delays render true conversational dialogue physically and semiotically impossible.
 
 [#theorem-interstellar-temporal-disconnect]
 [THEOREM]
 .Theorem: Interstellar Temporal Disconnect and Round-Trip Boundedness Theorem
 ====
-Let \( d \) be the spatial separation distance between transmitting civilization \( A \) and receiving civilization \( B \) on spatial grid \( \mathcal { G } _ N \). Let \( T _ \text{soc} \) be the characteristic operational lifespan of technological communication infrastructure and organizational continuity for a civilization.
+Let \( d \) be the spatial separation distance between transmitting civilization \( A \) and receiving civilization \( B \) on spatial grid \( \mathcal { G } _ N \). Let \( T _ \text{soc} \) be the characteristic functional lifespan of technological communication infrastructure and organizational continuity for a civilization.
 
 1. **Round-Trip Delay Bound**: The minimum temporal duration required for a closed-loop interactive signal exchange is:
 \[ \Delta t _ \text{roundtrip} = \frac { 2 d } { c } \]
 
-2. **Interactive Disconnect**: For all interstellar distances \( d \ge d _ \text{horizon} = \frac { 1 } { 2 } c T _ \text{soc} \), the round-trip signal delay strictly exceeds societal operational lifespan (\( \Delta t _ \text{roundtrip} > T _ \text{soc} \)). Closed-loop feedback, error-correcting re-transmission, and conversational dialogue are physically impossible.
+2. **Interactive Disconnect**: For all interstellar distances \( d \ge d _ \text{horizon} = \frac { 1 } { 2 } c T _ \text{soc} \), the round-trip signal delay strictly exceeds societal functional lifespan (\( \Delta t _ \text{roundtrip} > T _ \text{soc} \)). Closed-loop feedback, error-correcting re-transmission, and conversational dialogue are physically impossible.
 
 *Proof:*
 
@@ -2464,7 +2466,7 @@ Let \( d \) be the spatial separation distance between transmitting civilization
 
 === The Total Futility of CETI: Physical, Interpretive, and Temporal Isolation
 
-Combining the Thermodynamic-Information Horizon, the Operational Interpretation Horizon, Time-Binding Evolutionary Asymmetry, and the Interstellar Temporal Disconnect yields an inescapable mathematical conclusion: CETI is a complete physical, interpretive, and operational futility.
+Combining the Thermodynamic-Information Horizon, the Empirical Interpretation Horizon, Time-Binding Evolutionary Asymmetry, and the Interstellar Temporal Disconnect yields an inescapable mathematical conclusion: CETI is a complete physical, interpretive, and practical futility.
 
 [#theorem-futility-of-ceti]
 [THEOREM]
@@ -2479,9 +2481,9 @@ Let \( \mathcal { I } _ \text{CETI} \) represent the net information throughput 
 
 *Proof:*
 
-. **Conjunctive Information Bound**: The achievable information transfer rate \( \mathcal { I } _ \text{CETI} \) requires three simultaneous non-zero physical conditions: (i) non-zero signal-to-noise ratio at the receiver (\( \text{SNR} ( d ) > 0 \)); (ii) non-zero mutual semantic information between sender and receiver meanings (\( I ( M _ A ; M _ B \mid S ) > 0 \)); and (iii) temporal round-trip closure within societal operational lifespan (\( \Delta t _ \text{roundtrip} \le T _ \text{soc} \)).
+. **Conjunctive Information Bound**: The achievable information transfer rate \( \mathcal { I } _ \text{CETI} \) requires three simultaneous non-zero physical conditions: (i) non-zero signal-to-noise ratio at the receiver (\( \text{SNR} ( d ) > 0 \)); (ii) non-zero mutual semantic information between sender and receiver meanings (\( I ( M _ A ; M _ B \mid S ) > 0 \)); and (iii) temporal round-trip closure within societal functional lifespan (\( \Delta t _ \text{roundtrip} \le T _ \text{soc} \)).
 
-. **Horizon Nullification**: By Theorem 12.1 (Signal Attenuation Horizon), for interstellar distances \( d > R _ \text{horizon} \), \( \text{SNR} ( d ) \to 0 \). By Theorem 12.2 (Operational Interpretation Horizon), in the absence of a shared physical directrix, \( I ( M _ A ; M _ B \mid S ) = 0 \). By Theorem 12.3 (Asymmetric Abductive Inference), developmental time-binding divergence prevents mutual operational dialogue. By Theorem 12.4 (Interstellar Temporal Disconnect), for \( d > \frac { 1 } { 2 } c T _ \text{soc} \), indicator function \( \mathbf { 1 } _ { \{ \Delta t _ \text{roundtrip} \le T _ \text{soc} \} } = 0 \).
+. **Horizon Nullification**: By Theorem 12.1 (Signal Attenuation Horizon), for interstellar distances \( d > R _ \text{horizon} \), \( \text{SNR} ( d ) \to 0 \). By Theorem 12.2 (Empirical Interpretation Horizon), in the absence of a shared physical directrix, \( I ( M _ A ; M _ B \mid S ) = 0 \). By Theorem 12.3 (Asymmetric Abductive Inference), developmental time-binding divergence prevents mutual empirical dialogue. By Theorem 12.4 (Interstellar Temporal Disconnect), for \( d > \frac { 1 } { 2 } c T _ \text{soc} \), indicator function \( \mathbf { 1 } _ { \{ \Delta t _ \text{roundtrip} \le T _ \text{soc} \} } = 0 \).
 
 . **Total Futility**: Because each of the independent horizon factors evaluates to zero over interstellar scales, their product vanishes identically:
 \[ \langle \mathcal { I } _ \text{CETI} \rangle = 0 \]
@@ -3059,7 +3061,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-extensional-definition-creed-dissolution[**Theorem: Extensional Definition Invariance and Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Epistemological Safeguard of Extensional Definitions and Explicit Postulate Apertures*
 * xref:theorem-extensional-definitions-time-binding[**Theorem: The Role of Extensional Definitions in Preserving Time-Binding Integrity Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Vital Importance of Extensional Definitions for Time-Binding and Systemic Evolution*
 * xref:theorem-signal-attenuation-horizon[**Theorem: Discrete Electromagnetic Energy Attenuation and Signal-to-Noise Horizon Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Physics of Physical Horizons: Attenuation and Thermodynamic-Information Bounds*
-* xref:theorem-conformal-semiotic-horizon[**Theorem: Operational Interpretation Horizon and Operational Context Un-translatability Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Operational Interpretation Horizon: Structure Detection versus Meaning*
+* xref:theorem-conformal-semiotic-horizon[**Theorem: Empirical Interpretation Horizon and Contextual Un-translatability Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Empirical Interpretation Horizon: Structure Detection versus Meaning*
 * xref:theorem-asymmetric-abductive-inference[**Theorem: Asymmetric Abductive Inference and Time-Binding Disconnect Theorem**]  -- Chapter: *The Futility of CETI* | Section: *Evolutionary Asymmetry, Time-Binding, and Asymmetric Abductive Inference*
 * xref:theorem-interstellar-temporal-disconnect[**Theorem: Interstellar Temporal Disconnect and Round-Trip Boundedness Theorem**]  -- Chapter: *The Futility of CETI* | Section: *Interstellar Temporal Disconnect and Round-Trip Boundedness*
 * xref:theorem-futility-of-ceti[**Theorem: Total Futility of CETI and Physical Interstellar Isolation Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Total Futility of CETI: Physical, Interpretive, and Temporal Isolation*
