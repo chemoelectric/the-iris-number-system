@@ -89,11 +89,10 @@ Expressed in powers of the Golden Ratio:
 
 Because \( \Phi^2 = \Phi + 1 \), the algebraic identity \( \Phi^{-1} + \Phi^{-2} = 1 \) holds identically. The denominator can thus be written in the elegant form:
 \[ 1 + \Phi^{-1} \cos \theta + \Phi^{-2} \cos \psi \]
-footnote:[The Golden Ratio \( \Phi = \frac{1 + \sqrt{5}}{2} \) and its algebraic conjugate \( \bar{\Phi} = \frac{1 - \sqrt{5}}{2} = - \Phi^{-1} \) are the fundamental roots of the characteristic polynomial \( x^2 - x - 1 = 0 \). Under Binet's formula, any Fibonacci number \( F_n \) is computed in closed algebraic form by \( F_n = \frac{\Phi^n - \bar{\Phi}^n}{\sqrt{5}} \). For the fundamental step \( n = 1 \), adding the Golden Ratio and its conjugate's negation (the quantity \( \Phi^{-1} = \frac{\sqrt{5} - 1}{2} \) appearing directly as Hobby's primary angular weighting coefficient) yields \( \frac{\Phi - \bar{\Phi}}{\sqrt{5}} = \frac{\sqrt{5}}{\sqrt{5}} = 1 = F_1 \).]
 
 When the departure and arrival angles are equal (\( \theta = \psi \)), the sum of the cosine terms collapses to:
 \[ (\Phi^{-1} + \Phi^{-2}) \cos \theta = 1 \cdot \cos \theta \]
-so that the entire denominator reduces to \( 1 + \cos \theta \). This harmonic partition of unity ensures that symmetric circular quadrants and elliptical segments preserve exact curvature balance without manual optical compensation.
+so that the entire denominator reduces to \( 1 + \cos \theta \). This harmonic partition of unity ensures that symmetric circular quadrants and elliptical segments preserve exact curvature balance without manual optical compensation.footnote:[The algebraic conjugate of the Golden Ratio, \( \bar{\Phi} = \left({1 - \sqrt{5}}\right)/\mkern2mu{2} = - \Phi^{-1} \), is the other solution of \( x = 1 + {1}/{x} \). The Fibonacci number \( F_n \) can be obtained from the Golden Ratio and its conjugate by Binet’s formula: \( F_n = \left({\Phi^n - \bar{\Phi}^n}\right)/{\sqrt{5}} \).]
 
 === Continued Fractions, Noble Numbers, and Scale-Free Energy Distribution
 
