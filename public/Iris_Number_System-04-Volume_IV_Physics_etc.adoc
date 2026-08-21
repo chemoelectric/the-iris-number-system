@@ -2985,10 +2985,6 @@ This massive energy surplus drives temperature rise \( \Delta T = \frac { E _ \t
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-== Index of Formal Statements
-
-This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
-
 === Theorems
 
 * xref:theorem-master-field-unification-sciences[**Theorem: First-Principles Multivector Unification of Physical Fields**]  -- Chapter: *The Master Field Equation that Unites the Sciences* | Section: *First-Principles Unification of Physical Fields via Multivector Algebra*
