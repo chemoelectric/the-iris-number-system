@@ -41,7 +41,7 @@ To understand how Hobby’s method works, we consider a single segment running b
 
 In the planar Clifford algebra \( Cl(2,0) \), each point is a 2D position multivector on the discrete resolution grid \( \mathcal{G}_N \):
 \[ z = x \, e_1 + y \, e_2 \]
-A cubic Bézier curve running from \( z_0 \) to \( z_1 \) is governed by two intermediate off-curve control points, \( u_0 \) (the first handle, pulling from \( z_0 \)) and \( v_1 \) (the second handle, pulling toward \( z_1 \)). 
+A cubic Bézier curve running from \( z_0 \) to \( z_1 \) is governed by two intermediate off-curve control points, \( u_0 \) (the first handle, pulling from \( z_0 \)) and \( v_1 \) (the second handle, pushing toward \( z_1 \)). 
 
 The curve is parameterized by a progress variable \( t \in [0, 1] \) on the discrete evaluation grid:
 \[ z(t) = (1 - t)^3 z_0 + 3 (1 - t)^2 t \, u_0 + 3 (1 - t) t^2 \, v_1 + t^3 z_1 \]
