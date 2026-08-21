@@ -420,11 +420,11 @@ where \( B_{k,n}(t) = \binom{n}{k} (1 - t)^{n-k} t^k \) denotes the classical Be
 While computationally straightforward, this split Cartesian representation obscures the intrinsic geometric reality of the curve:
 1. **Geometric Invariance Obscured**: Rotations, scalings, reflections, and perspective transformations require converting back and forth between coordinate matrices rather than operating directly on the curve object itself.
 2. **Rational Conics as Second-Class Citizens**: Exact circular arcs, ellipses, and hyperbolas require rational fractions \( x(t) = X(t)/W(t) \), introducing quotient singularities and complex derivative rules.
-3. **Loss of Dual Projective Symmetry**: The parameter \( t \in [0, 1] \) is treated as an asymmetric scalar running from \( 0 \) to \( 1 \), breaking the natural projective symmetry between the forward parameter \( t \) and the complementary reverse parameter \( s = 1 - t \).
+3. **Loss of Dual Projective Symmetry**: The parameter \( t \in [0, 1] \) is treated as an asymmetric scalar running from \( 0 \) to \( 1 \), breaking the natural projective symmetry between the forward parameter \( t \) and the complementary reverse parameter \( s = 1 - t \). As demonstrated in the foundational work of Javier Sánchez-Reyes on the symmetric polynomial basis (the s-power basis), formulating polynomial and rational curves in terms of balanced, symmetric parameters \( (s, t) \) provides optimal numerical conditioning, eliminates endpoint asymmetry, and yields elegant, self-dual matrix transformations for degree elevation and subdivision.
 
-In this chapter, we develop the theory of **Symmetric Power Polynomials** formulated natively within Geometric Algebra. We present two complementary formulations:
+In this chapter, we develop the theory of **Symmetric Power Polynomials** formulated natively within Geometric Algebra, extending the symmetric basis insights of Sánchez-Reyes to coordinate-free multivector spaces. We present two complementary formulations:
 * The affine planar algebra \( Cl(2,0) \), providing coordinate-free representation for standard polynomial contours.
-* The 3D homogeneous Clifford algebra \( Cl(3,0) \) with positive-definite metric \( (+1, +1, +1) \) (following the geometric projective model of Dorst, Fontijne, and Mann applied to the planar design manifold), which natively unifies affine points, vectors at infinity, weighted rational conics, and projective transformations into single multivectors.
+* The 3D homogeneous Clifford algebra \( Cl(3,0) \) with positive-definite metric \( (+1, +1, +1) \) (adapting the projective geometric model of Leo Dorst, Daniel Fontijne, and Stephen Mann to the planar design manifold), which natively unifies affine points, vectors at infinity, weighted rational conics, and projective transformations into single multivectors.
 
 === The Affine Planar Formulation in \( Cl(2,0) \)
 
@@ -433,6 +433,26 @@ In the planar Clifford algebra \( Cl(2,0) \) over the discrete metric grid \( \m
 
 Any point or displacement vector in the design plane is a 1-vector:
 \[ z = x \, e_1 + y \, e_2 \]
+
+==== The Sánchez-Reyes Symmetric Power Basis (s-Basis)
+
+In standard polynomial design, curves are traditionally expressed in the conventional monomial power basis \( \{ 1, t, t^2, \dots, t^n \} \) or the Bernstein basis \( \{ B_{k,n}(t) \} \). However, the monomial basis is notoriously ill-conditioned and introduces strong endpoint asymmetry, while the Bernstein basis requires separate rational fractions for conics.
+
+Javier Sánchez-Reyes introduced the **symmetric power basis** (the \( s \)-power basis or \( s \)-basis) to bridge the gap between monomial evaluation efficiency and Bernstein geometric intuition. By centering the parameterization around dual variables \( s = 1 - t \) and \( t \), the basis functions are defined symmetrically:
+\[ \phi_{k,n}(s, t) = s^{n-k} t^k \]
+where \( s + t = 1 \).
+
+In \( Cl(2,0) \), any polynomial curve is represented by the symmetric multivector expansion:
+\[ z(s, t) = \sum_{k=0}^n c_k \, s^{n-k} t^k \]
+where \( c_k \in Cl(2,0) \) are the symmetric power coefficients.
+
+The conversion between the symmetric power coefficients \( c_k \) and the standard Bézier control points \( p_k \) is governed by the binomial coefficients:
+\[ c_k = \binom{n}{k} \sum_{j=0}^k (-1)^{k-j} \binom{k}{j} p_j \]
+
+This symmetric formulation possesses three major advantages:
+1. **Optimal Condition Number**: The transformation matrix between the \( s \)-basis and the Bernstein basis is strictly diagonal-dominant and preserves numerical precision across extreme aspect ratios.
+2. **Self-Dual Degree Elevation**: Raising the polynomial degree by one corresponds to a simple symmetric recurrence \( z(s, t) = (s + t) \sum c_k s^{n-k} t^k \), maintaining identical algebraic symmetry from both endpoints simultaneously.
+3. **Direct Extremum Extraction**: The symmetric derivative \( \frac{\partial z}{\partial t} = \sum k \, c_k s^{n-k} t^{k-1} - \sum (n-k) c_k s^{n-k-1} t^k \) isolates inflection points and coordinate extrema with minimal algebraic degree.
 
 ==== Symmetric Bernstein-Bézier Basis and Dual Parameters
 
