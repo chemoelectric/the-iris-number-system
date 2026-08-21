@@ -175,7 +175,7 @@ The discrete grid space \( \mathcal { G } _ N \) endowed with the Iris multivect
 
 *Proof:*
 
-. **Discrete Metric Norm Definition**: For any pair of grid multivectors \( x , y \in \mathcal { G } _ N \), the metric distance is defined via the positive scalar projection \( d _ { \mathcal { I } } ( x , y ) = ( \downarrow ) \sqrt { \langle x - y , x - y \rangle _ { \mathcal { I } } } \cdot \mathbf { 1 } _ { Cl } \).
+. **Discrete Metric Norm Definition**: For any pair of grid multivectors \( x , y \in \mathcal { G } _ N \), the metric distance is defined via the positive scalar projection \[ d _ { \mathcal { I } } ( x , y ) = ( \downarrow ) \sqrt { \langle x - y , x - y \rangle _ { \mathcal { I } } } \cdot \mathbf { 1 } _ { Cl } \]
 
 . **Cauchy Sequence Stabilization**: Let \( \{ x _ k \} _ { k = 1 } ^ M \) be a Cauchy sequence on finite grid \( \mathcal { G } _ N \) with grid step resolution \( \delta = 1 / N \). By definition, for any rational threshold \( \epsilon > 0 \), there exists an integer \( K \) such that for all \( m , n \ge K \), \( d _ { \mathcal { I } } ( x _ m , x _ n ) < \epsilon \). Choosing \( \epsilon = \delta / 2 \), since all distances on \( \mathcal { G } _ N \) are integer multiples of \( \delta \), it follows that \( x _ m = x _ n \) for all \( m , n \ge K \).
 
@@ -2461,7 +2461,7 @@ where ties in minimax aperture value are resolved strictly by discrete lexicogra
 
 == Index of Formal Statements
 
-Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
+This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
 
 === Theorems
 
