@@ -123,7 +123,7 @@ When a curve transitions from a tight radius to a wide radius, software that use
 Because \( \Phi = 1 + \frac{1}{\Phi} \), the Golden Ratio satisfies the self-balancing relation:
 \[ \Phi^{-1} = 1 - \Phi^{-2} \]
 This means that when the curve computes how much influence the starting knot should have compared to the ending knot, the ratio between primary local feedback and distant secondary feedback is:
-\[ \frac{c_1}{c_2} = \frac{\Phi^{-1}}{\Phi^{-2}} = \Phi \]
+\[ \frac{c_1}{c_2} = \frac{\Phi ^ {-1}}{\Phi ^ {-2}} = \Phi \]
 
 In physical terms, the draftsperson’s spline distributes its bending energy across adjacent segments in a **scale-free, non-resonant hierarchy**. Because the continued fraction is made entirely of \( 1 \)s, the curve has no “preferred size” or artificial frequency. It dampens out optical distortions evenly across long sweeps and compact brackets alike, ensuring that letterforms look naturally proportioned at both headline and caption optical sizes.
 
@@ -195,7 +195,7 @@ Let an arbitrary configuration of \( n \) knots \( \{ z_k \} \) on the discrete 
 
 1. **Universal Solvability**: The solution \( \theta ^ { \ast } = K^+ b \) exists and is uniquely determined for *every* possible input, regardless of whether \( K \) is square, singular, rank-deficient, underdetermined, or overdetermined.
 2. **Least-Squares Error Minimization**: If the designer's constraints are contradictory or overdetermined, \( \theta ^ { \ast } \) minimizes the total residual discrepancy:
-\[ \| K \theta ^ { \ast } - b \|_2 = \min_{\theta} \| K \theta - b \|_2 \]
+\[ \| K \theta ^ { \ast } - b \|_2 = {\min} _ {\theta} \| K \theta - b \|_2 \]
 3. **Minimum-Strain Regularization**: If the constraints are underdetermined (such as on a straight line or unconstrained contour), \( \theta ^ { \ast } \) selects the unique solution with the smallest Euclidean norm \( \| \theta ^ { \ast } \|_2 \). In the Iris number system, this corresponds to the minimal-strain contour that minimizes unnecessary angular displacement across knots.
 
 *Proof:*
@@ -563,10 +563,10 @@ The affine coordinates are given by the projection ratio:
 For a symmetric quadrant centered at the origin with radius \( r \), let \( P_0 = r e_1 + e_3 \), \( P_2 = r e_2 + e_3 \), and \( P_1 = w_1 (r e_1 + r e_2) + w_1 e_3 \). 
 For a 90-degree quadrant, \( \alpha = \pi/4 \), so \( w_1 = \cos(\pi/4) = \frac{\sqrt{2}}{2} \).
 Evaluating the squared radius:
-\[ x(t)^2 + y(t)^2 = \frac{(s^2 r + \sqrt{2} s t r)^2 + (\sqrt{2} s t r + t^2 r)^2}{(s^2 + \sqrt{2} s t + t^2)^2} = \frac{r^2 (s^4 + 2\sqrt{2} s^3 t + 4 s^2 t^2 + 2\sqrt{2} s t^3 + t^4)}{(s^2 + \sqrt{2} s t + t^2)^2} \]
+\[ x(t) ^ 2 + y(t) ^ 2 = \frac{(s ^ 2 r + \sqrt{2} s t r) ^ 2 + (\sqrt{2} s t r + t ^ 2 r) ^ 2}{(s ^ 2 + \sqrt{2} s t + t ^ 2) ^ 2} = \frac{r ^ 2 (s ^ 4 + 2\sqrt{2} s ^ 3 t + 4 s ^ 2 t ^ 2 + 2\sqrt{2} s t ^ 3 + t ^ 4)}{(s ^ 2 + \sqrt{2} s t + t ^ 2) ^ 2} \]
 Expanding the denominator squared:
-\[ (s^2 + \sqrt{2} s t + t^2)^2 = s^4 + 2\sqrt{2} s^3 t + 2 s^2 t^2 + 2 s^2 t^2 + 2\sqrt{2} s t^3 + t^4 = s^4 + 2\sqrt{2} s^3 t + 4 s^2 t^2 + 2\sqrt{2} s t^3 + t^4 \]
-The numerator and denominator polynomials are identically equal, yielding \( x(t)^2 + y(t)^2 = r^2 \) for all \( t \in [0, 1] \). \( \square \)
+\[ (s ^ 2 + \sqrt{2} s t + t ^ 2) ^ 2 = s ^ 4 + 2\sqrt{2} s ^ 3 t + 2 s ^ 2 t ^ 2 + 2 s ^ 2 t ^ 2 + 2\sqrt{2} s t ^ 3 + t ^ 4 = s ^ 4 + 2\sqrt{2} s ^ 3 t + 4 s ^ 2 t ^ 2 + 2\sqrt{2} s t ^ 3 + t ^ 4 \]
+The numerator and denominator polynomials are identically equal, yielding \( x(t) ^ 2 + y(t) ^ 2 = r ^ 2 \) for all \( t \in [0, 1] \). \( \square \)
 ====
 
 === Line Joins, Tangents, and Outer Product Intersections
@@ -587,8 +587,8 @@ The three bivector components correspond precisely to the classical Plücker lin
 ==== Intersection of Two Lines via the Dual Product
 
 Given two lines represented by bivectors \( L_1 = P_1 \wedge P_2 \) and \( L_2 = Q_1 \wedge Q_2 \), their point of intersection \( X \in Cl(3,0) \) is computed directly by the commutator product or dual join:
-\[ X = (L_1 \times L_2) \cdot I = (L_1 \cdot L_2^{\ast}) \]
-where \( L_2^{\ast} = - L_2 I \) is the 1-vector dual of the line bivector.
+\[ X = (L_1 \times L_2) \cdot I = (L_1 \cdot L_2 ^ {\ast}) \]
+where \( L_2 ^ {\ast} = - L_2 I \) is the 1-vector dual of the line bivector.
 
 If the lines are parallel in the affine plane, \( e_3 \cdot X = 0 \), automatically yielding the ideal point (direction vector) at infinity without arithmetic overflow or special-case branching.
 

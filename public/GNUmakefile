@@ -27,6 +27,7 @@ define preprocess-adoc
 $(AWK) < $(1) > $(2) ' \
 /^\*Proof:\*$$/ { print; print ""; next } \
 /^\* **[^[:space:]]/ { print ""; print; next } \
+/^1\. **[^[:space:]]/ { print ""; print; next } \
 { print } \
 '
 endef
