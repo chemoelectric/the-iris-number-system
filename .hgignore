@@ -1,0 +1,11 @@
+.*~$
+.*\.orig$
+
+^(dist|node_modules)$
+
+.*\.(gcda|gcno)$
+^.*/coverage(\.info)?$
+
+^.*/html_report$
+
+^.*/Iris.*\.pdf$
