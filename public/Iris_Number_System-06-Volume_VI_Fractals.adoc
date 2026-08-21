@@ -1096,7 +1096,7 @@ This chapter examines the deep disconnection between what conventional continuum
 
 The divergence between conventional mathematics and the Iris number system regarding fractals is not merely cosmetic; it is foundational.
 
-Conventional analysis conceptualizes fractals by reifying the infinite limit operation \( \lim _ { k \to \infty } \) into an actually existing, completed geometric object. In that paradigm:
+Conventional analysis formulates fractals by reifying the infinite limit operation \( \lim _ { k \to \infty } \) into an actually existing, completed geometric object. In that paradigm:
 
 1. **The “Nowhere Differentiable Continuous Curve”**: Objects such as the Koch curve, the Brownian path, or the Weierstrass function are defined as continuous curves that possess no tangent vector at any point. Conventional analysis asserts that these curves are composed of an uncountably infinite collection of dimensionless points possessing zero spatial extent.
 
@@ -1140,7 +1140,7 @@ These continuum assertions are structurally self-contradictory:
 
 *Proof:*
 
-. **Thermodynamic Energy Balance**: Let a solid or fluid body undergo fracture or branching breakdown on grid \( \mathcal { G } _ N \). The total energy supplied to create the fracture surface is bounded by the applied external strain energy \( E _ \text { strain } < \infty \). If the true physical boundary had infinite 1-dimensional Hausdorff measure \( \mathcal { H } ^ 1 = \infty \), the surface energy would evaluate to \( E _ \text { surface } = \gamma \int _ \mathcal { B } d \mathcal { H } ^ 1 = \infty \), requiring an infinite energy source to produce a microscopic fracture. This is a direct physical and logical contradiction.
+. **Thermodynamic Energy Balance**: Let a solid or fluid body undergo fracture or branching breakdown on grid \( \mathcal { G } _ N \). The total energy supplied to create the fracture surface is bounded by the applied external strain energy \( E _ \text { strain } < \infty \). If the true physical boundary had infinite 1-dimensional Hausdorff measure \( \mathcal { H } ^ 1 = \infty \), the surface energy would evaluate to \( E _ \text { surface } = \gamma \int _ { \mathcal { B } } d \mathcal { H } ^ 1 = \infty \), requiring an infinite energy source to produce a microscopic fracture. This is a direct physical and logical contradiction.
 
 . **Operational Decidability on \( \mathcal { G } _ N \)**: By Theorem `xref:theorem-simd-fractal-throughput[Multi-Grid Complexity]`, every physical boundary is fully characterized by a finite sequence of discrete aperture counts \( \{ N ( 2 ^ { - m } ) \} _ { m = 0 } ^ N \). The Hausdorff dimension \( D \) is the rational slope of the Vernier scaling line over the finite physical range \( [ \ell_0 , L_0 ] \):
 \[ D = \frac { \ln N ( \ell_0 ) - \ln N ( L_0 ) } { \ln ( L_0 / \ell_0 ) } \]
@@ -1188,7 +1188,7 @@ Instead, 20th-century conventional mathematics chose to preserve the dogma of th
 
 Every layer of abstraction added by orthodox analysis has increased the complexity, opacity, and internal friction of mathematics without resolving its core foundational inconsistencies.
 
-In the 20th and 21st centuries, mathematics has grown ever more complicated with patches and workarounds, rather than simpler and simpler as it is _supposed_ to do. Will mathematicians be satisfied to say the new theory of fractals is a separate branch, forming a workaround to address the results obtained by the Iris Number System—or will they accept it as a signal the system of patches and workarounds is inconsistent and must be abandoned?
+In the 20th and 21st centuries, mathematics has grown ever more complicated with patches and workarounds, rather than simpler and simpler as it is _supposed_ to do, as it _used_ to do—for instance when Heaviside put Maxwell’s equations into vector form. So, if someone published a constructive theory of fractals to reach the same results as has the Iris system, would mathematicians be satisfied to call constructive theory of fractals merely a new branch of mathematics, yet another workaround to avoid saying the system as a whole is inconsistent? Would they retain continuous fractals as the primary object of study? Or would they accept their own ability to reach genuinely useful results as a sign they have been wasting their life-hours by patching and patching and patching a continuum mathematics whose results apply only to a fantasy universe and not the one we live in.
 
 == Index of Formal Statements
 
