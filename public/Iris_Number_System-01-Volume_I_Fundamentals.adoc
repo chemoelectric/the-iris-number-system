@@ -1079,10 +1079,6 @@ By grounding all analysis in discrete Multiscale Resolution Analysis (MSRA) and 
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-== Index of Formal Statements
-
-This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
-
 === Postulates
 
 * xref:postulate-0[**Postulate 0: Primordial Principle of Measurement**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
