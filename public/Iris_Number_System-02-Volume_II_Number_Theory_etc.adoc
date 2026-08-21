@@ -1375,10 +1375,6 @@ Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-== Index of Formal Statements
-
-This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
-
 === Theorems
 
 * xref:theorem-fundamental-arithmetic[**Theorem: The Fundamental Theorem of Arithmetic in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
