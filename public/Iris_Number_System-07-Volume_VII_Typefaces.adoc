@@ -135,7 +135,7 @@ The tolerance threshold is set relative to machine precision:
 \[ \varepsilon_{\text{tol}} = \max(m, n) \cdot \sigma_1 \cdot 10^{-14} \]
 
 The optimal turning angle vector is then:
-\[ \theta^* = K^+ \, b \]
+\[ \theta ^ { \ast } = K^+ \, b \]
 
 [#thm-svd-hobby-least-squares]
 [THEOREM]
@@ -143,20 +143,20 @@ The optimal turning angle vector is then:
 ====
 Let an arbitrary configuration of \( n \) knots \( \{ z_k \} \) on the discrete design grid \( \mathcal{G}_N \) and \( m \) typographic constraints be represented by the linear system \( K \theta = b \).
 
-1. **Universal Solvability**: The solution \( \theta^* = K^+ b \) exists and is uniquely determined for *every* possible input, regardless of whether \( K \) is square, singular, rank-deficient, underdetermined, or overdetermined.
-2. **Least-Squares Error Minimization**: If the designer's constraints are contradictory or overdetermined, \( \theta^* \) minimizes the total residual discrepancy:
-\[ \| K \theta^* - b \|_2 = \min_{\theta} \| K \theta - b \|_2 \]
-3. **Minimum-Strain Regularization**: If the constraints are underdetermined (such as on a straight line or unconstrained contour), \( \theta^* \) selects the unique solution with the smallest Euclidean norm \( \| \theta^* \|_2 \). In the Iris number system, this corresponds to the minimal-strain contour that minimizes unnecessary angular displacement across knots.
+1. **Universal Solvability**: The solution \( \theta ^ { \ast } = K^+ b \) exists and is uniquely determined for *every* possible input, regardless of whether \( K \) is square, singular, rank-deficient, underdetermined, or overdetermined.
+2. **Least-Squares Error Minimization**: If the designer's constraints are contradictory or overdetermined, \( \theta ^ { \ast } \) minimizes the total residual discrepancy:
+\[ \| K \theta ^ { \ast } - b \|_2 = \min_{\theta} \| K \theta - b \|_2 \]
+3. **Minimum-Strain Regularization**: If the constraints are underdetermined (such as on a straight line or unconstrained contour), \( \theta ^ { \ast } \) selects the unique solution with the smallest Euclidean norm \( \| \theta ^ { \ast } \|_2 \). In the Iris number system, this corresponds to the minimal-strain contour that minimizes unnecessary angular displacement across knots.
 
 *Proof:*
 
 . **Orthogonal Direct Sum**: By the Singular Value Decomposition in real Euclidean space, the domain \( \mathbb{R}^n \) is the direct sum of the row space \( \operatorname{row}(K) \) and the null space \( \operatorname{null}(K) \).
 
-. **Projection Optimality**: The vector \( K \theta^* = U \Sigma \Sigma^+ U^T b \) is the exact orthogonal projection of \( b \) onto the range \( \operatorname{col}(K) \). By the projection theorem on discrete Euclidean inner-product spaces, this uniquely minimizes the distance \( \| K \theta - b \|_2 \).
+. **Projection Optimality**: The vector \( K \theta ^ { \ast } = U \Sigma \Sigma^+ U^T b \) is the exact orthogonal projection of \( b \) onto the range \( \operatorname{col}(K) \). By the projection theorem on discrete Euclidean inner-product spaces, this uniquely minimizes the distance \( \| K \theta - b \|_2 \).
 
-. **Null-Space Elimination**: Any other vector \( \theta \) that achieves the same minimal residual must satisfy \( K \theta = K \theta^* \), meaning \( \theta = \theta^* + w \) for some vector \( w \in \operatorname{null}(K) \). Because \( \theta^* = V \Sigma^+ U^T b \in \operatorname{row}(K) \), we have the orthogonality condition \( \langle \theta^*, w \rangle = 0 \). Therefore:
-\[ \| \theta \|_2^2 = \| \theta^* \|_2^2 + \| w \|_2^2 \ge \| \theta^* \|_2^2 \]
-with equality if and only if \( w = 0 \). Hence, \( \theta^* \) is the uniquely optimal minimal-norm solution. \( \square \)
+. **Null-Space Elimination**: Any other vector \( \theta \) that achieves the same minimal residual must satisfy \( K \theta = K \theta ^ { \ast } \), meaning \( \theta = \theta ^ { \ast } + w \) for some vector \( w \in \operatorname{null}(K) \). Because \( \theta ^ { \ast } = V \Sigma^+ U^T b \in \operatorname{row}(K) \), we have the orthogonality condition \( \langle \theta ^ { \ast }, w \rangle = 0 \). Therefore:
+\[ \| \theta \|_2^2 = \| \theta ^ { \ast } \|_2^2 + \| w \|_2^2 \ge \| \theta ^ { \ast } \|_2^2 \]
+with equality if and only if \( w = 0 \). Hence, \( \theta ^ { \ast } \) is the uniquely optimal minimal-norm solution. \( \square \)
 ====
 
 === IEEE-754 Arithmetic Safeguards and Exception Handling
