@@ -77,6 +77,24 @@ and the complementary velocity function is symmetric:
 
 These formulas ensure that when four knots are placed at the corners of a square, the resulting curve matches a true circle to within \( 0.06\% \) optical aperture deviation—an imperceptible discrepancy in digital typography.
 
+==== The Golden Ratio and Harmonic Weighting in Hobby’s Denominator
+
+A remarkable property of Hobby’s velocity denominator is the presence of constants directly originating from the Golden Ratio \( \Phi = \frac{1 + \sqrt{5}}{2} \approx 1.6180339887 \).
+
+Let us examine the two angular weighting coefficients appearing in the denominator of \( \rho(\theta, \psi) \):
+\[ c_1 = \frac{\sqrt{5} - 1}{2}, \qquad c_2 = \frac{3 - \sqrt{5}}{2} \]
+Expressed in powers of the Golden Ratio:
+\[ c_1 = \Phi - 1 = \frac{1}{\Phi} = \Phi^{-1} \approx 0.6180339887 \]
+\[ c_2 = 2 - \Phi = \frac{1}{\Phi^2} = \Phi^{-2} \approx 0.3819660113 \]
+
+Because \( \Phi^2 = \Phi + 1 \), the algebraic identity \( \Phi^{-1} + \Phi^{-2} = 1 \) holds identically. The denominator can thus be written in the elegant form:
+\[ 1 + \Phi^{-1} \cos \theta + \Phi^{-2} \cos \psi \]
+footnote:[The Golden Ratio \( \Phi = \frac{1 + \sqrt{5}}{2} \) and its algebraic conjugate \( \bar{\Phi} = \frac{1 - \sqrt{5}}{2} = - \Phi^{-1} \) are the fundamental roots of the characteristic polynomial \( x^2 - x - 1 = 0 \). Under Binet's formula, any Fibonacci number \( F_n \) is computed in closed algebraic form by \( F_n = \frac{\Phi^n - \bar{\Phi}^n}{\sqrt{5}} \). For the fundamental step \( n = 1 \), adding the Golden Ratio and its conjugate's negation (the quantity \( \Phi^{-1} = \frac{\sqrt{5} - 1}{2} \) appearing directly as Hobby's primary angular weighting coefficient) yields \( \frac{\Phi - \bar{\Phi}}{\sqrt{5}} = \frac{\sqrt{5}}{\sqrt{5}} = 1 = F_1 \).]
+
+When the departure and arrival angles are equal (\( \theta = \psi \)), the sum of the cosine terms collapses to:
+\[ (\Phi^{-1} + \Phi^{-2}) \cos \theta = 1 \cdot \cos \theta \]
+so that the entire denominator reduces to \( 1 + \cos \theta \). This harmonic partition of unity ensures that symmetric circular quadrants and elliptical segments preserve exact curvature balance without manual optical compensation.
+
 === Curvature Continuity: The Mathematics of Optical Smoothness
 
 Why do type designers care about curvature continuity? 
