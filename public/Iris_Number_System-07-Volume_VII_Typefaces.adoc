@@ -1,0 +1,18 @@
+= The Iris Number System: Applications to Digital Typeface Design
+:subtitle: Applications to Digital Typeface Design
+:author: Frédéric Blondin Custer
+:doctype: book
+:toc: left
+:toclevels: 3
+:stem: latexmath
+:sectnums!:
+
+A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Coordinate Curves, Multi-Aperture Font Outlines, and Digital Typeface Design
+
+== Prelude: Foundations of Digital Typeface Design in the Iris Framework
+
+Digital typeface design and font outline geometry operate inherently within discrete coordinate grids and multiscale rasterization apertures. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization within the Counting-Iris framework.
+
+== Index of Formal Statements
+
+This index lists all formal Definitions and Theorems established across this volume.

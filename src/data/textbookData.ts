@@ -2986,12 +2986,61 @@ export const FRACTALS_TEXTBOOK: Textbook = {
           "contentAsciiDoc": "=== The Historical Crossroads\n\nEvery layer of abstraction added by orthodox analysis has increased the complexity, opacity, and internal friction of mathematics without resolving its core foundational inconsistencies.\n\nIn the 20th and 21st centuries, mathematics has grown ever more complicated with patches and workarounds, rather than simpler and simpler as it is _supposed_ to do, as it _used_ to do—for instance when Heaviside put Maxwell’s equations into vector form. So, if someone published a constructive theory of fractals to reach the same results as has the Iris system, would mathematicians be satisfied to call constructive theory of fractals merely a new branch of mathematics, yet another workaround to avoid saying the system as a whole is inconsistent? Would they retain continuous fractals as the primary object of study? Or would they accept their own ability to reach genuinely useful results as a sign they have been wasting their life-hours by patching and patching and patching a continuum mathematics whose results apply only to a fantasy universe and not the one we live in."
         }
       ]
+    },
+    {
+      "id": "chap-index",
+      "title": "Index of Formal Statements",
+      "summary": "Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.",
+      "sections": [
+        {
+          "id": "sec-index-formal-statements",
+          "title": "Index of Formal Statements",
+          "contentAsciiDoc": "== Index of Formal Statements\n\nThis index lists all formal Postulates, Theorems, and Definitions established across the textbook.\n\n=== Theorems\n\n* xref:theorem-mandelbrot-bounded-orbit-cl20[**Theorem: Discrete Bounded Orbit Criterion and Escape Radius in \\( Cl(2,0) \\)**]  -- Chapter: *Foundations of Discrete Scale Invariance and Multiscale Geometric Algebra* | Section: *Discrete Iteration and Geometric Algebra in \\( Cl(2,0) \\)*\n* xref:theorem-mandelbrot-main-cardioid-exact-cl20[**Theorem: Geometric Algebraic Boundary of the Main Cardioid in \\( Cl(2,0) \\)**]  -- Chapter: *The Mandelbrot Set in Real \\( Cl(2,0) \\): Bulbs, Cardioid, and Rotational Standing Waves* | Section: *The Main Cardioid as Period-1 Limit Cycle Equilibrium*\n* xref:theorem-period-2-bulb-geometry[**Theorem: Exact Circular Geometry of the Period-2 Hyperbolic Component**]  -- Chapter: *The Mandelbrot Set in Real \\( Cl(2,0) \\): Bulbs, Cardioid, and Rotational Standing Waves* | Section: *Period-2 Bulb and Higher-Order Rotational Resonance*\n* xref:theorem-julia-connectedness-discrete-dichotomy[**Theorem: Discrete Connectedness Dichotomy of Julia Sets**]  -- Chapter: *Julia Sets and Topological Attractor Basins on Discrete Grids* | Section: *Dichotomy of Discrete Julia Sets*\n* xref:theorem-banach-fixed-point-discrete-multivector[**Theorem: Banach Fixed-Point Theorem on Discrete Multivector Metric Spaces**]  -- Chapter: *Iterated Function Systems, Vernier Box Dimensions, and Constructive Measure Theory* | Section: *Contraction Mappings in Clifford Algebra*\n* xref:theorem-hutchinson-vernier-attractor[**Theorem: Existence and Uniqueness of Discrete IFS Attractors**]  -- Chapter: *Iterated Function Systems, Vernier Box Dimensions, and Constructive Measure Theory* | Section: *Contraction Mappings in Clifford Algebra*\n* xref:theorem-simd-fractal-throughput[**Theorem: Computational Complexity and Memory Bound of Multi-Grid Fractal Rasterization**]  -- Chapter: *High-Performance Parallel Fractal Algorithms and Hardware Accelerators* | Section: *SIMD Vectorized Multi-Grid Escape Iteration*\n* xref:theorem-knot-capstan-cascade[**Theorem: Multiscale Capstan Friction Cascade and Topological Self-Locking**]  -- Chapter: *Physical Manifestations of Discrete Fractals in the Material World* | Section: *Hierarchical Topological Friction, Capstan Cascades, and the Discrete Mechanics of Knots*\n* xref:theorem-dielectric-breakdown-dla-dimension[**Theorem: Fractal Dimension of Discrete Laplacian Discharge Filaments**]  -- Chapter: *Physical Manifestations of Discrete Fractals in the Material World* | Section: *Dielectric Breakdown and Laplacian Growth*\n* xref:thm-granular-force-chain-fractal[**Theorem: Discrete Fractal Scaling of Force Chains in Granular Media**]  -- Chapter: *Physical Manifestations of Discrete Fractals in the Material World* | Section: *Granular Force Chains and Compaction Arches*\n* xref:thm-preimage-fractal-convergence[**Theorem: Discrete Pre-Image Tree Convergence to Julia Basin Boundaries**]  -- Chapter: *Inverse Dynamical Systems, Pre-Image Trees, and Reasoning Backwards* | Section: *The Geometry of Pre-Image Trees*\n* xref:thm-hierarchical-abduction-complexity[**Theorem: Hierarchical Aperture Pruning Complexity on Discrete Pre-Image Trees**]  -- Chapter: *Inverse Dynamical Systems, Pre-Image Trees, and Reasoning Backwards* | Section: *Sherlock Holmes and the Geometry of Abductive Tree Pruning*\n* xref:thm-ishikawa-fractal-pruning[**Theorem: Discrete Ishikawa Tree Abductive Pruning and Root-Cause Isolation**]  -- Chapter: *The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology* | Section: *The Ishikawa Diagram as an Explicit Backward Pre-Image Fractal Tree*\n* xref:thm-shewhart-multiscale-invariance[**Theorem: Multiscale Self-Similarity of Stable Common-Cause Variation**]  -- Chapter: *The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology* | Section: *Shewhart Quality Control and Multiscale Physical Noise*\n* xref:thm-pdsa-contraction-convergence[**Theorem: PDSA Operational Contraction and Convergence to Target Invariants**]  -- Chapter: *The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology* | Section: *The Shewhart-Deming Cycle (PDSA) as a Discrete Contraction Iteration*\n* xref:thm-tampering-feigenbaum-instability[**Theorem: Tampering-Induced Feigenbaum Period-Doubling and Chaotic Variance Explosion**]  -- Chapter: *The Extraction of Order from Variation: Shewhart, Deming, C. I. Lewis, and Discrete Fractal Epistemology* | Section: *The Deming Funnel Experiment and the Dynamics of Tampering*\n* xref:thm-continuum-measure-fractal-inconsistency[**Theorem: Structural Inconsistency of Continuum Measure on Scale-Invariant Physical Boundaries**]  -- Chapter: *Fractals as the Threshold of Self-Contradiction in Conventional Mathematics* | Section: *The Measure-Theoretic Crisis: The Coastline Paradox and Hausdorff-Besicovitch Measures*\n\n=== Definitions\n\n* xref:def-discrete-asperity-mesh[**Definition: Discrete Asperity Contact Network**]  -- Chapter: *Physical Manifestations of Discrete Fractals in the Material World* | Section: *Microscopic Solid Contact: The Asperity Network*\n\n"
+        }
+      ]
     }
   ],
   "filename": "Iris_Number_System-06-Volume_VI_Fractals.adoc"
 };
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [BIBLIOGRAPHY_TEXTBOOK, INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK, FRACTALS_TEXTBOOK];
+export const TYPEFACES_TEXTBOOK: Textbook = {
+  "id": "textbook-iris-typefaces",
+  "title": "The Iris Number System",
+  "subtitle": "Volume VII: Applications to Digital Typeface Design",
+  "author": "Frédéric Blondin Custer",
+  "version": "2.1.0",
+  "lastUpdated": "2026-08-01",
+  "description": "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Coordinate Curves, Multi-Aperture Font Outlines, and Digital Typeface Design",
+  "chapters": [
+    {
+      "id": "chap-prelude-foundations-of-digital-typeface-design-in-the-iris-framework",
+      "title": "Prelude: Foundations of Digital Typeface Design in the Iris Framework",
+      "summary": "Digital typeface design and font outline geometry operate inherently within discrete coordinate grids and multiscale rasterization apertures. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization within the Counting-Iris framework.",
+      "sections": [
+        {
+          "id": "chap-prelude-foundations-of-digital-typeface-design-in-the-iris-framework-sec-1",
+          "title": "Prelude: Foundations of Digital Typeface Design in the Iris Framework",
+          "contentAsciiDoc": "Digital typeface design and font outline geometry operate inherently within discrete coordinate grids and multiscale rasterization apertures. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization within the Counting-Iris framework."
+        }
+      ]
+    },
+    {
+      "id": "chap-index",
+      "title": "Index of Formal Statements",
+      "summary": "Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.",
+      "sections": [
+        {
+          "id": "sec-index-formal-statements",
+          "title": "Index of Formal Statements",
+          "contentAsciiDoc": "== Index of Formal Statements\n\nThis index lists all formal Postulates, Theorems, and Definitions established across the textbook.\n\n"
+        }
+      ]
+    }
+  ],
+  "filename": "Iris_Number_System-07-Volume_VII_Typefaces.adoc"
+};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [BIBLIOGRAPHY_TEXTBOOK, INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK, FRACTALS_TEXTBOOK, TYPEFACES_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
