@@ -384,7 +384,7 @@ This section proves that the mathematical structure of Hilbert space—with its 
 ====
 Let \( | \Psi \rangle \in \mathcal { H } \) be a state vector in a complex inner product space \( \mathcal { H } \). The vector \( | \Psi \rangle \) does not represent a physical field or material entity in the non-verbal external universe. Instead, \( \mathcal { H } \) is isomorphic to a linear vector space of logical propositions \( \{ A_k \} \) governed by Jaynesian probability theory and trigonometry:
 \[ | \Psi \rangle = \sum _ { k } c _ k | A _ k \rangle = \sum _ { k } r _ k \exp ( i \theta _ k ) | A _ k \rangle \]
-where \( r _ k \exp ( i \theta _ k ) \) encodes the trigonometric phase angle \( \theta _ k \) and probability amplitude \( r _ k = \sqrt { P ( A _ k \mid I ) } \) for logical proposition \( A _ k \) conditioned on background state of knowledge \( I \).
+where \( r _ k \exp ( i \theta _ k ) \) encodes the trigonometric phase angle \( \theta _ k \) and probability amplitude \( r _ k = { P ( A _ k \mid I ) } ^ {\frac{1}{\rule{0pt}{0.9ex}2}} \) for logical proposition \( A _ k \) conditioned on background state of knowledge \( I \).
 
 *Proof:*
 
@@ -1229,7 +1229,7 @@ where \( \nu _ \text{cycle} \) is the operating cycle frequency, \( \Delta \math
 
 . **Power Scaling on Discrete Grid**: In contrast to macroscopic thermal engines where power is constrained by bulk thermal transport and heat-exchanger surface area, direct field transduction scales linearly with the microscopic cell count \( N _ \text{cells} \) and operating frequency \( \nu _ \text{cycle} \). Each discrete cell delivers energy \( \Delta \mathcal { E } _ \text{discrete} \) during each finite cycle duration \( \tau = 1 / \nu _ \text{cycle} \).
 
-. **Impedance-Matched Extraction**: By Theorem 5.1, impedance matching on \( \mathcal { G } _ N \) ensures that the direct electrical extraction efficiency \( \eta _ \text{direct} = \frac { 4 Z _ \text{src} Z _ \text{load} } { ( Z _ \text{src} + Z _ \text{load} ) ^ 2 } \) exceeds \( 85 \% \text{--} 95 \% \), with dissipative losses confined to the finite discrete m-res threshold.
+. **Impedance-Matched Extraction**: By Theorem 5.1, impedance matching on \( \mathcal { G } _ N \) ensures that the direct electrical extraction efficiency \( \eta _ \text{direct} = \left( 4 Z _ \text{src} Z _ \text{load} \right) / \left( Z _ \text{src} + Z _ \text{load} \right) ^ 2 \) exceeds \( 85 \% \text{--} 95 \% \), with dissipative losses confined to the finite discrete m-res threshold.
 
 . **Dynamic Operational Stability**: Any excess charge accumulation or high-frequency phase drift increases local field back-EMF, which automatically shifts the lattice impedance away from the resonance condition (\( Z _ \text{load} \ne Z _ \text{src} \)). This introduces an intrinsic, self-limiting negative feedback mechanism that prevents runaway power escalation and guarantees unconditionally stable, safe industrial operation. \( \square \)
 ====
@@ -1260,7 +1260,7 @@ while the multivector dielectric gradient separation achieves operational energy
 \[ \mathbf { f } = \rho \, \mathbf { E } + ( \mathbf { P } \cdot \nabla ) \mathbf { E } + \mathbf { J } \times \mathbf { B } \]
 For neutral hydrated salt clusters \( ( Na^+ \cdot n H_2 O ) \) and \( ( Cl^- \cdot m H_2 O ) \), the scalar charge term averages to zero over RF cycles, while the dielectrophoretic polarization gradient term \( ( \mathbf { P } \cdot \nabla ) \mathbf { E } \) exerts a deterministic time-average force directed along the electric field intensity gradient \( \nabla | \mathbf { E } | ^ 2 \).
 
-. **Resonant Frequency Matching**: The Clausius-Mossotti factor \( K ( \omega ) = \frac { \varepsilon _ \text{ion} ^ { \ast } - \varepsilon _ m ^ { \ast } } { \varepsilon _ \text{ion} ^ { \ast } + 2 \varepsilon _ m ^ { \ast } } \) exhibits a sharp sign reversal at the dielectric relaxation frequency \( f _ \text{relaxation} \sim 100 \text{ kHz -- 10 MHz} \) of hydrated ion shells. At frequencies above relaxation, \( \text{Re} [ K ( \omega ) ] < 0 \), driving hydrated salt ions away from high-field electrode edges into collection side-streams (negative dielectrophoresis), leaving purified bulk water in the central conduit channel.
+. **Resonant Frequency Matching**: The Clausius-Mossotti factor \( K ( \omega ) = \left( \varepsilon _ \text{ion} ^ { \ast } - \varepsilon _ m ^ { \ast } \right) / \left( \varepsilon _ \text{ion} ^ { \ast } + 2 \varepsilon _ m ^ { \ast } \right) \) exhibits a sharp sign reversal at the dielectric relaxation frequency \( f _ \text{relaxation} \sim 100 \text{ kHz -- 10 MHz} \) of hydrated ion shells. At frequencies above relaxation, \( \text{Re} [ K ( \omega ) ] < 0 \), driving hydrated salt ions away from high-field electrode edges into collection side-streams (negative dielectrophoresis), leaving purified bulk water in the central conduit channel.
 
 . **Energy Recovery and Reagentless Purification**: Unlike reverse osmosis (which expends irreversible mechanical pressure work \( W = \Delta P \cdot V \) against osmotic pressure \( \Pi \approx 27 \text{ bar} \) to force water molecules through sub-nanometer polymer pores), dielectrophoretic separation moves only the dissolved ions (\( < 3.5 \% \) of fluid mass) across short transverse distances (\( \sim 100 \ \mu \text{m} \)). Furthermore, the capacitive energy stored in the RF electric field is recovered inductively during each AC cycle, reducing net energy dissipation to \( E _ \text{operational} < 0.45 \text{ kWh / m}^3 \). \( \square \)
 ====
@@ -1300,11 +1300,11 @@ eliminating turbulent pressure drops and preventing municipal pipeline scaling a
 
 *Proof:*
 
-. **Multivector Vorticity Decomposition**: In \( Cl ( 4 , 1 , 1 ) \), fluid velocity vector \( \mathbf { v } \) and vorticity bivector \( \boldsymbol { \omega } = \nabla \wedge \mathbf { v } \) govern energy dissipation. In conventional smooth-wall pipes, turbulent Reynolds stresses \( - \rho \overline { v_i' v_j' } \) arise from random boundary-layer vortex detachment and cross-flow eddy breakdown.
+. **Multivector Vorticity Decomposition**: In \( Cl ( 4 , 1 , 1 ) \), fluid velocity vector \( \mathbf { v } \) and vorticity bivector \( \boldsymbol { \omega } = \nabla \wedge \mathbf { v } \) govern energy dissipation. In conventional smooth-wall pipes, turbulent Reynolds stresses \[ - \rho \overline { v_i' v_j' } \] arise from random boundary-layer vortex detachment and cross-flow eddy breakdown.
 
 . **Logarithmic Helical Boundary Alignment**: By fashioning the internal conduit surface with logarithmic spiral micro-riblets aligned with the primary multivector rotational field lines, fluid elements adjacent to the wall are guided into organized, self-stabilizing helical trajectories. This boundary guidance suppresses boundary-layer separation and eliminates transverse velocity fluctuations (\( v_r' \approx 0 \)).
 
-. **Friction Reduction and Biofilm Prevention**: The suppression of cross-flow turbulence transforms the boundary layer into a stable liquid bearing. Evaluating the head loss equation \( h_f = f \frac { L } { D } \frac { v^2 } { 2 g } \), the friction factor drops by over 80%. Furthermore, the sustained axial shear stress along the helical grooves prevents stagnation zones, prohibiting bacterial biofilm attachment and mineral scale deposition (\( CaCO_3 \)) along municipal distribution networks. \( \square \)
+. **Friction Reduction and Biofilm Prevention**: The suppression of cross-flow turbulence transforms the boundary layer into a stable liquid bearing. Evaluating the head loss equation \[ h_f = f \frac { L } { D } \frac { v^2 } { 2 g } \] the friction factor drops by over 80%. Furthermore, the sustained axial shear stress along the helical grooves prevents stagnation zones, prohibiting bacterial biofilm attachment and mineral scale deposition (\( CaCO_3 \)) along municipal distribution networks. \( \square \)
 ====
 
 === Engineering Design of Practical Clean Water Purification and Distribution Devices
@@ -1352,7 +1352,7 @@ The Multi-Stage Capillary-Vapor Pervaporation Transducer is a high-efficiency so
 The Inline Catalytic-Redox Household Well Decontaminator is a compact domestic under-sink or utility appliance designed for rural and suburban groundwater wells contaminated with agricultural nitrates, arsenic, lead, pesticides, sulfur odors, and PFAS “forever chemicals”.
 
 . **Catalytic Kinetic Redox Pre-Conditioning Chamber**: An upstream KDF-55 copper-zinc and manganese dioxide cartridge that quantitatively oxidizes trivalent arsenic \( \text{As(III)} \) to pentavalent \( \text{As(V)} \) and reduces dissolved hydrogen sulfide \( H_2 S \) into insoluble mineral sulfides, preventing gas carryover.
-. **Electric PTC Multi-Plate Pervaporation Core**: An 8-stage aluminum/polypropylene plate cassette driven by a low-power (\( 180 \text{ W} \)) positive temperature coefficient (PTC) ceramic heating element maintained at \( 68 \ ^\circ \text{C} \). Because non-volatile contaminants (nitrates \( NO_3^- \), arsenic, lead, microplastics, and PFAS) have zero vapor pressure at operating temperature, only pure \( H_2 O \) vapor traverses the \( 0.30 \text{ mm} \) hydrophobic vapor gap.
+. **Electric PTC Multi-Plate Pervaporation Core**: An 8-stage aluminum{empty}/{empty}poly&shy;pro&shy;pylene plate cassette driven by a low-power (\( 180 \text{ W} \)) positive temperature coefficient (PTC) ceramic heating element maintained at \( 68 \ ^\circ \text{C} \). Because non-volatile contaminants (nitrates \( NO_3^- \), arsenic, lead, microplastics, and PFAS) have zero vapor pressure at operating temperature, only pure \( H_2 O \) vapor traverses the \( 0.30 \text{ mm} \) hydrophobic vapor gap.
 . **Continuous Degassing Micro-Vent**: A sub-millimeter counter-current vent cap fitted with an active carbon gas trap that continuously exhausts volatile organic solvents, methane, and radon gas to the atmosphere before condensation occurs.
 . **Remineralizing Calcite/Magnesium Balancing Column**: A downstream food-grade calcite (\( CaCO_3 \)) and magnesium oxide post-treatment bed that remineralizes the ultrapure distillate to optimal physiological drinking water parameters (\( 35 \text{--} 50 \text{ ppm} \) TDS, \( \text{pH } 7.3 \text{--} 7.5 \)).
 . **Domestic Operational Yield**: Produces \( 3.5 \text{--} 4.2 \text{ L/hr} \) of crystal-clear potable water at an electrical energy expenditure of only \( 0.048 \text{ kWh/L} \), representing a 92% energy reduction compared to standard domestic single-stage thermal distillers.
@@ -1368,8 +1368,12 @@ while decentralized point-of-use solar and domestic units (MCP-1/MCP-2) achieve 
 *Proof:*
 
 . **Summation of Resonant Energy Inputs**: Summing the energetic lower bounds established in Theorems 5.1, 5.2, and 5.3:
-\[ E _ \text{desalination} \le 0.42 \text{ kWh / m}^3 , \quad E _ \text{sterilization} \le 0.12 \text{ kWh / m}^3 , \quad E _ \text{distribution} \le 0.08 \text{ kWh / m}^3 \]
-\[ E _ \text{plant} = 0.42 + 0.12 + 0.08 = 0.62 \text{ kWh / m}^3 \]
+\[\begin {aligned}
+&E _ \text{desalination} \le 0.42 \text{ kWh / m} ^ 3 \\
+&E _ \text{sterilization} \le 0.12 \text{ kWh / m} ^ 3 \\
+&E _ \text{distribution} \le 0.08 \text{ kWh / m} ^ 3 \\
+&E _ \text{plant} = 0.42 + 0.12 + 0.08 = 0.62 \text{ kWh / m} ^ 3
+\end {aligned}\]
 
 . **Multi-Stage Latent Heat Recycling**: In the multi-stage capillary cassette (MCP-1/MCP-2), the total vapor production is the sum of cascading stages:
 \[ \dot{m} _ \text{total} = \sum _ { k = 1 } ^ N \dot{m} _ k = \dot{m} _ 1 \sum _ { k = 1 } ^ N \eta _ \text{transfer} ^ { k - 1 } \approx \dot{m} _ 1 \frac { 1 - \eta _ \text{transfer} ^ N } { 1 - \eta _ \text{transfer} } \]
@@ -1417,7 +1421,10 @@ This section establishes the thermodynamic and kinetic foundation for active car
 .Theorem: Accelerated Carbon-Negative Mineralization and Compressive Strength Synergy
 ====
 Let a newly cast C-M-S-H silicate binder matrix be exposed to an atmosphere containing carbon dioxide (\( CO_2 \) concentration \( \ge 15 \% \) by volume) inside a multivector electrodynamic curing chamber on discrete grid \( \mathcal { G } _ N \). Under a pulsed electrostatic orientation field \( \mathbf { E } _ \text{cure} \), atmospheric \( CO_2 \) molecules diffuse rapidly through nano-porous gel channels, undergoing quantitative aqueous mineralization with magnesium and calcium ions:
-\[ Mg^{2+} + Ca^{2+} + 2 SiO_3^{2-} + 2 CO_2 + 3 H_2 O \longrightarrow MgCO_3 \cdot 3 H_2 O + CaCO_3 + 2 SiO_2 \text{ (amorphous gel)} \]
+\[ \begin {aligned}
+&Mg^{2+} + Ca^{2+} + 2 SiO_3^{2-} + 2 CO_2 + 3 H_2 O \longrightarrow \\
+&\quad MgCO_3 \cdot 3 H_2 O + CaCO_3 + 2 SiO_2 \text{ (amorphous gel)}
+\end {aligned} \]
 The net carbon sequestration capacity satisfies \( S _ { CO_2 } \ge 0.32 \text{ kg } CO_2 \text{ bound / kg cement} \), producing a carbon-negative structural material whose 24-hour compressive strength satisfies \( \sigma _ \text{comp} \ge 85 \text{ MPa} \).
 
 *Proof:*
@@ -1447,7 +1454,7 @@ while drying shrinkage strain is constrained to \( \varepsilon _ \text{shrinkage
 
 . **Multivector Interface Friction and Mechanical Anchoring**: Linear fibers slip linearly under tensile pullout; in contrast, logarithmic helical micro-fibers generate a spatial bivector torque \( \mathbf { \tau } = \mathbf { r } \times \mathbf { F } _ \text{pullout} \) as crack surfaces separate. This rotational anchoring increases the total fiber pullout energy dissipation by over 350% per unit fiber volume.
 
-. **Capillary Tension Suppression**: During gel hydration, capillary pore water menisci exert contractile tension \( P _ \text{cap} = \frac { 2 \gamma \cos \theta } { r _ \text{pore} } \). The rigid C-M-S-H gel network reinforced by helical fiber anchorage balances this contractile pressure, locking the spatial grid nodes of matrix \( \mathcal { G } _ N \) in mechanical equilibrium and reducing drying shrinkage strain to near-zero levels (\( \le 0.005 \% \)). \( \square \)
+. **Capillary Tension Suppression**: During gel hydration, capillary pore water menisci exert contractile tension \( P _ \text{cap} =  \left( 2 \gamma \cos \theta \right) / \left( r _ \text{pore} \right) \). The rigid C-M-S-H gel network reinforced by helical fiber anchorage balances this contractile pressure, locking the spatial grid nodes of matrix \( \mathcal { G } _ N \) in mechanical equilibrium and reducing drying shrinkage strain to near-zero levels (\( \le 0.005 \% \)). \( \square \)
 ====
 
 === Engineering Design of Practical Ecologically Superior Cement Production Devices
@@ -1658,11 +1665,13 @@ where \( AR = b / c \) is the aspect ratio and \( C _ L \) is the lift coefficie
 
 *Proof:*
 
-. **Effective Downwash Stream Tube**: A wing of span \( b \) moving at speed \( U _ 0 \) affects a circular stream tube of air with diameter \( b \) and cross-sectional area \( A _ \text{tube} = \frac { \pi } { 4 } b ^ 2 \). The mass flow rate processed by the wing is \( \dot { m } = \rho A _ \text{tube} U _ 0 = \frac { pi } { 4 } \rho b ^ 2 U _ 0 \).
+. **Effective Downwash Stream Tube**: A wing of span \( b \) moving at speed \( U _ 0 \) affects a circular stream tube of air with diameter \( b \) and cross-sectional area \( A _ \text{tube} = \frac { \pi } { 4 } b ^ 2 \). The mass flow rate processed by the wing is \[ \dot { m } = \rho A _ \text{tube} U _ 0 = \frac { \pi } { 4 } \rho b ^ 2 U _ 0 \]
 
 . **Downwash Velocity and Angle**: Equating vertical momentum rate to weight (\( \dot { m } \cdot 2 w _ \text{downwash} = M g \), accounting for total vertical deflection in the far wake):
 \[ 2 w _ \text{downwash} \left( \frac { \pi } { 4 } \rho b ^ 2 U _ 0 \right) = M g \implies w _ \text{downwash} = \frac { 2 M g } { \pi \rho b ^ 2 U _ 0 } \]
-The induced angle is \( \alpha _ \text{downwash} \approx \frac { w _ \text{downwash} } { U _ 0 } = \frac { 2 M g } { \pi \rho b ^ 2 U _ 0 ^ 2 } \). Substituting \( M g = \frac { 1 } { 2 } \rho U _ 0 ^ 2 S C _ L \) with wing area \( S = b c \) yields \( \alpha _ \text{downwash} = \frac { C _ L } { \pi AR } \). This relation holds universally for all wing profiles, completing the proof. \( \square \)
+The induced angle is \[ \alpha _ \text{downwash} \approx \frac { w _ \text{downwash} } { U _ 0 } = \frac { 2 M g } { \pi \rho b ^ 2 U _ 0 ^ 2 } \]
+Substituting \[ M g = \frac { 1 } { 2 } \rho U _ 0 ^ 2 S C _ L \] with wing area \( S = b c \) yields \[ \alpha _ \text{downwash} = \frac { C _ L } { \pi AR } \]
+This relation holds universally for all wing profiles, completing the proof. \( \square \)
 ====
 
 === Rotary Wings, Autorotation, and Tethered Aerodynamic Systems
@@ -1684,7 +1693,7 @@ A tethered box kite consists of rigid, planar fabric cells anchored to the groun
 ====
 Let a rotary wing (helicopter rotor of disk area \( A \)), autorotating maple seed, or tethered box kite produce thrust or lift force \( T \) in a fluid of density \( \rho \) on discrete grid \( \mathcal { G } _ N \). The induced downward velocity \( v _ i \) in static hover or stationary tether balance satisfies:
 \[ v _ i = \sqrt { \frac { T } { 2 \rho A } } \]
-and the mechanical power \( P _ \text{induced} \) required to maintain the downward air jet satisfies \( P _ \text{induced} = T v _ i = \frac { T ^ { 3/2 } } { \sqrt { 2 \rho A } } \).
+and the mechanical power \( P _ \text{induced} \) required to maintain the downward air jet satisfies \[ P _ \text{induced} = T v _ i = \frac { T ^ { 3/2 } } { \sqrt { 2 \rho A } } \]
 
 *Proof:*
 
@@ -1692,7 +1701,8 @@ and the mechanical power \( P _ \text{induced} \) required to maintain the downw
 
 . **Thrust and Power Integration**: Mass flow through the disk is \( \dot { m } = \rho A v _ i \). Total thrust generated equals mass flow times wake velocity change:
 \[ T = \dot { m } ( 2 v _ i ) = 2 \rho A v _ i ^ 2 \implies v _ i = \sqrt { \frac { T } { 2 \rho A } } \]
-The induced kinetic energy rate imparted to the downward air column is \( P _ \text{induced} = \frac { 1 } { 2 } \dot { m } ( 2 v _ i ) ^ 2 = T v _ i \), proving exact momentum balance for rotary blades, autorotating samaras, and tethered kites. \( \square \)
+The induced kinetic energy rate imparted to the downward air column is \[ P _ \text{induced} = \frac { 1 } { 2 } \dot { m } ( 2 v _ i ) ^ 2 = T v _ i \]
+proving exact momentum balance for rotary blades, autorotating samaras, and tethered kites. \( \square \)
 ====
 
 === Biomechanical Flight and Unsteady Aerodynamics
