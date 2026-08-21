@@ -1877,7 +1877,7 @@ Let \( \Pi _ t \) represent the human postulate aperture at generational time st
 
 . **Postulate Refinement**: When generation \( t + 1 \) encounters an empirical or logical defect in \( \mathcal { D } _ t \) (such as the continuum fallacies deconstructed in Chapter 3), it replaces defective postulates in \( \Pi _ t \) with exact multivector postulates in \( \Pi _ { t + 1 } \). The new deductive closure \( \mathcal { D } _ { t + 1 } = \text{Ded} ( \Pi _ { t + 1 } ) \) satisfies \( \mathcal { K } _ t \subset \mathcal { D } _ { t + 1 } \), ensuring no valid prior knowledge is lost.
 
-. **Logical Destiny Transformation**: By shifting the postulate basis from \( \Pi _ t \) to \( \Pi _ { t + 1 } \), humanity actively alters its logical destiny from \( \mathcal { D } _ t \) to \( \mathcal { D } _ { t + 1 } \). This proves that time-binding is the operational mechanism by which conscious beings exercise freedom over their collective fate, fulfilling Keyser's vision of mathematical philosophy as a science of human liberation. \( \square \)
+. **Logical Destiny Transformation**: By shifting the postulate basis from \( \Pi _ t \) to \( \Pi _ { t + 1 } \), humanity actively alters its logical destiny from \( \mathcal { D } _ t \) to \( \mathcal { D } _ { t + 1 } \). This demonstrates how time-binding enables conscious beings to exercise agency over their collective trajectory across generational time steps, fulfilling Keyser's vision of mathematical philosophy as a discipline of human liberation. \( \square \)
 ====
 
 [#chap-signal-processing-theory-of-human-language]
@@ -1988,42 +1988,42 @@ Let \( \mathcal { C } \subset A ^ L \) be the set of all syntactically valid sen
 
 Human social systems, religious organizations, political ideologies, and academic institutions routinely construct *creeds*—rigid, unalterable sets of dogmatic postulates and symbolic declarations designed to enforce cognitive conformity across populations. A central operational mechanism in the propagation and maintenance of creeds is the *coöptation of terms*, wherein pre-existing, rigorously defined lexical tokens (such as "truth", "logic", "science", "freedom", or "probability") are surreptitiously assigned modified semantic meanings while retaining their familiar phonetic or visual forms.
 
-Building upon Keyser's theory of doctrinal functions, the signal processing theory of human language, and Alfred Korzybski's foundational general semantics formulated in *Science and Sanity*, this chapter formalizes creeds as static propositional multivector filters. We analyze term coöptation as a semantic phase-shift transformation in \( Cl ( 4 , 1 , 1 ) \), prove that definition by intension creates vulnerable creedal enclosures, establish definition by extension as the indispensable operational safeguard, and examine historical case studies—including the 1927 Solvay Conference—where terms were coöpted to institutionalize dogmatic creeds over scientific objections.
+Building upon Keyser's theory of doctrinal functions, the signal processing theory of human language, and Alfred Korzybski's foundational general semantics formulated in *Science and Sanity*, this chapter formalizes creeds as static propositional multivector filters. We analyze term coöptation as a semantic phase-shift transformation in \( Cl ( 4 , 1 , 1 ) \), prove that definition by intension creates vulnerable creedal enclosures, establish definition by extension as the indispensable foundation for unambiguous communication and deductive integrity, and examine historical case studies—including the 1927 Solvay Conference—where terms were coöpted to institutionalize dogmatic creeds over scientific objections.
 
-=== Korzybskian Operational Semantics: Definition by Intension vs. Definition by Extension
+=== Korzybskian Extensional Semantics: Definition by Intension vs. Definition by Extension
 
 In the lengthy introduction to the second edition of *Science and Sanity*—written by Alfred Korzybski in 1941 amidst the world-shattering destruction of World War II and printed on wartime pulp paper due to critical paper shortages—Korzybski emphasized the urgent necessity of distinguishing between two fundamentally different modes of definition: *definition by intension* and *definition by extension*.
 
-* **Definition by Intension** (Dictionary Definitions): A verbal substitution wherein words are defined by other words, producing circular symbol-to-symbol associations within a linguistic loop. Intensional definitions remain entirely trapped in higher-order verbal abstractions without pointing to physical operations or non-verbal events.
-* **Definition by Extension** (Definition by Giving Examples): An operational, extensional definition wherein a term is defined by pointing directly to objective physical instances, specific non-verbal objects, measurable laboratory operations, or finite step counts on a discrete spatial-temporal grid.
+* **Definition by Intension** (Dictionary Definitions): A verbal substitution wherein words are defined by other words, producing circular symbol-to-symbol associations within a linguistic loop. Intensional definitions remain entirely trapped in higher-order verbal abstractions without pointing to physical exemplars or non-verbal events.
+* **Definition by Extension** (Definition by Giving Examples): An extensional definition wherein a term is defined by pointing directly to physical instances, specific non-verbal exemplars, laboratory demonstrations, or finite step counts on a discrete spatial-temporal grid.
 
 While human societies continually default to definitions by intension—giving rise to endless verbal disputes, semantic coöptations, and dogmatic creeds—human sanity, scientific progress, and effective time-binding depend strictly on definitions by extension.
 
 [#theorem-korzybski-extensional-intensional-duality]
 [THEOREM]
-.Theorem: Korzybskian Extensional Operationalism and Intensional Creed Dissolution Theorem
+.Theorem: Korzybskian Extensional Semantics and Intensional Creed Dissolution Theorem
 ====
 Let \( t \) be a lexical token within a natural language or scientific nomenclature.
 
 1. **Intensional Circularity and Creedal Vulnerability**: An intensional definition \( D _ \text{int} ( t ) \) defines token \( t \) via a finite sequence of other verbal tokens \( \{ t _ 1 ' , t _ 2 ' , \dots , t _ M ' \} \). Because intensional definitions lack direct physical grounding on discrete grid \( \mathcal { G } _ N \), they form closed verbal loops \( t \to t _ 1 ' \to t _ 2 ' \to t \), permitting arbitrary semantic drift and coöptation without physical detection.
-2. **Extensional Uniqueness and Invariance**: An extensional definition \( D _ \text{ext} ( t ) \) defines token \( t \) by specifying an explicit set of physical examples, physical pointer operations, or algorithmic grid step counts \( \{ E_1 , E_2 , \dots , E_K \} \). The corresponding multivector state \( M _ \text{ext} ( t ) \in Cl ( 4 , 1 , 1 ) \) is invariant under verbal redefinition.
+2. **Extensional Uniqueness and Invariance**: An extensional definition \( D _ \text{ext} ( t ) \) defines token \( t \) by specifying an explicit set of physical examples, physical pointer demonstrations, or algorithmic grid step counts \( \{ E_1 , E_2 , \dots , E_K \} \). The corresponding multivector state \( M _ \text{ext} ( t ) \in Cl ( 4 , 1 , 1 ) \) is invariant under verbal redefinition.
 
 *Proof:*
 
-. **Intensional Loop Formulation**: Represent verbal tokens as nodes in a directed graph \( G = ( V , E ) \). An intensional definition corresponds to a directed edge \( ( t , t ' ) \). Since the dictionary vocabulary \( V \) is finite, every path of purely verbal definitions must enter a directed cycle \( C \subset G \). Thus, intensional definitions reduce to circular tautologies of the form "A is B, B is C, C is A". Within such closed loops, an authority can alter the multivector interpretation of node \( A \) without breaking graph connectivity, enabling covert term coöptation.
+. **Intensional Loop Formulation**: Represent verbal tokens as nodes in a directed graph \( G = ( V , E ) \). An intensional definition corresponds to a directed edge \( ( t , t ' ) \). Since the dictionary vocabulary \( V \) is finite, every path of purely verbal definitions must enter a directed cycle \( C \subset G \). Thus, intensional definitions reduce to circular tautologies of the form “A is B, B is C, C is A”. Within such closed loops, an authority can alter the multivector interpretation of node \( A \) without breaking graph connectivity, enabling covert term coöptation.
 
-. **Extensional Grounding**: An extensional definition breaks graph circularity by mapping token \( t \) directly to an external physical measurement or objective set of physical exemplars \( E_k \subset \mathcal { G } _ N \). The multivector representation \( M ( t ) = \sum _ k w _ k M ( E _ k ) \) is anchored directly in observable spatial-temporal step counts. Any attempt to alter \( M ( t ) \) while keeping physical exemplars \( E_k \) fixed generates an immediate observable discrepancy \( \| M ' ( t ) - M ( t ) \| > 0 \), instantly exposing creedal deception. \( \square \)
+. **Extensional Grounding**: An extensional definition breaks graph circularity by mapping token \( t \) directly to an external physical measurement or set of physical exemplars \( E_k \subset \mathcal { G } _ N \). The multivector representation \( M ( t ) = \sum _ k w _ k M ( E _ k ) \) is anchored directly in observable spatial-temporal step counts. Any attempt to alter \( M ( t ) \) while keeping physical exemplars \( E_k \) fixed generates an immediate observable discrepancy \( \| M ' ( t ) - M ( t ) \| > 0 \), instantly exposing creedal deception. \( \square \)
 ====
 
 === Creeds as Rigid Postulate Sets and the Mathematical Mechanics of Semantic Coöptation
 
-In Keyser's framework, a doctrine is a flexible deductive system generated by assigning variables within a doctrinal function. A *creed*, by contrast, is a closed, frozen postulate set \( \Pi _ \text{creed} \) that forbids variable revision, alternative postulate exploration, or operational empirical auditing, relying entirely on definitions by intension to maintain authority.
+In Keyser's framework, a doctrine is a flexible deductive system generated by assigning variables within a doctrinal function. A *creed*, by contrast, is a closed, frozen postulate set \( \Pi _ \text{creed} \) that forbids variable revision, alternative postulate exploration, or empirical auditing, relying entirely on definitions by intension to maintain authority.
 
 [#theorem-semantic-cooptation-deductive-instability]
 [THEOREM]
 .Theorem: Semantic Coöptation, Sub-Aperture Shift, and Deductive Instability Theorem
 ====
-Let \( T = \{ t _ 1 , t _ 2 , \dots , t _ K \} \) be a set of lexical tokens associated with original operational multivector meanings \( M ( t _ k ) \in Cl ( 4 , 1 , 1 ) \). Let a creedal system execute a coöptation mapping \( \sigma : T \to T \) that preserves the visual and acoustic token representation \( t _ k \) while shifting its underlying meaning to a coöpted multivector state \( M ' ( t _ k ) = M ( t _ k ) + \Delta M _ k \).
+Let \( T = \{ t _ 1 , t _ 2 , \dots , t _ K \} \) be a set of lexical tokens associated with original extensional multivector meanings \( M ( t _ k ) \in Cl ( 4 , 1 , 1 ) \). Let a creedal system execute a coöptation mapping \( \sigma : T \to T \) that preserves the visual and acoustic token representation \( t _ k \) while shifting its underlying meaning to a coöpted multivector state \( M ' ( t _ k ) = M ( t _ k ) + \Delta M _ k \).
 
 1. **Hidden Phase Distortion**: The coöpted meaning shift \( \Delta M _ k \neq 0 \) introduces a non-zero bivector phase distortion into every propositional multivector containing token \( t _ k \).
 2. **Deductive Contradiction Inevitability**: If a recipient deduces consequences using the public postulate set \( \Pi _ \text{public} \) under original meanings \( M ( t _ k ) \) while the creed operates under coöpted meanings \( M ' ( t _ k ) \), the joint deductive closure contains inescapable logical contradictions on discrete grid \( \mathcal { G } _ N \).
@@ -2043,15 +2043,15 @@ A supreme historical example of creedal construction and term coöptation occurr
 
 Albert Einstein stubbornly resisted this institutional creed, pointing out that replacing local physical causality with ungrounded intrinsic randomness was an abdication of physical science. Einstein summarized his objection in his famous extensional protest:
 
-\[ \text{"God does not play dice with the universe!"} \]
+\[ \text{“God does not play dice with the universe!”} \]
 
 Einstein was explicitly accusing Bohr and his circle of imposing a rigid, ungrounded creed on physics—substituting mystical dice-rolling for physical wave-propagation mechanisms. 
 
-Niels Bohr's response was a masterclass in semantic turnabout and term coöptation. Rather than producing an operational, extensional physical proof of non-local probability collapse, Bohr replied with a clever rhetorical inversion:
+Niels Bohr's response was a masterclass in semantic turnabout and term coöptation. Rather than producing an extensional physical demonstration of non-local probability collapse, Bohr replied with a clever rhetorical inversion:
 
-\[ \text{"Einstein, stop telling God what to do!"} \]
+\[ \text{“Einstein, stop telling God what to do!”} \]
 
-In this historical exchange, Bohr executed an "I'm rubber, you're glue" semantic reflection. Einstein had accused Bohr of inventing an arbitrary theological-probabilistic creed ("God playing dice"). Bohr coöpted Einstein's metaphor by reframing Einstein—who was defending strict physical causality and operational extensionalism—as the dogmatist who was "dictating to God". By shifting the debate from extensional physical operations on spatial grids to intensional theological metaphors, the Copenhagen school successfully weaponized Einstein's own words, silenced operational critique, and institutionalized quantum probability as a scientific creed that dominated physics for a century.
+In this historical exchange, Bohr executed an “I'm rubber, you're glue” semantic reflection. Einstein had accused Bohr of inventing an arbitrary theological-probabilistic creed (“God playing dice”). Bohr coöpted Einstein's metaphor by reframing Einstein—who was defending strict physical causality and extensional definitions—as the dogmatist who was “dictating to God”. By shifting the debate from extensional physical reality on spatial grids to intensional theological metaphors, the Copenhagen school successfully weaponized Einstein's own words, silenced extensional critique, and institutionalized quantum probability as a scientific creed that dominated physics for a century.
 
 === Case Study: Deconstruction of Bohr's Complementarity as Linguistic Signal Processing Degradation
 
@@ -2253,57 +2253,59 @@ While Ptolemaic epicycles provided explicit mathematical utility and engineering
 Let \( \mathbf { r } _ \text{obs} ( t ) \) be an observed physical trajectory or field configuration measured on discrete resolution grid \( \mathcal { G } _ N \).
 
 1. **Fourier Decomposition vs. Entity Creation**: Representing \( \mathbf { r } _ \text{obs} ( t ) \) via a finite sum of orthogonal trigonometric basis modes \( \sum _ k \mathbf { A } _ k \mathbf { e } ^ { i \omega _ k t } \) (Ptolemaic series representation) preserves mathematical transparency and predictive utility without altering the underlying postulate set \( \Pi \).
-2. **Epistemological Invalidation of Post Hoc Entities**: Introducing an unobservable entity \( X \) (e.g., "dark matter", "quarks", "zero-mass photons") solely to reconcile an empirical residue \( \mathbf { R } ( t ) = \mathbf { r } _ \text{obs} ( t ) - \mathbf { r } _ \text{model} ( t ) \neq 0 \) without operational grid detection evaluates to an intensional null aperture \( \langle M ( X ) \rangle = 0 \).
+2. **Epistemological Invalidation of Post Hoc Entities**: Introducing an unobservable entity \( X \) (e.g., “dark matter”, “quarks”, “zero-mass photons”) solely to reconcile an empirical residue \( \mathbf { R } ( t ) = \mathbf { r } _ \text{obs} ( t ) - \mathbf { r } _ \text{model} ( t ) \neq 0 \) without verifiable grid detection evaluates to an intensional null aperture \( \langle M ( X ) \rangle = 0 \).
 
 *Proof:*
 
-. **Trigonometric Representation Invariance**: Let \( \mathbf { r } _ \text{obs} ( t ) \) be a discrete time-series on grid \( \mathcal { G } _ N \). By the discrete Fourier-Iris decomposition (Volume II), \( \mathbf { r } _ \text{obs} ( t ) \) can be represented to arbitrary finite precision \( \epsilon _ M \) by selecting \( M \) epicyclic modes. The parameter set \( \{ \mathbf { A } _ k , \omega _ k \} \) is operational, extensional, and fully computable from observations without introducing non-physical entities.
+. **Trigonometric Representation Invariance**: Let \( \mathbf { r } _ \text{obs} ( t ) \) be a discrete time-series on grid \( \mathcal { G } _ N \). By the discrete Fourier-Iris decomposition (Volume II), \( \mathbf { r } _ \text{obs} ( t ) \) can be represented to arbitrary finite precision \( \epsilon _ M \) by selecting \( M \) epicyclic modes. The parameter set \( \{ \mathbf { A } _ k , \omega _ k \} \) is extensional and fully computable from observations without introducing non-physical entities.
 
-. **Post Hoc Contrivance Nullification**: Suppose a model asserts field equation \( \mathcal { D } \mathbf { \Psi } = 0 \). When observation yields \( \mathcal { D } \mathbf { \Psi } _ \text{obs} \neq 0 \), postulating an unobservable ghost field \( \mathbf { \Psi } _ \text{ghost} \) such that \( \mathcal { D } ( \mathbf { \Psi } _ \text{obs} + \mathbf { \Psi } _ \text{ghost} ) = 0 \) is a tautological post hoc contrivance. Because \( \mathbf { \Psi } _ \text{ghost} \) cannot be isolated or measured independently on grid \( \mathcal { G } _ N \), its operational definition is empty: \( D _ \text{ext} ( \mathbf { \Psi } _ \text{ghost} ) = \emptyset \).
+. **Post Hoc Contrivance Nullification**: Suppose a model asserts field equation \( \mathcal { D } \mathbf { \Psi } = 0 \). When observation yields \( \mathcal { D } \mathbf { \Psi } _ \text{obs} \neq 0 \), postulating an unobservable ghost field \( \mathbf { \Psi } _ \text{ghost} \) such that \( \mathcal { D } ( \mathbf { \Psi } _ \text{obs} + \mathbf { \Psi } _ \text{ghost} ) = 0 \) is a tautological post hoc contrivance. Because \( \mathbf { \Psi } _ \text{ghost} \) cannot be isolated or measured independently on grid \( \mathcal { G } _ N \), its extensional grounding is empty: \( D _ \text{ext} ( \mathbf { \Psi } _ \text{ghost} ) = \emptyset \).
 
-. **Deductive Superiority**: The Master Field Equation \( \nabla M = J \) accounts for observed galactic rotation curves and atomic energy quantization through deterministic multivector field momentum co-propagation without ad hoc ghost particles. Therefore, post hoc entity creation is an intensional creed that dissolves under operational extensional analysis. \( \square \)
+. **Deductive Superiority**: The Master Field Equation \( \nabla M = J \) accounts for observed galactic rotation curves and atomic energy quantization through deterministic multivector field momentum co-propagation without ad hoc ghost particles. Therefore, post hoc entity creation is an intensional creed that dissolves under extensional analysis. \( \square \)
 ====
 
-=== The Operational Safeguard of Operational Definitions and Explicit Postulate Apertures
+=== The Epistemological Safeguard of Extensional Definitions and Explicit Postulate Apertures
 
-To protect human reasoning and communication from the corrupting effects of creedal coöptation, definitions must be grounded in physical step counts, operational procedures, and exact multivector grid representations rather than recursive verbal abstractions.
+To protect human reasoning and communication from the corrupting effects of creedal coöptation, definitions must be grounded extensionally in physical exemplars, measurable field interactions, and exact multivector grid representations on \( \mathcal { G } _ N \) rather than circular verbal abstractions.
 
-[#theorem-operational-definition-creed-dissolution]
+[#theorem-extensional-definition-creed-dissolution]
 [THEOREM]
-.Theorem: Operational Definition Conservation and Creed Dissolution Theorem
+.Theorem: Extensional Definition Invariance and Creed Dissolution Theorem
 ====
-Let \( t \) be a lexical token whose meaning is contested between an operational physical definition \( D _ \text{op} ( t ) \) and a coöpted creedal definition \( D _ \text{creed} ( t ) \).
+Let \( t \) be a lexical token whose meaning is contested between an extensional physical definition \( D _ \text{ext} ( t ) \) and a coöpted creedal definition \( D _ \text{creed} ( t ) \).
 
-1. **Extensional Uniqueness**: If \( D _ \text{op} ( t ) \) is defined strictly as a finite sequence of physical measuring operations and discrete lattice step counts on grid \( \mathcal { G } _ N \), its multivector state representation \( M _ \text{op} ( t ) \in Cl ( 4 , 1 , 1 ) \) is uniquely and unambiguously fixed.
-2. **Creed Dissolution**: Any coöpted creedal definition \( D _ \text{creed} ( t ) \) that cannot be mapped to a finite, repeatable sequence of physical grid step counts evaluates to a null aperture state \( \langle M _ \text{creed} ( t ) \rangle = 0 \), completely dissolving the creedal claim within the Iris framework.
+1. **Extensional Uniqueness**: If \( D _ \text{ext} ( t ) \) is defined strictly by pointing directly to non-verbal physical exemplars, verifiable laboratory interactions, and discrete lattice step counts on grid \( \mathcal { G } _ N \), its multivector state representation \( M _ \text{ext} ( t ) \in Cl ( 4 , 1 , 1 ) \) is uniquely and unambiguously fixed.
+2. **Creed Dissolution**: Any coöpted creedal definition \( D _ \text{creed} ( t ) \) that cannot be grounded in physical exemplars or grid step counts evaluates to a null aperture state \( \langle M _ \text{creed} ( t ) \rangle = 0 \), completely dissolving the creedal claim within the Iris framework.
 
 *Proof:*
 
-. **Operational Step-Count Grounding**: An operational definition specifies an explicit physical algorithm \( A _ t \) that performs \( N _ t \) discrete grid operations on state space \( \mathcal { G } _ N \). The outcome of \( A _ t \) produces a uniquely verifiable multivector value \( M _ \text{op} ( t ) \).
+. **Extensional Step-Count Grounding**: An extensional definition specifies an explicit physical exemplar set or discrete algorithm \( A _ t \) that evaluates over finite grid step counts on state space \( \mathcal { G } _ N \). The outcome produces a uniquely verifiable multivector value \( M _ \text{ext} ( t ) \).
 
-. **Elimination of Verbal Ambiguity**: Suppose a creed attempts to coöpt token \( t \) by introducing a non-operational verbal definition \( D _ \text{creed} ( t ) \) involving unmeasurable, infinite, or continuum formulations. Because the Iris number system permits only finite numbers of finite entities, any non-operational construct fails to define an aperture on grid \( \mathcal { G } _ N \).
+. **Elimination of Verbal Ambiguity**: Suppose a creed attempts to coöpt token \( t \) by introducing a non-extensional verbal definition \( D _ \text{creed} ( t ) \) involving unmeasurable, infinite, or continuum formulations. Because the Iris number system permits only finite numbers of finite entities, any non-extensional construct fails to define an aperture on grid \( \mathcal { G } _ N \).
 
-. **Rigorous Dissolution**: The evaluation operator \( E : \text{Statements} \to Cl ( 4 , 1 , 1 ) \) yields \( E ( D _ \text{creed} ( t ) ) = 0 \). Consequently, all creedal deductions dependent on coöpted, non-operational terms vanish identically, leaving only operational physical tautologies intact. \( \square \)
+. **Rigorous Dissolution**: The evaluation operator \( E : \text{Statements} \to Cl ( 4 , 1 , 1 ) \) yields \( E ( D _ \text{creed} ( t ) ) = 0 \). Consequently, all creedal deductions dependent on coöpted, non-extensional terms vanish identically, leaving only verified physical tautologies intact. \( \square \)
 ====
 
-=== Time-Binding Immunity to Dogmatic Creeds and Systemic Evolutionary Integrity
+=== The Vital Importance of Extensional Definitions for Time-Binding and Systemic Evolution
 
-Human time-binding—the generational transmission and refinement of structured knowledge—depends strictly on the open flexibility of postulate choice established in Keyser's Theorem of Logical Destiny. Dogmatic creeds freeze postulate apertures, leading to societal and scientific stagnation.
+Human time-binding—the generational transmission and refinement of structured knowledge—depends crucially on the open flexibility of postulate choice and the maintenance of extensional definitions. Grounding terms extensionally prevents dogmatic stagnation and ensures that transmitted knowledge remains tied to physical reality.
 
-[#theorem-time-binding-creed-immunity]
+[#theorem-extensional-definitions-time-binding]
 [THEOREM]
-.Theorem: Time-Binding Immune System and Creed-Driven Systemic Collapse Theorem
+.Theorem: The Role of Extensional Definitions in Preserving Time-Binding Integrity Theorem
 ====
-Let \( \Pi _ t \) be the collective postulate set of a human society at generational step \( t \).
+Let \( \Pi _ t \) represent a collective postulate aperture at generational step \( t \).
 
-1. **Systemic Stagnation under Creeds**: If a society adopts a dogmatic creed that enforces \( \Pi _ { t + 1 } = \Pi _ t \) by outlawing postulate revision, the society's problem-solving capacity is bounded by the static deductive closure \( \text{Ded} ( \Pi _ t ) \). As environmental or technological complexity grows beyond \( \text{Ded} ( \Pi _ t ) \), systemic failure ensues.
-2. **Time-Binding Immunity**: Active maintenance of operational extensional definitions and dynamic postulate revision creates an immune barrier that neutralizes creedal coöptation, ensuring unbounded time-binding evolution across generational grids.
+1. **Vulnerability of Intensional Postulate Chains**: When generational knowledge is transmitted purely through intensional definitions, semantic drift and term coöptation accumulate across generational steps, causing the deductive closure \( \text{Ded} ( \Pi _ t ) \) to diverge from physical reality and historical experience.
+2. **Extensional Grounding for Time-Binding**: Grounding terms in extensional definitions—anchored directly in physical exemplars and verifiable step counts on grid \( \mathcal { G } _ N \)—ensures that successive generations can evaluate, verify, and refine postulate apertures \( \Pi _ t \to \Pi _ { t + 1 } \) without becoming trapped in circular verbal creeds.
 
 *Proof:*
 
-. **Creed-Enforced Stagnation**: Under a creedal regime, any proposal to update postulate set \( \Pi _ t \to \Pi _ { t + 1 } \) is declared heresy or error. The deductive capacity remains locked at \( \mathcal { D } _ t = \text{Ded} ( \Pi _ t ) \). When novel physical or social challenges arise requiring state space transformations outside \( \mathcal { D } _ t \), the creedal system is mathematically incapable of generating solutions, incurring catastrophic systemic failure.
+. **Intensional Accumulation of Error**: In an ungrounded intensional framework, each generational transmission step introduces linguistic variance \( \Delta M _ t \neq 0 \). Without extensional reference points, these errors compound across generational transmissions: \( M _ T = M _ 0 + \sum _ { t = 1 } ^ T \Delta M _ t \). The cumulative semantic distortion leads to deductive divergence, creating rigid dogma disconnected from physical reality.
 
-. **Operational Time-Binding Resilience**: When a society enforces operational definitions, coöpted terms in creeds are immediately detected as non-operational null apertures. The society preserves its freedom of postulation (Keyser's freedom), allowing ongoing refinement \( \Pi _ t \to \Pi _ { t + 1 } \). The resulting expanded closure \( \mathcal { D } _ { t + 1 } \supset \mathcal { D } _ t \) successfully resolves novel challenges, proving that operational definitions are the vital immune mechanism of human time-binding. \( \square \)
+. **Extensional Invariance Across Generations**: An extensional definition anchors token \( t \) to physical exemplars and measurement procedures on discrete grid \( \mathcal { G } _ N \). Because physical exemplars remain directly accessible to observers in generation \( t + 1 \), any divergence \( \Delta M _ t \) between the verbal label and the physical exemplar is immediately detectable.
+
+. **Preservation of Postulate Revision**: By maintaining extensional definitions, human time-binding preserves its capacity to inspect and revise postulate apertures (\( \Pi _ t \to \Pi _ { t + 1 } \)) in light of experience, avoiding dogmatic stagnation and ensuring that transmitted knowledge remains tied to physical reality. \( \square \)
 ====
 
 [#chap-the-futility-of-ceti]
@@ -2312,7 +2314,7 @@ Let \( \Pi _ t \) be the collective postulate set of a human society at generati
 
 For decades, astronomical initiatives and popular scientific movements under the rubric of CETI (Communication with Extraterrestrial Intelligence) have asserted that transmitting electromagnetic radio waves or laser pulses into interstellar space can achieve intelligible two-way communication with distant technological civilizations. CETI relies on the unexamined assumption that abstract mathematical sequences (such as binary lists of prime numbers) sent through space constitute a universal, self-interpreting lingua franca that any intelligent organism can automatically decode and comprehend.
 
-In the Counting-Iris framework, CETI is revealed to be a fundamental physical and semiotic fallacy. Drawing upon the Direct Contact Action framework in \( Cl(4,1,1) \), the Master Field Equation, the Signal Processing Theory of Human Language, and the terminology of physical *horizons* (including the Optical Containment Horizon, Thermodynamic-Information Horizon, and Conformal Semiotic Horizon), this chapter proves the total futility of CETI. We demonstrate that electromagnetic signals attenuate exponentially into unrecoverable thermal noise floors across finite physical spatial horizons; that civilizations separated by interstellar distances lack a shared physical directrix or operational measurement context, creating an impassable conformal semiotic horizon; that wave propagation at finite speed \( c \) imposes an inescapable temporal disconnect exceeding societal lifespans; and that abstract mathematical symbols without extensional operational grounding evaluate to intensional null apertures.
+In the Counting-Iris framework, CETI is revealed to be a fundamental physical and semiotic fallacy. Drawing upon the Direct Contact Action framework in \( Cl(4,1,1) \), the Master Field Equation, the Signal Processing Theory of Human Language, and the terminology of physical *horizons* (including the Optical Containment Horizon, Thermodynamic-Information Horizon, and Conformal Semiotic Horizon), this chapter proves the total futility of CETI. We demonstrate that electromagnetic signals attenuate exponentially into unrecoverable thermal noise floors across finite physical spatial horizons; that civilizations separated by interstellar distances lack a shared physical directrix or common measurement context, creating an impassable conformal semiotic horizon; that wave propagation at finite speed \( c \) imposes an inescapable temporal disconnect exceeding societal lifespans; and that abstract mathematical symbols without extensional physical grounding evaluate to intensional null apertures.
 
 === The Physics of Physical Horizons: Attenuation and Thermodynamic-Information Bounds
 
@@ -2366,7 +2368,7 @@ Let \( \mathcal { M } _ A \subset Cl ( 4 , 1 , 1 ) \) be the cognitive multivect
 
 *Proof:*
 
-. **Operational Grounding Requirement**: By Theorem 11.1 (Korzybskian Extensional Operationalism), a symbol token \( t \) acquires unambiguous multivector meaning \( M ( t ) \) solely through an extensional operational mapping \( D _ \text{ext} ( t ) = \{ E _ 1 , E _ 2 , \dots , E _ K \} \), where \( E _ k \) are physical step-count measurement procedures on grid \( \mathcal { G } _ N \).
+. **Extensional Grounding Requirement**: By Theorem 11.1 (Korzybskian Extensional Semantics), a symbol token \( t \) acquires unambiguous multivector meaning \( M ( t ) \) solely through an extensional mapping \( D _ \text{ext} ( t ) = \{ E _ 1 , E _ 2 , \dots , E _ K \} \), where \( E _ k \) are physical exemplars or step-count measurement procedures on grid \( \mathcal { G } _ N \).
 
 . **Absence of Shared Directrix**: Civilizations \( A \) and \( B \), separated by interstellar distance \( d \), share zero physical calibration events (\( E _ k ^ A \cap E _ j ^ B = \emptyset \)). Civilization \( A \)'s signal encodes references to its local physical directrix \( \mathbf { D } _ A \). Because civilization \( B \) has access only to signal string \( S \) without access to physical directrix \( \mathbf { D } _ A \), civilization \( B \) must construct a decoding operator \( \mathbf { H } _ B : A ^ L \to \mathcal { M } _ B \).
 
@@ -3047,15 +3049,15 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-phoneme-nyquist-aperture-encoding[**Theorem: Discrete Phoneme Nyquist-Aperture Encoding Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Discrete Acoustic Phoneme Modulation and Nyquist-Aperture Speech Encoding*
 * xref:theorem-linguistic-filter-bank-capacity[**Theorem: Linguistic Filter Bank Capacity and Semantic Resolution Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Symbolic Transduction, Contextual Filter Banks, and Information Capacity of Human Language*
 * xref:theorem-linguistic-error-correcting-redundancy[**Theorem: Linguistic Error-Correcting Redundancy and Channel Robustness Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Time-Series Parsing, Noise Invariance, and Error-Correcting Linguistic Redundancy*
-* xref:theorem-korzybski-extensional-intensional-duality[**Theorem: Korzybskian Extensional Operationalism and Intensional Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Korzybskian Operational Semantics: Definition by Intension vs. Definition by Extension*
+* xref:theorem-korzybski-extensional-intensional-duality[**Theorem: Korzybskian Extensional Semantics and Intensional Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Korzybskian Extensional Semantics: Definition by Intension vs. Definition by Extension*
 * xref:theorem-semantic-cooptation-deductive-instability[**Theorem: Semantic Coöptation, Sub-Aperture Shift, and Deductive Instability Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Creeds as Rigid Postulate Sets and the Mathematical Mechanics of Semantic Coöptation*
 * xref:theorem-bohr-complementarity-doublethink[**Theorem: Socio-Linguistic Invalidation of Bohr's Complementarity via Signal Processing Theory**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Case Study: Deconstruction of Bohr's Complementarity as Linguistic Signal Processing Degradation*
 * xref:theorem-quantum-superposition-creed-refutation[**Theorem: Refutation of the Quantum Superposition Creed via Mid-Circuit Register Sampling Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Modern Case Study: The Creed of Quantum Superposition vs. Mid-Circuit Register Sampling in Recursive Digital Grover Factorization*
 * xref:theorem-consensus-creed-deductive-refutation[**Theorem: Epistemological Fallacy of Consensus Creeds and Deductive Priority Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Modern Case Study: The Creed of "Scientific Consensus" vs. Deductive Demonstration and Historical Galilean Observation*
 * xref:theorem-nobel-prize-social-role[**Theorem: Socio-Ecclesiastical Function and Epistemological Fallacy of Institutional Award Priesthoods**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Historical Analysis: The Track Record of the Nobel Prize in Physics and Its Socio-Ecclesiastical Role*
 * xref:theorem-ptolemaic-fourier-vs-posthoc-creeds[**Theorem: Ptolemaic Trigonometric Series Utility and Refutation of Post Hoc Particle Creeds Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Historical Contrast: The Rigorous Fourier Utility of Ptolemaic Epicycles vs. Modern Post Hoc Epistemological Creeds*
-* xref:theorem-operational-definition-creed-dissolution[**Theorem: Operational Definition Conservation and Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Operational Safeguard of Operational Definitions and Explicit Postulate Apertures*
-* xref:theorem-time-binding-creed-immunity[**Theorem: Time-Binding Immune System and Creed-Driven Systemic Collapse Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Time-Binding Immunity to Dogmatic Creeds and Systemic Evolutionary Integrity*
+* xref:theorem-extensional-definition-creed-dissolution[**Theorem: Extensional Definition Invariance and Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Epistemological Safeguard of Extensional Definitions and Explicit Postulate Apertures*
+* xref:theorem-extensional-definitions-time-binding[**Theorem: The Role of Extensional Definitions in Preserving Time-Binding Integrity Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Vital Importance of Extensional Definitions for Time-Binding and Systemic Evolution*
 * xref:theorem-signal-attenuation-horizon[**Theorem: Discrete Electromagnetic Energy Attenuation and Signal-to-Noise Horizon Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Physics of Physical Horizons: Attenuation and Thermodynamic-Information Bounds*
 * xref:theorem-conformal-semiotic-horizon[**Theorem: Operational Interpretation Horizon and Operational Context Un-translatability Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Operational Interpretation Horizon: Structure Detection versus Meaning*
 * xref:theorem-asymmetric-abductive-inference[**Theorem: Asymmetric Abductive Inference and Time-Binding Disconnect Theorem**]  -- Chapter: *The Futility of CETI* | Section: *Evolutionary Asymmetry, Time-Binding, and Asymmetric Abductive Inference*
