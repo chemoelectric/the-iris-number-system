@@ -41,6 +41,9 @@ To understand how Hobby’s method works, we consider a single segment running b
 
 In the planar Clifford algebra \( Cl(2,0) \), each point is a 2D position multivector on the discrete resolution grid \( \mathcal{G}_N \):
 \[ z = x \, e_1 + y \, e_2 \]
+
+To relate this notation directly to the conventional coordinate format familiar to type designers, font engineers, and digital font production systems (such as Metafont, MetaPost, PostScript Type 1, TrueType, OpenType CFF, and UFO font editors): the 1-vector \( z = x \, e_1 + y \, e_2 \) corresponds identically to what is commonly written as the 2D Cartesian coordinate pair \( z = ( x, y ) \). In font design, the pair \( ( x, y ) \) specifies discrete coordinate positions on the glyph grid (such as the standard 1000 or 2048 units-per-em design grids). The orthonormal basis vectors \( e_1 \) and \( e_2 \) represent unit steps along the horizontal \( x \)-axis and vertical \( y \)-axis respectively. Expressing points natively as \( z = x \, e_1 + y \, e_2 \) in geometric algebra \( Cl(2,0) \) unifies positions and displacements into single algebraic entities, allowing geometric operations—such as planar rotations via rotors \( R(\alpha) = \cos \alpha + \sin \alpha \, e_{12} \), reflection, and chord scaling—to be carried out directly on points without decomposing them into separate scalar equations.
+
 A cubic Bézier curve running from \( z_0 \) to \( z_1 \) is governed by two intermediate off-curve control points, \( u_0 \) (the first handle, pulling from \( z_0 \)) and \( v_1 \) (the second handle, pushing toward \( z_1 \)). 
 
 The curve is parameterized by a progress variable \( t \in [0, 1] \) on the discrete evaluation grid:
@@ -434,7 +437,7 @@ In the planar Clifford algebra \( Cl(2,0) \) over the discrete metric grid \( \m
 Any point or displacement vector in the design plane is a 1-vector:
 \[ z = x \, e_1 + y \, e_2 \]
 
-To prevent confusion for readers accustomed to conventional coordinate systems: the 1-vector \( z = x \, e_1 + y \, e_2 \) corresponds directly to what is commonly written as the 2D Cartesian pair \( z = (x, y) \) in practical font design grids (such as the standard 1000 or 2048 units-per-em grids used in digital typography). The orthonormal basis vectors \( e_1 \) and \( e_2 \) simply represent unit steps along the horizontal \( x \)-axis and vertical \( y \)-axis respectively, enabling algebraic operations (such as rotations via geometric products) to be performed directly on points without dropping into separate scalar coordinate machinery.
+To prevent confusion for readers accustomed to conventional coordinate systems: the 1-vector \( z = x \, e_1 + y \, e_2 \) corresponds directly to what is commonly written as the 2D Cartesian pair \( z = ( x, y ) \) in practical font design grids (such as the standard 1000 or 2048 units-per-em grids used in digital typography). The orthonormal basis vectors \( e_1 \) and \( e_2 \) simply represent unit steps along the horizontal \( x \)-axis and vertical \( y \)-axis respectively, enabling algebraic operations (such as rotations via geometric products) to be performed directly on points without dropping into separate scalar coordinate machinery.
 
 ==== The Sánchez-Reyes Symmetric Power Basis (s-Basis)
 
