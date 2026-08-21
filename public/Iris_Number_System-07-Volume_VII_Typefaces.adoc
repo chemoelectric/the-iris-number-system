@@ -130,7 +130,7 @@ where:
 The Moore-Penrose pseudoinverse \( K^+ \) is computed by inverting only the non-zero singular values exceeding the finite m-resolution aperture \( \varepsilon_{\text{tol}} \):
 \[ K^+ = V \, \Sigma^+ \, U^T \]
 where:
-\[ \Sigma^+_{ii} = \begin{cases} \frac{1}{\sigma_i} & \text{if } \sigma_i > \varepsilon_{\text{tol}} \\ 0 & \text{if } \sigma_i \le \varepsilon_{\text{tol}} \end{cases} \]
+\[ \Sigma ^ + _ {ii} = \begin{cases} \frac{1}{\sigma_i} & \text{if } \sigma_i > \varepsilon_{\text{tol}} \\ 0 & \text{if } \sigma_i \le \varepsilon_{\text{tol}} \end{cases} \]
 The tolerance threshold is set relative to machine precision:
 \[ \varepsilon_{\text{tol}} = \max(m, n) \cdot \sigma_1 \cdot 10^{-14} \]
 
