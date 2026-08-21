@@ -2463,10 +2463,6 @@ where ties in minimax aperture value are resolved strictly by discrete lexicogra
 
 Index of all formal Postulates, Theorems, and Definitions in the Iris Number System.
 
-== Index of Formal Statements
-
-This index lists all formal Postulates, Theorems, and Definitions established across the textbook.
-
 === Theorems
 
 * xref:theorem-2d-euclidean-rotor[**Theorem: Constructive 2D Euclidean Rotor Equivalence Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Constructive 2D Euclidean Geometric Algebra Cl(2,0) and Planar Rotors*
