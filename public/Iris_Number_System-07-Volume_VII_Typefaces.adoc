@@ -40,7 +40,7 @@ In the mid-1980s, computer scientist John D. Hobby (working closely with Donald 
 To understand how Hobby’s method works, we consider a single segment running between two consecutive on-curve knots, which we denote as \( z_0 \) and \( z_1 \).
 
 In the planar Clifford algebra \( Cl(2,0) \), each point is a 2D position multivector on the discrete resolution grid \( \mathcal{G}_N \):
-\[ z = x \, \mathbf{e}_1 + y \, \mathbf{e}_2 \]
+\[ z = x \, e_1 + y \, e_2 \]
 A cubic Bézier curve running from \( z_0 \) to \( z_1 \) is governed by two intermediate off-curve control points, \( u_0 \) (the first handle, pulling from \( z_0 \)) and \( v_1 \) (the second handle, pulling toward \( z_1 \)). 
 
 The curve is parameterized by a progress variable \( t \in [0, 1] \) on the discrete evaluation grid:
@@ -51,7 +51,7 @@ The curve is parameterized by a progress variable \( t \in [0, 1] \) on the disc
 Let \( \Delta z_0 = z_1 - z_0 \) be the straight chord vector connecting the two knots. 
 
 * The chord length is \( d_0 = | \Delta z_0 | = \sqrt{ (x_1 - x_0)^2 + (y_1 - y_0)^2 } \).
-* The chord angle relative to the horizontal basis vector \( \mathbf{e}_1 \) is \( \phi_0 = \operatorname{atan2}(y_1 - y_0, \, x_1 - x_0) \).
+* The chord angle relative to the horizontal basis vector \( e_1 \) is \( \phi_0 = \operatorname{atan2}(y_1 - y_0, \, x_1 - x_0) \).
 
 The direction of the curve as it leaves \( z_0 \) makes an angle \( \theta_0 \) with the chord. Similarly, as the curve enters \( z_1 \), its direction makes an angle \( \psi_1 \) with the chord.
 
@@ -65,10 +65,10 @@ Once the departure angle \( \theta_0 \) and arrival angle \( \psi_1 \) are known
 If the handles are too short, the curve flattens out like a stiff wire. If the handles are too long, the curve balloons outward and may even loop back on itself.
 
 Hobby discovered that the optimal handle lengths depend on both turning angles through two velocity functions, \( \rho(\theta, \psi) \) and \( \sigma(\theta, \psi) \):
-\[ u_0 = z_0 + \frac{d_0 \cdot \rho(\theta_0, \psi_1)}{3 \, \tau_0} \, \mathbf{R}(\phi_0 + \theta_0) \, \mathbf{e}_1 \]
-\[ v_1 = z_1 - \frac{d_0 \cdot \sigma(\theta_0, \psi_1)}{3 \, \tau_1'} \, \mathbf{R}(\phi_0 - \psi_1) \, \mathbf{e}_1 \]
+\[ u_0 = z_0 + \frac{d_0 \cdot \rho(\theta_0, \psi_1)}{3 \, \tau_0} \, R(\phi_0 + \theta_0) \, e_1 \]
+\[ v_1 = z_1 - \frac{d_0 \cdot \sigma(\theta_0, \psi_1)}{3 \, \tau_1'} \, R(\phi_0 - \psi_1) \, e_1 \]
 where:
-* \( \mathbf{R}(\alpha) = \cos \alpha + \sin \alpha \, \mathbf{e}_{12} \) is the planar rotor in \( Cl(2,0) \) that rotates a vector by angle \( \alpha \) in the oriented plane \( \mathbf{e}_{12} \).
+* \( R(\alpha) = \cos \alpha + \sin \alpha \, e_{12} \) is the planar rotor in \( Cl(2,0) \) that rotates a vector by angle \( \alpha \) in the oriented plane \( e_{12} \).
 * \( \tau_0 \) and \( \tau_1' \) are user-adjustable tension parameters (where \( \tau = 1.0 \) represents standard optical fullness, \( \tau > 1.0 \) tightens the curve toward the chord, and \( \tau < 1.0 \) relaxes the curve).
 * The velocity function \( \rho(\theta, \psi) \) is given by:
 \[ \rho(\theta, \psi) = \frac{2 + \sqrt{2} \left( \sin \theta - \frac{1}{16} \sin \psi \right) \left( \sin \psi - \frac{1}{16} \sin \theta \right) (\cos \theta - \cos \psi)}{1 + \left( \frac{\sqrt{5} - 1}{2} \right) \cos \theta + \left( \frac{3 - \sqrt{5}}{2} \right) \cos \psi} \]
@@ -95,8 +95,8 @@ where the coefficients are determined entirely by the geometry of adjacent chord
 \[ C_k = \frac{\tau_{k+1}}{\tau_k'^2 \cdot d_k} \]
 \[ D_k = - A_k \, \psi_{k-1} - C_k \, \psi_k \]
 
-For a closed loop of \( n \) knots (such as the outer contour of an *o*), this produces a cyclic system of \( n \) linear equations in \( n \) unknown angles \( \boldsymbol{\theta} = (\theta_0, \theta_1, \dots, \theta_{n-1})^T \):
-\[ \mathbf{K} \, \boldsymbol{\theta} = \mathbf{d} \]
+For a closed loop of \( n \) knots (such as the outer contour of an *o*), this produces a cyclic system of \( n \) linear equations in \( n \) unknown angles \( \theta = (\theta_0, \theta_1, \dots, \theta_{n-1})^T \):
+\[ K \, \theta = d \]
 
 === Where Classical Solvers Fail: The Reality of Glyph Design
 
@@ -112,58 +112,58 @@ However, in professional font design tools, font interpolation engines, and glyp
 === The SVD Extension: Finding the Best Harmony in Every Situation
 
 To resolve all these failure modes, we generalize Hobby’s formulation into an arbitrary rectangular constraint matrix over the discrete parameter space:
-\[ \mathbf{K} \, \boldsymbol{\theta} = \mathbf{b} \]
-where \( \mathbf{K} \in \mathbb{R}^{m \times n} \) contains:
+\[ K \, \theta = b \]
+where \( K \in \mathbb{R}^{m \times n} \) contains:
 * Curvature continuity rows for all smooth internal knots.
 * Direction lock rows pinning specific angles: \( \theta_k = \theta_{\text{locked}} \).
 * Boundary condition rows for open contours (curl conditions or fixed terminal slopes).
 
-Instead of assuming that \( \mathbf{K} \) is square and invertible, we compute its **Singular Value Decomposition (SVD)**:
-\[ \mathbf{K} = \mathbf{U} \, \mathbf{\Sigma} \, \mathbf{V}^T \]
+Instead of assuming that \( K \) is square and invertible, we compute its **Singular Value Decomposition (SVD)**:
+\[ K = U \, \Sigma \, V^T \]
 where:
-* \( \mathbf{U} \) is an \( m \times m \) orthogonal matrix whose columns represent the fundamental modes of the constraint space.
-* \( \mathbf{\Sigma} \) is an \( m \times n \) diagonal matrix of singular values \( \sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_r \ge 0 \), representing the geometric stiffness of each mode.
-* \( \mathbf{V} \) is an \( n \times n \) orthogonal matrix whose columns represent the fundamental angular deformation modes of the knot sequence.
+* \( U \) is an \( m \times m \) orthogonal matrix whose columns represent the fundamental modes of the constraint space.
+* \( \Sigma \) is an \( m \times n \) diagonal matrix of singular values \( \sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_r \ge 0 \), representing the geometric stiffness of each mode.
+* \( V \) is an \( n \times n \) orthogonal matrix whose columns represent the fundamental angular deformation modes of the knot sequence.
 
 ==== The Moore-Penrose Pseudoinverse
 
-The Moore-Penrose pseudoinverse \( \mathbf{K}^+ \) is computed by inverting only the non-zero singular values exceeding the finite m-resolution aperture \( \varepsilon_{\text{tol}} \):
-\[ \mathbf{K}^+ = \mathbf{V} \, \mathbf{\Sigma}^+ \, \mathbf{U}^T \]
+The Moore-Penrose pseudoinverse \( K^+ \) is computed by inverting only the non-zero singular values exceeding the finite m-resolution aperture \( \varepsilon_{\text{tol}} \):
+\[ K^+ = V \, \Sigma^+ \, U^T \]
 where:
 \[ \Sigma^+_{ii} = \begin{cases} \frac{1}{\sigma_i} & \text{if } \sigma_i > \varepsilon_{\text{tol}} \\ 0 & \text{if } \sigma_i \le \varepsilon_{\text{tol}} \end{cases} \]
 The tolerance threshold is set relative to machine precision:
 \[ \varepsilon_{\text{tol}} = \max(m, n) \cdot \sigma_1 \cdot 10^{-14} \]
 
 The optimal turning angle vector is then:
-\[ \boldsymbol{\theta}^* = \mathbf{K}^+ \, \mathbf{b} \]
+\[ \theta^* = K^+ \, b \]
 
 [#thm-svd-hobby-least-squares]
 [THEOREM]
 .Theorem: Universal Existence, Uniqueness, and Least-Squares Optimality of SVD-Hobby Splines in the Iris Number System
 ====
-Let an arbitrary configuration of \( n \) knots \( \{ z_k \} \) on the discrete design grid \( \mathcal{G}_N \) and \( m \) typographic constraints be represented by the linear system \( \mathbf{K} \boldsymbol{\theta} = \mathbf{b} \).
+Let an arbitrary configuration of \( n \) knots \( \{ z_k \} \) on the discrete design grid \( \mathcal{G}_N \) and \( m \) typographic constraints be represented by the linear system \( K \theta = b \).
 
-1. **Universal Solvability**: The solution \( \boldsymbol{\theta}^* = \mathbf{K}^+ \mathbf{b} \) exists and is uniquely determined for *every* possible input, regardless of whether \( \mathbf{K} \) is square, singular, rank-deficient, underdetermined, or overdetermined.
-2. **Least-Squares Error Minimization**: If the designer's constraints are contradictory or overdetermined, \( \boldsymbol{\theta}^* \) minimizes the total residual discrepancy:
-\[ \| \mathbf{K} \boldsymbol{\theta}^* - \mathbf{b} \|_2 = \min_{\boldsymbol{\theta}} \| \mathbf{K} \boldsymbol{\theta} - \mathbf{b} \|_2 \]
-3. **Minimum-Strain Regularization**: If the constraints are underdetermined (such as on a straight line or unconstrained contour), \( \boldsymbol{\theta}^* \) selects the unique solution with the smallest Euclidean norm \( \| \boldsymbol{\theta}^* \|_2 \). In the Iris number system, this corresponds to the minimal-strain contour that minimizes unnecessary angular displacement across knots.
+1. **Universal Solvability**: The solution \( \theta^* = K^+ b \) exists and is uniquely determined for *every* possible input, regardless of whether \( K \) is square, singular, rank-deficient, underdetermined, or overdetermined.
+2. **Least-Squares Error Minimization**: If the designer's constraints are contradictory or overdetermined, \( \theta^* \) minimizes the total residual discrepancy:
+\[ \| K \theta^* - b \|_2 = \min_{\theta} \| K \theta - b \|_2 \]
+3. **Minimum-Strain Regularization**: If the constraints are underdetermined (such as on a straight line or unconstrained contour), \( \theta^* \) selects the unique solution with the smallest Euclidean norm \( \| \theta^* \|_2 \). In the Iris number system, this corresponds to the minimal-strain contour that minimizes unnecessary angular displacement across knots.
 
 *Proof:*
 
-. **Orthogonal Direct Sum**: By the Singular Value Decomposition in real Euclidean space, the domain \( \mathbb{R}^n \) is the direct sum of the row space \( \operatorname{row}(\mathbf{K}) \) and the null space \( \operatorname{null}(\mathbf{K}) \).
+. **Orthogonal Direct Sum**: By the Singular Value Decomposition in real Euclidean space, the domain \( \mathbb{R}^n \) is the direct sum of the row space \( \operatorname{row}(K) \) and the null space \( \operatorname{null}(K) \).
 
-. **Projection Optimality**: The vector \( \mathbf{K} \boldsymbol{\theta}^* = \mathbf{U} \mathbf{\Sigma} \mathbf{\Sigma}^+ \mathbf{U}^T \mathbf{b} \) is the exact orthogonal projection of \( \mathbf{b} \) onto the range \( \operatorname{col}(\mathbf{K}) \). By the projection theorem on discrete Euclidean inner-product spaces, this uniquely minimizes the distance \( \| \mathbf{K} \boldsymbol{\theta} - \mathbf{b} \|_2 \).
+. **Projection Optimality**: The vector \( K \theta^* = U \Sigma \Sigma^+ U^T b \) is the exact orthogonal projection of \( b \) onto the range \( \operatorname{col}(K) \). By the projection theorem on discrete Euclidean inner-product spaces, this uniquely minimizes the distance \( \| K \theta - b \|_2 \).
 
-. **Null-Space Elimination**: Any other vector \( \boldsymbol{\theta} \) that achieves the same minimal residual must satisfy \( \mathbf{K} \boldsymbol{\theta} = \mathbf{K} \boldsymbol{\theta}^* \), meaning \( \boldsymbol{\theta} = \boldsymbol{\theta}^* + \mathbf{w} \) for some vector \( \mathbf{w} \in \operatorname{null}(\mathbf{K}) \). Because \( \boldsymbol{\theta}^* = \mathbf{V} \mathbf{\Sigma}^+ \mathbf{U}^T \mathbf{b} \in \operatorname{row}(\mathbf{K}) \), we have the orthogonality condition \( \langle \boldsymbol{\theta}^*, \mathbf{w} \rangle = 0 \). Therefore:
-\[ \| \boldsymbol{\theta} \|_2^2 = \| \boldsymbol{\theta}^* \|_2^2 + \| \mathbf{w} \|_2^2 \ge \| \boldsymbol{\theta}^* \|_2^2 \]
-with equality if and only if \( \mathbf{w} = \mathbf{0} \). Hence, \( \boldsymbol{\theta}^* \) is the uniquely optimal minimal-norm solution. \( \square \)
+. **Null-Space Elimination**: Any other vector \( \theta \) that achieves the same minimal residual must satisfy \( K \theta = K \theta^* \), meaning \( \theta = \theta^* + w \) for some vector \( w \in \operatorname{null}(K) \). Because \( \theta^* = V \Sigma^+ U^T b \in \operatorname{row}(K) \), we have the orthogonality condition \( \langle \theta^*, w \rangle = 0 \). Therefore:
+\[ \| \theta \|_2^2 = \| \theta^* \|_2^2 + \| w \|_2^2 \ge \| \theta^* \|_2^2 \]
+with equality if and only if \( w = 0 \). Hence, \( \theta^* \) is the uniquely optimal minimal-norm solution. \( \square \)
 ====
 
 === IEEE-754 Arithmetic Safeguards and Exception Handling
 
 In production software, mathematical elegance must be backed by strict floating-point hygiene. The SVD-Hobby engine implements four specific defensive safeguards:
 
-1. **Aperture Coalescence for Coincident Knots**: If the distance between two consecutive knots is less than an aperture threshold \( d_k < 10^{-10} \), the engine does not perform division. It collapses the duplicate knot and sets the corresponding row in \( \mathbf{K} \) to an identity constraint \( \theta_k = 0 \).
+1. **Aperture Coalescence for Coincident Knots**: If the distance between two consecutive knots is less than an aperture threshold \( d_k < 10^{-10} \), the engine does not perform division. It collapses the duplicate knot and sets the corresponding row in \( K \) to an identity constraint \( \theta_k = 0 \).
 2. **Velocity Clamping against Singular Angles**: If a designer creates an extreme acute fold (\( \theta \to \pi \) or \( \psi \to \pi \)), the denominator of Hobby’s velocity function \( \rho(\theta, \psi) \) can approach zero. The engine clamps the computed velocity:
 \[ \rho_{\text{safe}} = \max(0.05, \, \min(4.0, \, \rho(\theta, \psi))) \]
 This guarantees that Bézier handles never shoot across the canvas or invert through the knot.
