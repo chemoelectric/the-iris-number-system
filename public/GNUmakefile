@@ -49,9 +49,10 @@ clean:: clean-html
 	          --lua-filter=chapter-newpage.lua \
 	          -V documentclass=book \
 	          -V classoption=oneside \
-	          -H header.tex \
-	          -V fontsize=12pt \
 	          -V classoption=fleqn \
+	          -V linestretch=1.05 \
+	          -V fontsize=12pt \
+	          -H header.tex \
 	          -M title="" \
 	          $(<) -o $(@)
 .PHONY: clean-pdf
