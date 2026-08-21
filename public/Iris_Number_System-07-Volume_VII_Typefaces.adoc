@@ -95,6 +95,39 @@ When the departure and arrival angles are equal (\( \theta = \psi \)), the sum o
 \[ (\Phi^{-1} + \Phi^{-2}) \cos \theta = 1 \cdot \cos \theta \]
 so that the entire denominator reduces to \( 1 + \cos \theta \). This harmonic partition of unity ensures that symmetric circular quadrants and elliptical segments preserve exact curvature balance without manual optical compensation.
 
+=== Continued Fractions, Noble Numbers, and Scale-Free Energy Distribution
+
+Why should the Golden Ratio appear so naturally inside an equation designed to draw letterforms? Is this an arbitrary numerical trick, or does it reflect a deeper principle of geometry?
+
+To see why, we must look at how numbers can be built out of pure fractions, and what happens to a flexible physical spline when it bends.
+
+==== Continued Fractions and the Simplest Pattern in Arithmetic
+
+Every number can be expressed as a **continued fraction**—a chain of nested fractions where each denominator contains another fraction:
+\[ a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \ddots}}} \]
+
+For most numbers, the integers \( a_0, a_1, a_2, \dots \) jump around unpredictably. For instance, the ratio \( \pi \) begins as \( [3; 7, 15, 1, 292, \dots] \). 
+
+However, the Golden Ratio \( \Phi \) has the purest and most uniform pattern possible in all of arithmetic: every single step in the chain is simply the number \( 1 \):
+\[ \Phi = 1 + \cfrac{1}{1 + \cfrac{1}{1 + \cfrac{1}{1 + \ddots}}} \]
+Similarly, its reciprocal \( \Phi^{-1} \) (the primary coefficient \( c_1 \) in Hobby’s velocity formula) is:
+\[ \Phi^{-1} = \cfrac{1}{1 + \cfrac{1}{1 + \cfrac{1}{1 + \ddots}}} \]
+
+In number theory, numbers whose continued fractions end in a repeating sequence of \( 1 \)s are called **noble numbers**. The Golden Ratio is the most noble of all.
+
+==== Scale-Free Balance: Why Infinite Ones Prevent Optical Kinks
+
+In digital type design, a glyph rarely consists of identical, evenly spaced segments. A designer might place two knots very close together around a sharp serif bracket, followed immediately by a long, sweeping stroke across a capital bowl.
+
+When a curve transitions from a tight radius to a wide radius, software that uses simple polynomial averaging often creates an artificial “bump” or “wobble”. This happens because one knot exerts an overpowering influence over the neighboring segment, creating an accidental harmonic resonance (much like pushing a child on a swing at just the wrong frequency).
+
+Because \( \Phi = 1 + \frac{1}{\Phi} \), the Golden Ratio satisfies the self-balancing relation:
+\[ \Phi^{-1} = 1 - \Phi^{-2} \]
+This means that when the curve computes how much influence the starting knot should have compared to the ending knot, the ratio between primary local feedback and distant secondary feedback is:
+\[ \frac{c_1}{c_2} = \frac{\Phi^{-1}}{\Phi^{-2}} = \Phi \]
+
+In physical terms, the draftsperson’s spline distributes its bending energy across adjacent segments in a **scale-free, non-resonant hierarchy**. Because the continued fraction is made entirely of \( 1 \)s, the curve has no “preferred size” or artificial frequency. It dampens out optical distortions evenly across long sweeps and compact brackets alike, ensuring that letterforms look naturally proportioned at both headline and caption optical sizes.
+
 === Curvature Continuity: The Mathematics of Optical Smoothness
 
 Why do type designers care about curvature continuity? 
