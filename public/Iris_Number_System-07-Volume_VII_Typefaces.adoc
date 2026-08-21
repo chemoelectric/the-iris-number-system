@@ -434,6 +434,8 @@ In the planar Clifford algebra \( Cl(2,0) \) over the discrete metric grid \( \m
 Any point or displacement vector in the design plane is a 1-vector:
 \[ z = x \, e_1 + y \, e_2 \]
 
+To prevent confusion for readers accustomed to conventional coordinate systems: the 1-vector \( z = x \, e_1 + y \, e_2 \) corresponds directly to what is commonly written as the 2D Cartesian pair \( z = (x, y) \) in practical font design grids (such as the standard 1000 or 2048 units-per-em grids used in digital typography). The orthonormal basis vectors \( e_1 \) and \( e_2 \) simply represent unit steps along the horizontal \( x \)-axis and vertical \( y \)-axis respectively, enabling algebraic operations (such as rotations via geometric products) to be performed directly on points without dropping into separate scalar coordinate machinery.
+
 ==== The Sánchez-Reyes Symmetric Power Basis (s-Basis)
 
 In standard polynomial design, curves are traditionally expressed in the conventional monomial power basis \( \{ 1, t, t^2, \dots, t^n \} \) or the Bernstein basis \( \{ B_{k,n}(t) \} \). However, the monomial basis is notoriously ill-conditioned and introduces strong endpoint asymmetry, while the Bernstein basis requires separate rational fractions for conics.
