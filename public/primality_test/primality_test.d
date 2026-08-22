@@ -16,6 +16,13 @@
 * Execution modes (flags for gdc):
 *   -fversion=standalone (Command-line application with main)
 *   -fversion=demo       (Demonstration suite)
+*
+* Example compilation:
+*
+*   gdc -O3 -march=native -frelease -funroll-loops \
+*     -fversion=LIMB_512 -fversion=standalone \
+*       primality_test.d -o primality_test
+*
 *********************************************************************/
 
 module primality_test;
