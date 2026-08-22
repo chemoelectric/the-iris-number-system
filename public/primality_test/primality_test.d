@@ -6,14 +6,14 @@
 * Montgomery domain aperture reduction for deterministic primality
 * verification without integer factorization.
 *
-* Precision selected at compile time via version flags:
+* Precision selected at compile time via gdc (GNU D) version flags:
 *   -fversion=LIMB_32   (32-bit integer precision)
 *   -fversion=LIMB_64   (64-bit integer precision)
 *   -fversion=LIMB_128  (128-bit integer precision)
 *   -fversion=LIMB_256  (256-bit integer precision)
 *   -fversion=LIMB_512  (512-bit integer precision)
 *
-* Execution modes:
+* Execution modes (flags for gdc):
 *   -fversion=standalone (Command-line application with main)
 *   -fversion=demo       (Demonstration suite)
 *********************************************************************/
@@ -501,7 +501,7 @@ VectorizedBatchResult runParallelPrimalityBenchmark(size_t count)
       idx = idx + 1;
     }
 
-  auto sw = StopWatch(StartPolicy.yes);
+  auto sw = StopWatch(AutoStart.yes);
   batchPrimalityTestVectorized(candidates, results);
   sw.stop();
 
@@ -590,7 +590,7 @@ version (standalone)
       }
 
     writeln("\nExecuting single aperture primality evaluation...");
-    auto sw = StopWatch(StartPolicy.yes);
+    auto sw = StopWatch(AutoStart.yes);
     bool primeRes = isPrimeIrisBailliePSW64(testVal);
     sw.stop();
     double singleTimeUs = sw.peek().total!"usecs";
