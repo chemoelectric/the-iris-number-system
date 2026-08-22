@@ -28,6 +28,34 @@ $(AWK) < $(1) > $(2) ' \
 /^\*Proof:\*$$/ { print; print ""; next } \
 /^\* **[^[:space:]]/ { print ""; print; next } \
 /^1\. **[^[:space:]]/ { print ""; print; next } \
+/^=[[:space:]]+The Iris Number System: Fundamentals[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume I: Fundamentals"; \
+  next \
+} \
+/^=[[:space:]]+The Iris Number System: Applications to Number Theory, Analysis, Probability Theory, Statistics[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume II: Applications to Number Theory, Analysis, Probability Theory, Statistics"; \
+  next \
+} \
+/^=[[:space:]]+The Iris Number System: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume III: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics"; \
+  next \
+} \
+/^=[[:space:]]+The Iris Number System: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume IV: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding"; \
+  next \
+} \
+/^=[[:space:]]+The Iris Number System: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume V: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing"; \
+  next \
+} \
+/^=[[:space:]]+The Iris Number System: Applications to Fractals[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume VI: Applications to Fractals"; \
+  next \
+} \
+/^=[[:space:]]+The Iris Number System: Applications to Digital Typeface Design[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume VII: Applications to Digital Typeface Design"; \
+  next \
+} \
 { print } \
 '
 endef
