@@ -10,7 +10,3 @@ const filePath = path.join(publicDir, fileName);
 
 fs.writeFileSync(filePath, adocContent, 'utf8');
 console.log(`Successfully generated ${filePath}`);
-
-const masterPath = path.join(publicDir, 'volume_5_master.adoc');
-fs.writeFileSync(masterPath, adocContent, 'utf8');
-console.log(`Successfully generated ${masterPath}`);

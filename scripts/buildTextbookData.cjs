@@ -141,9 +141,7 @@ const vol4 = parseAdocFile(
 );
 
 const vol5 = parseAdocFile(
-  fs.existsSync("public/Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc")
-    ? "public/Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc"
-    : "public/volume_5_master.adoc",
+  "public/Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc",
   "textbook-iris-spectral-circuits-etc",
   "The Iris Number System",
   "Volume V: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing",
