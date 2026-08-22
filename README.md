@@ -122,7 +122,7 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── maxima/                  # Maxima package (iris.mac) for Cl(4,1,1) geometric algebra and field equations
 │   ├── wave_queens_8.adb        # Wave-mechanical 8-queens phase-locking engine in Ada 2022
 │   ├── grover_search_givens/    # Standalone Grover search Ada program using Givens rotations
-│   ├── primality_test/          # Standalone D arbitrary multiple-precision primality engine (Baillie-PSW & std.bigint)
+│   ├── primality_test/          # Standalone vectorizable D primality engine (Baillie-PSW & Montgomery reduction)
 │   └── bezclip.mp               # MetaPost illustration of s-power Bézier clipping
 ├── src/
 │   ├── components/               # React UI modules (Navbar, Textbook, Prover, Calculator, etc.)
