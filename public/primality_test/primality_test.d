@@ -39,26 +39,29 @@ version (LIMB_512)
   enum size_t NUM_LIMBS = 8;
   enum string PRECISION_NAME = "512-bit";
 }
-else version (LIMB_256)
-{
-  enum size_t NUM_LIMBS = 4;
-  enum string PRECISION_NAME = "256-bit";
-}
-else version (LIMB_128)
-{
-  enum size_t NUM_LIMBS = 2;
-  enum string PRECISION_NAME = "128-bit";
-}
-else version (LIMB_32)
-{
-  enum size_t NUM_LIMBS = 1;
-  enum string PRECISION_NAME = "32-bit";
-}
 else
-{
-  enum size_t NUM_LIMBS = 1;
-  enum string PRECISION_NAME = "64-bit";
-}
+  version (LIMB_256)
+  {
+    enum size_t NUM_LIMBS = 4;
+    enum string PRECISION_NAME = "256-bit";
+  }
+else
+  version (LIMB_128)
+  {
+    enum size_t NUM_LIMBS = 2;
+    enum string PRECISION_NAME = "128-bit";
+  }
+else
+  version (LIMB_32)
+  {
+    enum size_t NUM_LIMBS = 1;
+    enum string PRECISION_NAME = "32-bit";
+  }
+else
+  {
+    enum size_t NUM_LIMBS = 1;
+    enum string PRECISION_NAME = "64-bit";
+  }
 
 struct BigIntFixed
 {
@@ -855,7 +858,7 @@ unittest
   assert(results[5] == true);
 
   assert(isPrimeIrisBailliePSWBigInt(BigInt(
-    "1000000000000000000000000000057")));
+                                       "1000000000000000000000000000057")));
   assert(isPrimeIrisBailliePSWBigInt(BigInt(1000000007UL)));
   assert(!isPrimeIrisBailliePSWBigInt(BigInt(561UL)));
 }
