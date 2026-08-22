@@ -68,7 +68,8 @@ procedure wave_queens_8 is
          s_val := sin (ang_c);
          r_val := real (row);
 
-         col_idx := integer (floor ((ang_c / (2.0 * pi)) * fn_n)) + 1;
+         col_idx :=
+           integer (real'floor ((ang_c / (2.0 * pi)) * fn_n)) + 1;
          if col_idx < 1 then
             col_idx := 1;
          elsif col_idx > board_size then
@@ -195,7 +196,8 @@ procedure wave_queens_8 is
       fn_n := real (board_size);
       for row in 1 .. board_size loop
          ang_c := phases (row);
-         c_val := integer (floor ((ang_c / (2.0 * pi)) * fn_n)) + 1;
+         c_val :=
+           integer (real'floor ((ang_c / (2.0 * pi)) * fn_n)) + 1;
          if c_val < 1 then
             c_val := 1;
          elsif c_val > board_size then
