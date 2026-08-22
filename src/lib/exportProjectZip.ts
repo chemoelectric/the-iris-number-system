@@ -20,6 +20,7 @@ export async function exportCompleteWorkspaceZip(): Promise<void> {
     'bezclip.mp',
     'bernstein_root_finder.adb',
     'wave_queens_8.adb',
+    'grassmann_queens_8.adb',
     'acl2/iris_number_system.lisp',
     'acl2/README.md',
     'grover_search_givens/grover_search_givens.adb',
