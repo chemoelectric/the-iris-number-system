@@ -25,17 +25,17 @@ procedure wave_queens_8 is
 
    pi : constant real := 3.141592653589793238462643383279502884;
 
-   rng_state : integer := 987654321;
+   type rand_u32 is mod 2**32;
+
+   rng_state : rand_u32 := 987654321;
 
    function next_random return integer is
-      mult_val : constant integer := 1664525;
-      add_val  : constant integer := 1013904223;
-      mod_val  : constant integer := 2147483647;
+      mult_val : constant rand_u32 := 1664525;
+      add_val  : constant rand_u32 := 1013904223;
       res      : integer;
    begin
-      rng_state :=
-        abs ((rng_state * mult_val + add_val) mod mod_val);
-      res := rng_state;
+      rng_state := rng_state * mult_val + add_val;
+      res := integer (rng_state / 2);
       return res;
    end next_random;
 
