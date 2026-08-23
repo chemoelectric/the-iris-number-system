@@ -1546,62 +1546,197 @@ The geometric-algebraic polynomial curve intersection and Bézier clipping formu
 
 === MetaPost Implementation of Geometric-Algebraic Curve Intersections
 
-The MetaPost language provides an elegant environment for rendering geometric curves and computing intersections programmatically. Below is complete MetaPost code illustrating quadratic Bézier curve generation, skeleton projection, fat-line bounds, and exact intersection extraction.
+The MetaPost language provides an elegant environment for rendering geometric curves and computing intersections programmatically. Below is complete MetaPost code illustrating quadratic Bézier curve generation in the \( s \)-power basis, skeleton coordinate transformation, optimal parallel fat-line bounds, parameter-space quadratic clipping, and quadratic deviation contraction.
 
 [source,metapost]
 ----
-% MetaPost illustration of s-Power Bézier Curve Intersections
+% MetaPost illustration of the s-Power Bézier Clipping Algorithm
+%
+% This program demonstrates the constructive s-power Bézier clipping
+% algorithm:
+%   1. S-power basis curve representation and deviation vector derivation
+%   2. Affine skeleton transformation mapping chord to the standard baseline
+%   3. Optimal parallel fat-line slab construction
+%   4. Algebraic quadratic boundary crossing solution (solving A*t^2 + B*t + C = 0)
+%   5. Parameter interval pruning and quadratic deviation contraction:
+%      P1_delta_new = (t_max - t_min)^2 * P1_delta
+%   6. Deterministic convergence to the exact intersection point (x*, y*)
+%
+% To compile:
+%   mpost --tex=lualatex bezclip.mp
 
-filenametemplate "%j-%3c.mps";
+filenametemplate "%j-%c.mps";
 prologues := 3;
 
 verbatimtex
-  \documentclass{article}
-  \begin{document}
-  etex;
+\documentclass{article}
+\usepackage{fouriernc}
+\usepackage{amsmath,amssymb}
+\begin{document}
+etex;
 
+% Colors & Styling
+color col_clipper, col_clippehend, col_skel, col_fatline, col_fatline_q;
+color col_inter, col_box, col_discard;
+
+col_clipper    := (0.80, 0.15, 0.15); % Deep Red
+col_clippehend := (0.10, 0.55, 0.20); % Emerald Green
+col_skel       := (0.15, 0.35, 0.85); % Royal Blue
+col_fatline    := (0.88, 0.93, 1.00); % Faint Blue Fat-Line Band
+col_fatline_q  := (0.88, 0.97, 0.90); % Faint Green Fat-Line Band
+col_inter      := (0.05, 0.05, 0.05); % Pure Black
+
+% Evaluate quadratic Bézier curve in s-power basis:
+vardef eval_spower(expr Pzero, Ptwo, Pdelta, t) =
+  ((1 - t) * Pzero + t * Ptwo + (1 - t) * t * Pdelta)
+enddef;
+
+% Construct smooth MetaPost path from s-power representation
+vardef spower_path(expr Pzero, Ptwo, Pdelta, steps) =
+  eval_spower(Pzero, Ptwo, Pdelta, 0)
+  for i = 1 upto steps:
+    -- eval_spower(Pzero, Ptwo, Pdelta, i / steps)
+  endfor
+enddef;
+
+% Affine Skeleton Transformation: Maps P0 -> (0,0) and P2 -> (1,0)
+vardef skel_transform(expr Pzero, Ptwo, Q) =
+  save dx, dy, Lsq, rx, ry;
+  dx := xpart(Ptwo - Pzero);
+  dy := ypart(Ptwo - Pzero);
+  Lsq := dx * dx + dy * dy;
+  rx := xpart(Q - Pzero);
+  ry := ypart(Q - Pzero);
+  ((dx * rx + dy * ry) / Lsq, (-dy * rx + dx * ry) / Lsq)
+enddef;
+
+% FIGURE 1: Global Geometry & Optimal Fat-Line Slabs
 beginfig(1);
+  save u, P, Q, P_delta, Q_delta;
+  u := 1.6cm;
 
-  u := 1.5cm;
-
-% Define control points for Clipper Curve P
   pair P[], Q[];
-  P0 := (-1u, 0u);
-  P1 := (0u, 10u);
-  P2 := (1u, 0u);
+  P0 := (-1u, 0u); P1 := (0u, 10u); P2 := (1u, 0u);
+  Q0 := (2u, 1u);  Q1 := (-8u, 2u); Q2 := (2u, 3u);
 
-% Define control points for Clippehend Curve Q
-  Q0 := (2u, 1u);
-  Q1 := (-8u, 2u);
-  Q2 := (2u, 3u);
+  pair P_delta, Q_delta;
+  P_delta := 2 * P1 - P0 - P2;  % (0, 20u)
+  Q_delta := 2 * Q1 - Q0 - Q2;  % (-20u, 0)
 
-% Draw Clipper Curve P (quadratic Bezier)
+  % Optimal Fat-Line bounds for Clipper P (y in [0, 5u]):
+  path fatline_P_slab;
+  fatline_P_slab := (-3.5u, 0u) -- (3.5u, 0u) -- (3.5u, 5u) -- (-3.5u, 5u) -- cycle;
+  fill fatline_P_slab withcolor col_fatline;
+
+  % Optimal Fat-Line bounds for Clippehend Q (x in [-3u, 2u]):
+  path fatline_Q_slab;
+  fatline_Q_slab := (-3u, -0.5u) -- (2u, -0.5u) -- (2u, 5.5u) -- (-3u, 5.5u) -- cycle;
+  fill fatline_Q_slab withcolor col_fatline_q;
+
+  % Mutual Fat-Line Overlap Region: [-3u, 2u] x [0u, 5u]
+  path overlap_slab;
+  overlap_slab := (-3u, 0u) -- (2u, 0u) -- (2u, 5u) -- (-3u, 5u) -- cycle;
+  fill overlap_slab withcolor 0.5[col_fatline, col_fatline_q];
+  draw overlap_slab dashed evenly scaled 0.7 withpen pencircle scaled 0.8pt withcolor (0.4, 0.4, 0.4);
+
+  % Draw Boundary Lines & Skeletons:
+  draw (-3.5u, 0u) -- (3.5u, 0u) withpen pencircle scaled 0.6pt withcolor col_skel;
+  draw (-3.5u, 5u) -- (3.5u, 5u) dashed evenly withpen pencircle scaled 0.8pt withcolor col_clipper;
+  draw (2u, -0.5u) -- (2u, 5.5u) withpen pencircle scaled 0.6pt withcolor col_clippehend;
+  draw (-3u, -0.5u) -- (-3u, 5.5u) dashed evenly withpen pencircle scaled 0.8pt withcolor col_clippehend;
+
+  draw P0 -- P2 withpen pencircle scaled 1.2pt withcolor col_skel;
+  draw Q0 -- Q2 withpen pencircle scaled 1.2pt withcolor (0.1, 0.4, 0.1);
+
+  % Draw Deviation Vectors (from midpoint):
+  pair midP, midQ;
+  midP := 0.5[P0, P2]; midQ := 0.5[Q0, Q2];
+  drawarrow midP -- (midP + 0.25 * P_delta) withpen pencircle scaled 1.1pt withcolor (0.7, 0, 0);
+  drawarrow midQ -- (midQ + 0.25 * Q_delta) withpen pencircle scaled 1.1pt withcolor (0, 0.5, 0);
+
+  % Draw Quadratic Bézier Curves in s-power representation:
   path pathP, pathQ;
-  pathP := P0 .. controls (2/3[P0,P1]) and (2/3[P2,P1]) .. P2;
-  pathQ := Q0 .. controls (2/3[Q0,Q1]) and (2/3[Q2,Q1]) .. Q2;
+  pathP := spower_path(P0, P2, P_delta, 40);
+  pathQ := spower_path(Q0, Q2, Q_delta, 40);
+  draw pathP withpen pencircle scaled 1.6pt withcolor col_clipper;
+  draw pathQ withpen pencircle scaled 1.6pt withcolor col_clippehend;
 
-% Draw Skeleton line P0--P2
-  draw P0--P2 dashed withdots scaled 0.8 withcolor blue;
+  % Intersection Point: (x*, y*) = (0, 5u)
+  pair P_inter;
+  P_inter := (0u, 5u);
+  fill fullcircle scaled 6pt shifted P_inter withcolor col_inter;
 
-% Draw Curves
-  draw pathP withpen pencircle scaled 1.2pt withcolor red;
-  draw pathQ withpen pencircle scaled 1.2pt withcolor (0, 0.6, 0);
-
-% Compute and draw Intersection Point using MetaPost intersectiontimes
-  pair t_pair;
-  t_pair := pathP intersectiontimes pathQ;
-  pair inter_pt;
-  inter_pt := point xpart(t_pair) of pathP;
-  fill fullcircle scaled 5pt shifted inter_pt withcolor black;
-  label.top(btex $(x^*,y^*) = (0,5)$ etex, inter_pt shifted (0, 4pt));
-
-% Labels
-  label.bot(btex $P_0(-1,0)$ etex, P0);
-  label.bot(btex $P_2(1,0)$ etex, P2);
-  label.rt(btex $Q_2(2,3)$ etex, Q2);
-  label.rt(btex $Q_0(2,1)$ etex, Q0);
-
+  % Labels:
+  label.bot(btex $P_0(-1,0)$ etex, P0 shifted (0, -2pt));
+  label.bot(btex $P_2(1,0)$ etex, P2 shifted (0, -2pt));
+  label.rt(btex $Q_0(2,1)$ etex, Q0 shifted (3pt, 0));
+  label.rt(btex $Q_2(2,3)$ etex, Q2 shifted (3pt, 0));
+  label.top(btex $\mathbf{P}(t)$ [Clipper] etex, eval_spower(P0, P2, P_delta, 0.25) shifted (-14pt, 6pt));
+  label.bot(btex $\mathbf{Q}(t)$ [Clippehend] etex, eval_spower(Q0, Q2, Q_delta, 0.8) shifted (18pt, -6pt));
+  label.top(btex $(x^*, y^*) = (0, 5)$ etex, P_inter shifted (0, 6pt));
 endfig;
+
+% FIGURE 2: Skeleton Frame Projection & Distance Polynomial
+beginfig(2);
+  save w, h, y_max_val, y_scale, t_scale;
+  w := 8.0cm; h := 4.5cm;
+  y_max_val := 3.0; y_scale := h / y_max_val; t_scale := w;
+
+  path fatline_strip;
+  fatline_strip := (0, 0) -- (w, 0) -- (w, 2.5 * y_scale) -- (0, 2.5 * y_scale) -- cycle;
+  fill fatline_strip withcolor col_fatline;
+
+  drawarrow (-0.5cm, 0) -- (w + 0.8cm, 0) withpen pencircle scaled 1.0pt;
+  drawarrow (0, -0.5cm) -- (0, h + 0.5cm) withpen pencircle scaled 1.0pt;
+
+  draw (0, 2.5 * y_scale) -- (w, 2.5 * y_scale) dashed evenly withpen pencircle scaled 0.9pt withcolor col_clipper;
+  label.rt(btex $d_{\max} = \frac{d_y}{4} = 2.5$ etex, (w, 2.5 * y_scale));
+
+  % Plot Clipper Parabola d_P(t)
+  path plot_P;
+  plot_P := (0, 0)
+    for i = 1 upto 50:
+      hide(numeric tt, yy; tt := i / 50; yy := 10.0 * tt * (1.0 - tt);)
+      -- (tt * t_scale, yy * y_scale)
+    endfor;
+  draw plot_P withpen pencircle scaled 1.4pt withcolor col_clipper;
+
+  % Plot Clippehend Distance Polynomial Q_y'(t) = 0.5 + t
+  path plot_Q;
+  plot_Q := (0, 0.5 * y_scale) -- (w, 1.5 * y_scale);
+  draw plot_Q withpen pencircle scaled 1.5pt withcolor col_clippehend;
+
+  label.bot(btex $t=0$ etex, (0, -4pt));
+  label.bot(btex $t=1$ etex, (w, -4pt));
+  label.bot(btex $t = \frac{1}{2}$ etex, (0.5 * w, -3pt));
+  fill fullcircle scaled 5pt shifted (0.5 * w, 2.5 * y_scale) withcolor col_inter;
+endfig;
+
+% FIGURE 3: s-Power Reparameterization & Quadratic Contraction
+beginfig(3);
+  save u, Pzero, Ptwo, Pdelta, tzero, tone, Dt;
+  u := 1.8cm;
+  Pzero := (-1.5u, 0u); Ptwo := (1.5u, 0u); Pdelta := (0u, 16u);
+
+  path path_full;
+  path_full := spower_path(Pzero, Ptwo, Pdelta, 40);
+  draw path_full dashed evenly withpen pencircle scaled 0.8pt withcolor (0.7, 0.7, 0.7);
+
+  tzero := 0.35; tone := 0.65; Dt := tone - tzero;
+
+  pair P_sub_zero, P_sub_two, P_sub_delta;
+  P_sub_zero  := eval_spower(Pzero, Ptwo, Pdelta, tzero);
+  P_sub_two   := eval_spower(Pzero, Ptwo, Pdelta, tone);
+  P_sub_delta := (Dt * Dt) * Pdelta; % Quadratic contraction: (0.3)^2 = 0.09
+
+  draw P_sub_zero -- P_sub_two withpen pencircle scaled 1.2pt withcolor col_skel;
+  path path_sub;
+  path_sub := spower_path(P_sub_zero, P_sub_two, P_sub_delta, 30);
+  draw path_sub withpen pencircle scaled 2.0pt withcolor col_clipper;
+
+  label.top(btex \bfseries Quadratic Deviation Contraction: $P_1^{\Delta,\text{new}} = (\Delta t)^2 P_1^\Delta$ etex, (0, 4.5u));
+endfig;
+
 end.
 ----
 
