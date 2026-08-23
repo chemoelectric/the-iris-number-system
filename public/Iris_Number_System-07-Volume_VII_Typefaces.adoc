@@ -741,6 +741,490 @@ package body Iris_Symmetric_Curves is
 end Iris_Symmetric_Curves;
 ----
 
+== Geometric Algebra of the \( s \)-Power and Bernstein Bases: Distinguishing Points, Vectors, and Arbitrary-Degree Expansions
+
+=== Points Versus Vectors: The Foundational Geometric Distinction
+
+In computational geometry and digital typeface design, one of the most persistent sources of conceptual confusion is the casual conflation of **affine points** (spatial locations) and **displacement vectors** (free directions or translations).
+
+When a type designer places an on-curve knot on the discrete design grid \( \mathcal{G}_N \), that knot is an absolute spatial position: it has an anchor location, but it makes no sense to “add” two knot locations together to produce a third location, just as it makes no sense to add two calendar dates together. By contrast, the offset between two knots is a displacement vector: vectors can be scaled, negated, and added together freely.
+
+Geometric algebra provides the natural mathematical language to make this physical distinction absolute and coordinate-free.
+
+==== The Homogeneous Affine Embedding in \( Cl(3,0) \)
+
+To distinguish points and vectors within the Clifford algebra, we embed the two-dimensional design plane into the three-dimensional geometric algebra \( Cl(3,0) \) by adjoining an origin point or reference basis element \( e_3 \) orthogonal to the planar basis vectors \( \{ e_1, e_2 \} \).
+
+[#def-affine-point-vector-split]
+[DEFINITION]
+.Affine Point–Vector Decomposition in \( Cl(3,0) \)
+====
+Let \( Cl(3,0) \) be the Euclidean Clifford algebra spanned by orthonormal basis 1-vectors \( \{ e_1, e_2, e_3 \} \) with \( e_i^2 = 1 \) and \( e_i e_j = - e_j e_i \) (for \( i \neq j \)).
+
+1. **Affine Point**: An affine location \( P \) in the design plane is a 1-vector whose canonical projection onto \( e_3 \) is unity (scalar weight \( w = 1 \)):
+\[ P = x \, e_1 + y \, e_2 + e_3 \]
+2. **Displacement Vector**: A pure geometric translation \( \mathbf{v} \) in the design plane is a 1-vector whose canonical projection onto \( e_3 \) is zero (scalar weight \( w = 0 \)):
+\[ \mathbf{v} = v_x \, e_1 + v_y \, e_2 + 0 \cdot e_3 = v_x \, e_1 + v_y \, e_2 \]
+3. **Algebraic Operations**:
+* **Point Subtraction**: The difference between any two affine points \( Q \) and \( P \) has weight \( 1 - 1 = 0 \), producing a pure displacement vector:
+\[ Q - P = (x_Q - x_P) \, e_1 + (y_Q - y_P) \, e_2 \]
+* **Point–Vector Addition**: Adding a displacement vector \( \mathbf{v} \) to an affine point \( P \) has weight \( 1 + 0 = 1 \), producing a translated affine point:
+\[ P + \mathbf{v} = (x_P + v_x) \, e_1 + (y_P + v_y) \, e_2 + e_3 \]
+* **Affine Combinations**: A linear combination of points \( \sum_{i=0}^n \alpha_i P_i \) is a physically valid affine point if and only if the weights sum to unity:
+\[ \sum_{i=0}^n \alpha_i = 1 \]
+If \( \sum_{i=0}^n \alpha_i = 0 \), the linear combination is a pure displacement vector.
+====
+
+=== The Bernstein Basis: A Pure Convex Combination of Points
+
+With this rigorous distinction established, let us inspect the classical Bernstein polynomial basis of degree \( n \).
+
+Let \( s = 1 - t \) and \( t \) be the dual barycentric parameters over the unit interval \( [0, 1] \), so that \( s \ge 0 \), \( t \ge 0 \), and \( s + t = 1 \). The Bernstein basis polynomials are given by:
+\[ B_i^n(s, t) = \binom{n}{i} s^{n-i} t^i, \qquad (i = 0, 1, \dots, n) \]
+
+A degree-\( n \) Bézier curve expressed in the Bernstein basis is:
+\[ \mathbf{P}(t) = \sum_{i=0}^n B_i^n(s, t) \, P_i = \sum_{i=0}^n \binom{n}{i} s^{n-i} t^i \, P_i \]
+
+Because of the binomial theorem:
+\[ \sum_{i=0}^n B_i^n(s, t) = \sum_{i=0}^n \binom{n}{i} s^{n-i} t^i = (s + t)^n = 1^n = 1 \]
+the scalar coefficients \( B_i^n(s, t) \) always sum identically to \( 1 \) for every parameter value \( t \in [0, 1] \).
+
+Furthermore, because \( B_i^n(s, t) \ge 0 \) on the interval, the Bernstein representation is **strictly a convex combination of affine points**. Every control point \( P_i \) is an affine point (weight \( w = 1 \)), and the curve is strictly contained within the convex hull of its control polygon.
+
+However, while mathematically elegant, the Bernstein representation obscures the physical mechanics of the curve in two critical ways:
+1. **Remote Control Points**: The intermediate control points \( P_1, \dots, P_{n-1} \) do not lie on the curve; they act as external gravitational anchors. Their coordinates depend heavily on the arbitrary choice of global origin.
+2. **Conflation of Skeleton and Excursion**: The baseline chord connecting the endpoints \( P_0 \) and \( P_n \) is intertwined with the curve's bending excursion, making it difficult to isolate how much the curve actually departs from a straight line.
+
+=== The \( s \)-Power Basis: Structural Separation of Points and Deviation Vectors
+
+The \( s \)-power basis, formulated in the spirit of Javier Sánchez-Reyes and extended here into arbitrary degree in Geometric Algebra, resolves this entanglement by decomposing the curve into:
+1. A **straight skeleton chord** spanned by the two endpoint **points** \( P_0 \) and \( P_n \).
+2. A sequence of **internal deviation vectors** \( \mathbf{P}_k^\Delta \) measuring the transverse geometric excursion away from the chord.
+
+To derive this for arbitrary degree \( n \), we write the straight chord parameterized from \( P_0 \) to \( P_n \) as:
+\[ \mathbf{P}_{\text{chord}}(s, t) = s \, P_0 + t \, P_n \]
+
+Using the binomial identity \( 1 = (s + t)^{n-1} \), we can rewrite the linear chord terms as degree-\( n \) polynomials:
+\[ s \, P_0 = s (s + t)^{n-1} P_0 = \sum_{i=0}^{n-1} \binom{n-1}{i} s^{n-i} t^i \, P_0 \]
+\[ t \, P_n = t (s + t)^{n-1} P_n = \sum_{i=1}^n \binom{n-1}{i-1} s^{n-i} t^i \, P_n \]
+
+Subtracting the baseline chord \( \mathbf{P}_{\text{chord}}(s, t) \) from the full Bernstein curve \( \mathbf{P}(s, t) \), the boundary endpoint terms at \( i = 0 \) and \( i = n \) cancel out completely:
+\[ \mathbf{P}(s, t) - (s \, P_0 + t \, P_n) = \sum_{i=1}^{n-1} s^{n-i} t^i \left[ \binom{n}{i} P_i - \binom{n-1}{i} P_0 - \binom{n-1}{i-1} P_n \right] \]
+
+Let us examine the quantity inside the brackets:
+\[ \mathbf{P}_i^\Delta = \binom{n}{i} P_i - \binom{n-1}{i} P_0 - \binom{n-1}{i-1} P_n \]
+
+By Pascal’s fundamental recurrence, \( \binom{n}{i} = \binom{n-1}{i} + \binom{n-1}{i-1} \). Therefore, the sum of the scalar coefficients in \( \mathbf{P}_i^\Delta \) is:
+\[ \binom{n}{i} - \binom{n-1}{i} - \binom{n-1}{i-1} \equiv 0 \]
+
+Because the sum of the weights is **identically zero**, every intermediate coefficient \( \mathbf{P}_i^\Delta \) is **strictly a pure displacement vector** (weight \( w = 0 \)), completely independent of the choice of coordinate origin!
+
+[#thm-spower-arbitrary-degree]
+[THEOREM]
+.Complete S-Power Basis Representation for Arbitrary Degree \( n \)
+====
+Let \( \mathbf{P}(t) \) be a polynomial curve of degree \( n \ge 1 \) with Bernstein control points \( \{ P_0, P_1, \dots, P_n \} \) in the affine plane embedded in \( Cl(3,0) \).
+
+The curve admits the unique, coordinate-free **\( s \)-power basis expansion**:
+\[ \mathbf{P}(s, t) = s \, P_0 + t \, P_n + \sum_{k=1}^{n-1} s^{n-k} t^k \, \mathbf{P}_k^\Delta \]
+where:
+1. \( P_0 \) and \( P_n \) are the two **affine endpoint points** (weight \( w = 1 \)).
+2. Each \( \mathbf{P}_k^\Delta \) (\( k = 1, \dots, n-1 \)) is a **pure displacement vector** (weight \( w = 0 \)) given by:
+\[ \mathbf{P}_k^\Delta = \binom{n}{k} P_k - \binom{n-1}{k} P_0 - \binom{n-1}{k-1} P_n \]
+3. Every basis blending function \( s^{n-k} t^k \) contains the factor \( s t = (1 - t) t \), vanishing identically at both endpoints \( t = 0 \) and \( t = 1 \).
+
+The inverse transformation recovering the Bernstein control points from the \( s \)-power basis is:
+\[ P_k = \frac{1}{\binom{n}{k}} \left[ \mathbf{P}_k^\Delta + \binom{n-1}{k} P_0 + \binom{n-1}{k-1} P_n \right] \]
+====
+
+=== Concrete Expansions for Degrees 2, 3, 4, and Beyond
+
+Let us evaluate this general theorem for the curve degrees commonly encountered in typeface design and geometric modeling.
+
+==== Degree 2 (Quadratic Bézier Curves, TrueType Standard)
+
+For \( n = 2 \), there is a single internal index \( k = 1 \):
+\[ \mathbf{P}_1^\Delta = \binom{2}{1} P_1 - \binom{1}{1} P_0 - \binom{1}{0} P_2 = 2 \, P_1 - P_0 - P_2 \]
+
+The curve expansion is:
+\[ \mathbf{P}(s, t) = s \, P_0 + t \, P_2 + s t \, \mathbf{P}_1^\Delta \]
+
+* **Geometric Meaning**: Let \( M = \frac{1}{2}(P_0 + P_2) \) be the midpoint of the skeleton chord. The vector \( \mathbf{P}_1^\Delta = 2 (P_1 - M) \) is exactly twice the displacement from the chord midpoint to the off-curve control point \( P_1 \).
+* **Apex Displacement**: At the parameter midpoint \( t = 1/2 \) (where \( s t = 1/4 \)), the physical curve apex is:
+\[ \mathbf{P}(1/2) = M + \frac{1}{4} \mathbf{P}_1^\Delta \]
+The vector \( \frac{1}{4} \mathbf{P}_1^\Delta \) is the exact physical excursion of the parabola from its chord.
+
+==== Degree 3 (Cubic Bézier Curves, PostScript / OpenType CFF Standard)
+
+For \( n = 3 \), there are two internal displacement vectors \( k = 1 \) and \( k = 2 \):
+\[ \mathbf{P}_1^\Delta = \binom{3}{1} P_1 - \binom{2}{1} P_0 - \binom{2}{0} P_3 = 3 \, P_1 - 2 \, P_0 - P_3 \]
+\[ \mathbf{P}_2^\Delta = \binom{3}{2} P_2 - \binom{2}{2} P_0 - \binom{2}{1} P_3 = 3 \, P_2 - P_0 - 2 \, P_3 \]
+
+The cubic expansion is:
+\[ \mathbf{P}(s, t) = s \, P_0 + t \, P_3 + s^2 t \, \mathbf{P}_1^\Delta + s t^2 \, \mathbf{P}_2^\Delta \]
+
+* **Geometric Meaning**: 
+  Notice that \( \mathbf{P}_1^\Delta = 3(P_1 - P_0) - (P_3 - P_0) \), which is three times the initial departure handle minus the full chord vector.
+  Similarly, \( \mathbf{P}_2^\Delta = 3(P_2 - P_3) + (P_3 - P_0) \), which is three times the arrival handle plus the chord vector.
+* **Symmetry**: If the cubic curve is symmetric about its midpoint, \( \mathbf{P}_1^\Delta = \mathbf{P}_2^\Delta \), and the deviation reduces to \( s t (s + t) \mathbf{P}_1^\Delta = s t \, \mathbf{P}_1^\Delta \), behaving like an effective quadratic parabola!
+
+==== Degree 4 (Quartic Curves)
+
+For \( n = 4 \), there are three internal displacement vectors:
+\[ \mathbf{P}_1^\Delta = 4 \, P_1 - 3 \, P_0 - P_4 \]
+\[ \mathbf{P}_2^\Delta = 6 \, P_2 - 3 \, P_0 - 3 \, P_4 \]
+\[ \mathbf{P}_3^\Delta = 4 \, P_3 - P_0 - 3 \, P_4 \]
+
+The quartic expansion is:
+\[ \mathbf{P}(s, t) = s \, P_0 + t \, P_4 + s^3 t \, \mathbf{P}_1^\Delta + s^2 t^2 \, \mathbf{P}_2^\Delta + s t^3 \, \mathbf{P}_3^\Delta \]
+
+=== Geometric Algebra of Deviation: Wedge Products and Exact Enclosed Area
+
+In Geometric Algebra, the interaction between the straight chord and the curve’s deviation vectors produces closed-form multivector invariants.
+
+Let the straight chord vector be:
+\[ \mathbf{v}_{\text{chord}} = P_n - P_0 \]
+
+The oriented deviation of the curve from its chord at any parameter \( t \) is measured by the outer product bivector:
+\[ \mathbf{B}(t) = (\mathbf{P}(t) - P_0) \wedge \mathbf{v}_{\text{chord}} \]
+
+Substituting the \( s \)-power expansion:
+\[ \mathbf{P}(t) - P_0 = t \, \mathbf{v}_{\text{chord}} + \sum_{k=1}^{n-1} s^{n-k} t^k \, \mathbf{P}_k^\Delta \]
+
+Taking the outer product with \( \mathbf{v}_{\text{chord}} \), the collinear term \( t \, \mathbf{v}_{\text{chord}} \wedge \mathbf{v}_{\text{chord}} \) vanishes identically:
+\[ \mathbf{B}(t) = \sum_{k=1}^{n-1} s^{n-k} t^k \left( \mathbf{P}_k^\Delta \wedge \mathbf{v}_{\text{chord}} \right) \]
+
+Every term is an oriented 2-blade in \( Cl(2,0) \) measuring the signed areal excursion at parameter \( t \).
+
+[#thm-spower-bivector-excursion]
+[THEOREM]
+.Exact Multivector Area Enclosed by a Degree-\( n \) Curve and its Chord
+====
+Let \( \mathbf{P}(t) \) be a degree-\( n \) polynomial curve with endpoint chord \( \mathbf{v}_{\text{chord}} = P_n - P_0 \) and \( s \)-power deviation vectors \( \mathbf{P}_k^\Delta \).
+
+The total signed area bivector \( \mathbf{A} \) enclosed between the curve and its chord is:
+\[ \mathbf{A} = \int_0^1 (\mathbf{P}(t) - P_0) \wedge \mathbf{v}_{\text{chord}} \, dt = \frac{1}{n + 1} \sum_{k=1}^{n-1} \frac{1}{\binom{n}{k}} \left( \mathbf{P}_k^\Delta \wedge \mathbf{v}_{\text{chord}} \right) \]
+
+*Proof:*
+Integrating the basis terms over the unit interval:
+\[ \int_0^1 s^{n-k} t^k \, dt = \int_0^1 (1 - t)^{n-k} t^k \, dt = \mathrm{B}(n - k + 1, \, k + 1) = \frac{(n - k)! \, k!}{(n + 1)!} = \frac{1}{(n + 1) \binom{n}{k}} \]
+Summing across all \( k = 1, \dots, n-1 \) yields the exact formula. \( \square \)
+====
+
+==== Applications to Standard Glyph Curves:
+* **Quadratic Segment (\( n = 2 \))**:
+\[ \mathbf{A} = \frac{1}{3 \cdot 2} \left( \mathbf{P}_1^\Delta \wedge \mathbf{v}_{\text{chord}} \right) = \frac{1}{6} \left( \mathbf{P}_1^\Delta \wedge \mathbf{v}_{\text{chord}} \right) \]
+Since \( \mathbf{P}_1^\Delta = 4 \, \mathbf{h} \) (where \( \mathbf{h} \) is the physical apex excursion), \( \mathbf{A} = \frac{2}{3} (\mathbf{h} \wedge \mathbf{v}_{\text{chord}}) \), reproducing Archimedes’ classical quadrature of the parabola coordinate-free.
+* **Cubic Segment (\( n = 3 \))**:
+\[ \mathbf{A} = \frac{1}{4 \cdot 3} \left( \mathbf{P}_1^\Delta \wedge \mathbf{v}_{\text{chord}} \right) + \frac{1}{4 \cdot 3} \left( \mathbf{P}_2^\Delta \wedge \mathbf{v}_{\text{chord}} \right) = \frac{1}{12} \left( (\mathbf{P}_1^\Delta + \mathbf{P}_2^\Delta) \wedge \mathbf{v}_{\text{chord}} \right) \]
+The enclosed area of any cubic Bézier curve is strictly one-twelfth the outer product of the sum of its deviation vectors with its chord.
+
+=== Sub-Interval Truncation and the Quadratic Deviation Shrinking Law
+
+When a curve segment is clipped to an active parameter interval \( [t_{\min}, t_{\max}] \subset [0, 1] \) of width \( \Delta t = t_{\max} - t_{\min} \), the \( s \)-power representation reveals why Bézier clipping converges with superlinear quadratic speed.
+
+Let \( \tilde{t} = (t - t_{\min}) / \Delta t \in [0, 1] \) be the normalized sub-interval parameter. The deviation polynomial satisfies:
+\[ s(t) \, t = (1 - t) \, t = (\Delta t)^2 \, (1 - \tilde{t}) \, \tilde{t} + \mathcal{O}(\Delta t) \]
+
+Under reparameterization, the new deviation vectors of the sub-curve scale quadratically with the interval width:
+\[ \mathbf{P}_k^{\Delta, \text{new}} = (\Delta t)^2 \, \mathbf{M}_k(\Delta t) \, \mathbf{P}^\Delta \]
+
+Every time the interval contracts by a factor of \( 10 \), the physical deviation vectors shrink by a factor of \( 100 \). The curve segment flattens into its skeleton chord at quadratic speed, which guarantees that the parallel fat-line bounds become tight immediately.
+
+=== Standalone Ada 2022 Implementation: Arbitrary-Degree S-Power Algebra
+
+Below is a complete, standalone Ada 2022 package implementing the coordinate-free \( s \)-power geometric algebra for arbitrary degrees up to 8, with strict separation between affine points and displacement vectors, subprogram contracts, and zero external dependencies.
+
+[source,ada]
+----
+pragma ada_2022;
+
+with Ada.Numerics.Generic_Elementary_Functions;
+
+package Iris_Spower_Algebra with
+   pure,
+   elaborate_body
+is
+
+   type Real is digits 15;
+
+   -- Homogeneous element in Cl(3,0):
+   -- Weight W = 1.0 represents an Affine Point.
+   -- Weight W = 0.0 represents a Pure Displacement Vector.
+   type Element_Cl3 is record
+      X : Real := 0.0;
+      Y : Real := 0.0;
+      W : Real := 0.0;
+   end record;
+
+   -- Subtypes enforcing geometric semantics
+   subtype Affine_Point is Element_Cl3
+   with Dynamic_Predicate => abs (Affine_Point.W - 1.0) < 1.0e-12;
+
+   subtype Displacement_Vector is Element_Cl3
+   with Dynamic_Predicate => abs (Displacement_Vector.W) < 1.0e-12;
+
+   -- 2-Blade (Bivector) representing oriented plane area
+   type Bivector_Area is record
+      XY : Real := 0.0;
+   end record;
+
+   type Degree_Range is range 1 .. 8;
+
+   type Point_Array is array (Natural range <>) of Affine_Point;
+   type Vector_Array is array (Natural range <>) of Displacement_Vector;
+
+   -- Constructor for an Affine Point (W = 1.0)
+   function Make_Point (X, Y : in Real) return Affine_Point
+   with
+      inline,
+      post => abs (Make_Point'Result.W - 1.0) < 1.0e-12;
+
+   -- Constructor for a Displacement Vector (W = 0.0)
+   function Make_Vector (X, Y : in Real) return Displacement_Vector
+   with
+      inline,
+      post => abs (Make_Vector'Result.W) < 1.0e-12;
+
+   -- Point Subtraction: Point - Point = Displacement Vector
+   function "-" (P2, P1 : in Affine_Point) return Displacement_Vector
+   with
+      inline,
+      post => abs ("-"'Result.W) < 1.0e-12;
+
+   -- Point-Vector Addition: Point + Vector = Translated Point
+   function "+"
+     (P : in Affine_Point;
+      V : in Displacement_Vector) return Affine_Point
+   with
+      inline,
+      post => abs ("+"'Result.W - 1.0) < 1.0e-12;
+
+   -- Vector Scaling
+   function "*"
+     (Scale : in Real;
+      V     : in Displacement_Vector) return Displacement_Vector
+   with inline;
+
+   -- Outer Product (Wedge) of two vectors yielding oriented area bivector
+   function Wedge
+     (U, V : in Displacement_Vector) return Bivector_Area
+   with inline;
+
+   -- Convert Bernstein Control Points to S-Power Representation
+   procedure Bernstein_To_Spower
+     (N              : in Degree_Range;
+      Bernstein_Pts  : in Point_Array;
+      P_Start, P_End : out Affine_Point;
+      Deviations     : out Vector_Array)
+   with
+      pre => Bernstein_Pts'Length = Natural (N) + 1 and
+             Bernstein_Pts'First = 0 and
+             Deviations'Length = Natural (N) - 1 and
+             Deviations'First = 1;
+
+   -- Evaluate S-Power Curve at Dual Parameters S and T
+   function Evaluate_Spower
+     (N              : in Degree_Range;
+      P_Start, P_End : in Affine_Point;
+      Deviations     : in Vector_Array;
+      S, T           : in Real) return Affine_Point
+   with
+      pre  => S >= 0.0 and T >= 0.0 and abs (S + T - 1.0) < 1.0e-12 and
+              Deviations'Length = Natural (N) - 1 and
+              Deviations'First = 1,
+      post => abs (Evaluate_Spower'Result.W - 1.0) < 1.0e-12;
+
+   -- Exact Enclosed Area Bivector between Curve and Chord
+   function Enclosed_Chord_Area
+     (N              : in Degree_Range;
+      P_Start, P_End : in Affine_Point;
+      Deviations     : in Vector_Array) return Bivector_Area
+   with
+      pre => Deviations'Length = Natural (N) - 1 and
+             Deviations'First = 1;
+
+end Iris_Spower_Algebra;
+----
+
+[source,ada]
+----
+package body Iris_Spower_Algebra is
+
+   function Make_Point (X, Y : in Real) return Affine_Point is
+   begin
+      return Affine_Point'(X => X, Y => Y, W => 1.0);
+   end Make_Point;
+
+   function Make_Vector (X, Y : in Real) return Displacement_Vector is
+   begin
+      return Displacement_Vector'(X => X, Y => Y, W => 0.0);
+   end Make_Vector;
+
+   function "-" (P2, P1 : in Affine_Point) return Displacement_Vector is
+   begin
+      return Displacement_Vector'
+        (X => P2.X - P1.X,
+         Y => P2.Y - P1.Y,
+         W => 0.0);
+   end "-";
+
+   function "+"
+     (P : in Affine_Point;
+      V : in Displacement_Vector) return Affine_Point
+   is
+   begin
+      return Affine_Point'
+        (X => P.X + V.X,
+         Y => P.Y + V.Y,
+         W => 1.0);
+   end "+";
+
+   function "*"
+     (Scale : in Real;
+      V     : in Displacement_Vector) return Displacement_Vector
+   is
+   begin
+      return Displacement_Vector'
+        (X => Scale * V.X,
+         Y => Scale * V.Y,
+         W => 0.0);
+   end "*";
+
+   function Wedge
+     (U, V : in Displacement_Vector) return Bivector_Area
+   is
+   begin
+      return Bivector_Area'(XY => (U.X * V.Y) - (U.Y * V.X));
+   end Wedge;
+
+   -- Helper: Compute Binomial Coefficient C(N, K)
+   function Binomial (N, K : in Natural) return Real is
+      Result : Real := 1.0;
+   begin
+      if K > N then
+         Result := 0.0;
+      elsif K > 0 and K < N then
+         declare
+            K_Min : constant Natural := Natural'Min (K, N - K);
+            I     : Natural := 1;
+         begin
+            while I <= K_Min loop
+               Result := (Result * Real (N - I + 1)) / Real (I);
+               I := I + 1;
+            end loop;
+         end;
+      end if;
+      return Result;
+   end Binomial;
+
+   procedure Bernstein_To_Spower
+     (N              : in Degree_Range;
+      Bernstein_Pts  : in Point_Array;
+      P_Start, P_End : out Affine_Point;
+      Deviations     : out Vector_Array)
+   is
+      Deg : constant Natural := Natural (N);
+      P0  : constant Affine_Point := Bernstein_Pts (0);
+      Pn  : constant Affine_Point := Bernstein_Pts (Deg);
+      K   : Natural := 1;
+   begin
+      P_Start := P0;
+      P_End   := Pn;
+
+      while K <= Deg - 1 loop
+         declare
+            C_N_K   : constant Real := Binomial (Deg, K);
+            C_N1_K  : constant Real := Binomial (Deg - 1, K);
+            C_N1_K1 : constant Real := Binomial (Deg - 1, K - 1);
+            Pk      : constant Affine_Point := Bernstein_Pts (K);
+            Vx      : Real;
+            Vy      : Real;
+         begin
+            Vx := (C_N_K * Pk.X) - (C_N1_K * P0.X) - (C_N1_K1 * Pn.X);
+            Vy := (C_N_K * Pk.Y) - (C_N1_K * P0.Y) - (C_N1_K1 * Pn.Y);
+            Deviations (K) := Make_Vector (Vx, Vy);
+         end;
+         K := K + 1;
+      end loop;
+   end Bernstein_To_Spower;
+
+   -- Helper: Compute S^P * T^Q
+   function Power_Product
+     (S, T : in Real;
+      P, Q : in Natural) return Real
+   is
+      Result : Real := 1.0;
+      I      : Natural := 0;
+   begin
+      while I < P loop
+         Result := Result * S;
+         I := I + 1;
+      end loop;
+      I := 0;
+      while I < Q loop
+         Result := Result * T;
+         I := I + 1;
+      end loop;
+      return Result;
+   end Power_Product;
+
+   function Evaluate_Spower
+     (N              : in Degree_Range;
+      P_Start, P_End : in Affine_Point;
+      Deviations     : in Vector_Array;
+      S, T           : in Real) return Affine_Point
+   is
+      Deg : constant Natural := Natural (N);
+      -- Baseline chord point
+      X_Sum : Real := (S * P_Start.X) + (T * P_End.X);
+      Y_Sum : Real := (S * P_Start.Y) + (T * P_End.Y);
+      K     : Natural := 1;
+   begin
+      while K <= Deg - 1 loop
+         declare
+            Poly_Term : constant Real :=
+              Power_Product (S, T, Deg - K, K);
+            Dev       : constant Displacement_Vector := Deviations (K);
+         begin
+            X_Sum := X_Sum + (Poly_Term * Dev.X);
+            Y_Sum := Y_Sum + (Poly_Term * Dev.Y);
+         end;
+         K := K + 1;
+      end loop;
+
+      return Make_Point (X_Sum, Y_Sum);
+   end Evaluate_Spower;
+
+   function Enclosed_Chord_Area
+     (N              : in Degree_Range;
+      P_Start, P_End : in Affine_Point;
+      Deviations     : in Vector_Array) return Bivector_Area
+   is
+      Deg        : constant Natural := Natural (N);
+      Chord_Vec  : constant Displacement_Vector := P_End - P_Start;
+      Area_Total : Real := 0.0;
+      Inv_Np1    : constant Real := 1.0 / Real (Deg + 1);
+      K          : Natural := 1;
+   begin
+      while K <= Deg - 1 loop
+         declare
+            C_N_K    : constant Real := Binomial (Deg, K);
+            Weight   : constant Real := Inv_Np1 / C_N_K;
+            Wedge_B  : constant Bivector_Area :=
+              Wedge (Deviations (K), Chord_Vec);
+         begin
+            Area_Total := Area_Total + (Weight * Wedge_B.XY);
+         end;
+         K := K + 1;
+      end loop;
+
+      return Bivector_Area'(XY => Area_Total);
+   end Enclosed_Chord_Area;
+
+end Iris_Spower_Algebra;
+----
+
 == Index of Formal Statements
 
 This index lists all formal Definitions and Theorems established across this volume.
@@ -748,4 +1232,7 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:thm-svd-hobby-least-squares[**Theorem: Universal Existence, Uniqueness, and Least-Squares Optimality of SVD-Hobby Splines**] -- Section: *The SVD Extension: Finding the Best Harmony in Every Situation*
 * xref:def-polar-form-cl20[**Definition: Symmetric Multilinear Blossom in \( Cl(2,0) \)**] -- Section: *Symmetric Polar Forms (Blossoming) in \( Cl(2,0) \)*
 * xref:thm-exact-circle-representation[**Theorem: Exact Conic Representation in \( Cl(3,0) \)**] -- Section: *Rational Bézier Curves as Linear Multivector Sums*
+* xref:def-affine-point-vector-split[**Definition: Affine Point–Vector Decomposition in \( Cl(3,0) \)**] -- Section: *Points Versus Vectors: The Foundational Geometric Distinction*
+* xref:thm-spower-arbitrary-degree[**Theorem: Complete S-Power Basis Representation for Arbitrary Degree \( n \)**] -- Section: *The \( s \)-Power Basis: Structural Separation of Points and Deviation Vectors*
+* xref:thm-spower-bivector-excursion[**Theorem: Exact Multivector Area and Bivector Deviation Bounds**] -- Section: *Geometric Algebra of Deviation: Wedge Products and Exact Enclosed Area*
 
