@@ -1690,13 +1690,13 @@ beginfig(1);
   fill fullcircle scaled 4.5pt shifted Q0 withcolor col_clippehend;
   fill fullcircle scaled 4.5pt shifted Q2 withcolor col_clippehend;
 
-  % Intersection Point: exactly at (-1.5u, 0.45u) at t_P = 0.25, t_Q = 0.25
-  pair P_inter;
-  P_inter := (-1.5u, 0.45u);
-  draw (P_inter - (0.09u, 0.09u)) -- (P_inter + (0.09u, 0.09u))
-    withpen pencircle scaled 0.5 withcolor 0.4;
-  draw (P_inter - (0.09u, -0.09u)) -- (P_inter + (0.09u, -0.09u))
-    withpen pencircle scaled 0.5 withcolor 0.4;
+  % Clipping Point: where clippehend Q(t) exits the upper fat-line boundary of P
+  pair P_clip;
+  P_clip := pathQ intersectionpoint ((-3.6u, 0.6u) -- (3.6u, 0.6u));
+  draw (P_clip - (0.09u, 0.09u)) -- (P_clip + (0.09u, 0.09u))
+    withpen pencircle scaled 0.6 withcolor 0.3;
+  draw (P_clip - (0.09u, -0.09u)) -- (P_clip + (0.09u, -0.09u))
+    withpen pencircle scaled 0.6 withcolor 0.3;
 
   label.rt(btex $\mathbf{P}(t)$ [Clipper] etex, eval_spower(P0, P2, P_delta, 0.80) shifted (16pt, 0pt));
   label.ulft(btex $\mathbf{Q}(t)$ [Clippehend] etex, eval_spower(Q0, Q2, Q_delta, 0.85) shifted (-5pt, 2pt));
