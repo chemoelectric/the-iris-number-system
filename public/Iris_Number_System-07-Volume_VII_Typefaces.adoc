@@ -871,9 +871,101 @@ Where do two planes intersect? They intersect along a straight line passing thro
 * **Intersecting Lines**: If the lines intersect at an ordinary point on the tabletop, the 1-vector \( X \) pierces the tabletop at altitude \( w = e_3 \cdot X \neq 0 \). The physical intersection point is simply \( X / w \).
 * **Parallel Lines**: If the two lines are parallel, the two planes intersect horizontally along the ground floor at altitude \( w = e_3 \cdot X = 0 \). The result is automatically a pure displacement vector pointing in the common direction of the parallel lines! There is no division by zero, no numerical overflow, and no special-case branch in the algorithm.
 
+=== Origin-Free Relative Representations: Intrinsic Local Reference Chains
+
+In classical coordinate-based software systems, geometric curves are typically described by recording absolute Cartesian coordinate pairs \( (x_i, y_i) \) for every landmark knot and off-curve control handle relative to an arbitrary, external origin point \( (0, 0) \).
+
+From the standpoint of physical geometry and structural invariance, an external origin is an unphysical artifact. A physical typeface contour, a bent wire, or an aerodynamic turbine blade possesses an intrinsic geometric shape that is completely determined by the spatial relations among its own constituent parts. If a glyph outline is translated across the page, copied between font masters, or rotated into a slanted baseline, its intrinsic geometric shape does not change. Forcing every control point to measure its position against a distant, arbitrary global origin introduces artificial numerical coupling and obscures geometric relationships.
+
+Both the classical Bernstein–Bézier representation and the \( s \)-power geometric representation can be formulated purely in terms of relative displacement vectors between adjacent points.
+
+==== Origin-Free Bernstein Representation
+
+Consider a degree-\( n \) Bernstein curve:
+\[ \mathbf{P}(s, t) = \sum_{i=0}^n B_i^n(s, t) \, P_i \]
+
+Because the Bernstein basis polynomials form a rigorous partition of unity on the dual barycentric simplex:
+\[ \sum_{i=0}^n B_i^n(s, t) \equiv 1 \]
+we can choose any single point—most naturally the initial knot \( P_0 \) (carrying affine weight \( w = 1 \))—as our sole spatial anchor on the drawing surface.
+
+We define the relative displacement vectors from anchor \( P_0 \) to each control point \( P_i \) as:
+\[ \mathbf{v}_i = P_i - P_0 \qquad (i = 1, \dots, n) \]
+with \( \mathbf{v}_0 = \mathbf{0} \). Every \( \mathbf{v}_i \) is a pure displacement vector in \( Cl(3,0) \) possessing weight \( w = 0 \).
+
+Substituting \( P_i = P_0 + \mathbf{v}_i \) directly into the Bernstein sum yields:
+\[ \mathbf{P}(s, t) = \sum_{i=0}^n B_i^n(s, t) \, (P_0 + \mathbf{v}_i) = \left( \sum_{i=0}^n B_i^n(s, t) \right) P_0 + \sum_{i=1}^n B_i^n(s, t) \, \mathbf{v}_i \]
+
+Applying the partition of unity:
+\[ \mathbf{P}(s, t) = P_0 + \sum_{i=1}^n B_i^n(s, t) \, \mathbf{v}_i \]
+
+In this formulation:
+1. Exactly **one** affine point exists in the entire specification: the starting anchor \( P_0 \) (\( w = 1 \)).
+2. All remaining degrees of freedom \( \mathbf{v}_1, \dots, \mathbf{v}_n \) are pure displacement vectors (\( w = 0 \)) defined strictly relative to \( P_0 \).
+
+Alternatively, we can express the curve through sequential incremental step vectors along the control polygon, \( \mathbf{d}_i = P_i - P_{i-1} \):
+\[ P_i = P_0 + \sum_{j=1}^i \mathbf{d}_j \]
+\[ \mathbf{P}(s, t) = P_0 + \sum_{j=1}^n \left( \sum_{i=j}^n B_i^n(s, t) \right) \mathbf{d}_j \]
+where every segment delta step \( \mathbf{d}_j \) is a local displacement relative only to the preceding control handle.
+
+==== Origin-Free S-Power Representation
+
+The \( s \)-power representation is even more directly suited to coordinate-free relative formulation because it already decomposes the curve into a straight baseline skeleton chord and internal deviation displacement vectors:
+\[ \mathbf{P}(s, t) = s \, P_0 + t \, P_n + \sum_{k=1}^{n-1} s^{n-k} t^k \, \mathbf{P}_k^\Delta \]
+
+Let \( \mathbf{v}_{\text{chord}} = P_n - P_0 \) denote the straight chord displacement vector spanning the start and end knots. Because \( s + t = 1 \) (or \( s = 1 - t \)), the linear skeleton chord satisfies:
+\[ s \, P_0 + t \, P_n = (1 - t) P_0 + t (P_0 + \mathbf{v}_{\text{chord}}) = P_0 + t \, \mathbf{v}_{\text{chord}} \]
+
+Thus, the entire curve is expressed relative to anchor \( P_0 \) as:
+\[ \mathbf{P}(s, t) = P_0 + t \, \mathbf{v}_{\text{chord}} + \sum_{k=1}^{n-1} s^{n-k} t^k \, \mathbf{P}_k^\Delta \]
+
+[#thm-origin-free-relative-chains]
+[NOTE]
+====
+.Theorem: Direct Computation of S-Power Deviations from Relative Displacements
+Let a degree-\( n \) curve have relative displacement vectors \( \mathbf{v}_k = P_k - P_0 \) for \( k = 1, \dots, n \), with total chord vector \( \mathbf{v}_{\text{chord}} = \mathbf{v}_n = P_n - P_0 \). Then for every internal index \( k \in \{1, \dots, n-1\} \), the \( s \)-power deviation vector \( \mathbf{P}_k^\Delta \) is given identically by:
+\[ \mathbf{P}_k^\Delta = \binom{n}{k} \mathbf{v}_k - \binom{n-1}{k-1} \mathbf{v}_{\text{chord}} \]
+without requiring the absolute coordinates of any point.
+
+*Proof:*
+Recall the foundational formula for the \( s \)-power deviation vector:
+\[ \mathbf{P}_k^\Delta = \binom{n}{k} P_k - \binom{n-1}{k} P_0 - \binom{n-1}{k-1} P_n \]
+
+By Pascal’s combinatorial identity, \( \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1} \). Regrouping the coefficients around \( P_0 \) gives:
+\[ \binom{n-1}{k} P_0 = \binom{n}{k} P_0 - \binom{n-1}{k-1} P_0 \]
+
+Substituting this regrouping into the formula for \( \mathbf{P}_k^\Delta \):
+\[ \mathbf{P}_k^\Delta = \binom{n}{k} P_k - \left( \binom{n}{k} P_0 - \binom{n-1}{k-1} P_0 \right) - \binom{n-1}{k-1} P_n \]
+\[ \mathbf{P}_k^\Delta = \binom{n}{k} (P_k - P_0) - \binom{n-1}{k-1} (P_n - P_0) \]
+
+Expressing this directly in terms of the relative displacement vectors \( \mathbf{v}_k = P_k - P_0 \) and \( \mathbf{v}_{\text{chord}} = P_n - P_0 \):
+\[ \mathbf{P}_k^\Delta = \binom{n}{k} \mathbf{v}_k - \binom{n-1}{k-1} \mathbf{v}_{\text{chord}} \]
+This establishes the theorem. \( \square \)
+====
+
+This algebraic identity proves that:
+* The internal deviation vectors \( \mathbf{P}_k^\Delta \) can be computed directly from relative displacement vectors with zero knowledge of any global origin.
+* For a quadratic curve (\( n = 2 \)):
+\[ \mathbf{P}_1^\Delta = 2 \mathbf{v}_1 - \mathbf{v}_{\text{chord}} \]
+* For a cubic curve (\( n = 3 \)):
+\[ \mathbf{P}_1^\Delta = 3 \mathbf{v}_1 - \mathbf{v}_{\text{chord}}, \qquad \mathbf{P}_2^\Delta = 3 \mathbf{v}_2 - 2 \mathbf{v}_{\text{chord}} \]
+
+==== Relative Multi-Segment Spline Chains (Glyph Contours)
+
+In digital typography, complete glyph outlines are constructed from connected loops of \( M \) curve segments.
+
+In an origin-free relative chain:
+1. The entire glyph contour requires only **one** global anchor point \( P_0^{(0)} \) (e.g., the starting on-curve knot of the first contour).
+2. Each subsequent segment \( m \) starts at the end of segment \( m - 1 \):
+\[ P_0^{(m)} = P_0^{(0)} + \sum_{j=0}^{m-1} \mathbf{v}_{\text{chord}}^{(j)} \]
+3. For each segment \( m \), the shape is fully specified by its chord vector \( \mathbf{v}_{\text{chord}}^{(m)} \) and its internal deviation vectors \( \mathbf{P}_k^{\Delta, (m)} \).
+4. For closed glyph contours, the sum of all chord vectors closes identically to zero:
+\[ \sum_{m=0}^{M-1} \mathbf{v}_{\text{chord}}^{(m)} = \mathbf{0} \]
+
+This ensures that translating the glyph anywhere on the drawing surface modifies only the single anchor point \( P_0^{(0)} \). Every chord vector, every deviation vector, every enclosed bivector area, and every curvature profile remains completely unchanged.
+
 === Standalone Ada 2022 Implementation: Unified S-Power Geometric Algebra
 
-Below is the complete, self-contained Ada 2022 package implementing this unified coordinate-free geometric framework for digital typefaces. It enforces the strict separation of affine points and displacement vectors via dynamic subprogram contracts, provides exact conic arc evaluation, and computes enclosed area bivectors with a modified McCabe cyclomatic complexity strictly bounded below 10.
+Below is the complete, self-contained Ada 2022 package implementing this unified coordinate-free geometric framework for digital typefaces. It enforces the strict separation of affine points and displacement vectors via dynamic subprogram contracts, provides exact conic arc evaluation, supports relative origin-free evaluation and conversion, and computes enclosed area bivectors with a modified McCabe cyclomatic complexity strictly bounded below 10.
 
 [source,ada]
 ----
@@ -939,6 +1031,13 @@ is
       inline,
       post => abs ("-"'result.w) < 1.0e-12;
 
+   -- vector subtraction: vector - vector = displacement vector
+   function "-"
+     (u, v : in displacement_vector) return displacement_vector
+   with
+      inline,
+      post => abs ("-"'result.w) < 1.0e-12;
+
    -- point-vector addition: point + vector = translated point
    function "+"
      (p : in affine_point;
@@ -946,6 +1045,13 @@ is
    with
       inline,
       post => abs ("+"'result.w - 1.0) < 1.0e-12;
+
+   -- vector addition: vector + vector = displacement vector
+   function "+"
+     (u, v : in displacement_vector) return displacement_vector
+   with
+      inline,
+      post => abs ("+"'result.w) < 1.0e-12;
 
    -- vector scaling
    function "*"
@@ -980,6 +1086,18 @@ is
              deviations'length = natural (n) - 1 and
              deviations'first = 1;
 
+   -- compute s-power deviations directly from relative vectors
+   procedure relative_vectors_to_spower
+     (n           : in degree_range;
+      rel_vectors : in vector_array;
+      chord_vec   : out displacement_vector;
+      deviations  : out vector_array)
+   with
+      pre => rel_vectors'length = natural (n) and
+             rel_vectors'first = 1 and
+             deviations'length = natural (n) - 1 and
+             deviations'first = 1;
+
    -- convert s-power representation back to bernstein control points
    procedure spower_to_bernstein
      (n              : in degree_range;
@@ -1003,6 +1121,31 @@ is
               deviations'length = natural (n) - 1 and
               deviations'first = 1,
       post => abs (evaluate_spower'result.w - 1.0) < 1.0e-12;
+
+   -- evaluate relative s-power curve from anchor and relative vectors
+   function evaluate_relative_spower
+     (n          : in degree_range;
+      p_anchor   : in affine_point;
+      chord_vec  : in displacement_vector;
+      deviations : in vector_array;
+      s, t       : in real) return affine_point
+   with
+      pre  => s >= 0.0 and t >= 0.0 and abs (s + t - 1.0) < 1.0e-12 and
+              deviations'length = natural (n) - 1 and
+              deviations'first = 1,
+      post => abs (evaluate_relative_spower'result.w - 1.0) < 1.0e-12;
+
+   -- evaluate relative bernstein curve from anchor and relative offsets
+   function evaluate_relative_bernstein
+     (n           : in degree_range;
+      p_anchor    : in affine_point;
+      rel_vectors : in vector_array;
+      s, t        : in real) return affine_point
+   with
+      pre  => s >= 0.0 and t >= 0.0 and abs (s + t - 1.0) < 1.0e-12 and
+              rel_vectors'length = natural (n) and
+              rel_vectors'first = 1,
+      post => abs (evaluate_relative_bernstein'result.w - 1.0) < 1.0e-12;
 
    -- exact enclosed area bivector between curve and chord
    function enclosed_chord_area
@@ -1051,6 +1194,16 @@ package body iris_spower_algebra is
          w => 0.0);
    end "-";
 
+   function "-"
+     (u, v : in displacement_vector) return displacement_vector
+   is
+   begin
+      return displacement_vector'
+        (x => u.x - v.x,
+         y => u.y - v.y,
+         w => 0.0);
+   end "-";
+
    function "+"
      (p : in affine_point;
       v : in displacement_vector) return affine_point
@@ -1060,6 +1213,16 @@ package body iris_spower_algebra is
         (x => p.x + v.x,
          y => p.y + v.y,
          w => 1.0);
+   end "+";
+
+   function "+"
+     (u, v : in displacement_vector) return displacement_vector
+   is
+   begin
+      return displacement_vector'
+        (x => u.x + v.x,
+         y => u.y + v.y,
+         w => 0.0);
    end "+";
 
    function "*"
@@ -1151,6 +1314,33 @@ package body iris_spower_algebra is
       end loop;
    end bernstein_to_spower;
 
+   procedure relative_vectors_to_spower
+     (n           : in degree_range;
+      rel_vectors : in vector_array;
+      chord_vec   : out displacement_vector;
+      deviations  : out vector_array)
+   is
+      deg : constant natural := natural (n);
+      k   : natural := 1;
+   begin
+      chord_vec := rel_vectors (deg);
+
+      while k <= deg - 1 loop
+         declare
+            c_n_k   : constant real := binomial (deg, k);
+            c_n1_k1 : constant real := binomial (deg - 1, k - 1);
+            vk      : constant displacement_vector := rel_vectors (k);
+            vx      : real;
+            vy      : real;
+         begin
+            vx := (c_n_k * vk.x) - (c_n1_k1 * chord_vec.x);
+            vy := (c_n_k * vk.y) - (c_n1_k1 * chord_vec.y);
+            deviations (k) := make_vector (vx, vy);
+         end;
+         k := k + 1;
+      end loop;
+   end relative_vectors_to_spower;
+
    procedure spower_to_bernstein
      (n              : in degree_range;
       p_start, p_end : in affine_point;
@@ -1230,6 +1420,60 @@ package body iris_spower_algebra is
       return make_point (x_sum, y_sum);
    end evaluate_spower;
 
+   function evaluate_relative_spower
+     (n          : in degree_range;
+      p_anchor   : in affine_point;
+      chord_vec  : in displacement_vector;
+      deviations : in vector_array;
+      s, t       : in real) return affine_point
+   is
+      deg   : constant natural := natural (n);
+      x_sum : real := p_anchor.x + (t * chord_vec.x);
+      y_sum : real := p_anchor.y + (t * chord_vec.y);
+      k     : natural := 1;
+   begin
+      while k <= deg - 1 loop
+         declare
+            poly_term : constant real :=
+              power_product (s, t, deg - k, k);
+            dev       : constant displacement_vector := deviations (k);
+         begin
+            x_sum := x_sum + (poly_term * dev.x);
+            y_sum := y_sum + (poly_term * dev.y);
+         end;
+         k := k + 1;
+      end loop;
+
+      return make_point (x_sum, y_sum);
+   end evaluate_relative_spower;
+
+   function evaluate_relative_bernstein
+     (n           : in degree_range;
+      p_anchor    : in affine_point;
+      rel_vectors : in vector_array;
+      s, t        : in real) return affine_point
+   is
+      deg   : constant natural := natural (n);
+      x_sum : real := p_anchor.x;
+      y_sum : real := p_anchor.y;
+      k     : natural := 1;
+   begin
+      while k <= deg loop
+         declare
+            c_n_k     : constant real := binomial (deg, k);
+            poly_term : constant real :=
+              c_n_k * power_product (s, t, deg - k, k);
+            vk        : constant displacement_vector := rel_vectors (k);
+         begin
+            x_sum := x_sum + (poly_term * vk.x);
+            y_sum := y_sum + (poly_term * vk.y);
+         end;
+         k := k + 1;
+      end loop;
+
+      return make_point (x_sum, y_sum);
+   end evaluate_relative_bernstein;
+
    function enclosed_chord_area
      (n              : in degree_range;
       p_start, p_end : in affine_point;
@@ -1292,5 +1536,7 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:def-affine-point-vector-split[**Definition: Affine Point–Vector Decomposition in \( Cl(3,0) \)**] -- Section: *Points Versus Vectors: The Foundational Geometric Distinction*
 * xref:thm-spower-arbitrary-degree[**Theorem: Complete S-Power Basis Representation for Arbitrary Degree \( n \)**] -- Section: *The \( s \)-Power Basis: Separating the Skeleton Chord from the Bending Muscle*
 * xref:thm-spower-bivector-excursion[**Theorem: Exact Multivector Area and Bivector Deviation Bounds**] -- Section: *Geometric Algebra of Deviation: Wedge Products and Enclosed Area*
+* xref:thm-origin-free-relative-chains[**Theorem: Direct Computation of S-Power Deviations from Relative Displacements**] -- Section: *Origin-Free Relative Representations: Intrinsic Local Reference Chains*
+
 
 
