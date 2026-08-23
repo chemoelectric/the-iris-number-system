@@ -1,10 +1,18 @@
 % MetaPost illustration of s-Power Bézier Curve Intersections
+%
+% Run with:
+%
+%   mpost --tex=lualatex bezclip.mp
+%   magick bezclip.mps -flatten \
+%      -bordercolor white -border 20 bezclip.png
+%
 
-filenametemplate "%j-%3c.mps";
+filenametemplate "%j.mps";
 prologues := 3;
 
 verbatimtex
   \documentclass{article}
+  \usepackage{fouriernc}
   \begin{document}
   etex;
 
@@ -49,5 +57,6 @@ beginfig(1);
   label.rt(btex $Q_2(2,3)$ etex, Q2);
   label.rt(btex $Q_0(2,1)$ etex, Q0);
 
+  currentpicture := currentpicture scaled 2;
 endfig;
 end.
