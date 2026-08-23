@@ -11,7 +11,7 @@
 %   6. Deterministic convergence to the exact intersection point (x*, y*)
 %
 % To compile:
-%   mpost --tex=lualatex bezclip.mp
+%   mpost --tex=latex bezclip.mp
 %
 % To convert figures to PNG:
 %   magick bezclip-1.mps -flatten -bordercolor white -border 20 bezclip-1.png
@@ -194,6 +194,7 @@ beginfig(2);
   h := 4.5cm;
 
   % Axes for Parameter Space: t in [0, 1] on X-axis, d_y'(t) on Y-axis
+  pair origin_pt;
   origin_pt := (0, 0);
 
   % Draw background Fat-Line Band [d_min, d_max] = [0, 2.5]
