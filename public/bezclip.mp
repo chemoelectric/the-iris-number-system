@@ -11,9 +11,9 @@
 %   mpost --tex=latex bezclip.mp
 %
 % To convert figures to PNG:
-%   magick bezclip-1.mps -flatten -bordercolor white -border 20 bezclip-1.png
+%   magick bezclip.mps -flatten -bordercolor white -border 20 bezclip-1.png
 
-filenametemplate "%j-%c.mps";
+filenametemplate "%j.mps";
 prologues := 3;
 
 verbatimtex
