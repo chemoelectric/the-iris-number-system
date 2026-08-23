@@ -414,95 +414,137 @@ The SVD-extended Hobby algorithm enables new capabilities in modern digital font
 
 == Symmetric Power Polynomials in Geometric Algebra: Points, Vectors, and the \( s \)-Power Basis
 
-=== The Need for Coordinate-Free Curve Representations
+=== The Physical Nature of Curves and the Coordinate Illusion
 
-In conventional computer-aided typeface design, polynomial curves are almost universally expressed through Cartesian coordinates. A planar Bézier curve is traditionally written as two separate scalar parametric equations:
+When a master calligrapher, stonecutter, or type designer draws an elegant glyph contour, the physical act is one of pure geometry. An ink-laden brush touches a smooth surface at an anchor point, moves along an intended trajectory with controlled pressure and tilt, bends outward to form the swelling bowl of an ‘o’ or the arch of an ‘n’, and finishes at a second anchor point. 
+
+The shape of this curve is entirely intrinsic: it possesses an entry point, an exit point, a straight chord spanning between them, and a physical excursion or bulge that fills space. If the drawing board is rotated, shifted across the table, or placed on an easel at an angle, the curve itself does not change. Its length, its enclosed area, its inflection points, and its geometric curvature remain identical.
+
+Yet for more than half a century, digital typeface design and computer-aided geometric design (CAGD) have subjected this organic geometric reality to an artificial coordinate illusion. In conventional systems, before a curve can even be described, an arbitrary Cartesian graph-paper grid must be superimposed upon the workspace. The curve is then fractured into two independent scalar coordinate functions:
 \[ x(t) = \sum_{k=0}^n B_{k,n}(t) \, x_k, \qquad y(t) = \sum_{k=0}^n B_{k,n}(t) \, y_k \]
 where \( B_{k,n}(t) = \binom{n}{k} (1 - t)^{n-k} t^k \) denotes the classical Bernstein polynomial basis.
 
-While computationally straightforward, this split Cartesian representation obscures the intrinsic geometric reality of the curve:
+This algebraic fracturing introduces severe conceptual and computational defects:
 
-1. **Geometric Invariance Obscured**: Rotations, scalings, reflections, and perspective transformations require converting back and forth between coordinate matrices rather than operating directly on the curve object itself.
-2. **Rational Conics as Second-Class Citizens**: Exact circular arcs, ellipses, and hyperbolas require rational fractions \( x(t) = X(t)/W(t) \), introducing quotient singularities and complex derivative rules.
-3. **Loss of Dual Projective Symmetry**: The parameter \( t \in [0, 1] \) is treated as an asymmetric scalar running from \( 0 \) to \( 1 \), breaking the natural projective symmetry between the forward parameter \( t \) and the complementary reverse parameter \( s = 1 - t \). As demonstrated in the foundational work of Javier Sánchez-Reyes on the symmetric polynomial basis (the \( s \)-power basis), formulating polynomial and rational curves in terms of balanced, symmetric parameters \( (s, t) \) provides optimal numerical conditioning, eliminates endpoint asymmetry, and yields elegant, self-dual matrix transformations for degree elevation and subdivision.
+1. **The Coordinate Anchor Trap**: The numbers \( (x_k, y_k) \) do not describe the curve’s intrinsic shape; they measure how far each control point sits from an arbitrary, distant origin point \( (0, 0) \). If the glyph is translated by ten units, every single coordinate in the entire dataset changes, despite the fact that the glyph’s internal proportions, angles, and curvatures have not moved by a hair’s breadth.
+2. **Conflation of Locations and Displacements**: A coordinate pair \( (3, 4) \) looks identical whether it represents an absolute physical landmark on the discrete design grid \( \mathcal{G}_N \) (an affine point) or a movement vector indicating a shift of three units right and four units up (a displacement vector). This confusion leads to nonsensical operations, such as adding two landmark locations together.
+3. **The Fraction Penalty for Exact Conics**: When a designer requires an exact circular arc (such as the outer bowl of a geometric sans-serif capital ‘O’) or an exact conic section, classical polynomials fail. Conventional systems resort to rational Bézier curves—ratios of polynomials \( x(t) = X(t)/W(t) \)—which introduce division by variable denominators, quotient singularities, rational derivative complications, and numerical fragility.
+4. **Asymmetric Parameterization**: Conventional formulations treat the parameter \( t \) as an asymmetric single scalar running from \( 0 \) to \( 1 \). This destroys the natural physical symmetry between the start of the curve and its end. As demonstrated in the pioneering work of Javier Sánchez-Reyes on the symmetric polynomial basis (the \( s \)-power basis), expressing curves through balanced dual parameters \( (s, t) \) where \( s = 1 - t \) restores perfect bilateral symmetry, optimizes numerical stability, and provides a direct window into the physical geometry of curves.
 
-In this unified chapter, we develop the complete theory of **Symmetric Power Polynomials** formulated natively within Geometric Algebra, extending the symmetric basis insights of Sánchez-Reyes to coordinate-free multivector spaces across arbitrary polynomial degree \( n \).
+In this chapter, we develop a comprehensive, coordinate-free foundation for curve design using Geometric Algebra and the \( s \)-power basis. We replace algebraic abstractions with clear geometric realities: points that anchor in space, straight chords that provide structural skeletons, displacement vectors that push curves outward like sails catching the wind, and oriented bivector areas that measure the exact space swept out between a curve and its baseline.
 
 === Points Versus Vectors: The Foundational Geometric Distinction
 
-In computational geometry and digital typeface design, one of the most persistent sources of conceptual confusion is the casual conflation of **affine points** (spatial locations) and **displacement vectors** (free directions or translations).
+To understand how curves form in space, we must first establish an unbreakable distinction between two fundamentally different geometric entities: **affine points** and **displacement vectors**.
 
-When a type designer places an on-curve knot on the discrete design grid \( \mathcal{G}_N \), that knot is an absolute spatial position: it has an anchor location, but it makes no sense to “add” two knot locations together to produce a third location, just as it makes no sense to add two calendar dates together. By contrast, the offset between two knots is a displacement vector: vectors can be scaled, negated, and added together freely.
+Imagine a large wooden drafting table. A brass pin pressed firmly into the wood at a specific spot is an **affine point**. It represents a fixed place, a physical address, a landmark. It has position, but it has no direction or velocity. 
 
-Geometric algebra provides the natural mathematical language to make this physical distinction absolute and coordinate-free.
+Now imagine taking a ruler and walking a straight pencil line four inches toward the upper-right corner. That pencil stroke is a **displacement vector**. It has length and direction, but it is not anchored to any single place—you can pick up that four-inch diagonal shift and apply it starting from any pin on the table.
 
-==== The Homogeneous Affine Embedding in \( Cl(3,0) \)
+[#fig-points-vs-vectors]
+.The Geometric Distinction Between Points and Vectors
+====
+* **Point \( P \)**: A fixed location or pin on the design plane.
+* **Vector \( \mathbf{v} \)**: A free direction and distance (a step).
+* **Point \( - \) Point \( = \) Vector**: The difference between two pins is the displacement vector connecting them: \( Q - P = \mathbf{v} \).
+* **Point \( + \) Vector \( = \) Point**: Taking a pin and applying a displacement vector transports you to a new pin: \( P + \mathbf{v} = Q \).
+* **Point \( + \) Point \( = \) Nonsense**: Adding two physical pins together has no geometric meaning, just as adding two street addresses or two calendar dates produces nonsense.
+====
 
-To distinguish points and vectors within the Clifford algebra, we embed the two-dimensional design plane into the three-dimensional geometric algebra \( Cl(3,0) \) by adjoining an origin point or reference basis element \( e_3 \) orthogonal to the planar basis vectors \( \{ e_1, e_2 \} \).
+==== Visualizing Affine Space via the Homogeneous Tabletop in \( Cl(3,0) \)
+
+How do we represent this physical distinction mathematically without resorting to arbitrary coordinates? We use the 3-dimensional Geometric Algebra \( Cl(3,0) \).
+
+Imagine our 2-dimensional design plane as a flat tabletop hovering in space at an altitude of exactly one unit above the ground floor. 
+
+* Every **affine point** \( P \) is represented by an arrow originating from the ground origin whose tip touches the tabletop at altitude \( 1 \). Its vertical weight component along the reference altitude vector \( e_3 \) is exactly unity (\( w = 1 \)):
+\[ P = x \, e_1 + y \, e_2 + e_3 \]
+* Every **displacement vector** \( \mathbf{v} \) is a flat arrow lying entirely on the ground floor, parallel to the tabletop, with an altitude of exactly zero (\( w = 0 \)):
+\[ \mathbf{v} = v_x \, e_1 + v_y \, e_2 + 0 \cdot e_3 = v_x \, e_1 + v_y \, e_2 \]
 
 [#def-affine-point-vector-split]
 [DEFINITION]
 .Affine Point–Vector Decomposition in \( Cl(3,0) \)
 ====
-Let \( Cl(3,0) \) be the Euclidean Clifford algebra spanned by orthonormal basis 1-vectors \( \{ e_1, e_2, e_3 \} \) with \( e_i^2 = 1 \) and \( e_i e_j = - e_j e_i \) (for \( i \neq j \)).
+Let \( Cl(3,0) \) be the Euclidean Clifford algebra generated by three orthonormal basis vectors \( \{ e_1, e_2, e_3 \} \) satisfying \( e_i^2 = 1 \) and \( e_i e_j = - e_j e_i \) for \( i \neq j \).
 
-1. **Affine Point**: An affine location \( P \) in the design plane is a 1-vector whose canonical projection onto \( e_3 \) is unity (scalar weight \( w = 1 \)):
-\[ P = x \, e_1 + y \, e_2 + e_3 \]
-2. **Displacement Vector**: A pure geometric translation \( \mathbf{v} \) in the design plane is a 1-vector whose canonical projection onto \( e_3 \) is zero (scalar weight \( w = 0 \)):
-\[ \mathbf{v} = v_x \, e_1 + v_y \, e_2 + 0 \cdot e_3 = v_x \, e_1 + v_y \, e_2 \]
-3. **Algebraic Operations**:
-* **Point Subtraction**: The difference between any two affine points \( Q \) and \( P \) has weight \( 1 - 1 = 0 \), producing a pure displacement vector:
-\[ Q - P = (x_Q - x_P) \, e_1 + (y_Q - y_P) \, e_2 \]
-* **Point–Vector Addition**: Adding a displacement vector \( \mathbf{v} \) to an affine point \( P \) has weight \( 1 + 0 = 1 \), producing a translated affine point:
-\[ P + \mathbf{v} = (x_P + v_x) \, e_1 + (y_P + v_y) \, e_2 + e_3 \]
-* **Affine Combinations**: A linear combination of points \( \sum_{i=0}^n \alpha_i P_i \) is a physically valid affine point if and only if the weights sum to unity:
-\[ \sum_{i=0}^n \alpha_i = 1 \]
-If \( \sum_{i=0}^n \alpha_i = 0 \), the linear combination is a pure displacement vector.
+1. **Affine Point (Weight \( w = 1 \))**: A 1-vector \( P \) with unit projection along the altitude axis \( e_3 \):
+\[ e_3 \cdot P = 1 \]
+2. **Displacement Vector (Weight \( w = 0 \))**: A 1-vector \( \mathbf{v} \) with zero projection along the altitude axis \( e_3 \):
+\[ e_3 \cdot \mathbf{v} = 0 \]
+3. **Geometric Combinations**:
+* **Difference of Two Points**: When we subtract point \( P \) from point \( Q \), their altitudes cancel:
+\[ w = e_3 \cdot (Q - P) = 1 - 1 = 0 \]
+The result is a pure displacement vector lying parallel to the plane.
+* **Translation of a Point**: Adding a displacement vector \( \mathbf{v} \) to a point \( P \) preserves the altitude:
+\[ w = e_3 \cdot (P + \mathbf{v}) = 1 + 0 = 1 \]
+The result is a new, translated affine point on the tabletop.
+* **General Weighted Sum**: A linear combination \( \sum_{i=0}^n \alpha_i P_i \) of affine points produces:
+  - An **affine point** if and only if the weights balance to unity: \( \sum_{i=0}^n \alpha_i = 1 \).
+  - A **displacement vector** if and only if the weights sum to zero: \( \sum_{i=0}^n \alpha_i = 0 \).
+  - A **homogeneous scaled point** (with optical weight \( w \)) if \( \sum_{i=0}^n \alpha_i = w \neq 0 \).
 ====
 
-=== The Bernstein Basis: A Pure Convex Combination of Points
+This structure guarantees that every geometric operation in our typography engine obeys strict physical semantics. Invalid operations (such as adding two locations) are immediately recognized and forbidden by the algebra.
 
-With this rigorous distinction established, let us inspect the classical Bernstein polynomial basis of degree \( n \).
+=== The Bernstein Representation: A Scaffold of Gravitational Anchors
 
-Let \( s = 1 - t \) and \( t \) be the dual barycentric parameters over the unit interval \( [0, 1] \), so that \( s \ge 0 \), \( t \ge 0 \), and \( s + t = 1 \). The Bernstein basis polynomials are given by:
-\[ B_i^n(s, t) = \binom{n}{i} s^{n-i} t^i, \qquad (i = 0, 1, \dots, n) \]
+With our distinction between points and vectors firmly in place, let us examine the classical Bernstein-Bézier curve to see how it operates geometrically.
 
-A degree-\( n \) Bézier curve expressed in the Bernstein basis is:
-\[ \mathbf{P}(t) = \sum_{i=0}^n B_i^n(s, t) \, P_i = \sum_{i=0}^n \binom{n}{i} s^{n-i} t^i \, P_i \]
+Let \( s = 1 - t \) and \( t \) represent dual barycentric balance parameters over the interval from \( 0 \) to \( 1 \). Think of \( s \) and \( t \) as the grip strengths of two hands holding the ends of a flexible rod. At the start of the stroke, the left hand has full grip (\( s = 1, t = 0 \)). At the midpoint, both hands pull with equal strength (\( s = 1/2, t = 1/2 \)). At the end of the stroke, the right hand has full grip (\( s = 0, t = 1 \)). At every instant along the journey, the two strengths balance perfectly:
+\[ s + t = 1, \qquad s \ge 0, \quad t \ge 0 \]
 
-Because of the binomial theorem:
-\[ \sum_{i=0}^n B_i^n(s, t) = \sum_{i=0}^n \binom{n}{i} s^{n-i} t^i = (s + t)^n = 1^n = 1 \]
-the scalar coefficients \( B_i^n(s, t) \) always sum identically to \( 1 \) for every parameter value \( t \in [0, 1] \).
+A degree-\( n \) Bézier curve is constructed by placing \( n + 1 \) control points \( \{ P_0, P_1, \dots, P_n \} \) in space and blending them using the Bernstein basis functions:
+\[ \mathbf{P}(s, t) = \sum_{i=0}^n B_i^n(s, t) \, P_i = \sum_{i=0}^n \binom{n}{i} s^{n-i} t^i \, P_i \]
 
-Furthermore, because \( B_i^n(s, t) \ge 0 \) on the interval, the Bernstein representation is **strictly a convex combination of affine points**. Every control point \( P_i \) is an affine point (weight \( w = 1 \)), and the curve is strictly contained within the convex hull of its control polygon.
+Because of the binomial theorem, the sum of all blending coefficients is always identically one:
+\[ \sum_{i=0}^n B_i^n(s, t) = (s + t)^n = 1^n = 1 \]
 
-However, while mathematically elegant, the Bernstein representation obscures the physical mechanics of the curve in two critical ways:
-1. **Remote Control Points**: The intermediate control points \( P_1, \dots, P_{n-1} \) do not lie on the curve; they act as external gravitational anchors. Their coordinates depend heavily on the arbitrary choice of global origin.
-2. **Conflation of Skeleton and Excursion**: The baseline chord connecting the endpoints \( P_0 \) and \( P_n \) is intertwined with the curve's bending excursion, making it difficult to isolate how much the curve actually departs from a straight line.
+Because every coefficient \( B_i^n(s, t) \) is non-negative and their total sum is \( 1 \), the classical Bézier formula is **strictly a weighted average (convex combination) of affine points**. Every control point \( P_i \) is an affine location (altitude \( w = 1 \)), and the resulting curve point \( \mathbf{P}(s, t) \) is guaranteed to remain on the tabletop at altitude \( 1 \), tucked safely inside the outer convex boundary (the convex hull) formed by the control points.
 
-=== The \( s \)-Power Basis: Structural Separation of Points and Deviation Vectors
+==== The Geometric Limitations of the Bernstein Scaffold
 
-The \( s \)-power basis, formulated in the spirit of Javier Sánchez-Reyes and extended here into arbitrary degree in Geometric Algebra, resolves this entanglement by decomposing the curve into:
-1. A **straight skeleton chord** spanned by the two endpoint **points** \( P_0 \) and \( P_n \).
-2. A sequence of **internal deviation vectors** \( \mathbf{P}_k^\Delta \) measuring the transverse geometric excursion away from the chord.
+While the Bernstein formulation is mathematically sound, it suffers from two major geometric shortcomings:
 
-To derive this for arbitrary degree \( n \), we write the straight chord parameterized from \( P_0 \) to \( P_n \) as:
+1. **Remote Ghost Anchors**: The intermediate control points \( P_1, P_2, \dots, P_{n-1} \) do not lie on the curve itself. They hover in empty space like external gravitational anchors or magnetic poles, pulling the curve toward them. A designer cannot easily look at an off-curve control point \( P_1 \) and intuitively know how far the physical curve will actually deviate from a straight path.
+2. **Entangled Skeleton and Muscle**: In a physical limb, the straight bone (the skeleton) provides the baseline, while the surrounding muscles produce the outward contour. In the Bernstein formula, the baseline line segment between the endpoints \( P_0 \) and \( P_n \) is completely entangled with the intermediate control points. There is no separate term that isolates the straight chord from the curve’s bending excursion.
+
+=== The \( s \)-Power Basis: Separating the Skeleton Chord from the Bending Muscle
+
+The \( s \)-power basis, inspired by the work of Javier Sánchez-Reyes and extended here into Geometric Algebra across arbitrary polynomial degrees, completely resolves this entanglement.
+
+Instead of describing a curve as a collection of remote anchor points, the \( s \)-power basis describes the curve by its two physical components:
+
+1. **The Straight Skeleton Chord**: The straight line segment connecting the starting point \( P_0 \) directly to the ending point \( P_n \).
+2. **The Deviation Vectors (The Bending Muscle)**: A set of pure displacement vectors \( \mathbf{P}_k^\Delta \) that push the curve outward from the straight chord, sculpting its arch and curvature.
+
+==== The Coordinate-Free Geometric Derivation
+
+Let us derive this decomposition geometrically for a curve of arbitrary degree \( n \).
+
+First, consider the straight line segment between the starting pin \( P_0 \) and the ending pin \( P_n \). As the balance parameters \( (s, t) \) slide from \( (1, 0) \) to \( (0, 1) \), the straight skeleton chord is simply:
 \[ \mathbf{P}_{\text{chord}}(s, t) = s \, P_0 + t \, P_n \]
 
-Using the binomial identity \( 1 = (s + t)^{n-1} \), we can rewrite the linear chord terms as degree-\( n \) polynomials:
+To compare this straight chord directly with a degree-\( n \) curve, we express the linear factors \( s \) and \( t \) as degree-\( n \) polynomials by multiplying them by the identity \( 1 = (s + t)^{n-1} \):
 \[ s \, P_0 = s (s + t)^{n-1} P_0 = \sum_{i=0}^{n-1} \binom{n-1}{i} s^{n-i} t^i \, P_0 \]
 \[ t \, P_n = t (s + t)^{n-1} P_n = \sum_{i=1}^n \binom{n-1}{i-1} s^{n-i} t^i \, P_n \]
 
-Subtracting the baseline chord \( \mathbf{P}_{\text{chord}}(s, t) \) from the full Bernstein curve \( \mathbf{P}(s, t) \), the boundary endpoint terms at \( i = 0 \) and \( i = n \) cancel out completely:
-\[ \mathbf{P}(s, t) - (s \, P_0 + t \, P_n) = \sum_{i=1}^{n-1} s^{n-i} t^i \left[ \binom{n}{i} P_i - \binom{n-1}{i} P_0 - \binom{n-1}{i-1} P_n \right] \]
+Now, we subtract this straight skeleton chord from the full Bernstein curve \( \mathbf{P}(s, t) \). At the two endpoints (\( i = 0 \) where \( t = 0 \), and \( i = n \) where \( s = 0 \)), the curve touches the chord exactly, so the boundary terms cancel out completely:
+\[ \mathbf{P}(s, t) - (s \, P_0 + t \, P_n) = \sum_{k=1}^{n-1} s^{n-k} t^k \, \mathbf{P}_k^\Delta \]
+where each intermediate coefficient \( \mathbf{P}_k^\Delta \) is given by:
+\[ \mathbf{P}_k^\Delta = \binom{n}{k} P_k - \binom{n-1}{k} P_0 - \binom{n-1}{k-1} P_n \]
 
-Let us examine the quantity inside the brackets:
-\[ \mathbf{P}_i^\Delta = \binom{n}{i} P_i - \binom{n-1}{i} P_0 - \binom{n-1}{i-1} P_n \]
+==== The Vanishing Weight Property: Pure Displacement Vectors
 
-By Pascal’s fundamental recurrence, \( \binom{n}{i} = \binom{n-1}{i} + \binom{n-1}{i-1} \). Therefore, the sum of the scalar coefficients in \( \mathbf{P}_i^\Delta \) is:
-\[ \binom{n}{i} - \binom{n-1}{i} - \binom{n-1}{i-1} \equiv 0 \]
+Let us examine the total weight (sum of coefficients) of this intermediate entity \( \mathbf{P}_k^\Delta \):
+\[ \text{Total Weight} = \binom{n}{k} - \binom{n-1}{k} - \binom{n-1}{k-1} \]
 
-Because the sum of the weights is **identically zero**, every intermediate coefficient \( \mathbf{P}_i^\Delta \) is **strictly a pure displacement vector** (weight \( w = 0 \)), completely independent of the choice of coordinate origin!
+According to Pascal’s fundamental triangle identity, \( \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1} \). Therefore:
+\[ \text{Total Weight} \equiv 0 \]
+
+Because the weights sum identically to zero, **every single \( \mathbf{P}_k^\Delta \) is strictly a pure displacement vector (altitude \( w = 0 \))!**
+
+This is a profound geometric result. The vectors \( \mathbf{P}_k^\Delta \) do not depend on where the coordinate origin is placed. If you move the entire drawing board across the room, the starting point \( P_0 \) and ending point \( P_n \) move to new locations, but the deviation vectors \( \mathbf{P}_k^\Delta \) remain completely unchanged. They describe the pure physical shape and bulge of the curve.
 
 [#thm-spower-arbitrary-degree]
 [THEOREM]
@@ -513,177 +555,214 @@ Let \( \mathbf{P}(t) \) be a polynomial curve of degree \( n \ge 1 \) with Berns
 The curve admits the unique, coordinate-free **\( s \)-power basis expansion**:
 \[ \mathbf{P}(s, t) = s \, P_0 + t \, P_n + \sum_{k=1}^{n-1} s^{n-k} t^k \, \mathbf{P}_k^\Delta \]
 where:
-1. \( P_0 \) and \( P_n \) are the two **affine endpoint points** (weight \( w = 1 \)).
+1. \( P_0 \) and \( P_n \) are the two **affine endpoint locations** (weight \( w = 1 \)).
 2. Each \( \mathbf{P}_k^\Delta \) (\( k = 1, \dots, n-1 \)) is a **pure displacement vector** (weight \( w = 0 \)) given by:
 \[ \mathbf{P}_k^\Delta = \binom{n}{k} P_k - \binom{n-1}{k} P_0 - \binom{n-1}{k-1} P_n \]
-3. Every basis blending function \( s^{n-k} t^k \) contains the factor \( s t = (1 - t) t \), vanishing identically at both endpoints \( t = 0 \) and \( t = 1 \).
+3. Every blending term \( s^{n-k} t^k \) contains the mutual product factor \( s t = (1 - t) t \), which vanishes identically at both endpoints (\( t = 0 \) and \( t = 1 \)), ensuring that the deviation vectors act purely as interior bending muscle.
 
-The inverse transformation recovering the Bernstein control points from the \( s \)-power basis is:
+The inverse formula recovering the classical Bernstein control points from the \( s \)-power representation is:
 \[ P_k = \frac{1}{\binom{n}{k}} \left[ \mathbf{P}_k^\Delta + \binom{n-1}{k} P_0 + \binom{n-1}{k-1} P_n \right] \]
 ====
 
-=== Concrete Expansions for Degrees 2, 3, 4, and Beyond
+=== Intuitive Geometric Anatomy of Curves by Degree
 
-Let us evaluate this general theorem for the curve degrees commonly encountered in typeface design and geometric modeling.
+To see how this works in practice, let us examine the physical curves used every day in digital typography.
 
-==== Degree 2 (Quadratic Bézier Curves, TrueType Standard)
+==== Degree 2: The Quadratic Parabola (TrueType Glyphs)
 
-For \( n = 2 \), there is a single internal index \( k = 1 \):
+In TrueType fonts, all glyph outlines are formed from quadratic Bézier segments. For degree \( n = 2 \), there are three Bernstein control points: the start pin \( P_0 \), an off-curve control point \( P_1 \), and the end pin \( P_2 \).
+
+In the \( s \)-power basis, there is only a single deviation vector (\( k = 1 \)):
 \[ \mathbf{P}_1^\Delta = \binom{2}{1} P_1 - \binom{1}{1} P_0 - \binom{1}{0} P_2 = 2 \, P_1 - P_0 - P_2 \]
 
-The curve expansion is:
+Let \( M = \frac{1}{2}(P_0 + P_2) \) be the geometric midpoint of the straight skeleton chord. We can rewrite the deviation vector as:
+\[ \mathbf{P}_1^\Delta = 2 (P_1 - M) \]
+
+The vector \( \mathbf{P}_1^\Delta \) is simply **twice the physical offset from the chord midpoint \( M \) to the off-curve handle \( P_1 \)**!
+
+The complete quadratic curve equation becomes:
 \[ \mathbf{P}(s, t) = s \, P_0 + t \, P_2 + s t \, \mathbf{P}_1^\Delta \]
 
-* **Geometric Meaning**: Let \( M = \frac{1}{2}(P_0 + P_2) \) be the midpoint of the skeleton chord. The vector \( \mathbf{P}_1^\Delta = 2 (P_1 - M) \) is exactly twice the displacement from the chord midpoint to the off-curve control point \( P_1 \).
-* **Apex Displacement**: At the parameter midpoint \( t = 1/2 \) (where \( s t = 1/4 \)), the physical curve apex is:
-\[ \mathbf{P}(1/2) = M + \frac{1}{4} \mathbf{P}_1^\Delta \]
-The vector \( \frac{1}{4} \mathbf{P}_1^\Delta \) is the exact physical excursion of the parabola from its chord.
+* **The Arching Factor**: The blending function \( s t = (1 - t) t \) is a perfect symmetric arch. It is \( 0 \) at the start (\( t = 0 \)), rises smoothly to its maximum height of \( 1/4 \) at the exact middle (\( t = 1/2 \)), and drops back to \( 0 \) at the end (\( t = 1 \)).
+* **The Apex Peak**: At the midpoint \( t = 1/2 \), the curve reaches its maximum physical excursion from the chord:
+\[ \mathbf{P}(1/2) = M + \frac{1}{4} \mathbf{P}_1^\Delta = M + \frac{1}{2}(P_1 - M) \]
+The curve passes exactly halfway between the chord midpoint \( M \) and the off-curve control point \( P_1 \). 
 
-==== Degree 3 (Cubic Bézier Curves, PostScript / OpenType CFF Standard)
+A type designer can immediately see the physical shape: the vector \( \mathbf{h} = \frac{1}{4} \mathbf{P}_1^\Delta \) is the exact physical arrow showing how far the glyph contour bows outward from the straight line.
 
-For \( n = 3 \), there are two internal displacement vectors \( k = 1 \) and \( k = 2 \):
-\[ \mathbf{P}_1^\Delta = \binom{3}{1} P_1 - \binom{2}{1} P_0 - \binom{2}{0} P_3 = 3 \, P_1 - 2 \, P_0 - P_3 \]
-\[ \mathbf{P}_2^\Delta = \binom{3}{2} P_2 - \binom{2}{2} P_0 - \binom{2}{1} P_3 = 3 \, P_2 - P_0 - 2 \, P_3 \]
+==== Degree 3: The Cubic Spline (PostScript / OpenType CFF Glyphs)
 
-The cubic expansion is:
+In PostScript and OpenType CFF fonts, outlines are formed from cubic Bézier curves. For degree \( n = 3 \), there are four Bernstein control points: \( P_0, P_1, P_2, P_3 \).
+
+In the \( s \)-power basis, the curve decomposes into the straight skeleton chord \( s P_0 + t P_3 \) plus two distinct deviation vectors:
+\[ \mathbf{P}_1^\Delta = 3 \, P_1 - 2 \, P_0 - P_3 \]
+\[ \mathbf{P}_2^\Delta = 3 \, P_2 - P_0 - 2 \, P_3 \]
+
+The complete cubic curve is:
 \[ \mathbf{P}(s, t) = s \, P_0 + t \, P_3 + s^2 t \, \mathbf{P}_1^\Delta + s t^2 \, \mathbf{P}_2^\Delta \]
 
-* **Geometric Meaning**: 
-  Notice that \( \mathbf{P}_1^\Delta = 3(P_1 - P_0) - (P_3 - P_0) \), which is three times the initial departure handle minus the full chord vector.
-  Similarly, \( \mathbf{P}_2^\Delta = 3(P_2 - P_3) + (P_3 - P_0) \), which is three times the arrival handle plus the chord vector.
-* **Symmetry**: If the cubic curve is symmetric about its midpoint, \( \mathbf{P}_1^\Delta = \mathbf{P}_2^\Delta \), and the deviation reduces to \( s t (s + t) \mathbf{P}_1^\Delta = s t \, \mathbf{P}_1^\Delta \), behaving like an effective quadratic parabola!
+Let us examine the physical meaning of these two vectors:
 
-==== Degree 4 (Quartic Curves)
+* **The Departure Shoulder Vector \( \mathbf{P}_1^\Delta \)**: 
+  Notice that \( \mathbf{P}_1^\Delta = 3(P_1 - P_0) - (P_3 - P_0) \). This vector takes three times the initial departure tangent handle and subtracts the full chord vector. It controls the swelling and curvature of the curve’s **left shoulder** near the start. Because it is multiplied by \( s^2 t = (1 - t)^2 t \), its influence peaks early, at \( t = 1/3 \).
+* **The Arrival Shoulder Vector \( \mathbf{P}_2^\Delta \)**: 
+  Similarly, \( \mathbf{P}_2^\Delta = 3(P_2 - P_3) + (P_3 - P_0) \). This vector controls the swelling and curvature of the curve’s **right shoulder** near the finish. Multiplied by \( s t^2 = (1 - t) t^2 \), its influence peaks late, at \( t = 2/3 \).
+* **The Bilateral Symmetry Law**: 
+  If a letterform contour is bilaterally symmetric (such as the symmetric bowl of a capital ‘U’ or the bottom arch of an ‘O’), the two deviation vectors are identical: \( \mathbf{P}_1^\Delta = \mathbf{P}_2^\Delta \). When this happens, the deviation terms combine:
+\[ s^2 t \, \mathbf{P}_1^\Delta + s t^2 \, \mathbf{P}_1^\Delta = s t (s + t) \mathbf{P}_1^\Delta = s t \, \mathbf{P}_1^\Delta \]
+The cubic curve behaves exactly like a pure quadratic arch, showing that symmetric cubic curves are simply balanced parabolas in disguise!
+* **Inflection and S-Curves**: 
+  If \( \mathbf{P}_1^\Delta \) and \( \mathbf{P}_2^\Delta \) point in opposite directions (one pushing upward and the other pushing downward), the curve effortlessly forms an S-shaped contour (such as the spine of a letter ‘S’) with an inflection point where the deviation crosses the skeleton chord.
 
-For \( n = 4 \), there are three internal displacement vectors:
+==== Degree 4: Quartic Curves (Precision Master Interpolation)
+
+For degree \( n = 4 \), the curve features three deviation vectors:
 \[ \mathbf{P}_1^\Delta = 4 \, P_1 - 3 \, P_0 - P_4 \]
 \[ \mathbf{P}_2^\Delta = 6 \, P_2 - 3 \, P_0 - 3 \, P_4 \]
 \[ \mathbf{P}_3^\Delta = 4 \, P_3 - P_0 - 3 \, P_4 \]
 
-The quartic expansion is:
+The expansion is:
 \[ \mathbf{P}(s, t) = s \, P_0 + t \, P_4 + s^3 t \, \mathbf{P}_1^\Delta + s^2 t^2 \, \mathbf{P}_2^\Delta + s t^3 \, \mathbf{P}_3^\Delta \]
 
-=== Geometric Algebra of Deviation: Wedge Products and Exact Enclosed Area
+Here, \( \mathbf{P}_2^\Delta \) represents a purely symmetric central crown vector modulated by \( (s t)^2 \), while \( \mathbf{P}_1^\Delta \) and \( \mathbf{P}_3^\Delta \) provide independent optical adjustments to the entry and exit shoulders. This formulation allows variable font interpolation engines to adjust glyph weight at the center of a stroke without altering the curvature at the serifs.
 
-In Geometric Algebra, the interaction between the straight chord and the curve’s deviation vectors produces closed-form multivector invariants.
+=== Geometric Algebra of Deviation: Wedge Products and Enclosed Area
 
-Let the straight chord vector be:
+In Geometric Algebra, we can measure the exact 2-dimensional space swept out by a curve using the **outer product** (the wedge product, denoted by \( \wedge \)).
+
+When two displacement vectors \( \mathbf{u} \) and \( \mathbf{v} \) are wedged together, \( \mathbf{u} \wedge \mathbf{v} \), the result is an **oriented bivector blade** representing the directed planar area of the parallelogram spanned by \( \mathbf{u} \) and \( \mathbf{v} \).
+
+==== Visualizing the Area Ribbon
+
+Let the straight skeleton chord vector be:
 \[ \mathbf{v}_{\text{chord}} = P_n - P_0 \]
 
-The oriented deviation of the curve from its chord at any parameter \( t \) is measured by the outer product bivector:
-\[ \mathbf{B}(t) = (\mathbf{P}(t) - P_0) \wedge \mathbf{v}_{\text{chord}} \]
-
-Substituting the \( s \)-power expansion:
+As the curve travels from \( P_0 \) to \( P_n \), imagine a continuous geometric ribbon stretched between the straight chord and the bent contour. At any parameter \( t \), the deviation of the curve from the starting pin is:
 \[ \mathbf{P}(t) - P_0 = t \, \mathbf{v}_{\text{chord}} + \sum_{k=1}^{n-1} s^{n-k} t^k \, \mathbf{P}_k^\Delta \]
 
-Taking the outer product with \( \mathbf{v}_{\text{chord}} \), the collinear term \( t \, \mathbf{v}_{\text{chord}} \wedge \mathbf{v}_{\text{chord}} \) vanishes identically:
-\[ \mathbf{B}(t) = \sum_{k=1}^{n-1} s^{n-k} t^k \left( \mathbf{P}_k^\Delta \wedge \mathbf{v}_{\text{chord}} \right) \]
+Now, we take the wedge product of this displacement with the chord vector \( \mathbf{v}_{\text{chord}} \). Because any vector wedged with itself is identically zero (\( \mathbf{v}_{\text{chord}} \wedge \mathbf{v}_{\text{chord}} = 0 \)), the straight collinear term vanishes completely:
+\[ \mathbf{B}(t) = (\mathbf{P}(t) - P_0) \wedge \mathbf{v}_{\text{chord}} = \sum_{k=1}^{n-1} s^{n-k} t^k \left( \mathbf{P}_k^\Delta \wedge \mathbf{v}_{\text{chord}} \right) \]
 
-Every term is an oriented 2-blade in \( Cl(2,0) \) measuring the signed areal excursion at parameter \( t \).
+Every term in this sum is an oriented parallelogram area formed by one of the deviation vectors and the skeleton chord!
 
 [#thm-spower-bivector-excursion]
 [THEOREM]
-.Exact Multivector Area Enclosed by a Degree-\( n \) Curve and its Chord
+.Exact Multivector Area Enclosed by a Curve and its Chord
 ====
 Let \( \mathbf{P}(t) \) be a degree-\( n \) polynomial curve with endpoint chord \( \mathbf{v}_{\text{chord}} = P_n - P_0 \) and \( s \)-power deviation vectors \( \mathbf{P}_k^\Delta \).
 
-The total signed area bivector \( \mathbf{A} \) enclosed between the curve and its chord is:
+The total signed area bivector \( \mathbf{A} \) enclosed between the curve and its chord is obtained by integrating the deviation bivector across the unit interval:
 \[ \mathbf{A} = \int_0^1 (\mathbf{P}(t) - P_0) \wedge \mathbf{v}_{\text{chord}} \, dt = \frac{1}{n + 1} \sum_{k=1}^{n-1} \frac{1}{\binom{n}{k}} \left( \mathbf{P}_k^\Delta \wedge \mathbf{v}_{\text{chord}} \right) \]
 
 *Proof:*
-Integrating the basis terms over the unit interval:
-\[ \int_0^1 s^{n-k} t^k \, dt = \int_0^1 (1 - t)^{n-k} t^k \, dt = \mathrm{B}(n - k + 1, \, k + 1) = \frac{(n - k)! \, k!}{(n + 1)!} = \frac{1}{(n + 1) \binom{n}{k}} \]
-Summing across all \( k = 1, \dots, n-1 \) yields the exact formula. \( \square \)
+Integrating the basis polynomial \( s^{n-k} t^k = (1 - t)^{n-k} t^k \) over the interval \( [0, 1] \) yields the classical Euler Beta integral:
+\[ \int_0^1 (1 - t)^{n-k} t^k \, dt = \mathrm{B}(n - k + 1, \, k + 1) = \frac{(n - k)! \, k!}{(n + 1)!} = \frac{1}{(n + 1) \binom{n}{k}} \]
+Multiplying by the constant bivector \( \mathbf{P}_k^\Delta \wedge \mathbf{v}_{\text{chord}} \) and summing over all \( k = 1, \dots, n-1 \) yields the exact closed formula. \( \square \)
 ====
 
-==== Applications to Standard Glyph Curves:
-* **Quadratic Segment (\( n = 2 \))**:
+==== Physical Interpretation for Typeface Glyphs
+
+This theorem provides an instantaneous, coordinate-free measure of the visual "ink weight" or "blackness" added by curving a stroke:
+
+* **For a Quadratic Stroke (\( n = 2 \))**:
 \[ \mathbf{A} = \frac{1}{3 \cdot 2} \left( \mathbf{P}_1^\Delta \wedge \mathbf{v}_{\text{chord}} \right) = \frac{1}{6} \left( \mathbf{P}_1^\Delta \wedge \mathbf{v}_{\text{chord}} \right) \]
-Since \( \mathbf{P}_1^\Delta = 4 \, \mathbf{h} \) (where \( \mathbf{h} \) is the physical apex excursion), \( \mathbf{A} = \frac{2}{3} (\mathbf{h} \wedge \mathbf{v}_{\text{chord}}) \), reproducing Archimedes’ classical quadrature of the parabola coordinate-free.
-* **Cubic Segment (\( n = 3 \))**:
+Since the physical apex height vector is \( \mathbf{h} = \frac{1}{4} \mathbf{P}_1^\Delta \), we have \( \mathbf{P}_1^\Delta = 4 \, \mathbf{h} \). Substituting this gives:
+\[ \mathbf{A} = \frac{4}{6} (\mathbf{h} \wedge \mathbf{v}_{\text{chord}}) = \frac{2}{3} (\mathbf{h} \wedge \mathbf{v}_{\text{chord}}) \]
+This reproduces Archimedes’ famous quadrature theorem of the parabola coordinate-free: **the area enclosed by a parabolic arch is exactly two-thirds of the enclosing triangle!**
+
+* **For a Cubic Stroke (\( n = 3 \))**:
 \[ \mathbf{A} = \frac{1}{4 \cdot 3} \left( \mathbf{P}_1^\Delta \wedge \mathbf{v}_{\text{chord}} \right) + \frac{1}{4 \cdot 3} \left( \mathbf{P}_2^\Delta \wedge \mathbf{v}_{\text{chord}} \right) = \frac{1}{12} \left( (\mathbf{P}_1^\Delta + \mathbf{P}_2^\Delta) \wedge \mathbf{v}_{\text{chord}} \right) \]
-The enclosed area of any cubic Bézier curve is strictly one-twelfth the outer product of the sum of its deviation vectors with its chord.
+The total enclosed area of any cubic curve is **strictly one-twelfth the outer product of the sum of its deviation vectors with the skeleton chord**. A rasterizer or optical hinting engine can compute this single wedge product in a handful of processor cycles without numerical integration.
 
-=== Sub-Interval Truncation and the Quadratic Deviation Shrinking Law
+=== Sub-Interval Zooming and the Quadratic Flattening Law
 
-When a curve segment is clipped to an active parameter interval \( [t_{\min}, t_{\max}] \subset [0, 1] \) of width \( \Delta t = t_{\max} - t_{\min} \), the \( s \)-power representation reveals why Bézier clipping converges with superlinear quadratic speed.
+When a font rendering engine clips a curve to find where it intersects a pixel boundary or another glyph outline, it zooms in on a tiny sub-interval \( [t_{\min}, t_{\max}] \) of parameter width \( \Delta t = t_{\max} - t_{\min} \).
 
-Let \( \tilde{t} = (t - t_{\min}) / \Delta t \in [0, 1] \) be the normalized sub-interval parameter. The deviation polynomial satisfies:
-\[ s(t) \, t = (1 - t) \, t = (\Delta t)^2 \, (1 - \tilde{t}) \, \tilde{t} + \mathcal{O}(\Delta t) \]
+Why does the curve flatten out so extraordinarily fast under this zooming process? The \( s \)-power basis reveals the exact geometric mechanism.
 
-Under reparameterization, the new deviation vectors of the sub-curve scale quadratically with the interval width:
-\[ \mathbf{P}_k^{\Delta, \text{new}} = (\Delta t)^2 \, \mathbf{M}_k(\Delta t) \, \mathbf{P}^\Delta \]
+Let \( \tilde{t} \in [0, 1] \) be the local parameter inside the zoomed sub-interval. The arching factor \( s(t) \, t = (1 - t) t \) transforms under zooming as:
+\[ s(t) \, t = (\Delta t)^2 \, (1 - \tilde{t}) \, \tilde{t} + \mathcal{O}(\Delta t) \]
 
-Every time the interval contracts by a factor of \( 10 \), the physical deviation vectors shrink by a factor of \( 100 \). The curve segment flattens into its skeleton chord at quadratic speed, which guarantees that the parallel fat-line bounds become tight immediately.
+When we reparameterize the sub-curve, the new deviation vectors \( \mathbf{P}_k^{\Delta, \text{new}} \) scale with the **square of the interval width**:
+\[ \mathbf{P}_k^{\Delta, \text{new}} \propto (\Delta t)^2 \]
 
-=== Symmetric Polar Forms (Blossoming) in \( Cl(2,0) \)
+* **The 100-to-1 Flattening Law**: 
+  If you zoom into a segment that is one-tenth the width of the original curve (\( \Delta t = 0.1 \)), the deviation vectors do not merely shrink to one-tenth of their size—**they shrink by a factor of one hundred (\( 0.1^2 = 0.01 \))!**
+  
+The curve flattens into its straight skeleton chord with quadratic speed. This explains why Bézier clipping algorithms converge almost instantly: within three or four zoom iterations, the curved stroke is physically indistinguishable from a straight line on the discrete grid \( \mathcal{G}_N \).
 
-The algebraic power of symmetric polynomials emerges through the **polar form** (also known as the *blossom*).
+=== Symmetric Polar Forms (Blossoming): The Caliper Model
+
+To understand curve subdivision, knot insertion, and derivatives without coordinate algebra, we introduce the **symmetric polar form** (traditionally called the *blossom*).
+
+==== The Multi-Caliper Analogy
+
+Imagine a degree-\( 3 \) cubic curve. Instead of a single slider \( t \), imagine three separate sliding calipers, labeled \( u_1, u_2, u_3 \). Each caliper can be set independently to any balance between the starting pin \( e_s = (1, 0) \) and the ending pin \( e_t = (0, 1) \).
+
+The blossom \( \mathcal{B}(u_1, u_2, u_3) \) is a geometric machine that takes the positions of these three calipers and produces a specific location on the drawing table. It obeys three simple geometric rules:
+
+1. **Symmetry (Order Does Not Matter)**: It does not matter in which order you adjust the calipers. Setting caliper 1 to \( 0.2 \) and caliper 2 to \( 0.8 \) gives the exact same point as setting caliper 1 to \( 0.8 \) and caliper 2 to \( 0.2 \):
+\[ \mathcal{B}(u_1, u_2, u_3) = \mathcal{B}(u_2, u_1, u_3) = \mathcal{B}(u_3, u_2, u_1) \]
+2. **Linear Interpolation along Each Caliper**: If you hold two calipers fixed and slide the third caliper along a straight line, the output point moves along a straight line at constant speed.
+3. **The Diagonal Curve Property**: If you lock all three calipers together so they all point to the same value \( u = (s, t) \), the output point traces the exact physical curve:
+\[ \mathcal{B}(u, u, u) = \mathbf{P}(s, t) \]
 
 [#def-polar-form-cl20]
 [DEFINITION]
 .Symmetric Multilinear Blossom in \( Cl(2,0) \)
 ====
-Let \( z(s, t) \) be a degree-\( n \) polynomial curve in \( Cl(2,0) \). The polar form \( \mathcal{B}[z](u_1, u_2, \dots, u_n) \) is the unique symmetric \( n \)-multilinear map from \( (\mathbb{R}^2)^n \) into \( Cl(2,0) \) satisfying:
+Let \( \mathbf{P}(s, t) \) be a degree-\( n \) polynomial curve in \( Cl(2,0) \). Its polar form \( \mathcal{B}[\mathbf{P}](u_1, u_2, \dots, u_n) \) is the unique symmetric \( n \)-multilinear function from \( (\mathbb{R}^2)^n \) into \( Cl(2,0) \) that satisfies:
 
-1. **Symmetry**: For any permutation \( \sigma \) of \( \{ 1, 2, \dots, n \} \):
-\[ \mathcal{B}[z](u_{\sigma(1)}, u_{\sigma(2)}, \dots, u_{\sigma(n)}) = \mathcal{B}[z](u_1, u_2, \dots, u_n) \]
-2. **Multi-Affine Property**: In each argument \( u_i = (s_i, t_i) \) with \( s_i + t_i = 1 \), \( \mathcal{B} \) is an affine multivector combination.
-3. **Diagonal Restriction**: When all \( n \) arguments coincide on \( u = (s, t) \), the blossom reproduces the curve point:
-\[ \mathcal{B}[z](u, u, \dots, u) = z(s, t) \]
+1. **Symmetry**: For any permutation \( \sigma \) of the indices:
+\[ \mathcal{B}[\mathbf{P}](u_{\sigma(1)}, \dots, u_{\sigma(n)}) = \mathcal{B}[\mathbf{P}](u_1, \dots, u_n) \]
+2. **Multi-Affine Property**: In each individual argument \( u_i = (s_i, t_i) \) with \( s_i + t_i = 1 \), \( \mathcal{B} \) is an affine geometric combination.
+3. **Diagonal Identity**:
+\[ \mathcal{B}[\mathbf{P}](u, u, \dots, u) = \mathbf{P}(s, t) \]
 ====
 
-The control points of the Bézier curve are simply the polar form evaluated at the fundamental basis steps \( e_s = (1, 0) \) and \( e_t = (0, 1) \):
-\[ p_k = \mathcal{B}[z](\underbrace{e_t, \dots, e_t}_{k \text{ times}}, \, \underbrace{e_s, \dots, e_s}_{n-k \text{ times}}) \]
+==== Finding Control Points and Subdividing Curves Instantly
 
-For a cubic curve:
-\[ p_0 = \mathcal{B}(e_s, e_s, e_s), \quad p_1 = \mathcal{B}(e_t, e_s, e_s), \quad p_2 = \mathcal{B}(e_t, e_t, e_s), \quad p_3 = \mathcal{B}(e_t, e_t, e_t) \]
+The classical Bernstein control points are simply what happens when the calipers are placed at the extreme ends of the stroke:
+\[ P_0 = \mathcal{B}(e_s, e_s, e_s) \quad (\text{all calipers at the start}) \]
+\[ P_1 = \mathcal{B}(e_t, e_s, e_s) \quad (\text{one caliper at end, two at start}) \]
+\[ P_2 = \mathcal{B}(e_t, e_t, e_s) \quad (\text{two calipers at end, one at start}) \]
+\[ P_3 = \mathcal{B}(e_t, e_t, e_t) \quad (\text{all calipers at the end}) \]
 
-This multilinear symmetry renders geometric operations transparent:
-* **De Casteljau Subdivision**: Subdividing a curve at parameter \( u = (s, t) \) into two halves is achieved by evaluating blossoms with mixed arguments:
-  Left sub-curve control points: \( \mathcal{B}(e_s, e_s, e_s), \; \mathcal{B}(e_s, e_s, u), \; \mathcal{B}(e_s, u, u), \; \mathcal{B}(u, u, u) \).
-  Right sub-curve control points: \( \mathcal{B}(u, u, u), \; \mathcal{B}(u, u, e_t), \; \mathcal{B}(u, e_t, e_t), \; \mathcal{B}(e_t, e_t, e_t) \).
-* **Direct Derivative Multivector**: The tangent vector is obtained by inserting the displacement direction \( \Delta = e_t - e_s = (-1, 1) \) into the blossom:
-\[ z'(s, t) = n \cdot \mathcal{B}[z](u, \dots, u, \, \Delta) \]
+If a type designer wants to cut a cubic curve in half at parameter \( u = (1/2, 1/2) \), the blossom immediately gives the new control points for both halves without any algebraic matrix inversion:
 
-=== The Homogeneous Model in \( Cl(3,0) \): Rational Curves and Exact Conics
+* **Left Half Control Points**:
+\[ \mathcal{B}(e_s, e_s, e_s), \quad \mathcal{B}(e_s, e_s, u), \quad \mathcal{B}(e_s, u, u), \quad \mathcal{B}(u, u, u) \]
+* **Right Half Control Points**:
+\[ \mathcal{B}(u, u, u), \quad \mathcal{B}(u, u, e_t), \quad \mathcal{B}(u, e_t, e_t), \quad \mathcal{B}(e_t, e_t, e_t) \]
 
-While \( Cl(2,0) \) cleanly handles affine polynomial curves, digital type design frequently demands exact conic sections—circular arcs for geometric sans-serif bowls, parabolic transitions for smooth brackets, and hyperbolic terminals.
+* **Tangent Velocity Vectors**: To find the tangent direction vector of the curve, you replace one caliper with the displacement step \( \Delta = e_t - e_s = (-1, 1) \):
+\[ \mathbf{P}'(s, t) = n \cdot \mathcal{B}(u, \dots, u, \, \Delta) \]
+The derivative is not an abstract limit of differences; it is a physical displacement vector generated directly by the multilinear geometry of the blossom.
 
-To unify polynomial splines and rational conics into a single seamless multivector framework without quotients, we embed the design plane into the 3D Clifford algebra \( Cl(3,0) \).
+=== The Homogeneous Model in \( Cl(3,0) \): Exact Conic Curves Without Division
 
-==== Metric and Algebraic Foundations of \( Cl(3,0) \)
+In digital typeface design, designers frequently require exact geometric conic curves:
+* Perfect circular arcs for the rounded bowls of sans-serif capitals (‘O’, ‘C’, ‘G’, ‘Q’).
+* Precise ellipses for slanted italic letterforms.
+* Parabolic arches for calligraphic brackets.
+* Hyperbolic curves for flared serif terminals.
 
-The algebra \( Cl(3,0) \) possesses a positive-definite Euclidean metric with orthonormal basis vectors \( \{ e_1, e_2, e_3 \} \):
-\[ e_1^2 = 1, \qquad e_2^2 = 1, \qquad e_3^2 = 1 \]
-\[ e_i e_j = - e_j e_i \quad (i \neq j) \]
+In conventional CAGD, polynomials cannot represent a true circle. Standard software forces the use of rational fractions with variable denominators, which creates severe division-by-zero risks and complicated rational derivative rules.
 
-The complete \( 2^3 = 8 \)-dimensional multivector space consists of:
-* Grade 0 (Scalar): \( 1 \)
-* Grade 1 (Vectors): \( e_1, e_2, e_3 \)
-* Grade 2 (Bivectors): \( e_{12} = e_1 e_2, \; e_{23} = e_2 e_3, \; e_{31} = e_3 e_1 \)
-* Grade 3 (Pseudoscalar): \( I = e_{123} = e_1 e_2 e_3 \), with \( I^2 = -1 \)
+Geometric Algebra solves this permanently by lifting the curve into the 3D algebra \( Cl(3,0) \).
 
-==== Homogeneous Point Embedding and Scalar Weights
+==== The Projective Cone: Conics as Straight Unbent Slices
 
-An affine point \( (x, y) \) on the discrete design grid \( \mathcal{G}_N \) with scalar optical weight \( w > 0 \) is represented as a homogeneous 1-vector \( P \in Cl(3,0) \):
-\[ P = w \, (x \, e_1 + y \, e_2) + w \, e_3 = x_h \, e_1 + y_h \, e_2 + w \, e_3 \]
+Why do circles require fractions in 2D? Because trying to bend a 2D polynomial into a perfect circle is like trying to flatten an orange peel onto a table without tearing it.
 
-The physical affine coordinates are recovered by projecting onto the canonical affine plane \( e_3 \cdot P = w \):
-\[ x = \frac{e_1 \cdot P}{e_3 \cdot P} = \frac{x_h}{w}, \qquad y = \frac{e_2 \cdot P}{e_3 \cdot P} = \frac{y_h}{w} \]
+However, imagine a 3D circular cone standing upright with its vertex at the ground origin. If you slice this cone with a flat plane at altitude \( 1 \), the intersection line on that plane is an **exact, perfect circle**.
 
-When \( w = 1 \), the representation is the standard unweighted affine point:
-\[ P = x \, e_1 + y \, e_2 + e_3 \]
-When \( w = 0 \), \( P = x \, e_1 + y \, e_2 \) represents a *direction (displacement vector)* in the design plane.
+In \( Cl(3,0) \), every rational conic curve is simply a **pure, linear polynomial curve running along the surface of a 3D cone**:
+\[ P(s, t) = s^2 \, P_0 + 2 \, s t \, P_1 + t^2 \, P_2 \]
+where each \( P_i \) is a 3D 1-vector in \( Cl(3,0) \):
+\[ P_i = w_i (x_i \, e_1 + y_i \, e_2) + w_i \, e_3 \]
 
-==== Rational Bézier Curves as Linear Multivector Sums
-
-In classical CAGD, a rational Bézier curve is an unwieldy quotient:
-\[ z_{\text{rational}}(t) = \frac{\sum_{k=0}^n \binom{n}{k} s^{n-k} t^k \, w_k \, z_k}{\sum_{k=0}^n \binom{n}{k} s^{n-k} t^k \, w_k} \]
-
-In \( Cl(3,0) \), the quotient completely disappears. A weighted rational curve is simply a **standard linear polynomial multivector** in homogeneous space:
-\[ P(s, t) = \sum_{k=0}^n \binom{n}{k} s^{n-k} t^k \, P_k \]
-where each control point \( P_k = w_k (x_k e_1 + y_k e_2) + w_k e_3 \in Cl(3,0) \).
+There are **no fractions, no quotients, and no divisions** in the representation! The curve is a standard linear multivector sum.
 
 [#thm-exact-circle-representation]
 [THEOREM]
@@ -693,56 +772,71 @@ Let three homogeneous control points in \( Cl(3,0) \) be given by:
 \[ P_0 = x_0 \, e_1 + y_0 \, e_2 + e_3 \]
 \[ P_1 = w_1 (x_1 \, e_1 + y_1 \, e_2) + w_1 \, e_3 \]
 \[ P_2 = x_2 \, e_1 + y_2 \, e_2 + e_3 \]
+where the endpoint weights are normalized to unity (\( w_0 = w_2 = 1 \)).
 
 The degree-2 symmetric power polynomial in \( Cl(3,0) \):
 \[ P(s, t) = s^2 \, P_0 + 2 \, s t \, P_1 + t^2 \, P_2 \]
-traces an exact conic arc in the affine plane. Specifically:
+traces an exact conic arc whose physical affine shape on the tabletop is governed entirely by the middle optical weight \( w_1 \):
 
-1. **Circular Arc**: If the chord \( \Delta P = P_2 - P_0 \) subtends an angle \( 2 \alpha \), and the apex control point \( P_1 \) is placed at the intersection of the tangents at \( P_0 \) and \( P_2 \) with weight:
+1. **Exact Circular Arc**: If the angle subtended by the arc is \( 2 \alpha \), and the apex control point \( P_1 \) is placed at the intersection of the endpoint tangent lines with weight:
 \[ w_1 = \cos \alpha \]
-then \( P(s, t) \) parameterizes an exact circular arc of angular span \( 2 \alpha \).
+then the projection of \( P(s, t) \) onto the tabletop traces a mathematically exact circular arc of angular span \( 2 \alpha \).
 2. **Parabolic Arc**: If \( w_1 = 1 \), the curve is a standard affine parabola.
-3. **Elliptic Arc**: If \( w_1 < 1 \), the curve is an exact elliptic arc.
+3. **Elliptic Arc**: If \( 0 < w_1 < 1 \) (and \( w_1 \neq \cos \alpha \)), the curve is an exact elliptic segment.
 4. **Hyperbolic Arc**: If \( w_1 > 1 \), the curve is an exact hyperbolic segment.
 
 *Proof:*
-The affine coordinates are given by the projection ratio:
+Projecting the 3D multivector onto the tabletop at altitude \( 1 \) is accomplished by dividing by the altitude component \( e_3 \cdot P(s, t) = s^2 + 2 s t w_1 + t^2 \):
 \[ x(t) = \frac{s^2 x_0 + 2 s t w_1 x_1 + t^2 x_2}{s^2 + 2 s t w_1 + t^2}, \qquad y(t) = \frac{s^2 y_0 + 2 s t w_1 y_1 + t^2 y_2}{s^2 + 2 s t w_1 + t^2} \]
-For a symmetric quadrant centered at the origin with radius \( r \), let \( P_0 = r e_1 + e_3 \), \( P_2 = r e_2 + e_3 \), and \( P_1 = w_1 (r e_1 + r e_2) + w_1 e_3 \). 
-For a 90-degree quadrant, \( \alpha = \pi/4 \), so \( w_1 = \cos(\pi/4) = \frac{\sqrt{2}}{2} \).
-Evaluating the squared radius:
-\[ x(t) ^ 2 + y(t) ^ 2 = \frac{(s ^ 2 r + \sqrt{2} s t r) ^ 2 + (\sqrt{2} s t r + t ^ 2 r) ^ 2}{(s ^ 2 + \sqrt{2} s t + t ^ 2) ^ 2} = \frac{r ^ 2 (s ^ 4 + 2\sqrt{2} s ^ 3 t + 4 s ^ 2 t ^ 2 + 2\sqrt{2} s t ^ 3 + t ^ 4)}{(s ^ 2 + \sqrt{2} s t + t ^ 2) ^ 2} \]
+
+For a 90-degree quadrant of radius \( r \) centered at the origin, let \( P_0 = r e_1 + e_3 \) (at angle \( 0 \)), \( P_2 = r e_2 + e_3 \) (at angle \( 90^\circ \)), and \( P_1 = w_1 (r e_1 + r e_2) + w_1 e_3 \) (at the corner \( (r, r) \)).
+Here the half-angle is \( \alpha = 45^\circ \), so \( w_1 = \cos(45^\circ) = \frac{\sqrt{2}}{2} \).
+
+Evaluating the squared distance from the origin:
+\[ x(t)^2 + y(t)^2 = \frac{(s^2 r + \sqrt{2} s t r)^2 + (\sqrt{2} s t r + t^2 r)^2}{(s^2 + \sqrt{2} s t + t^2)^2} = \frac{r^2 (s^4 + 2\sqrt{2} s^3 t + 4 s^2 t^2 + 2\sqrt{2} s t^3 + t^4)}{(s^2 + \sqrt{2} s t + t^2)^2} \]
+
 Expanding the denominator squared:
-\[ (s ^ 2 + \sqrt{2} s t + t ^ 2) ^ 2 = s ^ 4 + 2\sqrt{2} s ^ 3 t + 2 s ^ 2 t ^ 2 + 2 s ^ 2 t ^ 2 + 2\sqrt{2} s t ^ 3 + t ^ 4 = s ^ 4 + 2\sqrt{2} s ^ 3 t + 4 s ^ 2 t ^ 2 + 2\sqrt{2} s t ^ 3 + t ^ 4 \]
-The numerator and denominator polynomials are identically equal, yielding \( x(t) ^ 2 + y(t) ^ 2 = r ^ 2 \) for all \( t \in [0, 1] \). \( \square \)
+\[ (s^2 + \sqrt{2} s t + t^2)^2 = s^4 + 2\sqrt{2} s^3 t + 4 s^2 t^2 + 2\sqrt{2} s t^3 + t^4 \]
+
+The numerator and denominator polynomials are identically equal for every parameter value \( t \in [0, 1] \). Therefore:
+\[ x(t)^2 + y(t)^2 \equiv r^2 \]
+The path stays at an exact, constant radius \( r \) across the entire arc. \( \square \)
 ====
 
 === Line Joins, Tangents, and Outer Product Intersections
 
-In the homogeneous model \( Cl(3,0) \), geometric intersections and tangencies avoid all trigonometric equations and division by slope singularities.
+In typeface rendering and outline offsetting (such as generating bold weights or inline decorations), we must frequently find where two straight stroke lines intersect or where a tangent line meets a curve.
 
-==== The Line Bivector in \( Cl(3,0) \)
+In conventional coordinate geometry, finding line intersections requires computing slopes \( m = \Delta y / \Delta x \). When a stroke is vertical, \( \Delta x = 0 \), causing a catastrophic division-by-zero that crashes naive algorithms and requires branching `if-else` special cases throughout the codebase.
 
-Given two homogeneous points \( P_1, P_2 \in Cl(3,0) \), the directed line passing through them is represented directly by their **outer product bivector**:
+Geometric Algebra eliminates this problem completely using **Plücker line bivectors**.
+
+==== Visualizing Lines as Planes Through the Origin
+
+In our 3D homogeneous model \( Cl(3,0) \), a directed line in the design plane passing through points \( P_1 \) and \( P_2 \) is represented by the **outer product bivector**:
 \[ L = P_1 \wedge P_2 \]
 
-Writing \( P_1 = x_1 e_1 + y_1 e_2 + e_3 \) and \( P_2 = x_2 e_1 + y_2 e_2 + e_3 \):
+Geometrically, this bivector represents the 2D plane passing through the ground origin and the two points on the tabletop.
+
+Expanding this wedge product in terms of basis bivectors:
 \[ L = (x_1 y_2 - x_2 y_1) \, e_{12} + (y_1 - y_2) \, e_{23} + (x_2 - x_1) \, e_{31} \]
 
-The three bivector components correspond precisely to the classical Plücker line coefficients \( (a, b, c) \) where the implicit line equation is \( a x + b y + c = 0 \):
+The three components of this bivector are exactly the three coefficients \( (a, b, c) \) of the classical line equation \( a x + b y + c = 0 \):
 \[ a = y_1 - y_2, \qquad b = x_2 - x_1, \qquad c = x_1 y_2 - x_2 y_1 \]
 
-==== Intersection of Two Lines via the Dual Product
+==== Intersecting Two Lines via the Dual Outer Product
 
-Given two lines represented by bivectors \( L_1 = P_1 \wedge P_2 \) and \( L_2 = Q_1 \wedge Q_2 \), their point of intersection \( X \in Cl(3,0) \) is computed directly by the commutator product or dual join:
-\[ X = (L_1 \times L_2) \cdot I = (L_1 \cdot L_2 ^ {\ast}) \]
-where \( L_2 ^ {\ast} = - L_2 I \) is the 1-vector dual of the line bivector.
+Now, suppose we have two lines represented by bivectors \( L_1 \) and \( L_2 \). In 3D space, these two bivectors represent two flat planes passing through the origin.
 
-If the lines are parallel in the affine plane, \( e_3 \cdot X = 0 \), automatically yielding the ideal point (direction vector) at infinity without arithmetic overflow or special-case branching.
+Where do two planes intersect? They intersect along a straight line passing through the origin! The 1-vector \( X \) pointing along this intersection line is computed directly by the commutator product or dual join:
+\[ X = (L_1 \times L_2) \cdot I = (L_1 \cdot L_2^\ast) \]
+
+* **Intersecting Lines**: If the lines intersect at an ordinary point on the tabletop, the 1-vector \( X \) pierces the tabletop at altitude \( w = e_3 \cdot X \neq 0 \). The physical intersection point is simply \( X / w \).
+* **Parallel Lines**: If the two lines are parallel, the two planes intersect horizontally along the ground floor at altitude \( w = e_3 \cdot X = 0 \). The result is automatically a pure displacement vector pointing in the common direction of the parallel lines! There is no division by zero, no numerical overflow, and no special-case branch in the algorithm.
 
 === Standalone Ada 2022 Implementation: Unified S-Power Geometric Algebra
 
-Below is a complete, standalone Ada 2022 package implementing the unified coordinate-free \( s \)-power geometric algebra for arbitrary degrees up to 8, with strict separation between affine points and displacement vectors, subprogram contracts, and zero external dependencies.
+Below is the complete, self-contained Ada 2022 package implementing this unified coordinate-free geometric framework for digital typefaces. It enforces the strict separation of affine points and displacement vectors via dynamic subprogram contracts, provides exact conic arc evaluation, and computes enclosed area bivectors with a modified McCabe cyclomatic complexity strictly bounded below 10.
 
 [source,ada]
 ----
@@ -758,15 +852,15 @@ is
    type Real is digits 15;
 
    -- Homogeneous element in Cl(3,0):
-   -- Weight W = 1.0 represents an Affine Point.
-   -- Weight W = 0.0 represents a Pure Displacement Vector.
+   -- Weight W = 1.0 represents an Affine Landmark Point.
+   -- Weight W = 0.0 represents a Pure Displacement Direction Vector.
    type Element_Cl3 is record
       X : Real := 0.0;
       Y : Real := 0.0;
       W : Real := 0.0;
    end record;
 
-   -- Subtypes enforcing geometric semantics
+   -- Subtypes enforcing strict physical geometric semantics
    subtype Affine_Point is Element_Cl3
    with Dynamic_Predicate => abs (Affine_Point.W - 1.0) < 1.0e-12;
 
@@ -861,7 +955,7 @@ is
              Deviations'Length = Natural (N) - 1 and
              Deviations'First = 1;
 
-   -- Evaluate S-Power Curve at Dual Parameters S and T
+   -- Evaluate S-Power Curve at Dual Balance Parameters S and T
    function Evaluate_Spower
      (N              : in Degree_Range;
       P_Start, P_End : in Affine_Point;
@@ -1079,7 +1173,7 @@ package body Iris_Spower_Algebra is
       S, T           : in Real) return Affine_Point
    is
       Deg : constant Natural := Natural (N);
-      -- Baseline chord point
+      -- Baseline skeleton chord point
       X_Sum : Real := (S * P_Start.X) + (T * P_End.X);
       Y_Sum : Real := (S * P_Start.Y) + (T * P_End.Y);
       K     : Natural := 1;
@@ -1156,9 +1250,10 @@ end Iris_Spower_Algebra;
 This index lists all formal Definitions and Theorems established across this volume.
 
 * xref:thm-svd-hobby-least-squares[**Theorem: Universal Existence, Uniqueness, and Least-Squares Optimality of SVD-Hobby Splines**] -- Section: *The SVD Extension: Finding the Best Harmony in Every Situation*
-* xref:def-polar-form-cl20[**Definition: Symmetric Multilinear Blossom in \( Cl(2,0) \)**] -- Section: *Symmetric Polar Forms (Blossoming) in \( Cl(2,0) \)*
-* xref:thm-exact-circle-representation[**Theorem: Exact Conic Representation in \( Cl(3,0) \)**] -- Section: *Rational Bézier Curves as Linear Multivector Sums*
+* xref:def-polar-form-cl20[**Definition: Symmetric Multilinear Blossom in \( Cl(2,0) \)**] -- Section: *Symmetric Polar Forms (Blossoming): The Caliper Model*
+* xref:thm-exact-circle-representation[**Theorem: Exact Conic Representation in \( Cl(3,0) \)**] -- Section: *The Homogeneous Model in \( Cl(3,0) \): Exact Conic Curves Without Division*
 * xref:def-affine-point-vector-split[**Definition: Affine Point–Vector Decomposition in \( Cl(3,0) \)**] -- Section: *Points Versus Vectors: The Foundational Geometric Distinction*
-* xref:thm-spower-arbitrary-degree[**Theorem: Complete S-Power Basis Representation for Arbitrary Degree \( n \)**] -- Section: *The \( s \)-Power Basis: Structural Separation of Points and Deviation Vectors*
-* xref:thm-spower-bivector-excursion[**Theorem: Exact Multivector Area and Bivector Deviation Bounds**] -- Section: *Geometric Algebra of Deviation: Wedge Products and Exact Enclosed Area*
+* xref:thm-spower-arbitrary-degree[**Theorem: Complete S-Power Basis Representation for Arbitrary Degree \( n \)**] -- Section: *The \( s \)-Power Basis: Separating the Skeleton Chord from the Bending Muscle*
+* xref:thm-spower-bivector-excursion[**Theorem: Exact Multivector Area and Bivector Deviation Bounds**] -- Section: *Geometric Algebra of Deviation: Wedge Products and Enclosed Area*
+
 
