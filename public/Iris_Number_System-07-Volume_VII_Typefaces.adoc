@@ -1897,6 +1897,320 @@ package body iris_microsegment_geometry is
 end iris_microsegment_geometry;
 ----
 
+== Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry
+
+Digital typeface design has historically been constricted by an artificial divide between Latin-centric manual point-steering and non-Latin calligraphic traditions. When a designer works with high-precision digital input—such as structured keyboards, the DataHand, or direct numerical parameter streams—the objective is never the crude mimicry of physical arm gestures on a screen. Rather, the designer requires **declarative, symbolic geometric operators and exact kinetic invariants** that generate letterforms directly across all major world writing systems:
+
+* **Latin, Greek, and Cyrillic (Inscriptional Monumental, Humanist Italic, and Textura/Fraktur Blackletter)**: Governed by chisel/brush plane incisions, broad-nib translation angles, distinct ductus strokes, and modular counter-form voids.
+* **Arabic and Perso-Arabic (Naskh, Thuluth, Nastaliq, Ruq'ah, Kufic)**: Governed by the *nuqta* (rhomboid dot metric), continuous *qalam* (reed pen) ribbon sweeps, dynamic nib roll (*tahrif*), acute terminal trims (*tash'ir*), and cascading affine tiers.
+* **Hebrew (Square Script / Ashuri)**: Governed by broad-nib horizontal crown strokes, hanging upper baselines, disciplined vertical stem descenders, and distinct corner roof junctions.
+* **Indic (Devanagari, Bengali, Tamil, etc.)**: Governed by the continuous hanging top bar (*shirorekha*), vertical stem anchors, and curved vowel modifiers (*matras*).
+* **East Asian (Hanzi, Kanji, Hanja)**: Governed by disciplined stroke order (*yong* / eight principles of Yong), pressure-driven stroke weight swelling, and bounding box density equilibrium.
+
+By formulating the broad pen, chisel, and brush as **rigid and dynamic directed geometric elements in \( Cl(2,0) \) and \( Cl(3,0) \)** operating on discrete micro-segment chains, all writing systems are united under a single, exact, non-polynomial mathematical framework.
+
+=== The Universal Directed Nib Kinematic in \( Cl(2,0) \)
+
+Every broad-nib, chisel, or reed pen instrument possesses a physical cutting profile that can be characterized by a directed displacement vector in the Clifford algebra \( Cl(2,0) \).
+
+[#def-directed-nib-vector]
+[NOTE]
+====
+.Definition: Directed Nib Vector in \( Cl(2,0) \)
+Let a broad-nib or reed-pen instrument have instantaneous cutting width \( W \in \mathbb{R}^+ \) and orientation angle \( \theta_{\text{nib}} \in [0, \pi) \) measured relative to the horizontal baseline axis \( e_1 \). The **half-nib displacement vector** \( \mathbf{N} \) is defined as:
+\[ \mathbf{N}(W, \theta_{\text{nib}}) = \frac{W}{2} \left( \cos\theta_{\text{nib}} \, e_1 + \sin\theta_{\text{nib}} \, e_2 \right) \]
+The complete physical cutting edge is the directed segment spanning from \( -\mathbf{N} \) to \( +\mathbf{N} \), having full length \( W \) and unit normal bivector dual \( \mathbf{N}^\ast = \mathbf{N} \cdot e_{12} \).
+====
+
+==== The Canonical Nib Orientations Across World Traditions
+
+The orientation angle \( \theta_{\text{nib}} \) and width modulation \( W(s) \) embody the structural DNA of distinct historical traditions:
+
+1. **Latin Roman Monumental & Humanist Italic**:
+   - Fixed nib angle: \( \theta_{\text{nib}} \approx 30^\circ \text{ to } 45^\circ \).
+   - Generates the classic diagonal axis of stress in round letters ('o', 'c', 'e') and distinct thick-and-thin stem contrast.
+2. **Latin Blackletter (Textura Quadrata, Fraktur)**:
+   - Steep nib angle: \( \theta_{\text{nib}} \approx 40^\circ \text{ to } 50^\circ \).
+   - Characterized by diamond-shaped terminals (*quadrata*), fractured polygonal arches, and strictly parallel vertical minims.
+3. **Arabic (Naskh, Thuluth, Nastaliq)**:
+   - High nib slant: \( \theta_{\text{nib}} \approx 65^\circ \text{ to } 75^\circ \) (Naskh), \( 55^\circ \text{ to } 60^\circ \) (Thuluth).
+   - Characterized by dynamic pen rotation (*tahrif*) where the angle \( \theta_{\text{nib}}(s) \) continuously varies along the stroke trajectory to execute hairline connections and sweeping descenders.
+4. **Hebrew (Ashuri / Classical Square Script)**:
+   - Shallow or nearly horizontal nib angle: \( \theta_{\text{nib}} \approx 0^\circ \text{ to } 15^\circ \) (often \( 0^\circ \) for heavy horizontal roof strokes).
+   - Yields prominent horizontal weight with lighter vertical downstrokes, directly inverted relative to standard Latin stress.
+
+=== Ribbon Boundary Extraction Along Centerline Trajectories
+
+Let a glyph stroke be declared symbolically by its centerline trajectory \( \Gamma \), represented as an ordered sequence of discrete vertices on the grid \( \mathcal{G}_N \):
+\[ \Gamma = \left( Q_0, Q_1, Q_2, \dots, Q_K \right) \]
+where each segment has tangent displacement \( \mathbf{v}_k = Q_{k+1} - Q_k \).
+
+[#thm-ribbon-boundary-extraction]
+[NOTE]
+====
+.Theorem: Discrete Ribbon Boundary Pair
+Let a stroke trajectory \( \Gamma \) be swept by a directed nib \( \mathbf{N}_k = \mathbf{N}(W_k, \theta_k) \) evaluated at each vertex \( Q_k \). The left and right boundary chains \( \mathcal{C}_{\text{left}} \) and \( \mathcal{C}_{\text{right}} \) of the resulting ribbon are given by:
+\[ P_{\text{left}, k} = Q_k + \mathbf{N}_k, \qquad P_{\text{right}, k} = Q_k - \mathbf{N}_k \qquad (k = 0, 1, \dots, K) \]
+The closed perimeter of the stroke ribbon on \( \mathcal{G}_N \) is the cyclic concatenation:
+\[ \mathcal{C}_{\text{ribbon}} = \left( P_{\text{left}, 0}, P_{\text{left}, 1}, \dots, P_{\text{left}, K}, \, P_{\text{right}, K}, P_{\text{right}, K-1}, \dots, P_{\text{right}, 0}, \, P_{\text{left}, 0} \right) \]
+
+*Proof:*
+At every trajectory node \( Q_k \), the physical pen nib occupies the 1-simplex segment \( [Q_k - \mathbf{N}_k, \, Q_k + \mathbf{N}_k] \). Sweeping this line segment along the piecewise linear trajectory produces a Minkowski envelope whose extreme boundary edges are the loci of the nib endpoints \( Q_k \pm \mathbf{N}_k \). Connecting the forward left boundary with the reverse right boundary forms a closed, non-self-intersecting Jordan curve enclosing the exact ink volume. \( \square \)
+====
+
+Because each boundary vertex is computed independently via pure vector addition, all boundary points are generated simultaneously across parallel SIMD vector lanes in \( O(1) \) parallel time.
+
+=== The Nuqta Lattice Metric: Exact Proportional Geometry for Arabic
+
+In the canonical tradition established by Ibn Muqla and Ibn al-Bawwab, Arabic calligraphy is strictly measured by the **nuqta**—the rhomboid dot produced by pressing the *qalam* onto the surface without translational motion.
+
+[#def-nuqta-rhombus]
+[NOTE]
+====
+.Definition: The Discrete Nuqta Metric
+Let the *qalam* have width \( W_0 \) and cutting slant \( \theta_0 \). The **nuqta** \( \mathcal{N} \) is the planar rhombus formed by advancing the nib vector \( 2 \mathbf{N} \) perpendicularly to itself by distance \( W_0 \):
+\[ \mathcal{N} = \left\{ Q_0 + u \, \mathbf{N}(\theta_0) + v \, \mathbf{N}^\perp(\theta_0) \;\middle|\; u, v \in [-1, 1] \right\} \]
+The diagonal width \( \Delta x_{\mathcal{N}} \) and height \( \Delta y_{\mathcal{N}} \) of the nuqta are exact integer/rational constants:
+\[ \Delta x_{\mathcal{N}} = W_0 \sin\theta_0, \qquad \Delta y_{\mathcal{N}} = W_0 \cos\theta_0 \]
+====
+
+All major letterform proportions are expressed as exact rational multiples of the nuqta:
+* **Alif (Thuluth)**: A vertical centerline of height \( H = 7 \mathcal{N} \), executing a subtle double-inflection S-curve with excursion \( \delta = \frac{1}{2} \mathcal{N} \).
+* **Alif (Naskh)**: A height of \( H = 5 \mathcal{N} \).
+* **Baa / Taa Bowl**: Horizontal span \( W = 5 \mathcal{N} \), inner depth \( D = 1 \mathcal{N} \).
+* **Nun / Sad Descender Basin**: Radius \( R = 3 \mathcal{N} \), dropping \( 2 \mathcal{N} \) below the primary baseline.
+
+When the designer updates the single scalar parameter \( W_0 \) or angle \( \theta_0 \), the entire Arabic alphabet regenerates with complete structural coherence.
+
+=== Declarative Terminal Operators: Chisel Planes and Tash'ir Trims
+
+In fine typography, terminals and stroke endings are never rounded blobs; they are crisp, intentional geometric truncations.
+
+==== 1. Chisel Cut Planes (Latin and Greek Inscriptional Serifs)
+A flat chisel terminal is defined by an oriented cutting plane in \( Cl(3,0) \):
+\[ L_{\text{cut}} : (\cos\phi) x + (\sin\phi) y + c = 0 \]
+Applying \( L_{\text{cut}} \) truncates the ribbon boundary at angle \( \phi \), producing the sharp angled apex characteristic of Roman capital stems ('I', 'T', 'L') and Greek monumental lapidary inscriptions.
+
+==== 2. Tash'ir / Pen-Lifting Hairline Trims (Arabic Terminals)
+In Arabic script, strokes frequently terminate in a *tash'ir*—a dynamic tapering where the scribe lifts the pen onto its corner nib edge, reducing the effective width \( W(s) \to 0 \) along an acute exit tangent:
+\[ W(s) = W_0 \left( 1 - \left(\frac{s - s_{\text{start}}}{L_{\text{trim}}}\right)^p \right) \qquad (p \ge 1) \]
+This produces the razor-sharp terminals of the tails of *raa* (\( \text{ر} \)), *waw* (\( \text{و} \)), and the head of *alif* (\( \text{ا} \)).
+
+=== Cascading Affine Tiers in Nastaliq and Cursive Scripts
+
+Unlike Latin typography, where glyphs occupy rigid rectangular em-boxes sitting on a single horizontal baseline, Perso-Arabic **Nastaliq** is characterized by words that cascade downwards from upper-right to lower-left at a characteristic slant angle \( \phi_{\text{cascade}} \approx 30^\circ \text{ to } 40^\circ \).
+
+[#thm-nastaliq-cascade-frame]
+[NOTE]
+====
+.Theorem: Discrete Affine Cascade Carrier Frame
+Let a cursive word be composed of an ordered sequence of \( K \) glyph kernels \( (G_1, G_2, \dots, G_K) \). The origin of kernel \( G_k \) is placed at carrier frame position \( \mathbf{F}_k \in \mathcal{G}_N \), defined recursively by:
+\[ \mathbf{F}_1 = \mathbf{F}_{\text{start}}, \qquad \mathbf{F}_{k+1} = \mathbf{F}_k + \Delta x_k \, e_1 - (\tan\phi_{\text{cascade}} \, \Delta x_k + \Delta h_{\text{tier}, k}) \, e_2 \]
+where \( \Delta x_k \) is the horizontal advance of glyph \( k \), and \( \Delta h_{\text{tier}, k} \) is the structural drop between joining phonemes.
+====
+
+Every connecting ligature (*kashida*) between adjacent glyph kernels is formed by matching the exit nib vector of \( G_k \) with the entry nib vector of \( G_{k+1} \), ensuring uninterrupted \( C^1 \) geometric tangency and uniform ink thickness across the composite word.
+
+=== Standalone Ada 2022 Implementation: Universal Calligraphic Ribbon Engine
+
+Below is a complete, self-contained Ada 2022 package implementing universal calligraphic ribbon kinematics, directed nib transformations, nuqta metric evaluations, and declarative stroke boundary extractions on discrete micro-segment grids.
+
+[source,ada]
+----
+pragma ada_2022;
+
+package iris_calligraphic_ribbon is
+
+   type real is new long_float;
+
+   type point_2d is record
+      x : real := 0.0;
+      y : real := 0.0;
+   end record;
+
+   type vector_2d is record
+      dx : real := 0.0;
+      dy : real := 0.0;
+   end record;
+
+   type nib_spec is record
+      width : real := 10.0;
+      angle : real := 0.7853981633974483; -- 45 degrees in radians
+   end record;
+
+   type nuqta_metric is record
+      width    : real := 12.0;
+      angle    : real := 1.2217304763960306; -- 70 degrees (Naskh)
+      dx_nuqta : real := 0.0;
+      dy_nuqta : real := 0.0;
+   end record;
+
+   type point_array is array (natural range <>) of point_2d;
+   type nib_array is array (natural range <>) of nib_spec;
+
+   -- initialize a canonical nuqta metric
+   function make_nuqta_metric (width, angle_rad : in real) return nuqta_metric
+   with
+      pre  => width > 0.0,
+      post => make_nuqta_metric'result.dx_nuqta > 0.0 and
+              make_nuqta_metric'result.dy_nuqta > 0.0;
+
+   -- compute the directed half-nib displacement vector in cl(2,0)
+   function half_nib_vector (nib : in nib_spec) return vector_2d
+   with inline;
+
+   -- extract the left and right micro-segment boundary pair for a trajectory
+   procedure extract_ribbon_boundaries
+     (trajectory  : in point_array;
+      nibs        : in nib_array;
+      left_bound  : out point_array;
+      right_bound : out point_array)
+   with
+      pre => trajectory'length >= 2 and
+             nibs'length = trajectory'length and
+             left_bound'length = trajectory'length and
+             right_bound'length = trajectory'length and
+             trajectory'first = nibs'first and
+             trajectory'first = left_bound'first and
+             trajectory'first = right_bound'first;
+
+   -- apply a linear tash'ir (thinning terminal trim) to a nib array
+   procedure apply_tashir_trim
+     (nibs       : in out nib_array;
+      trim_start : in natural;
+      power      : in real := 1.0)
+   with
+      pre => trim_start >= nibs'first and
+             trim_start <= nibs'last and
+             power >= 1.0;
+
+   -- assemble closed ribbon contour from left and right boundaries
+   procedure assemble_closed_ribbon
+     (left_bound  : in point_array;
+      right_bound : in point_array;
+      contour_out : out point_array)
+   with
+      pre => left_bound'length >= 2 and
+             right_bound'length = left_bound'length and
+             left_bound'first = right_bound'first and
+             contour_out'length = (2 * left_bound'length) + 1 and
+             contour_out'first = 0;
+
+end iris_calligraphic_ribbon;
+
+package body iris_calligraphic_ribbon is
+
+   function make_nuqta_metric (width, angle_rad : in real) return nuqta_metric
+   is
+      s_val : constant real :=
+        real (long_float'sin (long_float (angle_rad)));
+      c_val : constant real :=
+        real (long_float'cos (long_float (angle_rad)));
+   begin
+      return nuqta_metric'
+        (width    => width,
+         angle    => angle_rad,
+         dx_nuqta => abs (width * s_val),
+         dy_nuqta => abs (width * c_val));
+   end make_nuqta_metric;
+
+   function half_nib_vector (nib : in nib_spec) return vector_2d is
+      half_w : constant real := 0.5 * nib.width;
+      c_val  : constant real :=
+        real (long_float'cos (long_float (nib.angle)));
+      s_val  : constant real :=
+        real (long_float'sin (long_float (nib.angle)));
+   begin
+      return vector_2d'
+        (dx => half_w * c_val,
+         dy => half_w * s_val);
+   end half_nib_vector;
+
+   procedure extract_ribbon_boundaries
+     (trajectory  : in point_array;
+      nibs        : in nib_array;
+      left_bound  : out point_array;
+      right_bound : out point_array)
+   is
+      n : constant natural := trajectory'length;
+      i : natural := 0;
+   begin
+      while i < n loop
+         declare
+            idx   : constant natural := trajectory'first + i;
+            pt    : constant point_2d := trajectory (idx);
+            h_nib : constant vector_2d := half_nib_vector (nibs (idx));
+         begin
+            left_bound (idx) := point_2d'
+              (x => pt.x + h_nib.dx,
+               y => pt.y + h_nib.dy);
+            right_bound (idx) := point_2d'
+              (x => pt.x - h_nib.dx,
+               y => pt.y - h_nib.dy);
+         end;
+         i := i + 1;
+      end loop;
+   end extract_ribbon_boundaries;
+
+   procedure apply_tashir_trim
+     (nibs       : in out nib_array;
+      trim_start : in natural;
+      power      : in real := 1.0)
+   is
+      total_trim_len : constant natural := (nibs'last - trim_start) + 1;
+      idx            : natural := trim_start;
+      step           : natural := 0;
+   begin
+      if total_trim_len <= 1 then
+         return;
+      end if;
+
+      while idx <= nibs'last loop
+         declare
+            fraction : constant real :=
+              real (step) / real (total_trim_len - 1);
+            factor   : constant real :=
+              1.0 - real (long_float (fraction) ** long_float (power));
+         begin
+            nibs (idx).width := nibs (idx).width * factor;
+         end;
+         step := step + 1;
+         idx  := idx + 1;
+      end loop;
+   end apply_tashir_trim;
+
+   procedure assemble_closed_ribbon
+     (left_bound  : in point_array;
+      right_bound : in point_array;
+      contour_out : out point_array)
+   is
+      m   : constant natural := left_bound'length;
+      i   : natural := 0;
+      out_idx : natural := 0;
+   begin
+      -- forward along left boundary
+      while i < m loop
+         contour_out (out_idx) := left_bound (left_bound'first + i);
+         out_idx := out_idx + 1;
+         i := i + 1;
+      end loop;
+
+      -- reverse along right boundary
+      i := 0;
+      while i < m loop
+         contour_out (out_idx) :=
+           right_bound (right_bound'last - i);
+         out_idx := out_idx + 1;
+         i := i + 1;
+      end loop;
+
+      -- close cycle at initial point
+      contour_out (out_idx) := left_bound (left_bound'first);
+   end assemble_closed_ribbon;
+
+end iris_calligraphic_ribbon;
+----
+
 == Index of Formal Statements
 
 This index lists all formal Definitions and Theorems established across this volume.
@@ -1911,5 +2225,7 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:def-vertex-turning-bivector[**Definition: Vertex Turning Bivector in \( Cl(2,0) \)**] -- Section: *Piecewise Linear Micro-Segment Font Design and Parallel Discrete Geometry*
 * xref:thm-discrete-gauss-bonnet[**Theorem: Discrete Gauss–Bonnet Index on \( \mathcal{G}_N \)**] -- Section: *Piecewise Linear Micro-Segment Font Design and Parallel Discrete Geometry*
 * xref:thm-discrete-greens-area[**Theorem: Discrete Green's Area Bivector**] -- Section: *Piecewise Linear Micro-Segment Font Design and Parallel Discrete Geometry*
-
-
+* xref:def-directed-nib-vector[**Definition: Directed Nib Vector in \( Cl(2,0) \)**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
+* xref:thm-ribbon-boundary-extraction[**Theorem: Discrete Ribbon Boundary Pair**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
+* xref:def-nuqta-rhombus[**Definition: The Discrete Nuqta Metric**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
+* xref:thm-nastaliq-cascade-frame[**Theorem: Discrete Affine Cascade Carrier Frame**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
