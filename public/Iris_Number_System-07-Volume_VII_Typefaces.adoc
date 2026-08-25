@@ -1514,6 +1514,389 @@ package body iris_spower_algebra is
 end iris_spower_algebra;
 ----
 
+== Piecewise Linear Micro-Segment Font Design and Parallel Discrete Geometry
+
+For over half a century, the digital type design industry has operated under the unexamined orthodoxy that letterforms must be modeled as high-order analytic polynomials—such as cubic splines in PostScript and OpenType CFF, quadratic splines in TrueType, or variational curvature spirals in Spiro. This reliance on non-linear polynomial curves imposes severe computational penalties: numerical root-finding for scanline rasterization, ill-conditioned degree elevation and reduction, expensive curve–curve intersection algorithms, and fragile floating-point tolerances.
+
+When we re-evaluate computational geometry from the foundational principles of the Iris number system and modern massively parallel architectures (SIMD vector execution units and streaming hardware cores), the opposite paradigm emerges as profoundly superior: **font outlines designed and processed directly as dense piecewise linear micro-segment chains on the discrete grid \( \mathcal{G}_N \)**.
+
+Instead of delegating the discretization of smooth curves to a runtime rasterizer that must repeatedly solve non-linear equations, the glyph is defined and manipulated as a sequence of integer-quantized linear segments. Every geometric operation—turning angles, enclosed signed areas, parallel curve offsetting, Laplacian smoothing, and analytic anti-aliased coverage integration—becomes exact, strictly linear, and embarrassingly parallel.
+
+=== Discrete Chain Topology in Geometric Algebra \( Cl(2,0) \)
+
+In the discrete micro-segment framework, a glyph contour \( \mathcal{C} \) is defined as an ordered cyclic sequence of \( M \) discrete vertices residing on the discrete spatial grid \( \mathcal{G}_N \):
+\[ \mathcal{C} = \left( P_0, P_1, P_2, \dots, P_{M-1}, P_M \equiv P_0 \right) \]
+where each vertex \( P_m \) has discrete grid coordinates \( (x_m, y_m) \in \mathcal{G}_N \).
+
+==== Micro-Segment Displacement Vectors
+
+Each directed micro-segment connecting vertex \( P_m \) to \( P_{m+1} \) is a pure displacement 1-vector in \( Cl(2,0) \):
+\[ \mathbf{d}_m = P_{m+1} - P_m = (\Delta x_m) \, e_1 + (\Delta y_m) \, e_2 \qquad (m = 0, 1, \dots, M-1) \]
+where \( \Delta x_m = x_{m+1} - x_m \) and \( \Delta y_m = y_{m+1} - y_m \).
+
+Because the contour is topologically closed, the discrete cycle satisfies the exact topological closure identity in integer arithmetic without numerical drift:
+\[ \sum_{m=0}^{M-1} \mathbf{d}_m = \sum_{m=0}^{M-1} (P_{m+1} - P_m) = P_M - P_0 \equiv \mathbf{0} \]
+
+=== Discrete Curvature and the Vertex Turning Bivector
+
+In classical differential geometry, curvature \( \kappa(t) \) requires computing second derivatives, non-linear fractions, and square roots:
+\[ \kappa = \frac{x' y'' - y' x''}{(x'^2 + y'^2)^{3/2}} \]
+On the discrete grid \( \mathcal{G}_N \), continuous derivatives are replaced by finite differences, and curvature is concentrated at the discrete vertices as **turning bivectors**.
+
+[#def-vertex-turning-bivector]
+[NOTE]
+====
+.Definition: Vertex Turning Bivector in \( Cl(2,0) \)
+Let \( P_m \) be an interior vertex of a micro-segment chain with incoming displacement vector \( \mathbf{d}_{m-1} = P_m - P_{m-1} \) and outgoing displacement vector \( \mathbf{d}_m = P_{m+1} - P_m \). The **vertex turning bivector** \( \mathbf{\Omega}_m \) is defined as the outer product:
+\[ \mathbf{\Omega}_m = \mathbf{d}_{m-1} \wedge \mathbf{d}_m \]
+In the standard basis of \( Cl(2,0) \), this evaluates to:
+\[ \mathbf{\Omega}_m = (\Delta x_{m-1} \Delta y_m - \Delta y_{m-1} \Delta x_m) \, e_{12} \]
+====
+
+The scalar coefficient of the turning bivector directly encodes the geometric nature of the vertex:
+* If \( (\mathbf{\Omega}_m \cdot e_{12}) > 0 \), the contour executes a counter-clockwise (leftward) turn, indicating local convexity along an outer boundary.
+* If \( (\mathbf{\Omega}_m \cdot e_{12}) < 0 \), the contour executes a clockwise (rightward) turn, indicating local concavity.
+* If \( (\mathbf{\Omega}_m \cdot e_{12}) = 0 \), the adjacent micro-segments are strictly collinear.
+
+Remarkably, determining the exact convexity and turning direction requires only two integer multiplications and one subtraction, with zero trigonometric or division operations.
+
+=== Discrete Gauss–Bonnet Theorem for Typeface Outlines
+
+The total turning behavior of a closed micro-segment outline obeys the discrete counterpart of the Gauss–Bonnet theorem.
+
+[#thm-discrete-gauss-bonnet]
+[NOTE]
+====
+.Theorem: Discrete Gauss–Bonnet Index on \( \mathcal{G}_N \)
+Let \( \mathcal{C} = (P_0, \dots, P_M) \) be a closed, non-self-intersecting discrete polygonal contour on \( \mathcal{G}_N \). Let \( \theta_m \in (-\pi, \pi) \) be the signed turning angle at vertex \( P_m \), defined by:
+\[ \sin \theta_m = \frac{\mathbf{d}_{m-1} \wedge \mathbf{d}_m}{\|\mathbf{d}_{m-1}\| \|\mathbf{d}_m\|} \cdot e_{12}, \qquad \cos \theta_m = \frac{\mathbf{d}_{m-1} \cdot \mathbf{d}_m}{\|\mathbf{d}_{m-1}\| \|\mathbf{d}_m\|} \]
+Then the sum of all discrete vertex turning angles around the contour satisfies:
+\[ \sum_{m=0}^{M-1} \theta_m = 2 \pi \, W \]
+where \( W = +1 \) for an exterior counter-clockwise boundary contour, and \( W = -1 \) for an interior cutout hole (such as the counter of an 'O' or 'A').
+
+*Proof:*
+Each discrete vertex \( P_m \) introduces a rotation of the tangent direction vector from \( \mathbf{d}_{m-1} \) to \( \mathbf{d}_m \). Because the contour returns to its initial vertex \( P_0 \) with initial tangent \( \mathbf{d}_0 \), the net total rotation of the unit tangent vector across the closed cycle must be an integer multiple of \( 2\pi \). For a simple, non-self-intersecting Jordan curve traversed counter-clockwise, the total winding index is precisely \( W = +1 \); for clockwise traversal enclosing a void, \( W = -1 \). \( \square \)
+====
+
+=== Exact Enclosed Signed Area via Discrete Green's Bivector
+
+Calculating the area enclosed by a glyph contour composed of thousands of micro-segments requires no numerical quadrature or polygon triangulation.
+
+[#thm-discrete-greens-area]
+[NOTE]
+====
+.Theorem: Discrete Green's Area Bivector
+Let \( \mathcal{C} = (P_0, P_1, \dots, P_{M-1}, P_0) \) be a closed discrete contour on \( \mathcal{G}_N \). The exact signed area bivector \( \mathbf{A} \) enclosed by \( \mathcal{C} \) is given by:
+\[ \mathbf{A} = \frac{1}{2} \sum_{m=0}^{M-1} P_m \wedge P_{m+1} = \frac{1}{2} \left( \sum_{m=0}^{M-1} (x_m y_{m+1} - x_{m+1} y_m) \right) e_{12} \]
+
+*Proof:*
+By the discrete Stokes theorem in \( Cl(2,0) \), the area 2-blade of the oriented triangle formed by the origin and the segment \( P_m \to P_{m+1} \) is \( \frac{1}{2} (P_m \wedge P_{m+1}) \). Summing these oriented triangular 2-blades over the closed boundary cycle cancels all exterior cross-terms identically, leaving the net oriented area enclosed by the perimeter. \( \square \)
+====
+
+This computation is an embarrassingly parallel reduction:
+1. Each parallel SIMD lane computes the local cross-term \( \Delta A_m = x_m y_{m+1} - x_{m+1} y_m \) simultaneously.
+2. A parallel prefix-sum tree aggregates the total signed area in \( O(\log M) \) time steps.
+
+=== Parallel Discrete Laplacian Smoothing
+
+In traditional typography, creating a fair curve requires solving coupled non-linear variational systems (such as minimizing the integral of squared curvature \( \int \kappa^2 \, ds \)). In the micro-segment paradigm, curve fairing is executed directly on the discrete vertices using a **parallel discrete Laplacian filter**.
+
+Let \( P_m^{(k)} \) be the position of vertex \( m \) at iteration \( k \). The updated position \( P_m^{(k+1)} \) is given by:
+\[ P_m^{(k+1)} = P_m^{(k)} + \lambda \left( \mathbf{d}_m^{(k)} - \mathbf{d}_{m-1}^{(k)} \right) = (1 - 2\lambda) P_m^{(k)} + \lambda P_{m-1}^{(k)} + \lambda P_{m+1}^{(k)} \]
+where \( \lambda \in (0, 0.5) \) is the smoothing relaxation parameter.
+
+* **Corner and Serif Pinning**: Vertices designated as sharp corners, stroke terminals, or serifs have their relaxation parameter set to \( \lambda = 0 \), anchoring them as immutable geometric landmarks.
+* **Massive Parallelism**: Because each vertex update depends only on its immediate neighbors from the previous iteration step \( k \), all \( M \) vertices are updated concurrently across parallel processor threads without synchronization locks.
+
+=== Exact Parallel Contour Offsetting (Strokes and Weight Expansion)
+
+Expanding a glyph outline to create a bold weight or stroking an open centerline path is notoriously difficult with polynomial splines, because the exact offset of a polynomial curve is generally non-polynomial, requiring complicated approximation routines and knot insertion.
+
+For a piecewise linear chain, offsetting is **exact, linear, and completely parallel**:
+
+1. **Segment Normal Bivector Dual**:
+   For each micro-segment \( \mathbf{d}_m = (\Delta x_m) e_1 + (\Delta y_m) e_2 \), the outward unit normal vector \( \mathbf{n}_m \) is computed directly from its geometric dual:
+   \[ \mathbf{n}_m = \frac{\mathbf{d}_m \cdot e_{12}}{\|\mathbf{d}_m\|} = \frac{-\Delta y_m \, e_1 + \Delta x_m \, e_2}{\sqrt{(\Delta x_m)^2 + (\Delta y_m)^2}} \]
+2. **Parallel Segment Translation**:
+   Shift each directed segment outward by offset distance \( \delta \):
+   \[ L_m' : \mathbf{n}_m \cdot (X - P_m) = \delta \]
+3. **Vertex Dual Join in \( Cl(3,0) \)**:
+   The new offset vertex \( P_m' \) between adjacent shifted lines \( L_{m-1}' \) and \( L_m' \) is obtained in parallel via the dual line join:
+   \[ P_m' = (L_{m-1}' \times L_m') \cdot I \]
+
+Every offset vertex is computed independently and simultaneously across SIMD execution registers.
+
+=== Parallel Analytic Rasterization: Exact Trapezoidal Coverage
+
+Rasterizing polynomial outlines traditionally requires computing floating-point roots of quadratic or cubic equations for every scanline. With micro-segments, rasterization becomes an **exact, branch-free trapezoidal area integration**.
+
+For a pixel cell spanning the coordinate box \( [x, x+1] \times [y, y+1] \):
+1. **Segment Clipping**: The micro-segment is clipped to the vertical boundaries of the pixel column.
+2. **Signed Trapezoid Area**: The signed area between the clipped line segment and the bottom of the pixel cell is computed using basic arithmetic:
+   \[ \Delta \text{Coverage}(x, y) = \frac{1}{2} (y_{\text{left}} + y_{\text{right}} - 2 y) \cdot (x_{\text{right}} - x_{\text{left}}) \]
+3. **Scanline Prefix Integration**:
+   Along any horizontal scanline, the final anti-aliased pixel alpha value \( \alpha(x, y) \in [0, 1] \) is the cumulative horizontal prefix sum of edge crossings:
+   \[ \alpha(x, y) = \text{clamp}\left( \text{Winding}(x_{\text{min}}, y) + \sum_{x' \le x} \Delta \text{Coverage}(x', y), \, 0, \, 1 \right) \]
+
+Because all segments are straight lines, the entire rendering pipeline executes with zero transcendental functions, zero iterative polynomial root solvers, and pure streaming SIMD throughput.
+
+=== Standalone Ada 2022 Implementation: Micro-Segment Chain Geometry
+
+Below is a complete, self-contained Ada 2022 package implementing discrete micro-segment geometry, vertex turning bivectors, parallel Laplacian smoothing, discrete Green's area reduction, and exact linear offsetting.
+
+[source,ada]
+----
+pragma ada_2022;
+
+package iris_microsegment_geometry is
+
+   type real is new long_float;
+
+   type vertex_2d is record
+      x : real := 0.0;
+      y : real := 0.0;
+   end record;
+
+   type vector_2d is record
+      dx : real := 0.0;
+      dy : real := 0.0;
+   end record;
+
+   type bivector_2d is record
+      xy : real := 0.0;
+   end record;
+
+   type vertex_array is array (natural range <>) of vertex_2d;
+   type vector_array is array (natural range <>) of vector_2d;
+   type bivector_array is array (natural range <>) of bivector_2d;
+   type boolean_array is array (natural range <>) of boolean;
+
+   -- displacement vector between two vertices
+   function segment_vector (p1, p2 : in vertex_2d) return vector_2d
+   with inline;
+
+   -- outer product (wedge) of two 2d displacement vectors
+   function wedge (v1, v2 : in vector_2d) return bivector_2d
+   with inline;
+
+   -- vertex turning bivector at an interior chain vertex
+   function vertex_turning_bivector
+     (p_prev, p_curr, p_next : in vertex_2d) return bivector_2d
+   with inline;
+
+   -- compute all discrete segment displacement vectors
+   procedure compute_displacements
+     (chain : in vertex_array;
+      disps : out vector_array)
+   with
+      pre => chain'length >= 3 and
+             disps'length = chain'length and
+             chain'first = disps'first;
+
+   -- exact enclosed signed area via discrete green's bivector
+   function enclosed_chain_area
+     (chain : in vertex_array) return real
+   with
+      pre => chain'length >= 3;
+
+   -- parallel discrete laplacian smoothing step
+   procedure laplacian_smooth_step
+     (chain_in  : in vertex_array;
+      pinned    : in boolean_array;
+      lambda    : in real;
+      chain_out : out vertex_array)
+   with
+      pre => chain_in'length >= 3 and
+             pinned'length = chain_in'length and
+             chain_out'length = chain_in'length and
+             chain_in'first = pinned'first and
+             chain_in'first = chain_out'first and
+             lambda >= 0.0 and lambda <= 0.5;
+
+   -- compute offset vertex for a piecewise linear chain
+   function offset_vertex
+     (p_prev, p_curr, p_next : in vertex_2d;
+      delta                  : in real) return vertex_2d
+   with inline;
+
+   -- exact parallel contour offset
+   procedure offset_chain
+     (chain_in  : in vertex_array;
+      delta     : in real;
+      chain_out : out vertex_array)
+   with
+      pre => chain_in'length >= 3 and
+             chain_out'length = chain_in'length and
+             chain_in'first = chain_out'first;
+
+end iris_microsegment_geometry;
+
+package body iris_microsegment_geometry is
+
+   function segment_vector (p1, p2 : in vertex_2d) return vector_2d is
+   begin
+      return vector_2d'(dx => p2.x - p1.x, dy => p2.y - p1.y);
+   end segment_vector;
+
+   function wedge (v1, v2 : in vector_2d) return bivector_2d is
+   begin
+      return bivector_2d'(xy => (v1.dx * v2.dy) - (v1.dy * v2.dx));
+   end wedge;
+
+   function vertex_turning_bivector
+     (p_prev, p_curr, p_next : in vertex_2d) return bivector_2d
+   is
+      v_in  : constant vector_2d := segment_vector (p_prev, p_curr);
+      v_out : constant vector_2d := segment_vector (p_curr, p_next);
+   begin
+      return wedge (v_in, v_out);
+   end vertex_turning_bivector;
+
+   procedure compute_displacements
+     (chain : in vertex_array;
+      disps : out vector_array)
+   is
+      n : constant natural := chain'length;
+      i : natural := 0;
+   begin
+      while i < n loop
+         declare
+            idx_curr : constant natural := chain'first + i;
+            idx_next : constant natural := chain'first + ((i + 1) mod n);
+         begin
+            disps (idx_curr) := segment_vector
+              (chain (idx_curr), chain (idx_next));
+         end;
+         i := i + 1;
+      end loop;
+   end compute_displacements;
+
+   function enclosed_chain_area
+     (chain : in vertex_array) return real
+   is
+      n          : constant natural := chain'length;
+      area_accum : real := 0.0;
+      i          : natural := 0;
+   begin
+      while i < n loop
+         declare
+            idx_curr : constant natural := chain'first + i;
+            idx_next : constant natural := chain'first + ((i + 1) mod n);
+            p0       : constant vertex_2d := chain (idx_curr);
+            p1       : constant vertex_2d := chain (idx_next);
+            term     : constant real := (p0.x * p1.y) - (p1.x * p0.y);
+         begin
+            area_accum := area_accum + term;
+         end;
+         i := i + 1;
+      end loop;
+
+      return 0.5 * area_accum;
+   end enclosed_chain_area;
+
+   procedure laplacian_smooth_step
+     (chain_in  : in vertex_array;
+      pinned    : in boolean_array;
+      lambda    : in real;
+      chain_out : out vertex_array)
+   is
+      n       : constant natural := chain_in'length;
+      one_m2l : constant real := 1.0 - (2.0 * lambda);
+      i       : natural := 0;
+   begin
+      while i < n loop
+         declare
+            idx_curr : constant natural := chain_in'first + i;
+            idx_prev : constant natural := chain_in'first + ((i + n - 1) mod n);
+            idx_next : constant natural := chain_in'first + ((i + 1) mod n);
+         begin
+            if pinned (idx_curr) then
+               chain_out (idx_curr) := chain_in (idx_curr);
+            else
+               declare
+                  p_p : constant vertex_2d := chain_in (idx_prev);
+                  p_c : constant vertex_2d := chain_in (idx_curr);
+                  p_n : constant vertex_2d := chain_in (idx_next);
+                  new_x : constant real :=
+                    (one_m2l * p_c.x) + (lambda * p_p.x) + (lambda * p_n.x);
+                  new_y : constant real :=
+                    (one_m2l * p_c.y) + (lambda * p_p.y) + (lambda * p_n.y);
+               begin
+                  chain_out (idx_curr) := vertex_2d'(x => new_x, y => new_y);
+               end;
+            end if;
+         end;
+         i := i + 1;
+      end loop;
+   end laplacian_smooth_step;
+
+   function offset_vertex
+     (p_prev, p_curr, p_next : in vertex_2d;
+      delta                  : in real) return vertex_2d
+   is
+      v1 : constant vector_2d := segment_vector (p_prev, p_curr);
+      v2 : constant vector_2d := segment_vector (p_curr, p_next);
+
+      len1_sq : constant real := (v1.dx * v1.dx) + (v1.dy * v1.dy);
+      len2_sq : constant real := (v2.dx * v2.dx) + (v2.dy * v2.dy);
+
+      len1 : real := 1.0;
+      len2 : real := 1.0;
+   begin
+      if len1_sq > 1.0e-12 then
+         len1 := real (long_float'sqrt (long_float (len1_sq)));
+      end if;
+      if len2_sq > 1.0e-12 then
+         len2 := real (long_float'sqrt (long_float (len2_sq)));
+      end if;
+
+      declare
+         n1_x : constant real := -v1.dy / len1;
+         n1_y : constant real :=  v1.dx / len1;
+         n2_x : constant real := -v2.dy / len2;
+         n2_y : constant real :=  v2.dx / len2;
+
+         m_x : constant real := 0.5 * (n1_x + n2_x);
+         m_y : constant real := 0.5 * (n1_y + n2_y);
+         m_len_sq : constant real := (m_x * m_x) + (m_y * m_y);
+         scale : real := 1.0;
+      begin
+         if m_len_sq > 1.0e-12 then
+            scale := 1.0 / m_len_sq;
+         end if;
+         return vertex_2d'
+           (x => p_curr.x + (delta * m_x * scale),
+            y => p_curr.y + (delta * m_y * scale));
+      end;
+   end offset_vertex;
+
+   procedure offset_chain
+     (chain_in  : in vertex_array;
+      delta     : in real;
+      chain_out : out vertex_array)
+   is
+      n : constant natural := chain_in'length;
+      i : natural := 0;
+   begin
+      while i < n loop
+         declare
+            idx_curr : constant natural := chain_in'first + i;
+            idx_prev : constant natural := chain_in'first + ((i + n - 1) mod n);
+            idx_next : constant natural := chain_in'first + ((i + 1) mod n);
+         begin
+            chain_out (idx_curr) := offset_vertex
+              (chain_in (idx_prev),
+               chain_in (idx_curr),
+               chain_in (idx_next),
+               delta);
+         end;
+         i := i + 1;
+      end loop;
+   end offset_chain;
+
+end iris_microsegment_geometry;
+----
+
 == Index of Formal Statements
 
 This index lists all formal Definitions and Theorems established across this volume.
@@ -1525,5 +1908,8 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:thm-spower-arbitrary-degree[**Theorem: Complete S-Power Basis Representation for Arbitrary Degree \( n \)**] -- Section: *The \( s \)-Power Basis: Separating the Skeleton Chord from the Bending Muscle*
 * xref:thm-spower-bivector-excursion[**Theorem: Exact Multivector Area and Bivector Deviation Bounds**] -- Section: *Geometric Algebra of Deviation: Wedge Products and Enclosed Area*
 * xref:thm-unit-mass-ensembles[**Theorem: Unit-Mass Normalization of Scaled Bernstein and S-Power Representations**] -- Section: *Scaled Bernstein Representation and Unit-Mass Ensembles*
+* xref:def-vertex-turning-bivector[**Definition: Vertex Turning Bivector in \( Cl(2,0) \)**] -- Section: *Piecewise Linear Micro-Segment Font Design and Parallel Discrete Geometry*
+* xref:thm-discrete-gauss-bonnet[**Theorem: Discrete Gauss–Bonnet Index on \( \mathcal{G}_N \)**] -- Section: *Piecewise Linear Micro-Segment Font Design and Parallel Discrete Geometry*
+* xref:thm-discrete-greens-area[**Theorem: Discrete Green's Area Bivector**] -- Section: *Piecewise Linear Micro-Segment Font Design and Parallel Discrete Geometry*
 
 
