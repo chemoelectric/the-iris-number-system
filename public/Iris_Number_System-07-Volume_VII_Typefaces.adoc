@@ -2248,6 +2248,41 @@ In practical font database structures, pegs are classified by a clean structured
    - When accented glyphs or complex ligatures are constructed from subcomponents via anchor joining, all pegs from each constituent component are automatically unioned into the composite glyph's peg record without manual metric recalculation:
      \[ \text{Pegs}(G_{\text{composite}}) = \bigcup_{c \in \text{Components}} \text{Pegs}(c) \]
 
+=== Physical Contact Mechanics vs. The Illusion of "Optimization"
+
+A prevalent fallacy across digital typography and automated metric generation is the blind framing of kerning as an abstract mathematical "optimization" problem. Software developers routinely construct arbitrary cost functions—penalizing bounding-box gaps or minimizing heuristic energy integrals—and run iterative numerical minimizers over them.
+
+In signal processing and communication theory, it is well understood that blindly optimizing a naive or linear cost function does not yield the true solution to a physical problem; optimal linear filtering, for instance, could never produce a modern high-speed constellation modem, because the actual physical channel is governed by non-linear constraints, discrete state transitions, and discrete structural boundaries.
+
+The **Spacing by Pegs** system rejects the premise of abstract numerical optimization in favor of **direct physical contact mechanics**:
+
+```
+   Traditional "Optimization" Approach:       Spacing by Pegs Physical Realization:
+   ┌───────────────────────────────────┐      ┌───────────────────────────────────┐
+   │ Arbitrary Heuristic Cost Function │      │ Non-Rectangular Metal Type Casts  │
+   │                ▼                  │      │                ▼                  │
+   │  Iterative Gradient Descent / NLP │      │ Physical Protrusions (Pegs)       │
+   │                ▼                  │      │                ▼                  │
+   │ Unstable, Black-Box Metric Floats │      │ Direct Physical Contact & Stop    │
+   └───────────────────────────────────┘      └───────────────────────────────────┘
+```
+
+1. **Type as Non-Rectangular Cast Metal Bodies**:
+   Historically, movable metal type was cast on rectangular metal bodies (the "type shank"), forcing kerned letters to either be physically notched (*mortised*) or have delicate overhangs (*kerns*) that broke under the press. If historical punchcutters and founders had possessed the metallurgical technology to cast type on stepped, non-rectangular bodies with precise interlocking physical protrusions (pegs), they would have shaped those physical contact shoulders directly with their files.
+2. **Smacking Together to a Physical Hard Stop**:
+   In Spacing by Pegs, digital glyphs are modeled as if they were physical pieces of cast metal shaped with stepped horizontal contact pegs. Kerning is not an esoteric calculation of mathematical minima; it is simply **pressing two pieces of physical type together along the baseline until their protruding contact pegs physically smack into each other**.
+3. **Human-Informed Physicality vs. Arbitrary Algorithms**:
+   What a skilled human designer establishes through physical contact landmarks possesses an organic, visual truth that arbitrary mathematical cost functions fail to capture. When the physical stop is reached, the glyphs rest in stable, deterministic equilibrium.
+
+[#thm-physical-contact-equilibrium]
+[NOTE]
+====
+.Theorem: Physical Contact Equilibrium in Stepped Metal Bodies
+Let glyphs \( G_L \) and \( G_R \) be modeled as rigid planar bodies on \( \mathcal{G}_N \) with stepped physical boundary profiles defined by their contact pegs. The kerning displacement \( K^\ast \) is the unique, deterministic translation at which the rigid bodies attain hard-stop direct physical contact without material interpenetration:
+\[ K^\ast = \inf \left\{ K \in \mathbb{Z} \;\middle|\; \left( \mathcal{B}(G_L) \cap \mathcal{B}(G_R; K) \right) = \emptyset \right\} \]
+where \( \mathcal{B}(G) \) is the discrete physical envelope defined by the union of the glyph's horizontal contact zones.
+====
+
 === Complete Geometric Reproducibility: Idempotent Single-Command Font Metric Restoration
 
 A foundational flaw in the traditional paradigm of digital font engineering is the loss of reproducibility. In standard commercial typeface production, kerning is maintained as a fragile, manual database of ad-hoc pair overrides. If a glyph contour is edited—for instance, adjusting the curve of a bowl or altering a serif—the entire kerning matrix is thrown out of calibration, requiring hours of tedious manual re-inspection and patching.
@@ -2603,6 +2638,286 @@ package body iris_spacing_by_pegs is
 end iris_spacing_by_pegs;
 ----
 
+== Multiscale Fractal Invariants, Microtypographic Shape Deformation, and Physical Device Transduction
+
+In the Iris Typesetter, typography is not treated as the passive placement of static, immutable glyph outlines onto a virtual plane. Conventional digital typesetters—inheriting the limitations of twentieth-century layout engines—attempt to achieve typographic justification and optical leveling solely by manipulating inter-word spacing, tracking, or applying crude horizontal scaling (affine glyph stretching). These scalar adjustments disrupt stroke-to-counter ratios, distort calligraphic stress angles, and degrade the perceptual gray-tone balance of the printed page.
+
+Furthermore, traditional engines ignore the physical transfer function of the output medium. A glyph rendered on an electrostatic laser engine, an offset lithographic press, an ink-jet nozzle array, or an emissive display panel undergoes non-linear physical distortions: ink spread (*dot gain*), toner scattering, corner rounding, and optical irradiation.
+
+The Iris Typesetter unifies **Volume VI (Discrete Iterated Function Systems on \( \mathcal{G}_N \))** and **Volume VII (Micro-Segment Typeface Geometry)** into a real-time **microtypographic shape deformation and physical device transduction engine**. By modifying the actual internal geometry of glyph outlines—modulating stroke weights, counter apertures, serif flares, and corner ink-traps on the discrete grid \( \mathcal{G}_N \)—the typesetter guarantees optical harmony and physical fidelity tailored to the exact output device.
+
+=== Typefaces as Finite Discrete Iterated Function Systems
+
+In discrete fractal geometry, an Iterated Function System (IFS) generates complex geometric attractors through a finite contractive mapping family \( \mathcal{W} = \{ w_1, \dots, w_K \} \). A typeface family is a **finite, partitioned discrete IFS with scale-bounded attractors on \( \mathcal{G}_N \)**.
+
+[#def-glyph-discrete-ifs]
+[NOTE]
+====
+.Definition: Discrete Glyph Iterated Function System
+Let \( \mathcal{G}_N \) be the discrete spatial grid at resolution scale \( N \). A glyph contour \( \mathcal{C} \) is the discrete attractor of a partitioned contractive affine system:
+\[ \mathcal{C} = \bigcup_{k=1}^K w_k(\mathcal{K}_k) \subset \mathcal{G}_N \]
+where \( \mathcal{K}_k \) are canonical generator kernels (stems, arch shoulders, bowl loops, terminal minims) and \( w_k(x) = \mathbf{A}_k x + \mathbf{t}_k \) are contractive affine maps with Lipschitz factor \( s_k \in (0, 1) \).
+====
+
+==== Multiscale Self-Affinity Across the Typeface
+1. **Minim and Stem Iteration**: Vertical minims and serif terminals are discrete self-affine iterations of a primary generator kernel \( \mathcal{K}_{\text{stem}} \).
+2. **Compound Glyph Hierarchies**: An 'm' is an affine iteration of the 'n' generator kernel:
+   \[ G_{\text{m}} = G_{\text{stem}} \cup w_{\text{arch}, 1}(G_{\text{arch}}) \cup w_{\text{arch}, 2}(G_{\text{arch}}) \]
+3. **Multiscale Perceptual Density**: While the topological dimension of a 1D boundary is \( D = 1 \), the **box-counting dimension** \( D_B \) of a micro-segment glyph boundary across grid scales \( N \) captures the emergence of high-frequency physical features (serif brackets, chisel clefts, ink-traps):
+   \[ D_B = \lim_{\epsilon \to 0} \frac{\log N(\epsilon)}{\log(1/\epsilon)} \]
+
+=== Microtypographic Shape Deformation (Sub-Glyphic Justification)
+
+When a line of text requires justification or optical leveling, the Iris Typesetter does not stretch glyphs via naive affine scaling. Instead, it applies **microtypographic shape deformation operators** directly to the \( s \)-power bending muscle and micro-segment boundaries.
+
+[#thm-microtypographic-deformation]
+[NOTE]
+====
+.Theorem: Microtypographic Shape Deformation Operator
+Let a glyph \( G \) be defined by its baseline chord endpoints \( P_0, P_n \) and internal \( s \)-power deviation vectors \( \mathbf{P}_k^\Delta \) in \( Cl(2,0) \). Let \( \tau \in [-\tau_{\max}, \tau_{\max}] \) be the line justification strain parameter. The microtypographic deformation operator \( \mathcal{D}_\tau \) transforms \( G \) into \( G(\tau) \) according to:
+\[ P_0(\tau) = P_0, \qquad P_n(\tau) = P_n + \tau \cdot (P_n - P_0) \]
+\[ \mathbf{P}_k^\Delta(\tau) = \mathbf{P}_k^\Delta + \gamma_k(\tau) \, (\mathbf{n}_{\text{chord}} \cdot e_{12}) \]
+where \( \gamma_k(\tau) \) is the non-linear stroke-preservation scalar ensuring that the physical stroke thickness \( W_{\text{stroke}} \) remains invariant while the interior counter void expands or contracts:
+\[ \frac{\partial W_{\text{stroke}}}{\partial \tau} \equiv 0, \qquad \frac{\partial W_{\text{counter}}}{\partial \tau} = \kappa_{\text{opt}} \]
+
+*Proof:*
+Under standard affine horizontal scaling \( (x, y) \to ((1+\tau)x, y) \), vertical stems thicken by factor \( (1+\tau) \) while horizontal hairlines remain unchanged, destroying the calligraphic contrast ratio \( W_{\text{vert}} / W_{\text{horiz}} \). By decomposing the glyph into baseline chords and orthogonal deviation vectors \( \mathbf{P}_k^\Delta \), the deformation operator \( \mathcal{D}_\tau \) translates the baseline endpoints while applying compensating normal shifts \( \gamma_k \) to the internal muscle nodes. This leaves the outer normal boundary offset invariant while transferring all dimensional strain \( \tau \) strictly into the white counter aperture. \( \square \)
+====
+
+=== Physical Device Transduction & Non-Linear Print Compensation
+
+Every physical output engine possesses an intrinsic **Point Spread Function (PSF)** and chemical/optical material transfer characteristic on the discrete grid \( \mathcal{G}_N \):
+
+```
+   Ideal Glyph Outline         Physical Device Channel        Printed Solid On Paper
+   ┌─────────────────────┐     ┌────────────────────────┐     ┌─────────────────────┐
+   │  Sharp Acute Crotch │ ──▶ │ Laser Toner Scattering │ ──▶ │ Filled-In Ink Blob  │
+   │  (Uncompensated)    │     │ / Capillary Dot Gain   │     │ (Distorted Letter)  │
+   └─────────────────────┘     └────────────────────────┘     └─────────────────────┘
+                                          ▲
+                                          │ Inverse Transduction
+                                          │ Compensation
+   Compensated Outline         Physical Device Channel        Printed Solid On Paper
+   ┌─────────────────────┐     ┌────────────────────────┐     ┌─────────────────────┐
+   │ Deep Micro-Ink-Trap │ ──▶ │ Capillary Ink Bleed    │ ──▶ │ True Optical Razor  │
+   │ & Thinned Stems     │     │ Equilibrium            │     │ Sharp Crotch        │
+   └─────────────────────┘     └────────────────────────┘     └─────────────────────┘
+```
+
+#### 1. Capillary Dot-Gain and Toner Bleed Modeling
+When liquid ink strikes paper fibers or electrostatic toner fuses onto a substrate, capillary diffusion expands the boundary outward by an empirical dilation distance \( \delta_{\text{gain}}(r_c) \), which increases non-linearly at acute interior corners with small radius of curvature \( r_c \):
+\[ \delta_{\text{gain}}(r_c) = \delta_0 + \frac{\alpha_{\text{capillary}}}{\max(r_c, \, r_{\min})} \]
+
+#### 2. Inverse Transduction Filtering on Micro-Segments
+To guarantee that the *printed result on physical paper* matches the intended design, the Iris Typesetter applies the **inverse transduction operator** \( \mathcal{T}_{\text{device}}^{-1} \) to the micro-segment chain prior to rasterization:
+1. **Per-Segment Normal Inset**: Every micro-segment is shifted inward by the nominal dot-gain:
+   \[ P_m' = P_m - \delta_0 \, \mathbf{n}_m \]
+2. **Dynamic Ink-Trap Excavation**: At interior acute vertices where turning bivector \( \mathbf{\Omega}_m \) indicates sharp concavity (\( \mathbf{\Omega}_m \cdot e_{12} < -\theta_{\text{trap\_threshold}} \)), the vertex is excavated inward along its bisector by depth:
+   \[ \Delta P_{\text{trap}} = -\left( \frac{\alpha_{\text{capillary}}}{\sin(\theta_m / 2)} \right) \frac{\mathbf{d}_{m-1} - \mathbf{d}_m}{\|\mathbf{d}_{m-1} - \mathbf{d}_m\|} \]
+When the physical ink expands during printing, it fills the excavated ink-trap exactly to the intended corner apex, yielding razor-sharp interior corners on physical paper.
+
+=== Real-Time Spectral Page Harmony and Pink-Noise Spatial Flux
+
+When microtypographic shape deformation and device transduction are active across a full page:
+* **Spatial Frequency Equilibrium**: The typesetter evaluates the 2D power spectral density \( S(\omega_x, \omega_y) \) of the page layout.
+* **Pink-Noise (\( 1/f \)) Convergence**: The inter-glyph peg clearances and counter-aperture deformations are jointly adjusted so that the spatial frequency distribution across text blocks converges to a **\( 1/f \) power spectrum**, eliminating optical rivers, clumping, and white voids.
+
+=== Standalone Ada 2022 Implementation: Microtypographic Device Transduction Engine
+
+Below is a complete, self-contained Ada 2022 package implementing microtypographic shape deformation, device-tailored dot-gain compensation, and dynamic ink-trap excavation on discrete micro-segment chains.
+
+[source,ada]
+----
+pragma ada_2022;
+
+package iris_microtypographic_transduction is
+
+   type real is new long_float;
+
+   type point_2d is record
+      x : real := 0.0;
+      y : real := 0.0;
+   end record;
+
+   type vector_2d is record
+      dx : real := 0.0;
+      dy : real := 0.0;
+   end record;
+
+   type printer_profile is record
+      nominal_dot_gain : real := 2.5; -- in grid units
+      capillary_alpha  : real := 1.2;
+      trap_threshold   : real := 0.5235987755982988; -- 30 degrees (rad)
+   end record;
+
+   type point_array is array (natural range <>) of point_2d;
+
+   -- compute displacement vector between two points
+   function point_diff (p1, p2 : in point_2d) return vector_2d
+   with inline;
+
+   -- apply microtypographic strain deformation to a glyph contour
+   procedure apply_microtypographic_strain
+     (chain_in  : in point_array;
+      strain    : in real;
+      chain_out : out point_array)
+   with
+      pre => chain_in'length >= 3 and
+             chain_out'length = chain_in'length and
+             chain_in'first = chain_out'first;
+
+   -- apply physical printer dot-gain and ink-trap compensation
+   procedure compensate_for_printer
+     (chain_in  : in point_array;
+      profile   : in printer_profile;
+      chain_out : out point_array)
+   with
+      pre => chain_in'length >= 3 and
+             chain_out'length = chain_in'length and
+             chain_in'first = chain_out'first and
+             profile.nominal_dot_gain >= 0.0 and
+             profile.capillary_alpha >= 0.0;
+
+end iris_microtypographic_transduction;
+
+package body iris_microtypographic_transduction is
+
+   function point_diff (p1, p2 : in point_2d) return vector_2d is
+   begin
+      return vector_2d'(dx => p2.x - p1.x, dy => p2.y - p1.y);
+   end point_diff;
+
+   procedure apply_microtypographic_strain
+     (chain_in  : in point_array;
+      strain    : in real;
+      chain_out : out point_array)
+   is
+      n     : constant natural := chain_in'length;
+      min_x : real := chain_in (chain_in'first).x;
+      max_x : real := chain_in (chain_in'first).x;
+      i     : natural := 0;
+   begin
+      -- find horizontal bounding interval
+      while i < n loop
+         declare
+            idx : constant natural := chain_in'first + i;
+            cur_x : constant real := chain_in (idx).x;
+         begin
+            if cur_x < min_x then
+               min_x := cur_x;
+            end if;
+            if cur_x > max_x then
+               max_x := cur_x;
+            end if;
+         end;
+         i := i + 1;
+      end loop;
+
+      declare
+         width : constant real := max_x - min_x;
+         scale_w : real := 1.0;
+      begin
+         if width > 1.0e-6 then
+            scale_w := 1.0 / width;
+         end if;
+
+         i := 0;
+         while i < n loop
+            declare
+               idx : constant natural := chain_in'first + i;
+               pt  : constant point_2d := chain_in (idx);
+               rel : constant real := (pt.x - min_x) * scale_w;
+               -- non-linear parabolic counter deformation
+               shift : constant real := strain * width * (rel - (0.5 * rel * (1.0 - rel)));
+            begin
+               chain_out (idx) := point_2d'
+                 (x => pt.x + shift,
+                  y => pt.y);
+            end;
+            i := i + 1;
+         end loop;
+      end;
+   end apply_microtypographic_strain;
+
+   procedure compensate_for_printer
+     (chain_in  : in point_array;
+      profile   : in printer_profile;
+      chain_out : out point_array)
+   is
+      n : constant natural := chain_in'length;
+      i : natural := 0;
+   begin
+      while i < n loop
+         declare
+            idx_curr : constant natural := chain_in'first + i;
+            idx_prev : constant natural := chain_in'first + ((i + n - 1) mod n);
+            idx_next : constant natural := chain_in'first + ((i + 1) mod n);
+
+            p_p : constant point_2d := chain_in (idx_prev);
+            p_c : constant point_2d := chain_in (idx_curr);
+            p_n : constant point_2d := chain_in (idx_next);
+
+            v_in  : constant vector_2d := point_diff (p_p, p_c);
+            v_out : constant vector_2d := point_diff (p_c, p_n);
+
+            len_in_sq  : constant real := (v_in.dx * v_in.dx) + (v_in.dy * v_in.dy);
+            len_out_sq : constant real := (v_out.dx * v_out.dx) + (v_out.dy * v_out.dy);
+
+            len_in  : real := 1.0;
+            len_out : real := 1.0;
+         begin
+            if len_in_sq > 1.0e-12 then
+               len_in := real (long_float'sqrt (long_float (len_in_sq)));
+            end if;
+            if len_out_sq > 1.0e-12 then
+               len_out := real (long_float'sqrt (long_float (len_out_sq)));
+            end if;
+
+            declare
+               -- outward unit normal bivectors
+               n1_x : constant real := -v_in.dy / len_in;
+               n1_y : constant real :=  v_in.dx / len_in;
+               n2_x : constant real := -v_out.dy / len_out;
+               n2_y : constant real :=  v_out.dx / len_out;
+
+               -- mean normal
+               m_x : constant real := 0.5 * (n1_x + n2_x);
+               m_y : constant real := 0.5 * (n1_y + n2_y);
+
+               -- turning cross-term (bivector)
+               wedge_val : constant real := (v_in.dx * v_out.dy) - (v_in.dy * v_out.dx);
+               inset     : real := profile.nominal_dot_gain;
+            begin
+               -- if acute concave interior corner, excavate dynamic ink-trap
+               if wedge_val < -1.0e-6 then
+                  declare
+                     dot_p : constant real := (v_in.dx * v_out.dx) + (v_in.dy * v_out.dy);
+                     cos_a : constant real := dot_p / (len_in * len_out);
+                     sin_half : real := 0.7071;
+                  begin
+                     if cos_a < 1.0 and cos_a > -1.0 then
+                        sin_half := real (long_float'sqrt
+                          (long_float (0.5 * (1.0 - cos_a))));
+                     end if;
+                     if sin_half > 0.1 then
+                        inset := inset + (profile.capillary_alpha / sin_half);
+                     end if;
+                  end;
+               end if;
+
+               -- shift vertex inward (opposite to outward normal)
+               chain_out (idx_curr) := point_2d'
+                 (x => p_c.x - (inset * m_x),
+                  y => p_c.y - (inset * m_y));
+            end;
+         end;
+         i := i + 1;
+      end loop;
+   end compensate_for_printer;
+
+end iris_microtypographic_transduction;
+----
+
 == Index of Formal Statements
 
 This index lists all formal Definitions and Theorems established across this volume.
@@ -2622,7 +2937,10 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:def-nuqta-rhombus[**Definition: The Discrete Nuqta Metric**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
 * xref:thm-nastaliq-cascade-frame[**Theorem: Discrete Affine Cascade Carrier Frame**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
 * xref:def-discrete-peg[**Definition: Discrete Contact Peg**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
+* xref:thm-physical-contact-equilibrium[**Theorem: Physical Contact Equilibrium in Stepped Metal Bodies**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
 * xref:thm-idempotent-spacing-reproducibility[**Theorem: Idempotent Metric Reproducibility from Geometric Invariants**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
 * xref:thm-peg-side-bearings[**Theorem: Outermost Peg Margin Projection**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
 * xref:thm-discrete-peg-collision[**Theorem: Discrete Multi-Zone Peg Collision Kerning**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
 * xref:thm-quantized-kerning-entropy[**Theorem: Kerning Lattice Quantization and Table Entropy Reduction**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
+* xref:def-glyph-discrete-ifs[**Definition: Discrete Glyph Iterated Function System**] -- Section: *Multiscale Fractal Invariants, Microtypographic Shape Deformation, and Physical Device Transduction*
+* xref:thm-microtypographic-deformation[**Theorem: Microtypographic Shape Deformation Operator**] -- Section: *Multiscale Fractal Invariants, Microtypographic Shape Deformation, and Physical Device Transduction*
