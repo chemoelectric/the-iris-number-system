@@ -871,9 +871,87 @@ Where do two planes intersect? They intersect along a straight line passing thro
 * **Intersecting Lines**: If the lines intersect at an ordinary point on the tabletop, the 1-vector \( X \) pierces the tabletop at altitude \( w = e_3 \cdot X \neq 0 \). The physical intersection point is simply \( X / w \).
 * **Parallel Lines**: If the two lines are parallel, the two planes intersect horizontally along the ground floor at altitude \( w = e_3 \cdot X = 0 \). The result is automatically a pure displacement vector pointing in the common direction of the parallel lines! There is no division by zero, no numerical overflow, and no special-case branch in the algorithm.
 
+=== Scaled Bernstein Representation and Unit-Mass Ensembles
+
+In classical coordinate geometry, a “point” is traditionally treated as an autonomous, standalone entity that exists in isolation prior to any curve or shape being drawn. In physical geometry and the Iris number system, an isolated landmark point is an unphysical abstraction: a curve outline is an undivided, holistic geometric structure. Control nodes do not exist as independent, standalone points; they are fractional constituent components that exist solely as parts of a unified whole.
+
+This foundational perspective is made algebraically rigorous by introducing the **scaled Bernstein representation** and normalizing the control structures into **unit-mass ensembles**.
+
+==== The Scaled Bernstein Basis: Monomial Evaluation
+
+In the standard Bernstein representation, the binomial combinatorial factors \( \binom{n}{i} \) are bundled with the polynomial basis functions:
+\[ \mathbf{P}(s, t) = \sum_{i=0}^n \binom{n}{i} s^{n-i} t^i \, P_i \]
+
+In the **scaled Bernstein representation**, the binomial coefficients are absorbed directly into the geometric control nodes:
+\[ \mathbf{Q}_i = \binom{n}{i} P_i \qquad (i = 0, \dots, n) \]
+
+The curve is then evaluated as a pure sum of monomials without polynomial weighting:
+\[ \mathbf{P}(s, t) = \sum_{i=0}^n s^{n-i} t^i \, \mathbf{Q}_i \]
+
+In our homogeneous geometric algebra \( Cl(3,0) \), if each classical point \( P_i \) carries unit affine weight \( w = 1 \), the scaled Bernstein node \( \mathbf{Q}_i \) carries homogeneous weight:
+\[ w(\mathbf{Q}_i) = \binom{n}{i} \]
+
+Summing the homogeneous weights of the entire node set yields:
+\[ \sum_{i=0}^n w(\mathbf{Q}_i) = \sum_{i=0}^n \binom{n}{i} = 2^n \]
+
+Thus, the unnormalized scaled Bernstein control set carries a total homogeneous mass of \( 2^n \).
+
+==== Unit-Mass Normalization: Nodes as Inseparable Fractions of Unity
+
+To reflect the principle that nodes have no independent existence outside the whole, we normalize the entire control structure so that the sum of its static weights equals exactly \( 1 \).
+
+[#thm-unit-mass-ensembles]
+[NOTE]
+====
+.Theorem: Unit-Mass Normalization of Scaled Bernstein and S-Power Representations
+Let a degree-\( n \) curve be represented in homogeneous geometric algebra \( Cl(3,0) \).
+
+1. **Normalized Scaled Bernstein Ensemble**:
+Dividing each scaled node \( \mathbf{Q}_i \) by the total mass \( 2^n \) yields normalized nodes:
+\[ \widetilde{\mathbf{Q}}_i = \frac{1}{2^n} \mathbf{Q}_i = \frac{1}{2^n} \binom{n}{i} P_i \]
+Each node carries fractional weight \( w(\widetilde{\mathbf{Q}}_i) = \frac{1}{2^n} \binom{n}{i} < 1 \), forming a binomial probability distribution:
+\[ \sum_{i=0}^n w(\widetilde{\mathbf{Q}}_i) = \sum_{i=0}^n \frac{1}{2^n} \binom{n}{i} = 1 \]
+No individual node \( \widetilde{\mathbf{Q}}_i \) constitutes an independent affine point; the entire ensemble forms a single unit-mass entity whose static centroid is identically the curve midpoint on the dual simplex:
+\[ \sum_{i=0}^n \widetilde{\mathbf{Q}}_i = \mathbf{P}\left(\frac{1}{2}, \frac{1}{2}\right) \]
+
+2. **Normalized S-Power Segment–Vector Ensemble**:
+In the \( s \)-power representation, the non-vector nodes are exclusively the two baseline endpoints \( P_0 \) and \( P_n \), while all intermediate deviation nodes \( \mathbf{P}_k^\Delta \) are pure displacement vectors of weight \( w = 0 \).
+Normalizing the two endpoint weights to \( \frac{1}{2} \) each:
+\[ \widetilde{P}_0 = \frac{1}{2} P_0, \qquad \widetilde{P}_n = \frac{1}{2} P_n \]
+yields a total static weight of:
+\[ w(\widetilde{P}_0) + w(\widetilde{P}_n) = \frac{1}{2} + \frac{1}{2} = 1 \]
+The curve is thus decomposed into a single **unit-mass affine 1-simplex** (the straight baseline chord) whose static centroid is the chord midpoint \( \widetilde{P}_0 + \widetilde{P}_n = \frac{P_0 + P_n}{2} \), augmented by an \( (n-1) \)-dimensional subspace of weightless deformation vectors \( \mathbf{P}_k^\Delta \) (\( w = 0 \)).
+
+*Proof:*
+For (1), by the binomial theorem:
+\[ \sum_{i=0}^n w(\widetilde{\mathbf{Q}}_i) = \frac{1}{2^n} \sum_{i=0}^n \binom{n}{i} = \frac{(1 + 1)^n}{2^n} = 1 \]
+Evaluating the sum of the normalized nodes:
+\[ \sum_{i=0}^n \widetilde{\mathbf{Q}}_i = \sum_{i=0}^n \frac{1}{2^n} \binom{n}{i} P_i = \sum_{i=0}^n \binom{n}{i} \left(\frac{1}{2}\right)^{n-i} \left(\frac{1}{2}\right)^i P_i = \mathbf{P}\left(\frac{1}{2}, \frac{1}{2}\right) \]
+
+For (2), the total weight of the non-vector nodes is \( w(\widetilde{P}_0) + w(\widetilde{P}_n) = \frac{1}{2} + \frac{1}{2} = 1 \). For every internal index \( k \in \{1, \dots, n-1\} \), recall that:
+\[ \mathbf{P}_k^\Delta = \mathbf{Q}_k - \binom{n-1}{k} \mathbf{Q}_0 - \binom{n-1}{k-1} \mathbf{Q}_n \]
+Since \( \mathbf{Q}_0 = P_0 \) (\( w = 1 \)), \( \mathbf{Q}_n = P_n \) (\( w = 1 \)), and \( \mathbf{Q}_k = \binom{n}{k} P_k \) (\( w = \binom{n}{k} \)), the weight of \( \mathbf{P}_k^\Delta \) is:
+\[ w(\mathbf{P}_k^\Delta) = \binom{n}{k} - \binom{n-1}{k} - \binom{n-1}{k-1} \equiv 0 \]
+by Pascal's combinatorial identity. The internal deviation elements carry zero weight and do not alter the unit mass of the baseline chord. \( \square \)
+====
+
+==== Bridge Between Scaled Bernstein and S-Power Deviations
+
+The scaled Bernstein representation provides the most direct, division-free method for computing the \( s \)-power deviation vectors.
+
+Because the binomial coefficients are already absorbed into the scaled nodes \( \mathbf{Q}_i \), the \( s \)-power deviation vector \( \mathbf{P}_k^\Delta \) is obtained directly by subtracting the chord contributions from \( \mathbf{Q}_k \):
+\[ \mathbf{P}_k^\Delta = \mathbf{Q}_k - \binom{n-1}{k} \mathbf{Q}_0 - \binom{n-1}{k-1} \mathbf{Q}_n \]
+
+* For a quadratic curve (\( n = 2 \)):
+\[ \mathbf{P}_1^\Delta = \mathbf{Q}_1 - \mathbf{Q}_0 - \mathbf{Q}_2 \]
+* For a cubic curve (\( n = 3 \)):
+\[ \mathbf{P}_1^\Delta = \mathbf{Q}_1 - 2 \mathbf{Q}_0 - \mathbf{Q}_3, \qquad \mathbf{P}_2^\Delta = \mathbf{Q}_2 - \mathbf{Q}_0 - 2 \mathbf{Q}_3 \]
+
+In both forms, the geometric elements are never treated as detached, freestanding points in an empty space: they are either fractional point-masses summing to unity (scaled Bernstein) or a unit-mass baseline chord coupled to weightless geometric bending bivectors and vectors (\( s \)-power).
+
 === Standalone Ada 2022 Implementation: Unified S-Power Geometric Algebra
 
-Below is the complete, self-contained Ada 2022 package implementing this unified coordinate-free geometric framework for digital typefaces. It enforces the strict separation of affine points and displacement vectors via dynamic subprogram contracts, provides exact conic arc evaluation, and computes enclosed area bivectors with a modified McCabe cyclomatic complexity strictly bounded below 10.
+Below is the complete, self-contained Ada 2022 package implementing this unified coordinate-free geometric framework for digital typefaces. It enforces the strict separation of affine points and displacement vectors via dynamic subprogram contracts, provides exact conic arc evaluation, supports scaled Bernstein conversion and unit-mass normalized evaluation, and computes enclosed area bivectors with a modified McCabe cyclomatic complexity strictly bounded below 10.
 
 [source,ada]
 ----
@@ -890,6 +968,7 @@ is
 
    -- homogeneous element in cl(3,0):
    -- weight w = 1.0 represents an affine landmark point.
+   -- weight w in (0.0, 1.0) represents a fractional node in a unit-mass ensemble.
    -- weight w = 0.0 represents a pure displacement direction vector.
    type element_cl3 is record
       x : real := 0.0;
@@ -920,6 +999,7 @@ is
 
    type point_array is array (natural range <>) of affine_point;
    type vector_array is array (natural range <>) of displacement_vector;
+   type element_array is array (natural range <>) of element_cl3;
 
    -- constructor for an affine point (w = 1.0)
    function make_point (x, y : in real) return affine_point
@@ -968,6 +1048,40 @@ is
      (l1, l2 : in bivector_cl3) return element_cl3
    with inline;
 
+   -- convert standard bernstein control points to scaled bernstein nodes
+   procedure bernstein_to_scaled
+     (n             : in degree_range;
+      bernstein_pts : in point_array;
+      scaled_nodes  : out element_array)
+   with
+      pre => bernstein_pts'length = natural (n) + 1 and
+             bernstein_pts'first = 0 and
+             scaled_nodes'length = natural (n) + 1 and
+             scaled_nodes'first = 0;
+
+   -- convert scaled bernstein nodes directly to s-power representation
+   procedure scaled_to_spower
+     (n             : in degree_range;
+      scaled_nodes  : in element_array;
+      p_start, p_end: out affine_point;
+      deviations    : out vector_array)
+   with
+      pre => scaled_nodes'length = natural (n) + 1 and
+             scaled_nodes'first = 0 and
+             deviations'length = natural (n) - 1 and
+             deviations'first = 1;
+
+   -- normalize scaled bernstein nodes to unit-mass ensemble (sum of w = 1.0)
+   procedure normalize_scaled_ensemble
+     (n            : in degree_range;
+      scaled_nodes : in element_array;
+      norm_nodes   : out element_array)
+   with
+      pre => scaled_nodes'length = natural (n) + 1 and
+             scaled_nodes'first = 0 and
+             norm_nodes'length = natural (n) + 1 and
+             norm_nodes'first = 0;
+
    -- convert bernstein control points to s-power representation
    procedure bernstein_to_spower
      (n              : in degree_range;
@@ -1003,6 +1117,17 @@ is
               deviations'length = natural (n) - 1 and
               deviations'first = 1,
       post => abs (evaluate_spower'result.w - 1.0) < 1.0e-12;
+
+   -- evaluate scaled bernstein curve via pure monomial sum
+   function evaluate_scaled_bernstein
+     (n            : in degree_range;
+      scaled_nodes : in element_array;
+      s, t         : in real) return affine_point
+   with
+      pre  => s >= 0.0 and t >= 0.0 and abs (s + t - 1.0) < 1.0e-12 and
+              scaled_nodes'length = natural (n) + 1 and
+              scaled_nodes'first = 0,
+      post => abs (evaluate_scaled_bernstein'result.w - 1.0) < 1.0e-12;
 
    -- exact enclosed area bivector between curve and chord
    function enclosed_chord_area
@@ -1120,6 +1245,88 @@ package body iris_spower_algebra is
       return result;
    end binomial;
 
+   procedure bernstein_to_scaled
+     (n             : in degree_range;
+      bernstein_pts : in point_array;
+      scaled_nodes  : out element_array)
+   is
+      deg : constant natural := natural (n);
+      i   : natural := 0;
+   begin
+      while i <= deg loop
+         declare
+            c_n_i : constant real := binomial (deg, i);
+            pt    : constant affine_point := bernstein_pts (i);
+         begin
+            scaled_nodes (i) := element_cl3'
+              (x => c_n_i * pt.x,
+               y => c_n_i * pt.y,
+               w => c_n_i);
+         end;
+         i := i + 1;
+      end loop;
+   end bernstein_to_scaled;
+
+   procedure scaled_to_spower
+     (n             : in degree_range;
+      scaled_nodes  : in element_array;
+      p_start, p_end: out affine_point;
+      deviations    : out vector_array)
+   is
+      deg : constant natural := natural (n);
+      q0  : constant element_cl3 := scaled_nodes (0);
+      qn  : constant element_cl3 := scaled_nodes (deg);
+      k   : natural := 1;
+   begin
+      p_start := make_point (q0.x, q0.y);
+      p_end   := make_point (qn.x, qn.y);
+
+      while k <= deg - 1 loop
+         declare
+            c_n1_k  : constant real := binomial (deg - 1, k);
+            c_n1_k1 : constant real := binomial (deg - 1, k - 1);
+            qk      : constant element_cl3 := scaled_nodes (k);
+            vx      : real;
+            vy      : real;
+         begin
+            vx := qk.x - (c_n1_k * q0.x) - (c_n1_k1 * qn.x);
+            vy := qk.y - (c_n1_k * q0.y) - (c_n1_k1 * qn.y);
+            deviations (k) := make_vector (vx, vy);
+         end;
+         k := k + 1;
+      end loop;
+   end scaled_to_spower;
+
+   procedure normalize_scaled_ensemble
+     (n            : in degree_range;
+      scaled_nodes : in element_array;
+      norm_nodes   : out element_array)
+   is
+      deg       : constant natural := natural (n);
+      total_w   : real := 1.0;
+      i         : natural := 0;
+      inv_total : real;
+   begin
+      while i < deg loop
+         total_w := total_w * 2.0;
+         i := i + 1;
+      end loop;
+
+      inv_total := 1.0 / total_w;
+      i := 0;
+      while i <= deg loop
+         declare
+            elem : constant element_cl3 := scaled_nodes (i);
+         begin
+            norm_nodes (i) := element_cl3'
+              (x => elem.x * inv_total,
+               y => elem.y * inv_total,
+               w => elem.w * inv_total);
+         end;
+         i := i + 1;
+      end loop;
+   end normalize_scaled_ensemble;
+
    procedure bernstein_to_spower
      (n              : in degree_range;
       bernstein_pts  : in point_array;
@@ -1230,6 +1437,31 @@ package body iris_spower_algebra is
       return make_point (x_sum, y_sum);
    end evaluate_spower;
 
+   function evaluate_scaled_bernstein
+     (n            : in degree_range;
+      scaled_nodes : in element_array;
+      s, t         : in real) return affine_point
+   is
+      deg   : constant natural := natural (n);
+      x_sum : real := 0.0;
+      y_sum : real := 0.0;
+      i     : natural := 0;
+   begin
+      while i <= deg loop
+         declare
+            poly_term : constant real :=
+              power_product (s, t, deg - i, i);
+            node      : constant element_cl3 := scaled_nodes (i);
+         begin
+            x_sum := x_sum + (poly_term * node.x);
+            y_sum := y_sum + (poly_term * node.y);
+         end;
+         i := i + 1;
+      end loop;
+
+      return make_point (x_sum, y_sum);
+   end evaluate_scaled_bernstein;
+
    function enclosed_chord_area
      (n              : in degree_range;
       p_start, p_end : in affine_point;
@@ -1245,7 +1477,7 @@ package body iris_spower_algebra is
          declare
             c_n_k    : constant real := binomial (deg, k);
             weight   : constant real := inv_np1 / c_n_k;
-            wedge_b  : constant bivector_area :=
+            wedge_b  : constant bivector_area := 
               wedge (deviations (k), chord_vec);
          begin
             area_total := area_total + (weight * wedge_b.xy);
@@ -1292,5 +1524,6 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:def-affine-point-vector-split[**Definition: Affine Point–Vector Decomposition in \( Cl(3,0) \)**] -- Section: *Points Versus Vectors: The Foundational Geometric Distinction*
 * xref:thm-spower-arbitrary-degree[**Theorem: Complete S-Power Basis Representation for Arbitrary Degree \( n \)**] -- Section: *The \( s \)-Power Basis: Separating the Skeleton Chord from the Bending Muscle*
 * xref:thm-spower-bivector-excursion[**Theorem: Exact Multivector Area and Bivector Deviation Bounds**] -- Section: *Geometric Algebra of Deviation: Wedge Products and Enclosed Area*
+* xref:thm-unit-mass-ensembles[**Theorem: Unit-Mass Normalization of Scaled Bernstein and S-Power Representations**] -- Section: *Scaled Bernstein Representation and Unit-Mass Ensembles*
 
 
