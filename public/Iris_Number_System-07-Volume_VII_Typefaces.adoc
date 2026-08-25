@@ -2248,6 +2248,44 @@ In practical font database structures, pegs are classified by a clean structured
    - When accented glyphs or complex ligatures are constructed from subcomponents via anchor joining, all pegs from each constituent component are automatically unioned into the composite glyph's peg record without manual metric recalculation:
      \[ \text{Pegs}(G_{\text{composite}}) = \bigcup_{c \in \text{Components}} \text{Pegs}(c) \]
 
+=== Complete Geometric Reproducibility: Idempotent Single-Command Font Metric Restoration
+
+A foundational flaw in the traditional paradigm of digital font engineering is the loss of reproducibility. In standard commercial typeface production, kerning is maintained as a fragile, manual database of ad-hoc pair overrides. If a glyph contour is edited—for instance, adjusting the curve of a bowl or altering a serif—the entire kerning matrix is thrown out of calibration, requiring hours of tedious manual re-inspection and patching.
+
+The **Spacing by Pegs** framework completely eliminates this fragility by making spacing and kerning **fully specified as an intrinsic geometric state of the glyphs themselves**:
+
+```
+   ┌─────────────────────────────────────────────────────────────┐
+   │                  Master Source Outlines & Pegs              │
+   └──────────────────────────────┬──────────────────────────────┘
+                                  │ Single Command / One-Button
+                                  ▼ Evaluation (Idempotent)
+   ┌─────────────────────────────────────────────────────────────┐
+   │ 1. Assemble Composites via Construction Anchors             │
+   │ 2. Exact Boolean Outline Union & Intersection in Cl(2,0)    │
+   │ 3. Union Component Peg Records                              │
+   │ 4. Grid-Aligned Autohinting                                 │
+   │ 5. Outermost Peg Projection -> Compute LSB, RSB, Advance    │
+   │ 6. Full Pairwise Peg Collision Engine -> Quantized Kerning  │
+   └──────────────────────────────┬──────────────────────────────┘
+                                  │
+                                  ▼
+   ┌─────────────────────────────────────────────────────────────┐
+   │   Fully Restored, Globally Harmonized Font Metrics & PEGS   │
+   └─────────────────────────────────────────────────────────────┘
+```
+
+[#thm-idempotent-spacing-reproducibility]
+[NOTE]
+====
+.Theorem: Idempotent Metric Reproducibility from Geometric Invariants
+Let a typeface \( \mathcal{F} \) be defined by its collection of contours and discrete structural pegs \( \{ (C_g, \text{Pegs}_g) \}_{g \in \mathcal{G}} \). The mapping from the geometric peg configuration to the full metric and kerning state \( (\mathbf{M}, \mathbf{K}) = \Psi(\mathcal{F}) \) is **deterministic, memoryless, and strictly idempotent**:
+\[ \Psi(\Psi(\mathcal{F})) \equiv \Psi(\mathcal{F}) \]
+Modifying any glyph \( g \) requires only adjusting its local contour and associated pegs; executing a single build command globally regenerates all side-bearings, composite assemblies, and pairwise kerning relationships across the entire font family without human intervention.
+====
+
+Because all metric information is embedded directly within the geometric coordinate space of the glyphs, the spacing and kerning become **invariant physical properties of the shapes**. Spacing is no longer an external layer slapped on top of a typeface; it is the natural, computable consequence of the geometry itself.
+
 === Deterministic Side-Bearing Determination via Outermost Pegs
 
 The fundamental side-bearings of an isolated glyph—the Left Side Bearing (\( \text{LSB} \)) and Right Side Bearing (\( \text{RSB} \))—are determined directly by projecting the outermost single-semicolon pegs against calibrated nominal optical margins.
@@ -2584,6 +2622,7 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:def-nuqta-rhombus[**Definition: The Discrete Nuqta Metric**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
 * xref:thm-nastaliq-cascade-frame[**Theorem: Discrete Affine Cascade Carrier Frame**] -- Section: *Declarative Calligraphic Ribbon Kinematics and Universal Script Geometry*
 * xref:def-discrete-peg[**Definition: Discrete Contact Peg**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
+* xref:thm-idempotent-spacing-reproducibility[**Theorem: Idempotent Metric Reproducibility from Geometric Invariants**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
 * xref:thm-peg-side-bearings[**Theorem: Outermost Peg Margin Projection**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
 * xref:thm-discrete-peg-collision[**Theorem: Discrete Multi-Zone Peg Collision Kerning**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
 * xref:thm-quantized-kerning-entropy[**Theorem: Kerning Lattice Quantization and Table Entropy Reduction**] -- Section: *The Spacing by Pegs System: Discrete Contact Mechanics, Spectral Vision, and the OpenType PEGS Table*
