@@ -10,7 +10,7 @@ Frédéric Blondin Custer
 [preface]
 == Preface and Scope
 
-This companion volume provides an annotated bibliography and critical epistemological roadmap for the five volumes of *The Iris Number System*. The works referenced herein represent foundational contributions to mathematical philosophy, constructive analysis, neurobiology, motor-learning kinematics, and lateral thinking that informed the development of Multiscale Resolution Analysis (MSRA), the Main Scale Projection operator \( ( \downarrow ) \), and the \( Cl(4,1,1) \) Master Field Equation.
+This companion volume provides an annotated bibliography and critical epistemological roadmap for the volumes of *The Iris Number System*. The works referenced herein represent foundational contributions to mathematical philosophy, constructive analysis, neurobiology, motor-learning kinematics, and lateral thinking that informed the development of Multiscale Resolution Analysis (MSRA), the Main Scale Projection operator \( ( \downarrow ) \), and the \( Cl(4,1,1) \) Master Field Equation.
 
 In accordance with strict operational discipline, works burdened with internal contradictions or unconstructive continuum abstractions are omitted or explicitly annotated to distinguish formal symbolic structures from the non-verbal physical plenum and low-order objective abstractions.
 

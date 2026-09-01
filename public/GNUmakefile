@@ -15,6 +15,7 @@ VOLUMES += Iris_Number_System-04-Volume_IV_Physics_etc
 VOLUMES += Iris_Number_System-05-Volume_V_Spectral_Analysis_etc
 VOLUMES += Iris_Number_System-06-Volume_VI_Fractals
 VOLUMES += Iris_Number_System-07-Volume_VII_Typefaces
+VOLUMES += Iris_Number_System-08-Volume_VIII_Physical_Chemistry
 
 
 default: all
@@ -54,6 +55,10 @@ $(AWK) < $(1) > $(2) ' \
 } \
 /^=[[:space:]]+The Iris Number System: Applications to Digital Typeface Design[[:space:]]*$$/ { \
   print "= The Iris Number System, Volume VII: Applications to Digital Typeface Design"; \
+  next \
+} \
+/^=[[:space:]]+The Iris Number System: Applications to Physical Chemistry and Chemical Physics[[:space:]]*$$/ { \
+  print "= The Iris Number System, Volume VIII: Applications to Physical Chemistry and Chemical Physics"; \
   next \
 } \
 { print } \

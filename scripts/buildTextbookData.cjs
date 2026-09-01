@@ -167,6 +167,15 @@ const vol7 = parseAdocFile(
   "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Coordinate Curves, Multi-Aperture Font Outlines, and Digital Typeface Design"
 );
 
+const vol8 = parseAdocFile(
+  "public/Iris_Number_System-08-Volume_VIII_Physical_Chemistry.adoc",
+  "textbook-iris-physical-chemistry",
+  "The Iris Number System",
+  "Volume VIII: Applications to Physical Chemistry and Chemical Physics",
+  "Frédéric Blondin Custer",
+  "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Chemical Bonds, Molecular Electrodynamics, Finite Thermodynamics, and Reaction Dynamics"
+);
+
 vol0.filename = "Iris_Number_System-00-Bibliography.adoc";
 vol1.filename = "Iris_Number_System-01-Volume_I_Fundamentals.adoc";
 vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
@@ -175,6 +184,7 @@ vol4.filename = "Iris_Number_System-04-Volume_IV_Physics_etc.adoc";
 vol5.filename = "Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc";
 vol6.filename = "Iris_Number_System-06-Volume_VI_Fractals.adoc";
 vol7.filename = "Iris_Number_System-07-Volume_VII_Typefaces.adoc";
+vol8.filename = "Iris_Number_System-08-Volume_VIII_Physical_Chemistry.adoc";
 
 function generateFormalIndexChapterObj(chapters) {
   const entries = [];
@@ -269,6 +279,7 @@ vol4.chapters.push(generateFormalIndexChapterObj(vol4.chapters));
 vol5.chapters.push(generateFormalIndexChapterObj(vol5.chapters));
 vol6.chapters.push(generateFormalIndexChapterObj(vol6.chapters));
 vol7.chapters.push(generateFormalIndexChapterObj(vol7.chapters));
+vol8.chapters.push(generateFormalIndexChapterObj(vol8.chapters));
 
 const fileHeader = `import { TextbookChapter, Textbook } from "../types";
 
@@ -391,7 +402,9 @@ export const FRACTALS_TEXTBOOK: Textbook = ${JSON.stringify(vol6, null, 2)};
 
 export const TYPEFACES_TEXTBOOK: Textbook = ${JSON.stringify(vol7, null, 2)};
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [BIBLIOGRAPHY_TEXTBOOK, INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK, FRACTALS_TEXTBOOK, TYPEFACES_TEXTBOOK];
+export const PHYSICAL_CHEMISTRY_TEXTBOOK: Textbook = ${JSON.stringify(vol8, null, 2)};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [BIBLIOGRAPHY_TEXTBOOK, INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK, FRACTALS_TEXTBOOK, TYPEFACES_TEXTBOOK, PHYSICAL_CHEMISTRY_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
