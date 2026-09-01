@@ -66,9 +66,11 @@ set style line 2 lc rgb "#d35400" dt 2 lw 1.4 # Dashed orange: C=O ... H-N hydro
 set label 1 "Peptide Main Chain (\\alpha-Helix)" at 0, 4.8, 5.0 center font "Sans-Bold,10" tc rgb "#185a9d"
 set label 2 "C=O\\cdots H-N Hydrogen Bond Bridges (i \\rightarrow i+4)" at 0, -4.5, 0 center font "Sans-Bold,9" tc rgb "#d35400"
 
+set key top right spacing 1.25 font "Sans,9.5"
+
 splot x_backbone(u, v), y_backbone(u, v), z_backbone(u, v) with lines ls 1 title "Peptide Backbone (2 Turns)", \
-      x_hb1(u, v), y_hb1(u, v), z_hb1(u, v) with lines ls 2 title "Longitudinal H-Bond Bridge 1", \
-      x_hb2(u, v), y_hb2(u, v), z_hb2(u, v) with lines ls 2 title "Longitudinal H-Bond Bridge 2"
+      x_hb1(u, v), y_hb1(u, v), z_hb1(u, v) with lines ls 2 title "Longitudinal H-Bond Bridges (i \\rightarrow i+4)", \
+      x_hb2(u, v), y_hb2(u, v), z_hb2(u, v) with lines ls 2 notitle
 
 if (!exists("OUTFILE")) {
     pause mouse close

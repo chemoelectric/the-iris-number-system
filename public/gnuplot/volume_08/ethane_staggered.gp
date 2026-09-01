@@ -82,13 +82,15 @@ set label 1 "Carbon C_1" at x_C1, 0, 0.45 center font "Sans-Bold,9" tc rgb "#2c3
 set label 2 "Carbon C_2" at x_C2, 0, 0.45 center font "Sans-Bold,9" tc rgb "#2c3e50"
 set label 3 "Staggered Dihedral: \\Delta\\phi = 60^\\circ" at 0, 0, -2.4 center font "Sans-Bold,10" tc rgb "#185a9d"
 
+set key top right spacing 1.25 font "Sans,9.5"
+
 splot x_bond_cc(u, v), y_bond_cc(u, v), z_bond_cc(u, v) with lines ls 1 title "C-C \\sigma-Bond Sheath (2e^-)", \
       x_carb1(u, v), y_carb1(u, v), z_carb1(u, v) with lines ls 2 title "Carbon Cores (Z=6)", \
       x_carb2(u, v), y_carb2(u, v), z_carb2(u, v) with lines ls 2 notitle, \
-      x_h1(u, 0), y_h1(u, v, 0), z_h1(u, v, 0) with lines ls 3 title "C-H \\sigma-Bonds (Methyl Cap 1)", \
+      x_h1(u, 0), y_h1(u, v, 0), z_h1(u, v, 0) with lines ls 3 title "C-H \\sigma-Bonds (6x, Staggered 60^\\circ)", \
       x_h1(u, 1), y_h1(u, v, 1), z_h1(u, v, 1) with lines ls 3 notitle, \
       x_h1(u, 2), y_h1(u, v, 2), z_h1(u, v, 2) with lines ls 3 notitle, \
-      x_h2(u, 0), y_h2(u, v, 0), z_h2(u, v, 0) with lines ls 3 title "C-H \\sigma-Bonds (Methyl Cap 2 - Staggered)", \
+      x_h2(u, 0), y_h2(u, v, 0), z_h2(u, v, 0) with lines ls 3 notitle, \
       x_h2(u, 1), y_h2(u, v, 1), z_h2(u, v, 1) with lines ls 3 notitle, \
       x_h2(u, 2), y_h2(u, v, 2), z_h2(u, v, 2) with lines ls 3 notitle
 

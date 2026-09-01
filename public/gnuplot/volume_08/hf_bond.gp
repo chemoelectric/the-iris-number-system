@@ -95,10 +95,12 @@ set label 1 "Fluorine Core (Z=9)" at 0, 0, z_F-0.35 center font "Sans-Bold,9" tc
 set label 2 "Proton Locus (H^+)"  at 0, 0, z_H+0.30 center font "Sans-Bold,9" tc rgb "#27ae60"
 set label 3 "Polar Covalent Axis" at 0, -1.0, 0 center font "Sans,9" tc rgb "#555555"
 
-splot x_bond(u, v),   y_bond(u, v),   z_bond(u, v)   with lines ls 1 title "Shared Bonding Electron Pair", \
-      x_lp1(u, v),    y_lp1(u, v),    z_lp1(u, v)    with lines ls 2 title "Fluorine 2p Lone Pair 1", \
-      x_lp2(u, v),    y_lp2(u, v),    z_lp2(u, v)    with lines ls 2 title "Fluorine 2p Lone Pair 2", \
-      x_lp3(u, v),    y_lp3(u, v),    z_lp3(u, v)    with lines ls 2 title "Fluorine 2p Lone Pair 3", \
+set key top right spacing 1.2 font "Sans,9.5"
+
+splot x_bond(u, v),   y_bond(u, v),   z_bond(u, v)   with lines ls 1 title "Shared Polar Covalent Bonding Sheath", \
+      x_lp1(u, v),    y_lp1(u, v),    z_lp1(u, v)    with lines ls 2 title "Fluorine 2p Lone-Pair Lobes (3x)", \
+      x_lp2(u, v),    y_lp2(u, v),    z_lp2(u, v)    with lines ls 2 notitle, \
+      x_lp3(u, v),    y_lp3(u, v),    z_lp3(u, v)    with lines ls 2 notitle, \
       x_core(u, v),   y_core(u, v),   z_core(u, v)   with lines ls 3 title "Fluorine 1s^2 Core Toroid", \
       x_H_well(u, v), y_H_well(u, v), z_H_well(u, v) with lines ls 4 title "Proton (H) Screening Locus"
 
