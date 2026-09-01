@@ -1,87 +1,144 @@
-# Gnuplot script: 3D Wireframe Meshwork of Hydrogen Fluoride (HF) Chemical Bond
-# Depicts the asymmetric polar covalent valence envelope and core structures on discrete grid G_N.
-# Pure wireframe meshwork with hidden-line removal; no surface shading.
+# Gnuplot script: 3D Wireframe Temporal Snapshot of Electron Interactions in HF
+# Depicts the instantaneous electromagnetic vortex meshwork of interacting electrons:
+# - The shared polar covalent bonding electron pair bridging H and F
+# - The three fluorine 2p lone-pair lobes oriented in trigonal symmetry
+# - The localized 1s^2 fluorine core toroid
+# Pure 3D wireframe meshwork; no surface shading.
 
 reset
 
-# Output terminal configuration: interactive window or file export
+# Output handling: default interactive terminal or PNG export if OUTFILE is defined
 if (exists("OUTFILE")) {
-    set terminal pngcairo size 1200,900 enhanced font "Sans,11"
+    set terminal pngcairo size 1200,900 font "Sans,10"
     set output OUTFILE
-} else {
-    set terminal qt size 1000,800 enhanced font "Sans,11" persist
 }
 
-set title "Electromagnetic Structure of the Chemical Bond in Hydrogen Fluoride (HF)\n{/*0.85Asymmetric Polar Covalent Envelope and Nuclear Core Shells on Discrete Grid G_N}" font "Sans-Bold,12" offset 0,-0.5
+set title "Temporal Snapshot of Electron Interactions in Hydrogen Fluoride (HF)\n{/*0.85Interlocking Electromagnetic Flux Meshwork on Discrete Grid G_N}" font "Sans-Bold,12" offset 0,-0.5
 
-# Enable 3D parametric plotting and wireframe meshwork
 set parametric
 set hidden3d
 unset pm3d
 set surface
 
-# Mesh sampling density across parameter intervals
-set isosamples 42, 54
-set urange [0:pi]
+# Mesh resolution
+set isosamples 36, 36
+set urange [0:2*pi]
 set vrange [0:2*pi]
 
-# Coordinate axes and ranges (in atomic units a_0: 1 a_0 ~ 0.529177 Angstrom)
+# Coordinate axes and viewing geometry
 set xlabel "X (a_0)" offset -1,-0.5
 set ylabel "Y (a_0)" offset 1,-0.5
 set zlabel "Z: Internuclear Axis (a_0)" offset 1,0
-set xrange [-2.4:2.4]
-set yrange [-2.4:2.4]
-set zrange [-2.5:2.5]
-set xyplane at -2.5
+set xrange [-2.2:2.2]
+set yrange [-2.2:2.2]
+set zrange [-2.2:2.2]
+set xyplane at -2.2
+set view 65, 325, 1.1, 1.0
 
-# Viewing angle for perspective along and across the bond axis
-set view 68, 335, 1.15, 1.0
+# Physical coordinates along internuclear axis (in atomic units a_0)
+z_F = -0.55   # Fluorine nucleus locus
+z_H =  1.18   # Hydrogen proton locus
 
-# Physical molecular parameters in atomic units:
-# Equilibrium bond length R_e = 1.733 a_0 (~0.917 Angstrom)
-z_F = -0.60    # Axial position of the Fluorine nucleus
-z_H =  1.13    # Axial position of the Hydrogen proton
-R_F =  1.32    # Fluorine valence radius (electronegative lobe and 2p lone-pair concentration)
-R_H =  0.64    # Hydrogen valence screening radius
+# ----------------------------------------------------------------------------
+# 1. Shared Polar Covalent Bonding Electron Pair (Bridge Meshwork)
+# Modeled as a dual-vortex pinched flux tube along the internuclear corridor
+# ----------------------------------------------------------------------------
+z_bond_c = 0.35
+L_bond   = 0.75
+R_bond_0 = 0.42
 
-# Interpolation weight along the polar axis (u = 0 at H terminus, u = pi at F terminus)
-w(u) = 0.5 * (1.0 - cos(u))
+z_bond(u, v) = z_bond_c + L_bond * cos(u)
+# Radius bulges near center, tapers at nuclear contacts
+r_bond(u)    = R_bond_0 * (sin(u)**0.8 + 0.15 * cos(u))
+x_bond(u, v) = r_bond(u) * cos(v)
+y_bond(u, v) = r_bond(u) * sin(v)
 
-# Axial center of curvature across the bonding corridor
-z_center(u) = z_H * (1.0 - w(u)) + z_F * w(u)
+# ----------------------------------------------------------------------------
+# 2. Fluorine 1s^2 Core Electron Pair (Localized Toroidal Current Loop)
+# ----------------------------------------------------------------------------
+R_core = 0.22
+r_core = 0.08
+x_core(u, v) = (R_core + r_core * cos(v)) * cos(u)
+y_core(u, v) = (R_core + r_core * cos(v)) * sin(u)
+z_core(u, v) = z_F + r_core * sin(v)
 
-# Radial envelope function incorporating the covalent bonding waist
-waist(u) = 1.0 - 0.14 * (sin(u)**2) * (1.0 - w(u))
-R_eff(u) = (R_H * (1.0 - w(u)) + R_F * w(u)) * waist(u)
+# ----------------------------------------------------------------------------
+# 3. Three Fluorine 2p Lone-Pair Electron Lobes (Trigonal Back-Lobe Meshworks)
+# Inclined at theta_lp = 112 deg relative to the +Z bond axis, spaced at 120 deg
+# ----------------------------------------------------------------------------
+theta_lp = 1.95  # ~112 degrees (pointing backward from bond axis)
+phi_1    = 0.0
+phi_2    = 2.0 * pi / 3.0
+phi_3    = 4.0 * pi / 3.0
 
-# 1. Outer polarized valence bonding envelope
-x_val(u, v) = R_eff(u) * sin(u) * cos(v)
-y_val(u, v) = R_eff(u) * sin(u) * sin(v)
-z_val(u, v) = z_center(u) + R_eff(u) * cos(u)
+L_lp = 0.70
+R_lp = 0.32
 
-# 2. Inner core electron shell at Fluorine (1s^2 tight localization)
-r_F_core = 0.35
-x_core_F(u, v) = r_F_core * sin(u) * cos(v)
-y_core_F(u, v) = r_F_core * sin(u) * sin(v)
-z_core_F(u, v) = z_F + r_F_core * cos(u)
+# Generic teardrop lobe centered at origin, directed along +Z
+z_lobe_local(u, v) = L_lp * (0.5 * (1.0 - cos(u)))
+r_lobe_local(u, v) = R_lp * sin(u) * (1.0 - 0.25 * cos(u))
+x_lobe_local(u, v) = r_lobe_local(u, v) * cos(v)
+y_lobe_local(u, v) = r_lobe_local(u, v) * sin(v)
 
-# 3. Proton locus at Hydrogen
-r_H_core = 0.15
-x_core_H(u, v) = r_H_core * sin(u) * cos(v)
-y_core_H(u, v) = r_H_core * sin(u) * sin(v)
-z_core_H(u, v) = z_H + r_H_core * cos(u)
+# Rotation into (theta, phi) orientation and translation to z_F
+x_rot(x, y, z, th, ph) = (x*cos(th) + z*sin(th))*cos(ph) - y*sin(ph)
+y_rot(x, y, z, th, ph) = (x*cos(th) + z*sin(th))*sin(ph) + y*cos(ph)
+z_rot(x, y, z, th, ph) = -x*sin(th) + z*cos(th)
 
-# Distinct wireframe mesh styles (no surface shading)
-set style line 1 lc rgb "#1b4d89" lw 1.0  # Blue mesh: Valence bonding envelope
-set style line 2 lc rgb "#c0392b" lw 1.2  # Red mesh: Fluorine core shell
-set style line 3 lc rgb "#27ae60" lw 1.2  # Green mesh: Hydrogen proton locus
+# Lone pair 1
+x_lp1(u, v) = x_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_1)
+y_lp1(u, v) = y_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_1)
+z_lp1(u, v) = z_F + z_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_1)
 
-# Molecular annotations and physical properties
-set label 1 "F (Z=9, {/Symbol d}^-)" at 0, 0, z_F-0.55 center font "Sans-Bold,10" tc rgb "#1b4d89"
-set label 2 "H (Z=1, {/Symbol d}^+)" at 0, 0, z_H+0.45 center font "Sans-Bold,10" tc rgb "#27ae60"
-set label 3 "Dipole Moment: {/Symbol m} = 1.82 D\nEquilibrium Bond Length: R_e = 0.917 {\305} (1.733 a_0)" at -2.1, 1.8, 2.0 font "Sans,9" tc rgb "#333333"
+# Lone pair 2
+x_lp2(u, v) = x_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_2)
+y_lp2(u, v) = y_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_2)
+z_lp2(u, v) = z_F + z_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_2)
 
-# Render 3D wireframe meshworks
-splot x_val(u, v), y_val(u, v), z_val(u, v) with lines ls 1 title "Valence Bond Envelope (Polar Covalent)", \
-      x_core_F(u, v), y_core_F(u, v), z_core_F(u, v) with lines ls 2 title "Fluorine Core Shell (1s^2)", \
-      x_core_H(u, v), y_core_H(u, v), z_core_H(u, v) with lines ls 3 title "Hydrogen Proton Locus"
+# Lone pair 3
+x_lp3(u, v) = x_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_3)
+y_lp3(u, v) = y_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_3)
+z_lp3(u, v) = z_F + z_rot(x_lobe_local(u, v), y_lobe_local(u, v), z_lobe_local(u, v), theta_lp, phi_3)
+
+# ----------------------------------------------------------------------------
+# 4. Discrete Internuclear Polarization Field Filaments (Lines of Force)
+# ----------------------------------------------------------------------------
+r_fil(u) = 0.65 * sin(u)
+z_fil(u) = 0.5 * (z_H + z_F) + 0.5 * (z_H - z_F) * cos(u)
+
+x_fil1(u, v) = r_fil(u) * cos(0.0)
+y_fil1(u, v) = r_fil(u) * sin(0.0)
+z_fil1(u, v) = z_fil(u)
+
+x_fil2(u, v) = r_fil(u) * cos(pi/2.0)
+y_fil2(u, v) = r_fil(u) * sin(pi/2.0)
+z_fil2(u, v) = z_fil(u)
+
+x_fil3(u, v) = r_fil(u) * cos(pi)
+y_fil3(u, v) = r_fil(u) * sin(pi)
+z_fil3(u, v) = z_fil(u)
+
+x_fil4(u, v) = r_fil(u) * cos(3.0*pi/2.0)
+y_fil4(u, v) = r_fil(u) * sin(3.0*pi/2.0)
+z_fil4(u, v) = z_fil(u)
+
+# Wireframe line styling
+set style line 1 lc rgb "#1b4d89" lw 1.2  # Blue: Shared bonding pair
+set style line 2 lc rgb "#d35400" lw 1.0  # Orange: Lone pair electron lobes
+set style line 3 lc rgb "#c0392b" lw 1.3  # Red: 1s^2 core electron toroid
+set style line 4 lc rgb "#7f8c8d" dt 2 lw 0.9 # Dashed gray: Polarization lines of force
+
+# Nuclear coordinate labels
+set label 1 "F Nucleus (Z=9)" at 0, 0, z_F-0.25 center font "Sans-Bold,9" tc rgb "#c0392b"
+set label 2 "Proton (H^+)"    at 0, 0, z_H+0.25 center font "Sans-Bold,9" tc rgb "#1b4d89"
+
+# Render wireframe meshes
+splot x_bond(u, v), y_bond(u, v), z_bond(u, v) with lines ls 1 title "Shared Bonding Electron Pair (Bridge Vortex)", \
+      x_lp1(u, v),  y_lp1(u, v),  z_lp1(u, v)  with lines ls 2 title "Fluorine 2p Lone Pair 1", \
+      x_lp2(u, v),  y_lp2(u, v),  z_lp2(u, v)  with lines ls 2 title "Fluorine 2p Lone Pair 2", \
+      x_lp3(u, v),  y_lp3(u, v),  z_lp3(u, v)  with lines ls 2 title "Fluorine 2p Lone Pair 3", \
+      x_core(u, v), y_core(u, v), z_core(u, v) with lines ls 3 title "Fluorine 1s^2 Core Electron Toroid", \
+      x_fil1(u, v), y_fil1(u, v), z_fil1(u, v) with lines ls 4 notitle, \
+      x_fil2(u, v), y_fil2(u, v), z_fil2(u, v) with lines ls 4 notitle, \
+      x_fil3(u, v), y_fil3(u, v), z_fil3(u, v) with lines ls 4 notitle, \
+      x_fil4(u, v), y_fil4(u, v), z_fil4(u, v) with lines ls 4 notitle
