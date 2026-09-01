@@ -2521,7 +2521,7 @@ Consequently, if two technological civilizations are separated by even a modest 
 
 The second fatal flaw of speculative interstellar fiction is its reliance on superluminal travel or signaling—presuming that material vessels or messages can cross interstellar voids at velocities exceeding the physical speed limit \( c \).
 
-Here a crucial linguistic, physical, and historical clarification is mandatory. Albert Einstein treated \( c \) as “the speed of light in a vacuum.” What the Iris Number System establishes is that \( c = \frac { 1 } { \sqrt { \mu _ 0 \varepsilon _ 0 } } \) is strictly **the speed of a wave in an electromagnetic field**.
+Here a crucial linguistic, physical, and historical clarification is mandatory. Albert Einstein treated \( c \) as “the speed of light in a vacuum.” What the Iris Number System establishes is that \( c = { 1 } / { \sqrt { \mu _ 0 \varepsilon _ 0 } } \) is strictly **the speed of a wave in an electromagnetic field**.
 
 The distinction is fundamental: an electromagnetic field is an explicit mathematical framework in which Newton’s laws of motion apply directly. The supposed “vacuum” of conventional relativity is an ungrounded verbalism representing the absence of any rigorous physical consideration by the human brain. By divorcing wave propagation from an active multivector field framework governed by Newtonian mechanics and Maxwell-Heaviside electrodynamics, twentieth-century conventional physics reified \( c \) into an abstract kinematic postulate across disembodied coordinate frames. In truth, \( c \) is the invariant electromagnetic wave propagation speed on the discrete spatial-temporal resolution grid \( \mathcal { G } _ N \).
 
