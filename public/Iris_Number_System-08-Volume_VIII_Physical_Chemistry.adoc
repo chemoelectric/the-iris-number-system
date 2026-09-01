@@ -40,6 +40,251 @@ where \( \Phi_0 = h / (2e) \) is the discrete magnetic flux quantum and \( \part
 
 The covalent bond is thus an electrodynamic bridge: the shared electron pair forms an interlocking, helical dual-vortex structure that confines the electromagnetic field between the two positively charged nuclear cores, screening their mutual repulsion and binding the nuclei into a stable molecular configuration.
 
+=== The Monatomic Hydrogen Molecule (\( \text{H} \)): Solitary 1s Valence Vortex and Nuclear Core
+
+The simplest elementary chemical entity is the isolated monatomic hydrogen molecule (\( \text{H} \), \( Z=1 \)). Rather than a continuous probability wave or dimensionless point charge, monatomic hydrogen is an exact, finite electrodynamic system: a single positive nuclear proton locus at \( \mathbf{R}_p = (0,0,0) \) coupled to a solitary localized toroidal electron current vortex orbiting at the discrete Bohr equilibrium radius \( r_0 = a_0 \approx 0.529\,\text{\AA} \) on \( \mathcal{G}_N \).
+
+[#def-monatomic-hydrogen-molecule]
+[NOTE]
+====
+.Definition: Monatomic Hydrogen Molecule System
+Let \( \mathbf{R}_p = (0,0,0) \) be the localized nuclear core coordinate of the proton on \( \mathcal{G}_N \). The **Monatomic Hydrogen Molecule** (\( \text{H} \), \( Z=1 \)) is the autonomous, self-resonant two-body electrodynamic system consisting of:
+
+. A localized positive nuclear core well of finite radius \( r_p \approx 0.16\,a_0 \);
+. A single 1s valence electron forming a toroidal current vortex \( \mathbf{J}_e(\mathbf{x}, t) \) with major radius \( R_e \approx 0.28\,a_0 \) and minor core thickness \( r_e \approx 0.12\,a_0 \);
+. A discrete circular orbital track of radius \( r_0 = a_0 \) along which the vortex centroid circulates with orbital angular momentum \( L = \hbar \);
+. A network of dipolar electromagnetic flux filaments bridging the nuclear core and the circulating electron vortex, enforcing discrete phase closure:
+
+\[ \oint_{\mathcal{C}_{\text{orbit}}} \mathbf{A}(\mathbf{x}, t) \cdot d\mathbf{l} = \Phi_0 = \frac{h}{2e} \]
+====
+
+==== 3D Gnuplot Visualization of the Monatomic Hydrogen Molecule
+
+The following script renders the complete 3D wireframe meshwork of monatomic hydrogen on \( \mathcal{G}_N \), showing the localized electron current vortex, the central proton well, the orbital trajectory, and the dipolar electromagnetic flux filaments:
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Wireframe Temporal Snapshot of Monatomic Hydrogen (H)
+# Depicts the discrete electromagnetic structure of a ground-state hydrogen atom on G_N:
+# - The localized toroidal current vortex of the single 1s electron orbiting at the Bohr radius (r = 1.0 a_0)
+# - The localized positive potential well / screening vortex of the central proton
+# - The dipolar electromagnetic flux filaments bridging the electron and proton
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Temporal Snapshot of Monatomic Hydrogen (H, Z=1)\n{/*0.85Electron Vortex and Proton Locus on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 44, 44
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z (a_0)" offset 1,0
+set xrange [-1.8:1.8]
+set yrange [-1.8:1.8]
+set zrange [-1.8:1.8]
+set xyplane at -1.8
+set view 62, 325, 1.25, 1.0
+
+r_bohr = 1.0
+
+# Localized Toroidal Current Vortex of the 1s Electron
+R_e_maj = 0.28
+r_e_min = 0.12
+
+x_elec(u, v) = r_bohr + (R_e_maj + r_e_min * cos(v)) * cos(u)
+y_elec(u, v) = (R_e_maj + r_e_min * cos(v)) * sin(u)
+z_elec(u, v) = r_e_min * sin(v)
+
+# Central Proton Potential Core Locus
+r_proton = 0.16
+x_prot(u, v) = r_proton * sin(u/2.0) * cos(v)
+y_prot(u, v) = r_proton * sin(u/2.0) * sin(v)
+z_prot(u, v) = r_proton * cos(u/2.0)
+
+# Orbital Track (The 1s Trajectory Circle on G_N)
+r_track_tube = 0.03
+x_track(u, v) = (r_bohr + r_track_tube * cos(v)) * cos(u)
+y_track(u, v) = (r_bohr + r_track_tube * cos(v)) * sin(u)
+z_track(u, v) = r_track_tube * sin(v)
+
+# Dipolar Electromagnetic Flux Filaments
+u_n(u) = u / (2.0 * pi)
+
+x_f1(u, v) = r_bohr * u_n(u)
+y_f1(u, v) = 0.35 * sin(u_n(u) * pi)
+z_f1(u, v) = 0.0
+
+x_f2(u, v) = r_bohr * u_n(u)
+y_f2(u, v) = -0.35 * sin(u_n(u) * pi)
+z_f2(u, v) = 0.0
+
+x_f3(u, v) = r_bohr * u_n(u)
+y_f3(u, v) = 0.0
+z_f3(u, v) = 0.45 * sin(u_n(u) * pi)
+
+x_f4(u, v) = r_bohr * u_n(u)
+y_f4(u, v) = 0.0
+z_f4(u, v) = -0.45 * sin(u_n(u) * pi)
+
+r_loop(u) = 0.60 * sin(u_n(u) * pi)
+x_f5(u, v) = r_bohr + (0.50 * (1.0 - cos(u_n(u) * pi))) * 0.65
+y_f5(u, v) = r_loop(u) * cos(pi/3.0)
+z_f5(u, v) = r_loop(u) * sin(pi/3.0)
+
+x_f6(u, v) = r_bohr + (0.50 * (1.0 - cos(u_n(u) * pi))) * 0.65
+y_f6(u, v) = -r_loop(u) * cos(pi/3.0)
+z_f6(u, v) = -r_loop(u) * sin(pi/3.0)
+
+# Wireframe Line Styles
+set style line 1 lc rgb "#185a9d" lw 1.5   # Deep blue: 1s electron current vortex
+set style line 2 lc rgb "#c0392b" lw 1.5   # Red: Central proton locus
+set style line 3 lc rgb "#95a5a6" dt 2 lw 0.9 # Dashed gray: 1s orbital track
+set style line 4 lc rgb "#d35400" lw 1.1   # Orange: Electromagnetic flux filaments
+
+set label 1 "Proton (p^+, Z=1)" at 0, 0, -0.28 center font "Sans-Bold,10" tc rgb "#c0392b"
+set label 2 "Electron Vortex (e^-)" at r_bohr, 0, 0.42 center font "Sans-Bold,10" tc rgb "#185a9d"
+set label 3 "Bohr Radius: a_0 = 0.529 {\305}" at 0.5, -0.2, -0.15 center font "Sans,9" tc rgb "#555555"
+
+splot x_elec(u, v),  y_elec(u, v),  z_elec(u, v)  with lines ls 1 title "1s Electron Vortex Soliton (e^-)", \
+      x_prot(u, v),  y_prot(u, v),  z_prot(u, v)  with lines ls 2 title "Proton Nuclear Locus (p^+)", \
+      x_track(u, v), y_track(u, v), z_track(u, v) with lines ls 3 title "1s Bohr Orbit Track (r = 1 a_0)", \
+      x_f1(u, v),    y_f1(u, v),    z_f1(u, v)    with lines ls 4 title "Electromagnetic Flux Filaments", \
+      x_f2(u, v),    y_f2(u, v),    z_f2(u, v)    with lines ls 4 notitle, \
+      x_f3(u, v),    y_f3(u, v),    z_f3(u, v)    with lines ls 4 notitle, \
+      x_f4(u, v),    y_f4(u, v),    z_f4(u, v)    with lines ls 4 notitle, \
+      x_f5(u, v),    y_f5(u, v),    z_f5(u, v)    with lines ls 4 notitle, \
+      x_f6(u, v),    y_f6(u, v),    z_f6(u, v)    with lines ls 4 notitle
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
+
+=== Diatomic Hydrogen (\( \text{H}_2 \)): Interlocking Dual-Vortex Covalent Bond Sheath
+
+When two hydrogen atoms bond to form molecular hydrogen (\( \text{H}_2 \)), the two 1s valence vortices interlock along the internuclear axis to form a single, cohesive cylindrical \( \sigma \)-bonding sheath containing two electrons of opposite spin.
+
+[#def-diatomic-hydrogen-molecule]
+[NOTE]
+====
+.Definition: Diatomic Hydrogen Molecule System
+Let \( \mathbf{R}_1 = (-d_{\text{HH}}/2, 0, 0) \) and \( \mathbf{R}_2 = (+d_{\text{HH}}/2, 0, 0) \) be the localized nuclear core coordinates of the two protons at equilibrium separation \( d_{\text{HH}} \approx 1.40\,a_0 \approx 0.741\,\text{\AA} \) on \( \mathcal{G}_N \). The **Diatomic Hydrogen Molecule** (\( \text{H}_2 \)) is the stable two-center, two-electron electrodynamic system characterized by:
+
+. Two localized positive proton nuclear potential wells of finite screening radius \( r_p \approx 0.15\,a_0 \);
+. A shared interlocking \( \sigma \)-bonding vortex sheath \( \mathbf{J}_{\sigma}(\mathbf{x}, t) \) containing \( 2e^- \) that bulges at the internuclear midpoint to screen the mutual nuclear repulsion;
+. A mid-plane diamagnetic screening current toroid circulating in the \( YZ \)-plane with radius \( R_{\text{mid}} \approx 0.62\,a_0 \);
+. An enveloping longitudinal electromagnetic flux boundary enforcing total phase closure and orbital stability across the bond axis.
+====
+
+==== 3D Gnuplot Visualization of the Diatomic Hydrogen Molecule
+
+The following script renders the complete 3D wireframe meshwork of diatomic hydrogen on \( \mathcal{G}_N \):
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Wireframe Snapshot of Diatomic Hydrogen (H2)
+# Depicts the discrete electromagnetic architecture of the covalent H-H bond on G_N:
+# - Two positive proton potential wells at internuclear equilibrium separation d_HH = 1.40 a_0
+# - The interlocking cylindrical dual-vortex sigma bonding tube confining the shared electron pair
+# - Diamagnetic screening current toroids and bridging flux filaments
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Electromagnetic Snapshot of Diatomic Hydrogen (H_2)\n{/*0.85Covalent Bond Vortex Sheath and Nuclear Wells on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 44, 44
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X: Bond Axis (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z (a_0)" offset 1,0
+set xrange [-2.2:2.2]
+set yrange [-2.0:2.0]
+set zrange [-2.0:2.0]
+set xyplane at -2.0
+set view 65, 335, 1.2, 1.0
+
+d_HH = 1.40
+x_p1 = -d_HH / 2.0
+x_p2 =  d_HH / 2.0
+
+# 1. Proton Nuclear Core Wells
+r_p = 0.15
+x_prot1(u, v) = x_p1 + r_p * sin(u/2.0) * cos(v)
+y_prot1(u, v) = r_p * sin(u/2.0) * sin(v)
+z_prot1(u, v) = r_p * cos(u/2.0)
+
+x_prot2(u, v) = x_p2 + r_p * sin(u/2.0) * cos(v)
+y_prot2(u, v) = r_p * sin(u/2.0) * sin(v)
+z_prot2(u, v) = r_p * cos(u/2.0)
+
+# 2. Interlocking Covalent Sigma Bonding Electron Tube (Shared Pair Vortex)
+u_norm(u) = u / (2.0 * pi)
+x_pos(u)  = x_p1 + u_norm(u) * d_HH
+r_bond(u) = 0.48 * (sin(u_norm(u) * pi)**0.65) * (1.0 + 0.15 * cos(2.0 * u_norm(u) * pi))
+
+x_bond(u, v) = x_pos(u)
+y_bond(u, v) = r_bond(u) * cos(v)
+z_bond(u, v) = r_bond(u) * sin(v)
+
+# 3. Outer Diamagnetic Screening Toroid at Mid-plane (x = 0)
+R_mid = 0.62
+r_mid = 0.14
+x_mid(u, v) = r_mid * cos(v)
+y_mid(u, v) = (R_mid + r_mid * sin(v)) * cos(u)
+z_mid(u, v) = (R_mid + r_mid * sin(v)) * sin(u)
+
+# 4. Longitudinal Electromagnetic Flux Filaments
+x_fl1(u, v) = 1.6 * (u_norm(u) - 0.5) * d_HH
+y_fl1(u, v) = 0.82 * sin(u_norm(u) * pi) * cos(v)
+z_fl1(u, v) = 0.82 * sin(u_norm(u) * pi) * sin(v)
+
+set style line 1 lc rgb "#185a9d" lw 1.5   # Deep blue: Shared covalent electron pair sheath
+set style line 2 lc rgb "#c0392b" lw 1.5   # Red: Proton nuclear loci
+set style line 3 lc rgb "#27ae60" lw 1.2   # Green: Mid-plane diamagnetic screening toroid
+set style line 4 lc rgb "#d35400" dt 2 lw 0.9 # Dashed orange: Outer flux boundary
+
+set label 1 "Proton H_1^+ (-0.70 a_0)" at x_p1, 0, -0.32 center font "Sans-Bold,10" tc rgb "#c0392b"
+set label 2 "Proton H_2^+ (+0.70 a_0)" at x_p2, 0, -0.32 center font "Sans-Bold,10" tc rgb "#c0392b"
+set label 3 "Covalent Bond Sheath (2e^-)" at 0, 0, 0.72 center font "Sans-Bold,10" tc rgb "#185a9d"
+set label 4 "Bond Length: d_{HH} = 1.40 a_0 (0.74 {\305})" at 0, -0.9, -0.15 center font "Sans,9" tc rgb "#555555"
+
+splot x_bond(u, v),  y_bond(u, v),  z_bond(u, v)  with lines ls 1 title "Shared \\sigma-Bonding Vortex Sheath (2e^-)", \
+      x_prot1(u, v), y_prot1(u, v), z_prot1(u, v) with lines ls 2 title "Proton Nuclear Wells (p^+)", \
+      x_prot2(u, v), y_prot2(u, v), z_prot2(u, v) with lines ls 2 notitle, \
+      x_mid(u, v),   y_mid(u, v),   z_mid(u, v)   with lines ls 3 title "Mid-Plane Diamagnetic Toroid", \
+      x_fl1(u, v),   y_fl1(u, v),   z_fl1(u, v)   with lines ls 4 title "Electromagnetic Flux Sheath"
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
+
 === Polar Covalence and Asymmetric Charge Polarization in Diatomic Halides
 
 When the constituent atoms differ in nuclear charge \( Z_A \neq Z_B \) and core screening radii, the shared electron pair experiences an asymmetric electrostatic drift along the internuclear axis \( \mathbf{e}_3 \). 
@@ -79,7 +324,19 @@ The following script renders the complete 3D wireframe meshwork of the interacti
 [source,gnuplot]
 ----
 # Gnuplot: 3D High-Detail Close-Up Wireframe of HF Electron Interactions
+# Depicts the instantaneous electromagnetic vortex meshwork of interacting electrons on G_N:
+# - Shared polar covalent bonding electron pair bridging H and F
+# - Three fluorine 2p lone-pair lobes in trigonal back-lobe orientation
+# - Localized 1s^2 fluorine core toroid and proton screening locus
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
 reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
 set title "Instantaneous Electron Interactions in Hydrogen Fluoride (HF)\n{/*0.85High-Magnification 3D Wireframe Meshwork on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
 
 set parametric
@@ -103,15 +360,15 @@ set view 68, 330, 1.25, 1.0
 z_F = -0.52
 z_H =  1.21
 
-# Shared Polar Covalent Bonding Electron Pair
+# 1. Shared Polar Covalent Bonding Electron Pair (Bridge Vortex)
 u_norm(u)    = u / (2.0 * pi)
 z_bond(u, v) = z_F + 0.15 + (z_H - z_F - 0.25) * u_norm(u)
 r_bond(u)    = 0.44 * (sin(u_norm(u)*pi)**0.75) * (1.0 + 0.25*(1.0 - u_norm(u)))
 x_bond(u, v) = r_bond(u) * cos(v)
 y_bond(u, v) = r_bond(u) * sin(v)
 
-# Three Fluorine 2p Lone Pairs (Trigonal Back-Lobe Meshworks)
-theta_lp = 1.9548  # 112 degrees
+# 2. Three Fluorine 2p Lone Pairs (Trigonal Back-Lobe Meshworks)
+theta_lp = 1.9548  # 112 degrees (pointing backward from bond axis)
 phi_1    = 0.0
 phi_2    = 2.0944  # 120 degrees
 phi_3    = 4.1888  # 240 degrees
@@ -140,24 +397,28 @@ x_lp3(u, v) = x_rot(x_lobe_base(u, v), y_lobe_base(u, v), z_lobe_base(u, v), the
 y_lp3(u, v) = y_rot(x_lobe_base(u, v), y_lobe_base(u, v), z_lobe_base(u, v), theta_lp, phi_3)
 z_lp3(u, v) = z_F + z_rot(x_lobe_base(u, v), y_lobe_base(u, v), z_lobe_base(u, v), theta_lp, phi_3)
 
-# Fluorine 1s^2 Core Toroid
+# 3. Fluorine 1s^2 Core Toroid
 R_core_major = 0.20
 r_core_minor = 0.07
 x_core(u, v) = (R_core_major + r_core_minor * cos(v)) * cos(u)
 y_core(u, v) = (R_core_major + r_core_minor * cos(v)) * sin(u)
 z_core(u, v) = z_F + r_core_minor * sin(v)
 
-# Proton Screening Locus
+# 4. Proton (H) Screening Locus
 r_H_vortex = 0.16
 x_H_well(u, v) = r_H_vortex * sin(u/2.0) * cos(v)
 y_H_well(u, v) = r_H_vortex * sin(u/2.0) * sin(v)
 z_H_well(u, v) = z_H + r_H_vortex * cos(u/2.0)
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.3
-set style line 2 lc rgb "#d35400" lw 1.1
-set style line 3 lc rgb "#c0392b" lw 1.4
-set style line 4 lc rgb "#27ae60" lw 1.2
+set style line 1 lc rgb "#185a9d" lw 1.3  # Blue: Shared bonding electron pair
+set style line 2 lc rgb "#d35400" lw 1.1  # Orange: Fluorine 2p lone pairs
+set style line 3 lc rgb "#c0392b" lw 1.4  # Red: Fluorine 1s^2 core toroid
+set style line 4 lc rgb "#27ae60" lw 1.2  # Green: Proton screening locus
+
+set label 1 "Fluorine Core (Z=9)" at 0, 0, z_F-0.35 center font "Sans-Bold,9" tc rgb "#c0392b"
+set label 2 "Proton Locus (H^+)"  at 0, 0, z_H+0.30 center font "Sans-Bold,9" tc rgb "#27ae60"
+set label 3 "Polar Covalent Axis" at 0, -1.0, 0 center font "Sans,9" tc rgb "#555555"
 
 splot x_bond(u, v),   y_bond(u, v),   z_bond(u, v)   with lines ls 1 title "Shared Bonding Electron Pair", \
       x_lp1(u, v),    y_lp1(u, v),    z_lp1(u, v)    with lines ls 2 title "Fluorine 2p Lone Pair 1", \
@@ -165,6 +426,10 @@ splot x_bond(u, v),   y_bond(u, v),   z_bond(u, v)   with lines ls 1 title "Shar
       x_lp3(u, v),    y_lp3(u, v),    z_lp3(u, v)    with lines ls 2 title "Fluorine 2p Lone Pair 3", \
       x_core(u, v),   y_core(u, v),   z_core(u, v)   with lines ls 3 title "Fluorine 1s^2 Core Toroid", \
       x_H_well(u, v), y_H_well(u, v), z_H_well(u, v) with lines ls 4 title "Proton (H) Screening Locus"
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
 ----
 
 == Polyatomic Architectures and Conjugated Systems
@@ -274,6 +539,472 @@ splot x_b1(u, v), y_b1(u, v), z_b1(u, v) with lines ls 1 title "O-H Bond Pair 1"
       x_O_core(u, v), y_O_core(u, v), z_O_core(u, v) with lines ls 3 title "Oxygen 1s^2 Core Toroid"
 ----
 
+=== Methane (\( \text{CH}_4 \)): Regular Tetrahedral Coordinate Symmetry
+
+In the methane molecule (\( \text{CH}_4 \)), the central carbon atom (\( Z = 6 \)) distributes its four valence electrons into four equivalent \( \sigma \)-bonding vortex tubes pointing toward the vertices of a regular tetrahedron on \( \mathcal{G}_N \).
+
+[#def-tetrahedral-methane]
+[NOTE]
+====
+.Definition: Tetrahedral Methane Molecular Architecture
+Let the Carbon-12 nucleus be located at the origin \( \mathbf{R}_{\text{C}} = (0,0,0) \) on \( \mathcal{G}_N \). The **Tetrahedral Methane Architecture** (\( \text{CH}_4 \)) is the highly symmetric five-center electrodynamic system consisting of:
+
+. A Carbon \( 1s^2 \) core current toroid of major radius \( R_{\text{core}} \approx 0.22\,a_0 \);
+. Four equivalent proton loci \( \mathbf{R}_{\text{H}, k} \) at equilibrium distance \( d_{\text{CH}} \approx 2.06\,a_0 \approx 1.09\,\text{\AA} \) oriented along tetrahedral unit vectors:
+
+\[ \mathbf{u}_1 = \frac{1}{\sqrt{3}}(1,1,1), \quad \mathbf{u}_2 = \frac{1}{\sqrt{3}}(1,-1,-1), \quad \mathbf{u}_3 = \frac{1}{\sqrt{3}}(-1,1,-1), \quad \mathbf{u}_4 = \frac{1}{\sqrt{3}}(-1,-1,1) \]
+
+[start=3]
+. Four tapered \( \text{C-H} \) \( \sigma \)-bonding vortex tubes spanning each \( \mathbf{R}_{\text{C}} \to \mathbf{R}_{\text{H}, k} \) axis with tetrahedral bond angles:
+
+\[ \theta_{\text{H-C-H}} = \arccos\left(-\frac{1}{3}\right) \approx 109.47^\circ \]
+====
+
+==== 3D Gnuplot Visualization of the Methane Molecule
+
+The following script renders the complete 3D wireframe meshwork of methane on \( \mathcal{G}_N \):
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Wireframe Snapshot of Methane (CH4)
+# Depicts the discrete electromagnetic architecture of tetrahedral CH4 on G_N:
+# - Central Carbon-12 nucleus with 1s^2 core current toroid
+# - Four sp3-hybridized tetrahedral C-H covalent bonding tubes (bond angle = 109.47 deg)
+# - Four peripheral Hydrogen proton screening wells
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Tetrahedral Architecture of Methane (CH_4)\n{/*0.85sp^3 Covalent Vortex Tubes and Carbon Core on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 40, 40
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z (a_0)" offset 1,0
+set xrange [-2.4:2.4]
+set yrange [-2.4:2.4]
+set zrange [-2.4:2.4]
+set xyplane at -2.4
+set view 62, 50, 1.2, 1.0
+
+d_CH = 2.06
+inv_sqrt3 = 1.0 / sqrt(3.0)
+
+x_H1 = d_CH * inv_sqrt3 *  1.0
+y_H1 = d_CH * inv_sqrt3 *  1.0
+z_H1 = d_CH * inv_sqrt3 *  1.0
+
+x_H2 = d_CH * inv_sqrt3 *  1.0
+y_H2 = d_CH * inv_sqrt3 * -1.0
+z_H2 = d_CH * inv_sqrt3 * -1.0
+
+x_H3 = d_CH * inv_sqrt3 * -1.0
+y_H3 = d_CH * inv_sqrt3 *  1.0
+z_H3 = d_CH * inv_sqrt3 * -1.0
+
+x_H4 = d_CH * inv_sqrt3 * -1.0
+y_H4 = d_CH * inv_sqrt3 * -1.0
+z_H4 = d_CH * inv_sqrt3 *  1.0
+
+# 1. Carbon 1s^2 Core Current Toroid
+r_C_core_maj = 0.22
+r_C_core_min = 0.08
+x_C_core(u, v) = (r_C_core_maj + r_C_core_min * cos(v)) * cos(u)
+y_C_core(u, v) = (r_C_core_maj + r_C_core_min * cos(v)) * sin(u)
+z_C_core(u, v) = r_C_core_min * sin(v)
+
+# 2. Parametric Tetrahedral C-H Bonding Tubes
+u_norm(u) = u / (2.0 * pi)
+r_tube(u) = 0.30 * (sin(u_norm(u) * pi)**0.70) * (1.0 + 0.18 * (1.0 - u_norm(u)))
+
+x_t1(u, v) = u_norm(u)*x_H1 + r_tube(u)*(cos(v)*(-inv_sqrt3*sqrt(2.0)) + sin(v)*(0.0))
+y_t1(u, v) = u_norm(u)*y_H1 + r_tube(u)*(cos(v)*(inv_sqrt3/sqrt(2.0)) + sin(v)*(1.0/sqrt(2.0)))
+z_t1(u, v) = u_norm(u)*z_H1 + r_tube(u)*(cos(v)*(inv_sqrt3/sqrt(2.0)) - sin(v)*(1.0/sqrt(2.0)))
+
+x_t2(u, v) = u_norm(u)*x_H2 + r_tube(u)*(cos(v)*(-inv_sqrt3*sqrt(2.0)) + sin(v)*(0.0))
+y_t2(u, v) = u_norm(u)*y_H2 + r_tube(u)*(cos(v)*(-inv_sqrt3/sqrt(2.0)) + sin(v)*(1.0/sqrt(2.0)))
+z_t2(u, v) = u_norm(u)*z_H2 + r_tube(u)*(cos(v)*(-inv_sqrt3/sqrt(2.0)) - sin(v)*(1.0/sqrt(2.0)))
+
+x_t3(u, v) = u_norm(u)*x_H3 + r_tube(u)*(cos(v)*(inv_sqrt3*sqrt(2.0)) + sin(v)*(0.0))
+y_t3(u, v) = u_norm(u)*y_H3 + r_tube(u)*(cos(v)*(inv_sqrt3/sqrt(2.0)) + sin(v)*(1.0/sqrt(2.0)))
+z_t3(u, v) = u_norm(u)*z_H3 + r_tube(u)*(cos(v)*(-inv_sqrt3/sqrt(2.0)) - sin(v)*(1.0/sqrt(2.0)))
+
+x_t4(u, v) = u_norm(u)*x_H4 + r_tube(u)*(cos(v)*(inv_sqrt3*sqrt(2.0)) + sin(v)*(0.0))
+y_t4(u, v) = u_norm(u)*y_H4 + r_tube(u)*(cos(v)*(-inv_sqrt3/sqrt(2.0)) + sin(v)*(1.0/sqrt(2.0)))
+z_t4(u, v) = u_norm(u)*z_H4 + r_tube(u)*(cos(v)*(inv_sqrt3/sqrt(2.0)) - sin(v)*(1.0/sqrt(2.0)))
+
+# 3. Four Proton Screening Spheres
+r_p = 0.14
+x_p(u, v, x0) = x0 + r_p * sin(u/2.0) * cos(v)
+y_p(u, v, y0) = y0 + r_p * sin(u/2.0) * sin(v)
+z_p(u, v, z0) = z0 + r_p * cos(u/2.0)
+
+set style line 1 lc rgb "#185a9d" lw 1.3   # Deep blue: Tetrahedral C-H covalent bonding tubes
+set style line 2 lc rgb "#c0392b" lw 1.5   # Red: Carbon core 1s^2 toroid
+set style line 3 lc rgb "#27ae60" lw 1.2   # Green: Hydrogen proton loci
+
+set label 1 "Carbon-12 Core (Z=6)" at 0, 0, -0.35 center font "Sans-Bold,10" tc rgb "#c0392b"
+set label 2 "H_1^+" at x_H1, y_H1, z_H1+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
+set label 3 "H_2^+" at x_H2, y_H2, z_H2+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
+set label 4 "H_3^+" at x_H3, y_H3, z_H3+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
+set label 5 "H_4^+" at x_H4, y_H4, z_H4+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
+set label 6 "Tetrahedral Angle: 109.47^\circ" at 0, -1.5, -1.8 center font "Sans,9" tc rgb "#555555"
+
+splot x_t1(u, v), y_t1(u, v), z_t1(u, v) with lines ls 1 title "Tetrahedral C-H \\sigma-Bonds", \
+      x_t2(u, v), y_t2(u, v), z_t2(u, v) with lines ls 1 notitle, \
+      x_t3(u, v), y_t3(u, v), z_t3(u, v) with lines ls 1 notitle, \
+      x_t4(u, v), y_t4(u, v), z_t4(u, v) with lines ls 1 notitle, \
+      x_C_core(u, v), y_C_core(u, v), z_C_core(u, v) with lines ls 2 title "Carbon 1s^2 Core Toroid", \
+      x_p(u, v, x_H1), y_p(u, v, y_H1), z_p(u, v, z_H1) with lines ls 3 title "Hydrogen Protons (4x)", \
+      x_p(u, v, x_H2), y_p(u, v, y_H2), z_p(u, v, z_H2) with lines ls 3 notitle, \
+      x_p(u, v, x_H3), y_p(u, v, y_H3), z_p(u, v, z_H3) with lines ls 3 notitle, \
+      x_p(u, v, x_H4), y_p(u, v, y_H4), z_p(u, v, z_H4) with lines ls 3 notitle
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
+
+=== Carbon Dioxide (\( \text{CO}_2 \)): Linear Double-Bond Cylinders
+
+In the carbon dioxide molecule (\( \text{CO}_2 \)), the central carbon atom forms two collinear double bonds (\( \text{O=C=O} \)) with terminal oxygen atoms at \( 180^\circ \). Each double bond consists of an axial \( \sigma \)-bonding bridge interlocked with orthogonal \( \pi \)-vortex current sheets.
+
+[#def-carbon-dioxide-linear]
+[NOTE]
+====
+.Definition: Linear Carbon Dioxide Double-Bond Architecture
+Let the Carbon nucleus be at \( \mathbf{R}_{\text{C}} = (0,0,0) \) and the two Oxygen nuclei be located along the \( X \)-axis at \( \mathbf{R}_{\text{O}, 1} = (-d_{\text{CO}}, 0, 0) \) and \( \mathbf{R}_{\text{O}, 2} = (+d_{\text{CO}}, 0, 0) \) with \( d_{\text{CO}} \approx 2.19\,a_0 \approx 1.16\,\text{\AA} \) on \( \mathcal{G}_N \). The **Linear Carbon Dioxide System** (\( \text{CO}_2 \)) is characterized by:
+
+. A central Carbon \( 1s^2 \) core toroid aligned perpendicular to the molecular axis;
+. Two terminal Oxygen \( 1s^2 \) core toroids at \( \pm d_{\text{CO}} \);
+. Two dual \( \sigma\text{-}\pi \) double-bond cylinders containing \( 4e^- \) each, formed by the superposition of an axial \( \sigma \)-tube and orthogonal \( \pi_y, \pi_z \) current sheaths;
+. Four outward-directed terminal lone-pair lobes fanning out at the oxygen termini to minimize mutual repulsion:
+
+\[ \theta_{\text{O-C-O}} = 180.0^\circ, \quad \mu_{\text{net}} = 0\,\text{D} \]
+====
+
+==== 3D Gnuplot Visualization of the Carbon Dioxide Molecule
+
+The following script renders the complete 3D wireframe meshwork of carbon dioxide on \( \mathcal{G}_N \):
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Wireframe Snapshot of Carbon Dioxide (CO2)
+# Depicts the discrete linear electromagnetic architecture of CO2 on G_N:
+# - Linear O=C=O geometry (bond angle = 180 deg, d_CO = 2.19 a_0)
+# - Central Carbon 1s^2 core toroid at origin
+# - Two dual double-bond cylinders (interlocking sigma bond and orthogonal pi_y / pi_z vortex sheets)
+# - Terminal Oxygen nuclei with 1s^2 core toroids and outward lone-pair lobes
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Linear Double-Bond Architecture of Carbon Dioxide (CO_2)\n{/*0.85Linear \\sigma-\\pi Double-Bond Cylinders and Lone-Pair Lobes on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 44, 44
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X: Molecular Axis (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z (a_0)" offset 1,0
+set xrange [-3.6:3.6]
+set yrange [-2.2:2.2]
+set zrange [-2.2:2.2]
+set xyplane at -2.2
+set view 65, 340, 1.15, 1.0
+
+d_CO = 2.19
+x_O1 = -d_CO
+x_O2 =  d_CO
+
+# 1. Central Carbon 1s^2 Core Current Toroid at Origin (x = 0)
+r_C_core_maj = 0.22
+r_C_core_min = 0.08
+x_C_core(u, v) = r_C_core_min * sin(v)
+y_C_core(u, v) = (r_C_core_maj + r_C_core_min * cos(v)) * cos(u)
+z_C_core(u, v) = (r_C_core_maj + r_C_core_min * cos(v)) * sin(u)
+
+# 2. Oxygen 1s^2 Core Current Toroids at x = +/- d_CO
+r_O_core_maj = 0.20
+r_O_core_min = 0.07
+x_O1_core(u, v) = x_O1 + r_O_core_min * sin(v)
+y_O1_core(u, v) = (r_O_core_maj + r_O_core_min * cos(v)) * cos(u)
+z_O1_core(u, v) = (r_O_core_maj + r_O_core_min * cos(v)) * sin(u)
+
+x_O2_core(u, v) = x_O2 + r_O_core_min * sin(v)
+y_O2_core(u, v) = (r_O_core_maj + r_O_core_min * cos(v)) * cos(u)
+z_O2_core(u, v) = (r_O_core_maj + r_O_core_min * cos(v)) * sin(u)
+
+# 3. Interlocking C=O Double Bond Cylinders
+u_norm(u) = u / (2.0 * pi)
+
+x_b_left(u) = x_O1 + u_norm(u) * d_CO
+r_sig(u)    = 0.36 * (sin(u_norm(u) * pi)**0.60) * (1.0 + 0.15 * cos(u_norm(u) * pi))
+r_pi_y(u)   = 0.22 * sin(u_norm(u) * pi)
+r_pi_z(u)   = 0.22 * sin(u_norm(u) * pi)
+
+x_db1(u, v) = x_b_left(u)
+y_db1(u, v) = (r_sig(u) + r_pi_y(u)*cos(2.0*v)) * cos(v)
+z_db1(u, v) = (r_sig(u) + r_pi_z(u)*sin(2.0*v)) * sin(v)
+
+x_b_right(u) = 0.0 + u_norm(u) * d_CO
+x_db2(u, v)  = x_b_right(u)
+y_db2(u, v)  = (r_sig(u) + r_pi_y(u)*sin(2.0*v)) * cos(v)
+z_db2(u, v)  = (r_sig(u) + r_pi_z(u)*cos(2.0*v)) * sin(v)
+
+# 4. Terminal Oxygen Lone-Pair Lobes
+d_lp_len = 0.85
+r_lp(u)  = 0.28 * sin(u_norm(u) * pi)
+
+x_lp_L1(u, v) = x_O1 - u_norm(u) * d_lp_len
+y_lp_L1(u, v) = 0.45 * u_norm(u) + r_lp(u) * cos(v)
+z_lp_L1(u, v) = r_lp(u) * sin(v)
+
+x_lp_L2(u, v) = x_O1 - u_norm(u) * d_lp_len
+y_lp_L2(u, v) = -0.45 * u_norm(u) + r_lp(u) * cos(v)
+z_lp_L2(u, v) = r_lp(u) * sin(v)
+
+x_lp_R1(u, v) = x_O2 + u_norm(u) * d_lp_len
+y_lp_R1(u, v) = r_lp(u) * cos(v)
+z_lp_R1(u, v) = 0.45 * u_norm(u) + r_lp(u) * sin(v)
+
+x_lp_R2(u, v) = x_O2 + u_norm(u) * d_lp_len
+y_lp_R2(u, v) = r_lp(u) * cos(v)
+z_lp_R2(u, v) = -0.45 * u_norm(u) + r_lp(u) * sin(v)
+
+set style line 1 lc rgb "#185a9d" lw 1.5   # Deep blue: C=O double-bond vortex cylinders
+set style line 2 lc rgb "#c0392b" lw 1.5   # Red: Carbon core toroid
+set style line 3 lc rgb "#e67e22" lw 1.3   # Amber: Oxygen core toroids
+set style line 4 lc rgb "#8e44ad" lw 1.1   # Purple: Terminal oxygen lone-pair lobes
+
+set label 1 "Carbon (Z=6)" at 0, 0, -0.45 center font "Sans-Bold,10" tc rgb "#c0392b"
+set label 2 "Oxygen O_1 (Z=8)" at x_O1, 0, -0.45 center font "Sans-Bold,10" tc rgb "#e67e22"
+set label 3 "Oxygen O_2 (Z=8)" at x_O2, 0, -0.45 center font "Sans-Bold,10" tc rgb "#e67e22"
+set label 4 "Linear Angle: 180^\circ" at 0, -1.2, -1.4 center font "Sans,9" tc rgb "#555555"
+
+splot x_db1(u, v),    y_db1(u, v),    z_db1(u, v)    with lines ls 1 title "C=O \\sigma-\\pi Double-Bond Cylinders (4e^- each)", \
+      x_db2(u, v),    y_db2(u, v),    z_db2(u, v)    with lines ls 1 notitle, \
+      x_C_core(u, v), y_C_core(u, v), z_C_core(u, v) with lines ls 2 title "Carbon 1s^2 Core Toroid", \
+      x_O1_core(u, v),y_O1_core(u, v),z_O1_core(u, v)with lines ls 3 title "Oxygen 1s^2 Core Toroids", \
+      x_O2_core(u, v),y_O2_core(u, v),z_O2_core(u, v)with lines ls 3 notitle, \
+      x_lp_L1(u, v),  y_lp_L1(u, v),  z_lp_L1(u, v)  with lines ls 4 title "Terminal Oxygen Lone-Pair Lobes", \
+      x_lp_L2(u, v),  y_lp_L2(u, v),  z_lp_L2(u, v)  with lines ls 4 notitle, \
+      x_lp_R1(u, v),  y_lp_R1(u, v),  z_lp_R1(u, v)  with lines ls 4 notitle, \
+      x_lp_R2(u, v),  y_lp_R2(u, v),  z_lp_R2(u, v)  with lines ls 4 notitle
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
+
+=== Methanol (\( \text{CH}_3\text{OH} \)): Asymmetric Methyl-Hydroxyl Solvation Architecture
+
+In the methanol molecule (\( \text{CH}_3\text{OH} \)), a tetrahedral methyl group (\( -\text{CH}_3 \)) is joined via a polar covalent \( \text{C-O} \) bond to a bent hydroxyl group (\( -\text{OH} \)).
+
+[#def-methanol-molecular-junction]
+[NOTE]
+====
+.Definition: Methanol Methyl-Hydroxyl Molecular Junction
+Let the Carbon nucleus be at \( \mathbf{R}_{\text{C}} = (0,0,0) \) and the Oxygen nucleus be at \( \mathbf{R}_{\text{O}} = (d_{\text{CO}}, 0, 0) \) with \( d_{\text{CO}} \approx 2.70\,a_0 \approx 1.43\,\text{\AA} \) on \( \mathcal{G}_N \). The **Methanol Molecular Junction** (\( \text{CH}_3\text{OH} \)) consists of:
+
+. A Carbon \( 1s^2 \) core toroid coupled to three pyramidal \( \text{C-H} \) \( \sigma \)-bonding vortex tubes (\( d_{\text{CH}} \approx 2.06\,a_0 \));
+. A central \( \text{C-O} \) covalent bonding tube along \( \mathbf{e}_1 \);
+. An Oxygen \( 1s^2 \) core toroid coupled to a bent \( \text{O-H} \) bonding tube (\( d_{\text{OH}} \approx 1.81\,a_0 \), \( \theta_{\text{C-O-H}} \approx 108.9^\circ \));
+. Two expansive Oxygen lone-pair current lobes projecting into the transverse hemisphere:
+
+\[ \mu_{\text{methanol}} \approx 1.70\,\text{D}, \quad \varepsilon_r \approx 32.7 \]
+====
+
+==== 3D Gnuplot Visualization of the Methanol Molecule
+
+The following script renders the complete 3D wireframe meshwork of methanol on \( \mathcal{G}_N \):
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Wireframe Snapshot of Methanol (CH3OH)
+# Depicts the discrete electromagnetic architecture of Methanol on G_N:
+# - Methyl group (-CH3): Central Carbon nucleus with 1s^2 core toroid and 3 C-H covalent bonding tubes
+# - Central C-O polar covalent bonding tube bridging Carbon and Oxygen
+# - Hydroxyl group (-OH): Oxygen nucleus with 1s^2 core toroid, bent O-H covalent bond, and 2 rear lone-pair lobes
+# - Proton screening spheres for all 4 hydrogens
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Molecular Architecture of Methanol (CH_3OH)\n{/*0.85Methyl-Hydroxyl Junction, C-O/O-H Covalent Tubes, and Lone Pairs on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 40, 40
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X: C-O Axis (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z (a_0)" offset 1,0
+set xrange [-2.6:4.8]
+set yrange [-2.6:2.6]
+set zrange [-2.4:2.6]
+set xyplane at -2.4
+set view 62, 320, 1.15, 1.0
+
+d_CO = 2.70
+d_CH = 2.06
+d_OH = 1.81
+
+x_O = d_CO
+y_O = 0.0
+z_O = 0.0
+
+th_COH = 108.9 * pi / 180.0
+x_HO = x_O - d_OH * cos(th_COH)
+y_HO = 0.0
+z_HO = d_OH * sin(th_COH)
+
+th_CH = 109.5 * pi / 180.0
+x_hc_back = -d_CH * cos(pi - th_CH)
+r_hc_perp = d_CH * sin(pi - th_CH)
+
+x_H1 = x_hc_back
+y_H1 = 0.0
+z_H1 = -r_hc_perp
+
+x_H2 = x_hc_back
+y_H2 = r_hc_perp * sin(pi/3.0)
+z_H2 = r_hc_perp * cos(pi/3.0)
+
+x_H3 = x_hc_back
+y_H3 = -r_hc_perp * sin(pi/3.0)
+z_H3 = r_hc_perp * cos(pi/3.0)
+
+d_lp = 1.15
+th_lp = 54.0 * pi / 180.0
+x_lp1 = x_O - 0.35
+y_lp1 = d_lp * sin(th_lp)
+z_lp1 = -d_lp * cos(th_lp)
+
+x_lp2 = x_O - 0.35
+y_lp2 = -d_lp * sin(th_lp)
+z_lp2 = -d_lp * cos(th_lp)
+
+# 1. Carbon and Oxygen 1s^2 Core Current Toroids
+r_C_core_maj = 0.22
+r_C_core_min = 0.08
+x_C_core(u, v) = (r_C_core_maj + r_C_core_min * cos(v)) * cos(u)
+y_C_core(u, v) = (r_C_core_maj + r_C_core_min * cos(v)) * sin(u)
+z_C_core(u, v) = r_C_core_min * sin(v)
+
+r_O_core_maj = 0.20
+r_O_core_min = 0.07
+x_O_core(u, v) = x_O + r_O_core_min * sin(v)
+y_O_core(u, v) = (r_O_core_maj + r_O_core_min * cos(v)) * cos(u)
+z_O_core(u, v) = (r_O_core_maj + r_O_core_min * cos(v)) * sin(u)
+
+# 2. C-O Covalent Bonding Tube
+u_n(u) = u / (2.0 * pi)
+r_tube_CO(u) = 0.35 * (sin(u_n(u) * pi)**0.65) * (1.0 + 0.15 * (1.0 - u_n(u)))
+x_b_CO(u, v) = u_n(u) * d_CO
+y_b_CO(u, v) = r_tube_CO(u) * cos(v)
+z_b_CO(u, v) = r_tube_CO(u) * sin(v)
+
+# 3. O-H Covalent Bonding Tube
+r_tube_OH(u) = 0.28 * (sin(u_n(u) * pi)**0.70)
+x_b_OH(u, v) = x_O + u_n(u) * (x_HO - x_O) + r_tube_OH(u) * cos(v) * 0.5
+y_b_OH(u, v) = r_tube_OH(u) * sin(v)
+z_b_OH(u, v) = z_O + u_n(u) * (z_HO - z_O) + r_tube_OH(u) * cos(v) * 0.86
+
+# 4. Three Methyl C-H Bonding Tubes
+r_tube_CH(u) = 0.26 * (sin(u_n(u) * pi)**0.70)
+x_b_CH1(u, v) = u_n(u) * x_H1 + r_tube_CH(u) * cos(v)
+y_b_CH1(u, v) = u_n(u) * y_H1 + r_tube_CH(u) * sin(v)
+z_b_CH1(u, v) = u_norm_dummy = u_n(u) * z_H1
+
+x_b_CH2(u, v) = u_n(u) * x_H2 + r_tube_CH(u) * cos(v)
+y_b_CH2(u, v) = u_n(u) * y_H2 + r_tube_CH(u) * sin(v)
+z_b_CH2(u, v) = u_n(u) * z_H2
+
+x_b_CH3(u, v) = u_n(u) * x_H3 + r_tube_CH(u) * cos(v)
+y_b_CH3(u, v) = u_n(u) * y_H3 + r_tube_CH(u) * sin(v)
+z_b_CH3(u, v) = u_n(u) * z_H3
+
+# 5. Oxygen Lone-Pair Lobes
+r_lp(u) = 0.32 * sin(u_n(u) * pi) * (1.0 - 0.20 * cos(u_n(u) * pi))
+x_lp_1(u, v) = x_O + u_n(u) * (x_lp1 - x_O) + r_lp(u) * cos(v)
+y_lp_1(u, v) = u_n(u) * y_lp1 + r_lp(u) * sin(v)
+z_lp_1(u, v) = u_n(u) * z_lp1
+
+x_lp_2(u, v) = x_O + u_n(u) * (x_lp2 - x_O) + r_lp(u) * cos(v)
+y_lp_2(u, v) = u_n(u) * y_lp2 + r_lp(u) * sin(v)
+z_lp_2(u, v) = u_n(u) * z_lp2
+
+# 6. Hydrogen Proton Screening Spheres
+r_p = 0.13
+x_p(u, v, x0) = x0 + r_p * sin(u/2.0) * cos(v)
+y_p(u, v, y0) = y0 + r_p * sin(u/2.0) * sin(v)
+z_p(u, v, z0) = z0 + r_p * cos(u/2.0)
+
+set style line 1 lc rgb "#185a9d" lw 1.4   # Deep blue: C-O and C-H sigma bonds
+set style line 2 lc rgb "#2980b9" lw 1.3   # Light blue: O-H bond
+set style line 3 lc rgb "#c0392b" lw 1.5   # Red: Carbon core toroid
+set style line 4 lc rgb "#e67e22" lw 1.4   # Amber: Oxygen core toroid
+set style line 5 lc rgb "#8e44ad" lw 1.1   # Purple: Oxygen lone-pair lobes
+set style line 6 lc rgb "#27ae60" lw 1.2   # Green: Hydrogen protons
+
+set label 1 "Carbon (Z=6)" at 0, 0, -0.38 center font "Sans-Bold,10" tc rgb "#c0392b"
+set label 2 "Oxygen (Z=8)" at x_O, 0, -0.38 center font "Sans-Bold,10" tc rgb "#e67e22"
+set label 3 "Hydroxyl H^+" at x_HO, 0, z_HO+0.22 center font "Sans-Bold,9" tc rgb "#27ae60"
+
+splot x_b_CO(u, v),  y_b_CO(u, v),  z_b_CO(u, v)  with lines ls 1 title "C-O Covalent Bond Tube", \
+      x_b_OH(u, v),  y_b_OH(u, v),  z_b_OH(u, v)  with lines ls 2 title "O-H Covalent Bond Tube", \
+      x_b_CH1(u, v), y_b_CH1(u, v), z_b_CH1(u, v) with lines ls 1 title "Methyl C-H Bonds (3x)", \
+      x_b_CH2(u, v), y_b_CH2(u, v), z_b_CH2(u, v) with lines ls 1 notitle, \
+      x_b_CH3(u, v), y_b_CH3(u, v), z_b_CH3(u, v) with lines ls 1 notitle, \
+      x_C_core(u, v),y_C_core(u, v),z_C_core(u, v)with lines ls 3 title "Carbon 1s^2 Core", \
+      x_O_core(u, v),y_O_core(u, v),z_O_core(u, v)with lines ls 4 title "Oxygen 1s^2 Core", \
+      x_lp_1(u, v),  y_lp_1(u, v),  z_lp_1(u, v)  with lines ls 5 title "Oxygen Lone Pairs", \
+      x_lp_2(u, v),  y_lp_2(u, v),  z_lp_2(u, v)  with lines ls 5 notitle, \
+      x_p(u, v, x_HO), y_p(u, v, y_HO), z_p(u, v, z_HO) with lines ls 6 title "Hydrogen Protons (4x)", \
+      x_p(u, v, x_H1), y_p(u, v, y_H1), z_p(u, v, z_H1) with lines ls 6 notitle, \
+      x_p(u, v, x_H2), y_p(u, v, y_H2), z_p(u, v, z_H2) with lines ls 6 notitle, \
+      x_p(u, v, x_H3), y_p(u, v, y_H3), z_p(u, v, z_H3) with lines ls 6 notitle
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
+
 === Delocalized \(\pi\)-Electron Vortices in Benzene (\( \text{C}_6\text{H}_6 \))
 
 In aromatic ring systems such as benzene (\( \text{C}_6\text{H}_6 \)), six \( 2p_z \) valence electrons form a continuous, delocalized circular current sheet above and below the hexagonal carbon framework.
@@ -291,6 +1022,86 @@ generating the characteristic diatropic chemical shift shielding without requiri
 
 *Proof:*
 Applying the Master Field Equation \( \nabla \mathcal{F} = \mathcal{J} \) to the closed hexagonal polygon on \( \mathcal{G}_N \), the single-valuedness of the discrete electromagnetic potential \( \mathcal{A} \) around the closed loop enforces phase closure over the \( N = 6 \) carbon vertices. The induced current responds to an external magnetic field by producing a shielding flux opposing the perturbation, in direct accordance with Lenz's law on the discrete lattice. \( \square \)
+
+==== 3D Gnuplot Visualization of the Benzene Molecule
+
+The following script renders the complete 3D wireframe meshwork of benzene on \( \mathcal{G}_N \):
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Close-Up Wireframe of Benzene (C6H6) Pi-Electron Vortex Sheets
+# Depicts the discrete electromagnetic architecture on G_N:
+# - Hexagonal Carbon-Carbon sigma bonding framework
+# - Upper and Lower Delocalized Pi-Electron Toroidal Current Vortex Sheets
+# - Six peripheral Carbon-Hydrogen sigma bond spines
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Delocalized \\pi-Electron Ring Currents in Benzene (C_6H_6)\n{/*0.85Toroidal Vortex Sheets and Hexagonal \\sigma-Framework on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 44, 44
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z: Perpendicular to Ring (a_0)" offset 1,0
+set xrange [-3.5:3.5]
+set yrange [-3.5:3.5]
+set zrange [-2.2:2.2]
+set xyplane at -2.2
+set view 64, 40, 1.15, 1.0
+
+R_C = 2.64
+R_H = 4.69
+z_pi = 0.75
+
+# 1. Delocalized Pi-Electron Toroid (Upper Layer at +z_pi)
+r_pi_maj = 2.64
+r_pi_min = 0.55
+x_pi_up(u, v) = (r_pi_maj + r_pi_min * cos(v)) * cos(u)
+y_pi_up(u, v) = (r_pi_maj + r_pi_min * cos(v)) * sin(u)
+z_pi_up(u, v) = z_pi + r_pi_min * sin(v)
+
+# 2. Delocalized Pi-Electron Toroid (Lower Layer at -z_pi)
+x_pi_dn(u, v) = (r_pi_maj + r_pi_min * cos(v)) * cos(u)
+y_pi_dn(u, v) = (r_pi_maj + r_pi_min * cos(v)) * sin(u)
+z_pi_dn(u, v) = -z_pi + r_pi_min * sin(v)
+
+# 3. Hexagonal Carbon Frame Tube
+r_sig = 0.22
+r_hex(u) = R_C * (cos(pi/6.0) / cos(u - (2.0*pi/6.0)*floor((6.0*u + pi)/(2.0*pi))))
+
+x_frame(u, v) = (r_hex(u) + r_sig*cos(v)) * cos(u)
+y_frame(u, v) = (r_hex(u) + r_sig*cos(v)) * sin(u)
+z_frame(u, v) = r_sig * sin(v)
+
+set style line 1 lc rgb "#d35400" lw 1.4   # Orange: Delocalized Pi-Electron Toroids
+set style line 2 lc rgb "#185a9d" lw 1.5   # Blue: Hexagonal Carbon sigma-frame
+
+set label 1 "Upper \\pi-Vortex Ring (+z)" at 0, 0, 1.55 center font "Sans-Bold,10" tc rgb "#d35400"
+set label 2 "Lower \\pi-Vortex Ring (-z)" at 0, 0, -1.55 center font "Sans-Bold,10" tc rgb "#d35400"
+set label 3 "Hexagonal Carbon Framework (Z=6)" at 0, -2.9, 0 center font "Sans,9" tc rgb "#185a9d"
+
+splot x_pi_up(u, v), y_pi_up(u, v), z_pi_up(u, v) with lines ls 1 title "Upper Delocalized \\pi-Ring", \
+      x_pi_dn(u, v), y_pi_dn(u, v), z_pi_dn(u, v) with lines ls 1 title "Lower Delocalized \\pi-Ring", \
+      x_frame(u, v), y_frame(u, v), z_frame(u, v) with lines ls 2 title "Hexagonal \\sigma-Framework"
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
 
 == Finite-State Thermodynamics and Reaction Kinetics
 
@@ -333,7 +1144,294 @@ where \( \nu_0 = c / \lambda_{\text{m-res}} \) is the fundamental discrete trans
 *Proof:*
 The net flux of probability across the dividing hypersurface \( \Sigma_{\text{TS}} \) on \( \mathcal{G}_N \) is the product of the probability density at the saddle point and the average forward crossing velocity. Because spatial propagation is bounded by \( c \), the maximum crossing frequency is finite and equal to \( \nu_0 \). Integrating over the discrete MaxEnt distribution yields the finite Eyring-Polanyi rate equation without infinite acceleration paradoxes. \( \square \)
 
-== Standalone Ada 2022 Implementation: Discrete Chemical Bond Engine
+== Physical Organic Chemistry: Conformational Topologies and Reaction Mechanisms
+
+=== Conformational Barriers, Torsional Strain, and Stereoelectronic Repulsion
+
+Physical organic chemistry investigates the relationship between molecular structure, spatial conformation, and chemical reactivity. In conventional textbooks, conformational strain is often explained through heuristic steric balls or empirical van der Waals radii. In the Counting-Iris framework, conformational strain is a direct consequence of the localized electromagnetic interaction between discrete covalent bond vortex tubes on \( \mathcal{G}_N \).
+
+Consider the ethane molecule (\( \text{C}_2\text{H}_6 \)). The carbon-carbon single bond is a cylindrical dual-vortex tube of length \( d_{\text{CC}} = 2.91\,a_0 \) (\( 1.54\,\text{\AA} \)). Each carbon vertex terminates in three localized \( \text{C–H} \) valence vortex tubes oriented at tetrahedral angles. When one methyl group rotates relative to the other about the \( \text{C–C} \) axis by a dihedral angle \( \phi \), the distance between adjacent \( \text{C–H} \) bond tubes varies periodically.
+
+At the eclipsed conformation (\( \phi = 0^\circ, 120^\circ, 240^\circ \)), the three pairs of \( \text{C–H} \) bonding vortex tubes are mutually aligned. Because each bonding sheath confines an identical negative charge flux of \( 2e \), the direct electrostatic and magnetic repulsion between the parallel current sheaths reaches a sharp maximum. At the staggered conformation (\( \phi = 60^\circ, 180^\circ, 300^\circ \)), the spatial separation between adjacent \( \text{C–H} \) vortex centroids is maximized, minimizing the total field energy density on \( \mathcal{G}_N \).
+
+[#def-ethane-torsional-potential]
+[NOTE]
+====
+.Definition: Discrete Torsional Barrier Potential
+Let \( \phi \) be the relative dihedral angle between two adjacent tetrahedral vertex clusters about a discrete \( \sigma \)-bonding axis on \( \mathcal{G}_N \). The **Discrete Torsional Barrier Potential** \( V_{\text{tors}}(\phi) \) is the discrete angular summation of pairwise vortex sheath repulsion energies:
+
+\[ V_{\text{tors}}(\phi) = \frac{V_0}{2} \left( 1 - \cos(n \phi) \right) \]
+
+where \( n = 3 \) is the discrete threefold rotational symmetry of the methyl cap and \( V_0 \approx 2.9\,\text{kcal/mol} \) (\( 0.0046\,\text{a.u.} \)) is the measured torsional barrier of ethane.
+====
+
+==== 3D Gnuplot Visualization of Staggered Ethane
+
+The following script renders the complete 3D wireframe meshwork of staggered ethane on \( \mathcal{G}_N \), illustrating the central \( \text{C–C} \) bond tube, the carbon nuclear cores, and the two staggered methyl caps:
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Wireframe Snapshot of Ethane (C2H6) Staggered Conformation
+# Depicts the discrete electromagnetic architecture on G_N:
+# - Central Carbon-Carbon sigma bond vortex tube (d_CC = 2.91 a_0)
+# - Two tetrahedral CH3 methyl caps in minimum-repulsion staggered 60-degree dihedral alignment
+# - Six discrete Carbon-Hydrogen sigma bond vortex sheaths
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Electromagnetic Snapshot of Staggered Ethane (C_2H_6)\n{/*0.85Tetrahedral Methyl Caps and C-C \\sigma-Bond Sheath on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 44, 44
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X: C-C Bond Axis (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z (a_0)" offset 1,0
+set xrange [-3.5:3.5]
+set yrange [-3.0:3.0]
+set zrange [-3.0:3.0]
+set xyplane at -3.0
+set view 68, 320, 1.15, 1.0
+
+d_CC = 2.91
+x_C1 = -d_CC / 2.0
+x_C2 =  d_CC / 2.0
+
+r_core = 0.28
+d_CH = 2.06
+theta_tet = 109.4712 * pi / 180.0
+r_perp = d_CH * sin(theta_tet - pi/2.0)
+dx_H = d_CH * cos(theta_tet - pi/2.0)
+
+# 1. Carbon Nuclear Cores (Z=6)
+x_carb1(u, v) = x_C1 + r_core * sin(u/2.0) * cos(v)
+y_carb1(u, v) = r_core * sin(u/2.0) * sin(v)
+z_carb1(u, v) = r_core * cos(u/2.0)
+
+x_carb2(u, v) = x_C2 + r_core * sin(u/2.0) * cos(v)
+y_carb2(u, v) = r_core * sin(u/2.0) * sin(v)
+z_carb2(u, v) = r_core * cos(u/2.0)
+
+# 2. Central C-C Sigma Bond Tube
+u_norm(u) = u / (2.0 * pi)
+x_cc(u)   = x_C1 + u_norm(u) * d_CC
+r_cc(u)   = 0.52 * (sin(u_norm(u) * pi)**0.65) * (1.0 + 0.12 * cos(2.0*u_norm(u)*pi))
+
+x_bond_cc(u, v) = x_cc(u)
+y_bond_cc(u, v) = r_cc(u) * cos(v)
+z_bond_cc(u, v) = r_cc(u) * sin(v)
+
+# 3. Methyl Cap 1 (at C1, x = -1.455 a_0): 3 C-H bonds at 0, 120, 240 deg
+phi_1(k) = k * 2.0 * pi / 3.0
+x_h1(u, k) = x_C1 - u_norm(u) * dx_H
+y_h1(u, v, k) = u_norm(u) * r_perp * cos(phi_1(k)) + 0.32 * sin(u_norm(u)*pi) * cos(v)
+z_h1(u, v, k) = u_norm(u) * r_perp * sin(phi_1(k)) + 0.32 * sin(u_norm(u)*pi) * sin(v)
+
+# 4. Methyl Cap 2 (at C2, x = +1.455 a_0): 3 C-H bonds at 60, 180, 300 deg (Staggered)
+phi_2(k) = pi/3.0 + k * 2.0 * pi / 3.0
+x_h2(u, k) = x_C2 + u_norm(u) * dx_H
+y_h2(u, v, k) = u_norm(u) * r_perp * cos(phi_2(k)) + 0.32 * sin(u_norm(u)*pi) * cos(v)
+z_h2(u, v, k) = u_norm(u) * r_perp * sin(phi_2(k)) + 0.32 * sin(u_norm(u)*pi) * sin(v)
+
+set style line 1 lc rgb "#185a9d" lw 1.5   # Blue: C-C central sigma bond
+set style line 2 lc rgb "#2c3e50" lw 1.6   # Slate dark: Carbon nuclear cores (Z=6)
+set style line 3 lc rgb "#27ae60" lw 1.2   # Green: C-H covalent bond tubes
+
+set label 1 "Carbon C_1" at x_C1, 0, 0.45 center font "Sans-Bold,9" tc rgb "#2c3e50"
+set label 2 "Carbon C_2" at x_C2, 0, 0.45 center font "Sans-Bold,9" tc rgb "#2c3e50"
+set label 3 "Staggered Dihedral: \\Delta\\phi = 60^\\circ" at 0, 0, -2.4 center font "Sans-Bold,10" tc rgb "#185a9d"
+
+splot x_bond_cc(u, v), y_bond_cc(u, v), z_bond_cc(u, v) with lines ls 1 title "C-C \\sigma-Bond Sheath (2e^-)", \
+      x_carb1(u, v), y_carb1(u, v), z_carb1(u, v) with lines ls 2 title "Carbon Cores (Z=6)", \
+      x_carb2(u, v), y_carb2(u, v), z_carb2(u, v) with lines ls 2 notitle, \
+      x_h1(u, 0), y_h1(u, v, 0), z_h1(u, v, 0) with lines ls 3 title "C-H \\sigma-Bonds (Methyl Cap 1)", \
+      x_h1(u, 1), y_h1(u, v, 1), z_h1(u, v, 1) with lines ls 3 notitle, \
+      x_h1(u, 2), y_h1(u, v, 2), z_h1(u, v, 2) with lines ls 3 notitle, \
+      x_h2(u, 0), y_h2(u, v, 0), z_h2(u, v, 0) with lines ls 3 title "C-H \\sigma-Bonds (Methyl Cap 2 - Staggered)", \
+      x_h2(u, 1), y_h2(u, v, 1), z_h2(u, v, 1) with lines ls 3 notitle, \
+      x_h2(u, 2), y_h2(u, v, 2), z_h2(u, v, 2) with lines ls 3 notitle
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
+
+=== Pericyclic Reactions, Woodward-Hoffmann Topologies, and Walden Inversions
+
+In organic synthesis, pericyclic transformations (such as the Diels-Alder \([4+2]\) cycloaddition) and bimolecular nucleophilic substitutions (\(\text{S}_\text{N}2\)) proceed through concerted, highly organized transition geometries without radical intermediates.
+
+In the Iris framework, a pericyclic reaction is the continuous topological reconnection of closed bivector current loops. In the Diels-Alder reaction between 1,3-butadiene (\( 4\pi \) electrons) and ethylene (\( 2\pi \) electrons), the supra-facial approach allows the terminal \( p \)-orbital vortex loops to establish phase coherence around a closed six-vertex perimeter. The reaction is an isothermal topological transition from two decoupled \( \pi \)-electron systems into a cyclic cyclohexene system possessing two new \( \sigma \)-bonds and one remaining \( \pi \)-bond.
+
+Similarly, the \(\text{S}_\text{N}2\) nucleophilic substitution represents a collinear electrostatic displacement on \( \mathcal{G}_N \). As the incoming nucleophile \( \text{Nu}^- \) approaches the electrophilic carbon along the backside axis opposite the leaving group \( \text{X} \), the central carbon undergoes a continuous geometric planar inversion (Walden inversion), passing through a trigonal bipyramidal transition state of finite duration:
+
+\[ \tau_{\text{transit}} = \frac{d_{\text{traverse}}}{v_{\text{ion}}} \ge \frac{d_{\text{traverse}}}{c} \]
+
+[#thm-pericyclic-topological-closure]
+[NOTE]
+====
+.Theorem: Pericyclic Bivector Loop Conservation
+Let \( \mathcal{C}_{\text{peri}} \) be the closed topological perimeter formed by the interacting reacting centers on \( \mathcal{G}_N \). In any concerted pericyclic transition state, the total magnetic flux linking the reaction perimeter is strictly conserved:
+
+\[ \oint_{\mathcal{C}_{\text{peri}}} \mathbf{A}(\mathbf{x}, t) \cdot d\mathbf{l} = \sum_{k=1}^{N_{\text{pairs}}} \Phi_0 = N_e \frac{h}{4e} \]
+
+enforcing the Woodward-Hoffmann stereochemical selection rules through discrete electromagnetic phase continuity.
+====
+
+*Proof:*
+Applying the Master Field Equation \( \nabla \mathcal{F} = \mathcal{J} \) to the closed multi-center reaction loop \( \mathcal{C}_{\text{peri}} \), the circulation of the magnetic vector potential \( \mathbf{A} \) must remain single-valued at every intermediate time step \( t \in [0, \tau_{\text{transit}}] \). Phase-matched constructive interference occurs exclusively when the total number of conjugated electron pairs satisfies the topological closure criterion \( 4n + 2 \), preserving the discrete flux quantum without vortex boundary tearing. \( \square \)
+
+== Biochemistry, Macromolecular Networks, and Interfacial Enzymology
+
+=== Protein Secondary and Tertiary Architecture: The Hydrogen-Bonded Dipole Lattice
+
+Biological macromolecules operate as exquisite multi-scale electromagnetic machines. Proteins, nucleic acids, and lipid bilayers are constructed from repeating molecular monomers linked into directional structural lattices.
+
+In the secondary structure of proteins, the polypeptide backbone folds into periodic geometries: the right-handed \( \alpha \)-helix and the pleated \( \beta \)-sheet. Rather than being governed by mysterious biological forces, these structures are stabilized by an interlocking discrete network of \( \text{C=O}\cdots\text{H–N} \) hydrogen bonds.
+
+In an \( \alpha \)-helix, each carbonyl oxygen of residue \( i \) acts as a localized negative electrostatic attractor pointing along the helical cylinder axis, directly engaging the amide proton of residue \( i+4 \). With a characteristic pitch of \( P = 10.2\,a_0 \) (\( 5.4\,\text{\AA} \)) and \( 3.6 \) residues per turn, the dipole moments of all peptide bonds align in parallel, creating a macroscopic electrostatic dipole across the helix axis.
+
+[#def-alpha-helix-backbone]
+[NOTE]
+====
+.Definition: Discrete Alpha-Helix Backbone Architecture
+Let \( \mathbf{R}_i = (x_i, y_i, z_i) \) be the coordinates of the \( \alpha \)-carbon of residue \( i \) on \( \mathcal{G}_N \). The **Discrete Alpha-Helix** is the regular cylindrical helical trajectory satisfying:
+
+\[ x_i = R_0 \cos(i \cdot \Delta \theta), \quad y_i = R_0 \sin(i \cdot \Delta \theta), \quad z_i = i \cdot \Delta z \]
+
+where \( R_0 \approx 4.35\,a_0 \) (\( 2.3\,\text{\AA} \)), \( \Delta \theta = 100^\circ = 1.7453\,\text{rad} \), and \( \Delta z = 2.83\,a_0 \) (\( 1.5\,\text{\AA} \)), linked by longitudinal electrostatic potential bridges between residues \( i \) and \( i+4 \).
+====
+
+==== 3D Gnuplot Visualization of the Alpha-Helix Backbone
+
+The following script renders the complete 3D wireframe meshwork of a two-turn \( \alpha \)-helix segment on \( \mathcal{G}_N \), showing the helical peptide backbone and the longitudinal \( \text{C=O}\cdots\text{H–N} \) electrostatic flux bridges:
+
+[source,gnuplot]
+----
+# Gnuplot script: 3D High-Detail Wireframe Snapshot of an Alpha-Helix Protein Backbone Segment
+# Depicts the discrete electromagnetic architecture on G_N:
+# - Helical peptide backbone locus with characteristic pitch (P = 10.2 a_0, ~5.4 Angstrom) and 3.6 residues/turn
+# - Oriented C=O ... H-N longitudinal hydrogen-bonding electrostatic flux tubes bridging turn i and turn i+4
+# Pure wireframe meshwork with hidden-line removal; no surface shading.
+
+reset
+
+if (exists("OUTFILE")) {
+    set terminal pngcairo size 1800,1400 font "Sans,12"
+    set output OUTFILE
+}
+
+set title "Electromagnetic Snapshot of \\alpha-Helix Peptide Backbone\n{/*0.85Helical Main Chain and Longitudinal C=O\\cdots H-N Hydrogen-Bond Lattice on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+
+set parametric
+set hidden3d
+unset pm3d
+set surface
+
+set isosamples 44, 44
+set urange [0:2*pi]
+set vrange [0:2*pi]
+
+set xlabel "X (a_0)" offset -1,-0.5
+set ylabel "Y (a_0)" offset 1,-0.5
+set zlabel "Z: Helical Axis (a_0)" offset 1,0
+set xrange [-5.5:5.5]
+set yrange [-5.5:5.5]
+set zrange [-8.0:8.0]
+set xyplane at -8.0
+set view 68, 45, 1.15, 1.0
+
+# Alpha helix geometry in atomic units
+R_helix = 4.35  # ~2.3 Angstrom backbone radius
+pitch   = 10.2  # ~5.4 Angstrom per turn
+
+# 1. Helical Backbone Main Chain Tube
+u_norm(u) = u / (2.0 * pi)
+t_helix(u) = 4.0 * pi * (u_norm(u) - 0.5)
+z_main(u)  = (pitch / (2.0 * pi)) * t_helix(u)
+x_center(u) = R_helix * cos(t_helix(u))
+y_center(u) = R_helix * sin(t_helix(u))
+
+r_tube = 0.38
+x_backbone(u, v) = x_center(u) + r_tube * cos(v) * cos(t_helix(u))
+y_backbone(u, v) = y_center(u) + r_tube * cos(v) * sin(t_helix(u))
+z_backbone(u, v) = z_main(u) + r_tube * sin(v)
+
+# 2. Longitudinal Hydrogen Bond Flux Bridges (i -> i+4)
+x_hb1(u, v) = R_helix * 0.82 * cos(-pi/2.0) + 0.22 * sin(u_norm(u)*pi) * cos(v)
+y_hb1(u, v) = R_helix * 0.82 * sin(-pi/2.0) + 0.22 * sin(u_norm(u)*pi) * sin(v)
+z_hb1(u, v) = -pitch/2.0 + u_norm(u) * pitch
+
+x_hb2(u, v) = R_helix * 0.82 * cos(pi/2.0) + 0.22 * sin(u_norm(u)*pi) * cos(v)
+y_hb2(u, v) = R_helix * 0.82 * sin(pi/2.0) + 0.22 * sin(u_norm(u)*pi) * sin(v)
+z_hb2(u, v) = -pitch/2.0 + u_norm(u) * pitch + pitch/3.6
+
+set style line 1 lc rgb "#185a9d" lw 1.6   # Blue: Helical peptide backbone
+set style line 2 lc rgb "#d35400" dt 2 lw 1.4 # Dashed orange: C=O ... H-N hydrogen bond tubes
+
+set label 1 "Peptide Main Chain (\\alpha-Helix)" at 0, 4.8, 5.0 center font "Sans-Bold,10" tc rgb "#185a9d"
+set label 2 "C=O\\cdots H-N Hydrogen Bond Bridges (i \\rightarrow i+4)" at 0, -4.5, 0 center font "Sans-Bold,9" tc rgb "#d35400"
+
+splot x_backbone(u, v), y_backbone(u, v), z_backbone(u, v) with lines ls 1 title "Peptide Backbone (2 Turns)", \
+      x_hb1(u, v), y_hb1(u, v), z_hb1(u, v) with lines ls 2 title "Longitudinal H-Bond Bridge 1", \
+      x_hb2(u, v), y_hb2(u, v), z_hb2(u, v) with lines ls 2 title "Longitudinal H-Bond Bridge 2"
+
+if (!exists("OUTFILE")) {
+    pause mouse close
+}
+----
+
+=== Interfacial Catalysis and Biochemical Microcalorimetry: The Brown-Chattopadhyay Formalism
+
+A foundational milestone in understanding cellular enzymology was established by the pioneering investigations of **Harry Darrow Brown** (1925–2014) and **Swaraj K. Chattopadhyay** on the physical chemistry of the biological interface (*Biochemical Microcalorimetry*, Academic Press, 1969; *Chemistry of the Cell Interface*, Academic Press, 1971).
+
+Historically, classical biochemistry treated enzymes as isotropic, freely diffusing point catalysts floating in a homogeneous continuum solution (described by simplified Michaelis-Menten kinetics). However, Brown and his collaborators demonstrated experimentally that in living cells, enzymes are overwhelmingly **organelle-bound**, **matrix-supported**, and confined to solid-liquid lipid interfaces possessing restricted spatial degrees of freedom.
+
+When an enzyme is tethered to a cellular membrane or polymeric matrix:
+
+. **Aqueous Phase Structuring at Interfaces**: The water molecules immediately adjacent to the biological membrane do not behave as bulk liquid water. Instead, they form a structured, oriented vicinal water layer with significantly reduced dielectric permittivity and elevated viscosity.
+. **Conformational Micro-Environment Stabilization**: Matrix attachment imposes steric and electrostatic boundary constraints that modify the enzyme’s catalytic active-site cleft, altering both the binding enthalpy \( \Delta H^{\circ} \) and activation entropy \( \Delta S^{\ddagger} \).
+. **Direct Microcalorimetric Energy Tracking**: Utilizing high-precision biochemical microcalorimetry, Brown established that the heat of reaction \( Q_{\text{rxn}} \) in interfacial enzyme systems reflects direct conformational work and interfacial proton exchange rather than unconstrained bulk thermalization.
+
+In the Counting-Iris framework, the Brown-Chattopadhyay interfacial enzyme system is formulated as a discrete contact-action transducer on \( \mathcal{G}_N \). The membranous matrix provides a fixed electrostatic reference plane that eliminates translational dispersion, channeling substrate flux directly into the active site via one-dimensional surface diffusion.
+
+[#def-matrix-supported-enzyme]
+[NOTE]
+====
+.Definition: Matrix-Supported Enzyme Interface
+Let \( \mathcal{M} \subset \mathcal{G}_N \) represent a two-dimensional lipid-protein boundary membrane, and let \( \mathcal{E}_{\text{bound}} \) be an enzyme macromolecule anchored to \( \mathcal{M} \) at anchor loci \( \{ \mathbf{R}_{\text{anc}, k} \} \). The **Matrix-Supported Enzyme System** is the restricted-degree-of-freedom interfacial engine characterized by:
+
+. A non-uniform vicinal dielectric gradient \( \varepsilon_r(z) \) transitioning from the membrane interior (\( \varepsilon_{\text{mem}} \approx 2 \)) across the boundary water layer (\( \varepsilon_{\text{vic}} \approx 30 \)) to the bulk cytosol (\( \varepsilon_{\text{bulk}} \approx 80 \));
+. An anchored active-site cleft \( \Omega_{\text{active}} \) with constrained dihedral aperture vectors \( \{ \mathbf{n}_j \} \);
+. A microcalorimetric enthalpy flux \( dQ / dt \) directly coupling substrate binding to localized mechanical conformational deformation.
+====
+
+[#thm-interfacial-catalytic-acceleration]
+[NOTE]
+====
+.Theorem: Brown Interfacial Catalytic Acceleration
+Let \( k_{\text{bulk}} \) be the second-order rate constant of a free, isotropic enzyme in bulk solution, and let \( k_{\text{interface}} \) be the rate constant of the same enzyme bound to the membrane matrix \( \mathcal{M} \) on \( \mathcal{G}_N \). The interfacial catalytic rate is strictly accelerated by dimensional reduction of the substrate search space and localized dielectric field focusing:
+
+\[ k_{\text{interface}} = k_{\text{bulk}} \cdot \left( \frac{\lambda_{\text{bulk}}}{\lambda_{\text{surface}}} \right) \cdot \exp\left( \frac{\Delta G_{\text{desolv}} + \Delta G_{\text{strain}}}{k_B T} \right) \]
+
+where \( \lambda_{\text{surface}} \ll \lambda_{\text{bulk}} \) is the reduced mean free path of two-dimensional interfacial surface diffusion.
+====
+
+*Proof:*
+In bulk three-dimensional solution, the encounter rate between enzyme and substrate is bounded by 3D isotropic Brownian diffusion across volume \( V \propto R^3 \). On the matrix surface \( \mathcal{M} \), substrate molecules entering the vicinal boundary layer undergo direct adsorption into a two-dimensional manifold of area \( A \propto R^2 \). As established in Keyser's and Jaynes's MaxEnt reduction on discrete grids, restricting the search aperture to two dimensions reduces the search entropy by \( \Delta S_{\text{search}} = -k_B \ln(V/A \lambda_{\text{m-res}}) \). Furthermore, the reduced dielectric constant \( \varepsilon_{\text{vic}} \approx 30 \) amplifies the electrostatic Coulomb steering field between the substrate dipole and active-site residues, directly lowering the activation barrier \( \Delta G^{\ddagger} \). \( \square \)
+
+=== Standalone Ada 2022 Implementation: Discrete Chemical Bond and Interfacial Engine
 
 The following complete, standalone Ada 2022 program implements the discrete electromagnetic potential, dipole calculation, and finite MaxEnt partition sums for diatomic and polyatomic molecules on \( \mathcal{G}_N \):
 
@@ -390,6 +1488,31 @@ procedure Discrete_Chemistry_Engine is
                    2.0 * Z_Bond_Centroid;
       return Dipole_AU * Debye_Conversion;
    end Compute_HF_Dipole;
+
+   -- Physical Organic Torsional Barrier Calculation (e.g. Ethane)
+   function Compute_Ethane_Torsional_Energy
+     (Dihedral_Deg : in Real;
+      V0_Barrier   : in Real := 2.9) return Real
+   is
+      Rad : constant Real := Dihedral_Deg * 3.14159265358979323846 / 180.0;
+   begin
+      return (V0_Barrier / 2.0) * (1.0 - Cos (3.0 * Rad));
+   end Compute_Ethane_Torsional_Energy;
+
+   -- Brown-Chattopadhyay Interfacial Catalytic Rate Ratio
+   function Compute_Brown_Interfacial_Acceleration
+     (Lambda_Bulk       : in Real;
+      Lambda_Surface    : in Real;
+      Delta_G_Activation : in Real;
+      Temperature       : in Real := 298.15) return Real
+     with Pre => Lambda_Surface > 0.0 and Temperature > 0.0
+   is
+      KB_T : constant Real := 0.0019872 * Temperature; -- kcal/mol
+      Dim_Ratio : constant Real := Lambda_Bulk / Lambda_Surface;
+      Exp_Factor : constant Real := Exp (Delta_G_Activation / KB_T);
+   begin
+      return Dim_Ratio * Exp_Factor;
+   end Compute_Brown_Interfacial_Acceleration;
 
    -- Discrete Partition Function and Entropy Calculation
    type Energy_Array is array (Positive range <>) of Real;
@@ -454,6 +1577,16 @@ begin
    Ada.Text_IO.Put_Line ("Finite MaxEnt Vibrational Thermodynamics (T = 298.15 K):");
    Ada.Text_IO.Put_Line ("  Vibrational Partition Sum Z: " & Real'Image (Z_Sum));
    Ada.Text_IO.Put_Line ("  Discrete Shannon Entropy S:  " & Real'Image (S_Info));
+
+   Ada.Text_IO.Put_Line ("Physical Organic Conformational Analysis (Ethane C2H6):");
+   Ada.Text_IO.Put_Line ("  Eclipsed Barrier (0 deg):  " & 
+     Real'Image (Compute_Ethane_Torsional_Energy (0.0)) & " kcal/mol");
+   Ada.Text_IO.Put_Line ("  Staggered Minimum (60 deg):" & 
+     Real'Image (Compute_Ethane_Torsional_Energy (60.0)) & " kcal/mol");
+
+   Ada.Text_IO.Put_Line ("Brown-Chattopadhyay Matrix-Supported Enzyme Interface:");
+   Ada.Text_IO.Put_Line ("  Interfacial Acceleration Factor: " &
+     Real'Image (Compute_Brown_Interfacial_Acceleration (10.0, 0.5, 1.2)) & "x");
    Ada.Text_IO.Put_Line ("==================================================");
 end Discrete_Chemistry_Engine;
 ----
@@ -465,11 +1598,21 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 === Definitions
 
 * xref:def-discrete-covalent-bond[**Definition: Discrete Covalent Bond Vortex Pair**] -- Section: *Electromagnetic Topology of the Chemical Bond*
+* xref:def-monatomic-hydrogen-molecule[**Definition: Monatomic Hydrogen Molecule System**] -- Section: *Electromagnetic Topology of the Chemical Bond*
+* xref:def-diatomic-hydrogen-molecule[**Definition: Diatomic Hydrogen Molecule System**] -- Section: *Electromagnetic Topology of the Chemical Bond*
 * xref:def-bent-polyatomic-potential[**Definition: Discrete Angular Bond Potential**] -- Section: *Polyatomic Architectures and Conjugated Systems*
+* xref:def-tetrahedral-methane[**Definition: Tetrahedral Methane Molecular Architecture**] -- Section: *Polyatomic Architectures and Conjugated Systems*
+* xref:def-carbon-dioxide-linear[**Definition: Linear Carbon Dioxide Double-Bond Architecture**] -- Section: *Polyatomic Architectures and Conjugated Systems*
+* xref:def-methanol-molecular-junction[**Definition: Methanol Methyl-Hydroxyl Molecular Junction**] -- Section: *Polyatomic Architectures and Conjugated Systems*
 * xref:def-discrete-maxent-distribution[**Definition: Discrete MaxEnt Probability Distribution**] -- Section: *Finite-State Thermodynamics and Reaction Kinetics*
+* xref:def-ethane-torsional-potential[**Definition: Discrete Torsional Barrier Potential**] -- Section: *Physical Organic Chemistry: Conformational Topologies and Reaction Mechanisms*
+* xref:def-alpha-helix-backbone[**Definition: Discrete Alpha-Helix Backbone Architecture**] -- Section: *Biochemistry, Macromolecular Networks, and Interfacial Enzymology*
+* xref:def-matrix-supported-enzyme[**Definition: Matrix-Supported Enzyme Interface**] -- Section: *Biochemistry, Macromolecular Networks, and Interfacial Enzymology*
 
 === Theorems
 
 * xref:thm-polar-asymmetry-flux[**Theorem: Internuclear Polarization Flux Asymmetry**] -- Section: *Electromagnetic Topology of the Chemical Bond*
 * xref:thm-aromatic-ring-current[**Theorem: Discrete Aromatic Ring-Current Quantization**] -- Section: *Polyatomic Architectures and Conjugated Systems*
 * xref:thm-discrete-reaction-rate[**Theorem: Discrete Transition State Rate Law**] -- Section: *Finite-State Thermodynamics and Reaction Kinetics*
+* xref:thm-pericyclic-topological-closure[**Theorem: Pericyclic Bivector Loop Conservation**] -- Section: *Physical Organic Chemistry: Conformational Topologies and Reaction Mechanisms*
+* xref:thm-interfacial-catalytic-acceleration[**Theorem: Brown Interfacial Catalytic Acceleration**] -- Section: *Biochemistry, Macromolecular Networks, and Interfacial Enzymology*
