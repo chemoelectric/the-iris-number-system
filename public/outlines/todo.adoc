@@ -3,7 +3,29 @@
 * A volume honoring Oliver Sacks, on abstracting, aura, hallucination,
   delusion, etc. Cortical and cerebral function in general.
 
-  - Secondary to this is the question of “general artificial
+  - Migraine, cluster headache, epilepsy, aura, hallucination,
+    delusion, drug-induced, etc.
+
+    * In humans.
+
+    * In divorce lawyers.
+
+    * In primates.
+
+    * In mammals other than primates. In particular dogs, cats, pigs,
+      horses, rats, jackalopes, esquilaxes, etc.
+
+    * In cephalopods.
+
+    * In other creatures. Other molluscs, arthropods, etc.
+
+    * In plants.
+
+    * In microbes.
+
+    * In machines and software.
+
+  - Secondary to this all is the question of “general artificial
     intelligence.” We are hardnosed and must insist upon a definition.
     Our definition is that the “general AI” must be structurally
     similar to a human.
