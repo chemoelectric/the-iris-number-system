@@ -1,3 +1,45 @@
 = TO DO
 
-* A volume honoring Oliver Sacks, on abstracting, aura, hallucination, delusion, etc.
+* A volume honoring Oliver Sacks, on abstracting, aura, hallucination,
+  delusion, etc. Cortical and cerebral function in general.
+
+  - Secondary to this is the question of “general artificial
+    intelligence.” We are hardnosed and must insist upon a definition.
+    Our definition is that the “general AI” must be structurally
+    similar to a human.
+
+    * This does _not_ mean it must suffer the same migraine auras!
+      That would be the same kind of category error as assuming
+      massive networks of anything vaguely resembling neurons would
+      produce “general intelligence” by some magical process of
+      “emergence.”
+
+    * _We know darn well that neither “consciousness” nor
+      “intelligence” is “emergent”!_ +
+        +
+      Someone will demand, “How do we know _that_?” But is it not
+      clear? Merely look at the animal world. These things came about
+      by slow evolution. They developed in degrees. They did not
+      “emerge.” _They did not “emerge”!_ +
+        +
+      It is disheartening that there are people who are paid salaries
+      at universities to go around theorizing about “emergence” of
+      what plainly are the results of slow evolution.
+
+    * LLMs do an excellent job of mimickry but are absolutely empty
+      inside and are structurally extremely dissimilar to humans. They
+      are very powerful inference engines that operate largely by
+      talking to themselves. They would probably operate much better
+      as inference engines if done by some other means that were not
+      too different, but which did not waste effort mimicking humans. +
+        +
+      What might be done is to separate the functions into two layers:
+      one of mimickry as user interface, and one to do the heavy
+      inference. +
+        +
+      As code generators they are not very good, but this is largely
+      because they code by learning from examples, and the examples
+      they learn from are written by computer programmers. Computer
+      programmers are, generally speaking, incompetent boobs. So LLMs
+      program by extrapolating the overwhelming professional
+      incompetence of computer programmers.
