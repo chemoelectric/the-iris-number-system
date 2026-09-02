@@ -13,7 +13,9 @@
     * In primates.
 
     * In mammals other than primates. In particular dogs, cats, pigs,
-      horses, rats, jackalopes, esquilaxes, etc.
+      horses, rats, jackalopes, esquilaxes, etc. And in birds.
+
+    * In other chordates.
 
     * In cephalopods.
 
