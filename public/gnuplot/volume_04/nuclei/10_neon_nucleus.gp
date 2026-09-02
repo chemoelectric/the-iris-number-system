@@ -1,8 +1,8 @@
-# Gnuplot: 3D High-Detail Wireframe Snapshot of Neon-20 Nucleus (5-Alpha Bipyramid)
+# Gnuplot: 3D High-Detail Wireframe Snapshot of Neon-20 Nucleus
 # Depicts the discrete electromagnetic architecture of the 20Ne nucleus on G_N:
 # - Five Helium-4 alpha core toroids arranged in a trigonal bipyramid (D3h point group)
-# - Three equatorial alpha clusters at 120 deg and two polar alpha clusters along the +/- Z axis
-# - Exceptionally symmetrical closed magnetic plasmoid with zero ground state spin and parity J=0+
+# - Three equatorial alphas in a triangular plane with two polar locking alphas (+Z and -Z)
+# - Closed-shell magnetic flux cage achieving ground state spin J=0+ and zero dipole moment
 # Pure wireframe meshwork with hidden-line removal; no surface shading.
 
 reset
@@ -26,23 +26,21 @@ set vrange [0:2*pi]
 set xlabel "X (fm)" offset -1,-0.5
 set ylabel "Y (fm)" offset 1,-0.5
 set zlabel "Z: Principal Axis (fm)" offset 1,0
-set xrange [-3.4:3.4]
-set yrange [-3.4:3.4]
-set zrange [-3.4:3.4]
-set xyplane at -3.4
-set view 64, 335, 1.25, 1.0
+set xrange [-3.2:3.2]
+set yrange [-3.2:3.2]
+set zrange [-3.2:3.2]
+set xyplane at -3.2
+set view 64, 45, 1.25, 1.0
 
-# 1. Three Equatorial Alpha Toroids (R_eq = 1.75 fm at 120 deg in XY-plane)
-R_eq = 1.75
+# 1. Three Equatorial Alpha Toroids in XY-Plane (R_eq = 1.65 fm, 120 deg apart)
+R_eq = 1.65
 R_a  = 0.58
 r_a  = 0.20
 
-# Equatorial Alpha 1: phi = 0 deg
 x_eq1(u, v) = R_eq + (R_a + r_a * cos(v)) * cos(u)
 y_eq1(u, v) = (R_a + r_a * cos(v)) * sin(u)
 z_eq1(u, v) = r_a * sin(v)
 
-# Equatorial Alpha 2: phi = 120 deg
 phi_2 = 2.0 * pi / 3.0
 x_rot2(x, y) = x * cos(phi_2) - y * sin(phi_2)
 y_rot2(x, y) = x * sin(phi_2) + y * cos(phi_2)
@@ -50,7 +48,6 @@ x_eq2(u, v) = x_rot2(x_eq1(u, v), y_eq1(u, v))
 y_eq2(u, v) = y_rot2(x_eq1(u, v), y_eq1(u, v))
 z_eq2(u, v) = r_a * sin(v)
 
-# Equatorial Alpha 3: phi = 240 deg
 phi_3 = 4.0 * pi / 3.0
 x_rot3(x, y) = x * cos(phi_3) - y * sin(phi_3)
 y_rot3(x, y) = x * sin(phi_3) + y * cos(phi_3)
@@ -58,41 +55,46 @@ x_eq3(u, v) = x_rot3(x_eq1(u, v), y_eq1(u, v))
 y_eq3(u, v) = y_rot3(x_eq1(u, v), y_eq1(u, v))
 z_eq3(u, v) = r_a * sin(v)
 
-# 2. Two Polar Alpha Toroids (+Z and -Z at Z_pol = +/- 1.80 fm)
-z_pol = 1.80
-x_pol_top(u, v) = (R_a + r_a * cos(v)) * cos(u)
-y_pol_top(u, v) = (R_a + r_a * cos(v)) * sin(u)
-z_pol_top(u, v) =  z_pol + r_a * sin(v)
+# 2. Two Polar Locking Alpha Toroids (+Z and -Z, Z = +/- 1.45 fm)
+z_pol = 1.45
+R_pol = 0.62
+r_pol = 0.20
 
-x_pol_bot(u, v) = (R_a + r_a * cos(v)) * cos(u)
-y_pol_bot(u, v) = (R_a + r_a * cos(v)) * sin(u)
-z_pol_bot(u, v) = -z_pol + r_a * sin(v)
+x_pol_top(u, v) = (R_pol + r_pol * cos(v)) * cos(u)
+y_pol_top(u, v) = (R_pol + r_pol * cos(v)) * sin(u)
+z_pol_top(u, v) =  z_pol + r_pol * sin(v)
 
-# 3. Equatorial Trigonal Confinement Ring
-R_eq_ring = 2.65
-r_ring_tube = 0.03
-x_ring(u, v) = (R_eq_ring + r_ring_tube * cos(v)) * cos(u)
-y_ring(u, v) = (R_eq_ring + r_ring_tube * cos(v)) * sin(u)
-z_ring(u, v) = r_ring_tube * sin(v)
+x_pol_bot(u, v) = (R_pol + r_pol * cos(v)) * cos(u)
+y_pol_bot(u, v) = (R_pol + r_pol * cos(v)) * sin(u)
+z_pol_bot(u, v) = -z_pol + r_pol * sin(v)
+
+# 3. 1D Equatorial Confinement Guide Ring on G_N
+set samples 120
+set table $NEON_RING
+plot [t=0:2*pi] 2.55 * cos(t), 2.55 * sin(t)
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5   # Crimson: Equatorial Alpha 1
-set style line 2 lc rgb "#185a9d" lw 1.5   # Blue: Equatorial Alpha 2
-set style line 3 lc rgb "#27ae60" lw 1.5   # Green: Equatorial Alpha 3
-set style line 4 lc rgb "#8e44ad" lw 1.6   # Purple: North Polar Alpha (+Z)
-set style line 5 lc rgb "#d35400" lw 1.6   # Orange: South Polar Alpha (-Z)
-set style line 6 lc rgb "#7f8c8d" dt 2 lw 0.9 # Dashed gray: Equatorial guide
+set style line 1 lc rgb "#c0392b" lw 1.4              # Crimson: Equatorial Alpha 1
+set style line 2 lc rgb "#185a9d" lw 1.4              # Blue: Equatorial Alpha 2
+set style line 3 lc rgb "#27ae60" lw 1.4              # Green: Equatorial Alpha 3
+set style line 4 lc rgb "#8e44ad" lw 1.6              # Purple: North Polar Alpha (+Z)
+set style line 5 lc rgb "#d35400" lw 1.6              # Amber: South Polar Alpha (-Z)
+set style line 6 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Equatorial guide ring
 
-set label 1 "Equatorial \\alpha_1" at R_eq+0.4, 0, 0.55 center font "Sans-Bold,9" tc rgb "#c0392b"
-set label 2 "North Pole \\alpha"   at 0, 0, z_pol+0.65 center font "Sans-Bold,9.5" tc rgb "#8e44ad"
-set label 3 "South Pole \\alpha"   at 0, 0, -z_pol-0.65 center font "Sans-Bold,9.5" tc rgb "#d35400"
+set label 1 "Equatorial \\alpha_1" at R_eq+0.3, 0, -0.45 center font "Sans-Bold,8.5" tc rgb "#c0392b"
+set label 2 "Equatorial \\alpha_2" at -0.9, 1.6, -0.45 center font "Sans-Bold,8.5" tc rgb "#185a9d"
+set label 3 "Equatorial \\alpha_3" at -0.9, -1.6, -0.45 center font "Sans-Bold,8.5" tc rgb "#27ae60"
+set label 4 "North Polar \\alpha (+Z)" at 0, 0, z_pol+0.55 center font "Sans-Bold,9" tc rgb "#8e44ad"
+set label 5 "South Polar \\alpha (-Z)" at 0, 0, -z_pol-0.55 center font "Sans-Bold,9" tc rgb "#d35400"
+set label 6 "Equatorial Confinement Belt (G_N)" at 2.6, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
 
-splot x_eq1(u, v),     y_eq1(u, v),     z_eq1(u, v)     with lines ls 1 title "Equatorial Alpha Toroid 1 (XY)", \
-      x_eq2(u, v),     y_eq2(u, v),     z_eq2(u, v)     with lines ls 2 title "Equatorial Alpha Toroid 2 (XY)", \
-      x_eq3(u, v),     y_eq3(u, v),     z_eq3(u, v)     with lines ls 3 title "Equatorial Alpha Toroid 3 (XY)", \
-      x_pol_top(u, v), y_pol_top(u, v), z_pol_top(u, v) with lines ls 4 title "North Polar Alpha Toroid (+Z)", \
-      x_pol_bot(u, v), y_pol_bot(u, v), z_pol_bot(u, v) with lines ls 5 title "South Polar Alpha Toroid (-Z)", \
-      x_ring(u, v),    y_ring(u, v),    z_ring(u, v)    with lines ls 6 title "Equatorial Confinement Belt"
+splot x_eq1(u, v),     y_eq1(u, v),     z_eq1(u, v)     with lines ls 1 title "Equatorial Alpha 1", \
+      x_eq2(u, v),     y_eq2(u, v),     z_eq2(u, v)     with lines ls 2 title "Equatorial Alpha 2", \
+      x_eq3(u, v),     y_eq3(u, v),     z_eq3(u, v)     with lines ls 3 title "Equatorial Alpha 3", \
+      x_pol_top(u, v), y_pol_top(u, v), z_pol_top(u, v) with lines ls 4 title "North Polar Alpha (+Z)", \
+      x_pol_bot(u, v), y_pol_bot(u, v), z_pol_bot(u, v) with lines ls 5 title "South Polar Alpha (-Z)", \
+      $NEON_RING using 1:2:(0.0) with lines ls 6 title "Equatorial Confinement Belt"
 
 if (!exists("OUTFILE")) {
     pause mouse close

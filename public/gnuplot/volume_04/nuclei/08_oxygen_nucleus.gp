@@ -57,30 +57,30 @@ x_a4(u, v) = -d_t + (R_a + r_a * cos(v)) * cos(u)
 y_a4(u, v) = -d_t + (R_a + r_a * cos(v)) * sin(u)
 z_a4(u, v) =  d_t + r_a * sin(v)
 
-# Tetrahedral Core Magnetic Cage Guide Envelope
-R_cage = 2.45
-r_cage_tube = 0.03
-x_cage(u, v) = (R_cage + r_cage_tube * cos(v)) * cos(u)
-y_cage(u, v) = (R_cage + r_cage_tube * cos(v)) * sin(u)
-z_cage(u, v) = r_cage_tube * sin(v)
+# 1D Tetrahedral Core Magnetic Cage Guide Envelope on G_N
+set samples 120
+set table $CAGE_RING
+plot [t=0:2*pi] 2.50 * cos(t), 2.50 * sin(t)
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5   # Crimson: Alpha Cluster 1
-set style line 2 lc rgb "#185a9d" lw 1.5   # Blue: Alpha Cluster 2
-set style line 3 lc rgb "#27ae60" lw 1.5   # Green: Alpha Cluster 3
-set style line 4 lc rgb "#e67e22" lw 1.5   # Amber: Alpha Cluster 4
-set style line 5 lc rgb "#7f8c8d" dt 2 lw 0.9 # Dashed gray: Spheroidal cage guide
+set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Alpha Cluster 1
+set style line 2 lc rgb "#185a9d" lw 1.5              # Blue: Alpha Cluster 2
+set style line 3 lc rgb "#27ae60" lw 1.5              # Green: Alpha Cluster 3
+set style line 4 lc rgb "#e67e22" lw 1.5              # Amber: Alpha Cluster 4
+set style line 5 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Spheroidal cage guide
 
 set label 1 "\\alpha_1 (+,+,+)" at  d_t+0.3,  d_t,  d_t+0.65 center font "Sans-Bold,9" tc rgb "#c0392b"
 set label 2 "\\alpha_2 (+,-,-)" at  d_t+0.3, -d_t, -d_t-0.65 center font "Sans-Bold,9" tc rgb "#185a9d"
 set label 3 "\\alpha_3 (-,+,-)" at -d_t-0.3,  d_t, -d_t-0.65 center font "Sans-Bold,9" tc rgb "#27ae60"
 set label 4 "\\alpha_4 (-,-,+)" at -d_t-0.3, -d_t,  d_t+0.65 center font "Sans-Bold,9" tc rgb "#e67e22"
+set label 5 "Equatorial Cage Envelope (G_N)" at 2.5, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
 
 splot x_a1(u, v),   y_a1(u, v),   z_a1(u, v)   with lines ls 1 title "Helium-4 Alpha Toroid 1 (Td)", \
       x_a2(u, v),   y_a2(u, v),   z_a2(u, v)   with lines ls 2 title "Helium-4 Alpha Toroid 2 (Td)", \
       x_a3(u, v),   y_a3(u, v),   z_a3(u, v)   with lines ls 3 title "Helium-4 Alpha Toroid 3 (Td)", \
       x_a4(u, v),   y_a4(u, v),   z_a4(u, v)   with lines ls 4 title "Helium-4 Alpha Toroid 4 (Td)", \
-      x_cage(u, v), y_cage(u, v), z_cage(u, v) with lines ls 5 title "Equatorial Tetrahedral Envelope"
+      $CAGE_RING using 1:2:(0.0) with lines ls 5 title "Equatorial Tetrahedral Envelope"
 
 if (!exists("OUTFILE")) {
     pause mouse close

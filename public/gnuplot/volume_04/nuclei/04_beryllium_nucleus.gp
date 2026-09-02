@@ -63,31 +63,32 @@ x_neut(u, v) = (R_neut + r_neut * cos(v)) * cos(u)
 y_neut(u, v) = (R_neut + r_neut * cos(v)) * sin(u)
 z_neut(u, v) = r_neut * sin(v)
 
-# 4. Inter-Alpha Magnetic Cinch / Flux Sheath
-u_n(u) = u / (2.0 * pi)
-z_span(u) = -z_a1 + 2.0 * z_a1 * u_n(u)
-r_sheath(u) = 0.95 * (1.0 - 0.35 * sin(u_n(u) * pi))
-x_sheath(u, v) = r_sheath(u) * cos(v)
-y_sheath(u, v) = r_sheath(u) * sin(v)
-z_sheath(u, v) = z_span(u)
+# 4. 1D Inter-Alpha Magnetic Confinement Sheath Streamlines (Hourglass Bounding Filaments)
+set samples 100
+set table $SHEATH_PROFILE
+plot [t=-1.35:1.35] (0.95 * (1.0 - 0.35 * cos(t * pi / 2.70))), t
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5   # Crimson: Upper Alpha Toroids
-set style line 2 lc rgb "#8e44ad" lw 1.5   # Purple: Lower Alpha Toroids
-set style line 3 lc rgb "#2980b9" lw 1.6   # Deep Blue: Central Bridging Neutron Ring
-set style line 4 lc rgb "#27ae60" dt 2 lw 0.9 # Green dashed: Magnetic confinement sheath
+set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Upper Alpha Toroids
+set style line 2 lc rgb "#8e44ad" lw 1.5              # Purple: Lower Alpha Toroids
+set style line 3 lc rgb "#2980b9" lw 1.6              # Deep Blue: Central Bridging Neutron Ring
+set style line 4 lc rgb "#27ae60" dt (18, 12) lw 1.8   # Distinct Dashed Green: Inter-alpha confinement sheath streamlines
 
 set label 1 "Upper \\alpha-Cluster" at 0, 0, 2.1 center font "Sans-Bold,9.5" tc rgb "#c0392b"
 set label 2 "Lower \\alpha-Cluster" at 0, 0, -2.1 center font "Sans-Bold,9.5" tc rgb "#8e44ad"
 set label 3 "Bridging Neutron Ring (Z=0)" at 0, -1.35, 0.0 center font "Sans-Bold,9.5" tc rgb "#2980b9"
-set label 4 "Inter-Alpha Bond Axis" at 1.4, 0, 0.0 center font "Sans,8.5" tc rgb "#555555"
+set label 4 "Inter-Alpha Sheath" at 1.4, 0, 0.0 center font "Sans-Bold,8.5" tc rgb "#27ae60"
 
 splot x_a1_top(u, v), y_a1_top(u, v), z_a1_top(u, v) with lines ls 1 title "Upper Alpha Cluster (2p-2n)", \
       x_a1_bot(u, v), y_a1_bot(u, v), z_a1_bot(u, v) with lines ls 1 notitle, \
       x_a2_top(u, v), y_a2_top(u, v), z_a2_top(u, v) with lines ls 2 title "Lower Alpha Cluster (2p-2n)", \
       x_a2_bot(u, v), y_a2_bot(u, v), z_a2_bot(u, v) with lines ls 2 notitle, \
       x_neut(u, v),   y_neut(u, v),   z_neut(u, v)   with lines ls 3 title "Bridging Neutron Toroid (n)", \
-      x_sheath(u, v), y_sheath(u, v), z_sheath(u, v) with lines ls 4 title "Inter-Cluster Magnetic Sheath"
+      $SHEATH_PROFILE using 1:(0.0):2 with lines ls 4 title "Inter-Cluster Magnetic Sheath", \
+      $SHEATH_PROFILE using (-$1):(0.0):2 with lines ls 4 notitle, \
+      $SHEATH_PROFILE using (0.0):1:2 with lines ls 4 notitle, \
+      $SHEATH_PROFILE using (0.0):(-$1):2 with lines ls 4 notitle
 
 if (!exists("OUTFILE")) {
     pause mouse close

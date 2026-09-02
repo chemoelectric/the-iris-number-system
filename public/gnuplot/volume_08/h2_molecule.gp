@@ -65,16 +65,17 @@ x_mid(u, v) = r_mid * cos(v)
 y_mid(u, v) = (R_mid + r_mid * sin(v)) * cos(u)
 z_mid(u, v) = (R_mid + r_mid * sin(v)) * sin(u)
 
-# 4. Longitudinal Electromagnetic Flux Filaments (Screening Lines of Force)
-x_fl1(u, v) = 1.6 * (u_norm(u) - 0.5) * d_HH
-y_fl1(u, v) = 0.82 * sin(u_norm(u) * pi) * cos(v)
-z_fl1(u, v) = 0.82 * sin(u_norm(u) * pi) * sin(v)
+# 4. 1D Longitudinal Electromagnetic Flux Filaments (Screening Lines of Force)
+set samples 100
+set table $FLUX_BOUND1
+plot [t=0:1] (1.6 * (t - 0.5) * d_HH), (0.82 * sin(t * pi))
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.5   # Deep blue: Shared covalent electron pair sheath
-set style line 2 lc rgb "#c0392b" lw 1.5   # Red: Proton nuclear loci
-set style line 3 lc rgb "#27ae60" lw 1.2   # Green: Mid-plane diamagnetic screening toroid
-set style line 4 lc rgb "#d35400" dt 2 lw 0.9 # Dashed orange: Outer flux boundary
+set style line 1 lc rgb "#185a9d" lw 1.5              # Deep blue: Shared covalent electron pair sheath
+set style line 2 lc rgb "#c0392b" lw 1.5              # Red: Proton nuclear loci
+set style line 3 lc rgb "#27ae60" lw 1.2              # Green: Mid-plane diamagnetic screening toroid
+set style line 4 lc rgb "#d35400" dt (18, 12) lw 1.8  # Distinct Dashed Orange: Outer flux boundary
 
 # Labels for atomic loci
 set label 1 "Proton H_1^+ (-0.70 a_0)" at x_p1, 0, -0.32 center font "Sans-Bold,10" tc rgb "#c0392b"
@@ -87,7 +88,10 @@ splot x_bond(u, v),  y_bond(u, v),  z_bond(u, v)  with lines ls 1 title "Shared 
       x_prot1(u, v), y_prot1(u, v), z_prot1(u, v) with lines ls 2 title "Proton Nuclear Wells (p^+)", \
       x_prot2(u, v), y_prot2(u, v), z_prot2(u, v) with lines ls 2 notitle, \
       x_mid(u, v),   y_mid(u, v),   z_mid(u, v)   with lines ls 3 title "Mid-Plane Diamagnetic Toroid", \
-      x_fl1(u, v),   y_fl1(u, v),   z_fl1(u, v)   with lines ls 4 title "Electromagnetic Flux Sheath"
+      $FLUX_BOUND1 using 1:2:(0.0) with lines ls 4 title "Electromagnetic Flux Sheath", \
+      $FLUX_BOUND1 using 1:(-$2):(0.0) with lines ls 4 notitle, \
+      $FLUX_BOUND1 using 1:(0.0):2 with lines ls 4 notitle, \
+      $FLUX_BOUND1 using 1:(0.0):(-$2) with lines ls 4 notitle
 
 if (!exists("OUTFILE")) {
     pause mouse close

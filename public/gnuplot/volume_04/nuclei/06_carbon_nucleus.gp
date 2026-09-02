@@ -65,30 +65,30 @@ x_cent(u, v) = (R_cent + r_cent * cos(v)) * cos(u)
 y_cent(u, v) = (R_cent + r_cent * cos(v)) * sin(u)
 z_cent(u, v) = r_cent * sin(v)
 
-# Triangular Outer Flux Boundary
-R_outer = 2.45
-r_out_tube = 0.03
-x_out(u, v) = (R_outer + r_out_tube * cos(v)) * cos(u)
-y_out(u, v) = (R_outer + r_out_tube * cos(v)) * sin(u)
-z_out(u, v) = r_out_tube * sin(v)
+# 1D Triangular Outer Magnetic Boundary Ring on G_N
+set samples 120
+set table $OUTER_RING
+plot [t=0:2*pi] 2.55 * cos(t), 2.55 * sin(t)
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5   # Crimson: Alpha Cluster 1
-set style line 2 lc rgb "#185a9d" lw 1.5   # Blue: Alpha Cluster 2
-set style line 3 lc rgb "#27ae60" lw 1.5   # Green: Alpha Cluster 3
-set style line 4 lc rgb "#e67e22" lw 1.3   # Amber: Central Recirculating Vortex
-set style line 5 lc rgb "#7f8c8d" dt 2 lw 0.9 # Dashed gray: Outer boundary
+set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Alpha Cluster 1
+set style line 2 lc rgb "#185a9d" lw 1.5              # Blue: Alpha Cluster 2
+set style line 3 lc rgb "#27ae60" lw 1.5              # Green: Alpha Cluster 3
+set style line 4 lc rgb "#e67e22" lw 1.3              # Amber: Central Recirculating Vortex
+set style line 5 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Outer boundary
 
 set label 1 "\\alpha_1 Cluster" at R_tri+0.4, 0, 0.65 center font "Sans-Bold,9.5" tc rgb "#c0392b"
 set label 2 "\\alpha_2 Cluster" at -0.9, 1.6, 0.65 center font "Sans-Bold,9.5" tc rgb "#185a9d"
 set label 3 "\\alpha_3 Cluster" at -0.9, -1.6, 0.65 center font "Sans-Bold,9.5" tc rgb "#27ae60"
 set label 4 "Central Vortex Hole" at 0, 0, -0.6 center font "Sans,9" tc rgb "#e67e22"
+set label 5 "Outer Flux Boundary (G_N)" at 2.6, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
 
 splot x_a1(u, v),   y_a1(u, v),   z_a1(u, v)   with lines ls 1 title "Helium-4 Alpha Toroid 1 (2p-2n)", \
       x_a2(u, v),   y_a2(u, v),   z_a2(u, v)   with lines ls 2 title "Helium-4 Alpha Toroid 2 (2p-2n)", \
       x_a3(u, v),   y_a3(u, v),   z_a3(u, v)   with lines ls 3 title "Helium-4 Alpha Toroid 3 (2p-2n)", \
       x_cent(u, v), y_cent(u, v), z_cent(u, v) with lines ls 4 title "Central Recirculating Vortex Aperture", \
-      x_out(u, v),  y_out(u, v),  z_out(u, v)  with lines ls 5 title "Triangular Magnetic Outer Boundary"
+      $OUTER_RING using 1:2:(0.0) with lines ls 5 title "Triangular Magnetic Outer Boundary"
 
 if (!exists("OUTFILE")) {
     pause mouse close

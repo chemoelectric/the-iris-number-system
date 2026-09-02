@@ -40,48 +40,33 @@ x_p(u, v) = (R_p + r_p * cos(v)) * cos(u)
 y_p(u, v) = (R_p + r_p * cos(v)) * sin(u)
 z_p(u, v) = r_p * sin(v)
 
-# 2. Central Poloidal Recirculating Flux Loop through Core Aperture
-u_n(u) = u / (2.0 * pi)
-r_flux_tube = 0.04
+# 2. 1D Poloidal Recirculating Magnetic Flux Lines through Core Aperture
+set samples 120
+set table $FLUX_LOOP
+plot [t=0:2*pi] (0.75 * sin(t/2.0)), (1.25 * cos(t/2.0))
+unset table
 
-x_f1(u, v) = (0.75 * sin(u_n(u) * pi) + r_flux_tube * cos(v)) * cos(0.0)
-y_f1(u, v) = r_flux_tube * sin(v)
-z_f1(u, v) = 1.25 * cos(u_n(u) * pi)
-
-x_f2(u, v) = (0.75 * sin(u_n(u) * pi) + r_flux_tube * cos(v)) * cos(pi/2.0)
-y_f2(u, v) = (0.75 * sin(u_n(u) * pi) + r_flux_tube * cos(v)) * sin(pi/2.0)
-z_f2(u, v) = 1.25 * cos(u_n(u) * pi)
-
-x_f3(u, v) = (0.75 * sin(u_n(u) * pi) + r_flux_tube * cos(v)) * cos(pi)
-y_f3(u, v) = (0.75 * sin(u_n(u) * pi) + r_flux_tube * cos(v)) * sin(pi)
-z_f3(u, v) = 1.25 * cos(u_n(u) * pi)
-
-x_f4(u, v) = (0.75 * sin(u_n(u) * pi) + r_flux_tube * cos(v)) * cos(3.0*pi/2.0)
-y_f4(u, v) = (0.75 * sin(u_n(u) * pi) + r_flux_tube * cos(v)) * sin(3.0*pi/2.0)
-z_f4(u, v) = 1.25 * cos(u_n(u) * pi)
-
-# 3. Outer Dipolar Return Flux Envelope
-R_env = 1.65
-r_env = 0.03
-x_env(u, v) = (R_env + r_env * cos(v)) * cos(u)
-y_env(u, v) = (R_env + r_env * cos(v)) * sin(u)
-z_env(u, v) = r_env * sin(v)
+# 3. 1D Outer Equatorial Flux Boundary Ring (G_N)
+set table $ENV_RING
+plot [t=0:2*pi] 1.65 * cos(t), 1.65 * sin(t)
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.6   # Crimson: Proton toroidal current vortex
-set style line 2 lc rgb "#185a9d" lw 1.1   # Deep blue: Axial/poloidal recirculating flux filaments
-set style line 3 lc rgb "#7f8c8d" dt 2 lw 0.9 # Dashed gray: Outer magnetic flux boundary
+set style line 1 lc rgb "#c0392b" lw 1.6                    # Crimson: Proton toroidal current vortex
+set style line 2 lc rgb "#185a9d" lw 1.5                    # Deep blue: Axial recirculating flux filaments
+set style line 3 lc rgb "#444444" dt (18, 12) lw 1.8        # Distinct Dashed Dark Gray: Equatorial flux boundary on G_N
 
 set label 1 "Proton Toroid (p^+)" at 0, 0, 0.75 center font "Sans-Bold,10" tc rgb "#c0392b"
 set label 2 "Major Radius R = 0.85 fm\nMinor Radius r = 0.35 fm" at 0, -1.3, -1.4 center font "Sans,9" tc rgb "#555555"
 set label 3 "Recirculating Magnetic Flux" at 0, 1.2, 0.9 center font "Sans,9" tc rgb "#185a9d"
+set label 4 "Equatorial Flux Boundary (G_N)" at 1.7, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
 
-splot x_p(u, v),   y_p(u, v),   z_p(u, v)   with lines ls 1 title "Proton Current Toroid (p^+)", \
-      x_f1(u, v),  y_f1(u, v),  z_f1(u, v)  with lines ls 2 title "Poloidal Magnetic Recirculation Lines", \
-      x_f2(u, v),  y_f2(u, v),  z_f2(u, v)  with lines ls 2 notitle, \
-      x_f3(u, v),  y_f3(u, v),  z_f3(u, v)  with lines ls 2 notitle, \
-      x_f4(u, v),  y_f4(u, v),  z_f4(u, v)  with lines ls 2 notitle, \
-      x_env(u, v), y_env(u, v), z_env(u, v) with lines ls 3 title "Equatorial Flux Boundary (G_N)"
+splot x_p(u, v), y_p(u, v), z_p(u, v) with lines ls 1 title "Proton Current Toroid (p^+)", \
+      $FLUX_LOOP using 1:(0.0):2 with lines ls 2 title "Poloidal Magnetic Recirculation Lines", \
+      $FLUX_LOOP using (-$1):(0.0):2 with lines ls 2 notitle, \
+      $FLUX_LOOP using (0.0):1:2 with lines ls 2 notitle, \
+      $FLUX_LOOP using (0.0):(-$1):2 with lines ls 2 notitle, \
+      $ENV_RING  using 1:2:(0.0) with lines ls 3 title "Equatorial Flux Boundary (G_N)"
 
 if (!exists("OUTFILE")) {
     pause mouse close

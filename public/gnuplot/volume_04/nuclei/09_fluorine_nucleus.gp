@@ -67,31 +67,35 @@ x_triton(u, v) = (R_tri_cap + r_tri_cap * cos(v)) * cos(u)
 y_triton(u, v) = (R_tri_cap + r_tri_cap * cos(v)) * sin(u)
 z_triton(u, v) = z_triton + r_tri_cap * sin(v)
 
-# 3. Polar Magnetic Flux Sheaths Connecting Cap to Alpha Core
-u_n(u) = u / (2.0 * pi)
-r_f_tube = 0.03
-x_cap_f1(u, v) = (d_t * (1.0 - u_n(u)) + r_f_tube * cos(v))
-y_cap_f1(u, v) = (d_t * (1.0 - u_n(u)) + r_f_tube * sin(v))
-z_cap_f1(u, v) = (d_t + z_shift) + (z_triton - (d_t + z_shift)) * u_n(u)
+# 3. 1D Polar Magnetic Flux Streamlines Connecting Cap to Core
+set samples 80
+set table $CAP_FLUX1
+plot [t=0:1] (d_t * (1.0 - t)), ((d_t + z_shift) + (z_triton - (d_t + z_shift)) * t)
+unset table
+
+set table $CAP_FLUX2
+plot [t=0:1] (-d_t * (1.0 - t)), ((d_t + z_shift) + (z_triton - (d_t + z_shift)) * t)
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.4   # Crimson: Core Alpha 1
-set style line 2 lc rgb "#185a9d" lw 1.4   # Blue: Core Alpha 2
-set style line 3 lc rgb "#27ae60" lw 1.4   # Green: Core Alpha 3
-set style line 4 lc rgb "#e67e22" lw 1.4   # Amber: Core Alpha 4
-set style line 5 lc rgb "#8e44ad" lw 1.6   # Purple: Polar Triton Cap (p_9-2n)
-set style line 6 lc rgb "#7f8c8d" dt 2 lw 0.9 # Dashed gray: Flux coupler
+set style line 1 lc rgb "#c0392b" lw 1.4              # Crimson: Core Alpha 1
+set style line 2 lc rgb "#185a9d" lw 1.4              # Blue: Core Alpha 2
+set style line 3 lc rgb "#27ae60" lw 1.4              # Green: Core Alpha 3
+set style line 4 lc rgb "#e67e22" lw 1.4              # Amber: Core Alpha 4
+set style line 5 lc rgb "#8e44ad" lw 1.6              # Purple: Polar Triton Cap (p_9-2n)
+set style line 6 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Flux coupler
 
 set label 1 "16O \\alpha_4 Core" at 0, 0, -1.5 center font "Sans-Bold,9.5" tc rgb "#555555"
 set label 2 "Polar Triton Cap (^3H cluster)" at 0, 0, z_triton+0.55 center font "Sans-Bold,9.5" tc rgb "#8e44ad"
-set label 3 "Apex Coupling Flux" at 0.8, 0.8, 1.2 center font "Sans,8.5" tc rgb "#7f8c8d"
+set label 3 "Apex Coupling Flux" at 0.8, 0.8, 1.2 center font "Sans-Bold,8.5" tc rgb "#444444"
 
 splot x_a1(u, v),     y_a1(u, v),     z_a1(u, v)     with lines ls 1 title "16O Core Alpha 1", \
       x_a2(u, v),     y_a2(u, v),     z_a2(u, v)     with lines ls 2 title "16O Core Alpha 2", \
       x_a3(u, v),     y_a3(u, v),     z_a3(u, v)     with lines ls 3 title "16O Core Alpha 3", \
       x_a4(u, v),     y_a4(u, v),     z_a4(u, v)     with lines ls 4 title "16O Core Alpha 4", \
       x_triton(u, v), y_triton(u, v), z_triton(u, v) with lines ls 5 title "Polar Triton Cap (p_9 + 2n)", \
-      x_cap_f1(u, v), y_cap_f1(u, v), z_cap_f1(u, v) with lines ls 6 title "Polar Core Flux Coupler"
+      $CAP_FLUX1 using 1:1:2 with lines ls 6 title "Polar Core Flux Coupler", \
+      $CAP_FLUX2 using 1:(-$1):2 with lines ls 6 notitle
 
 if (!exists("OUTFILE")) {
     pause mouse close

@@ -73,31 +73,31 @@ x_w3(u, v) = x_rot3(x_w2_base(u, v), y_w2_base(u, v))
 y_w3(u, v) = y_rot3(x_w2_base(u, v), y_w2_base(u, v))
 z_w3(u, v) = r_w_min * sin(v)
 
-# 3. Trigonal Magnetic Flux Ring
-R_tri_ring = 1.55
-r_tri_tube = 0.03
-x_tri_ring(u, v) = (R_tri_ring + r_tri_tube * cos(v)) * cos(u)
-y_tri_ring(u, v) = (R_tri_ring + r_tri_tube * cos(v)) * sin(u)
-z_tri_ring(u, v) = r_tri_tube * sin(v)
+# 3. 1D Trigonal Magnetic Flux Guide Ring on G_N
+set samples 120
+set table $TRI_RING
+plot [t=0:2*pi] 1.75 * cos(t), 1.75 * sin(t)
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5   # Crimson: Upper Alpha
-set style line 2 lc rgb "#8e44ad" lw 1.5   # Purple: Lower Alpha
-set style line 3 lc rgb "#e67e22" lw 1.5   # Amber: Valence Proton Toroid (p_5)
-set style line 4 lc rgb "#2980b9" lw 1.4   # Blue: Valence Neutron Toroids (n_5, n_6)
-set style line 5 lc rgb "#7f8c8d" dt 2 lw 0.9 # Dashed gray: Equatorial guide ring
+set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Upper Alpha
+set style line 2 lc rgb "#8e44ad" lw 1.5              # Purple: Lower Alpha
+set style line 3 lc rgb "#e67e22" lw 1.5              # Amber: Valence Proton Toroid (p_5)
+set style line 4 lc rgb "#2980b9" lw 1.4              # Blue: Valence Neutron Toroids (n_5, n_6)
+set style line 5 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Equatorial guide ring
 
 set label 1 "Upper \\alpha-Core" at 0, 0, 1.9 center font "Sans-Bold,9.5" tc rgb "#c0392b"
 set label 2 "Lower \\alpha-Core" at 0, 0, -1.9 center font "Sans-Bold,9.5" tc rgb "#8e44ad"
 set label 3 "Valence Proton (p_5)" at R_w_center+0.4, 0, 0.55 center font "Sans-Bold,9" tc rgb "#e67e22"
 set label 4 "Trigonal Neutrons (2n)" at -1.1, 1.1, 0.55 center font "Sans-Bold,9" tc rgb "#2980b9"
+set label 5 "Equatorial Guide Ring (G_N)" at -1.8, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
 
 splot x_a1(u, v),       y_a1(u, v),       z_a1(u, v)       with lines ls 1 title "Upper Alpha Core (^4He)", \
       x_a2(u, v),       y_a2(u, v),       z_a2(u, v)       with lines ls 2 title "Lower Alpha Core (^4He)", \
       x_w1(u, v),       y_w1(u, v),       z_w1(u, v)       with lines ls 3 title "Valence Proton Toroid (p)", \
       x_w2(u, v),       y_w2(u, v),       z_w2(u, v)       with lines ls 4 title "Valence Neutron Toroid 1 (n)", \
       x_w3(u, v),       y_w3(u, v),       z_w3(u, v)       with lines ls 4 title "Valence Neutron Toroid 2 (n)", \
-      x_tri_ring(u, v), y_tri_ring(u, v), z_tri_ring(u, v) with lines ls 5 title "Equatorial Trigonal Guide Ring"
+      $TRI_RING using 1:2:(0.0) with lines ls 5 title "Equatorial Trigonal Guide Ring"
 
 if (!exists("OUTFILE")) {
     pause mouse close

@@ -48,36 +48,31 @@ y_bot(u, v) = (R_maj + r_min * cos(v)) * sin(u)
 z_bot(u, v) = -z_sep + r_min * sin(v)
 
 # Interlocking Central Magnetic Vortex Throat (Connecting both rings)
-r_throat(u) = 0.42 + 0.12 * cos(u)
-u_n(u) = u / (2.0 * pi)
-z_th(u) = -z_sep + 2.0 * z_sep * u_n(u)
+x_throat(u, v) = (0.42 + 0.12 * cos(v)) * cos(u)
+y_throat(u, v) = (0.42 + 0.12 * cos(v)) * sin(u)
+z_throat(u, v) = 0.75 * sin(v)
 
-x_throat(u, v) = (0.45 * (1.0 + 0.3*cos(v))) * cos(u)
-y_throat(u, v) = (0.45 * (1.0 + 0.3*cos(v))) * sin(u)
-z_throat(u, v) = 0.85 * sin(v)
-
-# Inter-ring Magnetic Binding Flux Tube (Equatorial Cinch)
-R_cinch = 1.35
-r_cinch = 0.12
-x_cinch(u, v) = (R_cinch + r_cinch * cos(v)) * cos(u)
-y_cinch(u, v) = (R_cinch + r_cinch * cos(v)) * sin(u)
-z_cinch(u, v) = r_cinch * sin(v)
+# 1D Equatorial Magnetic Binding Flux Ring (Cinch on G_N)
+set samples 120
+set table $CINCH_RING
+plot [t=0:2*pi] 1.45 * cos(t), 1.45 * sin(t)
+unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5   # Crimson: Upper proton-neutron current toroid
-set style line 2 lc rgb "#2980b9" lw 1.5   # Blue: Lower counter-circulating toroid
-set style line 3 lc rgb "#27ae60" lw 1.3   # Green: Interlocking axial vortex throat
-set style line 4 lc rgb "#e67e22" dt 2 lw 1.0 # Amber dashed: Equatorial magnetic cinch sheath
+set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Upper proton-neutron current toroid
+set style line 2 lc rgb "#2980b9" lw 1.5              # Blue: Lower counter-circulating toroid
+set style line 3 lc rgb "#27ae60" lw 1.3              # Green: Interlocking axial vortex throat
+set style line 4 lc rgb "#d35400" dt (18, 12) lw 1.8   # Distinct Dashed Amber: Equatorial magnetic cinch ring
 
 set label 1 "Upper Toroid (+Z)" at 0, 0, 1.15 center font "Sans-Bold,9.5" tc rgb "#c0392b"
 set label 2 "Lower Toroid (-Z)" at 0, 0, -1.15 center font "Sans-Bold,9.5" tc rgb "#2980b9"
 set label 3 "Axial Vortex Throat" at 0, 1.1, 0.0 center font "Sans,9" tc rgb "#27ae60"
-set label 4 "Equatorial Magnetic Cinch" at 1.4, -0.6, -0.2 center font "Sans,8.5" tc rgb "#e67e22"
+set label 4 "Equatorial Magnetic Cinch" at 1.5, -0.6, -0.2 center font "Sans-Bold,8.5" tc rgb "#d35400"
 
 splot x_top(u, v),    y_top(u, v),    z_top(u, v)    with lines ls 1 title "Upper Toroidal Sub-Ring (p_1-n_1)", \
       x_bot(u, v),    y_bot(u, v),    z_bot(u, v)    with lines ls 2 title "Lower Toroidal Sub-Ring (p_2-n_2)", \
       x_throat(u, v), y_throat(u, v), z_throat(u, v) with lines ls 3 title "Axial Recirculating Vortex Throat", \
-      x_cinch(u, v),  y_cinch(u, v),  z_cinch(u, v)  with lines ls 4 title "Equatorial Magnetic Confinement Cinch"
+      $CINCH_RING using 1:2:(0.0) with lines ls 4 title "Equatorial Magnetic Confinement Cinch"
 
 if (!exists("OUTFILE")) {
     pause mouse close
