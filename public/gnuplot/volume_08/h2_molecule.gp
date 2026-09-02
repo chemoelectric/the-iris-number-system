@@ -72,16 +72,16 @@ plot [t=0:1] (1.6 * (t - 0.5) * d_HH), (0.82 * sin(t * pi))
 unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.5              # Deep blue: Shared covalent electron pair sheath
-set style line 2 lc rgb "#c0392b" lw 1.5              # Red: Proton nuclear loci
-set style line 3 lc rgb "#27ae60" lw 1.2              # Green: Mid-plane diamagnetic screening toroid
-set style line 4 lc rgb "#d35400" dt (18, 12) lw 1.8  # Distinct Dashed Orange: Outer flux boundary
+set style line 1 lc rgb "#002855" lw 1.5              # Deep blue: Shared covalent electron pair sheath
+set style line 2 lc rgb "#8b0000" lw 1.5              # Red: Proton nuclear loci
+set style line 3 lc rgb "#004d20" lw 1.2              # Green: Mid-plane diamagnetic screening toroid
+set style line 4 lc rgb "#78281f" dt (18, 12) lw 1.8  # Distinct Dashed Orange: Outer flux boundary
 
 # Labels for atomic loci
-set label 1 "Proton H_1^+ (-0.70 a_0)" at x_p1, 0, -0.32 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 2 "Proton H_2^+ (+0.70 a_0)" at x_p2, 0, -0.32 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 3 "Covalent Bond Sheath (2e^-)" at 0, 0, 0.72 center font "Sans-Bold,10" tc rgb "#185a9d"
-set label 4 "Bond Length: d_{HH} = 1.40 a_0 (0.74 {\305})" at 0, -0.9, -0.15 center font "Sans,9" tc rgb "#555555"
+set label 1 "Proton H_1^+ (-0.70 a_0)" at x_p1, 0, -0.32 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 2 "Proton H_2^+ (+0.70 a_0)" at x_p2, 0, -0.32 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 3 "Covalent Bond Sheath (2e^-)" at 0, 0, 0.72 center font "Sans-Bold,10" tc rgb "#002855"
+set label 4 "Bond Length: d_{HH} = 1.40 a_0 (0.74 {\305})" at 0, -0.9, -0.15 center font "Sans,9" tc rgb "#111111"
 
 # Plot components
 splot x_bond(u, v),  y_bond(u, v),  z_bond(u, v)  with lines ls 1 title "Shared \\sigma-Bonding Vortex Sheath (2e^-)", \

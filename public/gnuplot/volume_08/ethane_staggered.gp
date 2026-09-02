@@ -73,14 +73,14 @@ x_h2(u, k) = x_C2 + u_norm(u) * dx_H
 y_h2(u, v, k) = u_norm(u) * r_perp * cos(phi_2(k)) + 0.32 * sin(u_norm(u)*pi) * cos(v)
 z_h2(u, v, k) = u_norm(u) * r_perp * sin(phi_2(k)) + 0.32 * sin(u_norm(u)*pi) * sin(v)
 
-set style line 1 lc rgb "#185a9d" lw 1.5   # Blue: C-C central sigma bond
-set style line 2 lc rgb "#2c3e50" lw 1.6   # Slate dark: Carbon nuclear cores (Z=6)
-set style line 3 lc rgb "#27ae60" lw 1.2   # Green: C-H covalent bond tubes
-set style line 4 lc rgb "#c0392b" lw 1.3   # Red: Hydrogen protons
+set style line 1 lc rgb "#002855" lw 1.5   # Blue: C-C central sigma bond
+set style line 2 lc rgb "#1a252f" lw 1.6   # Slate dark: Carbon nuclear cores (Z=6)
+set style line 3 lc rgb "#004d20" lw 1.2   # Green: C-H covalent bond tubes
+set style line 4 lc rgb "#8b0000" lw 1.3   # Red: Hydrogen protons
 
-set label 1 "Carbon C_1" at x_C1, 0, 0.45 center font "Sans-Bold,9" tc rgb "#2c3e50"
-set label 2 "Carbon C_2" at x_C2, 0, 0.45 center font "Sans-Bold,9" tc rgb "#2c3e50"
-set label 3 "Staggered Dihedral: \\Delta\\phi = 60^\\circ" at 0, 0, -2.4 center font "Sans-Bold,10" tc rgb "#185a9d"
+set label 1 "Carbon C_1" at x_C1, 0, 0.45 center font "Sans-Bold,9" tc rgb "#1a252f"
+set label 2 "Carbon C_2" at x_C2, 0, 0.45 center font "Sans-Bold,9" tc rgb "#1a252f"
+set label 3 "Staggered Dihedral: \\Delta\\phi = 60^\\circ" at 0, 0, -2.4 center font "Sans-Bold,10" tc rgb "#002855"
 
 set key top right spacing 1.25 font "Sans,9.5"
 

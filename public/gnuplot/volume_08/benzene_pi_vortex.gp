@@ -69,13 +69,13 @@ y_ch(u, v, k) = (R_C + (R_H - R_C)*u_n(u)) * sin(k*pi/3.0) + r_ch_tube(u)*sin(v)
 z_ch(u, v)    = r_ch_tube(u)*cos(v)
 
 # Line Styles
-set style line 1 lc rgb "#8e44ad" lw 1.2 # Purple: Upper Pi-Electron Vortex Sheet
-set style line 2 lc rgb "#2980b9" lw 1.2 # Blue: Lower Pi-Electron Vortex Sheet
-set style line 3 lc rgb "#2c3e50" lw 1.5 # Dark Slate: Carbon-Carbon Sigma Hexagonal Frame
-set style line 4 lc rgb "#27ae60" lw 1.1 # Green: C-H Radial Bonds
+set style line 1 lc rgb "#4a0e4e" lw 1.2 # Purple: Upper Pi-Electron Vortex Sheet
+set style line 2 lc rgb "#0a369d" lw 1.2 # Blue: Lower Pi-Electron Vortex Sheet
+set style line 3 lc rgb "#1a252f" lw 1.5 # Dark Slate: Carbon-Carbon Sigma Hexagonal Frame
+set style line 4 lc rgb "#004d20" lw 1.1 # Green: C-H Radial Bonds
 
-set label 1 "Upper \\pi-Vortex Ring (+z)" at 0, 0,  z_pi+0.85 center font "Sans-Bold,10" tc rgb "#8e44ad"
-set label 2 "Lower \\pi-Vortex Ring (-z)" at 0, 0, -z_pi-0.85 center font "Sans-Bold,10" tc rgb "#2980b9"
+set label 1 "Upper \\pi-Vortex Ring (+z)" at 0, 0,  z_pi+0.85 center font "Sans-Bold,10" tc rgb "#4a0e4e"
+set label 2 "Lower \\pi-Vortex Ring (-z)" at 0, 0, -z_pi-0.85 center font "Sans-Bold,10" tc rgb "#0a369d"
 
 splot x_pi_up(u, v), y_pi_up(u, v), z_pi_up(u, v) with lines ls 1 title "Upper \\pi-Electron Toroidal Vortex", \
       x_pi_dn(u, v), y_pi_dn(u, v), z_pi_dn(u, v) with lines ls 2 title "Lower \\pi-Electron Toroidal Vortex", \

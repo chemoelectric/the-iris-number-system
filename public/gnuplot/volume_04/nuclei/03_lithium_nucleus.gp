@@ -68,15 +68,15 @@ plot [t=0:1] (R_alpha + (R_d_center - R_d_maj - R_alpha) * t), (0.28 * sin(t * p
 unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Core alpha toroids
-set style line 2 lc rgb "#185a9d" lw 1.5              # Blue: Peripheral deuteron toroid
-set style line 3 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Deuteron orbital guide ring
-set style line 4 lc rgb "#e67e22" lw 1.6              # Amber: Inter-vortex magnetic flux bridge
+set style line 1 lc rgb "#8b0000" lw 1.5              # Crimson: Core alpha toroids
+set style line 2 lc rgb "#002855" lw 1.5              # Blue: Peripheral deuteron toroid
+set style line 3 lc rgb "#111111" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Deuteron orbital guide ring
+set style line 4 lc rgb "#6d2800" lw 1.6              # Amber: Inter-vortex magnetic flux bridge
 
-set label 1 "Alpha Kernel (^4He)" at 0, 0, 0.95 center font "Sans-Bold,9.5" tc rgb "#c0392b"
-set label 2 "Valence Deuteron (p-n)" at R_d_center, 0, 0.75 center font "Sans-Bold,9.5" tc rgb "#185a9d"
-set label 3 "Magnetic Flux Bridge" at 1.15, -0.4, 0.35 center font "Sans,8.5" tc rgb "#e67e22"
-set label 4 "Deuteron Orbit Track (G_N)" at -1.8, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
+set label 1 "Alpha Kernel (^4He)" at 0, 0, 0.95 center font "Sans-Bold,9.5" tc rgb "#8b0000"
+set label 2 "Valence Deuteron (p-n)" at R_d_center, 0, 0.75 center font "Sans-Bold,9.5" tc rgb "#002855"
+set label 3 "Magnetic Flux Bridge" at 1.15, -0.4, 0.35 center font "Sans,8.5" tc rgb "#6d2800"
+set label 4 "Deuteron Orbit Track (G_N)" at -1.8, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#111111"
 
 splot x_a_top(u, v),   y_a_top(u, v),   z_a_top(u, v)   with lines ls 1 title "Helium-4 Core Upper Toroid", \
       x_a_bot(u, v),   y_a_bot(u, v),   z_a_bot(u, v)   with lines ls 1 title "Helium-4 Core Lower Toroid", \

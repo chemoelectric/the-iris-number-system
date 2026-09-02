@@ -52,14 +52,14 @@ plot [t=0:2*pi] 1.65 * cos(t), 1.65 * sin(t)
 unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.6                    # Crimson: Proton toroidal current vortex
-set style line 2 lc rgb "#185a9d" lw 1.5                    # Deep blue: Axial recirculating flux filaments
-set style line 3 lc rgb "#444444" dt (18, 12) lw 1.8        # Distinct Dashed Dark Gray: Equatorial flux boundary on G_N
+set style line 1 lc rgb "#8b0000" lw 1.6                    # Crimson: Proton toroidal current vortex
+set style line 2 lc rgb "#002855" lw 1.5                    # Deep blue: Axial recirculating flux filaments
+set style line 3 lc rgb "#111111" dt (18, 12) lw 1.8        # Distinct Dashed Dark Gray: Equatorial flux boundary on G_N
 
-set label 1 "Proton Toroid (p^+)" at 0, 0, 0.75 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 2 "Major Radius R = 0.85 fm\nMinor Radius r = 0.35 fm" at 0, -1.3, -1.4 center font "Sans,9" tc rgb "#555555"
-set label 3 "Recirculating Magnetic Flux" at 0, 1.2, 0.9 center font "Sans,9" tc rgb "#185a9d"
-set label 4 "Equatorial Flux Boundary (G_N)" at 1.7, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
+set label 1 "Proton Toroid (p^+)" at 0, 0, 0.75 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 2 "Major Radius R = 0.85 fm\nMinor Radius r = 0.35 fm" at 0, -1.3, -1.4 center font "Sans,9" tc rgb "#111111"
+set label 3 "Recirculating Magnetic Flux" at 0, 1.2, 0.9 center font "Sans,9" tc rgb "#002855"
+set label 4 "Equatorial Flux Boundary (G_N)" at 1.7, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#111111"
 
 splot x_p(u, v), y_p(u, v), z_p(u, v) with lines ls 1 title "Proton Current Toroid (p^+)", \
       $FLUX_LOOP using 1:(0.0):2 with lines ls 2 title "Poloidal Magnetic Recirculation Lines", \

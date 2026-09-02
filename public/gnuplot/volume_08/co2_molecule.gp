@@ -100,16 +100,16 @@ y_lp_R2(u, v) = r_lp(u) * cos(v)
 z_lp_R2(u, v) = -0.45 * u_norm(u) + r_lp(u) * sin(v)
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.5   # Deep blue: C=O double-bond vortex cylinders
-set style line 2 lc rgb "#c0392b" lw 1.5   # Red: Carbon core toroid
-set style line 3 lc rgb "#e67e22" lw 1.3   # Amber: Oxygen core toroids
-set style line 4 lc rgb "#8e44ad" lw 1.1   # Purple: Terminal oxygen lone-pair lobes
+set style line 1 lc rgb "#002855" lw 1.5   # Deep blue: C=O double-bond vortex cylinders
+set style line 2 lc rgb "#8b0000" lw 1.5   # Red: Carbon core toroid
+set style line 3 lc rgb "#6d2800" lw 1.3   # Amber: Oxygen core toroids
+set style line 4 lc rgb "#4a0e4e" lw 1.1   # Purple: Terminal oxygen lone-pair lobes
 
 # Labels
-set label 1 "Carbon (Z=6)" at 0, 0, -0.45 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 2 "Oxygen O_1 (Z=8)" at x_O1, 0, -0.45 center font "Sans-Bold,10" tc rgb "#e67e22"
-set label 3 "Oxygen O_2 (Z=8)" at x_O2, 0, -0.45 center font "Sans-Bold,10" tc rgb "#e67e22"
-set label 4 "Linear Angle: 180^\circ" at 0, -1.2, -1.4 center font "Sans,9" tc rgb "#555555"
+set label 1 "Carbon (Z=6)" at 0, 0, -0.45 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 2 "Oxygen O_1 (Z=8)" at x_O1, 0, -0.45 center font "Sans-Bold,10" tc rgb "#6d2800"
+set label 3 "Oxygen O_2 (Z=8)" at x_O2, 0, -0.45 center font "Sans-Bold,10" tc rgb "#6d2800"
+set label 4 "Linear Angle: 180^\circ" at 0, -1.2, -1.4 center font "Sans,9" tc rgb "#111111"
 
 splot x_db1(u, v),    y_db1(u, v),    z_db1(u, v)    with lines ls 1 title "C=O \\sigma-\\pi Double-Bond Cylinders (4e^- each)", \
       x_db2(u, v),    y_db2(u, v),    z_db2(u, v)    with lines ls 1 notitle, \

@@ -95,17 +95,17 @@ y_p(u, v, y0) = y0 + r_p * sin(u/2.0) * sin(v)
 z_p(u, v, z0) = z0 + r_p * cos(u/2.0)
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.3   # Deep blue: Tetrahedral C-H covalent bonding tubes
-set style line 2 lc rgb "#c0392b" lw 1.5   # Red: Carbon core 1s^2 toroid
-set style line 3 lc rgb "#27ae60" lw 1.2   # Green: Hydrogen proton loci
+set style line 1 lc rgb "#002855" lw 1.3   # Deep blue: Tetrahedral C-H covalent bonding tubes
+set style line 2 lc rgb "#8b0000" lw 1.5   # Red: Carbon core 1s^2 toroid
+set style line 3 lc rgb "#004d20" lw 1.2   # Green: Hydrogen proton loci
 
 # Labels
-set label 1 "Carbon-12 Core (Z=6)" at 0, 0, -0.35 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 2 "H_1^+" at x_H1, y_H1, z_H1+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
-set label 3 "H_2^+" at x_H2, y_H2, z_H2+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
-set label 4 "H_3^+" at x_H3, y_H3, z_H3+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
-set label 5 "H_4^+" at x_H4, y_H4, z_H4+0.25 center font "Sans-Bold,9" tc rgb "#27ae60"
-set label 6 "Tetrahedral Angle: 109.47^\circ" at 0, -1.5, -1.8 center font "Sans,9" tc rgb "#555555"
+set label 1 "Carbon-12 Core (Z=6)" at 0, 0, -0.35 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 2 "H_1^+" at x_H1, y_H1, z_H1+0.25 center font "Sans-Bold,9" tc rgb "#004d20"
+set label 3 "H_2^+" at x_H2, y_H2, z_H2+0.25 center font "Sans-Bold,9" tc rgb "#004d20"
+set label 4 "H_3^+" at x_H3, y_H3, z_H3+0.25 center font "Sans-Bold,9" tc rgb "#004d20"
+set label 5 "H_4^+" at x_H4, y_H4, z_H4+0.25 center font "Sans-Bold,9" tc rgb "#004d20"
+set label 6 "Tetrahedral Angle: 109.47^\circ" at 0, -1.5, -1.8 center font "Sans,9" tc rgb "#111111"
 
 splot x_t1(u, v), y_t1(u, v), z_t1(u, v) with lines ls 1 title "Tetrahedral C-H \\sigma-Bonds", \
       x_t2(u, v), y_t2(u, v), z_t2(u, v) with lines ls 1 notitle, \

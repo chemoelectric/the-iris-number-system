@@ -116,19 +116,19 @@ y_p2(u, v) = y_H2 + r_p*sin(u/2.0)*sin(v)
 z_p2(u, v) = z_H2 + r_p*cos(u/2.0)
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.5 # Deep Blue: O-H polar covalent bond pairs
-set style line 2 lc rgb "#d35400" lw 1.3 # Orange: Oxygen 2p lone pairs
-set style line 3 lc rgb "#c0392b" lw 1.6 # Red: Oxygen 1s^2 core toroid
-set style line 4 lc rgb "#27ae60" lw 1.4 # Green: Hydrogen protons
+set style line 1 lc rgb "#002855" lw 1.5 # Deep Blue: O-H polar covalent bond pairs
+set style line 2 lc rgb "#78281f" lw 1.3 # Orange: Oxygen 2p lone pairs
+set style line 3 lc rgb "#8b0000" lw 1.6 # Red: Oxygen 1s^2 core toroid
+set style line 4 lc rgb "#004d20" lw 1.4 # Green: Hydrogen protons
 
 # Key / Legend Configuration
 set key top right spacing 1.25 font "Sans,9.5"
 
 # In-Graph Annotations
-set label 1 "Oxygen Nucleus (Z=8)" at 0, 0, -0.35 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 2 "Proton H_1^+" at x_H1, y_H1, z_H1+0.28 center font "Sans-Bold,10" tc rgb "#27ae60"
-set label 3 "Proton H_2^+" at x_H2, y_H2, z_H2+0.28 center font "Sans-Bold,10" tc rgb "#27ae60"
-set label 4 "Bond Angle: 104.5^\\circ" at 0, 0, 1.95 center font "Sans,9" tc rgb "#555555"
+set label 1 "Oxygen Nucleus (Z=8)" at 0, 0, -0.35 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 2 "Proton H_1^+" at x_H1, y_H1, z_H1+0.28 center font "Sans-Bold,10" tc rgb "#004d20"
+set label 3 "Proton H_2^+" at x_H2, y_H2, z_H2+0.28 center font "Sans-Bold,10" tc rgb "#004d20"
+set label 4 "Bond Angle: 104.5^\\circ" at 0, 0, 1.95 center font "Sans,9" tc rgb "#111111"
 
 # 3D Parametric Wireframe Splot
 splot x_b1(u, v),    y_b1(u, v),    z_b1(u, v)    with lines ls 1 title "O-H Polar Covalent Bond Tubes (2x)", \

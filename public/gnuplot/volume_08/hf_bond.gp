@@ -86,14 +86,14 @@ y_H_well(u, v) = r_H_vortex * sin(u/2.0) * sin(v)
 z_H_well(u, v) = z_H + r_H_vortex * cos(u/2.0)
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.3  # Blue: Shared bonding electron pair
-set style line 2 lc rgb "#d35400" lw 1.1  # Orange: Fluorine 2p lone pairs
-set style line 3 lc rgb "#c0392b" lw 1.4  # Red: Fluorine 1s^2 core toroid
-set style line 4 lc rgb "#27ae60" lw 1.2  # Green: Proton screening locus
+set style line 1 lc rgb "#002855" lw 1.3  # Blue: Shared bonding electron pair
+set style line 2 lc rgb "#78281f" lw 1.1  # Orange: Fluorine 2p lone pairs
+set style line 3 lc rgb "#8b0000" lw 1.4  # Red: Fluorine 1s^2 core toroid
+set style line 4 lc rgb "#004d20" lw 1.2  # Green: Proton screening locus
 
-set label 1 "Fluorine Core (Z=9)" at 0, 0, z_F-0.35 center font "Sans-Bold,9" tc rgb "#c0392b"
-set label 2 "Proton Locus (H^+)"  at 0, 0, z_H+0.30 center font "Sans-Bold,9" tc rgb "#27ae60"
-set label 3 "Polar Covalent Axis" at 0, -1.0, 0 center font "Sans,9" tc rgb "#555555"
+set label 1 "Fluorine Core (Z=9)" at 0, 0, z_F-0.35 center font "Sans-Bold,9" tc rgb "#8b0000"
+set label 2 "Proton Locus (H^+)"  at 0, 0, z_H+0.30 center font "Sans-Bold,9" tc rgb "#004d20"
+set label 3 "Polar Covalent Axis" at 0, -1.0, 0 center font "Sans,9" tc rgb "#111111"
 
 set key top right spacing 1.2 font "Sans,9.5"
 

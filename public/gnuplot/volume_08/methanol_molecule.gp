@@ -138,17 +138,17 @@ y_p(u, v, y0) = y0 + r_p * sin(u/2.0) * sin(v)
 z_p(u, v, z0) = z0 + r_p * cos(u/2.0)
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.4   # Deep blue: C-O and C-H sigma bonds
-set style line 2 lc rgb "#2980b9" lw 1.3   # Light blue: O-H bond
-set style line 3 lc rgb "#c0392b" lw 1.5   # Red: Carbon core toroid
-set style line 4 lc rgb "#e67e22" lw 1.4   # Amber: Oxygen core toroid
-set style line 5 lc rgb "#8e44ad" lw 1.1   # Purple: Oxygen lone-pair lobes
-set style line 6 lc rgb "#27ae60" lw 1.2   # Green: Hydrogen protons
+set style line 1 lc rgb "#002855" lw 1.4   # Deep blue: C-O and C-H sigma bonds
+set style line 2 lc rgb "#0a369d" lw 1.3   # Light blue: O-H bond
+set style line 3 lc rgb "#8b0000" lw 1.5   # Red: Carbon core toroid
+set style line 4 lc rgb "#6d2800" lw 1.4   # Amber: Oxygen core toroid
+set style line 5 lc rgb "#4a0e4e" lw 1.1   # Purple: Oxygen lone-pair lobes
+set style line 6 lc rgb "#004d20" lw 1.2   # Green: Hydrogen protons
 
 # Labels
-set label 1 "Carbon (Z=6)" at 0, 0, -0.38 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 2 "Oxygen (Z=8)" at x_O, 0, -0.38 center font "Sans-Bold,10" tc rgb "#e67e22"
-set label 3 "Hydroxyl H^+" at x_HO, 0, z_HO+0.22 center font "Sans-Bold,9" tc rgb "#27ae60"
+set label 1 "Carbon (Z=6)" at 0, 0, -0.38 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 2 "Oxygen (Z=8)" at x_O, 0, -0.38 center font "Sans-Bold,10" tc rgb "#6d2800"
+set label 3 "Hydroxyl H^+" at x_HO, 0, z_HO+0.22 center font "Sans-Bold,9" tc rgb "#004d20"
 
 splot x_b_CO(u, v),  y_b_CO(u, v),  z_b_CO(u, v)  with lines ls 1 title "C-O Covalent Bond Tube", \
       x_b_OH(u, v),  y_b_OH(u, v),  z_b_OH(u, v)  with lines ls 2 title "O-H Covalent Bond Tube", \

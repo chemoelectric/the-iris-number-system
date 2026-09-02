@@ -63,11 +63,11 @@ set table $HB3
 plot [t=0:1] (R_helix * 0.85 * cos(0.0)), (-pitch/2.0 + t * pitch - pitch/3.6)
 unset table
 
-set style line 1 lc rgb "#185a9d" lw 1.6              # Blue: Helical peptide backbone
-set style line 2 lc rgb "#d35400" dt (18, 12) lw 2.0  # Distinct Dashed Orange: C=O ... H-N hydrogen bond filaments
+set style line 1 lc rgb "#002855" lw 1.6              # Blue: Helical peptide backbone
+set style line 2 lc rgb "#78281f" dt (18, 12) lw 2.0  # Distinct Dashed Orange: C=O ... H-N hydrogen bond filaments
 
-set label 1 "Peptide Main Chain (\\alpha-Helix)" at 0, 4.8, 5.0 center font "Sans-Bold,10" tc rgb "#185a9d"
-set label 2 "C=O\\cdots H-N Hydrogen Bond Bridges (i \\rightarrow i+4)" at 0, -4.5, 0 center font "Sans-Bold,9" tc rgb "#d35400"
+set label 1 "Peptide Main Chain (\\alpha-Helix)" at 0, 4.8, 5.0 center font "Sans-Bold,10" tc rgb "#002855"
+set label 2 "C=O\\cdots H-N Hydrogen Bond Bridges (i \\rightarrow i+4)" at 0, -4.5, 0 center font "Sans-Bold,9" tc rgb "#78281f"
 
 set key top right spacing 1.25 font "Sans,9.5"
 

@@ -80,17 +80,17 @@ plot [t=0:2*pi] 1.75 * cos(t), 1.75 * sin(t)
 unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Upper Alpha
-set style line 2 lc rgb "#8e44ad" lw 1.5              # Purple: Lower Alpha
-set style line 3 lc rgb "#e67e22" lw 1.5              # Amber: Valence Proton Toroid (p_5)
-set style line 4 lc rgb "#2980b9" lw 1.4              # Blue: Valence Neutron Toroids (n_5, n_6)
-set style line 5 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Equatorial guide ring
+set style line 1 lc rgb "#8b0000" lw 1.5              # Crimson: Upper Alpha
+set style line 2 lc rgb "#4a0e4e" lw 1.5              # Purple: Lower Alpha
+set style line 3 lc rgb "#6d2800" lw 1.5              # Amber: Valence Proton Toroid (p_5)
+set style line 4 lc rgb "#0a369d" lw 1.4              # Blue: Valence Neutron Toroids (n_5, n_6)
+set style line 5 lc rgb "#111111" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Equatorial guide ring
 
-set label 1 "Upper \\alpha-Core" at 0, 0, 1.9 center font "Sans-Bold,9.5" tc rgb "#c0392b"
-set label 2 "Lower \\alpha-Core" at 0, 0, -1.9 center font "Sans-Bold,9.5" tc rgb "#8e44ad"
-set label 3 "Valence Proton (p_5)" at R_w_center+0.4, 0, 0.55 center font "Sans-Bold,9" tc rgb "#e67e22"
-set label 4 "Trigonal Neutrons (2n)" at -1.1, 1.1, 0.55 center font "Sans-Bold,9" tc rgb "#2980b9"
-set label 5 "Equatorial Guide Ring (G_N)" at -1.8, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
+set label 1 "Upper \\alpha-Core" at 0, 0, 1.9 center font "Sans-Bold,9.5" tc rgb "#8b0000"
+set label 2 "Lower \\alpha-Core" at 0, 0, -1.9 center font "Sans-Bold,9.5" tc rgb "#4a0e4e"
+set label 3 "Valence Proton (p_5)" at R_w_center+0.4, 0, 0.55 center font "Sans-Bold,9" tc rgb "#6d2800"
+set label 4 "Trigonal Neutrons (2n)" at -1.1, 1.1, 0.55 center font "Sans-Bold,9" tc rgb "#0a369d"
+set label 5 "Equatorial Guide Ring (G_N)" at -1.8, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#111111"
 
 splot x_a1(u, v),       y_a1(u, v),       z_a1(u, v)       with lines ls 1 title "Upper Alpha Core (^4He)", \
       x_a2(u, v),       y_a2(u, v),       z_a2(u, v)       with lines ls 2 title "Lower Alpha Core (^4He)", \

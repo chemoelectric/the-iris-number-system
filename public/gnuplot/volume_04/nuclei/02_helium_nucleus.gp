@@ -59,15 +59,15 @@ plot [t=0:2*pi] 1.45 * cos(t), 1.45 * sin(t)
 unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.5              # Crimson: Upper proton-neutron current toroid
-set style line 2 lc rgb "#2980b9" lw 1.5              # Blue: Lower counter-circulating toroid
-set style line 3 lc rgb "#27ae60" lw 1.3              # Green: Interlocking axial vortex throat
-set style line 4 lc rgb "#d35400" dt (18, 12) lw 1.8   # Distinct Dashed Amber: Equatorial magnetic cinch ring
+set style line 1 lc rgb "#8b0000" lw 1.5              # Crimson: Upper proton-neutron current toroid
+set style line 2 lc rgb "#0a369d" lw 1.5              # Blue: Lower counter-circulating toroid
+set style line 3 lc rgb "#004d20" lw 1.3              # Green: Interlocking axial vortex throat
+set style line 4 lc rgb "#78281f" dt (18, 12) lw 1.8   # Distinct Dashed Amber: Equatorial magnetic cinch ring
 
-set label 1 "Upper Toroid (+Z)" at 0, 0, 1.15 center font "Sans-Bold,9.5" tc rgb "#c0392b"
-set label 2 "Lower Toroid (-Z)" at 0, 0, -1.15 center font "Sans-Bold,9.5" tc rgb "#2980b9"
-set label 3 "Axial Vortex Throat" at 0, 1.1, 0.0 center font "Sans,9" tc rgb "#27ae60"
-set label 4 "Equatorial Magnetic Cinch" at 1.5, -0.6, -0.2 center font "Sans-Bold,8.5" tc rgb "#d35400"
+set label 1 "Upper Toroid (+Z)" at 0, 0, 1.15 center font "Sans-Bold,9.5" tc rgb "#8b0000"
+set label 2 "Lower Toroid (-Z)" at 0, 0, -1.15 center font "Sans-Bold,9.5" tc rgb "#0a369d"
+set label 3 "Axial Vortex Throat" at 0, 1.1, 0.0 center font "Sans,9" tc rgb "#004d20"
+set label 4 "Equatorial Magnetic Cinch" at 1.5, -0.6, -0.2 center font "Sans-Bold,8.5" tc rgb "#78281f"
 
 splot x_top(u, v),    y_top(u, v),    z_top(u, v)    with lines ls 1 title "Upper Toroidal Sub-Ring (p_1-n_1)", \
       x_bot(u, v),    y_bot(u, v),    z_bot(u, v)    with lines ls 2 title "Lower Toroidal Sub-Ring (p_2-n_2)", \

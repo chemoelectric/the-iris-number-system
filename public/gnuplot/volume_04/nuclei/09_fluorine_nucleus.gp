@@ -78,16 +78,16 @@ plot [t=0:1] (-d_t * (1.0 - t)), ((d_t + z_shift) + (z_triton - (d_t + z_shift))
 unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.4              # Crimson: Core Alpha 1
-set style line 2 lc rgb "#185a9d" lw 1.4              # Blue: Core Alpha 2
-set style line 3 lc rgb "#27ae60" lw 1.4              # Green: Core Alpha 3
-set style line 4 lc rgb "#e67e22" lw 1.4              # Amber: Core Alpha 4
-set style line 5 lc rgb "#8e44ad" lw 1.6              # Purple: Polar Triton Cap (p_9-2n)
-set style line 6 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Flux coupler
+set style line 1 lc rgb "#8b0000" lw 1.4              # Crimson: Core Alpha 1
+set style line 2 lc rgb "#002855" lw 1.4              # Blue: Core Alpha 2
+set style line 3 lc rgb "#004d20" lw 1.4              # Green: Core Alpha 3
+set style line 4 lc rgb "#6d2800" lw 1.4              # Amber: Core Alpha 4
+set style line 5 lc rgb "#4a0e4e" lw 1.6              # Purple: Polar Triton Cap (p_9-2n)
+set style line 6 lc rgb "#111111" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Flux coupler
 
-set label 1 "16O \\alpha_4 Core" at 0, 0, -1.5 center font "Sans-Bold,9.5" tc rgb "#555555"
-set label 2 "Polar Triton Cap (^3H cluster)" at 0, 0, z_triton+0.55 center font "Sans-Bold,9.5" tc rgb "#8e44ad"
-set label 3 "Apex Coupling Flux" at 0.8, 0.8, 1.2 center font "Sans-Bold,8.5" tc rgb "#444444"
+set label 1 "16O \\alpha_4 Core" at 0, 0, -1.5 center font "Sans-Bold,9.5" tc rgb "#111111"
+set label 2 "Polar Triton Cap (^3H cluster)" at 0, 0, z_triton+0.55 center font "Sans-Bold,9.5" tc rgb "#4a0e4e"
+set label 3 "Apex Coupling Flux" at 0.8, 0.8, 1.2 center font "Sans-Bold,8.5" tc rgb "#111111"
 
 splot x_a1(u, v),     y_a1(u, v),     z_a1(u, v)     with lines ls 1 title "16O Core Alpha 1", \
       x_a2(u, v),     y_a2(u, v),     z_a2(u, v)     with lines ls 2 title "16O Core Alpha 2", \

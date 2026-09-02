@@ -75,19 +75,19 @@ plot [t=0:2*pi] 2.55 * cos(t), 2.55 * sin(t)
 unset table
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#c0392b" lw 1.4              # Crimson: Equatorial Alpha 1
-set style line 2 lc rgb "#185a9d" lw 1.4              # Blue: Equatorial Alpha 2
-set style line 3 lc rgb "#27ae60" lw 1.4              # Green: Equatorial Alpha 3
-set style line 4 lc rgb "#8e44ad" lw 1.6              # Purple: North Polar Alpha (+Z)
-set style line 5 lc rgb "#d35400" lw 1.6              # Amber: South Polar Alpha (-Z)
-set style line 6 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Equatorial guide ring
+set style line 1 lc rgb "#8b0000" lw 1.4              # Crimson: Equatorial Alpha 1
+set style line 2 lc rgb "#002855" lw 1.4              # Blue: Equatorial Alpha 2
+set style line 3 lc rgb "#004d20" lw 1.4              # Green: Equatorial Alpha 3
+set style line 4 lc rgb "#4a0e4e" lw 1.6              # Purple: North Polar Alpha (+Z)
+set style line 5 lc rgb "#78281f" lw 1.6              # Amber: South Polar Alpha (-Z)
+set style line 6 lc rgb "#111111" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: Equatorial guide ring
 
-set label 1 "Equatorial \\alpha_1" at R_eq+0.3, 0, -0.45 center font "Sans-Bold,8.5" tc rgb "#c0392b"
-set label 2 "Equatorial \\alpha_2" at -0.9, 1.6, -0.45 center font "Sans-Bold,8.5" tc rgb "#185a9d"
-set label 3 "Equatorial \\alpha_3" at -0.9, -1.6, -0.45 center font "Sans-Bold,8.5" tc rgb "#27ae60"
-set label 4 "North Polar \\alpha (+Z)" at 0, 0, z_pol+0.55 center font "Sans-Bold,9" tc rgb "#8e44ad"
-set label 5 "South Polar \\alpha (-Z)" at 0, 0, -z_pol-0.55 center font "Sans-Bold,9" tc rgb "#d35400"
-set label 6 "Equatorial Confinement Belt (G_N)" at 2.6, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
+set label 1 "Equatorial \\alpha_1" at R_eq+0.3, 0, -0.45 center font "Sans-Bold,8.5" tc rgb "#8b0000"
+set label 2 "Equatorial \\alpha_2" at -0.9, 1.6, -0.45 center font "Sans-Bold,8.5" tc rgb "#002855"
+set label 3 "Equatorial \\alpha_3" at -0.9, -1.6, -0.45 center font "Sans-Bold,8.5" tc rgb "#004d20"
+set label 4 "North Polar \\alpha (+Z)" at 0, 0, z_pol+0.55 center font "Sans-Bold,9" tc rgb "#4a0e4e"
+set label 5 "South Polar \\alpha (-Z)" at 0, 0, -z_pol-0.55 center font "Sans-Bold,9" tc rgb "#78281f"
+set label 6 "Equatorial Confinement Belt (G_N)" at 2.6, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#111111"
 
 splot x_eq1(u, v),     y_eq1(u, v),     z_eq1(u, v)     with lines ls 1 title "Equatorial Alpha 1", \
       x_eq2(u, v),     y_eq2(u, v),     z_eq2(u, v)     with lines ls 2 title "Equatorial Alpha 2", \

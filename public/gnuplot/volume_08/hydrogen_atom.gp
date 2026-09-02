@@ -83,15 +83,15 @@ y_f6(u, v) = -r_loop(u) * cos(pi/3.0)
 z_f6(u, v) = -r_loop(u) * sin(pi/3.0)
 
 # Wireframe Line Styles
-set style line 1 lc rgb "#185a9d" lw 1.5              # Deep blue: 1s electron current vortex
-set style line 2 lc rgb "#c0392b" lw 1.5              # Red: Central proton locus
-set style line 3 lc rgb "#444444" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: 1s orbital track
-set style line 4 lc rgb "#d35400" lw 1.2              # Orange: Electromagnetic flux filaments
+set style line 1 lc rgb "#002855" lw 1.5              # Deep blue: 1s electron current vortex
+set style line 2 lc rgb "#8b0000" lw 1.5              # Red: Central proton locus
+set style line 3 lc rgb "#111111" dt (18, 12) lw 1.8   # Distinct Dashed Dark Gray: 1s orbital track
+set style line 4 lc rgb "#78281f" lw 1.2              # Orange: Electromagnetic flux filaments
 
-set label 1 "Proton (p^+, Z=1)" at 0, 0, -0.28 center font "Sans-Bold,10" tc rgb "#c0392b"
-set label 2 "Electron Vortex (e^-)" at r_bohr, 0, 0.42 center font "Sans-Bold,10" tc rgb "#185a9d"
-set label 3 "Bohr Radius: a_0 = 0.529 {\305}" at 0.5, -0.2, -0.15 center font "Sans,9" tc rgb "#555555"
-set label 4 "1s Orbit Track (r = a_0)" at -1.1, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#444444"
+set label 1 "Proton (p^+, Z=1)" at 0, 0, -0.28 center font "Sans-Bold,10" tc rgb "#8b0000"
+set label 2 "Electron Vortex (e^-)" at r_bohr, 0, 0.42 center font "Sans-Bold,10" tc rgb "#002855"
+set label 3 "Bohr Radius: a_0 = 0.529 {\305}" at 0.5, -0.2, -0.15 center font "Sans,9" tc rgb "#111111"
+set label 4 "1s Orbit Track (r = a_0)" at -1.1, 0, -0.25 center font "Sans-Bold,8.5" tc rgb "#111111"
 
 splot x_elec(u, v),  y_elec(u, v),  z_elec(u, v)  with lines ls 1 title "1s Electron Vortex Soliton (e^-)", \
       x_prot(u, v),  y_prot(u, v),  z_prot(u, v)  with lines ls 2 title "Proton Nuclear Locus (p^+)", \
