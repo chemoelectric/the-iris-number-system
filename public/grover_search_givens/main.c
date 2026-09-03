@@ -3,14 +3,13 @@
  * Author: Frédéric Blondin Custer
  *
  * Demonstrates Givens Grover search, vectorized unique uintmax_t
- * scanning, and free-list associative table slot management.
+ * scanning, and sentinel unused slot recycling hashtables.
  */
 
 #include "givens_grover.h"
 #include "givens_grover_table.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #define BENCHMARK_SIZE 65536
 
@@ -20,6 +19,9 @@ static void test_givens_subspace(void)
     double theta;
     size_t opt_k;
     double prob;
+    size_t mult_m;
+    double theta_m;
+    size_t opt_k_m;
 
     space_n = 1048576;
     theta = givens_angle_compute(space_n);
@@ -28,11 +30,17 @@ static void test_givens_subspace(void)
 
     givens_grover_simulate(space_n, opt_k, &prob);
 
+    mult_m = 16384;
+    theta_m = givens_angle_multi_compute(space_n, mult_m);
+    opt_k_m = givens_optimal_multi_steps(space_n, mult_m);
+
     printf("=== Givens Grover Invariant Subspace ===\n");
     printf("Search Space Size N      : %zu\n", space_n);
-    printf("Givens Step Angle Theta  : %.8f rad\n", theta);
-    printf("Optimal Givens Steps k   : %zu\n", opt_k);
-    printf("Target State Probability : %.6f\n\n", prob);
+    printf("Unique Theta (M=1)       : %.8f rad\n", theta);
+    printf("Optimal Steps (M=1)      : %zu\n", opt_k);
+    printf("Target State Probability : %.6f\n", prob);
+    printf("Non-unique Theta (M=%zu): %.8f rad\n", mult_m, theta_m);
+    printf("Optimal Steps (M=%zu)  : %zu\n\n", mult_m, opt_k_m);
 }
 
 static void test_vectorized_search(void)
@@ -78,7 +86,7 @@ static void test_vectorized_search(void)
     }
 }
 
-static void test_associative_table(void)
+static void test_sentinel_hashtable(void)
 {
     givens_table_t tbl;
     bool init_ok;
@@ -91,7 +99,7 @@ static void test_associative_table(void)
     if (!init_ok) {
         printf("Failed to initialize Givens table.\n");
     } else {
-        printf("=== Unique uintmax_t Associative Table ===\n");
+        printf("=== Sentinel (KEY_UNUSED) Associative Table ===\n");
 
         ins_ok = givens_table_insert(&tbl, 1001, 5555);
         ins_ok = givens_table_insert(&tbl, 2002, 7777);
@@ -106,13 +114,13 @@ static void test_associative_table(void)
                found ? "YES" : "NO", val_out);
 
         del_ok = givens_table_delete(&tbl, 2002);
-        printf("Deleted Key 2002 -> Status: %s\n",
+        printf("Deleted Key 2002 (written to UNUSED) -> Status: %s\n",
                del_ok ? "SUCCESS" : "FAILED");
         printf("Count after deletion: %zu\n",
                givens_table_count(&tbl));
 
         ins_ok = givens_table_insert(&tbl, 4004, 1234);
-        printf("Recycled free slot for Key 4004. Count: %zu\n",
+        printf("Reoccupied UNUSED slot for Key 4004. Count: %zu\n",
                givens_table_count(&tbl));
 
         val_out = 0;
@@ -135,7 +143,7 @@ int main(void)
 
     test_givens_subspace();
     test_vectorized_search();
-    test_associative_table();
+    test_sentinel_hashtable();
 
     exit_code = 0;
     return exit_code;

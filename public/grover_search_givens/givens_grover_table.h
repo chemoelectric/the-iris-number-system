@@ -2,11 +2,12 @@
 #define GIVENS_GROVER_TABLE_H
 
 /*
- * Portable Parallel C25 Unique uintmax_t Table & Free List Engine
+ * Portable Parallel C25 Unique uintmax_t Table Engine
  * Author: Frédéric Blondin Custer
  *
- * Implements high-performance unique key storage with free list
- * slot recycling and vector-parallel Givens Grover lookup.
+ * Implements high-performance associative table with direct sentinel
+ * slot recycling (GIVENS_KEY_UNUSED) using vector-parallel Givens
+ * Grover scanning. Eliminates auxiliary free lists.
  */
 
 #include "givens_grover.h"
@@ -18,20 +19,28 @@
 typedef struct {
     uintmax_t key;
     uintmax_t value;
-    bool occupied;
 } givens_slot_t;
 
-/* Structure for the table with free-list recycling */
+/* Structure for contiguous table with sentinel unused recycling */
 typedef struct {
     givens_slot_t *slots;
-    size_t *free_stack;
-    size_t free_count;
+    uintmax_t *key_cache;
     size_t capacity;
     size_t count;
+    uintmax_t unused_sentinel;
 } givens_table_t;
 
 /*
- * Allocates and initializes a new table with given initial capacity.
+ * Allocates and initializes table with given capacity and sentinel.
+ */
+bool givens_table_init_sentinel(
+    givens_table_t *table,
+    size_t initial_capacity,
+    uintmax_t unused_sentinel
+);
+
+/*
+ * Allocates and initializes table with default GIVENS_KEY_UNUSED.
  */
 bool givens_table_init(
     givens_table_t *table,
@@ -39,13 +48,13 @@ bool givens_table_init(
 );
 
 /*
- * Deallocates all resources associated with the table.
+ * Deallocates all memory associated with the table.
  */
 void givens_table_destroy(givens_table_t *table);
 
 /*
- * Inserts or updates a unique key with an associated value.
- * Uses free-list slot recycling for deleted positions.
+ * Inserts or updates a unique key. Empty slots are located via
+ * high-multiplicity vector search for unused_sentinel.
  */
 bool givens_table_insert(
     givens_table_t *table,
@@ -54,8 +63,8 @@ bool givens_table_insert(
 );
 
 /*
- * Looks up a unique key in the table using vector-parallel search.
- * Returns true if key is found and stores associated value in out_val.
+ * Looks up unique key using vector-parallel Givens Grover scan.
+ * Stores value in out_val if found.
  */
 bool givens_table_lookup(
     const givens_table_t *table,
@@ -64,8 +73,8 @@ bool givens_table_lookup(
 );
 
 /*
- * Deletes a unique key and recycles its slot into the free list.
- * Returns true if the key was found and removed.
+ * Deletes unique key by rewriting its slot key to unused_sentinel.
+ * Returns true if key was present and deleted.
  */
 bool givens_table_delete(
     givens_table_t *table,

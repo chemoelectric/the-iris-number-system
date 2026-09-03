@@ -3,7 +3,8 @@
  * Author: Frédéric Blondin Custer
  *
  * Implements digital Grover search dynamics via Givens rotations
- * with thread-free data-parallel vectorization for unique uintmax_t.
+ * with thread-free data-parallel vectorization for unique uintmax_t
+ * and highly non-unique sentinel entries (e.g. empty/unused slots).
  */
 
 #include "givens_grover.h"
@@ -28,6 +29,35 @@ double givens_angle_compute(size_t search_space_size)
     return theta;
 }
 
+double givens_angle_multi_compute(
+    size_t search_space_size,
+    size_t multiplicity
+)
+{
+    double n_val;
+    double m_val;
+    double ratio;
+    double sq_ratio;
+    double asin_val;
+    double theta;
+
+    n_val = (double)search_space_size;
+    m_val = (double)multiplicity;
+    if (m_val > n_val) {
+        m_val = n_val;
+    }
+    if (m_val < 1.0) {
+        m_val = 1.0;
+    }
+
+    ratio = m_val / n_val;
+    sq_ratio = sqrt(ratio);
+    asin_val = asin(sq_ratio);
+    theta = 2.0 * asin_val;
+
+    return theta;
+}
+
 size_t givens_optimal_steps(size_t search_space_size)
 {
     double theta;
@@ -36,6 +66,24 @@ size_t givens_optimal_steps(size_t search_space_size)
     size_t k_steps;
 
     theta = givens_angle_compute(search_space_size);
+    half_pi = 0.5 * PI_CONST;
+    k_float = half_pi / theta;
+    k_steps = (size_t)floor(k_float);
+
+    return k_steps;
+}
+
+size_t givens_optimal_multi_steps(
+    size_t search_space_size,
+    size_t multiplicity
+)
+{
+    double theta;
+    double half_pi;
+    double k_float;
+    size_t k_steps;
+
+    theta = givens_angle_multi_compute(search_space_size, multiplicity);
     half_pi = 0.5 * PI_CONST;
     k_float = half_pi / theta;
     k_steps = (size_t)floor(k_float);
@@ -53,6 +101,25 @@ void givens_rotation_init(
     double sin_val;
 
     theta = givens_angle_compute(search_space_size);
+    cos_val = cos(theta);
+    sin_val = sin(theta);
+
+    rot->theta = theta;
+    rot->cos_theta = cos_val;
+    rot->sin_theta = sin_val;
+}
+
+void givens_rotation_multi_init(
+    givens_rotation_t *rot,
+    size_t search_space_size,
+    size_t multiplicity
+)
+{
+    double theta;
+    double cos_val;
+    double sin_val;
+
+    theta = givens_angle_multi_compute(search_space_size, multiplicity);
     cos_val = cos(theta);
     sin_val = sin(theta);
 
@@ -216,6 +283,33 @@ bool givens_grover_search_array(
 
     if (found && out_index != NULL) {
         *out_index = result_idx;
+    }
+
+    return found;
+}
+
+/*
+ * Non-unique search for first match (e.g. finding empty unused slot).
+ */
+bool givens_grover_search_nonunique(
+    const uintmax_t *keys,
+    size_t count,
+    uintmax_t target,
+    size_t *out_index
+)
+{
+    bool found;
+    size_t match_pos;
+
+    found = givens_grover_search_array(
+        keys,
+        count,
+        target,
+        &match_pos
+    );
+
+    if (found && out_index != NULL) {
+        *out_index = match_pos;
     }
 
     return found;
