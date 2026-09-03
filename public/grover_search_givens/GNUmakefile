@@ -1,20 +1,26 @@
-CC ?= gcc
-CFLAGS ?= -O3 -std=c2x -Wall -Wextra -pedantic -march=native -mavx512f
-LDFLAGS ?= -lm
+.DELETE_ON_ERROR:
+.DEFAULT_GOAL := all
 
-SRCS = givens_grover.c givens_grover_table.c main.c
-OBJS = $(SRCS:.c=.o)
-TARGET = grover_search_c
+CC = gcc
+CFLAGS = -O3 -std=gnu23 -march=native -mavx512f
+LDFLAGS = -lm
 
-all: $(TARGET)
+grover_search_c_SRCS =
+grover_search_c_SRCS += givens_grover.c
+grover_search_c_SRCS += givens_grover_table.c
+grover_search_c_SRCS += main.c
+grover_search_c_SRCS += givens_grover.h
+grover_search_c_SRCS += givens_grover_table.h
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+grover_search_c_OBJS = \
+	$(patsubst %.c,%.o,$(filter %.c,$(grover_search_c_SRCS)))
 
-%.o: %.c givens_grover.h givens_grover_table.h
-	$(CC) $(CFLAGS) -c $< -o $@
+.PHONY: clean
+clean:: ; -rm -f $(grover_search_c_OBJS)
 
-clean:
-	rm -f $(OBJS) $(TARGET) *.o
+.PHONY: all
+all:: grover_search_c
+clean:: ; -rm -f grover_search_c
 
-.PHONY: all clean
+grover_search_c: $(grover_search_c_OBJS)
+	$(CC) $(CFLAGS) $(filter %.o %.a %.so,$(^)) $(LDFLAGS) -o $(@)
