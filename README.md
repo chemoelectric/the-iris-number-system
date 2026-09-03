@@ -143,3 +143,10 @@ The inference engine operates strictly within the Counting-Iris number system:
 ├── package.json                  # Dependencies & execution scripts
 └── README.md                     # Documentation (kept in sync)
 ```
+
+---
+
+## ⚖️ Code of Ethics
+
+This project, its computational tools, and its mathematical developments strictly adhere to and comply with the **ACM Code of Ethics and Professional Conduct** (Association for Computing Machinery, [https://www.acm.org/diversity-inclusion/code-of-ethics](https://www.acm.org/diversity-inclusion/code-of-ethics)).
+
