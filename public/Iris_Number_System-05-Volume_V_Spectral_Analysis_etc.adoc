@@ -2549,7 +2549,7 @@ Let an unstructured database of \( N \) discrete records be stored within a phys
 
 *Proof:*
 
-. **Spatial Extent and Radius**: The total physical volume of the database satisfies \( V = \int_\mathcal{D} dV \ge N v_0 \). In \( d \) Euclidean spatial dimensions, the minimal bounding radius \( R \) enclosing volume \( V \) satisfies \( V = C_d R^d \ge N v_0 \), where \( C_d = \pi^{d/2} / \Gamma(d/2 + 1) \). Solving for \( R \):
+. **Spatial Extent and Radius**: The total physical volume of the database satisfies \( V = \int _ { \mathcal{D} } dV \ge N v_0 \). In \( d \) Euclidean spatial dimensions, the minimal bounding radius \( R \) enclosing volume \( V \) satisfies \( V = C_d R^d \ge N v_0 \), where \( C_d = \pi^{d/2} / \Gamma(d/2 + 1) \). Solving for \( R \):
    \[ R \ge \left( \frac{v_0}{C_d} \right)^{1/d} N^{1/d} \]
 
 . **Finite Propagation Latency**: Every Grover iteration requires evaluating an oracle function across the dataset and executing amplitude inversion about the global mean. In any physical realization, information must propagate from the central controller to the outermost memory units situated at distance \( R \) and return. Because signal velocity is bounded by \( c \), the physical round-trip propagation time per iteration satisfies:
