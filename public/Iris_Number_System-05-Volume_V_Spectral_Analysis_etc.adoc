@@ -2332,6 +2332,144 @@ In high-dimensional digital computing systems, global Householder reflections re
 * **Exact Isometry and Numerical Stability**: Elementary Givens rotations are strictly orthogonal matrices (\( G^T G = I \)). In discrete \( m \)-resolution fixed-point arithmetic, Givens rotations preserve vector norm \( \| v \|_2 = 1 \) strictly across arbitrary step counts, eliminating numerical drift and rounding divergence.
 * **Zero-Communication Granular Parallelism**: Because each Givens rotation updates only two coordinate registers \( ( v_i , v_j ) \), operations on disjoint coordinate pairs execute concurrently without shared-memory lock contention, global summation barriers, or pipeline stalls.
 
+=== The Fundamental Duality: Abstract 2D Planar Geometry versus Physical Memory Search
+
+To understand digital Grover search without mystical obfuscation, one must draw a sharp, uncompromising distinction between two entirely different computational activities that are routinely conflated in conventional literature:
+
+1. **Part (1): The 2D Givens Rotation Angle Calculator**: Calculating the theoretical angle parameter \( \theta = 2 \arcsin ( \sqrt{M / N} ) \) and the optimal step count \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N / M} \rfloor \) within a 2D Euclidean subspace.
+2. **Part (2): The Physical Memory Array Search**: Locating a marked data record, specific numerical key, or empty sentinel slot within an unstructured array physically residing in hardware memory registers, dynamic RAM, or solid-state storage.
+
+Once these two activities are extentionally examined, a stark realization emerges: **Part (1) performs zero search operations upon the physical database**. It does not inspect a single memory cell, does not read a single data word, and does not locate any information. It is purely an abstract mathematical calculation evaluated over two floating-point numbers (the space size \( N \) and the target multiplicity \( M \)).
+
+Furthermore, why can a digital computer not execute Part (1) directly as an iterative state-vector algorithm to search physical RAM? The answer lies in the catastrophic operational cost of software state-vector simulation:
+
+* In an unstructured database of \( N \) records, if one allocates a state vector of \( N \) coordinate amplitudes \( \mathbf{v} = ( v_0 , v_1 , \dots , v_{N-1} ) \) in computer memory, each oracle iteration must inspect every memory word to locate target index \( x^\ast \) and negate its amplitude \( v_{x^\ast} \leftarrow - v_{x^\ast} \). This inspection requires \( \mathcal{O}(N) \) discrete memory read operations.
+* Next, the diffusion operator (inversion about the mean) requires summing all \( N \) amplitudes to compute the scalar mean \( \bar{v} = \frac{1}{N} \sum_{i=0}^{N-1} v_i \), and then rewriting every coordinate \( v_i \leftarrow 2 \bar{v} - v_i \). This requires another \( \mathcal{O}(N) \) memory reads, additions, and writes.
+* Because Grover's method requires \( k_\text{opt} \approx \frac{\pi}{4} \sqrt{N} \) sequential iterations, the total computational work of a software state-vector simulation is:
+\[ T_\text{simulation} = k_\text{opt} \cdot \mathcal{O}(N) = \mathcal{O}(N \sqrt{N}) \]
+
+A computational procedure that requires \( \mathcal{O}(N^{1.5}) \) work to search a list of \( N \) items is vastly slower, more energy-intensive, and less efficient than a straightforward classical sequential scan, which searches the same list in \( \mathcal{O}(N) \) operations!
+
+Consequently, on any physical computing device, Part (1) serves exclusively as a closed-form geometric model that predicts how a fictitious planar state vector would rotate under idealized Householder reflections. When an actual software engine or hardware device is tasked with finding an item in memory, Part (2) is executed: and Part (2) is, in unadorned physical reality, an **unrolled brute-force parallel vector scan**.
+
+=== Physical Limits of Database Search: Finite Propagation Speed \( c \) and Spatial Extent
+
+Conventional expositions of Grover’s algorithm assert that searching an unsorted database of \( N \) elements requires only \( \mathcal{O}(\sqrt{N}) \) time steps, whereas any classical algorithm must require \( \mathcal{O}(N) \) time steps. This assertion is widely touted as an insurmountable “quantum supremacy.”
+
+However, this theoretical claim rests upon a severe physical defect: it treats the entire database and the oracle evaluator as zero-dimensional mathematical points possessing zero spatial extent, between which physical signals propagate at infinite speed. Once we restore physical geometry, finite spatial dimensions, and the finite speed of electromagnetic influences \( c \) to the analysis, the supposed quadratic acceleration evaporates entirely.
+
+==== The Non-Zero Spatial Extent of Physical Data Storage
+
+A database containing \( N \) discrete items cannot occupy zero space. In physical reality, each item (whether represented by flip-flops, capacitor charges in DRAM, magnetic domains, trapped ions, or atomic nuclear states) occupies a finite physical volume \( v_0 > 0 \).
+
+1. **Three-Dimensional Physical Volume**: If \( N \) discrete storage cells are packed into a three-dimensional spatial region, the total physical volume satisfies \( V \ge N v_0 \). For a spherical or cubical packaging geometry, the physical spatial radius \( R_\text{3D} \) from the central controller or processing core to the outermost memory elements scales as the cube root of \( N \):
+\[ R_\text{3D} = \left( \frac{3 V}{4 \pi} \right)^{1/3} \ge \left( \frac{3 v_0}{4 \pi} \right)^{1/3} N^{1/3} \propto N^{1/3} \]
+
+2. **Two-Dimensional Planar Substrate**: If the memory cells are fabricated on a planar silicon die, multichip substrate, or printed circuit board, the surface area satisfies \( A \ge N a_0 \), where \( a_0 \) is the finite area per cell. The spatial radius \( R_\text{2D} \) scales as the square root of \( N \):
+\[ R_\text{2D} = \left( \frac{A}{\pi} \right)^{1/2} \ge \left( \frac{a_0}{\pi} \right)^{1/2} N^{1/2} \propto N^{1/2} \]
+
+==== Finite Propagation Velocity of Electromagnetic Influences
+
+No physical influence, signal, or wave can propagate with infinite speed. Electromagnetic influences propagate at finite speed—in free space at the speed of electromagnetic waves \( c \), and across semiconductor transmission interconnects at propagation velocity \( v = c / \sqrt{\epsilon_r} \), which is typically \( 0.5 c \) to \( 0.7 c \).
+
+Every step of Grover’s algorithm requires two global operations:
+* **The Oracle Evaluation**: A query signal must travel from the central controller to the storage location of each element, evaluate whether that element matches the target, and transmit the result back.
+* **The Diffusion Operator (Inversion About the Mean)**: The amplitudes across all \( N \) storage locations must be globally coupled or summed to establish the arithmetic mean \( \bar{v} = \frac{1}{N} \sum v_i \), and the updated mean value must be redistributed across the entire physical array.
+
+Because the outermost storage elements are situated at distance \( R \) from the center, a single round-trip signal propagation across the database requires a minimum finite time delay:
+\[ \tau_\text{step, 3D} \ge \frac{2 R_\text{3D}}{c} \propto \frac{N^{1/3}}{c} \]
+\[ \tau_\text{step, 2D} \ge \frac{2 R_\text{2D}}{c} \propto \frac{N^{1/2}}{c} \]
+
+==== Physical Wall-Clock Duration of Grover Search
+
+Grover’s algorithm is fundamentally a **sequential** iterative procedure. Iteration \( k + 1 \) cannot commence until iteration \( k \) has completed its phase inversion and mean diffusion across all coordinates. Therefore, the total physical elapsed wall-clock time \( T_\text{Grover} \) is the product of the number of sequential iterations \( k_\text{opt} \propto N^{1/2} \) and the finite physical duration of each iteration \( \tau_\text{step} \):
+
+1. **In Three-Dimensional Space**:
+\[ T_\text{Grover, 3D} = k_\text{opt} \cdot \tau_\text{step, 3D} \propto N^{1/2} \cdot N^{1/3} = N^{5/6} = \mathcal{O}(N^{5/6}) \]
+
+2. **On a Two-Dimensional Planar Chip**:
+\[ T_\text{Grover, 2D} = k_\text{opt} \cdot \tau_\text{step, 2D} \propto N^{1/2} \cdot N^{1/2} = N^1 = \mathcal{O}(N) \]
+
+This is a profound physical result:
+* On a standard two-dimensional planar electronic chip or multichip substrate, Grover’s algorithm requires \( \mathcal{O}(N) \) physical time. The theoretical quadratic speedup is **completely eliminated by the finite propagation speed of electromagnetic signals**. It achieves exactly the same asymptotic scaling as an ordinary classical linear scan!
+* In three-dimensional space, the physical execution time scales as \( \mathcal{O}(N^{5/6}) \approx \mathcal{O}(N^{0.833}) \), reducing the theoretical \( N^{0.5} \) speedup to a minor fractional exponent.
+
+==== Physical Superiority of Classical Associative Parallel Hardware (CAM)
+
+Now consider the alternative: suppose we construct a classical parallel search engine within the exact same physical spatial volume \( V \propto N \). Instead of executing an abstract sequence of rotations, we equip each storage cell with a local 1-word comparator—an architecture known as Content-Addressable Memory (CAM) or an associative comparator mesh.
+
+To search for a target key in this classical associative array:
+1. **Broadcast Phase**: The target key is broadcast from the central controller to all \( N \) storage cells via an \( H \)-tree distribution network. Because the signal travels to radius \( R \), the broadcast takes finite propagation time \( \tau_\text{broadcast} \propto N^{1/3} \) in 3D (or \( N^{1/2} \) in 2D).
+2. **Local Comparison Phase**: Every storage cell compares its local stored word against the broadcast key simultaneously in parallel. This is a purely local electrodynamic transition requiring a single gate delay \( \tau_\text{gate} = \mathcal{O}(1) \), taking less than 10 picoseconds in modern silicon.
+3. **Priority Encoder Response Phase**: The match signal travels back through a balanced binary priority encoder tree of depth \( \log_2 N \), taking time \( \tau_\text{encode} \propto \log N \).
+
+The total physical wall-clock time of the classical parallel search is:
+\[ T_\text{CAM, 3D} = \mathcal{O}(N^{1/3} + \log N) = \mathcal{O}(N^{1/3}) \]
+\[ T_\text{CAM, 2D} = \mathcal{O}(N^{1/2} + \log N) = \mathcal{O}(N^{1/2}) \]
+
+Notice the decisive comparison:
+\[ \mathcal{O}(N^{1/3}) \ll \mathcal{O}(N^{5/6}) \quad \text{(in 3D space)} \]
+\[ \mathcal{O}(N^{1/2}) \ll \mathcal{O}(N) \quad \text{(on a 2D planar substrate)} \]
+
+When physical dimensions and finite signal velocities are respected, **classical parallel associative hardware is asymptotically faster than Grover's algorithm in every spatial dimension**. Grover’s algorithm appears superior in conventional literature only because theorists artificially grant the Grover oracle the magical ability to evaluate an entire spatial volume in \( \mathcal{O}(1) \) time while penalizing classical hardware with sequential step-by-step memory access.
+
+=== Microarchitectural Execution of Memory Search: Innermost Loop Unrolling and m4 Macro Generation
+
+On modern general-purpose microprocessors, unstructured database searches (such as scanning table slots, looking up keys, or identifying empty sentinel entries) are executed on linear arrays in cache and main memory. To achieve maximum throughput, the programmer must confront the realities of CPU pipelines, cache line geometries, and loop structure.
+
+==== The Loop Hierarchy: Outer Control versus Innermost Data Traversal
+
+In any structured search implementation—whether traversing partitioned tables, hash buckets, multi-dimensional matrix blocks, or segmented memory buffers—the code is organized into a hierarchy of nested loops:
+* **Outer Loops**: Manage coarse-grained iteration across blocks, partitions, memory pages, or hash buckets.
+* **The Innermost Loop**: Performs the direct, fine-grained element-by-element or vector-by-vector comparison across contiguous physical memory words.
+
+==== Why Only the Innermost Loop Needs Unrolling
+
+A critical engineering insight governs the optimization of search loops: **virtually 100% of the execution time, branch evaluations, cache transactions, and arithmetic operations occur exclusively inside the innermost loop**.
+
+Consider an unstructured search over \( N = 1{,}000{,}000 \) words partitioned into 1,000 blocks of 1,000 words each:
+* The outer loop executes at most 1,000 times. Its loop control instructions (incrementing a block index, testing the boundary, branching) account for fewer than 0.1% of all executed instructions.
+* The innermost loop executes up to 1,000,000 times, performing 1,000,000 memory reads and 1,000,000 key comparisons.
+
+Unrolling the outer loop provides zero measurable performance benefit: it does not eliminate any memory bus transactions, does not reduce comparator stall cycles, and merely bloats the binary code size. Conversely, unrolling the **innermost loop** directly eliminates hundreds of thousands of branch evaluations, enables contiguous memory burst reads, and saturates the CPU's superscalar execution ports. Therefore, in any search engine, **only the innermost loop needs unrolling**.
+
+==== The Fragility of Compiler Loop Unrolling
+
+Contemporary optimizing compilers (such as GCC and Clang under `-O3` or `-funroll-loops`) possess automated loop unrolling heuristics. However, relying on the compiler to optimize search loops is deeply unsatisfactory for three structural reasons:
+
+1. **Inability to Handle Outer Loops**: Compilers are strictly constrained in loop nest transformations; they almost never unroll outer loops when bounds are non-constant or when pointer aliasing cannot be formally disproven at compile time.
+2. **Failure on Early-Exit Search Loops**: An unstructured search loop is not a simple definite iteration that runs to a fixed upper limit; it must exit early the instant a matching key or sentinel slot is found. Compilers are notoriously timid when encountering loops with conditional early-exit breaks (`if (array[i] == target) break;`). Their cost models often conclude that generating complex multi-exit epilogues or speculative vector code creates excessive code bloat, leading the compiler to leave the loop unrolled by a meager factor of 2, or unrolled not at all.
+3. **Suboptimal Vector Alignment and Register Allocation**: When the compiler attempts automatic vectorization on search loops with early exits, it frequently introduces scalar fallback branches or misjudges the target processor's vector execution widths, resulting in pipeline bubbles and branch mispredictions.
+
+==== Deterministic Code Generation via m4 Macro Processing
+
+To achieve maximum microarchitectural throughput without relying on fragile compiler heuristics, the software engineer uses a dedicated macro preprocessor, such as `m4`. 
+
+By writing macro templates in `m4`, loop unrolling is performed deterministically at source code generation time:
+* The `m4` macro expands the innermost search loop into an explicit sequence of straight-line C or assembly statements.
+* The programmer specifies the exact unroll factor (e.g., 8-way, 16-way, or 32-way) to match the physical vector registers and cache line width of the target architecture.
+* For modern 64-bit processors with 512-bit vector capabilities (such as the AMD Zen 5 architecture featuring dual 512-bit vector execution pipelines), each 64-byte cache line holds exactly 8 `uintmax_t` (64-bit) words.
+* An 8-way unrolled innermost loop generated via `m4` inspects a complete 512-bit vector block in a single straight-line pass without backward branch instructions.
+
+When compiled, this straight-line sequence maps directly to hardware vector comparison instructions (or pipelined superscalar integer comparisons) operating without loop counter increments, without loop condition evaluations, and without backward branch mispredictions. Memory reads are streamed at full bus bandwidth (exceeding 50 to 100 GB/s on modern DDR5/LPDDR5 memory channels), checking keys across tens of thousands of elements in sub-nanosecond intervals per item.
+
+This demonstrates why the practical implementation of search in physical computing is a deterministic, unrolled brute-force parallel vector scan, completely distinct from the 2D planar angle rotation modeled in Part (1).
+
+==== Structured Single-Entry Single-Exit Search Loops and the Generic Ada Sentinel Architecture for Typesetting
+
+An alternative approach to handling the early-exit dilemma in search loops without relying on fragile compiler break heuristics is the structured elimination of early exits. By replacing unstructured `break` statements with unified single-entry, single-exit loop continuation predicates (e.g. `while not found and then probes < max_probes loop`), the software engineer eliminates irregular control-flow graph (CFG) edges. This structured formulation allows the optimizing compiler to perform software pipelining and vector register allocation without generating speculative early-break recovery code.
+
+In the Ada 2022 implementation of the Iris typesetter, this architecture is formalized in the generic package `iris_sentinel_hash` (`iris_sentinel_hash.ads` and `iris_sentinel_hash.adb`). The package is completely parameterized to accommodate diverse typographic and linguistic tables:
+
+1. **Arbitrary Key and Value Types**: Parameterized over private types `key_type` and `value_type`, allowing the typesetter to index character codes, composite glyph pairs, or macro identifiers.
+2. **Flexible Hash Word Sizes**: Parameterized over modular integer types `type hash_type is mod <>`, supporting 16-bit, 32-bit, or 64-bit hash digests (`interfaces.unsigned_16`, `interfaces.unsigned_32`, `interfaces.unsigned_64`).
+3. **Sentinel-Based Unused Slot Identification**: Parameterized by `sentinel_key` and `sentinel_value`. Empty slots are identified directly by the sentinel key, allowing open-addressing probe chains to terminate immediately upon encountering a vacant cell without maintaining auxiliary occupancy bitmasks or heap-allocated collision chains.
+4. **Hardware-Aligned Vector Block Sizes**: Parameterized by `block_size` (defaulting to 8 words, matching 512-bit vector registers and 64-byte cache lines on architectures such as AMD Zen 5).
+5. **Deterministic Capacity Bounds**: Parameterized by `max_table_size`, enabling zero-heap static table allocation on the stack or in global data segments.
+6. **Strict Structured Control and Complexity Compliance**: Every subprogram enforces single-entry, single-exit control flow using `while ... loop ... end loop;` exclusively, with modified McCabe cyclomatic complexity strictly bounded by \( \le 10 \) and lines bounded by 72 characters.
+
+In typographic processing—where glyph advance widths, left-side bearings, optical bounding boxes, ligature substitutions, kerning adjustments, and hyphenation patterns are queried millions of times during paragraph formatting—this sentinel-based block architecture streams table lookups at the hardware memory bus bandwidth.
+
 === Physical Mechanical and Fluid Dynamics Analogies
 
 ==== Dual-Gimbal Optical Reflection Analogy
@@ -2391,6 +2529,43 @@ In an unstructured database search over index set \( S = \{ 0 , 1 , \dots , N - 
 2. **Isometry and Norm Preservation**: For any Givens matrix \( G ( i , j , \theta ) \), the submatrix acting on components \( ( v_i , v_j ) \) is \( \begin {pmatrix} \cos \theta & - \sin \theta \\ \sin \theta & \cos \theta \end {pmatrix} \). Computing the updated sum of squares:
    \[ ( v'_i ) ^ 2 + ( v'_j ) ^ 2 = ( v_i \cos \theta - v_j \sin \theta ) ^ 2 + ( v_i \sin \theta + v_j \cos \theta ) ^ 2 = v_i ^ 2 ( \cos^2 \theta + \sin^2 \theta ) + v_j ^ 2 ( \sin^2 \theta + \cos^2 \theta ) = v_i ^ 2 + v_j ^ 2 \]
    Because all other coordinates remain unchanged, \( \| G v \|_2 = \| v \|_2 \). The product of elementary Givens rotations is therefore strictly isometric. \( \square \)
+====
+
+[#theorem-physical-database-search-bounds]
+[THEOREM]
+.Theorem: Physical Spatial Bounds, Electromagnetic Propagation Limits, and Classical Parallel Superiority over State-Vector Search
+====
+Let an unstructured database of \( N \) discrete records be stored within a physical spatial domain \( \mathcal{D} \subset \mathbb{R}^d \) where each storage unit occupies non-zero minimal volume \( v_0 > 0 \), and let all physical influences propagate at finite speed not exceeding \( c \).
+
+1. **Physical Grover Wall-Clock Lower Bound**: Any sequential iterative search algorithm requiring \( k = \Omega ( \sqrt{N} ) \) global query and diffusion steps requires physical elapsed wall-clock time bounded from below by:
+   \[ T_\text{Grover} = \Omega ( N^{\frac{1}{2} + \frac{1}{d}} ) \]
+   yielding \( T_\text{Grover, 3D} = \Omega ( N^{5/6} ) \) in three dimensions (\( d = 3 \)), and \( T_\text{Grover, 2D} = \Omega ( N ) \) on a planar substrate (\( d = 2 \)). The theoretical quadratic speedup is strictly eliminated on planar microelectronic devices.
+
+2. **Classical Parallel Associative Search Superiority**: A classical physical hardware architecture employing local comparator units (Content-Addressable Memory) distributed across the same spatial domain \( \mathcal{D} \) searches the database in physical wall-clock time:
+   \[ T_\text{CAM} = \mathcal{O} ( N^{1/d} + \log N ) \]
+   yielding \( T_\text{CAM, 3D} = \mathcal{O} ( N^{1/3} ) \) in three dimensions, and \( T_\text{CAM, 2D} = \mathcal{O} ( N^{1/2} ) \) in two dimensions. Classical parallel hardware is strictly asymptotically faster than state-vector Grover search across all physical dimensions \( d \ge 1 \).
+
+3. **Software Simulation Inefficiency**: Simulating the \( N \)-dimensional state-vector evolution of Grover search on a classical digital computer requires updating \( N \) coordinate amplitudes across \( \mathcal{O}(\sqrt{N}) \) iterations, incurring total computational work \( \mathcal{O}(N \sqrt{N}) \). This is strictly slower than a direct classical sequential scan (\( \mathcal{O}(N) \)) or unrolled vector-parallel memory scan (\( \mathcal{O}(N/P) \)).
+
+*Proof:*
+
+. **Spatial Extent and Radius**: The total physical volume of the database satisfies \( V = \int_\mathcal{D} dV \ge N v_0 \). In \( d \) Euclidean spatial dimensions, the minimal bounding radius \( R \) enclosing volume \( V \) satisfies \( V = C_d R^d \ge N v_0 \), where \( C_d = \pi^{d/2} / \Gamma(d/2 + 1) \). Solving for \( R \):
+   \[ R \ge \left( \frac{v_0}{C_d} \right)^{1/d} N^{1/d} \]
+
+. **Finite Propagation Latency**: Every Grover iteration requires evaluating an oracle function across the dataset and executing amplitude inversion about the global mean. In any physical realization, information must propagate from the central controller to the outermost memory units situated at distance \( R \) and return. Because signal velocity is bounded by \( c \), the physical round-trip propagation time per iteration satisfies:
+   \[ \tau_\text{step} \ge \frac{2 R}{c} \ge \frac{2}{c} \left( \frac{v_0}{C_d} \right)^{1/d} N^{1/d} \]
+   Because Grover's algorithm is strictly sequential—iteration \( k+1 \) depends causally on the coherent state generated by iteration \( k \)—the total physical wall-clock duration is:
+   \[ T_\text{Grover} = \sum_{k=1}^{k_\text{opt}} \tau_\text{step} \ge k_\text{opt} \cdot \tau_\text{step} \ge \left( \frac{\pi}{4} \sqrt{N} \right) \left[ \frac{2}{c} \left( \frac{v_0}{C_d} \right)^{1/d} N^{1/d} \right] = \Omega ( N^{\frac{1}{2} + \frac{1}{d}} ) \]
+   For \( d = 3 \), \( \frac{1}{2} + \frac{1}{3} = \frac{5}{6} \implies T_\text{Grover, 3D} = \Omega ( N^{5/6} ) \).
+   For \( d = 2 \), \( \frac{1}{2} + \frac{1}{2} = 1 \implies T_\text{Grover, 2D} = \Omega ( N ) \). The speedup over classical linear scanning is identically zero on a planar chip.
+
+. **Associative Hardware Scaling**: In a classical Content-Addressable Memory, the search key is broadcast across the spatial grid via a balanced distribution tree in time \( \tau_\text{broadcast} = R / c \propto N^{1/d} \). Each cell performs a local comparison in a single gate delay \( \tau_\text{gate} = \mathcal{O}(1) \). The match signal is collected through a balanced binary priority encoder tree of depth \( \log_2 N \), taking time \( \tau_\text{encode} = \mathcal{O}(\log N) \). The total time is \( T_\text{CAM} = \mathcal{O}(N^{1/d} + \log N) \). Comparing exponents:
+   \[ \frac{1}{d} < \frac{1}{2} + \frac{1}{d} \quad \forall d \ge 1 \]
+   Specifically, \( N^{1/3} \ll N^{5/6} \) for \( d = 3 \), and \( N^{1/2} \ll N \) for \( d = 2 \). Classical parallel hardware in the same physical space strictly dominates Grover search.
+
+. **Simulation Work Complexity**: Representing the state vector requires storing \( N \) real amplitudes \( v_i \). Evaluating the oracle in software requires testing each element, requiring \( \mathcal{O}(N) \) operations. Computing the arithmetic mean \( \bar{v} \) and updating each coordinate \( v_i \leftarrow 2 \bar{v} - v_i \) requires \( 2N \) arithmetic operations. For \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N} \rfloor \) iterations:
+   \[ W_\text{total} = k_\text{opt} \cdot \mathcal{O}(N) = \mathcal{O}(N \sqrt{N}) \]
+   Because \( \mathcal{O}(N \sqrt{N}) > \mathcal{O}(N) \), simulating state-vector Grover search on digital hardware is strictly inferior to a classical sequential or vector-parallel scan. \( \square \)
 ====
 
 === Worked Example Problems in Digital Search Analysis
@@ -2849,15 +3024,28 @@ While standard textbook presentations formulate Grover’s algorithm using dense
    Grover iteration is fundamentally a special case of optimal polynomial approximation. By applying an interleaved sequence of parameterized 2D phase rotations \( \vec { \phi } = ( \phi _ 1 , \phi _ 2 , \dots , \phi _ d ) \) and operator reflections, the composite operator transforms the system matrix spectrum according to an optimal minimax Chebyshev polynomial \( T _ d ( x ) \). While contemporary literature frequently terms this method “quantum signal processing,” we designate and formulate it more accurately as **Chebyshev spectral filtering**. This purely classical polynomial matrix technique allows arbitrary spectral shaping, optimal Hamiltonian simulation, and matrix inversion with minimal ripple and optimal minimax convergence bounds.
 
 ==== Fastest Parallel Digital Implementation of State-Vector Search
-To execute state-vector search on digital hardware with maximum throughput, we design a dedicated **Tree-Pipelined SIMD Systolic Array**:
 
-* **Processing Architecture**: An array of \( N \) elementary integer or fixed-point arithmetic processing elements (PEs), each storing a single coordinate amplitude \( v_i \) in local registers.
+To execute state-vector search on digital hardware with maximum throughput, one must distinguish between two fundamentally distinct computational paradigms:
 
-* **Parallel Oracle Step**: In a single clock cycle, the target index \( x ^ { \ast } \) is decoded across the PE array, flipping the sign bit of the target register (\( v_{x ^ { \ast } } \leftarrow - v_{x ^ { \ast } } \)) with zero communication overhead.
+1. **Hardware-Emulated State-Vector Systolic Arrays**: When dedicated processing elements (PEs) physically store coordinate amplitudes \( v_i \), a **Tree-Pipelined SIMD Systolic Array** executes the abstract Householder reflections:
+   * **Processing Architecture**: An array of \( N \) elementary integer or fixed-point arithmetic PEs, each storing a single coordinate amplitude \( v_i \) in local registers.
+   * **Parallel Oracle Step**: In a single clock cycle, the target index \( x ^ { \ast } \) is decoded across the PE array, flipping the sign bit of the target register (\( v_{x ^ { \ast } } \leftarrow - v_{x ^ { \ast } } \)) with zero communication overhead.
+   * **Pipelined Binary Adder Tree for Global Inversion**: To perform inversion about the mean without bus contention, the PEs feed a binary adder tree of depth \( \log_2 N \). The tree computes the sum \( S = \sum_{i=0}^{N-1} v_i \) in \( \log_2 N \) pipelined clock cycles. A single bit-shift calculates the scaled mean \( 2 \bar{v} = 2 S / N \), which is broadcast back along a balanced binary distribution tree. Each PE then computes \( v_i \leftarrow 2 \bar{v} - v_i \) in parallel during a single clock cycle.
+   * **Linear Systolic Mesh Alternative**: For ultra-large grids where global distribution wires introduce RC propagation delays, the PEs are arranged in a 1D or 2D mesh communicating strictly via nearest-neighbor contact. Pairwise Givens rotations rotate adjacent channels concurrently in an odd-even transposition pattern, achieving continuous pipelined throughput with zero global broadcast lines.
 
-* **Pipelined Binary Adder Tree for Global Inversion**: To perform inversion about the mean without bus contention, the PEs feed a binary adder tree of depth \( \log_2 N \). The tree computes the sum \( S = \sum_{i=0}^{N-1} v_i \) in \( \log_2 N \) pipelined clock cycles. A single bit-shift calculates the scaled mean \( 2 \bar{v} = 2 S / N \), which is broadcast back along a balanced binary distribution tree. Each PE then computes \( v_i \leftarrow 2 \bar{v} - v_i \) in parallel during a single clock cycle.
+2. **The Physical Reality of Searching Digital Computer Memory**:
+   When an application running on general-purpose digital hardware (such as a CPU or GPU) must search an unstructured array in physical memory (RAM or cache), software simulation of the state-vector Grover algorithm is catastrophically inefficient. Storing \( N \) amplitudes in memory requires \( \mathcal{O}(N) \) read-modify-write operations per iteration; over \( \mathcal{O}(\sqrt{N}) \) iterations, this incurs \( \mathcal{O}(N \sqrt{N}) \) total operations—vastly worse than a simple classical linear scan of \( \mathcal{O}(N) \).
+   
+   Therefore, actual physical memory search on digital processors is, in unadorned physical fact, a **brute-force parallel vector scan**. The 2D Givens rotation equations serve purely as an abstract geometric calculation of the planar angle \( \theta \) and step count \( k_\text{opt} \), performing zero work on memory cells.
 
-* **Linear Systolic Mesh Alternative**: For ultra-large grids where global distribution wires introduce RC propagation delays, the PEs are arranged in a 1D or 2D mesh communicating strictly via nearest-neighbor contact. Pairwise Givens rotations rotate adjacent channels concurrently in an odd-even transposition pattern, achieving continuous pipelined throughput with zero global broadcast lines.
+3. **Microarchitectural Execution via Innermost Loop Unrolling and m4 Macro Generation**:
+   * **Loop Hierarchy**: Memory searches operate on nested loops (outer loops iterating over partitions, hash buckets, or pages; the innermost loop traversing contiguous memory words).
+   * **Why Only the Innermost Loop Needs Unrolling**: Outer loops step infrequently (e.g. once every thousands of iterations), contributing less than 0.1% of instructions. Virtually 100% of memory bus traffic, ALU comparisons, and pipeline stall cycles occur inside the innermost loop. Unrolling outer loops provides zero benefit and bloats the instruction cache; only the innermost loop requires unrolling.
+   * **Compiler Unrolling Fragility**: Optimizing compilers (such as GCC and Clang) can only unroll innermost loops, but their heuristics routinely fail on search loops because the loop must exit early upon finding the target (`if (array[i] == target) break;`). Compilers often disable unrolling entirely or select a meager factor of 2.
+   * **Deterministic m4 Macro Generation**: By writing `m4` macro templates, the innermost search loop is deterministically unrolled at code-generation time into straight-line comparison instructions. Matching the physical vector width of modern architectures (such as AMD Zen 5 with dual 512-bit vector execution pipelines), an 8-way unrolled block evaluates 8 `uintmax_t` (64-bit) words (a complete 64-byte cache line) in a single straight-line vector pass without backward branches. This saturates memory bus bandwidth (50 to 100+ GB/s), locating keys or empty sentinel slots (`GIVENS_KEY_UNUSED`) in sub-nanosecond time per entry.
+
+4. **Physical Propagation Bounds and Classical CAM Dominance**:
+   As proven in Theorem xref:theorem-physical-database-search-bounds[**Physical Spatial Bounds, Electromagnetic Propagation Limits, and Classical Parallel Superiority over State-Vector Search**], once finite spatial dimensions (\( R \propto N^{1/3} \) in 3D, \( R \propto N^{1/2} \) in 2D) and the finite speed of electromagnetic influences \( c \) are accounted for, Grover's algorithm takes \( \mathcal{O}(N^{5/6}) \) physical time in 3D and \( \mathcal{O}(N) \) on a planar chip—completely eliminating the quadratic speedup. Meanwhile, classical parallel associative hardware (Content-Addressable Memory) in the exact same physical space completes the search in \( \mathcal{O}(N^{1/3}) \) in 3D and \( \mathcal{O}(N^{1/2}) \) in 2D, strictly outperforming Grover's algorithm in every physical spatial dimension.
 
 === Shor’s Algorithm: Integer Factorization via Discrete Spectral Order-Finding
 
@@ -3268,6 +3456,8 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-householder-reflection-properties[**Theorem: Algebraic and Geometric Properties of Real Householder Reflections**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Fundamentals of Householder Reflections in Real Vector Spaces*
 * xref:theorem-digital-grover-numerical-householder[**Theorem: Digital Grover Iteration as Householder Reflection Power Iteration in Real 2D Subspaces**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
 * xref:theorem-digital-grover-givens-rotation-equivalence[**Theorem: Equivalence of Digital Grover Search to Localized Givens Rotations and Isometric Subspace Transformations**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
+* xref:theorem-physical-database-search-bounds[**Theorem: Physical Spatial Bounds, Electromagnetic Propagation Limits, and Classical Parallel Superiority over State-Vector Search**]  -- Chapter: *Digital Grover Search as a Numerical Iterative Method* | Section: *Formal Postulates and Theorems of Digital Search Analysis*
 * xref:theorem-physical-equivalence-quantum-computing-coupled-oscillators[**Theorem: Physical Equivalence of Quantum Computing to Classical Coupled Oscillators**]  -- Chapter: *What “Quantum” Computers Really Are and How a Hobbyist Can Make Them at Home* | Section: *Formal Postulates and Theorems of Classical State-Vector Computing*
 * xref:theorem-hobbyist-state-vector-scalability-and-noise-floor[**Theorem: Hobbyist State-Vector Scalability and Signal-to-Noise Ratio Invariance Theorem**]  -- Chapter: *What “Quantum” Computers Really Are and How a Hobbyist Can Make Them at Home* | Section: *Formal Postulates and Theorems of Classical State-Vector Computing*
+* xref:theorem-rotational-equivalence-householder-givens[**Theorem: Generalized Rotational Equivalence: Isometry Between Householder Reflection Cascades and Sparse Givens Rotation Networks**]  -- Chapter: *Canonical State-Vector Algorithms: Classical Spectral Order-Finding, Phase Estimation, and Subspace Rotations* | Section: *Formal Postulates and Theorems of Canonical State-Vector Analysis*
 
