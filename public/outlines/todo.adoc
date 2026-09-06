@@ -68,71 +68,52 @@
       program by extrapolating the overwhelming professional
       incompetence of computer programmers.
 
-  - Discipline of Mentation vs. Institutionalized Pedagogy and Sloganeering.
+  - Disciplined mentation vs. schooling and buzzwords.
 
-    * The distinction between institutional “critical thinking” slogans
-      and genuine disciplined mentation. Institutional schooling relies
-      on rote authority, specialization myths, and formula recitation,
-      instilling reflexive helplessness in students who are trained to
-      believe knowledge is too complex for an ordinary person to master
-      from first principles without certified gatekeepers.
+    * “Critical thinking” is mostly an empty school buzzword. What is
+      actually needed is disciplined mentation.
 
-    * The physical and physiological cost of conscious mentation. For
-      intensely focused neurological systems, conscious directed thought
-      is not an effortless, weightless exercise but carries real somatic
-      strain, sensory overwhelm, and physical pain. Early trauma
-      inflicted by institutional enforcers—such as striking a child's
-      knuckles with a wooden ruler to suppress self-taught lettering in
-      the name of standardized conformity—serves to enforce obedience
-      and punish natural, self-directed curiosity.
+    * Schools train people to be helpless, repeating formulas and
+      believing knowledge is too specialized for an ordinary person to
+      understand without an “expert.”
 
-    * Concrete rules of disciplined mentation to replace institutional
-      formula repetition:
+    * Conscious thought can actually hurt physically. It is not some
+      weightless game.
 
-      ** Preserving strict temporal and developmental order: the
-         unconscious physiological substrate comes first, the conscious
-         verbal formulation comes second.
+    * Having knuckles hit with a wooden ruler to unteach self-taught
+      lettering before school: a brutal enforcement of conformity that is
+      neither forgotten nor forgiven.
 
-      ** Rigorous semantic hygiene: strictly distinguishing physical
-         individuals existing in Nature (such as discrete organisms or
-         physical apparatuses) from abstract category terms (such as
-         species or statistical ensembles).
+    * Core rules of disciplined mentation:
+      ** Put things in correct temporal order: unconscious first, conscious
+         second.
+      ** Distinguish individuals existing in Nature (organisms) from
+         category terms (species).
+      ** Keep representations clean: use Maxwell’s equations, avoid
+         metaphysical baggage, coordinate-free methods, don’t confuse the
+         map with the territory.
+      ** Show that any disciplined person can understand fundamental
+         matters better than credentialed Ph.D.s.
 
-      ** Structural and mathematical consistency: refusing arbitrary
-         substitutions or mystical dualisms (e.g., maintaining Maxwell’s
-         equations without metaphysical baggage, adhering to coordinate-free
-         methods, and never confusing mathematical artifacts with the
-         physical territory).
+  - Reasoning backwards (Sherlock Holmes) and childhood reality.
 
-      ** Demonstrating that disciplined mentation enables any attentive
-         person to grasp fundamental structures without surrendering to
-         the myth of hyper-specialization or academic consensus.
+    * Reasoning backwards: look at the fact and trace back to the real
+      cause, instead of taking the easy superficial blame.
 
-  - Reasoning Backwards: Abductive Inference and Childhood Observation.
+    * The shoe-tying example: Mrs. G. mocked me for not knowing how to
+      tie my shoes at age six. But if an otherwise intelligent six-year-old
+      can’t tie his shoes, that doesn’t mean something is wrong with the
+      kid—it means his mother was neglectful and didn't bother to teach
+      him to take care of himself.
 
-    * Sherlock Holmes's dictum of “reasoning backwards” (abductive
-      inference): observing a present state or symptom and deducing the
-      actual causal chain that produced it, rather than accepting
-      superficial institutional labels or moralistic blame.
+    * Mrs. G. used the wooden ruler for everything, including racial
+      prejudice in a mixed-race neighborhood on the Franklin/New
+      Brunswick border.
 
-    * The exemplar of childhood shoe-tying: when an otherwise bright,
-      inquisitive six-year-old child does not know how to tie his own
-      shoes, institutional authority (Mrs. G.) reflexively mocks the
-      child as deficient. Reasoning backwards reveals the objective
-      cause: maternal neglect and a failure of domestic guidance, not
-      an intrinsic defect in the child.
+    * But she also had a girl I knew show me how to tie shoes in a simple
+      way a six-year-old could actually get, unlike my mother's
+      half-hearted complex attempts.
 
-    * The duality of institutional figures and human contradiction:
-      Mrs. G. wielding the wooden ruler across a mixed-race New
-      Brunswick/Franklin border classroom to unteach self-acquired skills
-      and enforce racial and behavioral conformism, while simultaneously
-      arranging for a familiar young girl to teach shoe-tying in a direct,
-      accessible way that a six-year-old could grasp instantly.
-
-    * The physical talisman of human care amidst hardship: Mrs. G.’s son
-      crafting a honey jar coin bank for the child bedridden with scarlet
-      fever—a tangible artifact preserved across decades and still
-      holding silver dollars today, anchoring the reality that human
-      relationships are complex mixtures of institutional harshness and
-      unexpected, enduring acts of kindness.
+    * And when I had scarlet fever, her son made me a coin bank out of a
+      honey jar. I still have it, and I still keep silver dollars in it.
 
