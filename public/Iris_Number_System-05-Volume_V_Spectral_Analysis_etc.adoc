@@ -2150,9 +2150,9 @@ Grover’s algorithm is fundamentally better than acknowledged in academic liter
 However, a rigorous appraisal establishes four foundational principles:
 
 1. **Grover's Algorithm is Much Better than Realized**: The algorithm does not depend on cryogenic dilution refrigerators, superconducting qubits, or delicate quantum coherence. It can be constructed cleanly in standard room-temperature silicon using high-frequency linear operational amplifiers or executed digitally on standard microprocessors using exact integer arithmetic. The algorithm is structurally equivalent to a classical system of phase-locked coupled resonators.
-2. **Continuous Observability and Phase-Lock Verification**: In conventional quantum theory, one is falsely told that inspecting the state before \( \frac{\pi}{4}\sqrt{N} \) iterations destroys the computation through "wave-function collapse." In objective physical reality, the state vector evolves deterministically in a two-dimensional invariant subspace. The system can be probed, sampled, or checked for phase-lock and amplitude breakout at any iteration without disturbing the data trajectory. If a target amplitude exceeds a threshold (such as breaking out past the baseline noise level), the search terminates immediately, often in a fraction of the theoretical iteration count.
+2. **Continuous Observability and Phase-Lock Verification**: In conventional quantum theory, one is falsely told that inspecting the state before \( { ( \pi / 4 ) }\sqrt{N} \) iterations destroys the computation through "wave-function collapse." In the real world, the state vector evolves deterministically in a two-dimensional invariant subspace. The system can be probed, sampled, or checked for phase-lock and amplitude breakout at any iteration without disturbing the data trajectory. If a target amplitude exceeds a threshold (such as breaking out past the baseline noise level), the search can be stopped immediately, often in a fraction of the theoretical iteration count.
 3. **Full Digital and Analog Realizability**: The algorithm can be implemented either digitally using packed integer vectors with SIMD vectorization and parallel multicore reductions, or in analog electronics using precision op-amp inverters, difference amplifiers, and window comparators.
-4. **Strict Subordination to Classical Brute-Force Parallel Search**: Despite its mathematical elegance, Grover's algorithm remains strictly inferior to a brute-force parallel memory search. In software on sequential computers, Grover's method incurs \( \mathcal{O}(N\sqrt{N}) \) memory operations—thousands of times worse than a simple linear memory scan. On parallel hardware with \( N \) processing units (such as Content-Addressable Memory), a classical broadcast search completes in \( \mathcal{O}(1) \) gate cycles, whereas Grover search requires \( \mathcal{O}(\sqrt{N}) \) sequential iterations. When physical dimensions, finite storage volume, and the speed of electromagnetic waves \( c \) are accounted for, classical parallel associative hardware outperforms Grover search across all spatial dimensions.
+4. **Strict Subordination to Classical Brute-Force Parallel Search**: Despite its mathematical elegance, Grover's algorithm remains strictly inferior to a brute-force parallel memory search. In software on sequential computers, Grover's method incurs \( \mathcal{O}(N\sqrt{N}) \) memory operations—thousands of times worse than a simple linear memory scan. On parallel hardware with \( N \) processing units (such as Content-Addressable Memory), a classical broadcast search completes in \( \mathcal{O}(1) \) gate cycles, whereas Grover search requires \( \mathcal{O}(\sqrt{N}) \) sequential iterations. When physical dimensions, finite storage volume, and the speed of electromagnetic waves \( c \) are accounted for, classical parallel associative hardware always outperforms Grover search.
 
 === Demolition of “Quantum” Mysticism and Reformulation in Classical Numerical Linear Algebra
 
@@ -2352,7 +2352,7 @@ To understand digital Grover search without mystical obfuscation, one must draw 
 1. **Part (1): The 2D Givens Rotation Angle Calculator**: Calculating the theoretical angle parameter \( \theta = 2 \arcsin ( \sqrt{M / N} ) \) and the optimal step count \( k_\text{opt} = \lfloor \frac{\pi}{4} \sqrt{N / M} \rfloor \) within a 2D Euclidean subspace.
 2. **Part (2): The Physical Memory Array Search**: Locating a marked data record, specific numerical key, or empty sentinel slot within an unstructured array physically residing in hardware memory registers, dynamic RAM, or solid-state storage.
 
-Once these two activities are extentionally examined, a stark realization emerges: **Part (1) performs zero search operations upon the physical database**. It does not inspect a single memory cell, does not read a single data word, and does not locate any information. It is purely an abstract mathematical calculation evaluated over two floating-point numbers (the space size \( N \) and the target multiplicity \( M \)).
+Once these two activities are examined to see what _actually_ pertains to the computation and what _does not_, a stark realization emerges: **Part (1) performs zero search operations upon the physical database**. It does not inspect a single memory cell, does not read a single data word, and does not locate any information. It is purely an abstract mathematical calculation evaluated over two floating-point numbers (the space size \( N \) and the target multiplicity \( M \)).
 
 Furthermore, why can a digital computer not execute Part (1) directly as an iterative state-vector algorithm to search physical RAM? The answer lies in the catastrophic operational cost of software state-vector simulation:
 
@@ -2363,7 +2363,7 @@ Furthermore, why can a digital computer not execute Part (1) directly as an iter
 
 A computational procedure that requires \( \mathcal{O}(N^{1.5}) \) work to search a list of \( N \) items is vastly slower, more energy-intensive, and less efficient than a straightforward classical sequential scan, which searches the same list in \( \mathcal{O}(N) \) operations!
 
-Consequently, on any physical computing device, Part (1) serves exclusively as a closed-form geometric model that predicts how a fictitious planar state vector would rotate under idealized Householder reflections. When an actual software engine or hardware device is tasked with finding an item in memory, Part (2) is executed: and Part (2) is, in unadorned physical reality, an **unrolled brute-force parallel vector scan**.
+Consequently, on any physical computing device, Part (1) serves exclusively as a closed-form geometric model that predicts how a fictitious planar state vector would rotate under idealized Householder reflections. When an actual software engine or hardware device is tasked with finding an item in memory, Part (2) is executed: and Part (2) is, in unadorned physical reality, an **unrolled brute-force parallel vector scan**!
 
 === Physical Limits of Database Search: Finite Propagation Speed \( c \) and Spatial Extent
 
@@ -2383,7 +2383,7 @@ A database containing \( N \) discrete items cannot occupy zero space. In physic
 
 ==== Finite Propagation Velocity of Electromagnetic Influences
 
-No physical influence, signal, or wave can propagate with infinite speed. Electromagnetic influences propagate at finite speed—in free space at the speed of electromagnetic waves \( c \), and across semiconductor transmission interconnects at propagation velocity \( v = c / \sqrt{\epsilon_r} \), which is typically \( 0.5 c \) to \( 0.7 c \).
+No physical influence, signal, or wave can propagate with infinite speed. Electromagnetic influences propagate at finite speed—in free space at the speed of electromagnetic waves \( c \), and across semiconductor transmission interconnects at propagation velocity \( v = c\, / \sqrt{\epsilon_r} \), which is typically \( 0.5 c \) to \( 0.7 c \).
 
 Every step of Grover’s algorithm requires two global operations:
 * **The Oracle Evaluation**: A query signal must travel from the central controller to the storage location of each element, evaluate whether that element matches the target, and transmit the result back.
@@ -2701,7 +2701,7 @@ Let an unstructured database of \( N \) discrete records be stored within a phys
 . **Conclusion**:
    Resulting state vector \( v_1 = 1 \cdot e_2 + 0 \cdot w = e_2 \). This proves that the Givens rotation variant achieves 100% exact single-step convergence to target basis vector \( e_2 \), identically matching the Householder matrix power iteration!
 
-=== Concrete Implementations of Digital and Analog Grover Search
+=== Real World Implementations of Digital and Analog Grover Search
 
 The following sections incorporate the complete, self-contained reference implementations for digital microprocessors and room-temperature analog operational amplifier circuits.
 
@@ -3160,18 +3160,18 @@ Despite this monumental expenditure of capital and energy, the actual computatio
 
 ===== The Room-Temperature Analog CMOS Die Alternative
 
-In objective physical reality, the entire algebraic operation of Grover search—state superposition, oracle phase inversion, arithmetic mean averaging, and subtraction about the mean—can be implemented on a standard, low-cost silicon integrated circuit die fabricated in mature, inexpensive planar CMOS processes (such as 180 nm, 130 nm, or even 0.5 µm technologies).
+Meanwhile, the entire algebraic operation of Grover search—state superposition, oracle phase inversion, arithmetic mean averaging, and subtraction about the mean—can be implemented on a standard, low-cost silicon integrated circuit die fabricated in mature, inexpensive planar CMOS processes (such as 180 nm, 130 nm, or even 0.5 µm technologies).
 
 Each state channel requires only a tiny cluster of ordinary field-effect transistors:
 
 1. **Superposition Distribution**:
-   * A single differential AC carrier line \( (V^+_\text{carrier}, V^-_\text{carrier}) \) routed across the chip grid.
+   * A single differential AC carrier line \( (V^{\mkern2mu + } _ {\mkern-8mu \text{carrier} }, V^{\mkern2mu - } _ {\mkern-5mu \text{carrier} }) \) routed across the chip grid.
    * Every state cell taps this reference bus through a pair of source-follower or unity-gain differential MOSFET buffers. No cryogenics required; the carrier runs at ordinary room temperature (\( 0^\circ\text{C} \text{ to } 85^\circ\text{C} \)) from a standard 1.8V or 3.3V DC rail.
 
 2. **The Oracle Switch (Differential Crossbar)**:
    * Instead of microwave control pulses requiring room-sized arbitrary waveform generators, phase inversion of the target coordinate is performed by a balanced 4-transistor CMOS transmission-gate crossbar.
    * When the cell's target address line goes high, the crossbar swaps the differential lines:
-     \[ (V^+, V^-) \longleftrightarrow (V^-, V^+) \]
+     \[ ( V ^ {\mkern2mu  + }, V ^ {\mkern2mu -} ) \longleftrightarrow ( V ^ {\mkern2mu -}, V ^ {\mkern2mu  + } ) \]
    * This executes an exact \( 180^\circ \) (\( \pi \) radian) phase shift at the sub-nanosecond switching speed of a single silicon transistor gate, without requiring RF modulation.
 
 3. **Passive Kirchhoff Current Summation for the Mean**:
@@ -3194,7 +3194,7 @@ Each state channel requires only a tiny cluster of ordinary field-effect transis
 | **Operating Temperature** | \( \approx 0.015\text{ K} \) (requires liquid helium dilution refrigerator). | \( 300\text{ K} \) (\( 27^\circ\text{C} \), standard room temperature).
 | **Cooling Infrastructure** | Kilowatts of continuous compressor power, vacuum pumps, and liquid gas handling. | Zero cooling infrastructure (standard ambient thermal convection).
 | **Physical Footprint** | Multi-ton suspension gantry, ceiling-height dewar, and multiple 19-inch equipment racks. | A millimeter-scale silicon die housed in a standard surface-mount plastic package.
-| **System Cost** | \$5,000,000 to \$15,000,000 per installation. | Pennies per die in standard commercial semiconductor foundry production.
+| **System Cost** | $5,000,000 to $15,000,000 per installation. | Pennies per die in standard commercial semiconductor foundry production.
 | **Physical Mechanism** | Superconducting transmons susceptible to flux noise, charge noise, and quasiparticles. | Standard n-channel and p-channel MOSFETs in silicon dioxide.
 | **Oracle Execution** | Microsecond-duration microwave RF pulse shaping via expensive multichannel DACs. | 4-transistor CMOS transmission-gate swap switching in sub-nanoseconds.
 | **State Coherence Limit** | 50 to 100 microseconds before total thermal destruction of state. | Indefinite continuous operational stability under continuous DC power.
@@ -3340,11 +3340,11 @@ Any student, hobbyist, or electronics researcher can construct a fully functiona
 * **Quad Operational Amplifiers**: 4× TL074 or NE5532 quad JFET-input low-noise op-amps (16 op-amp channels total for state buffers and summing junctions).
 * **Analog Multiplexers**: 2× 74HC4051 8-channel analog multiplexer/demultiplexer ICs (for oracle sign inversion and channel targeting).
 * **Precision Metal-Film Resistors (1% Tolerance)**:
-  ** 32× 10.0 k\(\Omega\) 1/4W resistors (for unit-gain buffers and inverting switches).
-  ** 16× 14.14 k\(\Omega\) 1/4W resistors (or 14.0 k\(\Omega\) in series with 140 \(\Omega\) trimmers) for exact \( 1 / \sqrt{2} \approx 0.7071 \) Hadamard scaling.
-* **Trimmer Potentiometers**: 4× 10 k\(\Omega\) multi-turn cermet potentiometers (for DC offset calibration and gain trimming).
+  ** 32× 10.0 k\( \Omega \) 1/4W resistors (for unit-gain buffers and inverting switches).
+  ** 16× 14.14 k\( \Omega \) 1/4W resistors (or 14.0 k\(\Omega\) in series with 140 \( \Omega \) trimmers) for exact \( 1 / \sqrt{2} \approx 0.7071 \) Hadamard scaling.
+* **Trimmer Potentiometers**: 4× 10 k\( \Omega \) multi-turn cermet potentiometers (for DC offset calibration and gain trimming).
 * **Microcontroller Interface**: 1× Raspberry Pi Pico (RP2040), STM32 Nucleo, or Arduino Uno with 12-bit SPI DAC/ADC or PWM RC low-pass filters.
-* **Visual LED Output Display**: 16× green low-current LEDs with 1 k\(\Omega\) current-limiting resistors connected to channel voltage outputs to provide real-time visual display of state vector energy \( |v_i|^2 \).
+* **Visual LED Output Display**: 16× green low-current LEDs with 1 k\( \Omega \) current-limiting resistors connected to channel voltage outputs to provide real-time visual display of state vector energy \( |v_i|^2 \).
 * **Breadboard / Perforated PCB**: 2× solderless breadboards or standard 100mm × 150mm FR4 copper-clad perforated prototyping boards.
 
 ==== Hardware Architecture and Circuit Modules
@@ -3586,9 +3586,11 @@ To execute state-vector search on digital hardware with maximum throughput, one 
    * **Linear Systolic Mesh Alternative**: For ultra-large grids where global distribution wires introduce RC propagation delays, the PEs are arranged in a 1D or 2D mesh communicating strictly via nearest-neighbor contact. Pairwise Givens rotations rotate adjacent channels concurrently in an odd-even transposition pattern, achieving continuous pipelined throughput with zero global broadcast lines.
 
 2. **The Physical Reality of Searching Digital Computer Memory**:
-   When an application running on general-purpose digital hardware (such as a CPU or GPU) must search an unstructured array in physical memory (RAM or cache), software simulation of the state-vector Grover algorithm is catastrophically inefficient. Storing \( N \) amplitudes in memory requires \( \mathcal{O}(N) \) read-modify-write operations per iteration; over \( \mathcal{O}(\sqrt{N}) \) iterations, this incurs \( \mathcal{O}(N \sqrt{N}) \) total operations—vastly worse than a simple classical linear scan of \( \mathcal{O}(N) \).
-   
-   Therefore, actual physical memory search on digital processors is, in unadorned physical fact, a **brute-force parallel vector scan**. The 2D Givens rotation equations serve purely as an abstract geometric calculation of the planar angle \( \theta \) and step count \( k_\text{opt} \), performing zero work on memory cells.
+   When an application running on general-purpose digital hardware (such as a CPU or GPU) must search an unstructured array in physical memory (RAM or cache), software simulation of the state-vector Grover algorithm is catastrophically inefficient. Storing \( N \) amplitudes in memory requires \( \mathcal{O}(N) \) read-modify-write operations per iteration; over \( \mathcal{O}(\sqrt{N}) \) iterations, this incurs \( \mathcal{O}(N \sqrt{N}) \) total operations—vastly worse than a simple classical linear scan of \( \mathcal{O}(N) \). +
+     +
+   Therefore, actual physical memory search on digital processors is, in unadorned physical fact, a **brute-force parallel vector scan**. The 2D Givens rotation equations serve purely as an abstract geometric calculation of the planar angle \( \theta \) and step count \( k_\text{opt} \), performing zero work on memory cells. _They are a complete waste of time._  +
+     +
+   Though Grover’s algorithm is interesting, in the way a tavern puzzle or Spirograph is interesting, it also is _useless_. One should instead parallelize a linear search, because a brute-force parallel search is what Grover’s algorithm becomes when optimized for the real world. _Intuition should have told us so._ For the Grover’s algorithm oracle is by itself a detector of the solution! Only “quantum” dogma stops us using that solution directly. Once we recognize “quantum” dogma as claptrap, we see _only the oracle needs to be implemented_. The rest of the circuitry can be discarded.
 
 3. **Microarchitectural Execution via Innermost Loop Unrolling and m4 Macro Generation**:
    * **Loop Hierarchy**: Memory searches operate on nested loops (outer loops iterating over partitions, hash buckets, or pages; the innermost loop traversing contiguous memory words).
