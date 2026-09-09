@@ -1,6 +1,6 @@
 = The Iris Number System: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
 :subtitle: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing
-:author: Frédéric Blondel Custer
+:author: Frédéric Blondin Custer
 :doctype: book
 :toc: left
 :toc-title: Table of Contents
@@ -4014,4 +4014,3 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-physical-equivalence-quantum-computing-coupled-oscillators[**Theorem: Physical Equivalence of Quantum Computing to Classical Coupled Oscillators**]  -- Chapter: *What “Quantum” Computers Really Are and How a Hobbyist Can Make Them at Home* | Section: *Formal Postulates and Theorems of Classical State-Vector Computing*
 * xref:theorem-hobbyist-state-vector-scalability-and-noise-floor[**Theorem: Hobbyist State-Vector Scalability and Signal-to-Noise Ratio Invariance Theorem**]  -- Chapter: *What “Quantum” Computers Really Are and How a Hobbyist Can Make Them at Home* | Section: *Formal Postulates and Theorems of Classical State-Vector Computing*
 * xref:theorem-rotational-equivalence-householder-givens[**Theorem: Generalized Rotational Equivalence: Isometry Between Householder Reflection Cascades and Sparse Givens Rotation Networks**]  -- Chapter: *Canonical State-Vector Algorithms: Classical Spectral Order-Finding, Phase Estimation, and Subspace Rotations* | Section: *Formal Postulates and Theorems of Canonical State-Vector Analysis*
-

@@ -1,6 +1,6 @@
 = The Iris Number System: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
 :subtitle: Applications to Geometry, Algebra, Representations, Topology, Lattices, Categories, Combinatorics
-:author: Frédéric Blondel Custer
+:author: Frédéric Blondin Custer
 :doctype: book
 :toc: left
 :toc-title: Table of Contents
@@ -2678,4 +2678,3 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-wave-mechanical-n-queens[**Theorem: Constructive Wave-Mechanical Solvability and Destructive Interference Phase-Closure Theorem for the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
 * xref:theorem-vernier-knights-tour[**Theorem: Deterministic Vernier-Aperture Knight's Tour Construction Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
 * xref:theorem-multivector-chess-game-theory[**Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
-

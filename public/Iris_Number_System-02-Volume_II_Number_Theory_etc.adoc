@@ -1,6 +1,6 @@
 = The Iris Number System: Applications to Number Theory, Analysis, Probability Theory, Statistics
 :subtitle: Applications to Number Theory, Analysis, Probability Theory, Statistics
-:author: Frédéric Blondel Custer
+:author: Frédéric Blondin Custer
 :doctype: book
 :toc: left
 :toc-title: Table of Contents
@@ -1424,4 +1424,3 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-operational-hypothesis-testing[**Theorem: Operational Exactness of Discrete Hypothesis Testing**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Operational Hypothesis Testing on Discrete Grids*
 * xref:theorem-discrete-anova-decomposition[**Theorem: Operational Variance Decomposition in Finite Multivector ANOVA**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Analysis of Variance (ANOVA) in Multivector Space*
 * xref:theorem-discrete-regression-gauss-markov[**Theorem: Discrete Gauss-Markov Theorem for Multivector Linear Regression**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Multivector Linear Regression and Gauss-Markov Efficiency*
-

@@ -1,6 +1,6 @@
 = The Iris Number System: Fundamentals
 :subtitle: Fundamentals
-:author: Frédéric Blondel Custer
+:author: Frédéric Blondin Custer
 :doctype: book
 :toc: left
 :toc-title: Table of Contents
@@ -1128,4 +1128,3 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:definition-msra-indefinite-integral[**Definition: MSRA Indefinite Integral**]  -- Chapter: *How to do Integral Calculus* | Section: *Definite and Indefinite Integration as Vernier Aperture Sums*
 * xref:definition-msra-contour-integral[**Definition: MSRA Contour Integral**]  -- Chapter: *How to Compute a Contour Integral* | Section: *Parameterized Paths and Line Integrals in Cl(4,1,1)*
 * xref:definition-master-field-equation[**Definition: The Master Field Equation**]  -- Chapter: *The Master Field Equation* | Section: *Basis Vectors of \( Cl ( 4 , 1 , 1 ) \)*
-

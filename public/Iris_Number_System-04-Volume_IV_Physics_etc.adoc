@@ -1,6 +1,6 @@
 = The Iris Number System: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding
 :subtitle: Applications to Physics, Chemistry, Astronomy, Engineering, Communications, Time-Binding
-:author: Frédéric Blondel Custer
+:author: Frédéric Blondin Custer
 :doctype: book
 :toc: left
 :toc-title: Table of Contents
@@ -3085,4 +3085,3 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-cosmological-structure-visibility-horizon[**Theorem: Cosmic Field Structure, Non-Singular Stellar Remnants, and the Optical Visibility Horizon**]  -- Chapter: *Structural Cosmology: Galaxies, Stellar Evolution, Collapsed Objects, and the Cosmic Microwave Background* | Section: *The Cosmic Microwave Background and the Optical Visibility Horizon of the Universe*
 * xref:theorem-solar-system-formation-structure[**Theorem: First-Principles Formation, Mass Segregation, Orbital Quantization, and Primordial Ring Equilibrium of Solar Systems**]  -- Chapter: *Formation and Structure of Solar Systems: Multivector Gravitational Collapse, Angular Momentum Conservation, Disk Accretion, and Titius-Bode Orbit Quantization* | Section: *The Resolution of the Planetary Ring Age Mystery: Continuous Electrostatic Dust Purging and Primordial Ring Equilibrium*
 * xref:theorem-thermodynamic-catastrophe-earth-absorber[**Theorem: First-Principles Electrodynamic Mechanics of the Modern Thermodynamic Catastrophe**]  -- Chapter: *The Transition of Earth From Solar Energy Conductor to Solar Energy Absorber* | Section: *Lifetime-Scale Acceleration, Positive Feedback Loops, and Atmospheric Disequilibrium*
-

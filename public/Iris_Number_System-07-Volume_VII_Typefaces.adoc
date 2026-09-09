@@ -3615,4 +3615,3 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:def-dynamic-stress-rotor[**Definition: Dynamic Glyph Stress Rotor in \( Cl(2,0) \)**] -- Section: *Dynamic Stress Axes, Chiseled Micro-Geometry, and Spatial Economy in Discrete Type Design*
 * xref:thm-chiseled-plane-raster-stability[**Theorem: Discrete Raster Grid Edge Stability of Chiseled Planar Facets**] -- Section: *Dynamic Stress Axes, Chiseled Micro-Geometry, and Spatial Economy in Discrete Type Design*
 * xref:thm-kis-spatial-density[**Theorem: Spatial Packing Density of Dynamic-Axis Flat-Base Glyphs**] -- Section: *Dynamic Stress Axes, Chiseled Micro-Geometry, and Spatial Economy in Discrete Type Design*
-

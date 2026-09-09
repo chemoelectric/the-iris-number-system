@@ -1642,3 +1642,4 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:thm-discrete-reaction-rate[**Theorem: Discrete Transition State Rate Law**] -- Section: *Finite-State Thermodynamics and Reaction Kinetics*
 * xref:thm-pericyclic-topological-closure[**Theorem: Pericyclic Bivector Loop Conservation**] -- Section: *Physical Organic Chemistry: Conformational Topologies and Reaction Mechanisms*
 * xref:thm-interfacial-catalytic-acceleration[**Theorem: Brown Interfacial Catalytic Acceleration**] -- Section: *Biochemistry, Macromolecular Networks, and Interfacial Enzymology*
+

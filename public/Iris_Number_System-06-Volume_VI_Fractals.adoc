@@ -1217,4 +1217,3 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:thm-pdsa-contraction-convergence[**Theorem: PDSA Operational Contraction and Convergence to Target Invariants**] -- Section: *The Shewhart-Deming Cycle (PDSA) as a Discrete Contraction Iteration*
 * xref:thm-tampering-feigenbaum-instability[**Theorem: Tampering-Induced Feigenbaum Period-Doubling and Chaotic Variance Explosion**] -- Section: *The Deming Funnel Experiment and the Dynamics of Tampering*
 * xref:thm-continuum-measure-fractal-inconsistency[**Theorem: Structural Inconsistency of Continuum Measure on Scale-Invariant Physical Boundaries**] -- Section: *The Measure-Theoretic Crisis: The Coastline Paradox and Hausdorff-Besicovitch Measures*
-
