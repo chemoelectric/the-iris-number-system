@@ -8,4 +8,4 @@
 
 ^.*/html_report$
 
-^.*/Iris.*\.pdf$
+^.*/Iris.*\.(html|pdf)$
