@@ -3834,7 +3834,7 @@ Let an \( n \)-dimensional evaluation register contain discrete state-vector \( 
 When \( r y \equiv 0 \pmod M \implies y = s \frac { M } { r } \), the terms in the geometric series add in phase, producing constructive spectral peaks with amplitude \( \frac { \sqrt { M } } { r } \), while for all non-harmonic frequencies the sum vanishes identically. \( \square \)
 ====
 
-[#theorem-rotational-equivalence-householder-givens]
+[#theorem-householder-givens-isometry]
 [THEOREM]
 .Theorem: Generalized Rotational Equivalence: Isometry Between Householder Reflection Cascades and Sparse Givens Rotation Networks
 ====
