@@ -764,55 +764,240 @@ where \( t _ k = a + k \delta _ \omega \), \( \Delta \gamma _ k = \gamma ( t _ {
 
 In terms of parameter derivative \( \gamma ' ( t ) = \frac { d \gamma } { dt } \), the contour integral reduces to standard MSRA definite integration: \[ \int _ \Gamma \Psi ( z ) \, dz = \int _ a ^ b \Psi ( \gamma ( t ) ) \gamma ' ( t ) \, dt \]
 
-=== The Discrete Gauss-Green Divergence and Stokes Theorems in MSRA
+=== Classical Vector Calculus and Electromagnetics: Green, Stokes, and Gauss Theorems in MSRA
 
-In constructive calculus on discrete measurement grids \( \mathcal { G } _ N \), classical boundary circulation and flux theorems—traditionally attributed to Gauss, Green, and Stokes—emerge as exact algebraic telescoping identities. Rather than invoking continuum-limit hypotheses or infinitesimal differentials, the relation between the discrete interior derivative and the bounding contour circulation is an exact topological identity established cell by cell on the lattice.
+In university engineering and physics curricula, students traditionally encounter the integral and differential theorems of vector calculus most vividly in courses on classical electromagnetism and Maxwell’s equations. In that pedagogical setting, three theorems are typically introduced as separate mathematical rules:
+
+. **Stokes’ Theorem with the Curl Operator**:
++
+For an oriented two-dimensional open surface \( \mathcal { S } \) bounded by an oriented closed perimeter contour \( \partial \mathcal { S } \), the circulation of a vector field \( \mathbf { F } \) around the boundary equals the surface flux of its curl:
++
+\[ \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } = \iint _ { \mathcal { S } } ( \nabla \times \mathbf { F } ) \cdot \hat { \mathbf { n } } \, dS \]
++
+where the vector cross-product curl operator \( \nabla \times \mathbf { F } = \operatorname { curl } \mathbf { F } \) is defined in Cartesian components by:
++
+\[ \nabla \times \mathbf { F } = \left ( \frac { \partial F _ z } { \partial y } - \frac { \partial F _ y } { \partial z } \right ) \mathbf { e } _ 1 + \left ( \frac { \partial F _ x } { \partial z } - \frac { \partial F _ z } { \partial x } \right ) \mathbf { e } _ 2 + \left ( \frac { \partial F _ y } { \partial x } - \frac { \partial F _ x } { \partial y } \right ) \mathbf { e } _ 3 \]
++
+In electromagnetic field theory, Stokes’ curl theorem serves as the primary mathematical vehicle converting Maxwell’s differential equations into their experimental integral circuit formulations:
++
+* **Faraday’s Law of Induction**:
++
+Converts point-wise induction \( \nabla \times \mathbf { E } = - \frac { \partial \mathbf { B } } { \partial t } \) into electromotive force (EMF) around a closed circuit loop \( \partial \mathcal { S } \):
++
+\[ \oint _ { \partial \mathcal { S } } \mathbf { E } \cdot d \mathbf { r } = - \iint _ { \mathcal { S } } \frac { \partial \mathbf { B } } { \partial t } \cdot \hat { \mathbf { n } } \, dS = - \frac { d \Phi _ B } { dt } \]
++
+establishing that the induced voltage around a closed loop equals the time rate of change of the magnetic flux \( \Phi _ B \) passing through the aperture surface bounded by the loop.
++
+* **The Ampère-Maxwell Circuital Law**:
++
+Converts local current densities \( \nabla \times \mathbf { H } = \mathbf { J } + \frac { \partial \mathbf { D } } { \partial t } \) into magnetomotive loop circulation:
++
+\[ \oint _ { \partial \mathcal { S } } \mathbf { H } \cdot d \mathbf { r } = \iint _ { \mathcal { S } } \left ( \mathbf { J } + \frac { \partial \mathbf { D } } { \partial t } \right ) \cdot \hat { \mathbf { n } } \, dS = I _ { \text { enclosed } } + \iint _ { \mathcal { S } } \frac { \partial \mathbf { D } } { \partial t } \cdot \hat { \mathbf { n } } \, dS \]
+
+. **Gauss’s Divergence Theorem**:
++
+For a three-dimensional volume region \( \mathcal { V } \) bounded by a closed two-dimensional exterior surface \( \partial \mathcal { V } \) with outward unit normal \( \hat { \mathbf { n } } \), the total outward flux equals the volume integral of the divergence:
++
+\[ \oiint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, dS = \iiint _ { \mathcal { V } } ( \nabla \cdot \mathbf { F } ) \, dV \]
++
+where the scalar divergence operator is \( \nabla \cdot \mathbf { F } = \frac { \partial F _ x } { \partial x } + \frac { \partial F _ y } { \partial y } + \frac { \partial F _ z } { \partial z } \). In electromagnetics, this converts differential flux relations into total enclosed source balances:
++
+* **Gauss’s Law for Electricity**:
++
+\[ \nabla \cdot \mathbf { D } = \rho \iff \oiint _ { \partial \mathcal { V } } \mathbf { D } \cdot \hat { \mathbf { n } } \, dS = \iiint _ { \mathcal { V } } \rho \, dV = Q _ { \text { enclosed } } \]
++
+* **Gauss’s Law for Magnetism**:
++
+\[ \nabla \cdot \mathbf { B } = 0 \iff \oiint _ { \partial \mathcal { V } } \mathbf { B } \cdot \hat { \mathbf { n } } \, dS = 0 \]
++
+confirming the absence of isolated magnetic charges.
+
+. **Green’s Theorem in the Plane**:
++
+For a bounded simply connected planar region \( \Omega \) in the \( xy \)-plane with counterclockwise oriented boundary \( \partial \Omega \):
++
+\[ \oint _ { \partial \Omega } \left ( L \, dx + M \, dy \right ) = \iint _ \Omega \left ( \frac { \partial M } { \partial x } - \frac { \partial L } { \partial y } \right ) dx \, dy \]
++
+This is simply the two-dimensional planar reduction of Stokes’ theorem, where \( \mathbf { F } = L \mathbf { e } _ 1 + M \mathbf { e } _ 2 \) lies entirely in the plane and the normal vector is \( \hat { \mathbf { n } } = \mathbf { e } _ 3 \), so that \( ( \nabla \times \mathbf { F } ) \cdot \mathbf { e } _ 3 = \frac { \partial M } { \partial x } - \frac { \partial L } { \partial y } \).
+
+=== Why These Theorems Seem Different vs. Why They Are the Same
+
+In conventional engineering education, students are frequently puzzled by having to memorize Green’s theorem, Stokes’ theorem, and Gauss’s divergence theorem as three distinct, specialized formulas. This apparent fragmentation is an artificial defect of the 19th-century Gibbs-Heaviside three-dimensional vector calculus notation, arising from three historical limitations:
+
+. **The Spatial Artifact of the Cross Product**:
+The traditional vector cross product \( \mathbf { a } \times \mathbf { b } \) is defined exclusively in three spatial dimensions. Because the cross product does not exist in two dimensions, mathematicians were forced to invent Green’s theorem as a separate 2D planar rule, and Stokes’ theorem as a 3D surface rule.
+
+. **The Artificial Pseudovector Convention**:
+In conventional notation, the curl \( \nabla \times \mathbf { F } \) is artificially treated as an “axial vector” pointing perpendicular to the plane of circulation via an arbitrary right-hand rule convention. In reality, circulation does not physically take place along an axis; circulation is inherently a **directed two-dimensional bivector plane of rotation**.
+
+. **The Fragmentation of the Differential Operator**:
+Gibbs-Heaviside calculus separates spatial differentiation into three ad-hoc operations: the gradient (scalar to vector), the curl (vector to vector via cross product), and the divergence (vector to scalar via dot product).
+
+In the Iris Number System and Clifford geometric algebra \( Cl ( 4 , 1 , 1 ) \), there is only **one** unified geometric vector derivative \( \nabla \). When \( \nabla \) acts on a vector field \( \mathbf { F } \) through the Clifford geometric product, it decomposes naturally into its scalar (divergence) and bivector (circulation) components:
+\[ \nabla \mathbf { F } = \nabla \cdot \mathbf { F } + \nabla \wedge \mathbf { F } \]
+* The grade-0 scalar part \( \nabla \cdot \mathbf { F } \) is the Gauss flux divergence.
+* The grade-2 bivector part \( \nabla \wedge \mathbf { F } \) is the Stokes-Green circulation plane (the intrinsic curl).
+
+Consequently, Green’s theorem, Stokes’ theorem, and Gauss’s divergence theorem are not three separate theorems: they are **the exact same algebraic telescoping identity** evaluated on discrete measurement cells of varying dimensions. In every case, the interior derivative sums over the interior cells, all shared internal cell interfaces cancel identically in pairs, and only the unshared outer boundary remains.
 
 [#theorem-msra-gauss-green-stokes]
 [THEOREM]
-.Theorem: Discrete Gauss Divergence, Green's, and Stokes' Curl Theorem
+.Theorem: Discrete Gauss Divergence, Green’s, and Stokes’ Curl Theorem
 ====
-Let \( \Omega \subset \mathcal { G } _ N \) be a bounded, oriented discrete domain partitioned into a finite union of elementary cells with boundary \( \partial \Omega \).
+Let \( \Omega \subset \mathcal { G } _ N \) be a bounded, oriented discrete measurement domain partitioned into a finite collection of elementary cells with boundary \( \partial \Omega \).
 
-. **Discrete Green's Circulation Identity (2D)**:
-For a planar domain \( \Omega \subset \mathcal { G } _ N \) partitioned into elementary rectangular cells \( \mathcal { C } _ { ij } = [ x _ i , x _ { i + 1 } ] \times [ y _ j , y _ { j + 1 } ] \) and vector field \( \mathbf { F } = F _ x \mathbf { e } _ 1 + F _ y \mathbf { e } _ 2 \):
-\[ \sum _ { \mathcal { C } _ { ij } \subset \Omega } \left ( \frac { \Delta F _ y } { \Delta x } - \frac { \Delta F _ x } { \Delta y } \right ) \Delta x \Delta y = \oint _ { \partial \Omega } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) \]
-
-. **Discrete Stokes' Theorem with Curl Operator (3D Oriented Surface)**:
-Let \( \mathcal { S } \subset \mathcal { G } _ N \) be a bounded discrete two-dimensional oriented surface mesh composed of elementary oriented planar face cells \( \mathcal { C } _ k \) in three dimensions with oriented boundary contour \( \partial \mathcal { S } \). For any 3D vector field \( \mathbf { F } = F _ x \mathbf { e } _ 1 + F _ y \mathbf { e } _ 2 + F _ z \mathbf { e } _ 3 \):
+. **Part 1: Discrete Stokes’ Theorem with the Curl Operator (3D Surface Mesh)**:
++
+Let \( \mathcal { S } \subset \mathcal { G } _ N \) be an oriented discrete two-dimensional surface mesh in three-dimensional space consisting of a finite union of elementary planar facets \( \mathcal { C } _ k \) with boundary perimeter curve \( \partial \mathcal { S } \). For any 3D vector field \( \mathbf { F } = F _ x \mathbf { e } _ 1 + F _ y \mathbf { e } _ 2 + F _ z \mathbf { e } _ 3 \):
++
 \[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \operatorname { curl } \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
-where the discrete curl operator is defined by the circulation per unit area across the cell faces:
++
+where the discrete curl operator is defined across each elementary cell face by:
++
 \[ \operatorname { curl } \mathbf { F } = \nabla \times \mathbf { F } = \left ( \frac { \Delta F _ z } { \Delta y } - \frac { \Delta F _ y } { \Delta z } \right ) \mathbf { e } _ 1 + \left ( \frac { \Delta F _ x } { \Delta z } - \frac { \Delta F _ z } { \Delta x } \right ) \mathbf { e } _ 2 + \left ( \frac { \Delta F _ y } { \Delta x } - \frac { \Delta F _ x } { \Delta y } \right ) \mathbf { e } _ 3 \]
-In multivector geometric algebra \( Cl ( 4 , 1 , 1 ) \), the curl is represented directly by the bivector exterior derivative \( \nabla \wedge \mathbf { F } \):
++
+In multivector Clifford algebra \( Cl ( 4 , 1 , 1 ) \), this is expressed coordinate-free via the bivector exterior derivative:
++
 \[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \nabla \wedge \mathbf { F } ) _ k \cdot d \mathbf { S } _ k = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
 
-. **Discrete Gauss Divergence Identity (3D Volume)**:
-For a 3D bounded discrete volume domain \( \mathcal { V } \subset \mathcal { G } _ N \) partitioned into elementary cubical cells \( \mathcal { C } _ { ijk } \) with boundary surface \( \partial \mathcal { V } \):
-\[ \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V = \oint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S \]
-where \( \nabla \cdot \mathbf { F } = \frac { \Delta F _ x } { \Delta x } + \frac { \Delta F _ y } { \Delta y } + \frac { \Delta F _ z } { \Delta z } \).
+. **Part 2: Discrete Green’s Circulation Identity (2D Planar Aperture)**:
++
+When the surface \( \mathcal { S } \) is planar and aligned with the \( xy \)-coordinate plane, the mesh consists of rectangular cells \( \mathcal { C } _ { ij } = [ x _ i , x _ { i + 1 } ] \times [ y _ j , y _ { j + 1 } ] \), and Stokes’ theorem reduces to Green’s identity:
++
+\[ \sum _ { \mathcal { C } _ { ij } \subset \Omega } \left ( \frac { \Delta F _ y } { \Delta x } - \frac { \Delta F _ x } { \Delta y } \right ) \Delta x \Delta y = \oint _ { \partial \Omega } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) \]
 
-Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \), these algebraic identities yield the classical continuum integral laws without remainder:
-\[ \iint _ \Omega \left ( \frac { \partial F _ y } { \partial x } - \frac { \partial F _ x } { \partial y } \right ) dx \, dy = \oint _ { \partial \Omega } \mathbf { F } \cdot d \mathbf { r } \]
+. **Part 3: Discrete Gauss Divergence Theorem (3D Volume)**:
++
+Let \( \mathcal { V } \subset \mathcal { G } _ N \) be a bounded three-dimensional volume partitioned into a finite union of elementary cubical cells \( \mathcal { C } _ { ijk } \) with closed boundary surface \( \partial \mathcal { V } \) and outward unit normal \( \hat { \mathbf { n } } \):
++
+\[ \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V = \oiint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S \]
++
+where the discrete divergence is defined by:
++
+\[ \nabla \cdot \mathbf { F } = \frac { \Delta F _ x } { \Delta x } + \frac { \Delta F _ y } { \Delta y } + \frac { \Delta F _ z } { \Delta z } \]
+
+Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \), these discrete lattice identities yield the classical continuum integral equations without remainder:
 \[ \iint _ { \mathcal { S } } ( \nabla \times \mathbf { F } ) \cdot \hat { \mathbf { n } } \, dS = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
-\[ \iiint _ { \mathcal { V } } ( \nabla \cdot \mathbf { F } ) \, dV = \oint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, dS \]
+\[ \iint _ \Omega \left ( \frac { \partial F _ y } { \partial x } - \frac { \partial F _ x } { \partial y } \right ) dx \, dy = \oint _ { \partial \Omega } \left ( F _ x \, dx + F _ y \, dy \right ) \]
+\[ \iiint _ { \mathcal { V } } ( \nabla \cdot \mathbf { F } ) \, dV = \oiint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, dS \]
 
 *Proof:*
-. **Cell Circulation Decomposition**: Consider an elementary planar cell \( \mathcal { C } _ k \) on the surface mesh \( \mathcal { S } \). By orienting coordinates locally in the plane of \( \mathcal { C } _ k \), the circulation of \( \mathbf { F } \) along the four directed boundary edges \( \partial \mathcal { C } _ k \) equals:
-\[ \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } = \left [ F _ y ( x _ { i + 1 } , y _ j ) - F _ y ( x _ i , y _ j ) \right ] \Delta y - \left [ F _ x ( x _ i , y _ { j + 1 } ) - F _ x ( x _ i , y _ j ) \right ] \Delta x \]
-Dividing and multiplying by cell area \( \Delta S _ k = \Delta x \Delta y \) yields:
-\[ \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } = \left ( \frac { \Delta _ x F _ y } { \Delta x } - \frac { \Delta _ y F _ x } { \Delta y } \right ) \Delta S _ k = ( \operatorname { curl } \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k \]
+. **Proof of Stokes’ Curl Theorem on an Oriented Surface Mesh**:
++
+Consider an elementary oriented planar facet \( \mathcal { C } _ k \) on the discrete surface mesh \( \mathcal { S } \). In local coordinates on the facet spanned by orthogonal unit vectors \( \mathbf { u } \) and \( \mathbf { v } \) with normal \( \hat { \mathbf { n } } _ k = \mathbf { u } \times \mathbf { v } \), the circulation of \( \mathbf { F } \) along the four directed boundary edges \( \partial \mathcal { C } _ k \) evaluates to:
++
+\[ \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } = F _ u ( u _ 0 , v _ 0 ) \Delta u + F _ v ( u _ 0 + \Delta u , v _ 0 ) \Delta v - F _ u ( u _ 0 , v _ 0 + \Delta v ) \Delta u - F _ v ( u _ 0 , v _ 0 ) \Delta v \]
++
+Regrouping terms over the facet dimensions \( \Delta u \) and \( \Delta v \):
++
+\[ \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } = \left [ F _ v ( u _ 0 + \Delta u , v _ 0 ) - F _ v ( u _ 0 , v _ 0 ) \right ] \Delta v - \left [ F _ u ( u _ 0 , v _ 0 + \Delta v ) - F _ u ( u _ 0 , v _ 0 ) \right ] \Delta u \]
++
+Dividing and multiplying by the facet area \( \Delta S _ k = \Delta u \Delta v \):
++
+\[ \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } = \left ( \frac { \Delta _ u F _ v } { \Delta u } - \frac { \Delta _ v F _ u } { \Delta v } \right ) \Delta S _ k = ( \nabla \times \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k \]
++
+Now sum these elementary cell circulations over all facets in the surface mesh \( \mathcal { S } \):
++
+\[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \nabla \times \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k = \sum _ { \mathcal { C } _ k \subset \mathcal { S } } \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } \]
++
+Because adjacent facets \( \mathcal { C } _ p \) and \( \mathcal { C } _ q \) share a common interior edge, and because both facets have consistent orientations inherited from the surface normal field, the shared interior edge is traversed in opposite directions by the two facet boundary loops. Thus, along every shared internal edge:
++
+\[ \int _ { \text { shared } } ^ { ( p ) } \mathbf { F } \cdot d \mathbf { r } + \int _ { \text { shared } } ^ { ( q ) } \mathbf { F } \cdot d \mathbf { r } = \mathbf { F } \cdot ( \Delta \mathbf { r } ) + \mathbf { F } \cdot ( - \Delta \mathbf { r } ) = 0 \]
++
+The line integrals along all internal mesh edges cancel identically in pairs. Only the unshared outer edges along the perimeter curve \( \partial \mathcal { S } \) survive the summation:
++
+\[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \nabla \times \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
++
+This proves the discrete Stokes curl theorem.
 
-. **Exact Algebraic Telescoping Across Shared Mesh Edges (Stokes' Theorem)**: Summing the cell circulations over all elementary face cells in \( \mathcal { S } \):
-\[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \operatorname { curl } \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k = \sum _ { \mathcal { C } _ k \subset \mathcal { S } } \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } \]
-Every internal edge shared between two adjacent face cells \( \mathcal { C } _ p \) and \( \mathcal { C } _ q \) is traversed twice in opposite directions due to the matching orientations of adjacent cells. The directed path increments have identical magnitudes and opposite signs, canceling identically in the sum. The only directed edges that remain uncancelled are those along the outer boundary contour \( \partial \mathcal { S } \), establishing the discrete Stokes circulation identity.
+. **Proof of Green’s Theorem**:
++
+Setting the facet normal strictly to \( \hat { \mathbf { n } } = \mathbf { e } _ 3 \) in the \( xy \)-plane, the facet becomes a planar grid rectangle \( \mathcal { C } _ { ij } \), with \( \mathbf { u } = \mathbf { e } _ 1 \) and \( \mathbf { v } = \mathbf { e } _ 2 \). The above derivation simplifies directly to:
++
+\[ \sum _ { \mathcal { C } _ { ij } \subset \Omega } \left ( \frac { \Delta F _ y } { \Delta x } - \frac { \Delta F _ x } { \Delta y } \right ) \Delta x \Delta y = \oint _ { \partial \Omega } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) \]
++
+Internal vertical and horizontal edges between adjacent grid cells cancel identically in pairs, leaving strictly the perimeter circulation around \( \partial \Omega \).
 
-. **Exact Telescoping of Normal Outward Flux (Gauss Divergence)**: For an elementary 3D cell \( \mathcal { C } _ { ijk } \), the outward normal flux across its six faces is:
-\[ \oint _ { \partial \mathcal { C } _ { ijk } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S = \Delta F _ x \Delta y \Delta z + \Delta F _ y \Delta x \Delta z + \Delta F _ z \Delta x \Delta y = \left ( \frac { \Delta F _ x } { \Delta x } + \frac { \Delta F _ y } { \Delta y } + \frac { \Delta F _ z } { \Delta z } \right ) \Delta V \]
-Summing across all elementary cells in \( \mathcal { V } \), the outward normal flux across every internal interface between adjacent cells is traversed in opposite normal directions (\( + \hat { \mathbf { n } } \) and \( - \hat { \mathbf { n } } \)), canceling identically. The sum telescopes strictly to the net outward flux across the outer boundary surface \( \partial \mathcal { V } \):
-\[ \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V = \oint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S \]
+. **Proof of Gauss’s Divergence Theorem**:
++
+Consider an elementary three-dimensional cubical grid cell \( \mathcal { C } _ { ijk } \) with volume \( \Delta V = \Delta x \Delta y \Delta z \). The net outward flux through the six planar faces of the cube is:
++
+\[ \oint _ { \partial \mathcal { C } _ { ijk } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S = \text { Flux } _ x + \text { Flux } _ y + \text { Flux } _ z \]
++
+Evaluating the pairs of opposing faces in each coordinate direction:
++
+\[ \text { Flux } _ x = \left [ F _ x ( x _ { i + 1 } , y _ j , z _ k ) - F _ x ( x _ i , y _ j , z _ k ) \right ] \Delta y \Delta z = \frac { \Delta _ x F _ x } { \Delta x } \Delta V \]
++
+\[ \text { Flux } _ y = \left [ F _ y ( x _ i , y _ { j + 1 } , z _ k ) - F _ y ( x _ i , y _ j , z _ k ) \right ] \Delta x \Delta z = \frac { \Delta _ y F _ y } { \Delta y } \Delta V \]
++
+\[ \text { Flux } _ z = \left [ F _ z ( x _ i , y _ j , z _ k + 1 ) - F _ z ( x _ i , y _ j , z _ k ) \right ] \Delta x \Delta y = \frac { \Delta _ z F _ z } { \Delta z } \Delta V \]
++
+Adding these three contributions yields the discrete divergence of the cell:
++
+\[ \oint _ { \partial \mathcal { C } _ { ijk } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S = \left ( \frac { \Delta _ x F _ x } { \Delta x } + \frac { \Delta _ y F _ y } { \Delta y } + \frac { \Delta _ z F _ z } { \Delta z } \right ) \Delta V = ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V \]
++
+Summing across all elementary cells in the volume \( \mathcal { V } \):
++
+\[ \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V = \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } \oint _ { \partial \mathcal { C } _ { ijk } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S \]
++
+For any interior face shared between two adjacent cells \( \mathcal { C } _ 1 \) and \( \mathcal { C } _ 2 \), the outward normal from \( \mathcal { C } _ 1 \) is \( + \hat { \mathbf { n } } \) while the outward normal from \( \mathcal { C } _ 2 \) is \( - \hat { \mathbf { n } } \). The flux of \( \mathbf { F } \) across the shared interior interface is:
++
+\[ \int _ { \text { interface } } ^ { ( 1 ) } \mathbf { F } \cdot ( + \hat { \mathbf { n } } ) \, dS + \int _ { \text { interface } } ^ { ( 2 ) } \mathbf { F } \cdot ( - \hat { \mathbf { n } } ) \, dS = 0 \]
++
+All internal interface fluxes cancel identically. The summation reduces strictly to the net outward flux across the exterior bounding surface \( \partial \mathcal { V } \):
++
+\[ \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V = \oiint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S \]
++
+This proves the discrete Gauss divergence theorem.
 
-. **Main Scale Projection**: Applying Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \) where mesh dimensions project to the macroscopic aperture level recovers the standard integral equations of Stokes, Green, and Gauss without remainder. \( \square \)
+. **Main Scale Projection**:
++
+Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \) where mesh resolution \( \Delta x , \Delta y , \Delta z \to \delta _ \omega \) approaches the vernier limit, the discrete sums project to the standard Riemann-Stieltjes macroscopic field integrals without remainder, establishing the continuum theorems as exact constructive consequences of discrete cell telescoping. \( \square \)
 ====
+
+=== Worked Example: Verifying Stokes’ Curl and Faraday Induction on a 2x2 Discrete Lattice
+
+To see the exact cancellation of interior boundaries with complete clarity, consider a simple \( 2 \times 2 \) discrete planar mesh composed of four elementary cells \( \mathcal { C } _ { 11 } , \mathcal { C } _ { 12 } , \mathcal { C } _ { 21 } , \mathcal { C } _ { 22 } \) with unit grid step \( \Delta x = \Delta y = 1 \).
+
+Let an electric field \( \mathbf { E } = ( - y ) \mathbf { e } _ 1 + ( x ) \mathbf { e } _ 2 \) circulate around the mesh:
+
+. **Compute the Discrete Curl**:
++
+The discrete curl in each cell evaluates to:
++
+\[ ( \nabla \times \mathbf { E } ) _ z = \frac { \Delta E _ y } { \Delta x } - \frac { \Delta E _ x } { \Delta y } = \frac { 1 } { 1 } - \left ( \frac { - 1 } { 1 } \right ) = 1 - ( - 1 ) = 2 \]
++
+Across the four cells, the total surface sum of the curl is:
++
+\[ \sum _ { k = 1 } ^ 4 ( \nabla \times \mathbf { E } ) _ k \, \Delta S _ k = 2 \cdot 1 + 2 \cdot 1 + 2 \cdot 1 + 2 \cdot 1 = 8 \]
+
+. **Evaluate the Cell Circulations and Interior Edge Cancellation**:
++
+Each cell has four directed perimeter edges. In the interior of the \( 2 \times 2 \) grid, there are four interior shared edges:
++
+* The vertical edge between \( \mathcal { C } _ { 11 } \) and \( \mathcal { C } _ { 21 } \) is traversed upward by \( \mathcal { C } _ { 11 } \) and downward by \( \mathcal { C } _ { 21 } \); the sum of their line integrals is identically zero.
++
+* The vertical edge between \( \mathcal { C } _ { 12 } \) and \( \mathcal { C } _ { 22 } \) is traversed upward by \( \mathcal { C } _ { 12 } \) and downward by \( \mathcal { C } _ { 22 } \); their sum is identically zero.
++
+* The horizontal edge between \( \mathcal { C } _ { 11 } \) and \( \mathcal { C } _ { 12 } \) is traversed left-to-right by \( \mathcal { C } _ { 12 } \) and right-to-left by \( \mathcal { C } _ { 11 } \); their sum is identically zero.
++
+* The horizontal edge between \( \mathcal { C } _ { 21 } \) and \( \mathcal { C } _ { 22 } \) is traversed left-to-right by \( \mathcal { C } _ { 22 } \) and right-to-left by \( \mathcal { C } _ { 21 } \); their sum is identically zero.
+
+. **Evaluate the Outer Perimeter Line Integral**:
++
+The uncancelled outer boundary forms a square of side length 2 running along vertices \( ( 0 , 0 ) \to ( 2 , 0 ) \to ( 2 , 2 ) \to ( 0 , 2 ) \to ( 0 , 0 ) \):
++
+* Bottom edge ( \( y = 0 , x \in [ 0 , 2 ] \) ): \( \int E _ x \, dx = 0 \).
++
+* Right edge ( \( x = 2 , y \in [ 0 , 2 ] \) ): \( \int E _ y \, dy = 2 \cdot 2 = 4 \).
++
+* Top edge ( \( y = 2 , x \in [ 2 , 0 ] \) ): \( \int E _ x \, dx = ( - 2 ) \cdot ( - 2 ) = 4 \).
++
+* Left edge ( \( x = 0 , y \in [ 2 , 0 ] \) ): \( \int E _ y \, dy = 0 \).
++
+* Total perimeter circulation: \( 0 + 4 + 4 + 0 = 8 \).
+
+The outer boundary circulation equals 8, matching the interior curl summation identically. Every internal calculation in discrete electromagnetics, from digital signal transmission lines to microwave antenna apertures, operates on this exact telescoping principle without needing continuous infinities.
 
 === The Vernier Cauchy-Goursat Theorem in MSRA
 
@@ -1204,7 +1389,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-msra-chain-rule[**Theorem: MSRA Chain Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
 * xref:theorem-msra-fundamental-theorem[**Theorem: Fundamental Theorem of MSRA Calculus**]  -- Chapter: *How to do Integral Calculus* | Section: *The Fundamental Theorem of MSRA Calculus*
 * xref:theorem-msra-integration-by-parts[**Theorem: Vernier Integration by Parts**]  -- Chapter: *How to do Integral Calculus* | Section: *Vernier Integration Techniques on Discrete Grids*
-* xref:theorem-msra-gauss-green-stokes[**Theorem: Discrete Gauss Divergence, Green's, and Stokes' Curl Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The Discrete Gauss-Green Divergence and Stokes Theorems in MSRA*
+* xref:theorem-msra-gauss-green-stokes[**Theorem: Discrete Gauss Divergence, Green's, and Stokes' Curl Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *Classical Vector Calculus and Electromagnetics: Green, Stokes, and Gauss Theorems in MSRA*
 * xref:theorem-msra-cauchy-goursat[**Theorem: MSRA Cauchy-Goursat Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The Vernier Cauchy-Goursat Theorem in MSRA*
 * xref:theorem-msra-residue[**Theorem: MSRA Residue Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The MSRA Residue Theorem*
 * xref:theorem-cl411-existence[**Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Constructive Proof of Clifford Algebra Cl(4,1,1)*
