@@ -999,10 +999,10 @@ Electrons emitted from an electron gun assembly pass through orthogonal deflecti
 
 ==== Storage Tubes, Vidicons, and Photomultipliers
 * **Storage Oscilloscope Tubes**: Secondary emission charge storage on dielectric storage meshes preserves transient wave traces for extended observation without continuous electronic refresh.
-* **Vidicon Camera Tubes**: Incident optical images focus onto a photoconductive target (e.g., antimony trisulfide \( \text{Sb}_2\text{S}_3 \)). Photons generate electron-hole pairs that reduce local target resistivity, converting optical light patterns into a stored spatial charge pattern read out by a scanning electron beam.
+* **Vidicon Camera Tubes**: Incident optical images focus onto a photoconductive target (e.g., antimony trisulfide \( \text{Sb}_2\text{S}_3 \)). Incident optical wave packets generate electron-hole pairs that reduce local target resistivity, converting optical light patterns into a stored spatial charge pattern read out by a scanning electron beam.
 * **Photomultiplier Tubes (PMTs)**: Incident light strikes a photoemissive photocathode, releasing primary photoelectrons. Accelerated photoelectrons impact a cascade of dynode electrodes (typically 9 to 14 stages). Secondary emission multiplication at each dynode stage produces total current gain:
   \[ M = \delta^N \]
-  where \( \delta \approx 3\text{--}6 \) is the secondary emission ratio per dynode and \( N \) is the stage count, yielding gains exceeding \( 10^6 \) for single-photon detection.
+  where \( \delta \approx 3\text{--}6 \) is the secondary emission ratio per dynode and \( N \) is the stage count, yielding gains exceeding \( 10^6 \) for ultra-low-level discrete optical wave-packet detection.
 
 === Electron Tube Fabrication, Thermal Outgassing, and the Physics of the Barium Getter Mirror
 
@@ -1290,7 +1290,7 @@ where \( C_j \) is the junction capacitance and \( R_s \) is the parasitic serie
 
 * **PIN Diodes**: An undoped intrinsic (I) layer is sandwiched between P and N regions. At RF frequencies, the injected charge in the I-layer acts as a linear voltage-variable RF resistor \( R_i = \frac { W^2 } { ( \mu_n + \mu_p ) Q } \), used in high-power RF switches and attenuators.
 
-* **Light-Emitting Diodes (LEDs)**: Forward bias injects carriers across direct-bandgap heterojunctions (e.g., GaN, GaAs), where radiative recombination \( R = B n p \) transduces electrical current directly into coherent or incoherent optical field energy of photon energy \( h \nu = E_g \).
+* **Light-Emitting Diodes (LEDs)**: Forward bias injects carriers across direct-bandgap heterojunctions (e.g., GaN, GaAs), where radiative recombination \( R = B n p \) transduces electrical current directly into coherent or incoherent optical field energy of characteristic transition energy \( h \nu = E_g \).
 
 * **Photodiodes**: Reverse-biased junctions where incident optical wave packets generate electron-hole pairs in the depletion region, generating a photocurrent \( I_{ph} = \mathcal{R} P_{opt} \) proportional to optical power, with responsivity \( \mathcal{R} = \frac { \eta q } { h \nu } \).
 
@@ -1769,7 +1769,7 @@ When emitter voltage exceeds the peak point potential \( V_P = \eta V_{BB} + V_D
 === Optoelectronic Devices and Magnetic Hall-Effect Sensors
 
 ==== Optoelectronic Devices and Photocouplers
-* **Photodiodes and Phototransistors**: Photons with energy \( h \nu \ge E_g \) striking reverse-biased junctions excite valence band electrons into the conduction band, generating photocurrent \( I_{ph} = q \eta \frac { P_{\text{opt}} } { h \nu } \).
+* **Photodiodes and Phototransistors**: Optical wave packets with field energy \( h \nu \ge E_g \) striking reverse-biased junctions excite valence band electrons into the conduction band, generating photocurrent \( I_{ph} = q \eta \frac { P_{\text{opt}} } { h \nu } \).
 * **Optocouplers**: Integrating an infrared LED and a phototransistor inside an opaque package provides complete electrical isolation (\( > 5000 \text{ V}_{\text{RMS}} \)) between high-voltage power circuits and low-voltage digital microcontrollers.
 
 ==== Hall-Effect Sensors and Transverse Bivector Forces

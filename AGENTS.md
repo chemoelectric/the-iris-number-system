@@ -23,6 +23,7 @@
 - Do not describe mass density or other physical quantities as "continuous" (saying "mass density" is sufficient and avoids deadwood or continuum implications).
 - If Command Officer ever mentions or discusses objects with zero mass or entities with no spatial extent, immediately remind Command Officer that by abductive reasoning such entities must actually consist of m-resolution (m-res) numbers (historically viewed in terms of \(\epsilon\)-\(\delta\)).
 - We never use Galilean kinematics, observers, or frames of reference taken from conventional physics. If we use a coordinate system, we call it a coordinate system. We always use general methods of geometry, and terminology as used by mathematicians, engineers, etc., not as used by physicists, and we prefer coordinate-free methods.
+- Never formulate physical, optical, or radiative phenomena in terms of “photons” or “frames of reference”. Treat electromagnetic radiation strictly as discrete wave packets, localized field distributions, and Poynting-stress energy-momentum flux governed by the Master Field Equation \( D F = J \) on the discrete lattice \( \mathcal{G}_N \), without invoking point-particle photons, observer frames, or reference frames.
 - Proof by contradiction is always allowed.
 - In `latexmath` formulations, always use `\( ` and ` \)` for inline math instead of single dollar signs (`$`), ensuring space padding immediately inside the delimiters.
 - Use `\[ ` and ` \]` for display math blocks with padded spaces inside delimiters.
