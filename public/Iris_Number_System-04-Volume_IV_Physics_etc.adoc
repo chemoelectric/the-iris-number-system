@@ -433,7 +433,7 @@ We now carry out the explicit step-by-step derivation of the Navier-Stokes equat
 [THEOREM]
 ====
 **Theorem (First-Principles Derivation and Structural Comparison of Navier-Stokes and the Master Field Equation in \( Cl(4,1,1) \) )**:
-From the conservation of discrete molecular mass and momentum under short-range isotropic repulsive contact forces, the macroscopic streaming velocity \( \mathbf{u} ( \mathbf{x} , t ) \) and mass density \( \rho ( \mathbf{x} , t ) \) satisfy the compressible Navier-Stokes equations:
+From the conservation of discrete molecular mass and momentum under short-range isotropic repulsive contact forces, the macroscopic streaming velocity \( \mathbf{u} ( \mathbf{x} , t ) \) and mass density \( \rho ( \mathbf{x} , t ) \) satisfy the mass conservation equation and the compressible Navier-Stokes momentum equation:
 \[ \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) = 0 \]
 \[ \rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = - \nabla P + \mu \nabla^2 \mathbf{u} + \left( \zeta + \frac{1}{3} \mu \right) \nabla ( \nabla \cdot \mathbf{u} ) + \mathbf{f}_\text{ext} \]
 where \( P \) is the thermodynamic scalar pressure, \( \mu > 0 \) is the dynamic shear viscosity, and \( \zeta \ge 0 \) is the bulk (volume) viscosity.
@@ -448,24 +448,42 @@ which is strictly linear in the field multivector \( F \) on \( \mathcal{G}_N \)
 *Proof*:
 The derivation proceeds in four distinct steps:
 
-. **Step 1: Derivation of the Mass Continuity Equation**.
+. **Step 1: Derivation of the Mass Conservation Equation**.
++
 The total mass inside any control volume \( \Omega \) changes solely due to the net flux of mass passing through the boundary surface \( \partial \Omega \):
++
 \[ \frac{d}{d t} \int_\Omega \rho \, d^3 \mathbf{x} = - \oint_{\partial \Omega} \rho \mathbf{u} \cdot d \mathbf{S} \]
++
 Applying the Gauss divergence theorem to the surface integral transforms the right-hand side into a volume integral:
++
 \[ \int_\Omega \left( \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) \right) d^3 \mathbf{x} = 0 \]
-Because this identity holds for every arbitrary aperture volume \( \Omega \subset \mathcal{G}_N \), the integrand must vanish identically at each point, establishing the continuity equation:
++
+Because this identity holds for every arbitrary aperture volume \( \Omega \subset \mathcal{G}_N \), the integrand must vanish identically at each point, establishing the exact mass conservation equation:
++
 \[ \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) = 0 \]
++
+In legacy continuum mechanics, this relation was traditionally referred to as the “continuity equation”. In the Iris Number System, that terminology is strictly avoided: physical fluids consist of finite numbers of discrete entities on the measurement lattice \( \mathcal{G}_N \), not an uncountably infinite continuum. The equation expresses the exact conservation of physical mass—the net rate of mass accumulation within an aperture volume equals the net mass influx across its boundary. It is therefore properly and solely designated the **mass conservation equation**.
 
 . **Step 2: Momentum Conservation and the Cauchy Momentum Equation**.
++
 Newton’s second law applied to the control volume \( \Omega \) states that the rate of change of total fluid momentum equals the sum of net advective momentum inflow, boundary surface contact forces, and external volume forces:
++
 \[ \frac{d}{d t} \int_\Omega \rho \mathbf{u} \, d^3 \mathbf{x} = - \oint_{\partial \Omega} \rho \mathbf{u} ( \mathbf{u} \cdot d\mathbf{S} ) + \oint_{\partial \Omega} \mathbf{\sigma} \cdot d\mathbf{S} + \int_\Omega \mathbf{f}_\text{ext} \, d^3 \mathbf{x} \]
++
 Converting the surface integrals to volume integrals yields:
++
 \[ \int_\Omega \left( \frac{\partial ( \rho \mathbf{u} )}{\partial t} + \nabla \cdot ( \rho \mathbf{u} \otimes \mathbf{u} ) - \nabla \cdot \mathbf{\sigma} - \mathbf{f}_\text{ext} \right) d^3 \mathbf{x} = \mathbf{0} \]
++
 Setting the local integrand to zero gives Cauchy’s fundamental momentum equation:
++
 \[ \frac{\partial ( \rho \mathbf{u} )}{\partial t} + \nabla \cdot ( \rho \mathbf{u} \otimes \mathbf{u} ) = \nabla \cdot \mathbf{\sigma} + \mathbf{f}_\text{ext} \]
++
 Expanding the left-hand side using the vector calculus product rule:
++
 \[ \frac{\partial ( \rho \mathbf{u} )}{\partial t} + \nabla \cdot ( \rho \mathbf{u} \otimes \mathbf{u} ) = \mathbf{u} \left( \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) \right) + \rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) \]
-The first term vanishes identically by the mass continuity equation proven in Step 1. We are left with the convective acceleration formulation:
++
+The first term vanishes identically by the mass conservation equation proven in Step 1. We are left with the convective acceleration formulation:
++
 \[ \rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = \nabla \cdot \mathbf{\sigma} + \mathbf{f}_\text{ext} \]
 
 . **Step 3: Constitutive Relation for a Newtonian Viscous Fluid**.
@@ -1178,7 +1196,7 @@ yielding stable \( {}^4\text{He} \) gas as the primary nuclear ash in exact quan
 
 *Proof:*
 
-. **Multivector Conservation Laws**: In \( Cl ( 4 , 1 , 1 ) \), total multivector current \( J _ \text{total} \) satisfies the exact continuity law \( D \cdot J _ \text{total} = \mathbf { 0 } \). This guarantees strict conservation of scalar mass-energy, electric charge vector, and angular momentum bivectors across the reaction boundary.
+. **Multivector Conservation Laws**: In \( Cl ( 4 , 1 , 1 ) \), total multivector current \( J _ \text{total} \) satisfies the exact conservation law \( D \cdot J _ \text{total} = \mathbf { 0 } \). This guarantees strict conservation of scalar mass-energy, electric charge vector, and angular momentum bivectors across the reaction boundary.
 
 . **Branching Ratio Shift in Lattice Channels**: In unconstrained vacuum collisions, the two two-body decay channels \( D + D \to {}^3\text{He} + n \) (\( 3.27 \text{ MeV} \)) and \( D + D \to T + p \) (\( 4.03 \text{ MeV} \)) dominate because two-body momentum conservation cannot be satisfied by \( D + D \to {}^4\text{He} \) without a recoil body. In a crystal lattice, the host matrix acts as a macroscopic recoil body with mass \( M _ \text{lattice} \gg m _ D \).
 
@@ -1233,7 +1251,7 @@ demonstrating net positive power production under controlled, stable thermal equ
 
 *Proof:*
 
-. **Power Balance on Grid Matrix**: The operational power balance of the lattice reactor is governed by the volume integral of the multivector Poynting-stress energy continuity equation \( \nabla \cdot \mathbf { S } + \frac { \partial u } { \partial t } = J \cdot E \). In steady-state thermal equilibrium (\( \partial u / \partial t = 0 \)), the net outward thermal heat flux equals the total internal power generation.
+. **Power Balance on Grid Matrix**: The operational power balance of the lattice reactor is governed by the volume integral of the multivector Poynting-stress energy conservation equation \( \nabla \cdot \mathbf { S } + \frac { \partial u } { \partial t } = J \cdot E \). In steady-state thermal equilibrium (\( \partial u / \partial t = 0 \)), the net outward thermal heat flux equals the total internal power generation.
 
 . **Nuclear Source Power**: From Theorem 4.2 (Coherent Lattice Phase-Matching), the nuclear reaction rate \( \Gamma _ \text{fusion} = \eta _ \text{lattice} \cdot N _ \text{coherent} ^ 2 \) scales quadratically with the number of phase-locked interstitial deuterons. Each fusion event releases \( Q _ \text{fusion} = 23.84 \text{ MeV} = 3.82 \times 10 ^ { - 12 } \text{ J} \) directly into lattice phonon modes (Theorem 4.3).
 
@@ -1296,7 +1314,7 @@ completely bypassing thermal dissipation and entropy generation.
 
 . **Time-Scale Hierarchy**: On discrete grid \( \mathcal { G } _ N \), thermal heat represents the randomized, incoherent excitation of acoustic lattice phonon modes with characteristic relaxation time \( \tau _ \text{phonon} \approx 10 ^ { - 12 } \text{ s} \) (governed by the Debye frequency \( \omega _ \text{Debye} \)). If the source current \( J _ \text{src} \) couples to a structured electromagnetic waveguide or high-speed dielectric boundary on a time scale \( \tau _ \text{trans} \ll \tau _ \text{phonon} \), energy transfer occurs before the localized wave packet can partition into randomized lattice vibrations.
 
-. **Poynting-Stress Energy Transduction**: Operating with the Master Field Equation \( D F = J _ \text{src} + J _ \text{lattice} \), the energy-momentum continuity relation on \( \mathcal { G } _ N \) is:
+. **Poynting-Stress Energy Transduction**: Operating with the Master Field Equation \( D F = J _ \text{src} + J _ \text{lattice} \), the energy-momentum conservation relation on \( \mathcal { G } _ N \) is:
 \[ \nabla \cdot \mathbf { S } + \frac { \partial u } { \partial t } = - \langle J _ \text{src} \cdot F \rangle _ 0 \]
 where \( \mathbf { S } = \frac { 1 } { \mu _ 0 } \mathbf { E } \times \mathbf { B } \) is the directed Poynting vector flux and \( u \) is the localized field energy density. When the lattice geometry provides an impedance-matched boundary (\( Z _ \text{src} = Z _ \text{load} \)), reflection and scattering vanish, directing the entire source power into the output Poynting flux \( \mathbf { S } \).
 

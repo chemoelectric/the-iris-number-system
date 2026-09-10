@@ -408,7 +408,7 @@ To establish a clear physical picture on the objective level, every lumped circu
 
 ==== Mechanical Analogies for Kirchhoff’s Laws
 
-* **Kirchhoff’s Current Law (KCL) \(\leftrightarrow\) Hydraulic Fluid Incompressibility at Pipe Junctions**: At any sealed pipe junction node, the total volumetric fluid flow rate entering the junction must equal the total flow rate leaving: \( \sum Q_k = 0 \). Because fluid mass cannot be destroyed or accumulated at an ideal junction, current conservation is fluid continuity.
+* **Kirchhoff’s Current Law (KCL) \(\leftrightarrow\) Hydraulic Fluid Incompressibility at Pipe Junctions**: At any sealed pipe junction node, the total volumetric fluid flow rate entering the junction must equal the total flow rate leaving: \( \sum Q_k = 0 \). Because fluid mass cannot be destroyed or accumulated at an ideal junction, current conservation directly corresponds to fluid mass conservation.
 
 * **Kirchhoff’s Voltage Law (KVL) \(\leftrightarrow\) Closed Hydraulic Loop Pressure Conservation**: Summing hydrostatic pressure changes around a closed hydraulic loop returns to the starting pressure, ensuring \( \sum \Delta P_k = 0 \).
 
@@ -1043,7 +1043,7 @@ In a planar vacuum diode with inter-electrode spacing \( d \) and applied anode 
 
 
 1. **Poisson-Ampère Equation**: One-dimensional Poisson field relation on \( \mathcal{G}_N \) gives \( \frac { d^2 V } { d x^2 } = - \frac { \rho ( x ) } { \varepsilon_0 } \).
-2. **Current Continuity and Conservation**: \( J = - \rho ( x ) v ( x ) \) and energy conservation \( \frac { 1 } { 2 } m_e v ( x )^2 = q V ( x ) \).
+2. **Current and Energy Conservation**: Current conservation \( J = - \rho ( x ) v ( x ) \) and energy conservation \( \frac { 1 } { 2 } m_e v ( x )^2 = q V ( x ) \).
 3. **Differential Equation**: \( \frac { d^2 V } { d x^2 } = \frac { J } { \varepsilon_0 } \sqrt { \frac { m_e } { 2 q V ( x ) } } \).
 4. **First Integration**: Multiplying by \( 2 \frac { d V } { d x } \) yields \( \left( \frac { d V } { d x } \right)^2 = \frac { 4 J } { \varepsilon_0 } \sqrt { \frac { m_e } { 2 q } } V^{1/2} \).
 5. **Second Integration**: Integrating from \( x = 0 \) to \( x = d \) with boundary conditions \( V ( 0 ) = 0 \) and \( V ( d ) = V_P \) gives \( \frac { 4 } { 3 } V_P^{3/4} = 2 \left( \frac { J } { \varepsilon_0 } \right)^{1/2} \left( \frac { m_e } { 2 q } \right)^{1/4} d \).

@@ -130,10 +130,10 @@ Isotropic linear elasticity expresses stress directly as \( \mathbf { T } _ 2 = 
 
 2. **Multivector Material Derivative**: The directional advective multivector operator is \( \mathcal { D } _ t = \frac { \partial } { \partial t } + \mathbf { v } \cdot D \).
 
-3. **Unified Conservation Equation**: Mass conservation (continuity) and dynamic momentum balance combine into the multivector equation:
+3. **Unified Conservation Equation**: Mass conservation and dynamic momentum balance combine into the multivector equation:
 \[ \mathcal { D } _ t \Phi = D \cdot \mathbf { S } _ 2 - ( D p _ { \text { press } } ) \mathbf { 1 } _ { Cl } + \mathbf { f } _ { \text { ext } } \]
 Projecting onto orthogonal grade subspaces:
-   - **Grade-0 (Scalar Projection)**: \( \frac { \partial \rho } { \partial t } + D \cdot ( \rho \mathbf { v } ) = 0 \) (exact continuity equation).
+   - **Grade-0 (Scalar Projection)**: \( \frac { \partial \rho } { \partial t } + D \cdot ( \rho \mathbf { v } ) = 0 \) (exact mass conservation equation).
    - **Grade-1 (Vector Projection)**: \( \rho \left( \frac { \partial \mathbf { v } } { \partial t } + ( \mathbf { v } \cdot D ) \mathbf { v } \right) = - D p _ { \text { press } } + \mu D ^ 2 \mathbf { v } + \mathbf { f } _ { \text { ext } } \) (exact Navier-Stokes momentum equation).
 ====
 
