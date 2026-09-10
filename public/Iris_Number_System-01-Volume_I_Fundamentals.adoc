@@ -770,41 +770,48 @@ In constructive calculus on discrete measurement grids \( \mathcal { G } _ N \),
 
 [#theorem-msra-gauss-green-stokes]
 [THEOREM]
-.Theorem: Discrete Gauss-Green Divergence and Stokes Theorem
+.Theorem: Discrete Gauss Divergence, Green's, and Stokes' Curl Theorem
 ====
-Let \( \Omega \subset \mathcal { G } _ N \) be a bounded, simply connected discrete planar domain partitioned into a finite union of elementary rectangular cells \( \mathcal { C } _ { ij } = [ x _ i , x _ { i + 1 } ] \times [ y _ j , y _ { j + 1 } ] \) with discrete lattice spacing \( \Delta x = x _ { i + 1 } - x _ i \) and \( \Delta y = y _ { j + 1 } - y _ j \), having boundary contour \( \partial \Omega \). For any multivector aperture field \( \mathbf { F } = F _ x \mathbf { e } _ 1 + F _ y \mathbf { e } _ 2 \) defined on \( \Omega \):
+Let \( \Omega \subset \mathcal { G } _ N \) be a bounded, oriented discrete domain partitioned into a finite union of elementary cells with boundary \( \partial \Omega \).
 
-. **Discrete Green's Circulation Identity**:
+. **Discrete Green's Circulation Identity (2D)**:
+For a planar domain \( \Omega \subset \mathcal { G } _ N \) partitioned into elementary rectangular cells \( \mathcal { C } _ { ij } = [ x _ i , x _ { i + 1 } ] \times [ y _ j , y _ { j + 1 } ] \) and vector field \( \mathbf { F } = F _ x \mathbf { e } _ 1 + F _ y \mathbf { e } _ 2 \):
 \[ \sum _ { \mathcal { C } _ { ij } \subset \Omega } \left ( \frac { \Delta F _ y } { \Delta x } - \frac { \Delta F _ x } { \Delta y } \right ) \Delta x \Delta y = \oint _ { \partial \Omega } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) \]
 
-. **Discrete Gauss Divergence Identity**:
-\[ \sum _ { \mathcal { C } _ { ij } \subset \Omega } \left ( \frac { \Delta F _ x } { \Delta x } + \frac { \Delta F _ y } { \Delta y } \right ) \Delta x \Delta y = \oint _ { \partial \Omega } \mathbf { F } \cdot \mathbf { n } \, \Delta s \]
+. **Discrete Stokes' Theorem with Curl Operator (3D Oriented Surface)**:
+Let \( \mathcal { S } \subset \mathcal { G } _ N \) be a bounded discrete two-dimensional oriented surface mesh composed of elementary oriented planar face cells \( \mathcal { C } _ k \) in three dimensions with oriented boundary contour \( \partial \mathcal { S } \). For any 3D vector field \( \mathbf { F } = F _ x \mathbf { e } _ 1 + F _ y \mathbf { e } _ 2 + F _ z \mathbf { e } _ 3 \):
+\[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \operatorname { curl } \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
+where the discrete curl operator is defined by the circulation per unit area across the cell faces:
+\[ \operatorname { curl } \mathbf { F } = \nabla \times \mathbf { F } = \left ( \frac { \Delta F _ z } { \Delta y } - \frac { \Delta F _ y } { \Delta z } \right ) \mathbf { e } _ 1 + \left ( \frac { \Delta F _ x } { \Delta z } - \frac { \Delta F _ z } { \Delta x } \right ) \mathbf { e } _ 2 + \left ( \frac { \Delta F _ y } { \Delta x } - \frac { \Delta F _ x } { \Delta y } \right ) \mathbf { e } _ 3 \]
+In multivector geometric algebra \( Cl ( 4 , 1 , 1 ) \), the curl is represented directly by the bivector exterior derivative \( \nabla \wedge \mathbf { F } \):
+\[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \nabla \wedge \mathbf { F } ) _ k \cdot d \mathbf { S } _ k = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
 
-Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \), these algebraic identities yield the classical continuum formulations:
-\[ \iint _ \Omega \left ( \frac { \partial F _ y } { \partial x } - \frac { \partial F _ x } { \partial y } \right ) dx \, dy = \oint _ { \partial \Omega } \left ( F _ x \, dx + F _ y \, dy \right ) \]
-\[ \iint _ \Omega ( \nabla \cdot \mathbf { F } ) \, dx \, dy = \oint _ { \partial \Omega } \mathbf { F } \cdot \mathbf { n } \, ds \]
+. **Discrete Gauss Divergence Identity (3D Volume)**:
+For a 3D bounded discrete volume domain \( \mathcal { V } \subset \mathcal { G } _ N \) partitioned into elementary cubical cells \( \mathcal { C } _ { ijk } \) with boundary surface \( \partial \mathcal { V } \):
+\[ \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V = \oint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S \]
+where \( \nabla \cdot \mathbf { F } = \frac { \Delta F _ x } { \Delta x } + \frac { \Delta F _ y } { \Delta y } + \frac { \Delta F _ z } { \Delta z } \).
+
+Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \), these algebraic identities yield the classical continuum integral laws without remainder:
+\[ \iint _ \Omega \left ( \frac { \partial F _ y } { \partial x } - \frac { \partial F _ x } { \partial y } \right ) dx \, dy = \oint _ { \partial \Omega } \mathbf { F } \cdot d \mathbf { r } \]
+\[ \iint _ { \mathcal { S } } ( \nabla \times \mathbf { F } ) \cdot \hat { \mathbf { n } } \, dS = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
+\[ \iiint _ { \mathcal { V } } ( \nabla \cdot \mathbf { F } ) \, dV = \oint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, dS \]
 
 *Proof:*
-. **Cell Circulation Decomposition**: Consider a single elementary grid cell \( \mathcal { C } _ { ij } \) with vertices at \( ( x _ i , y _ j ) \), \( ( x _ { i + 1 } , y _ j ) \), \( ( x _ { i + 1 } , y _ { j + 1 } ) \), and \( ( x _ i , y _ { j + 1 } ) \). The circulation along the counterclockwise oriented boundary \( \partial \mathcal { C } _ { ij } \) consists of four directed edge segments:
-\[ \oint _ { \partial \mathcal { C } _ { ij } } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) = F _ x ( x _ i , y _ j ) \Delta x + F _ y ( x _ { i + 1 } , y _ j ) \Delta y - F _ x ( x _ i , y _ { j + 1 } ) \Delta x - F _ y ( x _ i , y _ j ) \Delta y \]
+. **Cell Circulation Decomposition**: Consider an elementary planar cell \( \mathcal { C } _ k \) on the surface mesh \( \mathcal { S } \). By orienting coordinates locally in the plane of \( \mathcal { C } _ k \), the circulation of \( \mathbf { F } \) along the four directed boundary edges \( \partial \mathcal { C } _ k \) equals:
+\[ \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } = \left [ F _ y ( x _ { i + 1 } , y _ j ) - F _ y ( x _ i , y _ j ) \right ] \Delta y - \left [ F _ x ( x _ i , y _ { j + 1 } ) - F _ x ( x _ i , y _ j ) \right ] \Delta x \]
+Dividing and multiplying by cell area \( \Delta S _ k = \Delta x \Delta y \) yields:
+\[ \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } = \left ( \frac { \Delta _ x F _ y } { \Delta x } - \frac { \Delta _ y F _ x } { \Delta y } \right ) \Delta S _ k = ( \operatorname { curl } \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k \]
 
-. **Regrouping into Discrete Differences**: Regrouping the terms over the cell dimensions \( \Delta x \) and \( \Delta y \) yields:
-\[ \oint _ { \partial \mathcal { C } _ { ij } } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) = \left [ F _ y ( x _ { i + 1 } , y _ j ) - F _ y ( x _ i , y _ j ) \right ] \Delta y - \left [ F _ x ( x _ i , y _ { j + 1 } ) - F _ x ( x _ i , y _ j ) \right ] \Delta x \]
-Dividing and multiplying each term by the respective opposite step size produces the exact discrete curl area product:
-\[ \oint _ { \partial \mathcal { C } _ { ij } } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) = \left ( \frac { \Delta _ x F _ y } { \Delta x } - \frac { \Delta _ y F _ x } { \Delta y } \right ) \Delta x \Delta y \]
+. **Exact Algebraic Telescoping Across Shared Mesh Edges (Stokes' Theorem)**: Summing the cell circulations over all elementary face cells in \( \mathcal { S } \):
+\[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \operatorname { curl } \mathbf { F } ) _ k \cdot \hat { \mathbf { n } } _ k \, \Delta S _ k = \sum _ { \mathcal { C } _ k \subset \mathcal { S } } \oint _ { \partial \mathcal { C } _ k } \mathbf { F } \cdot d \mathbf { r } \]
+Every internal edge shared between two adjacent face cells \( \mathcal { C } _ p \) and \( \mathcal { C } _ q \) is traversed twice in opposite directions due to the matching orientations of adjacent cells. The directed path increments have identical magnitudes and opposite signs, canceling identically in the sum. The only directed edges that remain uncancelled are those along the outer boundary contour \( \partial \mathcal { S } \), establishing the discrete Stokes circulation identity.
 
-. **Exact Algebraic Telescoping Across Shared Interfaces**: Sum the elementary cell circulations over all cells in the partition of \( \Omega \):
-\[ \sum _ { \mathcal { C } _ { ij } \subset \Omega } \oint _ { \partial \mathcal { C } _ { ij } } \left ( F _ x \, \Delta x + F _ y \, \Delta y \right ) = \sum _ { \mathcal { C } _ { ij } \subset \Omega } \left ( \frac { \Delta _ x F _ y } { \Delta x } - \frac { \Delta _ y F _ x } { \Delta y } \right ) \Delta x \Delta y \]
-Every shared internal edge between two adjacent cells \( \mathcal { C } _ { ij } \) and \( \mathcal { C } _ { i + 1 , j } \) (or \( \mathcal { C } _ { ij } \) and \( \mathcal { C } _ { i , j + 1 } \)) is traversed exactly twice, in opposite directions. The corresponding line increments have identical magnitudes and opposite signs, canceling identically in the summation. Only the unshared external edges along the exterior boundary \( \partial \Omega \) survive the telescoping sum, establishing the discrete Green-Stokes circulation identity.
+. **Exact Telescoping of Normal Outward Flux (Gauss Divergence)**: For an elementary 3D cell \( \mathcal { C } _ { ijk } \), the outward normal flux across its six faces is:
+\[ \oint _ { \partial \mathcal { C } _ { ijk } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S = \Delta F _ x \Delta y \Delta z + \Delta F _ y \Delta x \Delta z + \Delta F _ z \Delta x \Delta y = \left ( \frac { \Delta F _ x } { \Delta x } + \frac { \Delta F _ y } { \Delta y } + \frac { \Delta F _ z } { \Delta z } \right ) \Delta V \]
+Summing across all elementary cells in \( \mathcal { V } \), the outward normal flux across every internal interface between adjacent cells is traversed in opposite normal directions (\( + \hat { \mathbf { n } } \) and \( - \hat { \mathbf { n } } \)), canceling identically. The sum telescopes strictly to the net outward flux across the outer boundary surface \( \partial \mathcal { V } \):
+\[ \sum _ { \mathcal { C } _ { ijk } \subset \mathcal { V } } ( \nabla \cdot \mathbf { F } ) _ { ijk } \, \Delta V = \oint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, \Delta S \]
 
-. **Exact Telescoping of Outward Normal Flux (Gauss Divergence)**: Similarly, for each elementary cell \( \mathcal { C } _ { ij } \), evaluate the outward normal flux across its four faces:
-\[ \oint _ { \partial \mathcal { C } _ { ij } } \mathbf { F } \cdot \mathbf { n } \, \Delta s = \left [ F _ x ( x _ { i + 1 } , y _ j ) - F _ x ( x _ i , y _ j ) \right ] \Delta y + \left [ F _ y ( x _ i , y _ { j + 1 } ) - F _ y ( x _ i , y _ j ) \right ] \Delta x \]
-Rewriting in terms of discrete difference quotients gives:
-\[ \oint _ { \partial \mathcal { C } _ { ij } } \mathbf { F } \cdot \mathbf { n } \, \Delta s = \left ( \frac { \Delta _ x F _ x } { \Delta x } + \frac { \Delta _ y F _ y } { \Delta y } \right ) \Delta x \Delta y \]
-Summing across all cells in \( \Omega \), the outward normal flux across every internal interface between adjacent cells is traversed in opposite normal directions (\( + \mathbf { n } \) and \( - \mathbf { n } \)), canceling identically. The sum telescopes strictly to the net outward flux across the outer boundary \( \partial \Omega \):
-\[ \sum _ { \mathcal { C } _ { ij } \subset \Omega } \left ( \frac { \Delta _ x F _ x } { \Delta x } + \frac { \Delta _ y F _ y } { \Delta y } \right ) \Delta x \Delta y = \oint _ { \partial \Omega } \mathbf { F } \cdot \mathbf { n } \, \Delta s \]
-
-. **Main Scale Projection**: Applying Main Scale Projection \( ( \downarrow ) \) on the ultra-refined grid \( \mathcal { G } _ \omega \) where \( \Delta x , \Delta y \to \delta _ \omega \) yields the continuous field integral forms without remainder, establishing the theorem as an exact constructive tautology. \( \square \)
+. **Main Scale Projection**: Applying Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \) where mesh dimensions project to the macroscopic aperture level recovers the standard integral equations of Stokes, Green, and Gauss without remainder. \( \square \)
 ====
 
 === The Vernier Cauchy-Goursat Theorem in MSRA
@@ -1197,7 +1204,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-msra-chain-rule[**Theorem: MSRA Chain Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
 * xref:theorem-msra-fundamental-theorem[**Theorem: Fundamental Theorem of MSRA Calculus**]  -- Chapter: *How to do Integral Calculus* | Section: *The Fundamental Theorem of MSRA Calculus*
 * xref:theorem-msra-integration-by-parts[**Theorem: Vernier Integration by Parts**]  -- Chapter: *How to do Integral Calculus* | Section: *Vernier Integration Techniques on Discrete Grids*
-* xref:theorem-msra-gauss-green-stokes[**Theorem: Discrete Gauss-Green Divergence and Stokes Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The Discrete Gauss-Green Divergence and Stokes Theorems in MSRA*
+* xref:theorem-msra-gauss-green-stokes[**Theorem: Discrete Gauss Divergence, Green's, and Stokes' Curl Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The Discrete Gauss-Green Divergence and Stokes Theorems in MSRA*
 * xref:theorem-msra-cauchy-goursat[**Theorem: MSRA Cauchy-Goursat Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The Vernier Cauchy-Goursat Theorem in MSRA*
 * xref:theorem-msra-residue[**Theorem: MSRA Residue Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The MSRA Residue Theorem*
 * xref:theorem-cl411-existence[**Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Constructive Proof of Clifford Algebra Cl(4,1,1)*
