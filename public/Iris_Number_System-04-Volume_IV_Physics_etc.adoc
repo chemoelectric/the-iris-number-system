@@ -375,17 +375,17 @@ When a field distribution moves from initial state \( A_1 \) to final state \( A
 
 == Derivation of the Navier-Stokes Equations from First Principles
 
-In this chapter, we derive the classical Navier-Stokes equations directly from first principles: Newton’s laws of motion and direct contact mechanics applied to a finite ensemble of discrete molecular constituents on the spatial grid \( \mathcal{G}_N \). We subsequently formulate both the Master Field Equation and the Navier-Stokes system within the unified geometric algebra \( Cl(4,1,1) \). By placing these two fundamental descriptions side by side in the identical algebraic language, we present an exhaustive, mathematically rigorous, and accessible accounting of their structural differences, explaining precisely why fluids dissipate energy while pure multivector electromagnetic-gravitational fields maintain exact topological reversibility.
+In this chapter, we derive the classical Navier-Stokes equations directly from first principles: Newton’s laws of motion and direct contact mechanics applied to a finite ensemble of discrete molecular constituents on the spatial grid \( \mathcal{G}_N \). We subsequently formulate both the Master Field Equation and the Navier-Stokes system within the unified geometric algebra \( Cl(4,1,1) \). By placing these two fundamental descriptions side by side in the identical algebraic language, we present an exhaustive, mathematically rigorous, and accessible accounting of their structural differences, explaining precisely why fluids dissipate energy macroscopically through intermolecular collisions, whereas the underlying electromagnetic field satisfies the linear Master Field Equation \( D F = J \).
 
-=== The Physical Setting: Discrete Fluid Ensembles vs. the Unified Electromagnetic-Gravitational Field
+=== The Physical Setting: Discrete Fluid Ensembles vs. the Electromagnetic Field
 
-To comprehend fluid dynamics without the mathematical fictions of continuous matter, one must first recognize the fundamental distinction between a fluid and the fundamental electromagnetic-gravitational field:
+To comprehend fluid dynamics without the mathematical fictions of continuous matter, one must recognize that neither the electromagnetic field nor a fluid is a continuum. In the Iris Number System, all physical entities and fields are discrete at the m-resolution scale on the spatial grid \( \mathcal{G}_N \). The distinction between a fluid and the electromagnetic field is therefore not a contrast between discrete matter and an idealized continuum, but a distinction between two physical structures on \( \mathcal{G}_N \):
 
-1. **The Fundamental Field**: The Master Field \( F \in Cl(4,1,1) \) is an irreducible, fundamental field governed by the linear differential equation \( D F = J \). It propagates at finite speed \( c \) (the speed of electromagnetic waves relative to their source of transmission) through direct topological contact across adjacent cells of the discrete grid \( \mathcal{G}_N \). In source-free space, it possesses no internal collisions, no stochastic coarse-graining, and no entropy generation.
+. **The Electromagnetic Field**: The electromagnetic field \( F \in Cl(4,1,1) \) on \( \mathcal{G}_N \) (which subsumes gravitation as an electromagnetic manifestation) is governed directly by the linear differential equation \( D F = J \). It propagates across neighboring grid cells at finite speed \( c \) (the speed of electromagnetic waves relative to their source of transmission) through direct topological contact. Operating directly on \( \mathcal{G}_N \) under a linear equation, it is not composed of an ensemble of colliding molecular carriers, and its propagation does not involve coarse-grained thermal collisions.
 
 +
 
-2. **A Fluid**: A fluid (such as liquid water, air, or molten metal) is not an elementary continuum. A fluid is a collection of a finite number \( N_\text{fluid} \) of composite physical entities—molecules or atoms—possessing discrete masses \( m_k \), finite spatial extents with diameter \( d_0 \) at the m-resolution scale, and finite velocities \( \mathbf{v}_k ( t ) \). 
+. **A Fluid Ensemble**: A fluid (such as liquid water, air, or molten metal) is an ensemble consisting of a finite number \( N_\text{fluid} \) of composite physical entities—molecules or atoms—possessing discrete masses \( m_k \), finite spatial extents with diameter \( d_0 \) at the m-resolution scale, and finite velocities \( \mathbf{v}_k ( t ) \). These discrete molecular constituents are themselves localized, bound configurations of the electromagnetic field on \( \mathcal{G}_N \).
 
 Fluid behavior is the macroscopic manifestation of these discrete molecules colliding with one another via electromagnetic repulsion (direct contact forces) and exchanging linear and angular momentum. When we write macroscopic quantities such as the fluid velocity field \( \mathbf{u} ( \mathbf{x} , t ) \), the mass density \( \rho ( \mathbf{x} , t ) \), or the thermodynamic pressure \( P ( \mathbf{x} , t ) \), we are performing a deterministic spatial coarse-graining over an aperture \( \Omega_\text{ap} \) containing a large, finite number of discrete molecules:
 \[ \rho ( \mathbf{x} , t ) = \frac{1}{V ( \Omega_\text{ap} )} \sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k \]
@@ -406,9 +406,9 @@ By Newton’s second law of motion, the time rate of change of \( \mathbf{P}_\Om
 
 +
 
-. **External Volume Influences**: Macroscopic body forces (such as gravitational acceleration \( \mathbf{g} \) or external electromagnetic forces) exert an external force density \( \mathbf{f}_\text{ext} \).
+. **External Volume Influences**: Macroscopic body forces (such as gravitational acceleration \( \mathbf{g} \)—which is itself an electromagnetic manifestation—or external electric and magnetic forces) exert an external force density \( \mathbf{f}_\text{ext} \).
 
-[#def-discrete-fluid-continuum-aperture]
+[#def-discrete-fluid-aperture]
 [DEFINITION]
 ====
 **Definition (Discrete Fluid Aperture and Coarse-Grained Field Observables on \( \mathcal{G}_N \) )**:
@@ -441,9 +441,9 @@ where \( P \) is the thermodynamic scalar pressure, \( \mu > 0 \) is the dynamic
 For an incompressible fluid of uniform density \( \rho_0 \) (where \( \nabla \cdot \mathbf{u} = 0 \) ), the momentum equation simplifies to:
 \[ \rho_0 \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = - \nabla P + \mu \nabla^2 \mathbf{u} + \mathbf{f}_\text{ext} \]
 
-In contrast, the Master Field Equation governing fundamental electrodynamics and gravitation in \( Cl(4,1,1) \) is:
+In contrast, the Master Field Equation governing the fundamental electromagnetic field in \( Cl(4,1,1) \) is:
 \[ D F = J \]
-which is strictly linear in the fundamental field multivector \( F \), dispersion-free in source-free domains, non-dissipative (possessing zero viscous damping), and governed by exact multivector conservation \( D \cdot T = 0 \).
+which is strictly linear in the field multivector \( F \) on \( \mathcal{G}_N \), operates at finite propagation speed \( c \) across neighboring grid cells, contains no coarse-grained viscous damping, and satisfies multivector field energy-momentum conservation \( D \cdot \mathbf{T}_\text{field} = \langle F J \rangle_1 \).
 
 *Proof*:
 The derivation proceeds in four distinct steps:
@@ -500,16 +500,16 @@ To compare the fluid equations directly with the Master Field Equation, we must 
 
 Recall that \( Cl(4,1,1) \) is generated by six mutually orthogonal basis vectors:
 \[ \mathbf{e}_1^2 = \mathbf{e}_2^2 = \mathbf{e}_3^2 = \mathbf{e}_4^2 = +1 , \quad \mathbf{e}_5^2 = -1 , \quad \mathbf{e}_6^2 = 0 \]
-where \( \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \) span 3D physical space, \( \mathbf{e}_4 \) is the cosmological gravitational direction, \( \mathbf{e}_5 \) is the temporal basis vector, and \( \mathbf{e}_6 \) is the null degenerate direction.
+where \( \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \) span 3D physical space, \( \mathbf{e}_4 \) is the cosmological direction associated with gravitation as an electromagnetic phenomenon, \( \mathbf{e}_5 \) is the temporal basis vector, and \( \mathbf{e}_6 \) is the null degenerate direction.
 
 In this algebra, the multivector derivative operator \( D \) is:
 \[ D = \nabla_\mathbf{x} + \frac{1}{c} \mathbf{e}_5 \partial_t + \mathbf{e}_4 \partial_w + \mathbf{e}_6 \partial_s \]
 where \( \nabla_\mathbf{x} = \mathbf{e}_1 \partial_x + \mathbf{e}_2 \partial_y + \mathbf{e}_3 \partial_z \).
 
-==== The Master Field Equation in \( Cl(4,1,1) \)
-The entire coupled electromagnetic and gravitational reality is governed by the compact Master Field Equation:
+==== The Master Field Equation for the Electromagnetic Field in \( Cl(4,1,1) \)
+The electromagnetic field (which subsumes gravitation as an electromagnetic manifestation) is governed by the compact Master Field Equation:
 \[ D F = J \]
-where the field multivector \( F \) contains the electric field \( \mathbf{E} \), magnetic field \( \mathbf{B} \), gravitational field \( \mathbf{G} \), and gravitomagnetic field \( \mathbf{\Omega}_g \):
+where the field multivector \( F \) contains the electric field \( \mathbf{E} \), magnetic field \( \mathbf{B} \), and the gravitational components \( \mathbf{G} \) and \( \mathbf{\Omega}_g \) understood as aspects of the electromagnetic field:
 \[ F = \mathbf{E} \mathbf{e}_5 + c \mathbf{B} I_3 + \mathbf{G} \mathbf{e}_4 + \mathbf{\Omega}_g \mathbf{e}_4 \mathbf{e}_5 \]
 and the source multivector current \( J \) contains electric and mass charges and currents:
 \[ J = \rho_e c \mathbf{e}_5 + \mathbf{J}_e + \rho_m c \mathbf{e}_4 + \mathbf{J}_m \]
@@ -547,33 +547,33 @@ With both systems formulated in \( Cl(4,1,1) \), we can now lay out their precis
 
 [cols="1,2,2", options="header"]
 |===
-| Feature
-| Master Field Equation ( \( D F = J \) )
-| Navier-Stokes Equations ( \( \rho [ \partial_t \mathbf{u} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} ] = - \nabla P + \mu \nabla^2 \mathbf{u} \) )
+| Property / Feature
+| Electromagnetic Field ( \( D F = J \) )
+| Discrete Fluid Ensemble (Navier-Stokes)
 
 | **Mathematical Linearity**
-| **Strictly Linear** in the field \( F \). Superposition holds: if \( F_1 \) and \( F_2 \) are solutions for currents \( J_1 \) and \( J_2 \), then \( F_1 + F_2 \) is an exact solution for \( J_1 + J_2 \).
+| **Strictly Linear on \( \mathcal{G}_N \)**: Governed by the linear multivector operator \( D \). Disturbances satisfy superposition on the discrete grid: if \( F_1 \) and \( F_2 \) are solutions, so is \( F_1 + F_2 \).
 | **Inherently Non-linear** due to the advective acceleration term \( ( \mathbf{u} \cdot \nabla ) \mathbf{u} = \frac{1}{2} \nabla ( \mathbf{u}^2 ) - \mathbf{u} \cdot ( \nabla \wedge \mathbf{u} ) \). Solutions cannot be superposed.
 
-| **Wave Propagation vs. Diffusion**
-| **Pure Wave Equation** of hyperbolic type: in source-free regions, \( D^2 F = 0 \), which reduces to \( \nabla^2 F - \frac{1}{c^2} \partial_t^2 F = 0 \). All disturbances propagate at finite speed \( c \).
-| **Mixed Parabolic-Hyperbolic**: The convective term transports momentum at fluid velocity \( | \mathbf{u} | \ll c \), while the viscous term \( \mu \nabla^2 \mathbf{u} \) is parabolic and diffusive.
+| **Propagation Dynamics**
+| **Hyperbolic Wave Operator**: In source-free regions, \( D^2 F = 0 \), propagating disturbances at finite speed \( c \) (the speed of electromagnetic waves relative to their source of transmission) via direct contact between adjacent cells of \( \mathcal{G}_N \).
+| **Mixed Advective-Diffusive**: Convective momentum transport occurs at molecular drift velocity \( | \mathbf{u} | \ll c \), accompanied by parabolic momentum diffusion (viscosity \( \mu \nabla^2 \mathbf{u} \)) arising from thermal collisions.
 
-| **Energy Dissipation and Time Reversal**
-| **Exactly Conservative and Time-Reversible**. There is no internal entropy generation or viscous dissipation. The field stress tensor satisfies \( D \cdot \mathbf{T} = 0 \) in vacuum.
-| **Irreversible and Dissipative**. The viscous term continuously converts macroscopic kinetic energy into disordered microscopic thermal motion at rate \( 2 \mu \int \mathbf{S} : \mathbf{S} \, d^3 \mathbf{x} > 0 \).
+| **Energy Dynamics on \( \mathcal{G}_N \)**
+| **Linear Field Energy Balance**: In source-free regions on \( \mathcal{G}_N \), wave propagation involves no intermolecular collisions or thermal scattering, satisfying \( D \cdot \mathbf{T}_\text{field} = 0 \).
+| **Thermal Dissipation**: Macroscopic kinetic energy is continuously converted into disordered microscopic thermal molecular motion through collisions at rate \( 2 \mu \int \mathbf{S} : \mathbf{S} \, d^3 \mathbf{x} > 0 \).
 
-| **Nature of the Medium**
-| **The Primary Coordinate Fabric**. The field \( F \) is an elemental state of the geometry of space; it does not consist of particles moving through a pre-existing container.
-| **A Coarse-Grained Statistical Ensemble**. The fluid velocity \( \mathbf{u} \) is an averaged statistical observable representing billions of discrete molecules colliding via electromagnetic forces.
+| **Physical Structure on \( \mathcal{G}_N \)**
+| **Discrete Multivector Field**: The field \( F \) is a discrete geometric multivector configuration on the grid \( \mathcal{G}_N \), updated through direct topological contact across grid cells.
+| **Coarse-Grained Molecular Ensemble**: The fluid observables ( \( \mathbf{u} , \rho , P \) ) are spatial aperture averages over a finite ensemble of discrete molecular structures.
 
 | **Origin of Pressure**
-| **Electrodynamic and Gravitational Field Energy Density**: Field pressure is given directly by the diagonal spatial components of \( \mathbf{T}_\text{field} = \frac{1}{2} ( \epsilon_0 E^2 + \frac{1}{\mu_0} B^2 ) \).
-| **Thermal Molecular Bombardment**: Fluid pressure \( P = \rho R T \) is caused by the kinetic momentum transfer of chaotic microscopic thermal fluctuations \( \mathbf{c}_k \) striking surfaces.
+| **Electromagnetic Field Energy Density**: Field pressure is given directly by the diagonal spatial components of the electromagnetic stress tensor \( \mathbf{T}_\text{field} = \frac{1}{2} ( \epsilon_0 E^2 + \frac{1}{\mu_0} B^2 ) \) (including gravitational components as electromagnetic aspects).
+| **Thermal Molecular Bombardment**: Fluid pressure \( P = \rho R T \) is caused by the kinetic momentum transfer of chaotic microscopic thermal fluctuations \( \mathbf{c}_k \) striking aperture boundaries.
 
-| **Mathematical Regularity**
-| **Singularity-Free and Globally Well-Posed**. Because \( D F = J \) is linear with finite propagation speed \( c \), smooth initial data with compact support remains bounded and smooth for all finite time on \( \mathcal{G}_N \).
-| **Potential Finite-Time Blowup in the Continuum Limit**. In the unphysical continuum limit \( \Delta x \to 0 \), non-linear vortex stretching could concentrate kinetic energy into an infinitesimally small volume, creating infinite gradients.
+| **Lattice Regularity**
+| **Linear Well-Posedness on \( \mathcal{G}_N \)**: Because \( D F = J \) is linear with finite propagation speed \( c \), field values on \( \mathcal{G}_N \) remain bounded for all finite time without singular blowup.
+| **Aperture Regularity on \( \mathcal{G}_N \)**: Because molecules have finite non-zero diameter \( d_0 \) and mean free path, gradients remain bounded on \( \mathcal{G}_N \); potential blowup is an artifact of the unphysical continuum limit \( \Delta x \to 0 \).
 |===
 
 ==== Why Do These Structural Differences Exist?
@@ -588,7 +588,7 @@ The term \( ( \mathbf{u} \cdot \nabla ) \mathbf{u} \) arises solely because flui
 
 +
 
-In contrast, electromagnetic and gravitational fields do not possess resting mechanical mass. Electromagnetic disturbances do not "ride on top of" another electromagnetic wave; they propagate through the underlying spatial grid \( \mathcal{G}_N \) at speed \( c \) determined by the spatial constitutive parameters. Two light rays cross each other without colliding or deflecting because the field equations are linear.
+In contrast, the electromagnetic field does not possess resting mechanical mass. Electromagnetic disturbances do not "ride on top of" another electromagnetic wave; they propagate across adjacent cells of the spatial grid \( \mathcal{G}_N \) at speed \( c \) (the speed of electromagnetic waves relative to their source of transmission). Two electromagnetic wave packets cross each other without colliding or deflecting because the field equation is linear.
 
 2. **Viscosity is Coarse-Grained Microscopic Scattering**:
 Where does the second-order viscous term \( \mu \nabla^2 \mathbf{u} \) come from?
@@ -599,7 +599,7 @@ Viscosity is not an elementary law of nature; it is a macroscopic consequence of
 
 +
 
-Because the fundamental field \( F \) contains no interior "particles" colliding chaotically with one another, there is no internal random momentum exchange, and therefore pure field equations have identically zero viscosity ( \( \mu = 0 \) ).
+Because the electromagnetic field \( F \) is governed by the linear equation \( D F = J \) on \( \mathcal{G}_N \) rather than representing an ensemble of colliding molecular carriers, there is no coarse-grained intermolecular momentum exchange, and the field equation contains no viscous dissipation term ( \( \mu = 0 \) ).
 
 3. **Incompressibility is an Aperture-Scale Approximation**:
 The incompressible Navier-Stokes equation assumes \( \nabla \cdot \mathbf{u} = 0 \). In physical reality, no fluid is strictly incompressible. Sound waves travel through fluids at finite acoustic speed \( c_s = \sqrt{\partial P / \partial \rho} \). 
@@ -610,7 +610,7 @@ The assumption \( \nabla \cdot \mathbf{u} = 0 \) is valid only when the fluid ve
 
 +
 
-The Master Field Equation makes no such low-velocity approximation; it is fully causal and operates at the fundamental propagation speed \( c \) at all scales.
+The Master Field Equation for the electromagnetic field makes no such low-velocity approximation; it is fully causal and operates at the finite propagation speed \( c \) at all scales.
 
 === The "Smooth Solutions" Clay Millennium Problem: An Inconsistency of the Continuum Hypothesis
 
