@@ -3046,8 +3046,8 @@ A 2-bit database (\( N = 2^2 = 4 \) states) is mapped to four concurrent AC volt
 | 1 | Quad Comparator | **LM339N** | Window comparator for continuous amplitude threshold detection.
 | 4 | Small Signal Diodes | **1N4148** | Envelope demodulator rectifiers for the 4 coordinate channels.
 | 4 | Smoothing Capacitors | **10 nF** (Ceramic) | Envelope filter smoothing capacitors.
-| 16 | Precision Resistors | **10 kΩ (1%)** | Input matching, inverting gain, and summing network.
-| 4 | Bleed Resistors | **100 kΩ** | Envelope detector discharge bleeder resistors.
+| 16 | Precision Resistors | **10 k\( \Omega \) (1%)** | Input matching, inverting gain, and summing network.
+| 4 | Bleed Resistors | **100 k\( \Omega \)** | Envelope detector discharge bleeder resistors.
 | 1 | Microcontroller Interface | **Arduino Nano** | High-speed hardware interrupt logger (INT0 / Pin D2).
 |===
 
