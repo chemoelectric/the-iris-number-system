@@ -13,6 +13,36 @@ A Rigorous Application of the Counting-Iris Number System and the Master Field E
 
 Digital typeface design and font outline geometry operate inherently within discrete coordinate grids \( \mathcal{G}_N \) and multiscale rasterization apertures. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization strictly within the Counting-Iris framework and the planar geometric algebra \( Cl(2,0) \).
 
+=== Digital Typeface Design and Typesetting as Multidimensional Image Processing
+
+A persistent historical limitation of computational typography has been its framing through the narrow lens of formal language theory, string partitioning, and abstract combinatorial graph traversal. In standard computer science treatments, a text document is parsed into a sequence of abstract symbolic tokens, grouped into one-dimensional or two-dimensional box-and-glue lattices, and subjected to discrete dynamic programming search over candidate line-break topologies. While graph algorithms offer computational tractability for selecting discrete break positions, they remain detached from the physical reality of human visual perception.
+
+In this treatise, we fundamentally recast both **digital typeface design** and **typesetting** as problems in **multidimensional image processing and numerical analysis**:
+
+1. **The Letterform as a 2D Spatial Density Signal**:
++
+A glyph outline is not merely a list of drawing instructions or an isolated vector path. In digital realization, a letterform is a two-dimensional spatial distribution of opacity or ink density \( I(x, y) \) defined over a discrete aperture grid \( \mathcal{G}_N \). The placement of on-curve knots, off-curve Bézier handles, stem thicknesses, inner counter apertures, and serifs functions as spatial filter synthesis. Every stroke contour modulates the high-frequency and low-frequency components of the optical wave front that reaches the retina.
++
+Designing a digital typeface is therefore an inverse problem in image synthesis: determining the boundary curves of two-dimensional spatial signals such that, under discrete rasterization across varying display scales and resolutions, the glyph preserves its geometric invariants, optical balance, and legibility without introducing spurious phase distortions or high-frequency aliasing artifacts.
+
+2. **The Rendered Page as an Optical Field and Transmission Channel**:
++
+When glyphs are assembled into words, lines, and paragraphs across a page, the resulting document constitutes a full two-dimensional spatial field \( f ( x_n , y_m ) \) sampled on the discrete page grid \( \mathcal{G}_\text{page} \subset \mathcal{G}_N \). Reading is the transmission of this optical field across an analog transmission channel—the human visual pathway—to the visual cortex.
++
+Viewed through the discipline of multidimensional signal processing, common typographic defects are revealed as specific spectral distortions:
++
+* **Rivers of Whitespace**: Accidental vertical or diagonal alignments of inter-word spaces across successive lines represent unwanted coherent spatial frequency spikes and directional energy concentrations.
+* **Optical Grating Interference**: Rigidly regular line-spacing or periodic word-gap wandering creates periodic 2D optical gratings. For individuals with sensory hypersensitivity, these coherent periodicities induce intense visual resonance, optical vibration, and severe reading fatigue.
+* **Spatial Noise and Contrast Disparities**: Loose lines placed adjacent to tight lines produce localized spatial frequency discontinuities, disrupting the smooth processing of the visual signal.
+
+3. **Typesetting as Numerical Energy Minimization**:
++
+Rather than evaluating typography through arbitrary heuristic penalties (such as ungrounded integer badness exponents or empirical demerit weights), numerical analysis approaches the page as an energy minimization problem subject to geometric boundary conditions. 
++
+The layout of a page—including paragraph lineation, inter-word spacing, peg-based contact dynamics, and microtypographic adjustments—is formulated as the minimization of an action functional governed by the Master Field Equation \( D F = J \) and weighted by the Human Visual Contrast Sensitivity Function (CSF). By measuring the two-dimensional power spectral density \( P [ k_x , k_y ] \) across the page aperture, the numerical layout engine suppresses spurious periodic spikes and shapes the whitespace field toward a natural \( 1 / f^\alpha \) (pink-noise) spatial flux.
+
+By grounding digital typeface design and document typesetting in signal processing, image synthesis, and numerical field analysis, we bridge the gap between microscopic letterform geometry and macroscopic page harmony. The tools developed throughout this volume—from Hobby splines and singular value decomposition to discrete contact mechanics and the OpenType PEGS table—unify the shaping of individual glyph contours with the global spectral equilibrium of the printed and displayed page.
+
 == Smooth Spline Interpolation: Hobby’s Algorithm and its Extension via Singular Value Decomposition
 
 === The Typeface Designer’s Challenge: Drawing Curves That Flow
