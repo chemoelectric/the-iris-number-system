@@ -608,16 +608,41 @@ The term \( ( \mathbf{u} \cdot \nabla ) \mathbf{u} \) arises solely because flui
 
 In contrast, the electromagnetic field does not possess resting mechanical mass. Electromagnetic disturbances do not "ride on top of" another electromagnetic wave; they propagate across adjacent cells of the spatial grid \( \mathcal{G}_N \) at speed \( c \) (the speed of electromagnetic waves relative to their source of transmission). Two electromagnetic wave packets cross each other without colliding or deflecting because the field equation is linear.
 
-2. **Viscosity is Coarse-Grained Microscopic Scattering**:
-Where does the second-order viscous term \( \mu \nabla^2 \mathbf{u} \) come from?
+[#sec-causes-of-viscosity]
+2. **Causes of Viscosity: Molecular Collisions versus Electromagnetic Wave Momentum Transport**:
+Where does the second-order viscous term \( \mu \nabla^2 \mathbf{u} \) come from, and how does macroscopic viscosity compare with the Master Field Equation?
 
 +
 
-Viscosity is not an elementary law of nature; it is a macroscopic consequence of chaotic intermolecular collisions. When two adjacent fluid layers slide past each other at different velocities, molecules randomly cross the boundary between the layers due to their thermal velocities \( \mathbf{c}_k \). As a fast molecule moves into a slow layer, it collides with slower molecules, speeding them up; conversely, slow molecules entering the fast layer drag it down. This microscopic momentum mixing acts as an internal friction that smooths out velocity gradients.
+In both fluid mechanics and electrodynamics, the fundamental law is the **conservation of momentum** on the discrete lattice \( \mathcal{G}_N \). The change of momentum within any discrete cell over a finite duration equals the net momentum crossing the cell boundaries plus the direct contact forces acting upon it:
+\[ \frac{\Delta \mathbf{p}}{\Delta t} + \nabla \cdot \mathbf{\Pi} = \mathbf{f} \]
+Viscosity is not an elementary axiom of nature; it is the macroscopic resistance that arises whenever momentum is transported across sheared velocity boundaries.
 
 +
 
-Because the electromagnetic field \( F \) is governed by the linear equation \( D F = J \) on \( \mathcal{G}_N \) rather than representing an ensemble of colliding molecular carriers, there is no coarse-grained intermolecular momentum exchange, and the field equation contains no viscous dissipation term ( \( \mu = 0 \) ).
+* **Viscosity in Molecular Fluids (Navier-Stokes)**: In an ensemble of material atoms and molecules, viscosity is caused by chaotic thermal collisions. When two adjacent fluid layers slide past each other at different velocities, molecules randomly cross the boundary between the layers due to their thermal velocities \( \mathbf{c}_k \). As a fast molecule moves into a slow layer, it transfers momentum to slower molecules through collision, speeding them up; conversely, slow molecules entering the fast layer drag it down. This microscopic momentum mixing acts as an internal friction that smooths out velocity gradients, producing the dynamic shear viscosity \( \mu \).
+
++
+
+* **Viscosity in the Electromagnetic Field**: For an isolated, monochromatic wave packet traveling in empty space, the field is governed by the linear equation \( D F = 0 \) on \( \mathcal{G}_N \), where individual waves cross without colliding. However, whenever there exists a **multidirectional background of electromagnetic waves**—such as thermal radiation or the Cosmic Microwave Background (CMB)—the electromagnetic field itself possesses an effective **field viscosity**. Because electromagnetic wave energy density is equivalent to mass density (\( u = \rho_m c^2 \)), these waves carry real physical momentum \( \mathbf{p} = \frac{u}{c} \hat{\mathbf{n}} \).
+
++
+
+When a material body, charge distribution, or transverse wave packet moves through an isotropic wave background at velocity \( \mathbf{v} \):
+a. The wave packets encountered head-on undergo a Doppler blueshift, increasing their frequency, momentum density, and encounter rate per unit time.
+b. The wave packets catching up from the rear undergo a Doppler redshift, decreasing their frequency, momentum density, and encounter rate per unit time.
+
++
+
+By the strict **conservation of momentum**, the net difference between the head-on momentum flux and the rearward momentum flux is transferred to the moving entity. This transfer exerts a retarding drag force directly opposing the velocity \( \mathbf{v} \):
+\[ \mathbf{F}_\text{drag} = - \Gamma_\text{rad} \mathbf{v} \]
+Across sheared velocity layers in a radiation-permeated medium, transverse propagation of these wave packets transfers momentum across the velocity gradient, producing a non-zero **electromagnetic shear viscosity**:
+\[ \mu_\text{EM} \approx \frac{4}{15} \frac{u_\text{background}}{c} \ell_\text{rad} \]
+where \( u_\text{background} \) is the energy density of the ambient radiation field and \( \ell_\text{rad} \) is the effective radiation absorption or scattering length on \( \mathcal{G}_N \). 
+
++
+
+Thus, both Navier-Stokes viscosity and electromagnetic field viscosity are direct manifestations of **momentum conservation**: Navier-Stokes transfers momentum via colliding massive particles at thermal velocities, whereas the electromagnetic field transfers momentum via wave packets propagating at speed \( c \) subject to Doppler phase compression. As demonstrated in xref:chap-structural-cosmology[Chapter 20], this electromagnetic field viscosity has profound cosmological consequences: over billions of light-years, the viscous drag of the background radiation field causes propagating starlight to gradually wear out and attenuate, sustaining the Cosmic Microwave Background and establishing the optical visibility horizon of the universe.
 
 3. **Incompressibility is an Aperture-Scale Approximation**:
 The incompressible Navier-Stokes equation assumes \( \nabla \cdot \mathbf{u} = 0 \). In physical reality, no fluid is strictly incompressible. Sound waves travel through fluids at finite acoustic speed \( c_s = \sqrt{\partial P / \partial \rho} \). 
@@ -3024,16 +3049,22 @@ Under the Master Field Equation \( D F = J \), self-gravitating dense bodies con
 4. **Galactic Center Kernels (Vast Rotating Magnetoplasmoid Disks)**:
    * **Visual Shape**: A giant, spinning **thick donut-disk engine** thousands of times larger than a stellar kernel, featuring a central magnetic vortex hole and dual axial plasma jets extending perpendicular to the galactic plane.
 
-=== The Cosmic Microwave Background and the Optical Visibility Horizon of the Universe
+=== The Cosmic Microwave Background, Electromagnetic Field Viscosity, and the Optical Visibility Horizon of the Universe
 
-1. **The Cosmic Microwave Background (CMB)**: The isotropic \( T \approx 2.725 \text{ K} \) microwave radiation filling space is not a relic echo of a “Big Bang” creation explosion. It is the steady-state thermalized radiation background generated by ancient, highly redshifted electromagnetic wave packets emitted by stars and galaxies, scattered and re-radiated step-by-step by interstellar atomic matter and background grid cells.
+1. **The Cosmic Microwave Background (CMB) and Field Viscosity**: The isotropic \( T \approx 2.725 \text{ K} \) microwave radiation filling space is not a relic echo of an unphysical “Big Bang” creation explosion. It is the steady-state thermalized radiation background generated and self-sustained by the **viscosity of the electromagnetic field** (established in xref:sec-causes-of-viscosity[Chapter 3]). 
+
++
+
+As established in our comparison with Navier-Stokes mechanics, an ambient bath of electromagnetic waves possesses physical momentum and an effective shear viscosity \( \mu_\text{EM} \propto \frac{u_\text{CMB}}{c} \ell_\text{rad} \). When high-frequency starlight emitted by galaxies travels across cosmological distances through this ambient wave background, it experiences a persistent, velocity-dependent retarding drag force:
+\[ \mathbf{F}_\text{drag} = - \Gamma_\text{rad} \mathbf{v} \]
+Because momentum is conserved on \( \mathcal{G}_N \), this drag transfers energy from the propagating light wave into the background field, gradually "wearing out" the light. Higher-frequency starlight is steadily degraded and downshifted in frequency, generating more microwave-frequency wave packets. The CMB is therefore an active, self-sustaining thermodynamic equilibrium: the background radiation field's viscosity degrades incoming optical starlight, and that degraded starlight continuously replenishes and maintains the microwave background at \( T \approx 2.725 \text{ K} \).
 
 2. **How Far Out is the Universe Visible? (The Optical Visibility Horizon)**:
-   * As electromagnetic wave packets propagate across vast cosmological distances over the discrete spatial grid \( \mathcal { G } _ N \), they interact with ambient background field gradients and discrete cell boundaries, undergoing gradual, non-linear energy attenuation and phase decay (\( \frac { \Delta \nu } { \nu } = \frac { H _ 0 d } { c } \)).
+   * As electromagnetic wave packets propagate across vast cosmological distances over the discrete spatial grid \( \mathcal { G } _ N \), their interaction with the viscous radiation background and discrete cell boundaries produces continuous, non-linear energy attenuation and phase decay (\( \frac { \Delta \nu } { \nu } = \frac { H _ 0 d } { c } \)).
    * At a characteristic distance:
      \[ d _ \text{vis} = \frac { c } { H _ 0 } \approx 13.8 \text{ to } 14.2 \text{ billion light-years} \quad ( \approx 4.2 - 4.3 \text{ Gpc} ) \]
-     light emitted by distant galaxies has undergone complete optical attenuation: its frequency is redshifted all the way down into the microwave spectrum (\( T \sim 2.725 \text{ K} \)) and its energy density drops below the discrete grid detection threshold (the cosmic noise floor).
-   * **Visibility Limit**: Therefore, **the visible limit of the universe is an optical attenuation horizon at approximately 13.8 billion light-years** (\( d _ \text{vis} \approx 13.8 \times 10 ^ 9 \text{ light-years} \)). Beyond this operational visibility boundary, physical space, stars, and galaxies continue to exist indefinitely, but their optical radiation has degraded into the cosmic background noise floor, rendering them optically invisible to observational equipment.
+     light emitted by distant galaxies has been completely worn down by field viscosity: its frequency is redshifted entirely into the microwave spectrum (\( T \sim 2.725 \text{ K} \)) and its energy density drops below the discrete grid detection threshold (the cosmic noise floor).
+   * **Visibility Limit**: Therefore, **the visible limit of the universe is an optical attenuation horizon at approximately 13.8 billion light-years** (\( d _ \text{vis} \approx 13.8 \times 10 ^ 9 \text{ light-years} \)). Beyond this operational visibility boundary, physical space, stars, and galaxies continue to exist indefinitely, but their optical radiation has degraded through field viscosity into the cosmic background noise floor, rendering them optically invisible to observational equipment.
 
 [#theorem-cosmological-structure-visibility-horizon]
 [THEOREM]
