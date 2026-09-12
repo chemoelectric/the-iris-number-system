@@ -10,9 +10,13 @@ interface AsciiDocViewerProps {
 }
 
 export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, className = '', onNavigate, fontFamily = 'serif' }) => {
-  // Normalize downarrow operator spacing after equals signs across all content
+  // Normalize downarrow operator spacing after equals signs across all content and cleanup corrupted macros
   const normalizeMathSpacing = (mathStr: string): string => {
     return mathStr
+      .replace(/\\n\\nabla/g, '\\nabla')
+      .replace(/\\r\\rho/g, '\\rho')
+      .replace(/\\langle\s*F\s*J\s*\\n\s*angle_1/g, '\\langle F J \\rangle_1')
+      .replace(/angle_1/g, '\\rangle_1')
       .replace(/=\s*\(\\downarrow\)/g, '= (\\downarrow)')
       .replace(/=\s*\\downarrow/g, '= (\\downarrow)')
       .replace(/=\s*\(↓\)/g, '= (↓)')
@@ -97,6 +101,9 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
 
   // Render LaTeX math strings cleanly using KaTeX
   const renderMathInline = (text: string): React.ReactNode[] => {
+    const hasTrailingLineBreak = /\s{2,}\+$/.test(text);
+    const sanitizedText = hasTrailingLineBreak ? text.replace(/\s{2,}\+$/, '') : text;
+
     // 1. First split out block math delimiters \[ ... \] or $$ ... $$
     const blockMathRegex = /\\\[([\s\S]*?)\\\]|\$\$([\s\S]*?)\$\$/g;
     const blocks: { type: 'text' | 'math-block'; content: string }[] = [];
@@ -104,19 +111,19 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
     let currentIdx = 0;
     let bMatch;
 
-    while ((bMatch = blockMathRegex.exec(text)) !== null) {
+    while ((bMatch = blockMathRegex.exec(sanitizedText)) !== null) {
       if (bMatch.index > currentIdx) {
-        blocks.push({ type: 'text', content: text.substring(currentIdx, bMatch.index) });
+        blocks.push({ type: 'text', content: sanitizedText.substring(currentIdx, bMatch.index) });
       }
       const mathCode = bMatch[1] || bMatch[2];
       blocks.push({ type: 'math-block', content: mathCode });
       currentIdx = bMatch.index + bMatch[0].length;
     }
-    if (currentIdx < text.length) {
-      blocks.push({ type: 'text', content: text.substring(currentIdx) });
+    if (currentIdx < sanitizedText.length) {
+      blocks.push({ type: 'text', content: sanitizedText.substring(currentIdx) });
     }
 
-    return blocks.map((block, idx) => {
+    const renderedNodes = blocks.map((block, idx) => {
       if (block.type === 'math-block') {
         try {
           const html = katex.renderToString(normalizeMathSpacing(block.content.trim()), { displayMode: true, throwOnError: false });
@@ -162,6 +169,12 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
 
       return <span key={`inline-container-${idx}`}>{inlineElements}</span>;
     });
+
+    if (hasTrailingLineBreak) {
+      renderedNodes.push(<br key="trailing-br" />);
+    }
+
+    return renderedNodes;
   };
 
   // Helper for bold, italic, code, and xref hyperlinking formatting
@@ -656,6 +669,10 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                 i = nextIdx;
                 continue;
               }
+              if (nextLine === '+' || nextLine.startsWith('+') || nextLine === '--' || nextLine.startsWith('\\[') || nextLine.startsWith('$$') || lines[nextIdx].startsWith('  ') || lines[nextIdx].startsWith('\t')) {
+                i = nextIdx;
+                continue;
+              }
             }
             break;
           }
@@ -819,6 +836,10 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
                 i = nextIdx;
                 continue;
               }
+              if (nextLine === '+' || nextLine.startsWith('+') || nextLine === '--' || nextLine.startsWith('\\[') || nextLine.startsWith('$$') || lines[nextIdx].startsWith('  ') || lines[nextIdx].startsWith('\t')) {
+                i = nextIdx;
+                continue;
+              }
             }
             break;
           }
@@ -963,6 +984,12 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
             ))}
           </ol>
         );
+        continue;
+      }
+
+      // Standalone list continuation or open block delimiter lines
+      if (line === '+' || line === '--') {
+        i++;
         continue;
       }
 

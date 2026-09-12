@@ -383,54 +383,40 @@ To comprehend fluid dynamics without the mathematical fictions of continuous mat
 
 . **The Electromagnetic Field**: The electromagnetic field \( F \in Cl(4,1,1) \) on \( \mathcal{G}_N \) (which subsumes gravitation as an electromagnetic manifestation) is governed directly by the linear differential equation \( D F = J \) . It propagates across neighboring grid cells at finite speed \( c \) (the speed of electromagnetic waves relative to their source of transmission) through direct topological contact. Operating directly on \( \mathcal{G}_N \) under a linear equation, it is not composed of an ensemble of colliding molecular carriers, and its propagation does not involve coarse-grained thermal collisions.
 
-+
-
 . **A Fluid Ensemble**: A fluid (such as liquid water, air, or molten metal) is an ensemble consisting of a finite number \( N_\text{fluid} \) of composite physical entities—molecules or atoms—possessing discrete masses \( m_k \) , finite spatial extents with diameter \( d_0 \) at the m-resolution scale, and finite velocities \( \mathbf{v}_k ( t ) \) . These discrete molecular constituents are themselves localized, bound configurations of the electromagnetic field on \( \mathcal{G}_N \) .
 
-Fluid behavior is the macroscopic manifestation of these discrete molecules colliding with one another via electromagnetic repulsion (direct contact forces) and exchanging linear and angular momentum. When we write macroscopic quantities such as the fluid velocity field \( \mathbf{u} ( \mathbf{x} , t ) \) , the mass density \( 
-\rho ( \mathbf{x} , t ) \) , or the thermodynamic pressure \( P ( \mathbf{x} , t ) \) , we are performing a deterministic spatial coarse-graining over an aperture \( \Omega_\text{ap} \) containing a large, finite number of discrete molecules:
-\[ 
-\rho ( \mathbf{x} , t ) = \frac{1}{V ( \Omega_\text{ap} )} \sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k \]
+Fluid behavior is the macroscopic manifestation of these discrete molecules colliding with one another via electromagnetic repulsion (direct contact forces) and exchanging linear and angular momentum. When we write macroscopic quantities such as the fluid velocity field \( \mathbf{u} ( \mathbf{x} , t ) \) , the mass density \( \rho ( \mathbf{x} , t ) \) , or the thermodynamic pressure \( P ( \mathbf{x} , t ) \) , we are performing a deterministic spatial coarse-graining over an aperture \( \Omega_\text{ap} \) containing a large, finite number of discrete molecules:
+\[ \rho ( \mathbf{x} , t ) = \frac{1}{V ( \Omega_\text{ap} )} \sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k \]
 \[ \mathbf{u} ( \mathbf{x} , t ) = \frac{\sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k \mathbf{v}_k ( t )}{\sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k } \]
 
 === Direct Contact Topology: Molecular Momentum Flux across Aperture Boundaries
 
 Consider a finite discrete spatial region \( \Omega \) of lattice cells on \( \mathcal{G}_N \) bounded by an enclosing boundary surface \( \partial \Omega \) . The total linear momentum \( \mathbf{P}_\Omega ( t ) \) of the fluid inside \( \Omega \) is the sum of the discrete momenta of all molecules currently residing within \( \Omega \) :
-\[ \mathbf{P}_\Omega ( t ) = \sum_{k \in \Omega} m_k \mathbf{v}_k ( t ) = \sum_{\mathbf{x} \in \Omega} 
-\rho ( \mathbf{x} , t ) \mathbf{u} ( \mathbf{x} , t ) \Delta x^3 \]
+\[ \mathbf{P}_\Omega ( t ) = \sum_{k \in \Omega} m_k \mathbf{v}_k ( t ) = \sum_{\mathbf{x} \in \Omega} \rho ( \mathbf{x} , t ) \mathbf{u} ( \mathbf{x} , t ) \Delta x^3 \]
 
 By Newton’s second law of motion, the time rate of change of \( \mathbf{P}_\Omega \) over a finite duration \( \Delta t \) must equal the net rate at which momentum enters \( \Omega \) through two distinct physical mechanisms:
 
-. **Advective Momentum Transport**: Molecules moving across the discrete boundary faces \( \partial \Omega \) carry their own momentum across the aperture boundary. If an exterior boundary face \( \alpha \) on \( \partial \Omega \) has area \( \Delta S_\alpha \) and outward unit normal \( \hat{\mathbf{n}}_\alpha \) , the mass escaping across that facet per unit time is \( 
-\rho ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) , carrying advective momentum flux \( 
-\rho \mathbf{u} ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) .
-
-+
+. **Advective Momentum Transport**: Molecules moving across the discrete boundary faces \( \partial \Omega \) carry their own momentum across the aperture boundary. If an exterior boundary face \( \alpha \) on \( \partial \Omega \) has area \( \Delta S_\alpha \) and outward unit normal \( \hat{\mathbf{n}}_\alpha \) , the mass escaping across that facet per unit time is \( \rho ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) , carrying advective momentum flux \( \rho \mathbf{u} ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) .
 
 . **Surface Forces via Direct Intermolecular Contact**: Molecules located immediately outside \( \partial \Omega \) exert direct electromagnetic repulsive forces upon molecules immediately inside \( \partial \Omega \) across the boundary interface. This surface force per unit area on facet \( \alpha \) is the Cauchy stress vector \( \mathbf{t} ( \hat{\mathbf{n}}_\alpha ) = \mathbf{\sigma} \cdot \hat{\mathbf{n}}_\alpha \) , where \( \mathbf{\sigma} \) is the second-rank stress tensor.
-
-+
 
 . **External Volume Influences**: Macroscopic body forces (such as gravitational acceleration \( \mathbf{g} \) —which is itself an electromagnetic manifestation—or external electric and magnetic forces) exert an external force density \( \mathbf{f}_\text{ext} \) .
 
 [#def-discrete-fluid-aperture]
 [DEFINITION]
 ====
-**Definition (Discrete Fluid Aperture and Coarse-Grained Field Observables on \( \mathcal{G}_N \) )**:
+**Definition (Discrete Fluid Aperture and Coarse-Grained Field Observables on \( \mathcal{G}_N \) )**:  +
 Let \( \mathcal{G}_N \) be the discrete spatial lattice with lattice resolution \( \Delta x \) . A fluid domain is defined by an ensemble of \( N_\text{fluid} \) finite-mass entities \( \{ ( m_k , \mathbf{x}_k ( t ) , \mathbf{v}_k ( t ) ) \}_{k=1}^{N_\text{fluid}} \) .
 
 For an aperture weighting kernel \( W ( \mathbf{r} ) \) on \( \mathcal{G}_N \) with finite spatial support of radius \( R_\text{ap} \gg \Delta x \) (vanishing identically for all lattice points with \( | \mathbf{r} | \ge R_\text{ap} \) ) satisfying the discrete lattice normalization:
 \[ \sum_{\mathbf{x} \in \mathcal{G}_N} W ( \mathbf{x} ) \Delta x^3 = 1 \]
 the macroscopic fluid observables are defined as:
-\[ 
-\rho ( \mathbf{x} , t ) = \sum_{k=1}^{N_\text{fluid}} m_k W ( \mathbf{x} - \mathbf{x}_k ( t ) ) \]
-\[ \mathbf{j}_m ( \mathbf{x} , t ) = 
-\rho ( \mathbf{x} , t ) \mathbf{u} ( \mathbf{x} , t ) = \sum_{k=1}^{N_\text{fluid}} m_k \mathbf{v}_k ( t ) W ( \mathbf{x} - \mathbf{x}_k ( t ) ) \]
+\[ \rho ( \mathbf{x} , t ) = \sum_{k=1}^{N_\text{fluid}} m_k W ( \mathbf{x} - \mathbf{x}_k ( t ) ) \]
+\[ \mathbf{j}_m ( \mathbf{x} , t ) = \rho ( \mathbf{x} , t ) \mathbf{u} ( \mathbf{x} , t ) = \sum_{k=1}^{N_\text{fluid}} m_k \mathbf{v}_k ( t ) W ( \mathbf{x} - \mathbf{x}_k ( t ) ) \]
 \[ \mathbf{\Pi} ( \mathbf{x} , t ) = \sum_{k=1}^{N_\text{fluid}} m_k \mathbf{v}_k ( t ) \otimes \mathbf{v}_k ( t ) W ( \mathbf{x} - \mathbf{x}_k ( t ) ) \]
 
 Decomposing each microscopic molecular velocity into the mean streaming velocity and a thermal fluctuation, \( \mathbf{v}_k ( t ) = \mathbf{u} ( \mathbf{x} , t ) + \mathbf{c}_k ( t ) \) with \( \sum_k m_k \mathbf{c}_k W = \mathbf{0} \) , the momentum flux decomposes identically into:
-\[ \mathbf{\Pi} ( \mathbf{x} , t ) = 
-\rho ( \mathbf{x} , t ) \mathbf{u} ( \mathbf{x} , t ) \otimes \mathbf{u} ( \mathbf{x} , t ) + \mathbf{\sigma}_\text{kinetic} ( \mathbf{x} , t ) \]
+\[ \mathbf{\Pi} ( \mathbf{x} , t ) = \rho ( \mathbf{x} , t ) \mathbf{u} ( \mathbf{x} , t ) \otimes \mathbf{u} ( \mathbf{x} , t ) + \mathbf{\sigma}_\text{kinetic} ( \mathbf{x} , t ) \]
 where the kinetic part of the Cauchy stress tensor represents thermal momentum exchange:
 \[ \mathbf{\sigma}_\text{kinetic} ( \mathbf{x} , t ) = \sum_{k=1}^{N_\text{fluid}} m_k \mathbf{c}_k ( t ) \otimes \mathbf{c}_k ( t ) W ( \mathbf{x} - \mathbf{x}_k ( t ) ) \]
 ====
@@ -442,295 +428,104 @@ We now carry out the explicit step-by-step derivation of the Navier-Stokes equat
 [#theorem-navier-stokes-first-principles]
 [THEOREM]
 ====
-**Theorem (First-Principles Derivation and Structural Comparison of Navier-Stokes and the Master Field Equation in \( Cl(4,1,1) \) )**:
-From the conservation of discrete molecular mass and momentum under short-range isotropic repulsive contact forces, the macroscopic streaming velocity \( \mathbf{u} ( \mathbf{x} , t ) \) and mass density \( 
-\rho ( \mathbf{x} , t ) \) satisfy the mass conservation equation and the compressible Navier-Stokes momentum equation on \( \mathcal{G}_N \) :
-\[ \frac{\partial 
-\rho}{\partial t} + 
-\nabla \cdot ( 
-\rho \mathbf{u} ) = 0 \]
-\[ 
-\rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} 
-\right) = - 
-\nabla P + \mu 
-\n\nabla^2 \mathbf{u} + \left( \zeta + \frac{1}{3} \mu 
-\right) 
-\nabla ( 
-\nabla \cdot \mathbf{u} ) + \mathbf{f}_\text{ext} \]
+**Theorem (First-Principles Derivation and Structural Comparison of Navier-Stokes and the Master Field Equation in \( Cl(4,1,1) \) )**:  +
+From the conservation of discrete molecular mass and momentum under short-range isotropic repulsive contact forces, the macroscopic streaming velocity \( \mathbf{u} ( \mathbf{x} , t ) \) and mass density \( \rho ( \mathbf{x} , t ) \) satisfy the mass conservation equation and the compressible Navier-Stokes momentum equation on \( \mathcal{G}_N \) :
+\[ \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) = 0 \]
+\[ \rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = - \nabla P + \mu \nabla^2 \mathbf{u} + \left( \zeta + \frac{1}{3} \mu \right) \nabla ( \nabla \cdot \mathbf{u} ) + \mathbf{f}_\text{ext} \]
 where \( P \) is the thermodynamic scalar pressure, \( \mu > 0 \) is the dynamic shear viscosity, and \( \zeta \ge 0 \) is the bulk (volume) viscosity.
 
-For an incompressible fluid of uniform density \( 
-\rho_0 \) (where \( 
-\nabla \cdot \mathbf{u} = 0 \) ), the momentum equation simplifies to:
-\[ 
-\rho_0 \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} 
-\right) = - 
-\nabla P + \mu 
-\n\nabla^2 \mathbf{u} + \mathbf{f}_\text{ext} \]
+For an incompressible fluid of uniform density \( \rho_0 \) (where \( \nabla \cdot \mathbf{u} = 0 \) ), the momentum equation simplifies to:
+\[ \rho_0 \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = - \nabla P + \mu \nabla^2 \mathbf{u} + \mathbf{f}_\text{ext} \]
 
 In contrast, the Master Field Equation governing the fundamental electromagnetic field in \( Cl(4,1,1) \) is:
 \[ D F = J \]
-which is strictly linear in the field multivector \( F \) on \( \mathcal{G}_N \) , operates at finite propagation speed \( c \) across neighboring grid cells, contains no coarse-grained viscous damping, and satisfies multivector field energy-momentum conservation \( D \cdot \mathbf{T}_\text{field} = \langle F J 
-angle_1 \) .
+which is strictly linear in the field multivector \( F \) on \( \mathcal{G}_N \) , operates at finite propagation speed \( c \) across neighboring grid cells, contains no coarse-grained viscous damping, and satisfies multivector field energy-momentum conservation \( D \cdot \mathbf{T}_\text{field} = \langle F J \rangle_1 \) .
 
-*Proof*:
+*Proof*:  +
 The derivation proceeds in four distinct steps:
 
-. **Step 1: Derivation of the Mass Conservation Equation**.
-
-+
-
+. **Step 1: Derivation of the Mass Conservation Equation**.  +
 The total fluid mass inside any discrete spatial region \( \Omega \) of lattice cells on \( \mathcal{G}_N \) changes solely due to the net flux of mass passing through the exterior boundary faces \( \partial \Omega \) . For cell volume \( \Delta V = \Delta x^3 \) and discrete time step \( \Delta t \) :
-
 +
-
-\[ \frac{\Delta}{\Delta t} \sum_{\mathbf{x} \in \Omega} 
-\rho ( \mathbf{x} , t ) \Delta x^3 = - \sum_{\alpha \in \partial \Omega} 
-\rho ( \mathbf{x}_\alpha , t ) ( \mathbf{u} ( \mathbf{x}_\alpha , t ) \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \]
-
+\[ \frac{\Delta}{\Delta t} \sum_{\mathbf{x} \in \Omega} \rho ( \mathbf{x} , t ) \Delta x^3 = - \sum_{\alpha \in \partial \Omega} \rho ( \mathbf{x}_\alpha , t ) ( \mathbf{u} ( \mathbf{x}_\alpha , t ) \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \]
 +
-
 By the Discrete Gauss Divergence Theorem on \( \mathcal{G}_N \) (established in Volume I, Chapter 1 via the exact algebraic pairwise cancellation of adjacent interior cell faces), the sum of outward normal fluxes over the exterior boundary faces identically equals the sum of the discrete cell divergences across all cells of \( \Omega \) :
-
 +
-
-\[ \sum_{\alpha \in \partial \Omega} 
-\rho ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha = \sum_{\mathbf{x} \in \Omega} 
-\nabla \cdot ( 
-\rho \mathbf{u} ) \Delta x^3 \]
-
+\[ \sum_{\alpha \in \partial \Omega} \rho ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha = \sum_{\mathbf{x} \in \Omega} \nabla \cdot ( \rho \mathbf{u} ) \Delta x^3 \]
 +
-
 Substituting this exact discrete identity yields:
-
 +
-
-\[ \sum_{\mathbf{x} \in \Omega} \left( \frac{\Delta 
-\rho}{\Delta t} + 
-\nabla \cdot ( 
-\rho \mathbf{u} ) 
-\right) \Delta x^3 = 0 \]
-
+\[ \sum_{\mathbf{x} \in \Omega} \left( \frac{\Delta \rho}{\Delta t} + \nabla \cdot ( \rho \mathbf{u} ) \right) \Delta x^3 = 0 \]
 +
-
 Because this identity holds for every arbitrary finite aperture region \( \Omega \) on \( \mathcal{G}_N \) (including an individual lattice cell \( \Omega = \{ \mathbf{x} \} \) ), the bracketed quantity must vanish identically at each grid cell, establishing the exact mass conservation equation:
-
 +
-
-\[ \frac{\partial 
-\rho}{\partial t} + 
-\nabla \cdot ( 
-\rho \mathbf{u} ) = 0 \]
-
+\[ \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) = 0 \]
 +
-
 In legacy continuum mechanics, this relation was traditionally referred to as the “continuity equation”. In the Iris Number System, that terminology is strictly avoided: physical fluids consist of finite numbers of discrete entities on the measurement lattice \( \mathcal{G}_N \) , not an uncountably infinite continuum. The equation expresses the exact conservation of physical mass—the net rate of mass accumulation within an aperture volume equals the net mass influx across its boundary. It is therefore properly and solely designated the **mass conservation equation**.
 
-. **Step 2: Momentum Conservation and the Cauchy Momentum Equation**.
-
-+
-
+. **Step 2: Momentum Conservation and the Cauchy Momentum Equation**.  +
 Newton’s second law applied to the discrete control region \( \Omega \) states that the rate of change of total fluid momentum equals the sum of net advective momentum inflow, boundary surface contact forces, and external volume forces:
-
 +
-
-\[ \frac{\Delta}{\Delta t} \sum_{\mathbf{x} \in \Omega} 
-\rho \mathbf{u} \, \Delta x^3 = - \sum_{\alpha \in \partial \Omega} 
-\rho \mathbf{u} ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha + \sum_{\alpha \in \partial \Omega} \mathbf{\sigma} \cdot \hat{\mathbf{n}}_\alpha \Delta S_\alpha + \sum_{\mathbf{x} \in \Omega} \mathbf{f}_\text{ext} \Delta x^3 \]
-
+\[ \frac{\Delta}{\Delta t} \sum_{\mathbf{x} \in \Omega} \rho \mathbf{u} \, \Delta x^3 = - \sum_{\alpha \in \partial \Omega} \rho \mathbf{u} ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha + \sum_{\alpha \in \partial \Omega} \mathbf{\sigma} \cdot \hat{\mathbf{n}}_\alpha \Delta S_\alpha + \sum_{\mathbf{x} \in \Omega} \mathbf{f}_\text{ext} \Delta x^3 \]
 +
-
 Applying the Discrete Gauss Divergence Theorem to both the advective flux tensor and the Cauchy stress tensor converts both boundary sums to discrete cell divergences:
-
 +
-
-\[ \sum_{\mathbf{x} \in \Omega} \left( \frac{\Delta ( 
-\rho \mathbf{u} )}{\Delta t} + 
-\nabla \cdot ( 
-\rho \mathbf{u} \otimes \mathbf{u} ) - 
-\nabla \cdot \mathbf{\sigma} - \mathbf{f}_\text{ext} 
-\right) \Delta x^3 = \mathbf{0} \]
-
+\[ \sum_{\mathbf{x} \in \Omega} \left( \frac{\Delta ( \rho \mathbf{u} )}{\Delta t} + \nabla \cdot ( \rho \mathbf{u} \otimes \mathbf{u} ) - \nabla \cdot \mathbf{\sigma} - \mathbf{f}_\text{ext} \right) \Delta x^3 = \mathbf{0} \]
 +
-
 Setting the local cell expression to zero gives Cauchy’s fundamental momentum equation on \( \mathcal{G}_N \) :
-
 +
-
-\[ \frac{\partial ( 
-\rho \mathbf{u} )}{\partial t} + 
-\nabla \cdot ( 
-\rho \mathbf{u} \otimes \mathbf{u} ) = 
-\nabla \cdot \mathbf{\sigma} + \mathbf{f}_\text{ext} \]
-
+\[ \frac{\partial ( \rho \mathbf{u} )}{\partial t} + \nabla \cdot ( \rho \mathbf{u} \otimes \mathbf{u} ) = \nabla \cdot \mathbf{\sigma} + \mathbf{f}_\text{ext} \]
 +
-
 Expanding the left-hand side using the discrete product rule:
-
 +
-
-\[ \frac{\partial ( 
-\rho \mathbf{u} )}{\partial t} + 
-\nabla \cdot ( 
-\rho \mathbf{u} \otimes \mathbf{u} ) = \mathbf{u} \left( \frac{\partial 
-\rho}{\partial t} + 
-\nabla \cdot ( 
-\rho \mathbf{u} ) 
-\right) + 
-\rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} 
-\right) \]
-
+\[ \frac{\partial ( \rho \mathbf{u} )}{\partial t} + \nabla \cdot ( \rho \mathbf{u} \otimes \mathbf{u} ) = \mathbf{u} \left( \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) \right) + \rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) \]
 +
-
 The first grouped term vanishes identically by the mass conservation equation proven in Step 1. We are left with the convective acceleration formulation:
-
 +
+\[ \rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = \nabla \cdot \mathbf{\sigma} + \mathbf{f}_\text{ext} \]
 
-\[ 
-\rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} 
-\right) = 
-\nabla \cdot \mathbf{\sigma} + \mathbf{f}_\text{ext} \]
-
-. **Step 3: Constitutive Relation for a Newtonian Viscous Fluid**.
-
-+
-
+. **Step 3: Constitutive Relation for a Newtonian Viscous Fluid**.  +
 In a fluid at rest, shear stresses cannot be sustained; the stress tensor is purely isotropic and compressive: \( \mathbf{\sigma} = - P \mathbf{I} \) , where \( P \) is the thermodynamic pressure. In a moving fluid, intermolecular collisions during shear deformation create an additional deviatoric viscous stress tensor \( \mathbf{\tau} \) :
-
 +
-
 \[ \mathbf{\sigma} = - P \mathbf{I} + \mathbf{\tau} \]
-
 +
-
 For an isotropic fluid where viscous stress is linearly proportional to the rate of strain (Newton’s law of viscosity), \( \mathbf{\tau} \) must be constructed from the symmetric strain rate tensor:
-
 +
-
-\[ \mathbf{S} = \frac{1}{2} \left( 
-\nabla \mathbf{u} + ( 
-\nabla \mathbf{u} )^T 
-\right) \]
-
+\[ \mathbf{S} = \frac{1}{2} \left( \nabla \mathbf{u} + ( \nabla \mathbf{u} )^T \right) \]
 +
-
 The most general second-rank isotropic tensor linear in \( \mathbf{S} \) is:
-
 +
-
-\[ \mathbf{\tau} = 2 \mu \mathbf{S} + \lambda ( \text{tr} \, \mathbf{S} ) \mathbf{I} = \mu \left( 
-\nabla \mathbf{u} + ( 
-\nabla \mathbf{u} )^T 
-\right) + \lambda ( 
-\nabla \cdot \mathbf{u} ) \mathbf{I} \]
-
+\[ \mathbf{\tau} = 2 \mu \mathbf{S} + \lambda ( \text{tr} \, \mathbf{S} ) \mathbf{I} = \mu \left( \nabla \mathbf{u} + ( \nabla \mathbf{u} )^T \right) + \lambda ( \nabla \cdot \mathbf{u} ) \mathbf{I} \]
 +
-
 where \( \mu \) is the dynamic shear viscosity and \( \lambda \) is the second viscosity coefficient. Stokes’ hypothesis isolates the bulk viscosity \( \zeta = \lambda + \frac{2}{3} \mu \ge 0 \) , yielding:
-
 +
+\[ \mathbf{\tau} = \mu \left( \nabla \mathbf{u} + ( \nabla \mathbf{u} )^T - \frac{2}{3} ( \nabla \cdot \mathbf{u} ) \mathbf{I} \right) + \zeta ( \nabla \cdot \mathbf{u} ) \mathbf{I} \]
 
-\[ \mathbf{\tau} = \mu \left( 
-\nabla \mathbf{u} + ( 
-\nabla \mathbf{u} )^T - \frac{2}{3} ( 
-\nabla \cdot \mathbf{u} ) \mathbf{I} 
-\right) + \zeta ( 
-\nabla \cdot \mathbf{u} ) \mathbf{I} \]
-
-. **Step 4: Divergence of the Stress Tensor and Assembly**.
-
-+
-
+. **Step 4: Divergence of the Stress Tensor and Assembly**.  +
 Computing the vector divergence of \( \mathbf{\sigma} = - P \mathbf{I} + \mathbf{\tau} \) :
-
 +
-
-\[ 
-\nabla \cdot \mathbf{\sigma} = - 
-\nabla P + 
-\nabla \cdot \mathbf{\tau} \]
-
+\[ \nabla \cdot \mathbf{\sigma} = - \nabla P + \nabla \cdot \mathbf{\tau} \]
 +
-
 For constant transport coefficients \( \mu \) and \( \zeta \) , we evaluate the divergence of each term:
-
 +
-
-\[ 
-\nabla \cdot \left( \mu 
-\nabla \mathbf{u} 
-\right) = \mu 
-\n\nabla^2 \mathbf{u} \]
-
+\[ \nabla \cdot \left( \mu \nabla \mathbf{u} \right) = \mu \nabla^2 \mathbf{u} \]
 +
-
-\[ 
-\nabla \cdot \left( \mu ( 
-\nabla \mathbf{u} )^T 
-\right) = \mu 
-\nabla ( 
-\nabla \cdot \mathbf{u} ) \]
-
+\[ \nabla \cdot \left( \mu ( \nabla \mathbf{u} )^T \right) = \mu \nabla ( \nabla \cdot \mathbf{u} ) \]
 +
-
-\[ 
-\nabla \cdot \left( \left( \zeta - \frac{2}{3} \mu 
-\right) ( 
-\nabla \cdot \mathbf{u} ) \mathbf{I} 
-\right) = \left( \zeta - \frac{2}{3} \mu 
-\right) 
-\nabla ( 
-\nabla \cdot \mathbf{u} ) \]
-
+\[ \nabla \cdot \left( \left( \zeta - \frac{2}{3} \mu \right) ( \nabla \cdot \mathbf{u} ) \mathbf{I} \right) = \left( \zeta - \frac{2}{3} \mu \right) \nabla ( \nabla \cdot \mathbf{u} ) \]
 +
-
 Summing these contributions gives:
-
 +
-
-\[ 
-\nabla \cdot \mathbf{\tau} = \mu 
-\n\nabla^2 \mathbf{u} + \left( \zeta + \frac{1}{3} \mu 
-\right) 
-\nabla ( 
-\nabla \cdot \mathbf{u} ) \]
-
+\[ \nabla \cdot \mathbf{\tau} = \mu \nabla^2 \mathbf{u} + \left( \zeta + \frac{1}{3} \mu \right) \nabla ( \nabla \cdot \mathbf{u} ) \]
 +
-
 Substituting this result into the Cauchy momentum equation from Step 2 produces the complete compressible Navier-Stokes equation:
-
 +
-
-\[ 
-\rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} 
-\right) = - 
-\nabla P + \mu 
-\n\nabla^2 \mathbf{u} + \left( \zeta + \frac{1}{3} \mu 
-\right) 
-\nabla ( 
-\nabla \cdot \mathbf{u} ) + \mathbf{f}_\text{ext} \]
-
+\[ \rho \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = - \nabla P + \mu \nabla^2 \mathbf{u} + \left( \zeta + \frac{1}{3} \mu \right) \nabla ( \nabla \cdot \mathbf{u} ) + \mathbf{f}_\text{ext} \]
 +
-
-For an incompressible fluid, \( 
-\nabla \cdot \mathbf{u} = 0 \) , which eliminates the second term and yields the standard incompressible equation:
-
+For an incompressible fluid, \( \nabla \cdot \mathbf{u} = 0 \) , which eliminates the second term and yields the standard incompressible equation:
 +
-
-\[ 
-\rho_0 \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} 
-\right) = - 
-\nabla P + \mu 
-\n\nabla^2 \mathbf{u} + \mathbf{f}_\text{ext} \]
-
+\[ \rho_0 \left( \frac{\partial \mathbf{u}}{\partial t} + ( \mathbf{u} \cdot \nabla ) \mathbf{u} \right) = - \nabla P + \mu \nabla^2 \mathbf{u} + \mathbf{f}_\text{ext} \]
 +
-
 This completes the formal proof. \( \square \)
 ====
 
@@ -738,84 +533,44 @@ This completes the formal proof. \( \square \)
 
 To compare the fluid equations directly with the Master Field Equation, we must express both systems in the identical mathematical framework: the real Clifford geometric algebra \( Cl(4,1,1) \) .
 
-Recall that \( Cl(4,1,1) \) is generated by six mutually orthogonal basis vectors:
-\[ \mathbf{e}_1^2 = \mathbf{e}_2^2 = \mathbf{e}_3^2 = \mathbf{e}_4^2 = +1 , \quad \mathbf{e}_5^2 = -1 , \quad \mathbf{e}_6^2 = 0 \]
-where \( \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \) span 3D physical space, \( \mathbf{e}_4 \) is the cosmological direction associated with gravitation as an electromagnetic phenomenon, \( \mathbf{e}_5 \) is the temporal basis vector, and \( \mathbf{e}_6 \) is the null degenerate direction.
+==== The Master Field Equation in \( Cl(4,1,1) \)
+In the 6-dimensional phase-spacetime Clifford algebra \( Cl(4,1,1) \) , the unified spacetime vector gradient operator is:
+\[ D = \nabla _ { \mathbf{x} } + \frac{1}{c} \mathbf{e}_5 \partial_t + \mathbf{e}_4 \partial_w + \mathbf{e}_6 \partial_s \]
+where \( \nabla _ { \mathbf{x} } = \mathbf{e}_1 \partial_x + \mathbf{e}_2 \partial_y + \mathbf{e}_3 \partial_z \) .
 
-In this algebra, the multivector derivative operator \( D \) is:
-\[ D = 
-\nabla _ { \mathbf{x} } + \frac{1}{c} \mathbf{e}_5 \partial_t + \mathbf{e}_4 \partial_w + \mathbf{e}_6 \partial_s \]
-where \( 
-\nabla _ { \mathbf{x} } = \mathbf{e}_1 \partial_x + \mathbf{e}_2 \partial_y + \mathbf{e}_3 \partial_z \) .
-
-==== The Master Field Equation for the Electromagnetic Field in \( Cl(4,1,1) \)
-The electromagnetic field (which subsumes gravitation as an electromagnetic manifestation) is governed by the unified Master Field Equation:
+The total electromagnetic field \( F \) is governed by the unified Master Field Equation:
 \[ D F = J \]
 where the field multivector \( F \) contains the electric field \( \mathbf{E} \) , magnetic field \( \mathbf{B} \) , and the gravitational components \( \mathbf{G} \) and \( \mathbf{\Omega}_g \) understood as aspects of the electromagnetic field:
 \[ F = \mathbf{E} \mathbf{e}_5 + c \mathbf{B} I_3 + \mathbf{G} \mathbf{e}_4 + \mathbf{\Omega}_g \mathbf{e}_4 \mathbf{e}_5 \]
 and the source multivector current \( J \) contains electric and mass charges and currents:
-\[ J = 
-\rho_e c \mathbf{e}_5 + \mathbf{J}_e + 
-\rho_m c \mathbf{e}_4 + \mathbf{J}_m \]
+\[ J = \rho_e c \mathbf{e}_5 + \mathbf{J}_e + \rho_m c \mathbf{e}_4 + \mathbf{J}_m \]
 
 The geometric product \( D F \) decomposes into scalar, vector, bivector, and trivector grades:
 \[ D F = D \cdot F + D \wedge F \]
 Because \( F \) is a physical field multivector, the stress-energy-momentum tensor \( \mathbf{T}_\text{field} ( \mathbf{a} ) \) of the field is given by:
 \[ \mathbf{T}_\text{field} ( \mathbf{a} ) = - \frac{1}{2} F \mathbf{a} \widetilde{F} \]
 where \( \widetilde{F} \) is the multivector reverse. The conservation of field energy and momentum is expressed by the coordinate-free multivector divergence:
-\[ D \cdot \mathbf{T}_\text{field} = \langle F J 
-angle_1 \]
-where \( \langle F J 
-angle_1 \) is the Lorentz-Newton force density acting between fields and charge currents.
+\[ D \cdot \mathbf{T}_\text{field} = \langle F J \rangle_1 \]
+where \( \langle F J \rangle_1 \) is the Lorentz-Newton force density acting between fields and charge currents.
 
 ==== The Navier-Stokes Equation in \( Cl(4,1,1) \)
 Now consider how the fluid velocity vector \( \mathbf{u} = u_1 \mathbf{e}_1 + u_2 \mathbf{e}_2 + u_3 \mathbf{e}_3 \) and its momentum flux are represented in \( Cl(4,1,1) \) .
 
 In geometric algebra, the convective derivative of any vector field \( \mathbf{u} \) along itself is given by the directional derivative:
-\[ ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} = \frac{1}{2} 
-\nabla ( \mathbf{u}^2 ) - \mathbf{u} \cdot ( 
-\nabla \wedge \mathbf{u} ) \]
-Here \( 
-\nabla \wedge \mathbf{u} \) is the spatial vorticity bivector (the geometric algebra dual to the classical vorticity vector \( \mathbf{\omega} = 
-\nabla \times \mathbf{u} \) ), defined by:
-\[ \mathbf{\Omega}_\text{vort} = 
-\nabla \wedge \mathbf{u} = - I_3 \mathbf{\omega} \]
-The spatial Laplacian of the velocity vector can be expressed directly via the fundamental geometric algebra identity \( 
-\n\nabla^2 = 
-\nabla \cdot 
-\nabla + 
-\nabla \wedge 
-\nabla \) :
-\[ 
-\n\nabla^2 \mathbf{u} = 
-\nabla ( 
-\nabla \cdot \mathbf{u} ) - 
-\nabla \cdot ( 
-\nabla \wedge \mathbf{u} ) = 
-\nabla ( 
-\nabla \cdot \mathbf{u} ) - 
-\nabla \cdot \mathbf{\Omega}_\text{vort} \]
-For an incompressible fluid, \( 
-\nabla \cdot \mathbf{u} = 0 \) , so the viscous dissipation term is purely the divergence of the vorticity bivector:
-\[ 
-\n\nabla^2 \mathbf{u} = - 
-\nabla \cdot \mathbf{\Omega}_\text{vort} \]
+\[ ( \mathbf{u} \cdot \nabla ) \mathbf{u} = \frac{1}{2} \nabla ( \mathbf{u}^2 ) - \mathbf{u} \cdot ( \nabla \wedge \mathbf{u} ) \]
+Here \( \nabla \wedge \mathbf{u} \) is the spatial vorticity bivector (the geometric algebra dual to the classical vorticity vector \( \mathbf{\omega} = \nabla \times \mathbf{u} \) ), defined by:
+\[ \mathbf{\Omega}_\text{vort} = \nabla \wedge \mathbf{u} = - I_3 \mathbf{\omega} \]
+The spatial Laplacian of the velocity vector can be expressed directly via the fundamental geometric algebra identity \( \nabla^2 = \nabla \cdot \nabla + \nabla \wedge \nabla \) :
+\[ \nabla^2 \mathbf{u} = \nabla ( \nabla \cdot \mathbf{u} ) - \nabla \cdot ( \nabla \wedge \mathbf{u} ) = \nabla ( \nabla \cdot \mathbf{u} ) - \nabla \cdot \mathbf{\Omega}_\text{vort} \]
+For an incompressible fluid, \( \nabla \cdot \mathbf{u} = 0 \) , so the viscous dissipation term is purely the divergence of the vorticity bivector:
+\[ \nabla^2 \mathbf{u} = - \nabla \cdot \mathbf{\Omega}_\text{vort} \]
 
 We define the fluid energy-momentum tensor \( \mathbf{T}_\text{fluid} ( \mathbf{a} ) \) as a linear vector operator acting on an arbitrary test vector \( \mathbf{a} \) :
-\[ \mathbf{T}_\text{fluid} ( \mathbf{a} ) = 
-\rho \mathbf{u} ( \mathbf{u} \cdot \mathbf{a} ) + P \mathbf{a} - \mathbf{\sigma}_\text{visc} ( \mathbf{a} ) \]
+\[ \mathbf{T}_\text{fluid} ( \mathbf{a} ) = \rho \mathbf{u} ( \mathbf{u} \cdot \mathbf{a} ) + P \mathbf{a} - \mathbf{\sigma}_\text{visc} ( \mathbf{a} ) \]
 where the viscous stress operator is:
-\[ \mathbf{\sigma}_\text{visc} ( \mathbf{a} ) = \mu \left( ( \mathbf{a} \cdot 
-\nabla ) \mathbf{u} + 
-\nabla ( \mathbf{a} \cdot \mathbf{u} ) - \frac{2}{3} ( 
-\nabla \cdot \mathbf{u} ) \mathbf{a} 
-\right) + \zeta ( 
-\nabla \cdot \mathbf{u} ) \mathbf{a} \]
+\[ \mathbf{\sigma}_\text{visc} ( \mathbf{a} ) = \mu \left( ( \mathbf{a} \cdot \nabla ) \mathbf{u} + \nabla ( \mathbf{a} \cdot \mathbf{u} ) - \frac{2}{3} ( \nabla \cdot \mathbf{u} ) \mathbf{a} \right) + \zeta ( \nabla \cdot \mathbf{u} ) \mathbf{a} \]
 The entire Navier-Stokes momentum equation is then summarized as the vector divergence of this fluid stress-energy tensor:
-\[ 
-\nabla \cdot \mathbf{T}_\text{fluid} + \frac{\partial}{\partial t} ( 
-\rho \mathbf{u} ) = \mathbf{f}_\text{ext} \]
+\[ \nabla \cdot \mathbf{T}_\text{fluid} + \frac{\partial}{\partial t} ( \rho \mathbf{u} ) = \mathbf{f}_\text{ext} \]
 
 === The Master Field Equation vs. Navier-Stokes: Precise Structural Differences and Their Physical Causes
 
@@ -829,15 +584,11 @@ With both systems formulated in \( Cl(4,1,1) \) , we can now lay out their preci
 
 | **Mathematical Linearity**
 | **Strictly Linear on \( \mathcal{G}_N \) **: Governed by the linear multivector operator \( D \) . Disturbances satisfy superposition on the discrete grid: if \( F_1 \) and \( F_2 \) are solutions, so is \( F_1 + F_2 \) .
-| **Inherently Non-linear** due to the advective acceleration term \( ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} = \frac{1}{2} 
-\nabla ( \mathbf{u}^2 ) - \mathbf{u} \cdot ( 
-\nabla \wedge \mathbf{u} ) \) . Solutions cannot be superposed.
+| **Inherently Non-linear** due to the advective acceleration term \( ( \mathbf{u} \cdot \nabla ) \mathbf{u} = \frac{1}{2} \nabla ( \mathbf{u}^2 ) - \mathbf{u} \cdot ( \nabla \wedge \mathbf{u} ) \) . Solutions cannot be superposed.
 
 | **Propagation Dynamics**
 | **Hyperbolic Wave Operator**: In source-free regions, \( D^2 F = 0 \) , propagating disturbances at finite speed \( c \) (the speed of electromagnetic waves relative to their source of transmission) via direct contact between adjacent cells of \( \mathcal{G}_N \) .
-| **Mixed Advective-Diffusive**: Convective momentum transport occurs at molecular drift velocity \( | \mathbf{u} | \ll c \) , accompanied by parabolic momentum diffusion (viscosity \( \mu 
-\n\nabla^2 \mathbf{u} \) ) arising from thermal collisions.
+| **Mixed Advective-Diffusive**: Convective momentum transport occurs at molecular drift velocity \( | \mathbf{u} | \ll c \) , accompanied by parabolic momentum diffusion (viscosity \( \mu \nabla^2 \mathbf{u} \) ) arising from thermal collisions.
 
 | **Energy Dynamics on \( \mathcal{G}_N \) **
 | **Linear Field Energy Balance**: In source-free regions on \( \mathcal{G}_N \) , wave propagation involves no intermolecular collisions or thermal scattering, satisfying \( D \cdot \mathbf{T}_\text{field} = 0 \) .
@@ -845,13 +596,11 @@ With both systems formulated in \( Cl(4,1,1) \) , we can now lay out their preci
 
 | **Physical Structure on \( \mathcal{G}_N \) **
 | **Discrete Multivector Field**: The field \( F \) is a discrete geometric multivector configuration on the grid \( \mathcal{G}_N \) , updated through direct topological contact across grid cells.
-| **Coarse-Grained Molecular Ensemble**: The fluid observables ( \( \mathbf{u} , 
-\rho , P \) ) are spatial aperture averages over a finite ensemble of discrete molecular structures.
+| **Coarse-Grained Molecular Ensemble**: The fluid observables ( \( \mathbf{u} , \rho , P \) ) are spatial aperture averages over a finite ensemble of discrete molecular structures.
 
 | **Origin of Pressure**
 | **Electromagnetic Field Energy Density**: Field pressure is given directly by the diagonal spatial components of the electromagnetic stress tensor \( \mathbf{T}_\text{field} = \frac{1}{2} ( \epsilon_0 E^2 + \frac{1}{\mu_0} B^2 ) \) (including gravitational components as electromagnetic aspects).
-| **Thermal Molecular Bombardment**: Fluid pressure \( P = 
-\rho R T \) is caused by the kinetic momentum transfer of chaotic microscopic thermal fluctuations \( \mathbf{c}_k \) striking aperture boundaries.
+| **Thermal Molecular Bombardment**: Fluid pressure \( P = \rho R T \) is caused by the kinetic momentum transfer of chaotic microscopic thermal fluctuations \( \mathbf{c}_k \) striking aperture boundaries.
 
 | **Lattice Regularity**
 | **Linear Well-Posedness on \( \mathcal{G}_N \) **: Because \( D F = J \) is linear with finite propagation speed \( c \) , field values on \( \mathcal{G}_N \) remain bounded for all finite time without singular blowup.
@@ -862,72 +611,49 @@ With both systems formulated in \( Cl(4,1,1) \) , we can now lay out their preci
 
 The physical causes of these differences can be understood through three fundamental principles:
 
-1. **Self-Advection Requires Inertial Mass Carriers**:
-Why does the Navier-Stokes equation have the non-linear advection term \( ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} \) , while the Master Field Equation does not?
-
+1. **Self-Advection Requires Inertial Mass Carriers**:  +
+Why does the Navier-Stokes equation have the non-linear advection term \( ( \mathbf{u} \cdot \nabla ) \mathbf{u} \) , while the Master Field Equation does not?
 +
-
-The term \( ( \mathbf{u} \cdot 
-\nabla ) \mathbf{u} \) arises solely because fluid momentum is transported by physical mass carriers (atoms and molecules) that move at their own velocity \( \mathbf{u} \) . The carrier of the momentum *is itself moving with the momentum*. 
-
+The term \( ( \mathbf{u} \cdot \nabla ) \mathbf{u} \) arises solely because fluid momentum is transported by physical mass carriers (atoms and molecules) that move at their own velocity \( \mathbf{u} \) . The carrier of the momentum *is itself moving with the momentum*. 
 +
-
 In contrast, the electromagnetic field does not possess resting mechanical mass. Electromagnetic disturbances do not “ride on top of” another electromagnetic wave; they propagate across adjacent cells of the spatial grid \( \mathcal{G}_N \) at speed \( c \) (the speed of electromagnetic waves relative to their source of transmission). Two electromagnetic wave packets cross each other without colliding or deflecting because the field equation is linear.
 
 [#sec-causes-of-viscosity]
-2. **Causes of Viscosity: Molecular Collisions versus Electromagnetic Wave Momentum Transport**:
-Where does the second-order viscous term \( \mu 
-\n\nabla^2 \mathbf{u} \) come from, and how does macroscopic viscosity compare with the Master Field Equation?
-
+2. **Causes of Viscosity: Molecular Collisions versus Electromagnetic Wave Momentum Transport**:  +
+Where does the second-order viscous term \( \mu \nabla^2 \mathbf{u} \) come from, and how does macroscopic viscosity compare with the Master Field Equation?
 +
-
 In both fluid mechanics and electrodynamics, the fundamental law is the **conservation of momentum** on the discrete lattice \( \mathcal{G}_N \) . The change of momentum within any discrete cell over a finite duration equals the net momentum crossing the cell boundaries plus the direct contact forces acting upon it:
-\[ \frac{\Delta \mathbf{p}}{\Delta t} + 
-\nabla \cdot \mathbf{\Pi} = \mathbf{f} \]
++
+\[ \frac{\Delta \mathbf{p}}{\Delta t} + \nabla \cdot \mathbf{\Pi} = \mathbf{f} \]
++
 Viscosity is not an elementary axiom of nature; it is the macroscopic resistance that arises whenever momentum is transported across sheared velocity boundaries.
-
 +
-
 * **Viscosity in Molecular Fluids (Navier-Stokes)**: In an ensemble of material atoms and molecules, viscosity is caused by chaotic thermal collisions. When two adjacent fluid layers slide past each other at different velocities, molecules randomly cross the boundary between the layers due to their thermal velocities \( \mathbf{c}_k \) . As a fast molecule moves into a slow layer, it transfers momentum to slower molecules through collision, speeding them up; conversely, slow molecules entering the fast layer drag it down. This microscopic momentum mixing acts as an internal friction that smooths out velocity gradients, producing the dynamic shear viscosity \( \mu \) .
-
 +
-
-* **Viscosity in the Electromagnetic Field**: For an isolated, monochromatic wave packet traveling in empty space, the field is governed by the linear equation \( D F = 0 \) on \( \mathcal{G}_N \) , where individual waves cross without colliding. However, whenever there exists a **multidirectional background of electromagnetic waves**—such as thermal radiation or the Cosmic Microwave Background (CMB)—the electromagnetic field itself possesses an effective **field viscosity**. Because electromagnetic wave energy density is equivalent to mass density ( \( u = 
-\rho_m c^2 \) ), these waves carry real physical momentum \( \mathbf{p} = \frac{u}{c} \hat{\mathbf{n}} \) .
-
+* **Viscosity in the Electromagnetic Field**: For an isolated, monochromatic wave packet traveling in empty space, the field is governed by the linear equation \( D F = 0 \) on \( \mathcal{G}_N \) , where individual waves cross without colliding. However, whenever there exists a **multidirectional background of electromagnetic waves**—such as thermal radiation or the Cosmic Microwave Background (CMB)—the electromagnetic field itself possesses an effective **field viscosity**. Because electromagnetic wave energy density is equivalent to mass density ( \( u = \rho_m c^2 \) ), these waves carry real physical momentum \( \mathbf{p} = \frac{u}{c} \hat{\mathbf{n}} \) .
 +
-
 When a material body, charge distribution, or transverse wave packet moves through an isotropic wave background at velocity \( \mathbf{v} \) :
-
-a. The wave packets encountered head-on undergo a Doppler blueshift, increasing their frequency, momentum density, and encounter rate per unit time.
-
++
+a. The wave packets encountered head-on undergo a Doppler blueshift, increasing their frequency, momentum density, and encounter rate per unit time.  +
 b. The wave packets catching up from the rear undergo a Doppler redshift, decreasing their frequency, momentum density, and encounter rate per unit time.
-
 +
-
 By the strict **conservation of momentum**, the net difference between the head-on momentum flux and the rearward momentum flux is transferred to the moving entity. This transfer exerts a decelerating drag force directly opposing the velocity \( \mathbf{v} \) :
-\[ \mathbf{F}_\text{drag} = - \Gamma_\text{rad} \mathbf{v} \]
-Across sheared velocity layers in a radiation-permeated medium, transverse propagation of these wave packets transfers momentum across the velocity gradient, producing a non-zero **electromagnetic shear viscosity**:
-\[ \mu_\text{EM} \approx \frac{4}{15} \frac{u_\text{background}}{c} \ell_\text{rad} \]
-where \( u_\text{background} \) is the energy density of the ambient radiation field and \( \ell_\text{rad} \) is the effective radiation absorption or scattering length on \( \mathcal{G}_N \) . 
-
 +
-
+\[ \mathbf{F}_\text{drag} = - \Gamma_\text{rad} \mathbf{v} \]
++
+Across sheared velocity layers in a radiation-permeated medium, transverse propagation of these wave packets transfers momentum across the velocity gradient, producing a non-zero **electromagnetic shear viscosity**:
++
+\[ \mu_\text{EM} \approx \frac{4}{15} \frac{u_\text{background}}{c} \ell_\text{rad} \]
++
+where \( u_\text{background} \) is the energy density of the ambient radiation field and \( \ell_\text{rad} \) is the effective radiation absorption or scattering length on \( \mathcal{G}_N \) . 
++
 Thus, both Navier-Stokes viscosity and electromagnetic field viscosity are direct manifestations of **momentum conservation**: Navier-Stokes transfers momentum via colliding massive particles at thermal velocities, whereas the electromagnetic field transfers momentum via wave packets propagating at speed \( c \) subject to Doppler phase compression. As demonstrated in xref:chap-structural-cosmology[Chapter 20], this electromagnetic field viscosity has profound cosmological consequences: over billions of light-years, the viscous drag of the background radiation field causes propagating starlight to gradually wear out and attenuate, sustaining the Cosmic Microwave Background and establishing the optical visibility horizon of the universe.
 
-3. **Incompressibility is an Aperture-Scale Approximation**:
-The incompressible Navier-Stokes equation assumes \( 
-\nabla \cdot \mathbf{u} = 0 \) . In physical reality, no fluid is strictly incompressible. Sound waves travel through fluids at finite acoustic speed \( c_s = \sqrt{\partial P / \partial 
-\r\rho} \) . 
-
+3. **Incompressibility is an Aperture-Scale Approximation**:  +
+The incompressible Navier-Stokes equation assumes \( \nabla \cdot \mathbf{u} = 0 \) . In physical reality, no fluid is strictly incompressible. Sound waves travel through fluids at finite acoustic speed \( c_s = \sqrt{\partial P / \partial \rho} \) . 
 +
-
-The assumption \( 
-\nabla \cdot \mathbf{u} = 0 \) is valid only when the fluid velocity is much smaller than the speed of sound (low Mach number, \( \text{Ma} = | \mathbf{u} | / c_s \ll 1 \) ). In this regime, acoustic waves propagate across the control volume so rapidly compared to the fluid motion that density variations are negligible. 
-
+The assumption \( \nabla \cdot \mathbf{u} = 0 \) is valid only when the fluid velocity is much smaller than the speed of sound (low Mach number, \( \text{Ma} = | \mathbf{u} | / c_s \ll 1 \) ). In this regime, acoustic waves propagate across the control volume so rapidly compared to the fluid motion that density variations are negligible. 
 +
-
 The Master Field Equation for the electromagnetic field makes no such low-velocity approximation; it is fully causal and operates at the finite propagation speed \( c \) at all scales.
 
 === The “Smooth Solutions” Clay Millennium Problem: An Inconsistency of the Continuum Hypothesis
@@ -939,22 +665,21 @@ The Clay Mathematics Institute lists the existence and smoothness of solutions t
 From the perspective of the Iris Number System, this problem is an artificial conundrum generated entirely by assuming the continuum hypothesis:
 
 . **The Continuum Fiction**: Conventional mathematics assumes that a fluid is an infinitely divisible continuum of mathematical points \( \mathbf{x} \in \mathbb{R}^3 \) . Under this assumption, the non-linear vortex stretching term:
-\[ ( \mathbf{\omega} \cdot 
-\nabla ) \mathbf{u} \]
++
+\[ ( \mathbf{\omega} \cdot \nabla ) \mathbf{u} \]
++
 can mathematically compress a vortex tube into zero radius. If a vortex filament is stretched toward zero diameter while conserving circulation, its vorticity \( \mathbf{\omega} \) and kinetic energy density would grow without bound, potentially producing a mathematical singularity (“blowup”) in finite time.
 
-+
-
 . **The Physical Reality on \( \mathcal{G}_N \) **: In physical actuality, matter is composed of a finite number of discrete molecules with non-zero physical diameter \( d_0 \) at the m-resolution scale. A vortex tube cannot be compressed to a radius smaller than the mean free path \( \ell_\text{mfp} \) of the molecules:
++
 \[ r_\text{vortex} \ge \ell_\text{mfp} \gg \Delta x \]
++
 When a vortex reaches the scale of the molecular mean free path, the continuum approximation completely breaks down. The organized kinetic energy of the vortex is directly converted into thermal kinetic energy through molecular collisions—a process observed macroscopically as viscous dissipation.
 
+. **Resolution**: On the discrete lattice \( \mathcal{G}_N \) , the gradient \( \nabla \mathbf{u} \) is bounded by the maximum physical velocity divided by the grid spacing:
 +
-
-. **Resolution**: On the discrete lattice \( \mathcal{G}_N \) , the gradient \( 
-\nabla \mathbf{u} \) is bounded by the maximum physical velocity divided by the grid spacing:
-\[ | 
-\nabla \mathbf{u} | \le \frac{2 c}{\Delta x} < \infty \]
+\[ | \nabla \mathbf{u} | \le \frac{2 c}{\Delta x} < \infty \]
++
 Therefore, infinite velocity gradients and infinite energy densities are physically and mathematically impossible. The Navier-Stokes equations remain smooth, bounded, and physically well-behaved for all time when grounded in the discrete Counting-Iris framework, while the continuum blowup is exposed as an artifact of an ungrounded mathematical abstraction.
 
 [#chap-quantum-pseudo-physics]
@@ -3329,10 +3054,7 @@ Under the Master Field Equation \( D F = J \), self-gravitating dense bodies con
 
 === The Cosmic Microwave Background, Electromagnetic Field Viscosity, and the Optical Visibility Horizon of the Universe
 
-1. **The Cosmic Microwave Background (CMB) and Field Viscosity**: The isotropic \( T \approx 2.725 \text{ K} \) microwave radiation filling space is not a relic echo of an unphysical “Big Bang” creation explosion. It is the steady-state thermalized radiation background generated and self-sustained by the **viscosity of the electromagnetic field** (established in xref:sec-causes-of-viscosity[Chapter 3]). 
-
-+
-
+1. **The Cosmic Microwave Background (CMB) and Field Viscosity**: The isotropic \( T \approx 2.725 \text{ K} \) microwave radiation filling space is not a relic echo of an unphysical “Big Bang” creation explosion. It is the steady-state thermalized radiation background generated and self-sustained by the **viscosity of the electromagnetic field** (established in xref:sec-causes-of-viscosity[Chapter 3]).  +
 As established in our comparison with Navier-Stokes mechanics, an ambient bath of electromagnetic waves possesses physical momentum and an effective shear viscosity \( \mu_\text{EM} \propto \frac{u_\text{CMB}}{c} \ell_\text{rad} \). When high-frequency starlight emitted by galaxies travels across cosmological distances through this ambient wave background, it experiences a persistent, velocity-dependent retarding drag force:
 \[ \mathbf{F}_\text{drag} = - \Gamma_\text{rad} \mathbf{v} \]
 Because momentum is conserved on \( \mathcal{G}_N \), this drag transfers energy from the propagating light wave into the background field, gradually "wearing out" the light. Higher-frequency starlight is steadily degraded and downshifted in frequency, generating more microwave-frequency wave packets. The CMB is therefore an active, self-sustaining thermodynamic equilibrium: the background radiation field's viscosity degrades incoming optical starlight, and that degraded starlight continuously replenishes and maintains the microwave background at \( T \approx 2.725 \text{ K} \).
