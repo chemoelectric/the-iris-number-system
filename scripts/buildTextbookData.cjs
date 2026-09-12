@@ -176,6 +176,15 @@ const vol8 = parseAdocFile(
   "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Chemical Bonds, Molecular Electrodynamics, Finite Thermodynamics, and Reaction Dynamics"
 );
 
+const refBook = parseAdocFile(
+  "public/Iris_Number_System-Reference_Book.adoc",
+  "textbook-iris-reference-book",
+  "The Iris Number System Reference Book",
+  "",
+  "Frédéric Blondin Custer",
+  "The direct reference manual for the Iris Number System."
+);
+
 vol0.filename = "Iris_Number_System-00-Bibliography.adoc";
 vol1.filename = "Iris_Number_System-01-Volume_I_Fundamentals.adoc";
 vol2.filename = "Iris_Number_System-02-Volume_II_Number_Theory_etc.adoc";
@@ -185,6 +194,7 @@ vol5.filename = "Iris_Number_System-05-Volume_V_Spectral_Analysis_etc.adoc";
 vol6.filename = "Iris_Number_System-06-Volume_VI_Fractals.adoc";
 vol7.filename = "Iris_Number_System-07-Volume_VII_Typefaces.adoc";
 vol8.filename = "Iris_Number_System-08-Volume_VIII_Physical_Chemistry.adoc";
+refBook.filename = "Iris_Number_System-Reference_Book.adoc";
 
 function generateFormalIndexChapterObj(chapters) {
   const entries = [];
@@ -404,7 +414,9 @@ export const TYPEFACES_TEXTBOOK: Textbook = ${JSON.stringify(vol7, null, 2)};
 
 export const PHYSICAL_CHEMISTRY_TEXTBOOK: Textbook = ${JSON.stringify(vol8, null, 2)};
 
-export const TEXTBOOK_VOLUMES: Textbook[] = [BIBLIOGRAPHY_TEXTBOOK, INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK, FRACTALS_TEXTBOOK, TYPEFACES_TEXTBOOK, PHYSICAL_CHEMISTRY_TEXTBOOK];
+export const REFERENCE_BOOK_TEXTBOOK: Textbook = ${JSON.stringify(refBook, null, 2)};
+
+export const TEXTBOOK_VOLUMES: Textbook[] = [BIBLIOGRAPHY_TEXTBOOK, INITIAL_TEXTBOOK, NUMBER_THEORY_TEXTBOOK, GEOMETRY_ALGEBRA_TEXTBOOK, PHYSICS_CHEMISTRY_TEXTBOOK, SPECTRAL_CIRCUITS_TEXTBOOK, FRACTALS_TEXTBOOK, TYPEFACES_TEXTBOOK, PHYSICAL_CHEMISTRY_TEXTBOOK, REFERENCE_BOOK_TEXTBOOK];
 
 export function generateFullAsciiDoc(textbook = INITIAL_TEXTBOOK): string {
   const chapters = getCompleteChapters(textbook.chapters);
