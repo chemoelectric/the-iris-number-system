@@ -1358,13 +1358,13 @@ When mathematics is constructed properly—as an explicit, discrete tautological
 
 == Equivalent Informational Formulation of the Tautological System
 
-Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text { Iris } } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system folds Jaynesian Maximum Entropy probability theory and the Clifford \( Cl ( 4 , 1 , 1 ) \) Master Field Equation into a unified informational primitive, demonstrating that physical field dynamics and inductive scientific inference are two facets of the exact same mathematical foundation.
+Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text { Iris } } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system folds Jaynesian Maximum Entropy probability theory and the Clifford \( Cl ( 4 , 1 , 1 ) \) Master Field Equation into a unified informational primitive, demonstrating that physical field dynamics and inductive scientific inference are two facets of the same mathematical foundation.
 
 === Synthesis of Jaynesian MaxEnt Inference and the Master Field Equation
 
 In the original presentation of the Iris Number System, the framework is developed from Postulates 0 through 9: measurement operations on discrete counting grids, algebraic embedding into the 64-dimensional Clifford algebra \( Cl ( 4 , 1 , 1 ) \), Multiscale Resolution Analysis (MSRA), and the Master Field Equation \( D F = J \). That formulation is completely intuitive, explicit, and grounded directly in the physical act of counting and aperture metrology.
 
-An equivalent formulation emerges when one recognizes that Jaynesian probability theory—understood as the unique, consistent extension of Aristotelian logic to conditions of incomplete information—and the Master Field Equation are intimately unified. In this informational formulation, the physical plenum is conceived as an information-bearing aperture network on the discrete grid \( \mathcal { G } _ N \).
+An equivalent formulation emerges when one recognizes that Jaynesian probability theory—understood as the unique, consistent extension of Aristotelian logic to conditions of incomplete information—and the Master Field Equation are intimately unified. In this informational formulation, the physical plenum is formulated as an information-bearing aperture network on the discrete grid \( \mathcal { G } _ N \).
 
 When we have incomplete knowledge of the microscopic field states within a discrete aperture domain, the only scientifically honest state distribution is that which maximizes the informational entropy functional:
 \[ S [ P ] = - \sum _ { k } P _ k \ln P _ k \]
