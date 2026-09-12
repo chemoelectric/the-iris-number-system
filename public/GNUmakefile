@@ -16,10 +16,13 @@ VOLUMES += Iris_Number_System-05-Volume_V_Spectral_Analysis_etc
 VOLUMES += Iris_Number_System-06-Volume_VI_Fractals
 VOLUMES += Iris_Number_System-07-Volume_VII_Typefaces
 VOLUMES += Iris_Number_System-08-Volume_VIII_Physical_Chemistry
+VOLUMES += Iris_Number_System-Reference_Book
 
+PAPERS =
+PAPERS += m_res_numerical_analysis_and_statistical_mechanics
 
 default: all
-all: $(addsuffix .pdf, $(VOLUMES))
+all: $(addsuffix .pdf, $(VOLUMES)) $(addsuffix .pdf, $(PAPERS))
 
 
 .PHONY: clean
