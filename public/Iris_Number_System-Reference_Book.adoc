@@ -1,0 +1,13 @@
+= The Iris Number System Reference Book
+Frédéric Blondin Custer
+:doctype: book
+:toc: left
+:toclevels: 3
+:sectnums:
+:stem: latexmath
+:icons: font
+
+[preface]
+== Preface
+
+This volume serves as the direct reference manual for the Iris Number System.

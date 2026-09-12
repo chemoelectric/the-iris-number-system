@@ -142,7 +142,7 @@ export const IrisTextbook: React.FC<IrisTextbookProps> = ({ onOpenAeroSimulator 
             >
               {TEXTBOOK_VOLUMES.map((vol) => (
                 <option key={vol.id} value={vol.id} className="bg-[#181818] text-slate-200">
-                  Volume: {vol.subtitle} ({vol.author})
+                  {vol.subtitle ? `Volume: ${vol.subtitle} (${vol.author})` : `${vol.title} (${vol.author})`}
                 </option>
               ))}
             </select>
