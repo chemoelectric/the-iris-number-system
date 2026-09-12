@@ -1408,7 +1408,7 @@ The probability distribution over microscopic field states on the discrete latti
 \[ S = - \sum _ { k } P _ k \ln P _ k \]
 subject strictly to the operational boundary constraints imposed by localized source currents \( J \). The expected field configuration under this distribution is the unique, least-biased field satisfying the Master Field Equation:
 \[ D F = J \]
-where \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) is the Clifford differential operator and \( J \) represents the total localized multivector source current.
+where \[ D = \nabla + e _ 4 \frac { 1 } { c } \,\mkern-1mu D _ t \] is the Clifford differential operator and \( J \) represents the total localized multivector source current.
 ====
 
 === Proof of Equivalence Between the Original System and the Informational Formulation
