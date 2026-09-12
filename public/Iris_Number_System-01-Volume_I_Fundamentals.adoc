@@ -1358,7 +1358,7 @@ When mathematics is constructed properly—as an explicit, discrete tautological
 
 == Equivalent Informational Formulation of the Tautological System
 
-Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text { Iris } } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system folds Jaynesian Maximum Entropy probability theory and the Clifford \( Cl ( 4 , 1 , 1 ) \) Master Field Equation into a unified informational primitive, demonstrating that physical field dynamics and inductive scientific inference are two facets of the same mathematical foundation.
+Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text { Iris } } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system unites Jaynesian Maximum Entropy probability theory and the Clifford \( Cl ( 4 , 1 , 1 ) \) Master Field Equation into a unified foundation, demonstrating that physical field dynamics and inductive scientific inference are two facets of the same mathematical structure.
 
 === Synthesis of Jaynesian MaxEnt Inference and the Master Field Equation
 
@@ -1366,14 +1366,14 @@ In the original presentation of the Iris Number System, the framework is develop
 
 An equivalent formulation emerges when one recognizes that Jaynesian probability theory—understood as the unique, consistent extension of Aristotelian logic to conditions of incomplete information—and the Master Field Equation are intimately unified. In this informational formulation, the physical plenum is formulated as an information-bearing aperture network on the discrete grid \( \mathcal { G } _ N \).
 
-When we have incomplete knowledge of the microscopic field states within a discrete aperture domain, the only scientifically honest state distribution is that which maximizes the informational entropy functional:
-\[ S [ P ] = - \sum _ { k } P _ k \ln P _ k \]
-subject strictly to the known operational constraints. When the operational constraints represent localized macroscopic source distributions \( J \) on the boundary of an aperture cell, the stationary expectation configuration of the field is governed by the informational variational condition:
-\[ \delta \left [ S [ F ] - \left \langle \Lambda , D F - J \right \rangle \right ] = \mathbf { 0 } \]
-where \( \Lambda \) is the multivector Lagrange multiplier field enforcing boundary flux conservation. The resulting stationary Euler-Lagrange field equation is identically the Master Field Equation:
+When we have incomplete knowledge of the microscopic field states within a discrete aperture cell, there are typically many different microscopic configurations that could produce the same macroscopic measurements. To make a scientific inference without pretending to know details we have not measured, we must assign probabilities to these possibilities. E. T. Jaynes proved that the only honest, unbiased probability assignment is the one that maximizes the Shannon informational entropy:
+\[ S = - \sum _ { k } P _ k \ln P _ k \]
+Here \( P _ k \) is the probability assigned to microscopic configuration \( k \), and the entropy \( S \) is simply a number that measures how spread out or uncertain the probability distribution is. Maximizing \( S \) means making the distribution as spread out and impartial as possible, subject strictly to the facts we actually know from measurement.
+
+If our only measurement on an aperture cell is the net source current \( J \) across its boundary, then what is our best estimate for the field \( F \) inside? The boundary constraints require that the divergence and curl of the field match the source: \( D F = J \). The expected field configuration \( F \) that satisfies this constraint while maximizing entropy—that is, without assuming any arbitrary, unmeasured microscopic ripples or phantom sources—is the solution to:
 \[ D F = J \]
 
-Thus, the Master Field Equation is not an arbitrary empirical assertion; it is the unique, maximally unbiased inductive inference possible given the localized source boundary constraints. Physics and Jaynesian scientific inference become structurally identical.
+Thus, the Master Field Equation is not an arbitrary empirical assertion; it is simply the unique, least-biased inductive inference possible given the localized source boundary constraints. Physics and Jaynesian scientific inference become structurally identical.
 
 === Postulate Set of the Informational Formulation
 
@@ -1402,11 +1402,11 @@ Information transfer, field coupling, and causal state updates occur exclusively
 
 [#postulate-info-3]
 [POSTULATE]
-.Postulate Info-3: Jaynesian Informational Field Variational Principle
+.Postulate Info-3: Jaynesian Maximum Entropy Field Principle
 ====
-The state distribution of the multivector field \( F \in Cl ( 4 , 1 , 1 ) \) over the discrete lattice \( \mathcal { G } _ N \) is the unique probability distribution that maximizes the informational entropy:
-\[ S [ P ] = - \sum _ { k } P _ k \ln P _ k \]
-subject to the operational boundary constraints imposed by localized source currents \( J \). The stationary expectation value of this distribution satisfies the multivector Euler-Lagrange condition, identically yielding the Master Field Equation:
+The probability distribution over microscopic field states on the discrete lattice \( \mathcal { G } _ N \) is the unique distribution that maximizes the informational entropy:
+\[ S = - \sum _ { k } P _ k \ln P _ k \]
+subject strictly to the operational boundary constraints imposed by localized source currents \( J \). The expected field configuration under this distribution is the unique, least-biased field satisfying the Master Field Equation:
 \[ D F = J \]
 where \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) is the Clifford differential operator and \( J \) represents the total localized multivector source current.
 ====
@@ -1441,7 +1441,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
 . **Derivation of Postulate Info-2**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 8 (Action by Direct Contact via Topological Halos) establishes that all physical interactions occur by direct contact across boundaries with finite propagation duration at speed \( c \), explicitly excluding non-local action-at-a-distance. This is identically Postulate Info-2.
 
-. **Derivation of Postulate Info-3**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 6 establishes the Jaynesian Maximum Entropy Prior on discrete states. Furthermore, the Master Field Equation \( D F = J \) is established in Chapter 10. By the variational principles established in Volume IV, the multivector field configuration satisfying \( D F = J \) under localized boundary sources \( J \) is the unique stationary point of the action integral, which corresponds to the stationary expectation configuration under the Jaynesian MaxEnt distribution constrained by source current boundary data. Hence, Postulate Info-3 is satisfied.
+. **Derivation of Postulate Info-3**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 6 establishes the Jaynesian Maximum Entropy Prior on discrete states. Furthermore, the Master Field Equation \( D F = J \) is established in Chapter 10. The field configuration satisfying \( D F = J \) under localized boundary sources \( J \) is the unique expectation value under the Jaynesian maximum-entropy distribution constrained by the source current boundary data. Hence, Postulate Info-3 is satisfied.
 
 Therefore, \( \mathcal { S } _ { \text { Iris } } \implies \mathcal { S } _ { \text { Info } } \).
 
@@ -1463,8 +1463,8 @@ Assume the validity of \( \mathcal { S } _ { \text { Info } } \).
 
 . **Recovery of Postulate 8**: Postulate Info-2 explicitly asserts action by direct contact across adjacent aperture boundaries with finite-duration propagation at velocity \( c \). This identically recovers Postulate 8.
 
-. **Recovery of Postulate 6 and the Master Field Equation**: Postulate Info-3 asserts that multivector state distributions maximize informational entropy subject to source constraints. Restricting this principle to prior distributions in the absence of source constraints directly recovers Postulate 6 (Jaynesian Maximum Entropy Prior). Evaluating the stationary Euler-Lagrange condition of the entropy functional under source current constraints \( J \) yields:
-\[ \delta S [ F ] = \left \langle \Lambda , \delta ( D F - J ) \right \rangle \implies D F = J \]
+. **Recovery of Postulate 6 and the Master Field Equation**: Postulate Info-3 assigns probabilities to microscopic field states by maximizing informational entropy subject to known source constraints. In the absence of source constraints, maximizing entropy assigns equal probability to all accessible microscopic configurations, which directly recovers Postulate 6 (the Jaynesian Maximum Entropy Prior). When source current constraints \( J \) are present, the expected field that satisfies the boundary conditions without assuming any phantom or unmeasured variations is the field satisfying:
+\[ D F = J \]
 identically recovering the Master Field Equation of Chapter 10.
 
 . **Recovery of MSRA Calculus**: Because both formulations share the identical discrete grid \( \mathcal { G } _ N \) and multiscale resolution ring \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \), the Multiscale Resolution Analysis operators (vernier derivatives, definite integrals, and contour integrals) and their associated theorems (Product Rule, Quotient Rule, Chain Rule, Fundamental Theorem of Calculus, Cauchy-Goursat, and Residue Theorem) hold identically in both formulations.
@@ -1513,7 +1513,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:postulate-info-0[**Postulate Info-0: Discrete Aperture Information Space**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 * xref:postulate-info-1[**Postulate Info-1: Clifford Geometry of Multichannel Information Propagation**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 * xref:postulate-info-2[**Postulate Info-2: The Informational Principle of Direct Contact Action**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
-* xref:postulate-info-3[**Postulate Info-3: Jaynesian Informational Field Variational Principle**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
+* xref:postulate-info-3[**Postulate Info-3: Jaynesian Maximum Entropy Field Principle**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 
 === Theorems
 
