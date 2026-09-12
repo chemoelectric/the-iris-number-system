@@ -1548,11 +1548,11 @@ Every physical measurement consists of a finite count of discrete events across 
 
 [#postulate-metro-1]
 [POSTULATE]
-.Postulate Metro-1: The Finite Precision Postulate (The Real Number as a Measurement)
+.Postulate Metro-1: The Finite Precision Postulate (The Real Number as a Measurement with Variation)
 ====
-No physical measurement yields a dimensionless point of infinite precision. Every real number is an operational measurement record:
-\[ x \pm \delta \]
-consisting of a rational scale reading \( x \) accompanied by a non-zero vernier tolerance \( \delta > 0 \) defining the boundary of instrument precision.
+No physical measurement yields a dimensionless point of infinite precision. Every real number is an operational measurement record carrying unavoidable time-dependent variation:
+\[ [ x - \delta _ 1 ( t ) , x + \delta _ 2 ( t ) ] \]
+where \( \delta _ 1 ( t ) , \delta _ 2 ( t ) > 0 \), consisting of a rational scale reading \( x \) bounded by an arbitrarily small interval of variation. Real numbers are incorporated into the language as a convenience, carrying countably infinite precision to account for measurement variation without invoking uncountably infinite Platonic continuums.
 ====
 
 [#postulate-metro-2]
@@ -1597,7 +1597,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
 . **Derivation of Postulate Metro-0**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 0 establishes measurement on counting grids, Postulates 1 through 4 establish the Euclidean embedding in \( Cl ( 4 , 1 , 1 ) \), and Postulate 8 establishes that all influences propagate by direct contact with finite duration at speed \( c \). Together with the Iris generator of Postulate 9, this identically recovers Postulate Metro-0.
 
-. **Derivation of Postulate Metro-1**: In \( \mathcal { S } _ { \text { Iris } } \), Chapter 4 establishes that real numbers are constructed as rational aperture bounds on discrete counting grids with finite non-zero vernier tolerances. This satisfies Postulate Metro-1.
+. **Derivation of Postulate Metro-1**: In \( \mathcal { S } _ { \text { Iris } } \), Chapter 4 establishes that real numbers are constructed as rational bounds on discrete counting grids with finite non-zero variation intervals \( [ x - \delta _ 1 ( t ) , x + \delta _ 2 ( t ) ] \). This satisfies Postulate Metro-1.
 
 . **Derivation of Postulate Metro-2**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 5 establishes exact rational partition grids and Chapter 5 constructs the multiscale resolution numbers \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) via discrete scale powers \( \epsilon^m \). This satisfies Postulate Metro-2.
 
@@ -1615,7 +1615,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Metro } } \).
 
 . **Recovery of Postulate 6 and the Master Field Equation**: Postulate Metro-3 assigns probabilities to sub-vernier microstates by maximizing informational entropy subject to known boundary constraints. In the absence of constraints, maximizing entropy yields the uniform prior, recovering Postulate 6. Under boundary source constraints \( J \), the expected field satisfies \( D F = J \), recovering the Master Field Equation of Chapter 10.
 
-. **Recovery of MSRA Calculus**: Because Postulates Metro-1 and Metro-2 establish real numbers and m-res numbers as finite vernier measurements on discrete zoom scales, the discrete vernier derivatives, definite integrals, contour integrals, and associated calculus theorems hold identically.
+. **Recovery of MSRA Calculus**: Because Postulates Metro-1 and Metro-2 establish real numbers and m-res numbers as finite measurements carrying variation intervals on discrete zoom scales, the discrete vernier derivatives, definite integrals, contour integrals, and associated calculus theorems hold identically.
 
 Therefore, \( \mathcal { S } _ { \text { Metro } } \implies \mathcal { S } _ { \text { Iris } } \).
 
@@ -1647,7 +1647,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:postulate-info-2[**Postulate Info-2: The Informational Principle of Direct Contact Action**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 * xref:postulate-info-3[**Postulate Info-3: Jaynesian Maximum Entropy Field Principle**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 * xref:postulate-metro-0[**Postulate Metro-0: The Discrete Counting and Aperture Metrology Postulate**]  -- Chapter: *The Operational Metrological Formulation of the Tautological System* | Section: *Postulate Set of the Operational Metrological Formulation*
-* xref:postulate-metro-1[**Postulate Metro-1: The Finite Precision Postulate (The Real Number as a Measurement)**]  -- Chapter: *The Operational Metrological Formulation of the Tautological System* | Section: *Postulate Set of the Operational Metrological Formulation*
+* xref:postulate-metro-1[**Postulate Metro-1: The Finite Precision Postulate (The Real Number as a Measurement with Variation)**]  -- Chapter: *The Operational Metrological Formulation of the Tautological System* | Section: *Postulate Set of the Operational Metrological Formulation*
 * xref:postulate-metro-2[**Postulate Metro-2: The Multiscale Vernier Zoom Postulate (m-res Numbers)**]  -- Chapter: *The Operational Metrological Formulation of the Tautological System* | Section: *Postulate Set of the Operational Metrological Formulation*
 * xref:postulate-metro-3[**Postulate Metro-3: The Inductive Field Reconstruction Postulate (MaxEnt and DF = J)**]  -- Chapter: *The Operational Metrological Formulation of the Tautological System* | Section: *Postulate Set of the Operational Metrological Formulation*
 
