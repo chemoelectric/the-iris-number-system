@@ -1665,7 +1665,7 @@ When we expand the discrete difference equation across the link on the m-res sca
 \[ D F = J \]
 emerges as the exact macroscopic transfer function of the underlying contact collisions.
 
-Furthermore, a stable material entity (such as an electron or proton) is not a strange fluid or a dimensionless point particle. It is a **recirculating limit cycle** of the scattering operator \( \Omega \)—a localized, self-sustaining standing knot of wave packets endlessly scattering into one another at lattice vertices.
+Furthermore, a stable material entity (such as an electron or proton) is not a strange fluid or a dimensionless point particle. It is a persistent, self-sustaining loop of wave packets endlessly scattering into one another at lattice vertices—a localized standing wave structure that maintains its pattern while exchanging influences with adjacent channels.
 
 === Postulate Set of the Discrete Kinetic Formulation
 
@@ -1700,9 +1700,9 @@ where the Master Field Equation is the macroscopic transfer function of the unde
 
 [#postulate-kinetic-3]
 [POSTULATE]
-.Postulate Kinetic-3: The Recirculating Limit Cycle Postulate
+.Postulate Kinetic-3: The Persistent Wave Loop Postulate (Material Entities)
 ====
-Material entities are localized, recirculating limit cycles of the scattering operator \( \Omega \). They consist of stable standing wave knots that exchange momentum and energy with propagating signals strictly through direct contact collisions at lattice vertices.
+Material entities are localized, self-sustaining standing loops of wave packets governed by the scattering operator \( \Omega \). They maintain a stable periodic circulation pattern across lattice vertices, exchanging momentum and energy with propagating signals strictly through direct contact collisions.
 ====
 
 === Proof of Equivalence Among the Four Formulations
@@ -1733,7 +1733,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
 . **Derivation of Postulate Kinetic-2**: In \( \mathcal { S } _ { \text { Iris } } \), Chapter 5 constructs multiscale resolution numbers \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) via scale powers \( \epsilon ^ m \). Taking the low-order multivector moments of the discrete distribution and expanding across link length \( \Delta x = \epsilon ^ m \) yields the vernier derivatives and recovers the Master Field Equation \( D F = J \). This satisfies Postulate Kinetic-2.
 
-. **Derivation of Postulate Kinetic-3**: In \( \mathcal { S } _ { \text { Iris } } \), Chapter 10 and Volume IV demonstrate that particles are localized standing electromagnetic wave knots governed by \( D F = J \). On the discrete lattice, these knots are stable recirculating limit cycles of the collision operator \( \Omega \). This satisfies Postulate Kinetic-3.
+. **Derivation of Postulate Kinetic-3**: In \( \mathcal { S } _ { \text { Iris } } \), Chapter 10 and Volume IV demonstrate that particles are localized standing electromagnetic wave knots governed by \( D F = J \). On the discrete lattice, these knots are stable recirculating loops of wave packets endlessly scattering at lattice vertices. This satisfies Postulate Kinetic-3.
 
 Therefore, \( \mathcal { S } _ { \text { Iris } } \implies \mathcal { S } _ { \text { Kinetic } } \).
 
@@ -1785,7 +1785,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:postulate-kinetic-0[**Postulate Kinetic-0: The Discrete Scattering Lattice Postulate**]  -- Chapter: *The Discrete Kinetic Formulation of the Tautological System* | Section: *Postulate Set of the Discrete Kinetic Formulation*
 * xref:postulate-kinetic-1[**Postulate Kinetic-1: The Direct Contact Collision Postulate**]  -- Chapter: *The Discrete Kinetic Formulation of the Tautological System* | Section: *Postulate Set of the Discrete Kinetic Formulation*
 * xref:postulate-kinetic-2[**Postulate Kinetic-2: The Multiscale Moment Projection Postulate**]  -- Chapter: *The Discrete Kinetic Formulation of the Tautological System* | Section: *Postulate Set of the Discrete Kinetic Formulation*
-* xref:postulate-kinetic-3[**Postulate Kinetic-3: The Recirculating Limit Cycle Postulate**]  -- Chapter: *The Discrete Kinetic Formulation of the Tautological System* | Section: *Postulate Set of the Discrete Kinetic Formulation*
+* xref:postulate-kinetic-3[**Postulate Kinetic-3: The Persistent Wave Loop Postulate (Material Entities)**]  -- Chapter: *The Discrete Kinetic Formulation of the Tautological System* | Section: *Postulate Set of the Discrete Kinetic Formulation*
 
 === Theorems
 
