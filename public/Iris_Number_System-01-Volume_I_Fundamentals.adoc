@@ -1626,9 +1626,9 @@ All three formulations of the Iris Number System are completely equivalent. \( \
 
 == The Discrete Kinetic Formulation of the Tautological System
 
-Having established the original constructive system ( \( \mathcal { S } _ { \text { Iris } } \) ), the informational formulation ( \( \mathcal { S } _ { \text { Info } } \) ), and the operational metrological formulation ( \( \mathcal { S } _ { \text { Metro } } \) ), we now present a fourth equivalent formulation: the **Discrete Kinetic Formulation** ( \( \mathcal { S } _ { \text { Kinetic } } \) ).
+Having established the original constructive system (\( \mathcal { S } _ { \text { Iris } } \)), the informational formulation (\( \mathcal { S } _ { \text { Info } } \)), and the operational metrological formulation (\( \mathcal { S } _ { \text { Metro } } \)), we now present a fourth equivalent formulation: the **Discrete Kinetic Formulation** (\( \mathcal { S } _ { \text { Kinetic } } \)).
 
-While the metrological formulation views the system through the four tools of the laboratory workbench, the kinetic formulation expresses the system at its deepest submicroscopic mechanics. In this formulation, we discard the higher-order abstractions of smooth continuous fields and occult fluid charges. We deal strictly with individual entities, discrete difference equations, and direct physical contact at lattice vertices.
+While the metrological formulation views the system through the four tools of the laboratory workbench, the kinetic formulation expresses the system at its deepest submicroscopic mechanics. In this formulation, we discard the higher-order abstractions of fields (imagined as “continuous”), currents (that flow like rivers), and charges (resembling ponds and lakes). We deal strictly with individual entities, discrete difference equations, and direct physical contact at lattice vertices.
 
 === Physical Motivation: Difference Equations and Direct Contact Collisions
 
@@ -1636,7 +1636,7 @@ In digital signal processing, discrete-time difference equations and multi-chann
 
 The kinetic formulation models the universe as a discrete lattice of vertices connected by directional channels of length \( \Delta x \). Signals propagate across links with finite duration:
 \[ \tau = \frac { \Delta x } { c } \]
-which acts as a unit delay operator \( z ^ { - 1 } \) in a digital lattice network.
+which acts as a unit delay operator in a digital lattice network.footnote:[A unit delay operator in a digital lattice is often written \( z ^ { - 1 } \). Here \( z \) is the complex-valued independent variable of the \( z \)-transform, and division by \( z \) corresponds to a unit delay.]
 
 When discrete wave packets meet at a lattice vertex, they undergo direct physical contact. They cannot pass through each other unaffected or act across empty space. Instead, they undergo a deterministic, local scattering transformation:
 \[ n _ i ( \mathbf { x } + \mathbf { c } _ i \tau , t + \tau ) - n _ i ( \mathbf { x } , t ) = \Omega _ i ( n ) \]
@@ -1645,12 +1645,14 @@ where \( n _ i \) is the count of discrete wave packets moving along channel dir
 === Conservation and the Emergence of the Multivector Field
 
 The collision operator \( \Omega _ i \) is governed strictly by the physical requirements of direct contact:
+
 . **Conservation of Total Count (Energy)**: The total number of incoming packets equals the total number of outgoing packets across the collision:
 \[ \sum _ i \Omega _ i ( n ) = 0 \]
 . **Conservation of Contact Momentum**: The vector sum of outgoing momenta equals the vector sum of incoming momenta across the collision:
 \[ \sum _ i \mathbf { c } _ i \Omega _ i ( n ) = 0 \]
 
-What conventional physics calls “fields”, “charges”, and “currents” are simply the low-order multivector moments of this discrete channel distribution at each lattice vertex:
+What conventional physics calls “fields”, “charges”, and “currents” are simply the multivector moments of this discrete channel distribution at each lattice vertex:
+
 * **Scalar Count Density (Grade 0)**:
 \[ \rho ( \mathbf { x } , t ) = \sum _ i n _ i ( \mathbf { x } , t ) \]
 * **Vector Flux and Current (Grade 1)**:
@@ -1663,7 +1665,7 @@ When we expand the discrete difference equation across the link on the m-res sca
 \[ D F = J \]
 emerges as the exact macroscopic transfer function of the underlying contact collisions.
 
-Furthermore, a stable material entity (such as an electron or proton) is not an occult fluid or a dimensionless point particle. It is a **recirculating limit cycle** of the scattering operator \( \Omega \)—a localized, self-sustaining standing knot of wave packets endlessly scattering into one another at lattice vertices.
+Furthermore, a stable material entity (such as an electron or proton) is not a strange fluid or a dimensionless point particle. It is a **recirculating limit cycle** of the scattering operator \( \Omega \)—a localized, self-sustaining standing knot of wave packets endlessly scattering into one another at lattice vertices.
 
 === Postulate Set of the Discrete Kinetic Formulation
 
