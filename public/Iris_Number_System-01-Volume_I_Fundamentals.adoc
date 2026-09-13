@@ -1552,7 +1552,7 @@ Every physical measurement consists of a finite count of discrete events across 
 ====
 No physical measurement yields a dimensionless point of infinite precision. In the formal mathematical system, every real number is an operational measurement record:
 \[ [ x - \delta _ 1 , x + \delta _ 2 ] \]
-where \( \delta _ 1 , \delta _ 2 > 0 \), consisting of a rational scale reading \( x \) bounded by an arbitrarily small interval. While actual physical measurements exhibit variation that changes over time, real numbers are incorporated into the language as a convenience, carrying countably infinite precision to account for measurement variation without invoking uncountably infinite Platonic continuums.
+where \( \delta _ 1 , \delta _ 2 > 0 \), consisting of a rational scale reading \( x \) bounded by an arbitrarily small interval. The reason \( \delta _ 1 \) and{nbsp}\( \delta _ 2 \) are not written as functions of time (the way they were before) is they are a theoretical consideration of variation, explicitly arbitrary in value. There is no use making an arbitrary value dependent on time.
 ====
 
 [#postulate-metro-2]
