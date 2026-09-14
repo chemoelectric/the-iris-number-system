@@ -1665,7 +1665,9 @@ When we expand the discrete difference equation across the link on the m-res sca
 \[ D F = J \]
 emerges as the exact macroscopic transfer function of the underlying contact collisions.
 
-Furthermore, a stable material entity (such as an electron or proton) is not a strange fluid or a dimensionless point particle. It is a persistent, self-sustaining loop of wave packets endlessly scattering into one another at lattice vertices—a localized standing wave structure that maintains its pattern while exchanging influences with adjacent channels.
+Furthermore, a stable material entity (such as an electron or proton) is not a spooky fluid or dimensionless point particle. It is a persistent, self-sustaining loop of wave packets endlessly scattering into one another at lattice vertices—a localized standing wave structure that maintains its pattern while exchanging influences with adjacent channels.
+
+In other words, it is like a traffic jam.
 
 === Postulate Set of the Discrete Kinetic Formulation
 
@@ -1675,9 +1677,7 @@ We formalize these principles into four explicit postulates:
 [POSTULATE]
 .Postulate Kinetic-0: The Discrete Scattering Lattice Postulate
 ====
-Physical space is a discrete lattice of nodes connected by directional channels of finite length \( \Delta x \). Signals propagate across links with finite duration:
-\[ \tau = \frac { \Delta x } { c } \]
-corresponding to unit delay operators in a multi-channel digital network.
+Physical space will be represented by a discrete lattice of nodes, which are connected by directional channels of finite length \( \Delta x \). Signals propagate across these linking channels, requiring finite time \( \tau = { ( \Delta x ) } / { c } \) per link. This interval \( \tau \) corresponds to a unit delay in a multi-channel digital network.
 ====
 
 [#postulate-kinetic-1]
