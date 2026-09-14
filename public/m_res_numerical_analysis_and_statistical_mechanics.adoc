@@ -166,8 +166,8 @@ Then the time rate of change of momentum \( {\Delta P _ k}\, / {\Delta t} \) of 
 \[ \frac{\Delta P _ k}{\Delta t} = - \sum _ {\mathbf{s} \in \partial \Omega _ k} T(n(\mathbf{s})) \Delta A(\mathbf{s}) + \sum _ {\mathbf{x} \in \Omega _ k} \langle J _ {\text{internal}} \widetilde{F} \rangle _ 1 \Delta x _ {(m)} ^ d \]
 where \( n(\mathbf{s}) \) is the outward directed unit normal vector on \( \partial \Omega _ k \) and \( \Delta A(\mathbf{s}) \) is the discrete boundary cell area.
 
-Furthermore, under causal propagation, the field \( F(\mathbf{x}, t) \) acting on \( \partial \Omega _ k \) at time \( t \) is determined strictly by the causally delayed emissions of surrounding sources at retarded coordinate times:
-\[ t _ {\text{ret}} = t - \frac{\| \mathbf{x} - \mathbf{x}' \|}{c} \]
+Furthermore, under causal propagation, the field \( F(\mathbf{x}, t) \) acting on \( \partial \Omega _ k \) at time \( t \) is determined strictly by the causally delayed emissions of surrounding sources at delayed coordinate times:
+\[ t _ {\text{delay}} = t - \frac{\| \mathbf{x} - \mathbf{x}' \|}{c} \]
 taking finite duration across the lattice.
 
 *Proof:*
