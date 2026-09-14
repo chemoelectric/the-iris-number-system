@@ -221,9 +221,10 @@ Then the time rate of change of momentum \( {\Delta P _ k}\, / {\Delta t} \) of 
 \[ \frac{\Delta P _ k}{\Delta t} = - \sum _ {\mathbf{s} \in \partial \Omega _ k} T(n(\mathbf{s})) \Delta A(\mathbf{s}) + \sum _ {\mathbf{x} \in \Omega _ k} \langle J _ {\text{internal}} \widetilde{F} \rangle _ 1 \Delta x _ {(m)} ^ d \]
 where \( n(\mathbf{s}) \) is the outward directed unit normal vector on \( \partial \Omega _ k \) and \( \Delta A(\mathbf{s}) \) is the discrete boundary cell area.
 
-Furthermore, under causal propagation, the field \( F(\mathbf{x}, t) \) acting on \( \partial \Omega _ k \) at time \( t \) is determined strictly by the causally delayed emissions of surrounding sources at delayed coordinate times:
-\[ t _ {\text{delay}} = t - \frac{\| \mathbf{x} - \mathbf{x}' \|}{c} \]
-taking finite duration across the lattice.
+Furthermore, because electromagnetic influences travel across the lattice at finite speed \( c \), waves emitted by distant sources require finite time to reach the boundary \( \partial \Omega _ k \).
+Thus, the field \( F(\mathbf{x}, t) \) acting on the surface at time \( t \) depends on what surrounding sources were doing at the earlier moment:
+\[ t' = t - \frac{\| \mathbf{x} - \mathbf{x}' \|}{c} \]
+when their influence was first sent out.
 
 *Proof:*
 
