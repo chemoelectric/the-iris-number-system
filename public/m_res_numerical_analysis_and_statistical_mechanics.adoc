@@ -136,18 +136,18 @@ This completes the proof.
 [DEFINITION]
 .Definition: Genuine Graded \( m \)-res Numerical Types and Composite Jets
 ====
-To formulate a truly novel numerical analysis that departs from classical floating-point approximations, we establish a strict Fontijne-style graded algebraic typing discipline.
+To formulate a truly novel numerical analysis that departs from classical floating-point approximations, we establish a strict _Gaigen_-style graded algebraic typing discipline.footnote:[Daniel Fontijne. 2006. Gaigen 2: a geometric algebra implementation generator. In Proceedings of the 5th international conference on Generative programming and component engineering (GPCE '06). Association for Computing Machinery, New York, NY, USA, 141–150. https://doi.org/10.1145/1173706.1173728]
 Terminology is kept mathematically sharp: a number of resolution order \( k \) consists strictly and exclusively of terms of grade \( k \).
-A structure containing terms of mixed resolution orders is designated an **\( m \)-resolution jet** (or composite jet) and is **never called an \( m \)-res number**.
+A structure containing terms of mixed resolution orders is designated an \( m \)-_resolution jet_ (or composite jet), whereas an \( m \)-_resolution number_ is strictly of a single resolution order.
 
 The foundational types are stratified as follows:
 
-* **Grade 0 (Macroscopic Observable)**: Denoted \( \text{real\_t} \), representing macroscopic scalar observables \( x_0 \in \mathbb{R} \) on the grid.
-* **Grade 1 (Pure First-Order \( m \)-res Number)**: Denoted \( \text{mres1\_t} \), representing pure first-order resolution quantities \( x_1 \mu \), possessing no macroscopic real component.
-* **Grade 2 (Pure Second-Order \( m \)-res Number)**: Denoted \( \text{mres2\_t} \), representing pure second-order quantities \( x_2 \mu^2 \).
-* **Grade 3 (Pure Third-Order \( m \)-res Number)**: Denoted \( \text{mres3\_t} \), representing pure third-order quantities \( x_3 \mu^3 \).
-* **Composite Resolution Jet**: Denoted \( \text{mjet}_K \), aggregating distinct homogeneous grades up to order \( K \):
-\[ X = x_0 + x_1 \mu + x_2 \mu^2 + \dots + x_K \mu^K \]
+* _Grade 0 (Macroscopic Observable)_: Denoted \( \mathtt{real\_t} \), representing macroscopic scalar observables \( x_0 \in \mathbb{R} \) on the grid.
+* _Grade 1 (Pure First-Order \( m \)-res Number)_: Denoted \( \mathtt{mres1\_t} \), representing pure first-order resolution quantities \( x_1 \mu \), possessing no macroscopic real component.
+* _Grade 2 (Pure Second-Order \( m \)-res Number)_: Denoted \( \mathtt{mres2\_t} \), representing pure second-order quantities \( x_2 \mu^2 \).
+* _Grade 3 (Pure Third-Order \( m \)-res Number)_: Denoted \( \mathtt{mres3\_t} \), representing pure third-order quantities \( x_3 \mu^3 \).
+* _Composite Resolution Jet_: Denoted \( \mathtt{mjet}_K \), aggregating distinct homogeneous grades up to order \( K \):
+\[ X = x _ 0 + x _ 1 \mu + x _ 2 \mu ^ 2 + \dots + x _ K \mu ^ K \]
 where \( \mu \) is the canonical resolution generator satisfying discrete lattice nilpotency \( \mu ^ {K+1} \equiv 0 \).
 ====
 
@@ -157,13 +157,13 @@ where \( \mu \) is the canonical resolution generator satisfying discrete lattic
 ====
 Let \( A = \sum_{j=0}^K a_j \mu^j \) and \( B = \sum_{k=0}^K b_k \mu^k \) be composite \( m \)-resolution jets in the truncated polynomial ring \( \mathbb{R}[\mu] / \langle \mu^{K+1} \rangle \).
 
-1. **Graded Multiplication**: Pure homogeneous grades multiply strictly according to grade addition:
+1. _Graded Multiplication_: Pure homogeneous grades multiply strictly according to grade addition:
 \[ \text{mres}_j \ast \text{mres}_k \to \text{mres}_{j+k} \]
 For composite jets, multiplication is given by the exact discrete Cauchy convolution:
 \[ A \ast B = \sum_{n=0}^K c_n \mu^n, \quad \text{where } c_n = \sum_{j=0}^n a_j b_{n-j} \]
 All product terms of order \( n \ge K + 1 \) vanish identically by discrete lattice nilpotency.
 
-2. **Exact Nilpotent Inversion**: If \( a_0 \ne 0 \), the inverse \( A^{-1} \) exists and is computed in closed algebraic form without limits, iterative approximations, or subtractive cancellation:
+2. _Exact Nilpotent Inversion_: If \( a_0 \ne 0 \), the inverse \( A^{-1} \) exists and is computed in closed algebraic form without limits, iterative approximations, or subtractive cancellation:
 \[ A^{-1} = \frac{1}{a_0} \left( 1 + \delta \right)^{-1} = \frac{1}{a_0} \sum_{m=0}^K (-1)^m \delta^m \]
 where \( \delta = \sum_{j=1}^K \frac{a_j}{a_0} \mu^j \) is strictly nilpotent (\( \delta^{K+1} \equiv 0 \)).
 
@@ -183,17 +183,17 @@ This completes the proof.
 [DEFINITION]
 .Definition: Typed Downarrow Projection Operators
 ====
-In \( m \)-res numerical analysis, computation proceeds in the graded jet ring, after which results are projected back to observable states via typed **downarrow operators** \( \downarrow \):
+In \( m \)-res numerical analysis, computation proceeds in the graded jet ring, after which results are projected back to observable states via typed _downarrow operators_ \( \downarrow \):
 
-1. **Observable Projection \( \downarrow_0 \)**:
+1. _Observable Projection \( \downarrow_0 \)_:
 \[ \downarrow_0(X) = x_0 \]
 Extracts the macroscopic Grade-0 observable, discarding sub-resolution Vernier components.
 
-2. **Discrete Grid Projection \( \downarrow_{\text{grid}} \)**:
+2. _Discrete Grid Projection \( \downarrow _ {\text{grid}} \)_:
 \[ \downarrow_{\text{grid}}(X, \Delta x) = \text{round}_{\mathcal{G}_N}\left( \sum_{k=0}^K x_k (\Delta x)^k \right) \]
 Evaluates the jet at physical lattice increment \( \Delta x \) and snaps deterministically to the nearest discrete lattice node of \( \mathcal{G}_N \).
 
-3. **Differential Rate Extraction \( \downarrow_k \)**:
+3. _Differential Rate Extraction \( \downarrow_k \)_:
 \[ \downarrow_k(X) = k! \cdot x_k \]
 Extracts the exact \( k \)-th order rate of variation without dividing by any small step size \( \Delta t \), completely avoiding floating-point subtractive cancellation and \( 0/0 \) indeterminate forms.
 ====
@@ -204,16 +204,16 @@ Extracts the exact \( k \)-th order rate of variation without dividing by any sm
 ====
 Consider a stiff differential equation governing boundary layers, relaxation processes, or reaction networks:
 \[ \frac{dy}{dt} = -\lambda y + g(t), \quad \lambda \gg 1, \quad y(0) = y_0 \]
-In classical numerical analysis, explicit stepping schemes explode into catastrophic instability unless \( \Delta t < \frac{2}{\lambda} \), forcing millions of tiny steps that accumulate roundoff error.
+In classical numerical analysis, explicit stepping schemes explode into catastrophic instability unless \( \Delta t < {2} / {\lambda} \), forcing millions of tiny steps that accumulate roundoff error.
 
-In \( m \)-res numerical analysis, the stiffness is reparameterized by the pure first-order resolution generator \( \epsilon = \frac{1}{\lambda} \mu \).
+In \( m \)-res numerical analysis, the stiffness is reparameterized by the pure first-order resolution generator \( \epsilon = \mu / {\lambda} \).
 Then:
 
-1. **Fast Transient Decomposition**: Across a macroscopic step \( \Delta t \gg \frac{1}{\lambda} \), the transient component decays exponentially onto the discrete lattice:
+1. _Fast Transient Decomposition_: Across a macroscopic step \( \Delta t \gg {1} / {\lambda} \), the transient component decays exponentially onto the discrete lattice:
 \[ y_{\text{transient}}(t + \Delta t) = y(t) \exp(-\lambda \Delta t) \]
 When \( \lambda \Delta t \ge 50 \), the transient falls below the fundamental discrete aperture threshold and is rounded to zero on \( \mathcal{G}_N \) in a single Vernier step.
 
-2. **Slow Manifold Algebraic Evaluation**: The driven slow manifold is solved **algebraically** in the graded \( m \)-res jet without time stepping:
+2. _Slow Manifold Algebraic Evaluation_: The driven slow manifold is solved _algebraically_ in the graded \( m \)-res jet without time stepping:
 \[ Y_{\text{manifold}}(t) = \sum_{k=0}^K (-1)^k g^{(k)}(t) \, \epsilon^k \]
 The state at macroscopic time \( t + \Delta t \) is evaluated unconditionally stably by downarrow projection:
 \[ y(t + \Delta t) = y_{\text{transient}}(t + \Delta t) + \downarrow_{\epsilon} Y_{\text{manifold}}(t + \Delta t) \]
@@ -289,7 +289,7 @@ Here, \( F \) is the complete multivector field containing scalar, vector, bivec
 We wish to treat this Master Field Equation as a statistical mechanical system.
 
 In statistical mechanics done correctly, one cannot simply postulate ad hoc Brownian motion, random Langevin noise forces, or phenomenological friction terms.
-Instead, one must **make deductions** about the motions of particles and field kernels from first principles:
+Instead, one must _make deductions_ about the motions of particles and field kernels from first principles:
 1. Localized mass-energy concentrations are discrete field packets (vortices and solitons of \( F \)).
 2. The mechanical acceleration, trajectory, and momentum transfer of any localized entity are deduced directly from the surface integral of the multivector Poynting-stress energy-momentum tensor over the boundary enclosing the entity.
 3. Every influence propagates at finite speed \( c \), so all interactions involve causally delayed boundary fluxes across the discrete grid.
@@ -399,7 +399,7 @@ This completes the proof.
 
 We have established a unified, constructive formulation of numerical analysis and statistical mechanics rooted in the Iris number system:
 
-1. **\( m \)-res Numerical Analysis**: Computational algorithms on discrete lattices \( \mathcal{G} _ N \) are recognized as fundamental and exact operators, replacing illusory continuum limits with finite Vernier aperture stability bounds. Furthermore, arithmetic is made aperture-exact by incorporating Taylor's theorem remainder term directly into the \( m \)-res number structure, proving existence and enabling rigorous deduction on the basis of incomplete information.
-2. **\( m \)-res Statistical Mechanics**: Phase space is partitioned into finite combinatorial cells, and probability distributions are established strictly as Jaynesian deductive inferences derived from Maximum Entropy subject to operational constraints.
-3. **Deductive Field Reformulation**: When applied to the Master Field Equation \( D F = J \), the motions of particles are rigorously deduced from the surface flux of the multivector stress tensor and causally delayed wave propagation, while macroscopic dissipative laws (viscosity, resistivity) emerge deductively as the covariance of unresolved microscopic fluctuations.
+1. _\( m \)-res Numerical Analysis_: Computational algorithms on discrete lattices \( \mathcal{G} _ N \) are recognized as fundamental and exact operators, replacing illusory continuum limits with finite Vernier aperture stability bounds. Furthermore, arithmetic is made aperture-exact by incorporating Taylor's theorem remainder term directly into the \( m \)-res number structure, proving existence and enabling rigorous deduction on the basis of incomplete information.
+2. _\( m \)-res Statistical Mechanics_: Phase space is partitioned into finite combinatorial cells, and probability distributions are established strictly as Jaynesian deductive inferences derived from Maximum Entropy subject to operational constraints.
+3. _Deductive Field Reformulation_: When applied to the Master Field Equation \( D F = J \), the motions of particles are rigorously deduced from the surface flux of the multivector stress tensor and causally delayed wave propagation, while macroscopic dissipative laws (viscosity, resistivity) emerge deductively as the covariance of unresolved microscopic fluctuations.
 By eliminating unphysical continuum infinities and fictitious action-at-a-distance, physical and numerical mechanics are united in a single, operational deductive discipline.
