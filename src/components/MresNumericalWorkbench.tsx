@@ -106,7 +106,7 @@ export const MresNumericalWorkbench: React.FC = () => {
           </h2>
         </div>
         <p className="text-slate-400 text-sm max-w-4xl leading-relaxed">
-          Unlike remainder-term interval tracking, genuine m-res numerical analysis operates on
+          Departing from conventional continuum approximations, genuine m-res numerical analysis operates on
           distinct, typed algebraic grades: <code className="text-emerald-300 font-mono">real_t</code> (Grade 0),{' '}
           <code className="text-emerald-300 font-mono">mres1_t</code> (Grade 1, pure \(\mu\)),{' '}
           <code className="text-emerald-300 font-mono">mres2_t</code> (Grade 2, pure \(\mu^2\)), and{' '}

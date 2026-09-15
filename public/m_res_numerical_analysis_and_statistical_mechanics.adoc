@@ -95,57 +95,6 @@ At resolution level \( m ^ \ast \), the computational state is mathematically ex
 This completes the proof.
 ====
 
-[#definition-m-res-remainder-carrying-arithmetic]
-[DEFINITION]
-.Definition: Remainder-Term Numerical Analysis (Aperture Interval Tracking)
-====
-In scientific computing, Taylor's theorem is historically used at design time to truncate polynomials, after which the remainder term is discarded.
-One elementary enhancement is **remainder-term numerical analysis**, where a quantity is tracked as a dual interval pair:
-\[ X = \left( x _ {\text{grid}}, \, \mathcal{R} _ X \right) \]
-where \( x _ {\text{grid}} \in \mathcal{G} _ N ^ {(m)} \) is a discrete lattice node, and \( \mathcal{R} _ X = [R _ {\min}, R _ {\max}] \) is an aperture interval representing the remainder bounds.
-
-Arithmetic operations on such dual pairs preserve both the discrete lattice address and the remainder bounds:
-\[ X + Y = \left( x _ {\text{grid}} + y _ {\text{grid}}, \, [R _ {\min} ^ X + R _ {\min} ^ Y, \, R _ {\max} ^ X + R _ {\max} ^ Y] \right) \]
-\[ X \ast Y = \left( x _ {\text{grid}} y _ {\text{grid}}, \, \mathcal{R} _ {X \ast Y} \right) \]
-While remainder-term analysis provides verified aperture bounds, it does not constitute a fundamentally new mathematical method of solution: if an ordinary floating-point evaluation suffers from subtractive cancellation, stiffness instability, or indeterminate forms, the remainder term is likewise rendered inaccurate.
-====
-
-[#theorem-deductive-exactness-of-taylor-remainder]
-[THEOREM]
-.Theorem: Deductive Exactness of Taylor's Remainder Under Incomplete Information
-====
-Let \( f: \Omega \to Cl(4,1,1) \) be a multivector function possessing \( k + 1 \) discrete differences on \( \mathcal{G} _ N ^ {(m)} \).
-Then the evaluation of \( f(x _ 0 + h) \) is an exact equality:
-\[ f(x _ 0 + h) = \sum _ {j=0} ^ k \frac{h ^ j}{j!} f ^ {(j)}(x _ 0) + R _ k(h) \]
-where Taylor's theorem rigorously proves the existence of an intermediate value \( \xi \in (x _ 0, x _ 0 + h) \) such that:
-\[ R _ k(h) = \frac{h ^ {k+1}}{(k+1)!} f ^ {(k+1)}(\xi) \]
-Even though the precise microscopic coordinate of \( \xi \) is unknown, the remainder is strictly bounded within the closed Vernier aperture:
-\[ R _ k(h) \in \left[ \frac{h ^ {k+1}}{(k+1)!} \min _ {\zeta \in [x _ 0, x _ 0 + h]} f ^ {(k+1)}(\zeta), \; \frac{h ^ {k+1}}{(k+1)!} \max _ {\zeta \in [x _ 0, x _ 0 + h]} f ^ {(k+1)}(\zeta) \right] \]
-Carrying this interval enclosure inside the remainder structure permits deterministic deductions to proceed without requiring complete microscopic information.
-
-*Proof:*
-
-1. By the generalized Mean Value Theorem on the finite interval \( [x _ 0, x _ 0 + h] \subset \mathcal{G} _ N ^ {(m)} \), the difference between \( f(x _ 0 + h) \) and the \( k \)-th order polynomial \( P _ k(h) = \sum _ {j=0} ^ k \frac{h ^ j}{j!} f ^ {(j)}(x _ 0) \) is an exact function of the interval.
-
-2. Construct the auxiliary function:
-\[ g(t) = f(x _ 0 + h) - \sum _ {j=0} ^ k \frac{(x _ 0 + h - t) ^ j}{j!} f ^ {(j)}(t) - \left( \frac{x _ 0 + h - t}{h} \right) ^ {k+1} R _ k(h) \]
-Notice that \( g(x _ 0 + h) = 0 \) and \( g(x _ 0) = 0 \).
-
-3. By Rolle's theorem on the discrete grid with finite step \( \Delta x _ {(m)} \), there exists an intermediate point \( \xi \) strictly between \( x _ 0 \) and \( x _ 0 + h \) such that the derivative vanishes: \( g'(\xi) = 0 \).
-
-4. Evaluating \( g'(t) \):
-\[ g'(t) = - \frac{(x _ 0 + h - t) ^ k}{k!} f ^ {(k+1)}(t) + (k+1) \frac{(x _ 0 + h - t) ^ k}{h ^ {k+1}} R _ k(h) \]
-Setting \( g'(\xi) = 0 \) yields the exact identity:
-\[ R _ k(h) = \frac{h ^ {k+1}}{(k+1)!} f ^ {(k+1)}(\xi) \]
-
-5. Because the function \( f ^ {(k+1)} \) is bounded on the finite compact aperture \( [x _ 0, x _ 0 + h] \), the extreme values \( M _ {\min} = \min _ {\zeta \in [x _ 0, x _ 0+h]} f ^ {(k+1)}(\zeta) \) and \( M _ {\max} = \max _ {\zeta \in [x _ 0, x _ 0+h]} f ^ {(k+1)}(\zeta) \) exist and are finite.
-
-6. Therefore, the interval enclosure:
-\[ \mathcal{R} _ k(h) = \left[ \frac{h ^ {k+1}}{(k+1)!} M _ {\min}, \; \frac{h ^ {k+1}}{(k+1)!} M _ {\max} \right] \]
-contains the true value of \( R _ k(h) \) with mathematical certainty.
-This completes the proof.
-====
-
 [#definition-graded-m-res-algebraic-types]
 [DEFINITION]
 .Definition: Genuine Graded \( m \)-res Numerical Types and Composite Jets
@@ -413,7 +362,7 @@ This completes the proof.
 
 We have established a unified, constructive formulation of numerical analysis and statistical mechanics rooted in the Iris number system:
 
-1. _\( m \)-res Numerical Analysis_: Computational algorithms on discrete lattices \( \mathcal{G} _ N \) are recognized as fundamental and exact operators, replacing illusory continuum limits with finite Vernier aperture stability bounds. Furthermore, arithmetic is made aperture-exact by incorporating Taylor's theorem remainder term directly into the \( m \)-res number structure, proving existence and enabling rigorous deduction on the basis of incomplete information.
+1. _\( m \)-res Numerical Analysis_: Computational algorithms on discrete lattices \( \mathcal{G} _ N \) are recognized as fundamental and exact operators, replacing illusory continuum limits with finite Vernier aperture stability bounds. By replacing continuous real numbers with graded \( m \)-resolution jets, stiff transients vanish at the discrete aperture threshold in a single step, and the remaining response is evaluated in closed algebraic form without division.
 2. _\( m \)-res Statistical Mechanics_: Phase space is partitioned into finite combinatorial cells, and probability distributions are established strictly as Jaynesian deductive inferences derived from Maximum Entropy subject to operational constraints.
 3. _Deductive Field Reformulation_: When applied to the Master Field Equation \( D F = J \), the motions of particles are rigorously deduced from the surface flux of the multivector stress tensor and causally delayed wave propagation, while macroscopic dissipative laws (viscosity, resistivity) emerge deductively as the covariance of unresolved microscopic fluctuations.
 By eliminating unphysical continuum infinities and fictitious action-at-a-distance, physical and numerical mechanics are united in a single, operational deductive discipline.
