@@ -231,7 +231,7 @@ For \( \lambda \Delta t \ge 50 \), \( \exp(-\lambda \Delta t) \le \exp(-50) < 2 
 Therefore, downarrow projection to \( \mathcal{G}_N \) evaluates the transient to zero in a single step without numerical oscillation.
 
 3. The slow manifold component is computed purely through graded jet arithmetic without dividing by \( \Delta t \).
-Consequently, the solution remains perfectly bounded, smooth, and physically stable regardless of the magnitude of \( \lambda \).
+Consequently, the solution remains perfectly bounded, well-conditioned, and physically stable regardless of the magnitude of \( \lambda \).
 This completes the proof.
 ====
 
