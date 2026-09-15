@@ -8,13 +8,25 @@
 
 == Abstract
 
-Classical analysis and physics each created their own undoing by worshipping the continuum.
-In numerical analysis, the pretense of continuous real numbers spawned the terror of the stiff differential equation, where artificial infinities force computers into millions of tiny, roundoff-plagued steps.
-By grounding computation on the discrete multiscale lattice \( \mathcal{G}_N \) through \( m \)-resolution jets, the monster disappears: stiff transients truncate to zero at the discrete aperture threshold in a single step, and the slow manifold is evaluated algebraically without division.
+Conventional numerical solution of stiff differential equations can
+require millions of tiny, roundoff-plagued steps. The difficulty
+disappears if continuous real numbers are discarded in favor of jets
+of discrete Iris real and \( m \)-resolution numbers. Stiff transients
+vanish in a single step at the discrete aperture threshold, and the
+remaining response is evaluated in closed algebraic form without
+division.
 
-Meanwhile, conventional statistical mechanics mistook probability for a physical vapor dispersing through infinite phase space and imagined matter as zero-volume points enduring an impossible infinity of collisions.
-Restoring the physical reality that matter has finite extent and that probability is Jaynesian inference under incomplete knowledge liberates thermodynamics from continuum paradoxes.
-On the discrete lattice, maximum entropy over finite configurations yields the Boltzmann distribution directly through contact topology and finite-duration interactions, uniting computation and statistical mechanics on common, unshakeable ground.
+Meanwhile, using Iris real and \( m \)-res numbers for statistical
+mechanics gives discrete lattices and maximum entropy as fundamental
+tools. Matter is matter and not pinpricks, and probabilities are not a
+phase-space haze but instead represent plausible inferences. On the
+discrete lattice, maximum entropy over finite configurations yields
+the Boltzmann distribution directly through contact topology and
+finite-duration interactions, uniting computation and statistical
+mechanics.
+
+Applying \( m \)-res statistical mechanics to the Master Field
+Equation predicts viscosity and resistivity from first principles.
 
 == Foundations of \( m \)-res Numerical Analysis
 
