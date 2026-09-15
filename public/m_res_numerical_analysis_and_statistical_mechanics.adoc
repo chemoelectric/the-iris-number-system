@@ -87,18 +87,17 @@ This completes the proof.
 
 [#definition-m-res-remainder-carrying-arithmetic]
 [DEFINITION]
-.Definition: Remainder-Carrying \( m \)-res Arithmetic Structure
+.Definition: Remainder-Term Numerical Analysis (Aperture Interval Tracking)
 ====
-In conventional numerical analysis and scientific computing, Taylor's theorem is used only at design time to truncate polynomials (such as for \( \sin x \), \( \cos x \), or \( \exp x \)), after which the remainder term is discarded, leaving standard floating-point hardware blind to accumulated truncation and roundoff error.
-
-In \( m \)-res numerical analysis, an \( m \)-res number is an explicit dual structure:
+In scientific computing, Taylor's theorem is historically used at design time to truncate polynomials, after which the remainder term is discarded.
+One elementary enhancement is **remainder-term numerical analysis**, where a quantity is tracked as a dual interval pair:
 \[ X = \left( x _ {\text{grid}}, \, \mathcal{R} _ X \right) \]
-where \( x _ {\text{grid}} \in \mathcal{G} _ N ^ {(m)} \) is a discrete lattice node, and \( \mathcal{R} _ X = [R _ {\min}, R _ {\max}] \) is an exact, bounded Vernier remainder aperture interval representing the remainder of Taylor's theorem.
+where \( x _ {\text{grid}} \in \mathcal{G} _ N ^ {(m)} \) is a discrete lattice node, and \( \mathcal{R} _ X = [R _ {\min}, R _ {\max}] \) is an aperture interval representing the remainder bounds.
 
-Arithmetic operations on \( m \)-res numbers preserve both the discrete lattice address and the deterministic remainder aperture:
+Arithmetic operations on such dual pairs preserve both the discrete lattice address and the remainder bounds:
 \[ X + Y = \left( x _ {\text{grid}} + y _ {\text{grid}}, \, [R _ {\min} ^ X + R _ {\min} ^ Y, \, R _ {\max} ^ X + R _ {\max} ^ Y] \right) \]
 \[ X \ast Y = \left( x _ {\text{grid}} y _ {\text{grid}}, \, \mathcal{R} _ {X \ast Y} \right) \]
-where \( \mathcal{R} _ {X \ast Y} \) is computed from the exact product interval of the discrete components and remainder bounds.
+While remainder-term analysis provides verified aperture bounds, it does not constitute a fundamentally new mathematical method of solution: if an ordinary floating-point evaluation suffers from subtractive cancellation, stiffness instability, or indeterminate forms, the remainder term is likewise rendered inaccurate.
 ====
 
 [#theorem-deductive-exactness-of-taylor-remainder]
@@ -106,13 +105,13 @@ where \( \mathcal{R} _ {X \ast Y} \) is computed from the exact product interval
 .Theorem: Deductive Exactness of Taylor's Remainder Under Incomplete Information
 ====
 Let \( f: \Omega \to Cl(4,1,1) \) be a multivector function possessing \( k + 1 \) discrete differences on \( \mathcal{G} _ N ^ {(m)} \).
-Then the evaluation of \( f(x _ 0 + h) \) is not an inexact approximation, but an exact equality:
+Then the evaluation of \( f(x _ 0 + h) \) is an exact equality:
 \[ f(x _ 0 + h) = \sum _ {j=0} ^ k \frac{h ^ j}{j!} f ^ {(j)}(x _ 0) + R _ k(h) \]
-where Taylor's theorem rigorously proves the existence of an intermediate value \( \xi \in (x _ 0, x _ 0 + h) \) such that the remainder is identically:
+where Taylor's theorem rigorously proves the existence of an intermediate value \( \xi \in (x _ 0, x _ 0 + h) \) such that:
 \[ R _ k(h) = \frac{h ^ {k+1}}{(k+1)!} f ^ {(k+1)}(\xi) \]
-Even though the precise microscopic coordinate of \( \xi \) is unknown (representing incomplete microscopic information), the remainder is strictly and deterministically bounded within the closed Vernier aperture:
+Even though the precise microscopic coordinate of \( \xi \) is unknown, the remainder is strictly bounded within the closed Vernier aperture:
 \[ R _ k(h) \in \left[ \frac{h ^ {k+1}}{(k+1)!} \min _ {\zeta \in [x _ 0, x _ 0 + h]} f ^ {(k+1)}(\zeta), \; \frac{h ^ {k+1}}{(k+1)!} \max _ {\zeta \in [x _ 0, x _ 0 + h]} f ^ {(k+1)}(\zeta) \right] \]
-Consequently, computational execution of \( f \) on \( \mathcal{G} _ N ^ {(m)} \) that carries \( R _ k(h) \) inside the \( m \)-res arithmetic structure permits exact, infallible mathematical deductions to proceed without requiring complete microscopic information.
+Carrying this interval enclosure inside the remainder structure permits deterministic deductions to proceed without requiring complete microscopic information.
 
 *Proof:*
 
@@ -131,10 +130,112 @@ Setting \( g'(\xi) = 0 \) yields the exact identity:
 
 5. Because the function \( f ^ {(k+1)} \) is bounded on the finite compact aperture \( [x _ 0, x _ 0 + h] \), the extreme values \( M _ {\min} = \min _ {\zeta \in [x _ 0, x _ 0+h]} f ^ {(k+1)}(\zeta) \) and \( M _ {\max} = \max _ {\zeta \in [x _ 0, x _ 0+h]} f ^ {(k+1)}(\zeta) \) exist and are finite.
 
-6. Therefore, while \( \xi \) itself is not uniquely identified, the interval enclosure:
+6. Therefore, the interval enclosure:
 \[ \mathcal{R} _ k(h) = \left[ \frac{h ^ {k+1}}{(k+1)!} M _ {\min}, \; \frac{h ^ {k+1}}{(k+1)!} M _ {\max} \right] \]
 contains the true value of \( R _ k(h) \) with mathematical certainty.
-Carrying this interval enclosure inside the \( m \)-res number \( X \) transforms computation from an uncertain floating-point approximation into a deterministic deductive procedure on the basis of incomplete information.
+This completes the proof.
+====
+
+[#definition-graded-m-res-algebraic-types]
+[DEFINITION]
+.Definition: Genuine Graded \( m \)-res Numerical Types and Composite Jets
+====
+To formulate a truly novel numerical analysis that departs from classical floating-point approximations, we establish a strict Fontijne-style graded algebraic typing discipline.
+Terminology is kept mathematically sharp: a number of resolution order \( k \) consists strictly and exclusively of terms of grade \( k \).
+A structure containing terms of mixed resolution orders is designated an **\( m \)-resolution jet** (or composite jet) and is **never called an \( m \)-res number**.
+
+The foundational types are stratified as follows:
+
+* **Grade 0 (Macroscopic Observable)**: Denoted \( \text{real\_t} \), representing macroscopic scalar observables \( x_0 \in \mathbb{R} \) on the grid.
+* **Grade 1 (Pure First-Order \( m \)-res Number)**: Denoted \( \text{mres1\_t} \), representing pure first-order resolution quantities \( x_1 \mu \), possessing no macroscopic real component.
+* **Grade 2 (Pure Second-Order \( m \)-res Number)**: Denoted \( \text{mres2\_t} \), representing pure second-order quantities \( x_2 \mu^2 \).
+* **Grade 3 (Pure Third-Order \( m \)-res Number)**: Denoted \( \text{mres3\_t} \), representing pure third-order quantities \( x_3 \mu^3 \).
+* **Composite Resolution Jet**: Denoted \( \text{mjet}_K \), aggregating distinct homogeneous grades up to order \( K \):
+\[ X = x_0 + x_1 \mu + x_2 \mu^2 + \dots + x_K \mu^K \]
+where \( \mu \) is the canonical resolution generator satisfying discrete lattice nilpotency \( \mu ^ {K+1} \equiv 0 \).
+====
+
+[#theorem-graded-cauchy-nilpotent-algebra]
+[THEOREM]
+.Theorem: Graded Cauchy Convolution and Exact Nilpotent Inversion
+====
+Let \( A = \sum_{j=0}^K a_j \mu^j \) and \( B = \sum_{k=0}^K b_k \mu^k \) be composite \( m \)-resolution jets in the truncated polynomial ring \( \mathbb{R}[\mu] / \langle \mu^{K+1} \rangle \).
+
+1. **Graded Multiplication**: Pure homogeneous grades multiply strictly according to grade addition:
+\[ \text{mres}_j \ast \text{mres}_k \to \text{mres}_{j+k} \]
+For composite jets, multiplication is given by the exact discrete Cauchy convolution:
+\[ A \ast B = \sum_{n=0}^K c_n \mu^n, \quad \text{where } c_n = \sum_{j=0}^n a_j b_{n-j} \]
+All product terms of order \( n \ge K + 1 \) vanish identically by discrete lattice nilpotency.
+
+2. **Exact Nilpotent Inversion**: If \( a_0 \ne 0 \), the inverse \( A^{-1} \) exists and is computed in closed algebraic form without limits, iterative approximations, or subtractive cancellation:
+\[ A^{-1} = \frac{1}{a_0} \left( 1 + \delta \right)^{-1} = \frac{1}{a_0} \sum_{m=0}^K (-1)^m \delta^m \]
+where \( \delta = \sum_{j=1}^K \frac{a_j}{a_0} \mu^j \) is strictly nilpotent (\( \delta^{K+1} \equiv 0 \)).
+
+*Proof:*
+
+1. The Cauchy convolution follows directly from the distributive law over the graded basis \( \{ \mu^0, \mu^1, \dots, \mu^K \} \) modulo the discrete lattice ideal \( \langle \mu^{K+1} \rangle \).
+
+2. Because \( \delta \) has no Grade-0 scalar component, \( \delta^m \) has minimum grade \( m \).
+Consequently, for \( m \ge K + 1 \), \( \delta^m \equiv 0 \).
+The Neumann series \( \sum_{m=0}^K (-1)^m \delta^m \) terminates after exactly \( K + 1 \) algebraic terms.
+Multiplying \( (1 + \delta) \cdot \sum_{m=0}^K (-1)^m \delta^m = 1 + (-1)^K \delta^{K+1} = 1 \).
+Multiplying by \( a_0^{-1} \) yields the exact multiplicative inverse in closed form.
+This completes the proof.
+====
+
+[#definition-typed-downarrow-operations]
+[DEFINITION]
+.Definition: Typed Downarrow Projection Operators
+====
+In \( m \)-res numerical analysis, computation proceeds in the graded jet ring, after which results are projected back to observable states via typed **downarrow operators** \( \downarrow \):
+
+1. **Observable Projection \( \downarrow_0 \)**:
+\[ \downarrow_0(X) = x_0 \]
+Extracts the macroscopic Grade-0 observable, discarding sub-resolution Vernier components.
+
+2. **Discrete Grid Projection \( \downarrow_{\text{grid}} \)**:
+\[ \downarrow_{\text{grid}}(X, \Delta x) = \text{round}_{\mathcal{G}_N}\left( \sum_{k=0}^K x_k (\Delta x)^k \right) \]
+Evaluates the jet at physical lattice increment \( \Delta x \) and snaps deterministically to the nearest discrete lattice node of \( \mathcal{G}_N \).
+
+3. **Differential Rate Extraction \( \downarrow_k \)**:
+\[ \downarrow_k(X) = k! \cdot x_k \]
+Extracts the exact \( k \)-th order rate of variation without dividing by any small step size \( \Delta t \), completely avoiding floating-point subtractive cancellation and \( 0/0 \) indeterminate forms.
+====
+
+[#theorem-m-res-stiff-differential-solver]
+[THEOREM]
+.Theorem: Exact Algebraic Solution of Stiff Systems and Singular Perturbations
+====
+Consider a stiff differential equation governing boundary layers, relaxation processes, or reaction networks:
+\[ \frac{dy}{dt} = -\lambda y + g(t), \quad \lambda \gg 1, \quad y(0) = y_0 \]
+In classical numerical analysis, explicit stepping schemes explode into catastrophic instability unless \( \Delta t < \frac{2}{\lambda} \), forcing millions of tiny steps that accumulate roundoff error.
+
+In \( m \)-res numerical analysis, the stiffness is reparameterized by the pure first-order resolution generator \( \epsilon = \frac{1}{\lambda} \mu \).
+Then:
+
+1. **Fast Transient Decomposition**: Across a macroscopic step \( \Delta t \gg \frac{1}{\lambda} \), the transient component decays exponentially onto the discrete lattice:
+\[ y_{\text{transient}}(t + \Delta t) = y(t) \exp(-\lambda \Delta t) \]
+When \( \lambda \Delta t \ge 50 \), the transient falls below the fundamental discrete aperture threshold and is rounded to zero on \( \mathcal{G}_N \) in a single Vernier step.
+
+2. **Slow Manifold Algebraic Evaluation**: The driven slow manifold is solved **algebraically** in the graded \( m \)-res jet without time stepping:
+\[ Y_{\text{manifold}}(t) = \sum_{k=0}^K (-1)^k g^{(k)}(t) \, \epsilon^k \]
+The state at macroscopic time \( t + \Delta t \) is evaluated unconditionally stably by downarrow projection:
+\[ y(t + \Delta t) = y_{\text{transient}}(t + \Delta t) + \downarrow_{\epsilon} Y_{\text{manifold}}(t + \Delta t) \]
+yielding unconditional stability for arbitrarily large macroscopic time increments \( \Delta t \).
+
+*Proof:*
+
+1. In the singular perturbation formulation, write the ODE as \( \epsilon \frac{dy}{dt} = -y + \epsilon g(t) \), where \( \epsilon = \frac{1}{\lambda} \mu \).
+On the slow manifold where \( \frac{dy}{dt} \) is bounded, expanding \( Y = \sum_{k=0}^K y_k \epsilon^k \) and equating coefficients of \( \epsilon^k \) yields the algebraic recurrence:
+\[ y_0 = g(t), \quad y_k = -y_{k-1}' = (-1)^k g^{(k)}(t) \]
+This series is exact up to order \( K \).
+
+2. On the discrete lattice \( \mathcal{G}_N \), any transient term with magnitude less than the discrete resolution aperture \( 2^{-M} \) is operationally indistinguishable from zero.
+For \( \lambda \Delta t \ge 50 \), \( \exp(-\lambda \Delta t) \le \exp(-50) < 2 \cdot 10^{-22} \), which is strictly smaller than double-precision machine epsilon.
+Therefore, downarrow projection to \( \mathcal{G}_N \) evaluates the transient to zero in a single step without numerical oscillation.
+
+3. The slow manifold component is computed purely through graded jet arithmetic without dividing by \( \Delta t \).
+Consequently, the solution remains perfectly bounded, smooth, and physically stable regardless of the magnitude of \( \lambda \).
 This completes the proof.
 ====
 

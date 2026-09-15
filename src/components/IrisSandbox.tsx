@@ -41,9 +41,10 @@ import {
   Binary,
   Cpu
 } from 'lucide-react';
+import { MresNumericalWorkbench } from './MresNumericalWorkbench';
 
 export const IrisSandbox: React.FC = () => {
-  const [activeSubTab, setActiveSubTab] = useState<'4d' | 'cl411' | 'nonstandard' | 'maxent'>('4d');
+  const [activeSubTab, setActiveSubTab] = useState<'4d' | 'cl411' | 'nonstandard' | 'maxent' | 'mres'>('4d');
 
   // ================= 4D IRIS STATE =================
   const [z1, setZ1] = useState<IrisNumber>({ a: 2, b: 1, c: 0.5, d: 0, label: 'Z₁' });
@@ -144,6 +145,16 @@ export const IrisSandbox: React.FC = () => {
               }`}
             >
               Jaynesian MaxEnt
+            </button>
+            <button
+              onClick={() => setActiveSubTab('mres')}
+              className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition ${
+                activeSubTab === 'mres'
+                  ? 'bg-emerald-600 text-white shadow'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              m-res Graded Analysis
             </button>
           </div>
         </div>
@@ -564,6 +575,9 @@ export const IrisSandbox: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* m-res GRADED NUMERICAL ANALYSIS SECTION */}
+      {activeSubTab === 'mres' && <MresNumericalWorkbench />}
     </div>
   );
 };
