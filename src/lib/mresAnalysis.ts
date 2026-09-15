@@ -263,12 +263,12 @@ export function simulateStiffSystem(
     // m-res Singular Perturbation Jet Solver:
     // eps = 1 / lambda is the 1st-order m-res parameter.
     // The transient decays as exp(-lambda * dt), exactly bounded on G_N.
-    // The slow manifold is algebraic in powers of eps = 1/lambda.
+    // The closed-form driven solution is algebraic in powers of eps = 1/lambda.
     const eps = 1.0 / lambda;
     const decay = lambda * dt >= 700 ? 0 : Math.exp(-lambda * dt);
     const transient = yMres * decay;
 
-    let manifold = 0;
+    let closedFormDriven = 0;
     if (sourceFn) {
       // Jet expansion of source g(t)
       const g0 = sourceFn(t + dt);
@@ -276,12 +276,12 @@ export function simulateStiffSystem(
       const g2 =
         (sourceFn(t + dt + 1e-6) - 2 * g0 + sourceFn(t + dt - 1e-6)) / 1e-12;
 
-      // Algebraic manifold jet: g0 - eps*g1 + eps^2*g2
+      // Closed-form algebraic jet: g0 - eps*g1 + eps^2*g2
       const gJet = mjet3(g0, mres1(-g1), mres2(g2), mres3(0));
-      manifold = mresDownarrowGrid(gJet, eps);
+      closedFormDriven = mresDownarrowGrid(gJet, eps);
     }
 
-    yMres = transient + manifold;
+    yMres = transient + closedFormDriven;
     t += dt;
 
     results.push({ t, yMres, yEuler, eulerExploded });

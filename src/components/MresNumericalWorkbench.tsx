@@ -304,7 +304,7 @@ export const MresNumericalWorkbench: React.FC = () => {
             </div>
             <p className="text-slate-400 text-xs mt-1">
               System: <code className="text-indigo-300 font-mono">dy/dt = -λ·y + g(t)</code>. Classical Euler explodes when <code className="text-rose-400 font-mono">Δt &gt; 2/λ</code>.
-              The m-res jet solves the fast boundary layer and slow manifold algebraically without tiny sub-stepping!
+              The m-res jet evaluates the transient and closed-form driven response algebraically without tiny sub-stepping!
             </p>
           </div>
 

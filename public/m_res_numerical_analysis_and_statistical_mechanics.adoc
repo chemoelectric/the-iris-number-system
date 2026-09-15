@@ -176,16 +176,16 @@ Then:
 \[ y_{\text{transient}}(t + \Delta t) = y(t) \exp(-\lambda \Delta t) \]
 When \( \lambda \Delta t \ge 50 \), the transient falls below the fundamental discrete aperture threshold and is rounded to zero on \( \mathcal{G}_N \) in a single Vernier step.
 
-2. _Slow Manifold Algebraic Evaluation_: The driven slow manifold is solved _algebraically_ in the graded \( m \)-res jet without time stepping:
-\[ Y_{\text{manifold}}(t) = \sum_{k=0}^K (-1)^k g^{(k)}(t) \, \epsilon^k \]
+2. _Closed-Form Solution_: The driven response is obtained in _closed algebraic form_ in the graded \( m \)-res jet without time stepping:
+\[ Y_{\text{closed}}(t) = \sum_{k=0}^K (-1)^k g^{(k)}(t) \, \epsilon^k \]
 The state at macroscopic time \( t + \Delta t \) is evaluated unconditionally stably by downarrow projection:
-\[ y(t + \Delta t) = y_{\text{transient}}(t + \Delta t) + \downarrow_{\epsilon} Y_{\text{manifold}}(t + \Delta t) \]
+\[ y(t + \Delta t) = y_{\text{transient}}(t + \Delta t) + \downarrow_{\epsilon} Y_{\text{closed}}(t + \Delta t) \]
 yielding unconditional stability for arbitrarily large macroscopic time increments \( \Delta t \).
 
 *Proof:*
 
 1. In the singular perturbation formulation, write the ODE as \( \epsilon \frac{dy}{dt} = -y + \epsilon g(t) \), where \( \epsilon = \frac{1}{\lambda} \mu \).
-On the slow manifold where \( \frac{dy}{dt} \) is bounded, expanding \( Y = \sum_{k=0}^K y_k \epsilon^k \) and equating coefficients of \( \epsilon^k \) yields the algebraic recurrence:
+For the persistent driven response where \( \frac{dy}{dt} \) is bounded, expanding \( Y = \sum_{k=0}^K y_k \epsilon^k \) and equating coefficients of \( \epsilon^k \) yields the algebraic recurrence:
 \[ y_0 = g(t), \quad y_k = -y_{k-1}' = (-1)^k g^{(k)}(t) \]
 This series is exact up to order \( K \).
 
@@ -193,7 +193,7 @@ This series is exact up to order \( K \).
 For \( \lambda \Delta t \ge 50 \), \( \exp(-\lambda \Delta t) \le \exp(-50) < 2 \cdot 10^{-22} \), which is strictly smaller than double-precision machine epsilon.
 Therefore, downarrow projection to \( \mathcal{G}_N \) evaluates the transient to zero in a single step without numerical oscillation.
 
-3. The slow manifold component is computed purely through graded jet arithmetic without dividing by \( \Delta t \).
+3. The closed-form driven component is computed purely through graded jet arithmetic without dividing by \( \Delta t \).
 Consequently, the solution remains perfectly bounded, well-conditioned, and physically stable regardless of the magnitude of \( \lambda \).
 This completes the proof.
 ====
