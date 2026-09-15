@@ -8,15 +8,11 @@
 
 == Abstract
 
-Conventional continuum numerical analysis and statistical mechanics suffer from persistent conceptual pathologies resulting from the reification of the mathematical continuum.
-Numerical analysis routinely treats computational execution as an imperfect, corrupted degradation of an inaccessible infinite-precision ideal, rather than recognizing finite-resolution discrete operations as the primary operational ground.
-Simultaneously, conventional statistical mechanics commits the Mind Projection Fallacy by projecting subjective probability distributions into physical phase-space fluids, while postulating zero-volume point particles and unphysical continuum collisions.
-In this paper, we develop a unified, constructive foundation for \( m \)-resolution (\( m \)-res) numerical analysis and statistical mechanics formulated on discrete lattices \( \mathcal{G}_N \) and within the real Clifford geometric algebra \( Cl(4,1,1) \).
-We establish aperture-exact operators and finite Vernier convergence bounds that replace arbitrary infinitesimal limits.
-Furthermore, we reformulate computational arithmetic: rather than discarding the remainder term of Taylor's theorem as an ephemeral “error” to derive floating-point polynomial approximations, \( m \)-res numerical analysis incorporates the Lagrange remainder directly into the algebraic structure of the computed quantity.
-Because Taylor's theorem rigorously proves the existence of an intermediate value without requiring complete microscopic knowledge of its location, the remainder defines an exact, closed aperture interval, enabling deterministic mathematical deductions on the basis of incomplete information.
-We then formulate \( m \)-res statistical mechanics where microstates are finite combinatorial grid configurations, and macroscopic distributions are deduced strictly via Jaynesian Maximum Entropy (MaxEnt) inference subject to operational multivector conservation constraints.
-Finally, we reformulate the Master Field Equation \( D F = J \) in this statistical mechanical framework, demonstrating that the trajectories and phase-space motions of localized field kernels and particles are not arbitrary postulates, but rigorous deductions derived from local boundary flux conservation, finite-duration causal propagation at speed \( c \), and maximum-entropy aperture coarse-graining.
+Finite-resolution discrete operations on lattices \( \mathcal{G}_N \) and within the Clifford geometric algebra \( Cl(4,1,1) \) provide exact aperture-bounded numerical computation without infinitesimal limits.
+Incorporating the Lagrange remainder directly into the algebraic structure of computed quantities preserves exact bounds: Taylor's theorem proves the existence of an intermediate value without requiring microscopic coordinates, defining a closed aperture interval that permits deterministic mathematical deductions from incomplete information.
+In statistical mechanics, microstates are finite combinatorial lattice configurations whose macroscopic distributions follow from Jaynesian Maximum Entropy inference subject to multivector conservation constraints.
+Graded \( m \)-res algebras with nilpotent boundary-scale elements resolve stiff differential systems and singular perturbations algebraically in \( \mathcal{O}(N) \) operations, bypassing matrix inversion and continuum roundoff instability.
+Particle trajectories and field distributions under the Master Field Equation \( D F = J \) are rigorous deductions of local boundary flux conservation and finite-duration causal propagation at speed \( c \).
 
 == Foundations of \( m \)-res Numerical Analysis
 
