@@ -60,7 +60,13 @@
                               (values (append α* ξ*)))))))
                      (set! κ κ₁)
                      (apply values ξ₁*))))
+                ;; When thunk terminates, its return value(s) are
+                ;; automatically yielded via suspend. In functional
+                ;; Scheme, the thunk returns its final value (such
+                ;; as (eof-object) to signal normal exhaustion).
                 (call-with-values thunk suspend)
+                ;; Subsequent invocations after exhaustion yield
+                ;; (eof-object) indefinitely:
                 (let loop ()
                   (suspend (eof-object))
                   (loop)))))

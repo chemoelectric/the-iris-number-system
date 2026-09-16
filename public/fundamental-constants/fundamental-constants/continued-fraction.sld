@@ -80,11 +80,12 @@
          (let loop ((p-2 0) (p-1 1)
                     (q-2 1) (q-1 0))
            (let-values (((a b) (cf-step cf)))
-             (unless (eof-object? a)
-               (let ((p (+ (* b p-1) (* a p-2)))
-                     (q (+ (* b q-1) (* a q-2))))
-                 (suspend (/ p q))
-                 (loop p-1 p q-1 q))))))))
+             (if (eof-object? a)
+                 (eof-object)
+                 (let ((p (+ (* b p-1) (* a p-2)))
+                       (q (+ (* b q-1) (* a q-2))))
+                   (suspend (/ p q))
+                   (loop p-1 p q-1 q))))))))
 
     ;; -------------------------------------------------------------
     ;; Exact rational continued fraction: r = num / den.
@@ -96,11 +97,12 @@
         (make-co-expression
          (lambda ()
            (let loop ((n num) (d den))
-             (unless (zero? d)
-               (let ((q (floor-quotient n d))
-                     (rem (floor-remainder n d)))
-                 (suspend 1 q)
-                 (loop d rem))))))))
+             (if (zero? d)
+                 (eof-object)
+                 (let ((q (floor-quotient n d))
+                       (rem (floor-remainder n d)))
+                   (suspend 1 q)
+                   (loop d rem))))))))
 
     ;; -------------------------------------------------------------
     ;; Golden ratio phi = (1 + sqrt(5)) / 2 = [1; 1, 1, 1, ...]
@@ -145,17 +147,18 @@
        (lambda ()
          (let-values (((s r) (exact-integer-sqrt n)))
            (suspend 1 s)
-           (unless (zero? r)
-             (let loop ((m 0)
-                        (d 1)
-                        (a s))
-               (let* ((m-next (- (* d a) m))
-                      (d-next (floor-quotient (- n (* m-next m-next))
-                                              d))
-                      (a-next (floor-quotient (+ s m-next)
-                                              d-next)))
-                 (suspend 1 a-next)
-                 (loop m-next d-next a-next))))))))
+           (if (zero? r)
+               (eof-object)
+               (let loop ((m 0)
+                          (d 1)
+                          (a s))
+                 (let* ((m-next (- (* d a) m))
+                        (d-next (floor-quotient (- n (* m-next m-next))
+                                                d))
+                        (a-next (floor-quotient (+ s m-next)
+                                                d-next)))
+                   (suspend 1 a-next)
+                   (loop m-next d-next a-next))))))))
 
     ;; -------------------------------------------------------------
     ;; Generalized continued fraction for pi (Lord Brouncker):
@@ -185,9 +188,11 @@
       (make-co-expression
        (lambda ()
          (let loop ((terms pi-terms))
-           (unless (null? terms)
-             (suspend 1 (car terms))
-             (loop (cdr terms)))))))
+           (if (null? terms)
+               (eof-object)
+               (begin
+                 (suspend 1 (car terms))
+                 (loop (cdr terms))))))))
 
     ;; -------------------------------------------------------------
     ;; Gosper's homographic transform: (a*x + b) / (c*x + d)
@@ -209,10 +214,11 @@
                  (let-values (((num den) (cf-step cf-in)))
                    (if (eof-object? num)
                        (let flush ((a a) (c c))
-                         (unless (zero? c)
-                           (let ((q (floor-quotient a c)))
-                             (suspend 1 q)
-                             (flush c (- a (* q c))))))
+                         (if (zero? c)
+                             (eof-object)
+                             (let ((q (floor-quotient a c)))
+                               (suspend 1 q)
+                               (flush c (- a (* q c))))))
                        (loop (+ (* a den) b) a
                              (+ (* c den) d) c)))))))))
 

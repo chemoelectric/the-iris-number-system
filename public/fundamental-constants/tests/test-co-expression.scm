@@ -19,13 +19,14 @@
     (newline)
     (exit 1)))
 
-;; Test 1: Simple generator sequence
+;; Test 1: Simple generator sequence ending with (eof-object)
 (define g1
   (make-co-expression
    (lambda ()
      (suspend 10)
      (suspend 20)
-     (suspend 30))))
+     (suspend 30)
+     (eof-object))))
 
 (assert-equal 10 (g1) "g1-first")
 (assert-equal 20 (g1) "g1-second")
@@ -38,7 +39,8 @@
   (make-co-expression
    (lambda ()
      (suspend 1 2 3)
-     (suspend 4 5))))
+     (suspend 4 5)
+     (eof-object))))
 
 (let-values (((a b c) (g2)))
   (assert-equal '(1 2 3) (list a b c) "g2-three-values"))
@@ -52,7 +54,8 @@
    (lambda ()
      (let-values (((x y) (suspend 100 200)))
        (let-values (((z) (suspend (+ x y))))
-         (suspend (* z 2)))))))
+         (suspend (* z 2))
+         (eof-object))))))
 
 (let-values (((a b) (g3)))
   (assert-equal '(100 200) (list a b) "g3-initial-yield"))
@@ -64,6 +67,17 @@
   (assert-equal 14 d "g3-final-yield"))
 
 (assert-equal #t (eof-object? (g3)) "g3-exhausted")
+
+;; Test 4: Custom return value yielded upon thunk completion
+(define g4
+  (make-co-expression
+   (lambda ()
+     (suspend 'item)
+     'completed)))
+
+(assert-equal 'item (g4) "g4-yield")
+(assert-equal 'completed (g4) "g4-return-value")
+(assert-equal #t (eof-object? (g4)) "g4-subsequent-eof")
 
 ;; Silent exit 0 on success
 (exit 0)
