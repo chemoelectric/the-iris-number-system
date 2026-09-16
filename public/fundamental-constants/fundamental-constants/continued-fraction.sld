@@ -53,17 +53,24 @@
       (apply cf args))
 
     ;; Collect up to `limit` terms from a continued fraction
-    ;; as a list of pairs ((a0 . b0) (a1 . b1) ...).
+    ;; as a list of pairs ((a0 . b0) (a1 . b1) ...) or values.
     (define (cf-terms->list cf limit)
       (let loop ((count 0)
                  (acc '()))
         (if (>= count limit)
             (reverse acc)
-            (let-values (((a b) (cf-step cf)))
-              (if (eof-object? a)
-                  (reverse acc)
+            (call-with-values
+                (lambda () (cf-step cf))
+              (lambda vals
+                (cond
+                 ((or (null? vals) (eof-object? (car vals)))
+                  (reverse acc))
+                 ((null? (cdr vals))
                   (loop (+ count 1)
-                        (cons (cons a b) acc)))))))
+                        (cons (car vals) acc)))
+                 (else
+                  (loop (+ count 1)
+                        (cons (cons (car vals) (cadr vals)) acc)))))))))
 
     ;; -------------------------------------------------------------
     ;; Convergents generator:
@@ -79,13 +86,16 @@
        (lambda ()
          (let loop ((p-2 0) (p-1 1)
                     (q-2 1) (q-1 0))
-           (let-values (((a b) (cf-step cf)))
-             (if (eof-object? a)
-                 (eof-object)
-                 (let ((p (+ (* b p-1) (* a p-2)))
-                       (q (+ (* b q-1) (* a q-2))))
-                   (suspend (/ p q))
-                   (loop p-1 p q-1 q))))))))
+           (call-with-values
+               (lambda () (cf-step cf))
+             (lambda (a . rest)
+               (if (or (eof-object? a) (null? rest) (eof-object? (car rest)))
+                   (eof-object)
+                   (let* ((b (car rest))
+                          (p (+ (* b p-1) (* a p-2)))
+                          (q (+ (* b q-1) (* a q-2))))
+                     (suspend (/ p q))
+                     (loop p-1 p q-1 q)))))))))
 
     ;; -------------------------------------------------------------
     ;; Exact rational continued fraction: r = num / den.
@@ -98,7 +108,7 @@
          (lambda ()
            (let loop ((n num) (d den))
              (if (zero? d)
-                 (eof-object)
+                 (values (eof-object) (eof-object))
                  (let ((q (floor-quotient n d))
                        (rem (floor-remainder n d)))
                    (suspend 1 q)
@@ -148,7 +158,7 @@
          (let-values (((s r) (exact-integer-sqrt n)))
            (suspend 1 s)
            (if (zero? r)
-               (eof-object)
+               (values (eof-object) (eof-object))
                (let loop ((m 0)
                           (d 1)
                           (a s))
@@ -189,7 +199,7 @@
        (lambda ()
          (let loop ((terms pi-terms))
            (if (null? terms)
-               (eof-object)
+               (values (eof-object) (eof-object))
                (begin
                  (suspend 1 (car terms))
                  (loop (cdr terms))))))))
@@ -211,15 +221,18 @@
                  (let ((q (floor-quotient a c)))
                    (suspend 1 q)
                    (loop c d (- a (* q c)) (- b (* q d))))
-                 (let-values (((num den) (cf-step cf-in)))
-                   (if (eof-object? num)
-                       (let flush ((a a) (c c))
-                         (if (zero? c)
-                             (eof-object)
-                             (let ((q (floor-quotient a c)))
-                               (suspend 1 q)
-                               (flush c (- a (* q c))))))
-                       (loop (+ (* a den) b) a
-                             (+ (* c den) d) c)))))))))
+                 (call-with-values
+                     (lambda () (cf-step cf-in))
+                   (lambda (num . rest)
+                     (if (or (eof-object? num) (null? rest) (eof-object? (car rest)))
+                         (let flush ((a a) (c c))
+                           (if (zero? c)
+                               (values (eof-object) (eof-object))
+                               (let ((q (floor-quotient a c)))
+                                 (suspend 1 q)
+                                 (flush c (- a (* q c))))))
+                         (let ((den (car rest)))
+                           (loop (+ (* a den) b) a
+                                 (+ (* c den) d) c)))))))))))
 
     )) ;; end library
