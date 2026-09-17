@@ -186,15 +186,18 @@
     (define (make-cf-accumulator)
       (make-co-expression
        (lambda ()
-         (let loop ((p-2 0) (p-1 1)
-                    (q-2 1) (q-1 0))
-           (let ((b (suspend 'ready)))
-             (if (eof-object? b)
-                 (eof-object)
-                 (let ((p (+ (* b p-1) p-2))
-                       (q (+ (* b q-1) q-2)))
-                   (suspend (/ p q))
-                   (loop p-1 p q-1 q))))))))
+         (let ((first-b (suspend 'ready)))
+           (if (eof-object? first-b)
+               (eof-object)
+               (let loop ((b first-b)
+                          (p-2 0) (p-1 1)
+                          (q-2 1) (q-1 0))
+                 (let* ((p (+ (* b p-1) p-2))
+                        (q (+ (* b q-1) q-2))
+                        (next-b (suspend (/ p q))))
+                   (if (eof-object? next-b)
+                       (eof-object)
+                       (loop next-b p-1 p q-1 q)))))))))
 
     ;; -------------------------------------------------------------
     ;; Exact rational continued fraction: r = num / den.
