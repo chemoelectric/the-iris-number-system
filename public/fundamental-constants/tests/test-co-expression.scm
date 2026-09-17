@@ -21,7 +21,7 @@
 
 ;; Test 1: Simple generator sequence ending with (eof-object)
 (define g1
-  (make-co-expression
+  (make-co-expression*
    (lambda ()
      (suspend 10)
      (suspend 20)
@@ -36,7 +36,7 @@
 
 ;; Test 2: Multiple values in yield
 (define g2
-  (make-co-expression
+  (make-co-expression*
    (lambda ()
      (suspend 1 2 3)
      (suspend 4 5)
@@ -50,7 +50,7 @@
 
 ;; Test 3: Two-way multiple values exchange
 (define g3
-  (make-co-expression
+  (make-co-expression*
    (lambda ()
      (let-values (((x y) (suspend 100 200)))
        (let-values (((z) (suspend (+ x y))))
@@ -70,7 +70,7 @@
 
 ;; Test 4: Custom return value yielded upon thunk completion
 (define g4
-  (make-co-expression
+  (make-co-expression*
    (lambda ()
      (suspend 'item)
      'completed)))

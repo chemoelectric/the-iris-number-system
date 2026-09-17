@@ -41,17 +41,18 @@
     (define (make-co-expression thunk)
       (letrec
           ((resumption-point
-            (lambda (κ . ξ*)
+            (lambda (ω . ξ*)
               (let ((what-suspend-runs
                      (lambda ψ*
                        (let-values
-                           (((κ₁ . ξ₁*)
+                           (((ω₁ . ξ₁*)
                              (call/cc
-                              (lambda (λ)
-                                (set! resumption-point λ)
-                                (let-values ((α* (apply κ ψ*)))
-                                  (values (append α* ξ*)))))))
-                         (set! κ κ₁)
+                              (lambda (α)
+                                (set! resumption-point α)
+                                ;; Do the suspension: pass control
+                                ;; back to the caller.
+                                (apply ω ψ*)))))
+                         (set! ω ω₁)
                          (apply values ξ₁*)))))
               (parameterize ((*suspend* what-suspend-runs))
                 ;; When thunk terminates, its return value(s) are
@@ -66,7 +67,7 @@
                   (loop)))))))
         (lambda ξ*
           (call/cc
-           (lambda (κ)
-             (apply resumption-point (cons κ ξ*)))))))
+           (lambda (ω)
+             (apply resumption-point (cons ω ξ*)))))))
 
     )) ;; end library

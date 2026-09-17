@@ -44,7 +44,7 @@
   (begin
 
     ;; Constructor for continued-fraction co-expressions.
-    (define make-cf make-co-expression)
+    (define make-cf make-co-expression*)
 
     ;; Advance a continued fraction by one term.
     ;; Returns two values: partial numerator a_n and partial
@@ -82,7 +82,7 @@
     ;;   q_n = b_n * q_{n-1} + a_n * q_{n-2}
     ;; -------------------------------------------------------------
     (define (cf-convergents cf)
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (let loop ((p-2 0) (p-1 1)
                     (q-2 1) (q-1 0))
@@ -104,7 +104,7 @@
     (define (cf:rational r)
       (let ((num (numerator r))
             (den (denominator r)))
-        (make-co-expression
+        (make-co-expression*
          (lambda ()
            (let loop ((n num) (d den))
              (if (zero? d)
@@ -118,7 +118,7 @@
     ;; Golden ratio phi = (1 + sqrt(5)) / 2 = [1; 1, 1, 1, ...]
     ;; -------------------------------------------------------------
     (define (cf:golden-ratio)
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (let loop ()
            (suspend 1 1)
@@ -128,7 +128,7 @@
     ;; Silver ratio delta_S = 1 + sqrt(2) = [2; 2, 2, 2, ...]
     ;; -------------------------------------------------------------
     (define (cf:silver-ratio)
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (let loop ()
            (suspend 1 2)
@@ -139,7 +139,7 @@
     ;; e = [2; 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, ...]
     ;; -------------------------------------------------------------
     (define (cf:e)
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (suspend 1 2)
          (let loop ((k 1))
@@ -153,7 +153,7 @@
     ;; a positive integer.
     ;; -------------------------------------------------------------
     (define (cf:sqrt n)
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (let-values (((s r) (exact-integer-sqrt n)))
            (suspend 1 s)
@@ -179,7 +179,7 @@
     ;; Convergents: 3, 19/6, 47/15, 646/195, ...
     ;; -------------------------------------------------------------
     (define (cf:pi-brouncker)
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (suspend 1 3)
          (let loop ((k 1))
@@ -195,7 +195,7 @@
     (define (cf:pi-simple)
       (define pi-terms
         '(3 7 15 1 292 1 1 1 2 1 3 1 14 2 1 1 2 2 2 2 1 84 2))
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (let loop ((terms pi-terms))
            (if (null? terms)
@@ -210,7 +210,7 @@
     ;; continued fraction on demand.
     ;; -------------------------------------------------------------
     (define (cf-homographic a b c d cf-in)
-      (make-co-expression
+      (make-co-expression*
        (lambda ()
          (let loop ((a a) (b b) (c c) (d d))
            (let ((emit? (and (not (zero? c))

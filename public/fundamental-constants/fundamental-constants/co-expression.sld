@@ -25,7 +25,9 @@
 
   (import (scheme base))
 
-  (export make-co-expression
+  (export make-generator
+          make-co-expression
+          make-co-expression*
           suspend)
 
   (begin
@@ -38,35 +40,106 @@
     (define (suspend . ψ*)
       (apply (*suspend*) ψ*))
 
-    (define (make-co-expression thunk)
+    (define (make-generator thunk)
+      ;;
+      ;; No-values in, single-value out generator.
+      ;;
       (letrec
           ((resumption-point
-            (lambda (κ . ξ*)
+            (lambda (ω)
+              (let ((what-suspend-runs
+                     (lambda (ψ)
+                       (let ((ω₁ (call/cc
+                                  (lambda (α)
+                                    (set! resumption-point α)
+                                    ;; Do the suspension: pass control
+                                    ;; back to the caller.
+                                    (ω ψ)))))
+                         (set! ω ω₁)))))
+                (parameterize ((*suspend* what-suspend-runs))
+                  ;; When thunk terminates, its return value is
+                  ;; automatically yielded via suspend. In functional
+                  ;; Scheme, the thunk returns its final value (such as
+                  ;; (eof-object) to signal normal exhaustion).
+                  (call-with-values thunk suspend)
+                  ;; Subsequent invocations after exhaustion yield
+                  ;; (eof-object) indefinitely:
+                  (let loop ()
+                    (suspend (eof-object))
+                    (loop)))))))
+        (lambda ()
+          (call/cc
+           (lambda (ω)
+             (resumption-point ω))))))
+
+    (define (make-co-expression thunk)
+      ;;
+      ;; Single-value in, single-value out co-expressions.
+      ;;
+      (letrec
+          ((resumption-point
+            (lambda (ω ξ)
+              (let ((what-suspend-runs
+                     (lambda (ψ)
+                       (let-values
+                           (((ω₁ ξ₁)
+                             (call/cc
+                              (lambda (α)
+                                (set! resumption-point α)
+                                ;; Do the suspension: pass control
+                                ;; back to the caller.
+                                (ω ψ)))))
+                         (set! ω ω₁)
+                         ξ₁))))
+                (parameterize ((*suspend* what-suspend-runs))
+                  ;; When thunk terminates, its return value is
+                  ;; automatically yielded via suspend. In functional
+                  ;; Scheme, the thunk returns its final value (such
+                  ;; as (eof-object) to signal normal exhaustion).
+                  (call-with-values thunk suspend)
+                  ;; Subsequent invocations after exhaustion yield
+                  ;; (eof-object) indefinitely:
+                  (let loop ()
+                    (suspend (eof-object))
+                    (loop)))))))
+        (lambda (ξ)
+          (call/cc
+           (lambda (ω)
+             (resumption-point ω ξ))))))
+
+    (define (make-co-expression* thunk)
+      ;;
+      ;; Multiple-values in, multiple-values out co-expressions.
+      ;;
+      (letrec
+          ((resumption-point
+            (lambda (ω . ξ*)
               (let ((what-suspend-runs
                      (lambda ψ*
                        (let-values
-                           (((κ₁ . ξ₁*)
+                           (((ω₁ . ξ₁*)
                              (call/cc
-                              (lambda (λ)
-                                (set! resumption-point λ)
-                                (let-values ((α* (apply κ ψ*)))
-                                  (values (append α* ξ*)))))))
-                         (set! κ κ₁)
+                              (lambda (α)
+                                (set! resumption-point α)
+                                ;; Do the suspension: pass control
+                                ;; back to the caller.
+                                (apply ω ψ*)))))
+                         (set! ω ω₁)
                          (apply values ξ₁*)))))
-              (parameterize ((*suspend* what-suspend-runs))
-                ;; When thunk terminates, its return value(s) are
-                ;; automatically yielded via suspend. In functional
-                ;; Scheme, the thunk returns its final value (such as
-                ;; (eof-object) to signal normal exhaustion).
-                (call-with-values thunk suspend)
-                ;; Subsequent invocations after exhaustion yield
-                ;; (eof-object) indefinitely:
-                (let loop ()
-                  (suspend (eof-object))
-                  (loop)))))))
+                (parameterize ((*suspend* what-suspend-runs))
+                  ;; When thunk terminates, its return value(s) are
+                  ;; automatically yielded via suspend. In functional
+                  ;; Scheme, the thunk returns its final value (such
+                  ;; as (eof-object) to signal normal exhaustion).
+                  (call-with-values thunk suspend)
+                  ;; Subsequent invocations after exhaustion yield
+                  ;; (eof-object) indefinitely:
+                  (let loop ()
+                    (suspend (eof-object))
+                    (loop)))))))
         (lambda ξ*
           (call/cc
-           (lambda (κ)
-             (apply resumption-point (cons κ ξ*)))))))
+           (lambda (ω)
+             (apply resumption-point (cons ω ξ*)))))))
 
     )) ;; end library
