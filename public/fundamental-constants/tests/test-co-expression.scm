@@ -1,4 +1,4 @@
-;;; test-co-expression.scm - Quiet test for co-expression.sld
+;;; test-co-expression.scm - Quiet test for make-co-expression (1-in, 1-out)
 ;;; Compatible with autotest / test harnesses. Exits 0 on success.
 
 (import (scheme base)
@@ -19,65 +19,65 @@
     (newline)
     (exit 1)))
 
-;; Test 1: Simple generator sequence ending with (eof-object)
-(define g1
-  (make-co-expression*
+;; Test 1: 1-in, 1-out ping-pong exchange
+(define co1
+  (make-co-expression
    (lambda ()
-     (suspend 10)
-     (suspend 20)
-     (suspend 30)
-     (eof-object))))
+     (let ((x (suspend 'ready)))
+       (let ((y (suspend (* x 2))))
+         (let ((z (suspend (+ y 100))))
+           'finished))))))
 
-(assert-equal 10 (g1) "g1-first")
-(assert-equal 20 (g1) "g1-second")
-(assert-equal 30 (g1) "g1-third")
-(assert-equal #t (eof-object? (g1)) "g1-eof-1")
-(assert-equal #t (eof-object? (g1)) "g1-eof-2")
+(assert-equal 'ready (co1 #f) "co1-init")
+(assert-equal 20 (co1 10) "co1-received-10-yielded-20")
+(assert-equal 145 (co1 45) "co1-received-45-yielded-145")
+(assert-equal 'finished (co1 'done) "co1-completion-value")
+(assert-equal #t (eof-object? (co1 #f)) "co1-eof-1")
+(assert-equal #t (eof-object? (co1 #f)) "co1-eof-2")
 
-;; Test 2: Multiple values in yield
-(define g2
-  (make-co-expression*
+;; Test 2: Running accumulator co-expression
+(define running-sum
+  (make-co-expression
    (lambda ()
-     (suspend 1 2 3)
-     (suspend 4 5)
-     (eof-object))))
+     (let loop ((total 0))
+       (let ((delta (suspend total)))
+         (if (eof-object? delta)
+             (eof-object)
+             (loop (+ total delta))))))))
 
-(let-values (((a b c) (g2)))
-  (assert-equal '(1 2 3) (list a b c) "g2-three-values"))
+(assert-equal 0 (running-sum #f) "sum-init")
+(assert-equal 10 (running-sum 10) "sum-plus-10")
+(assert-equal 35 (running-sum 25) "sum-plus-25")
+(assert-equal 30 (running-sum -5) "sum-minus-5")
+(assert-equal 100 (running-sum 70) "sum-plus-70")
+(assert-equal #t (eof-object? (running-sum (eof-object))) "sum-eof")
 
-(let-values (((d e) (g2)))
-  (assert-equal '(4 5) (list d e) "g2-two-values"))
-
-;; Test 3: Two-way multiple values exchange
-(define g3
-  (make-co-expression*
+;; Test 3: Two independent 1-in, 1-out co-expressions running concurrently
+(define doubler
+  (make-co-expression
    (lambda ()
-     (let-values (((x y) (suspend 100 200)))
-       (let-values (((z) (suspend (+ x y))))
-         (suspend (* z 2))
-         (eof-object))))))
+     (let loop ()
+       (let ((x (suspend 'doubler-ready)))
+         (suspend (* x 2))
+         (loop))))))
 
-(let-values (((a b) (g3)))
-  (assert-equal '(100 200) (list a b) "g3-initial-yield"))
-
-(let-values (((c) (g3 10 25)))
-  (assert-equal 35 c "g3-received-and-computed"))
-
-(let-values (((d) (g3 7)))
-  (assert-equal 14 d "g3-final-yield"))
-
-(assert-equal #t (eof-object? (g3)) "g3-exhausted")
-
-;; Test 4: Custom return value yielded upon thunk completion
-(define g4
-  (make-co-expression*
+(define tripler
+  (make-co-expression
    (lambda ()
-     (suspend 'item)
-     'completed)))
+     (let loop ()
+       (let ((x (suspend 'tripler-ready)))
+         (suspend (* x 3))
+         (loop))))))
 
-(assert-equal 'item (g4) "g4-yield")
-(assert-equal 'completed (g4) "g4-return-value")
-(assert-equal #t (eof-object? (g4)) "g4-subsequent-eof")
+(assert-equal 'doubler-ready (doubler #f) "doubler-init")
+(assert-equal 'tripler-ready (tripler #f) "tripler-init")
+
+(assert-equal 14 (doubler 7) "doubler-7")
+(assert-equal 21 (tripler 7) "tripler-7")
+(assert-equal 'doubler-ready (doubler #f) "doubler-step-back")
+(assert-equal 'tripler-ready (tripler #f) "tripler-step-back")
+(assert-equal 100 (doubler 50) "doubler-50")
+(assert-equal 150 (tripler 50) "tripler-50")
 
 ;; Silent exit 0 on success
 (exit 0)

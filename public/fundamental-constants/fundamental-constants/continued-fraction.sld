@@ -30,6 +30,8 @@
           cf-step
           cf-terms->list
           cf-convergents
+          cf-quotients
+          make-cf-accumulator
           ;; Core generator procedures:
           cf:rational
           cf:golden-ratio
@@ -82,7 +84,7 @@
     ;;   q_n = b_n * q_{n-1} + a_n * q_{n-2}
     ;; -------------------------------------------------------------
     (define (cf-convergents cf)
-      (make-co-expression*
+      (make-generator
        (lambda ()
          (let loop ((p-2 0) (p-1 1)
                     (q-2 1) (q-1 0))
@@ -96,6 +98,44 @@
                           (q (+ (* b q-1) (* a q-2))))
                      (suspend (/ p q))
                      (loop p-1 p q-1 q)))))))))
+
+    ;; -------------------------------------------------------------
+    ;; Quotients generator:
+    ;; Yields successive partial denominators b_n as single values
+    ;; via a 0-in, 1-out generator.
+    ;; -------------------------------------------------------------
+    (define (cf-quotients cf)
+      (make-generator
+       (lambda ()
+         (let loop ()
+           (call-with-values
+               (lambda () (cf-step cf))
+             (lambda (a . rest)
+               (if (or (eof-object? a) (null? rest) (eof-object? (car rest)))
+                   (eof-object)
+                   (begin
+                     (suspend (car rest))
+                     (loop)))))))))
+
+    ;; -------------------------------------------------------------
+    ;; Convergent accumulator co-expression:
+    ;; 1-value in (partial quotient b_n), 1-value out (convergent p_n / q_n).
+    ;; An initial step with any dummy value yields 'ready.
+    ;; Subsequent invocations pass successive b_n and yield p_n / q_n.
+    ;; Passing (eof-object) terminates accumulation and yields (eof-object).
+    ;; -------------------------------------------------------------
+    (define (make-cf-accumulator)
+      (make-co-expression
+       (lambda ()
+         (let loop ((p-2 0) (p-1 1)
+                    (q-2 1) (q-1 0))
+           (let ((b (suspend 'ready)))
+             (if (eof-object? b)
+                 (eof-object)
+                 (let ((p (+ (* b p-1) p-2))
+                       (q (+ (* b q-1) q-2)))
+                   (suspend (/ p q))
+                   (loop p-1 p q-1 q))))))))
 
     ;; -------------------------------------------------------------
     ;; Exact rational continued fraction: r = num / den.

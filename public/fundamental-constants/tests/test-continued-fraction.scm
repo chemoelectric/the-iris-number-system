@@ -86,5 +86,26 @@
               pi-conv-list
               "pi-simple-convergents")
 
+;; Test 6: Partial quotients generator via cf-quotients (0-in, 1-out generator)
+(define pi-q (cf-quotients (cf:pi-simple)))
+(define pi-q-list
+  (let loop ((k 0) (acc '()))
+    (if (= k 5)
+        (reverse acc)
+        (loop (+ k 1) (cons (pi-q) acc)))))
+
+(assert-equal '(3 7 15 1 292)
+              pi-q-list
+              "pi-partial-quotients")
+
+;; Test 7: Convergent accumulator co-expression (1-in, 1-out co-expression)
+(define acc (make-cf-accumulator))
+(assert-equal 'ready (acc #f) "accumulator-ready")
+(assert-equal 3 (acc 3) "accumulator-step-1")
+(assert-equal 22/7 (acc 7) "accumulator-step-2")
+(assert-equal 333/106 (acc 15) "accumulator-step-3")
+(assert-equal 355/113 (acc 1) "accumulator-step-4")
+(assert-equal #t (eof-object? (acc (eof-object))) "accumulator-eof")
+
 ;; Silent exit 0 on success
 (exit 0)
