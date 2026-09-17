@@ -125,6 +125,7 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── gnuplot/                 # 3D parametric wireframe gnuplot scripts and rendered high-res snapshots
 │   │   ├── volume_04/nuclei/    # Nuclear electromagnetic toroidal architectures for Elements 1–10 (H to Ne)
 │   │   └── volume_08/           # Molecular bond topologies and solvent networks (H2, H2O, CH4, CO2, etc.)
+│   ├── fundamental-constants/   # R7RS Scheme library for continued fractions & dimensionless constants (pi.sld, continued-fraction.sld, co-expression.sld)
 │   ├── acl2/                    # Certified ACL2 formal verification book (iris_number_system.lisp)
 │   ├── devices/                 # Mechanical engineering blueprints for novel solid experimental devices (ADISC-1, MTE-1, VSH-1)
 │   ├── maxima/                  # Maxima package (iris.mac) for Cl(4,1,1) geometric algebra and field equations

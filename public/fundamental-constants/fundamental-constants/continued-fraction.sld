@@ -52,6 +52,7 @@
           cf:silver-ratio
           cf:e
           cf:sqrt
+          cf:pi
           cf:pi-brouncker
           cf:pi-simple
           ;; Gosper homographic transform:
@@ -291,13 +292,17 @@
              (loop (fx+ k 1)))))))
 
     ;; -------------------------------------------------------------
-    ;; Simple continued fraction for pi:
+    ;; Simple continued fraction for pi (OEIS A001203):
     ;; [3; 7, 15, 1, 292, 1, 1, 1, 2, 1, 3, 1, 14, 2, 1, 1, ...]
     ;; Convergents: 3, 22/7, 333/106, 355/113, 103993/33102, ...
     ;; -------------------------------------------------------------
     (define (cf:pi-simple)
       (define pi-terms
-        '(3 7 15 1 292 1 1 1 2 1 3 1 14 2 1 1 2 2 2 2 1 84 2))
+        '(3 7 15 1 292 1 1 1 2 1 3 1 14 2 1 1 2 2 2 2 1 84 2
+          1 1 15 3 13 1 4 2 6 6 99 1 2 2 6 3 5 1 1 6 8 1 7 1
+          2 3 7 1 2 1 1 12 1 1 1 3 1 1 8 1 1 2 1 6 1 1 5 2 2
+          3 1 2 4 4 16 1 161 45 1 22 1 2 2 1 4 1 2 24 1 2 1
+          3 1 2 1 1 10 2 5 4 1 2 2 8 1 5 2 2 26 1 4 1 1 8 2 42 2))
       (make-co-expression*
        (lambda ()
          (let loop ((terms pi-terms))
@@ -306,6 +311,8 @@
                (begin
                  (suspend 1 (car terms))
                  (loop (cdr terms))))))))
+
+    (define cf:pi cf:pi-simple)
 
     ;; -------------------------------------------------------------
     ;; Gosper's homographic transform: (a*x + b) / (c*x + d)
