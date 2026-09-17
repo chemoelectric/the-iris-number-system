@@ -33,46 +33,40 @@
     (define identity* (lambda ψ* (apply values ψ*)))
 
     (define *suspend*
-      (make-parameter (vector identity*)))
-
-    (define (set-*suspend*! x)
-      (vector-set! (*suspend*) 0 x))
-
-    (define (ref-*suspend*)
-      (vector-ref (*suspend*) 0))
+      (make-parameter identity*))
 
     (define (suspend . ψ*)
-      (apply (ref-*suspend*) ψ*))
+      (apply (*suspend*) ψ*))
 
     (define (make-co-expression thunk)
-      (parameterize ((*suspend* (vector identity*)))
-        (letrec
-            ((resumption-point
-              (lambda (κ . ξ*)
-                (set-*suspend*!
-                 (lambda ψ*
-                   (let-values
-                       (((κ₁ . ξ₁*)
-                         (call/cc
-                          (lambda (λ)
-                            (set! resumption-point λ)
-                            (let-values ((α* (apply κ ψ*)))
-                              (values (append α* ξ*)))))))
-                     (set! κ κ₁)
-                     (apply values ξ₁*))))
+      (letrec
+          ((resumption-point
+            (lambda (κ . ξ*)
+              (let ((what-suspend-runs
+                     (lambda ψ*
+                       (let-values
+                           (((κ₁ . ξ₁*)
+                             (call/cc
+                              (lambda (λ)
+                                (set! resumption-point λ)
+                                (let-values ((α* (apply κ ψ*)))
+                                  (values (append α* ξ*)))))))
+                         (set! κ κ₁)
+                         (apply values ξ₁*)))))
+              (parameterize ((*suspend* what-suspend-runs))
                 ;; When thunk terminates, its return value(s) are
                 ;; automatically yielded via suspend. In functional
-                ;; Scheme, the thunk returns its final value (such
-                ;; as (eof-object) to signal normal exhaustion).
+                ;; Scheme, the thunk returns its final value (such as
+                ;; (eof-object) to signal normal exhaustion).
                 (call-with-values thunk suspend)
                 ;; Subsequent invocations after exhaustion yield
                 ;; (eof-object) indefinitely:
                 (let loop ()
                   (suspend (eof-object))
-                  (loop)))))
-          (lambda ξ*
-            (call/cc
-             (lambda (κ)
-               (apply resumption-point (cons κ ξ*))))))))
+                  (loop)))))))
+        (lambda ξ*
+          (call/cc
+           (lambda (κ)
+             (apply resumption-point (cons κ ξ*)))))))
 
     )) ;; end library
