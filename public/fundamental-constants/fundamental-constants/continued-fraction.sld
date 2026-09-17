@@ -26,10 +26,24 @@
   (import (scheme base)
           (fundamental-constants co-expression))
 
+  (cond-expand
+    ((library (scheme fixnum))
+     (import (scheme fixnum)))
+    (else
+     (import (srfi 143))))
+
+  (cond-expand
+    ((library (scheme flonum))
+     (import (scheme flonum)))
+    (else
+     (import (srfi 144))))
+
   (export make-cf
           cf-step
           cf-terms->list
           cf-convergents
+          cf-convergents->flonums
+          cf-eval-flonum
           cf-quotients
           make-cf-accumulator
           ;; Core generator procedures:
@@ -59,7 +73,7 @@
     (define (cf-terms->list cf limit)
       (let loop ((count 0)
                  (acc '()))
-        (if (>= count limit)
+        (if (fx>=? count limit)
             (reverse acc)
             (call-with-values
                 (lambda () (cf-step cf))
@@ -68,10 +82,10 @@
                  ((or (null? vals) (eof-object? (car vals)))
                   (reverse acc))
                  ((null? (cdr vals))
-                  (loop (+ count 1)
+                  (loop (fx+ count 1)
                         (cons (car vals) acc)))
                  (else
-                  (loop (+ count 1)
+                  (loop (fx+ count 1)
                         (cons (cons (car vals) (cadr vals)) acc)))))))))
 
     ;; -------------------------------------------------------------
@@ -98,6 +112,51 @@
                           (q (+ (* b q-1) (* a q-2))))
                      (suspend (/ p q))
                      (loop p-1 p q-1 q)))))))))
+
+    ;; -------------------------------------------------------------
+    ;; Flonum convergents generator:
+    ;; Converts exact rational convergents from a continued fraction
+    ;; generator to IEEE 754 floating-point approximations via flonum
+    ;; division.
+    ;; -------------------------------------------------------------
+    (define (cf-convergents->flonums conv)
+      (make-generator
+       (lambda ()
+         (let loop ()
+           (let ((c (conv)))
+             (if (eof-object? c)
+                 (eof-object)
+                 (let ((num (exact->inexact (numerator c)))
+                       (den (exact->inexact (denominator c))))
+                   (suspend (fl/ num den))
+                   (loop))))))))
+
+    ;; -------------------------------------------------------------
+    ;; Backward-recurrence flonum evaluation:
+    ;; Evaluates the continued fraction up to `terms-limit` using
+    ;; stable backward recurrence with unboxed flonum arithmetic:
+    ;;   v_k = b_k
+    ;;   v_{j} = b_j + a_{j+1} / v_{j+1}
+    ;; -------------------------------------------------------------
+    (define (cf-eval-flonum cf terms-limit)
+      (let ((terms (cf-terms->list cf terms-limit)))
+        (if (null? terms)
+            (eof-object)
+            (let* ((rev-terms (reverse terms))
+                   (last-term (car rev-terms))
+                   (b-last (if (pair? last-term) (cdr last-term) last-term))
+                   (init-val (exact->inexact b-last)))
+              (let loop ((rem (cdr rev-terms))
+                         (v init-val))
+                (if (null? rem)
+                    v
+                    (let* ((term (car rem))
+                           (b (if (pair? term) (cdr term) term))
+                           (a (if (pair? term) (car term) 1))
+                           (fl-b (exact->inexact b))
+                           (fl-a (exact->inexact a)))
+                      (loop (cdr rem)
+                            (fl+ fl-b (fl/ fl-a v))))))))))
 
     ;; -------------------------------------------------------------
     ;; Quotients generator:
@@ -184,9 +243,9 @@
          (suspend 1 2)
          (let loop ((k 1))
            (suspend 1 1)
-           (suspend 1 (* 2 k))
+           (suspend 1 (fx* 2 k))
            (suspend 1 1)
-           (loop (+ k 1))))))
+           (loop (fx+ k 1))))))
 
     ;; -------------------------------------------------------------
     ;; Periodic simple continued fraction for sqrt(N), where N is
@@ -223,9 +282,10 @@
        (lambda ()
          (suspend 1 3)
          (let loop ((k 1))
-           (let ((odd (- (* 2 k) 1)))
-             (suspend (* odd odd) 6)
-             (loop (+ k 1)))))))
+           (let* ((odd (fx- (fx* 2 k) 1))
+                  (odd-sq (fx* odd odd)))
+             (suspend odd-sq 6)
+             (loop (fx+ k 1)))))))
 
     ;; -------------------------------------------------------------
     ;; Simple continued fraction for pi:

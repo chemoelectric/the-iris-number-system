@@ -6,6 +6,18 @@
         (scheme write)
         (fundamental-constants continued-fraction))
 
+(cond-expand
+  ((library (scheme fixnum))
+   (import (scheme fixnum)))
+  (else
+   (import (srfi 143))))
+
+(cond-expand
+  ((library (scheme flonum))
+   (import (scheme flonum)))
+  (else
+   (import (srfi 144))))
+
 (define (assert-equal expected actual name)
   (unless (equal? expected actual)
     (display "FAIL: ")
@@ -106,6 +118,23 @@
 (assert-equal 333/106 (acc 15) "accumulator-step-3")
 (assert-equal 355/113 (acc 1) "accumulator-step-4")
 (assert-equal #t (eof-object? (acc (eof-object))) "accumulator-eof")
+
+;; Test 8: Flonum convergents stream (IEEE 754 float approximations)
+(define phi-fl (cf-convergents->flonums (cf-convergents (cf:golden-ratio))))
+(define fl-1 (phi-fl))
+(define fl-2 (phi-fl))
+(define fl-3 (phi-fl))
+(define fl-4 (phi-fl))
+(assert-equal 1.0 fl-1 "phi-flonum-1")
+(assert-equal 2.0 fl-2 "phi-flonum-2")
+(assert-equal 1.5 fl-3 "phi-flonum-3")
+;; 5/3 is approx 1.6666666666666667; verify with fl- / flabs
+(assert-equal #t (fl< (flabs (fl- fl-4 (/ 5.0 3.0))) 1e-12) "phi-flonum-4")
+
+;; Test 9: Backward-recurrence flonum evaluation
+(define pi-approx (cf-eval-flonum (cf:pi-simple) 4))
+;; First 4 terms: 3, 7, 15, 1 gives 355/113 ~ 3.1415929203539825
+(assert-equal #t (fl< (flabs (fl- pi-approx (/ 355.0 113.0))) 1e-12) "pi-eval-flonum")
 
 ;; Silent exit 0 on success
 (exit 0)
