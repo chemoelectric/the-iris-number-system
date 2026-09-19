@@ -3329,7 +3329,7 @@ For a continuous curved boundary with radius of curvature \( R \), the normal ro
 [#thm-kis-spatial-density]
 .Theorem: Spatial Packing Density of Dynamic-Axis Flat-Base Glyphs
 ====
-Let \( W_\text{total}(N_\text{char}) \) be the total horizontal advance width of a string of \( N_\text{char} \) glyphs. Let \( A_\text{counter} \) be the total enclosed counter area and \( W_\text{stem} \) be the primary stem width.
+Let \( W_\text{total}(N_\text{char}) \) be the total horizontal advance width of a string of \( N_\text{char} \) glyphs. Let \( A_\text{counter} \) be the total enclosed counter area and \( W_\text{{st}{em}} \) be the primary stem width.
 
 For a dynamic-axis, flat-serif letterform with Kis proportions, the packing efficiency ratio \( \eta = A_\text{counter} / W_\text{total} \) satisfies:
 
