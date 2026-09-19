@@ -146,6 +146,36 @@
                    (get-var (snobol-match breakx-jump-pat "xyzab_and_abc") 'captured-prefix)))
 
   ;; ====================================================================
+  ;; SPITBOL ARBNO BACKTRACKING SUITE
+  ;; ====================================================================
+
+  ;; 1. ARBNO minimal evaluation check
+  ;; Input: "abc". Pattern: ARBNO("a") followed by ARB.
+  ;; Because ARBNO is shortest-match-first, it should match 0 characters ("").
+  ;; Then ARB consumes the rest ("abc"). Total index match is 3.
+  (let ((arbno-min (p:seq (p:assign-local (p:arbno (p:lit "a")) 'seq-data) 
+                          (p:arb))))
+    (assert-equal? "p:arbno initially prioritizes matching zero characters"
+                   ""
+                   (get-var (snobol-match arbno-min "abc") 'seq-data)))
+
+  ;; 2. ARBNO expansion check via downstream anchoring
+  ;; Input: "aaab". Pattern: ARBNO("a") followed by "b".
+  ;; The literal "b" forces ARBNO to expand step-by-step until it matches all three "a"s.
+  (let ((arbno-expand (p:seq (p:assign-local (p:arbno (p:lit "a")) 'seq-data) 
+                             (p:lit "b"))))
+    (assert-equal? "p:arbno expands iteratively when forced by downstream patterns"
+                   "aaa"
+                   (get-var (snobol-match arbno-expand "aaab") 'seq-data)))
+
+  ;; 3. ARBNO infinite loop prevention check
+  ;; If passed an empty matching literal, ARBNO should safely exit loop generation.
+  (let ((arbno-empty (p:seq (p:arbno (p:lit "")) (p:lit "xyz"))))
+    (assert-equal? "p:arbno safely breaks execution if the pattern consumes nothing"
+                   3
+                   (car (snobol-match arbno-empty "xyz"))))
+
+  ;; ====================================================================
   ;; 3. POSITIONAL, BOUNDARY, AND REJECTION CORNERS
   ;; ====================================================================
 
@@ -251,6 +281,93 @@
     (assert-equal? "p:any-of with custom user-defined lambda predicate"
                    2
                    (car (snobol-match custom-pred-pat "e!"))))
+
+  ;; ====================================================================
+  ;; 8. SPITBOL IMMEDIATE ASSIGNMENT ($) SUITE
+  ;; ====================================================================
+
+  ;; 1. Immediate capture verification
+  ;; Input: "123lbs". Pattern: SPAN(digits) immediately assigned to 'weight, followed by "lbs"
+  (let ((imm-match (p:seq (p:immediate-assign (p:span "0123456789") 'weight)
+                          (p:lit "lbs"))))
+    (assert-equal? "p:immediate-assign captures text segments on successful sub-paths"
+                   "123"
+                   (get-var (snobol-match imm-match "123lbs") 'weight)))
+
+  ;; 2. Tracking intermediate state inside recursive branches
+  ;; Even if a pattern backtracks later, the environment snapshot captures 
+  ;; what was matched at that exact moment.
+  (let* ((vowel? (lambda (c) (string-contains? "aeiou" (string c))))
+         (imm-track (p:seq (p:immediate-assign (p:any-of vowel?) 'first-vowel)
+                           (p:lit "z"))))
+    ;; Input: "az". Matches 'a', sets 'first-vowel to "a", matches "z". Success!
+    (assert-equal? "p:immediate-assign logs state correctly before downstream execution"
+                   "a"
+                   (get-var (snobol-match imm-track "az") 'first-vowel)))
+
+  ;; ====================================================================
+  ;; 9. SPITBOL CURSOR POSITION ASSIGNMENT (@) SUITE
+  ;; ====================================================================
+
+  ;; 1. Standard index tracking
+  ;; Input: "abcdef". Pattern: Skip 3 chars, log position 'pos, match "def"
+  (let ((cursor-pat (p:seq (p:len 3) 
+                           (p:cursor 'pos) 
+                           (p:lit "def"))))
+    (assert-equal? "p:cursor logs the precise numeric match index position"
+                   "3"
+                   (get-var (snobol-match cursor-pat "abcdef") 'pos)))
+
+  ;; 2. Bracketing a matched slice with two cursors
+  ;; Input: "   target   "
+  ;; Pattern: BREAK("t") -> @start -> SPAN("target") -> @end
+  (let ((span-bound-pat (p:seq (p:break "t")
+                               (p:cursor 'start-idx)
+                               (p:span "atgner")
+                               (p:cursor 'end-idx))))
+    (let ((res (snobol-match span-bound-pat "   target   ")))
+      (assert-equal? "p:cursor tracks starting index boundary cleanly"
+                     "3"
+                     (get-var res 'start-idx))
+      (assert-equal? "p:cursor tracks ending index boundary cleanly"
+                     "9"
+                     (get-var res 'end-idx))))
+
+  ;; ====================================================================
+  ;; 10. SPITBOL BRANCH TRUNCATION & COMPACTION SUITE
+  ;; ====================================================================
+
+ ;; 1. ABORT execution roadblock check
+  ;; Alternation tries to match "xyz" and succeeds, hitting ABORT. 
+  ;; Even though "xyz" is also available as a fallback alternative, 
+  ;; ABORT terminates the entire match attempt, returning #f.
+  (let ((abort-pat (p:alt (p:seq (p:lit "xyz") (p:abort)) 
+                          (p:lit "xyz"))))
+    (assert-equal? "p:abort immediately halts all evaluation paths"
+                   #f
+                   (snobol-match abort-pat "xyz")))
+
+  ;; 2. FENCE backtrack prevention check
+  ;; Input: "abcdef". Sequence matches "abc", crosses FENCE, then tries to match "xyz".
+  ;; "xyz" fails. Downstream logic wants to backtrack into "abc", but FENCE drops the line.
+  (let ((fence-pat (p:seq (p:lit "abc") (p:fence) (p:lit "xyz"))))
+    (assert-equal? "p:fence permits forward progress but isolates backtracking paths"
+                   #f
+                   (snobol-match fence-pat "abcdef")))
+
+  ;; 3. Environment Compaction Check
+  ;; Input: "123". We trace a variable 'x being assigned at index 1, 2, and 3 consecutively.
+  (let ((dupe-pat (p:seq (p:assign-local (p:len 1) 'x)
+                         (p:assign-local (p:len 1) 'x)
+                         (p:assign-local (p:len 1) 'x))))
+    (let ((res (snobol-match dupe-pat "123")))
+      ;; The final structure should contain exactly one unique instance of 'x mapping to "3"
+      (assert-equal? "Environment compaction retains only the final written state"
+                     "3"
+                     (get-var res 'x))
+      (assert-equal? "Environment contains no duplicate key definitions after compaction"
+                     1
+                     (length (cdr res)))))
 
   ;; If execution drops out of the bottom smoothly, everything is verified.
   (exit 0))
