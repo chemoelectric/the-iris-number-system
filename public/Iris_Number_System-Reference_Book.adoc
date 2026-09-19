@@ -11,7 +11,7 @@ Frédéric Blondin Custer
 
 === The Fundamental Theorem of Arithmetic in Cl(4,1,1)
 
-[#ref-th-the-fundamental-theorem-of-arithmetic-in]
+// [#ref-th-the-fundamental-theorem-of-arithmetic-in]
 [THEOREM]
 .Theorem: The Fundamental Theorem of Arithmetic in Cl(4,1,1)
 ====
@@ -32,7 +32,7 @@ Every discrete positive integer measurement count \( n > 1 \) in \( \mathbb { Z 
 
 === Euclid's Prime Infinitude Theorem on Aperture Grids
 
-[#ref-th-euclid-s-prime-infinitude-theorem-on]
+// [#ref-th-euclid-s-prime-infinitude-theorem-on]
 [THEOREM]
 .Theorem: Euclid's Prime Infinitude Theorem on Aperture Grids
 ====
@@ -53,7 +53,7 @@ The set of discrete Iris prime measurement step counts is strictly unbounded on 
 
 === Fermat's Little Theorem in Cl(4,1,1) Arithmetic
 
-[#ref-th-fermat-s-little-theorem-in-cl]
+// [#ref-th-fermat-s-little-theorem-in-cl]
 [THEOREM]
 .Theorem: Fermat's Little Theorem in Cl(4,1,1) Arithmetic
 ====
@@ -75,7 +75,7 @@ For any discrete Iris prime measurement count \( p \) and integer step count \( 
 
 === Euler's Totient Operational Theorem
 
-[#ref-th-euler-s-totient-operational-theorem]
+// [#ref-th-euler-s-totient-operational-theorem]
 [THEOREM]
 .Theorem: Euler's Totient Operational Theorem
 ====
@@ -97,7 +97,7 @@ For any discrete positive integer count \( n \ge 1 \) and integer step count \( 
 
 === The Chinese Remainder Operational Theorem
 
-[#ref-th-the-chinese-remainder-operational-theorem]
+// [#ref-th-the-chinese-remainder-operational-theorem]
 [THEOREM]
 .Theorem: The Chinese Remainder Operational Theorem
 ====
@@ -118,7 +118,7 @@ Let \( m _ 1 , m _ 2 , \dots , m _ k \) be pairwise coprime discrete integer cou
 
 === The Law of Quadratic Reciprocity in Cl(4,1,1)
 
-[#ref-th-the-law-of-quadratic-reciprocity-in]
+// [#ref-th-the-law-of-quadratic-reciprocity-in]
 [THEOREM]
 .Theorem: The Law of Quadratic Reciprocity in Cl(4,1,1)
 ====
@@ -140,7 +140,7 @@ For distinct odd Iris prime measurement counts \( p \) and \( q \), the product 
 
 === Multi-Radix Representation and Uniqueness Theorem
 
-[#ref-th-multi-radix-representation-and-uniqueness-theorem]
+// [#ref-th-multi-radix-representation-and-uniqueness-theorem]
 [THEOREM]
 .Theorem: Multi-Radix Representation and Uniqueness Theorem
 ====
@@ -163,7 +163,7 @@ For any discrete radix integer count \( b \ge 2 \) and any positive measurement 
 
 === Radix Transformation Invariance Theorem
 
-[#ref-th-radix-transformation-invariance-theorem]
+// [#ref-th-radix-transformation-invariance-theorem]
 [THEOREM]
 .Theorem: Radix Transformation Invariance Theorem
 ====
@@ -181,7 +181,7 @@ Let \( ( d _ M \dots d _ 0 ) _ { b _ 1 } \) and \( ( c _ K \dots c _ 0 ) _ { b _
 
 === Iris Pi-Digit Normalcy and Direct Hexadecimal Extraction Theorem
 
-[#ref-th-iris-pi-digit-normalcy-and-direct]
+// [#ref-th-iris-pi-digit-normalcy-and-direct]
 [THEOREM]
 .Theorem: Iris Pi-Digit Normalcy and Direct Hexadecimal Extraction Theorem
 ====
@@ -223,7 +223,7 @@ Let \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \) be the circle ra
 
 === Iris Aperture Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
 
-[#ref-th-iris-aperture-difference-of-squares-factorization]
+// [#ref-th-iris-aperture-difference-of-squares-factorization]
 [THEOREM]
 .Theorem: Iris Aperture Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
 ====
@@ -250,7 +250,7 @@ where midpoint \( x = \frac { p + q } { 2 } \) and offset \( y = \frac { q - p }
 
 === Quadratic Reciprocity, Polignac Multi-Gap SIMD, and Peephole Residue Update Theorem
 
-[#ref-th-quadratic-reciprocity-polignac-multi-gap-simd]
+// [#ref-th-quadratic-reciprocity-polignac-multi-gap-simd]
 [THEOREM]
 .Theorem: Quadratic Reciprocity, Polignac Multi-Gap SIMD, and Peephole Residue Update Theorem
 ====
@@ -275,7 +275,7 @@ Let \( N \in \mathbb { Z } ^ + \) be an integer step count to be factorized. The
 
 === Special-Class Bitwise Masking, Montgomery-Barrett Reduction, and Gilbreath Sieve Integrity Invariant Theorem
 
-[#ref-th-special-class-bitwise-masking-montgomery-barrett]
+// [#ref-th-special-class-bitwise-masking-montgomery-barrett]
 [THEOREM]
 .Theorem: Special-Class Bitwise Masking, Montgomery-Barrett Reduction, and Gilbreath Sieve Integrity Invariant Theorem
 ====
@@ -300,7 +300,7 @@ Let \( N \in \mathbb { Z } ^ + \) be an integer step count to be factorized or t
 
 === Parallel Multi-Grid Vernier Partitioning and Recursive Digital Grover Search Theorem
 
-[#ref-th-parallel-multi-grid-vernier-partitioning-and]
+// [#ref-th-parallel-multi-grid-vernier-partitioning-and]
 [THEOREM]
 .Theorem: Parallel Multi-Grid Vernier Partitioning and Recursive Digital Grover Search Theorem
 ====
@@ -325,7 +325,7 @@ Let \( N \in \mathbb { Z } ^ + \) be a composite measurement step count to be fa
 
 === Prior-Information OEIS Product Tree Factorization and Deterministic Primality Theorem
 
-[#ref-th-prior-information-oeis-product-tree-factorization]
+// [#ref-th-prior-information-oeis-product-tree-factorization]
 [THEOREM]
 .Theorem: Prior-Information OEIS Product Tree Factorization and Deterministic Primality Theorem
 ====
@@ -349,7 +349,7 @@ Let \( \mathcal { P } _ \text{OEIS} \subset \mathbb { Z } ^ + \) be the set of a
 
 === Vernier Multi-Grid Residue Phase Trajectory Theorem
 
-[#ref-th-vernier-multi-grid-residue-phase-trajectory]
+// [#ref-th-vernier-multi-grid-residue-phase-trajectory]
 [THEOREM]
 .Theorem: Vernier Multi-Grid Residue Phase Trajectory Theorem
 ====
@@ -374,7 +374,7 @@ Continuing this recursive square-root decomposition down to \( a ^ d - 1 \) forc
 
 === Lucas-Frobenius Cl(2,0) Bivector Rotor Phase Symmetry Theorem
 
-[#ref-th-lucas-frobenius-cl-2-0-bivector]
+// [#ref-th-lucas-frobenius-cl-2-0-bivector]
 [THEOREM]
 .Theorem: Lucas-Frobenius Cl(2,0) Bivector Rotor Phase Symmetry Theorem
 ====
@@ -400,7 +400,7 @@ and \( U_{p+1} = \frac{\alpha^{p+1} - \beta^{p+1}}{\alpha - \beta} \equiv \frac{
 
 === Combined Baillie-PSW Vernier Phase and Rotor Determinism Theorem
 
-[#ref-th-combined-baillie-psw-vernier-phase-and]
+// [#ref-th-combined-baillie-psw-vernier-phase-and]
 [THEOREM]
 .Theorem: Combined Baillie-PSW Vernier Phase and Rotor Determinism Theorem
 ====
@@ -424,7 +424,7 @@ An integer step count \( N \) passes both tests if and only if \( N \) is prime.
 
 === Montgomery Aperture Domain Division Elimination Theorem
 
-[#ref-th-montgomery-aperture-domain-division-elimination-theorem]
+// [#ref-th-montgomery-aperture-domain-division-elimination-theorem]
 [THEOREM]
 .Theorem: Montgomery Aperture Domain Division Elimination Theorem
 ====
@@ -451,7 +451,7 @@ This transformation replaces all hardware division instructions in modular expon
 
 === Goldbach Partition Tautology in Cl(4,1,1)
 
-[#ref-th-goldbach-partition-tautology-in-cl-4]
+// [#ref-th-goldbach-partition-tautology-in-cl-4]
 [THEOREM]
 .Theorem: Goldbach Partition Tautology in Cl(4,1,1)
 ====
@@ -474,7 +474,7 @@ where \( \| \cdot \| _ { \mathcal { I } } \) is the non-Euclidean Iris metric no
 
 === Strict Critical Line Zero Spectrum of the Iris Zeta Operator
 
-[#ref-th-strict-critical-line-zero-spectrum-of]
+// [#ref-th-strict-critical-line-zero-spectrum-of]
 [THEOREM]
 .Theorem: Strict Critical Line Zero Spectrum of the Iris Zeta Operator
 ====
@@ -495,7 +495,7 @@ Let \( s \) be an Iris spectral point in discrete domain \( \mathcal { D } _ { \
 
 === Infinitude of Discrete Twin Prime Pairs
 
-[#ref-th-infinitude-of-discrete-twin-prime-pairs]
+// [#ref-th-infinitude-of-discrete-twin-prime-pairs]
 [THEOREM]
 .Theorem: Infinitude of Discrete Twin Prime Pairs
 ====
@@ -516,7 +516,7 @@ The counting step sequence of discrete Iris twin prime pairs \( ( p , p + 2 \cdo
 
 === Universal Collatz Orbit Convergence to Origin State 1
 
-[#ref-th-universal-collatz-orbit-convergence-to-origin]
+// [#ref-th-universal-collatz-orbit-convergence-to-origin]
 [THEOREM]
 .Theorem: Universal Collatz Orbit Convergence to Origin State 1
 ====
@@ -537,7 +537,7 @@ Every discrete Collatz orbit starting at positive integer count \( n \in \mathbb
 
 === Non-Existence of Integer Solutions to Fermat's Equation for n > 2
 
-[#ref-th-non-existence-of-integer-solutions-to]
+// [#ref-th-non-existence-of-integer-solutions-to]
 [THEOREM]
 .Theorem: Non-Existence of Integer Solutions to Fermat's Equation for n > 2
 ====
@@ -558,7 +558,7 @@ For any discrete positive integer counts \( x , y , z \in \mathbb { Z } ^ + \) a
 
 === Existence of Iris Primes Between Consecutive Squares
 
-[#ref-th-existence-of-iris-primes-between-consecutive]
+// [#ref-th-existence-of-iris-primes-between-consecutive]
 [THEOREM]
 .Theorem: Existence of Iris Primes Between Consecutive Squares
 ====
@@ -579,7 +579,7 @@ For every discrete integer measurement step \( n \ge 1 \), the interval \( ( n ^
 
 === Non-Existence of Odd Perfect Numbers in Cl(4,1,1)
 
-[#ref-th-non-existence-of-odd-perfect-numbers]
+// [#ref-th-non-existence-of-odd-perfect-numbers]
 [THEOREM]
 .Theorem: Non-Existence of Odd Perfect Numbers in Cl(4,1,1)
 ====
@@ -602,7 +602,7 @@ No discrete odd positive integer measurement step count \( n \in \mathbb { Z } ^
 
 === Infinitude of Arbitrary Even Prime Gaps
 
-[#ref-th-infinitude-of-arbitrary-even-prime-gaps]
+// [#ref-th-infinitude-of-arbitrary-even-prime-gaps]
 [THEOREM]
 .Theorem: Infinitude of Arbitrary Even Prime Gaps
 ====
@@ -621,7 +621,7 @@ For every even integer step gap \( 2k \ge 2 \), there exist infinitely many pair
 
 === Infinitude of Discrete Mersenne Primes
 
-[#ref-th-infinitude-of-discrete-mersenne-primes]
+// [#ref-th-infinitude-of-discrete-mersenne-primes]
 [THEOREM]
 .Theorem: Infinitude of Discrete Mersenne Primes
 ====
@@ -644,7 +644,7 @@ There exist infinitely many prime measurement step counts \( p \) such that the 
 
 === Gilbreath's Leading Term Invariance for Ordered Primes
 
-[#ref-th-gilbreath-s-leading-term-invariance-for]
+// [#ref-th-gilbreath-s-leading-term-invariance-for]
 [THEOREM]
 .Theorem: Gilbreath's Leading Term Invariance for Ordered Primes
 ====
@@ -665,7 +665,7 @@ Let \( A _ 0 = ( p _ 1 , p _ 2 , p _ 3 , \dots ) = ( 2 , 3 , 5 , 7 , 11 , \dots 
 
 === Universal Reverse-and-Add Palindrome Convergence
 
-[#ref-th-universal-reverse-and-add-palindrome-convergence]
+// [#ref-th-universal-reverse-and-add-palindrome-convergence]
 [THEOREM]
 .Theorem: Universal Reverse-and-Add Palindrome Convergence
 ====
@@ -686,7 +686,7 @@ Under radix base \( b \ge 2 \) aperture iteration \( R _ b ( n ) = n + \text { r
 
 === Accelerated Sub-Linear \( n \)-th Prime Inversion, Modular SIMD Buchstab Tree, and Segmented Vernier Extraction Theorem
 
-[#ref-th-accelerated-sub-linear-n-th-prime]
+// [#ref-th-accelerated-sub-linear-n-th-prime]
 [THEOREM]
 .Theorem: Accelerated Sub-Linear \( n \)-th Prime Inversion, Modular SIMD Buchstab Tree, and Segmented Vernier Extraction Theorem
 ====
@@ -705,6 +705,7 @@ converges in at most \( 2 \) iterations to a discrete interval \( [ A , B ] \) c
 4. **Legendre-Bounded Multi-Grid Local Segment Sieve**: Sieving the narrow local segment \( [ A , B ] \) across parallel multi-grid Vernier channels with Gilbreath prime difference vector invariant checks (\( d_1^{(k)} = 1 \)) uniquely extracts the exact coordinate \( p _ n \) satisfying \( \pi _ { \mathcal { I } } ( p _ n ) = n \) with zero inter-thread lock overhead.
 
 *Proof:*
+
 . **Combinatorial SIMD Decomposition**: On discrete grid \( \mathcal { G } _ N \), integers \( \le x \) with no prime factors \( \le p _ a \) (where \( p _ a \le x ^ { 1 / 3 } \)) are counted by \( \phi ( x , a ) \). Subtracting cross-products of two prime factors (\( P _ 2 \)) and three prime factors (\( P _ 3 \)) eliminates composite numbers, yielding \( \pi _ { \mathcal { I } } ( x ) = \phi ( x , a ) + a - 1 - P _ 2 ( x , a ) - P _ 3 ( x , a ) \). Packing 8 candidate paths into AVX-512 vector registers and substituting Montgomery-Barrett arithmetic for hardware integer division accelerates leaf evaluation in the Buchstab-Vernier recursion tree by 800%.
 
 . **Convergence of Newton-Vernier Iteration**: The derivative of \( \text { Li } ( x ) \) is \( \frac { d } { d x } \text { Li } ( x ) = \frac { 1 } { \ln x } \). Since \( \pi _ { \mathcal { I } } ( x ) \approx \text { Li } ( x ) \), the asymptotic inverse gradient is \( \frac { d x } { d \pi } = \ln x \). The step \( \Delta x = ( n - \pi _ { \mathcal { I } } ( x _ k ) ) \ln x _ k \) corrects the residual error \( \Delta n = n - \pi _ { \mathcal { I } } ( x _ k ) \). Because \( | \pi _ { \mathcal { I } } ( x ) - \text { Li } ( x ) | \le \mathcal { O } ( \sqrt { x } \ln x ) \), the residual after 1 step is bounded by \( \mathcal { O } ( x ^ { 1 / 4 } ) \), causing rapid quadratic-like discrete convergence to within a segment of length \( \mathcal { O } ( \sqrt { p _ n } ) \).
