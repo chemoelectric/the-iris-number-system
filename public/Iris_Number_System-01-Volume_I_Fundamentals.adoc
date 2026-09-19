@@ -1760,17 +1760,17 @@ All four formulations of the Iris Number System are completely equivalent. \( \s
 
 == The Historical Causal Formulation of the Tautological System
 
-Having established the original constructive system ( \( \mathcal { S } _ { \text { Iris } } \) ), the informational formulation ( \( \mathcal { S } _ { \text { Info } } \) ), the operational metrological formulation ( \( \mathcal { S } _ { \text { Metro } } \) ), and the discrete kinetic formulation ( \( \mathcal { S } _ { \text { Kinetic } } \) ), we now present a fifth equivalent formulation: the **Historical Causal Formulation** ( \( \mathcal { S } _ { \text { History } } \) ).
+Having established the original constructive system (\( \mathcal { S } _ { \text { Iris } } \)), the informational formulation (\( \mathcal { S } _ { \text { Info } } \)), the operational metrological formulation (\( \mathcal { S } _ { \text { Metro } } \)), and the discrete kinetic formulation (\( \mathcal { S } _ { \text { Kinetic } } \)), we now present a fifth equivalent formulation: the **Historical Causal Formulation** (\( \mathcal { S } _ { \text { History } } \)).
 
-While conventional physics commonly sets up dynamic problems looking forward—prescribing initial positions and velocities at an arbitrary starting instant and then attempting to integrate differential equations into the future—the physical world operates through the accumulated convergence of past interactions. Because electromagnetic influences propagate with finite speed, any physical entity at coordinates \( ( \mathbf { x } , t ) \) is responding strictly to time-delayed causal wavefronts and direct-contact encounters originating from its past.
+While conventional physics commonly sets up dynamic problems looking forward—prescribing initial positions and velocities at an arbitrary starting instant and then attempting to integrate differential equations into the future—the physical world operates through the accumulated convergence of past interactions. Because electromagnetic influences propagate with finite speed, any physical entity at coordinates \( ( \mathbf { x } , t ) \) is responding strictly to finite-time wavefronts and direct-contact encounters originating from its past.
 
-In this formulation, causation is understood retrospectively: matter is where it is at a given moment strictly because a definite, countable sequence of physical events brought it there. When mathematical formulations reject unphysical continua and completed actual infinities, this retrospective perspective becomes mathematically exact: the past of any entity is a finite, discrete causal chain, permitting an exact hypothetical backtrace.
+In this formulation, causation is understood retrospectively: matter is where it is at a given moment because a specific countable sequence of events brought it there. When mathematical formulations reject uncountable infinities, this retrospective perspective becomes exact: the past of any entity is—in the Iris Numbers _theory_—a finite, discrete causal chain, permitting an exact backtrace.footnote:[The actual physical plenum _is not words_. It can be described, and it can be modeled—but it _cannot be said_. Whether it “_is_” or “_is not_” “a finite, discrete causal chain” is a meaningless question.]
 
 === Retrospective Causation and the Hypothetical Backtrace
 
-In the conventional view inherited from seventeenth-century mechanics, the universe is imagined as an initial-value problem. One assumes an uncountably infinite continuum of real coordinates \( \mathbb { R } ^ 3 \) and a continuous time parameter \( t \). Forces are imagined to push matter forward into the next infinitesimal moment \( t + dt \). This forward-looking viewpoint conceals the physical mechanism of force transmission, encouraging the belief that forces act without duration or that objects possess abstract, ungrounded velocities disconnected from their interaction history.
+In the conventional view, derived from seventeenth-century mechanics, the universe is imagined as an initial-value problem. In the “modern” version of this view, employing defective mathematics, one assumes an uncountably infinite continuum of real coordinates \( \mathbb { R } ^ 3 \) and a continuous time parameter \( t \). Forces are imagined to push matter forward into the next infinitesimal moment \( t + dt \). Diagrams depict differentials such as \( dt \) as straight lines that disappear “in the limit.” Motion forwards is a motion that exists and yet disappears “in the limit” (supposedly resolving Zeno’s paradoxes). This forward-looking viewpoint that occurs in uncountable infinities of no-time conceals the physical mechanism of force transmission, encouraging the belief that forces act without duration or that objects possess abstract, ungrounded velocities disconnected from their interaction history.
 
-In physical actuality, no interaction occurs without duration. Every push, pull, deflection, wave emission, and wave absorption requires a finite duration of time. The maximum speed at which any physical influence or wave packet can travel relative to its source is designated \( c \), the fundamental speed of causation.
+In the real world, no interaction occurs without duration. Every push, pull, deflection, wave emission, or wave absorption requires an amount of time. The maximum speed at which any physical influence or wave packet can travel relative to its source is designated \( c \). We may call \( c \) the **fundamental speed of causation**. Indeed, all units of speed should be defined in terms of it, rather than in terms of the SI constant mislabeled \( c \) (which is called by the meaningless name “speed of light in a vacuum”).
 
 Consequently, an entity located at position \( \mathbf { x } \) at time step \( t \) does not exist in isolation. It is the destination point of influences that left other entities at earlier time steps:
 \[ t _ { \text { causal } } = t - \frac { r } { c } \]
@@ -1791,21 +1791,21 @@ To formulate this perspective with utmost clarity, we present an expanded set of
 [POSTULATE]
 .Postulate History-0: Non-Zero Spatial Extent and Non-Zero Mass
 ====
-Every physical entity possesses a strictly non-zero spatial extent and a strictly non-zero mass. Entities of purported zero spatial extent or zero mass do not exist in the real world; by abductive reasoning, any such conceptual entities consist of m-resolution vernier numbers on the multiscale grid \( \mathcal { G } _ N \).
+Every physical entity possesses a strictly non-zero spatial extent and a strictly non-zero mass. Entities of purported zero spatial extent or zero mass do not exist in the real world; by abductive reasoning, any such entities actually consist of m-resolution vernier numbers on the multiscale grid \( \mathcal { G } _ N \). (They may, for instance, be associated with _density functions_.)
 ====
 
 [#postulate-history-1]
 [POSTULATE]
 .Postulate History-1: The Discrete Lattice Stage
 ====
-Physical space and the succession of physical events exist at a definite discrete scale on the multiscale resolution grid \( \mathcal { G } _ N \). Physical displacements and clock ticks occur in discrete, finite m-resolution steps. There is no uncountably infinite continuum of spatial points or temporal instants.
+Physical space and the succession of physical events exist at a definite discrete scale on the multiscale resolution grid \( \mathcal { G } _ N \). Physical displacements and clock ticks occur in discrete, finite m-resolution steps. There is no uncountably infinite continuum of spatial points or temporal “instants.”
 ====
 
 [#postulate-history-2]
 [POSTULATE]
 .Postulate History-2: The Fundamental Speed of Causation
 ====
-Every physical influence, wave packet, and field disturbance propagates across spatial intervals with finite speed, requiring finite, non-zero duration. The maximum speed at which any electromagnetic influence or causal effect propagates through space relative to its transmission source is designated \( c \), the fundamental speed of causation. Actions across zero duration and unmediated phase jumps do not exist.
+Every physical influence, wave packet, and field disturbance propagates across spatial intervals with finite speed, requiring finite, non-zero, one-directional duration. The maximum speed at which any electromagnetic influence or causal effect propagates through space relative to its transmission source is designated \( c \), the _fundamental speed of causation_. There is no such thing as “time travel,” no such thing as “instantaneity,” and no such thing as “motion faster than{nbsp}\( c \).”
 ====
 
 [#postulate-history-3]
@@ -1870,7 +1870,7 @@ We have already established in xref:theorem-kinetic-equivalence[Theorem: Structu
 Therefore, to establish the five-way equivalence, it is necessary and sufficient to prove the two-way implication:
 \[ \mathcal { S } _ { \text { Iris } } \implies \mathcal { S } _ { \text { History } } \quad \text{and} \quad \mathcal { S } _ { \text { History } } \implies \mathcal { S } _ { \text { Iris } } \]
 
-*Part 1: Forward Implication ( \( \mathcal { S } _ { \text { Iris } } \implies \mathcal { S } _ { \text { History } } \) )*
+*Part 1: Forward Implication (\( \mathcal { S } _ { \text { Iris } } \implies \mathcal { S } _ { \text { History } } \))*
 
 Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
@@ -1878,7 +1878,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
 . **Derivation of Postulates History-2 and History-3**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 8 (Action by Direct Contact via Topological Halos) explicitly establishes that all physical interactions occur by direct contiguous contact across halo boundaries over finite duration, with causal propagation bounded by \( c \), the speed of electromagnetic influences relative to their source. This establishes Postulates History-2 and History-3.
 
-. **Derivation of Postulates History-4 and History-5**: In \( \mathcal { S } _ { \text { Iris } } \), physical dynamics are governed by the Master Field Equation \( D F = J \) on discrete grids \( \mathcal { G } _ N \). Because all interactions propagate with finite velocity \( c \) across discrete links, the field arriving at any cell at step \( k \) is the convolution of localized source emissions from past time-delayed steps \( k - r / ( c \tau ) \). Integrating the momentum transfer over discrete time yields the cumulative displacement equation:
+. **Derivation of Postulates History-4 and History-5**: In \( \mathcal { S } _ { \text { Iris } } \), physical dynamics are governed by the Master Field Equation \( D F = J \) on discrete grids \( \mathcal { G } _ N \). Because all interactions propagate with finite velocity \( c \) across discrete links, the field arriving at any cell at step \( k \) is the convolution of localized source emissions from past finite-time steps \( k - r / ( c \tau ) \). Integrating the momentum transfer over discrete time yields the cumulative displacement equation:
 \[ \mathbf { x } _ i [ k ] = \mathbf { x } _ i [ 0 ] + \sum _ { j = 0 } ^ { k - 1 } \Delta \mathbf { x } _ i [ j ] \]
 Because the lattice index set is strictly finite and recursively enumerable (Postulate 7), the past interaction history is a finite sequence of discrete steps. Reversing the sequence step by step constructs an exact hypothetical backtrace without singularities. This establishes Postulates History-4 and History-5.
 
@@ -1890,7 +1890,7 @@ At each discrete direct-contact boundary, this yields exact conservation of inco
 
 Therefore, \( \mathcal { S } _ { \text { Iris } } \implies \mathcal { S } _ { \text { History } } \).
 
-*Part 2: Reverse Implication ( \( \mathcal { S } _ { \text { History } } \implies \mathcal { S } _ { \text { Iris } } \) )*
+*Part 2: Reverse Implication (\( \mathcal { S } _ { \text { History } } \implies \mathcal { S } _ { \text { Iris } } \))*
 
 Assume the validity of \( \mathcal { S } _ { \text { History } } \).
 
