@@ -213,6 +213,21 @@
   (set-macro-handler! "dnl" dnl-handler)
 
   ;;----------------------------------------------------
+  ;; (@@@ eval FORM)
+  ;;
+  ;; Evaluate FORM as Scheme.
+  ;;
+
+  (define (eval-handler macro-call macro-name macro-body)
+    (let-values ((form-lst (evaluate macro-body)))
+      (case (length form-lst)
+        ((0) (error "(@@@ eval FORM) expects a form to evaluate"))
+        ((1) (serialize-to-string (first form-lst)))
+        (else (error "(@@@ eval FORM) expects only one form"
+                     form-lst)))))
+  (set-macro-handler! "eval" eval-handler)
+
+  ;;----------------------------------------------------
   ;; (@@@ include-raw FORM)
   ;;
   ;; Non-recursive include of the file specified by the FORM.
