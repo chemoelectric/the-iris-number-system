@@ -130,7 +130,7 @@
   (make-parameter
    (p:assign-local (p:seq
                     (p:lit ";")
-                    (p:maybe-many (p:notany "\n"))
+                    (p:break "\n")
                     (p:lit "\n"))
                    'comment)))
 
@@ -195,6 +195,24 @@
     (set! t (remove-prefix prefix t)))
 
   ;;----------------------------------------------------
+  ;; (@@@ dnl)
+  ;;
+  ;; Delete up through the next newline.
+  ;;
+
+  (define dnl-handler
+    (let ((pattern (p:seq (p:alt (p:seq (p:break "\n") (p:lit "\n"))
+                                 (p:lit "\n"))
+                          (p:cursor 'cursor))))
+      (lambda (macro-call macro-name macro-body)
+        (let ((match-result (snobol-match pattern t)))
+          (when match-result
+            (let ((n (string->number (getvar 'cursor match-result))))
+              (set! t (string-copy t n))))
+          ""))))
+  (set-macro-handler! "dnl" dnl-handler)
+
+  ;;----------------------------------------------------
   ;; (@@@ include-raw FORM)
   ;;
   ;; Non-recursive include of the file specified by the FORM.
@@ -243,9 +261,9 @@
                         "(@@@ popdef \"" (number->string i) "\")"
                         t)))
              (set! t (string-append body t))
-             (do ((i n (- i 1))
+             (do ((i 1 (+ i 1))
                   (p vals (cdr p)))
-                 ((= i 0))
+                 ((= i (+ n 1)))
                (set! t (string-append
                         "(@@@ define \"" (number->string i) "\" "
                         (serialize-to-string (car p)) ")"
@@ -256,6 +274,8 @@
 
   ;;----------------------------------------------------
   ;; (@@@ popdef MACRO-NAME)
+  ;;
+  ;; Pop a definition.
   ;;
 
   (define (popdef-handler macro-call macro-name macro-body)
