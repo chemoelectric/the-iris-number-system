@@ -95,10 +95,6 @@
            (lambda (final-idx env retry) 
              (cons final-idx (compact-env env))) 
            (lambda () #f)))
-    #;(define (snobol-match pat str)
-    (pat str 0 '()
-    (lambda (final-idx env retry) (cons final-idx env)) 
-    (lambda () #f)))
 
     ;; Captures a matched text slice into a thread-safe lexical
     ;; context. Passes the updated environment map down the
