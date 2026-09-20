@@ -32,15 +32,15 @@
         (scheme process-context)
         (scheme eval))
 (cond-expand
-    ((library (scheme list)) (import (scheme list)))
-    ((library (srfi 1)) (import (srfi 1)))
-    (loko (import (srfi :1 lists)))
-    (else (import (srfi srfi-1))))
+  ((library (scheme list)) (import (scheme list)))
+  ((library (srfi 1)) (import (srfi 1)))
+  (loko (import (srfi :1 lists)))
+  (else (import (srfi srfi-1))))
 (cond-expand
-    ((library (scheme charset)) (import (scheme charset)))
-    ((library (srfi 14)) (import (srfi 14)))
-    (loko (import (srfi :14 char-sets)))
-    (else (import (srfi srfi-14))))
+  ((library (scheme charset)) (import (scheme charset)))
+  ((library (srfi 14)) (import (srfi 14)))
+  (loko (import (srfi :14 char-sets)))
+  (else (import (srfi srfi-14))))
 
 (include "snobol-match.sld")
 (include "snobol-char-set.sld")
@@ -77,8 +77,13 @@
   (eval (read (open-input-string str)) env))
 
 (define (evaluate str)
-  (eval-string (string-append "(values " str ")")
+  (eval-string (string-append "(values " str " )")
                (*environment*)))
+
+(define (serialize-to-string obj)
+  (let ((port (open-output-string)))
+    (write obj port)
+    (get-output-string port)))
 
 (define (getvar key match-result)
   (and match-result
@@ -91,24 +96,6 @@
     (if (<= n m)
       ""
       (string-copy str m))))
-
-;;;---------------------------------------------------------------------
-
-;;
-;; (@@@ define MACRO-NAME FORM)
-;;
-;;;(define (handle-define arg*)
-;;;  (unless (= 2 (length arg*))
-;;;    (error "(@@@ define MACRO-NAME FORM) takes two arguments, not: "
-;;;           arg*))
-;;;  (let ((macro-name (first arg*))
-;;;        (form (second arg*)))
-;;;    (macro-set! macro-name form)))
-
-;;
-;; (@@@ ifdef MACRO-NAME T-FORM F-FORM)
-;;
-'FIXME
 
 ;;;---------------------------------------------------------------------
 
@@ -129,11 +116,12 @@
            (p:span-char-set char-set:whitespace)
            (p:assign-local (p:span-char-set char-set:macro-name)
                            'macro-name)
-           (p:span-char-set char-set:whitespace)
+           (p:maybe-many (p:span-char-set char-set:whitespace))
            (p:assign-local
-            (p:many (p:seq (p:bal)
-                           (p:maybe-many
-                            (p:span-char-set char-set:whitespace))))
+            (p:maybe-many
+             (p:seq (p:bal)
+                    (p:maybe-many
+                     (p:span-char-set char-set:whitespace))))
             'macro-body)
            (p:lit ")"))
     'macro-call)))
@@ -148,28 +136,47 @@
 
 ;;;---------------------------------------------------------------------
 
+(define-syntax define-lookup
+  (syntax-rules ()
+    ((¶ *things* getter setter! localizer)
+     (begin
+       (define *things* (make-parameter (list (list '()))))
+       (define (getter name)
+         (let ((p (*things*)))
+           (let ((association (assoc name (caar p))))
+             (if association
+               (cdr association)
+               #f))))
+       (define (setter! name handler)
+         (let ((p (*things*)))
+           (let ((lst (alist-delete! name (caar p)))
+                 (association (cons name handler)))
+             (set-car! (car p) (cons association lst)))))
+       (define-syntax localizer
+         (syntax-rules ooo ()
+           ((ß body ooo)
+            (parameterize
+                ((*things*
+                  (list (map (lambda (p) (cons (car p) (cdr p)))
+                             (caar (*things*))))))
+              (begin
+                (if #f #f)
+                body ooo)))))))))
+
+(define-lookup *macros*
+  get-macro-handler
+  set-macro-handler!
+  localize-macros)
+
+;;;---------------------------------------------------------------------
+
 (define (process-text text)
   (define t (string-copy text))
 
   (define (remove-t-prefix! prefix)
     (set! t (remove-prefix prefix t)))
 
-  (define *macros* (make-parameter (list (list '()))))
-
-  (define (get-macro-handler name)
-    (let ((p (*macros*)))
-      (let ((association (assoc name (caar p))))
-        (if association
-          (cdr association)
-          #f))))
-
-  (define (set-macro-handler! name handler)
-    (let ((p (*macros*)))
-      (let ((lst (alist-delete! name (caar p)))
-            (association (cons name handler)))
-        (set-car! (car p) (cons association lst)))))
-
-  ;;
+  ;;----------------------------------------------------
   ;; (@@@ include-raw FORM)
   ;;
   ;; Non-recursive include of the file specified by the FORM.
@@ -180,7 +187,7 @@
         (lambda () (read-string #f)))))
   (set-macro-handler! "include-raw" include-raw-handler)
 
-  ;;
+  ;;----------------------------------------------------
   ;; (@@@ include FORM)
   ;;
   ;; Recursive include of the file specified by the FORM.
@@ -192,6 +199,39 @@
           (set! t (string-append (read-string #f) t))
           ""))))
   (set-macro-handler! "include" include-handler)
+
+  ;;----------------------------------------------------
+  ;; (@@@ define MACRO-NAME MACRO-BODY)
+  ;;
+  ;; Define a macro with the name given by the form MACRO-NAME and
+  ;; definition by the form MACRO-BODY, which (in the current
+  ;; implementation) must evaluate to a string. When a macro call is
+  ;; made, MACRO-BODY is inserted and then evaluated recursively
+  ;;
+  ;; FIXME: SUPPORT ARGUMENTS
+  ;;
+  (define (definition-handler macro-call macro-name macro-body)
+    (let-values (((name body) (evaluate macro-body)))
+      (unless (string? name)
+        (error "macro name must be a be a string: " name))
+      (unless (string? body)
+        (error "macro body must be a be a string: " body))
+      (set-macro-handler!
+       name
+       (lambda (mac-call mac-name mac-body)
+         (set! t (string-append body t))
+         (let-values ((vals (evaluate mac-body)))
+           (do ((i 1 (+ i 1))
+                (p vals (cdr p)))
+               ((not-pair? p))
+             (set! t (string-append
+                      "(@@@ define \"" (number->string i) "\" "
+                      (serialize-to-string (car p)) ")" t))))
+         ""))
+      ""))
+  (set-macro-handler! "define" definition-handler)
+
+  ;;----------------------------------------------------
 
   (define (handle-quick-result match-result)
     (let ((snippet (getvar 'snippet match-result)))
@@ -283,12 +323,12 @@
     (exit 1)))
 
 ;;(guard (exc (else (exception-handler exc)))
-  (let ((args (command-line)))
-    (case (length args)
-      ((1) (run-the-program "-" "-"))
-      ((2) (run-the-program (second args) "-"))
-      ((3) (run-the-program (second args) (third args)))
-      (else (usage-handler args))))
+(let ((args (command-line)))
+  (case (length args)
+    ((1) (run-the-program "-" "-"))
+    ((2) (run-the-program (second args) "-"))
+    ((3) (run-the-program (second args) (third args)))
+    (else (usage-handler args))))
 ;;)
 
 ;;;---------------------------------------------------------------------

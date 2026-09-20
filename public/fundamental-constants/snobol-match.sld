@@ -317,8 +317,8 @@
       (lambda (str idx env succeed fail)
         (arb-loop str idx env 0 succeed fail)))
 
-    ;; SNOBOL BREAK: Fixed to be an atomic, non-backtracking choice point.
-    ;; Once it scans up to the breakpoint, it passes that fixed slice forward.
+    ;; SNOBOL BREAK: An atomic, non-backtracking choice point. Once it
+    ;; scans up to the breakpoint, it passes that fixed slice forward.
     (define p:break
       (case-lambda
         ((char-set-str)
@@ -336,7 +336,7 @@
                (succeed max-end env fail)
                (fail)))))))
 
-    ;; SNOBOL SPAN: Similarly fixed to be atomic and non-backtracking.
+    ;; SNOBOL SPAN: Similarly atomic and non-backtracking.
     (define p:span
       (case-lambda
         ((char-set-str)
