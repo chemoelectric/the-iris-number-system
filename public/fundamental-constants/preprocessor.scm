@@ -138,7 +138,9 @@
 
 (define-syntax define-lookup
   (syntax-rules ()
-    ((¶ *things* getter setter! localizer)
+    ((¶ *things*
+        getter setter! popper!
+        localizer)
      (begin
        (define *things* (make-parameter (list (list '()))))
        (define (getter name)
@@ -149,9 +151,24 @@
                #f))))
        (define (setter! name handler)
          (let ((p (*things*)))
-           (let ((lst (alist-delete! name (caar p)))
+           ;;
+           ;; This is not a “true” association list, but rather a
+           ;; stack.
+           ;;
+           (let (;;(lst (alist-delete! name (caar p)))
+                 (lst (caar p))
                  (association (cons name handler)))
              (set-car! (car p) (cons association lst)))))
+       (define (popper! name)
+         (let ((p (*things*)))
+           ;;
+           ;; Pop the first instance of name.
+           ;;
+           (let-values (((a b) (break! (lambda (p)
+                                         (equal? name (car p)))
+                                       (caar p))))
+             (let ((b (if (pair? b) (cdr b) b)))
+               (set-car! (car p) (append a b))))))
        (define-syntax localizer
          (syntax-rules ooo ()
            ((ß body ooo)
@@ -166,6 +183,7 @@
 (define-lookup *macros*
   get-macro-handler
   set-macro-handler!
+  pop-macro!
   localize-macros)
 
 ;;;---------------------------------------------------------------------
@@ -208,28 +226,45 @@
   ;; implementation) must evaluate to a string. When a macro call is
   ;; made, MACRO-BODY is inserted and then evaluated recursively
   ;;
-  ;; FIXME: SUPPORT ARGUMENTS
-  ;;
   (define (definition-handler macro-call macro-name macro-body)
     (let-values (((name body) (evaluate macro-body)))
       (unless (string? name)
-        (error "macro name must be a be a string: " name))
+        (error "macro name must be a be a string" name))
       (unless (string? body)
-        (error "macro body must be a be a string: " body))
+        (error "macro body must be a be a string" body))
       (set-macro-handler!
        name
        (lambda (mac-call mac-name mac-body)
-         (set! t (string-append body t))
          (let-values ((vals (evaluate mac-body)))
-           (do ((i 1 (+ i 1))
-                (p vals (cdr p)))
-               ((not-pair? p))
-             (set! t (string-append
-                      "(@@@ define \"" (number->string i) "\" "
-                      (serialize-to-string (car p)) ")" t))))
+           (let ((n (length vals)))
+             (do ((i 1 (+ i 1)))
+                 ((= i (+ n 1)))
+               (set! t (string-append
+                        "(@@@ popdef \"" (number->string i) "\")"
+                        t)))
+             (set! t (string-append body t))
+             (do ((i n (- i 1))
+                  (p vals (cdr p)))
+                 ((= i 0))
+               (set! t (string-append
+                        "(@@@ define \"" (number->string i) "\" "
+                        (serialize-to-string (car p)) ")"
+                        t)))))
          ""))
       ""))
   (set-macro-handler! "define" definition-handler)
+
+  ;;----------------------------------------------------
+  ;; (@@@ popdef MACRO-NAME)
+  ;;
+
+  (define (popdef-handler macro-call macro-name macro-body)
+    (let-values (((name) (evaluate macro-body)))
+      (unless (string? name)
+        (error "macro name must be a be a string" name))
+      (pop-macro! name)
+      ""))
+  (set-macro-handler! "popdef" popdef-handler)
 
   ;;----------------------------------------------------
 
