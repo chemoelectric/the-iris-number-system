@@ -73,6 +73,11 @@
     '(snobol-match)
     '(snobol-char-set))))
 
+(define-syntax unspecified-value
+  (syntax-rules ()
+    ((¶)
+     (if #f #f))))
+
 (define (eval-string str env)
   (eval (read (open-input-string str)) env))
 
@@ -139,7 +144,8 @@
 (define-syntax define-lookup
   (syntax-rules ()
     ((¶ *things*
-        getter setter! popper!
+        getter setter!
+        pusher! popper!
         localizer)
      (begin
        (define *things* (make-parameter (list (list '()))))
@@ -150,13 +156,15 @@
                (cdr association)
                #f))))
        (define (setter! name handler)
+         (popper! name)
+         (pusher! name handler))
+       (define (pusher! name handler)
          (let ((p (*things*)))
            ;;
            ;; This is not a “true” association list, but rather a
            ;; stack.
            ;;
-           (let (;;(lst (alist-delete! name (caar p)))
-                 (lst (caar p))
+           (let ((lst (caar p))
                  (association (cons name handler)))
              (set-car! (car p) (cons association lst)))))
        (define (popper! name)
@@ -177,14 +185,16 @@
                   (list (map (lambda (p) (cons (car p) (cdr p)))
                              (caar (*things*))))))
               (begin
-                (if #f #f)
-                body ooo)))))))))
+                body ooo
+                (unspecified-value)
+                )))))))))
 
-(define-lookup *macros*
+(define-lookup *macro-handlers*
   get-macro-handler
   set-macro-handler!
-  pop-macro!
-  localize-macros)
+  push-macro-handler!
+  pop-macro-handler!
+  localize-macro-handlers)
 
 ;;;---------------------------------------------------------------------
 
@@ -253,39 +263,80 @@
 
   ;;----------------------------------------------------
   ;; (@@@ define MACRO-NAME MACRO-BODY)
+  ;; (@@@ pushdef MACRO-NAME MACRO-BODY)
   ;;
   ;; Define a macro with the name given by the form MACRO-NAME and
   ;; definition by the form MACRO-BODY, which (in the current
   ;; implementation) must evaluate to a string. When a macro call is
-  ;; made, MACRO-BODY is inserted and then evaluated recursively
+  ;; made, MACRO-BODY is inserted and then evaluated recursively.
   ;;
+  ;; The “define” version pops any top definition of the macro,
+  ;; whereas “pushdef” does not.
+  ;;
+
+  (define-syntax define-macro
+    (syntax-rules ()
+      ((¶ set-or-push-macro-handler! macro-body)
+       (let-values (((name body) (evaluate macro-body)))
+         (unless (string? name)
+           (error "macro name must be a be a string" name))
+         (unless (string? body)
+           (error "macro body must be a be a string" body))
+         (set-or-push-macro-handler!
+          name
+          (lambda (mac-call mac-name mac-body)
+            (let-values ((vals (evaluate mac-body)))
+              (let ((n (length vals)))
+                (do ((i 1 (+ i 1)))
+                    ((= i (+ n 1)))
+                  (set! t (string-append
+                           "(@@@ popdef \"" (number->string i) "\")"
+                           t)))
+                (set! t (string-append body t))
+                (do ((i 1 (+ i 1))
+                     (p vals (cdr p)))
+                    ((= i (+ n 1)))
+                  (set! t (string-append
+                           "(@@@ pushdef \"" (number->string i) "\" "
+                           (serialize-to-string (car p)) ")"
+                           t)))))
+            ""))
+         ""))))
+
   (define (definition-handler macro-call macro-name macro-body)
-    (let-values (((name body) (evaluate macro-body)))
-      (unless (string? name)
-        (error "macro name must be a be a string" name))
-      (unless (string? body)
-        (error "macro body must be a be a string" body))
-      (set-macro-handler!
-       name
-       (lambda (mac-call mac-name mac-body)
-         (let-values ((vals (evaluate mac-body)))
-           (let ((n (length vals)))
-             (do ((i 1 (+ i 1)))
-                 ((= i (+ n 1)))
-               (set! t (string-append
-                        "(@@@ popdef \"" (number->string i) "\")"
-                        t)))
-             (set! t (string-append body t))
-             (do ((i 1 (+ i 1))
-                  (p vals (cdr p)))
-                 ((= i (+ n 1)))
-               (set! t (string-append
-                        "(@@@ define \"" (number->string i) "\" "
-                        (serialize-to-string (car p)) ")"
-                        t)))))
-         ""))
-      ""))
+    (define-macro set-macro-handler! macro-body))
   (set-macro-handler! "define" definition-handler)
+
+  (define (pushdef-handler macro-call macro-name macro-body)
+    (define-macro push-macro-handler! macro-body))
+  (set-macro-handler! "pushdef" pushdef-handler)
+
+;;;;;    (let-values (((name body) (evaluate macro-body)))
+;;;;;      (unless (string? name)
+;;;;;        (error "macro name must be a be a string" name))
+;;;;;      (unless (string? body)
+;;;;;        (error "macro body must be a be a string" body))
+;;;;;      (set-macro-handler!
+;;;;;       name
+;;;;;       (lambda (mac-call mac-name mac-body)
+;;;;;         (let-values ((vals (evaluate mac-body)))
+;;;;;           (let ((n (length vals)))
+;;;;;             (do ((i 1 (+ i 1)))
+;;;;;                 ((= i (+ n 1)))
+;;;;;               (set! t (string-append
+;;;;;                        "(@@@ popdef \"" (number->string i) "\")"
+;;;;;                        t)))
+;;;;;             (set! t (string-append body t))
+;;;;;             (do ((i 1 (+ i 1))
+;;;;;                  (p vals (cdr p)))
+;;;;;                 ((= i (+ n 1)))
+;;;;;               (set! t (string-append
+;;;;;                        "(@@@ pushdef \"" (number->string i) "\" "
+;;;;;                        (serialize-to-string (car p)) ")"
+;;;;;                        t)))))
+;;;;;         ""))
+;;;;;      ""))
+
 
   ;;----------------------------------------------------
   ;; (@@@ popdef MACRO-NAME)
@@ -297,7 +348,7 @@
     (let-values (((name) (evaluate macro-body)))
       (unless (string? name)
         (error "macro name must be a be a string" name))
-      (pop-macro! name)
+      (pop-macro-handler! name)
       ""))
   (set-macro-handler! "popdef" popdef-handler)
 
