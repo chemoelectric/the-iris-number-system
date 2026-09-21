@@ -402,33 +402,6 @@
     (define-macro push-macro-handler! macro-body))
   (set-macro-handler! "pushdef" pushdef-handler)
 
-;;;;;    (let-values (((name body) (evaluate macro-body)))
-;;;;;      (unless (string? name)
-;;;;;        (error "macro name must be a be a string" name))
-;;;;;      (unless (string? body)
-;;;;;        (error "macro body must be a be a string" body))
-;;;;;      (set-macro-handler!
-;;;;;       name
-;;;;;       (lambda (mac-call mac-name mac-body)
-;;;;;         (let-values ((vals (evaluate mac-body)))
-;;;;;           (let ((n (length vals)))
-;;;;;             (do ((i 1 (+ i 1)))
-;;;;;                 ((= i (+ n 1)))
-;;;;;               (set! t (string-append
-;;;;;                        "(@@@ popdef \"" (number->string i) "\")"
-;;;;;                        t)))
-;;;;;             (set! t (string-append body t))
-;;;;;             (do ((i 1 (+ i 1))
-;;;;;                  (p vals (cdr p)))
-;;;;;                 ((= i (+ n 1)))
-;;;;;               (set! t (string-append
-;;;;;                        "(@@@ pushdef \"" (number->string i) "\" "
-;;;;;                        (serialize-to-string (car p)) ")"
-;;;;;                        t)))))
-;;;;;         ""))
-;;;;;      ""))
-
-
   ;;----------------------------------------------------
   ;; (@@@ popdef MACRO-NAME)
   ;;
