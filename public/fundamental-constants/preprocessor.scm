@@ -238,6 +238,38 @@
   (set-macro-handler! "eval" eval-handler)
 
   ;;----------------------------------------------------
+  ;; (@@@ when PREDICATE FORM ...)
+  ;; (@@@ unless PREDICATE FORM ...)
+  ;;
+  ;; For “when”, insert the evaluated results of FORM ... if PREDICATE
+  ;; evaluates as true in Scheme. For “unless”, reverse the sense of
+  ;; the PREDICATE.
+  ;;
+
+  (define-syntax when-or-unless-handler
+    (syntax-rules ()
+      ((¶ when-or-unless macro-body)
+       (let-values ((form-lst (evaluate macro-body)))
+         (unless (<= 1 (length form-lst))
+           (error "expected PREDICATE FORM ..." form-lst))
+         (let-values (((pred forms) (car+cdr form-lst)))
+           (let ((str ""))
+             (when-or-unless
+              pred
+              (do ((p (reverse forms) (cdr p)))
+                  ((null? p))
+                (set! str (string-append (car p) str))))
+             str))))))
+
+  (define (when-handler macro-call macro-name macro-body)
+    (when-or-unless-handler when macro-body))
+  (set-macro-handler! "when" when-handler)
+
+  (define (unless-handler macro-call macro-name macro-body)
+    (when-or-unless-handler unless macro-body))
+  (set-macro-handler! "unless" unless-handler)
+
+  ;;----------------------------------------------------
   ;; (@@@ include-raw FORM)
   ;;
   ;; Non-recursive include of the file specified by the FORM.
