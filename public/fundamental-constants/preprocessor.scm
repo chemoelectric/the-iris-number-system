@@ -44,8 +44,10 @@
 
 (include "snobol-match.sld")
 (include "snobol-char-set.sld")
+(include "random-fixnum.sld")
 (import (snobol-match)
-        (snobol-char-set))
+        (snobol-char-set)
+        (random-fixnum))
 
 ;;;---------------------------------------------------------------------
 
@@ -71,12 +73,36 @@
       (loko '(srfi :14 char-sets))
       (else '(srfi srfi-14)))
     '(snobol-match)
-    '(snobol-char-set))))
+    '(snobol-char-set)
+    '(random-fixnum))))
 
 (define-syntax unspecified-value
   (syntax-rules ()
     ((¶)
      (if #f #f))))
+
+;; By using a fixed initial seed, we will take our chances with
+;; vicious non-deterministic branching attackers. Who would actually
+;; be doing us a favor by finding branching bugs for us.
+(define initial-seed 12345)
+
+(define random-fixnum
+  (make-random-fixnum initial-seed))
+
+(define random-integer
+  (make-random-integer random-fixnum))
+
+(define (vector-shuffle! vec)
+  ;;
+  ;; Fisher-Yates shuffle.
+  ;;
+  (let loop ((i (- (vector-length vec) 1)))
+    (when (positive? i)
+      (let* ((j (random-integer (+ i 1))) ;; 0 <= j <= i
+             (tmp (vector-ref vec i)))
+        (vector-set! vec i (vector-ref vec j))
+        (vector-set! vec j tmp)
+        (loop (- i 1))))))
 
 (define (eval-string str env)
   (eval (read (open-input-string str)) env))
@@ -270,10 +296,42 @@
   (set-macro-handler! "unless" unless-handler)
 
   ;;----------------------------------------------------
+  ;; (@@@ if PREDICATE1 FORM1
+  ;;         PREDICATE2 FORM2
+  ;;         ...)
+  ;;
+  ;; Nondeterministic branching.
+  ;;
+
+  (define (if-handler macro-call macro-name macro-body)
+    (let-values ((pairs (evaluate macro-body)))
+      (let* ((n*2 (length pairs))
+             (n (/ n*2 2)))
+        (unless (integer? n)
+          (error "expected PREDICATE FORM pairs" pairs))
+        (if (zero? n)
+          ""
+          (let ((v (make-vector n)))
+            (do ((i 0 (+ i 1))
+                 (p pairs (cddr p)))
+                ((= i n))
+              (vector-set! v i (cons (first p) (second p))))
+            (vector-shuffle! v) ;; Enforce non-determinism.
+            (let loop ((i (- n 1)))
+              (cond ((= i -1)
+                     (error "no case is satisfied" pairs))
+                    ((car (vector-ref v i))
+                     (cdr (vector-ref v i)))
+                    (else
+                     (loop (- i 1))))))))))
+  (set-macro-handler! "if" if-handler)
+
+  ;;----------------------------------------------------
   ;; (@@@ include-raw FORM)
   ;;
   ;; Non-recursive include of the file specified by the FORM.
   ;;
+
   (define (include-raw-handler macro-call macro-name macro-body)
     (let-values (((filename) (evaluate macro-body)))
       (with-input-from-file filename
@@ -285,6 +343,7 @@
   ;;
   ;; Recursive include of the file specified by the FORM.
   ;;
+
   (define (include-handler macro-call macro-name macro-body)
     (let-values (((filename) (evaluate macro-body)))
       (with-input-from-file filename
