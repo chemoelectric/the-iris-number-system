@@ -241,7 +241,7 @@
   (define (remove-t-prefix! prefix)
     (set! t (remove-prefix prefix t)))
 
-  (define (append-to-t! str)
+  (define (prepend-to-t! str)
     (set! t (string-append str t)))
 
   (define (output-to-port obj)
@@ -306,7 +306,7 @@
               (do ((p (reverse forms) (cdr p)))
                   ((null? p))
                 (set! str (string-append (car p) str))))
-             (append-to-t! str)))))))
+             (prepend-to-t! str)))))))
 
   (define (when-handler macro-call macro-name macro-body)
     (when-or-unless-handler when macro-body))
@@ -353,7 +353,7 @@
                 (error "no case is satisfied" forms))
                ((vector-ref v i) =>
                 (lambda (x)
-                  (append-to-t! (stringize x))))
+                  (prepend-to-t! (stringize x))))
                (else
                 (loop (- i 1))))))))
   (set-macro-handler! "if" if-handler)
@@ -365,7 +365,7 @@
        (let outer-loop ((s '()))
          (let inner-loop ((i (- n 1)))
            (cond ((= i -1)
-                  (for-each append-to-t! (reverse! s)))
+                  (for-each prepend-to-t! (reverse! s)))
                  ((vector-ref v i) =>
                   (lambda (x)
                     (outer-loop (cons (stringize x) s))))
@@ -423,23 +423,23 @@
           (lambda (mac-call mac-name mac-body)
             (let-values ((vals (evaluate mac-body)))
               (let ((n (length vals)))
-                (append-to-t! (string-append "(@ popdef \"0\")"))
+                (prepend-to-t! (string-append "(@ popdef \"0\")"))
                 (do ((i 1 (+ i 1)))
                     ((= i (+ n 1)))
-                  (append-to-t! (string-append
-                                 "(@ popdef \""
-                                 (number->string i) "\")")))
-                (append-to-t! body)
-                (append-to-t! (string-append
-                               "(@ pushdef \"0\" "
-                               (serialize name) ")"))
+                  (prepend-to-t! (string-append
+                                  "(@ popdef \""
+                                  (number->string i) "\")")))
+                (prepend-to-t! body)
+                (prepend-to-t! (string-append
+                                "(@ pushdef \"0\" "
+                                (serialize name) ")"))
                 (do ((i 1 (+ i 1))
                      (p vals (cdr p)))
                     ((= i (+ n 1)))
-                  (append-to-t! (string-append
-                                 "(@ pushdef \""
-                                 (number->string i) "\" "
-                                 (serialize (car p)) ")")))
+                  (prepend-to-t! (string-append
+                                  "(@ pushdef \""
+                                  (number->string i) "\" "
+                                  (serialize (car p)) ")")))
                 ))))))))
 
   (define (definition-handler macro-call macro-name macro-body)
