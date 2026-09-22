@@ -35,32 +35,26 @@
 (cond-expand
   ((library (scheme list)) (import (scheme list)))
   ((library (srfi 1)) (import (srfi 1)))
-  ;;;(loko (import (srfi :1 lists)))
   (else (import (srfi srfi-1))))
 (cond-expand
   ((library (scheme charset)) (import (scheme charset)))
   ((library (srfi 14)) (import (srfi 14)))
-  ;;;(loko (import (srfi :14 char-sets)))
   (else (import (srfi srfi-14))))
 (cond-expand
   ((library (scheme fixnum)) (import (scheme fixnum)))
   ((library (srfi 143)) (import (srfi 143)))
-  ;;;(loko (import (srfi :143 fixnums)))
   (else (import (srfi srfi-143))))
 (cond-expand
   (chicken
    (include "snobol-match.sld")
    (include "snobol-char-set.sld")
-   (include "random-fixnum.sld"))
+   (include "random-fixnum.sld")
+   (include "preprocessor-variables.sld"))
   (else))
 (import (snobol-match)
         (snobol-char-set)
-        (random-fixnum))
-
-(cond-expand
-  (chicken
-   (include "preprocessor-variables.sld"))
-  (else))
+        (random-fixnum)
+        (preprocessor-variables))
 
 ;;;---------------------------------------------------------------------
 
@@ -285,27 +279,13 @@
     (display obj output-port))
 
   ;;----------------------------------------------------
-  ;; (@ dnl)
-  ;;
-  ;; Delete up through the next newline.
-  ;;
-
-  (define dnl-handler
-    (let ((pattern (p:seq (p:alt (p:seq (p:break "\n") (p:lit "\n"))
-                                 (p:lit "\n"))
-                          (p:cursor 'cursor))))
-      (lambda (macro-call macro-name macro-body)
-        (let ((match-result (snobol-match pattern t)))
-          (when match-result
-            (let ((n (string->number (getvar 'cursor match-result))))
-              (shorten-t! n)))))))
-
-  ;;----------------------------------------------------
   ;; (@ eval FORM ...)
   ;; (@ hide FORM ...)
+  ;; (@ dnl FORM ...)
   ;;
   ;; Evaluate FORM ... as Scheme. The “eval” version expands the
-  ;; results, whereas “hide” does not.
+  ;; results, whereas “hide” does not. The “dnl” version not only
+  ;; hides the results, it deletes text up through the next newline.
   ;;
 
   (define (eval-handler macro-call macro-name macro-body)
@@ -317,6 +297,17 @@
   (define (hide-handler macro-call macro-name macro-body)
     (let-values ((form-lst (evaluate macro-body)))
       (unspecified-value)))
+
+  (define dnl-handler
+    (let ((pattern (p:seq (p:alt (p:seq (p:break "\n") (p:lit "\n"))
+                                 (p:lit "\n"))
+                          (p:cursor 'cursor))))
+      (lambda (macro-call macro-name macro-body)
+        (let-values ((form-lst (evaluate macro-body)))
+          (let ((match-result (snobol-match pattern t)))
+            (when match-result
+              (let ((n (string->number (getvar 'cursor match-result))))
+                (shorten-t! n))))))))
 
   ;;----------------------------------------------------
   ;; (@ when PREDICATE FORM ...)
@@ -407,28 +398,32 @@
                 (loop (- i 1))))))))
 
   ;;----------------------------------------------------
-  ;; (@ include-raw FORM)
+  ;; (@ include-raw FORM ...)
   ;;
-  ;; Non-recursive include of the file specified by the FORM.
+  ;; Non-recursive include of the files specified by FORM ...
   ;;
 
   (define (include-raw-handler macro-call macro-name macro-body)
-    (let-values (((filename) (evaluate macro-body)))
-      (with-input-from-file filename
-        (lambda ()
-          (output-to-port (read-to-string))))))
+    (let-values ((filenames (evaluate macro-body)))
+      (do ((f (reverse filenames) (cdr f)))
+          ((null? f))
+        (with-input-from-file (car f)
+          (lambda ()
+            (output-to-port (read-to-string)))))))
 
   ;;----------------------------------------------------
-  ;; (@ include FORM)
+  ;; (@ include FORM ...)
   ;;
-  ;; Recursive include of the file specified by the FORM.
+  ;; Recursive include of the files specified by FORM ...
   ;;
 
   (define (include-handler macro-call macro-name macro-body)
-    (let-values (((filename) (evaluate macro-body)))
-      (with-input-from-file filename
-        (lambda ()
-          (reinsert! (read-to-string))))))
+    (let-values ((filenames (evaluate macro-body)))
+      (do ((f (reverse filenames) (cdr f)))
+          ((null? f))
+        (with-input-from-file (car f)
+          (lambda ()
+            (reinsert! (read-to-string)))))))
 
   ;;----------------------------------------------------
   ;; (@ define MACRO-NAME MACRO-BODY)
@@ -480,16 +475,18 @@
     (define-macro push-macro-handler! macro-body))
 
   ;;----------------------------------------------------
-  ;; (@ popdef MACRO-NAME)
+  ;; (@ popdef MACRO-NAME ...)
   ;;
-  ;; Pop a definition.
+  ;; Pop definitions.
   ;;
 
   (define (popdef-handler macro-call macro-name macro-body)
-    (let-values (((name) (evaluate macro-body)))
-      (unless (string? name)
-        (error "macro name must be a be a string" name))
-      (pop-macro-handler! name)))
+    (let-values ((names (evaluate macro-body)))
+      (do ((nm names (cdr nm)))
+          ((null? nm))
+        (unless (string? (car nm))
+          (error "macro name must be a string" (car nm)))
+        (pop-macro-handler! (car nm)))))
 
   ;;----------------------------------------------------
 
@@ -588,13 +585,16 @@
     (newline port)
     (exit 1)))
 
-;;(guard (exc (else (exception-handler exc)))
-(let ((args (command-line)))
-  (case (length args)
-    ((1) (run-the-program "-" "-"))
-    ((2) (run-the-program (second args) "-"))
-    ((3) (run-the-program (second args) (third args)))
-    (else (usage-handler args))))
-;;)
+(guard (exc (else (exception-handler exc)))
+  (let ((args (command-line)))
+    (case (length args)
+      ((1) (run-the-program "-" "-"))
+      ((2) (run-the-program (second args) "-"))
+      ((3) (run-the-program (second args) (third args)))
+      (else (usage-handler args)))) )
 
 ;;;---------------------------------------------------------------------
+;;; local variables:
+;;; mode: scheme
+;;; coding: utf-8
+;;; end:

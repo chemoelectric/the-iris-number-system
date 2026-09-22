@@ -21,53 +21,154 @@
 ;;; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 ;;; OTHER DEALINGS IN THE SOFTWARE.
 
+;;;---------------------------------------------------------------------
+;;;
+;;;
+;;; An implementation of variables for the preprocessor.
+;;;
+;;; This implementation has to be in a library, so it can be imported
+;;; into an (eval) environment.
+;;;
+;;;
+;;;---------------------------------------------------------------------
+
 (define-library (preprocessor-variables)
 
-  (export v@ v!) ;; get and set, respectively.
-  (export a@)
+  (export :=)
+
+  (export $a)
+  (export $b)
+  (export $c)
+  (export $d)
+  (export $e)
+  (export $f)
+  (export $g)
+  (export $h)
+  (export $i)
+  (export $j)
+  (export $k)
+  (export $l)
+  (export $m)
+  (export $n)
+  (export $o)
+  (export $p)
+  (export $q)
+  (export $r)
+  (export $s)
+  (export $t)
+  (export $u)
+  (export $v)
+  (export $w)
+  (export $x)
+  (export $y)
+  (export $z)
+
+  (export $A)
+  (export $B)
+  (export $C)
+  (export $D)
+  (export $E)
+  (export $F)
+  (export $G)
+  (export $H)
+  (export $I)
+  (export $J)
+  (export $K)
+  (export $L)
+  (export $M)
+  (export $N)
+  (export $O)
+  (export $P)
+  (export $Q)
+  (export $R)
+  (export $S)
+  (export $T)
+  (export $U)
+  (export $V)
+  (export $W)
+  (export $X)
+  (export $Y)
+  (export $Z)
 
   (import (scheme base)
           (scheme case-lambda))
-  (cond-expand
-    ((library (scheme list)) (import (scheme list)))
-    ((library (srfi 1)) (import (srfi 1)))
-    (loko (import (srfi :1 lists)))
-    (else (import (srfi srfi-1))))
-
-  (import (scheme write));;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   (begin
 
-    (define *preprocessor-variables*
-      (make-parameter (vector (list))))
+    (define := '#(unique-object))
 
-    (define (canonicalize-var procname var)
-      (cond
-        ((symbol? var) var)
-        ((string? var) (string->symbol var))
-        (else (error (string-append
-                      "(" procname ") expected symbol or string")
-                     var))))
+    (define-syntax define-prepvar
+      (syntax-rules ()
+        ((¶ name)
+         (define name
+           ;; The storage has to be mutable while leaving the
+           ;; environment immutable.
+           (let ((p (list #f)))
+             (case-lambda
+               (() (car p))
+               ((symb value)
+                (unless (eq? symb :=)
+                  (error "expected the unique object :=" symb))
+                (set-car! p value))))))))
 
-    (define (v@ var)
-      (let ((var (canonicalize-var "v@" var))
-            (vec (*preprocessor-variables*)))
-        (let ((pair (assq var (vector-ref vec 0))))
-          (and pair (cdr pair)))))
+    (define-prepvar $a)
+    (define-prepvar $b)
+    (define-prepvar $c)
+    (define-prepvar $d)
+    (define-prepvar $e)
+    (define-prepvar $f)
+    (define-prepvar $g)
+    (define-prepvar $h)
+    (define-prepvar $i)
+    (define-prepvar $j)
+    (define-prepvar $k)
+    (define-prepvar $l)
+    (define-prepvar $m)
+    (define-prepvar $n)
+    (define-prepvar $o)
+    (define-prepvar $p)
+    (define-prepvar $q)
+    (define-prepvar $r)
+    (define-prepvar $s)
+    (define-prepvar $t)
+    (define-prepvar $u)
+    (define-prepvar $v)
+    (define-prepvar $w)
+    (define-prepvar $x)
+    (define-prepvar $y)
+    (define-prepvar $z)
 
-    (define (v! var value)
-      (let ((var (canonicalize-var "v!" var))
-            (vec (*preprocessor-variables*)))
-        (let ((pair (assq var (vector-ref vec 0))))
-          (if pair
-            (set-cdr! pair value)
-            (vector-set! vec 0 (cons (cons var value)
-                                     (vector-ref vec 0)))))))
-
-    (define a@
-      (let ((value #f))
-        (case-lambda
-          (() value)
-          ((v) (set! value v)))))
+    (define-prepvar $A)
+    (define-prepvar $B)
+    (define-prepvar $C)
+    (define-prepvar $D)
+    (define-prepvar $E)
+    (define-prepvar $F)
+    (define-prepvar $G)
+    (define-prepvar $H)
+    (define-prepvar $I)
+    (define-prepvar $J)
+    (define-prepvar $K)
+    (define-prepvar $L)
+    (define-prepvar $M)
+    (define-prepvar $N)
+    (define-prepvar $O)
+    (define-prepvar $P)
+    (define-prepvar $Q)
+    (define-prepvar $R)
+    (define-prepvar $S)
+    (define-prepvar $T)
+    (define-prepvar $U)
+    (define-prepvar $V)
+    (define-prepvar $W)
+    (define-prepvar $X)
+    (define-prepvar $Y)
+    (define-prepvar $Z)
 
     ))
+
+;;;---------------------------------------------------------------------
+;;; local variables:
+;;; mode: scheme
+;;; coding: utf-8
+;;; end:
