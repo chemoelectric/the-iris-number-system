@@ -57,6 +57,11 @@
         (snobol-char-set)
         (random-fixnum))
 
+(cond-expand
+  (chicken
+   (include "preprocessor-variables.sld"))
+  (else))
+
 ;;;---------------------------------------------------------------------
 
 (define *environment*
@@ -89,7 +94,8 @@
       (else (quote (srfi srfi-143))))
     '(snobol-match)
     '(snobol-char-set)
-    '(random-fixnum))))
+    '(random-fixnum)
+    '(preprocessor-variables))))
 
 (define-syntax unspecified-value
   (syntax-rules ()
@@ -272,7 +278,7 @@
   (define (remove-t-prefix! prefix)
     (set! t (remove-prefix prefix t)))
 
-  (define (prepend-to-t! str)
+  (define (reinsert! str)
     (set! t (string-append str t)))
 
   (define (output-to-port obj)
@@ -334,7 +340,7 @@
               (do ((p (reverse forms) (cdr p)))
                   ((null? p))
                 (set! str (string-append (car p) str))))
-             (prepend-to-t! str)))))))
+             (reinsert! str)))))))
 
   (define (when-handler macro-call macro-name macro-body)
     (when-or-unless-handler when macro-body))
@@ -379,7 +385,7 @@
                 (error "no case is satisfied" forms))
                ((vector-ref v i) =>
                 (lambda (x)
-                  (prepend-to-t! (stringize x))))
+                  (reinsert! (stringize x))))
                (else
                 (loop (- i 1))))))))
 
@@ -387,15 +393,18 @@
     (if-or-while-handler
      macro-body
      (lambda (forms v n)
-       (let outer-loop ((s '()))
-        (let inner-loop ((i (- n 1)))
-           (cond ((= i -1)
-                  (for-each prepend-to-t! (reverse! s)))
-                 ((vector-ref v i) =>
-                  (lambda (x)
-                    (outer-loop (cons (stringize x) s))))
-                 (else
-                  (inner-loop (- i 1)))))))))
+       (let loop ((i (- n 1)))
+         (cond ((= i -1)
+                (unspecified-value))
+               ((vector-ref v i) =>
+                ;; Reinsert both the expansion and the (@ while ...)
+                (lambda (x)
+                  (reinsert!
+                   (string-append
+                    (stringize x)
+                    "(@ " macro-name " " macro-body ")"))))
+               (else
+                (loop (- i 1))))))))
 
   ;;----------------------------------------------------
   ;; (@ include-raw FORM)
@@ -419,7 +428,7 @@
     (let-values (((filename) (evaluate macro-body)))
       (with-input-from-file filename
         (lambda ()
-          (prepend-to-t! (read-to-string))))))
+          (reinsert! (read-to-string))))))
 
   ;;----------------------------------------------------
   ;; (@ define MACRO-NAME MACRO-BODY)
@@ -445,23 +454,23 @@
           (lambda (mac-call mac-name mac-body)
             (let-values ((vals (evaluate mac-body)))
               (let ((n (length vals)))
-                (prepend-to-t! (string-append "(@ popdef \"0\")"))
+                (reinsert! (string-append "(@ popdef \"0\")"))
                 (do ((i 1 (+ i 1)))
                     ((= i (+ n 1)))
-                  (prepend-to-t! (string-append
-                                  "(@ popdef \""
-                                  (number->string i) "\")")))
-                (prepend-to-t! body)
-                (prepend-to-t! (string-append
-                                "(@ pushdef \"0\" "
-                                (serialize name) ")"))
+                  (reinsert! (string-append
+                              "(@ popdef \""
+                              (number->string i) "\")")))
+                (reinsert! body)
+                (reinsert! (string-append
+                            "(@ pushdef \"0\" "
+                            (serialize name) ")"))
                 (do ((i 1 (+ i 1))
                      (p vals (cdr p)))
                     ((= i (+ n 1)))
-                  (prepend-to-t! (string-append
-                                  "(@ pushdef \""
-                                  (number->string i) "\" "
-                                  (serialize (car p)) ")")))
+                  (reinsert! (string-append
+                              "(@ pushdef \""
+                              (number->string i) "\" "
+                              (serialize (car p)) ")")))
                 ))))))))
 
   (define (definition-handler macro-call macro-name macro-body)
