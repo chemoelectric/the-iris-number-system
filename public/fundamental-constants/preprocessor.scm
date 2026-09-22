@@ -165,7 +165,7 @@
 
 (define *quick-pattern*
   (make-parameter
-   (p:assign-local (p:break "(;") 'snippet)))
+   (p:assign-local (p:break "(;#") 'snippet)))
 
 (define char-set:macro-name
   (char-set-difference char-set:graphic
@@ -196,6 +196,17 @@
                     (p:lit ";")
                     (p:break "\n")
                     (p:lit "\n"))
+                   'comment)))
+
+(define *form-comment-pattern*
+  (make-parameter
+   (p:assign-local (p:seq
+                    (p:lit "#;")
+                    (p:maybe-many
+                     (p:span-char-set char-set:whitespace))
+                    (p:lit "(")
+                    (p:bal)
+                    (p:lit ")"))
                    'comment)))
 
 ;;;---------------------------------------------------------------------
@@ -505,6 +516,11 @@
       (remove-t-prefix! comment)
       (output-to-port comment)))
 
+  (define (handle-form-comment match-result)
+    (let ((comment (getvar 'comment match-result)))
+      (remove-t-prefix! comment)
+      (output-to-port comment)))
+
   (set-macro-handler! "dnl" dnl-handler)
   (set-macro-handler! "eval" eval-handler)
   (set-macro-handler! "hide" hide-handler)
@@ -528,6 +544,10 @@
           ((snobol-match (*macro-pattern*) t) =>
            (lambda (match-result)
              (handle-macro-call match-result)
+             (loop)))
+          ((snobol-match (*form-comment-pattern*) t) =>
+           (lambda (match-result)
+             (handle-form-comment match-result)
              (loop)))
           ((snobol-match (*line-comment-pattern*) t) =>
            (lambda (match-result)
