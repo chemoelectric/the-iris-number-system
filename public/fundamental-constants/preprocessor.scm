@@ -1,4 +1,4 @@
-#!/usr/bin/env -S csi -s
+#!/usr/bin/env -S csi -w -s
 
 ;;; Copyright (c) 2026 Barry Schwartz
 ;;;
@@ -96,13 +96,8 @@
     ((¶)
      (if #f #f))))
 
-;; By using a fixed initial seed, we will take our chances with
-;; vicious non-deterministic branching attackers. Who would actually
-;; be doing us a favor by finding branching bugs for us.
-(define initial-seed 12345)
-
 (define random-fixnum
-  (make-random-fixnum initial-seed))
+  (make-random-fixnum))
 
 (define random-integer
   (make-random-integer random-fixnum))
