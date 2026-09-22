@@ -111,10 +111,17 @@
   (eval-string (string-append "(values " str " )")
                (*environment*)))
 
-(define (serialize-to-string obj)
+(define (serialize obj)
   (let ((port (open-output-string)))
     (write obj port)
     (get-output-string port)))
+
+(define (stringize x)
+  (cond ((string? x) x)
+        ((symbol? x) (symbol->string x))
+        ((number? x) (number->string x))
+        ((char? x) (string x))
+        (else (serialize x))))
 
 (define (getvar key match-result)
   (and match-result
@@ -181,17 +188,17 @@
              (if association
                (cdr association)
                #f))))
-       (define (setter! name handler)
+       (define (setter! name value)
          (popper! name)
-         (pusher! name handler))
-       (define (pusher! name handler)
+         (pusher! name value))
+       (define (pusher! name value)
          (let ((p (*things*)))
            ;;
            ;; This is not a “true” association list, but rather a
            ;; stack.
            ;;
            (let ((lst (caar p))
-                 (association (cons name handler)))
+                 (association (cons name value)))
              (set-car! (car p) (cons association lst)))))
        (define (popper! name)
          (let ((p (*things*)))
@@ -204,14 +211,14 @@
              (let ((b (if (pair? b) (cdr b) b)))
                (set-car! (car p) (append a b))))))
        (define-syntax localizer
-         (syntax-rules ooo ()
-           ((ß body ooo)
+         (syntax-rules --- ()
+           ((ß body ---)
             (parameterize
                 ((*things*
                   (list (map (lambda (p) (cons (car p) (cdr p)))
                              (caar (*things*))))))
               (begin
-                body ooo
+                body ---
                 (unspecified-value)
                 )))))))))
 
@@ -224,11 +231,21 @@
 
 ;;;---------------------------------------------------------------------
 
-(define (process-text text)
+(define (process-text text output-port)
+
   (define t (string-copy text))
+
+  (define (shorten-t! n)
+    (set! t (string-copy t n)))
 
   (define (remove-t-prefix! prefix)
     (set! t (remove-prefix prefix t)))
+
+  (define (append-to-t! str)
+    (set! t (string-append str t)))
+
+  (define (output-to-port obj)
+    (display obj output-port))
 
   ;;----------------------------------------------------
   ;; (@@@ dnl)
@@ -244,32 +261,36 @@
         (let ((match-result (snobol-match pattern t)))
           (when match-result
             (let ((n (string->number (getvar 'cursor match-result))))
-              (set! t (string-copy t n))))
-          ""))))
+              (shorten-t! n)))))))
   (set-macro-handler! "dnl" dnl-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ eval FORM)
+  ;; (@@@ eval FORM ...)
+  ;; (@@@ hide FORM ...)
   ;;
-  ;; Evaluate FORM as Scheme.
+  ;; Evaluate FORM ... as Scheme. The “eval” version expands the
+  ;; results, whereas “hide” does not.
   ;;
 
   (define (eval-handler macro-call macro-name macro-body)
     (let-values ((form-lst (evaluate macro-body)))
-      (case (length form-lst)
-        ((0) (error "(@@@ eval FORM) expects a form to evaluate"))
-        ((1) (serialize-to-string (first form-lst)))
-        (else (error "(@@@ eval FORM) expects only one form"
-                     form-lst)))))
+      (for-each (lambda (form)
+                  (output-to-port (serialize form)))
+                form-lst)))
   (set-macro-handler! "eval" eval-handler)
+
+  (define (hide-handler macro-call macro-name macro-body)
+    (let-values ((form-lst (evaluate macro-body)))
+      (unspecified-value)))
+  (set-macro-handler! "hide" hide-handler)
 
   ;;----------------------------------------------------
   ;; (@@@ when PREDICATE FORM ...)
   ;; (@@@ unless PREDICATE FORM ...)
   ;;
-  ;; For “when”, insert the evaluated results of FORM ... if PREDICATE
-  ;; evaluates as true in Scheme. For “unless”, reverse the sense of
-  ;; the PREDICATE.
+  ;; For “when”, re-insert the evaluated results of FORM ... if
+  ;; PREDICATE evaluates as true in Scheme. For “unless”, reverse the
+  ;; sense of the PREDICATE.
   ;;
 
   (define-syntax when-or-unless-handler
@@ -285,7 +306,7 @@
               (do ((p (reverse forms) (cdr p)))
                   ((null? p))
                 (set! str (string-append (car p) str))))
-             str))))))
+             (append-to-t! str)))))))
 
   (define (when-handler macro-call macro-name macro-body)
     (when-or-unless-handler when macro-body))
@@ -296,35 +317,124 @@
   (set-macro-handler! "unless" unless-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ if PREDICATE1 FORM1
-  ;;         PREDICATE2 FORM2
-  ;;         ...)
+  ;; (@@@ if FORM ...)
+  ;; (@@@ while FORM ...)
   ;;
-  ;; Nondeterministic branching.
+  ;; Nondeterministic branching and looping. (These let you write
+  ;; deterministic branching and looping by putting the logic in the
+  ;; Scheme code.)
+  ;;
+  ;; True branches are converted to strings if possible, and
+  ;; re-inserted.
   ;;
 
+  (define-syntax if-or-while-handler
+    (syntax-rules ()
+      ((¶ macro-body proc)
+       (let-values ((forms (evaluate macro-body)))
+         (let ((n (length forms)))
+           (if (zero? n)
+             ""
+             (let ((v (make-vector n)))
+               (do ((i 0 (+ i 1))
+                    (p forms (cdr p)))
+                   ((= i n))
+                 (vector-set! v i (first p)))
+               (vector-shuffle! v) ;; Enforce non-determinism.
+               (proc forms v n))))))))
+
+
   (define (if-handler macro-call macro-name macro-body)
-    (let-values ((pairs (evaluate macro-body)))
-      (let* ((n*2 (length pairs))
-             (n (/ n*2 2)))
-        (unless (integer? n)
-          (error "expected PREDICATE FORM pairs" pairs))
-        (if (zero? n)
-          ""
-          (let ((v (make-vector n)))
-            (do ((i 0 (+ i 1))
-                 (p pairs (cddr p)))
-                ((= i n))
-              (vector-set! v i (cons (first p) (second p))))
-            (vector-shuffle! v) ;; Enforce non-determinism.
-            (let loop ((i (- n 1)))
-              (cond ((= i -1)
-                     (error "no case is satisfied" pairs))
-                    ((car (vector-ref v i))
-                     (cdr (vector-ref v i)))
-                    (else
-                     (loop (- i 1))))))))))
+    (if-or-while-handler
+     macro-body
+     (lambda (forms v n)
+       (let loop ((i (- n 1)))
+         (cond ((= i -1)
+                (error "no case is satisfied" forms))
+               ((vector-ref v i) =>
+                (lambda (x)
+                  (append-to-t! (stringize x))))
+               (else
+                (loop (- i 1))))))))
   (set-macro-handler! "if" if-handler)
+
+  (define (while-handler macro-call macro-name macro-body)
+    (if-or-while-handler
+     macro-body
+     (lambda (forms v n)
+       (let outer-loop ((s '()))
+         (let inner-loop ((i (- n 1)))
+           (cond ((= i -1)
+                  (for-each append-to-t! (reverse! s)))
+                 ((vector-ref v i) =>
+                  (lambda (x)
+                    (outer-loop (cons (stringize x) s))))
+                 (else
+                  (inner-loop (- i 1)))))))))
+  (set-macro-handler! "while" while-handler)
+
+;;;;;  ;;----------------------------------------------------
+;;;;;  ;; (@@@ if PREDICATE1 FORM1
+;;;;;  ;;         PREDICATE2 FORM2
+;;;;;  ;;         ...)
+;;;;;  ;; (@@@ while INITIALIZATION
+;;;;;  ;;            PREDICATE1 FORM1
+;;;;;  ;;            PREDICATE2 FORM2
+;;;;;  ;;            ...)
+;;;;;  ;;
+;;;;;  ;; Nondeterministic branching and looping.
+;;;;;  ;;
+;;;;;
+;;;;;  (define-syntax if-or-while-handler
+;;;;;    (syntax-rules ()
+;;;;;      ((¶ macro-body initialization? proc)
+;;;;;       (let-values ((pairs (evaluate macro-body)))
+;;;;;         (when (and initialization? (zero? (length pairs)))
+;;;;;           (error "expected an initialization form"))
+;;;;;         (let*-values (((init pairs) (if initialization?
+;;;;;                                       (car+cdr pairs)
+;;;;;                                       (values #f pairs)))
+;;;;;                       ((n*2) (length pairs))
+;;;;;                       ((n) (/ n*2 2)))
+;;;;;           (unless (integer? n)
+;;;;;             (error "expected PREDICATE FORM pairs" pairs))
+;;;;;           (if (zero? n)
+;;;;;             ""
+;;;;;             (let ((v (make-vector n)))
+;;;;;               (do ((i 0 (+ i 1))
+;;;;;                    (p pairs (cddr p)))
+;;;;;                   ((= i n))
+;;;;;                 (vector-set! v i (cons (first p) (second p))))
+;;;;;               (vector-shuffle! v) ;; Enforce non-determinism.
+;;;;;               (proc init pairs v n))))))))
+;;;;;
+;;;;;  (define (if-handler macro-call macro-name macro-body)
+;;;;;    (if-or-while-handler
+;;;;;     macro-body #f
+;;;;;     (lambda (init pairs v n)
+;;;;;       (let loop ((i (- n 1)))
+;;;;;         (cond ((= i -1)
+;;;;;                (error "no case is satisfied" pairs))
+;;;;;               ((car (vector-ref v i))
+;;;;;                (cdr (vector-ref v i)))
+;;;;;               (else
+;;;;;                (loop (- i 1))))))))
+;;;;;  (set-macro-handler! "if" if-handler)
+;;;;;
+;;;;;  (define (while-handler macro-call macro-name macro-body)
+;;;;;    (if-or-while-handler
+;;;;;     macro-body #t
+;;;;;     (lambda (init pairs v n)
+;;;;;       (write init)(newline)
+;;;;;       (let outer-loop ((s '()))
+;;;;;         (write s)(newline)
+;;;;;         (let inner-loop ((i (- n 1)))
+;;;;;           (cond ((= i -1) (apply string-append (reverse! s)))
+;;;;;                 ((car (vector-ref v i))
+;;;;;                  (outer-loop (cons (cdr (vector-ref v i)) s)))
+;;;;;                 (else
+;;;;;                  (inner-loop (- i 1)))))))))
+;;;;;  (set-macro-handler! "while" while-handler)
 
   ;;----------------------------------------------------
   ;; (@@@ include-raw FORM)
@@ -335,7 +445,8 @@
   (define (include-raw-handler macro-call macro-name macro-body)
     (let-values (((filename) (evaluate macro-body)))
       (with-input-from-file filename
-        (lambda () (read-string #f)))))
+        (lambda ()
+          (output-to-port (read-string #f))))))
   (set-macro-handler! "include-raw" include-raw-handler)
 
   ;;----------------------------------------------------
@@ -348,8 +459,7 @@
     (let-values (((filename) (evaluate macro-body)))
       (with-input-from-file filename
         (lambda ()
-          (set! t (string-append (read-string #f) t))
-          ""))))
+          (set! t (string-append (read-string #f) t))))))
   (set-macro-handler! "include" include-handler)
 
   ;;----------------------------------------------------
@@ -371,28 +481,28 @@
        (let-values (((name body) (evaluate macro-body)))
          (unless (string? name)
            (error "macro name must be a be a string" name))
-         (unless (string? body)
-           (error "macro body must be a be a string" body))
          (set-or-push-macro-handler!
           name
           (lambda (mac-call mac-name mac-body)
             (let-values ((vals (evaluate mac-body)))
               (let ((n (length vals)))
+                (set! t (string-append "(@@@ popdef \"0\")" t))
                 (do ((i 1 (+ i 1)))
                     ((= i (+ n 1)))
                   (set! t (string-append
                            "(@@@ popdef \"" (number->string i) "\")"
                            t)))
                 (set! t (string-append body t))
+                (set! t (string-append "(@@@ pushdef \"0\" "
+                                       (serialize name)
+                                       ")" t))
                 (do ((i 1 (+ i 1))
                      (p vals (cdr p)))
                     ((= i (+ n 1)))
                   (set! t (string-append
                            "(@@@ pushdef \"" (number->string i) "\" "
-                           (serialize-to-string (car p)) ")"
-                           t)))))
-            ""))
-         ""))))
+                           (serialize (car p)) ")"
+                           t)))))))))))
 
   (define (definition-handler macro-call macro-name macro-body)
     (define-macro set-macro-handler! macro-body))
@@ -412,8 +522,7 @@
     (let-values (((name) (evaluate macro-body)))
       (unless (string? name)
         (error "macro name must be a be a string" name))
-      (pop-macro-handler! name)
-      ""))
+      (pop-macro-handler! name)))
   (set-macro-handler! "popdef" popdef-handler)
 
   ;;----------------------------------------------------
@@ -421,7 +530,7 @@
   (define (handle-quick-result match-result)
     (let ((snippet (getvar 'snippet match-result)))
       (remove-t-prefix! snippet)
-      snippet))
+      (output-to-port snippet)))
 
   (define (handle-macro-call match-result)
     (let ((macro-call (getvar 'macro-call match-result))
@@ -436,32 +545,27 @@
   (define (handle-line-comment match-result)
     (let ((comment (getvar 'comment match-result)))
       (remove-t-prefix! comment)
-      comment))
+      (output-to-port comment)))
 
-  (let loop ((s '()))
-    (cond ((and (pair? s) (string=? (car s) ""))
-           (loop (cdr s)))
-          ((= 0 (string-length t))
-           (reverse! s))
+  (let loop ()
+    (cond ((= 0 (string-length t))
+           (unspecified-value))
           ((snobol-match (*quick-pattern*) t) =>
            (lambda (match-result)
-             (let ((quick-result
-                    (handle-quick-result match-result)))
-               (loop (cons quick-result s)))))
+             (handle-quick-result match-result)
+             (loop)))
           ((snobol-match (*macro-pattern*) t) =>
            (lambda (match-result)
-             (let ((macro-call-result
-                    (handle-macro-call match-result)))
-               (loop (cons macro-call-result s)))))
+             (handle-macro-call match-result)
+             (loop)))
           ((snobol-match (*line-comment-pattern*) t) =>
            (lambda (match-result)
-             (let ((line-comment
-                    (handle-line-comment match-result)))
-               (loop (cons line-comment s)))))
+             (handle-line-comment match-result)
+             (loop)))
           (else
-           (let ((c (string-copy t 0 1)))
-             (set! t (string-copy t 1))
-             (loop (cons c s)))) )))
+           (output-to-port (string-copy t 0 1))
+           (set! t (string-copy t 1))
+           (loop)))))
 
 (define (run-the-program input-file output-file)
   (let ((use-stdin? (string=? input-file "-"))
@@ -472,10 +576,8 @@
           (output-port (if use-stdout?
                          (current-output-port)
                          (open-output-file output-file))))
-      (let* ((text (read-string #f input-port))
-             (lst (process-text text)))
-        (for-each (lambda (s) (display s output-port))
-                  lst))
+      (let ((text (read-string #f input-port)))
+        (process-text text output-port))
       (unless use-stdin?
         (close-input-port input-port))
       (unless use-stdout?
