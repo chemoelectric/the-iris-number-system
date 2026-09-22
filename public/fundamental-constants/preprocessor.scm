@@ -400,7 +400,7 @@
 
   (define (include-raw-handler macro-call macro-name macro-body)
     (let-values ((filenames (evaluate macro-body)))
-      (do ((f (reverse filenames) (cdr f)))
+      (do ((f filenames (cdr f)))
           ((null? f))
         (with-input-from-file (car f)
           (lambda ()
