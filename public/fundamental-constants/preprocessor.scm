@@ -423,23 +423,24 @@
           (lambda (mac-call mac-name mac-body)
             (let-values ((vals (evaluate mac-body)))
               (let ((n (length vals)))
-                (set! t (string-append "(@ popdef \"0\")" t))
+                (append-to-t! (string-append "(@ popdef \"0\")"))
                 (do ((i 1 (+ i 1)))
                     ((= i (+ n 1)))
-                  (set! t (string-append
-                           "(@ popdef \"" (number->string i) "\")"
-                           t)))
-                (set! t (string-append body t))
-                (set! t (string-append "(@ pushdef \"0\" "
-                                       (serialize name)
-                                       ")" t))
+                  (append-to-t! (string-append
+                                 "(@ popdef \""
+                                 (number->string i) "\")")))
+                (append-to-t! body)
+                (append-to-t! (string-append
+                               "(@ pushdef \"0\" "
+                               (serialize name) ")"))
                 (do ((i 1 (+ i 1))
                      (p vals (cdr p)))
                     ((= i (+ n 1)))
-                  (set! t (string-append
-                           "(@ pushdef \"" (number->string i) "\" "
-                           (serialize (car p)) ")"
-                           t)))))))))))
+                  (append-to-t! (string-append
+                                 "(@ pushdef \""
+                                 (number->string i) "\" "
+                                 (serialize (car p)) ")")))
+                ))))))))
 
   (define (definition-handler macro-call macro-name macro-body)
     (define-macro set-macro-handler! macro-body))
