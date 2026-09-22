@@ -96,6 +96,39 @@
     ((¶)
      (if #f #f))))
 
+;; "#|" and "|#" get converted to these code points, for handling as
+;; if they were bracket characters. These code points are chosen
+;; haphazardly from Supplemental Private Use Area-B.
+(define comment-left #\x10A631)
+(define comment-right #\x10A632)
+
+(define (comment-brackets->chars str)
+  str
+  #;(let ((n (string-length str))
+        (s-comment-left (string comment-left))
+        (s-comment-right (string comment-right)))
+    (let loop1 ((i 0)
+                (t ""))
+      (if (= i n)
+        t
+        (let loop2 ((j i))
+          (cond ((= j n)
+                 (string-append t (string-copy str i)))
+                ((and (not (= (+ j 1) n))
+                      (char=? (string-ref str j) #\#)
+                      (char=? (string-ref str (+ j 1)) #\|))
+                 (loop1 (+ j 2)
+                        (string-append t (string-copy str i j)
+                                       s-comment-left)))
+                ((and (not (= (+ j 1) n))
+                      (char=? (string-ref str j) #\|)
+                      (char=? (string-ref str (+ j 1)) #\#))
+                 (loop1 (+ j 2)
+                        (string-append t (string-copy str i j)
+                                       s-comment-right)))
+                (else
+                 (loop2 (+ j 1)))))))))
+
 (define random-fixnum
   (make-random-fixnum))
 
@@ -146,20 +179,21 @@
       (string-copy str m))))
 
 (define read-to-string
-  (case-lambda
-    (()
-     (read-to-string (current-input-port)))
-    ((port)
-     (let ((n 4096))
-       (let loop ((lst '()))
-         (let ((s (read-string n port)))
-           (if (eof-object? s)
-             (let loop2 ((s "")
-                         (p lst))
-               (if (null? p)
-                 s
-                 (loop2 (string-append (car p) s) (cdr p))))
-             (loop (cons s lst)))))))))
+  (let ((n 4096))
+    (case-lambda
+      (()
+       (read-to-string (current-input-port)))
+      ((port)
+       (comment-brackets->chars
+        (let loop ((lst '()))
+          (let ((s (read-string n port)))
+            (if (eof-object? s)
+              (let loop2 ((s "")
+                          (p lst))
+                (if (null? p)
+                  s
+                  (loop2 (string-append (car p) s) (cdr p))))
+              (loop (cons s lst))))))))))
 
 ;;;---------------------------------------------------------------------
 
