@@ -150,7 +150,7 @@
    (p:assign-local
     (p:seq (p:lit "(")
            (p:maybe-many (p:span-char-set char-set:whitespace))
-           (p:lit "@@@")
+           (p:lit "@")
            (p:span-char-set char-set:whitespace)
            (p:assign-local (p:span-char-set char-set:macro-name)
                            'macro-name)
@@ -248,7 +248,7 @@
     (display obj output-port))
 
   ;;----------------------------------------------------
-  ;; (@@@ dnl)
+  ;; (@ dnl)
   ;;
   ;; Delete up through the next newline.
   ;;
@@ -265,8 +265,8 @@
   (set-macro-handler! "dnl" dnl-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ eval FORM ...)
-  ;; (@@@ hide FORM ...)
+  ;; (@ eval FORM ...)
+  ;; (@ hide FORM ...)
   ;;
   ;; Evaluate FORM ... as Scheme. The “eval” version expands the
   ;; results, whereas “hide” does not.
@@ -285,8 +285,8 @@
   (set-macro-handler! "hide" hide-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ when PREDICATE FORM ...)
-  ;; (@@@ unless PREDICATE FORM ...)
+  ;; (@ when PREDICATE FORM ...)
+  ;; (@ unless PREDICATE FORM ...)
   ;;
   ;; For “when”, re-insert the evaluated results of FORM ... if
   ;; PREDICATE evaluates as true in Scheme. For “unless”, reverse the
@@ -317,8 +317,8 @@
   (set-macro-handler! "unless" unless-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ if FORM ...)
-  ;; (@@@ while FORM ...)
+  ;; (@ if FORM ...)
+  ;; (@ while FORM ...)
   ;;
   ;; Nondeterministic branching and looping. (These let you write
   ;; deterministic branching and looping by putting the logic in the
@@ -373,71 +373,8 @@
                   (inner-loop (- i 1)))))))))
   (set-macro-handler! "while" while-handler)
 
-;;;;;  ;;----------------------------------------------------
-;;;;;  ;; (@@@ if PREDICATE1 FORM1
-;;;;;  ;;         PREDICATE2 FORM2
-;;;;;  ;;         ...)
-;;;;;  ;; (@@@ while INITIALIZATION
-;;;;;  ;;            PREDICATE1 FORM1
-;;;;;  ;;            PREDICATE2 FORM2
-;;;;;  ;;            ...)
-;;;;;  ;;
-;;;;;  ;; Nondeterministic branching and looping.
-;;;;;  ;;
-;;;;;
-;;;;;  (define-syntax if-or-while-handler
-;;;;;    (syntax-rules ()
-;;;;;      ((¶ macro-body initialization? proc)
-;;;;;       (let-values ((pairs (evaluate macro-body)))
-;;;;;         (when (and initialization? (zero? (length pairs)))
-;;;;;           (error "expected an initialization form"))
-;;;;;         (let*-values (((init pairs) (if initialization?
-;;;;;                                       (car+cdr pairs)
-;;;;;                                       (values #f pairs)))
-;;;;;                       ((n*2) (length pairs))
-;;;;;                       ((n) (/ n*2 2)))
-;;;;;           (unless (integer? n)
-;;;;;             (error "expected PREDICATE FORM pairs" pairs))
-;;;;;           (if (zero? n)
-;;;;;             ""
-;;;;;             (let ((v (make-vector n)))
-;;;;;               (do ((i 0 (+ i 1))
-;;;;;                    (p pairs (cddr p)))
-;;;;;                   ((= i n))
-;;;;;                 (vector-set! v i (cons (first p) (second p))))
-;;;;;               (vector-shuffle! v) ;; Enforce non-determinism.
-;;;;;               (proc init pairs v n))))))))
-;;;;;
-;;;;;  (define (if-handler macro-call macro-name macro-body)
-;;;;;    (if-or-while-handler
-;;;;;     macro-body #f
-;;;;;     (lambda (init pairs v n)
-;;;;;       (let loop ((i (- n 1)))
-;;;;;         (cond ((= i -1)
-;;;;;                (error "no case is satisfied" pairs))
-;;;;;               ((car (vector-ref v i))
-;;;;;                (cdr (vector-ref v i)))
-;;;;;               (else
-;;;;;                (loop (- i 1))))))))
-;;;;;  (set-macro-handler! "if" if-handler)
-;;;;;
-;;;;;  (define (while-handler macro-call macro-name macro-body)
-;;;;;    (if-or-while-handler
-;;;;;     macro-body #t
-;;;;;     (lambda (init pairs v n)
-;;;;;       (write init)(newline)
-;;;;;       (let outer-loop ((s '()))
-;;;;;         (write s)(newline)
-;;;;;         (let inner-loop ((i (- n 1)))
-;;;;;           (cond ((= i -1) (apply string-append (reverse! s)))
-;;;;;                 ((car (vector-ref v i))
-;;;;;                  (outer-loop (cons (cdr (vector-ref v i)) s)))
-;;;;;                 (else
-;;;;;                  (inner-loop (- i 1)))))))))
-;;;;;  (set-macro-handler! "while" while-handler)
-
   ;;----------------------------------------------------
-  ;; (@@@ include-raw FORM)
+  ;; (@ include-raw FORM)
   ;;
   ;; Non-recursive include of the file specified by the FORM.
   ;;
@@ -450,7 +387,7 @@
   (set-macro-handler! "include-raw" include-raw-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ include FORM)
+  ;; (@ include FORM)
   ;;
   ;; Recursive include of the file specified by the FORM.
   ;;
@@ -463,8 +400,8 @@
   (set-macro-handler! "include" include-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ define MACRO-NAME MACRO-BODY)
-  ;; (@@@ pushdef MACRO-NAME MACRO-BODY)
+  ;; (@ define MACRO-NAME MACRO-BODY)
+  ;; (@ pushdef MACRO-NAME MACRO-BODY)
   ;;
   ;; Define a macro with the name given by the form MACRO-NAME and
   ;; definition by the form MACRO-BODY, which (in the current
@@ -486,21 +423,21 @@
           (lambda (mac-call mac-name mac-body)
             (let-values ((vals (evaluate mac-body)))
               (let ((n (length vals)))
-                (set! t (string-append "(@@@ popdef \"0\")" t))
+                (set! t (string-append "(@ popdef \"0\")" t))
                 (do ((i 1 (+ i 1)))
                     ((= i (+ n 1)))
                   (set! t (string-append
-                           "(@@@ popdef \"" (number->string i) "\")"
+                           "(@ popdef \"" (number->string i) "\")"
                            t)))
                 (set! t (string-append body t))
-                (set! t (string-append "(@@@ pushdef \"0\" "
+                (set! t (string-append "(@ pushdef \"0\" "
                                        (serialize name)
                                        ")" t))
                 (do ((i 1 (+ i 1))
                      (p vals (cdr p)))
                     ((= i (+ n 1)))
                   (set! t (string-append
-                           "(@@@ pushdef \"" (number->string i) "\" "
+                           "(@ pushdef \"" (number->string i) "\" "
                            (serialize (car p)) ")"
                            t)))))))))))
 
@@ -513,7 +450,7 @@
   (set-macro-handler! "pushdef" pushdef-handler)
 
   ;;----------------------------------------------------
-  ;; (@@@ popdef MACRO-NAME)
+  ;; (@ popdef MACRO-NAME)
   ;;
   ;; Pop a definition.
   ;;
