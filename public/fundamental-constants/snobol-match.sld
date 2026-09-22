@@ -577,9 +577,9 @@
     ;; Checks if a character matches any registered open or close
     ;; bracket symbol.
     (define (any-bracket? char)
-      (let ((is-open  (assoc char *bracket-pairs*))
+      (let ((is-open (assoc char *bracket-pairs*))
             (is-close (rassoc char *bracket-pairs*)))
-        (if (or is-open is-close) #t #f)))
+        (not (not (or is-open is-close)))))
 
     ;; Matches a single character that is not a registered bracket type
     (define (p:bal-text-char)
@@ -592,13 +592,13 @@
       (lambda (str idx env succeed fail)
         (if (< idx (string-length str))
           (let* ((open-char (string-ref str idx))
-                 (pair      (assoc open-char *bracket-pairs*)))
+                 (pair (assoc open-char *bracket-pairs*)))
             (if pair
               (let* ((close-str (string (cdr pair)))
-                     (open-str  (string open-char))
-                     (nest-pat  (p:seq (p:lit open-str)
-                                       (p:seq (p:bal-loop) 
-                                              (p:lit close-str)))))
+                     (open-str (string open-char))
+                     (nest-pat (p:seq (p:lit open-str)
+                                      (p:seq (p:bal-loop) 
+                                             (p:lit close-str)))))
                 (nest-pat str idx env succeed fail))
               (fail)))
           (fail))))
