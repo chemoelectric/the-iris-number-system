@@ -26,6 +26,7 @@
 ;;;---------------------------------------------------------------------
 
 (import (scheme base)
+        (scheme case-lambda)
         (scheme file)
         (scheme read)
         (scheme write)
@@ -34,17 +35,24 @@
 (cond-expand
   ((library (scheme list)) (import (scheme list)))
   ((library (srfi 1)) (import (srfi 1)))
-  (loko (import (srfi :1 lists)))
+  ;;;(loko (import (srfi :1 lists)))
   (else (import (srfi srfi-1))))
 (cond-expand
   ((library (scheme charset)) (import (scheme charset)))
   ((library (srfi 14)) (import (srfi 14)))
-  (loko (import (srfi :14 char-sets)))
+  ;;;(loko (import (srfi :14 char-sets)))
   (else (import (srfi srfi-14))))
-
-(include "snobol-match.sld")
-(include "snobol-char-set.sld")
-(include "random-fixnum.sld")
+(cond-expand
+  ((library (scheme fixnum)) (import (scheme fixnum)))
+  ((library (srfi 143)) (import (srfi 143)))
+  ;;;(loko (import (srfi :143 fixnums)))
+  (else (import (srfi srfi-143))))
+(cond-expand
+  (chicken
+   (include "snobol-match.sld")
+   (include "snobol-char-set.sld")
+   (include "random-fixnum.sld"))
+  (else))
 (import (snobol-match)
         (snobol-char-set)
         (random-fixnum))
@@ -63,15 +71,22 @@
     '(scheme inexact)
     '(scheme complex)
     (cond-expand
-      ((library (scheme list)) '(scheme list))
-      ((library (srfi 1)) '(srfi 1))
-      (loko '(srfi :1 lists))
-      (else '(srfi srfi-1)))
+      ((library (scheme list)) (quote (scheme list)))
+      ((library (srfi 1)) (quote (srfi 1)))
+      (loko (quote (except (srfi :1 lists)
+                           member map for-each
+                           assoc list-copy make-list)))
+      (else (quote (srfi srfi-1))))
     (cond-expand
-      ((library (scheme charset)) '(scheme charset))
-      ((library (srfi 14)) '(srfi 14))
-      (loko '(srfi :14 char-sets))
-      (else '(srfi srfi-14)))
+      ((library (scheme charset)) (quote (scheme charset)))
+      ((library (srfi 14)) (quote (srfi 14)))
+      (loko (quote (srfi :14 char-sets)))
+      (else (quote (srfi srfi-14))))
+    (cond-expand
+      ((library (scheme fixnum)) (quote (scheme fixnum)))
+      ((library (srfi 143)) (quote (srfi 143)))
+      (loko (quote (srfi :143 fixnums)))
+      (else (quote (srfi srfi-143))))
     '(snobol-match)
     '(snobol-char-set)
     '(random-fixnum))))
@@ -134,6 +149,22 @@
     (if (<= n m)
       ""
       (string-copy str m))))
+
+(define read-to-string
+  (case-lambda
+    (()
+     (read-to-string (current-input-port)))
+    ((port)
+     (let ((n 4096))
+       (let loop ((lst '()))
+         (let ((s (read-string n port)))
+           (if (eof-object? s)
+             (let loop2 ((s "")
+                         (p lst))
+               (if (null? p)
+                 s
+                 (loop2 (string-append (car p) s) (cdr p))))
+             (loop (cons s lst)))))))))
 
 ;;;---------------------------------------------------------------------
 
@@ -262,7 +293,6 @@
           (when match-result
             (let ((n (string->number (getvar 'cursor match-result))))
               (shorten-t! n)))))))
-  (set-macro-handler! "dnl" dnl-handler)
 
   ;;----------------------------------------------------
   ;; (@ eval FORM ...)
@@ -277,12 +307,10 @@
       (for-each (lambda (form)
                   (output-to-port (serialize form)))
                 form-lst)))
-  (set-macro-handler! "eval" eval-handler)
 
   (define (hide-handler macro-call macro-name macro-body)
     (let-values ((form-lst (evaluate macro-body)))
       (unspecified-value)))
-  (set-macro-handler! "hide" hide-handler)
 
   ;;----------------------------------------------------
   ;; (@ when PREDICATE FORM ...)
@@ -310,11 +338,9 @@
 
   (define (when-handler macro-call macro-name macro-body)
     (when-or-unless-handler when macro-body))
-  (set-macro-handler! "when" when-handler)
 
   (define (unless-handler macro-call macro-name macro-body)
     (when-or-unless-handler unless macro-body))
-  (set-macro-handler! "unless" unless-handler)
 
   ;;----------------------------------------------------
   ;; (@ if FORM ...)
@@ -356,14 +382,13 @@
                   (prepend-to-t! (stringize x))))
                (else
                 (loop (- i 1))))))))
-  (set-macro-handler! "if" if-handler)
 
   (define (while-handler macro-call macro-name macro-body)
     (if-or-while-handler
      macro-body
      (lambda (forms v n)
        (let outer-loop ((s '()))
-         (let inner-loop ((i (- n 1)))
+        (let inner-loop ((i (- n 1)))
            (cond ((= i -1)
                   (for-each prepend-to-t! (reverse! s)))
                  ((vector-ref v i) =>
@@ -371,7 +396,6 @@
                     (outer-loop (cons (stringize x) s))))
                  (else
                   (inner-loop (- i 1)))))))))
-  (set-macro-handler! "while" while-handler)
 
   ;;----------------------------------------------------
   ;; (@ include-raw FORM)
@@ -383,8 +407,7 @@
     (let-values (((filename) (evaluate macro-body)))
       (with-input-from-file filename
         (lambda ()
-          (output-to-port (read-string #f))))))
-  (set-macro-handler! "include-raw" include-raw-handler)
+          (output-to-port (read-to-string))))))
 
   ;;----------------------------------------------------
   ;; (@ include FORM)
@@ -396,8 +419,7 @@
     (let-values (((filename) (evaluate macro-body)))
       (with-input-from-file filename
         (lambda ()
-          (set! t (string-append (read-string #f) t))))))
-  (set-macro-handler! "include" include-handler)
+          (prepend-to-t! (read-to-string))))))
 
   ;;----------------------------------------------------
   ;; (@ define MACRO-NAME MACRO-BODY)
@@ -444,11 +466,9 @@
 
   (define (definition-handler macro-call macro-name macro-body)
     (define-macro set-macro-handler! macro-body))
-  (set-macro-handler! "define" definition-handler)
 
   (define (pushdef-handler macro-call macro-name macro-body)
     (define-macro push-macro-handler! macro-body))
-  (set-macro-handler! "pushdef" pushdef-handler)
 
   ;;----------------------------------------------------
   ;; (@ popdef MACRO-NAME)
@@ -461,7 +481,6 @@
       (unless (string? name)
         (error "macro name must be a be a string" name))
       (pop-macro-handler! name)))
-  (set-macro-handler! "popdef" popdef-handler)
 
   ;;----------------------------------------------------
 
@@ -484,6 +503,19 @@
     (let ((comment (getvar 'comment match-result)))
       (remove-t-prefix! comment)
       (output-to-port comment)))
+
+  (set-macro-handler! "dnl" dnl-handler)
+  (set-macro-handler! "eval" eval-handler)
+  (set-macro-handler! "hide" hide-handler)
+  (set-macro-handler! "when" when-handler)
+  (set-macro-handler! "unless" unless-handler)
+  (set-macro-handler! "if" if-handler)
+  (set-macro-handler! "while" while-handler)
+  (set-macro-handler! "include-raw" include-raw-handler)
+  (set-macro-handler! "include" include-handler)
+  (set-macro-handler! "define" definition-handler)
+  (set-macro-handler! "pushdef" pushdef-handler)
+  (set-macro-handler! "popdef" popdef-handler)
 
   (let loop ()
     (cond ((= 0 (string-length t))
@@ -514,7 +546,7 @@
           (output-port (if use-stdout?
                          (current-output-port)
                          (open-output-file output-file))))
-      (let ((text (read-string #f input-port)))
+      (let ((text (read-to-string input-port)))
         (process-text text output-port))
       (unless use-stdin?
         (close-input-port input-port))
