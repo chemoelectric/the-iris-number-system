@@ -1,4 +1,4 @@
-#!/usr/bin/env -S csi -w -s
+#!/usr/bin/env scheme-r7rs
 
 ;;; Copyright (c) 2026 Barry Schwartz
 ;;;
@@ -113,8 +113,7 @@
                 (k 0))
       (if (= i n)
         (string-copy t 0 k)
-        (let loop2 ((j i)
-                    (k k))
+        (let loop2 ((j i))
           (cond ((= j n)
                  (string-copy! t k str i j)
                  (loop1 j (+ k (- j i))))
@@ -131,7 +130,34 @@
                  (string-set! t (+ k (- j i)) comment-right)
                  (loop1 (+ j 2) (+ k (- j i) 1)))
                 (else
-                 (loop2 (+ j 1) k))))))))
+                 (loop2 (+ j 1)))))))))
+
+(define (chars->comment-brackets str)
+  ;;
+  ;; Convert certain code points to "#|" and "|#".
+  ;;
+  (let* ((n (string-length str))
+         (t (make-string (+ n n))))
+    (let loop1 ((i 0)
+                (k 0))
+      (if (= i n)
+        (string-copy t 0 k)
+        (let loop2 ((j i))
+          (cond ((= j n)
+                 (string-copy! t k str i j)
+                 (loop1 j (+ k (- j i))))
+                ((char=? (string-ref str j) comment-left)
+                 (string-copy! t k str i j)
+                 (string-set! t (+ k (- j i)) #\#)
+                 (string-set! t (+ k (- j i) 1) #\|)
+                 (loop1 (+ j 1) (+ k (- j i) 2)))
+                ((char=? (string-ref str j) comment-right)
+                 (string-copy! t k str i j)
+                 (string-set! t (+ k (- j i)) #\|)
+                 (string-set! t (+ k (- j i) 1) #\#)
+                 (loop1 (+ j 1) (+ k (- j i) 2)))
+                (else
+                 (loop2 (+ j 1)))))))))
 
 (define random-fixnum
   (make-random-fixnum))
@@ -198,6 +224,13 @@
                   s
                   (loop2 (string-append (car p) s) (cdr p))))
               (loop (cons s lst))))))))))
+
+(define display-as-string
+  (case-lambda
+    ((obj)
+     (display-as-string obj (current-output-port)))
+    ((obj port)
+     (display (chars->comment-brackets (stringize obj)) port))))
 
 ;;;---------------------------------------------------------------------
 
@@ -320,7 +353,7 @@
     (set! t (string-append str t)))
 
   (define (output-to-port obj)
-    (display obj output-port))
+    (display-as-string obj output-port))
 
   ;;----------------------------------------------------
   ;; (@ eval FORM ...)
@@ -607,6 +640,9 @@
                          (open-output-file output-file))))
       (let ((text (read-to-string input-port)))
         (localize-bracket-pairs
+         (set-bracket-pairs!
+          (cons (cons comment-left comment-right)
+                (bracket-pairs)))
          (process-text text output-port)))
       (unless use-stdin?
         (close-input-port input-port))
