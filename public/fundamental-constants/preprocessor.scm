@@ -103,31 +103,35 @@
 (define comment-right #\x10A632)
 
 (define (comment-brackets->chars str)
-  str
-  #;(let ((n (string-length str))
-        (s-comment-left (string comment-left))
-        (s-comment-right (string comment-right)))
+  ;;
+  ;; Convert "#|" and "|#" to single code points in an out-of-the-way
+  ;; range.
+  ;;
+  (let* ((n (string-length str))
+         (t (make-string n)))
     (let loop1 ((i 0)
-                (t ""))
+                (k 0))
       (if (= i n)
-        t
-        (let loop2 ((j i))
+        (string-copy t 0 k)
+        (let loop2 ((j i)
+                    (k k))
           (cond ((= j n)
-                 (string-append t (string-copy str i)))
+                 (string-copy! t k str i j)
+                 (loop1 j (+ k (- j i))))
                 ((and (not (= (+ j 1) n))
                       (char=? (string-ref str j) #\#)
                       (char=? (string-ref str (+ j 1)) #\|))
-                 (loop1 (+ j 2)
-                        (string-append t (string-copy str i j)
-                                       s-comment-left)))
+                 (string-copy! t k str i j)
+                 (string-set! t (+ k (- j i)) comment-left)
+                 (loop1 (+ j 2) (+ k (- j i) 1)))
                 ((and (not (= (+ j 1) n))
                       (char=? (string-ref str j) #\|)
                       (char=? (string-ref str (+ j 1)) #\#))
-                 (loop1 (+ j 2)
-                        (string-append t (string-copy str i j)
-                                       s-comment-right)))
+                 (string-copy! t k str i j)
+                 (string-set! t (+ k (- j i)) comment-right)
+                 (loop1 (+ j 2) (+ k (- j i) 1)))
                 (else
-                 (loop2 (+ j 1)))))))))
+                 (loop2 (+ j 1) k))))))))
 
 (define random-fixnum
   (make-random-fixnum))
@@ -602,7 +606,8 @@
                          (current-output-port)
                          (open-output-file output-file))))
       (let ((text (read-to-string input-port)))
-        (process-text text output-port))
+        (localize-bracket-pairs
+         (process-text text output-port)))
       (unless use-stdin?
         (close-input-port input-port))
       (unless use-stdout?
