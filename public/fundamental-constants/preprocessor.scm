@@ -31,7 +31,8 @@
         (scheme read)
         (scheme write)
         (scheme process-context)
-        (scheme eval))
+        (scheme eval)
+        (srfi 37))
 (cond-expand
   ((library (scheme list)) (import (scheme list)))
   ((library (srfi 1)) (import (srfi 1)))
@@ -69,6 +70,7 @@
     '(scheme write)
     '(scheme inexact)
     '(scheme complex)
+    '(srfi 37)
     (cond-expand
       ((library (scheme list)) (quote (scheme list)))
       ((library (srfi 1)) (quote (srfi 1)))
@@ -242,6 +244,12 @@
   (char-set-difference char-set:graphic
                        (string->char-set "()[]{};|'`,@\"\\")))
 
+(define (macro-name? str)
+  (and (positive? (string-length str))
+       (zero? (char-set-size
+               (char-set-difference (string->char-set str)
+                                    char-set:macro-name)))))
+
 (define *macro-pattern*
   (make-parameter
    (p:assign-local
@@ -309,15 +317,14 @@
                  (association (cons name value)))
              (set-car! (car p) (cons association lst)))))
        (define (popper! name)
-         (let ((p (*things*)))
-           ;;
-           ;; Pop the first instance of name.
-           ;;
-           (let-values (((a b) (break! (lambda (p)
-                                         (equal? name (car p)))
-                                       (caar p))))
-             (let ((b (if (pair? b) (cdr b) b)))
-               (set-car! (car p) (append a b))))))
+         ;;
+         ;; Pop the first instance of name.
+         ;;
+         (let-values (((a b) (break! (lambda (pair)
+                                       (equal? name (car pair)))
+                                     (caar (*things*)))))
+           (let ((b (if (pair? b) (cdr b) b)))
+             (set-car! (car (*things*)) (append a b)))))
        (define-syntax localizer
          (syntax-rules --- ()
            ((ß body ---)
@@ -337,9 +344,14 @@
   pop-macro-handler!
   localize-macro-handlers)
 
+(define (remove-macro-handlers! name)
+  (let loop ()
+    (when (get-macro-handler name)
+      (pop-macro-handler! name))))
+
 ;;;---------------------------------------------------------------------
 
-(define (process-text text output-port)
+(define (process-text definitions text output-port)
 
   (define t (string-copy text))
 
@@ -347,10 +359,10 @@
     (set! t (string-copy t n)))
 
   (define (remove-t-prefix! prefix)
-    (set! t (remove-prefix prefix t)))
+    (set! t (remove-prefix (stringize prefix) t)))
 
   (define (reinsert! str)
-    (set! t (string-append str t)))
+    (set! t (string-append (stringize str) t)))
 
   (define (output-to-port obj)
     (display-as-string obj output-port))
@@ -566,6 +578,20 @@
         (pop-macro-handler! (car nm)))))
 
   ;;----------------------------------------------------
+  ;; (@ undefine MACRO-NAME ...)
+  ;;
+  ;; Remove all definitions corresponding to the given macro names.
+  ;;
+
+  (define (undefine-handler macro-call macro-name macro-body)
+    (let-values ((names (evaluate macro-body)))
+      (do ((nm names (cdr nm)))
+          ((null? nm))
+        (unless (string? (car nm))
+          (error "macro name must be a string" (car nm)))
+        (remove-macro-handlers! (car nm)))))
+
+  ;;----------------------------------------------------
 
   (define (handle-quick-result match-result)
     (let ((snippet (getvar 'snippet match-result)))
@@ -579,7 +605,7 @@
       (remove-t-prefix! macro-call)
       (let ((macro-handler (get-macro-handler macro-name)))
         (if (not macro-handler)
-          macro-call
+          (output-to-port macro-call)
           (macro-handler macro-call macro-name macro-body)))))
 
   (define (handle-line-comment match-result)
@@ -592,6 +618,18 @@
       (remove-t-prefix! comment)
       (output-to-port comment)))
 
+  (define (apply-definitions-list definitions)
+    (do ((defs definitions (cdr defs)))
+        ((null? defs))
+      (let ((macro-name (first (car defs)))
+            (macro-body (second (car defs)))
+            (define? (third (car defs))))
+        (if define?
+          (definition-handler
+            "" "" (string-append (serialize macro-name)
+                                 " " (serialize macro-body)))
+          (remove-macro-handlers! macro-name)))))
+
   (set-macro-handler! "dnl" dnl-handler)
   (set-macro-handler! "eval" eval-handler)
   (set-macro-handler! "hide" hide-handler)
@@ -602,9 +640,11 @@
   (set-macro-handler! "include-raw" include-raw-handler)
   (set-macro-handler! "include" include-handler)
   (set-macro-handler! "define" definition-handler)
+  (set-macro-handler! "undefine" undefine-handler)
   (set-macro-handler! "pushdef" pushdef-handler)
   (set-macro-handler! "popdef" popdef-handler)
 
+  (apply-definitions-list definitions)
   (let loop ()
     (cond ((= 0 (string-length t))
            (unspecified-value))
@@ -629,7 +669,7 @@
            (set! t (string-copy t 1))
            (loop)))))
 
-(define (run-the-program input-file output-file)
+(define (run-the-program definitions input-file output-file)
   (let ((use-stdin? (string=? input-file "-"))
         (use-stdout? (string=? output-file "-")))
     (let ((input-port (if use-stdin?
@@ -643,11 +683,124 @@
          (set-bracket-pairs!
           (cons (cons comment-left comment-right)
                 (bracket-pairs)))
-         (process-text text output-port)))
+         (process-text definitions text output-port)))
       (unless use-stdin?
         (close-input-port input-port))
       (unless use-stdout?
         (close-output-port output-port)))))
+
+(import (scheme base)
+        (scheme write)
+        (srfi 37))
+
+;;;---------------------------------------------------------------------
+
+;;;
+;;; seed fields:
+;;;
+;;; first   custom macro definitions: (("name" "body" #t) ...)
+;;;           where #t for define, #f for undefine. For undefine
+;;;           the body will be ignored and may be any value.
+;;;
+;;; second  positional arguments.
+;;;
+(define options
+  (list
+   ;;
+   ;; -D name[=value], --define=name[=value]
+   ;;
+   ;; If the value is left out, the body of the macro is an empty
+   ;; string. This is the same behavior as m4.
+   ;;
+   ;; You can have a macro name with an equals sign in it by using
+   ;; escape sequences.
+   ;;
+   (option
+    '(#\D "define") #t #f
+    (let* ((name-set (char-set-difference
+                      char-set:graphic
+                      (string->char-set "=")))
+           (pattern
+            (p:alt
+             (p:seq
+              (p:assign-local
+               (p:many (p:any-char-set name-set))
+               'macro-name)
+              (p:lit "=")
+              (p:assign-local
+               (p:maybe-many (p:any-char-set char-set:full))
+               'macro-body))
+             (p:assign-local
+              (p:many (p:any-char-set name-set))
+              'macro-name))))
+      (lambda (opt name arg seed)
+        (cond
+          ((and arg (snobol-match pattern arg)) =>
+           (lambda (match-result)
+             (let ((macro-name (getvar 'macro-name match-result))
+                   (macro-body (or (getvar 'macro-body match-result)
+                                   "")))
+               (list (append! (first seed)
+                              (list (list macro-name macro-body #t)))
+                     (second seed)))))
+          (else
+           (list (append! (first seed) (list (list "" "" #t)))
+                 (second seed)))))))
+
+   ;;
+   ;; -U name, --undefine=name
+   ;;
+   (option
+    '(#\U "undefine") #t #f
+    (let* ((name-set char-set:graphic)
+           (pattern
+            (p:assign-local
+             (p:many (p:any-char-set name-set))
+             'macro-name))
+           (filler
+            (string->symbol
+             (list->string
+              (reverse
+               (string->list "pihS\xA0;sserpxE\xA0;tenalP"))))))
+      (lambda (opt name arg seed)
+        (cond
+          ((and arg (snobol-match pattern arg)) =>
+           (lambda (match-result)
+             (let ((macro-name (getvar 'macro-name match-result)))
+               (list (append! (first seed)
+                              (list (list macro-name filler #f)))
+                     (second seed)))))
+          (else
+           (list (append! (first seed) (list (list "" filler #f)))
+                 (second seed)))))))
+
+   ;;
+   ;; FIXME: ADD --help AND --version OPTIONS.
+   ;; FIXME: ADD -U --undefine
+   ;; FIXME: ADD -I --include
+   ;;
+   ;; FIXME: MAYBE ADD -s --synclines (by counting \n characters) but
+   ;; this may be more trouble than it is worth.
+   ;;
+   ))
+
+(define (parse-arguments args)
+
+  (define (handle-unknown-option opt name arg seed)
+    ;;
+    ;; FIXME: INSTEAD RECOMMEND PEOPLE USE A HELP OPTION.
+    ;;
+    (error (string-append (first args) ": unrecognized option")
+           name))
+
+  (define (handle-positionals str seed)
+    (list (first seed)
+          (append! (second seed) (list str))))
+
+  (args-fold args options
+             handle-unknown-option
+             handle-positionals
+             (list (list) (list))))
 
 ;;;---------------------------------------------------------------------
 
@@ -671,17 +824,38 @@
   (let ((port (current-output-port)))
     (display "Usage: " port)
     (display (first args) port)
-    (display " [INFILE|-] [OUTFILE|-]" port)
+    (display " [OPTIONS] [INFILE|-] [OUTFILE|-]" port)
     (newline port)
     (exit 1)))
 
+(define (check-definitions definitions args)
+  (let ((port (current-output-port)))
+    (for-each (lambda (def)
+                (unless (macro-name? (first def))
+                  (display (first args) port)
+                  (display ": not a legal macro name: “" port)
+                  (display (first def) port)
+                  (display "”" port)
+                  (newline port)
+                  ;;
+                  ;; FIXME: PUT A NOTE HERE TO TRY --help
+                  ;;
+                  (exit 1)))
+              definitions)))
+
 (guard (exc (else (exception-handler exc)))
-  (let ((args (command-line)))
+  (let-values (((definitions args)
+                (apply values (parse-arguments (command-line)))))
+    (check-definitions definitions args)
     (case (length args)
-      ((1) (run-the-program "-" "-"))
-      ((2) (run-the-program (second args) "-"))
-      ((3) (run-the-program (second args) (third args)))
-      (else (usage-handler args)))) )
+      ((1) (run-the-program definitions "-" "-"))
+      ((2) (run-the-program definitions (second args) "-"))
+      ((3) (run-the-program definitions (second args) (third args)))
+      (else
+       ;;
+       ;; FIXME: GIVE A DIFFERENT MESSAGE, AND SUGGEST USING --help
+       ;;
+       (usage-handler args)))) )
 
 ;;;---------------------------------------------------------------------
 ;;; local variables:
