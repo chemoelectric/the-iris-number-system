@@ -633,7 +633,8 @@
                    (every (lambda (entry)
                             (and (pair? entry)
                                  (char? (car entry))
-                                 (char? (cdr entry))))))
+                                 (char? (cdr entry))))
+                          lst))
         (error "not a correct bracket pair list" lst))
       (set-car! (*bracket-pair-list*) lst))
 
