@@ -233,17 +233,17 @@
 
     (define number->utf32-string
       (case-lambda
-       ((z)
-        (string->utf32-string (number->string z)))
-       ((z radix)
-        (string->utf32-string (number->string z radix)))))
+        ((z)
+         (string->utf32-string (number->string z)))
+        ((z radix)
+         (string->utf32-string (number->string z radix)))))
 
     (define utf32-string->number
       (case-lambda
-       ((string)
-        (string->number (utf32-string->string string)))
-       ((string radix)
-        (string->number (utf32-string->string string radix)))))
+        ((string)
+         (string->number (utf32-string->string string)))
+        ((string radix)
+         (string->number (utf32-string->string string radix)))))
 
     ))
 
