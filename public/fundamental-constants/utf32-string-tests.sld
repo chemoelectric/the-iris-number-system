@@ -122,6 +122,17 @@
                (utf32-string->string (utf32-string-concatenate bvs))))
 
       ;; --------------------------------------------------
+      ;; Symbols
+      ;; --------------------------------------------------
+      (let ()
+
+        (check "symbol->utf32-string" "symbol12345"
+               (utf32-string->string (symbol->utf32-string 'symbol12345)))
+
+        (check "utf32-string->symbol" 'symbol12345
+               (utf32-string->symbol (string->utf32-string "symbol12345"))) )
+
+      ;; --------------------------------------------------
       ;; Numbers
       ;; --------------------------------------------------
       (let ()
