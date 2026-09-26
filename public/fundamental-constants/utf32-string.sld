@@ -42,6 +42,8 @@
           utf32-string-concatenate
           utf32-string->string
           string->utf32-string
+          utf32-string->symbol
+          symbol->utf32-string
           utf32-string->number
           number->utf32-string)
 
@@ -231,6 +233,12 @@
     ;; Some more mappings.
     ;;
 
+    (define (symbol->utf32-string symbol)
+      (string->utf32-string (symbol->string symbol)))
+
+    (define (utf32-string->symbol bv)
+      (string->symbol (utf32-string->string bv)))
+
     (define number->utf32-string
       (case-lambda
         ((z)
@@ -240,10 +248,10 @@
 
     (define utf32-string->number
       (case-lambda
-        ((string)
-         (string->number (utf32-string->string string)))
-        ((string radix)
-         (string->number (utf32-string->string string radix)))))
+        ((bv)
+         (string->number (utf32-string->string bv)))
+        ((bv radix)
+         (string->number (utf32-string->string bv radix)))))
 
     ))
 
