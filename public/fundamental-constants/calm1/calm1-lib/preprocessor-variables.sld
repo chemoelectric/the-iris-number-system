@@ -32,7 +32,7 @@
 ;;;
 ;;;---------------------------------------------------------------------
 
-(define-library (preprocessor-variables)
+(define-library (calm1-lib preprocessor-variables)
 
   (export define-preprocessor-variable)
 

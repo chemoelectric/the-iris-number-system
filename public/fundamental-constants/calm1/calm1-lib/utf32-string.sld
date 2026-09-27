@@ -23,7 +23,7 @@
 
 ;;;---------------------------------------------------------------------
 
-(define-library (utf32-string)
+(define-library (calm1-lib utf32-string)
 
   (export current-utf32-endianness
           utf32-string-length
@@ -40,6 +40,9 @@
           utf32-string-fold-right
           utf32-string-append
           utf32-string-concatenate
+          list->utf32-string
+          utf32-string->list
+          utf32-string
           utf32-string->string
           string->utf32-string
           utf32-string->symbol
@@ -219,6 +222,30 @@
               (loop (cdr lst) (+ offset len)))))))
 
     ;;
+    ;; List conversions.
+    ;;
+
+    (define (list->utf32-string lst)
+      (let* ((n (length lst))
+             (bv (make-utf32-string n)))
+        (do ((p lst (cdr p))
+             (i 0 (+ i 1)))
+            ((not-pair? lst))
+          (utf32-string-set! bv i (car p)))
+        bv))
+
+    (define (utf32-string->list bv)
+      (let ((n (utf32-string-length bv)))
+        (let loop ((lst '())
+                   (i 0))
+          (if (= i n)
+            (reverse! lst)
+            (loop (cons (utf32-string-ref bv i) lst) (+ i 1))))))
+
+    (define (utf32-string . char*)
+      (list->utf32-string char*))
+
+    ;;
     ;; Mapping between strings and utf32-strings.
     ;;
 
@@ -250,7 +277,7 @@
         ((bv)
          (string->number (utf32-string->string bv)))
         ((bv radix)
-         (string->number (utf32-string->string bv radix)))))
+         (string->number (utf32-string->string bv) radix))))
 
     ))
 

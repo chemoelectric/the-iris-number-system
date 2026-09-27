@@ -24,14 +24,9 @@
 (import (scheme base)
         (scheme char)
         (scheme write)
-        (scheme process-context))
-(cond-expand
-  (chicken
-   (include "utf32-string.sld")
-   (include "snobol-match.sld"))
-  (else))
-(import (utf32-string)
-        (snobol-match))
+        (scheme process-context)
+        (calm1-lib utf32-string)
+        (calm1-lib snobol-match))
 
 (define (->utf32 s)
   (cond ((string? s) (string->utf32-string s))

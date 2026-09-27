@@ -45,7 +45,7 @@
 ;;;
 ;;;---------------------------------------------------------------------
 
-(define-library (random-fixnum)
+(define-library (calm1-lib random-fixnum)
 
   (export make-random-128bits)
   (export make-random-fixnum)

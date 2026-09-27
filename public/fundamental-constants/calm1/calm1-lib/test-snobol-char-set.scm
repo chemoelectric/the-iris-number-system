@@ -23,22 +23,15 @@
 
 (import (scheme base)
         (scheme write)
-        (scheme process-context))
-
+        (scheme process-context)
+        (calm1-lib utf32-string)
+        (calm1-lib snobol-match)
+        (calm1-lib snobol-char-set))
 (cond-expand
     ((library (scheme charset)) (import (scheme charset)))
     ((library (srfi 14)) (import (srfi 14)))
     (loko (import (srfi :14 char-sets)))
     (else (import (srfi srfi-14))))
-(cond-expand
-  (chicken
-   (include "utf32-string.sld")
-   (include "snobol-match.sld")
-   (include "snobol-char-set.sld"))
-  (else))
-(import (utf32-string)
-        (snobol-match)
-        (snobol-char-set))
 
 (define (->utf32 s)
   (cond ((string? s) (string->utf32-string s))

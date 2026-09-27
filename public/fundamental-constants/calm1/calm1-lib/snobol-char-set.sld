@@ -23,10 +23,10 @@
 
 ;;;---------------------------------------------------------------------
 
-(define-library (snobol-char-set)
+(define-library (calm1-lib snobol-char-set)
 
   (import (scheme base)
-          (utf32-string))
+          (calm1-lib utf32-string))
   (cond-expand
     ((library (scheme charset)) (import (scheme charset)))
     ((library (srfi 14)) (import (srfi 14)))

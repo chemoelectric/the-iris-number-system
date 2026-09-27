@@ -23,14 +23,14 @@
 
 ;;;---------------------------------------------------------------------
 
-(define-library (utf32-string-tests)
+(define-library (calm1-lib utf32-string-tests)
 
   (export run-utf32-string-tests)
 
   (import (scheme base)
           (scheme cxr)
           (scheme write)
-          (utf32-string))
+          (calm1-lib utf32-string))
 
   (begin
 

@@ -23,12 +23,12 @@
 
 ;;;---------------------------------------------------------------------
 
-(define-library (snobol-match)
+(define-library (calm1-lib snobol-match)
 
   (import (scheme base)
           (scheme char)
           (scheme case-lambda)
-          (utf32-string))
+          (calm1-lib utf32-string))
   (cond-expand
     ((library (srfi 1)) (import (srfi 1)))
     ((library (scheme list)) (import (scheme list)))

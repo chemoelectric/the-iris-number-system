@@ -23,7 +23,7 @@
 
 ;;;---------------------------------------------------------------------
 
-(define-library (define-record-factory)
+(define-library (calm1-lib define-record-factory)
 
   (export define-record-factory)
 

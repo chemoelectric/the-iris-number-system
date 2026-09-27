@@ -23,7 +23,7 @@
 
 ;;;---------------------------------------------------------------------
 
-(define-library (preprocessor-define-lookup)
+(define-library (calm1-lib preprocessor-define-lookup)
 
   (export define-lookup)
 

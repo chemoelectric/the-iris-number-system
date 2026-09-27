@@ -23,7 +23,7 @@
 
 ;;;---------------------------------------------------------------------
 
-(define-library (preprocessor-macro-handler)
+(define-library (calm1-lib preprocessor-macro-handler)
 
   (export macro-handler?
           make-macro-handler
@@ -37,13 +37,9 @@
           localize-macro-handlers)
 
   (import (scheme base)
-          (define-record-factory))
-  (cond-expand
-    (chicken
-     (include "utf32-string.sld"))
-    (else))
-  (import (utf32-string)
-          (preprocessor-define-lookup))
+          (calm1-lib define-record-factory)
+          (calm1-lib utf32-string)
+          (calm1-lib preprocessor-define-lookup))
 
   (begin
 
