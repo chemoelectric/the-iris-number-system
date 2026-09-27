@@ -30,11 +30,19 @@
     ((library (srfi 14)) (import (srfi 14)))
     (loko (import (srfi :14 char-sets)))
     (else (import (srfi srfi-14))))
-
-(include "snobol-match.sld")
-(include "snobol-char-set.sld")
-(import (snobol-match)
+(cond-expand
+  (chicken
+   (include "utf32-string.sld")
+   (include "snobol-match.sld")
+   (include "snobol-char-set.sld"))
+  (else))
+(import (utf32-string)
+        (snobol-match)
         (snobol-char-set))
+
+(define (->utf32 s)
+  (cond ((string? s) (string->utf32-string s))
+        (else s)))
 
 (define (assert-equal? label expected actual)
   (if (not (equal? expected actual))
@@ -55,7 +63,7 @@
   (let ((break-space-pat (p:seq (p:assign-local (p:break-char-set char-set:whitespace) 'word)
                                 (p:span-char-set char-set:whitespace))))
     (assert-equal? "p:break-char-set identifies text blocks up to a charset delimiter"
-                   "symbol-name"
+                   (->utf32 "symbol-name")
                    (let ((res (snobol-match break-space-pat "symbol-name \t")))
                      (if res (cdr (assoc 'word (cdr res))) #f))))
 

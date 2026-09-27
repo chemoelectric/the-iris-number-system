@@ -64,7 +64,7 @@
       ;; --------------------------------------------------
       ;; Mutation and Allocation
       ;; --------------------------------------------------
-      (let ((bv (utf32-make-string 3 #\space)))
+      (let ((bv (make-utf32-string 3 #\space)))
         (utf32-string-set! bv 0 #\{)
         (utf32-string-set! bv 1 #\X)
         (utf32-string-set! bv 2 #\})

@@ -47,6 +47,7 @@
   (else (import (srfi srfi-143))))
 (cond-expand
   (chicken
+   (include "utf32-string.sld")
    (include "snobol-match.sld")
    (include "snobol-char-set.sld")
    (include "random-fixnum.sld")
@@ -55,7 +56,8 @@
    (include "preprocessor-macro-handler.sld")
    (include "preprocessor-define-lookup.sld"))
   (else))
-(import (snobol-match)
+(import (utf32-string)
+        (snobol-match)
         (snobol-char-set)
         (random-fixnum)
         (preprocessor-variables)
@@ -93,6 +95,7 @@
       ((library (srfi 143)) (quote (srfi 143)))
       (loko (quote (srfi :143 fixnums)))
       (else (quote (srfi srfi-143))))
+    '(utf32-string)
     '(snobol-match)
     '(snobol-char-set)
     '(random-fixnum)
@@ -106,6 +109,23 @@
     ((¶)
      (if #f #f))))
 
+(define (utf32-string? obj)
+  ;;
+  ;; FIXME: This will suffice unless we put a proper first-class
+  ;; wrapper on utf32-string.
+  ;;
+  (bytevector? obj))
+
+(define (->utf32 str)
+  (cond ((string? str) (string->utf32-string str))
+        (else str)))
+
+(define empty-string (string->utf32-string ""))
+(define (spaces n) (string->utf32-string (make-string n #\x20)))
+(define one-space (spaces 1))
+(define macro-open (string->utf32-string "(@ "))
+(define macro-close (string->utf32-string ")"))
+
 ;; "#|" and "|#" get converted to these code points, for handling as
 ;; if they were bracket characters. These code points are chosen
 ;; haphazardly from Supplemental Private Use Area-B.
@@ -117,27 +137,27 @@
   ;; Convert "#|" and "|#" to single code points in an out-of-the-way
   ;; range.
   ;;
-  (let* ((n (string-length str))
-         (t (make-string n)))
+  (let* ((n (utf32-string-length str))
+         (t (make-utf32-string n)))
     (let loop1 ((i 0)
                 (k 0))
       (if (= i n)
-        (string-copy t 0 k)
+        (utf32-string-copy t 0 k)
         (let loop2 ((j i))
           (cond ((= j n)
-                 (string-copy! t k str i j)
+                 (utf32-string-copy! t k str i j)
                  (loop1 j (+ k (- j i))))
                 ((and (not (= (+ j 1) n))
-                      (char=? (string-ref str j) #\#)
-                      (char=? (string-ref str (+ j 1)) #\|))
-                 (string-copy! t k str i j)
-                 (string-set! t (+ k (- j i)) comment-left)
+                      (char=? (utf32-string-ref str j) #\#)
+                      (char=? (utf32-string-ref str (+ j 1)) #\|))
+                 (utf32-string-copy! t k str i j)
+                 (utf32-string-set! t (+ k (- j i)) comment-left)
                  (loop1 (+ j 2) (+ k (- j i) 1)))
                 ((and (not (= (+ j 1) n))
-                      (char=? (string-ref str j) #\|)
-                      (char=? (string-ref str (+ j 1)) #\#))
-                 (string-copy! t k str i j)
-                 (string-set! t (+ k (- j i)) comment-right)
+                      (char=? (utf32-string-ref str j) #\|)
+                      (char=? (utf32-string-ref str (+ j 1)) #\#))
+                 (utf32-string-copy! t k str i j)
+                 (utf32-string-set! t (+ k (- j i)) comment-right)
                  (loop1 (+ j 2) (+ k (- j i) 1)))
                 (else
                  (loop2 (+ j 1)))))))))
@@ -146,25 +166,25 @@
   ;;
   ;; Convert certain code points to "#|" and "|#".
   ;;
-  (let* ((n (string-length str))
-         (t (make-string (+ n n))))
+  (let* ((n (utf32-string-length str))
+         (t (make-utf32-string (+ n n))))
     (let loop1 ((i 0)
                 (k 0))
       (if (= i n)
-        (string-copy t 0 k)
+        (utf32-string-copy t 0 k)
         (let loop2 ((j i))
           (cond ((= j n)
-                 (string-copy! t k str i j)
+                 (utf32-string-copy! t k str i j)
                  (loop1 j (+ k (- j i))))
-                ((char=? (string-ref str j) comment-left)
-                 (string-copy! t k str i j)
-                 (string-set! t (+ k (- j i)) #\#)
-                 (string-set! t (+ k (- j i) 1) #\|)
+                ((char=? (utf32-string-ref str j) comment-left)
+                 (utf32-string-copy! t k str i j)
+                 (utf32-string-set! t (+ k (- j i)) #\#)
+                 (utf32-string-set! t (+ k (- j i) 1) #\|)
                  (loop1 (+ j 1) (+ k (- j i) 2)))
-                ((char=? (string-ref str j) comment-right)
-                 (string-copy! t k str i j)
-                 (string-set! t (+ k (- j i)) #\|)
-                 (string-set! t (+ k (- j i) 1) #\#)
+                ((char=? (utf32-string-ref str j) comment-right)
+                 (utf32-string-copy! t k str i j)
+                 (utf32-string-set! t (+ k (- j i)) #\|)
+                 (utf32-string-set! t (+ k (- j i) 1) #\#)
                  (loop1 (+ j 1) (+ k (- j i) 2)))
                 (else
                  (loop2 (+ j 1)))))))))
@@ -191,19 +211,24 @@
   (eval (read (open-input-string str)) env))
 
 (define (evaluate str)
-  (eval-string (string-append "(values " str " )")
+  (eval-string (string-append "(values "
+                              (if (bytevector? str)
+                                (utf32-string->string str)
+                                str)
+                              " )")
                (*environment*)))
 
 (define (serialize obj)
   (let ((port (open-output-string)))
     (write obj port)
-    (get-output-string port)))
+    (string->utf32-string (get-output-string port))))
 
 (define (stringize x)
-  (cond ((string? x) x)
-        ((symbol? x) (symbol->string x))
-        ((number? x) (number->string x))
-        ((char? x) (string x))
+  (cond ((utf32-string? x) x)
+        ((string? x) (string->utf32-string x))
+        ((symbol? x) (symbol->utf32-string x))
+        ((number? x) (number->utf32-string x))
+        ((char? x) (utf32-string (char->integer x)))
         (else (serialize x))))
 
 (define (getvar key match-result)
@@ -212,11 +237,11 @@
          (and p (cdr p)))))
 
 (define (remove-prefix prefix str)
-  (let ((m (string-length prefix))
-        (n (string-length str)))
+  (let ((m (utf32-string-length prefix))
+        (n (utf32-string-length str)))
     (if (<= n m)
-      ""
-      (string-copy str m))))
+      empty-string
+      (utf32-string-copy str m))))
 
 (define read-to-string
   (let ((n 4096))
@@ -228,11 +253,14 @@
         (let loop ((lst '()))
           (let ((s (read-string n port)))
             (if (eof-object? s)
+              (utf32-string-concatenate
+               (map! string->utf32-string (reverse! lst)))
+              #|
               (let loop2 ((s "")
-                          (p lst))
-                (if (null? p)
-                  s
-                  (loop2 (string-append (car p) s) (cdr p))))
+              (p lst))
+              (if (null? p)
+              s
+              (loop2 (string-append (car p) s) (cdr p))))|#
               (loop (cons s lst))))))))))
 
 (define display-as-string
@@ -240,7 +268,9 @@
     ((obj)
      (display-as-string obj (current-output-port)))
     ((obj port)
-     (display (chars->comment-brackets (stringize obj)) port))))
+     (display
+      (utf32-string->string (chars->comment-brackets (stringize obj)))
+      port))))
 
 ;;;---------------------------------------------------------------------
 
@@ -253,12 +283,12 @@
                        (string->char-set "()[]{};|'`,@\"\\")))
 
 (define (macro-name? str)
-  (let ((n (string-length str)))
+  (let ((n (utf32-string-length str)))
     (and (not (zero? n))
          (let loop ((i 0))
            (cond ((= i n) #t)
                  ((not (char-set-contains? char-set:macro-name
-                                           (string-ref str i)))
+                                           (utf32-string-ref str i)))
                   #f)
                  (loop (+ i 1)))))))
 
@@ -304,16 +334,16 @@
 
 (define (process-text definitions text output-port)
 
-  (define t (string-copy text))
+  (define t (utf32-string-copy text))
 
   (define (shorten-t! n)
-    (set! t (string-copy t n)))
+    (set! t (utf32-string-copy t n)))
 
   (define (remove-t-prefix! prefix)
     (set! t (remove-prefix (stringize prefix) t)))
 
   (define (reinsert! str)
-    (set! t (string-append (stringize str) t)))
+    (set! t (utf32-string-append (stringize str) t)))
 
   (define (output-to-port obj)
     (display-as-string obj output-port))
@@ -351,7 +381,8 @@
          (let-values ((form-lst (evaluate macro-body)))
            (let ((match-result (snobol-match pattern t)))
              (when match-result
-               (let ((n (string->number (getvar 'cursor match-result))))
+               (let ((n (utf32-string->number
+                         (getvar 'cursor match-result))))
                  (shorten-t! n)))))))))
 
   ;;----------------------------------------------------
@@ -444,9 +475,11 @@
                    ;; Reinsert both the expansion and the (@ while ...)
                    (lambda (x)
                      (reinsert!
-                      (string-append
+                      (utf32-string-append
                        (stringize x)
-                       "(@ " macro-name " " macro-body ")"))))
+                       macro-open
+                       macro-name one-space macro-body
+                       macro-close))))
                   (else
                    (loop (- i 1))))))))))
 
@@ -495,12 +528,31 @@
   ;; whereas “pushdef” does not.
   ;;
 
+  (define reinsert-popdef-i!
+    (let ((before (->utf32 "(@ popdef \""))
+          (after (->utf32 "\")")))
+      (lambda (i)
+        (reinsert! (utf32-string-append
+                    before (number->utf32-string i) after)))))
+
+  (define reinsert-pushdef-i!
+    (let ((before (->utf32 "(@ pushdef \""))
+          (between (->utf32 "\" "))
+          (after (->utf32 ")")))
+      (lambda (i value)
+        (reinsert! (utf32-string-append
+                    before (number->utf32-string i)
+                    between (serialize value) after)))))
+
   (define-syntax define-macro
     (syntax-rules ()
       ((¶ set-or-push-macro-handler! macro-body)
-       (let-values (((name body) (evaluate macro-body)))
+       (let*-values (((name body) (evaluate macro-body))
+                     ((name) (if (bytevector? name)
+                               (utf32-string->string name)
+                               name)))
          (unless (string? name)
-           (error "macro name must be a be a string" name))
+           (error "macro name must be a string" name))
          (set-or-push-macro-handler!
           name
           (if (macro-handler? body)
@@ -509,23 +561,16 @@
              (lambda (mac-call mac-name mac-body)
                (let-values ((vals (evaluate mac-body)))
                  (let ((n (length vals)))
-                   (reinsert! (string-append "(@ popdef \"0\")"))
+                   (reinsert-popdef-i! 0)
                    (do ((i 1 (+ i 1)))
                        ((= i (+ n 1)))
-                     (reinsert! (string-append
-                                 "(@ popdef \""
-                                 (number->string i) "\")")))
+                     (reinsert-popdef-i! i))
                    (reinsert! body)
-                   (reinsert! (string-append
-                               "(@ pushdef \"0\" "
-                               (serialize name) ")"))
+                   (reinsert-pushdef-i! 0 name)
                    (do ((i 1 (+ i 1))
                         (p vals (cdr p)))
                        ((= i (+ n 1)))
-                     (reinsert! (string-append
-                                 "(@ pushdef \""
-                                 (number->string i) "\" "
-                                 (serialize (car p)) ")")))
+                     (reinsert-pushdef-i! i (car p)))
                    ))))))))))
 
   (define definition-handler
@@ -606,8 +651,10 @@
             (define? (third (car defs))))
         (if define?
           ((macro-handler-procedure definition-handler)
-           "" "" (string-append (serialize macro-name)
-                                " " (serialize macro-body)))
+           empty-string empty-string
+           (utf32-string-append (serialize macro-name)
+                                one-space
+                                (serialize macro-body)))
           (remove-macro-handlers! macro-name)))))
 
   (set-macro-handler! "dnl" dnl-handler)
@@ -626,7 +673,7 @@
 
   (apply-definitions-list definitions)
   (let loop ()
-    (cond ((= 0 (string-length t))
+    (cond ((= 0 (utf32-string-length t))
            (unspecified-value))
           ((snobol-match (*quick-pattern*) t) =>
            (lambda (match-result)
@@ -645,8 +692,8 @@
              (handle-line-comment match-result)
              (loop)))
           (else
-           (output-to-port (string-copy t 0 1))
-           (set! t (string-copy t 1))
+           (output-to-port (utf32-string-copy t 0 1))
+           (set! t (utf32-string-copy t 1))
            (loop)))))
 
 (define (run-the-program definitions input-file output-file)

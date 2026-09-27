@@ -25,21 +25,34 @@
         (scheme char)
         (scheme write)
         (scheme process-context))
-(include "snobol-match.sld")
-(import (snobol-match))
+(cond-expand
+  (chicken
+   (include "utf32-string.sld")
+   (include "snobol-match.sld"))
+  (else))
+(import (utf32-string)
+        (snobol-match))
+
+(define (->utf32 s)
+  (cond ((string? s) (string->utf32-string s))
+        (else s)))
 
 (define (string-contains? haystack needle)
-  (let* ((n-len (string-length needle))
-         (h-len (string-length haystack)))
-    (cond ((zero? n-len) #t)
-          ((> n-len h-len) #f)
-          (else
-           (let loop ((i 0))
-             (if (> (+ i n-len) h-len)
-               #f
-               (if (string=? needle (substring haystack i (+ i n-len)))
-                 #t
-                 (loop (+ i 1)))))))))
+  (let ((haystack (->utf32 haystack))
+        (needle (->utf32 needle)))
+    (let ((n-len (utf32-string-length needle))
+          (h-len (utf32-string-length haystack)))
+      (cond ((zero? n-len) #t)
+            ((> n-len h-len) #f)
+            (else
+             (let loop ((i 0))
+               (if (> (+ i n-len) h-len)
+                 #f
+                 (if (utf32-string=? needle
+                                     (utf32-string-copy
+                                      haystack i (+ i n-len)))
+                   #t
+                   (loop (+ i 1))))))))))
 
 ;; Core assertion tracking procedure.
 ;; Evaluates a thunk; if the return value doesn't match expected data, 
@@ -69,23 +82,28 @@
   
   (assert-equal? "p:lit empty string on empty input"
                  0
-                 (car (snobol-match (p:lit "") "")))
+                 (car (snobol-match (p:lit "")
+                                    (->utf32 ""))))
 
   (assert-equal? "p:lit empty string on populated input (non-consuming match)"
                  0
-                 (car (snobol-match (p:lit "") "abcdef")))
+                 (car (snobol-match (p:lit "")
+                                    (->utf32 "abcdef"))))
 
   (assert-equal? "p:arb on pure empty string input"
                  0
-                 (car (snobol-match (p:arb) "")))
+                 (car (snobol-match (p:arb)
+                                    (->utf32 ""))))
 
   (assert-equal? "p:maybe-many wrapping an empty literal (prevents infinite loop)"
                  0
-                 (car (snobol-match (p:maybe-many (p:lit "")) "abc")))
+                 (car (snobol-match (p:maybe-many (p:lit ""))
+                                    (->utf32 "abc"))))
 
   (assert-equal? "p:maybe-many when matching pattern is entirely absent"
                  0
-                 (car (snobol-match (p:maybe-many (p:lit "xyz")) "abcdef")))
+                 (car (snobol-match (p:maybe-many (p:lit "xyz"))
+                                    (->utf32 "abcdef"))))
 
 
   ;; ====================================================================
@@ -103,7 +121,7 @@
   ;; Verifies p:break matches cleanly up to the boundary without internal shifting.
   (let ((break-test (p:seq (p:assign-local (p:break "b") 'break-data) (p:lit "b"))))
     (assert-equal? "p:break matches up to the designated character delimiter atomically"
-                   "xyzaa"
+                   (->utf32 "xyzaa")
                    (get-var (snobol-match break-test "xyzaab") 'break-data)))
 
   ;; 1. p:span verification (Atomic non-backtracking check)
@@ -142,7 +160,7 @@
                    13
                    (car (snobol-match breakx-jump-pat "xyzab_and_abc")))
     (assert-equal? "p:breakx variable capture tracking matches up to the final jump point"
-                   "xyzab_and_a"
+                   (->utf32 "xyzab_and_a")
                    (get-var (snobol-match breakx-jump-pat "xyzab_and_abc") 'captured-prefix)))
 
   ;; ====================================================================
@@ -156,7 +174,7 @@
   (let ((arbno-min (p:seq (p:assign-local (p:arbno (p:lit "a")) 'seq-data) 
                           (p:arb))))
     (assert-equal? "p:arbno initially prioritizes matching zero characters"
-                   ""
+                   (->utf32 "")
                    (get-var (snobol-match arbno-min "abc") 'seq-data)))
 
   ;; 2. ARBNO expansion check via downstream anchoring
@@ -165,7 +183,7 @@
   (let ((arbno-expand (p:seq (p:assign-local (p:arbno (p:lit "a")) 'seq-data) 
                              (p:lit "b"))))
     (assert-equal? "p:arbno expands iteratively when forced by downstream patterns"
-                   "aaa"
+                   (->utf32 "aaa")
                    (get-var (snobol-match arbno-expand "aaab") 'seq-data)))
 
   ;; 3. ARBNO infinite loop prevention check
@@ -243,13 +261,13 @@
 
   (let ((empty-match (snobol-match (p:lit "") "test")))
     (assert-equal? "snobol-replace with empty recipe list on valid match"
-                   ""
+                   (->utf32 "")
                    (snobol-replace empty-match '())))
 
   (let* ((p (p:seq (p:assign-local (p:lit "foo") 'k)))
          (res (snobol-match p "foobar")))
     (assert-equal? "snobol-replace handling unregistered/missing lookup keys gracefully"
-                   "foo-missing-"
+                   (->utf32 "foo-missing-")
                    (snobol-replace res '(k "-missing-" missing_key))))
 
 
@@ -291,7 +309,7 @@
   (let ((imm-match (p:seq (p:immediate-assign (p:span "0123456789") 'weight)
                           (p:lit "lbs"))))
     (assert-equal? "p:immediate-assign captures text segments on successful sub-paths"
-                   "123"
+                   (->utf32 "123")
                    (get-var (snobol-match imm-match "123lbs") 'weight)))
 
   ;; 2. Tracking intermediate state inside recursive branches
@@ -302,7 +320,7 @@
                            (p:lit "z"))))
     ;; Input: "az". Matches 'a', sets 'first-vowel to "a", matches "z". Success!
     (assert-equal? "p:immediate-assign logs state correctly before downstream execution"
-                   "a"
+                   (->utf32 "a")
                    (get-var (snobol-match imm-track "az") 'first-vowel)))
 
   ;; ====================================================================
@@ -315,7 +333,7 @@
                            (p:cursor 'pos) 
                            (p:lit "def"))))
     (assert-equal? "p:cursor logs the precise numeric match index position"
-                   "3"
+                   (->utf32 "3")
                    (get-var (snobol-match cursor-pat "abcdef") 'pos)))
 
   ;; 2. Bracketing a matched slice with two cursors
@@ -327,10 +345,10 @@
                                (p:cursor 'end-idx))))
     (let ((res (snobol-match span-bound-pat "   target   ")))
       (assert-equal? "p:cursor tracks starting index boundary cleanly"
-                     "3"
+                     (->utf32 "3")
                      (get-var res 'start-idx))
       (assert-equal? "p:cursor tracks ending index boundary cleanly"
-                     "9"
+                     (->utf32 "9")
                      (get-var res 'end-idx))))
 
   ;; ====================================================================
@@ -363,7 +381,7 @@
     (let ((res (snobol-match dupe-pat "123")))
       ;; The final structure should contain exactly one unique instance of 'x mapping to "3"
       (assert-equal? "Environment compaction retains only the final written state"
-                     "3"
+                     (->utf32 "3")
                      (get-var res 'x))
       (assert-equal? "Environment contains no duplicate key definitions after compaction"
                      1

@@ -29,7 +29,7 @@
           utf32-string-length
           utf32-string-ref
           utf32-string-set!
-          utf32-make-string
+          make-utf32-string
           utf32-string-copy
           utf32-string-copy!
           utf32-string=?
@@ -62,8 +62,7 @@
     ((library (rnrs bytevectors))
      (import (except (rnrs bytevectors)
                      bytevector-copy!)))
-    (chicken (import (except (r6rs bytevectors)
-                             bytevector-copy!))))
+    (chicken (import (r6rs bytevectors))))
 
   (begin
 
@@ -126,7 +125,7 @@
           (loop (- i 1)
                 (proc acc (utf32-string-ref-aux bv i endian))))))
 
-    (define (utf32-make-string-aux len char endian)
+    (define (make-utf32-string-aux len char endian)
       (let ((bv (make-bytevector (* len 4) 0)))
         (let loop ((i 0))
           (if (= i len)
@@ -150,10 +149,10 @@
       (utf32-string-set-aux! bv k char (current-utf32-endianness)))
 
     ;; Allocates a UTF-32 bytevector string.
-    (define utf32-make-string
+    (define make-utf32-string
       (case-lambda
         ((len) (make-bytevector (* len 4) 0))
-        ((len char) (utf32-make-string-aux
+        ((len char) (make-utf32-string-aux
                      len char (current-utf32-endianness)))))
 
     ;; Substring copying via fast flat memory slices.

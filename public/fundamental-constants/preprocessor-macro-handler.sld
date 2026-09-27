@@ -33,12 +33,16 @@
           set-macro-handler!
           push-macro-handler!
           pop-macro-handler!
+          remove-macro-handlers!
           localize-macro-handlers)
 
-  (export remove-macro-handlers!)
-
   (import (scheme base)
-          (define-record-factory)
+          (define-record-factory))
+  (cond-expand
+    (chicken
+     (include "utf32-string.sld"))
+    (else))
+  (import (utf32-string)
           (preprocessor-define-lookup))
 
   (begin
@@ -62,16 +66,34 @@
       (getter> 1 macro-handler-procedure))
 
     (define-lookup *macro-handlers*
-      get-macro-handler
-      set-macro-handler!
-      push-macro-handler!
-      pop-macro-handler!
+      get-macro-handler-aux
+      set-macro-handler!-aux
+      push-macro-handler!-aux
+      pop-macro-handler!-aux
       localize-macro-handlers)
 
+    (define (to-string s)
+      (if (bytevector? s)
+        (utf32-string->string s)
+        s))
+
+    (define (get-macro-handler name)
+      (get-macro-handler-aux (to-string name)))
+
+    (define (set-macro-handler! name handler)
+      (set-macro-handler!-aux (to-string name) handler))
+
+    (define (push-macro-handler! name handler)
+      (push-macro-handler!-aux (to-string name) handler))
+
+    (define (pop-macro-handler! name)
+      (pop-macro-handler!-aux (to-string name)))
+
     (define (remove-macro-handlers! name)
-      (let loop ()
-        (when (get-macro-handler name)
-          (pop-macro-handler! name))))
+      (let ((name (to-string name)))
+        (let loop ()
+          (when (get-macro-handler name)
+            (pop-macro-handler! name)))))
 
     ))
 

@@ -25,7 +25,8 @@
 
 (define-library (snobol-char-set)
 
-  (import (scheme base))
+  (import (scheme base)
+          (utf32-string))
   (cond-expand
     ((library (scheme charset)) (import (scheme charset)))
     ((library (srfi 14)) (import (srfi 14)))
@@ -39,19 +40,27 @@
 
   (begin
 
+    (define (->utf32 s)
+      (cond ((string? s) (string->utf32-string s))
+            (else s)))
+
     ;; Optimized tail-recursive forward index loops querying the
     ;; native char-set directly.
     (define (span-cs-forward str idx cs len)
-      (if (and (< idx len)
-               (char-set-contains? cs (string-ref str idx)))
-        (span-cs-forward str (+ idx 1) cs len)
-        idx))
+      (let ((str (->utf32 str)))
+        (if (and (< idx len)
+                 (char-set-contains?
+                  cs (utf32-string-ref str idx)))
+          (span-cs-forward str (+ idx 1) cs len)
+          idx)))
 
     (define (break-cs-forward str idx cs len)
-      (if (and (< idx len)
-               (not (char-set-contains? cs (string-ref str idx))))
-        (break-cs-forward str (+ idx 1) cs len)
-        idx))
+      (let ((str (->utf32 str)))
+        (if (and (< idx len)
+                 (not (char-set-contains?
+                       cs (utf32-string-ref str idx))))
+          (break-cs-forward str (+ idx 1) cs len)
+          idx)))
 
     ;;------------------------------------------------------------------
     ;;
@@ -62,39 +71,45 @@
     ;; char-set object.
     (define (p:span-char-set cs)
       (lambda (str idx env succeed fail)
-        (let* ((len (string-length str))
-               (max-end (span-cs-forward str idx cs len)))
-          (if (< idx max-end)
-            (succeed max-end env fail)
-            (fail)))))
+        (let ((str (->utf32 str)))
+          (let* ((len (utf32-string-length str))
+                 (max-end (span-cs-forward str idx cs len)))
+            (if (< idx max-end)
+              (succeed max-end env fail)
+              (fail))))))
 
     ;; SNOBOL BREAK: Consumes text up to, but excluding, the char-set
     ;; boundary.
     (define (p:break-char-set cs)
       (lambda (str idx env succeed fail)
-        (let* ((len (string-length str))
-               (max-end (break-cs-forward str idx cs len)))
-          (if (< idx max-end)
-            (succeed max-end env fail)
-            (fail)))))
+        (let ((str (->utf32 str)))
+          (let* ((len (utf32-string-length str))
+                 (max-end (break-cs-forward str idx cs len)))
+            (if (< idx max-end)
+              (succeed max-end env fail)
+              (fail))))))
 
     ;; SNOBOL ANY: Matches a single character contained within the
     ;; target char-set.
     (define (p:any-char-set cs)
       (lambda (str idx env succeed fail)
-        (if (and (< idx (string-length str))
-                 (char-set-contains? cs (string-ref str idx)))
-          (succeed (+ idx 1) env fail)
-          (fail))))
+        (let ((str (->utf32 str)))
+          (if (and (< idx (utf32-string-length str))
+                   (char-set-contains?
+                    cs (utf32-string-ref str idx)))
+            (succeed (+ idx 1) env fail)
+            (fail)))))
 
     ;; SNOBOL NOTANY: Matches a character completely absent from the
     ;; target char-set.
     (define (p:notany-char-set cs)
       (lambda (str idx env succeed fail)
-        (if (and (< idx (string-length str))
-                 (not (char-set-contains? cs (string-ref str idx))))
-          (succeed (+ idx 1) env fail)
-          (fail))))
+        (let ((str (->utf32 str)))
+          (if (and (< idx (utf32-string-length str))
+                   (not (char-set-contains?
+                         cs (utf32-string-ref str idx))))
+            (succeed (+ idx 1) env fail)
+            (fail)))))
 
     ))
 

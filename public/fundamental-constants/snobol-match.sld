@@ -27,10 +27,11 @@
 
   (import (scheme base)
           (scheme char)
-          (scheme case-lambda))
+          (scheme case-lambda)
+          (utf32-string))
   (cond-expand
-    ((library (scheme list)) (import (scheme list)))
     ((library (srfi 1)) (import (srfi 1)))
+    ((library (scheme list)) (import (scheme list)))
     (loko (import (srfi :1 lists)))
     (else (import (srfi srfi-1))))
 
@@ -80,6 +81,10 @@
                  ((pred obj (cdr (car ls))) (car ls))
                  (else (loop (cdr ls))))))))
 
+    (define (->utf32 s)
+      (cond ((string? s) (string->utf32-string s))
+            (else s)))
+
     ;;------------------------------------------------------------------
     ;;
     ;; Runner and environment environment lookups.
@@ -104,22 +109,24 @@
     ;; string initializing an empty env. Returns a pair of
     ;; (final-index . environment-alist) on success, or #f.
     (define (snobol-match pat str)
-      (pat str 0 '()
-           (lambda (final-idx env retry) 
-             (cons final-idx (compact-env env))) 
-           (lambda () #f)))
+      (let ((str (->utf32 str)))
+        (pat str 0 '()
+             (lambda (final-idx env retry) 
+               (cons final-idx (compact-env env))) 
+             (lambda () #f))))
 
     ;; Captures a matched text slice into a thread-safe lexical
     ;; context. Passes the updated environment map down the
     ;; continuation pipeline.
     (define (p:assign-local pat key)
       (lambda (str idx env succeed fail)
-        (pat str idx env
-             (lambda (next-idx next-env retry-fail)
-               (let* ((slice (substring str idx next-idx))
-                      (updated-env (cons (cons key slice) next-env)))
-                 (succeed next-idx updated-env retry-fail)))
-             fail)))
+        (let ((str (->utf32 str)))
+          (pat str idx env
+               (lambda (next-idx next-env retry-fail)
+                 (let* ((slice (utf32-string-copy str idx next-idx))
+                        (updated-env (cons (cons key slice) next-env)))
+                   (succeed next-idx updated-env retry-fail)))
+               fail))))
 
     ;; SPITBOL $ Operator: Immediate Assignment. Extracts the slice
     ;; and updates the lexical environment instantly when 'pat'
@@ -127,27 +134,30 @@
     ;; backtracking alternatives.
     (define (p:immediate-assign pat key)
       (lambda (str idx env succeed fail)
-        (pat str idx env
-             (lambda (next-idx next-env retry-fail)
-               (let* ((slice (substring str idx next-idx))
-                      (updated-env (cons (cons key slice) next-env)))
-                 ;; Pass the updated env forward, keeping the
-                 ;; immediate capture locked into the environment
-                 ;; timeline even on subsequent downstream retries.
-                 (succeed next-idx updated-env retry-fail)))
-             fail)))
+        (let ((str (->utf32 str)))
+          (pat str idx env
+               (lambda (next-idx next-env retry-fail)
+                 (let* ((slice (utf32-string-copy str idx next-idx))
+                        (updated-env (cons (cons key slice) next-env)))
+                   ;; Pass the updated env forward, keeping the
+                   ;; immediate capture locked into the environment
+                   ;; timeline even on subsequent downstream retries.
+                   (succeed next-idx updated-env retry-fail)))
+               fail))))
 
     ;; SPITBOL @ Operator: Cursor Position Assignment. Non-consuming
     ;; primitive that instantly binds the current cursor position
     ;; index to 'key' within the environment alist, then passes
     ;; control forward.
     (define (p:cursor key)
-      (lambda (str idx env succeed fail)
-        (let* ((pos-str (number->string idx))
-               (updated-env (cons (cons key pos-str) env)))
-          ;; Instantly succeed without advancing the cursor index (idx
-          ;; remains unchanged)
-          (succeed idx updated-env fail))))
+      (let ((key (->utf32 key)))
+        (lambda (str idx env succeed fail)
+          (let ((str (->utf32 str)))
+            (let* ((pos-str (number->utf32-string idx))
+                   (updated-env (cons (cons key pos-str) env)))
+              ;; Instantly succeed without advancing the cursor index
+              ;; (idx remains unchanged)
+              (succeed idx updated-env fail))))))
 
     ;; Extracts bound variable data out of the current stack context.
     (define (env-lookup env key default)
@@ -158,10 +168,12 @@
     ;; Dynamically resolves a key's bound value at the moment of
     ;; evaluation.
     (define (p:expr key)
-      (lambda (str idx env succeed fail)
-        (let* ((val (env-lookup env key ""))
-               (lit-pat (p:lit val)))
-          (lit-pat str idx env succeed fail))))
+      (let ((key (->utf32 key)))
+        (lambda (str idx env succeed fail)
+          (let ((str (->utf32 str)))
+            (let* ((val (env-lookup env key ""))
+                   (lit-pat (p:lit val)))
+              (lit-pat str idx env succeed fail))))))
 
     ;; Formats a single recipe element based on whether it is a key or
     ;; literal.
@@ -179,7 +191,7 @@
           (let loop ((rem-recipe recipe)
                      (acc '()))
             (if (null? rem-recipe)
-              (apply string-append (reverse acc))
+              (utf32-string-concatenate (map! ->utf32 (reverse! acc)))
               (let* ((token (car rem-recipe))
                      (chunk (render-recipe-token token env)))
                 (loop (cdr rem-recipe) (cons chunk acc))))))))
@@ -192,13 +204,16 @@
     ;; Literal Matcher: Verifies exact substring presentation at
     ;; index.
     (define (p:lit lit)
-      (let ((lit-len (string-length lit)))
-        (lambda (str idx env succeed fail)
-          (let ((end (+ idx lit-len)))
-            (if (and (<= end (string-length str))
-                     (string=? lit (substring str idx end)))
-              (succeed end env fail)
-              (fail))))))
+      (let ((lit (->utf32 lit)))
+        (let ((lit-len (utf32-string-length lit)))
+          (lambda (str idx env succeed fail)
+            (let ((str (->utf32 str)))
+              (let ((end (+ idx lit-len)))
+                (if (and (<= end (utf32-string-length str))
+                         (utf32-string=? lit (utf32-string-copy
+                                              str idx end)))
+                  (succeed end env fail)
+                  (fail))))))))
 
     ;; Variadic Sequence: Chains an arbitrary list of patterns
     ;; consecutively. Includes single-argument routing to prevent
@@ -206,40 +221,48 @@
     (define p:seq
       (case-lambda
         (() 
-         (lambda (str idx env succeed fail) (succeed idx env fail)))
+         (lambda (str idx env succeed fail)
+           (succeed idx env fail)))
         ((p1) 
          p1) ;; Gracefully return the single pattern directly
         ((p1 p2)
          (lambda (str idx env succeed fail)
-           (p1 str idx env
-               (lambda (next-idx next-env retry-fail)
-                 (p2 str next-idx next-env succeed retry-fail))
-               fail)))
+           (let ((str (->utf32 str)))
+             (p1 str idx env
+                 (lambda (next-idx next-env retry-fail)
+                   (p2 str next-idx next-env succeed retry-fail))
+                 fail))))
         (patterns
          (lambda (str idx env succeed fail)
-           ((car patterns) str idx env
-            (lambda (next-idx next-env retry-fail)
-              ((apply p:seq (cdr patterns)) str next-idx next-env
-               succeed retry-fail))
-            fail)))))
+           (let ((str (->utf32 str)))
+             ((car patterns) str idx env
+              (lambda (next-idx next-env retry-fail)
+                ((apply p:seq (cdr patterns))
+                 str next-idx next-env succeed retry-fail))
+              fail))))))
 
     ;; Variadic Alternation: Tries alternative patterns down the list
     ;; sequentially.
     (define p:alt
       (case-lambda
         (() 
-         (lambda (str idx env succeed fail) (fail)))
+         (lambda (str idx env succeed fail)
+           (fail)))
         ((p1) 
          p1) ;; Gracefully return the single pattern directly
         ((p1 p2)
          (lambda (str idx env succeed fail)
-           (p1 str idx env succeed 
-               (lambda () (p2 str idx env succeed fail)))))
+           (let ((str (->utf32 str)))
+             (p1 str idx env succeed 
+                 (lambda ()
+                   (p2 str idx env succeed fail))))))
         (patterns
          (lambda (str idx env succeed fail)
-           ((car patterns) str idx env succeed 
-            (lambda () 
-              ((apply p:alt (cdr patterns)) str idx env succeed fail)))))))
+           (let ((str (->utf32 str)))
+             ((car patterns) str idx env succeed 
+              (lambda () 
+                ((apply p:alt (cdr patterns))
+                 str idx env succeed fail))))))))
 
     ;;------------------------------------------------------------------
     ;;
@@ -249,10 +272,12 @@
     ;; Finds the furthest index matching the criteria using a string
     ;; character set.
     (define (span-forward-str str idx char-set-str len)
-      (if (and (< idx len)
-               (char-in-string? char-set-str (string-ref str idx)))
-        (span-forward-str str (+ idx 1) char-set-str len)
-        idx))
+      (let ((str (->utf32 str)))
+        (if (and (< idx len)
+                 (char-in-string? char-set-str
+                                  (utf32-string-ref str idx)))
+          (span-forward-str str (+ idx 1) char-set-str len)
+          idx)))
 
     ;; Checks if a character matches any predicate in a list.
     (define (matches-any-pred? char preds)
@@ -264,184 +289,207 @@
     ;; Finds the furthest index matching the criteria using a list of
     ;; predicates.
     (define (span-forward-preds str idx preds len)
-      (if (and (< idx len)
-               (matches-any-pred? (string-ref str idx) preds))
-        (span-forward-preds str (+ idx 1) preds len)
-        idx))
+      (let ((str (->utf32 str)))
+        (if (and (< idx len)
+                 (matches-any-pred? (utf32-string-ref str idx) preds))
+          (span-forward-preds str (+ idx 1) preds len)
+          idx)))
 
     ;; Linearly scales down the matched index when subsequent paths fail.
     (define (span-backtrack str start-idx current-idx env succeed fail)
-      (if (>= current-idx start-idx)
-        (succeed current-idx env 
-                 (lambda () 
-                   (span-backtrack str start-idx (- current-idx 1)
-                                   env succeed fail)))
-        (fail)))
+      (let ((str (->utf32 str)))
+        (if (>= current-idx start-idx)
+          (succeed current-idx env 
+                   (lambda () 
+                     (span-backtrack str start-idx (- current-idx 1)
+                                     env succeed fail)))
+          (fail))))
 
     (define (span-aux preds)
       (lambda (str idx env succeed fail)
-        (let* ((len (string-length str))
-               (max-end (span-forward-preds str idx preds len)))
-          (if (= max-end idx)
-            (fail)
-            (span-backtrack str (+ idx 1) max-end
-                            env succeed fail)))))
+        (let ((str (->utf32 str)))
+          (let* ((len (utf32-string-length str))
+                 (max-end (span-forward-preds str idx preds len)))
+            (if (= max-end idx)
+              (fail)
+              (span-backtrack str (+ idx 1) max-end
+                              env succeed fail))))))
 
     ;; Scans forward until it finds a character inside the
     ;; character-set string.
     (define (break-forward-str str idx char-set-str len)
-      (if (and (< idx len)
-               (not (char-in-string? char-set-str
-                                     (string-ref str idx))))
-        (break-forward-str str (+ idx 1) char-set-str len)
-        idx))
+      (let ((str (->utf32 str)))
+        (if (and (< idx len)
+                 (not (char-in-string? char-set-str
+                                       (utf32-string-ref str idx))))
+          (break-forward-str str (+ idx 1) char-set-str len)
+          idx)))
 
     ;; Scans forward until it finds a character satisfying any of the
     ;; predicates.
     (define (break-forward-preds str idx preds len)
-      (if (and (< idx len)
-               (not (matches-any-pred? (string-ref str idx) preds)))
-        (break-forward-preds str (+ idx 1) preds len)
-        idx))
+      (let ((str (->utf32 str)))
+        (if (and (< idx len)
+                 (not (matches-any-pred? (utf32-string-ref str idx) preds)))
+          (break-forward-preds str (+ idx 1) preds len)
+          idx)))
 
     ;; Drops the cursor backward one character at a time on downstream
     ;; failure.
     (define (break-backtrack str start-idx current-idx env succeed fail)
-      (if (>= current-idx start-idx)
-        (succeed current-idx env 
-                 (lambda () 
-                   (break-backtrack str start-idx (- current-idx 1) env
-                                    succeed fail)))
-        (fail)))
+      (let ((str (->utf32 str)))
+        (if (>= current-idx start-idx)
+          (succeed current-idx env 
+                   (lambda () 
+                     (break-backtrack str start-idx (- current-idx 1) env
+                                      succeed fail)))
+          (fail))))
 
     (define (break-aux preds)
       (lambda (str idx env succeed fail)
-        (let* ((len (string-length str))
-               (max-end (break-forward-preds str idx preds len)))
-          (if (= max-end idx)
-            (fail)
-            (break-backtrack str (+ idx 1) max-end env succeed fail)))))
+        (let ((str (->utf32 str)))
+          (let* ((len (utf32-string-length str))
+                 (max-end (break-forward-preds str idx preds len)))
+            (if (= max-end idx)
+              (fail)
+              (break-backtrack str (+ idx 1) max-end env succeed fail))))))
 
     ;; SNOBOL LEN(n): Consumes a fixed chunk of characters safely.
     (define (p:len n)
       (lambda (str idx env succeed fail)
-        (let ((end (+ idx n)))
-          (if (<= end (string-length str))
-            (succeed end env fail)
-            (fail)))))
+        (let ((str (->utf32 str)))
+          (let ((end (+ idx n)))
+            (if (<= end (utf32-string-length str))
+              (succeed end env fail)
+              (fail))))))
 
     ;; SNOBOL ARB: Corrected to match minimally (0 characters initially)
     (define (arb-loop str idx env n succeed fail)
-      (let ((end (+ idx n)))
-        (if (<= end (string-length str))
-          (succeed end env (lambda () (arb-loop str idx env (+ n 1)
-                                                succeed fail)))
-          (fail))))
+      (let ((str (->utf32 str)))
+        (let ((end (+ idx n)))
+          (if (<= end (utf32-string-length str))
+            (succeed end env (lambda () (arb-loop str idx env (+ n 1)
+                                                  succeed fail)))
+            (fail)))))
 
     (define (p:arb)
       (lambda (str idx env succeed fail)
-        (arb-loop str idx env 0 succeed fail)))
+        (let ((str (->utf32 str)))
+          (arb-loop str idx env 0 succeed fail))))
 
     ;; SNOBOL BREAK: An atomic, non-backtracking choice point. Once it
     ;; scans up to the breakpoint, it passes that fixed slice forward.
     (define p:break
       (case-lambda
         ((char-set-str)
-         (lambda (str idx env succeed fail)
-           (let* ((len (string-length str))
-                  (max-end (break-forward-str str idx char-set-str len)))
-             (if (< idx max-end)
-               ;; Pure SNOBOL: no backtrack wrapper here.
-               (succeed max-end env fail)
-               (fail)))))
-        (preds
-         (lambda (str idx env succeed fail)
-           (let* ((len (string-length str))
-                  (max-end (break-forward-preds str idx preds len)))
-             (if (< idx max-end)
-               (succeed max-end env fail)
-               (fail)))))))
+         (let ((char-set-str (->utf32 char-set-str)))
+           (lambda (str idx env succeed fail)
+             (let ((str (->utf32 str)))
+               (let* ((len (utf32-string-length str))
+                      (max-end (break-forward-str
+                                str idx char-set-str len)))
+                 (if (< idx max-end)
+                   ;; Pure SNOBOL: no backtrack wrapper here.
+                   (succeed max-end env fail)
+                   (fail)))))))
+         (preds
+          (lambda (str idx env succeed fail)
+            (let ((str (->utf32 str)))
+              (let* ((len (utf32-string-length str))
+                     (max-end (break-forward-preds str idx preds len)))
+                (if (< idx max-end)
+                  (succeed max-end env fail)
+                  (fail))))))))
 
     ;; SNOBOL SPAN: Similarly atomic and non-backtracking.
     (define p:span
       (case-lambda
         ((char-set-str)
-         (lambda (str idx env succeed fail)
-           (let* ((len (string-length str))
-                  (max-end (span-forward-str str idx char-set-str len)))
-             (if (< idx max-end)
-               (succeed max-end env fail)
-               (fail)))))
+         (let ((char-set-str (->utf32 char-set-str)))
+           (lambda (str idx env succeed fail)
+             (let ((str (->utf32 str)))
+               (let* ((len (utf32-string-length str))
+                      (max-end (span-forward-str
+                                str idx char-set-str len)))
+                 (if (< idx max-end)
+                   (succeed max-end env fail)
+                   (fail)))))))
         (preds
          (lambda (str idx env succeed fail)
-           (let* ((len (string-length str))
-                  (max-end (span-forward-preds str idx preds len)))
-             (if (< idx max-end)
-               (succeed max-end env fail)
-               (fail)))))))
+           (let ((str (->utf32 str)))
+             (let* ((len (utf32-string-length str))
+                    (max-end (span-forward-preds str idx preds len)))
+               (if (< idx max-end)
+                 (succeed max-end env fail)
+                 (fail))))))))
 
     ;; Internal tracking loop that jumps precisely from one delimiter
     ;; landmark to the next.
     (define (breakx-loop str start-idx current-delimiter-idx
                          char-set-str env succeed fail)
-      (let ((len (string-length str)))
-        (succeed current-delimiter-idx env
-                 (lambda ()
-                   ;; If downstream fails, scan for the NEXT
-                   ;; occurrence strictly past this one.
-                   (if (< current-delimiter-idx len)
-                     (let ((next-end (break-forward-str
-                                      str (+ current-delimiter-idx 1)
-                                      char-set-str len)))
-                       (if (<= next-end len)
-                         ;; If another delimiter is found, pivot the
-                         ;; retry straight to it.
-                         (breakx-loop str start-idx next-end
-                                      char-set-str env succeed fail)
-                         (fail)))
-                     (fail))))))
+      (let ((str (->utf32 str)))
+        (let ((len (utf32-string-length str)))
+          (succeed current-delimiter-idx env
+                   (lambda ()
+                     ;; If downstream fails, scan for the NEXT
+                     ;; occurrence strictly past this one.
+                     (if (< current-delimiter-idx len)
+                       (let ((next-end (break-forward-str
+                                        str (+ current-delimiter-idx 1)
+                                        char-set-str len)))
+                         (if (<= next-end len)
+                           ;; If another delimiter is found, pivot the
+                           ;; retry straight to it.
+                           (breakx-loop str start-idx next-end
+                                        char-set-str env succeed fail)
+                           (fail)))
+                       (fail)))))))
 
     ;; SPITBOL BREAKX: Moves to the first delimiter boundary, and
     ;; leaps to subsequent delimiter positions on downstream failures.
     (define (p:breakx char-set-str)
-      (lambda (str idx env succeed fail)
-        (let* ((len (string-length str))
-               (first-end (break-forward-str str idx
-                                             char-set-str len)))
-          ;; BREAKX must find at least one character before the
-          ;; initial delimiter to succeed.
-          (if (< idx first-end)
-            (breakx-loop str idx first-end char-set-str env
-                         succeed fail)
-            (fail)))))
+      (let ((char-set-str (->utf32 char-set-str)))
+        (lambda (str idx env succeed fail)
+          (let ((str (->utf32 str)))
+            (let* ((len (utf32-string-length str))
+                   (first-end (break-forward-str str idx
+                                                 char-set-str len)))
+              ;; BREAKX must find at least one character before the
+              ;; initial delimiter to succeed.
+              (if (< idx first-end)
+                (breakx-loop str idx first-end char-set-str env
+                             succeed fail)
+                (fail)))))))
 
     ;; Internal stepping loop for ARBNO. Evaluates the target pattern
     ;; 'pat' once, and if it succeeds, pipes its success continuation
     ;; into a recursive instance of itself to match more blocks.
     (define (arbno-loop pat str idx env succeed fail)
-      (pat str idx env
-           (lambda (next-idx next-env retry-fail)
-             ;; CRITICAL SPITBOL SEMANTICS: Enforce forward progress
-             ;; to prevent infinite loops on empty-matching patterns.
-             (if (< idx next-idx)
-               (succeed next-idx next-env
-                        (lambda ()
-                          (arbno-loop pat str next-idx next-env
-                                      succeed retry-fail)))
-               (succeed idx env fail)))
-           fail))
+      (let ((str (->utf32 str)))
+        (pat str idx env
+             (lambda (next-idx next-env retry-fail)
+               ;; CRITICAL SPITBOL SEMANTICS: Enforce forward progress
+               ;; to prevent infinite loops on empty-matching patterns.
+               (if (< idx next-idx)
+                 (succeed next-idx next-env
+                          (lambda ()
+                            (arbno-loop pat str next-idx next-env
+                                        succeed retry-fail)))
+                 (succeed idx env fail)))
+             fail)))
 
     ;; SNOBOL/SPITBOL ARBNO: Matches zero or more repetitions of 'pat'
     ;; minimally. Initially matches 0 characters, expanding to match
     ;; more blocks on downstream failure.
     (define (p:arbno pat)
       (lambda (str idx env succeed fail)
-        ;; Immediately succeed matching 0 characters.
-        (succeed idx env
-                 (lambda ()
-                   ;; On downstream failure, fallback and try to match
-                   ;; 1 or more pieces.
-                   (arbno-loop pat str idx env succeed fail)))))
+        (let ((str (->utf32 str)))
+          ;; Immediately succeed matching 0 characters.
+          (succeed idx env
+                   (lambda ()
+                     ;; On downstream failure, fallback and try to
+                     ;; match 1 or more pieces.
+                     (arbno-loop pat str idx env succeed fail))))))
 
     ;;------------------------------------------------------------------
     ;;
@@ -451,42 +499,47 @@
     ;; Core abstraction for analyzing single character elements.
     (define (p:pred predicate)
       (lambda (str idx env succeed fail)
-        (if (< idx (string-length str))
-          (let ((char (string-ref str idx)))
-            (if (predicate char)
-              (succeed (+ idx 1) env fail)
-              (fail)))
-          (fail))))
+        (let ((str (->utf32 str)))
+          (if (< idx (utf32-string-length str))
+            (let ((char (utf32-string-ref str idx)))
+              (if (predicate char)
+                (succeed (+ idx 1) env fail)
+                (fail)))
+            (fail)))))
 
     ;; Tail-recursive search for validating single elements inside raw
     ;; string containers.
     (define (string-has-char? str target-char)
-      (let ((len (string-length str)))
-        (let loop ((i 0))
-          (cond ((= i len) #f)
-                ((char=? (string-ref str i) target-char) #t)
-                (else (loop (+ i 1)))))))
+      (let ((str (->utf32 str)))
+        (let ((len (utf32-string-length str)))
+          (let loop ((i 0))
+            (cond ((= i len) #f)
+                  ((char=? (utf32-string-ref str i) target-char) #t)
+                  (else (loop (+ i 1))))))))
 
     ;; SNOBOL ANY: Matches a character found inside a target set
     ;; string.
     (define (p:any char-set-str)
-      (p:pred (lambda (char) 
-                (string-has-char? char-set-str char))))
+      (let ((char-set-str (->utf32 char-set-str)))
+        (p:pred (lambda (char) 
+                  (string-has-char? char-set-str char)))))
 
     ;; SNOBOL NOTANY: Matches a character absent from a target set
     ;; string.
     (define (p:notany char-set-str)
-      (p:pred (lambda (char) 
-                (not (string-has-char? char-set-str char)))))
+      (let ((char-set-str (->utf32 char-set-str)))
+        (p:pred (lambda (char) 
+                  (not (string-has-char? char-set-str char))))))
 
     ;; Internal character lookup helper to keep branch depth under the
     ;; ceiling.
     (define (char-in-string? str target-char)
-      (let ((len (string-length str)))
-        (let loop ((i 0))
-          (cond ((= i len) #f)
-                ((char=? (string-ref str i) target-char) #t)
-                (else (loop (+ i 1)))))))
+      (let ((str (->utf32 str)))
+        (let ((len (utf32-string-length str)))
+          (let loop ((i 0))
+            (cond ((= i len) #f)
+                  ((char=? (utf32-string-ref str i) target-char) #t)
+                  (else (loop (+ i 1))))))))
 
     ;; Matches a single character at the cursor index if it matches
     ;; any character in a string set, or satisfies any predicate in a
@@ -505,7 +558,7 @@
         ((arg)
          (if (procedure? arg)
            (p:pred arg)
-           (let ((char-set-str arg))
+           (let ((char-set-str (->utf32 arg)))
              (p:pred (lambda (char) 
                        (char-in-string? char-set-str char))))))
         ;;
@@ -544,8 +597,8 @@
         ((arg)
          (if (procedure? arg)
            (none-of-aux (list arg))
-           (let ((char-set-str arg))
-             (p:pred (lambda (char) 
+           (let ((char-set-str (->utf32 arg)))
+             (p:pred (lambda (char)
                        (not (char-in-string? char-set-str char)))))))
         ;;
         ;; Multi-argument predicate list variation:
@@ -559,24 +612,27 @@
     ;; another instance of `pat`. If it succeeds, it sets up a
     ;; backtracking choice point to the prior length.
     (define (many-loop pat str idx env succeed fail)
-      (pat str idx env
-           (lambda (next-idx next-env retry-fail)
-             (if (< idx next-idx)
-               (many-loop pat str next-idx next-env succeed
-                          (lambda () (succeed idx env retry-fail)))
-               (succeed idx env fail)))
-           (lambda () (succeed idx env fail))))
+      (let ((str (->utf32 str)))
+        (pat str idx env
+             (lambda (next-idx next-env retry-fail)
+               (if (< idx next-idx)
+                 (many-loop pat str next-idx next-env succeed
+                            (lambda () (succeed idx env retry-fail)))
+                 (succeed idx env fail)))
+             (lambda ()
+               (succeed idx env fail)))))
 
     ;; SNOBOL equivalent to matching 1 or more repetitions of a
     ;; pattern. Evaluates `pat` exactly once, then hands control off
     ;; to the greedy backtracking loop.
     (define (p:many pat)
       (lambda (str idx env succeed fail)
-        (pat str idx env
-             (lambda (next-idx next-env retry-fail)
-               (many-loop pat str next-idx next-env
-                          succeed retry-fail))
-             fail)))
+        (let ((str (->utf32 str)))
+          (pat str idx env
+               (lambda (next-idx next-env retry-fail)
+                 (many-loop pat str next-idx next-env
+                            succeed retry-fail))
+               fail))))
 
     ;; SNOBOL equivalent to matching 0 or more repetitions of a
     ;; pattern. Greedily matches as many instances as possible, but
@@ -620,10 +676,7 @@
     ;;
 
     (define *bracket-pair-list*
-      ;; Start with the brackets supported by popular Schemes.
-      (make-parameter (list (list '(#\( . #\)) 
-                                  '(#\[ . #\]) 
-                                  '(#\{ . #\})))))
+      (make-parameter (list (list))))
 
     (define (bracket-pairs)
       (car (*bracket-pair-list*)))
@@ -648,6 +701,12 @@
                                     (car (*bracket-pair-list*))))))
            body ... (if #f #f)))))
 
+    ;; Start with the brackets supported by popular Schemes.
+    (set-bracket-pairs!
+     (list '(#\( . #\))
+           '(#\[ . #\]) 
+           '(#\{ . #\})))
+
     ;; Checks if a character matches any registered open or close
     ;; bracket symbol.
     (define (any-bracket? char)
@@ -658,44 +717,49 @@
     ;; Matches a single character that is not a registered bracket
     ;; type.
     (define (p:bal-text-char)
-      (p:pred (lambda (char) 
+      (p:pred (lambda (char)
                 (not (any-bracket? char)))))
 
     ;; Nested context structural matcher. Dynamically finds the
     ;; correct closing character for whatever open bracket it sees.
     (define (p:bal-nest)
       (lambda (str idx env succeed fail)
-        (if (< idx (string-length str))
-          (let* ((open-char (string-ref str idx))
-                 (pair (assoc open-char (bracket-pairs))))
-            (if pair
-              (let* ((close-str (string (cdr pair)))
-                     (open-str (string open-char))
-                     (nest-pat (p:seq (p:lit open-str)
-                                      (p:seq (p:bal-loop) 
-                                             (p:lit close-str)))))
-                (nest-pat str idx env succeed fail))
-              (fail)))
-          (fail))))
+        (let ((str (->utf32 str)))
+          (if (< idx (utf32-string-length str))
+            (let* ((open-char (utf32-string-ref str idx))
+                   (pair (assoc open-char (bracket-pairs))))
+              (if pair
+                (let* ((close-str (string (cdr pair)))
+                       (open-str (string open-char))
+                       (nest-pat (p:seq (p:lit open-str)
+                                        (p:seq (p:bal-loop) 
+                                               (p:lit close-str)))))
+                  (nest-pat str idx env succeed fail))
+                (fail)))
+            (fail)))))
 
     ;; Balanced element parser: Either pure text or a matching bracket
     ;; block.
     (define (bal-element str idx env succeed fail)
-      (let ((alt-matcher (p:alt (p:bal-text-char) (p:bal-nest))))
-        (alt-matcher str idx env succeed fail)))
+      (let ((str (->utf32 str)))
+        (let ((alt-matcher (p:alt (p:bal-text-char) (p:bal-nest))))
+          (alt-matcher str idx env succeed fail))))
 
     ;; Zero-or-more tracking driver to safely loop consecutive
     ;; balanced components
     (define (bal-loop-proc str idx env succeed fail)
-      (let ((loop-matcher (p:alt (p:seq bal-element (p:bal-loop))
-                                 (lambda (s i e succ f) (succ i e f)))))
-        (loop-matcher str idx env succeed fail)))
+      (let ((str (->utf32 str)))
+        (let ((loop-matcher (p:alt (p:seq bal-element (p:bal-loop))
+                                   (lambda (s i e succ f)
+                                     (succ i e f)))))
+          (loop-matcher str idx env succeed fail))))
 
     ;; Thunk construction layer to shield recursive loop compilation
     ;; paths.
     (define (p:bal-loop)
       (lambda (str idx env succeed fail)
-        (bal-loop-proc str idx env succeed fail)))
+        (let ((str (->utf32 str)))
+          (bal-loop-proc str idx env succeed fail))))
 
     ;; Global multi-bracket SNOBOL BAL variant.
     (define (p:bal)
@@ -712,20 +776,22 @@
     ;; exceeds the string length.
     (define (p:tab n)
       (lambda (str idx env succeed fail)
-        (if (and (>= n idx)
-                 (<= n (string-length str)))
-          (succeed n env fail)
-          (fail))))
+        (let ((str (->utf32 str)))
+          (if (and (>= n idx)
+                   (<= n (utf32-string-length str)))
+            (succeed n env fail)
+            (fail)))))
 
     ;; SNOBOL RTAB(n): Moves the cursor forward, leaving exactly n
     ;; characters remaining. Fails if fewer than n characters remain
     ;; from the current cursor position.
     (define (p:rtab n)
       (lambda (str idx env succeed fail)
-        (let ((target-idx (- (string-length str) n)))
-          (if (>= target-idx idx)
-            (succeed target-idx env fail)
-            (fail)))))
+        (let ((str (->utf32 str)))
+          (let ((target-idx (- (utf32-string-length str) n)))
+            (if (>= target-idx idx)
+              (succeed target-idx env fail)
+              (fail))))))
 
     ;; SNOBOL REM: Matches the entire remainder of the string.
     (define (p:rem)

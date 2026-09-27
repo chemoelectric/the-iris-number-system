@@ -29,8 +29,8 @@
 
   (import (scheme base))
   (cond-expand
-    ((library (scheme list)) (import (scheme list)))
     ((library (srfi 1)) (import (srfi 1)))
+    ((library (scheme list)) (import (scheme list)))
     (else (import (srfi srfi-1))))
 
   (begin
