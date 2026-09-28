@@ -717,25 +717,32 @@
                (set! t (utf32-string-copy t 1))
                (loop)))))
 
-    (define (run-the-program definitions input-file output-file)
-      (let ((use-stdin? (string=? input-file "-"))
-            (use-stdout? (string=? output-file "-")))
-        (let ((input-port (if use-stdin?
-                            (current-input-port)
-                            (open-input-file input-file)))
-              (output-port (if use-stdout?
-                             (current-output-port)
-                             (open-output-file output-file))))
-          (let ((text (read-to-string input-port)))
-            (localize-bracket-pairs
-             (set-bracket-pairs!
-              (cons (cons comment-left comment-right)
-                    (bracket-pairs)))
-             (process-text definitions text output-port)))
-          (unless use-stdin?
-            (close-input-port input-port))
-          (unless use-stdout?
-            (close-output-port output-port)))))
+    (define (run-the-program definitions input-files output-file)
+      (let* ((use-stdout? (string=? output-file "-"))
+             (output-port (if use-stdout?
+                            (current-output-port)
+                            (open-output-file output-file)))
+             (texts (list)))
+        (do ((p input-files (cdr p)))
+            ((null-list? p))
+          (let* ((input-file (car p))
+                 (use-stdin? (string=? input-file "-"))
+                 (input-port (if use-stdin?
+                               (current-input-port)
+                               (open-input-file input-file))))
+            (let ((text (read-to-string input-port)))
+              (set! texts (append! texts (list text))))
+            (unless use-stdin?
+              (close-input-port input-port))))
+        (localize-bracket-pairs
+         (set-bracket-pairs!
+          (cons (cons comment-left comment-right)
+                (bracket-pairs)))
+         (process-text definitions
+                       (utf32-string-concatenate texts)
+                       output-port))
+        (unless use-stdout?
+          (close-output-port output-port))))
 
 ;;;---------------------------------------------------------------------
 
@@ -746,7 +753,11 @@
       (constructor> initial-seed
                     (lambda (construct)
                       (lambda ()
-                        (construct (list) (list) #f #f))))
+                        (construct (list) ; positionals
+                                   (list) ; definitions
+                                   #f     ; deterministic?
+                                   "-"    ; output
+                                   ))))
 
       ;;
       ;; Positional arguments.
@@ -802,18 +813,22 @@
                      (error "expected a boolean" value))
                    (setter! obj value))))
 
-      (getter> 4 get-help)
-      (setter> 4 set-help!
-               (lambda (setter!)
-                 (lambda (obj value)
-                   (unless (boolean? value)
-                     (error "expected a boolean" value))
-                   (setter! obj value))))
+      (getter> 4 get-output)
+      (setter> 4 set-output!)
 
       ) ;; end <seed>
 
     (define options
       (list
+       ;;
+       ;; -o file, --output=file
+       ;;
+       (option
+        '(#\o "output") #t #f
+        (lambda (opt name arg seed)
+          (set-output! seed arg)
+          seed))
+
        ;;
        ;; -D name[=value], --define=name[=value]
        ;;
@@ -969,42 +984,44 @@
       (let ((port (current-output-port)))
         (display "Usage: " port)
         (display (*program-name*) port)
-        ;;
-        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
-        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
-        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
-        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
-        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
-        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
-        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
-        ;;
-        (display " [OPTION]... [INFILE [OUTFILE]]\n\n" port)
-        (display "If OUTFILE is “-” or left out, \
-                  standard output is used.\n\
-                  If INFILE is “-” or left out, \
-                  standard input is used.\n\n"
+        (display " [OPTION]... [FILE]...\n" port)
+        (display "Process macros in FILEs. If no FILE or if FILE is \
+                  “-”, standard input\nis read.\n\n"
                  port)
         (display "Mandatory or optional arguments to long options \
                   are mandatory or optional\n\
                   for short options too.\n\n"
                  port)
+
         (display "  -D, --define=NAME[=VALUE]" port)
         (display "    define NAME as having VALUE, or empty\n"
                  port)
+
         (display "  -U, --undefine=NAME" port)
         (display "          undefine NAME\n" port)
+
+        (display "  -o, --output=FILE" port)
+        (display "            output to FILE, or to standard output\n"
+                 port)
+        (display "                                 if FILE is “-”\n"
+                 port)
+
         (display "      --deterministic" port)
         (display "          deterministic “if”, “while”\n"
                  port)
+
         (display "      --nondeterministic" port)
         (display "       nondeterministic “if”, “while” [default]\n"
                  port)
+
         (display "      --help" port)
         (display "                   display this help and exit\n"
                  port)
+
         (display "      --version" port)
         (display "                output version information and exit\n"
                  port)
+
         (exit exit-status)))
 
     (define (version-handler exit-status)
@@ -1056,21 +1073,17 @@ OTHER DEALINGS IN THE SOFTWARE.\n"
         (parameterize ((*program-name* (first arguments)))
           (let* ((arguments (cdr arguments))
                  (seed (parse-arguments arguments))
-                 (args (get-positionals seed))
-                 (definitions (get-definitions seed)))
+                 (positionals (get-positionals seed))
+                 (definitions (get-definitions seed))
+                 (deterministic? (get-deterministic seed))
+                 (output-filename (get-output seed)))
             (check-definitions definitions)
-            (parameterize ((*deterministic?* (get-deterministic seed)))
-              (case (length args)
-                ((0) (run-the-program definitions "-" "-"))
-                ((1) (run-the-program definitions (first args) "-"))
-                ((2) (run-the-program definitions
-                                      (first args) (second args)))
-                (else
-                 (let ((port (current-error-port)))
-                   (display (*program-name*) port)
-                   (display ": too many arguments\n" port)
-                   (try-help port)
-                   (exit 1)))))))))
+            (parameterize ((*deterministic?* deterministic?))
+              (case (length positionals)
+                ((0) (run-the-program definitions '("-")
+                                      output-filename))
+                (else (run-the-program definitions positionals
+                                       output-filename))))))))
 
     ))
 
