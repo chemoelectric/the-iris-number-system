@@ -1,0 +1,130 @@
+= TO DO
+
+* A volume honoring Oliver Sacks, on abstracting, aura, hallucination,
+  delusion, etc. Cortical and cerebral function in general.
+
+  - Migraine, cluster headache, epilepsy, aura, hallucination,
+    delusion, drug-induced, etc.
+
+    * In humans.
+
+    * In divorce lawyers.
+
+    * In primates.
+
+    * In mammals other than primates. In particular dogs, cats, pigs,
+      horses, rats, jackalopes, esquilaxes, etc. And in birds.
+
+    * In other chordates.
+
+    * In cephalopods.
+
+    * In other creatures. Other molluscs, arthropods, etc.
+
+    * In plants.
+
+    * In microbes.
+
+    * In machines and software.
+
+  - Secondary to this all is the question of “general artificial
+    intelligence.” We are hardnosed and must insist upon a definition.
+    Our definition is that the “general AI” must be structurally
+    similar to a human.
+
+    * This does _not_ mean it must suffer the same migraine auras!
+      That would be the same kind of category error as assuming
+      massive networks of anything vaguely resembling neurons would
+      produce “general intelligence” by some magical process of
+      “emergence.”
+
+    * _We know darn well that neither “consciousness” nor
+      “intelligence” is “emergent”!_ +
+        +
+      Someone will demand, “How do we know _that_?” But is it not
+      clear? Merely look at the animal world. These things came about
+      by slow evolution. They developed in degrees. They did not
+      “emerge.” _They did not “emerge”!_ +
+        +
+      It is disheartening that there are people who are paid salaries
+      at universities to go around theorizing about “emergence” of
+      what plainly are the results of slow evolution.
+
+    * LLMs do an excellent job of mimickry but are absolutely empty
+      inside and are structurally extremely dissimilar to humans. They
+      are very powerful inference engines that operate largely by
+      talking to themselves. They would probably operate much better
+      as inference engines if done by some other means that were not
+      too different, but which did not waste effort mimicking humans. +
+        +
+      What might be done is to separate the functions into two layers:
+      one of mimickry as user interface, and one to do the heavy
+      inference. +
+        +
+      As code generators they are not very good, but this is largely
+      because they code by learning from examples, and the examples
+      they learn from are written by computer programmers. Computer
+      programmers are, generally speaking, incompetent boobs. So LLMs
+      program by extrapolating the overwhelming professional
+      incompetence of computer programmers.
+
+  - Disciplined mentation vs. schooling and buzzwords.
+
+    * “Critical thinking” is mostly an empty school buzzword. What is
+      actually needed is disciplined mentation.
+
+    * Schools train people to be helpless, repeating formulas and
+      believing knowledge is too specialized for an ordinary person to
+      understand without an “expert.”
+
+    * Conscious thought can actually hurt physically. It is not some
+      weightless game.
+
+    * Having knuckles hit with a wooden ruler to unteach self-taught
+      lettering before school: a brutal enforcement of conformity that is
+      neither forgotten nor forgiven.
+
+    * Core rules of disciplined mentation:
+      ** Put things in correct temporal order: unconscious first, conscious
+         second.
+      ** Distinguish individuals existing in Nature (organisms) from
+         category terms (species).
+      ** Keep representations clean: use Maxwell’s equations, avoid
+         metaphysical baggage, coordinate-free methods, don’t confuse the
+         map with the territory.
+      ** Show that any disciplined person can understand fundamental
+         matters better than credentialed Ph.D.s.
+
+  - Reasoning backwards (Sherlock Holmes) and childhood reality.
+
+    * Reasoning backwards: look at the fact and trace back to the real
+      cause, instead of taking the easy superficial blame.
+
+    * The shoe-tying example: Mrs. G. mocked me for not knowing how to
+      tie my shoes at age six. But if an otherwise intelligent six-year-old
+      can’t tie his shoes, that doesn’t mean something is wrong with the
+      kid—it means his mother was neglectful and didn't bother to teach
+      him to take care of himself.
+
+    * Mrs. G. used the wooden ruler for everything, including racial
+      prejudice in a mixed-race neighborhood on the Franklin/New
+      Brunswick border.
+
+    * But she also had a girl I knew show me how to tie shoes in a simple
+      way a six-year-old could actually get, unlike my mother's
+      half-hearted complex attempts.
+
+    * And when I had scarlet fever, her son made me a coin bank out of a
+      honey jar. I still have it, and I still keep silver dollars in it.
+
+  - Rabbi Blumenthal’s Hebrew School lesson on not ratting.
+
+    * Rabbi Blumenthal (from England, Yorkshire perhaps). When someone
+      shot a spitball, he would keep the whole class after until someone
+      ratted on the spitballer.
+    * Once someone ratted, he let the entire class go—except for the
+      spitballer and the rat.
+    * Using the moment to teach an unforgettable Jewish principle against
+      ratting on others. Unpleasant at the time, but brilliant and
+      beautiful in hindsight.
+

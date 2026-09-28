@@ -1,0 +1,14 @@
+DEFINITION MODULE NthPrime64;
+
+(* NthPrime64.def - ISO Modula-2 interface for 64-bit nth-prime engine. *)
+
+FROM SYSTEM IMPORT CARDINAL64;
+
+EXPORT QUALIFIED GetNthPrimeU64, GetNthPrimeStr;
+
+PROCEDURE GetNthPrimeU64 (nVal : CARDINAL64) : CARDINAL64;
+
+PROCEDURE GetNthPrimeStr (VAR outStr : ARRAY OF CHAR;
+                          inStr : ARRAY OF CHAR);
+
+END NthPrime64.

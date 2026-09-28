@@ -1,0 +1,368 @@
+= m-res Numerical Analysis and Statistical Mechanics
+:author: Frédéric Blondin Custer
+:doctype: article
+:toc: left
+:toc-title: Table of Contents
+:stem: latexmath
+:sectnums!:
+
+== Abstract
+
+Conventional numerical solution of stiff differential equations can
+require millions of tiny, roundoff-plagued steps. The difficulty
+disappears if continuous real numbers are discarded in favor of jets
+of discrete Iris real and \( m \)-resolution numbers. Stiff transients
+vanish in a single step at the discrete aperture threshold, and the
+remaining response is evaluated in closed algebraic form without
+division.
+
+Meanwhile, using Iris real and \( m \)-res numbers for statistical
+mechanics gives discrete lattices and maximum entropy as fundamental
+tools. Matter is matter and not pinpricks, and probabilities are not a
+phase-space haze but instead represent plausible inferences. On the
+discrete lattice, maximum entropy over finite configurations yields
+the Boltzmann distribution directly through contact topology and
+finite-duration interactions, uniting computation and statistical
+mechanics.
+
+Applying \( m \)-res statistical mechanics to the Master Field
+Equation predicts viscosity and resistivity from first principles.
+
+== Foundations of \( m \)-res Numerical Analysis
+
+Conventional numerical analysis is historically abstracted backwards: an unmeasurable, uncountably infinite “continuum” is postulated as if it were known to exist in the external world, and finite discrete computations are denigrated as mere “approximations” plagued by truncation and roundoff errors. However, the only reason to believe a “continuum” exists is conventional mathematics _has words for it_. There is no empirical evidence for such a thing, and the “continuum” provably brings numerous pathologies into mathematics.
+
+In the Iris number system, realities are represented instead at discrete, finite spatial and temporal resolutions.
+The discrete lattice \( \mathcal{G}_N \) and its finite aperture scale \( l_{\text{res}} \) provide a language in which it is impossible for the fantasy of a “continuum” to interfere with logical reasoning.
+
+
+[#definition-m-res-lattice-mesh]
+[DEFINITION]
+.Definition: \( m \)-Resolution Lattice Mesh and Metric Resolution
+====
+Let \( \mathcal{G}_N ^ {(m)} \subset \mathbb{Q} ^ d \) denote the \( m \)-resolution spatial grid in \( d \) spatial dimensions defined by a finite resolution increment \( \Delta x_{(m)} = 2 ^ {-m} l_0 \), where \( l_0 \) is the fundamental macroscopic aperture scale and \( m \in \mathbb{N}_0 \) designates the finite Vernier resolution level.
+The spatial domain is bounded within a finite aperture box \( \Omega = [-L, L] ^ d \) such that the total number of discrete grid locations is strictly finite:
+\[ N_{(m)} = \left( \frac{2 L}{\Delta x_{(m)}} + 1 \right) ^ d = \left( \frac{2 L}{l_0} 2 ^ m + 1 \right) ^ d < \infty \]
+
+Each discrete lattice position is addressed by an integer coordinate vector \( \mathbf{n} = (n_1, \dots, n_d) \in \mathbb{Z} ^ d \) yielding the position vector:
+\[ \mathbf{x}_{\mathbf{n}} = \mathbf{n} \Delta x_{(m)} \in \mathcal{G}_N ^ {(m)} \]
+====
+
+[#definition-aperture-exact-discrete-differential]
+[DEFINITION]
+.Definition: Aperture-Exact Discrete Multivector Difference Operators
+====
+Let \( \Phi: \mathcal{G}_N ^ {(m)} \to Cl(4,1,1) \) be a discrete multivector field configuration.
+The discrete spatial directional difference operator \( \Delta_k ^ {(m)} \) along the spatial basis vector \( e_k \) (\( k \in \{1, 2, 3\} \)) is defined by the central rational difference:
+\[ \Delta_k ^ {(m)} \Phi(\mathbf{x}) = \frac{\Phi(\mathbf{x} + \Delta x_{(m)} e_k) - \Phi(\mathbf{x} - \Delta x_{(m)} e_k)}{2 \Delta x_{(m)}} \]
+
+The discrete multivector gradient operator on \( \mathcal{G}_N ^ {(m)} \) is the directed sum:
+\[ D_{(m)} \Phi(\mathbf{x}) = \sum_{k=1} ^ d e_k \Delta_k ^ {(m)} \Phi(\mathbf{x}) \]
+which is an exact, rational multivector mapping on \( \mathcal{G}_N ^ {(m)} \) without appeal to limits \( \Delta x_{(m)} \to 0 \).
+====
+
+[#theorem-vernier-aperture-stability]
+[THEOREM]
+.Theorem: Vernier Aperture Stability and Exact Finite Convergence
+====
+Let \( \Phi ^ {(m)} \) and \( \Phi ^ {(m+1)} \) denote discrete multivector field configurations on nested grids \( \mathcal{G}_N ^ {(m)} \subset \mathcal{G}_N ^ {(m+1)} \), and let \( \mathcal{P}_m ^ {m+1}: \mathcal{G}_N ^ {(m+1)} \to \mathcal{G}_N ^ {(m)} \) denote the canonical projection operator.
+If the multivector field satisfies the bounded aperture variation condition:
+\[ \max _ {\mathbf{x} \in \mathcal{G} _ N ^ {(m)}} \left\| \Phi ^ {(m+1)}(\mathbf{x}) - \Phi ^ {(m)}(\mathbf{x}) \right\| _ {Cl} \le C \cdot 2 ^ {-(m \alpha)} \]
+for positive constants \( C < \infty \) and \( \alpha \ge 1 \), then for any operational tolerance \( \epsilon _ {\text{res}} = 2 ^ {-M} \), there exists a finite integer resolution level:
+\[ m ^ \ast = \left\lceil \frac{1}{\alpha} \log _ 2 \left( \frac{C}{\epsilon _ {\text{res}}} \right) \right\rceil < \infty \]
+such that for all resolution levels \( m \ge m ^ \ast \), the field values are identically stable within the operational aperture:
+\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {Cl} \le \epsilon _ {\text{res}} \]
+without requiring an unphysical infinite-resolution limit.
+
+*Proof:*
+
+1. Consider the telescopic expansion of the multivector difference across successive nested resolution levels:
+\[ \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) = \sum _ {j=m ^ \ast} ^ {m-1} \left( \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right) \]
+
+2. Applying the triangle inequality for the multivector norm in \( Cl(4,1,1) \):
+\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {Cl} \le \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {Cl} \]
+
+3. Substituting the bounded aperture variation hypothesis:
+\[ \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {Cl} \le C \sum _ {j=m ^ \ast} ^ {m-1} 2 ^ {-j \alpha} = C \cdot 2 ^ {-m ^ \ast \alpha} \sum _ {k=0} ^ {m - 1 - m ^ \ast} 2 ^ {-k \alpha} \]
+
+4. For \( \alpha \ge 1 \), the geometric series sum satisfies \( \sum _ {k=0} ^ {\infty} 2 ^ {-k \alpha} = ( 1 - 2 ^ {-\alpha} ) ^ {-1} \le 2 \). Therefore:
+\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {Cl} \le 2 C \cdot 2 ^ {-m ^ \ast \alpha} \]
+
+5. Setting \( 2 C \cdot 2 ^ {-m ^ \ast \alpha} \le \epsilon _ {\text{res}} \) and taking logarithms base 2 yields:
+\[ m ^ \ast \ge \frac{1}{\alpha} \log _ 2 \left( \frac{2 C}{\epsilon _ {\text{res}}} \right) \]
+which is an explicit, finite integer.
+At resolution level \( m ^ \ast \), the computational state is mathematically exact and invariant under further Vernier refinement relative to the operational aperture \( \epsilon _ {\text{res}} \).
+This completes the proof.
+====
+
+[#definition-graded-m-res-algebraic-types]
+[DEFINITION]
+.Definition: Genuine Graded \( m \)-res Numerical Types and Composite Jets
+====
+To formulate a truly novel numerical analysis that departs from classical floating-point approximations, we establish a strict _Gaigen_-style graded algebraic typing discipline.footnote:[Daniel Fontijne. 2006. Gaigen 2: a geometric algebra implementation generator. In Proceedings of the 5th international conference on Generative programming and component engineering (GPCE '06). Association for Computing Machinery, New York, NY, USA, 141–150. https://doi.org/10.1145/1173706.1173728]
+Terminology is kept mathematically sharp: a number of resolution order \( k \) consists strictly and exclusively of terms of grade \( k \).
+A structure containing terms of mixed resolution orders is designated an \( m \)-_resolution jet_ (or composite jet), whereas an \( m \)-_resolution number_ is strictly of a single resolution order.
+
+The foundational types are stratified as follows:
+
+* _Grade 0 (Macroscopic Observable)_: Denoted \( \mathtt{real\_t} \), representing macroscopic scalar observables \( x_0 \in \mathbb{R} \) on the grid.
+* _Grade 1 (Pure First-Order \( m \)-res Number)_: Denoted \( \mathtt{mres1\_t} \), representing pure first-order resolution quantities \( x_1 \mu \), possessing no macroscopic real component.
+* _Grade 2 (Pure Second-Order \( m \)-res Number)_: Denoted \( \mathtt{mres2\_t} \), representing pure second-order quantities \( x_2 \mu^2 \).
+* _Grade 3 (Pure Third-Order \( m \)-res Number)_: Denoted \( \mathtt{mres3\_t} \), representing pure third-order quantities \( x_3 \mu^3 \).
+* _Composite Resolution Jet_: Denoted \( \mathtt{mjet}_K \), aggregating distinct homogeneous grades up to order \( K \):
+\[ X = x _ 0 + x _ 1 \mu + x _ 2 \mu ^ 2 + \dots + x _ K \mu ^ K \]
+where \( \mu \) is the canonical resolution generator satisfying discrete lattice nilpotency \( \mu ^ {K+1} \equiv 0 \).
+====
+
+[#theorem-graded-cauchy-nilpotent-algebra]
+[THEOREM]
+.Theorem: Graded Cauchy Convolution and Exact Nilpotent Inversion
+====
+Let \( A = \sum_{j=0}^K a_j \mu^j \) and \( B = \sum_{k=0}^K b_k \mu^k \) be composite \( m \)-resolution jets in the truncated polynomial ring \( \mathbb{R}[\mu] / \langle \mu^{K+1} \rangle \).
+
+1. _Graded Multiplication_: Pure homogeneous grades multiply strictly according to grade addition:
+\[ \text{mres}_j \ast \text{mres}_k \to \text{mres}_{j+k} \]
+For composite jets, multiplication is given by the exact discrete Cauchy convolution:
+\[ A \ast B = \sum_{n=0}^K c_n \mu^n, \quad \text{where } c_n = \sum_{j=0}^n a_j b_{n-j} \]
+All product terms of order \( n \ge K + 1 \) vanish identically by discrete lattice nilpotency.
+
+2. _Exact Nilpotent Inversion_: If \( a_0 \ne 0 \), the inverse \( A^{-1} \) exists and is computed in closed algebraic form without limits, iterative approximations, or subtractive cancellation:
+\[ A^{-1} = \frac{1}{a_0} \left( 1 + \delta \right)^{-1} = \frac{1}{a_0} \sum_{m=0}^K (-1)^m \delta^m \]
+where \( \delta = \sum_{j=1}^K \frac{a_j}{a_0} \mu^j \) is strictly nilpotent (\( \delta^{K+1} \equiv 0 \)).
+
+*Proof:*
+
+1. The Cauchy convolution follows directly from the distributive law over the graded basis \( \{ \mu^0, \mu^1, \dots, \mu^K \} \) modulo the discrete lattice ideal \( \langle \mu^{K+1} \rangle \).
+
+2. Because \( \delta \) has no Grade-0 scalar component, \( \delta^m \) has minimum grade \( m \).
+Consequently, for \( m \ge K + 1 \), \( \delta^m \equiv 0 \).
+The Neumann series \( \sum_{m=0}^K (-1)^m \delta^m \) terminates after exactly \( K + 1 \) algebraic terms.
+Multiplying \( (1 + \delta) \cdot \sum_{m=0}^K (-1)^m \delta^m = 1 + (-1)^K \delta^{K+1} = 1 \).
+Multiplying by \( a_0^{-1} \) yields the exact multiplicative inverse in closed form.
+This completes the proof.
+====
+
+[#definition-typed-downarrow-operations]
+[DEFINITION]
+.Definition: Typed Downarrow Projection Operators
+====
+In \( m \)-res numerical analysis, computation proceeds in the graded jet ring, after which results are projected back to observable states via typed _downarrow operators_ \( \downarrow \):
+
+1. _Observable Projection \( \downarrow_0 \)_:
+\[ \downarrow_0(X) = x_0 \]
+Extracts the macroscopic Grade-0 observable, discarding sub-resolution Vernier components.
+
+2. _Discrete Grid Projection \( \downarrow _ {\text{grid}} \)_:
+\[ \downarrow_{\text{grid}}(X, \Delta x) = \text{round}_{\mathcal{G}_N}\left( \sum_{k=0}^K x_k (\Delta x)^k \right) \]
+Evaluates the jet at physical lattice increment \( \Delta x \) and snaps deterministically to the nearest discrete lattice node of \( \mathcal{G}_N \).
+
+3. _Differential Rate Extraction \( \downarrow_k \)_:
+\[ \downarrow_k(X) = k! \cdot x_k \]
+Extracts the exact \( k \)-th order rate of variation without dividing by any small step size \( \Delta t \), completely avoiding floating-point subtractive cancellation and \( 0/0 \) indeterminate forms.
+====
+
+[#theorem-m-res-stiff-differential-solver]
+[THEOREM]
+.Theorem: Exact Algebraic Solution of Stiff Systems and Singular Perturbations
+====
+Consider a stiff differential equation governing boundary layers, relaxation processes, or reaction networks:
+\[ \frac{dy}{dt} = -\lambda y + g(t), \quad \lambda \gg 1, \quad y(0) = y_0 \]
+In classical numerical analysis, explicit stepping schemes explode into catastrophic instability unless \( \Delta t < {2} / {\lambda} \), forcing millions of tiny steps that accumulate roundoff error.
+
+In \( m \)-res numerical analysis, the stiffness is reparameterized by the pure first-order resolution generator \( \epsilon = \mu / {\lambda} \).
+Then:
+
+1. _Fast Transient Decomposition_: Across a macroscopic step \( \Delta t \gg {1} / {\lambda} \), the transient component decays exponentially onto the discrete lattice:
+\[ y_{\text{transient}}(t + \Delta t) = y(t) \exp(-\lambda \Delta t) \]
+When \( \lambda \Delta t \ge 50 \), the transient falls below the fundamental discrete aperture threshold and is rounded to zero on \( \mathcal{G}_N \) in a single Vernier step.
+
+2. _Closed-Form Solution_: The driven response is obtained in _closed algebraic form_ in the graded \( m \)-res jet without time stepping:
+\[ Y_{\text{closed}}(t) = \sum_{k=0}^K (-1)^k g^{(k)}(t) \, \epsilon^k \]
+The state at macroscopic time \( t + \Delta t \) is evaluated unconditionally stably by downarrow projection:
+\[ y(t + \Delta t) = y_{\text{transient}}(t + \Delta t) + \downarrow_{\epsilon} Y_{\text{closed}}(t + \Delta t) \]
+yielding unconditional stability for arbitrarily large macroscopic time increments \( \Delta t \).
+
+*Proof:*
+
+1. In the singular perturbation formulation, write the ODE as \( \epsilon \frac{dy}{dt} = -y + \epsilon g(t) \), where \( \epsilon = \frac{1}{\lambda} \mu \).
+For the persistent driven response where \( \frac{dy}{dt} \) is bounded, expanding \( Y = \sum_{k=0}^K y_k \epsilon^k \) and equating coefficients of \( \epsilon^k \) yields the algebraic recurrence:
+\[ y_0 = g(t), \quad y_k = -y_{k-1}' = (-1)^k g^{(k)}(t) \]
+This series is exact up to order \( K \).
+
+2. On the discrete lattice \( \mathcal{G}_N \), any transient term with magnitude less than the discrete resolution aperture \( 2^{-M} \) is operationally indistinguishable from zero.
+For \( \lambda \Delta t \ge 50 \), \( \exp(-\lambda \Delta t) \le \exp(-50) < 2 \cdot 10^{-22} \), which is strictly smaller than double-precision machine epsilon.
+Therefore, downarrow projection to \( \mathcal{G}_N \) evaluates the transient to zero in a single step without numerical oscillation.
+
+3. The closed-form driven component is computed purely through graded jet arithmetic without dividing by \( \Delta t \).
+Consequently, the solution remains perfectly bounded, well-conditioned, and physically stable regardless of the magnitude of \( \lambda \).
+This completes the proof.
+====
+
+== Foundations of \( m \)-res Statistical Mechanics
+
+In conventional physics, statistical mechanics commits the following errors:
+
+. It treats probability distributions as clouds of ethereal substance dispersing itself through some sort of infinite “phase space,” despite there being no experimental evidence for such things.
+
+. It fantasizes matter as point particles with zero volume undergoing an infinite number of collisions. However, if one knows the structure of matter, then this structure must be accounted for. At the very least, matter has spatial extent and cannot undergo infinite numbers of collisions!
+
+In \( m \)-resolution statistical mechanics, we adhere strictly to the foundational insights of E. T. Jaynes:
+probability distributions are not physical fluids; they are explicit, deductive representations of our state of knowledge given incomplete macroscopic information.
+Phase space is not a continuum of uncountably infinite points, but a finite combinatorial grid of discrete state cells partitioned by the fundamental spatial and momentum resolution scales \( (\Delta x _ {(m)}, \Delta p _ {(m)}) \). Furthermore, phase space is a linguistic entity, not a physical one. It would not exist if no one ever thought it up and wrote it down.
+
+The the order of abstracting is correct: phase space is recognized as _language that talks about_ physical realities, whereas physical realities _are not and cannot be words_.
+
+
+[#definition-m-res-phase-space]
+[DEFINITION]
+.Definition: Discrete \( m \)-Resolution Phase Space Cell Network
+====
+Let an isolated physical system composed of \( K \) localized field packets reside within a spatial bounding aperture \( \Omega \) on the discrete lattice \( \mathcal{G} _ N ^ {(m)} \).
+Let the momentum of each field packet be bounded within a finite multivector momentum range \( \mathcal{P} = [-P _ {\max}, P _ {\max}] ^ d \) with discrete momentum resolution \( \Delta p _ {(m)} = 2 ^ {-m} p _ 0 \).
+The one-particle phase space is partitioned into a finite number of discrete cells:
+\[ W _ 1 = \left( \frac{2 L}{\Delta x _ {(m)}} \right) ^ d \times \left( \frac{2 P _ {\max}}{\Delta p _ {(m)}} \right) ^ d < \infty \]
+For \( K \) indistinguishable discrete field configurations, the total number of microstates \( \Omega _ {\text{micro}} \) is strictly finite and combinatorial:
+\[ \Omega _ {\text{micro}} = \binom{W _ 1 + K - 1}{K} < \infty \]
+Every microstate \( i \in \{1, 2, \dots, \Omega _ {\text{micro}}\} \) corresponds to an exact, non-singular configuration of discrete field cells on \( \mathcal{G} _ N ^ {(m)} \).
+====
+
+[#definition-jaynesian-maxent-m-res]
+[DEFINITION]
+.Definition: Discrete Maximum Entropy (MaxEnt) State Inference
+====
+Let \( p _ i \) denote the probability assigned to discrete microstate \( i \in \{1, \dots, \Omega _ {\text{micro}}\} \), satisfying normalization:
+\[ \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i = 1, \quad p _ i \ge 0 \]
+Given a set of \( M \) macroscopic expectation constraints \( \langle A _ r \rangle = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i A _ r(i) = \bar{A} _ r \) for \( r \in \{1, \dots, M\} \), the Jaynesian information entropy over the discrete cell network is:
+\[ S _ I = - \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \ln p _ i \]
+The uniquely honest deductive probability assignment that incorporates all macroscopic constraints without introducing unwarranted assumptions is the distribution maximizing \( S _ I \):
+\[ p _ i = \frac{1}{Z} \exp \left( - \sum _ {r=1} ^ M \lambda _ r A _ r(i) \right) \]
+where the partition function \( Z \) is the finite discrete sum:
+\[ Z(\lambda _ 1, \dots, \lambda _ M) = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} \exp \left( - \sum _ {r=1} ^ M \lambda _ r A _ r(i) \right) \]
+and \( \lambda _ r \) are Lagrange multipliers determined deductively by:
+\[ - \frac{\partial \ln Z}{\partial \lambda _ r} = \bar{A} _ r \]
+====
+
+== Statistical Mechanical Reformulation of the Master Field Equation
+
+In the Iris unified field theory, the fundamental law of physics is the Master Field Equation:
+\[ D F = J \]
+formulated in the Clifford geometric algebra \( Cl(4,1,1) \) with real-valued components.
+Here, \( F \) is the complete multivector field containing scalar, vector, bivector, trivector, and pseudoscalar components, \( D \) is the geometric derivative, and \( J \) is the multivector source current. This Master Field Equation amounts to Maxwell’s equations with geometric constraints required by the Michelson-Morley experimental result. From it can be derived not General Relativity, which is incorrect, but instead Gauss’s theory of gravity. The two “nuclear forces” are found to be mistakes.
+
+We wish to treat this Master Field Equation as a statistical mechanical system.
+
+In statistical mechanics done correctly, one cannot simply postulate ad hoc Brownian motion, random Langevin noise forces, or phenomenological friction terms.
+Instead, one must _make deductions_ about the motions of particles and field kernels from first principles:
+1. Localized mass-energy concentrations are discrete field packets (vortices and solitons of \( F \)).
+2. The mechanical acceleration, trajectory, and momentum transfer of any localized entity are deduced directly from the surface integral of the multivector Poynting-stress energy-momentum tensor over the boundary enclosing the entity.
+3. Every influence propagates at finite speed \( c \), so all interactions involve causally delayed boundary fluxes across the discrete grid.
+4. When microscopic detail is unknown, the macroscopic current \( J \) and macroscopic stress tensor are deduced via Maximum Entropy expectation over the discrete lattice states.
+
+[#definition-multivector-stress-tensor]
+[DEFINITION]
+.Definition: Multivector Energy-Momentum Flux Tensor
+====
+Let \( F \in Cl(4,1,1) \) be the multivector electromagnetic-gravitational field satisfying \( D F = J \) on the discrete lattice \( \mathcal{G} _ N ^ {(m)} \).
+The symmetric multivector energy-momentum-stress tensor \( T(a) \) acting on an arbitrary directional vector \( a \) is defined by:
+\[ T(a) = - \frac{1}{2} \left\langle F a \widetilde{F} \right\rangle _ 1 \]
+where \( \widetilde{F} \) denotes the Clifford reversion of \( F \), and \( \langle \dots \rangle _ 1 \) denotes the vector projection in \( Cl(4,1,1) \).
+The local divergence of \( T \) on the discrete lattice satisfies the exact conservation law:
+\[ D \cdot T = \langle J \widetilde{F} \rangle _ 1 \]
+representing the direct contact momentum and energy transfer between field fluxes and localized currents.
+====
+
+[#theorem-deduction-of-particle-motion]
+[THEOREM]
+.Theorem: Deductive Derivation of Particle Trajectory from Boundary Flux Balance
+====
+Let a localized hypothetical object or particle occupy a discrete spatial domain \( \Omega _ k \subset \mathcal{G} _ N ^ {(m)} \) bounded by the discrete surface boundary \( \partial \Omega _ k \).
+Let \( P _ k = \sum _ {\mathbf{x} \in \Omega _ k} \rho _ {\text{field}}(\mathbf{x}) \Delta x _ {(m)} ^ d \) denote the net multivector field momentum contained within \( \Omega _ k \).
+Then the time rate of change of momentum \( {\Delta P _ k}\, / {\Delta t} \) of the particle is not a postulated Newton's second law, but is rigorously deduced from the surface flux of the multivector stress tensor:
+\[ \frac{\Delta P _ k}{\Delta t} = - \sum _ {\mathbf{s} \in \partial \Omega _ k} T(n(\mathbf{s})) \Delta A(\mathbf{s}) + \sum _ {\mathbf{x} \in \Omega _ k} \langle J _ {\text{internal}} \widetilde{F} \rangle _ 1 \Delta x _ {(m)} ^ d \]
+where \( n(\mathbf{s}) \) is the outward directed unit normal vector on \( \partial \Omega _ k \) and \( \Delta A(\mathbf{s}) \) is the discrete boundary cell area.
+
+Furthermore, because electromagnetic influences travel across the lattice at finite speed \( c \), waves emitted by distant sources require finite time to reach the boundary \( \partial \Omega _ k \).
+Thus, the field \( F(\mathbf{x}, t) \) acting on the surface at time \( t \) depends on what surrounding sources were doing at the earlier moment:
+\[ t' = t - \frac{\| \mathbf{x} - \mathbf{x}' \|}{c} \]
+when their influence was first sent out.
+
+*Proof:*
+
+1. On the discrete lattice \( \mathcal{G} _ N ^ {(m)} \), sum the discrete divergence of the multivector stress tensor \( T \) over all cells inside \( \Omega _ k \):
+\[ \sum _ {\mathbf{x} \in \Omega _ k} (D \cdot T)(\mathbf{x}) \Delta x _ {(m)} ^ d = \sum _ {\mathbf{x} \in \Omega _ k} \langle J \widetilde{F} \rangle _ 1 (\mathbf{x}) \Delta x _ {(m)} ^ d \]
+
+2. Applying the discrete Gauss-Ostrogradsky divergence identity on \( \mathcal{G} _ N ^ {(m)} \), the volume sum of the divergence transforms identically into the discrete surface flux sum over the boundary \( \partial \Omega _ k \):
+\[ \sum _ {\mathbf{x} \in \Omega _ k} (D \cdot T)(\mathbf{x}) \Delta x _ {(m)} ^ d = \sum _ {\mathbf{s} \in \partial \Omega _ k} T(n(\mathbf{s})) \Delta A(\mathbf{s}) \]
+
+3. The total current \( J \) decomposes into localized internal binding current \( J _ {\text{internal}} \) and external convective/field current. The time rate of change of the enclosed momentum within the finite cell domain \( \Omega _ k \) is:
+\[ \frac{\Delta P _ k}{\Delta t} = \sum _ {\mathbf{x} \in \Omega _ k} \frac{\Delta}{\Delta t} \left( \frac{1}{c ^ 2} \mathbf{S}(\mathbf{x}) \right) \Delta x _ {(m)} ^ d \]
+where \( \mathbf{S} = \langle F e _ 0 \widetilde{F} \rangle _ 1 \) is the Poynting momentum flux density.
+
+4. Equating the internal time rate of momentum change with the net balance of incoming/outgoing boundary stress and internal current forces:
+\[ \frac{\Delta P _ k}{\Delta t} = - \sum _ {\mathbf{s} \in \partial \Omega _ k} T(n(\mathbf{s})) \Delta A(\mathbf{s}) + \sum _ {\mathbf{x} \in \Omega _ k} \langle J _ {\text{internal}} \widetilde{F} \rangle _ 1 \Delta x _ {(m)} ^ d \]
+
+5. Because all wave packet interactions travel at finite speed \( c \), the field values \( F(\mathbf{s}) \) arriving at the boundary \( \partial \Omega _ k \) from any other source \( k' \) at distance \( r _ {k k'} \) require finite propagation time:
+\[ \Delta t _ {\text{prop}} = \frac{r _ {k k'}}{c} > 0 \]
+The acceleration and subsequent displacement \( \Delta \mathbf{x} _ k = \frac{P _ k}{M _ k} \Delta t \) of the object are thus uniquely deduced from the field stress balance without introducing unphysical instantaneous action-at-a-distance or arbitrary kinematic axioms.
+This completes the deduction.
+====
+
+[#theorem-maxent-macroscopic-field-reformulation]
+[THEOREM]
+.Theorem: MaxEnt Reformulation of the Master Field Equation over Discrete Ensembles
+====
+Let an ensemble of microscopic field kernels and current trajectories be distributed over \( \mathcal{G} _ N ^ {(m)} \) according to the Jaynesian MaxEnt probability distribution \( p _ i \).
+Let \( \langle F(\mathbf{x}) \rangle = \sum _ i p _ i F _ i(\mathbf{x}) \) and \( \langle J(\mathbf{x}) \rangle = \sum _ i p _ i J _ i(\mathbf{x}) \) denote the macroscopic MaxEnt expectation fields.
+Then the macroscopic Master Field Equation satisfies:
+\[ D _ {(m)} \langle F(\mathbf{x}) \rangle = \langle J(\mathbf{x}) \rangle \]
+and the macroscopic energy-momentum transport equation deduced from the ensemble average contains an exact, non-zero viscous dissipation tensor:
+\[ D _ {(m)} \cdot \langle T \rangle = \langle J \rangle \cdot \langle F \rangle + \mathbf{C} _ {\text{visc}} \]
+where the correlation tensor \( \mathbf{C} _ {\text{visc}} \) arises entirely from finite-aperture microscopic covariance:
+\[ \mathbf{C} _ {\text{visc}}(\mathbf{x}) = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \left( J _ i(\mathbf{x}) - \langle J(\mathbf{x}) \rangle \right) \left( \widetilde{F} _ i(\mathbf{x}) - \langle \widetilde{F}(\mathbf{x}) \rangle \right) \]
+which is identically the physical origin of viscosity, electrical resistivity, and thermal relaxation in macroscopic matter, deduced without phenomenological damping constants.
+
+*Proof:*
+
+1. The microscopic Master Field Equation holds in every discrete microstate configuration \( i \in \{1, \dots, \Omega _ {\text{micro}}\} \) on \( \mathcal{G} _ N ^ {(m)} \):
+\[ D _ {(m)} F _ i(\mathbf{x}) = J _ i(\mathbf{x}) \]
+
+2. Taking the linear expectation value with respect to the discrete MaxEnt probability distribution \( p _ i \):
+\[ \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i D _ {(m)} F _ i(\mathbf{x}) = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i J _ i(\mathbf{x}) \]
+
+3. Because the discrete difference operator \( D _ {(m)} \) is linear and independent of the ensemble weights \( p _ i \), it commutes with the expectation sum:
+\[ D _ {(m)} \left( \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i F _ i(\mathbf{x}) \right) = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i J _ i(\mathbf{x}) \implies D _ {(m)} \langle F(\mathbf{x}) \rangle = \langle J(\mathbf{x}) \rangle \]
+proving the macroscopic linearity of the field equation.
+
+4. Now consider the quadratic energy-momentum stress divergence equation in each microstate:
+\[ D _ {(m)} \cdot T _ i(\mathbf{x}) = \langle J _ i(\mathbf{x}) \widetilde{F} _ i(\mathbf{x}) \rangle _ 1 \]
+
+5. Taking the MaxEnt expectation value of both sides:
+\[ D _ {(m)} \cdot \langle T(\mathbf{x}) \rangle = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \langle J _ i(\mathbf{x}) \widetilde{F} _ i(\mathbf{x}) \rangle _ 1 \]
+
+6. Decomposing the microscopic variables into mean and fluctuating components:
+\[ J _ i(\mathbf{x}) = \langle J(\mathbf{x}) \rangle + \delta J _ i(\mathbf{x}) \]
+\[ F _ i(\mathbf{x}) = \langle F(\mathbf{x}) \rangle + \delta F _ i(\mathbf{x}) \]
+where \( \sum _ i p _ i \delta J _ i = 0 \) and \( \sum _ i p _ i \delta F _ i = 0 \).
+
+7. Expanding the product inside the expectation sum:
+\[ \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \left( \langle J \rangle + \delta J _ i \right) \left( \langle \widetilde{F} \rangle + \delta \widetilde{F} _ i \right) = \langle J \rangle \langle \widetilde{F} \rangle + \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \delta J _ i \delta \widetilde{F} _ i \]
+
+8. Defining \( \mathbf{C} _ {\text{visc}}(\mathbf{x}) \equiv \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \delta J _ i(\mathbf{x}) \delta \widetilde{F} _ i(\mathbf{x}) \), we obtain:
+\[ D _ {(m)} \cdot \langle T(\mathbf{x}) \rangle = \langle J(\mathbf{x}) \rangle \langle \widetilde{F}(\mathbf{x}) \rangle + \mathbf{C} _ {\text{visc}}(\mathbf{x}) \]
+
+9. The covariance term \( \mathbf{C} _ {\text{visc}} \) represents the net momentum and energy scattered into unresolved microscopic modes.
+Because wave packet propagation requires finite duration at speed \( c \), delayed correlations between fluctuating currents and radiated fields are strictly dissipative:
+\[ \sum _ {\mathbf{x} \in \mathcal{G} _ N ^ {(m)}} \mathbf{C} _ {\text{visc}}(\mathbf{x}) \cdot \langle \mathbf{v} \rangle \ge 0 \]
+This is the rigorous first-principles derivation of macroscopic shear viscosity, bulk viscosity, and Ohm's law resistivity.
+Every macroscopic dissipative parameter is deduced from the underlying field dynamics and incomplete state information, without ever postulating phenomenological friction.
+This completes the proof.
+====
+
+== Conclusion
+
+We have established a unified, constructive formulation of numerical analysis and statistical mechanics rooted in the Iris number system:
+
+1. _\( m \)-res Numerical Analysis_: Computational algorithms on discrete lattices \( \mathcal{G} _ N \) are recognized as fundamental and exact operators, replacing illusory continuum limits with finite Vernier aperture stability bounds. By replacing continuous real numbers with graded \( m \)-resolution jets, stiff transients vanish at the discrete aperture threshold in a single step, and the remaining response is evaluated in closed algebraic form without division.
+2. _\( m \)-res Statistical Mechanics_: Phase space is partitioned into finite combinatorial cells, and probability distributions are established strictly as Jaynesian deductive inferences derived from Maximum Entropy subject to operational constraints.
+3. _Deductive Field Reformulation_: When applied to the Master Field Equation \( D F = J \), the motions of particles are rigorously deduced from the surface flux of the multivector stress tensor and causally delayed wave propagation, while macroscopic dissipative laws (viscosity, resistivity) emerge deductively as the covariance of unresolved microscopic fluctuations.
+By eliminating unphysical continuum infinities and fictitious action-at-a-distance, physical and numerical mechanics are united in a single, operational deductive discipline.

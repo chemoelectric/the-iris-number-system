@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -e
+
+lcov --capture --directory . --output-file coverage.info
+lcov --remove coverage.info \
+     '/usr/*' \
+     --output-file coverage
+genhtml coverage.info \
+        --ignore-errors source \
+        --synthesize-missing \
+        --output-directory html_report
