@@ -66,6 +66,7 @@
           (calm1-lib snobol-match)
           (calm1-lib snobol-char-set)
           (calm1-lib random-fixnum)
+          (calm1-lib define-record-factory)
           (calm1-lib preprocessor-variables)
           (calm1-lib preprocessor-macro-handler)
           (calm1-lib preprocessor-define-lookup))
@@ -338,6 +339,12 @@
 
 ;;;---------------------------------------------------------------------
 
+    (define *deterministic?*
+      ;;
+      ;; Are branching and looping deterministic?
+      ;;
+      (make-parameter #f))
+
     (define (process-text definitions text output-port)
 
       (define t (utf32-string-copy text))
@@ -450,9 +457,10 @@
                         (p forms (cdr p)))
                        ((= i n))
                      (vector-set! v i (first p)))
-                   (vector-shuffle! v) ;; Enforce non-determinism.
+                   (unless (*deterministic?*)
+                     ;; Enforce non-determinism.
+                     (vector-shuffle! v))
                    (proc forms v n))))))))
-
 
       (define if-handler
         (make-macro-handler
@@ -726,17 +734,68 @@
 
 ;;;---------------------------------------------------------------------
 
-;;;
-;;; seed fields:
-;;;
-;;; first   positional arguments.
-;;;
-;;; second  custom macro definitions: (("name" "body" #t) ...)
-;;;           where #t for define, #f for undefine. For undefine
-;;;           the body will be ignored and may be any value.
-;;;
-;;; third   
-;;;
+    (define-record-factory <seed>
+
+      (predicate> seed?)
+
+      (constructor> initial-seed
+                    (lambda (construct)
+                      (lambda ()
+                        (construct (list) (list) #f))))
+
+      ;;
+      ;; Positional arguments.
+      ;;
+      (getter> 1 get-positionals)
+      (setter> 1 set-positionals!
+               (lambda (setter!)
+                 (lambda (obj value)
+                   (unless (and (proper-list? value)
+                                (every string? value))
+                     (error "expected proper list of strings" value))
+                   (setter! obj value))))
+
+      ;;
+      ;; Custom macro definitions: (("name" "body" #t) ...)
+      ;;
+      ;;    #t is for define
+      ;;    #f is for undefine
+      ;;
+      ;;    For undefine, the body will be ignored and may be any
+      ;;    value. We will set it to a peculiar symbol that might help
+      ;;    in debugging.
+      ;;
+      (getter> 2 get-definitions)
+      (setter> 2 set-definitions!
+               (lambda (setter!)
+                 (lambda (obj value)
+                   (unless (and (proper-list? value)
+                                (every
+                                 (lambda (entry)
+                                   (and (proper-list? entry)
+                                        (= 3 (length entry))
+                                        (utf32-string? (first entry))
+                                        (boolean? (third entry))
+                                        (or (not (third entry))
+                                            (utf32-string?
+                                             (second entry)))))
+                                 value))
+                     (error "expected a list of \
+                             ((\"name\" \"body\" #t) ...)"
+                            value))
+                   (setter! obj value))))
+
+      ;;
+      ;; Deterministic?  #t or #f  [default #f]
+      ;;
+      (getter> 3 get-deterministic)
+      (setter> 3 set-deterministic!
+               (lambda (setter!)
+                 (lambda (obj value)
+                   (unless (boolean? value)
+                     (error "expected a boolean" value))
+                   (setter! obj value))))  )
+
     (define options
       (list
        ;;
@@ -773,14 +832,16 @@
                  (let ((macro-name (getvar 'macro-name match-result))
                        (macro-body (or (getvar 'macro-body match-result)
                                        "")))
-                   (list (first seed)
-                         (append! (second seed)
+                   (set-definitions!
+                    seed (append! (get-definitions seed)
                                   (list (list macro-name
-                                              macro-body #t)))))))
+                                              macro-body #t)))))
+                 seed))
               (else
-               (list (first seed)
-                     (append! (second seed) (list (list "" "" #t)))
-                     ))))))
+               (set-definitions!
+                seed (append! (get-definitions seed)
+                              (list (list "" "" #t))))
+               seed)))))
 
        ;;
        ;; -U name, --undefine=name
@@ -802,13 +863,28 @@
               ((and arg (snobol-match pattern arg)) =>
                (lambda (match-result)
                  (let ((macro-name (getvar 'macro-name match-result)))
-                   (list (first seed)
-                         (append! (second seed)
-                                  (list (list macro-name filler #f)))))))
+                   (set-definitions!
+                    seed (append! (get-definitions seed)
+                                  (list (list macro-name
+                                              filler #f))))
+                   seed)))
               (else
-               (list (first seed)
-                     (append! (second seed) (list (list "" filler #f)))
-                     ))))))
+               (set-definitions!
+                seed (append! (get-definitions seed)
+                              (list (list "" filler #f))))
+               seed)))))
+
+       (option
+        '("deterministic") #f #f
+        (lambda (opt name arg seed)
+          (set-deterministic! seed #t)
+          seed))
+
+       (option
+        '("nondeterministic") #f #f
+        (lambda (opt name arg seed)
+          (set-deterministic! seed #f)
+          seed))
 
        ;;
        ;; FIXME: ADD --help AND --version OPTIONS.
@@ -830,13 +906,14 @@
                name))
 
       (define (handle-positionals str seed)
-        (list (append! (first seed) (list str))
-              (second seed) ))
+        (set-positionals! seed (append! (get-positionals seed)
+                                        (list str)))
+        seed)
 
       (args-fold arguments options
                  handle-unknown-option
                  handle-positionals
-                 (list (list) (list))))
+                 (initial-seed)))
 
 ;;;---------------------------------------------------------------------
 
@@ -881,20 +958,23 @@
 
     (define (main arguments)
       (guard (exc (else (exception-handler exc)))
-        (let-values (((args definitions)
-                      (apply values (parse-arguments arguments))))
+        (let* ((seed (parse-arguments arguments))
+               (args (get-positionals seed))
+               (definitions (get-definitions seed))
+               (deterministic? (get-deterministic seed)))
           (check-definitions definitions args)
-          (case (length args)
-            ((1) (run-the-program definitions "-" "-"))
-            ((2) (run-the-program definitions (second args) "-"))
-            ((3) (run-the-program definitions (second args)
-                                  (third args)))
-            (else
-             ;;
-             ;; FIXME: GIVE A DIFFERENT MESSAGE, AND SUGGEST USING
-             ;; --help
-             ;;
-             (usage-handler args))))))
+          (parameterize ((*deterministic?* deterministic?))
+            (case (length args)
+              ((1) (run-the-program definitions "-" "-"))
+              ((2) (run-the-program definitions (second args) "-"))
+              ((3) (run-the-program definitions (second args)
+                                    (third args)))
+              (else
+               ;;
+               ;; FIXME: GIVE A DIFFERENT MESSAGE, AND SUGGEST USING
+               ;; --help
+               ;;
+               (usage-handler args)))))))
 
     ))
 
