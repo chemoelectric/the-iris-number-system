@@ -729,11 +729,13 @@
 ;;;
 ;;; seed fields:
 ;;;
-;;; first   custom macro definitions: (("name" "body" #t) ...)
+;;; first   positional arguments.
+;;;
+;;; second  custom macro definitions: (("name" "body" #t) ...)
 ;;;           where #t for define, #f for undefine. For undefine
 ;;;           the body will be ignored and may be any value.
 ;;;
-;;; second  positional arguments.
+;;; third   
 ;;;
     (define options
       (list
@@ -771,13 +773,14 @@
                  (let ((macro-name (getvar 'macro-name match-result))
                        (macro-body (or (getvar 'macro-body match-result)
                                        "")))
-                   (list (append! (first seed)
+                   (list (first seed)
+                         (append! (second seed)
                                   (list (list macro-name
-                                              macro-body #t)))
-                         (second seed)))))
+                                              macro-body #t)))))))
               (else
-               (list (append! (first seed) (list (list "" "" #t)))
-                     (second seed)))))))
+               (list (first seed)
+                     (append! (second seed) (list (list "" "" #t)))
+                     ))))))
 
        ;;
        ;; -U name, --undefine=name
@@ -799,16 +802,16 @@
               ((and arg (snobol-match pattern arg)) =>
                (lambda (match-result)
                  (let ((macro-name (getvar 'macro-name match-result)))
-                   (list (append! (first seed)
-                                  (list (list macro-name filler #f)))
-                         (second seed)))))
+                   (list (first seed)
+                         (append! (second seed)
+                                  (list (list macro-name filler #f)))))))
               (else
-               (list (append! (first seed) (list (list "" filler #f)))
-                     (second seed)))))))
+               (list (first seed)
+                     (append! (second seed) (list (list "" filler #f)))
+                     ))))))
 
        ;;
        ;; FIXME: ADD --help AND --version OPTIONS.
-       ;; FIXME: ADD -U --undefine
        ;; FIXME: ADD -I --include
        ;;
        ;; FIXME: MAYBE ADD -s --synclines (by counting \n characters) but
@@ -816,20 +819,21 @@
        ;;
        ))
 
-    (define (parse-arguments args)
+    (define (parse-arguments arguments)
 
       (define (handle-unknown-option opt name arg seed)
         ;;
         ;; FIXME: INSTEAD RECOMMEND PEOPLE USE A HELP OPTION.
         ;;
-        (error (string-append (first args) ": unrecognized option")
+        (error (string-append (first arguments)
+                              ": unrecognized option")
                name))
 
       (define (handle-positionals str seed)
-        (list (first seed)
-              (append! (second seed) (list str))))
+        (list (append! (first seed) (list str))
+              (second seed) ))
 
-      (args-fold args options
+      (args-fold arguments options
                  handle-unknown-option
                  handle-positionals
                  (list (list) (list))))
@@ -877,7 +881,7 @@
 
     (define (main arguments)
       (guard (exc (else (exception-handler exc)))
-        (let-values (((definitions args)
+        (let-values (((args definitions)
                       (apply values (parse-arguments arguments))))
           (check-definitions definitions args)
           (case (length args)
