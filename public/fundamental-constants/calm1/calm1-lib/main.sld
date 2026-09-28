@@ -115,6 +115,8 @@
         '(calm1-lib preprocessor-macro-handler)
         '(calm1-lib preprocessor-define-lookup))))
 
+    (define *program-name* (make-parameter #f))
+
     (define-syntax unspecified-value
       (syntax-rules ()
         ((¶)
@@ -129,6 +131,10 @@
 
     (define (->utf32 str)
       (cond ((string? str) (string->utf32-string str))
+            (else str)))
+
+    (define (utf32-> str)
+      (cond ((utf32-string? str) (utf32-string->string str))
             (else str)))
 
     (define empty-string (string->utf32-string ""))
@@ -293,11 +299,10 @@
         (and (not (zero? n))
              (let loop ((i 0))
                (cond ((= i n) #t)
-                     ((not (char-set-contains?
-                            char-set:macro-name
-                            (utf32-string-ref str i)))
-                      #f)
-                     (loop (+ i 1)))))))
+                     ((char-set-contains? char-set:macro-name
+                                          (utf32-string-ref str i))
+                      (loop (+ i 1)))
+                     (else #f))))))
 
     (define *macro-pattern*
       (make-parameter
@@ -741,7 +746,7 @@
       (constructor> initial-seed
                     (lambda (construct)
                       (lambda ()
-                        (construct (list) (list) #f))))
+                        (construct (list) (list) #f #f))))
 
       ;;
       ;; Positional arguments.
@@ -782,7 +787,8 @@
                                  value))
                      (error "expected a list of \
                              ((\"name\" \"body\" #t) ...)"
-                            value))
+                            (map (lambda (entry) (map utf32-> entry))
+                                 value)))
                    (setter! obj value))))
 
       ;;
@@ -794,7 +800,17 @@
                  (lambda (obj value)
                    (unless (boolean? value)
                      (error "expected a boolean" value))
-                   (setter! obj value))))  )
+                   (setter! obj value))))
+
+      (getter> 4 get-help)
+      (setter> 4 set-help!
+               (lambda (setter!)
+                 (lambda (obj value)
+                   (unless (boolean? value)
+                     (error "expected a boolean" value))
+                   (setter! obj value))))
+
+      ) ;; end <seed>
 
     (define options
       (list
@@ -831,7 +847,7 @@
                (lambda (match-result)
                  (let ((macro-name (getvar 'macro-name match-result))
                        (macro-body (or (getvar 'macro-body match-result)
-                                       "")))
+                                       empty-string)))
                    (set-definitions!
                     seed (append! (get-definitions seed)
                                   (list (list macro-name
@@ -840,7 +856,8 @@
               (else
                (set-definitions!
                 seed (append! (get-definitions seed)
-                              (list (list "" "" #t))))
+                              (list (list empty-string
+                                          empty-string #t))))
                seed)))))
 
        ;;
@@ -885,6 +902,16 @@
         (lambda (opt name arg seed)
           (set-deterministic! seed #f)
           seed))
+
+       (option
+        '("help") #f #f
+        (lambda (opt name arg seed)
+          (usage-handler 0)))
+
+       (option
+        '("version") #f #f
+        (lambda (opt name arg seed)
+          (version-handler 0)))
 
        ;;
        ;; FIXME: ADD --help AND --version OPTIONS.
@@ -933,48 +960,117 @@
         (newline port)
         (exit 2)))
 
-    (define (usage-handler args)
+    (define (try-help port)
+      (display "Try “" port)
+      (display (*program-name*) port)
+      (display "” --help' for more information.\n" port))
+
+    (define (usage-handler exit-status)
       (let ((port (current-output-port)))
         (display "Usage: " port)
-        (display (first args) port)
-        (display " [OPTIONS] [INFILE|-] [OUTFILE|-]" port)
-        (newline port)
-        (exit 1)))
+        (display (*program-name*) port)
+        ;;
+        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
+        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
+        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
+        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
+        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
+        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
+        ;; FIXME: CHANGE TO DOING FILE I/O SIMILARLY TO m4
+        ;;
+        (display " [OPTION]... [INFILE [OUTFILE]]\n\n" port)
+        (display "If OUTFILE is “-” or left out, \
+                  standard output is used.\n\
+                  If INFILE is “-” or left out, \
+                  standard input is used.\n\n"
+                 port)
+        (display "Mandatory or optional arguments to long options \
+                  are mandatory or optional\n\
+                  for short options too.\n\n"
+                 port)
+        (display "  -D, --define=NAME[=VALUE]" port)
+        (display "    define NAME as having VALUE, or empty\n"
+                 port)
+        (display "  -U, --undefine=NAME" port)
+        (display "          undefine NAME\n" port)
+        (display "      --deterministic" port)
+        (display "          deterministic “if”, “while”\n"
+                 port)
+        (display "      --nondeterministic" port)
+        (display "       nondeterministic “if”, “while” [default]\n"
+                 port)
+        (display "      --help" port)
+        (display "                   display this help and exit\n"
+                 port)
+        (display "      --version" port)
+        (display "                output version information and exit\n"
+                 port)
+        (exit exit-status)))
 
-    (define (check-definitions definitions args)
+    (define (version-handler exit-status)
+      (let ((port (current-output-port)))
+        (display (*program-name*) port)
+        (display " (" port)
+        (display "anxiety reduction by text generation" port)
+        (display ")\nexperimental version (●)\n" port)
+        (display "\nCopyright © 2026 Barry Schwartz\n" port)
+        (display "\n\
+Permission is hereby granted, free of charge, to any person\n\
+obtaining a copy of this software and associated documentation\n\
+files (the “Software”), to deal in the Software without\n\
+restriction, including without limitation the rights to use,\n\
+copy, modify, merge, publish, distribute, sublicense, and/or sell\n\
+copies of the Software, and to permit persons to whom the\n\
+Software is furnished to do so, subject to the following\n\
+conditions:\n\
+\n\
+The above copyright notice and this permission notice shall be\n\
+included in all copies or substantial portions of the Software.\n\
+\n\
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,\n\
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n\
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n\
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n\
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n\
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n\
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n\
+OTHER DEALINGS IN THE SOFTWARE.\n"
+                 port)
+        (exit exit-status)))
+
+    (define (check-definitions definitions)
       (let ((port (current-output-port)))
         (for-each (lambda (def)
                     (unless (macro-name? (first def))
-                      (display (first args) port)
+                      (display (*program-name*) port)
                       (display ": not a legal macro name: “" port)
-                      (display (first def) port)
+                      (display (utf32-> (first def)) port)
                       (display "”" port)
                       (newline port)
-                      ;;
-                      ;; FIXME: PUT A NOTE HERE TO TRY --help
-                      ;;
+                      (try-help port)
                       (exit 1)))
                   definitions)))
 
     (define (main arguments)
       (guard (exc (else (exception-handler exc)))
-        (let* ((seed (parse-arguments arguments))
-               (args (get-positionals seed))
-               (definitions (get-definitions seed))
-               (deterministic? (get-deterministic seed)))
-          (check-definitions definitions args)
-          (parameterize ((*deterministic?* deterministic?))
-            (case (length args)
-              ((1) (run-the-program definitions "-" "-"))
-              ((2) (run-the-program definitions (second args) "-"))
-              ((3) (run-the-program definitions (second args)
-                                    (third args)))
-              (else
-               ;;
-               ;; FIXME: GIVE A DIFFERENT MESSAGE, AND SUGGEST USING
-               ;; --help
-               ;;
-               (usage-handler args)))))))
+        (parameterize ((*program-name* (first arguments)))
+          (let* ((arguments (cdr arguments))
+                 (seed (parse-arguments arguments))
+                 (args (get-positionals seed))
+                 (definitions (get-definitions seed)))
+            (check-definitions definitions)
+            (parameterize ((*deterministic?* (get-deterministic seed)))
+              (case (length args)
+                ((0) (run-the-program definitions "-" "-"))
+                ((1) (run-the-program definitions (first args) "-"))
+                ((2) (run-the-program definitions
+                                      (first args) (second args)))
+                (else
+                 (let ((port (current-output-port)))
+                   (display (*program-name*) port)
+                   (display ": too many arguments\n" port)
+                   (try-help port)
+                   (exit 2)))))))))
 
     ))
 
