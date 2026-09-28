@@ -914,7 +914,6 @@
           (version-handler 0)))
 
        ;;
-       ;; FIXME: ADD --help AND --version OPTIONS.
        ;; FIXME: ADD -I --include
        ;;
        ;; FIXME: MAYBE ADD -s --synclines (by counting \n characters) but
@@ -925,12 +924,13 @@
     (define (parse-arguments arguments)
 
       (define (handle-unknown-option opt name arg seed)
-        ;;
-        ;; FIXME: INSTEAD RECOMMEND PEOPLE USE A HELP OPTION.
-        ;;
-        (error (string-append (first arguments)
-                              ": unrecognized option")
-               name))
+        (let ((port (current-error-port)))
+          (display (*program-name*) port)
+          (display ": unrecognized option: " port)
+          (display name port)
+          (newline port)
+          (try-help port)
+          (exit 1)))
 
       (define (handle-positionals str seed)
         (set-positionals! seed (append! (get-positionals seed)
@@ -958,7 +958,7 @@
               (else
                (write err port)))
         (newline port)
-        (exit 2)))
+        (exit 1)))
 
     (define (try-help port)
       (display "Try “" port)
@@ -1039,7 +1039,7 @@ OTHER DEALINGS IN THE SOFTWARE.\n"
         (exit exit-status)))
 
     (define (check-definitions definitions)
-      (let ((port (current-output-port)))
+      (let ((port (current-error-port)))
         (for-each (lambda (def)
                     (unless (macro-name? (first def))
                       (display (*program-name*) port)
@@ -1066,11 +1066,11 @@ OTHER DEALINGS IN THE SOFTWARE.\n"
                 ((2) (run-the-program definitions
                                       (first args) (second args)))
                 (else
-                 (let ((port (current-output-port)))
+                 (let ((port (current-error-port)))
                    (display (*program-name*) port)
                    (display ": too many arguments\n" port)
                    (try-help port)
-                   (exit 2)))))))))
+                   (exit 1)))))))))
 
     ))
 
