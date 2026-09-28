@@ -66,6 +66,7 @@
           (calm1-lib snobol-match)
           (calm1-lib snobol-char-set)
           (calm1-lib random-fixnum)
+          (calm1-lib define-record-factory)
           (calm1-lib preprocessor-variables)
           (calm1-lib preprocessor-macro-handler)
           (calm1-lib preprocessor-define-lookup))
@@ -114,6 +115,8 @@
         '(calm1-lib preprocessor-macro-handler)
         '(calm1-lib preprocessor-define-lookup))))
 
+    (define *program-name* (make-parameter #f))
+
     (define-syntax unspecified-value
       (syntax-rules ()
         ((¶)
@@ -128,6 +131,10 @@
 
     (define (->utf32 str)
       (cond ((string? str) (string->utf32-string str))
+            (else str)))
+
+    (define (utf32-> str)
+      (cond ((utf32-string? str) (utf32-string->string str))
             (else str)))
 
     (define empty-string (string->utf32-string ""))
@@ -292,11 +299,10 @@
         (and (not (zero? n))
              (let loop ((i 0))
                (cond ((= i n) #t)
-                     ((not (char-set-contains?
-                            char-set:macro-name
-                            (utf32-string-ref str i)))
-                      #f)
-                     (loop (+ i 1)))))))
+                     ((char-set-contains? char-set:macro-name
+                                          (utf32-string-ref str i))
+                      (loop (+ i 1)))
+                     (else #f))))))
 
     (define *macro-pattern*
       (make-parameter
@@ -337,6 +343,12 @@
                        'comment)))
 
 ;;;---------------------------------------------------------------------
+
+    (define *deterministic?*
+      ;;
+      ;; Are branching and looping deterministic?
+      ;;
+      (make-parameter #f))
 
     (define (process-text definitions text output-port)
 
@@ -450,9 +462,10 @@
                         (p forms (cdr p)))
                        ((= i n))
                      (vector-set! v i (first p)))
-                   (vector-shuffle! v) ;; Enforce non-determinism.
+                   (unless (*deterministic?*)
+                     ;; Enforce non-determinism.
+                     (vector-shuffle! v))
                    (proc forms v n))))))))
-
 
       (define if-handler
         (make-macro-handler
@@ -704,39 +717,118 @@
                (set! t (utf32-string-copy t 1))
                (loop)))))
 
-    (define (run-the-program definitions input-file output-file)
-      (let ((use-stdin? (string=? input-file "-"))
-            (use-stdout? (string=? output-file "-")))
-        (let ((input-port (if use-stdin?
-                            (current-input-port)
-                            (open-input-file input-file)))
-              (output-port (if use-stdout?
-                             (current-output-port)
-                             (open-output-file output-file))))
-          (let ((text (read-to-string input-port)))
-            (localize-bracket-pairs
-             (set-bracket-pairs!
-              (cons (cons comment-left comment-right)
-                    (bracket-pairs)))
-             (process-text definitions text output-port)))
-          (unless use-stdin?
-            (close-input-port input-port))
-          (unless use-stdout?
-            (close-output-port output-port)))))
+    (define (run-the-program definitions input-files output-file)
+      (let* ((use-stdout? (string=? output-file "-"))
+             (output-port (if use-stdout?
+                            (current-output-port)
+                            (open-output-file output-file)))
+             (texts (list)))
+        (do ((p input-files (cdr p)))
+            ((null-list? p))
+          (let* ((input-file (car p))
+                 (use-stdin? (string=? input-file "-"))
+                 (input-port (if use-stdin?
+                               (current-input-port)
+                               (open-input-file input-file))))
+            (let ((text (read-to-string input-port)))
+              (set! texts (append! texts (list text))))
+            (unless use-stdin?
+              (close-input-port input-port))))
+        (localize-bracket-pairs
+         (set-bracket-pairs!
+          (cons (cons comment-left comment-right)
+                (bracket-pairs)))
+         (process-text definitions
+                       (utf32-string-concatenate texts)
+                       output-port))
+        (unless use-stdout?
+          (close-output-port output-port))))
 
 ;;;---------------------------------------------------------------------
 
-;;;
-;;; seed fields:
-;;;
-;;; first   custom macro definitions: (("name" "body" #t) ...)
-;;;           where #t for define, #f for undefine. For undefine
-;;;           the body will be ignored and may be any value.
-;;;
-;;; second  positional arguments.
-;;;
+    (define-record-factory <seed>
+
+      (predicate> seed?)
+
+      (constructor> initial-seed
+                    (lambda (construct)
+                      (lambda ()
+                        (construct (list) ; positionals
+                                   (list) ; definitions
+                                   #f     ; deterministic?
+                                   "-"    ; output
+                                   ))))
+
+      ;;
+      ;; Positional arguments.
+      ;;
+      (getter> 1 get-positionals)
+      (setter> 1 set-positionals!
+               (lambda (setter!)
+                 (lambda (obj value)
+                   (unless (and (proper-list? value)
+                                (every string? value))
+                     (error "expected proper list of strings" value))
+                   (setter! obj value))))
+
+      ;;
+      ;; Custom macro definitions: (("name" "body" #t) ...)
+      ;;
+      ;;    #t is for define
+      ;;    #f is for undefine
+      ;;
+      ;;    For undefine, the body will be ignored and may be any
+      ;;    value. We will set it to a peculiar symbol that might help
+      ;;    in debugging.
+      ;;
+      (getter> 2 get-definitions)
+      (setter> 2 set-definitions!
+               (lambda (setter!)
+                 (lambda (obj value)
+                   (unless (and (proper-list? value)
+                                (every
+                                 (lambda (entry)
+                                   (and (proper-list? entry)
+                                        (= 3 (length entry))
+                                        (utf32-string? (first entry))
+                                        (boolean? (third entry))
+                                        (or (not (third entry))
+                                            (utf32-string?
+                                             (second entry)))))
+                                 value))
+                     (error "expected a list of \
+                             ((\"name\" \"body\" #t) ...)"
+                            (map (lambda (entry) (map utf32-> entry))
+                                 value)))
+                   (setter! obj value))))
+
+      ;;
+      ;; Deterministic?  #t or #f  [default #f]
+      ;;
+      (getter> 3 get-deterministic)
+      (setter> 3 set-deterministic!
+               (lambda (setter!)
+                 (lambda (obj value)
+                   (unless (boolean? value)
+                     (error "expected a boolean" value))
+                   (setter! obj value))))
+
+      (getter> 4 get-output)
+      (setter> 4 set-output!)
+
+      ) ;; end <seed>
+
     (define options
       (list
+       ;;
+       ;; -o file, --output=file
+       ;;
+       (option
+        '(#\o "output") #t #f
+        (lambda (opt name arg seed)
+          (set-output! seed arg)
+          seed))
+
        ;;
        ;; -D name[=value], --define=name[=value]
        ;;
@@ -770,14 +862,18 @@
                (lambda (match-result)
                  (let ((macro-name (getvar 'macro-name match-result))
                        (macro-body (or (getvar 'macro-body match-result)
-                                       "")))
-                   (list (append! (first seed)
+                                       empty-string)))
+                   (set-definitions!
+                    seed (append! (get-definitions seed)
                                   (list (list macro-name
-                                              macro-body #t)))
-                         (second seed)))))
+                                              macro-body #t)))))
+                 seed))
               (else
-               (list (append! (first seed) (list (list "" "" #t)))
-                     (second seed)))))))
+               (set-definitions!
+                seed (append! (get-definitions seed)
+                              (list (list empty-string
+                                          empty-string #t))))
+               seed)))))
 
        ;;
        ;; -U name, --undefine=name
@@ -799,16 +895,40 @@
               ((and arg (snobol-match pattern arg)) =>
                (lambda (match-result)
                  (let ((macro-name (getvar 'macro-name match-result)))
-                   (list (append! (first seed)
-                                  (list (list macro-name filler #f)))
-                         (second seed)))))
+                   (set-definitions!
+                    seed (append! (get-definitions seed)
+                                  (list (list macro-name
+                                              filler #f))))
+                   seed)))
               (else
-               (list (append! (first seed) (list (list "" filler #f)))
-                     (second seed)))))))
+               (set-definitions!
+                seed (append! (get-definitions seed)
+                              (list (list "" filler #f))))
+               seed)))))
+
+       (option
+        '("deterministic") #f #f
+        (lambda (opt name arg seed)
+          (set-deterministic! seed #t)
+          seed))
+
+       (option
+        '("nondeterministic") #f #f
+        (lambda (opt name arg seed)
+          (set-deterministic! seed #f)
+          seed))
+
+       (option
+        '("help") #f #f
+        (lambda (opt name arg seed)
+          (usage-handler 0)))
+
+       (option
+        '("version") #f #f
+        (lambda (opt name arg seed)
+          (version-handler 0)))
 
        ;;
-       ;; FIXME: ADD --help AND --version OPTIONS.
-       ;; FIXME: ADD -U --undefine
        ;; FIXME: ADD -I --include
        ;;
        ;; FIXME: MAYBE ADD -s --synclines (by counting \n characters) but
@@ -816,23 +936,26 @@
        ;;
        ))
 
-    (define (parse-arguments args)
+    (define (parse-arguments arguments)
 
       (define (handle-unknown-option opt name arg seed)
-        ;;
-        ;; FIXME: INSTEAD RECOMMEND PEOPLE USE A HELP OPTION.
-        ;;
-        (error (string-append (first args) ": unrecognized option")
-               name))
+        (let ((port (current-error-port)))
+          (display (*program-name*) port)
+          (display ": unrecognized option: " port)
+          (display name port)
+          (newline port)
+          (try-help port)
+          (exit 1)))
 
       (define (handle-positionals str seed)
-        (list (first seed)
-              (append! (second seed) (list str))))
+        (set-positionals! seed (append! (get-positionals seed)
+                                        (list str)))
+        seed)
 
-      (args-fold args options
+      (args-fold arguments options
                  handle-unknown-option
                  handle-positionals
-                 (list (list) (list))))
+                 (initial-seed)))
 
 ;;;---------------------------------------------------------------------
 
@@ -850,47 +973,117 @@
               (else
                (write err port)))
         (newline port)
-        (exit 2)))
-
-    (define (usage-handler args)
-      (let ((port (current-output-port)))
-        (display "Usage: " port)
-        (display (first args) port)
-        (display " [OPTIONS] [INFILE|-] [OUTFILE|-]" port)
-        (newline port)
         (exit 1)))
 
-    (define (check-definitions definitions args)
+    (define (try-help port)
+      (display "Try “" port)
+      (display (*program-name*) port)
+      (display "” --help' for more information.\n" port))
+
+    (define (usage-handler exit-status)
       (let ((port (current-output-port)))
+        (display "Usage: " port)
+        (display (*program-name*) port)
+        (display " [OPTION]... [FILE]...\n" port)
+        (display "Process macros in FILEs. If no FILE or if FILE is \
+                  “-”, standard input\nis read.\n\n"
+                 port)
+        (display "Mandatory or optional arguments to long options \
+                  are mandatory or optional\n\
+                  for short options too.\n\n"
+                 port)
+
+        (display "  -D, --define=NAME[=VALUE]" port)
+        (display "    define NAME as having VALUE, or empty\n"
+                 port)
+
+        (display "  -U, --undefine=NAME" port)
+        (display "          undefine NAME\n" port)
+
+        (display "  -o, --output=FILE" port)
+        (display "            output to FILE, or to standard output\n"
+                 port)
+        (display "                                 if FILE is “-”\n"
+                 port)
+
+        (display "      --deterministic" port)
+        (display "          deterministic “if”, “while”\n"
+                 port)
+
+        (display "      --nondeterministic" port)
+        (display "       nondeterministic “if”, “while” [default]\n"
+                 port)
+
+        (display "      --help" port)
+        (display "                   display this help and exit\n"
+                 port)
+
+        (display "      --version" port)
+        (display "                output version information and exit\n"
+                 port)
+
+        (exit exit-status)))
+
+    (define (version-handler exit-status)
+      (let ((port (current-output-port)))
+        (display (*program-name*) port)
+        (display " (" port)
+        (display "anxiety reduction by text generation" port)
+        (display ")\nexperimental version (●)\n" port)
+        (display "\nCopyright © 2026 Barry Schwartz\n" port)
+        (display "\n\
+Permission is hereby granted, free of charge, to any person\n\
+obtaining a copy of this software and associated documentation\n\
+files (the “Software”), to deal in the Software without\n\
+restriction, including without limitation the rights to use,\n\
+copy, modify, merge, publish, distribute, sublicense, and/or sell\n\
+copies of the Software, and to permit persons to whom the\n\
+Software is furnished to do so, subject to the following\n\
+conditions:\n\
+\n\
+The above copyright notice and this permission notice shall be\n\
+included in all copies or substantial portions of the Software.\n\
+\n\
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,\n\
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n\
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n\
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n\
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n\
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n\
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n\
+OTHER DEALINGS IN THE SOFTWARE.\n"
+                 port)
+        (exit exit-status)))
+
+    (define (check-definitions definitions)
+      (let ((port (current-error-port)))
         (for-each (lambda (def)
                     (unless (macro-name? (first def))
-                      (display (first args) port)
+                      (display (*program-name*) port)
                       (display ": not a legal macro name: “" port)
-                      (display (first def) port)
+                      (display (utf32-> (first def)) port)
                       (display "”" port)
                       (newline port)
-                      ;;
-                      ;; FIXME: PUT A NOTE HERE TO TRY --help
-                      ;;
+                      (try-help port)
                       (exit 1)))
                   definitions)))
 
     (define (main arguments)
       (guard (exc (else (exception-handler exc)))
-        (let-values (((definitions args)
-                      (apply values (parse-arguments arguments))))
-          (check-definitions definitions args)
-          (case (length args)
-            ((1) (run-the-program definitions "-" "-"))
-            ((2) (run-the-program definitions (second args) "-"))
-            ((3) (run-the-program definitions (second args)
-                                  (third args)))
-            (else
-             ;;
-             ;; FIXME: GIVE A DIFFERENT MESSAGE, AND SUGGEST USING
-             ;; --help
-             ;;
-             (usage-handler args))))))
+        (parameterize ((*program-name* (first arguments)))
+          (let* ((arguments (cdr arguments))
+                 (seed (parse-arguments arguments))
+                 (positionals (get-positionals seed))
+                 (definitions (get-definitions seed))
+                 (deterministic? (get-deterministic seed))
+                 (output-filename (get-output seed)))
+            (check-definitions definitions)
+            (parameterize ((*deterministic?* deterministic?))
+              (case (length positionals)
+                ((0) (run-the-program definitions '("-")
+                                      output-filename))
+                (else (run-the-program definitions positionals
+                                       output-filename))))))))
 
     ))
 
