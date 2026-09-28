@@ -3856,302 +3856,327 @@ export const REFERENCE_BOOK_TEXTBOOK: Textbook = {
 
 export const PHYSICAL_CONSTANTS_PAPER: Textbook = {
   "id": "paper-physical-constants",
-  "title": "Closed-Form Geometric Ratios of the Physical Constants in the SI System",
-  "subtitle": "Technical Paper (SI Geometric Invariants & Maxima Representations)",
+  "title": "Closed-Form Geometric Ratios of the Physical Constants: Iris Numbers and SI System",
+  "subtitle": "Technical Paper (Iris Dimensionless Forms & SI Scale Conversions)",
   "author": "Frédéric Blondin Custer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "lastUpdated": "2026-09-28",
-  "description": "Standalone treatise reformulating physical constants on the firm ground of the modern 2019 SI redefinition and discrete geometric field mechanics in the Counting-Iris framework.",
+  "description": "Standalone treatise formulating the fundamental physical constants as exact closed forms within the Iris Number System on discrete lattice G_N, mapping to SI units via explicit scale conversion factors.",
   "chapters": [
     {
       "id": "chap-paper-physical-constants-main",
       "title": "Closed-Form Geometric Ratios of Physical Constants",
-      "summary": "Full text of the technical paper on closed-form geometric ratios of physical constants in the SI system with Maxima representations.",
+      "summary": "Full text of the technical paper on closed-form Iris numbers physical constants and SI conversions with Maxima representations.",
       "sections": [
         {
           "id": "sec-paper-physical-constants-content",
           "title": "Technical Paper: Closed-Form Geometric Ratios",
           "contentAsciiDoc": `== Abstract
 
-Physical constants in conventional physics are routinely presented as an arbitrary, empirical collection of conversion factors discovered by laboratory curve-fitting. This paper reformulates the physical constants on the firm ground of the modern International System of Units (SI, 2019 redefinition) and discrete geometric field mechanics in the Counting-Iris framework. By taking the defined invariants of the SI system as fixed scale apertures and treating physical constants as exact geometric ratios—analogous to the circle ratio \\( \\pi = C / (2 r) \\)—we deduce closed-form relations for the speed of electromagnetic waves \\( c \\), the characteristic impedance of free space \\( Z_0 \\), magnetic permeability \\( \\mu_0 \\), electric permittivity \\( \\epsilon_0 \\), the von Klitzing quantum resistance \\( R_K \\), the Josephson constant \\( K_J \\), the magnetic flux quantum \\( \\Phi_0 \\), the conductance quantum \\( G_0 \\), the Planck mass \\( m_P \\), the Planck impedance \\( Z_P \\), and the fine-structure constant \\( \\alpha \\). Each expression is explicitly derived and verified with its corresponding symbolic representation in Maxima notation.
+Physical constants in conventional physics are routinely presented as an arbitrary, empirical collection of conversion factors discovered by laboratory curve-fitting. This paper establishes exact closed forms for the fundamental physical constants formulated directly within the Iris Number System. In the Counting-Iris framework, physical invariants are derived in natural, dimensionless geometric aperture units on the discrete multiscale resolution lattice \\( \\mathcal{G}_N \\) in Clifford algebra \\( Cl(4,1,1) \\), and mapped to the International System of Units (SI, 2019 redefinition) through explicit scale conversion factors. Using strict Asciidoctor \`latexmath\` syntax, we formulate closed-form expressions for the speed of electromagnetic influences \\( c \\), the characteristic impedance of free space \\( Z_0 \\), magnetic permeability \\( \\mu_0 \\), electric permittivity \\( \\epsilon_0 \\), the von Klitzing quantum resistance \\( R_K \\), the Josephson constant \\( K_J \\), the magnetic flux circulation quantum \\( \\Phi_0 \\), the conductance quantum \\( G_0 \\), the Planck impedance \\( Z_P \\), and the fine-structure circle ratio \\( \\alpha \\). Each relation is presented first in its intrinsic Iris number formulation, followed by its SI conversion factor and verified Maxima 2D symbolic representations.
 
-== 1. Introduction: The Nature of Geometric and Scale Ratios
+== 1. The Iris Number System and Dimensionless Geometric Field Units
 
-The circle ratio \\( \\pi \\) expresses the ratio of the perimeter of a regular circle to its diameter:
-\\[ \\pi = \\frac{C}{2 r} \\]
-One might easily have chosen the ratio of circumference to radius instead (the ratio \\( 2 \\pi \\)), or any other fixed geometric proportion. The choice of specific factor of 2 is an operational convention, but once the geometric basis is declared, the ratio is an invariant geometric eigenvalue of Euclidean space.
+In the Counting-Iris Number System, all physical phenomena are governed by the Master Field Equation:
+\\[ D F = J \\]
+formulated on the discrete multiscale resolution partition grid \\( \\mathcal{G}_N \\) in the 6-generator Clifford algebra \\( Cl(4,1,1) \\). The fundamental unit stride of measurement is the counting bullet \\( \\bullet \\), and the ultra-refined vernier scale step is given by:
+\\[ \\delta_\\omega = \\frac{\\bullet}{\\omega} \\]
+where \\( \\omega \\) is an unbounded resolution count index.
 
-In exactly the same manner, when one chooses a coherent metrological framework such as the International System of Units (SI) following the 2019 CIPM redefinition, one establishes a firm, non-arbitrary starting point. In the revised SI system, the numerical values of the following fundamental defining constants are fixed exact integers or terminating decimals:
+In this natural geometric foundation, the primordial units of space-time and field interaction are normalized to unity:
 
-1. The hyperfine transition frequency of Caesium-133: \\( \\Delta \\nu_{\\text{Cs}} = 9\\,192\\,631\\,770 \\text{ s}^{-1} \\)
-2. The speed of electromagnetic influences in space: \\( c = 299\\,792\\,458 \\text{ m s}^{-1} \\)
-3. The Planck constant of discrete action: \\( h = 6.626\\,070\\,15 \\times 10^{-34} \\text{ J s} \\) (exact rational)
-4. The elementary unit of electric charge: \\( e = 1.602\\,176\\,634 \\times 10^{-19} \\text{ C} \\) (exact rational)
-5. The Boltzmann thermal constant: \\( k_B = 1.380\\,649 \\times 10^{-23} \\text{ J K}^{-1} \\) (exact rational)
-6. The Avogadro counting constant: \\( N_A = 6.022\\,140\\,76 \\times 10^{23} \\text{ mol}^{-1} \\) (exact integer)
+1. **Geometric Wave Propagation Speed**:
+\\[ c_{\\text{Iris}} = \\mathbf{1}_{\\text{Iris}} \\]
+Electromagnetic influences propagate across the discrete grid at a uniform rate of one spatial grid step per temporal update interval.
 
-Within this exact operational foundation, the remaining physical constants of field mechanics are not disconnected empirical mysteries. They are exact algebraic and geometric ratios linking the discrete quantum of circulation to space-time propagation and electromagnetic field coupling.
+2. **Discrete Circulation Flux Quantum**:
+\\[ h_{\\text{Iris}} = \\mathbf{1}_{\\text{Iris}} \\qquad \\text{and} \\qquad \\hbar_{\\text{Iris}} = \\frac{\\mathbf{1}_{\\text{Iris}}}{2 \\pi} \\]
+Action and circulation are discrete integers counting cyclic traversals around topological apertures.
 
-== 2. Maxima Symbolic Environment and Defining Invariants
+3. **Discrete Elementary Charge Quantum**:
+\\[ e_{\\text{Iris}} = \\mathbf{1}_{\\text{Iris}} \\]
+Electric charge is an integer winding count of the bivector field around a localized vortex halo.
 
-We define the primary SI base parameters in a computer algebra environment (Maxima) as exact values. All subsequent relations are derived by algebraic substitution and displayed in standard 2D mathematical notation.
+4. **Intrinsic Free Space Aperture Impedance**:
+In pure geometric terms, the characteristic impedance of the discrete lattice is determined directly by the fine-structure circle ratio \\( \\alpha \\):
+\\[ Z_{0, \\text{Iris}} = 2 \\alpha \\]
 
-[source,maxima]
-----
-/* Defining Base Constants in SI (2019 Redefinition) */
-c          : 299792458;
-h          : 662607015 / 10^42;
-e          : 1602176634 / 10^28;
-h_bar      : h / (2 * %pi);
-----
+== 2. Metrological Unit Conversions to the SI System
 
-== 3. Quantum Metrological Standards as Discrete Geometric Ratios
+When an engineer or physicist requires values expressed in the International System of Units (SI), one does not change the underlying physics; one simply multiplies by the dimensional conversion factor between the natural discrete Iris aperture scale and the defined SI base units (2019 CIPM redefinition).
 
-=== The von Klitzing Constant (Quantum Hall Resistance)
+Let the conversion scale factors be denoted:
 
-The von Klitzing constant \\( R_K \\) is the fundamental quantum unit of electrical resistance and field impedance, observed directly in the integer Quantum Hall Effect:
-\\[ R_K = \\frac{h}{e^2} \\]
-In the modern SI system, because both \\( h \\) and \\( e \\) are exact fixed rational constants, \\( R_K \\) is an exact fixed rational resistance standard of the universe:
-\\[ R_K = \\frac{6.62607015 \\times 10^{-34} \\text{ J s}}{(1.602176634 \\times 10^{-19} \\text{ C})^2} \\approx 25812.8074593045... \\; \\Omega \\]
+* Length / Time conversion ratio (speed):
+\\[ K_c = 299\\,792\\,458 \\text{ m} \\cdot \\text{s}^{-1} \\]
 
-In Maxima 2D display fashion:
+* Discrete Action conversion factor:
+\\[ K_h = 6.626\\,070\\,15 \\times 10^{-34} \\text{ J} \\cdot \\text{s} \\]
+
+* Elementary Charge conversion factor:
+\\[ K_e = 1.602\\,176\\,634 \\times 10^{-19} \\text{ C} \\]
+
+* Resistance / Impedance conversion factor (the von Klitzing base ratio):
+\\[ K_R = \\frac{K_h}{K_e^2} \\approx 25\\,812.807\\,459\\,304\\,5... \\; \\Omega \\]
+
+Any physical constant \\( Q \\) is then obtained from its intrinsic Iris number closed form \\( Q_{\\text{Iris}} \\) by:
+\\[ Q_{\\text{SI}} = Q_{\\text{Iris}} \\cdot K_Q \\]
+where \\( K_Q \\) is the exact dimensional conversion monomial formed from \\( ( K_c, K_h, K_e ) \\).
+
+== 3. Closed Forms of Fundamental Physical Constants
+
+=== The von Klitzing Quantum Resistance (\\( R_K \\))
+
+In the Iris Number System, the quantum Hall resistance is the ratio of unit action to the square of unit charge:
+\\[ R_{K, \\text{Iris}} = \\frac{h_{\\text{Iris}}}{e_{\\text{Iris}}^2} = \\frac{\\mathbf{1}_{\\text{Iris}}}{\\mathbf{1}_{\\text{Iris}}^2} = \\mathbf{1}_{\\text{Iris}} \\]
+In SI units, with conversion factor \\( K_R = K_h / K_e^2 \\):
+\\[ R_K = R_{K, \\text{Iris}} \\cdot \\left ( \\frac{K_h}{K_e^2} \\right ) = \\frac{K_h}{K_e^2} = \\frac{h}{e^2} \\]
+
+Maxima 2D symbolic verification:
 
 [source,text]
 ----
-(%i1) R_K : h / e^2;
+(%i1) R_K_Iris : 1;
+
+(%o1)                                  1
+
+(%i2) R_K_SI : R_K_Iris * (h / e^2);
 
                                        h
-(%o1)                                 ----
+(%o2)                                 ----
                                         2
                                        e
 ----
 
-=== The Conductance Quantum
+=== The Conductance Quantum (\\( G_0 \\))
 
-The dual of the von Klitzing resistance is the quantum of electrical conductance \\( G_0 \\), representing the maximum ballistic transmission capacity of a single discrete 1D conduction channel:
-\\[ G_0 = \\frac{2 e^2}{h} = \\frac{2}{R_K} \\]
+In the Iris Number System, the maximum ballistic conductance of a single spatial channel carrying two spin-orientation bivectors is:
+\\[ G_{0, \\text{Iris}} = 2 \\cdot \\frac{e_{\\text{Iris}}^2}{h_{\\text{Iris}}} = 2 \\cdot \\mathbf{1}_{\\text{Iris}} \\]
+In SI units, applying conversion factor \\( K_G = K_e^2 / K_h = 1 / K_R \\):
+\\[ G_0 = G_{0, \\text{Iris}} \\cdot \\left ( \\frac{K_e^2}{K_h} \\right ) = \\frac{2 e^2}{h} = \\frac{2}{R_K} \\]
+
+Maxima 2D symbolic verification:
 
 [source,text]
 ----
-(%i2) G_0 : 2 * e^2 / h;
+(%i3) G_0_Iris : 2;
+
+(%o3)                                  2
+
+(%i4) G_0_SI : G_0_Iris * (e^2 / h);
 
                                         2
                                      2 e
-(%o2)                                ----
+(%o4)                                ----
                                       h
-
-(%i3) G_0 : 2 / R_K;
-
-                                       2
-(%o3)                                 ---
-                                      R_K
 ----
 
-=== The Magnetic Flux Quantum and Josephson Constant
+=== The Magnetic Flux Circulation Quantum (\\( \\Phi_0 \\))
 
-In superconducting topological loops and discrete multivector vortex channels, magnetic flux circulation is quantized in discrete steps of \\( \\Phi_0 \\):
-\\[ \\Phi_0 = \\frac{h}{2 e} \\]
-The reciprocal ratio defines the Josephson constant \\( K_J \\), which relates the Josephson junction oscillation frequency directly to applied voltage:
-\\[ K_J = \\frac{1}{\\Phi_0} = \\frac{2 e}{h} \\]
+In the Iris Number System, the discrete magnetic flux circulation around a paired superconducting topological vortex loop is:
+\\[ \\Phi_{0, \\text{Iris}} = \\frac{h_{\\text{Iris}}}{2 e_{\\text{Iris}}} = \\frac{\\mathbf{1}_{\\text{Iris}}}{2} \\]
+In SI units, with conversion factor \\( K_\\Phi = K_h / K_e \\):
+\\[ \\Phi_0 = \\Phi_{0, \\text{Iris}} \\cdot \\left ( \\frac{K_h}{K_e} \\right ) = \\frac{h}{2 e} \\]
+
+Maxima 2D symbolic verification:
 
 [source,text]
 ----
-(%i4) Phi_0 : h / (2 * e);
+(%i5) Phi_0_Iris : 1 / 2;
+
+                                       1
+(%o5)                                  -
+                                       2
+
+(%i6) Phi_0_SI : Phi_0_Iris * (h / e);
 
                                        h
-(%o4)                                 ----
+(%o6)                                 ----
                                       2 e
-
-(%i5) K_J : 1 / Phi_0;
-
-                                      2 e
-(%o5)                                 ---
-                                       h
 ----
 
-Note the exact closed geometric identity connecting the flux quantum and conductance quantum:
-\\[ G_0 \\cdot \\Phi_0 = e \\]
+=== The Josephson Constant (\\( K_J \\))
 
-== 4. Closed Forms for Free Space and Electromagnetic Propagation
+The reciprocal dual of the magnetic flux quantum is the Josephson frequency-to-voltage ratio:
+\\[ K_{J, \\text{Iris}} = \\frac{1}{\\Phi_{0, \\text{Iris}}} = \\frac{2 e_{\\text{Iris}}}{h_{\\text{Iris}}} = 2 \\cdot \\mathbf{1}_{\\text{Iris}} \\]
+In SI units, with conversion factor \\( K_J = K_e / K_h \\):
+\\[ K_J = K_{J, \\text{Iris}} \\cdot \\left ( \\frac{K_e}{K_h} \\right ) = \\frac{2 e}{h} = \\frac{1}{\\Phi_0} \\]
+
+Maxima 2D symbolic verification:
+
+[source,text]
+----
+(%i7) K_J_Iris : 2;
+
+(%o7)                                  2
+
+(%i8) K_J_SI : K_J_Iris * (e / h);
+
+                                      2 e
+(%o8)                                 ---
+                                       h
+----
 
 === Characteristic Impedance of Free Space (\\( Z_0 \\))
 
-In the Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\), free space is not an empty void, but a discrete multiscale lattice \\( \\mathcal{G}_N \\) through which transverse electromagnetic waves propagate. The characteristic impedance \\( Z_0 \\) measures the ratio of the transverse electric vector blade \\( \\mathbf{E} \\) to the transverse magnetic bivector blade \\( \\mathbf{B} / \\mu_0 \\):
-\\[ Z_0 = \\sqrt{\\frac{\\mu_0}{\\epsilon_0}} \\]
-Expressed as a pure geometric ratio involving the fine-structure constant \\( \\alpha \\) and the von Klitzing quantum resistance \\( R_K \\), \\( Z_0 \\) admits the closed form:
-\\[ Z_0 = 2 \\alpha R_K = \\frac{2 \\alpha h}{e^2} \\]
+In the Iris Number System, the characteristic impedance of the discrete lattice to transverse electromagnetic wave propagation is governed by the fine-structure circle ratio \\( \\alpha \\):
+\\[ Z_{0, \\text{Iris}} = 2 \\alpha \\]
+Converting to SI units by scaling through the electrical resistance aperture factor \\( K_R = K_h / K_e^2 \\):
+\\[ Z_0 = Z_{0, \\text{Iris}} \\cdot \\left ( \\frac{K_h}{K_e^2} \\right ) = 2 \\alpha \\left ( \\frac{h}{e^2} \\right ) = 2 \\alpha R_K = \\frac{2 \\alpha h}{e^2} \\]
 
-In Maxima 2D display fashion:
+Maxima 2D symbolic verification:
 
 [source,text]
 ----
-(%i6) Z_0 : 2 * alpha * R_K;
+(%i9) Z_0_Iris : 2 * alpha;
 
-(%o6)                             2 alpha R_K
+(%o9)                               2 alpha
 
-(%i7) Z_0 : (2 * alpha * h) / e^2;
+(%i10) Z_0_SI : Z_0_Iris * (h / e^2);
 
                                    2 alpha h
-(%o7)                              ---------
+(%o10)                             ---------
                                        2
                                       e
 ----
 
-This reveals that \\( Z_0 \\) is simply the quantum Hall resistance scaled by twice the fine-structure circle ratio!
-
 === Magnetic Permeability of Free Space (\\( \\mu_0 \\))
 
-The magnetic permeability describes the inductive inertia of the discrete lattice to changes in bivector magnetic current flux. Formulated in closed form as a ratio of impedance to wave speed:
-\\[ \\mu_0 = \\frac{Z_0}{c} = \\frac{2 \\alpha R_K}{c} = \\frac{2 \\alpha h}{e^2 c} \\]
+In the Iris Number System, since \\( c_{\\text{Iris}} = \\mathbf{1} \\), the magnetic inductive inertia of the lattice is identical to its impedance:
+\\[ \\mu_{0, \\text{Iris}} = \\frac{Z_{0, \\text{Iris}}}{c_{\\text{Iris}}} = 2 \\alpha \\]
+To convert to SI units, multiply by the permeability conversion factor \\( K_\\mu = K_R / K_c = K_h / (K_e^2 K_c) \\):
+\\[ \\mu_0 = \\mu_{0, \\text{Iris}} \\cdot \\left ( \\frac{K_h}{K_e^2 K_c} \\right ) = \\frac{2 \\alpha h}{e^2 c} = \\frac{Z_0}{c} \\]
 
-In Maxima 2D display fashion:
+Maxima 2D symbolic verification:
 
 [source,text]
 ----
-(%i8) mu_0 : Z_0 / c;
+(%i11) mu_0_Iris : 2 * alpha;
 
-                                      Z_0
-(%o8)                                 ---
-                                       c
+(%o11)                              2 alpha
 
-(%i9) mu_0 : (2 * alpha * h) / (e^2 * c);
+(%i12) mu_0_SI : mu_0_Iris * (h / (e^2 * c));
 
                                    2 alpha h
-(%o9)                              ---------
+(%o12)                             ---------
                                      2
                                     e  c
 ----
 
 === Electric Permittivity of Free Space (\\( \\epsilon_0 \\))
 
-The electric permittivity is the reciprocal dual of magnetic permeability, governing the displacement flux and capacitive storage of the lattice:
-\\[ \\epsilon_0 = \\frac{1}{\\mu_0 c^2} = \\frac{1}{Z_0 c} = \\frac{e^2}{2 \\alpha h c} \\]
+In the Iris Number System, the capacitive displacement permittivity of the lattice is the reciprocal of the impedance:
+\\[ \\epsilon_{0, \\text{Iris}} = \\frac{\\mathbf{1}_{\\text{Iris}}}{Z_{0, \\text{Iris}} \\cdot c_{\\text{Iris}}} = \\frac{\\mathbf{1}_{\\text{Iris}}}{2 \\alpha} \\]
+To convert to SI units, multiply by the permittivity conversion factor \\( K_\\epsilon = 1 / (K_R K_c) = K_e^2 / (K_h K_c) \\):
+\\[ \\epsilon_0 = \\epsilon_{0, \\text{Iris}} \\cdot \\left ( \\frac{K_e^2}{K_h K_c} \\right ) = \\left ( \\frac{1}{2 \\alpha} \\right ) \\left ( \\frac{e^2}{h c} \\right ) = \\frac{e^2}{2 \\alpha h c} = \\frac{1}{\\mu_0 c^2} \\]
 
-In Maxima 2D display fashion:
+Maxima 2D symbolic verification:
 
 [source,text]
 ----
-(%i10) epsilon_0 : 1 / (mu_0 * c^2);
+(%i13) epsilon_0_Iris : 1 / (2 * alpha);
 
                                        1
-(%o10)                             ----------
-                                           2
-                                   mu_0   c
+(%o13)                              -------
+                                    2 alpha
 
-(%i11) epsilon_0 : e^2 / (2 * alpha * h * c);
+(%i14) epsilon_0_SI : epsilon_0_Iris * (e^2 / (h * c));
 
                                        2
                                       e
-(%o11)                            -----------
+(%o14)                            -----------
                                   2 alpha c h
 ----
 
-== 5. The Fine-Structure Constant as an Invariant Geometric Ratio
+=== The Fine-Structure Constant (\\( \\alpha \\))
 
-The fine-structure constant \\( \\alpha \\) is the primordial dimensionless ratio of nature. In the Iris Number System, \\( \\alpha \\) is the geometric eigenvalue of the Clifford torus in \\( Cl(4,1,1) \\) relating the elementary charge quantum of circulation to the total integrated Poynting self-energy of a localized wave packet:
-\\[ \\alpha = \\frac{e^2}{2 \\epsilon_0 h c} = \\frac{Z_0 e^2}{2 h} = \\frac{Z_0}{2 R_K} \\]
+Because \\( \\alpha \\) is a pure dimensionless geometric ratio—the circle ratio of the Clifford torus in \\( Cl(4,1,1) \\)—its conversion factor is identically unity:
+\\[ K_\\alpha = \\mathbf{1} \\]
+In the Iris Number System, it is directly the half-ratio of the vacuum lattice impedance to the quantum Hall resistance:
+\\[ \\alpha = \\frac{Z_{0, \\text{Iris}}}{2 R_{K, \\text{Iris}}} = \\frac{Z_{0, \\text{Iris}}}{2 \\cdot \\mathbf{1}} = \\frac{Z_{0, \\text{Iris}}}{2} \\]
+Expressed in SI units, this relation remains invariant:
+\\[ \\alpha = \\frac{Z_0}{2 R_K} = \\frac{e^2}{2 \\epsilon_0 h c} \\]
 
-In terms of the reduced Planck constant \\( \\hbar = h / (2 \\pi) \\) and the conventional electrostatic Coulomb factor \\( 4 \\pi \\epsilon_0 \\):
-\\[ \\alpha = \\frac{e^2}{4 \\pi \\epsilon_0 \\hbar c} \\]
-
-In Maxima 2D display fashion:
+Maxima 2D symbolic verification:
 
 [source,text]
 ----
-(%i12) alpha : e^2 / (2 * epsilon_0 * h * c);
-
-                                       2
-                                      e
-(%o12)                            -----------
-                                  2 alpha c h
-
-(%i13) alpha : Z_0 / (2 * R_K);
+(%i15) alpha_formula : Z_0 / (2 * R_K);
 
                                       Z_0
-(%o13)                                ----
+(%o15)                                ----
                                      2 R_K
 ----
 
-Notice the structural symmetry:
-\\[ \\frac{Z_0}{R_K} = 2 \\alpha \\]
-The ratio of the impedance of the physical universe to the quantum resistance of matter is strictly equal to twice the fine-structure constant.
-
-== 6. Gravitational and High-Energy Planck Ratios
-
 === The Planck Impedance (\\( Z_P \\))
 
-When gravitational coupling is unified with electrodynamics via the Master Field Equation \\( D F = J \\), the characteristic impedance of space-time at the fundamental Planck aperture scale is given directly by:
-\\[ Z_P = \\frac{c}{G / (4 \\pi \\epsilon_0)} \\cdot \\frac{G}{c^2} = \\frac{1}{4 \\pi \\epsilon_0 c} = \\frac{Z_0}{4 \\pi} \\]
-or in unrationalized units:
-\\[ Z_P = \\frac{Z_0}{2 \\alpha} = R_K \\]
+At the microscopic Planck boundary scale where the gravitational field gradient and electromagnetic stress tensor couple in the Master Field Equation, the intrinsic Planck impedance in Iris numbers is:
+\\[ Z_{P, \\text{Iris}} = \\frac{Z_{0, \\text{Iris}}}{2 \\alpha} = \\mathbf{1}_{\\text{Iris}} \\]
+Converted to SI units via \\( K_R \\):
+\\[ Z_P = Z_{P, \\text{Iris}} \\cdot \\left ( \\frac{K_h}{K_e^2} \\right ) = R_K = \\frac{h}{e^2} \\]
+or in rationalized angular units:
+\\[ Z_P = \\frac{Z_0}{4 \\pi} \\]
 
-=== The Gravitational Coupling Constant for the Proton
+== 4. Comprehensive Master Table of Iris Numbers and SI Closed Forms
 
-The dimensionless gravitational coupling constant \\( \\alpha_G \\) comparing gravitational attraction between two protons to their electrostatic repulsion is given by:
-\\[ \\alpha_G = \\frac{G m_p^2}{\\hbar c} = \\frac{G m_p^2 (2 \\pi)}{h c} \\]
-
-In Maxima 2D display fashion:
-
-[source,text]
-----
-(%i14) alpha_G : (2 * %pi * G * m_p^2) / (h * c);
-
-                                             2
-                                  2 %pi G m_p
-(%o14)                            ------------
-                                      c h
-----
-
-Using the geometric mass eigenvalue for the proton-to-electron ratio derived in Chapter 17 and Chapter 23 of Volume IV:
-\\[ \\frac{m_p}{m_e} = 6 \\pi^5 \\left( 1 - \\frac{1}{4 \\pi^2 (137)} \\right) \\]
-the gravitational coupling is entirely mapped into geometric invariants of the discrete multiscale lattice.
-
-== 7. Summary Table of Exact SI Geometric Closed Forms
-
-[cols="3,3,4", options="header"]
+[cols="2,2,3,3", options="header"]
 |===
-| Physical Constant | Operational Meaning | Closed Form Expression
+| Constant | Iris Number Form | SI Unit Conversion Factor | Complete SI Closed Form
 
 | \\( c \\)
-| Speed of Electromagnetic Influences
-| Exact Defined Base Constant (\\( 299\\,792\\,458 \\text{ m/s} \\))
+| \\( \\mathbf{1}_{\\text{Iris}} \\)
+| \\( K_c \\)
+| \\( c = 299\\,792\\,458 \\text{ m/s} \\)
 
 | \\( R_K \\)
-| von Klitzing Quantum Resistance
+| \\( \\mathbf{1}_{\\text{Iris}} \\)
+| \\( \\displaystyle \\frac{K_h}{K_e^2} \\)
 | \\( \\displaystyle \\frac{h}{e^2} \\)
 
 | \\( G_0 \\)
-| Quantum of Electrical Conductance
+| \\( 2 \\cdot \\mathbf{1}_{\\text{Iris}} \\)
+| \\( \\displaystyle \\frac{K_e^2}{K_h} \\)
 | \\( \\displaystyle \\frac{2 e^2}{h} = \\frac{2}{R_K} \\)
 
 | \\( \\Phi_0 \\)
-| Magnetic Flux Circulation Quantum
+| \\( \\displaystyle \\frac{\\mathbf{1}_{\\text{Iris}}}{2} \\)
+| \\( \\displaystyle \\frac{K_h}{K_e} \\)
 | \\( \\displaystyle \\frac{h}{2 e} \\)
 
 | \\( K_J \\)
-| Josephson Constant
+| \\( 2 \\cdot \\mathbf{1}_{\\text{Iris}} \\)
+| \\( \\displaystyle \\frac{K_e}{K_h} \\)
 | \\( \\displaystyle \\frac{2 e}{h} = \\frac{1}{\\Phi_0} \\)
 
 | \\( Z_0 \\)
-| Characteristic Impedance of Free Space
-| \\( \\displaystyle 2 \\alpha R_K = \\frac{2 \\alpha h}{e^2} \\)
+| \\( 2 \\alpha \\)
+| \\( \\displaystyle \\frac{K_h}{K_e^2} \\)
+| \\( \\displaystyle 2 \\alpha \\left ( \\frac{h}{e^2} \\right ) = 2 \\alpha R_K \\)
 
 | \\( \\mu_0 \\)
-| Magnetic Permeability of Free Space
-| \\( \\displaystyle \\frac{Z_0}{c} = \\frac{2 \\alpha h}{e^2 c} \\)
+| \\( 2 \\alpha \\)
+| \\( \\displaystyle \\frac{K_h}{K_e^2 K_c} \\)
+| \\( \\displaystyle \\frac{2 \\alpha h}{e^2 c} = \\frac{Z_0}{c} \\)
 
 | \\( \\epsilon_0 \\)
-| Electric Permittivity of Free Space
-| \\( \\displaystyle \\frac{1}{Z_0 c} = \\frac{e^2}{2 \\alpha h c} \\)
+| \\( \\displaystyle \\frac{\\mathbf{1}_{\\text{Iris}}}{2 \\alpha} \\)
+| \\( \\displaystyle \\frac{K_e^2}{K_h K_c} \\)
+| \\( \\displaystyle \\frac{e^2}{2 \\alpha h c} = \\frac{1}{Z_0 c} \\)
 
 | \\( \\alpha \\)
-| Fine-Structure Constant
+| \\( \\alpha \\)
+| \\( \\mathbf{1} \\)
 | \\( \\displaystyle \\frac{Z_0}{2 R_K} = \\frac{e^2}{2 \\epsilon_0 h c} \\)
+
+| \\( Z_P \\)
+| \\( \\mathbf{1}_{\\text{Iris}} \\)
+| \\( \\displaystyle \\frac{K_h}{K_e^2} \\)
+| \\( \\displaystyle R_K = \\frac{h}{e^2} \\)
 |===
 
-== 8. Conclusion
+== 5. Conclusion
 
-By anchoring the deduction of physical constants in the fixed operational invariants of the 2019 SI redefinition and recognizing them as geometric eigenvalues of the discrete multivector lattice \\( \\mathcal{G}_N \\), the illusion that natural constants are arbitrary or ungrounded is dispelled. Just as the circle ratio \\( \\pi \\) expresses the invariant boundary relation of flat 2D geometry, the constants \\( Z_0, \\mu_0, \\epsilon_0, R_K, \\) and \\( \\Phi_0 \\) express the invariant boundary relations of 6D Clifford electrodynamics and discrete contact topology.`
+By separating the intrinsic, dimensionless geometric invariants of the Iris Number System on the discrete lattice \\( \\mathcal{G}_N \\) from the external metrological scaling factors of the SI system, every physical constant is exposed as an exact closed-form ratio. Just as the circle ratio \\( \\pi \\) relates perimeter to diameter regardless of whether the circle is gauged in inches or meters, the physical constants \\( Z_0, \\mu_0, \\epsilon_0, R_K, \\) and \\( \\Phi_0 \\) represent the invariant boundary eigenvalues of electromagnetic flux circulation, easily converted to standard laboratory units by direct scale multiplication.`
         }
       ]
     }
