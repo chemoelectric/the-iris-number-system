@@ -29,8 +29,8 @@ providing the numerical analyst with an a priori error guarantee at any desired 
 In the Counting-Iris framework, physical realities are described by the Master Field Equation:
 \[ D F = J \]
 formulated on the discrete multiscale resolution lattice \( \mathcal{G}_N \) in Clifford algebra \( Cl(4,1,1) \). Within this foundation:
-1. The **speed of electromagnetic influences \( c \)** is the sole foundational kinematic stride—the rate of spatial step propagation per unit temporal update across the lattice.
-2. All remaining fundamental constants of nature are **definite integrals of resonant field geometry and Maximum Entropy (MaxEnt) covariance**, evaluated relative to \( c \).
+1. The **speed of electromagnetic influences \( c \)** is the fundamental speed of propagation in space and time.
+2. The remaining physical constants are **definite integrals describing wave geometry and field interactions**, evaluated relative to \( c \).
 
 == 2. The Fine-Structure Constant \( \alpha \) as a Toroidal Resonant Definite Integral (NEW FORMULA)
 
