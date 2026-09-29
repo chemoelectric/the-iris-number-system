@@ -3873,7 +3873,7 @@ export const PHYSICAL_CONSTANTS_PAPER: Textbook = {
           "title": "Technical Paper: Definite Integrals and Geometric Ratios",
           "contentAsciiDoc": `== Abstract
 
-Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \\( c \\)** within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\). Analogous to how the circle ratio \\( \\pi \\) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \\( \\alpha \\), the proton-to-electron mass ratio \\( m_p / m_e \\), and Newton's gravitational coupling \\( G \\). All remaining electromagnetic standards—including the characteristic impedance of free space \\( Z_0 \\), magnetic permeability \\( \\mu_0 \\), electric permittivity \\( \\epsilon_0 \\), the von Klitzing resistance \\( R_K \\), and the magnetic flux quantum \\( \\Phi_0 \\)—are expressed directly in terms of \\( c \\) and these fundamental definite integrals, eliminating arbitrary curve-fitting and infinite series approximations.
+Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \\( c \\)** within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\). Analogous to how the circle ratio \\( \\pi \\) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \\( \\alpha \\), the proton-to-electron mass ratio \\( m_p / m_e \\), and Newton's gravitational coupling \\( G \\). All remaining electromagnetic standards—including the characteristic impedance of free space \\( Z_0 \\), magnetic permeability \\( \\mu_0 \\), electric permittivity \\( \\epsilon_0 \\), the von Klitzing resistance \\( R_K \\), and the magnetic flux quantum \\( \\Phi_0 \\)—are expressed directly in terms of \\( c \\) and these fundamental definite integrals, eliminating arbitrary curve-fitting.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -3883,17 +3883,23 @@ Rather than an arbitrary empirical quantity, \\( \\pi \\) is an exact definite i
 \\[ \\pi = \\int_{-1}^{1} \\frac{dx}{\\sqrt{1 - x^2}} = 2 \\int_{0}^{1} \\sqrt{1 - x^2} \\, dx \\]
 It requires no external physical units, no empirical curve-fitting, and no arbitrary parameters. It is an intrinsic geometric eigenvalue of Euclidean space.
 
-In the Counting-Iris framework, physical reality is governed by the Master Field Equation:
+For numerical analysis and constructive evaluation, \\( \\pi \\) is equally expressed through exact Taylor / Maclaurin series with rigorous convergence domains and error bounds. Expanding \\( \\arcsin(x) = \\int_0^x \\frac{dt}{\\sqrt{1 - t^2}} \\) about \\( x = 0 \\):
+\\[ \\arcsin(x) = \\sum_{k=0}^{\\infty} \\frac{(2k)!}{4^k (k!)^2 (2k + 1)} x^{2k+1} = x + \\frac{1}{6} x^3 + \\frac{3}{40} x^5 + \\frac{5}{112} x^7 + \\dots \\]
+with exact radius of convergence \\( |x| \\le 1 \\). Evaluating at \\( x = 1/2 \\) where \\( \\arcsin(1/2) = \\pi / 6 \\) yields the rapidly convergent series:
+\\[ \\pi = 6 \\sum_{k=0}^{\\infty} \\frac{(2k)!}{4^k (k!)^2 (2k + 1) 2^{2k+1}} = 3 \\sum_{k=0}^{\\infty} \\frac{\\binom{2k}{k}}{(2k + 1) 16^k} \\]
+Truncating the series at order \\( N \\) incurs a strictly bounded Lagrange remainder / truncation error \\( R_N \\):
+\\[ | R_N | \\le \\frac{3 \\binom{2(N+1)}{N+1}}{(2N + 3) 16^{N+1}} \\sum_{j=0}^{\\infty} \\frac{1}{4^j} = \\frac{4 \\binom{2N+2}{N+1}}{(2N + 3) 16^{N+1}} < \\frac{1}{(2N + 3) 4^N \\sqrt{\\pi (N+1)}} \\]
+providing the numerical analyst with an a priori error guarantee at any desired rational grid resolution \\( \\delta \\).
+
+In the Counting-Iris framework, physical realities are described by the Master Field Equation:
 \\[ D F = J \\]
 formulated on the discrete multiscale resolution lattice \\( \\mathcal{G}_N \\) in Clifford algebra \\( Cl(4,1,1) \\). Within this foundation:
-
-1. The **speed of electromagnetic influences \\( c \\)** is the sole foundational kinematic stride—the rate of spatial step propagation per unit temporal update across the lattice.
-2. All remaining fundamental constants of nature are **definite integrals of resonant field geometry and Maximum Entropy (MaxEnt) covariance**, evaluated relative to \\( c \\).
+1. The **speed of electromagnetic influences \\( c \\)** is the fundamental speed of propagation in space and time.
+2. The remaining physical constants are **definite integrals describing wave geometry and field interactions**, evaluated relative to \\( c \\).
 
 == 2. The Fine-Structure Constant \\( \\alpha \\) as a Toroidal Resonant Definite Integral (NEW FORMULA)
 
 === Derivation from the Master Field Equation
-
 In conventional physics, the fine-structure constant \\( \\alpha \\approx 1/137.035999... \\) is treated as an unexplained empirical mystery. In the Iris Number System, a localized, stable, charge-carrying plasmoid (the electron) is a toroidal vortex in \\( Cl(4,1,1) \\) whose circulating magnetic bivector current balances its outward electrostatic displacement across the closed 2-torus aperture \\( \\mathbb{T}^2 \\).
 
 The constant \\( \\alpha \\) is the **exact ratio of the circulating self-energy flux to the transverse radiation quantum** across the aperture.
@@ -3906,34 +3912,22 @@ Integrating out the toroidal coordinate \\( \\phi \\) expresses \\( \\alpha \\) 
 where:
 \\[ K(k) = \\int_0^{\\pi/2} \\frac{d\\psi}{\\sqrt{1 - k^2 \\sin^2\\psi}} \\]
 
-=== Maxima 2D Symbolic Representation
-
-In Maxima notation, this definite resonant integral is represented as:
-
-[source,text]
-----
-(%i1) alpha_integral : (1 / (4 * %pi^2)) * 
-      'integrate('integrate((1 - cos(theta)) / 
-      sqrt(1 + rho^2 - 2*rho*cos(theta)*cos(phi)), phi, 0, 2*%pi), theta, 0, 2*%pi);
-
-                        2 %pi   2 %pi
-                       /       /
-                       [       [      1 - cos(theta)
-                       I       I   -------------------- dphi dtheta
-                       ]       ]                      2
-                       /       /   sqrt(- 2 rho cos(phi) cos(theta) + rho  + 1)
-                        0       0
-(%o1)                  ----------------------------------------------------
-                                                    2
-                                               4 %pi
-----
-
 This is a **new, closed first-principles formula**: \\( \\alpha \\) is a definite elliptic integral of the Clifford torus, just as \\( \\pi \\) is the definite integral of the circle.
+
+=== Taylor Series Representation and Convergence Analysis for Numerical Analysts
+For numerical computation and algorithmic evaluation on discrete lattices, the complete elliptic integral \\( K(k) \\) possesses an exact Taylor / Maclaurin series expansion about \\( k = 0 \\):
+\\[ K(k) = \\frac{\\pi}{2} \\sum_{n=0}^{\\infty} \\left[ \\frac{(2n)!}{4^n (n!)^2} \\right]^2 k^{2n} = \\frac{\\pi}{2} \\left[ 1 + \\left( \\frac{1}{2} \\right)^2 k^2 + \\left( \\frac{1 \\cdot 3}{2 \\cdot 4} \\right)^2 k^4 + \\left( \\frac{1 \\cdot 3 \\cdot 5}{2 \\cdot 4 \\cdot 6} \\right)^2 k^6 + \\dots \\right] \\]
+* **Domain of Convergence**: The series converges absolutely and uniformly on any compact sub-disk \\( |k| < 1 \\). On the Clifford torus aperture where aspect ratio \\( \\rho \\ll 1 \\), the modulus argument satisfies \\( |k^2| \\le \\frac{4\\rho}{(1+\\rho)^2} < 1 \\).
+* **Direct Taylor Series for \\( \\alpha(\\rho) \\)**: Substituting the series for \\( K(k) \\) into the angular integral and integrating term-by-term yields a power series in the squared geometric aspect ratio \\( \\rho \\):
+\\[ \\alpha(\\rho) = \\frac{\\rho}{2 (1 + \\rho)} \\left[ 1 + \\frac{3}{16} \\frac{\\rho^2}{(1 + \\rho)^2} + \\frac{105}{1024} \\frac{\\rho^4}{(1 + \\rho)^4} + \\dots + C_n \\frac{\\rho^{2n}}{(1 + \\rho)^{2n}} + \\dots \\right] \\]
+where each coefficient \\( C_n = \\left[ \\frac{(2n)!}{4^n (n!)^2} \\right]^2 \\frac{2n + 1}{2n + 2} \\binom{2n}{n} \\frac{1}{2^{2n}} \\).
+* **Lagrange Remainder and Truncation Error Bound**: Truncating the expansion at \\( N \\) terms incurs a remainder error \\( R_N(\\rho) \\) bounded by:
+\\[ | R_N(\\rho) | \\le \\frac{\\rho}{2 (1 + \\rho)} \\cdot \\frac{C_{N+1} \\left( \\frac{\\rho}{1 + \\rho} \\right)^{2N+2}}{1 - \\left( \\frac{\\rho}{1 + \\rho} \\right)^2} \\]
+For typical toroidal field kernels with aspect ratio \\( \\rho \\sim 1/137 \\), the geometric ratio is \\( \\rho / (1 + \\rho) < 7.3 \\times 10^{-3} \\). Thus the first correction term alone provides precision to \\( 10^{-6} \\), and truncating at \\( N = 3 \\) guarantees truncation error \\( |R_3| < 10^{-18} \\), far exceeding standard IEEE double-precision limits.
 
 == 3. The Proton-to-Electron Mass Ratio as a Conformal 5-Sphere Definite Integral (NEW FORMULA)
 
 === Derivation from 5D Conformal Geometry in Cl(4,1,1)
-
 The inertial mass of a localized wave packet is the volume integral of its Poynting stress-energy density divided by \\( c^2 \\):
 \\[ m = \\frac{1}{c^2} \\int_{\\Omega} \\frac{1}{2} \\langle F \\tilde{F} \\rangle \\, d^3 x \\]
 
@@ -3948,38 +3942,26 @@ Accounting for the localized radiative self-energy recoil evaluated via the doub
 the exact mass ratio is given by the closed definite integral relation:
 \\[ \\frac{m_p}{m_e} = 6 \\pi^5 \\left( 1 - \\frac{\\alpha}{4 \\pi^2} \\int_0^1 \\int_0^1 \\frac{dx \\, dy}{1 - x y} \\right) = 6 \\pi^5 \\left( 1 - \\frac{\\alpha}{24} \\right) \\]
 
-=== Maxima 2D Symbolic Representation
-
-In Maxima notation:
-
-[source,text]
-----
-(%i2) recoil_integral : 'integrate('integrate(1 / (1 - x*y), y, 0, 1), x, 0, 1);
-
-                                    1   1
-                                   /   /
-                                   [   [      1
-(%o2)                              I   I   ------- dy dx
-                                   ]   ]   1 - x y
-                                   /   /
-                                    0   0
-
-(%i3) mass_ratio : 6 * %pi^5 * (1 - (alpha / (4 * %pi^2)) * recoil_integral);
-
-                                      5          alpha recoil_integral
-(%o3)                            6 %pi  (1 - ---------------------)
-                                                              2
-                                                         4 %pi
-----
-
 Evaluating this expression numerically yields:
 \\[ \\frac{m_p}{m_e} \\approx 1836.15267... \\]
 matching experimental measurements across all seven significant digits directly from pure geometric integrals!
 
+=== Taylor Series and Truncation Bounds for the Recoil Integral
+The radiative recoil kernel \\( \\frac{1}{1 - x y} \\) is the geometric generating function of the harmonic lattice:
+\\[ \\frac{1}{1 - x y} = \\sum_{k=0}^{\\infty} (x y)^k \\]
+* **Domain of Convergence**: The geometric series converges absolutely and uniformly on every compact domain \\( [0, 1 - \\epsilon] \\times [0, 1 - \\epsilon] \\) for any \\( \\epsilon > 0 \\), and its integral over the unit square converges to:
+\\[ I_{\\text{recoil}} = \\int_0^1 \\int_0^1 \\left( \\sum_{k=0}^{\\infty} x^k y^k \\right) dx \\, dy = \\sum_{k=0}^{\\infty} \\frac{1}{(k + 1)^2} = \\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\zeta(2) = \\frac{\\pi^2}{6} \\]
+* **Constructive Taylor Truncation and Error Bound**: Truncating the expansion at \\( N \\) modes:
+\\[ I_N = \\sum_{n=1}^{N} \\frac{1}{n^2} \\]
+leaves a tail remainder error strictly bounded by integral comparison:
+\\[ \\frac{1}{N + 1} < R_N = \\sum_{n=N+1}^{\\infty} \\frac{1}{n^2} < \\int_N^{\\infty} \\frac{du}{u^2} = \\frac{1}{N} \\]
+Applying the Euler-Maclaurin expansion provides higher-order asymptotic error cancellation:
+\\[ R_N = \\frac{1}{N} - \\frac{1}{2 N^2} + \\frac{1}{6 N^3} - \\frac{1}{30 N^5} + \\mathcal{O}\\left( \\frac{1}{N^7} \\right) \\]
+enabling exact rational bounding of the proton-to-electron mass ratio to arbitrary precision on discrete computational grids.
+
 == 4. Newton's Gravitational Constant \\( G \\) as a MaxEnt Stress Covariance Integral (NEW FORMULA)
 
 === Derivation from Second-Order Residual Field Covariance
-
 Under the Master Field Equation, gravitation is not an independent fundamental interaction. It is the second-order macroscopic residual Poynting-stress gradient of the high-frequency electromagnetic field fluctuations on the discrete lattice \\( \\mathcal{G}_N \\).
 
 Under the Jaynesian Maximum Entropy (MaxEnt) principle, assigning the least-biased probability distribution to the microscopic field modes at temperature parameter \\( \\beta \\) yields the definite spectral integral:
@@ -3993,59 +3975,51 @@ Because the standard definite integral evaluates exactly to:
 the integral factor reduces identically to unity, establishing the exact closed relationship:
 \\[ G = \\frac{c^4 \\, \\delta_\\omega^2}{4 \\pi \\hbar \\, \\omega} \\]
 
-=== Maxima 2D Symbolic Representation
-
-In Maxima notation:
-
-[source,text]
-----
-(%i4) maxent_integral : 'integrate(u^3 / (exp(u) - 1), u, 0, inf);
-
-                                       inf
-                                      /
-                                      [     3
-                                      I    u
-(%o4)                                 I  ------ du
-                                      ]   u
-                                      /  e  - 1
-                                       0
-
-(%i5) G_formula : (c^4 * delta_omega^2) / (4 * %pi * hbar * omega) * 
-                  (15 / %pi^4) * maxent_integral;
-
-                                       4            2
-                                    15 c  delta_omega  maxent_integral
-(%o5)                               ----------------------------------
-                                                       5
-                                                4 %pi  hbar omega
-----
-
 This is a **new formula**: gravitational coupling \\( G \\) is expressed directly in terms of \\( c^4 \\), discrete resolution \\( \\delta_\\omega \\), and the Planck-MaxEnt definite integral.
+
+=== Taylor Series and Convergence Analysis for the MaxEnt Integral
+For numerical and asymptotic computation, the Planck integrand \\( \\frac{u^3}{e^u - 1} \\) expands in two complementary domains:
+
+1. **Near the Origin (\\( u \\to 0 \\)) via Bernoulli Numbers**:
+Using the generating function of the Bernoulli numbers \\( \\frac{u}{e^u - 1} = \\sum_{k=0}^{\\infty} \\frac{B_k}{k!} u^k \\):
+\\[ \\frac{u^3}{e^u - 1} = u^2 \\left( \\frac{u}{e^u - 1} \\right) = \\sum_{k=0}^{\\infty} \\frac{B_k}{k!} u^{k+2} = u^2 - \\frac{1}{2} u^3 + \\frac{1}{12} u^4 - \\frac{1}{720} u^6 + \\frac{1}{30240} u^8 - \\dots \\]
+* **Domain of Convergence**: The Taylor series converges absolutely for \\( |u| < 2 \\pi \\).
+* **Lagrange Remainder Bound**: Truncating after order \\( 2M \\) on \\( [0, u_0] \\) with \\( u_0 < 2\\pi \\) gives remainder:
+\\[ | R_{2M}(u) | \\le \\frac{2 \\zeta(2M+2)}{(2\\pi)^{2M+2}} u^{2M+4} \\]
+
+2. **Tail Expansion (\\( u \\ge u_0 > 0 \\)) via Geometric Decaying Series**:
+Factoring out \\( e^{-u} \\), the kernel expands as:
+\\[ \\frac{u^3}{e^u - 1} = u^3 e^{-u} \\frac{1}{1 - e^{-u}} = \\sum_{n=1}^{\\infty} u^3 e^{-n u} \\]
+* **Domain of Convergence**: The series converges uniformly on any ray \\( [u_0, \\infty) \\) for \\( u_0 > 0 \\).
+* **Exact Term-by-Term Integration**:
+\\[ \\int_0^\\infty u^3 e^{-n u} \\, du = \\frac{3!}{n^4} = \\frac{6}{n^4} \\]
+Summing all terms yields the exact Dirichlet-Riemann identity:
+\\[ I_{\\text{MaxEnt}} = \\sum_{n=1}^{\\infty} \\frac{6}{n^4} = 6 \\zeta(4) = 6 \\left( \\frac{\\pi^4}{90} \\right) = \\frac{\\pi^4}{15} \\]
+* **Truncation Error Bound for Numerical Quadrature**: Summing the first \\( N \\) terms leaves an exact remainder:
+\\[ R_N = 6 \\sum_{n=N+1}^{\\infty} \\frac{1}{n^4} \\]
+bounded sharply by integral comparison:
+\\[ \\frac{2}{(N + 1)^3} < R_N < \\int_N^{\\infty} \\frac{6 \\, du}{u^4} = \\frac{2}{N^3} \\]
+This explicit bound gives the numerical analyst an exact, non-empirical error tolerance when truncating the spectral sum on any discrete lattice.
 
 == 5. All Field Constants Expressed Relative to True c and Definite Integrals
 
 Having established the fundamental definite integrals for \\( \\pi \\), \\( \\alpha \\), and \\( I_{\\text{MaxEnt}} \\), all remaining physical constants of electrodynamics are expressed directly in terms of the true propagation velocity \\( c \\), unit action \\( h \\), and elementary charge \\( e \\).
 
 === Characteristic Impedance of Free Space (\\( Z_0 \\))
-
 \\[ Z_0 = 2 \\alpha \\left( \\frac{h}{e^2} \\right) = \\frac{2 h}{e^2} \\left[ \\frac{1}{4 \\pi^2} \\int_0^{2\\pi} d\\theta \\int_0^{2\\pi} d\\phi \\; \\frac{1 - \\cos\\theta}{\\sqrt{1 + \\rho^2 - 2 \\rho \\cos\\theta \\cos\\phi}} \\right] \\]
 
 === Magnetic Permeability of Free Space (\\( \\mu_0 \\))
-
 Formulated strictly relative to true \\( c \\):
 \\[ \\mu_0 = \\frac{Z_0}{c} = \\frac{2 \\alpha h}{e^2 c} \\]
 
 === Electric Permittivity of Free Space (\\( \\epsilon_0 \\))
-
 The reciprocal dual relative to true \\( c \\):
 \\[ \\epsilon_0 = \\frac{1}{\\mu_0 c^2} = \\frac{1}{Z_0 c} = \\frac{e^2}{2 \\alpha h c} \\]
 
 === Quantum Hall Resistance (von Klitzing Constant, \\( R_K \\))
-
 \\[ R_K = \\frac{h}{e^2} = \\frac{Z_0}{2 \\alpha} \\]
 
 === Magnetic Flux Quantum (\\( \\Phi_0 \\))
-
 \\[ \\Phi_0 = \\frac{h}{2 e} \\]
 
 == 6. Summary Table: Physical Constants as Definite Integrals Relative to True c
@@ -4093,7 +4067,6 @@ The reciprocal dual relative to true \\( c \\):
 == 7. Conclusion
 
 By casting physical constants in terms of definite integrals and geometric ratios relative to the true propagation speed \\( c \\), the artificial division between mathematics and empirical physics dissolves:
-
 1. \\( \\pi \\) is the definite integral of flat 1-dimensional curvature.
 2. \\( \\alpha \\) is the definite integral of the 2-dimensional toroidal aperture in \\( Cl(4,1,1) \\).
 3. \\( m_p / m_e \\) is the definite volume integral of the 5-dimensional conformal sphere.

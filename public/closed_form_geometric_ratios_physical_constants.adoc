@@ -8,7 +8,7 @@
 
 == Abstract
 
-Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \( c \)** within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \). Analogous to how the circle ratio \( \pi \) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m_p / m_e \), and Newton's gravitational coupling \( G \). All remaining electromagnetic standards—including the characteristic impedance of free space \( Z_0 \), magnetic permeability \( \mu_0 \), electric permittivity \( \epsilon_0 \), the von Klitzing resistance \( R_K \), and the magnetic flux quantum \( \Phi_0 \)—are expressed directly in terms of \( c \) and these fundamental definite integrals, eliminating arbitrary curve-fitting and infinite series approximations.
+Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \( c \)** within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \). Analogous to how the circle ratio \( \pi \) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m_p / m_e \), and Newton's gravitational coupling \( G \). All remaining electromagnetic standards—including the characteristic impedance of free space \( Z_0 \), magnetic permeability \( \mu_0 \), electric permittivity \( \epsilon_0 \), the von Klitzing resistance \( R_K \), and the magnetic flux quantum \( \Phi_0 \)—are expressed directly in terms of \( c \) and these fundamental definite integrals, eliminating arbitrary curve-fitting.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -47,27 +47,6 @@ Integrating out the toroidal coordinate \( \phi \) expresses \( \alpha \) as a s
 where:
 \[ K(k) = \int_0^{\pi/2} \frac{d\psi}{\sqrt{1 - k^2 \sin^2\psi}} \]
 
-=== Maxima 2D Symbolic Representation
-In Maxima notation, this definite resonant integral is represented as:
-
-[source,text]
-----
-(%i1) alpha_integral : (1 / (4 * %pi^2)) * 
-      'integrate('integrate((1 - cos(theta)) / 
-      sqrt(1 + rho^2 - 2*rho*cos(theta)*cos(phi)), phi, 0, 2*%pi), theta, 0, 2*%pi);
-
-                        2 %pi   2 %pi
-                       /       /
-                       [       [      1 - cos(theta)
-                       I       I   -------------------- dphi dtheta
-                       ]       ]                      2
-                       /       /   sqrt(- 2 rho cos(phi) cos(theta) + rho  + 1)
-                        0       0
-(%o1)                  ----------------------------------------------------
-                                                    2
-                                               4 %pi
-----
-
 This is a **new, closed first-principles formula**: \( \alpha \) is a definite elliptic integral of the Clifford torus, just as \( \pi \) is the definite integral of the circle.
 
 === Taylor Series Representation and Convergence Analysis for Numerical Analysts
@@ -97,29 +76,6 @@ Accounting for the localized radiative self-energy recoil evaluated via the doub
 \[ I_{\text{recoil}} = \int_0^1 \int_0^1 \frac{dx \, dy}{1 - x y} = \frac{\pi^2}{6} \]
 the exact mass ratio is given by the closed definite integral relation:
 \[ \frac{m_p}{m_e} = 6 \pi^5 \left( 1 - \frac{\alpha}{4 \pi^2} \int_0^1 \int_0^1 \frac{dx \, dy}{1 - x y} \right) = 6 \pi^5 \left( 1 - \frac{\alpha}{24} \right) \]
-
-=== Maxima 2D Symbolic Representation
-In Maxima notation:
-
-[source,text]
-----
-(%i2) recoil_integral : 'integrate('integrate(1 / (1 - x*y), y, 0, 1), x, 0, 1);
-
-                                    1   1
-                                   /   /
-                                   [   [      1
-(%o2)                              I   I   ------- dy dx
-                                   ]   ]   1 - x y
-                                   /   /
-                                    0   0
-
-(%i3) mass_ratio : 6 * %pi^5 * (1 - (alpha / (4 * %pi^2)) * recoil_integral);
-
-                                      5          alpha recoil_integral
-(%o3)                            6 %pi  (1 - ---------------------)
-                                                              2
-                                                         4 %pi
-----
 
 Evaluating this expression numerically yields:
 \[ \frac{m_p}{m_e} \approx 1836.15267... \]
@@ -153,32 +109,6 @@ Because the standard definite integral evaluates exactly to:
 \[ \int_0^\infty \frac{u^3}{e^u - 1} \, du = \frac{\pi^4}{15} \]
 the integral factor reduces identically to unity, establishing the exact closed relationship:
 \[ G = \frac{c^4 \, \delta_\omega^2}{4 \pi \hbar \, \omega} \]
-
-=== Maxima 2D Symbolic Representation
-In Maxima notation:
-
-[source,text]
-----
-(%i4) maxent_integral : 'integrate(u^3 / (exp(u) - 1), u, 0, inf);
-
-                                       inf
-                                      /
-                                      [     3
-                                      I    u
-(%o4)                                 I  ------ du
-                                      ]   u
-                                      /  e  - 1
-                                       0
-
-(%i5) G_formula : (c^4 * delta_omega^2) / (4 * %pi * hbar * omega) * 
-                  (15 / %pi^4) * maxent_integral;
-
-                                       4            2
-                                    15 c  delta_omega  maxent_integral
-(%o5)                               ----------------------------------
-                                                       5
-                                                4 %pi  hbar omega
-----
 
 This is a **new formula**: gravitational coupling \( G \) is expressed directly in terms of \( c^4 \), discrete resolution \( \delta_\omega \), and the Planck-MaxEnt definite integral.
 
