@@ -16,7 +16,7 @@ In Euclidean geometry, the circle ratio \( \pi \) represents the ratio of the pe
 \[ \pi = \frac{C}{2 r} \]
 Rather than an arbitrary empirical quantity, \( \pi \) is an exact definite integral:
 \[ \pi = \int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}} = 2 \int_{0}^{1} \sqrt{1 - x^2} \, dx \]
-It requires no external physical units, no empirical curve-fitting, and no arbitrary parameters. It is an intrinsic geometric eigenvalue of Euclidean space.
+It requires no external physical units, no empirical curve-fitting, and no arbitrary parameters. It is an intrinsic geometric ratio of Euclidean space.
 
 For numerical analysis and constructive evaluation, \( \pi \) is equally expressed through exact Taylor / Maclaurin series with rigorous convergence domains and error bounds. Expanding \( \arcsin(x) = \int_0^x \frac{dt}{\sqrt{1 - t^2}} \) about \( x = 0 \):
 \[ \arcsin(x) = \sum_{k=0}^{\infty} \frac{(2k)!}{4^k (k!)^2 (2k + 1)} x^{2k+1} = x + \frac{1}{6} x^3 + \frac{3}{40} x^5 + \frac{5}{112} x^7 + \dots \]
@@ -66,7 +66,7 @@ For typical toroidal field kernels with aspect ratio \( \rho \sim 1/137 \), the 
 The inertial mass of a localized wave packet is the volume integral of its Poynting stress-energy density divided by \( c^2 \):
 \[ m = \frac{1}{c^2} \int_{\Omega} \frac{1}{2} \langle F \tilde{F} \rangle \, d^3 x \]
 
-In the nuclear domain, the proton represents a 3D standing wave resonating within the 5-dimensional conformal space of \( Cl(4,1,1) \) with metric signature \( (++++,-,0) \). Its geometric volume eigenvalue is governed by the volume integral of the unit 5-sphere \( S^5 \):
+In the nuclear domain, the proton represents a 3D standing wave resonating within the 5-dimensional conformal space of \( Cl(4,1,1) \) with metric signature \( (++++,-,0) \). Its geometric volume is governed by the volume integral of the unit 5-sphere \( S^5 \):
 \[ \text{Vol}(S^5) = \int_0^\pi \sin^4\theta_1 \, d\theta_1 \int_0^\pi \sin^3\theta_2 \, d\theta_2 \int_0^\pi \sin^2\theta_3 \, d\theta_3 \int_0^\pi \sin\theta_4 \, d\theta_4 \int_0^{2\pi} d\phi = \pi^3 \]
 
 The primary mass ratio is the product of the 6 Clifford basis generators and the 5-sphere volume:
