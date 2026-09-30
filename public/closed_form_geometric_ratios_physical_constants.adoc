@@ -154,7 +154,7 @@ The reciprocal dual relative to true \( c \):
 === Fundamental Circulation Impedance (von Klitzing Constant, \( R_K \))
 In the unified field theory, the von Klitzing constant \( R_K \) is not an inexplicable quantum quasi-theoretic effect, but the fundamental circulation impedance of a localized electromagnetic vortex in \( Cl(4,1,1) \):
 \[ R_K = \frac{h}{e^2} = \frac{Z_0}{2 \alpha} \]
-expressing the exact ratio of action circulation per unit elementary charge squared, directly relating free-space wave impedance \( Z_0 \) to the toroidal resonance ratio \( \alpha \).
+expressing the exact ratio of action circulation per unit elementary charge squared, directly relating intrinsic wave impedance \( Z_0 \) to the toroidal resonance ratio \( \alpha \).
 
 === Enclosed Magnetic Bivector Circulation (Magnetic Flux Quantum, \( \Phi_0 \))
 The magnetic flux quantum \( \Phi_0 \) is the fundamental unit of enclosed magnetic bivector flux circulation per elementary charge pair on the discrete lattice \( \mathcal{G}_N \):
