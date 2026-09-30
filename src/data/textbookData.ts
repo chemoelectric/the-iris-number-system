@@ -3902,7 +3902,7 @@ formulated on the discrete multiscale resolution lattice \\( \\mathcal{G}_N \\) 
 === Derivation from the Master Field Equation
 In conventional physics, the fine-structure constant \\( \\alpha \\approx 1/137.035999... \\) is treated as an unexplained empirical mystery. In the Iris Number System, a localized, stable, charge-carrying plasmoid (the electron) is a toroidal vortex in \\( Cl(4,1,1) \\) whose circulating magnetic bivector current balances its outward electrostatic displacement across the closed 2-torus \\( \\mathbb{T}^2 \\).
 
-The constant \\( \\alpha \\) is the **exact ratio of the circulating self-energy flux to the transverse radiation quantum** across the toroid.
+The constant \\( \\alpha \\) is the **exact ratio of the circulating self-energy flux to the transverse energy emission** across the toroid.
 
 Let the 2-torus have poloidal angle \\( \\theta \\in [0, 2\\pi] \\) and toroidal angle \\( \\phi \\in [0, 2\\pi] \\), with aspect ratio \\( \\rho = r / R \\). Integrating the Poynting stress multivector yields the exact double definite integral:
 \\[ \\alpha = \\frac{1}{4 \\pi^2} \\int_0^{2\\pi} d\\theta \\int_0^{2\\pi} d\\phi \\; \\frac{1 - \\cos\\theta}{\\sqrt{1 + \\rho^2 - 2 \\rho \\cos\\theta \\cos\\phi}} \\]
