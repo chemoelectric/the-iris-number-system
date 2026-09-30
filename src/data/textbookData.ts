@@ -3873,7 +3873,7 @@ export const PHYSICAL_CONSTANTS_PAPER: Textbook = {
           "title": "Technical Paper: Definite Integrals and Geometric Ratios",
           "contentAsciiDoc": `== Abstract
 
-Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \\( c \\)** within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\). Analogous to how the circle ratio \\( \\pi \\) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \\( \\alpha \\), the proton-to-electron mass ratio \\( m_p / m_e \\), and Newton's gravitational coupling \\( G \\). All remaining electromagnetic standards—including the intrinsic electromagnetic wave impedance \\( Z_0 \\), intrinsic magnetic permeability \\( \\mu_0 \\), intrinsic electric permittivity \\( \\epsilon_0 \\), the von Klitzing resistance \\( R_K \\), and the magnetic flux quantum \\( \\Phi_0 \\)—are expressed directly in terms of \\( c \\) and these fundamental definite integrals. Furthermore, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \\( \\mathcal{G}_N \\) with m-res dimensions, m-res mass, and base-scale ratios, we derive the SI thermodynamic constants \\( k_B \\) and \\( R \\) as exact geometric scale invariants of discrete momentum flux conservation, eliminating arbitrary curve-fitting and continuum approximations.
+Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \\( c \\)** within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\). Analogous to how the circle ratio \\( \\pi \\) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \\( \\alpha \\), the proton-to-electron mass ratio \\( m_p / m_e \\), and Newton's gravitational coupling \\( G \\). All remaining electromagnetic standards—including the intrinsic electromagnetic wave impedance \\( Z_0 \\), intrinsic magnetic permeability \\( \\mu_0 \\), intrinsic electric permittivity \\( \\epsilon_0 \\), the von Klitzing resistance \\( R_K \\) (the fundamental charge-circulation impedance \\( h / e^2 = Z_0 / (2 \\alpha) \\) of a localized field vortex), and the magnetic flux quantum \\( \\Phi_0 \\) (the fundamental unit of enclosed magnetic bivector flux circulation \\( h / (2 e) \\) on the discrete lattice)—are expressed directly in terms of \\( c \\) and these fundamental definite integrals. Furthermore, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \\( \\mathcal{G}_N \\) with m-res dimensions, m-res mass, and base-scale ratios, we derive the SI thermodynamic constants \\( k_B \\) and \\( R \\) as exact geometric scale invariants of discrete momentum flux conservation, eliminating arbitrary curve-fitting and continuum approximations.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -4016,11 +4016,15 @@ Formulated strictly relative to true \\( c \\):
 The reciprocal dual relative to true \\( c \\):
 \\[ \\epsilon_0 = \\frac{1}{\\mu_0 c^2} = \\frac{1}{Z_0 c} = \\frac{e^2}{2 \\alpha h c} \\]
 
-=== Quantum Hall Resistance (von Klitzing Constant, \\( R_K \\))
+=== Fundamental Circulation Impedance (von Klitzing Constant, \\( R_K \\))
+In the unified field theory, the von Klitzing constant \\( R_K \\) is not an inexplicable quantum quasi-theoretic effect, but the fundamental circulation impedance of a localized electromagnetic vortex in \\( Cl(4,1,1) \\):
 \\[ R_K = \\frac{h}{e^2} = \\frac{Z_0}{2 \\alpha} \\]
+expressing the exact ratio of action circulation per unit elementary charge squared, directly relating free-space wave impedance \\( Z_0 \\) to the toroidal resonance ratio \\( \\alpha \\).
 
-=== Magnetic Flux Quantum (\\( \\Phi_0 \\))
+=== Enclosed Magnetic Bivector Circulation (Magnetic Flux Quantum, \\( \\Phi_0 \\))
+The magnetic flux quantum \\( \\Phi_0 \\) is the fundamental unit of enclosed magnetic bivector flux circulation per elementary charge pair on the discrete lattice \\( \\mathcal{G}_N \\):
 \\[ \\Phi_0 = \\frac{h}{2 e} \\]
+representing the closed contour integral of the magnetic bivector field \\( F \\) bounding an elementary vortex cell.
 
 == 6. The Analytic Ideal Gas on the m-Resolution Grid and SI Thermodynamic Constants (\\( k_B, R \\))
 
