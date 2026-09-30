@@ -8,7 +8,7 @@
 
 == Abstract
 
-Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \( c \) within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \), eliminating arbitrary empirical curve-fitting. The fine-structure constant \( \alpha \) is derived from the aspect-ratio geometry of a localized toroidal vortex in \( Cl(4,1,1) \) via the complete elliptic integral \( \alpha = ({1} / {2 \pi}) \int_0^{\pi / 2} ({1 - k_0^2 \sin^2\theta}) ^ {-1/2}{d\theta} \approx 1/{137.035999} \). The proton-to-electron mass ratio is calculated as the conformal \( 5 \)-sphere volume integral with discrete lattice reaction: \( m_p / m_e = 6 \pi^5 [ 1 - ({\alpha} / {4\pi^2}) \int_0^1 \int_0^1 (1 - x y) ^ {-1}{dx\,dy} ] = 6 \pi^5 ( 1 - {\alpha} / {24} ) \approx 1836.15267 \). Newton's gravitational coupling is derived from the MaxEnt spectral covariance integral of electromagnetic stress-energy tensor fluctuations proportional to \( c^4 \): \( G = \frac{c^4 \delta_\omega^2}{4 \pi \hbar \omega} \left( \frac{15}{\pi^4} \int_0^\infty \frac{u^3 du}{e^u - 1} \right) \). All intrinsic electromagnetic standards are expressed directly in terms of \( c \) and these definite integrals: intrinsic magnetic permeability \( \mu_0 = \frac{2 \alpha h}{e^2 c} \), intrinsic wave impedance \( Z_0 = \mu_0 c = \frac{2 \alpha h}{e^2} \), intrinsic electric permittivity \( \epsilon_0 = \frac{1}{\mu_0 c^2} \), the fundamental circulation impedance (von Klitzing constant) \( R_K = \frac{h}{e^2} = \frac{Z_0}{2 \alpha} \), and the unit of enclosed magnetic bivector flux circulation \( \Phi_0 = \frac{h}{2 e} \). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \( \mathcal{G}_N \) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \( k_B \) and molar gas constant \( R \) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
+Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \( c \) within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \), eliminating arbitrary empirical curve-fitting. The fine-structure constant \( \alpha \) is derived from the aspect-ratio geometry of a localized toroidal vortex in \( Cl(4,1,1) \) via the complete elliptic integral \( \alpha = ({1} / {2 \pi}) \int_0^{\pi / 2} ({1 - k_0^2 \sin^2\vartheta}) ^ {-1/2}{d\vartheta} \approx 1/{137.035999} \). The proton-to-electron mass ratio is calculated as the conformal \( 5 \)-sphere volume integral with discrete lattice reaction: \( m_p / m_e = 6 \pi^5 [ 1 - ({\alpha} / {4\pi^2}) \int_0^1 \int_0^1 (1 - x y) ^ {-1}{dx\,dy} ] = 6 \pi^5 ( 1 - {\alpha} / {24} ) \approx 1836.15267 \). Newton's gravitational coupling is derived from the MaxEnt spectral covariance integral of electromagnetic stress-energy tensor fluctuations proportional to \( c^4 \): \( G = ( c^4 \delta_\omega^2 / 4 \pi \hbar \omega) (15 / \pi^4 ) \int_0^\infty [{u^3} / ({e^u - 1})] \, du \). All intrinsic electromagnetic standards are expressed directly in terms of \( c \) and these definite integrals: intrinsic magnetic permeability \( \mu_0 = {2 \alpha h} / {e^2 c} \), intrinsic wave impedance \( Z_0 = \mu_0 c = {2 \alpha h} / {e^2} \), intrinsic electric permittivity \( \varepsilon_0 = {1} / {\mu_0 c^2} \), the fundamental circulation impedance (von Klitzing constant) \( R_K = {h} / {e^2} ={Z_0} / {2 \alpha} \), and the unit of enclosed magnetic bivector flux circulation \( \Phi_0 = {h} / {2 e} \). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \( \mathcal{G}_N \) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \( k_B \) and molar gas constant \( R \) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -18,45 +18,57 @@ Rather than an arbitrary empirical quantity, \( \pi \) is an exact definite inte
 \[ \pi = \arcsin(1) - \arcsin(-1) = \int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}} \]
 It requires no external physical units, no empirical curve-fitting, and no arbitrary parameters. It is an intrinsic geometric ratio of Euclidean space.
 
-For numerical analysis and constructive evaluation, \( \pi \) is equally expressed through exact Taylor / Maclaurin series with rigorous convergence domains and error bounds. Expanding \( \arcsin(x) = \int_0^x \frac{dt}{\sqrt{1 - t^2}} \) about \( x = 0 \):
+For numerical analysis and constructive evaluation, \( \pi \) is equally expressed through exact Taylor / Maclaurin series with rigorous convergence domains and error bounds. Expanding \( \arcsin(x) = \int_0^x (1 - t ^ 2) ^ {-1/2} {dt} \) about \( x = 0 \):
 \[ \arcsin(x) = \sum_{k=0}^{\infty} \frac{(2k)!}{4^k (k!)^2 (2k + 1)} x^{2k+1} = x + \frac{1}{6} x^3 + \frac{3}{40} x^5 + \frac{5}{112} x^7 + \dots \]
 with exact radius of convergence \( |x| \le 1 \). Evaluating at \( x = 1/2 \) where \( \arcsin(1/2) = \pi / 6 \) yields the rapidly convergent series:
 \[ \pi = 6 \sum_{k=0}^{\infty} \frac{(2k)!}{4^k (k!)^2 (2k + 1) 2^{2k+1}} = 3 \sum_{k=0}^{\infty} \frac{\binom{2k}{k}}{(2k + 1) 16^k} \]
 Truncating the series at order \( N \) incurs a strictly bounded Lagrange remainder / truncation error \( R_N \):
 \[ | R_N | \le \frac{3 \binom{2(N+1)}{N+1}}{(2N + 3) 16^{N+1}} \sum_{j=0}^{\infty} \frac{1}{4^j} = \frac{4 \binom{2N+2}{N+1}}{(2N + 3) 16^{N+1}} < \frac{1}{(2N + 3) 4^N \sqrt{\pi (N+1)}} \]
-providing the numerical analyst with an a priori error guarantee at any desired rational grid resolution \( \delta \).
+Using this error term, a person can choose an \( N \) for any desired resolution.
 
 In the Counting-Iris framework, physical realities are described by the Master Field Equation:
 \[ D F = J \]
-formulated on the discrete multiscale resolution lattice \( \mathcal{G}_N \) in Clifford algebra \( Cl(4,1,1) \). Within this foundation:
-1. The **speed of electromagnetic influences \( c \)** is the fundamental speed of propagation in space and time.
-2. The remaining physical constants are **definite integrals describing wave geometry and field interactions**, evaluated relative to \( c \).
+This equation is formulated not in conventional mathematics based on continuous real numbers and \( \varepsilon \)-\( \delta \) analysis, but on the discrete multiscale resolution lattice \( \mathcal{G}_N \) in Clifford algebra \( Cl(4,1,1) \). Within this foundation:
 
-== 2. The Fine-Structure Constant \( \alpha \) as a Toroidal Resonant Definite Integral ([smallcaps]#new formula#)
+1. The _speed of electromagnetic influences \( c \)_ is the fundamental speed of propagation in space and time.
+
+2. The remaining physical constants are _definite integrals describing wave geometry and field interactions_, evaluated relative to \( c \).
+
+Thus the physical constants are not accidents, and are not consequences of cosmological history. They are logical necessities akin to \( \pi \), but dealing with more complicated geometries. As \( \pi \) is similar in structure to a wheel, so is the fine-structure constant \( \alpha \) similar in structure to the toroidal form of an electron. Both the circle ratio \( \pi \) and the fine-structure constant \( \alpha \) are _geometric_ values. They both _describe_ physical realities (by their shapes), without _being_ those realities.
+
+Being geometry, however, the physical constants need not be _measured_
+to be _known_, at least as ratios. They can derived logically, much as
+\( \pi \) is the circumference of a circle measured as a ratio to the
+circle’s diameter, and its value can be derived by logic. Amongst what
+follow are newly discovered logical derivations of the fine-structure
+constant, the proton-to-electron mass ratio, and Newton’s
+gravitational constant \( G \).
+
+== 2. The Fine-Structure Constant \( \alpha \) as a Definite Integral ([smallcaps]#new formula#)
 
 === Derivation from the Master Field Equation
-In conventional physics, the fine-structure constant \( \alpha \approx 1/137.035999... \) is treated as an unexplained empirical mystery. In the Iris Number System, a localized, stable, charge-carrying plasmoid (the electron) is a toroidal vortex in \( Cl(4,1,1) \) whose circulating magnetic bivector current balances its outward electrostatic displacement across the closed 2-torus \( \mathbb{T}^2 \).
+In conventional physics, the fine-structure constant \( \alpha \approx 1/137.035999... \) is treated as an accident of Nature. In the Iris Number System, the electron is represented by a toroidal plasmoid vortex in \( Cl(4,1,1) \) whose circulating magnetic bivector current balances its outward electrostatic displacement across the closed 2-torus \( \mathbb{T}^2 \).
 
-The constant \( \alpha \) is the **exact ratio of the circulating self-energy flux to the transverse radiation quantum** across the toroid.
+The constant \( \alpha \) is the _exact ratio of the circulating self-energy flux to the transverse radiation quantum_ across the toroid.
 
-Let the 2-torus have poloidal angle \( \theta \in [0, 2\pi] \) and toroidal angle \( \phi \in [0, 2\pi] \), with aspect ratio \( \rho = r / R \). Integrating the Poynting stress multivector yields the exact double definite integral:
-\[ \alpha = \frac{1}{4 \pi^2} \int_0^{2\pi} d\theta \int_0^{2\pi} d\phi \; \frac{1 - \cos\theta}{\sqrt{1 + \rho^2 - 2 \rho \cos\theta \cos\phi}} \]
+Let the 2-torus have poloidal angle \( \vartheta \in [0, 2\pi] \) and toroidal angle \( \varphi \in [0, 2\pi] \), with aspect ratio \( \rho = r / R \). Integrating the Poynting stress multivector yields the exact double definite integral:
+\[ \alpha = \frac{1}{4 \pi^2} \int_0^{2\pi} d\vartheta \int_0^{2\pi} d\varphi \; \frac{1 - \cos\vartheta}{\sqrt{1 + \rho^2 - 2 \rho \cos\vartheta \cos\varphi}} \]
 
-Integrating out the toroidal coordinate \( \phi \) expresses \( \alpha \) as a single definite integral involving the complete elliptic integral of the first kind \( K(k) \):
-\[ \alpha = \frac{1}{\pi^2} \int_0^{\pi} \frac{1 - \cos\theta}{1 + \rho} \, K \left( \frac{4\rho \cos\theta}{(1 + \rho)^2} \right) d\theta \]
+Integrating out the toroidal coordinate \( \varphi \) expresses \( \alpha \) as a single definite integral involving the complete elliptic integral of the first kind \( K(k) \):
+\[ \alpha = \frac{1}{\pi^2} \int_0^{\pi} \frac{1 - \cos\vartheta}{1 + \rho} \, K \left( \frac{4\rho \cos\vartheta}{(1 + \rho)^2} \right) d\vartheta \]
 where:
 \[ K(k) = \int_0^{\pi/2} \frac{d\psi}{\sqrt{1 - k^2 \sin^2\psi}} \]
 
-This is a **new, closed first-principles formula**: \( \alpha \) is a definite elliptic integral of the Clifford torus, just as \( \pi \) is the definite integral of the circle.
+This is a _new, closed first-principles formula_: \( \alpha \) is a definite elliptic integral of the Clifford torus, just as \( \pi \) is the definite integral of the circle.
 
 === Taylor Series Representation and Convergence Analysis for Numerical Analysts
 For numerical computation and algorithmic evaluation on discrete lattices, the complete elliptic integral \( K(k) \) possesses an exact Taylor / Maclaurin series expansion about \( k = 0 \):
 \[ K(k) = \frac{\pi}{2} \sum_{n=0}^{\infty} \left[ \frac{(2n)!}{4^n (n!)^2} \right]^2 k^{2n} = \frac{\pi}{2} \left[ 1 + \left( \frac{1}{2} \right)^2 k^2 + \left( \frac{1 \cdot 3}{2 \cdot 4} \right)^2 k^4 + \left( \frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6} \right)^2 k^6 + \dots \right] \]
-* **Domain of Convergence**: The series converges absolutely and uniformly on any compact sub-disk \( |k| < 1 \). On the Clifford torus where aspect ratio \( \rho \ll 1 \), the modulus argument satisfies \( |k^2| \le \frac{4\rho}{(1+\rho)^2} < 1 \).
-* **Direct Taylor Series for \( \alpha(\rho) \)**: Substituting the series for \( K(k) \) into the angular integral and integrating term-by-term yields a power series in the squared geometric aspect ratio \( \rho \):
+* _Domain of Convergence_: The series converges absolutely and uniformly on any compact sub-disk \( |k| < 1 \). On the Clifford torus where aspect ratio \( \rho \ll 1 \), the modulus argument satisfies \( |k^2| \le \frac{4\rho}{(1+\rho)^2} < 1 \).
+* _Direct Taylor Series for \( \alpha(\rho) \)_: Substituting the series for \( K(k) \) into the angular integral and integrating term-by-term yields a power series in the squared geometric aspect ratio \( \rho \):
 \[ \alpha(\rho) = \frac{\rho}{2 (1 + \rho)} \left[ 1 + \frac{3}{16} \frac{\rho^2}{(1 + \rho)^2} + \frac{105}{1024} \frac{\rho^4}{(1 + \rho)^4} + \dots + C_n \frac{\rho^{2n}}{(1 + \rho)^{2n}} + \dots \right] \]
 where each coefficient \( C_n = \left[ \frac{(2n)!}{4^n (n!)^2} \right]^2 \frac{2n + 1}{2n + 2} \binom{2n}{n} \frac{1}{2^{2n}} \).
-* **Lagrange Remainder and Truncation Error Bound**: Truncating the expansion at \( N \) terms incurs a remainder error \( R_N(\rho) \) bounded by:
+* _Lagrange Remainder and Truncation Error Bound_: Truncating the expansion at \( N \) terms incurs a remainder error \( R_N(\rho) \) bounded by:
 \[ | R_N(\rho) | \le \frac{\rho}{2 (1 + \rho)} \cdot \frac{C_{N+1} \left( \frac{\rho}{1 + \rho} \right)^{2N+2}}{1 - \left( \frac{\rho}{1 + \rho} \right)^2} \]
 For typical toroidal field kernels with aspect ratio \( \rho \sim 1/137 \), the geometric ratio is \( \rho / (1 + \rho) < 7.3 \times 10^{-3} \). Thus the first correction term alone provides precision to \( 10^{-6} \), and truncating at \( N = 3 \) guarantees truncation error \( |R_3| < 10^{-18} \), far exceeding standard IEEE double-precision limits.
 
@@ -67,7 +79,7 @@ The inertial mass of a localized wave packet is the volume integral of its Poynt
 \[ m = \frac{1}{c^2} \int_{\Omega} \frac{1}{2} \langle F \tilde{F} \rangle \, d^3 x \]
 
 In the nuclear domain, the proton represents a 3D standing wave resonating within the 5-dimensional conformal space of \( Cl(4,1,1) \) with metric signature \( (++++,-,0) \). Its geometric volume is governed by the volume integral of the unit 5-sphere \( S^5 \):
-\[ \text{Vol}(S^5) = \int_0^\pi \sin^4\theta_1 \, d\theta_1 \int_0^\pi \sin^3\theta_2 \, d\theta_2 \int_0^\pi \sin^2\theta_3 \, d\theta_3 \int_0^\pi \sin\theta_4 \, d\theta_4 \int_0^{2\pi} d\phi = \pi^3 \]
+\[ \text{Vol}(S^5) = \int_0^\pi \sin^4\vartheta_1 \, d\vartheta_1 \int_0^\pi \sin^3\vartheta_2 \, d\vartheta_2 \int_0^\pi \sin^2\vartheta_3 \, d\vartheta_3 \int_0^\pi \sin\vartheta_4 \, d\vartheta_4 \int_0^{2\pi} d\varphi = \pi^3 \]
 
 The primary mass ratio is the product of the 6 Clifford basis generators and the 5-sphere volume:
 \[ \lambda_{\text{mass}, 0} = 6 \pi^5 \]
@@ -84,9 +96,9 @@ matching experimental measurements across all seven significant digits directly 
 === Taylor Series and Truncation Bounds for the Discrete Lattice Reaction Integral
 The radiative reaction kernel \( \frac{1}{1 - x y} \) expresses the geometric generating function of modal interactions on the discrete grid \( \mathcal{G}_N \):
 \[ \frac{1}{1 - x y} = \sum_{k=0}^{\infty} (x y)^k \]
-* **Domain of Convergence**: The geometric series converges absolutely and uniformly on every compact domain \( [0, 1 - \epsilon] \times [0, 1 - \epsilon] \) for any \( \epsilon > 0 \), and its integral over the unit square converges to:
+* _Domain of Convergence_: The geometric series converges absolutely and uniformly on every compact domain \( [0, 1 - \varepsilon] \times [0, 1 - \varepsilon] \) for any \( \varepsilon > 0 \), and its integral over the unit square converges to:
 \[ I_{\text{recoil}} = \int_0^1 \int_0^1 \left( \sum_{k=0}^{\infty} x^k y^k \right) dx \, dy = \sum_{k=0}^{\infty} \frac{1}{(k + 1)^2} = \sum_{n=1}^{\infty} \frac{1}{n^2} = \zeta(2) = \frac{\pi^2}{6} \]
-* **Constructive Taylor Truncation and Error Bound**: Truncating the expansion at \( N \) modes:
+* _Constructive Taylor Truncation and Error Bound_: Truncating the expansion at \( N \) modes:
 \[ I_N = \sum_{n=1}^{N} \frac{1}{n^2} \]
 leaves a tail remainder error strictly bounded by integral comparison:
 \[ \frac{1}{N + 1} < R_N = \sum_{n=N+1}^{\infty} \frac{1}{n^2} < \int_N^{\infty} \frac{du}{u^2} = \frac{1}{N} \]
@@ -110,27 +122,27 @@ Because the standard definite integral evaluates exactly to:
 the integral factor reduces identically to unity, establishing the exact closed relationship:
 \[ G = \frac{c^4 \, \delta_\omega^2}{4 \pi \hbar \, \omega} \]
 
-This is a **new formula**: gravitational coupling \( G \) is expressed directly in terms of \( c^4 \), discrete resolution \( \delta_\omega \), and the Planck-MaxEnt definite integral.
+This is a _new formula_: gravitational coupling \( G \) is expressed directly in terms of \( c^4 \), discrete resolution \( \delta_\omega \), and the Planck-MaxEnt definite integral.
 
 === Taylor Series and Convergence Analysis for the MaxEnt Integral
 For numerical and asymptotic computation, the Planck integrand \( \frac{u^3}{e^u - 1} \) expands in two complementary domains:
 
-1. **Near the Origin (\( u \to 0 \)) via Bernoulli Numbers**:
+1. _Near the Origin (\( u \to 0 \)) via Bernoulli Numbers_:
 Using the generating function of the Bernoulli numbers \( \frac{u}{e^u - 1} = \sum_{k=0}^{\infty} \frac{B_k}{k!} u^k \):
 \[ \frac{u^3}{e^u - 1} = u^2 \left( \frac{u}{e^u - 1} \right) = \sum_{k=0}^{\infty} \frac{B_k}{k!} u^{k+2} = u^2 - \frac{1}{2} u^3 + \frac{1}{12} u^4 - \frac{1}{720} u^6 + \frac{1}{30240} u^8 - \dots \]
-* **Domain of Convergence**: The Taylor series converges absolutely for \( |u| < 2 \pi \).
-* **Lagrange Remainder Bound**: Truncating after order \( 2M \) on \( [0, u_0] \) with \( u_0 < 2\pi \) gives remainder:
+* _Domain of Convergence_: The Taylor series converges absolutely for \( |u| < 2 \pi \).
+* _Lagrange Remainder Bound_: Truncating after order \( 2M \) on \( [0, u_0] \) with \( u_0 < 2\pi \) gives remainder:
 \[ | R_{2M}(u) | \le \frac{2 \zeta(2M+2)}{(2\pi)^{2M+2}} u^{2M+4} \]
 
-2. **Tail Expansion (\( u \ge u_0 > 0 \)) via Geometric Decaying Series**:
+2. _Tail Expansion (\( u \ge u_0 > 0 \)) via Geometric Decaying Series_:
 Factoring out \( e^{-u} \), the kernel expands as:
 \[ \frac{u^3}{e^u - 1} = u^3 e^{-u} \frac{1}{1 - e^{-u}} = \sum_{n=1}^{\infty} u^3 e^{-n u} \]
-* **Domain of Convergence**: The series converges uniformly on any ray \( [u_0, \infty) \) for \( u_0 > 0 \).
-* **Exact Term-by-Term Integration**:
+* _Domain of Convergence_: The series converges uniformly on any ray \( [u_0, \infty) \) for \( u_0 > 0 \).
+* _Exact Term-by-Term Integration_:
 \[ \int_0^\infty u^3 e^{-n u} \, du = \frac{3!}{n^4} = \frac{6}{n^4} \]
 Summing all terms yields the exact Dirichlet-Riemann identity:
 \[ I_{\text{MaxEnt}} = \sum_{n=1}^{\infty} \frac{6}{n^4} = 6 \zeta(4) = 6 \left( \frac{\pi^4}{90} \right) = \frac{\pi^4}{15} \]
-* **Truncation Error Bound for Numerical Quadrature**: Summing the first \( N \) terms leaves an exact remainder:
+* _Truncation Error Bound for Numerical Quadrature_: Summing the first \( N \) terms leaves an exact remainder:
 \[ R_N = 6 \sum_{n=N+1}^{\infty} \frac{1}{n^4} \]
 bounded sharply by integral comparison:
 \[ \frac{2}{(N + 1)^3} < R_N < \int_N^{\infty} \frac{6 \, du}{u^4} = \frac{2}{N^3} \]
@@ -141,15 +153,15 @@ This explicit bound gives the numerical analyst an exact, non-empirical error to
 Having established the fundamental definite integrals for \( \pi \), \( \alpha \), and \( I_{\text{MaxEnt}} \), all remaining physical constants of electrodynamics are expressed directly in terms of the true propagation velocity \( c \), unit action \( h \), and elementary charge \( e \).
 
 === Intrinsic Electromagnetic Wave Impedance (\( Z_0 \))
-\[ Z_0 = 2 \alpha \left( \frac{h}{e^2} \right) = \frac{2 h}{e^2} \left[ \frac{1}{4 \pi^2} \int_0^{2\pi} d\theta \int_0^{2\pi} d\phi \; \frac{1 - \cos\theta}{\sqrt{1 + \rho^2 - 2 \rho \cos\theta \cos\phi}} \right] \]
+\[ Z_0 = 2 \alpha \left( \frac{h}{e^2} \right) = \frac{2 h}{e^2} \left[ \frac{1}{4 \pi^2} \int_0^{2\pi} d\vartheta \int_0^{2\pi} d\varphi \; \frac{1 - \cos\vartheta}{\sqrt{1 + \rho^2 - 2 \rho \cos\vartheta \cos\varphi}} \right] \]
 
 === Intrinsic Magnetic Permeability (\( \mu_0 \))
 Formulated strictly relative to true \( c \):
 \[ \mu_0 = \frac{Z_0}{c} = \frac{2 \alpha h}{e^2 c} \]
 
-=== Intrinsic Electric Permittivity (\( \epsilon_0 \))
+=== Intrinsic Electric Permittivity (\( \varepsilon_0 \))
 The reciprocal dual relative to true \( c \):
-\[ \epsilon_0 = \frac{1}{\mu_0 c^2} = \frac{1}{Z_0 c} = \frac{e^2}{2 \alpha h c} \]
+\[ \varepsilon_0 = \frac{1}{\mu_0 c^2} = \frac{1}{Z_0 c} = \frac{e^2}{2 \alpha h c} \]
 
 === Fundamental Circulation Impedance (von Klitzing Constant, \( R_K \))
 In the unified field theory, the von Klitzing constant \( R_K \) is not an inexplicable quantum quasi-theoretic effect, but the fundamental circulation impedance of a localized electromagnetic vortex in \( Cl(4,1,1) \):
@@ -171,20 +183,20 @@ Here we establish that the Ideal Gas is not an arbitrary phenomenological model,
 
 Instead of point particles of zero spatial extent (an unphysical category error) or arbitrary macroscopic spheres, the gas consists of a finite number \( N \) of finite entities defined on discrete resolution grid \( \mathcal{G}_N \):
 
-1. **m-Resolution Dimensions**: Each particle possesses non-zero, finite spatial extent with discrete m-res dimensions \( \Delta x \in \mathcal{G}_N \), occupying an m-res volume \( \Delta V = ( \Delta x )^3 \).
-2. **m-Resolution Mass**: Each particle carries a discrete, finite m-res mass \( \Delta m \) at lattice scale \( N \).
-3. **m-Resolution Displacements and Durations**: In each discrete m-res time increment \( \Delta t \), a particle traverses an m-res spatial displacement \( \Delta \mathbf{x} \). All collisions and boundary reflections occur via direct contact action over finite interaction duration \( \tau_c > 0 \).
+1. _m-Resolution Dimensions_: Each particle possesses non-zero, finite spatial extent with discrete m-res dimensions \( \Delta x \in \mathcal{G}_N \), occupying an m-res volume \( \Delta V = ( \Delta x )^3 \).
+2. _m-Resolution Mass_: Each particle carries a discrete, finite m-res mass \( \Delta m \) at lattice scale \( N \).
+3. _m-Resolution Displacements and Durations_: In each discrete m-res time increment \( \Delta t \), a particle traverses an m-res spatial displacement \( \Delta \mathbf{x} \). All collisions and boundary reflections occur via direct contact action over finite interaction duration \( \tau_c > 0 \).
 
 === Emergence of Base-Scale Kinematic and Dynamic Ratios
 
 Although the spatial displacements and time increments are at the m-resolution scale, their quotients and products evaluate directly to standard base-scale physical observables:
 
-1. **Base-Scale Velocity**: The velocity of each particle is the base-scale ratio:
+1. _Base-Scale Velocity_: The velocity of each particle is the base-scale ratio:
 \[ \mathbf{v} = \frac{\Delta \mathbf{x}}{\Delta t} \]
 The m-res scale parameters cancel analytically in the quotient, producing base-scale velocities bounded strictly by the propagation speed of electromagnetic influences \( c \):
 \[ | \mathbf{v} | < c \]
 
-2. **Base-Scale Mass Density**: In a bounded domain of volume \( V \), the total mass \( M = N \Delta m \) distributed over the spatial grid yields the base-scale mass density:
+2. _Base-Scale Mass Density_: In a bounded domain of volume \( V \), the total mass \( M = N \Delta m \) distributed over the spatial grid yields the base-scale mass density:
 \[ \rho = \frac{M}{V} = \frac{\Delta m}{( \Delta x )^3} \]
 which is regular, finite, and strictly non-singular.
 
@@ -214,9 +226,9 @@ For a molar quantity containing Avogadro's count \( N_A \) of discrete entities 
 \[ P V = n R T, \quad \text{where} \quad R = N_A k_B \]
 
 This derivation establishes:
-1. **No Continuum Approximations**: The ideal gas equation of state is an exact theorem of discrete momentum flux conservation on the m-resolution grid \( \mathcal{G}_N \).
-2. **Elimination of Arbitrary Parameters**: No ad hoc “spherical cow” radii or phenomenological potential functions are introduced; the particles interact strictly through contact dynamics with m-res dimensions and masses.
-3. **The Nature of the SI Constants**: The Boltzmann constant \( k_B \) is a **geometric scale factor** that calibrates macroscopic calorimetric temperature units (kelvins) to base-scale kinetic action (joules):
+1. _No Continuum Approximations_: The ideal gas equation of state is an exact theorem of discrete momentum flux conservation on the m-resolution grid \( \mathcal{G}_N \).
+2. _Elimination of Arbitrary Parameters_: No ad hoc “spherical cow” radii or phenomenological potential functions are introduced; the particles interact strictly through contact dynamics with m-res dimensions and masses.
+3. _The Nature of the SI Constants_: The Boltzmann constant \( k_B \) is a _geometric scale factor_ that calibrates macroscopic calorimetric temperature units (kelvins) to base-scale kinetic action (joules):
 \[ k_B = \frac{2 \langle E_k \rangle}{3 T} \]
 Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar momentum flux constant. Both constants are exact geometric consequences of discrete spatial kinematics on \( \mathcal{G}_N \).
 
@@ -234,19 +246,19 @@ Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar mome
 //| Classical
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}\alpha \hfil \)
-| \( \displaystyle \frac{1}{4 \pi^2} \int_0^{2\pi} \int_0^{2\pi} \frac{(1 - \cos\theta) \, d\theta \, d\phi}{\sqrt{1 + \rho^2 - 2\rho\cos\theta\cos\phi}} \)
+| \( \displaystyle \frac{1}{4 \pi^2} \int_0^{2\pi} \int_0^{2\pi} \frac{(1 - \cos\vartheta) \, d\vartheta \, d\varphi}{\sqrt{1 + \rho^2 - 2\rho\cos\vartheta\cos\varphi}} \)
 //| Coupling ratio of \( Cl(4,1,1) \) torus
-//| **[smallcaps]#new formula#**
+//| _[smallcaps]#new formula#_
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}\displaystyle \frac{m_p}{m_e} \hfil \)
 | \( \displaystyle 6 \pi^5 \left( 1 - \frac{\alpha}{4\pi^2} \int_0^1 \int_0^1 \frac{dx \, dy}{1 - x y} \right) \)
 //| \( 5 \)-Sphere Conformal Volume Ratio
-//| **[smallcaps]#new formula#**
+//| _[smallcaps]#new formula#_
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}G \hfil \)
 | \( \displaystyle \frac{c^4 \delta_\omega^2}{4 \pi \hbar \omega} \left( \frac{15}{\pi^4} \int_0^\infty \frac{u^3 \, du}{e^u - 1} \right) \)
 //| Proportional to \( c^4 \) via MaxEnt Covariance
-//| **[smallcaps]#new formula#**
+//| _[smallcaps]#new formula#_
 
 | \( \hfil\hbox{\vrule height1.1\baselineskip depth1.1\baselineskip width0pt}Z_0 \hfil \)
 | \( \displaystyle 2 \alpha R_K \)
@@ -258,7 +270,7 @@ Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar mome
 //| Ratio of \( Z_0 \) to true \( c \)
 //| Relative to \( c \)
 
-| \( \hfil\hbox{\vrule height1.1\baselineskip depth1.1\baselineskip width0pt}\epsilon_0 \hfil \)
+| \( \hfil\hbox{\vrule height1.1\baselineskip depth1.1\baselineskip width0pt}\varepsilon_0 \hfil \)
 | \( \displaystyle \frac{1}{2 \alpha R_K c} \)
 //| Ratio of \( 1 / Z_0 \) to true \( c \)
 //| Relative to \( c \)
@@ -288,4 +300,4 @@ By casting physical constants in terms of definite integrals and geometric ratio
 4. \( G \) is the MaxEnt definite spectral integral of the electromagnetic stress tensor scaled by \( c^4 \).
 5. \( k_B \) and \( R \) are the geometric momentum flux ratios of the analytic ideal gas on the discrete m-resolution grid \( \mathcal{G}_N \).
 
-All other electromagnetic constants (\( Z_0, \mu_0, \epsilon_0 \)) emerge directly from these definite integrals when gauged against the single fundamental kinematic speed \( c \).
+All other electromagnetic constants (\( Z_0, \mu_0, \varepsilon_0 \)) emerge directly from these definite integrals when gauged against the single fundamental kinematic speed \( c \).
