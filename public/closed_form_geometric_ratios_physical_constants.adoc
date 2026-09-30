@@ -8,7 +8,7 @@
 
 == Abstract
 
-Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \( c \)** within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \). Analogous to how the circle ratio \( \pi \) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m_p / m_e \), and Newton's gravitational coupling \( G \). All remaining electromagnetic standards—including the characteristic impedance of free space \( Z_0 \), magnetic permeability \( \mu_0 \), electric permittivity \( \epsilon_0 \), the von Klitzing resistance \( R_K \), and the magnetic flux quantum \( \Phi_0 \)—are expressed directly in terms of \( c \) and these fundamental definite integrals, eliminating arbitrary curve-fitting.
+Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \( c \)** within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \). Analogous to how the circle ratio \( \pi \) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m_p / m_e \), and Newton's gravitational coupling \( G \). All remaining electromagnetic standards—including the intrinsic electromagnetic wave impedance \( Z_0 \), intrinsic magnetic permeability \( \mu_0 \), intrinsic electric permittivity \( \epsilon_0 \), the von Klitzing resistance \( R_K \), and the magnetic flux quantum \( \Phi_0 \)—are expressed directly in terms of \( c \) and these fundamental definite integrals, eliminating arbitrary curve-fitting.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -140,14 +140,14 @@ This explicit bound gives the numerical analyst an exact, non-empirical error to
 
 Having established the fundamental definite integrals for \( \pi \), \( \alpha \), and \( I_{\text{MaxEnt}} \), all remaining physical constants of electrodynamics are expressed directly in terms of the true propagation velocity \( c \), unit action \( h \), and elementary charge \( e \).
 
-=== Characteristic Impedance of Free Space (\( Z_0 \))
+=== Intrinsic Electromagnetic Wave Impedance (\( Z_0 \))
 \[ Z_0 = 2 \alpha \left( \frac{h}{e^2} \right) = \frac{2 h}{e^2} \left[ \frac{1}{4 \pi^2} \int_0^{2\pi} d\theta \int_0^{2\pi} d\phi \; \frac{1 - \cos\theta}{\sqrt{1 + \rho^2 - 2 \rho \cos\theta \cos\phi}} \right] \]
 
-=== Magnetic Permeability of Free Space (\( \mu_0 \))
+=== Intrinsic Magnetic Permeability (\( \mu_0 \))
 Formulated strictly relative to true \( c \):
 \[ \mu_0 = \frac{Z_0}{c} = \frac{2 \alpha h}{e^2 c} \]
 
-=== Electric Permittivity of Free Space (\( \epsilon_0 \))
+=== Intrinsic Electric Permittivity (\( \epsilon_0 \))
 The reciprocal dual relative to true \( c \):
 \[ \epsilon_0 = \frac{1}{\mu_0 c^2} = \frac{1}{Z_0 c} = \frac{e^2}{2 \alpha h c} \]
 

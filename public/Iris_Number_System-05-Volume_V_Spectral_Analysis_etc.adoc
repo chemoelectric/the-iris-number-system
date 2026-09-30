@@ -482,7 +482,7 @@ enabling complete impedance matching between power sources and loads.
 
 ==== Antennas as Circuit-Field Launching Elements
 
-An antenna serves as an electrodynamic transducer between lumped guided currents in a circuit and propagating wave fields in the spatial grid \( \mathcal { G } _ N \). Characterized by its radiation resistance \( R _ \text{rad} \), an antenna converts terminal current \( I_0 \) into launched electromagnetic wave power \( P _ \text{rad} = \frac { 1 } { 2 } I _ 0 ^ 2 R _ \text{rad} \). A Hertzian dipole of length \( d l \ll \lambda \) has radiation resistance \( R_\text{rad} = 80 \pi ^ 2 \left( \frac { d l } { \lambda } \right) ^ 2 \), while a resonant half-wave dipole antenna in free space exhibits \( R_\text{rad} \approx 73 \ \Omega \).
+An antenna serves as an electrodynamic transducer between lumped guided currents in a circuit and propagating wave fields in the spatial grid \( \mathcal { G } _ N \). Characterized by its radiation resistance \( R _ \text{rad} \), an antenna converts terminal current \( I_0 \) into launched electromagnetic wave power \( P _ \text{rad} = \frac { 1 } { 2 } I _ 0 ^ 2 R _ \text{rad} \). A Hertzian dipole of length \( d l \ll \lambda \) has radiation resistance \( R_\text{rad} = 80 \pi ^ 2 \left( \frac { d l } { \lambda } \right) ^ 2 \), while a resonant half-wave dipole antenna in unconfined propagation exhibits \( R_\text{rad} \approx 73 \ \Omega \).
 
 ==== Impedance Matching Networks
 
@@ -2400,7 +2400,7 @@ A database containing \( N \) discrete items cannot occupy zero space. In physic
 
 ==== Finite Propagation Velocity of Electromagnetic Influences
 
-No physical influence, signal, or wave can propagate with infinite speed. Electromagnetic influences propagate at finite speed—in free space at the speed of electromagnetic waves \( c \), and across semiconductor transmission interconnects at propagation velocity \( v = c\, / \sqrt{\epsilon_r} \), which is typically \( 0.5 c \) to \( 0.7 c \).
+No physical influence, signal, or wave can propagate with infinite speed. Electromagnetic influences propagate at finite speed—in unconfined propagation at the speed of electromagnetic waves \( c \), and across semiconductor transmission interconnects at propagation velocity \( v = c\, / \sqrt{\epsilon_r} \), which is typically \( 0.5 c \) to \( 0.7 c \).
 
 Every step of Grover’s algorithm requires two global operations:
 * **The Oracle Evaluation**: A query signal must travel from the central controller to the storage location of each element, evaluate whether that element matches the target, and transmit the result back.
