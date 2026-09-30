@@ -8,7 +8,7 @@
 
 == Abstract
 
-Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \( c \)** within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \). Analogous to how the circle ratio \( \pi \) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m_p / m_e \), and Newton's gravitational coupling \( G \). All remaining electromagnetic standards—including the intrinsic electromagnetic wave impedance \( Z_0 \), intrinsic magnetic permeability \( \mu_0 \), intrinsic electric permittivity \( \epsilon_0 \), the von Klitzing resistance \( R_K \), and the magnetic flux quantum \( \Phi_0 \)—are expressed directly in terms of \( c \) and these fundamental definite integrals, eliminating arbitrary curve-fitting.
+Physical constants in conventional physics are typically tabulated as an arbitrary collection of empirically measured parameters with no known mathematical origin. This paper establishes that fundamental physical constants can be formulated strictly as **definite integrals** and **geometric ratios relative to the true propagation speed \( c \)** within the Counting-Iris Number System and Clifford field mechanics \( Cl(4,1,1) \). Analogous to how the circle ratio \( \pi \) is defined as a definite integral of arc length relative to diameter, we derive new first-principles integral formulations for the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m_p / m_e \), and Newton's gravitational coupling \( G \). All remaining electromagnetic standards—including the intrinsic electromagnetic wave impedance \( Z_0 \), intrinsic magnetic permeability \( \mu_0 \), intrinsic electric permittivity \( \epsilon_0 \), the von Klitzing resistance \( R_K \), and the magnetic flux quantum \( \Phi_0 \)—are expressed directly in terms of \( c \) and these fundamental definite integrals. Furthermore, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \( \mathcal{G}_N \) with m-res dimensions, m-res mass, and base-scale ratios, we derive the SI thermodynamic constants \( k_B \) and \( R \) as exact geometric scale invariants of discrete momentum flux conservation, eliminating arbitrary curve-fitting and continuum approximations.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -157,7 +157,66 @@ The reciprocal dual relative to true \( c \):
 === Magnetic Flux Quantum (\( \Phi_0 \))
 \[ \Phi_0 = \frac{h}{2 e} \]
 
-== 6. Summary Table: Physical Constants as Definite Integrals Relative to True c
+== 6. The Analytic Ideal Gas on the m-Resolution Grid and SI Thermodynamic Constants (\( k_B, R \))
+
+In the 2019 revision of the International System of Units (SI), the kelvin and the mole were anchored by defining the exact numerical values of the Boltzmann constant \( k_B \) and the Avogadro constant \( N_A \), thereby fixing the molar gas constant \( R = N_A k_B \). Conventional physics treats these constants through phenomenological continuum thermodynamics or statistical mechanics burdened with unphysical “spherical cow” approximations (such as hard-sphere particles of arbitrary phenomenological radius colliding in an uncountable continuum).
+
+Here we establish that the Ideal Gas is not an arbitrary phenomenological model, but a deductive structure dictated by pure analytic method on the multiscale resolution grid \( \mathcal{G}_N \). By decomposing the gas into its logically analytic components, all unphysical continuum singularities and arbitrary geometric approximations are completely eliminated.
+
+=== Logically Analytic Decomposition at the m-Resolution Scale
+
+Instead of point particles of zero spatial extent (an unphysical category error) or arbitrary macroscopic spheres, the gas consists of a finite number \( N \) of finite entities defined on discrete resolution grid \( \mathcal{G}_N \):
+
+1. **m-Resolution Dimensions**: Each particle possesses non-zero, finite spatial extent with discrete m-res dimensions \( \Delta x \in \mathcal{G}_N \), occupying an m-res volume \( \Delta V = ( \Delta x )^3 \).
+2. **m-Resolution Mass**: Each particle carries a discrete, finite m-res mass \( \Delta m \) at lattice scale \( N \).
+3. **m-Resolution Displacements and Durations**: In each discrete m-res time increment \( \Delta t \), a particle traverses an m-res spatial displacement \( \Delta \mathbf{x} \). All collisions and boundary reflections occur via direct contact action over finite interaction duration \( \tau_c > 0 \).
+
+=== Emergence of Base-Scale Kinematic and Dynamic Ratios
+
+Although the spatial displacements and time increments are at the m-resolution scale, their quotients and products evaluate directly to standard base-scale physical observables:
+
+1. **Base-Scale Velocity**: The velocity of each particle is the base-scale ratio:
+\[ \mathbf{v} = \frac{\Delta \mathbf{x}}{\Delta t} \]
+The m-res scale parameters cancel analytically in the quotient, producing base-scale velocities bounded strictly by the propagation speed of electromagnetic influences \( c \):
+\[ | \mathbf{v} | < c \]
+
+2. **Base-Scale Mass Density**: In a bounded domain of volume \( V \), the total mass \( M = N \Delta m \) distributed over the spatial grid yields the base-scale mass density:
+\[ \rho = \frac{M}{V} = \frac{\Delta m}{( \Delta x )^3} \]
+which is regular, finite, and strictly non-singular.
+
+=== Kinetic Pressure as Discrete Momentum Flux Conservation
+
+Consider a planar boundary of area \( A \) normal to the \( x \)-axis. Over a finite observation duration \( \tau \), particles striking the boundary undergo elastic reflection via direct contact action, transferring momentum \( \Delta p_x = 2 ( \Delta m ) v_x \) per collision.
+
+The number of collisions within duration \( \tau \) for particles with velocity component \( v_x > 0 \) is:
+\[ \Delta N_c = \frac{1}{2} \left( \frac{N}{V} \right) A v_x \tau \]
+The total momentum transferred to the boundary is:
+\[ \Delta P_\text{total} = \sum \Delta p_x = \left( \frac{N}{V} \right) A \tau ( \Delta m ) \langle v_x^2 \rangle \]
+The mechanical pressure \( P \) is defined extensionally as the time-averaged normal force per unit area, \( P = \frac{\Delta P_\text{total}}{A \tau} \):
+\[ P = \left( \frac{N}{V} \right) ( \Delta m ) \langle v_x^2 \rangle = \rho \langle v_x^2 \rangle \]
+By spatial isotropy on the discrete lattice grid \( \mathcal{G}_N \), the mean-square velocity components satisfy \( \langle v_x^2 \rangle = \langle v_y^2 \rangle = \langle v_z^2 \rangle = \frac{1}{3} \langle v^2 \rangle \). Therefore:
+\[ P = \frac{1}{3} \rho \langle v^2 \rangle = \frac{2}{3} \frac{N}{V} \left( \frac{1}{2} ( \Delta m ) \langle v^2 \rangle \right) \]
+Multiplying by volume \( V \) yields the exact kinetic state identity:
+\[ P V = \frac{2}{3} N \langle E_k \rangle \]
+where \( \langle E_k \rangle = \frac{1}{2} ( \Delta m ) \langle v^2 \rangle \) is the base-scale mean kinetic energy per particle.
+
+=== Derivation of the SI Thermodynamic Constants (\( k_B \) and \( R \))
+
+In the SI system, absolute thermodynamic temperature \( T \) is an extensional measure of the mean kinetic energy per translational degree of freedom:
+\[ \frac{1}{2} k_B T \equiv \frac{1}{3} \langle E_k \rangle = \frac{1}{2} ( \Delta m ) \langle v_x^2 \rangle \]
+Substituting this extensional definition directly into the kinetic state identity gives:
+\[ P V = N k_B T \]
+For a molar quantity containing Avogadro's count \( N_A \) of discrete entities (where \( n = N / N_A \)):
+\[ P V = n R T, \quad \text{where} \quad R = N_A k_B \]
+
+This derivation establishes:
+1. **No Continuum Approximations**: The ideal gas equation of state is an exact theorem of discrete momentum flux conservation on the m-resolution grid \( \mathcal{G}_N \).
+2. **Elimination of Arbitrary Parameters**: No ad hoc “spherical cow” radii or phenomenological potential functions are introduced; the particles interact strictly through contact dynamics with m-res dimensions and masses.
+3. **The Nature of the SI Constants**: The Boltzmann constant \( k_B \) is a **geometric scale factor** that calibrates macroscopic calorimetric temperature units (kelvins) to base-scale kinetic action (joules):
+\[ k_B = \frac{2 \langle E_k \rangle}{3 T} \]
+Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar momentum flux constant. Both constants are exact geometric consequences of discrete spatial kinematics on \( \mathcal{G}_N \).
+
+== 7. Summary Table: Physical Constants as Definite Integrals and Geometric Ratios Relative to True c
 
 [cols="2,3,4,2", options="header"]
 |===
@@ -197,14 +256,25 @@ The reciprocal dual relative to true \( c \):
 | \( \displaystyle \frac{1}{2 \alpha R_K c} \)
 | Ratio of \( 1 / Z_0 \) to true \( c \)
 | Relative to \( c \)
+
+| \( k_B \)
+| \( \displaystyle \frac{2 \langle E_k \rangle}{3 T} \)
+| Base-scale kinetic energy to kelvin ratio on \( \mathcal{G}_N \)
+| SI Fundamental
+
+| \( R \)
+| \( \displaystyle N_A k_B \)
+| Molar momentum flux scale invariant
+| SI Fundamental
 |===
 
-== 7. Conclusion
+== 8. Conclusion
 
 By casting physical constants in terms of definite integrals and geometric ratios relative to the true propagation speed \( c \), the artificial division between mathematics and empirical physics dissolves:
 1. \( \pi \) is the definite integral of flat 1-dimensional curvature.
 2. \( \alpha \) is the definite integral of the 2-dimensional toroidal aperture in \( Cl(4,1,1) \).
 3. \( m_p / m_e \) is the definite volume integral of the 5-dimensional conformal sphere.
 4. \( G \) is the MaxEnt definite spectral integral of the electromagnetic stress tensor scaled by \( c^4 \).
+5. \( k_B \) and \( R \) are the geometric momentum flux ratios of the analytic ideal gas on the discrete m-resolution grid \( \mathcal{G}_N \).
 
 All other electromagnetic constants (\( Z_0, \mu_0, \epsilon_0 \)) emerge directly from these definite integrals when gauged against the single fundamental kinematic speed \( c \).
