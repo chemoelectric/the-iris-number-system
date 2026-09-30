@@ -3900,9 +3900,9 @@ formulated on the discrete multiscale resolution lattice \\( \\mathcal{G}_N \\) 
 == 2. The Fine-Structure Constant \\( \\alpha \\) as a Toroidal Resonant Definite Integral (NEW FORMULA)
 
 === Derivation from the Master Field Equation
-In conventional physics, the fine-structure constant \\( \\alpha \\approx 1/137.035999... \\) is treated as an unexplained empirical mystery. In the Iris Number System, a localized, stable, charge-carrying plasmoid (the electron) is a toroidal vortex in \\( Cl(4,1,1) \\) whose circulating magnetic bivector current balances its outward electrostatic displacement across the closed 2-torus aperture \\( \\mathbb{T}^2 \\).
+In conventional physics, the fine-structure constant \\( \\alpha \\approx 1/137.035999... \\) is treated as an unexplained empirical mystery. In the Iris Number System, a localized, stable, charge-carrying plasmoid (the electron) is a toroidal vortex in \\( Cl(4,1,1) \\) whose circulating magnetic bivector current balances its outward electrostatic displacement across the closed 2-torus \\( \\mathbb{T}^2 \\).
 
-The constant \\( \\alpha \\) is the **exact ratio of the circulating self-energy flux to the transverse radiation quantum** across the aperture.
+The constant \\( \\alpha \\) is the **exact ratio of the circulating self-energy flux to the transverse radiation quantum** across the toroid.
 
 Let the 2-torus have poloidal angle \\( \\theta \\in [0, 2\\pi] \\) and toroidal angle \\( \\phi \\in [0, 2\\pi] \\), with aspect ratio \\( \\rho = r / R \\). Integrating the Poynting stress multivector yields the exact double definite integral:
 \\[ \\alpha = \\frac{1}{4 \\pi^2} \\int_0^{2\\pi} d\\theta \\int_0^{2\\pi} d\\phi \\; \\frac{1 - \\cos\\theta}{\\sqrt{1 + \\rho^2 - 2 \\rho \\cos\\theta \\cos\\phi}} \\]
@@ -3917,7 +3917,7 @@ This is a **new, closed first-principles formula**: \\( \\alpha \\) is a definit
 === Taylor Series Representation and Convergence Analysis for Numerical Analysts
 For numerical computation and algorithmic evaluation on discrete lattices, the complete elliptic integral \\( K(k) \\) possesses an exact Taylor / Maclaurin series expansion about \\( k = 0 \\):
 \\[ K(k) = \\frac{\\pi}{2} \\sum_{n=0}^{\\infty} \\left[ \\frac{(2n)!}{4^n (n!)^2} \\right]^2 k^{2n} = \\frac{\\pi}{2} \\left[ 1 + \\left( \\frac{1}{2} \\right)^2 k^2 + \\left( \\frac{1 \\cdot 3}{2 \\cdot 4} \\right)^2 k^4 + \\left( \\frac{1 \\cdot 3 \\cdot 5}{2 \\cdot 4 \\cdot 6} \\right)^2 k^6 + \\dots \\right] \\]
-* **Domain of Convergence**: The series converges absolutely and uniformly on any compact sub-disk \\( |k| < 1 \\). On the Clifford torus aperture where aspect ratio \\( \\rho \\ll 1 \\), the modulus argument satisfies \\( |k^2| \\le \\frac{4\\rho}{(1+\\rho)^2} < 1 \\).
+* **Domain of Convergence**: The series converges absolutely and uniformly on any compact sub-disk \\( |k| < 1 \\). On the Clifford torus where aspect ratio \\( \\rho \\ll 1 \\), the modulus argument satisfies \\( |k^2| \\le \\frac{4\\rho}{(1+\\rho)^2} < 1 \\).
 * **Direct Taylor Series for \\( \\alpha(\\rho) \\)**: Substituting the series for \\( K(k) \\) into the angular integral and integrating term-by-term yields a power series in the squared geometric aspect ratio \\( \\rho \\):
 \\[ \\alpha(\\rho) = \\frac{\\rho}{2 (1 + \\rho)} \\left[ 1 + \\frac{3}{16} \\frac{\\rho^2}{(1 + \\rho)^2} + \\frac{105}{1024} \\frac{\\rho^4}{(1 + \\rho)^4} + \\dots + C_n \\frac{\\rho^{2n}}{(1 + \\rho)^{2n}} + \\dots \\right] \\]
 where each coefficient \\( C_n = \\left[ \\frac{(2n)!}{4^n (n!)^2} \\right]^2 \\frac{2n + 1}{2n + 2} \\binom{2n}{n} \\frac{1}{2^{2n}} \\).
@@ -4137,7 +4137,7 @@ Likewise, the molar gas constant \\( R = N_A k_B \\) is the macroscopic molar mo
 
 By casting physical constants in terms of definite integrals and geometric ratios relative to the true propagation speed \\( c \\), the artificial division between mathematics and empirical physics dissolves:
 1. \\( \\pi \\) is the definite integral of flat 1-dimensional curvature.
-2. \\( \\alpha \\) is the definite integral of the 2-dimensional toroidal aperture in \\( Cl(4,1,1) \\).
+2. \\( \\alpha \\) is the definite integral of the 2-dimensional Clifford torus in \\( Cl(4,1,1) \\).
 3. \\( m_p / m_e \\) is the definite volume integral of the 5-dimensional conformal sphere.
 4. \\( G \\) is the MaxEnt definite spectral integral of the electromagnetic stress tensor scaled by \\( c^4 \\).
 5. \\( k_B \\) and \\( R \\) are the geometric momentum flux ratios of the analytic ideal gas on the discrete m-resolution grid \\( \\mathcal{G}_N \\).
