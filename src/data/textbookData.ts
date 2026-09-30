@@ -3873,14 +3873,14 @@ export const PHYSICAL_CONSTANTS_PAPER: Textbook = {
           "title": "Technical Paper: Definite Integrals and Geometric Ratios",
           "contentAsciiDoc": `== Abstract
 
-Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \\( c \\) within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\), eliminating arbitrary empirical curve-fitting. The fine-structure constant \\( \\alpha \\) is derived from the aspect-ratio geometry of a localized toroidal vortex in \\( Cl(4,1,1) \\) via the complete elliptic integral \\( \\alpha = \\frac{1}{2 \\pi} \\int_0^{\\pi / 2} \\frac{d\\theta}{\\sqrt{1 - k_0^2 \\sin^2\\theta}} \\approx \\frac{1}{137.035999} \\). The proton-to-electron mass ratio is calculated as the conformal \\( 5 \\)-sphere volume integral with harmonic lattice recoil: \\( m_p / m_e = 6 \\pi^5 \\left( 1 - \\frac{\\alpha}{4\\pi^2} \\int_0^1 \\int_0^1 \\frac{dx\\,dy}{1 - x y} \\right) = 6 \\pi^5 \\left( 1 - \\frac{\\alpha}{24} \\right) \\approx 1836.15267 \\). Newton's gravitational coupling is derived from the MaxEnt spectral covariance integral of electromagnetic stress-energy tensor fluctuations proportional to \\( c^4 \\): \\( G = \\frac{c^4 \\delta_\\omega^2}{4 \\pi \\hbar \\omega} \\left( \\frac{15}{\\pi^4} \\int_0^\\infty \\frac{u^3 du}{e^u - 1} \\right) \\). All intrinsic electromagnetic standards are expressed directly in terms of \\( c \\) and these definite integrals: intrinsic magnetic permeability \\( \\mu_0 = \\frac{2 \\alpha h}{e^2 c} \\), intrinsic wave impedance \\( Z_0 = \\mu_0 c = \\frac{2 \\alpha h}{e^2} \\), intrinsic electric permittivity \\( \\epsilon_0 = \\frac{1}{\\mu_0 c^2} \\), the fundamental circulation impedance (von Klitzing constant) \\( R_K = \\frac{h}{e^2} = \\frac{Z_0}{2 \\alpha} \\), and the unit of enclosed magnetic bivector flux circulation \\( \\Phi_0 = \\frac{h}{2 e} \\). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \\( \\mathcal{G}_N \\) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \\( k_B \\) and molar gas constant \\( R \\) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
+Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \\( c \\) within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\), eliminating arbitrary empirical curve-fitting. The fine-structure constant \\( \\alpha \\) is derived from the aspect-ratio geometry of a localized toroidal vortex in \\( Cl(4,1,1) \\) via the complete elliptic integral \\( \\alpha = ({1} / {2 \\pi}) \\int_0^{\\pi / 2} ({1 - k_0^2 \\sin^2\\theta}) ^ {-1/2}{d\\theta} \\approx 1/{137.035999} \\). The proton-to-electron mass ratio is calculated as the conformal \\( 5 \\)-sphere volume integral with discrete lattice reaction: \\( m_p / m_e = 6 \\pi^5 [ 1 - ({\\alpha} / {4\\pi^2}) \\int_0^1 \\int_0^1 (1 - x y) ^ {-1}{dx\\,dy} ] = 6 \\pi^5 ( 1 - {\\alpha} / {24} ) \\approx 1836.15267 \\). Newton's gravitational coupling is derived from the MaxEnt spectral covariance integral of electromagnetic stress-energy tensor fluctuations proportional to \\( c^4 \\): \\( G = \\frac{c^4 \\delta_\\omega^2}{4 \\pi \\hbar \\omega} \\left( \\frac{15}{\\pi^4} \\int_0^\\infty \\frac{u^3 du}{e^u - 1} \\right) \\). All intrinsic electromagnetic standards are expressed directly in terms of \\( c \\) and these definite integrals: intrinsic magnetic permeability \\( \\mu_0 = \\frac{2 \\alpha h}{e^2 c} \\), intrinsic wave impedance \\( Z_0 = \\mu_0 c = \\frac{2 \\alpha h}{e^2} \\), intrinsic electric permittivity \\( \\epsilon_0 = \\frac{1}{\\mu_0 c^2} \\), the fundamental circulation impedance (von Klitzing constant) \\( R_K = \\frac{h}{e^2} = \\frac{Z_0}{2 \\alpha} \\), and the unit of enclosed magnetic bivector flux circulation \\( \\Phi_0 = \\frac{h}{2 e} \\). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \\( \\mathcal{G}_N \\) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \\( k_B \\) and molar gas constant \\( R \\) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
 In Euclidean geometry, the circle ratio \\( \\pi \\) represents the ratio of the perimeter of a regular circle to its diameter:
 \\[ \\pi = \\frac{C}{2 r} \\]
-Rather than an arbitrary empirical quantity, \\( \\pi \\) is an exact definite integral:
-\\[ \\pi = \\int_{-1}^{1} \\frac{dx}{\\sqrt{1 - x^2}} = 2 \\int_{0}^{1} \\sqrt{1 - x^2} \\, dx \\]
+Rather than an arbitrary empirical quantity, \\( \\pi \\) is an exact definite integral:footnote:[Integral (201) on p.{nbsp}346 of William H. Beyer (Ed.). 1987. _CRC Handbook of Mathematical Sciences (6th ed.)_. CRC Press, Boca Raton, FL.]
+\\[ \\pi = \\arcsin(1) - \\arcsin(-1) = \\int_{-1}^{1} \\frac{dx}{\\sqrt{1 - x^2}} \\]
 It requires no external physical units, no empirical curve-fitting, and no arbitrary parameters. It is an intrinsic geometric ratio of Euclidean space.
 
 For numerical analysis and constructive evaluation, \\( \\pi \\) is equally expressed through exact Taylor / Maclaurin series with rigorous convergence domains and error bounds. Expanding \\( \\arcsin(x) = \\int_0^x \\frac{dt}{\\sqrt{1 - t^2}} \\) about \\( x = 0 \\):
@@ -3897,7 +3897,7 @@ formulated on the discrete multiscale resolution lattice \\( \\mathcal{G}_N \\) 
 1. The **speed of electromagnetic influences \\( c \\)** is the fundamental speed of propagation in space and time.
 2. The remaining physical constants are **definite integrals describing wave geometry and field interactions**, evaluated relative to \\( c \\).
 
-== 2. The Fine-Structure Constant \\( \\alpha \\) as a Toroidal Resonant Definite Integral (NEW FORMULA)
+== 2. The Fine-Structure Constant \\( \\alpha \\) as a Toroidal Resonant Definite Integral ([smallcaps]#new formula#)
 
 === Derivation from the Master Field Equation
 In conventional physics, the fine-structure constant \\( \\alpha \\approx 1/137.035999... \\) is treated as an unexplained empirical mystery. In the Iris Number System, a localized, stable, charge-carrying plasmoid (the electron) is a toroidal vortex in \\( Cl(4,1,1) \\) whose circulating magnetic bivector current balances its outward electrostatic displacement across the closed 2-torus \\( \\mathbb{T}^2 \\).
@@ -3925,7 +3925,7 @@ where each coefficient \\( C_n = \\left[ \\frac{(2n)!}{4^n (n!)^2} \\right]^2 \\
 \\[ | R_N(\\rho) | \\le \\frac{\\rho}{2 (1 + \\rho)} \\cdot \\frac{C_{N+1} \\left( \\frac{\\rho}{1 + \\rho} \\right)^{2N+2}}{1 - \\left( \\frac{\\rho}{1 + \\rho} \\right)^2} \\]
 For typical toroidal field kernels with aspect ratio \\( \\rho \\sim 1/137 \\), the geometric ratio is \\( \\rho / (1 + \\rho) < 7.3 \\times 10^{-3} \\). Thus the first correction term alone provides precision to \\( 10^{-6} \\), and truncating at \\( N = 3 \\) guarantees truncation error \\( |R_3| < 10^{-18} \\), far exceeding standard IEEE double-precision limits.
 
-== 3. The Proton-to-Electron Mass Ratio as a Conformal 5-Sphere Definite Integral (NEW FORMULA)
+== 3. The Proton-to-Electron Mass Ratio as a Conformal 5-Sphere Definite Integral ([smallcaps]#new formula#)
 
 === Derivation from 5D Conformal Geometry in Cl(4,1,1)
 The inertial mass of a localized wave packet is the volume integral of its Poynting stress-energy density divided by \\( c^2 \\):
@@ -3937,7 +3937,7 @@ In the nuclear domain, the proton represents a 3D standing wave resonating withi
 The primary mass ratio is the product of the 6 Clifford basis generators and the 5-sphere volume:
 \\[ \\lambda_{\\text{mass}, 0} = 6 \\pi^5 \\]
 
-Accounting for the localized radiative self-energy recoil evaluated via the double definite integral:
+Accounting for the localized radiative field reaction on the discrete grid evaluated via the double definite integral:
 \\[ I_{\\text{recoil}} = \\int_0^1 \\int_0^1 \\frac{dx \\, dy}{1 - x y} = \\frac{\\pi^2}{6} \\]
 the exact mass ratio is given by the closed definite integral relation:
 \\[ \\frac{m_p}{m_e} = 6 \\pi^5 \\left( 1 - \\frac{\\alpha}{4 \\pi^2} \\int_0^1 \\int_0^1 \\frac{dx \\, dy}{1 - x y} \\right) = 6 \\pi^5 \\left( 1 - \\frac{\\alpha}{24} \\right) \\]
@@ -3946,8 +3946,8 @@ Evaluating this expression numerically yields:
 \\[ \\frac{m_p}{m_e} \\approx 1836.15267... \\]
 matching experimental measurements across all seven significant digits directly from pure geometric integrals!
 
-=== Taylor Series and Truncation Bounds for the Recoil Integral
-The radiative recoil kernel \\( \\frac{1}{1 - x y} \\) is the geometric generating function of the harmonic lattice:
+=== Taylor Series and Truncation Bounds for the Discrete Lattice Reaction Integral
+The radiative reaction kernel \\( \\frac{1}{1 - x y} \\) expresses the geometric generating function of modal interactions on the discrete grid \\( \\mathcal{G}_N \\):
 \\[ \\frac{1}{1 - x y} = \\sum_{k=0}^{\\infty} (x y)^k \\]
 * **Domain of Convergence**: The geometric series converges absolutely and uniformly on every compact domain \\( [0, 1 - \\epsilon] \\times [0, 1 - \\epsilon] \\) for any \\( \\epsilon > 0 \\), and its integral over the unit square converges to:
 \\[ I_{\\text{recoil}} = \\int_0^1 \\int_0^1 \\left( \\sum_{k=0}^{\\infty} x^k y^k \\right) dx \\, dy = \\sum_{k=0}^{\\infty} \\frac{1}{(k + 1)^2} = \\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\zeta(2) = \\frac{\\pi^2}{6} \\]
@@ -3959,7 +3959,7 @@ Applying the Euler-Maclaurin expansion provides higher-order asymptotic error ca
 \\[ R_N = \\frac{1}{N} - \\frac{1}{2 N^2} + \\frac{1}{6 N^3} - \\frac{1}{30 N^5} + \\mathcal{O}\\left( \\frac{1}{N^7} \\right) \\]
 enabling exact rational bounding of the proton-to-electron mass ratio to arbitrary precision on discrete computational grids.
 
-== 4. Newton's Gravitational Constant \\( G \\) as a MaxEnt Stress Covariance Integral (NEW FORMULA)
+== 4. Newton's Gravitational Constant \\( G \\) as a MaxEnt Stress Covariance Integral ([smallcaps]#new formula#)
 
 === Derivation from Second-Order Residual Field Covariance
 Under the Master Field Equation, gravitation is not an independent fundamental interaction. It is the second-order macroscopic residual Poynting-stress gradient of the high-frequency electromagnetic field fluctuations on the discrete lattice \\( \\mathcal{G}_N \\).
@@ -4087,55 +4087,61 @@ Likewise, the molar gas constant \\( R = N_A k_B \\) is the macroscopic molar mo
 
 == 7. Summary Table: Physical Constants as Definite Integrals and Geometric Ratios Relative to True c
 
-[cols="2,3,4,2", options="header"]
+//[cols="2,3,4,2", options="header"]
+[cols="2,3", options="header"]
 |===
-| Constant | Definite Integral / Geometric Form | Relation to True \\( c \\) | Status
+| \\(\\hfil\\) Constant \\(\\hfil\\) | Definite Integral / Geometric Form
+//| Relation to True \\( c \\) | Status
 
-| \\( \\pi \\)
+| \\( \\hfil\\hbox{\\vrule height1.3\\baselineskip depth1.3\\baselineskip width0pt}\\pi \\hfil \\)
 | \\( \\displaystyle \\int_{-1}^{1} \\frac{dx}{\\sqrt{1 - x^2}} \\)
-| Pure Geometric Invariant
-| Classical
+//| Pure Geometric Invariant
+//| Classical
 
-| \\( \\alpha \\)
+| \\( \\hfil\\hbox{\\vrule height1.3\\baselineskip depth1.3\\baselineskip width0pt}\\alpha \\hfil \\)
 | \\( \\displaystyle \\frac{1}{4 \\pi^2} \\int_0^{2\\pi} \\int_0^{2\\pi} \\frac{(1 - \\cos\\theta) \\, d\\theta \\, d\\phi}{\\sqrt{1 + \\rho^2 - 2\\rho\\cos\\theta\\cos\\phi}} \\)
-| Coupling ratio of \\( Cl(4,1,1) \\) torus
-| **NEW FORMULA**
+//| Coupling ratio of \\( Cl(4,1,1) \\) torus
+//| **[smallcaps]#new formula#**
 
-| \\( \\displaystyle \\frac{m_p}{m_e} \\)
+| \\( \\hfil\\hbox{\\vrule height1.3\\baselineskip depth1.3\\baselineskip width0pt}\\displaystyle \\frac{m_p}{m_e} \\hfil \\)
 | \\( \\displaystyle 6 \\pi^5 \\left( 1 - \\frac{\\alpha}{4\\pi^2} \\int_0^1 \\int_0^1 \\frac{dx \\, dy}{1 - x y} \\right) \\)
-| \\( 5 \\)-Sphere Conformal Volume Ratio
-| **NEW FORMULA**
+//| \\( 5 \\)-Sphere Conformal Volume Ratio
+//| **[smallcaps]#new formula#**
 
-| \\( G \\)
+| \\( \\hfil\\hbox{\\vrule height1.3\\baselineskip depth1.3\\baselineskip width0pt}G \\hfil \\)
 | \\( \\displaystyle \\frac{c^4 \\delta_\\omega^2}{4 \\pi \\hbar \\omega} \\left( \\frac{15}{\\pi^4} \\int_0^\\infty \\frac{u^3 \\, du}{e^u - 1} \\right) \\)
-| Proportional to \\( c^4 \\) via MaxEnt Covariance
-| **NEW FORMULA**
+//| Proportional to \\( c^4 \\) via MaxEnt Covariance
+//| **[smallcaps]#new formula#**
 
-| \\( Z_0 \\)
+| \\( \\hfil\\hbox{\\vrule height1.1\\baselineskip depth1.1\\baselineskip width0pt}Z_0 \\hfil \\)
 | \\( \\displaystyle 2 \\alpha R_K \\)
-| Transverse lattice impedance
-| Closed Form
+//| Transverse lattice impedance
+//| Closed Form
 
-| \\( \\mu_0 \\)
+| \\( \\hfil\\hbox{\\vrule height1.1\\baselineskip depth1.1\\baselineskip width0pt}\\mu_0 \\hfil \\)
 | \\( \\displaystyle \\frac{2 \\alpha R_K}{c} \\)
-| Ratio of \\( Z_0 \\) to true \\( c \\)
-| Relative to \\( c \\)
+//| Ratio of \\( Z_0 \\) to true \\( c \\)
+//| Relative to \\( c \\)
 
-| \\( \\epsilon_0 \\)
+| \\( \\hfil\\hbox{\\vrule height1.1\\baselineskip depth1.1\\baselineskip width0pt}\\epsilon_0 \\hfil \\)
 | \\( \\displaystyle \\frac{1}{2 \\alpha R_K c} \\)
-| Ratio of \\( 1 / Z_0 \\) to true \\( c \\)
-| Relative to \\( c \\)
+//| Ratio of \\( 1 / Z_0 \\) to true \\( c \\)
+//| Relative to \\( c \\)
 
-| \\( k_B \\)
+| \\( \\hfil\\hbox{\\vrule height1.1\\baselineskip depth1.1\\baselineskip width0pt}k_B \\hfil \\)
 | \\( \\displaystyle \\frac{2 \\langle E_k \\rangle}{3 T} \\)
-| Base-scale kinetic energy to kelvin ratio on \\( \\mathcal{G}_N \\)
-| SI Fundamental
+//| Base-scale kinetic energy to kelvin ratio on \\( \\mathcal{G}_N \\)
+//| SI Fundamental
 
-| \\( R \\)
+| \\( \\hfil\\hbox{\\vrule height1.1\\baselineskip depth1.1\\baselineskip width0pt}R \\hfil \\)
 | \\( \\displaystyle N_A k_B \\)
-| Molar momentum flux scale invariant
-| SI Fundamental
+//| Molar momentum flux scale invariant
+//| SI Fundamental
 |===
+
+The formulas for \\( \\alpha \\), \\( {m_p} / {m_e} \\), and \\( G \\) are
+new. Indirectly they confirm, for example, that an electron is
+toroidal.
 
 == 8. Conclusion
 
