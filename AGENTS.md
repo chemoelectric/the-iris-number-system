@@ -75,6 +75,7 @@ After making any modifications to the codebase or textbooks, the engine must exe
 ## 6. Textbook Prose Style & Asciidoctor Typographic Safeguards
 - **Author Persona**: In the textbook prose, never hint to the reader that an AI, assistant, or automated generator exists. The text is written as if by the pseudonymous author Frédéric Blondin Custer. Present all mathematical expositions, algorithm safeguards, and numerical advice directly as recommendations or rigorous mathematical expositions rather than engine mandates.
 - **Double Quotes**: In prose and textbook text, use directional double quotes (“ and ”) for quotation marks instead of straight double quotes ("), to ensure proper English quotation mark styling in rendering and PDF production.
+- **Strict Avoidance of Boldface (Use Italics)**: All document and textbook styling via `header.tex` is configured to be completely free of boldface (titles, chapters, and sections are set with `\normalfont`). Never use boldface in textbook prose, section headers, list items, or documentation; use italics (`_..._`) instead for emphasis and term distinctions. Reserve smallcaps (`[smallcaps]#...#`) strictly for very special purposes.
 - **Asciidoctor LaTeXMath Delimiters**:
   - Always use `\( ` and ` \)` for inline math instead of single dollar signs (`$`), ensuring space padding immediately inside the delimiters.
   - Use `\[ ` and ` \]` for display math blocks with padded spaces inside delimiters.
