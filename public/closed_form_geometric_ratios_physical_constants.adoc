@@ -119,7 +119,7 @@ enabling exact rational bounding of the proton-to-electron mass ratio to arbitra
 == 4. Newton's Gravitational Constant \( G \) as a MaxEnt Stress Covariance Integral ([smallcaps]#new formula#)
 
 === Derivation from Second-Order Residual Field Covariance
-Under the Master Field Equation, gravitation is not an independent fundamental interaction. It is the second-order macroscopic residual Poynting-stress gradient of the high-frequency electromagnetic field fluctuations on the discrete lattice \( \mathcal{G}_N \).
+In the Unified Field Theory, gravitation is not an independent force. On the discrete lattice \( \mathcal{G}_N \), microscopic electromagnetic fields fluctuate at very high frequencies. For neutral bodies of matter, the first-order electric and magnetic forces average out to zero over macroscopic distances, but the quadratic Poynting stress leaves an uncancelled second-order residual. Gravitation is the spatial gradient of this residual stress.
 
 Under the Jaynesian Maximum Entropy (MaxEnt) principle, assigning the least-biased probability distribution to the microscopic field modes at temperature parameter \( \beta \) yields the definite spectral integral:
 \[ I_{\text{MaxEnt}} = \int_0^{k_{\text{cut}}} \left( \frac{k^3}{e^{\beta \hbar c k} - 1} \right) dk \]
