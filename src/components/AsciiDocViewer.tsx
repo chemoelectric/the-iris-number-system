@@ -20,7 +20,9 @@ export const AsciiDocViewer: React.FC<AsciiDocViewerProps> = ({ content, classNa
       .replace(/=\s*\(\\downarrow\)/g, '= (\\downarrow)')
       .replace(/=\s*\\downarrow/g, '= (\\downarrow)')
       .replace(/=\s*\(↓\)/g, '= (↓)')
-      .replace(/=\s*↓/g, '= (↓)');
+      .replace(/=\s*↓/g, '= (↓)')
+      .replace(/\\plus\b/g, '+')
+      .replace(/\\minus\b/g, '-');
   };
 
   // Tokenizer for inline math & text that respects nested brackets in latexmath:[...] and stem:[...]
