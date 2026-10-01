@@ -81,13 +81,13 @@ For typical toroidal field kernels with aspect ratio \( \rho \sim 1/137 \), the 
 
 == 3. The Proton-to-Electron Mass Ratio as a Conformal 5-Sphere Definite Integral ([smallcaps]#new formula#)
 
-=== Derivation from 5D Conformal Geometry in \( Cl(4,1,1) \)
+=== Derivation from Conformal 5-Sphere Geometry in \( Cl(4,1,1) \)
 
 The inertial mass of a localized wave packet is the volume integral of its Poynting stress-energy density divided by \( c^2 \):
 \[ m = \frac{1}{c^2} \int_{\Omega} \frac{1}{2} \langle F \tilde{F} \rangle \, d^3 x \]
 However, in a ratio of two such masses constant factors will cancel out.
 
-The proton is formulated in the nuclear domain as a 3D standing wave in the 5-dimensional conformal subspace of \( Cl(4,1,1) \) with metric signature \( (\plus,\plus,\plus,\plus,\minus,0) \). The proton’s geometric volume is given by the volume integral of the unit 5-sphere \( S^5 \):
+The proton is formulated in the nuclear domain as a standing wave in the 6-dimensional vector space of \( Cl(4,1,1) \) with metric signature \( (\plus,\plus,\plus,\plus,\minus,0) \). The proton’s geometric boundary is given by the volume integral of the unit 5-sphere \( S^5 \):
 \[ \text{Vol}(S^5) = \int_0^\pi \sin^4\vartheta_1 \, d\vartheta_1 \int_0^\pi \sin^3\vartheta_2 \, d\vartheta_2 \int_0^\pi \sin^2\vartheta_3 \, d\vartheta_3 \int_0^\pi \sin\vartheta_4 \, d\vartheta_4 \int_0^{2\pi} d\varphi = \pi^3 \]
 
 The primary mass ratio is the product of the six Clifford basis generators and the 5-sphere volume:
