@@ -1,4 +1,4 @@
-"""Physics engine for circulating matter knots drawing spirographs in a refractive field."""
+"""Physics engine for circulating matter knots in the refractive gravitational field."""
 
 from __future__ import annotations
 
@@ -18,13 +18,13 @@ def maxent_gravitational_constant(
 
 @dataclass
 class RefractionField:
-    """Represents the refractive gradient around a central mass knot."""
+    """Represents the refractive gradient around a localized mass knot."""
 
-    cx: float = 500.0
-    cy: float = 350.0
-    mass: float = 16000.0
-    c: float = 300.0  # Base propagation speed of electromagnetic waves
-    core_radius: float = 24.0
+    cx: float = 480.0
+    cy: float = 320.0
+    mass: float = 22000.0
+    c: float = 460.0  # Base propagation speed of electromagnetic waves
+    core_radius: float = 32.0
 
     def distance_from_center(self, x: float, y: float) -> float:
         dx = x - self.cx
@@ -33,75 +33,56 @@ class RefractionField:
 
     def refractive_index(self, x: float, y: float) -> float:
         r = self.distance_from_center(x, y)
-        r_soft = math.hypot(r, self.core_radius)
-        return 1.0 + (2.0 * self.mass) / r_soft
+        effective_r = max(r, self.core_radius)
+        strength = (2.0 * self.mass) / effective_r
+        return 1.0 + strength
 
     def wave_speed(self, x: float, y: float) -> float:
         n = self.refractive_index(x, y)
         return self.c / n
-
-    @property
-    def mu(self) -> float:
-        """Effective gravitational coupling parameter mu = G*M = 2 * mass * c."""
-        return 2.0 * self.mass * self.c
 
 
 @dataclass
 class MatterKnot:
     """A localized circulating wave packet (matter knot) with finite radius R.
 
-    Steered smoothly by the refractive gradient. Uses a softened core so it never
-    crashes or halts, smoothly drawing precessing rosette spirograph patterns.
+    The differential wave speed across its diameter steers its center-of-mass
+    momentum, producing the exact inverse-square gravitational trajectory.
     """
 
-    x: float = 80.0
-    y: float = 520.0
-    vx: float = 195.0
+    x: float = 60.0
+    y: float = 486.0
+    vx: float = 340.0
     vy: float = 0.0
-    radius: float = 12.0
+    radius: float = 14.0
     phase: float = 0.0
-    spin_freq: float = 16.0  # Internal wave circulation frequency
+    spin_freq: float = 18.0  # Internal wave circulation frequency
     path: List[Tuple[float, float]] = field(default_factory=list)
-    max_path_points: int = 4000
-
-    def distance(self, field: RefractionField) -> float:
-        return field.distance_from_center(self.x, self.y)
-
-    def speed(self) -> float:
-        return math.hypot(self.vx, self.vy)
+    max_path_points: int = 2400
 
     def update(self, field: RefractionField, dt: float) -> None:
-        # Vector from central mass knot
+        self.path.append((self.x, self.y))
+        if len(self.path) > self.max_path_points:
+            self.path.pop(0)
+
+        # Internal circulation phase
+        self.phase = (self.phase + self.spin_freq * dt * 2.0 * math.pi) % (2.0 * math.pi)
+
+        # Vector from central mass knot to matter knot
         dx = self.x - field.cx
         dy = self.y - field.cy
         r = math.hypot(dx, dy)
+        if r < 1e-6:
+            return
 
-        # Softened distance ensures smooth swing through pericenter without collision
-        r_soft = math.hypot(r, field.core_radius)
+        effective_r = max(r, field.core_radius)
 
-        # Refractive wave delay steering acceleration:
-        # a = -(mu / r_soft^2) * (1 + 3 * mu / (r_soft * c^2)) * (r_vec / r_soft)
-        inv_r_soft = 1.0 / r_soft
-        inv_r_soft2 = inv_r_soft * inv_r_soft
-        corr = 1.0 + (3.0 * field.mu) / (r_soft * field.c * field.c)
-        accel_mag = field.mu * inv_r_soft2 * corr
+        # Steering acceleration via differential propagation delay across vortex diameter
+        accel_mag = (field.mass * 2.0 * field.c) / (effective_r * effective_r)
+        ax = -accel_mag * (dx / r)
+        ay = -accel_mag * (dy / r)
 
-        dir_x = (dx / r) if r > 1e-6 else 0.0
-        dir_y = (dy / r) if r > 1e-6 else 0.0
-
-        ax = -accel_mag * dir_x
-        ay = -accel_mag * dir_y
-
-        # Numerical integration step
         self.vx += ax * dt
         self.vy += ay * dt
         self.x += self.vx * dt
         self.y += self.vy * dt
-
-        # Update internal wave phase rotation
-        self.phase = (self.phase + self.spin_freq * dt * 2.0 * math.pi) % (2.0 * math.pi)
-
-        # Record spirograph trajectory history
-        self.path.append((self.x, self.y))
-        if len(self.path) > self.max_path_points:
-            self.path.pop(0)

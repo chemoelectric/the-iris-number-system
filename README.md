@@ -116,11 +116,11 @@ python3 -m gravity_as_refraction
 ```
 
 ### Physical Features
-- **Spirograph & Rosette Orbits**: Smooth, continuous orbital simulation where the circulating wave vortex draws multi-loop precessing spirograph patterns without crashing or halting into the central core.
-- **Effortless Capture**: Easily capture the matter knot into stable or precessing orbits by tuning speed with `f` / `s` as it swings past the central mass.
-- **Transparent PNG Equation Display**: The wave-refractive gravitational derivation equation is seamlessly embedded in the open space as a transparent PNG asset (`equation.png`).
-- **Minimalist, Spare Interface**: Uncluttered visual experience focusing purely on the mass, the orbiting vortex, the spirograph trail, and the equation.
-- **Pure ASCII Keyboard Controls**: Controlled entirely by ASCII keys (`f`/`s`, `+`/`-`, `[`/`]`, `c`, `r`, `q`) without arrow keys.
+- **Circulating Matter Knot Orbiting**: Localized circulating wave vortices undergo differential phase delay across their finite diameter, producing Newtonian orbits without curved space-time.
+- **Speed Parameter Tuning & Orbital Capture**: Capture the matter knot into various stable and precessing orbits around the central mass by dynamically adjusting the speed parameter with `f` / `s`.
+- **Launch Position Adjustment**: Shift the matter knot launch height and impact parameter up and down with `[` / `]`.
+- **Continuous Trajectory Trail**: Watch the matter knot trace its orbital path as it swings around the central mass knot.
+- **Pure ASCII Keyboard Controls**: Controlled entirely by ASCII keys (`+`/`-`, `f`/`s`, `[`/`]`, `g`, `r`, `q`) without arrow keys.
 - **Quiet Terminal Simulation**: Clean ASCII orbit visualizer (`--cli`) without equation text.
 - **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
 

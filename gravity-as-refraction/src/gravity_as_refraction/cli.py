@@ -17,18 +17,18 @@ except ImportError:
 def run_terminal_orbit_simulation(
     duration: Optional[float] = None, fps: float = 24.0
 ) -> None:
-    """Run an ASCII/ANSI terminal visualization of a matter knot orbiting in the field."""
+    """Run an ASCII/ANSI terminal visualization of a matter knot orbiting in the refractive field."""
     width = 72
     height = 24
     field = RefractionField(
         cx=width * 0.5,
         cy=height * 0.5,
-        mass=140.0,
-        c=24.0,
-        core_radius=2.0,
+        mass=200.0,
+        c=32.0,
+        core_radius=3.0,
     )
 
-    # Launch matter knot in a smooth precessing orbit
+    # Matter knot orbiting around the central mass
     knot = MatterKnot(
         x=field.cx,
         y=field.cy - 7.5,
@@ -55,10 +55,8 @@ def run_terminal_orbit_simulation(
                 break
             frame_count += 1
 
-            # Sub-step physics
-            substeps = 4
-            for _ in range(substeps):
-                knot.update(field, dt / substeps)
+            # Update physics
+            knot.update(field, dt)
 
             # Build ASCII buffer
             grid = [[" " for _ in range(width)] for _ in range(height)]
@@ -75,8 +73,8 @@ def run_terminal_orbit_simulation(
             # Draw gradient rings
             for ang in range(0, 360, 24):
                 rad = math.radians(ang)
-                rx = int(round(field.cx + 8.5 * math.cos(rad)))
-                ry = int(round(field.cy + 4.2 * math.sin(rad)))
+                rx = int(round(field.cx + 9.0 * math.cos(rad)))
+                ry = int(round(field.cy + 4.5 * math.sin(rad)))
                 if 0 <= ry < height and 0 <= rx < width and grid[ry][rx] == " ":
                     grid[ry][rx] = "·"
 
@@ -96,7 +94,9 @@ def run_terminal_orbit_simulation(
 
             # Render frame (clean, no equation text)
             out = ["\033[H\033[?25l"]
-            out.append(f"  Orbiting Matter Knot Spirograph Simulation [Ctrl+C to stop]")
+            out.append(
+                f"  Mass Knot Energy: {field.mass:.1f} | Speed Parameter c: {field.c:.1f} [Ctrl+C to stop]"
+            )
             out.append("-" * width)
             for row in grid:
                 out.append("".join(row))
@@ -110,7 +110,7 @@ def run_terminal_orbit_simulation(
     except KeyboardInterrupt:
         pass
     finally:
-        print("\033[?25h")  # Restore terminal cursor
+        print("\033[?25h")
         print("\nTerminal simulation stopped.")
 
 

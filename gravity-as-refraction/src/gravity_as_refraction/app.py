@@ -1,9 +1,8 @@
-"""Interactive 2D Pyglet simulation of matter knots drawing spirographs in a refractive field."""
+"""Interactive 2D Pyglet simulation of matter knots in the refractive gravitational field."""
 
 from __future__ import annotations
 
 import math
-import os
 import sys
 
 try:
@@ -39,9 +38,9 @@ def _make_line(
 
 
 class WaveGravityWindow:
-    """Clean, uncluttered spirograph orbital simulation window."""
+    """Main visualization window powered by pyglet."""
 
-    def __init__(self, width: int = 1000, height: int = 700) -> None:
+    def __init__(self, width: int = 960, height: int = 640) -> None:
         if pyglet is None:
             raise RuntimeError(
                 "pyglet is required to run the graphical interface. "
@@ -53,76 +52,58 @@ class WaveGravityWindow:
         self.window = pyglet.window.Window(
             width=width,
             height=height,
-            caption="gravity-as-refraction • Wave Refraction Spirograph Simulator",
+            caption="gravity-as-refraction • Wave Refraction Gravitational Simulator",
             resizable=False,
         )
 
-        # Refractive field around central mass knot
+        # Physics simulation state
         self.field = RefractionField(
             cx=width * 0.5,
             cy=height * 0.5,
-            mass=16000.0,
-            c=300.0,
-            core_radius=22.0,
-        )
-
-        # Launch parameters for matter knot
-        self.launch_x = 80.0
-        self.launch_y = height * 0.74
-        self.launch_vx = 195.0
-
-        # Matter knot with softened core (never crashes into core)
-        self.knot = MatterKnot(
-            x=self.launch_x,
-            y=self.launch_y,
-            vx=self.launch_vx,
-            vy=0.0,
-            radius=12.0,
-            max_path_points=4000,
+            mass=22000.0,
+            c=460.0,
+            core_radius=32.0,
         )
 
         self.paused = False
         self.show_grid = False
 
+        # Matter knot launched from the left
+        self.matter_knot = MatterKnot(
+            x=60.0, y=self.height * 0.76, vx=340.0, vy=0.0, radius=14.0
+        )
+
         # Batches for rendering
         self.batch = pyglet.graphics.Batch()
         self.hud_batch = pyglet.graphics.Batch()
 
-        # Load transparent PNG of the wave refraction equation
-        self.equation_sprite = None
-        eq_path = os.path.join(os.path.dirname(__file__), "equation.png")
-        if os.path.exists(eq_path):
-            try:
-                eq_image = pyglet.image.load(eq_path)
-                self.equation_sprite = pyglet.sprite.Sprite(
-                    eq_image,
-                    x=26,
-                    y=height - eq_image.height - 22,
-                    batch=self.hud_batch,
-                )
-            except Exception:
-                self.equation_sprite = None
+        # HUD labels
+        self.title_label = pyglet.text.Label(
+            "GRAVITATION AS WAVE REFRACTION",
+            font_name="Sans-Serif",
+            font_size=12,
+            x=20,
+            y=height - 25,
+            color=(240, 240, 240, 255),
+            batch=self.hud_batch,
+        )
 
-        # Minimalist fallback label if PNG is unavailable
-        self.fallback_label = None
-        if self.equation_sprite is None:
-            self.fallback_label = pyglet.text.Label(
-                "G = (c²·Δω² / 4πm) · (15/π⁴) ∫₀^∞ [u³/(eᵘ - 1)] du = c²·Δω² / (4πm)",
-                font_name="Monospace",
-                font_size=10,
-                x=26,
-                y=height - 30,
-                color=(226, 232, 240, 240),
-                batch=self.hud_batch,
-            )
+        self.status_label = pyglet.text.Label(
+            "",
+            font_name="Monospace",
+            font_size=10,
+            x=20,
+            y=height - 50,
+            color=(180, 180, 180, 255),
+            batch=self.hud_batch,
+        )
 
-        # Single discreet line of controls at the bottom
-        self.controls_label = pyglet.text.Label(
-            "[f/s] Speed   [+/-] Mass   [[/]] Launch Y   [c] Clear   [r] Relaunch   [space] Pause   [q] Quit",
+        self.help_label = pyglet.text.Label(
+            "[+/-] Mass  [f/s] Speed  [[/]] Launch Y  [g] Grid  [space] Pause  [r] Reset  [q] Quit",
             font_name="Monospace",
             font_size=9,
-            x=26,
-            y=16,
+            x=20,
+            y=18,
             color=(140, 140, 140, 255),
             batch=self.hud_batch,
         )
@@ -136,54 +117,32 @@ class WaveGravityWindow:
 
         pyglet.clock.schedule_interval(self.update, 1.0 / 60.0)
 
-    def relaunch(self) -> None:
-        """Relaunch the matter knot from the launch line."""
-        self.knot.x = self.launch_x
-        self.knot.y = self.launch_y
-        self.knot.vx = self.launch_vx
-        self.knot.vy = 0.0
-
     def on_text(self, text: str) -> None:
-        """Handle pure ASCII keyboard commands."""
-        # Speed adjustments: smoothly scale current velocity
-        if text in ("f", "F"):
-            self.knot.vx *= 1.05
-            self.knot.vy *= 1.05
-            self.launch_vx *= 1.05
-        elif text in ("s", "S"):
-            self.knot.vx *= 0.95
-            self.knot.vy *= 0.95
-            self.launch_vx *= 0.95
-
-        # Central mass strength
-        elif text in ("+", "="):
-            self.field.mass = min(self.field.mass + 2000.0, 70000.0)
+        """Handle pure ASCII character commands."""
+        if text in ("+", "="):
+            self.field.mass = min(self.field.mass + 3000.0, 60000.0)
         elif text in ("-", "_"):
-            self.field.mass = max(self.field.mass - 2000.0, 2000.0)
-
-        # Launch position height (impact parameter)
+            self.field.mass = max(self.field.mass - 3000.0, 3000.0)
         elif text == "[":
-            self.launch_y = max(self.launch_y - 20.0, 60.0)
+            self.matter_knot.y = max(self.matter_knot.y - 25.0, 50.0)
+            self.matter_knot.path.clear()
         elif text == "]":
-            self.launch_y = min(self.launch_y + 20.0, self.height - 60.0)
-
-        # Clear spirograph trail
-        elif text in ("c", "C"):
-            self.knot.path.clear()
-
-        # Toggle grid
+            self.matter_knot.y = min(self.matter_knot.y + 25.0, self.height - 50.0)
+            self.matter_knot.path.clear()
+        elif text in ("f", "F"):
+            self.field.c = min(self.field.c + 50.0, 900.0)
+        elif text in ("s", "S"):
+            self.field.c = max(self.field.c - 50.0, 100.0)
         elif text in ("g", "G"):
             self.show_grid = not self.show_grid
-
-        # Relaunch from start
-        elif text in ("r", "R"):
-            self.relaunch()
-
-        # Quit
         elif text in ("q", "Q"):
             self.window.close()
-
-        # Pause / Resume
+        elif text in ("r", "R"):
+            self.matter_knot.x = 60.0
+            self.matter_knot.y = self.height * 0.76
+            self.matter_knot.vx = 340.0
+            self.matter_knot.vy = 0.0
+            self.matter_knot.path.clear()
         elif text == " ":
             self.paused = not self.paused
 
@@ -194,19 +153,23 @@ class WaveGravityWindow:
         elif symbol == key.SPACE:
             self.paused = not self.paused
         elif symbol in (key.PLUS, key.EQUAL):
-            self.field.mass = min(self.field.mass + 2000.0, 70000.0)
+            self.field.mass = min(self.field.mass + 3000.0, 60000.0)
         elif symbol in (key.MINUS, key.UNDERSCORE):
-            self.field.mass = max(self.field.mass - 2000.0, 2000.0)
+            self.field.mass = max(self.field.mass - 3000.0, 3000.0)
         elif symbol == key.BRACKETLEFT:
-            self.on_text("[")
+            self.matter_knot.y = max(self.matter_knot.y - 25.0, 50.0)
+            self.matter_knot.path.clear()
         elif symbol == key.BRACKETRIGHT:
-            self.on_text("]")
-        elif symbol == key.C:
-            self.knot.path.clear()
-        elif symbol == key.R:
-            self.relaunch()
+            self.matter_knot.y = min(self.matter_knot.y + 25.0, self.height - 50.0)
+            self.matter_knot.path.clear()
         elif symbol == key.G:
             self.show_grid = not self.show_grid
+        elif symbol == key.R:
+            self.matter_knot.x = 60.0
+            self.matter_knot.y = self.height * 0.76
+            self.matter_knot.vx = 340.0
+            self.matter_knot.vy = 0.0
+            self.matter_knot.path.clear()
 
     def update(self, dt: float) -> None:
         if self.paused:
@@ -214,26 +177,37 @@ class WaveGravityWindow:
 
         dt = min(dt, 0.035)
 
-        # High-precision sub-stepping for smooth, beautiful spirograph curves
-        substeps = 4
-        sub_dt = dt / substeps
-        for _ in range(substeps):
-            self.knot.update(self.field, sub_dt)
+        self.matter_knot.update(self.field, dt)
 
-        # If it escapes completely past the screen boundary, wrap it back to launch
+        # Loop if matter knot exits window bounds
         if (
-            self.knot.x > self.width + 120
-            or self.knot.x < -120
-            or self.knot.y > self.height + 120
-            or self.knot.y < -120
+            self.matter_knot.x > self.width + 80
+            or self.matter_knot.x < -80
+            or self.matter_knot.y > self.height + 80
+            or self.matter_knot.y < -80
         ):
-            self.relaunch()
+            self.matter_knot.x = 60.0
+            self.matter_knot.y = self.height * 0.76
+            self.matter_knot.vx = 340.0
+            self.matter_knot.vy = 0.0
+            self.matter_knot.path.clear()
+
+        # Update HUD status text
+        v_edge = self.field.wave_speed(
+            self.field.cx + self.field.core_radius, self.field.cy
+        )
+        self.status_label.text = (
+            f"Mass Knot Energy: {self.field.mass:.0f} | "
+            f"Speed Parameter c: {self.field.c:.0f} | "
+            f"Wave Speed: {v_edge:.1f} | "
+            f"State: {'PAUSED' if self.paused else 'RUNNING'}"
+        )
 
     def on_draw(self) -> None:
         self.window.clear()
         draw_items = []
 
-        # 1. Discrete multiscale resolution grid G_N (optional)
+        # 1. Discrete multiscale resolution grid G_N
         if self.show_grid:
             grid_step = 40
             for gx in range(0, self.width, grid_step):
@@ -261,14 +235,14 @@ class WaveGravityWindow:
                     )
                 )
 
-        # 2. Subtle field gradient rings around central mass knot
-        for r_ring in [80, 140, 220, 310, 420]:
+        # 2. Refraction field gradient rings around central mass knot
+        for r_ring in [60, 110, 170, 240, 320]:
             draw_items.append(
                 shapes.Circle(
                     self.field.cx,
                     self.field.cy,
                     r_ring,
-                    color=(28, 38, 52, 35),
+                    color=(35, 45, 60, 40),
                     batch=self.batch,
                 )
             )
@@ -279,7 +253,7 @@ class WaveGravityWindow:
                 self.field.cx,
                 self.field.cy,
                 self.field.core_radius,
-                color=(230, 160, 50, 255),
+                color=(220, 160, 60, 255),
                 batch=self.batch,
             )
         )
@@ -287,58 +261,42 @@ class WaveGravityWindow:
             shapes.Circle(
                 self.field.cx,
                 self.field.cy,
-                self.field.core_radius * 0.45,
-                color=(255, 240, 190, 255),
+                self.field.core_radius * 0.5,
+                color=(255, 235, 180, 255),
                 batch=self.batch,
             )
         )
 
-        # 3. Draw continuous spirograph trajectory history
-        path = self.knot.path
-        p_len = len(path)
-        if p_len > 1:
-            for i in range(p_len - 1):
-                fade = (i + 1) / p_len
-                alpha = int(35 + 210 * fade)
-                # Cyan / teal spirograph path with luminous fade
-                draw_items.append(
-                    _make_line(
-                        path[i][0],
-                        path[i][1],
-                        path[i + 1][0],
-                        path[i + 1][1],
-                        color=(90, 190, 255, alpha),
-                        batch=self.batch,
-                        width=2 if fade > 0.85 else 1,
-                    )
+        # 3. Draw matter knot trajectory history
+        path = self.matter_knot.path
+        for i in range(len(path) - 1):
+            draw_items.append(
+                _make_line(
+                    path[i][0],
+                    path[i][1],
+                    path[i + 1][0],
+                    path[i + 1][1],
+                    color=(100, 180, 240, 160),
+                    batch=self.batch,
+                    width=1,
                 )
+            )
 
-        # 4. Draw orbiting matter knot
-        mk = self.knot
-        # Body
+        # 4. Draw matter knot vortex body
+        mk = self.matter_knot
         draw_items.append(
             shapes.Circle(
                 mk.x,
                 mk.y,
                 mk.radius,
-                color=(60, 160, 245, 220),
-                batch=self.batch,
-            )
-        )
-        # Inner core
-        draw_items.append(
-            shapes.Circle(
-                mk.x,
-                mk.y,
-                mk.radius * 0.4,
-                color=(230, 245, 255, 255),
+                color=(70, 150, 230, 200),
                 batch=self.batch,
             )
         )
 
         # Internal wave circulation indicator
-        px = mk.x + mk.radius * 0.85 * math.cos(mk.phase)
-        py = mk.y + mk.radius * 0.85 * math.sin(mk.phase)
+        px = mk.x + mk.radius * 0.8 * math.cos(mk.phase)
+        py = mk.y + mk.radius * 0.8 * math.sin(mk.phase)
         draw_items.append(
             _make_line(
                 mk.x,
@@ -351,13 +309,13 @@ class WaveGravityWindow:
             )
         )
 
-        # Draw batches
+        # Draw batch primitives and HUD
         self.batch.draw()
         self.hud_batch.draw()
 
 
 def run_app() -> None:
-    """Launch the interactive spirograph simulation."""
+    """Launch the interactive pyglet visualization."""
     if pyglet is None:
         print("Error: pyglet is required to run the graphical window.")
         print("Install it using: pip install pyglet")

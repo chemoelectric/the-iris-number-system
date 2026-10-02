@@ -30,12 +30,12 @@ All gravity is, in the most direct physical sense, wave refraction.
 
 ## Features
 
-* **Spirograph & Rosette Orbits**: Smooth, continuous orbital simulation where the circulating wave vortex draws multi-loop precessing spirograph patterns without crashing or halting into the central core.
-* **Effortless Capture**: Launching from the left allows you to easily capture the matter knot into stable or precessing orbits by tuning speed with `f` / `s`.
-* **Transparent PNG Equation Display**: The wave-refractive gravitational derivation equation is seamlessly embedded in the open space as a transparent PNG asset (`equation.png`).
-* **Minimalist, Spare Interface**: No clutter or complex readouts—just the mass, the orbiting vortex, the spirograph trail, and the equation.
-* **Interactive ASCII Controls**: Simple keyboard controls for speed, mass, launch height, and trail clearing.
-* **Clean Terminal CLI Mode**: A quiet, minimal ANSI terminal orbit visualizer (`--cli`) without equation text.
+* **Circulating Matter Knot Orbiting**: Observe an orbiting or deflected matter vortex steered entirely by the refractive gradient across its finite physical diameter.
+* **Speed Parameter Tuning & Orbital Capture**: Capture the matter knot into various stable and precessing orbits around the central mass by dynamically adjusting the speed parameter with `f` / `s`.
+* **Launch Position Adjustment**: Shift the matter knot launch height and impact parameter up and down with `[` / `]`.
+* **Continuous Trajectory Trail**: Watch the matter knot trace its orbital path as it swings around the central mass knot.
+* **Spare, Clean Interface**: Uncluttered visual layout showing the central mass knot, the orbiting matter vortex, its historical trail, and real-time status.
+* **Headless Terminal Mode**: Includes an interactive terminal ANSI rendering mode (`--cli`) that loops smoothly until `Ctrl+C`.
 * **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
 
 ## Installation
@@ -68,15 +68,14 @@ gravity-as-refraction --cli
 
 | Key | Action |
 | :--- | :--- |
-| **f** | Speed up (boost velocity +5%) |
-| **s** | Slow down (reduce velocity -5% to easily capture into orbit) |
 | **+** / **=** | Increase central mass knot energy |
 | **-** / **_** | Decrease central mass knot energy |
+| **f** | Faster speed parameter (increase wave speed \( c \)) |
+| **s** | Slower speed parameter (decrease wave speed \( c \)) |
 | **[** | Lower launch height / impact parameter |
 | **]** | Raise launch height / impact parameter |
-| **c** | Clear spirograph trajectory trail |
-| **r** | Relaunch from starting line |
-| **g** | Toggle discrete resolution grid overlay |
+| **g** | Toggle discrete resolution grid overlay on/off |
+| **r** | Reset / relaunch matter knot from starting position |
 | **Space** | Pause / Resume simulation |
 | **q** / **Esc** | Exit application |
 
