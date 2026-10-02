@@ -74,7 +74,6 @@ class WaveGravityWindow:
             "GRAVITATION AS WAVE REFRACTION",
             font_name="Sans-Serif",
             font_size=12,
-            bold=True,
             x=20,
             y=height - 25,
             color=(240, 240, 240, 255),

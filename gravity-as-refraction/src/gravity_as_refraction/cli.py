@@ -27,7 +27,7 @@ def run_terminal_simulation(duration: float = 8.0, fps: float = 15.0) -> None:
     print(" GRAVITATION AS WAVE REFRACTION • TERMINAL SIMULATION")
     print("=" * width)
     print("Matter Knot at center alters propagation speed of electromagnetic waves.")
-    print("Wavefronts retard near mass, continuously tilting toward the knot.")
+    print("Wavefronts slow down near mass, continuously tilting toward the knot.")
     print("=" * width)
     time.sleep(1.2)
 
