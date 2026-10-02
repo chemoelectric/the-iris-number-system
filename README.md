@@ -116,9 +116,10 @@ python3 -m gravity_as_refraction
 ```
 
 ### Physical Features
-- **Wave Front Tilting**: Continuous plane wave fronts slow down near the central matter knot, steering the trajectory via Huygens wave optics.
+- **Swift Wave Front Tilting**: Continuous plane wave fronts propagate rapidly and slow down near the central matter knot, steering the trajectory via Huygens wave optics.
+- **Wave Front Sample Point Trails**: Discrete points along each wave front leave historical trails tracing the real Poynting wave energy flux without fictional "light rays".
 - **Matter Knot Orbiting**: Localized circulating wave vortices undergo differential phase delay across their finite diameter, producing Newtonian orbits without curved space-time.
-- **Ray Lensing & Caustics**: Demonstrating optical caustics and light deflection as pure gradient-index refraction.
+- **Pure ASCII Keyboard Controls**: Controlled entirely by ASCII keys (`+`/`-`, `f`/`s`, `[`/`]`, `t`, `g`, `r`, `q`) without arrow keys.
 - **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
 
 ---

@@ -8,17 +8,17 @@ __author__ = "Barry Schwartz"
 __license__ = "MIT"
 
 from .physics import (
+    MatterKnot,
     RefractionField,
     WaveFront,
-    MatterKnot,
-    RayBeam,
+    WaveFrontPoint,
     maxent_gravitational_constant,
 )
 
 __all__ = [
+    "MatterKnot",
     "RefractionField",
     "WaveFront",
-    "MatterKnot",
-    "RayBeam",
+    "WaveFrontPoint",
     "maxent_gravitational_constant",
 ]

@@ -6,6 +6,7 @@ import argparse
 import math
 import sys
 import time
+from typing import List, Optional
 
 try:
     from .physics import RefractionField, WaveFront, MatterKnot, maxent_gravitational_constant
@@ -13,14 +14,23 @@ except ImportError:
     from physics import RefractionField, WaveFront, MatterKnot, maxent_gravitational_constant
 
 
-def run_terminal_simulation(duration: float = 8.0, fps: float = 15.0) -> None:
-    """Run an ASCII/ANSI terminal visualization of wave front refraction."""
-    width = 68
+def run_terminal_simulation(duration: Optional[float] = None, fps: float = 20.0) -> None:
+    """Run a continuous ASCII/ANSI terminal visualization of wave front refraction."""
+    width = 72
     height = 24
-    field = RefractionField(cx=width * 0.5, cy=height * 0.5, mass=120.0, c=16.0, core_radius=3.0)
+    field = RefractionField(
+        cx=width * 0.5,
+        cy=height * 0.5,
+        mass=200.0,
+        c=32.0,  # Faster wave propagation
+        core_radius=3.5,
+    )
 
-    # Wavefront starting on the left
-    wave = WaveFront(start_x=4.0, y_min=2.0, y_max=height - 2.0, num_points=21)
+    # Maintain two staggered wave fronts moving across the terminal
+    waves: List[WaveFront] = [
+        WaveFront(start_x=4.0, y_min=2.0, y_max=height - 2.0, num_points=23),
+        WaveFront(start_x=28.0, y_min=2.0, y_max=height - 2.0, num_points=23),
+    ]
 
     print("\033[2J\033[H", end="")
     print("=" * width)
@@ -28,60 +38,81 @@ def run_terminal_simulation(duration: float = 8.0, fps: float = 15.0) -> None:
     print("=" * width)
     print("Matter Knot at center alters propagation speed of electromagnetic waves.")
     print("Wavefronts slow down near mass, continuously tilting toward the knot.")
+    print("Press Ctrl+C to stop simulation.")
     print("=" * width)
-    time.sleep(1.2)
+    time.sleep(0.8)
 
     dt = 1.0 / fps
-    total_frames = int(duration * fps)
+    frame_count = 0
+    max_frames = int(duration * fps) if duration is not None else None
 
-    for _ in range(total_frames):
-        wave.update(field, dt)
+    try:
+        while True:
+            if max_frames is not None and frame_count >= max_frames:
+                break
+            frame_count += 1
 
-        # Build ASCII buffer
-        grid = [[" " for _ in range(width)] for _ in range(height)]
+            # Update wave fronts
+            for w in waves:
+                w.update(field, dt)
 
-        # Draw central mass knot
-        cx, cy = int(round(field.cx)), int(round(field.cy))
-        if 0 <= cy < height and 0 <= cx < width:
-            grid[cy][cx] = "●"
-            if 0 <= cx - 1 < width:
-                grid[cy][cx - 1] = "("
-            if 0 <= cx + 1 < width:
-                grid[cy][cx + 1] = ")"
+            # Build ASCII buffer
+            grid = [[" " for _ in range(width)] for _ in range(height)]
 
-        # Draw refractive field influence boundary
-        for ang in range(0, 360, 30):
-            rad = math.radians(ang)
-            rx = int(round(field.cx + 9.0 * math.cos(rad)))
-            ry = int(round(field.cy + 4.5 * math.sin(rad)))
-            if 0 <= ry < height and 0 <= rx < width and grid[ry][rx] == " ":
-                grid[ry][rx] = "·"
+            # Draw central mass knot
+            cx, cy = int(round(field.cx)), int(round(field.cy))
+            if 0 <= cy < height and 0 <= cx < width:
+                grid[cy][cx] = "●"
+                if 0 <= cx - 1 < width:
+                    grid[cy][cx - 1] = "("
+                if 0 <= cx + 1 < width:
+                    grid[cy][cx + 1] = ")"
 
-        # Draw wavefront points
-        for pt in wave.points:
-            px, py = int(round(pt.x)), int(round(pt.y))
-            if 0 <= py < height and 0 <= px < width:
-                grid[py][px] = "#"
+            # Draw refractive field influence boundary rings
+            for ang in range(0, 360, 24):
+                rad = math.radians(ang)
+                rx = int(round(field.cx + 11.0 * math.cos(rad)))
+                ry = int(round(field.cy + 5.5 * math.sin(rad)))
+                if 0 <= ry < height and 0 <= rx < width and grid[ry][rx] == " ":
+                    grid[ry][rx] = "·"
 
-        # Render frame
-        out = ["\033[H\033[?25l"]
-        out.append(f"  Field Mass: {field.mass:.1f} | Base c: {field.c:.1f} | Wave Refraction Active")
-        out.append("-" * width)
-        for row in grid:
-            out.append("".join(row))
-        out.append("-" * width)
-        out.append("  [#] Wavefront  [●] Central Mass Knot  [·] Refractive Gradient Zone")
-        sys.stdout.write("\n".join(out) + "\n")
-        sys.stdout.flush()
+            # Draw sample points on wave fronts
+            for w in waves:
+                for pt in w.points:
+                    px, py = int(round(pt.x)), int(round(pt.y))
+                    if 0 <= py < height and 0 <= px < width:
+                        grid[py][px] = "#"
 
-        time.sleep(dt)
+            # Render frame
+            out = ["\033[H\033[?25l"]
+            out.append(
+                f"  Field Mass: {field.mass:.1f} | Base c: {field.c:.1f} | Wave Refraction Active [Ctrl+C to stop]"
+            )
+            out.append("-" * width)
+            for row in grid:
+                out.append("".join(row))
+            out.append("-" * width)
+            out.append("  [#] Wavefront Points  [●] Central Mass Knot  [·] Refractive Gradient Zone")
+            sys.stdout.write("\n".join(out) + "\n")
+            sys.stdout.flush()
 
-        # Loop wavefront if it passed the screen
-        if all(pt.x > width - 2 for pt in wave.points):
-            wave = WaveFront(start_x=4.0, y_min=2.0, y_max=height - 2.0, num_points=21)
+            time.sleep(dt)
 
-    print("\033[?25h")  # Restore cursor
-    print("Simulation finished. Run without --cli to launch the full graphical window.")
+            # Re-spawn wave fronts as they exit the right boundary
+            for idx, w in enumerate(waves):
+                if all(pt.x > width - 1 for pt in w.points):
+                    waves[idx] = WaveFront(
+                        start_x=3.0,
+                        y_min=2.0,
+                        y_max=height - 2.0,
+                        num_points=23,
+                    )
+
+    except KeyboardInterrupt:
+        pass
+    finally:
+        print("\033[?25h")  # Restore terminal cursor
+        print("\nTerminal simulation stopped.")
 
 
 def main() -> None:
@@ -94,6 +125,12 @@ def main() -> None:
         "--text",
         action="store_true",
         help="Run terminal ANSI simulation mode (useful for headless / SSH environments)",
+    )
+    parser.add_argument(
+        "--duration",
+        type=float,
+        default=None,
+        help="Optional duration in seconds for terminal simulation (defaults to continuous until Ctrl+C)",
     )
     parser.add_argument(
         "--integral",
@@ -124,7 +161,7 @@ def main() -> None:
         return
 
     if args.cli:
-        run_terminal_simulation()
+        run_terminal_simulation(duration=args.duration)
         return
 
     # Attempt to run Pyglet graphical window
@@ -134,9 +171,9 @@ def main() -> None:
         run_app()
     except Exception as exc:
         print(f"\nUnable to open graphical window: {exc}", file=sys.stderr)
-        print("Launching terminal simulation instead...\n", file=sys.stderr)
+        print("Launching continuous terminal simulation instead...\n", file=sys.stderr)
         time.sleep(1.0)
-        run_terminal_simulation()
+        run_terminal_simulation(duration=args.duration)
 
 
 if __name__ == "__main__":

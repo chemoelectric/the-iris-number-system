@@ -25,12 +25,12 @@ All gravity is, in the most direct physical sense, wave refraction.
 
 ## Features
 
-* **Real-Time Wave Front Refraction**: Watch plane wave fronts propagate across the field and visibly bend around the mass knot via differential phase delay.
-* **Circulating Matter Knot Dynamics**: Observe an orbiting or falling matter vortex steered entirely by the refractive gradient across its finite diameter.
-* **Ray Tracing & Gravitational Lensing**: Visualize multiple Poynting-flux trajectories undergoing Snell gradient refraction to form caustics and focal lines.
-* **Interactive Controls**: Dynamically change the central mass, launch coordinates, impact parameter, and simulation speed.
+* **Real-Time Wave Front Refraction**: Watch plane wave fronts propagate rapidly across the field and visibly bend around the mass knot as wave points slow down in the higher energy-density gradient.
+* **Wave Front Sample Point Trails**: See discrete points along each wave front leaving illuminated historical trails behind them, revealing the exact directional paths of Poynting wave energy flux without fictional "light rays".
+* **Circulating Matter Knot Dynamics**: Observe an orbiting or falling matter vortex steered entirely by the refractive gradient across its finite physical diameter.
+* **Interactive Controls**: Pure ASCII keyboard controls for mass knot energy, wave speed, launch position, trails, and grid overlays.
 * **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
-* **Headless Terminal Mode**: Includes a terminal ANSI rendering mode (`--cli`) for headless or remote SSH servers.
+* **Continuous Headless Terminal Mode**: Includes an interactive terminal ANSI rendering mode (`--cli`) that loops smoothly until `Ctrl+C`.
 
 ## Installation
 
@@ -52,25 +52,29 @@ Or run via Python module:
 python3 -m gravity_as_refraction
 ```
 
-To run the terminal ANSI simulation in a text-only or remote environment:
+To run the continuous terminal ANSI simulation in a text-only or remote environment:
 
 ```bash
 gravity-as-refraction --cli
 ```
 
-## Interactive Keyboard Controls
+## Interactive Keyboard Controls (Pure ASCII Keys Only)
 
 | Key | Action |
 | :--- | :--- |
 | **Space** | Pause / Resume simulation |
-| **1** | Mode 1: Plane Wave Fronts (Huygens wave front tilt) |
-| **2** | Mode 2: Circulating Matter Knot (Orbiting/falling vortex) |
-| **3** | Mode 3: Optical Ray Lensing & Caustics |
-| **Up** / **Down** | Increase / Decrease central mass energy |
-| **Left** / **Right** | Adjust launch position / impact parameter |
-| **G** | Toggle discrete resolution grid overlay |
-| **R** | Reset simulation to initial state |
-| **Q** / **Esc** | Exit application |
+| **1** | Mode 1: Wave Fronts with Point Trails |
+| **2** | Mode 2: Circulating Matter Knot Orbit |
+| **+** / **=** | Increase central mass knot energy |
+| **-** / **_** | Decrease central mass knot energy |
+| **f** | Faster wave propagation speed |
+| **s** | Slower wave propagation speed |
+| **[** | Lower launch position / impact parameter |
+| **]** | Raise launch position / impact parameter |
+| **t** | Toggle wave front point trails on/off |
+| **g** | Toggle discrete resolution grid overlay on/off |
+| **r** | Reset simulation to initial state |
+| **q** / **Esc** | Exit application |
 
 ## License
 
