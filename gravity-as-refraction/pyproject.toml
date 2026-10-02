@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gravity-as-refraction"
+version = "0.1.0"
+description = "Visualizing gravitation as wave refraction in the universal electromagnetic field"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Barry Schwartz", email = "150643+chemoelectric@users.noreply.github.com" }
+]
+keywords = [
+    "gravity",
+    "optics",
+    "wave-mechanics",
+    "refraction",
+    "electromagnetism",
+    "lensing",
+    "pyglet",
+    "simulation",
+    "unified-field-theory"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+    "pyglet>=2.0.0",
+]
+
+[project.scripts]
+gravity-as-refraction = "gravity_as_refraction.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/chemoelectric/the-iris-number-system"
+Repository = "https://github.com/chemoelectric/the-iris-number-system.git"

@@ -94,6 +94,35 @@ npm start
 
 ---
 
+## 🌌 Standalone Package: `gravity-as-refraction` (PyPI Ready)
+
+A standalone Python application and package located in `gravity-as-refraction/` for visualizing gravitation as wave refraction in the universal electromagnetic field.
+
+### Quick Start
+```bash
+cd gravity-as-refraction
+
+# Build sdist (.tar.gz) and wheel (.whl) using Python's standard library (no pip/setuptools needed)
+python3 build_dist.py
+
+# Upload to PyPI
+twine upload dist/*
+
+# Run locally in terminal ANSI mode
+python3 -m gravity_as_refraction --cli
+
+# Run full graphical window (requires pyglet)
+python3 -m gravity_as_refraction
+```
+
+### Physical Features
+- **Wave Front Tilting**: Continuous plane wave fronts retard near the central matter knot, steering the trajectory via Huygens wave optics.
+- **Matter Knot Orbiting**: Localized circulating wave vortices undergo differential phase delay across their finite diameter, producing Newtonian orbits without curved space-time.
+- **Ray Lensing & Caustics**: Demonstrating optical caustics and light deflection as pure gradient-index refraction.
+- **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
+
+---
+
 ## 📜 Mathematical Foundations
 
 The inference engine operates strictly within the Counting-Iris number system:
@@ -113,6 +142,12 @@ The inference engine operates strictly within the Counting-Iris number system:
 
 ## 🛠️ Project Structure
 ```
+├── gravity-as-refraction/        # Standalone Python package (PyPI ready) for wave-refraction gravity simulation
+│   ├── pyproject.toml            # PEP 621 packaging metadata
+│   ├── README.md                 # Package documentation and CLI controls
+│   ├── LICENSE                   # MIT License
+│   ├── build_dist.py             # Zero-dependency sdist & wheel archive builder
+│   └── src/gravity_as_refraction/ # Pure-Python physics engine, Pyglet window & CLI
 ├── public/
 │   ├── Iris_Number_System-00-Bibliography.adoc   # Volume 0: Annotated Bibliography (AsciiDoc)
 │   ├── Iris_Number_System-01-Volume_I_Fundamentals.adoc   # Volume I: Fundamentals (AsciiDoc)
