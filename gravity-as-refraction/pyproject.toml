@@ -47,3 +47,6 @@ gravity-as-refraction = "gravity_as_refraction.cli:main"
 [project.urls]
 Homepage = "https://github.com/chemoelectric/the-iris-number-system"
 Repository = "https://github.com/chemoelectric/the-iris-number-system.git"
+
+[tool.setuptools.package-data]
+"gravity_as_refraction" = ["*.png"]

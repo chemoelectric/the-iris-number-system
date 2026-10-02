@@ -30,12 +30,12 @@ All gravity is, in the most direct physical sense, wave refraction.
 
 ## Features
 
-* **Interactive Orbital Mechanics**: Explore circular orbits, eccentric ellipses, precessing rosette orbits, hyperbolic flybys, and core capture.
-* **Real-Time Parameter Adjustment**: Dynamically alter velocity magnitude, launch angle, orbital radius, and central mass energy using pure ASCII keyboard controls.
-* **Continuous Trajectory History**: Visualize the complete path of the matter knot with a glowing historical trail.
-* **Internal Vortex Circulation**: Watch the internal wave-phase vector rotate within the matter knot as it orbits.
-* **Live Orbital Diagnostics**: Real-time HUD showing distance \( r \), velocity \( v \), specific orbital energy \( \mathcal{E} \), angular momentum \( L \), and bound/unbound state.
-* **Headless Terminal Mode**: Includes an interactive terminal ANSI rendering mode (`--cli`) that loops smoothly until `Ctrl+C`.
+* **Spirograph & Rosette Orbits**: Smooth, continuous orbital simulation where the circulating wave vortex draws multi-loop precessing spirograph patterns without crashing or halting into the central core.
+* **Effortless Capture**: Launching from the left allows you to easily capture the matter knot into stable or precessing orbits by tuning speed with `f` / `s`.
+* **Transparent PNG Equation Display**: The wave-refractive gravitational derivation equation is seamlessly embedded in the open space as a transparent PNG asset (`equation.png`).
+* **Minimalist, Spare Interface**: No clutter or complex readouts—just the mass, the orbiting vortex, the spirograph trail, and the equation.
+* **Interactive ASCII Controls**: Simple keyboard controls for speed, mass, launch height, and trail clearing.
+* **Clean Terminal CLI Mode**: A quiet, minimal ANSI terminal orbit visualizer (`--cli`) without equation text.
 * **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
 
 ## Installation
@@ -68,23 +68,16 @@ gravity-as-refraction --cli
 
 | Key | Action |
 | :--- | :--- |
-| **1** | Preset: Circular Orbit (\( e = 0 \)) |
-| **2** | Preset: Eccentric Ellipse (\( e \approx 0.62 \)) |
-| **3** | Preset: Precessing Rosette (Wave-delay perihelion advance) |
-| **4** | Preset: Hyperbolic Flyby (Gravitational scattering) |
-| **5** | Preset: Inspiral Core Capture |
-| **f** | Boost velocity magnitude (+6%) |
-| **s** | Reduce velocity magnitude (-6%) |
-| **a** | Rotate velocity vector counterclockwise (+3°) |
-| **d** | Rotate velocity vector clockwise (-3°) |
+| **f** | Speed up (boost velocity +5%) |
+| **s** | Slow down (reduce velocity -5% to easily capture into orbit) |
 | **+** / **=** | Increase central mass knot energy |
 | **-** / **_** | Decrease central mass knot energy |
-| **[** | Contract orbital radius toward center |
-| **]** | Expand orbital radius away from center |
-| **c** | Clear trajectory path history |
+| **[** | Lower launch height / impact parameter |
+| **]** | Raise launch height / impact parameter |
+| **c** | Clear spirograph trajectory trail |
+| **r** | Relaunch from starting line |
 | **g** | Toggle discrete resolution grid overlay |
 | **Space** | Pause / Resume simulation |
-| **r** | Reset current orbit preset |
 | **q** / **Esc** | Exit application |
 
 ## License

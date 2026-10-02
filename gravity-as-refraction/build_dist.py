@@ -46,9 +46,10 @@ def build_sdist(root_dir: Path, dist_dir: Path) -> Path:
         # Add src directory
         src_dir = root_dir / "src"
         if src_dir.exists():
-            for p in sorted(src_dir.rglob("*.py")):
-                rel_path = p.relative_to(root_dir)
-                tar.add(p, arcname=f"{prefix}/{rel_path}")
+            for p in sorted(src_dir.rglob("*")):
+                if p.is_file() and p.suffix in (".py", ".png"):
+                    rel_path = p.relative_to(root_dir)
+                    tar.add(p, arcname=f"{prefix}/{rel_path}")
 
     print(f"Built sdist: {sdist_path.name} ({sdist_path.stat().st_size} bytes)")
     return sdist_path
@@ -98,14 +99,15 @@ Tag: py3-none-any
     record_entries = []
 
     with zipfile.ZipFile(wheel_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        # 1. Package Python files
+        # 1. Package Python and asset files
         src_pkg_dir = root_dir / "src" / PACKAGE_NAME
-        for py_file in sorted(src_pkg_dir.glob("*.py")):
-            rel_arc = f"{PACKAGE_NAME}/{py_file.name}"
-            data = py_file.read_bytes()
-            zf.writestr(rel_arc, data)
-            chk = sha256_checksum(data)
-            record_entries.append(f"{rel_arc},{chk},{len(data)}")
+        for pkg_file in sorted(src_pkg_dir.iterdir()):
+            if pkg_file.is_file() and pkg_file.suffix in (".py", ".png"):
+                rel_arc = f"{PACKAGE_NAME}/{pkg_file.name}"
+                data = pkg_file.read_bytes()
+                zf.writestr(rel_arc, data)
+                chk = sha256_checksum(data)
+                record_entries.append(f"{rel_arc},{chk},{len(data)}")
 
         # 2. dist-info/METADATA
         meta_bytes = metadata_content.encode("utf-8")
