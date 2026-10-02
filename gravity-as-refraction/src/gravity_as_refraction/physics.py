@@ -1,4 +1,4 @@
-"""Physics engine for wave refraction in the unified electromagnetic field."""
+"""Physics engine for circulating matter knots in the refractive gravitational field."""
 
 from __future__ import annotations
 
@@ -22,13 +22,13 @@ def maxent_gravitational_constant(
 
 @dataclass
 class RefractionField:
-    """Represents the refractive gradient around a localized mass knot."""
+    """Represents the refractive gradient around a central matter knot."""
 
     cx: float = 480.0
     cy: float = 320.0
-    mass: float = 18000.0
-    c: float = 460.0  # Base propagation speed of electromagnetic waves
-    core_radius: float = 28.0
+    mass: float = 16000.0
+    c: float = 300.0  # Base propagation speed of electromagnetic waves
+    core_radius: float = 24.0
 
     def distance_from_center(self, x: float, y: float) -> float:
         dx = x - self.cx
@@ -46,97 +46,10 @@ class RefractionField:
         n = self.refractive_index(x, y)
         return self.c / n
 
-    def grad_n(self, x: float, y: float) -> Tuple[float, float]:
-        """Gradient of the refractive index vector (dn/dx, dn/dy)."""
-        dx = x - self.cx
-        dy = y - self.cy
-        r = math.hypot(dx, dy)
-        if r < 1e-4:
-            return 0.0, 0.0
-        effective_r = max(r, self.core_radius)
-        dndr = -(2.0 * self.mass) / (effective_r * effective_r)
-        dn_dx = dndr * (dx / r)
-        dn_dy = dndr * (dy / r)
-        return dn_dx, dn_dy
-
-
-@dataclass
-class WaveFrontPoint:
-    """A discrete sample point on a propagating wave front with its historical trail."""
-
-    x: float
-    y: float
-    nx: float = 1.0
-    ny: float = 0.0
-    trail: List[Tuple[float, float]] = field(default_factory=list)
-
-
-class WaveFront:
-    """A propagating wavefront line advancing along its local normal vectors."""
-
-    def __init__(
-        self,
-        start_x: float,
-        y_min: float,
-        y_max: float,
-        num_points: int = 90,
-    ) -> None:
-        self.points: List[WaveFrontPoint] = []
-        step = (y_max - y_min) / max(num_points - 1, 1)
-        for i in range(num_points):
-            py = y_min + i * step
-            self.points.append(
-                WaveFrontPoint(
-                    x=start_x,
-                    y=py,
-                    nx=1.0,
-                    ny=0.0,
-                    trail=[(start_x, py)],
-                )
-            )
-        self._trail_step_counter = 0
-
-    def update(self, field: RefractionField, dt: float) -> None:
-        """Advance each point on the wavefront according to local wave speed and normal."""
-        n_points = len(self.points)
-        if n_points < 2:
-            return
-
-        self._trail_step_counter += 1
-        record_trail = (self._trail_step_counter % 2 == 0)
-
-        # 1. Update point positions along current normals
-        for pt in self.points:
-            v = field.wave_speed(pt.x, pt.y)
-            pt.x += pt.nx * v * dt
-            pt.y += pt.ny * v * dt
-            if record_trail:
-                pt.trail.append((pt.x, pt.y))
-                if len(pt.trail) > 100:
-                    pt.trail.pop(0)
-
-        # 2. Recompute local normals perpendicular to the wavefront line
-        for i in range(n_points):
-            if i == 0:
-                dx = self.points[1].x - self.points[0].x
-                dy = self.points[1].y - self.points[0].y
-            elif i == n_points - 1:
-                dx = self.points[-1].x - self.points[-2].x
-                dy = self.points[-1].y - self.points[-2].y
-            else:
-                dx = self.points[i + 1].x - self.points[i - 1].x
-                dy = self.points[i + 1].y - self.points[i - 1].y
-
-            tangent_len = math.hypot(dx, dy)
-            if tangent_len > 1e-6:
-                # Normal is perpendicular to tangent vector (dy, -dx)
-                nx = dy / tangent_len
-                ny = -dx / tangent_len
-                if nx < 0:
-                    nx = -nx
-                    ny = -ny
-                self.points[i].nx = nx
-                self.points[i].ny = ny
+    @property
+    def mu(self) -> float:
+        """Effective gravitational coupling parameter mu = G*M = 2 * mass * c."""
+        return 2.0 * self.mass * self.c
 
 
 @dataclass
@@ -144,39 +57,143 @@ class MatterKnot:
     """A localized circulating wave packet (matter knot) with finite radius R.
 
     The differential wave speed across its diameter steers its center-of-mass
-    momentum, producing the exact inverse-square gravitational trajectory.
+    momentum, producing exact Newtonian and precessing Keplerian orbits.
     """
 
-    x: float = 100.0
-    y: float = 240.0
-    vx: float = 340.0
+    x: float = 480.0
+    y: float = 120.0
+    vx: float = 210.0
     vy: float = 0.0
-    radius: float = 14.0
+    radius: float = 12.0
     phase: float = 0.0
-    spin_freq: float = 18.0  # Internal wave circulation frequency
+    spin_freq: float = 16.0  # Internal wave circulation frequency
     path: List[Tuple[float, float]] = field(default_factory=list)
+    max_path_points: int = 1500
+    captured: bool = False
+
+    def distance(self, field: RefractionField) -> float:
+        return field.distance_from_center(self.x, self.y)
+
+    def speed(self) -> float:
+        return math.hypot(self.vx, self.vy)
+
+    def angular_momentum(self, field: RefractionField) -> float:
+        dx = self.x - field.cx
+        dy = self.y - field.cy
+        return dx * self.vy - dy * self.vx
+
+    def specific_energy(self, field: RefractionField) -> float:
+        r = self.distance(field)
+        if r < 1e-4:
+            return 0.0
+        v = self.speed()
+        return 0.5 * v * v - (field.mu / r)
+
+    def orbit_type(self, field: RefractionField) -> str:
+        if self.captured:
+            return "Captured in Core"
+        e_spec = self.specific_energy(field)
+        if e_spec < -100.0:
+            return "Bound (Elliptic)"
+        elif abs(e_spec) <= 100.0:
+            return "Parabolic (Escape Boundary)"
+        else:
+            return "Unbound (Hyperbolic)"
 
     def update(self, field: RefractionField, dt: float) -> None:
-        self.path.append((self.x, self.y))
-        if len(self.path) > 400:
-            self.path.pop(0)
+        if self.captured:
+            return
 
-        # Internal circulation phase
-        self.phase = (self.phase + self.spin_freq * dt * 2.0 * math.pi) % (2.0 * math.pi)
-
-        # Vector from central mass knot to matter knot
+        # Vector from central mass knot
         dx = self.x - field.cx
         dy = self.y - field.cy
         r = math.hypot(dx, dy)
-        effective_r = max(r, field.core_radius)
 
-        # Steering acceleration via differential propagation delay across vortex diameter
-        accel_mag = (field.mass * 2.0 * field.c) / (effective_r * effective_r)
+        # Check for core collision / capture
+        if r <= field.core_radius:
+            self.captured = True
+            self.vx = 0.0
+            self.vy = 0.0
+            return
 
-        ax = -accel_mag * (dx / r)
-        ay = -accel_mag * (dy / r)
+        # Differential wave speed across vortex diameter produces acceleration:
+        # a = - mu / r^2 * r_hat with higher-order refractive delay term:
+        # a = -(mu / r^2) * (1 + 3 * mu / (r * c^2))
+        inv_r = 1.0 / r
+        inv_r2 = inv_r * inv_r
+        # Refractive precession correction
+        corr = 1.0 + (3.0 * field.mu) / (r * field.c * field.c)
+        accel_mag = field.mu * inv_r2 * corr
 
+        ax = -accel_mag * (dx * inv_r)
+        ay = -accel_mag * (dy * inv_r)
+
+        # Symplectic Verlet integration step
         self.vx += ax * dt
         self.vy += ay * dt
         self.x += self.vx * dt
         self.y += self.vy * dt
+
+        # Update internal circulation phase
+        self.phase = (self.phase + self.spin_freq * dt * 2.0 * math.pi) % (2.0 * math.pi)
+
+        # Record orbit path history
+        self.path.append((self.x, self.y))
+        if len(self.path) > self.max_path_points:
+            self.path.pop(0)
+
+
+def create_circular_orbit(field: RefractionField, radius: float = 190.0) -> MatterKnot:
+    """Initialize a matter knot in a stable circular orbit."""
+    v_circ = math.sqrt(field.mu / radius)
+    return MatterKnot(
+        x=field.cx,
+        y=field.cy - radius,
+        vx=v_circ,
+        vy=0.0,
+        radius=12.0,
+    )
+
+
+def create_elliptic_orbit(
+    field: RefractionField, periapsis: float = 120.0, eccentricity: float = 0.55
+) -> MatterKnot:
+    """Initialize a matter knot in an eccentric Keplerian ellipse."""
+    # For ellipse: v_peri = sqrt(mu * (1 + e) / r_peri)
+    v_peri = math.sqrt((field.mu * (1.0 + eccentricity)) / periapsis)
+    return MatterKnot(
+        x=field.cx,
+        y=field.cy - periapsis,
+        vx=v_peri,
+        vy=0.0,
+        radius=12.0,
+    )
+
+
+def create_scattering_orbit(
+    field: RefractionField, impact_param: float = 160.0, v_inf: float = 230.0
+) -> MatterKnot:
+    """Initialize a matter knot in a hyperbolic flyby trajectory."""
+    return MatterKnot(
+        x=field.cx - 380.0,
+        y=field.cy + impact_param,
+        vx=v_inf,
+        vy=0.0,
+        radius=12.0,
+    )
+
+
+def create_rosette_orbit(
+    field: RefractionField, periapsis: float = 75.0
+) -> MatterKnot:
+    """Initialize a close-in orbit demonstrating perihelion advance (rosette pattern)."""
+    # High eccentricity and close periapsis to showcase wave-delay precession
+    v_peri = math.sqrt((field.mu * 1.65) / periapsis)
+    return MatterKnot(
+        x=field.cx,
+        y=field.cy - periapsis,
+        vx=v_peri,
+        vy=0.0,
+        radius=12.0,
+        max_path_points=2400,
+    )

@@ -1,4 +1,4 @@
-"""Command-line interface and terminal ANSI simulation mode."""
+"""Command-line interface and terminal ANSI orbital simulation mode."""
 
 from __future__ import annotations
 
@@ -6,38 +6,55 @@ import argparse
 import math
 import sys
 import time
-from typing import List, Optional
+from typing import Optional
 
 try:
-    from .physics import RefractionField, WaveFront, MatterKnot, maxent_gravitational_constant
+    from .physics import (
+        MatterKnot,
+        RefractionField,
+        create_circular_orbit,
+        create_elliptic_orbit,
+        create_rosette_orbit,
+        maxent_gravitational_constant,
+    )
 except ImportError:
-    from physics import RefractionField, WaveFront, MatterKnot, maxent_gravitational_constant
+    from physics import (
+        MatterKnot,
+        RefractionField,
+        create_circular_orbit,
+        create_elliptic_orbit,
+        create_rosette_orbit,
+        maxent_gravitational_constant,
+    )
 
 
-def run_terminal_simulation(duration: Optional[float] = None, fps: float = 20.0) -> None:
-    """Run a continuous ASCII/ANSI terminal visualization of wave front refraction."""
+def run_terminal_orbit_simulation(
+    preset: str = "ellipse", duration: Optional[float] = None, fps: float = 24.0
+) -> None:
+    """Run an ASCII/ANSI terminal visualization of an orbiting matter knot."""
     width = 72
     height = 24
     field = RefractionField(
         cx=width * 0.5,
         cy=height * 0.5,
-        mass=200.0,
-        c=32.0,  # Faster wave propagation
-        core_radius=3.5,
+        mass=140.0,
+        c=24.0,
+        core_radius=2.2,
     )
 
-    # Maintain two staggered wave fronts moving across the terminal
-    waves: List[WaveFront] = [
-        WaveFront(start_x=4.0, y_min=2.0, y_max=height - 2.0, num_points=23),
-        WaveFront(start_x=28.0, y_min=2.0, y_max=height - 2.0, num_points=23),
-    ]
+    if preset == "circle":
+        knot = create_circular_orbit(field, radius=8.0)
+    elif preset == "rosette":
+        knot = create_rosette_orbit(field, periapsis=4.2)
+    else:  # ellipse
+        knot = create_elliptic_orbit(field, periapsis=4.8, eccentricity=0.55)
 
     print("\033[2J\033[H", end="")
     print("=" * width)
-    print(" GRAVITATION AS WAVE REFRACTION • TERMINAL SIMULATION")
+    print(" GRAVITATION AS WAVE REFRACTION • ORBITAL SIMULATOR")
     print("=" * width)
-    print("Matter Knot at center alters propagation speed of electromagnetic waves.")
-    print("Wavefronts slow down near mass, continuously tilting toward the knot.")
+    print("Matter Knot orbits central mass via differential wave-speed refraction.")
+    print("Steered by wave phase delay across its finite physical diameter.")
     print("Press Ctrl+C to stop simulation.")
     print("=" * width)
     time.sleep(0.8)
@@ -52,9 +69,10 @@ def run_terminal_simulation(duration: Optional[float] = None, fps: float = 20.0)
                 break
             frame_count += 1
 
-            # Update wave fronts
-            for w in waves:
-                w.update(field, dt)
+            # Sub-step physics
+            substeps = 4
+            for _ in range(substeps):
+                knot.update(field, dt / substeps)
 
             # Build ASCII buffer
             grid = [[" " for _ in range(width)] for _ in range(height)]
@@ -68,69 +86,92 @@ def run_terminal_simulation(duration: Optional[float] = None, fps: float = 20.0)
                 if 0 <= cx + 1 < width:
                     grid[cy][cx + 1] = ")"
 
-            # Draw refractive field influence boundary rings
-            for ang in range(0, 360, 24):
+            # Draw equipotential gradient rings
+            for ang in range(0, 360, 20):
                 rad = math.radians(ang)
-                rx = int(round(field.cx + 11.0 * math.cos(rad)))
-                ry = int(round(field.cy + 5.5 * math.sin(rad)))
+                rx = int(round(field.cx + 8.5 * math.cos(rad)))
+                ry = int(round(field.cy + 4.2 * math.sin(rad)))
                 if 0 <= ry < height and 0 <= rx < width and grid[ry][rx] == " ":
                     grid[ry][rx] = "·"
 
-            # Draw sample points on wave fronts
-            for w in waves:
-                for pt in w.points:
-                    px, py = int(round(pt.x)), int(round(pt.y))
-                    if 0 <= py < height and 0 <= px < width:
-                        grid[py][px] = "#"
+            # Draw orbit path trail (with fading characters)
+            path = knot.path
+            p_len = len(path)
+            for i, (px, py) in enumerate(path):
+                ix, iy = int(round(px)), int(round(py))
+                if 0 <= iy < height and 0 <= ix < width:
+                    if grid[iy][ix] == " ":
+                        grid[iy][ix] = "·" if i < p_len // 2 else "*"
+
+            # Draw orbiting matter knot
+            kx, ky = int(round(knot.x)), int(round(knot.y))
+            if 0 <= ky < height and 0 <= kx < width:
+                grid[ky][kx] = "@"
+
+            # Compute real-time orbital metrics
+            r = knot.distance(field)
+            v = knot.speed()
+            energy = knot.specific_energy(field)
+            ang_mom = knot.angular_momentum(field)
+            state = knot.orbit_type(field)
 
             # Render frame
             out = ["\033[H\033[?25l"]
             out.append(
-                f"  Field Mass: {field.mass:.1f} | Base c: {field.c:.1f} | Wave Refraction Active [Ctrl+C to stop]"
+                f"  Orbit: {preset.upper()} | State: {state.upper()} | [Ctrl+C to stop]"
+            )
+            out.append(
+                f"  r: {r:4.1f} | v: {v:4.1f} | E: {energy:6.1f} | L: {ang_mom:6.1f}"
             )
             out.append("-" * width)
             for row in grid:
                 out.append("".join(row))
             out.append("-" * width)
-            out.append("  [#] Wavefront Points  [●] Central Mass Knot  [·] Refractive Gradient Zone")
+            out.append("  [@] Matter Knot  [*] Orbit Trail  [(●)] Central Mass  [·] Field Gradient")
             sys.stdout.write("\n".join(out) + "\n")
             sys.stdout.flush()
 
             time.sleep(dt)
 
-            # Re-spawn wave fronts as they exit the right boundary
-            for idx, w in enumerate(waves):
-                if all(pt.x > width - 1 for pt in w.points):
-                    waves[idx] = WaveFront(
-                        start_x=3.0,
-                        y_min=2.0,
-                        y_max=height - 2.0,
-                        num_points=23,
-                    )
+            # Reset if captured or escaped far away
+            if knot.captured or r > 45.0:
+                time.sleep(0.5)
+                if preset == "circle":
+                    knot = create_circular_orbit(field, radius=8.0)
+                elif preset == "rosette":
+                    knot = create_rosette_orbit(field, periapsis=4.2)
+                else:
+                    knot = create_elliptic_orbit(field, periapsis=4.8, eccentricity=0.55)
 
     except KeyboardInterrupt:
         pass
     finally:
         print("\033[?25h")  # Restore terminal cursor
-        print("\nTerminal simulation stopped.")
+        print("\nTerminal orbital simulation stopped.")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
         prog="gravity-as-refraction",
-        description="Visualizing gravitation as wave refraction in the unified electromagnetic field.",
+        description="Interactive orbital simulator of circulating wave packets in a refractive gravitational field.",
     )
     parser.add_argument(
         "--cli",
         "--text",
         action="store_true",
-        help="Run terminal ANSI simulation mode (useful for headless / SSH environments)",
+        help="Run terminal ANSI orbital simulation mode (for headless / SSH environments)",
+    )
+    parser.add_argument(
+        "--orbit",
+        choices=["circle", "ellipse", "rosette"],
+        default="ellipse",
+        help="Initial orbit type for terminal simulation (default: ellipse)",
     )
     parser.add_argument(
         "--duration",
         type=float,
         default=None,
-        help="Optional duration in seconds for terminal simulation (defaults to continuous until Ctrl+C)",
+        help="Optional duration in seconds (default: continuous until Ctrl+C)",
     )
     parser.add_argument(
         "--integral",
@@ -161,19 +202,19 @@ def main() -> None:
         return
 
     if args.cli:
-        run_terminal_simulation(duration=args.duration)
+        run_terminal_orbit_simulation(preset=args.orbit, duration=args.duration)
         return
 
-    # Attempt to run Pyglet graphical window
+    # Attempt to launch hardware-accelerated Pyglet window
     try:
         from .app import run_app
 
         run_app()
     except Exception as exc:
         print(f"\nUnable to open graphical window: {exc}", file=sys.stderr)
-        print("Launching continuous terminal simulation instead...\n", file=sys.stderr)
+        print("Launching continuous terminal orbital simulation instead...\n", file=sys.stderr)
         time.sleep(1.0)
-        run_terminal_simulation(duration=args.duration)
+        run_terminal_orbit_simulation(preset=args.orbit, duration=args.duration)
 
 
 if __name__ == "__main__":

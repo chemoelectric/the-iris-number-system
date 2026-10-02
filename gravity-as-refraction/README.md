@@ -1,6 +1,6 @@
 # gravity-as-refraction
 
-Visualizing gravitation as wave refraction in the universal electromagnetic field.
+Interactive orbital simulator of circulating wave packets in a refractive gravitational field.
 
 ## Physical Foundation
 
@@ -16,21 +16,27 @@ or equivalently establishes an optical refractive index gradient:
 
 \[ n(r) = \frac{c}{v(r)} \approx 1 + \frac{G M}{r c^2} \]
 
-When wave packets, light rays, or orbiting matter knots travel through this gradient, the portion closer to the mass moves through a region of higher delay. This differential phase delay continuously tilts the wave fronts toward the energy concentration:
+When circulating wave packets (matter knots) travel through this gradient, the portion of the vortex closer to the mass moves through a region of higher delay. This differential phase delay continuously tilts the vortex momentum vector:
 
-* **Electromagnetic Waves**: Wave fronts continuously refract around the mass, creating the observed gravitational deflection and lensing.
-* **Matter Knots**: Matter itself consists of circulating wave vortices. The differential delay across the physical aperture of the vortex continuously rotates its momentum vector, producing the familiar inverse-square gravitational acceleration without any external downward pull or geometric curvature.
+\[ \Delta v = \frac{\mathrm{d} v}{\mathrm{d} r} \cdot 2 R \]
+
+producing the exact inverse-square gravitational acceleration:
+
+\[ \vec{a} = -\frac{G M}{r^2} \hat{r} \]
+
+Furthermore, higher-order refractive delay terms naturally reproduce the classical perihelion advance (precessing rosette orbits) without curved space-time.
 
 All gravity is, in the most direct physical sense, wave refraction.
 
 ## Features
 
-* **Real-Time Wave Front Refraction**: Watch plane wave fronts propagate rapidly across the field and visibly bend around the mass knot as wave points slow down in the higher energy-density gradient.
-* **Wave Front Sample Point Trails**: See discrete points along each wave front leaving illuminated historical trails behind them, revealing the exact directional paths of Poynting wave energy flux without fictional "light rays".
-* **Circulating Matter Knot Dynamics**: Observe an orbiting or falling matter vortex steered entirely by the refractive gradient across its finite physical diameter.
-* **Interactive Controls**: Pure ASCII keyboard controls for mass knot energy, wave speed, launch position, trails, and grid overlays.
+* **Interactive Orbital Mechanics**: Explore circular orbits, eccentric ellipses, precessing rosette orbits, hyperbolic flybys, and core capture.
+* **Real-Time Parameter Adjustment**: Dynamically alter velocity magnitude, launch angle, orbital radius, and central mass energy using pure ASCII keyboard controls.
+* **Continuous Trajectory History**: Visualize the complete path of the matter knot with a glowing historical trail.
+* **Internal Vortex Circulation**: Watch the internal wave-phase vector rotate within the matter knot as it orbits.
+* **Live Orbital Diagnostics**: Real-time HUD showing distance \( r \), velocity \( v \), specific orbital energy \( \mathcal{E} \), angular momentum \( L \), and bound/unbound state.
+* **Headless Terminal Mode**: Includes an interactive terminal ANSI rendering mode (`--cli`) that loops smoothly until `Ctrl+C`.
 * **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
-* **Continuous Headless Terminal Mode**: Includes an interactive terminal ANSI rendering mode (`--cli`) that loops smoothly until `Ctrl+C`.
 
 ## Installation
 
@@ -62,18 +68,23 @@ gravity-as-refraction --cli
 
 | Key | Action |
 | :--- | :--- |
-| **Space** | Pause / Resume simulation |
-| **1** | Mode 1: Wave Fronts with Point Trails |
-| **2** | Mode 2: Circulating Matter Knot Orbit |
+| **1** | Preset: Circular Orbit (\( e = 0 \)) |
+| **2** | Preset: Eccentric Ellipse (\( e \approx 0.62 \)) |
+| **3** | Preset: Precessing Rosette (Wave-delay perihelion advance) |
+| **4** | Preset: Hyperbolic Flyby (Gravitational scattering) |
+| **5** | Preset: Inspiral Core Capture |
+| **f** | Boost velocity magnitude (+6%) |
+| **s** | Reduce velocity magnitude (-6%) |
+| **a** | Rotate velocity vector counterclockwise (+3°) |
+| **d** | Rotate velocity vector clockwise (-3°) |
 | **+** / **=** | Increase central mass knot energy |
 | **-** / **_** | Decrease central mass knot energy |
-| **f** | Faster wave propagation speed |
-| **s** | Slower wave propagation speed |
-| **[** | Lower launch position / impact parameter |
-| **]** | Raise launch position / impact parameter |
-| **t** | Toggle wave front point trails on/off |
-| **g** | Toggle discrete resolution grid overlay on/off |
-| **r** | Reset simulation to initial state |
+| **[** | Contract orbital radius toward center |
+| **]** | Expand orbital radius away from center |
+| **c** | Clear trajectory path history |
+| **g** | Toggle discrete resolution grid overlay |
+| **Space** | Pause / Resume simulation |
+| **r** | Reset current orbit preset |
 | **q** / **Esc** | Exit application |
 
 ## License

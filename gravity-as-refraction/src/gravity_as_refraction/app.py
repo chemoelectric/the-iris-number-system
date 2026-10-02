@@ -1,4 +1,4 @@
-"""Interactive 2D Pyglet visualization of gravitation as wave refraction."""
+"""Interactive 2D Pyglet simulator for playing with orbital parameters in a wave refractive field."""
 
 from __future__ import annotations
 
@@ -14,9 +14,23 @@ except ImportError:
     pyglet = None  # type: ignore
 
 try:
-    from .physics import MatterKnot, RefractionField, WaveFront
+    from .physics import (
+        MatterKnot,
+        RefractionField,
+        create_circular_orbit,
+        create_elliptic_orbit,
+        create_rosette_orbit,
+        create_scattering_orbit,
+    )
 except ImportError:
-    from physics import MatterKnot, RefractionField, WaveFront
+    from physics import (
+        MatterKnot,
+        RefractionField,
+        create_circular_orbit,
+        create_elliptic_orbit,
+        create_rosette_orbit,
+        create_scattering_orbit,
+    )
 
 
 def _make_line(
@@ -38,10 +52,10 @@ def _make_line(
             return shapes.Line(x1, y1, x2, y2, color=color, batch=batch)
 
 
-class WaveGravityWindow:
-    """Main visualization window powered by pyglet."""
+class OrbitSimulatorWindow:
+    """Hardware-accelerated orbital parameter simulation window."""
 
-    def __init__(self, width: int = 960, height: int = 640) -> None:
+    def __init__(self, width: int = 1000, height: int = 700) -> None:
         if pyglet is None:
             raise RuntimeError(
                 "pyglet is required to run the graphical interface. "
@@ -53,62 +67,70 @@ class WaveGravityWindow:
         self.window = pyglet.window.Window(
             width=width,
             height=height,
-            caption="gravity-as-refraction • Wave Optics Gravitational Simulator",
+            caption="gravity-as-refraction • Orbital Parameter Simulator",
             resizable=False,
         )
 
-        # Physics simulation state (faster base speed)
+        # Refractive field around central mass
         self.field = RefractionField(
             cx=width * 0.5,
             cy=height * 0.5,
-            mass=22000.0,
-            c=460.0,
-            core_radius=32.0,
+            mass=18000.0,
+            c=320.0,
+            core_radius=26.0,
         )
-        self.mode = 1  # 1: Wavefronts & Point Trails, 2: Circulating Matter Knot
+
+        # Active matter knot and simulation settings
+        self.preset_id = 1
+        self.preset_name = "Circular Orbit"
+        self.knot: MatterKnot = create_circular_orbit(self.field, radius=200.0)
+
         self.paused = False
         self.show_grid = False
-        self.show_trails = True
+        self.sim_speed = 1.0  # Simulation time scale multiplier
 
-        # Mode 1: Multiple successive wave fronts
-        self.wavefronts: List[WaveFront] = []
-        self.wave_spawn_timer = 0.0
-        self.wave_interval = 0.32  # Swift successive wave spawn
-
-        # Mode 2: Orbiting / deflected matter knot
-        self.matter_knot = MatterKnot(
-            x=60.0, y=height * 0.76, vx=340.0, vy=0.0, radius=14.0
-        )
-
-        # Batches for efficient rendering
+        # Graphics batches
         self.batch = pyglet.graphics.Batch()
         self.hud_batch = pyglet.graphics.Batch()
 
-        # Set up HUD text labels (no bold keyword for Pyglet 2.0+ compatibility)
+        # HUD labels
         self.title_label = pyglet.text.Label(
-            "GRAVITATION AS WAVE REFRACTION",
+            "WAVE-REFRACTIVE GRAVITATIONAL ORBIT SIMULATOR",
             font_name="Sans-Serif",
             font_size=12,
             x=20,
-            y=height - 25,
-            color=(240, 240, 240, 255),
+            y=height - 24,
+            color=(245, 245, 245, 255),
             batch=self.hud_batch,
         )
-        self.status_label = pyglet.text.Label(
+
+        self.metrics_label = pyglet.text.Label(
             "",
             font_name="Monospace",
             font_size=10,
             x=20,
-            y=height - 50,
-            color=(180, 180, 180, 255),
+            y=height - 48,
+            color=(180, 210, 240, 255),
             batch=self.hud_batch,
         )
-        self.help_label = pyglet.text.Label(
-            "[1] Wavefronts & Trails  [2] Matter Knot  |  [+/-] Mass  [f/s] Speed  [t] Trails  [g] Grid  [space] Pause  [r] Reset  [q] Quit",
+
+        self.params_label = pyglet.text.Label(
+            "",
             font_name="Monospace",
-            font_size=9,
+            font_size=10,
             x=20,
-            y=18,
+            y=height - 70,
+            color=(200, 200, 200, 255),
+            batch=self.hud_batch,
+        )
+
+        self.help_label = pyglet.text.Label(
+            "Presets: [1] Circle [2] Ellipse [3] Rosette [4] Flyby [5] Capture  |  [f/s] Speed  [+/-] Mass  "
+            "[a/d] Angle  [[/]] Radius  [c] Clear  [r] Reset  [space] Pause  [q] Quit",
+            font_name="Monospace",
+            font_size=8,
+            x=20,
+            y=16,
             color=(140, 140, 140, 255),
             batch=self.hud_batch,
         )
@@ -120,58 +142,95 @@ class WaveGravityWindow:
             on_text=self.on_text,
         )
 
-        self.reset_mode(self.mode)
         pyglet.clock.schedule_interval(self.update, 1.0 / 60.0)
 
-    def reset_mode(self, mode: int) -> None:
-        self.mode = mode
-        if mode == 1:
-            self.wavefronts = []
-            for start_x in [100.0, 260.0, 420.0]:
-                self.wavefronts.append(
-                    WaveFront(
-                        start_x=start_x,
-                        y_min=20.0,
-                        y_max=self.height - 20.0,
-                        num_points=90,
-                    )
-                )
-            self.wave_spawn_timer = 0.0
-        elif mode == 2:
-            self.matter_knot = MatterKnot(
-                x=60.0, y=self.height * 0.76, vx=340.0, vy=0.0, radius=14.0
+    def load_preset(self, preset_id: int) -> None:
+        self.preset_id = preset_id
+        if preset_id == 1:
+            self.preset_name = "Circular Orbit"
+            self.knot = create_circular_orbit(self.field, radius=210.0)
+        elif preset_id == 2:
+            self.preset_name = "Eccentric Ellipse"
+            self.knot = create_elliptic_orbit(self.field, periapsis=120.0, eccentricity=0.62)
+        elif preset_id == 3:
+            self.preset_name = "Precessing Rosette (Wave Delay Perihelion Advance)"
+            self.knot = create_rosette_orbit(self.field, periapsis=85.0)
+        elif preset_id == 4:
+            self.preset_name = "Hyperbolic Flyby (Gravitational Scattering)"
+            self.knot = create_scattering_orbit(self.field, impact_param=170.0, v_inf=250.0)
+        elif preset_id == 5:
+            self.preset_name = "Inspiral Core Capture"
+            self.knot = MatterKnot(
+                x=self.field.cx,
+                y=self.field.cy - 180.0,
+                vx=110.0,
+                vy=0.0,
+                radius=12.0,
             )
 
     def on_text(self, text: str) -> None:
-        """Handle pure ASCII character commands."""
-        if text in ("+", "="):
-            self.field.mass = min(self.field.mass + 3000.0, 60000.0)
-        elif text in ("-", "_"):
-            self.field.mass = max(self.field.mass - 3000.0, 3000.0)
-        elif text == "[":
-            if self.mode == 2:
-                self.matter_knot.y = max(self.matter_knot.y - 25.0, 50.0)
-                self.matter_knot.path.clear()
-        elif text == "]":
-            if self.mode == 2:
-                self.matter_knot.y = min(self.matter_knot.y + 25.0, self.height - 50.0)
-                self.matter_knot.path.clear()
+        """Handle pure ASCII keyboard commands."""
+        # Orbital presets
+        if text in ("1", "2", "3", "4", "5"):
+            self.load_preset(int(text))
+
+        # Velocity magnitude adjustments (Faster / Slower)
         elif text in ("f", "F"):
-            self.field.c = min(self.field.c + 50.0, 900.0)
+            # Boost velocity vector by +6%
+            self.knot.vx *= 1.06
+            self.knot.vy *= 1.06
         elif text in ("s", "S"):
-            self.field.c = max(self.field.c - 50.0, 150.0)
-        elif text in ("t", "T"):
-            self.show_trails = not self.show_trails
+            # Reduce velocity vector by -6%
+            self.knot.vx *= 0.94
+            self.knot.vy *= 0.94
+
+        # Central mass adjustments (+ / -)
+        elif text in ("+", "="):
+            self.field.mass = min(self.field.mass + 2500.0, 80000.0)
+        elif text in ("-", "_"):
+            self.field.mass = max(self.field.mass - 2500.0, 2500.0)
+
+        # Steering velocity vector angle (a / d)
+        elif text in ("a", "A"):
+            # Rotate velocity vector counterclockwise by 3 degrees
+            rad = math.radians(3.0)
+            cos_t, sin_t = math.cos(rad), math.sin(rad)
+            vx_new = self.knot.vx * cos_t - self.knot.vy * sin_t
+            vy_new = self.knot.vx * sin_t + self.knot.vy * cos_t
+            self.knot.vx, self.knot.vy = vx_new, vy_new
+        elif text in ("d", "D"):
+            # Rotate velocity vector clockwise by 3 degrees
+            rad = math.radians(-3.0)
+            cos_t, sin_t = math.cos(rad), math.sin(rad)
+            vx_new = self.knot.vx * cos_t - self.knot.vy * sin_t
+            vy_new = self.knot.vx * sin_t + self.knot.vy * cos_t
+            self.knot.vx, self.knot.vy = vx_new, vy_new
+
+        # Radial displacement ([ / ])
+        elif text == "[":
+            dx = self.knot.x - self.field.cx
+            dy = self.knot.y - self.field.cy
+            r = math.hypot(dx, dy)
+            if r > self.field.core_radius + 20.0:
+                self.knot.x -= (dx / r) * 15.0
+                self.knot.y -= (dy / r) * 15.0
+        elif text == "]":
+            dx = self.knot.x - self.field.cx
+            dy = self.knot.y - self.field.cy
+            r = math.hypot(dx, dy)
+            if r < min(self.width, self.height) * 0.48:
+                self.knot.x += (dx / r) * 15.0
+                self.knot.y += (dy / r) * 15.0
+
+        # Utilities
+        elif text in ("c", "C"):
+            self.knot.path.clear()
         elif text in ("g", "G"):
             self.show_grid = not self.show_grid
         elif text in ("r", "R"):
-            self.reset_mode(self.mode)
+            self.load_preset(self.preset_id)
         elif text in ("q", "Q"):
             self.window.close()
-        elif text == "1":
-            self.reset_mode(1)
-        elif text == "2":
-            self.reset_mode(2)
         elif text == " ":
             self.paused = not self.paused
 
@@ -181,97 +240,57 @@ class WaveGravityWindow:
             self.window.close()
         elif symbol == key.SPACE:
             self.paused = not self.paused
-        elif symbol == key._1:
-            self.reset_mode(1)
-        elif symbol == key._2:
-            self.reset_mode(2)
+        elif symbol in (key._1, key._2, key._3, key._4, key._5):
+            idx = symbol - key._1 + 1
+            self.load_preset(idx)
         elif symbol in (key.PLUS, key.EQUAL):
-            self.field.mass = min(self.field.mass + 3000.0, 60000.0)
+            self.field.mass = min(self.field.mass + 2500.0, 80000.0)
         elif symbol in (key.MINUS, key.UNDERSCORE):
-            self.field.mass = max(self.field.mass - 3000.0, 3000.0)
+            self.field.mass = max(self.field.mass - 2500.0, 2500.0)
         elif symbol == key.BRACKETLEFT:
-            if self.mode == 2:
-                self.matter_knot.y = max(self.matter_knot.y - 25.0, 50.0)
-                self.matter_knot.path.clear()
+            self.on_text("[")
         elif symbol == key.BRACKETRIGHT:
-            if self.mode == 2:
-                self.matter_knot.y = min(self.matter_knot.y + 25.0, self.height - 50.0)
-                self.matter_knot.path.clear()
+            self.on_text("]")
         elif symbol == key.G:
             self.show_grid = not self.show_grid
-        elif symbol == key.T:
-            self.show_trails = not self.show_trails
-        elif symbol == key.F:
-            self.field.c = min(self.field.c + 50.0, 900.0)
-        elif symbol == key.S:
-            self.field.c = max(self.field.c - 50.0, 150.0)
+        elif symbol == key.C:
+            self.knot.path.clear()
         elif symbol == key.R:
-            self.reset_mode(self.mode)
+            self.load_preset(self.preset_id)
 
     def update(self, dt: float) -> None:
         if self.paused:
             return
 
-        dt = min(dt, 0.035)
+        dt = min(dt, 0.035) * self.sim_speed
 
-        if self.mode == 1:
-            # Advance existing wave fronts
-            for wf in self.wavefronts:
-                wf.update(self.field, dt)
+        # Sub-step physics for high orbital integration precision
+        substeps = 4
+        sub_dt = dt / substeps
+        for _ in range(substeps):
+            self.knot.update(self.field, sub_dt)
 
-            # Spawn new wave fronts periodically
-            self.wave_spawn_timer += dt
-            if self.wave_spawn_timer >= self.wave_interval:
-                self.wave_spawn_timer = 0.0
-                self.wavefronts.append(
-                    WaveFront(
-                        start_x=20.0,
-                        y_min=20.0,
-                        y_max=self.height - 20.0,
-                        num_points=90,
-                    )
-                )
+        # Update HUD text
+        r = self.knot.distance(self.field)
+        v = self.knot.speed()
+        energy = self.knot.specific_energy(self.field)
+        ang_mom = self.knot.angular_momentum(self.field)
+        orbit_type = self.knot.orbit_type(self.field)
 
-            # Remove wave fronts that have traversed beyond the screen
-            self.wavefronts = [
-                wf
-                for wf in self.wavefronts
-                if any(pt.x < self.width + 60.0 for pt in wf.points)
-            ]
-
-        elif self.mode == 2:
-            self.matter_knot.update(self.field, dt)
-            # Loop if matter knot exits window bounds
-            if (
-                self.matter_knot.x > self.width + 80
-                or self.matter_knot.x < -80
-                or self.matter_knot.y > self.height + 80
-                or self.matter_knot.y < -80
-            ):
-                self.matter_knot.x = 60.0
-                self.matter_knot.y = self.height * 0.76
-                self.matter_knot.vx = 340.0
-                self.matter_knot.vy = 0.0
-                self.matter_knot.path.clear()
-
-        # Update HUD status text
-        mode_names = {
-            1: "Mode: Wave Fronts & Point Trails",
-            2: "Mode: Circulating Matter Knot Orbit",
-        }
-        v_edge = self.field.wave_speed(
-            self.field.cx + self.field.core_radius, self.field.cy
+        self.metrics_label.text = (
+            f"Orbit: {self.preset_name}  |  State: {orbit_type.upper()}  |  "
+            f"Distance r: {r:.1f}  |  Speed v: {v:.1f}"
         )
-        self.status_label.text = (
-            f"{mode_names[self.mode]} | Mass Knot Energy: {self.field.mass:.0f} | "
-            f"Wave Speed: {v_edge:.1f} / {self.field.c:.1f} c | "
-            f"State: {'PAUSED' if self.paused else 'RUNNING'}"
+
+        v_wave = self.field.wave_speed(self.knot.x, self.knot.y)
+        self.params_label.text = (
+            f"Central Mass Energy M: {self.field.mass:.0f}  |  Specific Energy E: {energy:.0f}  |  "
+            f"Angular Momentum L: {ang_mom:.0f}  |  Local Wave Speed: {v_wave:.1f} / {self.field.c:.0f} c  |  "
+            f"{'PAUSED' if self.paused else 'RUNNING'}"
         )
 
     def on_draw(self) -> None:
         self.window.clear()
-
-        # Temporary drawing objects list to keep references alive during render
         draw_items = []
 
         # 1. Discrete multiscale resolution grid G_N
@@ -302,14 +321,14 @@ class WaveGravityWindow:
                     )
                 )
 
-        # 2. Refraction field gradient rings around central mass knot
-        for r_ring in [60, 110, 170, 240, 320]:
+        # 2. Refractive gradient equipotential rings around central mass knot
+        for r_ring in [75, 130, 200, 280, 370, 470]:
             draw_items.append(
                 shapes.Circle(
                     self.field.cx,
                     self.field.cy,
                     r_ring,
-                    color=(35, 45, 60, 40),
+                    color=(30, 42, 58, 35),
                     batch=self.batch,
                 )
             )
@@ -320,7 +339,7 @@ class WaveGravityWindow:
                 self.field.cx,
                 self.field.cy,
                 self.field.core_radius,
-                color=(220, 160, 60, 255),
+                color=(225, 155, 45, 255),
                 batch=self.batch,
             )
         )
@@ -328,101 +347,59 @@ class WaveGravityWindow:
             shapes.Circle(
                 self.field.cx,
                 self.field.cy,
-                self.field.core_radius * 0.5,
-                color=(255, 235, 180, 255),
+                self.field.core_radius * 0.45,
+                color=(255, 240, 190, 255),
                 batch=self.batch,
             )
         )
 
-        # 3. Render active mode
-        if self.mode == 1:
-            for wf in self.wavefronts:
-                pts = wf.points
-                n_pts = len(pts)
-
-                # Draw continuous wavefront line connecting phase points
-                for i in range(n_pts - 1):
-                    v_local = self.field.wave_speed(pts[i].x, pts[i].y)
-                    ratio = min(max(v_local / self.field.c, 0.0), 1.0)
-                    r_col = int(255 - 100 * ratio)
-                    g_col = int(180 * ratio + 40)
-                    b_col = int(240 * ratio)
-                    draw_items.append(
-                        _make_line(
-                            pts[i].x,
-                            pts[i].y,
-                            pts[i + 1].x,
-                            pts[i + 1].y,
-                            color=(r_col, g_col, b_col, 220),
-                            batch=self.batch,
-                            width=2,
-                        )
-                    )
-
-                # Draw discrete sample points on wavefront and historical trails behind them
-                for i in range(0, n_pts, 6):
-                    pt = pts[i]
-
-                    # Historical trail behind this wave front point
-                    if self.show_trails and len(pt.trail) > 1:
-                        t_len = len(pt.trail)
-                        for ti in range(t_len - 1):
-                            fade = (ti + 1) / t_len
-                            trail_alpha = int(120 * fade)
-                            draw_items.append(
-                                _make_line(
-                                    pt.trail[ti][0],
-                                    pt.trail[ti][1],
-                                    pt.trail[ti + 1][0],
-                                    pt.trail[ti + 1][1],
-                                    color=(80, 160, 220, trail_alpha),
-                                    batch=self.batch,
-                                    width=1,
-                                )
-                            )
-
-                    # Glowing point on the wave front
-                    draw_items.append(
-                        shapes.Circle(
-                            pt.x,
-                            pt.y,
-                            2.5,
-                            color=(240, 245, 255, 240),
-                            batch=self.batch,
-                        )
-                    )
-
-        elif self.mode == 2:
-            # Draw matter knot trajectory history
-            path = self.matter_knot.path
-            for i in range(len(path) - 1):
+        # 3. Draw orbit trajectory trail
+        path = self.knot.path
+        p_len = len(path)
+        if p_len > 1:
+            for i in range(p_len - 1):
+                fade = (i + 1) / p_len
+                alpha = int(40 + 200 * fade)
+                # Color trajectory with subtle energy glow (cyan/amber)
                 draw_items.append(
                     _make_line(
                         path[i][0],
                         path[i][1],
                         path[i + 1][0],
                         path[i + 1][1],
-                        color=(100, 180, 240, 160),
+                        color=(80, 180, 250, alpha),
                         batch=self.batch,
-                        width=1,
+                        width=2 if fade > 0.8 else 1,
                     )
                 )
 
-            # Draw matter knot vortex body
-            mk = self.matter_knot
+        # 4. Draw matter knot vortex body
+        mk = self.knot
+        if not mk.captured:
+            # Body circle
             draw_items.append(
                 shapes.Circle(
                     mk.x,
                     mk.y,
                     mk.radius,
-                    color=(70, 150, 230, 200),
+                    color=(60, 160, 240, 220),
+                    batch=self.batch,
+                )
+            )
+            # Internal core
+            draw_items.append(
+                shapes.Circle(
+                    mk.x,
+                    mk.y,
+                    mk.radius * 0.4,
+                    color=(220, 240, 255, 255),
                     batch=self.batch,
                 )
             )
 
-            # Internal wave circulation indicator
-            px = mk.x + mk.radius * 0.8 * math.cos(mk.phase)
-            py = mk.y + mk.radius * 0.8 * math.sin(mk.phase)
+            # Internal wave circulation phase indicator
+            px = mk.x + mk.radius * 0.85 * math.cos(mk.phase)
+            py = mk.y + mk.radius * 0.85 * math.sin(mk.phase)
             draw_items.append(
                 _make_line(
                     mk.x,
@@ -435,17 +412,46 @@ class WaveGravityWindow:
                 )
             )
 
+            # Velocity vector arrow (green/teal indicator)
+            v_mag = mk.speed()
+            if v_mag > 1.0:
+                scale = min(35.0, v_mag * 0.12)
+                vx_dir = (mk.vx / v_mag) * scale
+                vy_dir = (mk.vy / v_mag) * scale
+                draw_items.append(
+                    _make_line(
+                        mk.x,
+                        mk.y,
+                        mk.x + vx_dir,
+                        mk.y + vy_dir,
+                        color=(100, 255, 180, 200),
+                        batch=self.batch,
+                        width=2,
+                    )
+                )
+        else:
+            # Captured alert glow
+            draw_items.append(
+                shapes.Circle(
+                    self.field.cx,
+                    self.field.cy,
+                    self.field.core_radius + 8.0,
+                    color=(255, 80, 60, 160),
+                    batch=self.batch,
+                )
+            )
+
         # Draw batch primitives and HUD
         self.batch.draw()
         self.hud_batch.draw()
 
 
 def run_app() -> None:
-    """Launch the interactive pyglet visualization."""
+    """Launch the interactive pyglet orbital simulator."""
     if pyglet is None:
         print("Error: pyglet is required to run the graphical window.")
         print("Install it using: pip install pyglet")
         sys.exit(1)
 
-    app = WaveGravityWindow()
+    app = OrbitSimulatorWindow()
     pyglet.app.run()

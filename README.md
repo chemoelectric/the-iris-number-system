@@ -116,10 +116,12 @@ python3 -m gravity_as_refraction
 ```
 
 ### Physical Features
-- **Swift Wave Front Tilting**: Continuous plane wave fronts propagate rapidly and slow down near the central matter knot, steering the trajectory via Huygens wave optics.
-- **Wave Front Sample Point Trails**: Discrete points along each wave front leave historical trails tracing the real Poynting wave energy flux without fictional "light rays".
-- **Matter Knot Orbiting**: Localized circulating wave vortices undergo differential phase delay across their finite diameter, producing Newtonian orbits without curved space-time.
-- **Pure ASCII Keyboard Controls**: Controlled entirely by ASCII keys (`+`/`-`, `f`/`s`, `[`/`]`, `t`, `g`, `r`, `q`) without arrow keys.
+- **Interactive Orbital Mechanics**: Explore circular orbits, eccentric ellipses, precessing rosette orbits, hyperbolic flybys, and core capture.
+- **Real-Time Parameter Steering**: Dynamically adjust velocity magnitude (`f`/`s`), velocity direction angle (`a`/`d`), radial distance (`[`/`]`), and central mass energy (`+`/`-`).
+- **Precessing Rosette Orbits**: Directly witness perihelion advance arising from higher-order wave refractive delay near the central knot without curved space-time.
+- **Continuous Trajectory History**: Watch the smooth glowing orbit trace and the internal rotating wave-phase vector of the matter knot.
+- **Pure ASCII Keyboard Controls**: Controlled entirely by ASCII keys without arrow keys.
+- **Headless Terminal Simulation**: Full ASCII orbit simulation mode (`--cli`) that loops smoothly until `Ctrl+C`.
 - **Completely Silent**: Zero audio code, zero audio drivers, and zero sound.
 
 ---
