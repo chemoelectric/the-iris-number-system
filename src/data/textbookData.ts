@@ -3959,12 +3959,12 @@ Applying the Euler-Maclaurin expansion provides higher-order asymptotic error ca
 \\[ R_N = \\frac{1}{N} - \\frac{1}{2 N^2} + \\frac{1}{6 N^3} - \\frac{1}{30 N^5} + \\mathcal{O}\\left( \\frac{1}{N^7} \\right) \\]
 enabling exact rational bounding of the proton-to-electron mass ratio to arbitrary precision on discrete computational grids.
 
-== 4. Newton's Gravitational Constant \\( G \\) as a MaxEnt Stress Covariance Integral ([smallcaps]#new formula#)
+== 4. Newton's Gravitational Constant \\( G \\) as a MaxEnt Wave Refraction Integral ([smallcaps]#new formula#)
 
-=== Derivation from Second-Order Residual Field Covariance
-Under the Master Field Equation, gravitation is not an independent fundamental interaction. It is the second-order macroscopic residual Poynting-stress gradient of the high-frequency electromagnetic field fluctuations on the discrete lattice \\( \\mathcal{G}_N \\).
+=== Gravitation as Wave Refraction in the Unified Field
+In the Unified Field Theory, gravitation is not an independent fundamental force. The universe is a single electromagnetic field, whose behavior and structure are described by the Master Field Equation \\( D F = J \\). What we observe as matter consists of localized, tightly knotted topological regions within this field. In the vicinity of a dense knot, the concentration of field energy alters the local propagation speed of electromagnetic influences, introducing a differential delay across traveling wave fronts. Gravitation is the continuous refraction of wave packets and circulating knots toward the region of higher field density, producing the familiar inverse-square acceleration.footnote:[Gravity is famously a far more feeble force than direct electric and magnetic interactions. Indeed, it is not the fall due to gravity that hurts so much as the immense electrostatic repulsion encountered at the end of the fall.]
 
-Under the Jaynesian Maximum Entropy (MaxEnt) principle, assigning the least-biased probability distribution to the microscopic field modes at temperature parameter \\( \\beta \\) yields the definite spectral integral:
+Under the Jaynesian Maximum Entropy (MaxEnt) principle, assigning the least-biased spectral distribution to the field modes at temperature parameter \\( \\beta \\) (making no undeducible assumptions) yields the definite spectral integral:
 \\[ I_{\\text{MaxEnt}} = \\int_0^{k_{\\text{cut}}} \\left( \\frac{k^3}{e^{\\beta \\hbar c k} - 1} \\right) dk \\]
 where \\( k_{\\text{cut}} = \\frac{2\\pi}{\\delta_\\omega} \\) is the upper cutoff wavevector imposed by the discrete lattice resolution \\( \\delta_\\omega = \\bullet / \\omega \\).
 
@@ -3975,7 +3975,7 @@ Because the standard definite integral evaluates exactly to:
 the integral factor reduces identically to unity, establishing the exact closed relationship:
 \\[ G = \\frac{c^4 \\, \\delta_\\omega^2}{4 \\pi \\hbar \\, \\omega} \\]
 
-This is a **new formula**: gravitational coupling \\( G \\) is expressed directly in terms of \\( c^4 \\), discrete resolution \\( \\delta_\\omega \\), and the Planck-MaxEnt definite integral.
+This is a **new formula**: gravitational coupling \\( G \\) is expressed directly in terms of \\( c^4 \\), discrete resolution \\( \\delta_\\omega \\), and the Planck-MaxEnt definite integral for wave refraction.
 
 === Taylor Series and Convergence Analysis for the MaxEnt Integral
 For numerical and asymptotic computation, the Planck integrand \\( \\frac{u^3}{e^u - 1} \\) expands in two complementary domains:

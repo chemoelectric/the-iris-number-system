@@ -222,7 +222,7 @@ Therefore, with Maxwell’s equations written in multivectors, a magnetic monopo
 
 === Derivation of the Law of Universal Gravitation in Gauss's and Newton's Forms
 
-This section proves that gravitational attraction is a direct consequence of the Master Field Equation, deriving both Gauss's flux law for gravity and Newton's inverse-square law of universal gravitation.
+Gravitation is a wave refraction effect occurring within the single electromagnetic field described by the Master Field Equation. What we identify empirically as matter consists of localized, tightly knotted topological structures of this field. In the vicinity of a dense mass knot \( m_1 \), the concentration of field energy establishes a gradient in the local wave propagation speed. When a traveling wave packet or circulating knot \( m_2 \) passes through this non-uniform field, the differential phase delay across its front continuously refracts its trajectory inward toward the denser region. This continuous wave refraction produces the radial acceleration field \( \mathbf{g} \), leading directly to Gauss's flux law and Newton's universal inverse-square law.
 
 [#theorem-gravitation-gauss-newton-derivation]
 [THEOREM]
@@ -235,7 +235,7 @@ and Newton's universal inverse-square force law between two localized mass distr
 
 *Proof:*
 
-. **Gravitational Field Grade Projection**: Consider the gravitational vector field projection \( \mathbf { g } \) governed by the Master Field Equation with mass current source \( J _ m = - \frac { 4 \pi G } { c } \rho _ m e _ 4 \). The field operator expansion yields:
+. **Gravitational Field Grade Projection**: Consider the gravitational vector field projection \( \mathbf { g } \) described by the Master Field Equation with mass current source \( J _ m = - \frac { 4 \pi G } { c } \rho _ m e _ 4 \). The field operator expansion yields:
 \[ \nabla \cdot \mathbf { g } = - 4 \pi G \rho _ m \]
 which is Gauss's law for gravity in differential form.
 
