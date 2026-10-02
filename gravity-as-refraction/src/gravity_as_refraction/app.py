@@ -19,6 +19,25 @@ except ImportError:
     from physics import MatterKnot, RayBeam, RefractionField, WaveFront
 
 
+def _make_line(
+    x1: float,
+    y1: float,
+    x2: float,
+    y2: float,
+    color: tuple,
+    batch,
+    width: float = 1.0,
+):
+    """Create a line shape compatible across all pyglet versions."""
+    try:
+        return shapes.Line(x1, y1, x2, y2, thickness=width, color=color, batch=batch)
+    except TypeError:
+        try:
+            return shapes.Line(x1, y1, x2, y2, width=width, color=color, batch=batch)
+        except TypeError:
+            return shapes.Line(x1, y1, x2, y2, color=color, batch=batch)
+
+
 class WaveGravityWindow:
     """Main visualization window powered by pyglet."""
 
@@ -225,14 +244,14 @@ class WaveGravityWindow:
             grid_step = 40
             for gx in range(0, self.width, grid_step):
                 draw_items.append(
-                    shapes.Line(
-                        gx, 0, gx, self.height, width=1, color=(25, 25, 25, 255), batch=self.batch
+                    _make_line(
+                        gx, 0, gx, self.height, color=(25, 25, 25, 255), batch=self.batch, width=1
                     )
                 )
             for gy in range(0, self.height, grid_step):
                 draw_items.append(
-                    shapes.Line(
-                        0, gy, self.width, gy, width=1, color=(25, 25, 25, 255), batch=self.batch
+                    _make_line(
+                        0, gy, self.width, gy, color=(25, 25, 25, 255), batch=self.batch, width=1
                     )
                 )
 
@@ -281,14 +300,14 @@ class WaveGravityWindow:
                     g_col = int(180 * ratio + 40)
                     b_col = int(240 * ratio)
                     draw_items.append(
-                        shapes.Line(
+                        _make_line(
                             pts[i].x,
                             pts[i].y,
                             pts[i + 1].x,
                             pts[i + 1].y,
-                            width=2,
                             color=(r_col, g_col, b_col, 220),
                             batch=self.batch,
+                            width=2,
                         )
                     )
 
@@ -297,14 +316,14 @@ class WaveGravityWindow:
             path = self.matter_knot.path
             for i in range(len(path) - 1):
                 draw_items.append(
-                    shapes.Line(
+                    _make_line(
                         path[i][0],
                         path[i][1],
                         path[i + 1][0],
                         path[i + 1][1],
-                        width=1,
                         color=(100, 180, 240, 160),
                         batch=self.batch,
+                        width=1,
                     )
                 )
 
@@ -324,14 +343,14 @@ class WaveGravityWindow:
             px = mk.x + mk.radius * 0.8 * math.cos(mk.phase)
             py = mk.y + mk.radius * 0.8 * math.sin(mk.phase)
             draw_items.append(
-                shapes.Line(
+                _make_line(
                     mk.x,
                     mk.y,
                     px,
                     py,
-                    width=2,
                     color=(255, 255, 255, 255),
                     batch=self.batch,
+                    width=2,
                 )
             )
 
@@ -341,14 +360,14 @@ class WaveGravityWindow:
                 path = ray.path
                 for i in range(len(path) - 1):
                     draw_items.append(
-                        shapes.Line(
+                        _make_line(
                             path[i][0],
                             path[i][1],
                             path[i + 1][0],
                             path[i + 1][1],
-                            width=1,
                             color=(120, 210, 180, 180),
                             batch=self.batch,
+                            width=1,
                         )
                     )
                 if ray.active:
