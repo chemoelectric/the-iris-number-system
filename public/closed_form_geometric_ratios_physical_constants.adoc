@@ -105,57 +105,58 @@ This result matches experimental measurements exactly to the given precision.foo
 === Taylor Series and Truncation Bounds for the Discrete Lattice Reaction Integral
 
 The radiative reaction kernel \( {1} / (1 - x y) \) expresses the geometric generating function of modal interactions on the discrete grid \( \mathcal{G}_N \):
-\[ \frac{1}{1 - x y} = \sum_{k=0}^{\infty} (x y)^k \]
+\[ \frac{1}{1 - x y} = \sum_{k=0} ^ {\infty} (x y) ^ k \]
 * _Domain of Convergence_: The geometric series converges absolutely and uniformly on every finite domain \( [0, 1 - \varepsilon] \times [0, 1 - \varepsilon] \) for any \( \varepsilon > 0 \), and its integral over the unit square converges to:
-\[ I_{\text{reaction}} = \int_0^1 \int_0^1 \left( \sum_{k=0}^{\infty} x^k y^k \right) dx \, dy = \sum_{k=0}^{\infty} \frac{1}{(k + 1)^2} = \sum_{n=1}^{\infty} \frac{1}{n^2} = \zeta(2) = \frac{\,\pi^2}{6} \]
+\[ I_{\text{reaction}} = \int_0 ^ 1 \int_0 ^ 1 \left( \sum_{k=0} ^ {\infty} x ^ k y ^ k \right) dx \, dy = \sum_{k=0} ^ {\infty} \frac{1}{(k + 1) ^ 2} = \sum_{n=1} ^ {\infty} \frac{1}{n ^ 2} = \zeta(2) = \frac{\,\pi ^ 2}{6} \]
 * _Constructive Taylor Truncation and Error Bound_: Truncating the expansion at \( N \) modes
-\[ I_N = \sum_{n=1}^{N} \frac{1}{n^2} \]
+\[ I_N = \sum_{n=1} ^ {N} \frac{1}{n ^ 2} \]
 leaves a tail remainder error strictly bounded by integral comparison:
-\[ \frac{1}{N + 1} < R_N = \sum_{n=N+1}^{\infty} \frac{1}{n^2} < \int_N^{\infty} \frac{du}{u^2} = \frac{1}{N} \]
+\[ \frac{1}{N + 1} < R_N = \sum_{n=N+1} ^ {\infty} \frac{1}{n ^ 2} < \int_N ^ {\infty} \frac{du}{u ^ 2} = \frac{1}{N} \]
 Applying the Euler-Maclaurin expansion provides higher-order asymptotic error cancellation:
-\[ R_N = \frac{1}{N} - \frac{1}{2 N^2} + \frac{1}{6 N^3} - \frac{1}{30 N^5} + \mathcal{O}\left( \frac{1}{N^7} \right) \]
+\[ R_N = \frac{1}{N} - \frac{1}{2 N ^ 2} + \frac{1}{6 N ^ 3} - \frac{1}{30 N ^ 5} + \mathcal{O}\left( \frac{1}{N ^ 7} \right) \]
 enabling exact rational bounding of the proton-to-electron mass ratio to arbitrary precision on discrete computational grids.
 
 == 4. Newton's Gravitational Constant \( G \) as a MaxEnt Stress Covariance Integral ([smallcaps]#new formula#)
 
 === Derivation from Second-Order Residual Field Covariance
-In the Unified Field Theory, gravitation is not an independent force. On the discrete lattice \( \mathcal{G}_N \), microscopic electromagnetic fields fluctuate at very high frequencies. For neutral bodies of matter, the first-order electric and magnetic forces average out to zero over macroscopic distances, but the quadratic Poynting stress leaves an uncancelled second-order residual. Gravitation is the spatial gradient of this residual stress.
 
-Under the Jaynesian Maximum Entropy (MaxEnt) principle, assigning the least-biased probability distribution to the microscopic field modes at temperature parameter \( \beta \) yields the definite spectral integral:
-\[ I_{\text{MaxEnt}} = \int_0^{k_{\text{cut}}} \left( \frac{k^3}{e^{\beta \hbar c k} - 1} \right) dk \]
+In the Unified Field Theory, gravitation is not an independent force. On the discrete lattice \( \mathcal{G}_N \), microscopic electromagnetic fields fluctuate at very high frequencies. For neutral matter, the first-order electromagnetic force averages to zero over macroscopic distances, but the quadratic Poynting stress leaves an uncanceled second-order residual. Gravitation is the spatial gradient of this residual stress.footnote:[Gravity is famously a far more feeble force than first-order electric and magnetic forces. Indeed, it is not the fall due to gravity that hurts so much as the immense electrostatic repulsion encountered at the end of the fall.]
+
+Assigning the least-biased, maximum entropy probability distribution to the microscopic field modes at temperature parameter \( \beta \) (that is, making no undeducible assumptions) yields the definite spectral integral:
+\[ I_{\text{MaxEnt}} = \int_0 ^ {k_{\text{cut}}} \left( \frac{k ^ 3}{e ^ {\beta \hbar c k} - 1} \right) dk \]
 where \( k_{\text{cut}} = \frac{2\pi}{\delta_\omega} \) is the upper cutoff wavevector imposed by the discrete lattice resolution \( \delta_\omega = \bullet / \omega \).
 
-The effective macroscopic gravitational coupling \( G \) is derived directly relative to \( c^4 \) through this definite integral:
-\[ G = \frac{c^4 \delta_\omega^2}{4 \pi \hbar \omega} \left( \frac{15}{\pi^4} \int_0^\infty \frac{u^3}{e^u - 1} \, du \right) \]
+The effective macroscopic gravitational coupling \( G \) is derived directly relative to \( c ^ 4 \) through this definite integral:
+\[ G = \frac{c ^ 4 \delta_\omega ^ 2}{4 \pi \hbar \omega} \left( \frac{15}{\pi ^ 4} \int_0 ^ \infty \frac{u ^ 3}{e ^ u - 1} \, du \right) \]
 Because the standard definite integral evaluates exactly to:
-\[ \int_0^\infty \frac{u^3}{e^u - 1} \, du = \frac{\pi^4}{15} \]
+\[ \int_0 ^ \infty \frac{u ^ 3}{e ^ u - 1} \, du = \frac{\pi ^ 4}{15} \]
 the integral factor reduces identically to unity, establishing the exact closed relationship:
-\[ G = \frac{c^4 \, \delta_\omega^2}{4 \pi \hbar \, \omega} \]
+\[ G = \frac{c ^ 4 \, \delta_\omega ^ 2}{4 \pi \hbar \, \omega} \]
 
-This is a _new formula_: gravitational coupling \( G \) is expressed directly in terms of \( c^4 \), discrete resolution \( \delta_\omega \), and the Planck-MaxEnt definite integral.
+This is a _new formula_: gravitational coupling \( G \) is expressed directly in terms of \( c ^ 4 \), discrete resolution \( \delta_\omega \), and the Planck-MaxEnt definite integral.
 
 === Taylor Series and Convergence Analysis for the MaxEnt Integral
-For numerical and asymptotic computation, the Planck integrand \( \frac{u^3}{e^u - 1} \) expands in two complementary domains:
+For numerical and asymptotic computation, the Planck integrand \( \frac{u ^ 3}{e ^ u - 1} \) expands in two complementary domains:
 
 1. _Near the Origin (\( u \to 0 \)) via Bernoulli Numbers_:
-Using the generating function of the Bernoulli numbers \( \frac{u}{e^u - 1} = \sum_{k=0}^{\infty} \frac{B_k}{k!} u^k \):
-\[ \frac{u^3}{e^u - 1} = u^2 \left( \frac{u}{e^u - 1} \right) = \sum_{k=0}^{\infty} \frac{B_k}{k!} u^{k+2} = u^2 - \frac{1}{2} u^3 + \frac{1}{12} u^4 - \frac{1}{720} u^6 + \frac{1}{30240} u^8 - \dots \]
+Using the generating function of the Bernoulli numbers \( \frac{u}{e ^ u - 1} = \sum_{k=0} ^ {\infty} \frac{B_k}{k!} u ^ k \):
+\[ \frac{u ^ 3}{e ^ u - 1} = u ^ 2 \left( \frac{u}{e ^ u - 1} \right) = \sum_{k=0} ^ {\infty} \frac{B_k}{k!} u ^ {k+2} = u ^ 2 - \frac{1}{2} u ^ 3 + \frac{1}{12} u ^ 4 - \frac{1}{720} u ^ 6 + \frac{1}{30240} u ^ 8 - \dots \]
 * _Domain of Convergence_: The Taylor series converges absolutely for \( |u| < 2 \pi \).
 * _Lagrange Remainder Bound_: Truncating after order \( 2M \) on \( [0, u_0] \) with \( u_0 < 2\pi \) gives remainder:
-\[ | R_{2M}(u) | \le \frac{2 \zeta(2M+2)}{(2\pi)^{2M+2}} u^{2M+4} \]
+\[ | R_{2M}(u) | \le \frac{2 \zeta(2M+2)}{(2\pi) ^ {2M+2}} u ^ {2M+4} \]
 
 2. _Tail Expansion (\( u \ge u_0 > 0 \)) via Geometric Decaying Series_:
-Factoring out \( e^{-u} \), the kernel expands as:
-\[ \frac{u^3}{e^u - 1} = u^3 e^{-u} \frac{1}{1 - e^{-u}} = \sum_{n=1}^{\infty} u^3 e^{-n u} \]
+Factoring out \( e ^ {-u} \), the kernel expands as:
+\[ \frac{u ^ 3}{e ^ u - 1} = u ^ 3 e ^ {-u} \frac{1}{1 - e ^ {-u}} = \sum_{n=1} ^ {\infty} u ^ 3 e ^ {-n u} \]
 * _Domain of Convergence_: The series converges uniformly on any ray \( [u_0, \infty) \) for \( u_0 > 0 \).
 * _Exact Term-by-Term Integration_:
-\[ \int_0^\infty u^3 e^{-n u} \, du = \frac{3!}{n^4} = \frac{6}{n^4} \]
+\[ \int_0 ^ \infty u ^ 3 e ^ {-n u} \, du = \frac{3!}{n ^ 4} = \frac{6}{n ^ 4} \]
 Summing all terms yields the exact Dirichlet-Riemann identity:
-\[ I_{\text{MaxEnt}} = \sum_{n=1}^{\infty} \frac{6}{n^4} = 6 \zeta(4) = 6 \left( \frac{\pi^4}{90} \right) = \frac{\pi^4}{15} \]
+\[ I_{\text{MaxEnt}} = \sum_{n=1} ^ {\infty} \frac{6}{n ^ 4} = 6 \zeta(4) = 6 \left( \frac{\pi ^ 4}{90} \right) = \frac{\pi ^ 4}{15} \]
 * _Truncation Error Bound for Numerical Quadrature_: Summing the first \( N \) terms leaves an exact remainder:
-\[ R_N = 6 \sum_{n=N+1}^{\infty} \frac{1}{n^4} \]
+\[ R_N = 6 \sum_{n=N+1} ^ {\infty} \frac{1}{n ^ 4} \]
 bounded sharply by integral comparison:
-\[ \frac{2}{(N + 1)^3} < R_N < \int_N^{\infty} \frac{6 \, du}{u^4} = \frac{2}{N^3} \]
+\[ \frac{2}{(N + 1) ^ 3} < R_N < \int_N ^ {\infty} \frac{6 \, du}{u ^ 4} = \frac{2}{N ^ 3} \]
 This explicit bound gives the numerical analyst an exact, non-empirical error tolerance when truncating the spectral sum on any discrete lattice.
 
 == 5. All Field Constants Expressed Relative to True c and Definite Integrals
@@ -163,19 +164,19 @@ This explicit bound gives the numerical analyst an exact, non-empirical error to
 Having established the fundamental definite integrals for \( \pi \), \( \alpha \), and \( I_{\text{MaxEnt}} \), all remaining physical constants of electrodynamics are expressed directly in terms of the true propagation velocity \( c \), unit action \( h \), and elementary charge \( e \).
 
 === Intrinsic Electromagnetic Wave Impedance (\( Z_0 \))
-\[ Z_0 = 2 \alpha \left( \frac{h}{e^2} \right) = \frac{2 h}{e^2} \left[ \frac{1}{4 \pi^2} \int_0^{2\pi} d\vartheta \int_0^{2\pi} d\varphi \; \frac{1 - \cos\vartheta}{\sqrt{1 + \rho^2 - 2 \rho \cos\vartheta \cos\varphi}} \right] \]
+\[ Z_0 = 2 \alpha \left( \frac{h}{e ^ 2} \right) = \frac{2 h}{e ^ 2} \left[ \frac{1}{4 \pi ^ 2} \int_0 ^ {2\pi} d\vartheta \int_0 ^ {2\pi} d\varphi \; \frac{1 - \cos\vartheta}{\sqrt{1 + \rho ^ 2 - 2 \rho \cos\vartheta \cos\varphi}} \right] \]
 
 === Intrinsic Magnetic Permeability (\( \mu_0 \))
 Formulated strictly relative to true \( c \):
-\[ \mu_0 = \frac{Z_0}{c} = \frac{2 \alpha h}{e^2 c} \]
+\[ \mu_0 = \frac{Z_0}{c} = \frac{2 \alpha h}{e ^ 2 c} \]
 
 === Intrinsic Electric Permittivity (\( \varepsilon_0 \))
 The reciprocal dual relative to true \( c \):
-\[ \varepsilon_0 = \frac{1}{\mu_0 c^2} = \frac{1}{Z_0 c} = \frac{e^2}{2 \alpha h c} \]
+\[ \varepsilon_0 = \frac{1}{\mu_0 c ^ 2} = \frac{1}{Z_0 c} = \frac{e ^ 2}{2 \alpha h c} \]
 
 === Fundamental Circulation Impedance (von Klitzing Constant, \( R_K \))
 In the unified field theory, the von Klitzing constant \( R_K \) is not an inexplicable quantum quasi-theoretic effect, but the fundamental circulation impedance of a localized electromagnetic vortex in \( Cl(4,1,1) \):
-\[ R_K = \frac{h}{e^2} = \frac{Z_0}{2 \alpha} \]
+\[ R_K = \frac{h}{e ^ 2} = \frac{Z_0}{2 \alpha} \]
 expressing the exact ratio of action circulation per unit elementary charge squared, directly relating intrinsic wave impedance \( Z_0 \) to the toroidal resonance ratio \( \alpha \).
 
 === Enclosed Magnetic Bivector Circulation (Magnetic Flux Quantum, \( \Phi_0 \))
@@ -193,7 +194,7 @@ Here we establish that the Ideal Gas is not an arbitrary phenomenological model,
 
 Instead of point particles of zero spatial extent (an unphysical category error) or arbitrary macroscopic spheres, the gas consists of a finite number \( N \) of finite entities defined on discrete resolution grid \( \mathcal{G}_N \):
 
-1. _m-Resolution Dimensions_: Each particle possesses non-zero, finite spatial extent with discrete m-res dimensions \( \Delta x \in \mathcal{G}_N \), occupying an m-res volume \( \Delta V = ( \Delta x )^3 \).
+1. _m-Resolution Dimensions_: Each particle possesses non-zero, finite spatial extent with discrete m-res dimensions \( \Delta x \in \mathcal{G}_N \), occupying an m-res volume \( \Delta V = ( \Delta x ) ^ 3 \).
 2. _m-Resolution Mass_: Each particle carries a discrete, finite m-res mass \( \Delta m \) at lattice scale \( N \).
 3. _m-Resolution Displacements and Durations_: In each discrete m-res time increment \( \Delta t \), a particle traverses an m-res spatial displacement \( \Delta \mathbf{x} \). All collisions and boundary reflections occur via direct contact action over finite interaction duration \( \tau_c > 0 \).
 
@@ -207,7 +208,7 @@ The m-res scale parameters cancel analytically in the quotient, producing base-s
 \[ | \mathbf{v} | < c \]
 
 2. _Base-Scale Mass Density_: In a bounded domain of volume \( V \), the total mass \( M = N \Delta m \) distributed over the spatial grid yields the base-scale mass density:
-\[ \rho = \frac{M}{V} = \frac{\Delta m}{( \Delta x )^3} \]
+\[ \rho = \frac{M}{V} = \frac{\Delta m}{( \Delta x ) ^ 3} \]
 which is regular, finite, and strictly non-singular.
 
 === Kinetic Pressure as Discrete Momentum Flux Conservation
@@ -217,19 +218,19 @@ Consider a planar boundary of area \( A \) normal to the \( x \)-axis. Over a fi
 The number of collisions within duration \( \tau \) for particles with velocity component \( v_x > 0 \) is:
 \[ \Delta N_c = \frac{1}{2} \left( \frac{N}{V} \right) A v_x \tau \]
 The total momentum transferred to the boundary is:
-\[ \Delta P_\text{total} = \sum \Delta p_x = \left( \frac{N}{V} \right) A \tau ( \Delta m ) \langle v_x^2 \rangle \]
+\[ \Delta P_\text{total} = \sum \Delta p_x = \left( \frac{N}{V} \right) A \tau ( \Delta m ) \langle v_x ^ 2 \rangle \]
 The mechanical pressure \( P \) is defined extensionally as the time-averaged normal force per unit area, \( P = \frac{\Delta P_\text{total}}{A \tau} \):
-\[ P = \left( \frac{N}{V} \right) ( \Delta m ) \langle v_x^2 \rangle = \rho \langle v_x^2 \rangle \]
-By spatial isotropy on the discrete lattice grid \( \mathcal{G}_N \), the mean-square velocity components satisfy \( \langle v_x^2 \rangle = \langle v_y^2 \rangle = \langle v_z^2 \rangle = \frac{1}{3} \langle v^2 \rangle \). Therefore:
-\[ P = \frac{1}{3} \rho \langle v^2 \rangle = \frac{2}{3} \frac{N}{V} \left( \frac{1}{2} ( \Delta m ) \langle v^2 \rangle \right) \]
+\[ P = \left( \frac{N}{V} \right) ( \Delta m ) \langle v_x ^ 2 \rangle = \rho \langle v_x ^ 2 \rangle \]
+By spatial isotropy on the discrete lattice grid \( \mathcal{G}_N \), the mean-square velocity components satisfy \( \langle v_x ^ 2 \rangle = \langle v_y ^ 2 \rangle = \langle v_z ^ 2 \rangle = \frac{1}{3} \langle v ^ 2 \rangle \). Therefore:
+\[ P = \frac{1}{3} \rho \langle v ^ 2 \rangle = \frac{2}{3} \frac{N}{V} \left( \frac{1}{2} ( \Delta m ) \langle v ^ 2 \rangle \right) \]
 Multiplying by volume \( V \) yields the exact kinetic state identity:
 \[ P V = \frac{2}{3} N \langle E_k \rangle \]
-where \( \langle E_k \rangle = \frac{1}{2} ( \Delta m ) \langle v^2 \rangle \) is the base-scale mean kinetic energy per particle.
+where \( \langle E_k \rangle = \frac{1}{2} ( \Delta m ) \langle v ^ 2 \rangle \) is the base-scale mean kinetic energy per particle.
 
 === Derivation of the SI Thermodynamic Constants (\( k_B \) and \( R \))
 
 In the SI system, absolute thermodynamic temperature \( T \) is an extensional measure of the mean kinetic energy per translational degree of freedom:
-\[ \frac{1}{2} k_B T \equiv \frac{1}{3} \langle E_k \rangle = \frac{1}{2} ( \Delta m ) \langle v_x^2 \rangle \]
+\[ \frac{1}{2} k_B T \equiv \frac{1}{3} \langle E_k \rangle = \frac{1}{2} ( \Delta m ) \langle v_x ^ 2 \rangle \]
 Substituting this extensional definition directly into the kinetic state identity gives:
 \[ P V = N k_B T \]
 For a molar quantity containing Avogadro's count \( N_A \) of discrete entities (where \( n = N / N_A \)):
@@ -251,23 +252,23 @@ Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar mome
 //| Relation to True \( c \) | Status
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}\pi \hfil \)
-| \( \displaystyle \int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}} \)
+| \( \displaystyle \int_{-1} ^ {1} \frac{dx}{\sqrt{1 - x ^ 2}} \)
 //| Pure Geometric Invariant
 //| Classical
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}\alpha \hfil \)
-| \( \displaystyle \frac{1}{4 \pi^2} \int_0^{2\pi} \int_0^{2\pi} \frac{(1 - \cos\vartheta) \, d\vartheta \, d\varphi}{\sqrt{1 + \rho^2 - 2\rho\cos\vartheta\cos\varphi}} \)
+| \( \displaystyle \frac{1}{4 \pi ^ 2} \int_0 ^ {2\pi} \int_0 ^ {2\pi} \frac{(1 - \cos\vartheta) \, d\vartheta \, d\varphi}{\sqrt{1 + \rho ^ 2 - 2\rho\cos\vartheta\cos\varphi}} \)
 //| Coupling ratio of \( Cl(4,1,1) \) torus
 //| _[smallcaps]#new formula#_
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}\displaystyle \frac{m_p}{m_e} \hfil \)
-| \( \displaystyle 6 \pi^5 \left( 1 - \frac{\alpha}{4\pi^2} \int_0^1 \int_0^1 \frac{dx \, dy}{1 - x y} \right) \)
+| \( \displaystyle 6 \pi ^ 5 \left( 1 - \frac{\alpha}{4\pi ^ 2} \int_0 ^ 1 \int_0 ^ 1 \frac{dx \, dy}{1 - x y} \right) \)
 //| \( 5 \)-Sphere Conformal Volume Ratio
 //| _[smallcaps]#new formula#_
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}G \hfil \)
-| \( \displaystyle \frac{c^4 \delta_\omega^2}{4 \pi \hbar \omega} \left( \frac{15}{\pi^4} \int_0^\infty \frac{u^3 \, du}{e^u - 1} \right) \)
-//| Proportional to \( c^4 \) via MaxEnt Covariance
+| \( \displaystyle \frac{c ^ 4 \delta_\omega ^ 2}{4 \pi \hbar \omega} \left( \frac{15}{\pi ^ 4} \int_0 ^ \infty \frac{u ^ 3 \, du}{e ^ u - 1} \right) \)
+//| Proportional to \( c ^ 4 \) via MaxEnt Covariance
 //| _[smallcaps]#new formula#_
 
 | \( \hfil\hbox{\vrule height1.1\baselineskip depth1.1\baselineskip width0pt}Z_0 \hfil \)
@@ -307,7 +308,7 @@ By casting physical constants in terms of definite integrals and geometric ratio
 1. \( \pi \) is the definite integral of flat 1-dimensional curvature.
 2. \( \alpha \) is the definite integral of the 2-dimensional Clifford torus in \( Cl(4,1,1) \).
 3. \( m_p / m_e \) is the definite volume integral of the 5-dimensional conformal sphere.
-4. \( G \) is the MaxEnt definite spectral integral of the electromagnetic stress tensor scaled by \( c^4 \).
+4. \( G \) is the MaxEnt definite spectral integral of the electromagnetic stress tensor scaled by \( c ^ 4 \).
 5. \( k_B \) and \( R \) are the geometric momentum flux ratios of the analytic ideal gas on the discrete m-resolution grid \( \mathcal{G}_N \).
 
 All other electromagnetic constants (\( Z_0, \mu_0, \varepsilon_0 \)) emerge directly from these definite integrals when gauged against the single fundamental kinematic speed \( c \).
