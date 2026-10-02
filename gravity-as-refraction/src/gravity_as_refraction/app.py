@@ -104,12 +104,22 @@ class OrbitSimulatorWindow:
             batch=self.hud_batch,
         )
 
+        self.equation_label = pyglet.text.Label(
+            "G = (c²·Δω² / 4πm) · (15/π⁴) ∫₀^∞ [u³/(eᵘ - 1)] du = c²·Δω² / (4πm)   |   n(r) = 1 + 2GM/(r·c²)",
+            font_name="Monospace",
+            font_size=10,
+            x=20,
+            y=height - 46,
+            color=(255, 215, 110, 255),
+            batch=self.hud_batch,
+        )
+
         self.metrics_label = pyglet.text.Label(
             "",
             font_name="Monospace",
             font_size=10,
             x=20,
-            y=height - 48,
+            y=height - 68,
             color=(180, 210, 240, 255),
             batch=self.hud_batch,
         )
@@ -119,7 +129,7 @@ class OrbitSimulatorWindow:
             font_name="Monospace",
             font_size=10,
             x=20,
-            y=height - 70,
+            y=height - 90,
             color=(200, 200, 200, 255),
             batch=self.hud_batch,
         )

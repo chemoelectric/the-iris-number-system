@@ -53,9 +53,9 @@ def run_terminal_orbit_simulation(
     print("=" * width)
     print(" GRAVITATION AS WAVE REFRACTION • ORBITAL SIMULATOR")
     print("=" * width)
-    print("Matter Knot orbits central mass via differential wave-speed refraction.")
-    print("Steered by wave phase delay across its finite physical diameter.")
-    print("Press Ctrl+C to stop simulation.")
+    print(" G = (c²·Δω² / 4πm) · (15/π⁴) ∫₀^∞ [u³/(eᵘ - 1)] du = c²·Δω² / (4πm)")
+    print(" Refractive Index: n(r) = 1 + 2GM/(r·c²)   |   a = -GM/r²")
+    print(" Press Ctrl+C to stop simulation.")
     print("=" * width)
     time.sleep(0.8)
 
@@ -117,6 +117,9 @@ def run_terminal_orbit_simulation(
 
             # Render frame
             out = ["\033[H\033[?25l"]
+            out.append(
+                "  Eq: G = (c²·Δω² / 4πm) · (15/π⁴) ∫₀^∞ [u³/(eᵘ - 1)] du = c²·Δω² / (4πm)"
+            )
             out.append(
                 f"  Orbit: {preset.upper()} | State: {state.upper()} | [Ctrl+C to stop]"
             )
@@ -195,9 +198,10 @@ def main() -> None:
         print("   G = (c^2 * delta_omega^2 / 4*pi*m) * (15 / pi^4) * integral_0^inf [u^3 / (e^u - 1)] du")
         print("     = c^2 * delta_omega^2 / (4 * pi * m)")
         print()
-        print(" Circulation action S_circ = E / omega cancels out identically,")
-        print(" demonstrating that gravitation is a classical wave-refractive effect")
-        print(" completely independent of quantum physics.")
+        print(" Refractive Index Gradient:")
+        print("   n(r) = 1 + 2*G*M / (r * c^2)")
+        print("   v(r) = c / n(r)")
+        print("   a    = - (dv/dr) * 2*R_vortex = - (G*M / r^2) * r_hat")
         print("=" * 65 + "\n")
         return
 
