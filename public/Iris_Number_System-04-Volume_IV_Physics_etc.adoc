@@ -2510,7 +2510,7 @@ When re-evaluated through the unified field theory—governed by the Master Fiel
 
 * **Louis de Broglie (1929)**: de Broglie introduced “wave-particle duality” as an intractable mystery. In \( Cl ( 4 , 1 , 1 ) \), there is no mystical duality: an electron is an extended multivector field vortex with an internal clock circulation frequency \( \omega _ 0 = m c ^ 2 / \hbar \). When moving at velocity \( \mathbf { v } \), its spatial phase modulation naturally produces a spatial wavelength \( \lambda = h / p \) on grid \( \mathcal { G } _ N \).
 
-* **Werner Heisenberg (1932)**: Heisenberg replaced physical field ontology with matrix calculus of abstract observables, declaring that unobserved physical configurations do not exist. The “uncertainty principle” \( \Delta x \Delta p \ge \hbar / 2 \) is not an ontological limit on physical reality or determinism, but the standard classical Fourier bandwidth theorem for spatially localized wave packets on grid \( \mathcal { G } _ N \).
+* **Werner Heisenberg (1932)**: Heisenberg replaced physical field configurations with matrix calculus of abstract observables, declaring that unobserved physical configurations do not exist. The “uncertainty principle” \( \Delta x \Delta p \ge \hbar / 2 \) is not a limit on physical reality or determinism, but the standard classical Fourier bandwidth theorem for spatially localized wave packets on grid \( \mathcal { G } _ N \).
 
 * **Erwin Schrödinger & Paul Dirac (1933)**: Schrödinger’s wave equation is the scalar potential approximation of the multivector wave equation. Dirac’s equation is the bispinor restriction of the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \). Dirac burdened his equation with unphysical “negative-energy seas” and point particles because he lacked the full multivector geometric algebra \( Cl ( 4 , 1 , 1 ) \) where positive field energy density \( U = \frac { 1 } { 2 } \langle F \tilde { F } \rangle \ge 0 \) is naturally guaranteed.
 --
@@ -2570,7 +2570,7 @@ Whenever continuum equations conflict with physical observations, modern institu
 * **"Higgs Bosons"**: A post hoc scalar field patch introduced to supply mass to broken gauge symmetries in electroweak theory.
 * **The "Big Bang"**: A cosmological singular creation event extrapolated backwards to an unphysical point of zero volume and infinite density, directly violating the fundamental principle that the universe consists of finite numbers of finite entities.
 
-While Ptolemaic epicycles provided explicit mathematical utility and engineering precision without ontological deception, modern particle creeds substitute post hoc ad hoc entities for rigorous physical mechanics, relying on intensional dictionary definitions and academic citation markets to shield their unobservable constructs from extensional empirical auditing.
+While Ptolemaic epicycles provided explicit mathematical utility and engineering precision without verbal deception, modern particle creeds substitute post hoc ad hoc entities for rigorous physical mechanics, relying on intensional dictionary definitions and academic citation markets to shield their unobservable constructs from extensional empirical auditing.
 
 [#theorem-ptolemaic-fourier-vs-posthoc-creeds]
 [THEOREM]
@@ -3381,10 +3381,10 @@ The structural failure of modern theoretical physics is intimately linked to the
 
 In the Counting-Iris framework, this interpretation is inverted and recognized as an evasion. Gödel's theorems do not describe an inherent limitation of human reason, nor do they describe any property of the universe. Rather, Gödel's theorems reveal that **conventional axiomatic mathematics is defective**.
 
-1. **The Ontological Defect: Fictitious Entities without Solid Structure**:
+1. **The Structural Defect: Fictitious Entities without Solid Structure**:
    By abductive reasoning, Gödelian undecidability and incompleteness arise because conventional mathematics does not talk about anything that exists in the universe.
    * Conventional mathematics is built upon ungrounded abstractions: actual infinities, Cantorian transfinite cardinalities, Dedekind cuts, dimensionless continuum points having zero spatial extent, and uncountably infinite sets of infinitesimal entities.
-   * None of these entities have solid structure. None exist in the real world. They are open-ended fabrications of human imagination—purely mental constructs possessing no objective or physical referents.
+   * None of these entities have solid structure. None exist in the real world. They are open-ended fabrications of human imagination—purely mental constructs that refer to nothing on the objective or physical levels.
    * When a formal axiomatic system (such as Zermelo-Fraenkel set theory with the Axiom of Choice, ZFC) is erected on top of ungrounded linguistic fictions, the formal grammar inevitably permits self-referential paradoxes (such as the Liar Paradox encoded into Gödel numbers). The system cannot prove its own consistency without infinite regress because the axioms were never anchored to physical operations or discrete finite entities in the first place.
 
 2. **Realistic Mathematics vs. Open-Ended Fantasy**:

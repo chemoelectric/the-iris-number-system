@@ -3873,7 +3873,7 @@ export const PHYSICAL_CONSTANTS_PAPER: Textbook = {
           "title": "Technical Paper: Definite Integrals and Geometric Ratios",
           "contentAsciiDoc": `== Abstract
 
-Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \\( c \\) within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\), eliminating arbitrary empirical curve-fitting. The fine-structure constant \\( \\alpha \\) is derived from the aspect-ratio geometry of a localized toroidal vortex in \\( Cl(4,1,1) \\) via the complete elliptic integral \\( \\alpha = ({1} / {2 \\pi}) \\int_0^{\\pi / 2} ({1 - k_0^2 \\sin^2\\theta}) ^ {-1/2}{d\\theta} \\approx 1/{137.035999} \\). The proton-to-electron mass ratio is calculated as the conformal \\( 5 \\)-sphere volume integral with discrete lattice reaction: \\( m_p / m_e = 6 \\pi^5 [ 1 - ({\\alpha} / {4\\pi^2}) \\int_0^1 \\int_0^1 (1 - x y) ^ {-1}{dx\\,dy} ] = 6 \\pi^5 ( 1 - {\\alpha} / {24} ) \\approx 1836.15267 \\). Newton's gravitational coupling is derived from the MaxEnt spectral covariance integral of electromagnetic stress-energy tensor fluctuations proportional to \\( c^4 \\): \\( G = \\frac{c^4 \\delta_\\omega^2}{4 \\pi \\hbar \\omega} \\left( \\frac{15}{\\pi^4} \\int_0^\\infty \\frac{u^3 du}{e^u - 1} \\right) \\). All intrinsic electromagnetic standards are expressed directly in terms of \\( c \\) and these definite integrals: intrinsic magnetic permeability \\( \\mu_0 = \\frac{2 \\alpha h}{e^2 c} \\), intrinsic wave impedance \\( Z_0 = \\mu_0 c = \\frac{2 \\alpha h}{e^2} \\), intrinsic electric permittivity \\( \\epsilon_0 = \\frac{1}{\\mu_0 c^2} \\), the fundamental circulation impedance (von Klitzing constant) \\( R_K = \\frac{h}{e^2} = \\frac{Z_0}{2 \\alpha} \\), and the unit of enclosed magnetic bivector flux circulation \\( \\Phi_0 = \\frac{h}{2 e} \\). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \\( \\mathcal{G}_N \\) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \\( k_B \\) and molar gas constant \\( R \\) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
+Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \\( c \\) within the Counting-Iris Number System and Clifford field mechanics \\( Cl(4,1,1) \\), eliminating arbitrary empirical curve-fitting. The fine-structure constant \\( \\alpha \\) is derived from the aspect-ratio geometry of a localized toroidal vortex in \\( Cl(4,1,1) \\) via the complete elliptic integral \\( \\alpha = ({1} / {2 \\pi}) \\int_0^{\\pi / 2} ({1 - k_0^2 \\sin^2\\theta}) ^ {-1/2}{d\\theta} \\approx 1/{137.035999} \\). The proton-to-electron mass ratio is calculated as the conformal \\( 5 \\)-sphere volume integral with discrete lattice reaction: \\( m_p / m_e = 6 \\pi^5 [ 1 - ({\\alpha} / {4\\pi^2}) \\int_0^1 \\int_0^1 (1 - x y) ^ {-1}{dx\\,dy} ] = 6 \\pi^5 ( 1 - {\\alpha} / {24} ) \\approx 1836.15267 \\). Newton's gravitational coupling is derived as a refractive wave effect within the single unified electromagnetic field described by the Master Field Equation, where matter consists of localized topological knots and gravitational acceleration arises from the continuous refraction of wave fronts in the field's propagation gradient, yielding the MaxEnt spectral wave refraction integral directly in terms of field mass \\( m \\): \\( G = ( c^2 \\delta_\\omega^2 / 4 \\pi m) (15 / \\pi^4 ) \\int_0^\\infty [{u^3} / ({e^u - 1})] \\, du = c^2 \\delta_\\omega^2 / (4 \\pi m) \\), where vortex circulation action \\( S_{\\text{circ}} = E / \\omega \\) (historically labeled \\( \\hbar \\)) cancels out completely, demonstrating that gravitation is a classical wave-refractive effect independent of quantum physics. All intrinsic electromagnetic standards are expressed directly in terms of \\( c \\) and these definite integrals: intrinsic magnetic permeability \\( \\mu_0 = \\frac{2 \\alpha h}{e^2 c} \\), intrinsic wave impedance \\( Z_0 = \\mu_0 c = \\frac{2 \\alpha h}{e^2} \\), intrinsic electric permittivity \\( \\epsilon_0 = \\frac{1}{\\mu_0 c^2} \\), the fundamental circulation impedance (von Klitzing constant) \\( R_K = \\frac{h}{e^2} = \\frac{Z_0}{2 \\alpha} \\), and the unit of enclosed magnetic bivector flux circulation \\( \\Phi_0 = \\frac{h}{2 e} \\). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \\( \\mathcal{G}_N \\) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \\( k_B \\) and molar gas constant \\( R \\) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -3964,21 +3964,47 @@ enabling exact rational bounding of the proton-to-electron mass ratio to arbitra
 === Gravitation as Wave Refraction in the Unified Field
 In the Unified Field Theory, gravitation is not an independent fundamental force. The universe is a single electromagnetic field, whose behavior and structure are described by the Master Field Equation \\( D F = J \\). What we observe as matter consists of localized, tightly knotted topological regions within this field. In the vicinity of a dense knot, the concentration of field energy alters the local propagation speed of electromagnetic influences, introducing a differential delay across traveling wave fronts. Gravitation is the continuous refraction of wave packets and circulating knots toward the region of higher field density, producing the familiar inverse-square acceleration.footnote:[Gravity is famously a far more feeble force than direct electric and magnetic interactions. Indeed, it is not the fall due to gravity that hurts so much as the immense electrostatic repulsion encountered at the end of the fall.]
 
-Under the Jaynesian Maximum Entropy (MaxEnt) principle, assigning the least-biased spectral distribution to the field modes at temperature parameter \\( \\beta \\) (making no undeducible assumptions) yields the definite spectral integral:
-\\[ I_{\\text{MaxEnt}} = \\int_0^{k_{\\text{cut}}} \\left( \\frac{k^3}{e^{\\beta \\hbar c k} - 1} \\right) dk \\]
-where \\( k_{\\text{cut}} = \\frac{2\\pi}{\\delta_\\omega} \\) is the upper cutoff wavevector imposed by the discrete lattice resolution \\( \\delta_\\omega = \\bullet / \\omega \\).
+=== Localized Knot Energy, Circulation Action, and Rejection of Quantum Black Boxes
 
-The effective macroscopic gravitational coupling \\( G \\) is derived directly relative to \\( c^4 \\) through this definite integral:
-\\[ G = \\frac{c^4 \\delta_\\omega^2}{4 \\pi \\hbar \\omega} \\left( \\frac{15}{\\pi^4} \\int_0^\\infty \\frac{u^3}{e^u - 1} \\, du \\right) \\]
-Because the standard definite integral evaluates exactly to:
+A localized knot of matter has a total localized field energy:
+\\[ E = \\int_{\\Omega} \\frac{1}{2} \\langle F \\tilde{F} \\rangle \\, dV = m c^2 \\]
+where \\( m \\) is the localized field mass. 
+
+As a stationary, self-sustaining topological vortex, the knot has an internal circulation frequency \\( \\omega \\). The circulation action per radian of the field bivector around the vortex core is defined mechanically:
+\\[ S_{\\text{circ}} = \\frac{E}{\\omega} = \\frac{m c^2}{\\omega} \\]
+This is the classical circulation action of the field vortex, analogous to hydrodynamic vortex circulation:
+\\[ S_{\\text{circ}} = \\frac{1}{c} \\oint_{\\partial \\Omega} \\mathbf{A} \\cdot d\\mathbf{x} \\]
+Historical physics labeled this circulation action for elementary particles with the symbol \\( \\hbar \\) and treated it as an occult, acausal “quantum” black box. In the Counting-Iris framework, there are no black boxes: \\( S_{\\text{circ}} \\) is simply the deterministic ratio of localized field energy to internal circulation frequency in a continuous, deterministic field vortex.
+
+=== Jaynesian MaxEnt Spectral Derivation
+
+Under the Jaynesian Maximum Entropy (MaxEnt) principle, we assign the least-biased spectral distribution to the wave modes of the field on discrete grid \\( \\mathcal{G}_N \\) subject to the expected total field energy (making no undeducible assumptions). For harmonic wave modes with spatial wavevector \\( k \\), the modal frequency is \\( \\omega_k = c k \\), and the characteristic modal action scale is \\( S_{\\text{circ}} \\), yielding mode energy \\( \\mathcal{E}_k = S_{\\text{circ}} c k \\).
+
+The least-biased occupation distribution of these wave modes on the discrete grid is the geometric distribution:
+\\[ \\bar{\\mathcal{E}}_k = \\frac{\\mathcal{E}_k}{e^{\\beta \\mathcal{E}_k} - 1} = \\frac{S_{\\text{circ}} c k}{e^{\\beta S_{\\text{circ}} c k} - 1} \\]
+where \\( \\beta \\) is the Lagrange multiplier governing the mean energy constraint. Integrating over 3D mode phase space up to cutoff wavevector \\( k_{\\text{cut}} = \\frac{2\\pi}{\\delta_\\omega} \\) (imposed by discrete grid aperture \\( \\delta_\\omega \\)) yields the definite spectral integral:
+\\[ I_{\\text{MaxEnt}} = \\int_0^{k_{\\text{cut}}} \\left( \\frac{k^3}{e^{\\beta S_{\\text{circ}} c k} - 1} \\right) dk \\]
+Setting the dimensionless variable \\( u = \\beta S_{\\text{circ}} c k \\), the integral becomes:
+\\[ I_{\\text{MaxEnt}} = \\frac{1}{(\\beta S_{\\text{circ}} c)^4} \\int_0^{u_{\\text{cut}}} \\frac{u^3}{e^u - 1} \\, du \\]
+In the macroscopic limit (\\( u_{\\text{cut}} \\to \\infty \\)), the standard definite integral evaluates exactly to:
 \\[ \\int_0^\\infty \\frac{u^3}{e^u - 1} \\, du = \\frac{\\pi^4}{15} \\]
-the integral factor reduces identically to unity, establishing the exact closed relationship:
-\\[ G = \\frac{c^4 \\, \\delta_\\omega^2}{4 \\pi \\hbar \\, \\omega} \\]
 
-This is a **new formula**: gravitational coupling \\( G \\) is expressed directly in terms of \\( c^4 \\), discrete resolution \\( \\delta_\\omega \\), and the Planck-MaxEnt definite integral for wave refraction.
+=== Derivation of Gravitational Coupling \\( G \\)
+
+The effective macroscopic gravitational coupling \\( G \\) is derived directly relative to \\( c^4 \\) through this definite integral by balancing the refractive wave-speed gradient against the source field energy \\( E \\):
+\\[ G = \\frac{c^4 \\delta_\\omega^2}{4 \\pi E} \\left( \\frac{15}{\\pi^4} \\int_0^\\infty \\frac{u^3}{e^u - 1} \\, du \\right) = \\frac{c^4 \\delta_\\omega^2}{4 \\pi E} \\]
+Because \\( E = m c^2 \\), this establishes the exact closed relationship directly in terms of localized field mass \\( m \\):
+\\[ G = \\frac{c^2 \\, \\delta_\\omega^2}{4 \\pi m} \\quad \\Longleftrightarrow \\quad G m = \\frac{c^2 \\, \\delta_\\omega^2}{4 \\pi} \\]
+Alternatively, expressing the knot's field energy in terms of its internal circulation frequency \\( \\omega \\) and vortex action \\( S_{\\text{circ}} \\) (where \\( E = S_{\\text{circ}} \\omega \\)):
+\\[ G = \\frac{c^4 \\, \\delta_\\omega^2}{4 \\pi S_{\\text{circ}} \\, \\omega} \\]
+
+This derivation proves that “quantum physics” has nothing whatsoever to do with gravitation:
+1. Gravitational coupling \\( G \\) is expressed directly in terms of \\( c^2 \\), discrete aperture \\( \\delta_\\omega \\), and localized field mass \\( m \\) without any action constant.
+2. The action scale \\( S_{\\text{circ}} \\) (historically labeled \\( \\hbar \\)) appears only when field mass-energy is decomposed into circulation frequency and vortex action, and it cancels out identically (\\( S_{\\text{circ}} \\omega = E = m c^2 \\)).
+3. Gravitation is entirely a classical wave-refractive consequence of the unified electromagnetic field governed by \\( D F = J \\).
 
 === Taylor Series and Convergence Analysis for the MaxEnt Integral
-For numerical and asymptotic computation, the Planck integrand \\( \\frac{u^3}{e^u - 1} \\) expands in two complementary domains:
+For numerical and asymptotic computation, the MaxEnt spectral integrand \\( \\frac{u^3}{e^u - 1} \\) expands in two complementary domains:
 
 1. **Near the Origin (\\( u \\to 0 \\)) via Bernoulli Numbers**:
 Using the generating function of the Bernoulli numbers \\( \\frac{u}{e^u - 1} = \\sum_{k=0}^{\\infty} \\frac{B_k}{k!} u^k \\):
