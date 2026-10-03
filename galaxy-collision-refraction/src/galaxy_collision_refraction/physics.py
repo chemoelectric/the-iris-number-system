@@ -22,6 +22,17 @@ from collections import deque
 from dataclasses import dataclass, field
 from typing import Deque, List, Tuple
 
+try:
+    from .physics_fast import fast_step_stars  # type: ignore
+    FAST_PHYSICS_AVAILABLE = True
+except ImportError:
+    try:
+        from physics_fast import fast_step_stars  # type: ignore
+        FAST_PHYSICS_AVAILABLE = True
+    except ImportError:
+        fast_step_stars = None
+        FAST_PHYSICS_AVAILABLE = False
+
 
 @dataclass
 class GalaxyConfig:
