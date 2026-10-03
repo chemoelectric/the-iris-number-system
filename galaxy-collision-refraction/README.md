@@ -125,12 +125,23 @@ The core numerical integration loop is equipped with a high-performance **Cython
 - **Zero-Allocation Symplectic Verlet Integrator**: Bypasses per-particle Python object lookups, method dispatch, and temporary tuple memory allocations during time steps.
 - **Graceful Fallback**: The engine dynamically checks `FAST_PHYSICS_AVAILABLE`. If compiled with Cython/C compiler, it runs at native C speed (supporting 10,000+ stars smoothly); if Cython or a C compiler is absent, it seamlessly falls back to pure Python without error.
 
-### Compiling Cython In-Place (Optional for 10x-30x Speedup)
+### Installation with Native Cython Acceleration
+
+To install the package into your environment with native C acceleration enabled:
 
 ```bash
 cd galaxy-collision-refraction
+
+# Install Cython in your environment first
 pip install cython setuptools
-python3 setup.py build_ext --inplace
+
+# Install the package with native C extension compiled directly into site-packages
+pip install --no-build-isolation -e .
+# or for a standard permanent installation:
+pip install --no-build-isolation .
 ```
+
+When launched, the window HUD and sidebar header explicitly display the installed version and active engine backend:
+`WAVE-REFRACTIVE GALAXY INTERACTION • v0.1.4 (Cython C-Accelerated)`
 
 

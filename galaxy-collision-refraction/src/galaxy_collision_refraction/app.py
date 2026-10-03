@@ -15,10 +15,15 @@ except ImportError:
     shapes = None  # type: ignore
 
 try:
-    from .physics import GalaxyCollisionSimulation
+    from . import __version__
+    from .physics import GalaxyCollisionSimulation, FAST_PHYSICS_AVAILABLE
     from .widgets import ButtonWidget, SliderWidget
 except ImportError:
-    from physics import GalaxyCollisionSimulation
+    try:
+        from galaxy_collision_refraction import __version__
+    except ImportError:
+        __version__ = "0.1.4"
+    from physics import GalaxyCollisionSimulation, FAST_PHYSICS_AVAILABLE
     from widgets import ButtonWidget, SliderWidget
 
 
@@ -93,7 +98,7 @@ class GalaxyCollisionApp:
 
         # Simulation HUD labels (Viewport on left)
         self.title_label = pyglet.text.Label(
-            "WAVE-REFRACTIVE GALAXY INTERACTION",
+            f"WAVE-REFRACTIVE GALAXY INTERACTION  •  v{__version__}",
             font_name="Sans-Serif",
             font_size=11,
             x=20,
@@ -159,7 +164,7 @@ class GalaxyCollisionApp:
         cur_y -= 18.0
 
         self.ctrl_subtitle = pyglet.text.Label(
-            "Energy Density Clouds & Tidal Refraction",
+            f"v{__version__} (" + ("Cython C-Accelerated" if FAST_PHYSICS_AVAILABLE else "Pure Python Core") + ")",
             font_name="Sans-Serif",
             font_size=8,
             x=start_x,

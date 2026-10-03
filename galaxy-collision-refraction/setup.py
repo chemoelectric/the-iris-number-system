@@ -1,10 +1,9 @@
-"""Optional Cython build setup for galaxy-collision-refraction."""
+"""Setup script for galaxy-collision-refraction supporting optional native Cython compilation on install."""
 
 from setuptools import setup, Extension
 import sys
 
 ext_modules = []
-cmdclass = {}
 
 try:
     from Cython.Build import cythonize
@@ -18,8 +17,10 @@ try:
         ],
         compiler_directives={"language_level": "3"},
     )
-except ImportError:
-    pass
+except Exception:
+    # If Cython or a C compiler is not available during installation,
+    # continue installing the pure Python package cleanly.
+    ext_modules = []
 
 setup(
     ext_modules=ext_modules,

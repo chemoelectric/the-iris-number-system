@@ -148,7 +148,7 @@ python3 -m galaxy_collision_refraction
 - **Realistic Energy Density Cloud Physics**: Galaxies modeled as continuous clouds of energy density establishing vacuum refractive index gradients \( n(\vec{r}) = 1 + \frac{2}{c^2} \Phi(\vec{r}) \). Differential phase delay across finite matter knots naturally produces forward tidal bridges and sweeping antenna tails.
 - **Interactive Encounter Presets**: Instant one-click presets for the Antennae Prograde Flyby, Direct Penetrating Merger, Retrograde Encounter, and Milky Way & Andromeda Infall.
 - **Pure Graphical Experience**: Strictly graphical with hardware acceleration; zero audio code.
-- **Cython Acceleration Core**: Optional native C/Cython extension (`physics_fast.pyx` via `setup.py build_ext --inplace`) providing 10x–30x speedup for tens of thousands of stars, with automatic fallback to pure Python.
+- **Cython Acceleration Core**: Built-in C/Cython extension (`physics_fast.pyx`) compiled into your environment via `pip install .` (or `--no-build-isolation`), providing 10x–30x speedup for tens of thousands of stars, with explicit on-screen version and backend verification.
 
 ---
 
