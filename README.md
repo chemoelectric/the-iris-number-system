@@ -143,7 +143,7 @@ python3 -m galaxy_collision_refraction
 ### Features & Architecture
 
 - **Unified Precision Interface** (`1400 x 800`):
-  - **Simulation Viewport** (`1020 x 800` left pane): Real-time symplectic integration of two rotating spiral galaxies with dense glowing energy cores, cyan and gold stellar matter knots, trailing tidal streams, and equipotential refractive gradient contour rings.
+  - **Simulation Viewport** (`1020 x 800` left pane): Real-time symplectic integration of two rotating spiral galaxies with dense glowing energy cores, cyan and gold stellar matter knots, and equipotential refractive gradient contour rings.
   - **Controls Sidebar** (`380 x 800` right pane): Integrated control sidebar running in a single, stable OpenGL context, featuring interactive sliders for galaxy masses (\( M_1, M_2 \)), separation distance, impact parameter, approach velocity, disk tilt angles, cloud softening, and simulation speed.
 - **Realistic Energy Density Cloud Physics**: Galaxies modeled as continuous clouds of energy density establishing vacuum refractive index gradients \( n(\vec{r}) = 1 + \frac{2}{c^2} \Phi(\vec{r}) \). Differential phase delay across finite matter knots naturally produces forward tidal bridges and sweeping antenna tails.
 - **Interactive Encounter Presets**: Instant one-click presets for the Antennae Prograde Flyby, Direct Penetrating Merger, Retrograde Encounter, and Milky Way & Andromeda Infall.

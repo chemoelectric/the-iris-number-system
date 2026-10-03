@@ -55,7 +55,6 @@ def fast_step_stars(
     object g2,
     double dt,
     double G,
-    int trail_step=2,
 ):
     """Fast vectorized update of all stars using Leapfrog/Verlet integration.
     
@@ -100,8 +99,6 @@ def fast_step_stars(
         tot_ax = ax1 + ax2
         tot_ay = ay1 + ay2
 
-        # Record trail point
-        star.trail.append((sx, sy))
 
         # Advance position (Verlet drift)
         sx += svx * dt + tot_ax * half_dt_sq

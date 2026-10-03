@@ -59,11 +59,9 @@ class StarKnot:
     galaxy_id: int
     r_initial: float
     base_color: Tuple[int, int, int]
-    trail: Deque[Tuple[float, float]] = field(default_factory=lambda: deque(maxlen=28))
 
     def update_position(self, dt: float, ax: float, ay: float) -> None:
         """First step of Verlet / Leapfrog position integration."""
-        self.trail.append((self.x, self.y))
         self.x += self.vx * dt + 0.5 * ax * dt * dt
         self.y += self.vy * dt + 0.5 * ay * dt * dt
 
@@ -85,10 +83,8 @@ class GalaxyCenter:
     softening: float
     disk_radius: float
     galaxy_id: int
-    trail: Deque[Tuple[float, float]] = field(default_factory=lambda: deque(maxlen=240))
 
     def update_position(self, dt: float, ax: float, ay: float) -> None:
-        self.trail.append((self.x, self.y))
         self.x += self.vx * dt + 0.5 * ax * dt * dt
         self.y += self.vy * dt + 0.5 * ay * dt * dt
 
@@ -116,7 +112,6 @@ class GalaxyCollisionSimulation:
         tilt2_deg: float = -45.0,
         softening: float = 34.0,
         num_stars_per_galaxy: int = 700,
-        trail_length: int = 30,
         dynamical_friction: float = 0.45,
     ) -> None:
         self.cx = center_x
@@ -132,7 +127,6 @@ class GalaxyCollisionSimulation:
         self.tilt2_deg = tilt2_deg
         self.softening = softening
         self.num_stars = num_stars_per_galaxy
-        self.trail_length = trail_length
         self.friction_coeff = dynamical_friction
 
         self.time_elapsed: float = 0.0
@@ -180,7 +174,6 @@ class GalaxyCollisionSimulation:
             softening=self.softening,
             disk_radius=95.0 * math.sqrt(self.m1),
             galaxy_id=1,
-            trail=deque(maxlen=240),
         )
 
         self.g2 = GalaxyCenter(
@@ -192,7 +185,6 @@ class GalaxyCollisionSimulation:
             softening=self.softening * 0.9,
             disk_radius=85.0 * math.sqrt(self.m2),
             galaxy_id=2,
-            trail=deque(maxlen=240),
         )
 
         # Generate stars for both galaxies
@@ -268,7 +260,6 @@ class GalaxyCollisionSimulation:
                 galaxy_id=core.galaxy_id,
                 r_initial=r,
                 base_color=color_rgb,
-                trail=deque(maxlen=self.trail_length),
             )
             self.stars.append(star)
 

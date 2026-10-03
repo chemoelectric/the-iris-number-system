@@ -33,7 +33,7 @@ When a circulating matter knot (star) of finite diameter \( 2 R \) moves through
 When two spiral galaxies approach each other:
 1. **Forward Tidal Bridge**: Stars on the near side of Galaxy 1's disk experience a higher refractive delay toward Galaxy 2 than Galaxy 1's center does, drawing them forward into a connecting tidal bridge.
 2. **Majestic Trailing Tails**: Stars on the far side of Galaxy 1's disk experience less delay than the center, falling behind the orbital trajectory and unwinding into sweeping, curving tidal tails (like the Antennae Galaxies, NGC 4038/4039).
-3. **Energy Cloud Overlap & Friction**: When the two extended energy density clouds interpenetrate, mutual wave deformation produces dynamical drag, causing the galaxy cores to spiral inward and coalesce into a merged elliptical knot surrounded by expanding star streams.
+3. **Energy Cloud Overlap & Friction**: When the two extended energy density clouds interpenetrate, mutual wave deformation produces dynamical drag, causing the galaxy cores to spiral inward and coalesce into a merged elliptical knot surrounded by expanding tidal structures.
 
 ---
 
@@ -42,7 +42,7 @@ When two spiral galaxies approach each other:
 The application runs in a unified, widescreen graphical window (`1400 x 800`) operating in a single, stable OpenGL context:
 
 1. **Simulation Viewport** (`1020 x 800` left pane):
-   - Shows the two interacting galaxies, their luminous energy cores, rotating spiral disks, and trailing tidal streams.
+   - Shows the two interacting galaxies, their luminous energy cores, and rotating spiral disks.
    - Distinct galaxy coloring: Galaxy 1 is rendered in luminous cyan/ice-blue; Galaxy 2 in warm amber/gold.
    - Refractive equipotential contour rings illustrating the deformation of the refractive landscape as the galaxies approach.
    - Core trajectory history tracing the mutual dance and merger.
@@ -60,8 +60,7 @@ The application runs in a unified, widescreen graphical window (`1400 x 800`) op
      - **Galaxy 2 Tilt Angle**: Inclination of companion disk (-90° to +90°).
      - **Cloud Softening (\( \epsilon \))**: M-res aperture smoothing scale (15 to 70 px).
      - **Simulation Speed**: Time multiplier (0.2x to 2.5x).
-     - **Trail Persistence**: Length of historical star stream trails (0 to 50 pts).
-   - **Action Buttons**:
+        - **Action Buttons**:
      - `RESET & RELAUNCH SIMULATION`: Instantly reapplies current slider parameters.
      - `PAUSE / PLAY`: Pause or resume time integration.
      - `CONTOURS ON/OFF`: Toggle display of refractive equipotential rings.

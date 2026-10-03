@@ -83,11 +83,9 @@ class GalaxyCollisionApp:
             tilt2_deg=-45.0,
             softening=34.0,
             num_stars_per_galaxy=750,
-            trail_length=28,
         )
 
         self.show_contours = True
-        self.show_trails = True
 
         # Persistent HUD and Controls batches in single OpenGL context
         self.hud_batch = pyglet.graphics.Batch()
@@ -115,7 +113,7 @@ class GalaxyCollisionApp:
         )
 
         self.help_label = pyglet.text.Label(
-            "[Space] Pause/Play  [r] Reset  [c] Toggle Contours  [t] Toggle Trails  [q] Quit",
+            "[Space] Pause/Play  [r] Reset  [c] Toggle Contours  [q] Quit",
             font_name="Monospace",
             font_size=8,
             x=20,
@@ -182,7 +180,6 @@ class GalaxyCollisionApp:
             ("Galaxy 2 Tilt Angle", -90.0, 90.0, self.sim.tilt2_deg, "{:.0f}", "°", self._on_tilt2_change),
             ("Cloud Softening (ε)", 15.0, 70.0, self.sim.softening, "{:.0f}", "px", self._on_soft_change),
             ("Simulation Speed", 0.2, 2.5, self.sim.speed_multiplier, "{:.1f}", "x", self._on_speed_change),
-            ("Trail Persistence", 0.0, 50.0, float(self.sim.trail_length), "{:.0f}", "pts", self._on_trail_change),
         ]
 
         slider_spacing = 42.0
@@ -316,11 +313,6 @@ class GalaxyCollisionApp:
     def _on_speed_change(self, val: float) -> None:
         self.sim.speed_multiplier = val
 
-    def _on_trail_change(self, val: float) -> None:
-        self.sim.trail_length = int(val)
-        for s in self.sim.stars:
-            s.trail = type(s.trail)(s.trail, maxlen=self.sim.trail_length)
-
     def on_reset_clicked(self) -> None:
         self.sim.reset()
 
@@ -394,8 +386,6 @@ class GalaxyCollisionApp:
             self.sim.reset()
         elif symbol == key.C:
             self.show_contours = not self.show_contours
-        elif symbol == key.T:
-            self.show_trails = not self.show_trails
 
     def on_mouse_press(self, x: float, y: float, button: int, modifiers: int) -> None:
         if x >= self.sidebar_x:
@@ -463,47 +453,9 @@ class GalaxyCollisionApp:
                     )
                 )
 
-        # 2. Galaxy core trajectory trails
-        if g1 and len(g1.trail) > 1:
-            for i in range(len(g1.trail) - 1):
-                p1 = g1.trail[i]
-                p2 = g1.trail[i + 1]
-                alpha = int(140 * ((i + 1) / len(g1.trail)))
-                draw_items.append(
-                    _make_line(p1[0], p1[1], p2[0], p2[1], (100, 190, 255, alpha), frame_batch, 2)
-                )
-
-        if g2 and len(g2.trail) > 1:
-            for i in range(len(g2.trail) - 1):
-                p1 = g2.trail[i]
-                p2 = g2.trail[i + 1]
-                alpha = int(140 * ((i + 1) / len(g2.trail)))
-                draw_items.append(
-                    _make_line(p1[0], p1[1], p2[0], p2[1], (255, 180, 90, alpha), frame_batch, 2)
-                )
-
-        # 3. Stars (Matter Knots) and their tidal stream trails
+        # 2. Stars (Matter Knots)
         for star in self.sim.stars:
             r_c, g_c, b_c = star.base_color
-
-            # Star trail
-            if self.show_trails and len(star.trail) > 1:
-                t_len = len(star.trail)
-                for ti in range(0, t_len - 1, 2):
-                    tp1 = star.trail[ti]
-                    tp2 = star.trail[min(ti + 2, t_len - 1)]
-                    fade = (ti + 1) / t_len
-                    alpha = int(85 * fade)
-                    draw_items.append(
-                        _make_line(
-                            tp1[0], tp1[1], tp2[0], tp2[1],
-                            (r_c, g_c, b_c, alpha),
-                            frame_batch,
-                            1,
-                        )
-                    )
-
-            # Star point
             draw_items.append(
                 shapes.Circle(
                     star.x,
@@ -514,7 +466,7 @@ class GalaxyCollisionApp:
                 )
             )
 
-        # 4. Dense Galaxy Cores (Energy concentrations)
+        # 3. Dense Galaxy Cores (Energy concentrations)
         if g1:
             draw_items.append(
                 shapes.Circle(g1.x, g1.y, g1.softening * 0.75, color=(35, 75, 130, 75), batch=frame_batch)
@@ -537,7 +489,7 @@ class GalaxyCollisionApp:
                 shapes.Circle(g2.x, g2.y, 3.5, color=(255, 255, 255, 255), batch=frame_batch)
             )
 
-        # 5. Sidebar background panel
+        # 4. Sidebar background panel
         draw_items.append(
             shapes.Rectangle(
                 self.sidebar_x,
@@ -562,7 +514,7 @@ class GalaxyCollisionApp:
             )
         )
 
-        # 6. Controls interactive visual elements (sliders, buttons)
+        # 5. Controls interactive visual elements (sliders, buttons)
         for s in self.sliders:
             s.draw_elements(draw_items, batch=frame_batch)
 
