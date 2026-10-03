@@ -142,6 +142,6 @@ pip install --no-build-isolation .
 ```
 
 When launched, the window HUD and sidebar header explicitly display the installed version and active engine backend:
-`WAVE-REFRACTIVE GALAXY INTERACTION • v0.1.4 (Cython C-Accelerated)`
+`WAVE-REFRACTIVE GALAXY INTERACTION • v0.1.5 (Cython C-Accelerated)`
 
 

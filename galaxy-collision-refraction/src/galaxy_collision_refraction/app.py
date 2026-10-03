@@ -22,7 +22,7 @@ except ImportError:
     try:
         from galaxy_collision_refraction import __version__
     except ImportError:
-        __version__ = "0.1.4"
+        __version__ = "0.1.5"
     from physics import GalaxyCollisionSimulation, FAST_PHYSICS_AVAILABLE
     from widgets import ButtonWidget, SliderWidget
 
@@ -90,7 +90,7 @@ class GalaxyCollisionApp:
             num_stars_per_galaxy=750,
         )
 
-        self.show_contours = True
+        self.show_contours = False
 
         # Persistent HUD and Controls batches in single OpenGL context
         self.hud_batch = pyglet.graphics.Batch()
