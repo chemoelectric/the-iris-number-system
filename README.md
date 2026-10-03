@@ -126,6 +126,31 @@ python3 -m gravity_as_refraction
 
 ---
 
+## 🌀 Standalone Package: `galaxy-collision-refraction` (Dual-Window Simulation)
+
+A realistic interactive Python simulation located in `galaxy-collision-refraction/` modeling two colliding spiral galaxies as distributed clouds of energy density, governed by wave refraction theory.
+
+### Quick Start
+```bash
+cd galaxy-collision-refraction
+
+# Build sdist (.tar.gz) and wheel (.whl) using Python's standard library
+python3 build_dist.py
+
+# Run dual-window graphical simulation (requires pyglet)
+python3 -m galaxy_collision_refraction
+```
+
+### Features & Architecture
+- **Dual-Window Interface**:
+  - **Simulation Viewport Window** (`1020 x 800`): Real-time symplectic integration of two rotating spiral galaxies with dense glowing energy cores, cyan and gold stellar matter knots, trailing tidal streams, and equipotential refractive gradient contour rings.
+  - **Controls Window** (`380 x 800`): A dedicated controls window opened alongside the simulation viewport, featuring interactive sliders for galaxy masses (\( M_1, M_2 \)), separation distance, impact parameter, approach velocity, disk tilt angles, cloud softening, and simulation speed.
+- **Realistic Energy Density Cloud Physics**: Galaxies modeled as continuous clouds of energy density establishing vacuum refractive index gradients \( n(\vec{r}) = 1 + \frac{2}{c^2} \Phi(\vec{r}) \). Differential phase delay across finite matter knots naturally produces forward tidal bridges and sweeping antenna tails.
+- **Interactive Encounter Presets**: Instant one-click presets for the Antennae Prograde Flyby, Direct Penetrating Merger, Retrograde Encounter, and Milky Way & Andromeda Infall.
+- **Pure Graphical Experience**: Strictly graphical with hardware acceleration; zero audio code.
+
+---
+
 ## 📜 Mathematical Foundations
 
 The inference engine operates strictly within the Counting-Iris number system:
