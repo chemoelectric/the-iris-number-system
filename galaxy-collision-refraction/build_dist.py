@@ -11,7 +11,7 @@ from pathlib import Path
 
 PACKAGE_NAME = "galaxy_collision_refraction"
 DIST_NAME = "galaxy-collision-refraction"
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 AUTHOR = "Barry Schwartz"
 AUTHOR_EMAIL = "150643+chemoelectric@users.noreply.github.com"
 SUMMARY = "Realistic interactive simulation of colliding spiral galaxies modeled as energy density clouds in wave refraction theory"

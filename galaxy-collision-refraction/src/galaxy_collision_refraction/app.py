@@ -99,15 +99,9 @@ class GalaxyCollisionApp:
         self.show_contours = True
         self.show_trails = True
 
-        # Batches
-        self.sim_batch = pyglet.graphics.Batch()
+        # Initialize simulation HUD inside sim_window's OpenGL context
+        self.sim_window.switch_to()
         self.sim_hud_batch = pyglet.graphics.Batch()
-        self.ctrl_batch = pyglet.graphics.Batch()
-
-        # Build UI in controls window
-        self.sliders: List[SliderWidget] = []
-        self.buttons: List[ButtonWidget] = []
-        self._init_controls_ui()
 
         # Simulation HUD labels
         self.title_label = pyglet.text.Label(
@@ -139,6 +133,13 @@ class GalaxyCollisionApp:
             color=(130, 140, 155, 255),
             batch=self.sim_hud_batch,
         )
+
+        # Initialize controls inside ctrl_window's OpenGL context
+        self.ctrl_window.switch_to()
+        self.ctrl_batch = pyglet.graphics.Batch()
+        self.sliders: List[SliderWidget] = []
+        self.buttons: List[ButtonWidget] = []
+        self._init_controls_ui()
 
         # Register event handlers for simulation window
         self.sim_window.push_handlers(
@@ -358,6 +359,7 @@ class GalaxyCollisionApp:
         t2: float,
         soft: float,
     ) -> None:
+        self.ctrl_window.switch_to()
         self.sliders[0].set_value(m1, trigger_callback=False)
         self.sliders[1].set_value(m2, trigger_callback=False)
         self.sliders[2].set_value(sep, trigger_callback=False)
@@ -414,6 +416,7 @@ class GalaxyCollisionApp:
             self.show_trails = not self.show_trails
 
     def on_ctrl_mouse_press(self, x: float, y: float, button: int, modifiers: int) -> None:
+        self.ctrl_window.switch_to()
         for s in self.sliders:
             if s.on_mouse_press(x, y, button):
                 break
@@ -422,11 +425,13 @@ class GalaxyCollisionApp:
                 break
 
     def on_ctrl_mouse_drag(self, x: float, y: float, dx: float, dy: float, buttons: int, modifiers: int) -> None:
+        self.ctrl_window.switch_to()
         for s in self.sliders:
             if s.dragging:
                 s.on_mouse_drag(x, y)
 
     def on_ctrl_mouse_release(self, x: float, y: float, button: int, modifiers: int) -> None:
+        self.ctrl_window.switch_to()
         for s in self.sliders:
             s.on_mouse_release()
         for b in self.buttons:
@@ -447,10 +452,11 @@ class GalaxyCollisionApp:
         dt = min(dt, 0.035)
         self.sim.step(dt)
 
-        # Update HUD text
+        # Update HUD text inside sim_window's OpenGL context
         dist = self.sim.distance_between_cores()
         v_rel = self.sim.relative_velocity()
         status_text = "PAUSED" if self.sim.paused else "RUNNING"
+        self.sim_window.switch_to()
         self.status_label.text = (
             f"T = {self.sim.time_elapsed:.2f} s | Separation: {dist:.0f} px | "
             f"V_rel: {v_rel:.1f} | Stars: {len(self.sim.stars)} | State: {status_text}"
@@ -458,7 +464,10 @@ class GalaxyCollisionApp:
 
     def on_sim_draw(self) -> None:
         """Render the simulation viewport."""
+        self.sim_window.switch_to()
         self.sim_window.clear()
+
+        sim_frame_batch = pyglet.graphics.Batch()
         draw_items = []
 
         g1 = self.sim.g1
@@ -470,14 +479,14 @@ class GalaxyCollisionApp:
             for r in [50, 95, 150, 220, 310, 420]:
                 draw_items.append(
                     shapes.Circle(
-                        g1.x, g1.y, r, color=(25, 45, 75, 24), batch=self.sim_batch
+                        g1.x, g1.y, r, color=(25, 45, 75, 24), batch=sim_frame_batch
                     )
                 )
                 draw_items.append(
                     shapes.Circle(
                         g2.x, g2.y, r * (g2.mass / g1.mass) ** 0.5,
                         color=(65, 45, 25, 24),
-                        batch=self.sim_batch,
+                        batch=sim_frame_batch,
                     )
                 )
 
@@ -488,7 +497,7 @@ class GalaxyCollisionApp:
                 p2 = g1.trail[i + 1]
                 alpha = int(140 * ((i + 1) / len(g1.trail)))
                 draw_items.append(
-                    _make_line(p1[0], p1[1], p2[0], p2[1], (100, 190, 255, alpha), self.sim_batch, 2)
+                    _make_line(p1[0], p1[1], p2[0], p2[1], (100, 190, 255, alpha), sim_frame_batch, 2)
                 )
 
         if g2 and len(g2.trail) > 1:
@@ -497,7 +506,7 @@ class GalaxyCollisionApp:
                 p2 = g2.trail[i + 1]
                 alpha = int(140 * ((i + 1) / len(g2.trail)))
                 draw_items.append(
-                    _make_line(p1[0], p1[1], p2[0], p2[1], (255, 180, 90, alpha), self.sim_batch, 2)
+                    _make_line(p1[0], p1[1], p2[0], p2[1], (255, 180, 90, alpha), sim_frame_batch, 2)
                 )
 
         # 3. Stars (Matter Knots) and their tidal stream trails
@@ -516,7 +525,7 @@ class GalaxyCollisionApp:
                         _make_line(
                             tp1[0], tp1[1], tp2[0], tp2[1],
                             (r_c, g_c, b_c, alpha),
-                            self.sim_batch,
+                            sim_frame_batch,
                             1,
                         )
                     )
@@ -528,7 +537,7 @@ class GalaxyCollisionApp:
                     star.y,
                     1.6,
                     color=(r_c, g_c, b_c, 240),
-                    batch=self.sim_batch,
+                    batch=sim_frame_batch,
                 )
             )
 
@@ -536,33 +545,36 @@ class GalaxyCollisionApp:
         if g1:
             # Galaxy 1 (Cyan/Blue Core)
             draw_items.append(
-                shapes.Circle(g1.x, g1.y, g1.softening * 0.75, color=(35, 75, 130, 75), batch=self.sim_batch)
+                shapes.Circle(g1.x, g1.y, g1.softening * 0.75, color=(35, 75, 130, 75), batch=sim_frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g1.x, g1.y, 8.0, color=(140, 215, 255, 230), batch=self.sim_batch)
+                shapes.Circle(g1.x, g1.y, 8.0, color=(140, 215, 255, 230), batch=sim_frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g1.x, g1.y, 4.0, color=(255, 255, 255, 255), batch=self.sim_batch)
+                shapes.Circle(g1.x, g1.y, 4.0, color=(255, 255, 255, 255), batch=sim_frame_batch)
             )
 
         if g2:
             # Galaxy 2 (Amber/Gold Core)
             draw_items.append(
-                shapes.Circle(g2.x, g2.y, g2.softening * 0.75, color=(130, 85, 35, 75), batch=self.sim_batch)
+                shapes.Circle(g2.x, g2.y, g2.softening * 0.75, color=(130, 85, 35, 75), batch=sim_frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g2.x, g2.y, 7.5, color=(255, 195, 100, 230), batch=self.sim_batch)
+                shapes.Circle(g2.x, g2.y, 7.5, color=(255, 195, 100, 230), batch=sim_frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g2.x, g2.y, 3.5, color=(255, 255, 255, 255), batch=self.sim_batch)
+                shapes.Circle(g2.x, g2.y, 3.5, color=(255, 255, 255, 255), batch=sim_frame_batch)
             )
 
-        self.sim_batch.draw()
+        sim_frame_batch.draw()
         self.sim_hud_batch.draw()
 
     def on_ctrl_draw(self) -> None:
         """Render the controls window with sliders and preset buttons."""
+        self.ctrl_window.switch_to()
         self.ctrl_window.clear()
+        
+        ctrl_frame_batch = pyglet.graphics.Batch()
         draw_items = []
 
         # Background panel framing
@@ -573,18 +585,19 @@ class GalaxyCollisionApp:
                 self.ctrl_width,
                 self.ctrl_height,
                 color=(14, 18, 26, 255),
-                batch=self.ctrl_batch,
+                batch=ctrl_frame_batch,
             )
         )
 
         # Draw sliders
         for s in self.sliders:
-            s.draw_elements(draw_items)
+            s.draw_elements(draw_items, batch=ctrl_frame_batch)
 
         # Draw buttons
         for b in self.buttons:
-            b.draw_elements(draw_items)
+            b.draw_elements(draw_items, batch=ctrl_frame_batch)
 
+        ctrl_frame_batch.draw()
         self.ctrl_batch.draw()
 
 

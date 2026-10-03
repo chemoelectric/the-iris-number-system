@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "galaxy-collision-refraction"
-version = "0.1.0"
+version = "0.1.1"
 description = "Realistic interactive simulation of colliding spiral galaxies modeled as energy density clouds in wave refraction theory"
 readme = "README.md"
 requires-python = ">=3.9"

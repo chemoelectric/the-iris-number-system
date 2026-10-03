@@ -126,8 +126,9 @@ class SliderWidget:
     def on_mouse_release(self) -> None:
         self.dragging = False
 
-    def draw_elements(self, draw_list: List) -> None:
+    def draw_elements(self, draw_list: List, batch=None) -> None:
         """Append shape primitives for rendering."""
+        target_batch = batch if batch is not None else self.batch
         # Track background
         draw_list.append(
             shapes.Rectangle(
@@ -136,7 +137,7 @@ class SliderWidget:
                 self.width,
                 self.track_height,
                 color=(50, 60, 75, 255),
-                batch=self.batch,
+                batch=target_batch,
             )
         )
         # Active track highlight
@@ -149,7 +150,7 @@ class SliderWidget:
                     active_w,
                     self.track_height,
                     color=(70, 150, 235, 255),
-                    batch=self.batch,
+                    batch=target_batch,
                 )
             )
         # Knob
@@ -162,7 +163,7 @@ class SliderWidget:
                 ky,
                 self.knob_radius,
                 color=knob_col,
-                batch=self.batch,
+                batch=target_batch,
             )
         )
         draw_list.append(
@@ -171,7 +172,7 @@ class SliderWidget:
                 ky,
                 self.knob_radius * 0.45,
                 color=(20, 60, 120, 255),
-                batch=self.batch,
+                batch=target_batch,
             )
         )
 
@@ -230,7 +231,8 @@ class ButtonWidget:
                 return True
         return False
 
-    def draw_elements(self, draw_list: List) -> None:
+    def draw_elements(self, draw_list: List, batch=None) -> None:
+        target_batch = batch if batch is not None else self.batch
         col = self.accent_color if self.pressed else self.bg_color
         draw_list.append(
             shapes.Rectangle(
@@ -239,6 +241,6 @@ class ButtonWidget:
                 self.width,
                 self.height,
                 color=(*col, 255),
-                batch=self.batch,
+                batch=target_batch,
             )
         )
