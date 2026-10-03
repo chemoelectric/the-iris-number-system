@@ -8,11 +8,11 @@ Developed by **Barry Schwartz**.
 
 ## The Physical Model: Energy Density Clouds & Wave Refraction
 
-In the Unified Field Theory, all matter consists of localized concentrations of electromagnetic wave energy (matter knots). A galaxy is not an assemblage of Newtonian point masses moving through empty vacuum, but an extended, distributed cloud of energy density:
+In the Unified Field Theory, all matter consists of localized concentrations of electromagnetic wave energy (matter knots). A galaxy is not an assemblage of Newtonian point masses moving through void, but an extended, distributed cloud of energy density in the universal electromagnetic field:
 
 \[ \rho_E(\vec{r}) = \rho(\vec{r}) c^2 \]
 
-The presence of this localized energy density establishes a refractive index gradient in the vacuum lattice:
+The presence of this localized energy density establishes an inhomogeneous refractive index gradient across the electromagnetic field lattice:
 
 \[ n(\vec{r}) = 1 + \frac{2}{c^2} \Phi(\vec{r}) \]
 

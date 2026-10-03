@@ -2172,7 +2172,7 @@ accounting for convective conduction currents and displacement flux on the discr
 
 Gravity is not a fundamental force. It is wave refraction. Both radiation and matter are made of electromagnetic waves and are refracted.
 
-In Dorst’s Conformal Geometric Algebra, a localized concentration of field energy (a matter knot of mass \( M = E / c ^ 2 \)) alters the effective local conformal scale factor across the grid \( \mathcal { G } _ N \). This establishes an inhomogeneous vacuum refractive index:
+In Dorst’s Conformal Geometric Algebra, a localized concentration of field energy (a matter knot of mass \( M = E / c ^ 2 \)) alters the effective local conformal scale factor across the grid \( \mathcal { G } _ N \). This establishes an inhomogeneous refractive index across the universal electromagnetic field lattice:
 \[ n ( \mathbf { x } ) = 1 + \frac { 2 } { c ^ 2 } \Phi ( \mathbf { x } ) , \qquad \nabla ^ 2 \Phi ( \mathbf { x } ) = 4 \pi G \rho _ m ( \mathbf { x } ) \]
 When electromagnetic wave packets (radiation) or circulating wave vortices (matter knots) traverse this gradient, the phase speed of the wave fronts varies across their finite diameter:
 \[ v _ \text{phase} ( \mathbf { x } ) = \frac { c } { n ( \mathbf { x } ) } \approx c \left ( 1 - \frac { 2 } { c ^ 2 } \Phi ( \mathbf { x } ) \right ) \]

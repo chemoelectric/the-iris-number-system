@@ -2,7 +2,7 @@
 
 In the Unified Field Theory, all matter consists of localized concentrations of
 electromagnetic wave energy (matter knots). Galaxies are extended clouds of
-energy density that establish a refractive index gradient in the vacuum:
+energy density that establish an inhomogeneous refractive index gradient across the universal electromagnetic field lattice:
 
     n(r) = 1 + (2 / c^2) * Phi(r)
 
