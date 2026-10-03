@@ -1,4 +1,4 @@
-"""Interactive Dual-Window Pyglet application for galaxy collision refraction simulation."""
+"""Interactive Pyglet application for galaxy collision refraction simulation."""
 
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ def _make_line(
 
 
 class GalaxyCollisionApp:
-    """Manages the simulation and both windows (Simulation Viewport and Controls)."""
+    """Manages the simulation and unified window (Simulation Viewport + Controls Sidebar)."""
 
     def __init__(self) -> None:
         if pyglet is None:
@@ -57,28 +57,18 @@ class GalaxyCollisionApp:
         self.ctrl_width = 380
         self.ctrl_height = 800
 
-        # Create simulation window
-        self.sim_window = pyglet.window.Window(
-            width=self.sim_width,
-            height=self.sim_height,
+        # Total window dimensions (Unified Viewport + Sidebar)
+        self.window_width = self.sim_width + self.ctrl_width
+        self.window_height = self.sim_height
+        self.sidebar_x = self.sim_width
+
+        # Create unified window
+        self.window = pyglet.window.Window(
+            width=self.window_width,
+            height=self.window_height,
             caption="Galaxy Collision • Wave Refraction Simulation",
             resizable=False,
         )
-
-        # Create separate controls window
-        self.ctrl_window = pyglet.window.Window(
-            width=self.ctrl_width,
-            height=self.ctrl_height,
-            caption="Simulation Controls",
-            resizable=False,
-        )
-
-        # Position controls window neatly adjacent to simulation window
-        try:
-            sx, sy = self.sim_window.get_location()
-            self.ctrl_window.set_location(sx + self.sim_width + 16, sy)
-        except Exception:
-            pass
 
         # Simulation engine
         self.sim = GalaxyCollisionSimulation(
@@ -99,11 +89,11 @@ class GalaxyCollisionApp:
         self.show_contours = True
         self.show_trails = True
 
-        # Initialize simulation HUD inside sim_window's OpenGL context
-        self.sim_window.switch_to()
-        self.sim_hud_batch = pyglet.graphics.Batch()
+        # Persistent HUD and Controls batches in single OpenGL context
+        self.hud_batch = pyglet.graphics.Batch()
+        self.ctrl_batch = pyglet.graphics.Batch()
 
-        # Simulation HUD labels
+        # Simulation HUD labels (Viewport on left)
         self.title_label = pyglet.text.Label(
             "WAVE-REFRACTIVE GALAXY INTERACTION",
             font_name="Sans-Serif",
@@ -111,7 +101,7 @@ class GalaxyCollisionApp:
             x=20,
             y=self.sim_height - 25,
             color=(230, 240, 255, 255),
-            batch=self.sim_hud_batch,
+            batch=self.hud_batch,
         )
 
         self.status_label = pyglet.text.Label(
@@ -121,7 +111,7 @@ class GalaxyCollisionApp:
             x=20,
             y=self.sim_height - 48,
             color=(170, 190, 215, 255),
-            batch=self.sim_hud_batch,
+            batch=self.hud_batch,
         )
 
         self.help_label = pyglet.text.Label(
@@ -131,38 +121,31 @@ class GalaxyCollisionApp:
             x=20,
             y=16,
             color=(130, 140, 155, 255),
-            batch=self.sim_hud_batch,
+            batch=self.hud_batch,
         )
 
-        # Initialize controls inside ctrl_window's OpenGL context
-        self.ctrl_window.switch_to()
-        self.ctrl_batch = pyglet.graphics.Batch()
+        # Initialize controls in sidebar
         self.sliders: List[SliderWidget] = []
         self.buttons: List[ButtonWidget] = []
         self._init_controls_ui()
 
-        # Register event handlers for simulation window
-        self.sim_window.push_handlers(
-            on_draw=self.on_sim_draw,
+        # Register event handlers for unified window
+        self.window.push_handlers(
+            on_draw=self.on_draw,
             on_key_press=self.on_key_press,
-            on_close=self.on_app_close,
-        )
-
-        # Register event handlers for controls window
-        self.ctrl_window.push_handlers(
-            on_draw=self.on_ctrl_draw,
-            on_mouse_press=self.on_ctrl_mouse_press,
-            on_mouse_drag=self.on_ctrl_mouse_drag,
-            on_mouse_release=self.on_ctrl_mouse_release,
+            on_mouse_press=self.on_mouse_press,
+            on_mouse_drag=self.on_mouse_drag,
+            on_mouse_release=self.on_mouse_release,
             on_close=self.on_app_close,
         )
 
         pyglet.clock.schedule_interval(self.update, 1.0 / 60.0)
 
     def _init_controls_ui(self) -> None:
-        """Construct the slider controls and preset buttons in the controls window."""
+        """Construct the slider controls and preset buttons in the sidebar."""
         pad_x = 24.0
         width = self.ctrl_width - pad_x * 2.0
+        start_x = self.sidebar_x + pad_x
         cur_y = self.ctrl_height - 40.0
 
         # Header labels
@@ -170,7 +153,7 @@ class GalaxyCollisionApp:
             "REFRACTION SIMULATION CONTROLS",
             font_name="Sans-Serif",
             font_size=11,
-            x=pad_x,
+            x=start_x,
             y=cur_y,
             color=(240, 245, 255, 255),
             batch=self.ctrl_batch,
@@ -181,7 +164,7 @@ class GalaxyCollisionApp:
             "Energy Density Clouds & Tidal Refraction",
             font_name="Sans-Serif",
             font_size=8,
-            x=pad_x,
+            x=start_x,
             y=cur_y,
             color=(140, 165, 195, 255),
             batch=self.ctrl_batch,
@@ -205,7 +188,7 @@ class GalaxyCollisionApp:
         slider_spacing = 42.0
         for label, min_v, max_v, init_v, fmt, unit, cb in slider_configs:
             s = SliderWidget(
-                x=pad_x,
+                x=start_x,
                 y=cur_y,
                 width=width,
                 height=18.0,
@@ -226,7 +209,7 @@ class GalaxyCollisionApp:
         # Action Buttons
         btn_h = 28.0
         self.btn_reset = ButtonWidget(
-            x=pad_x,
+            x=start_x,
             y=cur_y,
             width=width,
             height=btn_h,
@@ -241,7 +224,7 @@ class GalaxyCollisionApp:
 
         half_w = (width - 8.0) * 0.5
         self.btn_pause = ButtonWidget(
-            x=pad_x,
+            x=start_x,
             y=cur_y,
             width=half_w,
             height=btn_h,
@@ -254,7 +237,7 @@ class GalaxyCollisionApp:
         self.buttons.append(self.btn_pause)
 
         self.btn_contours = ButtonWidget(
-            x=pad_x + half_w + 8.0,
+            x=start_x + half_w + 8.0,
             y=cur_y,
             width=half_w,
             height=btn_h,
@@ -272,7 +255,7 @@ class GalaxyCollisionApp:
             "INTERACTIVE ENCOUNTER PRESETS",
             font_name="Sans-Serif",
             font_size=9,
-            x=pad_x,
+            x=start_x,
             y=cur_y,
             color=(180, 200, 225, 255),
             batch=self.ctrl_batch,
@@ -289,7 +272,7 @@ class GalaxyCollisionApp:
         preset_btn_h = 24.0
         for p_label, p_cb in presets:
             btn = ButtonWidget(
-                x=pad_x,
+                x=start_x,
                 y=cur_y,
                 width=width,
                 height=preset_btn_h,
@@ -359,7 +342,6 @@ class GalaxyCollisionApp:
         t2: float,
         soft: float,
     ) -> None:
-        self.ctrl_window.switch_to()
         self.sliders[0].set_value(m1, trigger_callback=False)
         self.sliders[1].set_value(m2, trigger_callback=False)
         self.sliders[2].set_value(sep, trigger_callback=False)
@@ -415,23 +397,21 @@ class GalaxyCollisionApp:
         elif symbol == key.T:
             self.show_trails = not self.show_trails
 
-    def on_ctrl_mouse_press(self, x: float, y: float, button: int, modifiers: int) -> None:
-        self.ctrl_window.switch_to()
-        for s in self.sliders:
-            if s.on_mouse_press(x, y, button):
-                break
-        for b in self.buttons:
-            if b.on_mouse_press(x, y, button):
-                break
+    def on_mouse_press(self, x: float, y: float, button: int, modifiers: int) -> None:
+        if x >= self.sidebar_x:
+            for s in self.sliders:
+                if s.on_mouse_press(x, y, button):
+                    break
+            for b in self.buttons:
+                if b.on_mouse_press(x, y, button):
+                    break
 
-    def on_ctrl_mouse_drag(self, x: float, y: float, dx: float, dy: float, buttons: int, modifiers: int) -> None:
-        self.ctrl_window.switch_to()
+    def on_mouse_drag(self, x: float, y: float, dx: float, dy: float, buttons: int, modifiers: int) -> None:
         for s in self.sliders:
             if s.dragging:
                 s.on_mouse_drag(x, y)
 
-    def on_ctrl_mouse_release(self, x: float, y: float, button: int, modifiers: int) -> None:
-        self.ctrl_window.switch_to()
+    def on_mouse_release(self, x: float, y: float, button: int, modifiers: int) -> None:
         for s in self.sliders:
             s.on_mouse_release()
         for b in self.buttons:
@@ -439,11 +419,7 @@ class GalaxyCollisionApp:
 
     def on_app_close(self) -> None:
         try:
-            self.sim_window.close()
-        except Exception:
-            pass
-        try:
-            self.ctrl_window.close()
+            self.window.close()
         except Exception:
             pass
         pyglet.app.exit()
@@ -452,22 +428,20 @@ class GalaxyCollisionApp:
         dt = min(dt, 0.035)
         self.sim.step(dt)
 
-        # Update HUD text inside sim_window's OpenGL context
+        # Update HUD text
         dist = self.sim.distance_between_cores()
         v_rel = self.sim.relative_velocity()
         status_text = "PAUSED" if self.sim.paused else "RUNNING"
-        self.sim_window.switch_to()
         self.status_label.text = (
             f"T = {self.sim.time_elapsed:.2f} s | Separation: {dist:.0f} px | "
             f"V_rel: {v_rel:.1f} | Stars: {len(self.sim.stars)} | State: {status_text}"
         )
 
-    def on_sim_draw(self) -> None:
-        """Render the simulation viewport."""
-        self.sim_window.switch_to()
-        self.sim_window.clear()
+    def on_draw(self) -> None:
+        """Render the simulation viewport and sidebar controls."""
+        self.window.clear()
 
-        sim_frame_batch = pyglet.graphics.Batch()
+        frame_batch = pyglet.graphics.Batch()
         draw_items = []
 
         g1 = self.sim.g1
@@ -475,18 +449,17 @@ class GalaxyCollisionApp:
 
         # 1. Refraction equipotential contour rings
         if self.show_contours and g1 and g2:
-            # Equipotential rings centered on each galaxy core
             for r in [50, 95, 150, 220, 310, 420]:
                 draw_items.append(
                     shapes.Circle(
-                        g1.x, g1.y, r, color=(25, 45, 75, 24), batch=sim_frame_batch
+                        g1.x, g1.y, r, color=(25, 45, 75, 24), batch=frame_batch
                     )
                 )
                 draw_items.append(
                     shapes.Circle(
                         g2.x, g2.y, r * (g2.mass / g1.mass) ** 0.5,
                         color=(65, 45, 25, 24),
-                        batch=sim_frame_batch,
+                        batch=frame_batch,
                     )
                 )
 
@@ -497,7 +470,7 @@ class GalaxyCollisionApp:
                 p2 = g1.trail[i + 1]
                 alpha = int(140 * ((i + 1) / len(g1.trail)))
                 draw_items.append(
-                    _make_line(p1[0], p1[1], p2[0], p2[1], (100, 190, 255, alpha), sim_frame_batch, 2)
+                    _make_line(p1[0], p1[1], p2[0], p2[1], (100, 190, 255, alpha), frame_batch, 2)
                 )
 
         if g2 and len(g2.trail) > 1:
@@ -506,7 +479,7 @@ class GalaxyCollisionApp:
                 p2 = g2.trail[i + 1]
                 alpha = int(140 * ((i + 1) / len(g2.trail)))
                 draw_items.append(
-                    _make_line(p1[0], p1[1], p2[0], p2[1], (255, 180, 90, alpha), sim_frame_batch, 2)
+                    _make_line(p1[0], p1[1], p2[0], p2[1], (255, 180, 90, alpha), frame_batch, 2)
                 )
 
         # 3. Stars (Matter Knots) and their tidal stream trails
@@ -525,7 +498,7 @@ class GalaxyCollisionApp:
                         _make_line(
                             tp1[0], tp1[1], tp2[0], tp2[1],
                             (r_c, g_c, b_c, alpha),
-                            sim_frame_batch,
+                            frame_batch,
                             1,
                         )
                     )
@@ -537,72 +510,75 @@ class GalaxyCollisionApp:
                     star.y,
                     1.6,
                     color=(r_c, g_c, b_c, 240),
-                    batch=sim_frame_batch,
+                    batch=frame_batch,
                 )
             )
 
         # 4. Dense Galaxy Cores (Energy concentrations)
         if g1:
-            # Galaxy 1 (Cyan/Blue Core)
             draw_items.append(
-                shapes.Circle(g1.x, g1.y, g1.softening * 0.75, color=(35, 75, 130, 75), batch=sim_frame_batch)
+                shapes.Circle(g1.x, g1.y, g1.softening * 0.75, color=(35, 75, 130, 75), batch=frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g1.x, g1.y, 8.0, color=(140, 215, 255, 230), batch=sim_frame_batch)
+                shapes.Circle(g1.x, g1.y, 8.0, color=(140, 215, 255, 230), batch=frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g1.x, g1.y, 4.0, color=(255, 255, 255, 255), batch=sim_frame_batch)
+                shapes.Circle(g1.x, g1.y, 4.0, color=(255, 255, 255, 255), batch=frame_batch)
             )
 
         if g2:
-            # Galaxy 2 (Amber/Gold Core)
             draw_items.append(
-                shapes.Circle(g2.x, g2.y, g2.softening * 0.75, color=(130, 85, 35, 75), batch=sim_frame_batch)
+                shapes.Circle(g2.x, g2.y, g2.softening * 0.75, color=(130, 85, 35, 75), batch=frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g2.x, g2.y, 7.5, color=(255, 195, 100, 230), batch=sim_frame_batch)
+                shapes.Circle(g2.x, g2.y, 7.5, color=(255, 195, 100, 230), batch=frame_batch)
             )
             draw_items.append(
-                shapes.Circle(g2.x, g2.y, 3.5, color=(255, 255, 255, 255), batch=sim_frame_batch)
+                shapes.Circle(g2.x, g2.y, 3.5, color=(255, 255, 255, 255), batch=frame_batch)
             )
 
-        sim_frame_batch.draw()
-        self.sim_hud_batch.draw()
-
-    def on_ctrl_draw(self) -> None:
-        """Render the controls window with sliders and preset buttons."""
-        self.ctrl_window.switch_to()
-        self.ctrl_window.clear()
-        
-        ctrl_frame_batch = pyglet.graphics.Batch()
-        draw_items = []
-
-        # Background panel framing
+        # 5. Sidebar background panel
         draw_items.append(
             shapes.Rectangle(
-                0,
+                self.sidebar_x,
                 0,
                 self.ctrl_width,
                 self.ctrl_height,
                 color=(14, 18, 26, 255),
-                batch=ctrl_frame_batch,
+                batch=frame_batch,
             )
         )
 
-        # Draw sliders
+        # Vertical divider border between viewport and sidebar
+        draw_items.append(
+            _make_line(
+                self.sidebar_x,
+                0,
+                self.sidebar_x,
+                self.window_height,
+                (35, 45, 60, 255),
+                frame_batch,
+                2,
+            )
+        )
+
+        # 6. Controls interactive visual elements (sliders, buttons)
         for s in self.sliders:
-            s.draw_elements(draw_items, batch=ctrl_frame_batch)
+            s.draw_elements(draw_items, batch=frame_batch)
 
-        # Draw buttons
         for b in self.buttons:
-            b.draw_elements(draw_items, batch=ctrl_frame_batch)
+            b.draw_elements(draw_items, batch=frame_batch)
 
-        ctrl_frame_batch.draw()
+        # Draw dynamic frame geometry
+        frame_batch.draw()
+
+        # Draw persistent text batches (HUD and sidebar text)
+        self.hud_batch.draw()
         self.ctrl_batch.draw()
 
 
 def main() -> None:
-    """Launch the interactive dual-window galaxy collision simulator."""
+    """Launch the interactive galaxy collision simulator."""
     app = GalaxyCollisionApp()
     pyglet.app.run()
 

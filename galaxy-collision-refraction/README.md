@@ -37,19 +37,19 @@ When two spiral galaxies approach each other:
 
 ---
 
-## Dual-Window Architecture
+## Unified Application Architecture
 
-Per the simulation specification, the application runs across **two dedicated graphical windows**:
+The application runs in a unified, widescreen graphical window (`1400 x 800`) operating in a single, stable OpenGL context:
 
-1. **Simulation Viewport Window** (`1020 x 800`):
+1. **Simulation Viewport** (`1020 x 800` left pane):
    - Shows the two interacting galaxies, their luminous energy cores, rotating spiral disks, and trailing tidal streams.
    - Distinct galaxy coloring: Galaxy 1 is rendered in luminous cyan/ice-blue; Galaxy 2 in warm amber/gold.
    - Refractive equipotential contour rings illustrating the deformation of the refractive landscape as the galaxies approach.
    - Core trajectory history tracing the mutual dance and merger.
    - Real-time HUD showing elapsed time, core separation distance, relative velocity, and star count.
 
-2. **Controls Window** (`380 x 800`):
-   - A dedicated window opened automatically alongside the simulation viewport.
+2. **Controls Sidebar** (`380 x 800` right pane):
+   - Integrated cleanly alongside the simulation viewport.
    - **Interactive Sliders**:
      - **Galaxy 1 Mass (\( M_1 \))**: Relative energy density mass (0.20 to 2.50 \( M_0 \)).
      - **Galaxy 2 Mass (\( M_2 \))**: Relative energy density mass (0.10 to 2.50 \( M_0 \)).
