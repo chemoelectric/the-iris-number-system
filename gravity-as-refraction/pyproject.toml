@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Visualizing gravitation as wave refraction in the universal electromagnetic field"
 readme = "README.md"
 requires-python = ">=3.9"
-license = { text = "MIT" }
+license = "MIT"
 authors = [
     { name = "Barry Schwartz", email = "150643+chemoelectric@users.noreply.github.com" }
 ]
