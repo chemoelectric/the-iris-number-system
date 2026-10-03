@@ -120,7 +120,11 @@ enabling exact rational bounding of the proton-to-electron mass ratio to arbitra
 
 === Gravitation as Wave Refraction in the Unified Field
 
-Gravity is not a fundamental force. It is wave refraction. Both radiation and matter are made of electromagnetic waves and are refracted. In the Unified Field Theory, we do not appeal to “curved space-time” or “rubber sheet physics” but instead to the optics of waves. The universe is represented in the unified theory as an enormous electromagnetic field, defined by the Master Field Equation \( D F = J \). What we observe as matter consists of localized, tightly knotted topological regions (circulating wave packets) within this field. Near a dense knot, the concentration of field energy alters the speed of electromagnetic influences, introducing a differential delay across wave fronts and across the finite extent of circulating knots. Gravitation is the refraction of wave packets and circulating knots toward the region of higher field density, producing the familiar inverse-square acceleration.footnote:[Gravity is famously a far more feeble effect than direct electric and magnetic interactions. Indeed, it is not the fall due to gravity that hurts so much as the immense electrostatic repulsion encountered at the end of the fall.]
+In the Unified Field Theory, gravitation is not a fundamental force, nor is it “curved space-time.” We do not appeal to “rubber sheet physics” but instead to classical wave optics. The universe is represented in the unified theory as an enormous electromagnetic field, defined by the Master Field Equation \( D F = J \). What we observe as matter consists of densely knotted, very active regions within this field. Near a dense knot, the concentration of field energy alters the speed of electromagnetic activity, introducing a differential delay across wave fronts. Gravitation is the refraction of waves toward the region of higher field density, producing the familiar inverse-square acceleration.
+
+In short, _all gravitation is gravitational lensing_. _Radiation and matter alike are made of electromagnetic waves and are refracted towards massive bodies._
+
+Gravity turns out to be an intuitively explicable consequence of Maxwell’s theory.footnote:[Gravity is famously a far more feeble force than direct electric and magnetic interactions. Indeed, it is not the fall due to gravity that hurts so much as the immense electrostatic repulsion encountered at the end of the fall.]
 
 === Localized Knot Energy, Circulation Action, and Rejection of Quantum Black Boxes
 
