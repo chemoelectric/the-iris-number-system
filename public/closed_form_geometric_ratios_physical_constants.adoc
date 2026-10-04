@@ -142,7 +142,7 @@ Historical physics labeled this circulation action for elementary particles with
 
 The effective gravitational coupling \( G \) is derived directly by balancing the refractive wave-speed gradient against the source field energy \( E \). By conservation of energy, the integrated spectral partition across all wave modes of the localized field configuration is identically unity: the total field energy is strictly conserved and equal to the localized knot energy \( E \).
 
-Balancing the refractive wave flux through discrete aperture \( \delta_\omega \) directly against source energy \( E \) yields:
+Balancing the refractive wave flux through discrete grid spacing \( \delta_\omega \) directly against source energy \( E \) yields:
 \[ G = \frac{c^4 \delta_\omega^2}{4 \pi E} \]
 
 Because \( E = m c^2 \), this establishes the exact closed relationship directly in terms of localized field mass \( m \):
@@ -152,7 +152,7 @@ Alternatively, expressing the knot's field energy in terms of its internal circu
 \[ G = \frac{c^4 \, \delta_\omega^2}{4 \pi S_{\text{circ}} \, \omega} \]
 
 This derivation proves that “quantum physics” has nothing whatsoever to do with gravitation:
-1. Gravitational coupling \( G \) is expressed directly in terms of \( c^2 \), discrete aperture \( \delta_\omega \), and localized field mass \( m \) without any action constant.
+1. Gravitational coupling \( G \) is expressed directly in terms of \( c^2 \), discrete grid spacing \( \delta_\omega \), and localized field mass \( m \) without any action constant.
 2. The action scale \( S_{\text{circ}} \) (historically labeled \( \hbar \)) appears only when field mass-energy is decomposed into circulation frequency and vortex action, and it cancels out identically (\( S_{\text{circ}} \omega = E = m c^2 \)).
 3. Gravitation is entirely a classical wave-refractive consequence of the unified electromagnetic field governed by \( D F = J \).
 
