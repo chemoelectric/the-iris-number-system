@@ -1,11 +1,9 @@
 = Exact Geometric Derivations of the Physical Constants and the Discrete Ideal Gas
 Frédéric Blondin Custer
-:doctype: book
+:doctype: article
 :stem: latexmath
-:eqnums:
 :toc: left
 :toclevels: 3
-:sectnums:
 :chapter-label:
 :experimental:
 
@@ -15,8 +13,11 @@ Frédéric Blondin Custer
 This treatise provides a rigorous, step-by-step mathematical derivation of the new closed-form expressions for the fundamental physical constants and the discrete equation of state for the Ideal Gas. Formulated strictly within the Counting-Iris Number System, Geometric Algebra \( Cl(4,1,1) \), and discrete resolution grids \( \mathcal{G}_N \), every derivation proceeds from first principles without skipping intermediate algebraic or geometric steps. We establish:
 
 1. _The Fine-Structure Constant \( \alpha \)_ as the exact geometric aspect-ratio integral of a localized toroidal vortex in Geometric Algebra \( Cl(4,1,1) \).
+
 2. _The Proton-to-Electron Mass Ratio \( m _ { p } / m _ { e } \)_ as the conformal \( 5 \)-sphere volume integral with discrete lattice boundary reaction.
+
 3. _Newton's Gravitational Coupling \( G \)_ derived directly from classical wave refraction in the universal electromagnetic field via local energy conservation and discrete grid spacing \( \delta _ { \omega } \), completely free of quantum postulates or ad hoc parameters.
+
 4. _The Discrete Ideal Gas and Thermodynamic Constants \( k _ { B }, R \)_ deduced from discrete momentum flux conservation and direct contact action causality of finite m-resolution entities, without continuum assumptions.
 
 Every algebraic factorization, trigonometric substitution, coordinate transformation, and boundary flux evaluation is displayed in full, unbroken sequence.
@@ -132,7 +133,7 @@ Under Landen's transformation, the integration over the poloidal circulation mod
 \]
 where \( K(k _ { 0 }) \) is defined by its pristine power series:
 \[
-K(k_0) = \frac{\pi}{2} \sum_{n=0} ^ { \infty } \left[ \frac{(2n)!}{2 ^ { 2n } (n!) ^ { 2 }} \right] ^ { 2 } k_0 ^ { 2n } = \frac{\pi}{2} \left[ 1 + \left(\frac{1}{2}\right) ^ { 2 } k_0 ^ { 2 } + \left(\frac{1 \cdot 3}{2 \cdot 4}\right) ^ { 2 } k_0 ^ { 4 } + \left(\frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6}\right) ^ { 2 } k_0 ^ { 6 } + \dots \right]
+K(k_0) = \frac{\pi}{2} \sum _ {n=0} ^ { \infty } \left[ \frac{(2n)!}{2 ^ { 2n } (n!) ^ { 2 }} \right] ^ { 2 } k_0 ^ { 2n } = \frac{\pi}{2} \left[ 1 + \left(\frac{1}{2}\right) ^ { 2 } k_0 ^ { 2 } + \left(\frac{1 \cdot 3}{2 \cdot 4}\right) ^ { 2 } k_0 ^ { 4 } + \left(\frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6}\right) ^ { 2 } k_0 ^ { 6 } + \dots \right]
 \]
 
 *Step 3: Direct Evaluation of the Series*
@@ -186,11 +187,11 @@ For the 5-dimensional unit sphere (\( n = 5 \), \( R = 1 \)):
 \]
 Substitute this gamma function value into the volume formula:
 \[
-V_5(1) = \frac{\pi ^ { 5/2 }}{\frac{15}{8} \sqrt{\pi}} = \frac{8}{15} \frac{\pi ^ { 5/2 }}{\sqrt{\pi}} = \frac{8}{15} \pi ^ { 2 }
+V _ 5(1) = \frac{\pi ^ { 5/2 }}{\frac{15}{8} \sqrt{\pi}} = \frac{8}{15} \frac{\pi ^ { 5/2 }}{\sqrt{\pi}} = \frac{8}{15} \pi ^ { 2 }
 \]
 The full angular volume (surface area of the unit sphere \( \mathbb{S} ^  { 5 } \)) is:
 \[
-\Omega _ { 5 } = \frac{d V _ { 6 }}{dR}\Bigg|_{R=1} \quad \text{or} \quad S _ { 5 } = \frac{2 \pi ^  { 6/2 }}{\Gamma(3)} = \frac{2 \pi ^  { 3 }}{2!} = \pi ^  { 3 }
+\Omega _ { 5 } = \frac{d V _ { 6 }}{dR}\Bigg| _ {R=1} \quad \text{or} \quad S _ { 5 } = \frac{2 \pi ^  { 6/2 }}{\Gamma(3)} = \frac{2 \pi ^  { 3 }}{2!} = \pi ^  { 3 }
 \]
 The conformal configuration space of the three coupled spatial axes in \( Cl(4,1,1) \) spans the exterior product space whose total geometric phase volume is:
 \[
@@ -218,7 +219,7 @@ For \( x, y \in (0, 1) \), we have \( 0 < x y < 1 \). The term \( \frac{1}{1 - x
 
 Because the series consists of non-negative measurable functions, by Tonelli's theorem we interchange integration and summation:
 \[
-I_{\text{react}} = \sum_{k=0} ^ { \infty } \int_0 ^ { 1 } x ^ { k } \, dx \int_0 ^ { 1 } y ^ { k } \, dy
+I _ {\text{react}} = \sum _ {k=0} ^ { \infty } \int_0 ^ { 1 } x ^ { k } \, dx \int_0 ^ { 1 } y ^ { k } \, dy
 \]
 Evaluate the single definite integral:
 \[
@@ -230,11 +231,11 @@ Likewise:
 \]
 Substitute these values back into the double sum:
 \[
-I_{\text{react}} = \sum_{k=0} ^ { \infty } \left( \frac{1}{k+1} \right) \left( \frac{1}{k+1} \right) = \sum_{k=0} ^ { \infty } \frac{1}{(k+1) ^ { 2 }}
+I _ {\text{react}} = \sum _ {k=0} ^ { \infty } \left( \frac{1}{k+1} \right) \left( \frac{1}{k+1} \right) = \sum _ {k=0} ^ { \infty } \frac{1}{(k+1) ^ { 2 }}
 \]
 Shift the index of summation by setting \( n = k + 1 \):
 \[
-I_{\text{react}} = \sum_{n=1} ^ { \infty } \frac{1}{n ^ { 2 }} = \zeta(2)
+I _ {\text{react}} = \sum _ {n=1} ^ { \infty } \frac{1}{n ^ { 2 }} = \zeta(2)
 \]
 Euler's Basel problem identity establishes:
 \[
@@ -242,7 +243,7 @@ Euler's Basel problem identity establishes:
 \]
 Therefore, the double integral evaluates to:
 \[
-I_{\text{react}} = \frac{\pi ^ { 2 }}{6}
+I _ {\text{react}} = \frac{\pi ^ { 2 }}{6}
 \]
 
 *Step 3: Exact Lattice Boundary Coupling*
@@ -296,7 +297,7 @@ As a self-sustaining vortex, the knot has an internal circulation frequency \( \
 \[
 S_{\text{circ}} = \frac{E}{\omega} = \frac{m c ^ { 2 }}{\omega}
 \]
-Historical physics labeled this classical circulation action for elementary entities with the symbol \( \hbar \) and treated it as an occult "quantum" black box. In the Counting-Iris framework, \( S _ { \text{circ }} \) is simply the deterministic ratio of field energy to circulation frequency.
+This classical circulation action for elementary entities is equal to \( \hbar \), which conventional physics treats it as an occult "quantum" black box. In the Counting-Iris framework, \( S _ { \text{circ }} = \hbar \) is _by definition_ the deterministic ratio of field energy to circulation frequency.
 
 === 3.2. Refractive Wave Speed Gradient in the Electromagnetic Field
 
@@ -599,31 +600,31 @@ This unbroken derivation establishes the true physical nature of \( k _ { B } \)
 
 '''
 
-== 5. Complete Master Summary of the Geometric Constants
+== 5. A Summary of Physical Constants
 
-[cols="2,3,3,2", options="header"]
+[cols="2,4,3,1", options="header"]
 |===
-| Constant | Mathematical Expression | Physical Interpretation | Status
+| Constant | Mathematical&#12;Expression | Physical&#12;Interpretation | Status
 
-| \( \pi \)
-| \( \displaystyle \int _ { -1 } ^  { 1 } \frac{dx}{\sqrt{1 - x ^  { 2 }}} \)
-| 1-dimensional flat space curvature ratio
-| Classical Invariant
+// | \( \pi \)
+// | \( \displaystyle \int _ { -1 } ^  { 1 } \frac{dx}{\sqrt{1 - x ^  { 2 }}} \)
+// | 1-dimensional flat space curvature ratio
+// | Classical
 
 | \( \alpha \)
-| \( \displaystyle \frac{1}{2 \pi} \int _ { 0 } ^  { \pi/2 } \frac{d\vartheta}{\sqrt{1 - k _ { 0 } ^  { 2 } \sin ^  { 2\vartheta }}} = \frac{1}{4} \sum _ { n=0 } ^  { \infty } \left[\frac{(2n)!}{2 ^  { 2n }(n!) ^  { 2 }}\right] ^  { 2 } k _ { 0 } ^  { 2n } \)
+| \( \displaystyle \hbox{\vrule width0pt height1.5\baselineskip depth1.5\baselineskip}\frac{1}{2 \pi} \int _ { 0 } ^  { \pi/2 } \frac{d\vartheta}{\sqrt{1 - k _ { 0 } ^  { 2 } \sin ^  { 2\vartheta }}} \newline\strut\quad = \hbox{\vrule width0pt height0\baselineskip depth1.2\baselineskip}\frac{1}{4} \sum _ { n=0 } ^  { \infty } \left[\frac{(2n)!}{2 ^  { 2n }(n!) ^  { 2 }}\right] ^  { 2 } k _ { 0 } ^  { 2n } \)
 | Aspect-ratio integral of toroidal vortex in \( Cl(4,1,1) \)
-| _[smallcaps]#new formula#_
+| _[smallcaps]#new#_
 
 | \( \displaystyle \frac{m _ { p }}{m _ { e }} \)
-| \( \displaystyle 6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{4 \pi ^  { 2 }} \int _ { 0 } ^  { 1 } \int _ { 0 } ^  { 1 } \frac{dx \, dy}{1 - x y} \right) = 6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{24} \right) \)
+| \( \displaystyle \hbox{\vrule width0pt height1.5\baselineskip depth1.2\baselineskip}6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{4 \pi ^  { 2 }} \int _ { 0 } ^  { 1 } \int _ { 0 } ^  { 1 } \frac{dx \, dy}{1 - x y} \right) \newline\strut\quad = \hbox{\vrule width0pt height0\baselineskip depth1.2\baselineskip}6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{24} \right) \)
 | Conformal \( 5 \)-sphere volume with lattice reaction
-| _[smallcaps]#new formula#_
+| _[smallcaps]#new#_
 
 | \( G \)
 | \( \displaystyle \frac{c ^  { 4 } \delta _ { \omega } ^  { 2 }}{4 \pi E} = \frac{c ^  { 2 } \delta _ { \omega } ^  { 2 }}{4 \pi m} \)
 | Wave refraction coupling via discrete grid spacing \( \delta _ { \omega } \)
-| _[smallcaps]#new formula#_
+| _[smallcaps]#new#_
 
 | \( Z _ { 0 } \)
 | \( \displaystyle 2 \alpha R _ { K } = \frac{2 \alpha h}{e ^  { 2 }} \)
@@ -643,12 +644,12 @@ This unbroken derivation establishes the true physical nature of \( k _ { B } \)
 | \( k _ { B } \)
 | \( \displaystyle \frac{2 \langle E _ { k } \rangle}{3 T} \)
 | Energy-to-kelvin conversion factor on discrete grid \( \mathcal{G}_N \)
-| SI Standard
+| SI
 
 | \( R \)
 | \( \displaystyle N _ { A } k _ { B } \)
 | Molar momentum flux scale factor
-| SI Standard
+| SI
 |===
 
-All constants are now completely grounded in direct geometric ratios, discrete resolution grids \( \mathcal{G}_N \), and classical direct contact action causality, free of continuum approximations and quantum mysticism.
+The constants are now grounded in direct geometric ratios, discrete resolution grids \( \mathcal{G}_N \), and classical direct contact action causality, free of continuum approximations and quantum mysticism.
