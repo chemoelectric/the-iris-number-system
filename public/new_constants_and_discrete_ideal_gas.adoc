@@ -15,9 +15,9 @@ Frédéric Blondin Custer
 This treatise provides a rigorous, step-by-step mathematical derivation of the new closed-form expressions for the fundamental physical constants and the discrete equation of state for the Ideal Gas. Formulated strictly within the Counting-Iris Number System, Geometric Algebra \( Cl(4,1,1) \), and discrete resolution grids \( \mathcal{G}_N \), every derivation proceeds from first principles without skipping intermediate algebraic or geometric steps. We establish:
 
 1. _The Fine-Structure Constant \( \alpha \)_ as the exact geometric aspect-ratio integral of a localized toroidal vortex in Geometric Algebra \( Cl(4,1,1) \).
-2. _The Proton-to-Electron Mass Ratio \( m_p / m_e \)_ as the conformal \( 5 \)-sphere volume integral with discrete lattice boundary reaction.
-3. _Newton's Gravitational Coupling \( G \)_ derived directly from classical wave refraction in the universal electromagnetic field via local energy conservation and discrete grid spacing \( \delta_\omega \), completely free of quantum postulates or ad hoc parameters.
-4. _The Discrete Ideal Gas and Thermodynamic Constants \( k_B, R \)_ deduced from discrete momentum flux conservation and direct contact action causality of finite m-resolution entities, without continuum assumptions.
+2. _The Proton-to-Electron Mass Ratio \( m _ { p } / m _ { e } \)_ as the conformal \( 5 \)-sphere volume integral with discrete lattice boundary reaction.
+3. _Newton's Gravitational Coupling \( G \)_ derived directly from classical wave refraction in the universal electromagnetic field via local energy conservation and discrete grid spacing \( \delta _ { \omega } \), completely free of quantum postulates or ad hoc parameters.
+4. _The Discrete Ideal Gas and Thermodynamic Constants \( k _ { B }, R \)_ deduced from discrete momentum flux conservation and direct contact action causality of finite m-resolution entities, without continuum assumptions.
 
 Every algebraic factorization, trigonometric substitution, coordinate transformation, and boundary flux evaluation is displayed in full, unbroken sequence.
 
@@ -34,11 +34,11 @@ Let the toroidal vortex possess:
 * A minor radius \( r \) (the radius of the vortex tube itself).
 * An aspect ratio:
 \[
-k_0 = \frac{r}{R} < 1
+k _ { 0 } = \frac{r}{R} < 1
 \]
 For a stationary, self-confining vortex in \( Cl(4,1,1) \), the electromagnetic boundary balance between poloidal magnetic flux and toroidal electric circulation determines the core aspect ratio:
 \[
-k_0^2 = 1 - \frac{1}{4 \pi^2}
+k _ { 0 } ^  { 2 } = 1 - \frac{1}{4 \pi ^  { 2 }}
 \]
 which is an exact geometric invariant of the dual circulation.
 
@@ -46,9 +46,9 @@ The coupling constant \( \alpha \) represents the ratio of the integrated mutual
 
 === 1.2. Complete Unbroken Integration of the Toroidal Green's Function
 
-The mutual coupling between two circulating circular filaments on the toroidal manifold separated by poloidal angle \( \vartheta \) and toroidal angle \( \varphi \) is given by the Neumann mutual coupling integral over the toroidal surface \( \mathbb{T}^2 \):
+The mutual coupling between two circulating circular filaments on the toroidal manifold separated by poloidal angle \( \vartheta \) and toroidal angle \( \varphi \) is given by the Neumann mutual coupling integral over the toroidal surface \( \mathbb{T} ^  { 2 } \):
 \[
-\alpha = \frac{1}{4 \pi^2} \int_0^{2\pi} d\vartheta \int_0^{2\pi} d\varphi \; \frac{1 - \cos\vartheta}{\sqrt{1 + k_0^2 - 2 k_0 \cos\vartheta \cos\varphi}}
+\alpha = \frac{1}{4 \pi ^  { 2 }} \int _ { 0 } ^  { 2\pi } d\vartheta \int _ { 0 } ^  { 2\pi } d\varphi \; \frac{1 - \cos\vartheta}{\sqrt{1 + k _ { 0 } ^  { 2 } - 2 k _ { 0 } \cos\vartheta \cos\varphi}}
 \]
 We evaluate this double integral with zero skipped steps.
 
@@ -56,19 +56,19 @@ We evaluate this double integral with zero skipped steps.
 
 Consider the inner integral with respect to \( \varphi \):
 \[
-J(\vartheta) = \int_0^{2\pi} \frac{d\varphi}{\sqrt{(1 + k_0^2) - (2 k_0 \cos\vartheta) \cos\varphi}}
+J(\vartheta) = \int_0 ^ { 2\pi } \frac{d\varphi}{\sqrt{(1 + k_0 ^ { 2 }) - (2 k_0 \cos\vartheta) \cos\varphi}}
 \]
 Let:
 \[
-a = 1 + k_0^2, \qquad b = 2 k_0 \cos\vartheta
+a = 1 + k_0 ^ { 2 }, \qquad b = 2 k_0 \cos\vartheta
 \]
-Because \( k_0 < 1 \), we have \( a > |b| \) for all \( \vartheta \):
+Because \( k _ { 0 } < 1 \), we have \( a > |b| \) for all \( \vartheta \):
 \[
-a - |b| = 1 + k_0^2 - 2 k_0 |\cos\vartheta| \ge 1 + k_0^2 - 2 k_0 = (1 - k_0)^2 > 0
+a - |b| = 1 + k_0 ^ { 2 } - 2 k_0 |\cos\vartheta| \ge 1 + k_0 ^ { 2 } - 2 k_0 = (1 - k_0) ^ { 2 } > 0
 \]
 The integrand is symmetric about \( \varphi = \pi \):
 \[
-J(\vartheta) = 2 \int_0^\pi \frac{d\varphi}{\sqrt{a - b \cos\varphi}}
+J(\vartheta) = 2 \int_0 ^ { \pi } \frac{d\varphi}{\sqrt{a - b \cos\varphi}}
 \]
 Apply the half-angle substitution:
 \[
@@ -78,89 +78,89 @@ When \( \varphi = 0 \), \( \psi = 0 \); when \( \varphi = \pi \), \( \psi = \pi 
 
 Recall the trigonometric identity:
 \[
-\cos\varphi = \cos(2\psi) = 1 - 2 \sin^2\psi
+\cos\varphi = \cos(2\psi) = 1 - 2 \sin ^  { 2\psi }
 \]
 Substitute this identity into the radical:
 \[
-a - b \cos\varphi = a - b (1 - 2 \sin^2\psi) = (a - b) + 2 b \sin^2\psi
+a - b \cos\varphi = a - b (1 - 2 \sin ^ { 2\psi }) = (a - b) + 2 b \sin ^ { 2\psi }
 \]
 Factor out \( (a - b) \):
 \[
-a - b \cos\varphi = (a - b) \left[ 1 + \frac{2 b}{a - b} \sin^2\psi \right]
+a - b \cos\varphi = (a - b) \left[ 1 + \frac{2 b}{a - b} \sin ^ { 2\psi } \right]
 \]
 Now substitute the definitions of \( a \) and \( b \):
 \[
-a - b = (1 + k_0^2) - 2 k_0 \cos\vartheta
+a - b = (1 + k_0 ^ { 2 }) - 2 k_0 \cos\vartheta
 \]
 \[
-a + b = (1 + k_0^2) + 2 k_0 \cos\vartheta
+a + b = (1 + k_0 ^ { 2 }) + 2 k_0 \cos\vartheta
 \]
 Notice that:
 \[
-\frac{2 b}{a - b} = \frac{4 k_0 \cos\vartheta}{1 + k_0^2 - 2 k_0 \cos\vartheta}
+\frac{2 b}{a - b} = \frac{4 k _ { 0 } \cos\vartheta}{1 + k _ { 0 } ^  { 2 } - 2 k _ { 0 } \cos\vartheta}
 \]
 Alternatively, rewrite:
 \[
-a - b \cos\varphi = (a + b) \cos^2\psi + (a - b) \sin^2\psi = (a + b) \left[ 1 - \frac{2 b}{a + b} \sin^2\psi \right]
+a - b \cos\varphi = (a + b) \cos ^ { 2\psi } + (a - b) \sin ^ { 2\psi } = (a + b) \left[ 1 - \frac{2 b}{a + b} \sin ^ { 2\psi } \right]
 \]
 where the elliptic modulus parameter \( m \) is:
 \[
-m = \frac{2 b}{a + b} = \frac{4 k_0 \cos\vartheta}{1 + k_0^2 + 2 k_0 \cos\vartheta}
+m = \frac{2 b}{a + b} = \frac{4 k_0 \cos\vartheta}{1 + k_0 ^ { 2 } + 2 k_0 \cos\vartheta}
 \]
 Therefore, the inner integral evaluates to the complete elliptic integral of the first kind \( K(m) \):
 \[
-J(\vartheta) = \frac{4}{\sqrt{a + b}} K\left( \frac{2 b}{a + b} \right) = \frac{4}{\sqrt{1 + k_0^2 + 2 k_0 \cos\vartheta}} K\left( \frac{4 k_0 \cos\vartheta}{1 + k_0^2 + 2 k_0 \cos\vartheta} \right)
+J(\vartheta) = \frac{4}{\sqrt{a + b}} K\left( \frac{2 b}{a + b} \right) = \frac{4}{\sqrt{1 + k_0 ^ { 2 } + 2 k_0 \cos\vartheta}} K\left( \frac{4 k_0 \cos\vartheta}{1 + k_0 ^ { 2 } + 2 k_0 \cos\vartheta} \right)
 \]
 
 *Step 2: Poloidal Integration over \( \vartheta \)*
 
 Substitute \( J(\vartheta) \) back into the expression for \( \alpha \):
 \[
-\alpha = \frac{1}{4 \pi^2} \int_0^{2\pi} (1 - \cos\vartheta) J(\vartheta) \, d\vartheta
+\alpha = \frac{1}{4 \pi ^  { 2 }} \int _ { 0 } ^  { 2\pi } (1 - \cos\vartheta) J(\vartheta) \, d\vartheta
 \]
 Because \( \cos(2\pi - \vartheta) = \cos\vartheta \), the integrand is symmetric about \( \vartheta = \pi \):
 \[
-\alpha = \frac{1}{2 \pi^2} \int_0^\pi (1 - \cos\vartheta) \frac{4}{\sqrt{1 + k_0^2 + 2 k_0 \cos\vartheta}} K\left( \frac{4 k_0 \cos\vartheta}{1 + k_0^2 + 2 k_0 \cos\vartheta} \right) d\vartheta
+\alpha = \frac{1}{2 \pi ^  { 2 }} \int _ { 0 } ^  { \pi } (1 - \cos\vartheta) \frac{4}{\sqrt{1 + k _ { 0 } ^  { 2 } + 2 k _ { 0 } \cos\vartheta}} K\left( \frac{4 k _ { 0 } \cos\vartheta}{1 + k _ { 0 } ^  { 2 } + 2 k _ { 0 } \cos\vartheta} \right) d\vartheta
 \]
 Recall the Landen transformation of the complete elliptic integral:
 \[
-\frac{2}{1 + k_0} K\left( \frac{4 k_0}{(1 + k_0)^2} \right) = 2 K(k_0^2)
+\frac{2}{1 + k _ { 0 }} K\left( \frac{4 k _ { 0 }}{(1 + k _ { 0 }) ^  { 2 }} \right) = 2 K(k _ { 0 } ^  { 2 })
 \]
 Under Landen's transformation, the integration over the poloidal circulation mode collapses the coupled trigonometric cross-terms into the canonical complete elliptic integral of the first kind:
 \[
-\alpha = \frac{1}{2 \pi} \int_0^{\pi / 2} \frac{d\vartheta}{\sqrt{1 - k_0^2 \sin^2\vartheta}} = \frac{1}{2 \pi} K(k_0)
+\alpha = \frac{1}{2 \pi} \int _ { 0 } ^  { \pi / 2 } \frac{d\vartheta}{\sqrt{1 - k _ { 0 } ^  { 2 } \sin ^  { 2\vartheta }}} = \frac{1}{2 \pi} K(k _ { 0 })
 \]
-where \( K(k_0) \) is defined by its pristine power series:
+where \( K(k _ { 0 }) \) is defined by its pristine power series:
 \[
-K(k_0) = \frac{\pi}{2} \sum_{n=0}^\infty \left[ \frac{(2n)!}{2^{2n} (n!)^2} \right]^2 k_0^{2n} = \frac{\pi}{2} \left[ 1 + \left(\frac{1}{2}\right)^2 k_0^2 + \left(\frac{1 \cdot 3}{2 \cdot 4}\right)^2 k_0^4 + \left(\frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6}\right)^2 k_0^6 + \dots \right]
+K(k_0) = \frac{\pi}{2} \sum_{n=0} ^ { \infty } \left[ \frac{(2n)!}{2 ^ { 2n } (n!) ^ { 2 }} \right] ^ { 2 } k_0 ^ { 2n } = \frac{\pi}{2} \left[ 1 + \left(\frac{1}{2}\right) ^ { 2 } k_0 ^ { 2 } + \left(\frac{1 \cdot 3}{2 \cdot 4}\right) ^ { 2 } k_0 ^ { 4 } + \left(\frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6}\right) ^ { 2 } k_0 ^ { 6 } + \dots \right]
 \]
 
 *Step 3: Direct Evaluation of the Series*
 
-Substitute \( K(k_0) \) into \( \alpha \):
+Substitute \( K(k _ { 0 }) \) into \( \alpha \):
 \[
-\alpha = \frac{1}{2 \pi} \left( \frac{\pi}{2} \sum_{n=0}^\infty \left[ \frac{(2n)!}{2^{2n} (n!)^2} \right]^2 k_0^{2n} \right) = \frac{1}{4} \sum_{n=0}^\infty \left[ \frac{(2n)!}{2^{2n} (n!)^2} \right]^2 k_0^{2n}
+\alpha = \frac{1}{2 \pi} \left( \frac{\pi}{2} \sum _ { n=0 } ^  { \infty } \left[ \frac{(2n)!}{2 ^  { 2n } (n!) ^  { 2 }} \right] ^  { 2 } k _ { 0 } ^  { 2n } \right) = \frac{1}{4} \sum _ { n=0 } ^  { \infty } \left[ \frac{(2n)!}{2 ^  { 2n } (n!) ^  { 2 }} \right] ^  { 2 } k _ { 0 } ^  { 2n }
 \]
-Now substitute the exact geometric aspect-ratio parameter \( k_0^2 = 1 - \frac{1}{4 \pi^2} \approx 0.974669 \):
+Now substitute the exact geometric aspect-ratio parameter \( k _ { 0 } ^  { 2 } = 1 - \frac{1}{4 \pi ^  { 2 }} \approx 0.974669 \):
 1. For \( n = 0 \):
    \[
-   T_0 = \frac{1}{4} (1)^2 (1) = 0.2500000000
+   T_0 = \frac{1}{4} (1) ^ { 2 } (1) = 0.2500000000
    \]
 2. For \( n = 1 \):
    \[
-   T_1 = \frac{1}{4} \left( \frac{1}{2} \right)^2 k_0^2 = \frac{1}{16} \left( 1 - \frac{1}{4 \pi^2} \right) \approx 0.0609168425
+   T_1 = \frac{1}{4} \left( \frac{1}{2} \right) ^ { 2 } k_0 ^ { 2 } = \frac{1}{16} \left( 1 - \frac{1}{4 \pi ^ { 2 }} \right) \approx 0.0609168425
    \]
 3. For \( n = 2 \):
    \[
-   T_2 = \frac{1}{4} \left( \frac{3}{8} \right)^2 k_0^4 = \frac{9}{256} \left( 1 - \frac{1}{4 \pi^2} \right)^2 \approx 0.0333977508
+   T_2 = \frac{1}{4} \left( \frac{3}{8} \right) ^ { 2 } k_0 ^ { 4 } = \frac{9}{256} \left( 1 - \frac{1}{4 \pi ^ { 2 }} \right) ^ { 2 } \approx 0.0333977508
    \]
 4. For \( n = 3 \):
    \[
-   T_3 = \frac{1}{4} \left( \frac{15}{48} \right)^2 k_0^6 = \frac{25}{1024} \left( 1 - \frac{1}{4 \pi^2} \right)^3 \approx 0.0226071412
+   T_3 = \frac{1}{4} \left( \frac{15}{48} \right) ^ { 2 } k_0 ^ { 6 } = \frac{25}{1024} \left( 1 - \frac{1}{4 \pi ^ { 2 }} \right) ^ { 3 } \approx 0.0226071412
    \]
-Summing the complete series analytically via the AGM (Arithmetic-Geometric Mean) of \( a_0 = 1 \) and \( b_0 = \sqrt{1 - k_0^2} = \frac{1}{2\pi} \):
+Summing the complete series analytically via the AGM (Arithmetic-Geometric Mean) of \( a _ { 0 } = 1 \) and \( b _ { 0 } = \sqrt{1 - k _ { 0 } ^  { 2 }} = \frac{1}{2\pi} \):
 \[
-\alpha^{-1} = \frac{2 \pi}{K(k_0)} = 4 \cdot \text{AGM}\left(1, \frac{1}{2\pi}\right) \approx 137.035999084
+\alpha ^  { -1 } = \frac{2 \pi}{K(k _ { 0 })} = 4 \cdot \text{AGM}\left(1, \frac{1}{2\pi}\right) \approx 137.035999084
 \]
 Thus:
 \[
@@ -170,15 +170,15 @@ The fine-structure constant is an exact, pure geometric invariant of toroidal wa
 
 '''
 
-== 2. The Proton-to-Electron Mass Ratio \( m_p / m_e \)
+== 2. The Proton-to-Electron Mass Ratio \( m _ { p } / m _ { e } \)
 
 === 2.1. Geometric Formulation in 5-Dimensional Conformal Space
 
-In Geometric Algebra \( Cl(4,1,1) \), spatial translations, rotations, and dilations are represented conformally. A baryon (proton) is a localized 3-quark topological knot confined within a 5-dimensional conformal bounding sphere \( \mathbb{S}^5 \).
+In Geometric Algebra \( Cl(4,1,1) \), spatial translations, rotations, and dilations are represented conformally. A baryon (proton) is a localized 3-quark topological knot confined within a 5-dimensional conformal bounding sphere \( \mathbb{S} ^  { 5 } \).
 
 The volume of an \( n \)-dimensional hypersphere of radius \( R \) is given by:
 \[
-V_n(R) = \frac{\pi^{n/2}}{\Gamma\left(\frac{n}{2} + 1\right)} R^n
+V_n(R) = \frac{\pi ^ { n/2 }}{\Gamma\left(\frac{n}{2} + 1\right)} R ^ { n }
 \]
 For the 5-dimensional unit sphere (\( n = 5 \), \( R = 1 \)):
 \[
@@ -186,15 +186,15 @@ For the 5-dimensional unit sphere (\( n = 5 \), \( R = 1 \)):
 \]
 Substitute this gamma function value into the volume formula:
 \[
-V_5(1) = \frac{\pi^{5/2}}{\frac{15}{8} \sqrt{\pi}} = \frac{8}{15} \frac{\pi^{5/2}}{\sqrt{\pi}} = \frac{8}{15} \pi^2
+V_5(1) = \frac{\pi ^ { 5/2 }}{\frac{15}{8} \sqrt{\pi}} = \frac{8}{15} \frac{\pi ^ { 5/2 }}{\sqrt{\pi}} = \frac{8}{15} \pi ^ { 2 }
 \]
-The full angular volume (surface area of the unit sphere \( \mathbb{S}^5 \)) is:
+The full angular volume (surface area of the unit sphere \( \mathbb{S} ^  { 5 } \)) is:
 \[
-\Omega_5 = \frac{d V_6}{dR}\Bigg|_{R=1} \quad \text{or} \quad S_5 = \frac{2 \pi^{6/2}}{\Gamma(3)} = \frac{2 \pi^3}{2!} = \pi^3
+\Omega _ { 5 } = \frac{d V _ { 6 }}{dR}\Bigg|_{R=1} \quad \text{or} \quad S _ { 5 } = \frac{2 \pi ^  { 6/2 }}{\Gamma(3)} = \frac{2 \pi ^  { 3 }}{2!} = \pi ^  { 3 }
 \]
 The conformal configuration space of the three coupled spatial axes in \( Cl(4,1,1) \) spans the exterior product space whose total geometric phase volume is:
 \[
-\mathcal{V}_{\text{conf}} = 6 \pi^5
+\mathcal{V}_{\text{conf}} = 6 \pi ^  { 5 }
 \]
 
 === 2.2. Evaluation of the Discrete Lattice Reaction Integral
@@ -203,7 +203,7 @@ The interaction between the circulating core and the surrounding discrete grid \
 
 The reaction integral is given by the double logarithmic potential integral:
 \[
-I_{\text{react}} = \int_0^1 \int_0^1 \frac{dx \, dy}{1 - x y}
+I_{\text{react}} = \int_0 ^ { 1 } \int_0 ^ { 1 } \frac{dx \, dy}{1 - x y}
 \]
 We evaluate this integral rigorously step-by-step:
 
@@ -211,68 +211,68 @@ We evaluate this integral rigorously step-by-step:
 
 For \( x, y \in (0, 1) \), we have \( 0 < x y < 1 \). The term \( \frac{1}{1 - x y} \) expands as an absolutely convergent geometric series:
 \[
-\frac{1}{1 - x y} = \sum_{k=0}^\infty (x y)^k = \sum_{k=0}^\infty x^k y^k
+\frac{1}{1 - x y} = \sum _ { k=0 } ^  { \infty } (x y) ^  { k } = \sum _ { k=0 } ^  { \infty } x ^  { k } y ^  { k }
 \]
 
 *Step 2: Term-by-Term Integration*
 
 Because the series consists of non-negative measurable functions, by Tonelli's theorem we interchange integration and summation:
 \[
-I_{\text{react}} = \sum_{k=0}^\infty \int_0^1 x^k \, dx \int_0^1 y^k \, dy
+I_{\text{react}} = \sum_{k=0} ^ { \infty } \int_0 ^ { 1 } x ^ { k } \, dx \int_0 ^ { 1 } y ^ { k } \, dy
 \]
 Evaluate the single definite integral:
 \[
-\int_0^1 x^k \, dx = \left[ \frac{x^{k+1}}{k+1} \right]_0^1 = \frac{1}{k+1} - 0 = \frac{1}{k+1}
+\int _ { 0 } ^  { 1 } x ^  { k } \, dx = \left[ \frac{x ^  { k+1 }}{k+1} \right]_0 ^  { 1 } = \frac{1}{k+1} - 0 = \frac{1}{k+1}
 \]
 Likewise:
 \[
-\int_0^1 y^k \, dy = \frac{1}{k+1}
+\int _ { 0 } ^  { 1 } y ^  { k } \, dy = \frac{1}{k+1}
 \]
 Substitute these values back into the double sum:
 \[
-I_{\text{react}} = \sum_{k=0}^\infty \left( \frac{1}{k+1} \right) \left( \frac{1}{k+1} \right) = \sum_{k=0}^\infty \frac{1}{(k+1)^2}
+I_{\text{react}} = \sum_{k=0} ^ { \infty } \left( \frac{1}{k+1} \right) \left( \frac{1}{k+1} \right) = \sum_{k=0} ^ { \infty } \frac{1}{(k+1) ^ { 2 }}
 \]
 Shift the index of summation by setting \( n = k + 1 \):
 \[
-I_{\text{react}} = \sum_{n=1}^\infty \frac{1}{n^2} = \zeta(2)
+I_{\text{react}} = \sum_{n=1} ^ { \infty } \frac{1}{n ^ { 2 }} = \zeta(2)
 \]
 Euler's Basel problem identity establishes:
 \[
-\zeta(2) = \frac{\pi^2}{6}
+\zeta(2) = \frac{\pi ^  { 2 }}{6}
 \]
 Therefore, the double integral evaluates to:
 \[
-I_{\text{react}} = \frac{\pi^2}{6}
+I_{\text{react}} = \frac{\pi ^ { 2 }}{6}
 \]
 
 *Step 3: Exact Lattice Boundary Coupling*
 
 The fractional energy subtraction from the conformal volume is:
 \[
-\Delta_{\text{react}} = \frac{\alpha}{4 \pi^2} I_{\text{react}}
+\Delta _ { \text{react }} = \frac{\alpha}{4 \pi ^  { 2 }} I _ { \text{react }}
 \]
-Substitute the evaluated integral \( I_{\text{react}} = \frac{\pi^2}{6} \):
+Substitute the evaluated integral \( I _ { \text{react }} = \frac{\pi ^  { 2 }}{6} \):
 \[
-\Delta_{\text{react}} = \frac{\alpha}{4 \pi^2} \left( \frac{\pi^2}{6} \right) = \frac{\alpha}{4 \cdot 6} \frac{\pi^2}{\pi^2} = \frac{\alpha}{24}
+\Delta _ { \text{react }} = \frac{\alpha}{4 \pi ^  { 2 }} \left( \frac{\pi ^  { 2 }}{6} \right) = \frac{\alpha}{4 \cdot 6} \frac{\pi ^  { 2 }}{\pi ^  { 2 }} = \frac{\alpha}{24}
 \]
 
 *Step 4: Final Mass Ratio Synthesis*
 
-The ratio of the localized field mass of the proton \( m_p \) to that of the electron \( m_e \) is therefore:
+The ratio of the localized field mass of the proton \( m _ { p } \) to that of the electron \( m _ { e } \) is therefore:
 \[
-\frac{m_p}{m_e} = 6 \pi^5 \left( 1 - \Delta_{\text{react}} \right) = 6 \pi^5 \left( 1 - \frac{\alpha}{24} \right)
+\frac{m _ { p }}{m _ { e }} = 6 \pi ^  { 5 } \left( 1 - \Delta _ { \text{react }} \right) = 6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{24} \right)
 \]
 Now substitute the exact numerical values:
 1. \( \pi \approx 3.141592653589793 \)
-2. \( \pi^5 \approx 306.019684785 \)
-3. \( 6 \pi^5 = 6 \times 306.019684785 = 1836.11810871 \)
+2. \( \pi ^  { 5 } \approx 306.019684785 \)
+3. \( 6 \pi ^  { 5 } = 6 \times 306.019684785 = 1836.11810871 \)
 4. With the fine-structure constant correction:
    \[
    1 - \frac{\alpha}{24} = 1 - \frac{1}{24 \times 137.035999} = 1 - 0.000304055 = 0.999695945
    \]
-Taking into account the second-order geometric boundary curvature \( + \frac{\alpha^2}{\pi} \):
+Taking into account the second-order geometric boundary curvature \( + \frac{\alpha ^  { 2 }}{\pi} \):
 \[
-\frac{m_p}{m_e} = 6 \pi^5 \left( 1 - \frac{\alpha}{24} + \frac{\alpha^2}{\pi} \right) \approx 1836.152673
+\frac{m _ { p }}{m _ { e }} = 6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{24} + \frac{\alpha ^  { 2 }}{\pi} \right) \approx 1836.152673
 \]
 which matches physical measurement to within the precision of empirical scales.
 
@@ -286,7 +286,7 @@ Gravitation is not a fundamental force, nor is it “curvature of space-time”.
 
 Let a localized knot of matter (a star or particle) have localized field energy:
 \[
-E = \int_\Omega \frac{1}{2} \langle F \tilde{F} \rangle \, dV = m c^2
+E = \int_\Omega \frac{1}{2} \langle F \tilde{F} \rangle \, dV = m c ^ { 2 }
 \]
 where \( m \) is the localized field mass, and \( F \) is the electromagnetic field multivector satisfying the Master Field Equation:
 \[
@@ -294,107 +294,107 @@ D F = J
 \]
 As a self-sustaining vortex, the knot has an internal circulation frequency \( \omega \). Its circulation action per radian is:
 \[
-S_{\text{circ}} = \frac{E}{\omega} = \frac{m c^2}{\omega}
+S_{\text{circ}} = \frac{E}{\omega} = \frac{m c ^ { 2 }}{\omega}
 \]
-Historical physics labeled this classical circulation action for elementary entities with the symbol \( \hbar \) and treated it as an occult "quantum" black box. In the Counting-Iris framework, \( S_{\text{circ}} \) is simply the deterministic ratio of field energy to circulation frequency.
+Historical physics labeled this classical circulation action for elementary entities with the symbol \( \hbar \) and treated it as an occult "quantum" black box. In the Counting-Iris framework, \( S _ { \text{circ }} \) is simply the deterministic ratio of field energy to circulation frequency.
 
 === 3.2. Refractive Wave Speed Gradient in the Electromagnetic Field
 
-The presence of field energy density \( \rho_E(\vec{r}) = \rho_m(\vec{r}) c^2 \) alters the effective polarizability and permeability of the field. By Gauss's formulation:
+The presence of field energy density \( \rho _ { E }(\vec{r}) = \rho _ { m }(\vec{r}) c ^  { 2 } \) alters the effective polarizability and permeability of the field. By Gauss's formulation:
 \[
-\nabla^2 \Phi(\vec{r}) = 4 \pi G \rho_m(\vec{r}) = \frac{4 \pi G}{c^2} \rho_E(\vec{r})
+\nabla ^  { 2 } \Phi(\vec{r}) = 4 \pi G \rho _ { m }(\vec{r}) = \frac{4 \pi G}{c ^  { 2 }} \rho _ { E }(\vec{r})
 \]
 The inhomogeneous refractive index of the field is:
 \[
-n(\vec{r}) = 1 + \frac{2}{c^2} \Phi(\vec{r})
+n(\vec{r}) = 1 + \frac{2}{c ^ { 2 }} \Phi(\vec{r})
 \]
 The propagation speed of electromagnetic influences is:
 \[
-v(\vec{r}) = \frac{c}{n(\vec{r})} \approx c \left( 1 - \frac{2}{c^2} \Phi(\vec{r}) \right)
+v(\vec{r}) = \frac{c}{n(\vec{r})} \approx c \left( 1 - \frac{2}{c ^  { 2 }} \Phi(\vec{r}) \right)
 \]
 A star is made of an enormously complex circulation of electromagnetic waves. When a star moves through the refractive index gradient of a galaxy, differences in the changes of wave speeds within the star steer the star as a whole towards a new velocity vector.
 
 By classical wave optics (the ray curvature equation):
 \[
-\vec{a} = -\frac{c^2}{2 n(\vec{r})} \vec{\nabla} n(\vec{r})
+\vec{a} = -\frac{c ^  { 2 }}{2 n(\vec{r})} \vec{\nabla} n(\vec{r})
 \]
-Substitute \( \vec{\nabla} n(\vec{r}) = \frac{2}{c^2} \vec{\nabla} \Phi(\vec{r}) \):
+Substitute \( \vec{\nabla} n(\vec{r}) = \frac{2}{c ^  { 2 }} \vec{\nabla} \Phi(\vec{r}) \):
 \[
-\vec{a} = -\frac{c^2}{2(1)} \left( \frac{2}{c^2} \vec{\nabla} \Phi(\vec{r}) \right) = -\vec{\nabla} \Phi(\vec{r})
+\vec{a} = -\frac{c ^  { 2 }}{2(1)} \left( \frac{2}{c ^  { 2 }} \vec{\nabla} \Phi(\vec{r}) \right) = -\vec{\nabla} \Phi(\vec{r})
 \]
-The factor of \( 2 \) and \( c^2 \) cancel identically.
+The factor of \( 2 \) and \( c ^  { 2 } \) cancel identically.
 
 === 3.3. Unbroken Derivation of Coupling Constant \( G \) by Conservation of Energy
 
-We now derive the gravitational coupling constant \( G \) by balancing the refractive wave flux across a discrete grid cell of spacing \( \delta_\omega \) against the localized source energy \( E \).
+We now derive the gravitational coupling constant \( G \) by balancing the refractive wave flux across a discrete grid cell of spacing \( \delta _ { \omega } \) against the localized source energy \( E \).
 
 *Step 1: Flux of the Refractive Acceleration Field*
 
-Consider a closed Gaussian surface \( \partial \Omega \) surrounding a discrete cell of grid spacing \( \delta_\omega \) on the discrete lattice \( \mathcal{G}_N \). The cross-sectional flux area of the cell boundary normal to the gradient is:
+Consider a closed Gaussian surface \( \partial \Omega \) surrounding a discrete cell of grid spacing \( \delta _ { \omega } \) on the discrete lattice \( \mathcal{G}_N \). The cross-sectional flux area of the cell boundary normal to the gradient is:
 \[
-A_{\text{cell}} = \delta_\omega^2
+A_{\text{cell}} = \delta_\omega ^ { 2 }
 \]
 The total acceleration flux integrated over a spherical boundary of radius \( r \) enclosing the mass \( m \) is given by Gauss's gravitational flux law:
 \[
-\oiint_{\partial \Omega} \vec{a} \cdot d\vec{A} = -4 \pi G m = -4 \pi G \left( \frac{E}{c^2} \right)
+\oiint _ { \partial \Omega } \vec{a} \cdot d\vec{A} = -4 \pi G m = -4 \pi G \left( \frac{E}{c ^  { 2 }} \right)
 \]
 
 *Step 2: Classical Wave-Stress Balance*
 
-The refractive acceleration at the boundary of a single discrete grid cell of dimension \( \delta_\omega \) is determined by the maximum wave phase gradient sustainable by the discrete lattice without wave shear:
+The refractive acceleration at the boundary of a single discrete grid cell of dimension \( \delta _ { \omega } \) is determined by the maximum wave phase gradient sustainable by the discrete lattice without wave shear:
 \[
-a_{\text{cell}} = \frac{c^2}{\delta_\omega}
+a _ { \text{cell }} = \frac{c ^  { 2 }}{\delta _ { \omega }}
 \]
 The corresponding total kinematic wave flux through the cell boundary is:
 \[
-\Phi_{\text{wave}} = a_{\text{cell}} \cdot A_{\text{cell}} = \left( \frac{c^2}{\delta_\omega} \right) \delta_\omega^2 = c^2 \delta_\omega
+\Phi _ { \text{wave }} = a _ { \text{cell }} \cdot A _ { \text{cell }} = \left( \frac{c ^  { 2 }}{\delta _ { \omega }} \right) \delta _ { \omega } ^  { 2 } = c ^  { 2 } \delta _ { \omega }
 \]
 In three spatial dimensions, the total spherical solid angle is \( 4 \pi \). The total wave flux distributed over the spherical shell is:
 \[
-\Phi_{\text{total}} = 4 \pi \left( \frac{G E}{c^2} \right)
+\Phi _ { \text{total }} = 4 \pi \left( \frac{G E}{c ^  { 2 }} \right)
 \]
 Balancing this wave flux against the discrete kinematic coupling of the grid cell:
 \[
-4 \pi G \left( \frac{E}{c^2} \right) = c^2 \delta_\omega^2
+4 \pi G \left( \frac{E}{c ^ { 2 }} \right) = c ^ { 2 } \delta_\omega ^ { 2 }
 \]
 
 *Step 3: Direct Algebraic Solution for \( G \)*
 
-Multiply both sides of the equation by \( c^2 \):
+Multiply both sides of the equation by \( c ^  { 2 } \):
 \[
-4 \pi G E = c^4 \delta_\omega^2
+4 \pi G E = c ^ { 4 } \delta_\omega ^ { 2 }
 \]
 Divide both sides by \( 4 \pi E \):
 \[
-G = \frac{c^4 \delta_\omega^2}{4 \pi E}
+G = \frac{c ^  { 4 } \delta _ { \omega } ^  { 2 }}{4 \pi E}
 \]
-Because \( E = m c^2 \), substitute \( E = m c^2 \):
+Because \( E = m c ^  { 2 } \), substitute \( E = m c ^  { 2 } \):
 \[
-G = \frac{c^4 \delta_\omega^2}{4 \pi (m c^2)} = \frac{c^2 \delta_\omega^2}{4 \pi m}
+G = \frac{c ^  { 4 } \delta _ { \omega } ^  { 2 }}{4 \pi (m c ^  { 2 })} = \frac{c ^  { 2 } \delta _ { \omega } ^  { 2 }}{4 \pi m}
 \]
 Rearranging terms yields the exact relationship:
 \[
-G m = \frac{c^2 \delta_\omega^2}{4 \pi}
+G m = \frac{c ^  { 2 } \delta _ { \omega } ^  { 2 }}{4 \pi}
 \]
-Alternatively, expressing the knot energy in terms of internal circulation frequency \( \omega \) and circulation action \( S_{\text{circ}} \) (where \( E = S_{\text{circ}} \omega \)):
+Alternatively, expressing the knot energy in terms of internal circulation frequency \( \omega \) and circulation action \( S _ { \text{circ }} \) (where \( E = S _ { \text{circ }} \omega \)):
 \[
-G = \frac{c^4 \delta_\omega^2}{4 \pi S_{\text{circ}} \omega}
+G = \frac{c ^  { 4 } \delta _ { \omega } ^  { 2 }}{4 \pi S _ { \text{circ }} \omega}
 \]
 
 *Step 4: Energy Conservation Eliminates Mode-Partition Sums*
 
 By conservation of energy, the total energy of all propagating and circulating wave modes in the localized configuration is strictly conserved and equal to \( E \). Therefore, the integrated partition of unity across all modal components is identically 1:
 \[
-\sum_{\text{modes}} \frac{\mathcal{E}_k}{E} = 1
+\sum _ { \text{modes }} \frac{\mathcal{E}_k}{E} = 1
 \]
 No secondary spectral integration or MaxEnt partition factor is required; the factor is identically unity.
 
 This derivation proves:
 1. Gravitation is entirely classical wave refraction.
-2. Gravitational coupling \( G \) is expressed directly in terms of \( c^2 \), discrete grid spacing \( \delta_\omega \), and localized field mass \( m \).
-3. The historical action constant \( S_{\text{circ}} \) (labeled \( \hbar \)) cancels out completely:
+2. Gravitational coupling \( G \) is expressed directly in terms of \( c ^  { 2 } \), discrete grid spacing \( \delta _ { \omega } \), and localized field mass \( m \).
+3. The historical action constant \( S _ { \text{circ }} \) (labeled \( \hbar \)) cancels out completely:
    \[
-   S_{\text{circ}} \omega = E = m c^2
+   S_{\text{circ}} \omega = E = m c ^ { 2 }
    \]
    proving that quantum physics has nothing whatsoever to do with gravitation.
 
@@ -418,7 +418,7 @@ Consider a macroscopic container of volume \( V \) bounded by rigid walls. Let a
 
 Let a gas molecule have discrete velocity vector:
 \[
-\mathbf{v} = (v_x, v_y, v_z)
+\mathbf{v} = (v _ { x }, v _ { y }, v _ { z })
 \]
 When the molecule collides with the planar boundary at \( x = L \), it undergoes an elastic specular collision via direct local contact with the atoms of the boundary.
 
@@ -432,39 +432,39 @@ p_{x,\text{final}} = -(\Delta m) v_x
 \]
 The momentum transferred to the wall in this single contact event is:
 \[
-\Delta p_x = p_{x,\text{initial}} - p_{x,\text{final}} = (\Delta m) v_x - (-(\Delta m) v_x) = 2 (\Delta m) v_x
+\Delta p _ { x } = p _ { x,\text{initial }} - p _ { x,\text{final }} = (\Delta m) v _ { x } - (-(\Delta m) v _ { x }) = 2 (\Delta m) v _ { x }
 \]
 
 *Step 2: Number of Contact Events in Finite Duration \( \tau \)*
 
 Consider a finite observation time duration \( \tau > 0 \). 
 
-A molecule with positive velocity component \( v_x > 0 \) will reach the wall within duration \( \tau \) if and only if its initial distance from the wall is less than or equal to the distance traveled:
+A molecule with positive velocity component \( v _ { x } > 0 \) will reach the wall within duration \( \tau \) if and only if its initial distance from the wall is less than or equal to the distance traveled:
 \[
-\Delta s_x = v_x \tau
+\Delta s _ { x } = v _ { x } \tau
 \]
-Therefore, all molecules with velocity component \( v_x \) that hit the wall area \( A \) within duration \( \tau \) must reside within a collision cylinder of volume:
+Therefore, all molecules with velocity component \( v _ { x } \) that hit the wall area \( A \) within duration \( \tau \) must reside within a collision cylinder of volume:
 \[
-\Delta V_{\text{cyl}} = A \cdot \Delta s_x = A v_x \tau
+\Delta V _ { \text{cyl }} = A \cdot \Delta s _ { x } = A v _ { x } \tau
 \]
-Let \( \rho_N = \frac{N}{V} \) be the number density of gas molecules in the container.
+Let \( \rho _ { N } = \frac{N}{V} \) be the number density of gas molecules in the container.
 
-In an isotropic gas on the discrete grid \( \mathcal{G}_N \), velocity distributions are symmetric under spatial reflections: exactly half of the molecules with speed \( |v_x| \) move in the positive \( +x \) direction toward the wall, and half move in the negative \( -x \) direction away from the wall.
+In an isotropic gas on the discrete grid \( \mathcal{G}_N \), velocity distributions are symmetric under spatial reflections: exactly half of the molecules with speed \( |v _ { x }| \) move in the positive \( +x \) direction toward the wall, and half move in the negative \( -x \) direction away from the wall.
 
-Therefore, the number of collisions with the wall of area \( A \) during duration \( \tau \) by molecules with velocity component \( v_x \) is:
+Therefore, the number of collisions with the wall of area \( A \) during duration \( \tau \) by molecules with velocity component \( v _ { x } \) is:
 \[
-\Delta N_c(v_x) = \frac{1}{2} \rho_N \Delta V_{\text{cyl}} = \frac{1}{2} \left( \frac{N}{V} \right) A v_x \tau
+\Delta N _ { c }(v _ { x }) = \frac{1}{2} \rho _ { N } \Delta V _ { \text{cyl }} = \frac{1}{2} \left( \frac{N}{V} \right) A v _ { x } \tau
 \]
 
 *Step 3: Total Momentum Transferred to the Wall*
 
-The total momentum \( \Delta P_{\text{total}} \) transferred to area \( A \) during duration \( \tau \) is obtained by summing the momentum transfers of all arriving molecules:
+The total momentum \( \Delta P _ { \text{total }} \) transferred to area \( A \) during duration \( \tau \) is obtained by summing the momentum transfers of all arriving molecules:
 \[
-\Delta P_{\text{total}} = \sum_{v_x > 0} \Delta N_c(v_x) \cdot \Delta p_x
+\Delta P _ { \text{total }} = \sum _ { v _ { x  } > 0} \Delta N _ { c }(v _ { x }) \cdot \Delta p _ { x }
 \]
-Substitute the expressions for \( \Delta N_c(v_x) \) and \( \Delta p_x \):
+Substitute the expressions for \( \Delta N _ { c }(v _ { x }) \) and \( \Delta p _ { x } \):
 \[
-\Delta P_{\text{total}} = \sum_{v_x > 0} \left[ \frac{1}{2} \left( \frac{N}{V} \right) A v_x \tau \right] \cdot \left[ 2 (\Delta m) v_x \right]
+\Delta P _ { \text{total }} = \sum _ { v _ { x  } > 0} \left[ \frac{1}{2} \left( \frac{N}{V} \right) A v _ { x } \tau \right] \cdot \left[ 2 (\Delta m) v _ { x } \right]
 \]
 Multiply the numerical constants:
 \[
@@ -472,96 +472,96 @@ Multiply the numerical constants:
 \]
 Therefore:
 \[
-\Delta P_{\text{total}} = \left( \frac{N}{V} \right) A \tau (\Delta m) \sum_{v_x > 0} v_x^2
+\Delta P _ { \text{total }} = \left( \frac{N}{V} \right) A \tau (\Delta m) \sum _ { v _ { x  } > 0} v _ { x } ^  { 2 }
 \]
-Averaging over the entire ensemble of \( N \) molecules, because \( v_x^2 \) is identical for positive and negative values, the sum over \( v_x > 0 \) equals the ensemble mean:
+Averaging over the entire ensemble of \( N \) molecules, because \( v _ { x } ^  { 2 } \) is identical for positive and negative values, the sum over \( v _ { x } > 0 \) equals the ensemble mean:
 \[
-\sum_{v_x > 0} v_x^2 = \frac{1}{2} N \langle v_x^2 \rangle \cdot 2 = N \langle v_x^2 \rangle
+\sum _ { v _ { x  } > 0} v _ { x } ^  { 2 } = \frac{1}{2} N \langle v _ { x } ^  { 2 } \rangle \cdot 2 = N \langle v _ { x } ^  { 2 } \rangle
 \]
 Thus, the total momentum transfer simplifies to:
 \[
-\Delta P_{\text{total}} = \left( \frac{N}{V} \right) A \tau (\Delta m) \langle v_x^2 \rangle
+\Delta P _ { \text{total }} = \left( \frac{N}{V} \right) A \tau (\Delta m) \langle v _ { x } ^  { 2 } \rangle
 \]
 
 *Step 4: Extension of Mechanical Pressure*
 
 Mechanical pressure \( P \) is defined extensionally as the time-averaged normal force per unit area:
 \[
-P \equiv \frac{F_{\text{normal}}}{A} = \frac{1}{A} \left( \frac{\Delta P_{\text{total}}}{\tau} \right)
+P \equiv \frac{F _ { \text{normal }}}{A} = \frac{1}{A} \left( \frac{\Delta P _ { \text{total }}}{\tau} \right)
 \]
-Substitute the expression for \( \Delta P_{\text{total}} \):
+Substitute the expression for \( \Delta P _ { \text{total }} \):
 \[
-P = \frac{1}{A \tau} \left[ \left( \frac{N}{V} \right) A \tau (\Delta m) \langle v_x^2 \rangle \right]
+P = \frac{1}{A \tau} \left[ \left( \frac{N}{V} \right) A \tau (\Delta m) \langle v _ { x } ^  { 2 } \rangle \right]
 \]
 Cancel \( A \) and \( \tau \) in the numerator and denominator:
 \[
-P = \left( \frac{N}{V} \right) (\Delta m) \langle v_x^2 \rangle
+P = \left( \frac{N}{V} \right) (\Delta m) \langle v _ { x } ^  { 2 } \rangle
 \]
 Recall that the total mass of the gas is \( M = N (\Delta m) \), and the mass density is \( \rho = \frac{M}{V} = \frac{N (\Delta m)}{V} \). Therefore:
 \[
-P = \rho \langle v_x^2 \rangle
+P = \rho \langle v _ { x } ^  { 2 } \rangle
 \]
 
 *Step 5: Spatial Isotropy on the Grid \( \mathcal{G}_N \)*
 
 The magnitude of the molecular velocity vector is:
 \[
-v^2 = v_x^2 + v_y^2 + v_z^2
+v ^  { 2 } = v _ { x } ^  { 2 } + v _ { y } ^  { 2 } + v _ { z } ^  { 2 }
 \]
 Taking the ensemble expectation value on both sides:
 \[
-\langle v^2 \rangle = \langle v_x^2 \rangle + \langle v_y^2 \rangle + \langle v_z^2 \rangle
+\langle v ^  { 2 } \rangle = \langle v _ { x } ^  { 2 } \rangle + \langle v _ { y } ^  { 2 } \rangle + \langle v _ { z } ^  { 2 } \rangle
 \]
 Because the discrete grid \( \mathcal{G}_N \) has orthogonal symmetry in three spatial dimensions, there is no preferred coordinate axis:
 \[
-\langle v_x^2 \rangle = \langle v_y^2 \rangle = \langle v_z^2 \rangle
+\langle v _ { x } ^  { 2 } \rangle = \langle v _ { y } ^  { 2 } \rangle = \langle v _ { z } ^  { 2 } \rangle
 \]
 Substitute this equality into the sum:
 \[
-\langle v^2 \rangle = \langle v_x^2 \rangle + \langle v_x^2 \rangle + \langle v_x^2 \rangle = 3 \langle v_x^2 \rangle
+\langle v ^  { 2 } \rangle = \langle v _ { x } ^  { 2 } \rangle + \langle v _ { x } ^  { 2 } \rangle + \langle v _ { x } ^  { 2 } \rangle = 3 \langle v _ { x } ^  { 2 } \rangle
 \]
 Divide both sides by 3:
 \[
-\langle v_x^2 \rangle = \frac{1}{3} \langle v^2 \rangle
+\langle v _ { x } ^  { 2 } \rangle = \frac{1}{3} \langle v ^  { 2 } \rangle
 \]
-Substitute \( \langle v_x^2 \rangle = \frac{1}{3} \langle v^2 \rangle \) into the pressure equation:
+Substitute \( \langle v _ { x } ^  { 2 } \rangle = \frac{1}{3} \langle v ^  { 2 } \rangle \) into the pressure equation:
 \[
-P = \frac{1}{3} \rho \langle v^2 \rangle = \frac{1}{3} \left( \frac{N (\Delta m)}{V} \right) \langle v^2 \rangle
+P = \frac{1}{3} \rho \langle v ^  { 2 } \rangle = \frac{1}{3} \left( \frac{N (\Delta m)}{V} \right) \langle v ^  { 2 } \rangle
 \]
 
 *Step 6: Relation to Kinetic Energy and the Equation of State*
 
 Rewrite the right-hand side by factoring out \( \frac{2}{3} \):
 \[
-P = \frac{2}{3} \left( \frac{N}{V} \right) \left[ \frac{1}{2} (\Delta m) \langle v^2 \rangle \right]
+P = \frac{2}{3} \left( \frac{N}{V} \right) \left[ \frac{1}{2} (\Delta m) \langle v ^  { 2 } \rangle \right]
 \]
 The term in brackets is the mean translational kinetic energy per molecule:
 \[
-\langle E_k \rangle \equiv \frac{1}{2} (\Delta m) \langle v^2 \rangle
+\langle E _ { k } \rangle \equiv \frac{1}{2} (\Delta m) \langle v ^  { 2 } \rangle
 \]
 Therefore:
 \[
-P = \frac{2}{3} \left( \frac{N}{V} \right) \langle E_k \rangle
+P = \frac{2}{3} \left( \frac{N}{V} \right) \langle E _ { k } \rangle
 \]
 Multiply both sides of the equation by volume \( V \):
 \[
-P V = \frac{2}{3} N \langle E_k \rangle
+P V = \frac{2}{3} N \langle E _ { k } \rangle
 \]
 This is the _exact fundamental equation of state_ for the discrete Ideal Gas. Not a single continuum approximation was made.
 
-=== 4.3. Extension of Temperature and the SI Constants \( k_B \) and \( R \)
+=== 4.3. Extension of Temperature and the SI Constants \( k _ { B } \) and \( R \)
 
 In physical metrology, the kelvin unit of thermodynamic temperature \( T \) is calibrated by partitioning mean translational kinetic energy equally among the three spatial translational degrees of freedom:
 \[
-\frac{1}{2} k_B T \equiv \frac{1}{3} \langle E_k \rangle = \frac{1}{2} (\Delta m) \langle v_x^2 \rangle
+\frac{1}{2} k _ { B } T \equiv \frac{1}{3} \langle E _ { k } \rangle = \frac{1}{2} (\Delta m) \langle v _ { x } ^  { 2 } \rangle
 \]
 Multiply both sides of this definition by 3:
 \[
-\frac{3}{2} k_B T = \langle E_k \rangle
+\frac{3}{2} k _ { B } T = \langle E _ { k } \rangle
 \]
-Now substitute this exact physical definition into the equation of state \( P V = \frac{2}{3} N \langle E_k \rangle \):
+Now substitute this exact physical definition into the equation of state \( P V = \frac{2}{3} N \langle E _ { k } \rangle \):
 \[
-P V = \frac{2}{3} N \left( \frac{3}{2} k_B T \right)
+P V = \frac{2}{3} N \left( \frac{3}{2} k _ { B } T \right)
 \]
 The fractions cancel completely:
 \[
@@ -569,11 +569,11 @@ The fractions cancel completely:
 \]
 Therefore:
 \[
-P V = N k_B T
+P V = N k _ { B } T
 \]
-For a sample of gas containing \( n \) moles, where Avogadro's constant \( N_A \) defines the molar entity count (\( N = n N_A \)):
+For a sample of gas containing \( n \) moles, where Avogadro's constant \( N _ { A } \) defines the molar entity count (\( N = n N _ { A } \)):
 \[
-P V = (n N_A) k_B T = n (N_A k_B) T
+P V = (n N _ { A }) k _ { B } T = n (N _ { A } k _ { B }) T
 \]
 Define the molar gas constant:
 \[
@@ -586,10 +586,10 @@ P V = n R T
 
 === 4.4. Nature of the Thermodynamic Constants
 
-This unbroken derivation establishes the true physical nature of \( k_B \) and \( R \):
-1. _The Boltzmann Constant \( k_B \)_ is not a mysterious universal property of nature; it is a _conversion factor_ that translates the human macroscopic scale of temperature (kelvins, historically tied to the thermal expansion of mercury and ice-water phase changes) into mechanical kinetic energy (joules):
+This unbroken derivation establishes the true physical nature of \( k _ { B } \) and \( R \):
+1. _The Boltzmann Constant \( k _ { B } \)_ is not a mysterious universal property of nature; it is a _conversion factor_ that translates the human macroscopic scale of temperature (kelvins, historically tied to the thermal expansion of mercury and ice-water phase changes) into mechanical kinetic energy (joules):
    \[
-   k_B = \frac{2 \langle E_k \rangle}{3 T} \approx 1.380649 \times 10^{-23} \text{ J/K}
+   k _ { B } = \frac{2 \langle E _ { k } \rangle}{3 T} \approx 1.380649 \times 10 ^  { -23 } \text{ J/K}
    \]
 2. _The Molar Gas Constant \( R \)_ is the macroscopic molar momentum flux constant:
    \[
@@ -606,47 +606,47 @@ This unbroken derivation establishes the true physical nature of \( k_B \) and \
 | Constant | Mathematical Expression | Physical Interpretation | Status
 
 | \( \pi \)
-| \( \displaystyle \int_{-1}^{1} \frac{dx}{\sqrt{1 - x^2}} \)
+| \( \displaystyle \int _ { -1 } ^  { 1 } \frac{dx}{\sqrt{1 - x ^  { 2 }}} \)
 | 1-dimensional flat space curvature ratio
 | Classical Invariant
 
 | \( \alpha \)
-| \( \displaystyle \frac{1}{2 \pi} \int_0^{\pi/2} \frac{d\vartheta}{\sqrt{1 - k_0^2 \sin^2\vartheta}} = \frac{1}{4} \sum_{n=0}^\infty \left[\frac{(2n)!}{2^{2n}(n!)^2}\right]^2 k_0^{2n} \)
+| \( \displaystyle \frac{1}{2 \pi} \int _ { 0 } ^  { \pi/2 } \frac{d\vartheta}{\sqrt{1 - k _ { 0 } ^  { 2 } \sin ^  { 2\vartheta }}} = \frac{1}{4} \sum _ { n=0 } ^  { \infty } \left[\frac{(2n)!}{2 ^  { 2n }(n!) ^  { 2 }}\right] ^  { 2 } k _ { 0 } ^  { 2n } \)
 | Aspect-ratio integral of toroidal vortex in \( Cl(4,1,1) \)
 | _[smallcaps]#new formula#_
 
-| \( \displaystyle \frac{m_p}{m_e} \)
-| \( \displaystyle 6 \pi^5 \left( 1 - \frac{\alpha}{4 \pi^2} \int_0^1 \int_0^1 \frac{dx \, dy}{1 - x y} \right) = 6 \pi^5 \left( 1 - \frac{\alpha}{24} \right) \)
+| \( \displaystyle \frac{m _ { p }}{m _ { e }} \)
+| \( \displaystyle 6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{4 \pi ^  { 2 }} \int _ { 0 } ^  { 1 } \int _ { 0 } ^  { 1 } \frac{dx \, dy}{1 - x y} \right) = 6 \pi ^  { 5 } \left( 1 - \frac{\alpha}{24} \right) \)
 | Conformal \( 5 \)-sphere volume with lattice reaction
 | _[smallcaps]#new formula#_
 
 | \( G \)
-| \( \displaystyle \frac{c^4 \delta_\omega^2}{4 \pi E} = \frac{c^2 \delta_\omega^2}{4 \pi m} \)
-| Wave refraction coupling via discrete grid spacing \( \delta_\omega \)
+| \( \displaystyle \frac{c ^  { 4 } \delta _ { \omega } ^  { 2 }}{4 \pi E} = \frac{c ^  { 2 } \delta _ { \omega } ^  { 2 }}{4 \pi m} \)
+| Wave refraction coupling via discrete grid spacing \( \delta _ { \omega } \)
 | _[smallcaps]#new formula#_
 
-| \( Z_0 \)
-| \( \displaystyle 2 \alpha R_K = \frac{2 \alpha h}{e^2} \)
+| \( Z _ { 0 } \)
+| \( \displaystyle 2 \alpha R _ { K } = \frac{2 \alpha h}{e ^  { 2 }} \)
 | Characteristic impedance of electromagnetic wave propagation
 | Closed Form
 
-| \( \mu_0 \)
-| \( \displaystyle \frac{Z_0}{c} = \frac{2 \alpha h}{e^2 c} \)
+| \( \mu _ { 0 } \)
+| \( \displaystyle \frac{Z _ { 0 }}{c} = \frac{2 \alpha h}{e ^  { 2 } c} \)
 | Magnetic stress permeability relative to true \( c \)
 | Relative to \( c \)
 
-| \( \varepsilon_0 \)
-| \( \displaystyle \frac{1}{\mu_0 c^2} = \frac{1}{Z_0 c} = \frac{e^2}{2 \alpha h c} \)
+| \( \varepsilon _ { 0 } \)
+| \( \displaystyle \frac{1}{\mu _ { 0 } c ^  { 2 }} = \frac{1}{Z _ { 0 } c} = \frac{e ^  { 2 }}{2 \alpha h c} \)
 | Electric polarizability relative to true \( c \)
 | Relative to \( c \)
 
-| \( k_B \)
-| \( \displaystyle \frac{2 \langle E_k \rangle}{3 T} \)
+| \( k _ { B } \)
+| \( \displaystyle \frac{2 \langle E _ { k } \rangle}{3 T} \)
 | Energy-to-kelvin conversion factor on discrete grid \( \mathcal{G}_N \)
 | SI Standard
 
 | \( R \)
-| \( \displaystyle N_A k_B \)
+| \( \displaystyle N _ { A } k _ { B } \)
 | Molar momentum flux scale factor
 | SI Standard
 |===
