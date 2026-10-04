@@ -136,7 +136,7 @@ As a stationary, self-sustaining topological vortex, the knot has an internal ci
 \[ S_{\text{circ}} = \frac{E}{\omega} = \frac{m c^2}{\omega} \]
 This is the classical circulation action of the field vortex, analogous to hydrodynamic vortex circulation:
 \[ S_{\text{circ}} = \frac{1}{c} \oint_{\partial \Omega} \mathbf{A} \cdot d\mathbf{x} \]
-Historical physics labeled this circulation action for elementary particles with the symbol \( \hbar \) and treated it as an occult, acausal “quantum” black box. In the Counting-Iris framework, there are no black boxes: \( S_{\text{circ}} \) is simply the deterministic ratio of localized field energy to internal circulation frequency in a continuous, deterministic field vortex.
+Historical physics labeled this circulation action for elementary particles with the symbol \( \hbar \) and treated it as an occult, acausal “quantum” black box. In the Counting-Iris framework, there are no black boxes: \( S_{\text{circ}} \) is simply the deterministic ratio of localized field energy to internal circulation frequency in a deterministic field vortex.
 
 === Derivation of Gravitational Coupling \( G \) by Conservation of Energy
 
