@@ -43,12 +43,16 @@ which is an exact geometric invariant of the dual circulation.
 
 The coupling constant \( \alpha \) represents the ratio of the integrated mutual inductance to the self-energy of the circulating toroidal wave front.
 
-=== Complete Unbroken Integration of the Toroidal Green's Function
+=== Integration of the Aspect Ratio Over the Toroidal Surface
 
-The mutual coupling between two circulating circular filaments on the toroidal manifold separated by poloidal angle \( \vartheta \) and toroidal angle \( \varphi \) is given by the Neumann mutual coupling integral over the toroidal surface \( \mathbb{T} ^  { 2 } \):
+To determine the fine-structure constant \( \alpha \), we calculate the self-coupling ratio of the wave front circulating over the toroidal surface. Because the wave current circulates both around the major loop (the toroidal direction, angle \( \varphi \)) and around the tube cross-section (the poloidal direction, angle \( \vartheta \)), any two surface elements separated by angle differences \( \vartheta \) and \( \varphi \) exert a mutual electromagnetic induction upon each other.
+
+By classical electrodynamics (Neumann's mutual inductance formula applied to closed surface currents), the total self-coupling of this dual circulation is the double integral of the inverse distance over the full toroidal surface:
 \[
 \alpha = \frac{1}{4 \pi ^  { 2 }} \int _ { 0 } ^  { 2\pi } d\vartheta \int _ { 0 } ^  { 2\pi } d\varphi \; \frac{1 - \cos\vartheta}{\sqrt{1 + k _ { 0 } ^  { 2 } - 2 k _ { 0 } \cos\vartheta \cos\varphi}}
 \]
+The factor \( 1 - \cos\vartheta \) in the numerator accounts for the relative geometric orientation of the circulating current vectors at angular separation \( \vartheta \), while the denominator is the Euclidean chord distance between the two points scaled by the major radius \( R \).
+
 We evaluate this double integral with zero skipped steps.
 
 *Step 1: Integration over the Toroidal Angle \( \varphi \)*
