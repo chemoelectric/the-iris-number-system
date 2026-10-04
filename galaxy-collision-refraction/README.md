@@ -1,6 +1,6 @@
 # galaxy-collision-refraction
 
-Realistic interactive simulation of colliding spiral galaxies modeled as clouds of energy density, governed by wave refraction theory in the universal electromagnetic field.
+Realistic interactive simulation of colliding spiral galaxies modeled as clouds of energy density, modeled by wave refraction theory in the universal electromagnetic field.
 
 Developed by **Barry Schwartz**.
 

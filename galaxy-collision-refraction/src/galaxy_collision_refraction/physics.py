@@ -1,4 +1,4 @@
-"""Physics engine for galaxy collision simulation governed by wave refraction theory.
+"""Physics engine for galaxy collision simulation modeled by wave refraction theory.
 
 Gravity is not a fundamental force. It is not “curvature of the fabric of space-time”.
 It is classical wave refraction.

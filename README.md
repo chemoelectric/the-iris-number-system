@@ -128,7 +128,7 @@ python3 -m gravity_as_refraction
 
 ## 🌀 Standalone Package: `galaxy-collision-refraction` (Interactive Simulation)
 
-A realistic interactive Python simulation located in `galaxy-collision-refraction/` modeling two colliding spiral galaxies as distributed clouds of energy density, governed by wave refraction theory.
+A realistic interactive Python simulation located in `galaxy-collision-refraction/` modeling two colliding spiral galaxies as distributed clouds of energy density, modeled by wave refraction theory.
 
 ### Quick Start
 
