@@ -26,7 +26,7 @@ The speed of electromagnetic influences is:
 
 \[ v(\vec{r}) = \frac{c}{n(\vec{r})} \]
 
-When a circulating matter knot (star) moves through this gradient, the differential wave speed across its finite diameter steers its momentum vector:
+A star is made of an enormously complex circulation of electromagnetic waves. When a star moves through the refractive index gradient of a galaxy, differences in the changes of wave speeds within the star steer the star as a whole towards a new velocity vector:
 
 \[ \vec{a} = -\frac{c^2}{2 n(\vec{r})} \vec{\nabla} n(\vec{r}) \approx -\vec{\nabla} \Phi(\vec{r}) \]
 
