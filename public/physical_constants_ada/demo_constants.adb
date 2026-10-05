@@ -19,9 +19,9 @@ with proton_mass;
 with gravitational_constant;
 with boltzmann_constant;
 with molar_gas_constant;
-with vacuum_impedance;
-with vacuum_permeability;
-with vacuum_permittivity;
+with intrinsic_impedance;
+with intrinsic_permeability;
+with intrinsic_permittivity;
 
 procedure demo_constants is
 
@@ -129,7 +129,7 @@ procedure demo_constants is
    package r_pkg is new molar_gas_constant
      (real_type => real, get_k_b => get_k_b);
 
-   package z_0_pkg is new vacuum_impedance
+   package z_0_pkg is new intrinsic_impedance
      (real_type => real, compute_alpha => get_alpha, get_h => get_h, get_e => get_e);
 
    function get_z_0 (tol : in real) return real is
@@ -137,10 +137,10 @@ procedure demo_constants is
       return z_0_pkg.compute (tol);
    end get_z_0;
 
-   package mu_0_pkg is new vacuum_permeability
+   package mu_0_pkg is new intrinsic_permeability
      (real_type => real, compute_z_0 => get_z_0, get_c => get_c);
 
-   package eps_0_pkg is new vacuum_permittivity
+   package eps_0_pkg is new intrinsic_permittivity
      (real_type => real, compute_z_0 => get_z_0, get_c => get_c);
 
 begin

@@ -1,6 +1,6 @@
 pragma ada_2022;
 
-package body vacuum_impedance is
+package body intrinsic_impedance is
 
    function compute
      (relative_tolerance : in real_type := 1.0e-15)
@@ -16,4 +16,4 @@ package body vacuum_impedance is
       return z0_val;
    end compute;
 
-end vacuum_impedance;
+end intrinsic_impedance;

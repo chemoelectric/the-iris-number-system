@@ -38,9 +38,9 @@ This directory contains standalone, human-readable Ada 2022 packages for computi
 | `gravitational_constant.ads/.adb` | \( G \) | Wave refraction coupling \( G = \hbar c / m_P^2 \); explicitly caliper-bounded by Planck mass empirical measurement (cannot exceed NIST/CODATA precision) |
 | `boltzmann_constant.ads/.adb` | \( k_B \) | Exact SI energy-to-temperature conversion factor (\( 1.380649 \times 10^{-23} \text{ J/K} \)) |
 | `molar_gas_constant.ads/.adb` | \( R \) | Exact molar momentum flux constant \( N_A k_B \) |
-| `vacuum_impedance.ads/.adb` | \( Z_0 \) | Transverse wave impedance \( 2 \alpha R_K \) |
-| `vacuum_permeability.ads/.adb` | \( \mu_0 \) | Magnetic permeability \( Z_0 / c \) |
-| `vacuum_permittivity.ads/.adb` | \( \varepsilon_0 \) | Electric permittivity \( 1 / (Z_0 c) \) |
+| `intrinsic_impedance.ads/.adb` | \( Z_0 \) | Intrinsic wave impedance of the microwave-rich EM field \( 2 \alpha R_K \) |
+| `intrinsic_permeability.ads/.adb` | \( \mu_0 \) | Intrinsic magnetic permeability of the microwave-rich EM field \( Z_0 / c \) |
+| `intrinsic_permittivity.ads/.adb` | \( \varepsilon_0 \) | Intrinsic electric permittivity of the microwave-rich EM field \( 1 / (Z_0 c) \) |
 | `demo_constants.adb` | Driver | Comprehensive demonstration of package instantiations |
 
 ## The Metrological Reality: NIST SI Units vs. Actual Physical Constants
