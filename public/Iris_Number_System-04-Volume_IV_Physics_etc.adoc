@@ -2683,9 +2683,9 @@ Proponents of interstellar communication often argue that transmitting mathemati
 
 Civilizations originating on separate planetary systems across light-years possess completely disjoint physical measurement histories, distinct anatomical sensorium apertures, and unaligned coordinate frames. Without a shared physical directrix horizon, transmitted mathematical sequences cannot be mapped to empirical physical steps, creating an impassable Empirical Interpretation Horizon.
 
-[#theorem-conformal-semiotic-horizon]
-[THEOREM]
-.Theorem: Empirical Interpretation Horizon and Contextual Un-translatability Theorem
+[#conclusion-conformal-semiotic-horizon]
+[NOTE]
+.Conclusion Pending New Information: Empirical Interpretation Horizon and Contextual Un-translatability
 ====
 Let \( \mathcal { M } _ A \subset Cl ( 4 , 1 , 1 ) \) be the cognitive multivector meaning space of civilization \( A \), and let \( \mathcal { M } _ B \subset Cl ( 4 , 1 , 1 ) \) be the cognitive meaning space of civilization \( B \). Let civilization \( A \) emit a symbolic signal sequence \( S \in A ^ L \).
 
@@ -2719,9 +2719,9 @@ When an advanced receiving civilization detects a faint, narrow-band signal cont
 
 Through this abductive inference, the advanced receiving civilization correctly deduces the existence, crude technological stage, and primitive nature of the emitting species. However, this one-way realization by the receiver does not establish two-way communication or mutual understanding. The primitive emitting civilization remains incapable of comprehending the advanced society's empirical context, and the multi-millennial spatial-temporal delay renders interactive dialogue impossible.
 
-[#theorem-asymmetric-abductive-inference]
-[THEOREM]
-.Theorem: Asymmetric Abductive Inference and Time-Binding Disconnect Theorem
+[#conclusion-asymmetric-abductive-inference]
+[NOTE]
+.Conclusion Pending New Information: Asymmetric Abductive Inference and Time-Binding Disconnect
 ====
 Let Civilization \( A \) be a primitive emitting civilization at time-binding evolutionary index \( \tau _ A \), and let Civilization \( B \) be an advanced receiving civilization at time-binding index \( \tau _ B \gg \tau _ A \). Let Civilization \( A \) transmit a structured mathematical signal sequence \( S \in A ^ L \).
 
@@ -2736,7 +2736,7 @@ Let Civilization \( A \) be a primitive emitting civilization at time-binding ev
 
 . **Abductive Hypothesis Evaluation**: Civilization \( B \) computes the algorithmic Kolmogorov complexity \( K ( S ) \) and spectral energy density \( E ( S ) \). Natural sources \( H _ \text{nat} \) yield high algorithmic entropy (\( K ( S ) \sim | S | \)), contradicting the structured prime-number sequence. Peer constructs \( H _ \text{peer} \) utilize high-density multivector field phase-locking, contradicting the faint radio wave carrier. The primitive emitter hypothesis \( H _ \text{prim} \) uniquely matches a low-energy, basic mathematical pattern broadcast by a species at early technological inception.
 
-. **Unilateral Observation**: While Civilization \( B \) correctly classifies Civilization \( A \) as a primitive artificial source, Theorem 12.2 (Empirical Interpretation Horizon) dictates that Civilization \( B \) cannot derive Civilization \( A \)'s internal subjective meanings, nor can Civilization \( A \) process or comprehend any response emitted by Civilization \( B \). The relationship reduces to passive, one-way astronomical observation, proving that time-binding asymmetry prevents two-way CETI dialogue. \( \square \)
+. **Unilateral Observation**: While Civilization \( B \) correctly classifies Civilization \( A \) as a primitive artificial source, the Empirical Interpretation Horizon (Conclusion Pending New Information) dictates that Civilization \( B \) cannot derive Civilization \( A \)'s internal subjective meanings, nor can Civilization \( A \) process or comprehend any response emitted by Civilization \( B \). The relationship reduces to passive, one-way astronomical observation, proving that time-binding asymmetry prevents two-way CETI dialogue. \( \square \)
 ====
 
 === Interstellar Temporal Disconnect and Round-Trip Boundedness
@@ -2768,9 +2768,9 @@ Because the velocity, acceleration, and all higher-order derivatives of structur
 
 Because closed-loop communication requires sustained temporal continuity of the cognitive, empirical, and institutional framework between the sender of a query and the recipient of its reply, multi-millennial light-travel delays render true conversational dialogue physically and semiotically impossible.
 
-[#theorem-interstellar-temporal-disconnect]
-[THEOREM]
-.Theorem: Interstellar Temporal Disconnect and Round-Trip Boundedness Theorem
+[#conclusion-interstellar-temporal-disconnect]
+[NOTE]
+.Conclusion Pending New Information: Interstellar Temporal Disconnect and Round-Trip Boundedness
 ====
 Let \( d \) be the spatial separation distance between transmitting civilization \( A \) and receiving civilization \( B \) on spatial grid \( \mathcal { G } _ N \). Let \( T _ \text{soc} \) be the characteristic functional lifespan of technological communication infrastructure and organizational continuity for a civilization.
 
@@ -2792,9 +2792,9 @@ Let \( d \) be the spatial separation distance between transmitting civilization
 
 Combining the Thermodynamic-Information Horizon, the Empirical Interpretation Horizon, Time-Binding Evolutionary Asymmetry, and the Interstellar Temporal Disconnect yields an inescapable mathematical conclusion: CETI is a complete physical, interpretive, and practical futility.
 
-[#theorem-futility-of-ceti]
-[THEOREM]
-.Theorem: Total Futility of CETI and Physical Interstellar Isolation Theorem
+[#conclusion-futility-of-ceti]
+[NOTE]
+.Conclusion Pending New Information: Physical Interstellar Isolation and Communication Barriers
 ====
 Let \( \mathcal { I } _ \text{CETI} \) represent the net information throughput of an interstellar communication attempt between distinct technological civilizations separated by distance \( d \) on discrete grid \( \mathcal { G } _ N \).
 
@@ -2807,7 +2807,7 @@ Let \( \mathcal { I } _ \text{CETI} \) represent the net information throughput 
 
 . **Conjunctive Information Bound**: The achievable information transfer rate \( \mathcal { I } _ \text{CETI} \) requires three simultaneous non-zero physical conditions: (i) non-zero signal-to-noise ratio at the receiver (\( \text{SNR} ( d ) > 0 \)); (ii) non-zero mutual semantic information between sender and receiver meanings (\( I ( M _ A ; M _ B \mid S ) > 0 \)); and (iii) temporal round-trip closure within societal functional lifespan (\( \Delta t _ \text{roundtrip} \le T _ \text{soc} \)).
 
-. **Horizon Nullification**: By Theorem 12.1 (Signal Attenuation Horizon), for interstellar distances \( d > R _ \text{horizon} \), \( \text{SNR} ( d ) \to 0 \). By Theorem 12.2 (Empirical Interpretation Horizon), in the absence of a shared physical directrix, \( I ( M _ A ; M _ B \mid S ) = 0 \). By Theorem 12.3 (Asymmetric Abductive Inference), developmental time-binding divergence prevents mutual empirical dialogue. By Theorem 12.4 (Interstellar Temporal Disconnect), for \( d > \frac { 1 } { 2 } c T _ \text{soc} \), indicator function \( \mathbf { 1 } _ { \{ \Delta t _ \text{roundtrip} \le T _ \text{soc} \} } = 0 \).
+. **Horizon Nullification**: By Theorem 12.1 (Signal Attenuation Horizon), for interstellar distances \( d > R _ \text{horizon} \), \( \text{SNR} ( d ) \to 0 \). By the Empirical Interpretation Horizon (Conclusion Pending New Information), in the absence of a shared physical directrix, \( I ( M _ A ; M _ B \mid S ) = 0 \). By Theorem 12.3 (Asymmetric Abductive Inference), developmental time-binding divergence prevents mutual empirical dialogue. By Theorem 12.4 (Interstellar Temporal Disconnect), for \( d > \frac { 1 } { 2 } c T _ \text{soc} \), indicator function \( \mathbf { 1 } _ { \{ \Delta t _ \text{roundtrip} \le T _ \text{soc} \} } = 0 \).
 
 . **Total Futility**: Because each of the independent horizon factors evaluates to zero over interstellar scales, their product vanishes identically:
 \[ \langle \mathcal { I } _ \text{CETI} \rangle = 0 \]
@@ -2838,9 +2838,9 @@ The distinction is fundamental: an electromagnetic field is an explicit mathemat
 
 All physical interactions, field propagations, wave packet transitions, and material movements require finite duration and are strictly bounded by \( c \). There is no physical possibility of material transport or field communication exceeding \( c \). “Everything” belongs to _the_ universal electromagnetic field, and therefore cannot exceed the speed of influences _within_ that field. “Speeds faster than \( c \)” are experienced physically not as high velocities, but as Doppler shifts. Inventions such as “warp drives,” “hyperspace jumps,” or “subspace relays” are unphysical fictions violating the core conservation laws of the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \).
 
-[#theorem-demolition-speculative-interstellar-fraternities]
-[THEOREM]
-.Theorem: Demolition of Speculative Interstellar Fraternities via Exponential Time-Binding Divergence and Universal Speed Limit c
+[#conclusion-demolition-speculative-interstellar-fraternities]
+[NOTE]
+.Conclusion Pending New Information: Interstellar Contact Barriers via Exponential Time-Binding Divergence and Speed Limit c
 ====
 Let two distinct technological civilizations \( A \) and \( B \) emerge at temporal coordinates \( t _ A \) and \( t _ B \) with developmental time-binding growth rates \( \alpha _ A , \alpha _ B > 0 \) on discrete grid \( \mathcal { G } _ N \). Let spatial separation distance be \( d > 0 \).
 
