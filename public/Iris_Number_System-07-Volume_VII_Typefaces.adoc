@@ -2694,7 +2694,7 @@ where \( \mathcal{K}_k \) are canonical generator kernels (stems, arch shoulders
 2. **Compound Glyph Hierarchies**: An 'm' is an affine iteration of the 'n' generator kernel:
    \[ G_{\text{m}} = G_{\text{{st}em}} \cup w_{\text{arch}, 1}(G_{\text{arch}}) \cup w_{\text{arch}, 2}(G_{\text{arch}}) \]
 3. **Multiscale Perceptual Density**: While the topological dimension of a 1D boundary is \( D = 1 \), the **box-counting dimension** \( D_B \) of a micro-segment glyph boundary across grid scales \( N \) captures the emergence of high-frequency physical features (serif brackets, chisel clefts, ink-traps):
-   \[ D_B = \lim_{\epsilon \to 0} \frac{\log N(\epsilon)}{\log(1/\epsilon)} \]
+   \[ \frac{\log N(\epsilon)}{\log(1/\epsilon)} \to D_B \text{ as } \epsilon \to 0 \]
 
 === Microtypographic Shape Deformation (Sub-Glyphic Justification)
 

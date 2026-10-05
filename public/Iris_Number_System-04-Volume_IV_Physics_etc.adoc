@@ -3414,7 +3414,7 @@ Let \( \mathcal{G}_N \) be the discrete multiscale spatial-temporal lattice gove
 *Proof:*
 
 . **Structural Invariant Equivalence**: Consider the circle ratio \( \pi = C / (2 r) \). In the Counting-Iris framework, \( \pi \) is evaluated on grid \( \mathcal{G}_N \) as the limit of regular \( n \)-gon perimeters under discrete aperture refinement:
-\[ \pi_n = n \sin \left( \frac{\pi}{n} \right) \quad \text{with} \quad \lim_{n \to \infty} \pi_n = \pi \]
+\[ \pi_n = n \sin \left( \frac{\pi}{n} \right) \quad \text{with} \quad \pi_n \to \pi \text{ as } n \to \infty \]
 Now consider the electromagnetic coupling constant \( \alpha = \frac{e^2}{4 \pi \varepsilon_0 \hbar c} \). Under the Master Field Equation \( D F = J \), a localized, stable, charge-carrying plasmoid (the electron) satisfies the self-consistent boundary condition between its circulating bivector magnetic current \( \mathbf{J}_m = \nabla \times \mathbf{B} \) and its outward electrostatic flux \( \nabla \cdot \mathbf{E} = \rho / \varepsilon_0 \) across the closed discrete aperture \( \partial \Omega \). Integrating the Poynting stress multivector over the topological boundary yields an exact eigenvalue equation for the resonance modes of \( \mathcal{G}_N \):
 \[ \oint_{\partial \Omega} F d \mathbf{x} \tilde{F} = \lambda_0 \langle F \tilde{F} \rangle \Delta V \]
 The dimensionless ratio of the self-energy flux to the radiation quantum is determined entirely by the geometry of the Clifford torus in \( Cl(4,1,1) \), yielding \( \alpha^{-1} \approx 137.035999\dots \) as a fixed geometric eigenvalue. Likewise, the proton-to-electron mass ratio is the eigenvalue of the 3D harmonic standing wave modes in the nuclear lattice:
@@ -3422,7 +3422,7 @@ The dimensionless ratio of the self-energy flux to the radiation quantum is dete
 Because these constants are derived from the geometric and topological invariants of \( Cl(4,1,1) \) on \( \mathcal{G}_N \), computing their digits is algorithmically and epistemologically equivalent to computing the digits of \( \pi \). They are structural invariants of the universal field engine.
 
 . **Constructive Demolition of Singularities**: Let \( E_\text{total} \) be the total mass-energy of a localized physical system contracting under attractive gravitational or electrodynamic forces. In continuum mechanics, the volume \( V(r) = \frac{4}{3} \pi r^3 \) is permitted to vanish as \( r \to 0 \), yielding infinite energy density:
-\[ \lim_{r \to 0} U(r) = \lim_{r \to 0} \frac{E_\text{total}}{\frac{4}{3} \pi r^3} = \infty \]
+\[ U(r) = \frac{E_\text{total}}{\frac{4}{3} \pi r^3} \to \infty \text{ as } r \to 0 \]
 In the real world described by the Counting-Iris framework, space is partitioned into discrete cells of finite minimum volume \( V_\text{cell} = l_\text{res}^3 > 0 \). The contraction of any physical mass element is bounded by the non-zero volume of its constituent cells. Furthermore, under the Master Field Equation \( D F = J \), compressing field flux increases the bivector magnetic energy density \( U_B = \frac{1}{2 \mu_0} B^2 \), which generates an isotropic outward bivector pressure:
 \[ P_B = \frac{1}{3} U_B = \frac{1}{6 \mu_0} B^2 \]
 As the radius approaches the structural kernel boundary \( r_\text{core} \), the outward bivector field pressure gradient \( - \nabla P_B \) scales as \( r^{-5} \), whereas the inward gravitational field gradient scales as \( r^{-2} \). The gradients balance identically at a strictly positive radius:
