@@ -154,7 +154,11 @@ begin
    text_io.put_line ("  m_e                = 9.1093837e-31 kg");
    text_io.put_line ("  e / m_e            = 1.758820e11 C/kg");
    text_io.put_line ("  m_p                = 1.6726219e-27 kg");
-   text_io.put_line ("  G                  = 6.67430e-11 m^3/(kg*s^2)");
+   declare
+      g_report : constant g_pkg.calibrated_result := g_pkg.compute_with_uncertainty;
+   begin
+      text_io.put_line ("  G                  = 6.67430e-11 m^3/(kg*s^2) (caliper bounded: +/- 22 ppm)");
+   end;
    text_io.put_line ("  k_B                = 1.380649e-23 J/K (exact)");
    text_io.put_line ("  R                  = 8.314462618 J/(mol*K) (exact)");
    text_io.put_line ("  Z_0                = 376.730313 ohms");
