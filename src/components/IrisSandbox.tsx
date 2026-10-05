@@ -42,9 +42,10 @@ import {
   Cpu
 } from 'lucide-react';
 import { MresNumericalWorkbench } from './MresNumericalWorkbench';
+import { PhysicalConstantsWorkbench } from './PhysicalConstantsWorkbench';
 
 export const IrisSandbox: React.FC = () => {
-  const [activeSubTab, setActiveSubTab] = useState<'4d' | 'cl411' | 'nonstandard' | 'maxent' | 'mres'>('4d');
+  const [activeSubTab, setActiveSubTab] = useState<'4d' | 'cl411' | 'nonstandard' | 'maxent' | 'mres' | 'constants'>('4d');
 
   // ================= 4D IRIS STATE =================
   const [z1, setZ1] = useState<IrisNumber>({ a: 2, b: 1, c: 0.5, d: 0, label: 'Z₁' });
@@ -155,6 +156,16 @@ export const IrisSandbox: React.FC = () => {
               }`}
             >
               m-res Graded Analysis
+            </button>
+            <button
+              onClick={() => setActiveSubTab('constants')}
+              className={`px-3 py-1.5 text-xs font-mono font-medium rounded-lg transition ${
+                activeSubTab === 'constants'
+                  ? 'bg-amber-600 text-white shadow'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              Physical Constants & G Caliper
             </button>
           </div>
         </div>
@@ -578,6 +589,7 @@ export const IrisSandbox: React.FC = () => {
 
       {/* m-res GRADED NUMERICAL ANALYSIS SECTION */}
       {activeSubTab === 'mres' && <MresNumericalWorkbench />}
+      {activeSubTab === 'constants' && <PhysicalConstantsWorkbench />}
     </div>
   );
 };
