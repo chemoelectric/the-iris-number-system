@@ -191,6 +191,7 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── m_res_numerical_analysis_and_statistical_mechanics.adoc # Standalone paper on m-res analysis & stat mech (AsciiDoc)
 │   ├── closed_form_geometric_ratios_physical_constants.adoc # Standalone paper on closed-form physical constants (AsciiDoc)
 │   ├── new_constants_and_discrete_ideal_gas.adoc # Exact step-by-step mathematical monograph on new constants and discrete Ideal Gas
+│   ├── physical_constants_ada/ # Standalone human-readable Ada 2022 packages for physical constants (ALGOL 60 style)
 │   ├── gnuplot/                 # 3D parametric wireframe gnuplot scripts and rendered high-res snapshots
 │   │   ├── volume_04/nuclei/    # Nuclear electromagnetic toroidal architectures for Elements 1–10 (H to Ne)
 │   │   └── volume_08/           # Molecular bond topologies and solvent networks (H2, H2O, CH4, CO2, etc.)
