@@ -1,0 +1,55 @@
+= Note: The Efficacy of Randomized Pivot Selection in Stable Quicksort
+Frédéric Blondin Custer
+:stem: latexmath
+:icons: font
+
+== Abstract
+
+This technical note records the structural rationale underlying the exceptional empirical and theoretical performance of uniform randomized pivot selection in stable quicksort algorithms. Unlike in-place unstable partitioning (such as Hoare or Lomuto schemes) where arbitrary element swaps inadvertently break up pathological runs at the cost of scrambling stability, stable partitioning strictly preserves the relative chronological order of identical and partitioned keys. Consequently, deterministic pivot strategies systematically preserve and propagate adverse structural correlations across recursive sub-arrays, inducing quadratic degradation. Uniform randomized pivot selection functions as a rigorous Maximum Entropy decorrelator, eliminating susceptibility to adversarial or pre-sorted input patterns and guaranteeing optimal expected logarithmic depth across arbitrary discrete key distributions.
+
+== 1. The Inherent Fragility of Deterministic Stable Partitioning
+
+In a stable quicksort, the partition operator decomposes an array \( A \) of \( N \) elements into two sub-arrays relative to a selected pivot element \( p \):
+
+\[ A_{<} = \{ x \in A \mid x < p \} \]
+\[ A_{\ge} = \{ x \in A \mid x \ge p \} \]
+
+where the relative order of elements within \( A_{<} \) and within \( A_{\ge} \) is strictly preserved identical to their original relative appearance in \( A \).
+
+In conventional unstable quicksort, the partition procedure performs in-place swaps between left and right scanning pointers. While this destroys stability, the swapping mechanism exerts an accidental shuffling effect on partially ordered or structured data.
+
+In contrast, stable partitioning performs no swaps:
+. Elements are filtered and packed into partition buffers in strict chronological sequence.
+. Any pre-existing structural order (such as ascending sequences, descending runs, or periodic repetitions) present in the original input is preserved _intact_ inside the sub-partitions.
+
+If a deterministic pivot selection heuristic is employed (such as selecting the first element, the last element, or a fixed median-of-three sample):
+* Real-world inputs frequently exhibit pre-existing correlations that match or skew the deterministic heuristic.
+* The resulting partition can become severely unbalanced (e.g. \( 1 \) element versus \( N - 1 \) elements).
+* Because the stable partition does not shuffle the sub-partitions, the pathological distribution is passed down unperturbed to subsequent recursive stages, locking the algorithm into catastrophic \( \mathcal{O}(N^2) \) quadratic degradation.
+
+== 2. Uniform Randomized Pivot Selection as an Entropic Decorrelator
+
+Selecting the pivot index \( k \in \{ 0 , 1 , \dots , N - 1 \} \) uniformly at random completely severs the link between input order and partition balance:
+
+. **Uniform Probability of Balanced Apertures**:
+Regardless of the initial arrangement, permutation, or repetition of keys in \( A \), every element has an equal probability \( 1/N \) of being chosen as the pivot. The probability that the selected pivot falls within the central interquartile range (between the 25th and 75th percentiles of the sorted keys) is strictly:
+
+\[ P\left( \frac{N}{4} \le |A_{<}| \le \frac{3N}{4} \right) \ge \frac{1}{2} \]
+
+. **Expected Tree Depth and MaxEnt Guarantees**:
+Because at least half of the random choices guarantee a reduction of the sub-problem size by at least a factor of \( 3/4 \), the expected recursion depth is bounded by logarithmic growth:
+
+\[ E[\text{depth}] \le \frac{\ln N}{\ln(4/3)} \approx 2.41 \, \ln N \]
+
+The expected total comparison count over all tiers of recursion is asymptotically bounded by:
+
+\[ E[C(N)] = 2 N \ln N + \mathcal{O}(N) \approx 1.386 \, N \log_2 N \]
+
+. **Preservation of Run Invariants Without Adversarial Traps**:
+While deterministic schemes can be intentionally defeated by adversarial test generators or unintentionally crippled by natural input runs, the randomized pivot decouples the partition balance from the physical layout of the memory buffer. The stable quicksort retains the exact stability demanded by downstream records while executing with the robust average-case performance of an optimal information-theoretic sorting network.
+
+== 3. Integration with Bounded Pointer Notation and Base-Index Discipline
+
+When implemented in systems programming languages (such as ATS2 or disciplined ISO C targeting GCC), stable partitioning benefits substantially from:
+. Employing verified, bound-checked pointer types (such as the `cptr` type with static bounds invariants \( 0 \le i \le N \)) or explicit base-index notation `&var[n]`, completely avoiding ungrounded raw pointer offsets.
+. Combining randomized stable quicksort with small-range binary insertion sorts at leaf thresholds (e.g. sub-arrays of size \( N \le 16 \) or \( 32 \)), which leverage fast binary search insertions to minimize comparison overhead while maintaining absolute stability.

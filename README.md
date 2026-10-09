@@ -224,3 +224,6 @@ The inference engine operates strictly within the Counting-Iris number system:
 
 This project, its computational tools, and its mathematical developments strictly adhere to and comply with the **ACM Code of Ethics and Professional Conduct** (Association for Computing Machinery, [https://www.acm.org/diversity-inclusion/code-of-ethics](https://www.acm.org/diversity-inclusion/code-of-ethics)).
 
+
+- **Stable Quicksort & Entropic Decorrelation**:
+  - `public/outlines/stable-quicksort.adoc`: Technical analysis detailing why uniform randomized pivot selection provides robust expected logarithmic performance in stable quicksort by acting as an entropic decorrelator against preserved pathological input runs.
