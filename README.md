@@ -226,4 +226,6 @@ This project, its computational tools, and its mathematical developments strictl
 
 
 - **Stable Quicksort & Entropic Decorrelation**:
-  - `public/outlines/stable-quicksort.adoc`: Technical analysis detailing why uniform randomized pivot selection provides robust expected logarithmic performance in stable quicksort by acting as an entropic decorrelator against preserved pathological input runs.
+  - **Alternative Unified Field Formulations**:
+  - `Volume I`: Added the *Theory of Newton's Laws of Motion are the Fundamental Laws of Physics*, deducing the Master Field Equation, electrodynamics, and gravitational wave refraction directly from Newton's three laws of motion and Jaynesian Maximum Entropy on discrete resolution grids \(\mathcal{G}_N\), demonstrating the redundancy of independent energy density.
+- `public/outlines/stable-quicksort.adoc`: Technical analysis detailing why uniform randomized pivot selection provides robust expected logarithmic performance in stable quicksort by acting as an entropic decorrelator against preserved pathological input runs.
