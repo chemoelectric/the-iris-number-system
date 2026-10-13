@@ -227,5 +227,6 @@ This project, its computational tools, and its mathematical developments strictl
 
 - **Stable Quicksort & Entropic Decorrelation**:
   - **Alternative Unified Field Formulations**:
+  - `Volume I`: Added *The Work Theory of Physics*, demonstrating that force \(F\) and mass \(m\) are mathematically redundant primitives eliminated via \(W = F^2 t^2 / (2m)\), showing that all of physics and the Master Field Equation are completely formulated in terms of motion (kinematics) and scalar mechanical work \(W\).
   - `Volume I`: Added the *Theory of Newton's Laws of Motion are the Fundamental Laws of Physics*, deducing the Master Field Equation, electrodynamics, and gravitational wave refraction directly from Newton's three laws of motion and Jaynesian Maximum Entropy on discrete resolution grids \(\mathcal{G}_N\), demonstrating the redundancy of independent energy density.
 - `public/outlines/stable-quicksort.adoc`: Technical analysis detailing why uniform randomized pivot selection provides robust expected logarithmic performance in stable quicksort by acting as an entropic decorrelator against preserved pathological input runs.
