@@ -2063,13 +2063,13 @@ Profound Insight Analysis and Multiscale Resolution Analysis are exact dual math
 
 The second alternative formulation of analysis within the Iris framework is **Discrete Weierstrass Analysis (DWA)**. 
 
-Historically, Karl Weierstrass sought to purge calculus of hazy infinitesimals and kinematic fluxions by introducing the static \( arepsilon \)-\( \delta \) formalism:
+Historically, Karl Weierstrass sought to purge calculus of hazy infinitesimals and kinematic fluxions by introducing the static \( arepsilon \)-\( \delta \) formalism:
 \[
 \forall \varepsilon > 0, \; \exists \delta > 0 \text{ such that } 0 < | x - c | < \delta \implies | f(x) - L | < \varepsilon
 \]
-However, conventional nineteenth- and twentieth-century analysis committed a fatal epistemological error: it coupled the \( arepsilon \)-\( \delta \) quantifier structure to the ungrounded metaphysics of the continuum, taking the limit as \( \delta \to 0 \) through an uncountably infinite sequence of points of zero spatial extent.
+However, conventional nineteenth- and twentieth-century analysis committed a fatal epistemological error: it coupled the \( arepsilon \)-\( \delta \) quantifier structure to the ungrounded metaphysics of the continuum, taking the limit as \( \delta \to 0 \) through an uncountably infinite sequence of points of zero spatial extent.
 
-In **Discrete Weierstrass Analysis**, we retain the rigor of the \( arepsilon \)-\( \delta \) bounded inequality structure, but **completely eliminate the limit**. Instead of allowing \( \delta \) to shrink to non-existent zero points, the analysis **stops at an arbitrary, finite real interval size** \( \delta > 0 \).
+In **Discrete Weierstrass Analysis**, we retain the rigor of the \( arepsilon \)-\( \delta \) bounded inequality structure, but **completely eliminate the limit**. Instead of allowing \( \delta \) to shrink to non-existent zero points, the analysis **stops at an arbitrary, finite real interval size** \( \delta > 0 \).
 
 ==== Foundational Principles of Discrete Weierstrass Analysis
 
