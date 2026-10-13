@@ -2309,25 +2309,99 @@ Consider a discrete lattice \( \mathcal{G} _ N \) of resolution \( \delta \). Le
 
 . _Newton's First Law (Inertial Conservation)_:
 In the absence of external contact stresses, total momentum is conserved across discrete lattice cells:
+
 \[ \sum _ { k } \mathbf{p} _ k = \text{constant} \]
 
 . _Newton's Second Law (Stress-Strain Acceleration)_:
 The net force acting on any discrete cell volume \( \Delta V \) is the closed surface integral of the local contact stress tensor \( \mathbf{T} \):
+
 \[ \frac{d \mathbf{p}}{d t} = \oint _ { \partial \Delta V } \mathbf{T} \cdot d \mathbf{A} \]
 
 . _Newton's Third Law (Pairwise Direct Contact Action)_:
 All stress interactions occur strictly between contiguous cells with finite duration and finite propagation speed \( c \). Every stress exerted by cell \( A \) upon adjacent cell \( B \) is matched by an equal and opposite reaction stress exerted by cell \( B \) upon cell \( A \):
+
 \[ \mathbf{F} _ { A \to B } + \mathbf{F} _ { B \to A } = 0 \]
 
-When an observer measures macroscopic field variables without complete microstate phase information, Jaynesian Maximum Entropy mandates assigning the least-biased probability distribution over discrete momentum states subject to Newton's momentum and stress constraints.
+===== Direct Derivation of the Wave Equation from Newton's Laws
 
-Maximizing the information entropy
-\[ S = - \sum _ i P _ i \ln P _ i \]
-subject to the conservation of momentum flux and direct contact stress immediately yields the linear wave equation as the least-biased propagation mode of localized shear:
+To see how the wave equation arises directly from these contact laws, consider a small cubic element of the medium having side length \( \Delta x \) and mass density \( \rho \), so that its mass is:
+
+\[ \Delta m = \rho \, ( \Delta x ) ^ 3 \]
+
+Let \( \mathbf{s} ( \mathbf{x} , t ) \) be the local displacement vector of the medium from equilibrium. When the element is displaced, adjacent faces experience contact forces through the internal shear stress.
+
+Consider the net force in the \( y \)-direction acting on the element due to variations in transverse displacement \( s _ y \) along the \( x \)-axis.
+
+The face at \( x + \Delta x \) experiences a shearing force:
+
+\[ F _ y ( x + \Delta x ) = G \, ( \Delta x ) ^ 2 \, \left. \frac{\partial s _ y}{\partial x} \right| _ { x + \Delta x } \]
+
+where \( G \) is the shear modulus (elastic stiffness) of the medium, and \( ( \Delta x ) ^ 2 \) is the face area.
+
+By Newton's third law of direct contact action, the opposing face at \( x \) experiences a reaction force in the opposite direction:
+
+\[ F _ y ( x ) = - G \, ( \Delta x ) ^ 2 \, \left. \frac{\partial s _ y}{\partial x} \right| _ { x } \]
+
+The net transverse contact force acting on the entire element is the sum of these two opposing surface forces:
+
+\[ F _ { y , \text{net} } = G \, ( \Delta x ) ^ 2 \, \left[ \left. \frac{\partial s _ y}{\partial x} \right| _ { x + \Delta x } - \left. \frac{\partial s _ y}{\partial x} \right| _ { x } \right] \]
+
+Multiplying and dividing by \( \Delta x \):
+
+\[ F _ { y , \text{net} } = G \, ( \Delta x ) ^ 3 \, \frac{1}{\Delta x} \left[ \left. \frac{\partial s _ y}{\partial x} \right| _ { x + \Delta x } - \left. \frac{\partial s _ y}{\partial x} \right| _ { x } \right] = G \, ( \Delta x ) ^ 3 \, \frac{\partial ^ 2 s _ y}{\partial x ^ 2} \]
+
+Now apply Newton's second law, \( F _ { y , \text{net} } = \Delta m \, a _ y \). Because acceleration is the second time derivative of displacement, \( a _ y = D _ t ^ 2 s _ y \), we have:
+
+\[ G \, ( \Delta x ) ^ 3 \, \frac{\partial ^ 2 s _ y}{\partial x ^ 2} = \left( \rho \, ( \Delta x ) ^ 3 \right) D _ t ^ 2 s _ y \]
+
+The volume factor \( ( \Delta x ) ^ 3 \) cancels completely on both sides:
+
+\[ G \, \frac{\partial ^ 2 s _ y}{\partial x ^ 2} = \rho \, D _ t ^ 2 s _ y \]
+
+Dividing through by \( G \):
+
+\[ \frac{\partial ^ 2 s _ y}{\partial x ^ 2} - \frac{\rho}{G} D _ t ^ 2 s _ y = 0 \]
+
+Defining the propagation speed \( c \) through the ratio of the medium's elastic shear stiffness to its mass density:
+
+\[ c = \sqrt{\frac{G}{\rho}} \implies \frac{1}{c ^ 2} = \frac{\rho}{G} \]
+
+Summing the contact forces across all three spatial coordinate axes yields the general three-dimensional vector wave equation for the displacement field \( \mathbf{s} \):
+
 \[ \nabla ^ 2 \mathbf{s} - \frac{1}{c ^ 2} D _ t ^ 2 \mathbf{s} = 0 \]
 
-Identifying the rotational vorticity of the displacement field as the magnetic bivector field \( \mathbf{B} = \nabla \times \mathbf{s} \) and the temporal rate of shear displacement as the electric vector field \( \mathbf{E} = - D _ t \mathbf{s} \), Newton's third law and momentum balance directly reproduce Maxwell's relations and the Clifford Master Field Equation
+===== Correspondence to Electrodynamics and the Master Field Equation
+
+When an observer measures macroscopic field variables without complete microstate phase information, Jaynesian Maximum Entropy mandates assigning the least-biased probability distribution over discrete momentum states subject to Newton's momentum and stress constraints, confirming this linear wave mode as the expectation value of localized undulations:
+
+\[ S = - \sum _ i P _ i \ln P _ i \]
+
+From this wave equation, electrodynamics emerges by recognizing the physical components of the displacement velocity and rotation:
+
+. The _electric field vector_ is the negative temporal rate of shear displacement:
+
+\[ \mathbf{E} = - D _ t \mathbf{s} \]
+
+. The _magnetic field bivector_ is the spatial curl (rotational vorticity) of the displacement:
+
+\[ \mathbf{B} = \nabla \times \mathbf{s} \]
+
+Taking the time derivative of \( \mathbf{B} \):
+
+\[ D _ t \mathbf{B} = D _ t ( \nabla \times \mathbf{s} ) = \nabla \times ( D _ t \mathbf{s} ) = - \nabla \times \mathbf{E} \]
+
+which is Faraday's induction law \( \nabla \times \mathbf{E} + D _ t \mathbf{B} = 0 \).
+
+Taking the spatial curl of \( \mathbf{B} \) using the vector identity \( \nabla \times ( \nabla \times \mathbf{s} ) = \nabla ( \nabla \cdot \mathbf{s} ) - \nabla ^ 2 \mathbf{s} \): for transverse waves (\( \nabla \cdot \mathbf{s} = 0 \)),
+
+\[ \nabla \times \mathbf{B} = - \nabla ^ 2 \mathbf{s} = - \frac{1}{c ^ 2} D _ t ^ 2 \mathbf{s} = \frac{1}{c ^ 2} D _ t \mathbf{E} \]
+
+which is the Ampère-Maxwell law in the absence of source currents.
+
+Newton's third law and momentum balance thus directly reproduce Maxwell's relations and the Clifford Master Field Equation:
+
 \[ D F = J \]
+
 without postulating independent electrical fluids or action-at-a-distance.
 
 ==== Derivation of Gravitational Refraction from Contact Stress Gradients
