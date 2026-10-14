@@ -556,7 +556,7 @@ where \( \| \cdot \| _ { \mathcal { I } } \) is the non-Euclidean Iris metric no
 ====
 
 [#sec-riemann-proof]
-==== The Riemann Hypothesis Spectral Theorem
+=== The Riemann Hypothesis Spectral Theorem
 
 [#theorem-riemann-proof]
 [THEOREM]
