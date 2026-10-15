@@ -147,6 +147,6 @@
 +
 \[ c ( r ) = c _ 0 \left( 1 - \frac{G M}{c _ 0 ^ 2 r} \right) \]
 +
-    * The moving parts of the clock are physically retarded by the altered medium, completing fewer cycles per unit of duration.
+    * The moving parts of the clock are physically slowed down by the altered medium, completing fewer cycles per unit of duration.
     * An atomic clock in circular orbit measures the local gravitational potential directly in its cabin; its exact physical position across the cabin matters because of the radial wave speed gradient \( \nabla c ( r ) \).
     * Aligns with the experimental realizations of gravitation researchers like C. S. Unnikrishnan: clocks slow down not from abstract relative speed, but from actual physical gravitational potentials and contact stresses in the plenum.
