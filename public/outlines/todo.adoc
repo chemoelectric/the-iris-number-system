@@ -128,3 +128,25 @@
       ratting on others. Unpleasant at the time, but brilliant and
       beautiful in hindsight.
 
+
+* Invariant Foundations of Probability and Gravitational Slowdown of Motion.
+  - Bayes' rule as an invariant balance of stuff (rectangles):
+    * Asymmetric textbook formulations ("prior", "posterior", "likelihood") distort understanding by making an inherently symmetric identity look like a one-way procedural conveyor belt.
+    * Focus on the invariant in the middle:
++
+\[ P ( A \mid B ) P ( B ) = P ( A B ) = P ( B \mid A ) P ( A ) \]
++
+    * The joint occurrence \( P ( A B ) \) is the invariant, conserved quantity of "stuff" (area). The equation always balances on a scale because both pans weigh the exact same amount of stuff.
+    * Investigating an analytic method: treating conditional probability statements as area-preserving projections or transformations from the invariant joint core \( P ( A B ) \) (like squashing and stretching a fixed patch of dough across orthogonal measuring axes).
+    * Contrast with John S. Bell: mathematics requires carefully designed definitions. Bell imported an ungrounded colloquial assumption that joint distributions across correlated wave emissions must factorize, breaking the invariant and inventing pseudo-paradoxes out of an algebraic blunder.
+  - Gravitation as the actual physical slowdown of moving parts (not kinematic "time dilation"):
+    * Special Relativity's claim of symmetric kinematic "velocity time dilation" in empty space is rejected as an ungrounded coordinate artifact.
+    * Gravitational time dilation is an _actual physical slowing down of motion_.
+    * A clock is made entirely of moving parts: gears, pendulums, quartz crystals, or oscillating electron wave packets and atomic hyperfine transitions in a cesium beam.
+    * Near a mass concentration, the local elastic stiffness and wave speed of the plenum \( c ( r ) \) are reduced:
++
+\[ c ( r ) = c _ 0 \left( 1 - \frac{G M}{c _ 0 ^ 2 r} \right) \]
++
+    * The moving parts of the clock are physically retarded by the altered medium, completing fewer cycles per unit of duration.
+    * An atomic clock in circular orbit measures the local gravitational potential directly in its cabin; its exact physical position across the cabin matters because of the radial wave speed gradient \( \nabla c ( r ) \).
+    * Aligns with the experimental realizations of gravitation researchers like C. S. Unnikrishnan: clocks slow down not from abstract relative speed, but from actual physical gravitational potentials and contact stresses in the plenum.
