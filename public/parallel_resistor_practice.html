@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parallel Resistor Practice - Conductance Method</title>
+  <style>
+    @page {
+      size: letter portrait;
+      margin: 0.5in;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #111;
+      background: #fff;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.4;
+    }
+    .header {
+      border-bottom: 2px solid #222;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 20pt;
+      margin: 0 0 4px 0;
+      font-weight: 600;
+    }
+    .subtitle {
+      font-size: 11pt;
+      color: #444;
+      font-style: italic;
+    }
+    .method-box {
+      border: 1px solid #444;
+      background: #f9f9f9;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      border-radius: 4px;
+      font-size: 10.5pt;
+    }
+    .method-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-size: 9.5pt;
+      letter-spacing: 0.5px;
+    }
+    .formula {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11pt;
+      margin: 4px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+    .problem-card {
+      border: 1px solid #ccc;
+      padding: 10px 14px;
+      border-radius: 4px;
+      background: #fff;
+      page-break-inside: avoid;
+    }
+    .problem-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      margin-bottom: 6px;
+      font-size: 11pt;
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 3px;
+    }
+    .branches {
+      font-size: 10.5pt;
+      margin-bottom: 8px;
+    }
+    .work-space {
+      margin-top: 6px;
+      font-size: 9.5pt;
+      color: #666;
+    }
+    .line {
+      border-bottom: 1px dotted #aaa;
+      height: 20px;
+      margin-bottom: 4px;
+    }
+    .answers {
+      margin-top: 24px;
+      border-top: 1px solid #888;
+      padding-top: 8px;
+      font-size: 9pt;
+      color: #555;
+    }
+    .answers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px 12px;
+      font-family: "Courier New", Courier, monospace;
+    }
+    @media print {
+      body {
+        padding: 0;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+    .btn-print {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn-print no-print" onclick="window.print()">Print Page</button>
+
+  <div class="header">
+    <h1>Parallel Resistance Drill: The Conductance Method</h1>
+    <div class="subtitle">Linear Conductance Addition: G_total = G_1 + G_2 + ... + G_n &nbsp;|&nbsp; R_total = 1 / G_total &nbsp;|&nbsp; Units in &Omega; and &Omega;<sup>-1</sup></div>
+  </div>
+
+  <div class="method-box">
+    <div class="method-title">The Two-Step Routine (No Inverted Fractions):</div>
+    <div>1. Invert each branch to get conductance: <b>G = 1 / R</b> (in &Omega;<sup>-1</sup> or m&Omega;<sup>-1</sup>)</div>
+    <div>2. Sum the conductances: <b>G_total = G_1 + G_2 + ...</b> &nbsp;&rarr;&nbsp; Invert total: <b>R_total = 1 / G_total</b></div>
+  </div>
+
+  <div class="grid">
+    <!-- Problem 1 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 1</span>
+        <span>2 Branches</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 20 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 20 &Omega;</b></div>
+      <div class="work-space">
+        G<sub>1</sub> = 0.05 &Omega;<sup>-1</sup>, &nbsp; G<sub>2</sub> = 0.05 &Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ &Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ &Omega;
+      </div>
+    </div>
+
+    <!-- Problem 2 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 2</span>
+        <span>2 Branches</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 100 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 25 &Omega;</b></div>
+      <div class="work-space">
+        G<sub>1</sub> = 10 m&Omega;<sup>-1</sup>, &nbsp; G<sub>2</sub> = 40 m&Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ m&Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ &Omega;
+      </div>
+    </div>
+
+    <!-- Problem 3 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 3</span>
+        <span>2 Branches</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 50 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 200 &Omega;</b></div>
+      <div class="work-space">
+        G<sub>1</sub> = 20 m&Omega;<sup>-1</sup>, &nbsp; G<sub>2</sub> = 5 m&Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ m&Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ &Omega;
+      </div>
+    </div>
+
+    <!-- Problem 4 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 4</span>
+        <span>3 Branches</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 10 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 20 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>3</sub> = 20 &Omega;</b></div>
+      <div class="work-space">
+        G<sub>1</sub> = 0.10 &Omega;<sup>-1</sup>, &nbsp; G<sub>2</sub> = 0.05 &Omega;<sup>-1</sup>, &nbsp; G<sub>3</sub> = 0.05 &Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ &Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ &Omega;
+      </div>
+    </div>
+
+    <!-- Problem 5 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 5</span>
+        <span>3 Branches</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 1 k&Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 2 k&Omega;</b> &nbsp;|&nbsp; <b>R<sub>3</sub> = 2 k&Omega;</b></div>
+      <div class="work-space">
+        G<sub>1</sub> = 1.0 m&Omega;<sup>-1</sup>, &nbsp; G<sub>2</sub> = 0.5 m&Omega;<sup>-1</sup>, &nbsp; G<sub>3</sub> = 0.5 m&Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ m&Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ &Omega;
+      </div>
+    </div>
+
+    <!-- Problem 6 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 6</span>
+        <span>3 Branches</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 300 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 600 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>3</sub> = 200 &Omega;</b></div>
+      <div class="work-space">
+        G<sub>1</sub> = 3.33 m&Omega;<sup>-1</sup>, &nbsp; G<sub>2</sub> = 1.67 m&Omega;<sup>-1</sup>, &nbsp; G<sub>3</sub> = 5.00 m&Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ m&Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ &Omega;
+      </div>
+    </div>
+
+    <!-- Problem 7 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 7</span>
+        <span>4 Branches</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 40 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 40 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>3</sub> = 40 &Omega;</b> &nbsp;|&nbsp; <b>R<sub>4</sub> = 40 &Omega;</b></div>
+      <div class="work-space">
+        G each = 0.025 &Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ &Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ &Omega;
+      </div>
+    </div>
+
+    <!-- Problem 8 -->
+    <div class="problem-card">
+      <div class="problem-header">
+        <span>Problem 8</span>
+        <span>Bench Practical</span>
+      </div>
+      <div class="branches"><b>R<sub>1</sub> = 10 k&Omega;</b> &nbsp;|&nbsp; <b>R<sub>2</sub> = 10 k&Omega;</b> &nbsp;|&nbsp; <b>R<sub>3</sub> = 5 k&Omega;</b></div>
+      <div class="work-space">
+        G<sub>1</sub> = 0.1 m&Omega;<sup>-1</sup>, &nbsp; G<sub>2</sub> = 0.1 m&Omega;<sup>-1</sup>, &nbsp; G<sub>3</sub> = 0.2 m&Omega;<sup>-1</sup>
+        <div class="line"></div>
+        G<sub>total</sub> = ________________ m&Omega;<sup>-1</sup> &nbsp;&rarr;&nbsp; R<sub>total</sub> = ________________ k&Omega;
+      </div>
+    </div>
+  </div>
+
+  <div class="answers">
+    <div style="font-weight: bold; margin-bottom: 4px;">Quick Check Answers (Inverted at bottom of page):</div>
+    <div class="answers-grid">
+      <div>1: 10 &Omega;</div>
+      <div>2: 20 &Omega;</div>
+      <div>3: 40 &Omega;</div>
+      <div>4: 5 &Omega;</div>
+      <div>5: 500 &Omega;</div>
+      <div>6: 100 &Omega;</div>
+      <div>7: 10 &Omega;</div>
+      <div>8: 2.5 k&Omega;</div>
+    </div>
+  </div>
+
+</body>
+</html>

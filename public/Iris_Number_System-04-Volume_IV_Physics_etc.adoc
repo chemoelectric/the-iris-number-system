@@ -257,11 +257,11 @@ This section demonstrates that classical mechanical laws—including field momen
 [THEOREM]
 .Theorem: Derivation of Classical Field Momentum Laws from the Master Field Equation
 ====
-In any source-free spatial aperture region where \( J = \mathbf { 0 } \), a localized self-trapped multivector field packet governed by \( D F = \mathbf { 0 } \) satisfies exact field momentum conservation, yielding the classical principles of inertia, force-momentum rate, and action-reaction equality.
+In any source-free spatial region where \( J = \mathbf { 0 } \), a localized self-trapped multivector field packet governed by \( D F = \mathbf { 0 } \) satisfies exact field momentum conservation, yielding the classical principles of inertia, force-momentum rate, and action-reaction equality.
 
 *Proof:*
 
-. **Principle of Field Inertia**: Expanding \( D ( D F ) = D ^ 2 F = \Delta _ { Cl } F = \mathbf { 0 } \) demonstrates that a localized field packet propagating on discrete grid \( \mathcal { G } _ N \) preserves its convective velocity vector \( u \) and field momentum \( p = \int _ { \Omega } F e _ 4 \tilde { F } \, dV \) along a straight spatial trajectory in the absence of external aperture flux gradients.
+. **Principle of Field Inertia**: Expanding \( D ( D F ) = D ^ 2 F = \Delta _ { Cl } F = \mathbf { 0 } \) demonstrates that a localized field packet propagating on discrete grid \( \mathcal { G } _ N \) preserves its convective velocity vector \( u \) and field momentum \( p = \int _ { \Omega } F e _ 4 \tilde { F } \, dV \) along a straight spatial trajectory in the absence of external field flux gradients.
 
 . **Principle of Net Force**: In the presence of a non-zero source current \( J \neq \mathbf { 0 } \), the spatial divergence of the stress-energy multivector tensor \( T = F e _ 4 \tilde { F } \) satisfies \( \nabla \cdot T = \text{Scalar} ( J F + F J ) \). Integrating over a finite grid volume \( \Omega \) yields the net multivector force \( F _ { \text{net} } = D _ t p \).
 
@@ -342,7 +342,7 @@ This section establishes Noether's theorem for multivector field systems, showin
 ====
 If the multivector field Lagrangian density \( \mathcal { L } ( A , D A ) \) is invariant under a parameterized transformation with scalar parameter \( \alpha \):
 \[ A ( x ) \to A ( x ) + \alpha \, \Delta A ( x ) , \quad x ^ a \to x ^ a + \alpha \, \xi ^ a ( x ) \]
-then there exists an explicitly conserved multivector Noether current density \( J _ \text{Noether} ^ a \) satisfying the exact local conservation equation (aperture flux conservation):
+then there exists an explicitly conserved multivector Noether current density \( J _ \text{Noether} ^ a \) satisfying the exact local conservation equation (boundary flux conservation):
 \[ \sum _ { a = 1 } ^ 6 \nabla _ a J _ \text{Noether} ^ a = 0 \]
 
 *Proof:*
@@ -367,9 +367,9 @@ yields the exact differential conservation law:
 
 === The Principle of Least Action as a Tautology of Multivector Field Momentum Balance
 
-This section demonstrates that the Principle of Least Action is neither a teleological law ("nature acting to minimize cost") nor a metaphysical principle. Instead, it is a mathematical tautology expressing that localized field momentum transport across discrete grid aperture boundaries is balanced.
+This section demonstrates that the Principle of Least Action is neither a teleological law ("nature acting to minimize cost") nor a metaphysical principle. Instead, it is a mathematical tautology expressing that localized field momentum transport across discrete grid cell boundaries is balanced.
 
-When a field distribution moves from initial state \( A_1 \) to final state \( A_2 \), the path traversed in field space renders the action integral stationary (\( \delta S = 0 \)) precisely because any non-stationary deviation would represent an uncompensated, non-zero net field force acting inside the domain without a corresponding source current \( J \). Thus, "least action" is simply the integral formulation of local field momentum conservation \( D F = J \) across spatial apertures on discrete grid \( \mathcal { G } _ N \).
+When a field distribution moves from initial state \( A_1 \) to final state \( A_2 \), the path traversed in field space renders the action integral stationary (\( \delta S = 0 \)) precisely because any non-stationary deviation would represent an uncompensated, non-zero net field force acting inside the domain without a corresponding source current \( J \). Thus, "least action" is simply the integral formulation of local field momentum conservation \( D F = J \) across spatial spacings on discrete grid \( \mathcal { G } _ N \).
 
 [#chap-navier-stokes-first-principles]
 
@@ -385,30 +385,30 @@ To comprehend fluid dynamics without the mathematical fictions of continuous mat
 
 . **A Fluid Ensemble**: A fluid (such as liquid water, air, or molten metal) is an ensemble consisting of a finite number \( N_\text{fluid} \) of composite physical entities—molecules or atoms—possessing discrete masses \( m_k \) , finite spatial extents with diameter \( d_0 \) at the m-resolution scale, and finite velocities \( \mathbf{v}_k ( t ) \) . These discrete molecular constituents are themselves localized, bound configurations of the electromagnetic field on \( \mathcal{G}_N \) .
 
-Fluid behavior is the macroscopic manifestation of these discrete molecules colliding with one another via electromagnetic repulsion (direct contact forces) and exchanging linear and angular momentum. When we write macroscopic quantities such as the fluid velocity field \( \mathbf{u} ( \mathbf{x} , t ) \) , the mass density \( \rho ( \mathbf{x} , t ) \) , or the thermodynamic pressure \( P ( \mathbf{x} , t ) \) , we are performing a deterministic spatial coarse-graining over an aperture \( \Omega_\text{ap} \) containing a large, finite number of discrete molecules:
+Fluid behavior is the macroscopic manifestation of these discrete molecules colliding with one another via electromagnetic repulsion (direct contact forces) and exchanging linear and angular momentum. When we write macroscopic quantities such as the fluid velocity field \( \mathbf{u} ( \mathbf{x} , t ) \) , the mass density \( \rho ( \mathbf{x} , t ) \) , or the thermodynamic pressure \( P ( \mathbf{x} , t ) \) , we are performing a deterministic spatial coarse-graining over a cell volume \( \Omega_\text{cell} \) containing a large, finite number of discrete molecules:
 \[ \rho ( \mathbf{x} , t ) = \frac{1}{V ( \Omega_\text{ap} )} \sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k \]
 \[ \mathbf{u} ( \mathbf{x} , t ) = \frac{\sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k \mathbf{v}_k ( t )}{\sum_{k \in \Omega_\text{ap} ( \mathbf{x} )} m_k } \]
 
-=== Direct Contact Topology: Molecular Momentum Flux across Aperture Boundaries
+=== Direct Contact Topology: Molecular Momentum Flux across Discrete Boundaries
 
 Consider a finite discrete spatial region \( \Omega \) of lattice cells on \( \mathcal{G}_N \) bounded by an enclosing boundary surface \( \partial \Omega \) . The total linear momentum \( \mathbf{P}_\Omega ( t ) \) of the fluid inside \( \Omega \) is the sum of the discrete momenta of all molecules currently residing within \( \Omega \) :
 \[ \mathbf{P}_\Omega ( t ) = \sum_{k \in \Omega} m_k \mathbf{v}_k ( t ) = \sum_{\mathbf{x} \in \Omega} \rho ( \mathbf{x} , t ) \mathbf{u} ( \mathbf{x} , t ) \Delta x^3 \]
 
 By Newton’s second law of motion, the time rate of change of \( \mathbf{P}_\Omega \) over a finite duration \( \Delta t \) must equal the net rate at which momentum enters \( \Omega \) through two distinct physical mechanisms:
 
-. **Advective Momentum Transport**: Molecules moving across the discrete boundary faces \( \partial \Omega \) carry their own momentum across the aperture boundary. If an exterior boundary face \( \alpha \) on \( \partial \Omega \) has area \( \Delta S_\alpha \) and outward unit normal \( \hat{\mathbf{n}}_\alpha \) , the mass escaping across that facet per unit time is \( \rho ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) , carrying advective momentum flux \( \rho \mathbf{u} ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) .
+. **Advective Momentum Transport**: Molecules moving across the discrete boundary faces \( \partial \Omega \) carry their own momentum across the cell boundary. If an exterior boundary face \( \alpha \) on \( \partial \Omega \) has area \( \Delta S_\alpha \) and outward unit normal \( \hat{\mathbf{n}}_\alpha \) , the mass escaping across that facet per unit time is \( \rho ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) , carrying advective momentum flux \( \rho \mathbf{u} ( \mathbf{u} \cdot \hat{\mathbf{n}}_\alpha ) \Delta S_\alpha \) .
 
 . **Surface Forces via Direct Intermolecular Contact**: Molecules located immediately outside \( \partial \Omega \) exert direct electromagnetic repulsive forces upon molecules immediately inside \( \partial \Omega \) across the boundary interface. This surface force per unit area on facet \( \alpha \) is the Cauchy stress vector \( \mathbf{t} ( \hat{\mathbf{n}}_\alpha ) = \mathbf{\sigma} \cdot \hat{\mathbf{n}}_\alpha \) , where \( \mathbf{\sigma} \) is the second-rank stress tensor.
 
 . **External Volume Influences**: Macroscopic body forces (such as gravitational acceleration \( \mathbf{g} \) —which is itself an electromagnetic manifestation—or external electric and magnetic forces) exert an external force density \( \mathbf{f}_\text{ext} \) .
 
-[#def-discrete-fluid-aperture]
+[#def-discrete-fluid-cell]
 [DEFINITION]
 ====
-**Definition (Discrete Fluid Aperture and Coarse-Grained Field Observables on \( \mathcal{G}_N \) )**:  +
+**Definition (Discrete Fluid Cell and Coarse-Grained Field Observables on \( \mathcal{G}_N \) )**:  +
 Let \( \mathcal{G}_N \) be the discrete spatial lattice with lattice resolution \( \Delta x \) . A fluid domain is defined by an ensemble of \( N_\text{fluid} \) finite-mass entities \( \{ ( m_k , \mathbf{x}_k ( t ) , \mathbf{v}_k ( t ) ) \}_{k=1}^{N_\text{fluid}} \) .
 
-For an aperture weighting kernel \( W ( \mathbf{r} ) \) on \( \mathcal{G}_N \) with finite spatial support of radius \( R_\text{ap} \gg \Delta x \) (vanishing identically for all lattice points with \( | \mathbf{r} | \ge R_\text{ap} \) ) satisfying the discrete lattice normalization:
+For an weighting kernel \( W ( \mathbf{r} ) \) on \( \mathcal{G}_N \) with finite spatial support of radius \( R_\text{ap} \gg \Delta x \) (vanishing identically for all lattice points with \( | \mathbf{r} | \ge R_\text{ap} \) ) satisfying the discrete lattice normalization:
 \[ \sum_{\mathbf{x} \in \mathcal{G}_N} W ( \mathbf{x} ) \Delta x^3 = 1 \]
 the macroscopic fluid observables are defined as:
 \[ \rho ( \mathbf{x} , t ) = \sum_{k=1}^{N_\text{fluid}} m_k W ( \mathbf{x} - \mathbf{x}_k ( t ) ) \]
@@ -457,11 +457,11 @@ Substituting this exact discrete identity yields:
 +
 \[ \sum_{\mathbf{x} \in \Omega} \left( \frac{\Delta \rho}{\Delta t} + \nabla \cdot ( \rho \mathbf{u} ) \right) \Delta x^3 = 0 \]
 +
-Because this identity holds for every arbitrary finite aperture region \( \Omega \) on \( \mathcal{G}_N \) (including an individual lattice cell \( \Omega = \{ \mathbf{x} \} \) ), the bracketed quantity must vanish identically at each grid cell, establishing the exact mass conservation equation:
+Because this identity holds for every arbitrary finite bounded region \( \Omega \) on \( \mathcal{G}_N \) (including an individual lattice cell \( \Omega = \{ \mathbf{x} \} \) ), the bracketed quantity must vanish identically at each grid cell, establishing the exact mass conservation equation:
 +
 \[ \frac{\partial \rho}{\partial t} + \nabla \cdot ( \rho \mathbf{u} ) = 0 \]
 +
-In legacy continuum mechanics, this relation was traditionally referred to as the “continuity equation”. In the Iris Number System, that terminology is strictly avoided: physical fluids consist of finite numbers of discrete entities on the measurement lattice \( \mathcal{G}_N \) , not an uncountably infinite continuum. The equation expresses the exact conservation of physical mass—the net rate of mass accumulation within an aperture volume equals the net mass influx across its boundary. It is therefore properly and solely designated the **mass conservation equation**.
+In legacy continuum mechanics, this relation was traditionally referred to as the “continuity equation”. In the Iris Number System, that terminology is strictly avoided: physical fluids consist of finite numbers of discrete entities on the measurement lattice \( \mathcal{G}_N \) , not an uncountably infinite continuum. The equation expresses the exact conservation of physical mass—the net rate of mass accumulation within a cell volume equals the net mass influx across its boundary. It is therefore properly and solely designated the **mass conservation equation**.
 
 . **Step 2: Momentum Conservation and the Cauchy Momentum Equation**.  +
 Newton’s second law applied to the discrete control region \( \Omega \) states that the rate of change of total fluid momentum equals the sum of net advective momentum inflow, boundary surface contact forces, and external volume forces:
@@ -596,15 +596,15 @@ With both systems formulated in \( Cl(4,1,1) \) , we can now lay out their preci
 
 | **Physical Structure on \( \mathcal{G}_N \) **
 | **Discrete Multivector Field**: The field \( F \) is a discrete geometric multivector configuration on the grid \( \mathcal{G}_N \) , updated through direct topological contact across grid cells.
-| **Coarse-Grained Molecular Ensemble**: The fluid observables ( \( \mathbf{u} , \rho , P \) ) are spatial aperture averages over a finite ensemble of discrete molecular structures.
+| **Coarse-Grained Molecular Ensemble**: The fluid observables ( \( \mathbf{u} , \rho , P \) ) are spatial spacing averages over a finite ensemble of discrete molecular structures.
 
 | **Origin of Pressure**
 | **Electromagnetic Field Energy Density**: Field pressure is given directly by the diagonal spatial components of the electromagnetic stress tensor \( \mathbf{T}_\text{field} = \frac{1}{2} ( \epsilon_0 E^2 + \frac{1}{\mu_0} B^2 ) \) (including gravitational components as electromagnetic aspects).
-| **Thermal Molecular Bombardment**: Fluid pressure \( P = \rho R T \) is caused by the kinetic momentum transfer of chaotic microscopic thermal fluctuations \( \mathbf{c}_k \) striking aperture boundaries.
+| **Thermal Molecular Bombardment**: Fluid pressure \( P = \rho R T \) is caused by the kinetic momentum transfer of chaotic microscopic thermal fluctuations \( \mathbf{c}_k \) striking cell boundaries.
 
 | **Lattice Regularity**
 | **Linear Well-Posedness on \( \mathcal{G}_N \) **: Because \( D F = J \) is linear with finite propagation speed \( c \) , field values on \( \mathcal{G}_N \) remain bounded for all finite time without singular blowup.
-| **Aperture Regularity on \( \mathcal{G}_N \) **: Because molecules have finite non-zero diameter \( d_0 \) and mean free path, gradients remain bounded on \( \mathcal{G}_N \) ; potential blowup is an artifact of the unphysical continuum limit \( \Delta x \to 0 \) .
+| **Lattice Spacing Regularity on \( \mathcal{G}_N \) **: Because molecules have finite non-zero diameter \( d_0 \) and mean free path, gradients remain bounded on \( \mathcal{G}_N \) ; potential blowup is an artifact of the unphysical continuum limit \( \Delta x \to 0 \) .
 |===
 
 ==== Why Do These Structural Differences Exist?
@@ -649,7 +649,7 @@ where \( u_\text{background} \) is the energy density of the ambient radiation f
 +
 Thus, both Navier-Stokes viscosity and electromagnetic field viscosity are direct manifestations of **momentum conservation**: Navier-Stokes transfers momentum via colliding massive particles at thermal velocities, whereas the electromagnetic field transfers momentum via wave packets propagating at speed \( c \) subject to Doppler phase compression. As demonstrated in xref:chap-structural-cosmology[Chapter 20], this electromagnetic field viscosity has profound cosmological consequences: over billions of light-years, the viscous drag of the background radiation field causes propagating starlight to gradually wear out and attenuate, sustaining the Cosmic Microwave Background and establishing the optical visibility horizon of the universe.
 
-3. **Incompressibility is an Aperture-Scale Approximation**:  +
+3. **Incompressibility is a Lattice-Scale Approximation**:  +
 The incompressible Navier-Stokes equation assumes \( \nabla \cdot \mathbf{u} = 0 \) . In physical reality, no fluid is strictly incompressible. Sound waves travel through fluids at finite acoustic speed \( c_s = \sqrt{\partial P / \partial \rho} \) . 
 +
 The assumption \( \nabla \cdot \mathbf{u} = 0 \) is valid only when the fluid velocity is much smaller than the speed of sound (low Mach number, \( \text{Ma} = | \mathbf{u} | / c_s \ll 1 \) ). In this regime, acoustic waves propagate across the control volume so rapidly compared to the fluid motion that density variations are negligible. 
@@ -686,7 +686,7 @@ Therefore, infinite velocity gradients and infinite energy densities are physica
 
 == Quantum Pseudo-Physics
 
-In this chapter, conventional quantum mechanics—specifically its reliance on non-causal probability collapses, non-local action at a distance, and uncountably infinite Hilbert space continuums—is demonstrated to be an artifact of assuming mathematical inconsistency in field descriptions, whereas the Iris Number System restores strict constructive determinism and topological aperture quantization.
+In this chapter, conventional quantum mechanics—specifically its reliance on non-causal probability collapses, non-local action at a distance, and uncountably infinite Hilbert space continuums—is demonstrated to be an artifact of assuming mathematical inconsistency in field descriptions, whereas the Iris Number System restores strict constructive determinism and topological spacing quantization.
 
 === Hilbert Space as a Linear Space of Logical Propositions, Jaynesian Probability, and Trigonometry
 
@@ -731,7 +731,7 @@ The standard quantum mechanical measurement postulate—requiring an zero-durati
 
 . **Measurement Contradiction**: If measurement is modeled as a physical process within the system, its interaction must be governed by \( U ( t_1 , t_0 ) \), which maps pure states to pure entangled states. Assuming a non-unitary collapse \( | \psi \rangle \to | \phi _ k \rangle \) with probability \( | \langle \phi _ k | \psi \rangle | ^ 2 \) violates the linearity of \( U ( t_1 , t_0 ) \), creating an irreducible formal contradiction in the axiomatic foundation of conventional quantum mechanics.
 
-. **Constructive Resolution in MSRA**: In the Iris number system, physical fields are real multivectors \( F \in Cl ( 4 , 1 , 1 ) \) evolving deterministically on discrete grid \( \mathcal { G } _ N \). Observational "measurement" is simply the finite resolution aperture interaction between the field packet and the grid detector, eliminating non-physical collapses and restoring mathematical consistency. \( \square \)
+. **Constructive Resolution in MSRA**: In the Iris number system, physical fields are real multivectors \( F \in Cl ( 4 , 1 , 1 ) \) evolving deterministically on discrete grid \( \mathcal { G } _ N \). Observational "measurement" is simply the finite resolution grid interaction between the field packet and the grid detector, eliminating non-physical collapses and restoring mathematical consistency. \( \square \)
 ====
 
 === Topological Origin of Quantized Energy Levels without Probabilistic Wave-Particle Duality
@@ -748,7 +748,7 @@ Let \( F _ \omega \) be a stationary multivector field solution surrounding an a
 
 . **Rotor Boundary Closure**: For a localized standing wave field packet to maintain single-valued boundary conditions under a full spatial rotation \( \theta \to \theta + 2 \pi \) on grid \( \mathcal { G } _ N \), the rotor transformation must satisfy \( R ( \theta + 2 \pi ) = \pm R ( \theta ) \).
 
-. **Integer Aperture Modes**: Evaluating \( \exp ( - I _ 2 n ( \theta + 2 \pi ) / 2 ) = \exp ( - I _ 2 n \theta / 2 ) \exp ( - n \pi I _ 2 ) \). Single-valuedness forces \( \exp ( - n \pi I _ 2 ) = ( - 1 ) ^ n \mathbf { 1 } _ { Cl } \), restricting \( n \) strictly to integers \( n \in \mathbb { Z } \setminus \{ 0 \} \).
+. **Integer Spacing Modes**: Evaluating \( \exp ( - I _ 2 n ( \theta + 2 \pi ) / 2 ) = \exp ( - I _ 2 n \theta / 2 ) \exp ( - n \pi I _ 2 ) \). Single-valuedness forces \( \exp ( - n \pi I _ 2 ) = ( - 1 ) ^ n \mathbf { 1 } _ { Cl } \), restricting \( n \) strictly to integers \( n \in \mathbb { Z } \setminus \{ 0 \} \).
 
 . **Discrete Frequency Spectrum**: Non-integer frequencies lead to destructive phase cancellation on discrete grid \( \mathcal { G } _ N \). Thus, discrete spectrum lines are exact topological standing wave resonances of deterministic fields, disproving the necessity of quantum probabilistic mechanics. \( \square \)
 ====
@@ -828,7 +828,7 @@ The derivation of Bell-type inequalities requires restricting the evaluation of 
 
 *Proof:*
 
-. **Incomplete Measure Space Integration**: Let \( \Omega \) be the complete physical state space of emitted wave-packets on discrete grid \( \mathcal { G } _ N \), including local detector thresholding and phase aperture parameters. In any real experiment, detector response is governed by a finite aperture function \( \chi _ a ( \lambda ) \in \{ 0 , 1 \} \).
+. **Incomplete Measure Space Integration**: Let \( \Omega \) be the complete physical state space of emitted wave-packets on discrete grid \( \mathcal { G } _ N \), including local detector thresholding and phase spacing parameters. In any real experiment, detector response is governed by a finite window function \( \chi _ a ( \lambda ) \in \{ 0 , 1 \} \).
 
 . **Post-Selection Data Erasure**: Bell's derivation assumes integration over a normalized density \( \int _ { \Lambda } \rho ( \lambda ) \, d \lambda = 1 \) where every emitted pair produces a binary outcome. However, physical detection evaluates expectations on the post-selected subset \( \Omega _ \text{det} = \{ \lambda \in \Omega \mid \chi _ a ( \lambda ) \chi _ b ( \lambda ) = 1 \} \). Erasing the complementary set \( \Omega \setminus \Omega _ \text{det} \) from the mathematical record alters the normalization measure:
 \[ E _ \text{exp} ( a , b ) = \frac { \int _ { \Omega } A ( a , \lambda ) B ( b , \lambda ) \chi _ a ( \lambda ) \chi _ b ( \lambda ) \rho ( \lambda ) \, d \lambda } { \int _ { \Omega } \chi _ a ( \lambda ) \chi _ b ( \lambda ) \rho ( \lambda ) \, d \lambda } \]
@@ -906,7 +906,7 @@ Because \( f _ \text{nonlocal} \) is unconstrained by boundary stress integrals 
 
 For over a century, the physical interpretation of optical experiments was severely distorted by a fundamental cognitive oversight: human habituation to linear continuum models caused researchers to ignore non-linear threshold effects inherent to physical detection instruments. When a discrete electromagnetic field wave packet at m-res scale interacts with a material detector (such as a photomultiplier tube, a charge-coupled device, or a photo-emulsion silver halide crystal), the detector lattice does not measure field energy smoothly across arbitrary scales. Instead, the detector lattice requires a finite, non-zero energy accumulation to trigger an irreversible atomic state transition—the work-function ionization threshold \( E _ \text{thresh} = W _ \text{work} \).
 
-In the two-slit experiment for light, the Master Field Equation \( D F = J \) governs the co-propagation of an electromagnetic wave packet through both slits as a discrete, deterministic multivector field distribution at m-res scale \( F \in Cl ( 4 , 1 , 1 ) \). The wave packet undergoes classical field interference behind the aperture plate, establishing a spatial field intensity pattern \( u ( \mathbf { x } ) = \frac { 1 } { 2 } ( \varepsilon _ 0 \mathbf { E } ^ 2 + \mu _ 0 ^ { - 1 } \mathbf { B } ^ 2 ) \). Individual detector “clicks” or localized silver grains are not localized point-particle “photons” arriving randomly; they are localized atomic threshold absorption events triggered at specific lattice sites where the integrated field energy density exceeds the detector's ionization threshold \( E _ \text{thresh} \).
+In the two-slit experiment for light, the Master Field Equation \( D F = J \) governs the co-propagation of an electromagnetic wave packet through both slits as a discrete, deterministic multivector field distribution at m-res scale \( F \in Cl ( 4 , 1 , 1 ) \). The wave packet undergoes classical field interference behind the slit mask, establishing a spatial field intensity pattern \( u ( \mathbf { x } ) = \frac { 1 } { 2 } ( \varepsilon _ 0 \mathbf { E } ^ 2 + \mu _ 0 ^ { - 1 } \mathbf { B } ^ 2 ) \). Individual detector “clicks” or localized silver grains are not localized point-particle “photons” arriving randomly; they are localized atomic threshold absorption events triggered at specific lattice sites where the integrated field energy density exceeds the detector's ionization threshold \( E _ \text{thresh} \).
 
 [#theorem-two-slit-light-threshold-solution]
 [THEOREM]
@@ -1143,7 +1143,7 @@ In conventional continuum physics, nuclear fusion between deuterons (\( D + D \)
 [THEOREM]
 .Theorem: Non-Singular Multivector Field Coupling and Interstitial Coulomb Shielding
 ====
-Let two deuterons occupy adjacent interstitial sites in a host metal lattice (e.g., face-centered cubic Palladium, \( Pd \)) on discrete grid \( \mathcal { G } _ N \). Each nuclear charge distribution is a non-singular, localized Clifford multivector field packet \( F _ \text{nuc} \in Cl ( 4 , 1 , 1 ) \). In high-density interstitial lattice apertures (\( D / Pd \ge 1 \)), collective electron density accumulation and lattice mechanical stress tensor \( T _ \text{elast} \) modify the effective interaction potential to a bounded, non-singular multivector function:
+Let two deuterons occupy adjacent interstitial sites in a host metal lattice (e.g., face-centered cubic Palladium, \( Pd \)) on discrete grid \( \mathcal { G } _ N \). Each nuclear charge distribution is a non-singular, localized Clifford multivector field packet \( F _ \text{nuc} \in Cl ( 4 , 1 , 1 ) \). In high-density interstitial lattice sites (\( D / Pd \ge 1 \)), collective electron density accumulation and lattice mechanical stress tensor \( T _ \text{elast} \) modify the effective interaction potential to a bounded, non-singular multivector function:
 \[ V _ \text{eff} ( r ) = \frac { e ^ 2 } { 4 \pi \varepsilon _ 0 r } \exp ( - k _ \text{TF} r ) + V _ \text{lattice} ( r ) < \infty \]
 where \( k _ \text{TF} \) is the Thomas-Fermi screening wavenumber of the dense lattice electron gas. At interstitial separation distances \( r \sim r _ \text{lattice} \), the effective potential barrier is reduced by several orders of magnitude, disproving the continuum point-particle Coulomb barrier assertion.
 
@@ -1151,9 +1151,9 @@ where \( k _ \text{TF} \) is the Thomas-Fermi screening wavenumber of the dense 
 
 . **Non-Singular Field Structure**: In the Iris Number System, a nuclear entity is not a zero-volume point particle. Operating with the 6D Dirac gradient operator \( D F = J \) on discrete resolution grid \( \mathcal { G } _ N \), the electric field \( \mathbf { E } _ \text{nuc} \) generated by nuclear current density \( J _ \text{nuc} \) satisfies:
 \[ \nabla \cdot \mathbf { E } _ \text{nuc} = \rho _ \text{nuc} ( \mathbf { r } ) \]
-where \( \rho _ \text{nuc} ( \mathbf { r } ) \) is a smooth, finite-valued spatial distribution bounded by nuclear aperture radius \( r _ \text{nuc} \). The electrostatic field energy density \( u _ e = \frac { 1 } { 2 } \varepsilon _ 0 | \mathbf { E } _ \text{nuc} | ^ 2 \) remains everywhere finite.
+where \( \rho _ \text{nuc} ( \mathbf { r } ) \) is a smooth, finite-valued spatial distribution bounded by nuclear radius \( r _ \text{nuc} \). The electrostatic field energy density \( u _ e = \frac { 1 } { 2 } \varepsilon _ 0 | \mathbf { E } _ \text{nuc} | ^ 2 \) remains everywhere finite.
 
-. **Interstitial Lattice Shielding**: When deuterons are packed into the interstitial octahedral and tetrahedral apertures of a Palladium crystal lattice at loading ratio \( D / Pd \ge 1.0 \), the local conduction electron density increases substantially. The surrounding lattice conduction electrons form a dense Thomas-Fermi screening sheath around each interstitial deuteron wave-packet. Substituting the screened multivector charge density into the Poisson projection of the Master Field Equation yields the Yukawa-type screened potential:
+. **Interstitial Lattice Shielding**: When deuterons are packed into the interstitial octahedral and tetrahedral sites of a Palladium crystal lattice at loading ratio \( D / Pd \ge 1.0 \), the local conduction electron density increases substantially. The surrounding lattice conduction electrons form a dense Thomas-Fermi screening sheath around each interstitial deuteron wave-packet. Substituting the screened multivector charge density into the Poisson projection of the Master Field Equation yields the Yukawa-type screened potential:
 \[ V _ \text{eff} ( r ) = \frac { e ^ 2 } { 4 \pi \varepsilon _ 0 r } \exp ( - k _ \text{TF} r ) \]
 where \( k _ \text{TF} = \sqrt { \frac { 3 e ^ 2 n _ e } { 2 \varepsilon _ 0 E _ F } } \).
 
@@ -1162,7 +1162,7 @@ where \( k _ \text{TF} = \sqrt { \frac { 3 e ^ 2 n _ e } { 2 \varepsilon _ 0 E _
 
 === Coherent Interstitial Lattice Resonance and D-D Nuclear Fusion Rates
 
-This section establishes that nuclear fusion rates in solid-state host lattices are governed by phase-coherent standing wave resonances across discrete lattice apertures, rather than classical thermal collision cross-sections.
+This section establishes that nuclear fusion rates in solid-state host lattices are governed by phase-coherent standing wave resonances across discrete lattice sites, rather than classical thermal collision cross-sections.
 
 [#theorem-lattice-coherent-phase-fusion-rate]
 [THEOREM]
@@ -1178,7 +1178,7 @@ the overlap integral of the non-singular nuclear multivector wave-packets increa
 \[ F _ \text{total} ( \mathbf { r } , t ) = \sum _ { j = 1 } ^ N F _ j ( \mathbf { r } - \mathbf { R } _ j ) \exp ( i \phi _ j ) \]
 where \( \mathbf { R } _ j \) denotes the discrete lattice site coordinates and \( \phi _ j \) is the internal multivector rotor phase angle.
 
-. **Phase-Locked Lattice Resonance**: Under electrochemical loading and external electromagnetic or acoustic stimulation, the interstitial deuteron collective mode locks into phase coherence (\( \phi _ j = \phi _ 0 \) for all \( j \)). The effective overlap probability density for nuclear field coalescence at interstitial boundary apertures is proportional to the square of the coherent sum:
+. **Phase-Locked Lattice Resonance**: Under electrochemical loading and external electromagnetic or acoustic stimulation, the interstitial deuteron collective mode locks into phase coherence (\( \phi _ j = \phi _ 0 \) for all \( j \)). The effective overlap probability density for nuclear field coalescence at interstitial boundary interfaces is proportional to the square of the coherent sum:
 \[ | F _ \text{total} | ^ 2 = \left| \sum _ { j = 1 } ^ N F _ j \right| ^ 2 = N ^ 2 | F _ 0 | ^ 2 \]
 
 . **Macroscopic Fusion Rate**: In contrast to incoherent gas-phase thermal collisions (where reaction probability scales linearly as \( N \)), the phase-locked lattice resonance amplifies the nuclear fusion interaction probability by factor \( N \sim 10 ^ { 12 } \text{--} 10 ^ { 18 } \). This coherent lattice amplification raises the room-temperature fusion rate \( \Gamma _ \text{fusion} \) into the observable range of watts per cubic centimeter of host metal. \( \square \)
@@ -1232,7 +1232,7 @@ yielding stable \( {}^4\text{He} \) gas as the primary nuclear ash in exact quan
 
 . **Quantitative Heat-to-Helium Ratio**: Because each successful fusion event produces exactly one \( {}^4\text{He} \) nucleus and releases \( 23.84 \text{ MeV} \) of energy into lattice heat, the total accumulated heat \( Q _ \text{total} \) and total produced Helium-4 atoms \( N _ {{}^4\text{He}} \) satisfy the exact linear ratio:
 \[ Q _ \text{total} = ( 23.84 \text{ MeV} ) \cdot N _ {{}^4\text{He}} \]
-This provides a rigorous, operational, experimentally verifiable criterion for cold fusion in discrete lattice apertures. \( \square \)
+This provides a rigorous, operational, experimentally verifiable criterion for cold fusion in discrete lattice sites. \( \square \)
 ====
 
 === Engineering Design of Practical Lattice-Assisted Nuclear Energy Devices
@@ -1562,7 +1562,7 @@ This section establishes the electrodynamic ion separation theorem for aqueous s
 [THEOREM]
 .Theorem: Multivector Dielectric Gradient Ion Separation and Energetic Lower Bound
 ====
-Let an aqueous saline solution (water containing hydrated \( Na^+ \) and \( Cl^- \) ions) flow through a discrete micro-channel aperture grid \( \mathcal { G } _ N \). Under an oscillating non-uniform multivector electric field gradient \( \nabla | \mathbf { E } | ^ 2 \) tuned to the dielectric relaxation resonance frequency \( \omega _ \text{dielectric} \) of hydrated ionic clusters, hydrated salt ions experience a directional dielectrophoretic gradient force \( \mathbf { F } _ \text{DEP} \):
+Let an aqueous saline solution (water containing hydrated \( Na^+ \) and \( Cl^- \) ions) flow through a discrete micro-channel grid \( \mathcal { G } _ N \). Under an oscillating non-uniform multivector electric field gradient \( \nabla | \mathbf { E } | ^ 2 \) tuned to the dielectric relaxation resonance frequency \( \omega _ \text{dielectric} \) of hydrated ionic clusters, hydrated salt ions experience a directional dielectrophoretic gradient force \( \mathbf { F } _ \text{DEP} \):
 \[ \mathbf { F } _ \text{DEP} = 2 \pi \varepsilon _ 0 \varepsilon _ m r _ \text{ion} ^ 3 \text{Re} [ K ( \omega ) ] \nabla | \mathbf { E } | ^ 2 \]
 forcing transverse ion migration away from the primary fluid stream without mechanical membrane pressure. The minimum energy required to separate 1 m\(^3\) of seawater (salinity 35,000 ppm TDS) into pure potable water (< 200 ppm TDS) satisfies the thermodynamic limit:
 \[ E _ \text{min} = \Delta G _ \text{mix} \approx 0.70 \text{ kWh / m}^3 \]
@@ -1595,7 +1595,7 @@ producing completely sterile water free of organic toxic residues.
 
 . **Multivector Acoustic Stress Balance**: In the Master Field Equation \( D F = J \), fluid pressure variations \( P \) and velocity field bivectors \( \mathbf { u } \) couple through the multivector stress-energy tensor. Acoustic standing waves generate localized spatial pressure nodes where acoustic intensity exceeds the cavitation threshold \( P _ \text{thresh} \approx 1.2 \text{ bar} \).
 
-. **Micro-Cavitation Collapse and Thermalization**: During the rarefaction phase, micro-void apertures expand on discrete grid \( \mathcal { G } _ N \); during compression, the surrounding liquid inertia drives catastrophic void collapse. The spherical collapse converts field energy into localized thermal shock spikes (\( T _ \text{cav} \sim 5000 \text{ K} \)) and localized high-energy ultraviolet/radical emission (sonoluminescence and hydroxyl radical \( \cdot OH \) generation) confined to sub-micron apertures for nanosecond durations.
+. **Micro-Cavitation Collapse and Thermalization**: During the rarefaction phase, micro-cavities expand on discrete grid \( \mathcal { G } _ N \); during compression, the surrounding liquid inertia drives catastrophic void collapse. The spherical collapse converts field energy into localized thermal shock spikes (\( T _ \text{cav} \sim 5000 \text{ K} \)) and localized high-energy ultraviolet/radical emission (sonoluminescence and hydroxyl radical \( \cdot OH \) generation) confined to sub-micron regions for nanosecond durations.
 
 . **Electroporation and Covalent Bond Cleavage**: Simultaneously, the pulsed electric field \( \mathbf { E } _ \text{pulse} \ge 10 \text{ kV/cm} \) induces a trans-membrane potential across bacterial cell walls exceeding \( V _ \text{critical} \sim 1.0 \text{ V} \), causing irreversible structural electroporation and cell lysis. For persistent toxic chemicals (e.g., perfluorooctanoic acid, PFOA), the combined high thermal density of cavitation collapse and hydroxyl radical flux cleaves the strong C-F covalent bonds (\( \sim 485 \text{ kJ/mol} \)) into benign fluoride ions (\( F^- \)) and carbon dioxide (\( CO_2 \)), rendering the water completely non-toxic without chemical additives. \( \square \)
 ====
@@ -1745,7 +1745,7 @@ The net carbon sequestration capacity satisfies \( S _ { CO_2 } \ge 0.32 \text{ 
 
 . **Field-Accelerated Carbonate Nucleation**: In \( Cl ( 4 , 1 , 1 ) \), the dipole moment of dissolved carbonic acid species (\( H_2 CO_3 \), \( HCO_3^- \)) aligns along the applied electric field lines \( \mathbf { E } _ \text{cure} \), increasing the kinetic collision rate with hydrated \( Mg^{2+} \) and \( Ca^{2+} \) cations by a factor of \( \sim 40 \). This accelerates the precipitation of dense nesquehonite (\( MgCO_3 \cdot 3 H_2 O \)) and micro-crystalline calcite (\( CaCO_3 \)) within inter-gel capillary pores.
 
-. **Microstructural Density and Pore Refinement**: The volumetric expansion associated with carbonate mineral precipitation fills interstitial gel micro-voids, reducing total porosity from \( \phi _ \text{initial} \approx 28 \% \) to \( \phi _ \text{cured} \le 4.2 \% \). Applying the discrete Knudsen-Aperture strength scaling relation \( \sigma = \sigma_0 ( 1 - \phi ) ^ n \), the refined microstructure achieves 24-hour compressive strengths exceeding 85 MPa, far surpassing standard 28-day Portland cement specifications (52.5 MPa).
+. **Microstructural Density and Pore Refinement**: The volumetric expansion associated with carbonate mineral precipitation fills interstitial gel micro-voids, reducing total porosity from \( \phi _ \text{initial} \approx 28 \% \) to \( \phi _ \text{cured} \le 4.2 \% \). Applying the discrete Knudsen-Pore strength scaling relation \( \sigma = \sigma_0 ( 1 - \phi ) ^ n \), the refined microstructure achieves 24-hour compressive strengths exceeding 85 MPa, far surpassing standard 28-day Portland cement specifications (52.5 MPa).
 
 . **Net Carbon Balance Proof**: Accounting for zero calcinative emissions (\( 0.0 \text{ kg } CO_2 / \text{kg} \)), minimal electrical energy generation emissions (\( \le 0.04 \text{ kg } CO_2 / \text{kg} \) assuming renewable grid mix), and net mineral sequestration (\( -0.32 \text{ kg } CO_2 / \text{kg} \)), the overall net carbon balance is strictly carbon-negative:
 \[ C _ \text{net} = 0.0 + 0.04 - 0.32 = -0.28 \text{ kg } CO_2 / \text{kg binder} \]
@@ -2134,15 +2134,15 @@ By Jaynesian maximum entropy principles on discrete state counts, uniform random
 
 In his seminal treatise *Mathematical Philosophy: A Study of Fate and Freedom* (1922), Cassius Jackson Keyser established a profound epistemological foundation linking mathematical rigor with human dynamics and systemic evolution. Keyser introduced the formulation *doctrinal function*—a generalized propositional function containing variable terms (variables of proposition, relationship, and domain) that yields a specific *doctrine* (a deductive system, theory, or social law) when its variables are assigned definite values (postulates or axioms).
 
-Keyser demonstrated that once a set of initial postulates is adopted, all subsequent theorems, logical consequences, and operational outcomes are rigidly and deterministically determined. Keyser termed this invariant deductive unfolding *Logical Destiny* (or *Logical Fate*). Under Keyser's formulation, human freedom does not consist in escaping logical consequences once premises are chosen, but rather in the conscious, deliberate freedom to select and revise the initial postulate aperture.
+Keyser demonstrated that once a set of initial postulates is adopted, all subsequent theorems, logical consequences, and operational outcomes are rigidly and deterministically determined. Keyser termed this invariant deductive unfolding *Logical Destiny* (or *Logical Fate*). Under Keyser's formulation, human freedom does not consist in escaping logical consequences once premises are chosen, but rather in the conscious, deliberate freedom to select and revise the initial postulate set.
 
-This chapter formalizes Keyser's theory within the Counting-Iris framework, establishing doctrinal functions as propositional multivector operators on discrete resolution grids and proving that logical destiny is the deterministic, invariant deductive closure of multivector postulate apertures in \( Cl ( 4 , 1 , 1 ) \).
+This chapter formalizes Keyser's theory within the Counting-Iris framework, establishing doctrinal functions as propositional multivector operators on discrete resolution grids and proving that logical destiny is the deterministic, invariant deductive closure of multivector postulate sets in \( Cl ( 4 , 1 , 1 ) \).
 
-=== Doctrinal Functions and Postulate Apertures on Discrete Multivector Lattices
+=== Doctrinal Functions and Postulate Sets on Discrete Multivector Lattices
 
 We begin by formalizing Keyser's doctrinal function as a discrete, propositional multivector mapping operating on finite lattice state spaces.
 
-[#theorem-doctrinal-function-aperture-mapping]
+[#theorem-doctrinal-function-mapping]
 [THEOREM]
 .Theorem: Doctrinal Function Mapping and Deductive Orbit Conservation Theorem
 ====
@@ -2179,7 +2179,7 @@ Let \( \Pi \subset Cl ( 4 , 1 , 1 ) \) be a finite, consistent set of multivecto
 
 . **Uniqueness and Immutability**: Because \( T \) is a deterministic, monotonic operator on finite sets (\( S _ 1 \subseteq S _ 2 \implies T ( S _ 1 ) \subseteq T ( S _ 2 ) \)), Tarski's fixed-point theorem on finite lattices guarantees that \( \text{Ded} ( \Pi ) \) is uniquely determined. There are no stochastic branching choices or non-deterministic paths in the unfolding of \( \text{Ded} ( \Pi ) \). Consequently, all theorems, operational consequences, and structural fates encoded in \( \text{Ded} ( \Pi ) \) are completely determined by \( \Pi \), establishing Keyser's Logical Destiny.
 
-. **Freedom as Postulate Choice**: Suppose an observer desires a consequence \( C \notin \text{Ded} ( \Pi ) \) or wishes to invalidate a consequence \( C ' \in \text{Ded} ( \Pi ) \). Since \( \text{Ded} ( \Pi ) \) is uniquely fixed by \( \Pi \), achieving this outcome is logically impossible under \( \Pi \). The only viable action is to choose a new postulate set \( \Pi ' \) such that \( C \in \text{Ded} ( \Pi ' ) \). Thus, human agency and freedom consist entirely in the selection and transformation of the initial postulate aperture \( \Pi \). \( \square \)
+. **Freedom as Postulate Choice**: Suppose an observer desires a consequence \( C \notin \text{Ded} ( \Pi ) \) or wishes to invalidate a consequence \( C ' \in \text{Ded} ( \Pi ) \). Since \( \text{Ded} ( \Pi ) \) is uniquely fixed by \( \Pi \), achieving this outcome is logically impossible under \( \Pi \). The only viable action is to choose a new postulate set \( \Pi ' \) such that \( C \in \text{Ded} ( \Pi ' ) \). Thus, human agency and freedom consist entirely in the selection and transformation of the initial postulate set \( \Pi \). \( \square \)
 ====
 
 === Time-Binding and Doctrinal Evolution across Generational Grids
@@ -2190,9 +2190,9 @@ Keyser collaborated closely with Alfred Korzybski on the formulation of *time-bi
 [THEOREM]
 .Theorem: Doctrinal Time-Binding Invariance and Systemic Revision Theorem
 ====
-Let \( \Pi _ t \) represent the human postulate aperture at generational time step \( t \in \mathbb { Z } ^ + \), with associated logical destiny \( \mathcal { D } _ t = \text{Ded} ( \Pi _ t ) \).
+Let \( \Pi _ t \) represent the human postulate set at generational time step \( t \in \mathbb { Z } ^ + \), with associated logical destiny \( \mathcal { D } _ t = \text{Ded} ( \Pi _ t ) \).
 
-1. **Time-Binding Accumulation**: Generational progress is achieved when time \( t + 1 \) identifies contradictions or limitations in \( \Pi _ t \), constructing a refined postulate aperture \( \Pi _ { t + 1 } \) such that all tautological, empirical truths of \( \mathcal { D } _ t \) are preserved while eliminating inconsistencies.
+1. **Time-Binding Accumulation**: Generational progress is achieved when time \( t + 1 \) identifies contradictions or limitations in \( \Pi _ t \), constructing a refined postulate set \( \Pi _ { t + 1 } \) such that all tautological, empirical truths of \( \mathcal { D } _ t \) are preserved while eliminating inconsistencies.
 2. **Resolution Expansion**: The sequence of generational postulate closures satisfies \( \mathcal { D } _ t \subset \mathcal { D } _ { t + 1 } \) in resolution capacity, expanding the volume of computable, constructive solutions to physical and human problems.
 
 *Proof:*
@@ -2208,9 +2208,9 @@ Let \( \Pi _ t \) represent the human postulate aperture at generational time st
 
 == Signal Processing Theory of Human Language
 
-Human language—whether expressed as spoken acoustic pressure variations, written symbolic glyphs, or formal mathematical notation—is fundamentally a physical, time-sampled, aperture-modulated signal transmitted across discrete spatial-temporal media. Traditional linguistic approaches frequently suffer from continuum fallacies, mystical psychological constructs, or ungrounded symbolic abstractions that decouple language from physical signal processing laws.
+Human language—whether expressed as spoken acoustic pressure variations, written symbolic glyphs, or formal mathematical notation—is fundamentally a physical, time-sampled, pulse-modulated signal transmitted across discrete spatial-temporal media. Traditional linguistic approaches frequently suffer from continuum fallacies, mystical psychological constructs, or ungrounded symbolic abstractions that decouple language from physical signal processing laws.
 
-In the Counting-Iris framework, human language is established as a deterministic, discrete signal processing system operating on finite resolution grids \( \mathcal { G } _ N \). Internal *meanings* are recognized as the primary organismal abstractions of interest—invariant multivector aperture configurations in an organism's discrete cognitive lattice. Physical speech and textual signals are transducer carrier waves that modulate spatial-temporal media to convey and reconstruct these internal organismal meanings across organisms. Furthermore, the finite vocabulary and grammar rules of language generate a countably indefinite recursive hierarchy of nested semantic structures, fully executed over finite physical step counts without continuum fallacies.
+In the Counting-Iris framework, human language is established as a deterministic, discrete signal processing system operating on finite resolution grids \( \mathcal { G } _ N \). Internal *meanings* are recognized as the primary organismal abstractions of interest—invariant multivector state configurations in an organism's discrete cognitive lattice. Physical speech and textual signals are transducer carrier waves that modulate spatial-temporal media to convey and reconstruct these internal organismal meanings across organisms. Furthermore, the finite vocabulary and grammar rules of language generate a countably indefinite recursive hierarchy of nested semantic structures, fully executed over finite physical step counts without continuum fallacies.
 
 === Meanings as Primary Organismal Abstractions and Countably Indefinite Linguistic Recursion
 
@@ -2220,7 +2220,7 @@ Linguistic utterances do not contain meanings as intrinsic physical properties o
 [THEOREM]
 .Theorem: Organismal Meaning Transduction and Countably Indefinite Recursive Hierarchy Theorem
 ====
-Let \( \mathcal { M } \subset Cl ( 4 , 1 , 1 ) \) be the set of internal organismal meaning abstractions—invariant multivector aperture configurations residing within an organism's discrete cognitive lattice. Let \( A \) be a finite discrete vocabulary alphabet, and let \( \mathcal { R } \) be a finite set of recursive syntactic production rules.
+Let \( \mathcal { M } \subset Cl ( 4 , 1 , 1 ) \) be the set of internal organismal meaning abstractions—invariant multivector state configurations residing within an organism's discrete cognitive lattice. Let \( A \) be a finite discrete vocabulary alphabet, and let \( \mathcal { R } \) be a finite set of recursive syntactic production rules.
 
 1. **Primary Organismal Meanings**: Physical linguistic utterances \( s ( t ) \) do not contain meaning in themselves; they serve strictly as physical transducer signals that modulate acoustic or optical channels to induce a target meaning state \( M ' \in \mathcal { M } \) in a receiving organism corresponding to sender meaning state \( M \in \mathcal { M } \).
 2. **Countably Indefinite Recursive Hierarchy**: The finite rule set \( \mathcal { R } \) acting on alphabet \( A \) generates a countably indefinite sequence of nested linguistic structures \( \mathcal { L } = \bigcup _ { k = 1 } ^ \infty \mathcal { L } _ k \), where each level \( k \in \mathbb { Z } ^ + \) permits embedding sub-expressions and sub-meanings to arbitrary finite depth.
@@ -2228,22 +2228,22 @@ Let \( \mathcal { M } \subset Cl ( 4 , 1 , 1 ) \) be the set of internal organis
 
 *Proof:*
 
-. **Organismal Meaning Abstraction**: Define an organismal meaning state \( M \in Cl ( 4 , 1 , 1 ) \) as a closed, invariant multivector field configuration over a local discrete lattice grid \( \mathcal { G } _ \text{org} \). A sender organism executes a transducer operator \( T _ \text{send} : \mathcal { M } \to \mathcal { S } \), mapping internal meaning state \( M \) into a physical acoustic or visual carrier signal \( s ( t ) \). The receiving organism executes inverse transduction \( T _ \text{recv} : \mathcal { S } \to \mathcal { M } \), reconstructing target meaning state \( M ' = T _ \text{recv} ( s ( t ) ) \). Successful communication is achieved when \( \| M ' - M \| < \epsilon _ \text{aperture} \).
+. **Organismal Meaning Abstraction**: Define an organismal meaning state \( M \in Cl ( 4 , 1 , 1 ) \) as a closed, invariant multivector field configuration over a local discrete lattice grid \( \mathcal { G } _ \text{org} \). A sender organism executes a transducer operator \( T _ \text{send} : \mathcal { M } \to \mathcal { S } \), mapping internal meaning state \( M \) into a physical acoustic or visual carrier signal \( s ( t ) \). The receiving organism executes inverse transduction \( T _ \text{recv} : \mathcal { S } \to \mathcal { M } \), reconstructing target meaning state \( M ' = T _ \text{recv} ( s ( t ) ) \). Successful communication is achieved when \( \| M ' - M \| < \epsilon _ \text{threshold} \).
 
 . **Countably Indefinite Recursion**: Let \( \mathcal { R } = \{ r _ 1 , r _ 2 , \dots , r _ m \} \) be finite recursive production rules operating on multivector operators (e.g., clause embedding \( S \to S \text{ and } S \), noun phrase modification \( N P \to N P + P P \)). For any finite recursive depth \( k \in \mathbb { Z } ^ + \), the set of valid expressions \( \mathcal { L } _ k = \mathcal { R } ^ k ( A ) \) is finite. The total language space \( \mathcal { L } = \bigcup _ { k = 1 } ^ \infty \mathcal { L } _ k \) is countably infinite (indefinite), as it is a countable union of finite sets.
 
 . **Finite Physical Resolution**: Though the set of potential recursive structures \( \mathcal { L } \) is countably indefinite, any realized physical message sequence \( s ( t ) \) requires a discrete temporal duration \( T _ k \ge k \cdot \Delta t _ \text{min} \) and finite spatial lattice allocation. Because physical organisms and transmission media possess finite resolution grid limits \( \mathcal { G } _ N \), physical execution at any instant operates on a strictly finite subset \( \mathcal { L } _ { k \le K } \). This rigorously establishes human language recursion as a countably indefinite structural capacity executed strictly over finite physical step counts, avoiding continuum infinity while preserving unlimited generative flexibility. \( \square \)
 ====
 
-=== Discrete Acoustic Phoneme Modulation and Nyquist-Aperture Speech Encoding
+=== Discrete Acoustic Phoneme Modulation and Nyquist-Sampling Speech Encoding
 
 Spoken language is generated by acoustic vocal-tract resonances that modulate physical pressure waves. On discrete spatial-temporal grid \( \mathcal { G } _ N \), acoustic speech signals are time-sampled discrete pressure multivectors bounded by finite anatomical bandwidth.
 
-[#theorem-phoneme-nyquist-aperture-encoding]
+[#theorem-phoneme-nyquist-sampling-encoding]
 [THEOREM]
-.Theorem: Discrete Phoneme Nyquist-Aperture Encoding Theorem
+.Theorem: Discrete Phoneme Nyquist-Sampling Encoding Theorem
 ====
-Let \( s ( t ) \in Cl ( 4 , 1 , 1 ) \) be a discrete acoustic speech multivector signal generated over time interval \( t \in [ 0 , T ] \) on grid \( \mathcal { G } _ N \). Let \( W _ f \) be the maximum physical formant aperture frequency of the human vocal tract.
+Let \( s ( t ) \in Cl ( 4 , 1 , 1 ) \) be a discrete acoustic speech multivector signal generated over time interval \( t \in [ 0 , T ] \) on grid \( \mathcal { G } _ N \). Let \( W _ f \) be the maximum physical formant cutoff frequency of the human vocal tract.
 
 1. **Exact Reconstruction**: The acoustic speech signal \( s ( t ) \) is completely and losslessly reconstructed from \( K = \lfloor 2 W _ f T \rfloor \) discrete time-sampled multivector coefficients \( s _ k = s ( k / ( 2 W _ f ) ) \) without continuum interpolation.
 2. **Discrete Phoneme Quantization**: Phonemic boundaries correspond to phase transition nodes of the discrete multivector carrier wave, partitioning speech into a finite sequence of distinct operational state tokens.
@@ -2256,7 +2256,7 @@ Let \( s ( t ) \in Cl ( 4 , 1 , 1 ) \) be a discrete acoustic speech multivector
 \[ s ( t ) = \sum _ { k = 0 } ^ { K - 1 } s _ k \cdot \text{sinc} \left( 2 \pi W _ f \left( t - \frac { k } { 2 W _ f } \right) \right) \]
 where all evaluation points are discrete lattice step counts. No residual information or unobserved continuum dynamics exist between sample points.
 
-. **Phonemic Phase Nodes**: Define the phonemic state operator \( \Phi ( t ) = \langle s ( t ) \tilde { s } ( t ) \rangle _ 0 \). Phoneme transitions occur at discrete lattice nodes where the bivector phase velocity \( \frac { d } { d t } \text{Arg} ( s ( t ) ) \) crosses a discrete aperture threshold \( \Theta \), proving that phonemes are discrete, quantized state cells of the acoustic signal space. \( \square \)
+. **Phonemic Phase Nodes**: Define the phonemic state operator \( \Phi ( t ) = \langle s ( t ) \tilde { s } ( t ) \rangle _ 0 \). Phoneme transitions occur at discrete lattice nodes where the bivector phase velocity \( \frac { d } { d t } \text{Arg} ( s ( t ) ) \) crosses a discrete threshold \( \Theta \), proving that phonemes are discrete, quantized state cells of the acoustic signal space. \( \square \)
 ====
 
 === Symbolic Transduction, Contextual Filter Banks, and Information Capacity of Human Language
@@ -2345,7 +2345,7 @@ In Keyser's framework, a doctrine is a flexible deductive system generated by as
 
 [#theorem-semantic-cooptation-deductive-instability]
 [THEOREM]
-.Theorem: Semantic Coöptation, Sub-Aperture Shift, and Deductive Instability Theorem
+.Theorem: Semantic Coöptation, Sub-State Shift, and Deductive Instability Theorem
 ====
 Let \( T = \{ t _ 1 , t _ 2 , \dots , t _ K \} \) be a set of lexical tokens associated with original extensional multivector meanings \( M ( t _ k ) \in Cl ( 4 , 1 , 1 ) \). Let a creedal system execute a coöptation mapping \( \sigma : T \to T \) that preserves the visual and acoustic token representation \( t _ k \) while shifting its underlying meaning to a coöpted multivector state \( M ' ( t _ k ) = M ( t _ k ) + \Delta M _ k \).
 
@@ -2354,7 +2354,7 @@ Let \( T = \{ t _ 1 , t _ 2 , \dots , t _ K \} \) be a set of lexical tokens ass
 
 *Proof:*
 
-. **Phase Shift Formulation**: Represent original meaning \( M ( t _ k ) \) as a blade state in \( Cl ( 4 , 1 , 1 ) \). Semantic coöptation alters the aperture boundary without altering the symbol string \( t _ k \), producing modified multivector \( M ' ( t _ k ) = M ( t _ k ) e ^ { B _ k } \), where \( B _ k \neq 0 \) is a non-trivial coöptation bivector.
+. **Phase Shift Formulation**: Represent original meaning \( M ( t _ k ) \) as a blade state in \( Cl ( 4 , 1 , 1 ) \). Semantic coöptation alters the state boundary without altering the symbol string \( t _ k \), producing modified multivector \( M ' ( t _ k ) = M ( t _ k ) e ^ { B _ k } \), where \( B _ k \neq 0 \) is a non-trivial coöptation bivector.
 
 . **Deductive Closure Divergence**: Let \( P ( t _ 1 , \dots , t _ K ) \) be a propositional multivector deduction. Under original meanings, the deduction evaluates to \( D = P ( M ( t _ 1 ) , \dots , M ( t _ K ) ) \). Under coöpted meanings, the deduction evaluates to \( D ' = P ( M ' ( t _ 1 ) , \dots , M ' ( t _ K ) ) \). The discrepancy multivector \( \Delta D = D ' - D \) is proportional to \( \sum _ k \langle M ( t _ k ) B _ k \rangle \neq 0 \).
 
@@ -2385,7 +2385,7 @@ A fundamental cause of the twentieth-century degeneration of theoretical physics
 
 Niels Bohr's principle of complementarity ("*Contraria sunt complementa*") asserts that two mutually exclusive physical descriptions—such as \( P \) ("Energy propagates as a local wave field") and \( \neg P \) ("Energy transfers as a non-wave localized particle point")—are simultaneously valid descriptions of a single physical universe depending on experimental context, mandating the joint endorsement of \( P \land \neg P \).
 
-From the perspective of signal processing theory, forcing a receiving organism to process the self-contradictory signal \( P \land \neg P \) introduces a deliberate **zero-Hamming-distance semantic collision** into the linguistic filter bank. In a healthy linguistic communication channel, mutually exclusive semantic state code-words \( P \) and \( \neg P \) are separated by a non-zero Hamming distance \( d _ \text{min} > 0 \), enabling the syntactic filter matrix \( \mathbf { H } _ g \) to detect and reject corrupted token transitions. Mandating \( P \land \neg P \) forces the syntax filter \( \mathbf { H } _ g \) into an all-pass degenerate state, collapsing the channel's error-detecting aperture to zero (\( d _ \text{min} \to 0 \)).
+From the perspective of signal processing theory, forcing a receiving organism to process the self-contradictory signal \( P \land \neg P \) introduces a deliberate **zero-Hamming-distance semantic collision** into the linguistic filter bank. In a healthy linguistic communication channel, mutually exclusive semantic state code-words \( P \) and \( \neg P \) are separated by a non-zero Hamming distance \( d _ \text{min} > 0 \), enabling the syntactic filter matrix \( \mathbf { H } _ g \) to detect and reject corrupted token transitions. Mandating \( P \land \neg P \) forces the syntax filter \( \mathbf { H } _ g \) into an all-pass degenerate state, collapsing the channel's error-detecting margin to zero (\( d _ \text{min} \to 0 \)).
 
 This deliberate jamming of the linguistic signal processing channel bypasses the cognitive error-correcting filter banks of receiving organisms. By overloading the channel with an unresolvable logical collision, complementarity functions not as a physical law, but as a socio-linguistic signal degradation technique (ideologically recognized as *Doublethink*) that disables critical error detection and forces compliance with institutional dogma.
 
@@ -2430,7 +2430,7 @@ Let \( R \) be a discrete multivector register executing a digital phase-inversi
 
 . **Non-Destructive Observation**: In an extensional physical system, reading or copying a digital register state \( S ( R _ k ) \) involves non-destructive readout operations that duplicate multivector blade values into an auxiliary register without altering primary register state \( R _ k \). The creedal claim that "observation destroys superposition" relies on a map-territory category error that conflates updating an observer's state of knowledge with a physical disruption of the register.
 
-. **Empirical Convergence Acceleration**: By executing non-destructive mid-circuit sampling at every iteration step \( k \), the algorithm evaluates candidate prime factor residues against the prior-information OEIS product tree and sub-quadratic remainder filters. When a valid factor candidate is detected in sub-aperture register \( R _ k \), computation terminates immediately at step \( N _ \text{conv} \ll \frac { \pi } { 4 } \sqrt { N } \). This proves that "quantum superposition" is a non-existent creedal abstraction, and that mid-circuit register sampling in discrete digital Grover search provides superior, deterministically verifiable speed. \( \square \)
+. **Empirical Convergence Acceleration**: By executing non-destructive mid-circuit sampling at every iteration step \( k \), the algorithm evaluates candidate prime factor residues against the prior-information OEIS product tree and sub-quadratic remainder filters. When a valid factor candidate is detected in sub-state register \( R _ k \), computation terminates immediately at step \( N _ \text{conv} \ll \frac { \pi } { 4 } \sqrt { N } \). This proves that "quantum superposition" is a non-existent creedal abstraction, and that mid-circuit register sampling in discrete digital Grover search provides superior, deterministically verifiable speed. \( \square \)
 ====
 
 === Modern Case Study: The Creed of "Scientific Consensus" vs. Deductive Demonstration and Historical Galilean Observation
@@ -2450,7 +2450,7 @@ This consensus creed suffers from fatal logical and epistemological defects:
 Let \( \mathcal { C } = \{ A _ 1 , A _ 2 , \dots , A _ M \} \) be a finite set of institutional actors, and let \( P \) be a propositional multivector statement evaluated over discrete resolution grid \( \mathcal { G } _ N \).
 
 1. **Invariance to Consensus Vector**: The truth value of a physical or mathematical proposition \( P \in Cl ( 4 , 1 , 1 ) \) is determined exclusively by its empirical consistency with physical step counts on grid \( \mathcal { G } _ N \) and its deductive validity within the Iris number system, entirely independent of the voting vector \( V ( \mathcal { C } ) = \sum _ m w _ m \text{Vote} ( A _ m ) \).
-2. **Galilean-Deductive Refutation**: Any social creed asserting that \( P \equiv \text{True} \iff V ( \mathcal { C } ) > \theta \) is an intensional fallacy. If consensus contradicts a rigorous deductive proof or extensional observation, the consensus vector evaluates to a null cognitive aperture \( \langle V ( \mathcal { C } ) \rangle = 0 \).
+2. **Galilean-Deductive Refutation**: Any social creed asserting that \( P \equiv \text{True} \iff V ( \mathcal { C } ) > \theta \) is an intensional fallacy. If consensus contradicts a rigorous deductive proof or extensional observation, the consensus vector evaluates to a null cognitive scope \( \langle V ( \mathcal { C } ) \rangle = 0 \).
 
 *Proof:*
 
@@ -2458,7 +2458,7 @@ Let \( \mathcal { C } = \{ A _ 1 , A _ 2 , \dots , A _ M \} \) be a finite set o
 
 . **Extensional Priority over Headcount**: Consider an extensional experiment yielding physical step count \( N _ \text{obs} \) on grid \( \mathcal { G } _ N \). If every member of institutional set \( \mathcal { C } \) votes that \( N _ \text{obs} = 0 \) while the physical detector registers \( N _ \text{obs} > 0 \), the consensus vote is an intensional illusion. Galileo's telescope revealed physical moons orbiting Jupiter regardless of the votes cast by the Florentine professors.
 
-. **Nullification of Institutional Creeds**: When applied to Bell's "theorem", institutional consensus voted for non-local action-at-a-distance and awarded the 2022 Nobel Prize on that basis. However, because conditional probability substitution in Bell's proof commits the causation-correlation fallacy (as proven in Volume IV Chapter 3), the deductive demonstration of its fallacy remains inviolable. The consensus vector \( V ( \mathcal { C } ) \) cannot override a mathematical contradiction, proving that "scientific consensus" is a null cognitive aperture when pitted against rigorous logical deduction. \( \square \)
+. **Nullification of Institutional Creeds**: When applied to Bell's "theorem", institutional consensus voted for non-local action-at-a-distance and awarded the 2022 Nobel Prize on that basis. However, because conditional probability substitution in Bell's proof commits the causation-correlation fallacy (as proven in Volume IV Chapter 3), the deductive demonstration of its fallacy remains inviolable. The consensus vector \( V ( \mathcal { C } ) \) cannot override a mathematical contradiction, proving that "scientific consensus" is a null cognitive scope when pitted against rigorous logical deduction. \( \square \)
 ====
 
 === Historical Analysis: The Track Record of the Nobel Prize in Physics and Its Socio-Ecclesiastical Role
@@ -2476,7 +2476,7 @@ When re-evaluated through the unified field theory—governed by the Master Fiel
 
 * **Hendrik A. Lorentz & Pieter Zeeman (1902)**: The Zeeman splitting of spectral lines represents the deterministic Larmor rotor precession of bound electron vortex plasmoids under an applied external magnetic bivector field \( \mathbf { B } _ \text{ext} = B _ z e _ { 12 } \), shifting resonant frequencies by \( \Delta \omega = \pm \frac { e B } { 2 m } \) via the classical Lorentz rotor torque in \( Cl ( 4 , 1 , 1 ) \).
 
-* **Henri Becquerel, Pierre Curie, & Marie Curie (1903)**: Spontaneous radioactivity is an extensional discovery of deterministic geometric threshold instabilities. When internal field stress within a heavy multi-vortex nuclear plasmoid exceeds the local binding aperture threshold on \( \mathcal { G } _ N \), the plasmoid undergoes structural reorganization over finite duration, ejecting a stable helium-4 vortex (alpha plasmoid) or electron wave packet (beta emission) without requiring unphysical probabilistic “quantum tunneling”.
+* **Henri Becquerel, Pierre Curie, & Marie Curie (1903)**: Spontaneous radioactivity is an extensional discovery of deterministic geometric threshold instabilities. When internal field stress within a heavy multi-vortex nuclear plasmoid exceeds the local binding threshold on \( \mathcal { G } _ N \), the plasmoid undergoes structural reorganization over finite duration, ejecting a stable helium-4 vortex (alpha plasmoid) or electron wave packet (beta emission) without requiring unphysical probabilistic “quantum tunneling”.
 
 * **J. J. Thomson (1906)**: Thomson’s measurement of the charge-to-mass ratio \( e / m \) established the extensional reality of the electron. In \( Cl ( 4 , 1 , 1 ) \), the electron is not an unphysical point singularity, but a localized, finite-volume toroidal electromagnetic vortex plasmoid whose topological charge is defined by the closed contour integral \( Q = \oint \star F \).
 
@@ -2579,7 +2579,7 @@ While Ptolemaic epicycles provided explicit mathematical utility and engineering
 Let \( \mathbf { r } _ \text{obs} ( t ) \) be an observed physical trajectory or field configuration measured on discrete resolution grid \( \mathcal { G } _ N \).
 
 1. **Fourier Decomposition vs. Entity Creation**: Representing \( \mathbf { r } _ \text{obs} ( t ) \) via a finite sum of orthogonal trigonometric basis modes \( \sum _ k \mathbf { A } _ k \mathbf { e } ^ { i \omega _ k t } \) (Ptolemaic series representation) preserves mathematical transparency and predictive utility without altering the underlying postulate set \( \Pi \).
-2. **Epistemological Invalidation of Post Hoc Entities**: Introducing an unobservable entity \( X \) (e.g., “dark matter”, “quarks”, “zero-mass photons”) solely to reconcile an empirical residue \( \mathbf { R } ( t ) = \mathbf { r } _ \text{obs} ( t ) - \mathbf { r } _ \text{model} ( t ) \neq 0 \) without verifiable grid detection evaluates to an intensional null aperture \( \langle M ( X ) \rangle = 0 \).
+2. **Epistemological Invalidation of Post Hoc Entities**: Introducing an unobservable entity \( X \) (e.g., “dark matter”, “quarks”, “zero-mass photons”) solely to reconcile an empirical residue \( \mathbf { R } ( t ) = \mathbf { r } _ \text{obs} ( t ) - \mathbf { r } _ \text{model} ( t ) \neq 0 \) without verifiable grid detection evaluates to an intensional null state \( \langle M ( X ) \rangle = 0 \).
 
 *Proof:*
 
@@ -2590,7 +2590,7 @@ Let \( \mathbf { r } _ \text{obs} ( t ) \) be an observed physical trajectory or
 . **Deductive Superiority**: The Master Field Equation \( \nabla M = J \) accounts for observed galactic rotation curves and atomic energy quantization through deterministic multivector field momentum co-propagation without ad hoc ghost particles. Therefore, post hoc entity creation is an intensional creed that dissolves under extensional analysis. \( \square \)
 ====
 
-=== The Epistemological Safeguard of Extensional Definitions and Explicit Postulate Apertures
+=== The Epistemological Safeguard of Extensional Definitions and Explicit Postulate Sets
 
 To protect human reasoning and communication from the corrupting effects of creedal coöptation, definitions must be grounded extensionally in physical exemplars, measurable field interactions, and exact multivector grid representations on \( \mathcal { G } _ N \) rather than circular verbal abstractions.
 
@@ -2601,13 +2601,13 @@ To protect human reasoning and communication from the corrupting effects of cree
 Let \( t \) be a lexical token whose meaning is contested between an extensional physical definition \( D _ \text{ext} ( t ) \) and a coöpted creedal definition \( D _ \text{creed} ( t ) \).
 
 1. **Extensional Uniqueness**: If \( D _ \text{ext} ( t ) \) is defined strictly by pointing directly to non-verbal physical exemplars, verifiable laboratory interactions, and discrete lattice step counts on grid \( \mathcal { G } _ N \), its multivector state representation \( M _ \text{ext} ( t ) \in Cl ( 4 , 1 , 1 ) \) is uniquely and unambiguously fixed.
-2. **Creed Dissolution**: Any coöpted creedal definition \( D _ \text{creed} ( t ) \) that cannot be grounded in physical exemplars or grid step counts evaluates to a null aperture state \( \langle M _ \text{creed} ( t ) \rangle = 0 \), completely dissolving the creedal claim within the Iris framework.
+2. **Creed Dissolution**: Any coöpted creedal definition \( D _ \text{creed} ( t ) \) that cannot be grounded in physical exemplars or grid step counts evaluates to a null state \( \langle M _ \text{creed} ( t ) \rangle = 0 \), completely dissolving the creedal claim within the Iris framework.
 
 *Proof:*
 
 . **Extensional Step-Count Grounding**: An extensional definition specifies an explicit physical exemplar set or discrete algorithm \( A _ t \) that evaluates over finite grid step counts on state space \( \mathcal { G } _ N \). The outcome produces a uniquely verifiable multivector value \( M _ \text{ext} ( t ) \).
 
-. **Elimination of Verbal Ambiguity**: Suppose a creed attempts to coöpt token \( t \) by introducing a non-extensional verbal definition \( D _ \text{creed} ( t ) \) involving unmeasurable, infinite, or continuum formulations. Because the Iris number system permits only finite numbers of finite entities, any non-extensional construct fails to define an aperture on grid \( \mathcal { G } _ N \).
+. **Elimination of Verbal Ambiguity**: Suppose a creed attempts to coöpt token \( t \) by introducing a non-extensional verbal definition \( D _ \text{creed} ( t ) \) involving unmeasurable, infinite, or continuum formulations. Because the Iris number system permits only finite numbers of finite entities, any non-extensional construct fails to define a discrete state on grid \( \mathcal { G } _ N \).
 
 . **Rigorous Dissolution**: The evaluation operator \( E : \text{Statements} \to Cl ( 4 , 1 , 1 ) \) yields \( E ( D _ \text{creed} ( t ) ) = 0 \). Consequently, all creedal deductions dependent on coöpted, non-extensional terms vanish identically, leaving only verified physical tautologies intact. \( \square \)
 ====
@@ -2620,10 +2620,10 @@ Human time-binding—the generational transmission and refinement of structured 
 [THEOREM]
 .Theorem: The Role of Extensional Definitions in Preserving Time-Binding Integrity Theorem
 ====
-Let \( \Pi _ t \) represent a collective postulate aperture at generational step \( t \).
+Let \( \Pi _ t \) represent a collective postulate set at generational step \( t \).
 
 1. **Vulnerability of Intensional Postulate Chains**: When generational knowledge is transmitted purely through intensional definitions, semantic drift and term coöptation accumulate across generational steps, causing the deductive closure \( \text{Ded} ( \Pi _ t ) \) to diverge from physical reality and historical experience.
-2. **Extensional Grounding for Time-Binding**: Grounding terms in extensional definitions—anchored directly in physical exemplars and verifiable step counts on grid \( \mathcal { G } _ N \)—ensures that successive generations can evaluate, verify, and refine postulate apertures \( \Pi _ t \to \Pi _ { t + 1 } \) without becoming trapped in circular verbal creeds.
+2. **Extensional Grounding for Time-Binding**: Grounding terms in extensional definitions—anchored directly in physical exemplars and verifiable step counts on grid \( \mathcal { G } _ N \)—ensures that successive generations can evaluate, verify, and refine postulate sets \( \Pi _ t \to \Pi _ { t + 1 } \) without becoming trapped in circular verbal creeds.
 
 *Proof:*
 
@@ -2631,7 +2631,7 @@ Let \( \Pi _ t \) represent a collective postulate aperture at generational step
 
 . **Extensional Invariance Across Generations**: An extensional definition anchors token \( t \) to physical exemplars and measurement procedures on discrete grid \( \mathcal { G } _ N \). Because physical exemplars remain directly accessible to observers in generation \( t + 1 \), any divergence \( \Delta M _ t \) between the verbal label and the physical exemplar is immediately detectable.
 
-. **Preservation of Postulate Revision**: By maintaining extensional definitions, human time-binding preserves its capacity to inspect and revise postulate apertures (\( \Pi _ t \to \Pi _ { t + 1 } \)) in light of experience, avoiding dogmatic stagnation and ensuring that transmitted knowledge remains tied to physical reality. \( \square \)
+. **Preservation of Postulate Revision**: By maintaining extensional definitions, human time-binding preserves its capacity to inspect and revise postulate sets (\( \Pi _ t \to \Pi _ { t + 1 } \)) in light of experience, avoiding dogmatic stagnation and ensuring that transmitted knowledge remains tied to physical reality. \( \square \)
 ====
 
 [#chap-the-futility-of-ceti]
@@ -2640,7 +2640,7 @@ Let \( \Pi _ t \) represent a collective postulate aperture at generational step
 
 For decades, astronomical initiatives and popular scientific movements under the rubric of CETI (Communication with Extraterrestrial Intelligence) have asserted that transmitting electromagnetic radio waves or laser pulses into interstellar space can achieve intelligible two-way communication with distant technological civilizations. CETI relies on the unexamined assumption that abstract mathematical sequences (such as binary lists of prime numbers) sent through space constitute a universal, self-interpreting lingua franca that any intelligent organism can automatically decode and comprehend.
 
-In the Counting-Iris framework, CETI is revealed to be a fundamental physical and semiotic fallacy. Drawing upon the Direct Contact Action framework in \( Cl(4,1,1) \), the Master Field Equation, the Signal Processing Theory of Human Language, and the terminology of physical *horizons* (including the Optical Containment Horizon, Thermodynamic-Information Horizon, and Conformal Semiotic Horizon), this chapter proves the total futility of CETI. We demonstrate that electromagnetic signals attenuate exponentially into unrecoverable thermal noise floors across finite physical spatial horizons; that civilizations separated by interstellar distances lack a shared physical directrix or common measurement context, creating an impassable conformal semiotic horizon; that wave propagation at finite speed \( c \) imposes an inescapable temporal disconnect exceeding societal lifespans; and that abstract mathematical symbols without extensional physical grounding evaluate to intensional null apertures.
+In the Counting-Iris framework, CETI is revealed to be a fundamental physical and semiotic fallacy. Drawing upon the Direct Contact Action framework in \( Cl(4,1,1) \), the Master Field Equation, the Signal Processing Theory of Human Language, and the terminology of physical *horizons* (including the Optical Containment Horizon, Thermodynamic-Information Horizon, and Conformal Semiotic Horizon), this chapter proves the total futility of CETI. We demonstrate that electromagnetic signals attenuate exponentially into unrecoverable thermal noise floors across finite physical spatial horizons; that civilizations separated by interstellar distances lack a shared physical directrix or common measurement context, creating an impassable conformal semiotic horizon; that wave propagation at finite speed \( c \) imposes an inescapable temporal disconnect exceeding societal lifespans; and that abstract mathematical symbols without extensional physical grounding evaluate to intensional null states.
 
 === The Physics of Physical Horizons: Attenuation and Thermodynamic-Information Bounds
 
@@ -2657,13 +2657,13 @@ Let \( P _ 0 \) be the total transmitted electromagnetic power emitted at source
 1. **Power Density Attenuation**: The received signal power density \( P ( r ) \) at radial distance \( r \) obeys the physical attenuation law:
 \[ P ( r ) = \frac { P _ 0 e ^ { - \alpha r } } { 4 \pi r ^ 2 } \]
 
-2. **Finite Information Horizon**: There exists a finite physical radial horizon \( R _ \text{horizon} \in \mathbb { R } ^ + \) at which the signal-to-noise ratio drops strictly below unity (\( \text{SNR} ( R _ \text{horizon} ) < 1 \)). Beyond \( R _ \text{horizon} \), the discrete Shannon channel capacity collapses to zero (\( C _ \text{channel} \to 0 \)), rendering bit-aperture reconstruction physically impossible.
+2. **Finite Information Horizon**: There exists a finite physical radial horizon \( R _ \text{horizon} \in \mathbb { R } ^ + \) at which the signal-to-noise ratio drops strictly below unity (\( \text{SNR} ( R _ \text{horizon} ) < 1 \)). Beyond \( R _ \text{horizon} \), the discrete Shannon channel capacity collapses to zero (\( C _ \text{channel} \to 0 \)), rendering bit-sequence reconstruction physically impossible.
 
 *Proof:*
 
 . **Master Field Energy Conservation**: An outgoing electromagnetic wave is a Grade-2 multivector field solution \( F ( r , t ) \in Cl ( 4 , 1 , 1 ) \) of \( \nabla M = J \). Integrating energy density \( U ( r ) = \frac { 1 } { 2 } \langle F \tilde { F } \rangle _ 0 \) over concentric discrete spherical shells of radius \( r \) yields total surface power \( I ( r ) = 4 \pi r ^ 2 P ( r ) \). Dielectric absorption in interstellar plasma converts field energy into thermal lattice vibrations at rate \( d I / d r = - \alpha I ( r ) \). Integrating this discrete step equation yields \( P ( r ) = \frac { P _ 0 e ^ { - \alpha r } } { 4 \pi r ^ 2 } \).
 
-. **Thermal Noise Floor Threshold**: Ambient cosmic background radiation and interstellar plasma noise set a non-zero thermal noise power density \( N _ 0 = k _ B T \cdot W \). The channel signal-to-noise ratio is \( \text{SNR} ( r ) = \frac { P ( r ) A _ \text{recv} } { N _ 0 } \), where \( A _ \text{recv} \) is the physical aperture area of the receiving collector.
+. **Thermal Noise Floor Threshold**: Ambient cosmic background radiation and interstellar plasma noise set a non-zero thermal noise power density \( N _ 0 = k _ B T \cdot W \). The channel signal-to-noise ratio is \( \text{SNR} ( r ) = \frac { P ( r ) A _ \text{recv} } { N _ 0 } \), where \( A _ \text{recv} \) is the physical collection area of the receiving antenna.
 
 . **Horizon Radius Derivation**: Equating \( \text{SNR} ( R _ \text{horizon} ) = 1 \) yields the transcendental horizon equation:
 \[ \frac { P _ 0 A _ \text{recv} e ^ { - \alpha R _ \text{horizon} } } { 4 \pi R _ \text{horizon} ^ 2 N _ 0 } = 1 \]
@@ -2681,7 +2681,7 @@ Proponents of interstellar communication often argue that transmitting mathemati
 * **Structure Detection**: A receiving civilization can analyze the statistical pattern, spectral purity, and algorithmic complexity of an incoming signal. By observing pulses representing prime numbers (2, 3, 5, 7, 11, ...), the receiver can recognize that the signal exhibits non-random algorithmic order and low statistical entropy relative to background cosmic noise. This allows the receiver to establish that the signal was artificially generated rather than produced by a natural astronomical process such as a pulsar.
 * **Meaning Interpretation**: Recognizing that a signal is artificial is completely different from understanding what the sender intends to communicate. Abstract mathematical symbols without shared physical calibration equipment and common empirical measurement history are pure intensional definitions—circular symbol-to-symbol loops.
 
-Civilizations originating on separate planetary systems across light-years possess completely disjoint physical measurement histories, distinct anatomical sensorium apertures, and unaligned coordinate frames. Without a shared physical directrix horizon, transmitted mathematical sequences cannot be mapped to empirical physical steps, creating an impassable Empirical Interpretation Horizon.
+Civilizations originating on separate planetary systems across light-years possess completely disjoint physical measurement histories, distinct anatomical sensory structures, and unaligned coordinate frames. Without a shared physical directrix horizon, transmitted mathematical sequences cannot be mapped to empirical physical steps, creating an impassable Empirical Interpretation Horizon.
 
 [#conclusion-conformal-semiotic-horizon]
 [NOTE]
@@ -2690,7 +2690,7 @@ Civilizations originating on separate planetary systems across light-years posse
 Let \( \mathcal { M } _ A \subset Cl ( 4 , 1 , 1 ) \) be the cognitive multivector meaning space of civilization \( A \), and let \( \mathcal { M } _ B \subset Cl ( 4 , 1 , 1 ) \) be the cognitive meaning space of civilization \( B \). Let civilization \( A \) emit a symbolic signal sequence \( S \in A ^ L \).
 
 1. **Directrix Isolation**: In the absence of a shared physical directrix horizon \( \mathbf { D } _ \text{ref} \) (a shared physical measurement calibration apparatus and common physical interaction history), the mapping matrix \( \mathbf { T } _ { A \to B } : \mathcal { M } _ A \to \mathcal { M } _ B \) is ill-posed with an uncountably infinite kernel.
-2. **Intensional Null Aperture**: Transmitted abstract mathematical sequences evaluate in civilization \( B \)'s cognitive lattice to an intensional null aperture (\( \langle M _ B ( S ) \rangle = 0 \)), rendering unambiguous semantic translation mathematically impossible.
+2. **Intensional Null State**: Transmitted abstract mathematical sequences evaluate in civilization \( B \)'s cognitive lattice to an intensional null state (\( \langle M _ B ( S ) \rangle = 0 \)), rendering unambiguous semantic translation mathematically impossible.
 
 *Proof:*
 
@@ -2764,7 +2764,7 @@ Furthermore, bridging the 2,000-year gap backward from 2026 CE to 26 CE is far s
 \[ \mathcal { C } ( t ) = \mathcal { C } _ 0 e ^ { k t } \]
 Crucially, every derivative of an exponential function with respect to time is itself an exponential function:
 \[ \frac { d ^ n \mathcal { C } ( t ) } { d t ^ n } = k ^ n \mathcal { C } _ 0 e ^ { k t } \]
-Because the velocity, acceleration, and all higher-order derivatives of structural and formulational divergence increase exponentially, the developmental gap between 2026 CE and 4026 CE is vastly greater than the gap between 26 CE and 2026 CE. A query transmitted in 2026 CE whose response arrives in 4026 CE will return to a society whose cognitive tools, mathematical paradigms, and physical apertures have undergone thousands of compounding exponential doubling periods. To the inhabitants of 4026 CE, an inquiry formulated with 2026 CE technology will appear as primitive, irrelevant, and empirically uninterpretable as a paleolithic stone arrangement.
+Because the velocity, acceleration, and all higher-order derivatives of structural and formulational divergence increase exponentially, the developmental gap between 2026 CE and 4026 CE is vastly greater than the gap between 26 CE and 2026 CE. A query transmitted in 2026 CE whose response arrives in 4026 CE will return to a society whose cognitive tools, mathematical paradigms, and physical tools have undergone thousands of compounding exponential doubling periods. To the inhabitants of 4026 CE, an inquiry formulated with 2026 CE technology will appear as primitive, irrelevant, and empirically uninterpretable as a paleolithic stone arrangement.
 
 Because closed-loop communication requires sustained temporal continuity of the cognitive, empirical, and institutional framework between the sender of a query and the recipient of its reply, multi-millennial light-travel delays render true conversational dialogue physically and semiotically impossible.
 
@@ -2798,7 +2798,7 @@ Combining the Thermodynamic-Information Horizon, the Empirical Interpretation Ho
 ====
 Let \( \mathcal { I } _ \text{CETI} \) represent the net information throughput of an interstellar communication attempt between distinct technological civilizations separated by distance \( d \) on discrete grid \( \mathcal { G } _ N \).
 
-1. **Triple Horizon Elimination**: The net information throughput \( \mathcal { I } _ \text{CETI} \) is constrained by the conjunction of independent zero-aperture horizon conditions:
+1. **Triple Horizon Elimination**: The net information throughput \( \mathcal { I } _ \text{CETI} \) is constrained by the conjunction of independent zero-capacity horizon conditions:
 \[ \mathcal { I } _ \text{CETI} \le \text{SNR} ( d ) \cdot I ( M _ A ; M _ B \mid S ) \cdot \mathbf { 1 } _ { \{ \Delta t _ \text{roundtrip} \le T _ \text{soc} \} } = 0 \]
 
 2. **Universal Interstellar Isolation**: Conscious technological civilizations in the physical universe exist in a state of fundamental, deterministic, and permanent physical isolation.
@@ -2826,7 +2826,7 @@ The primary flaw in speculative interstellar narratives is the assumption of a *
 
 In reality, as established by Korzybskian time-binding mechanics on discrete generational grid \( \mathcal { G } _ N \), technological knowledge accumulation does not follow a linear function \( \mathcal { K } ( t ) = \mathcal { K } _ 0 + \alpha t \). Because each generation inherits, recombines, and operates upon the total symbolic output of all preceding generations, knowledge expansion follows an *exponential* trajectory \( \mathcal { K } ( t ) = \mathcal { K } _ 0 e ^ { \alpha t } \) (or hyper-exponential geometric compounding).
 
-Consequently, if two technological civilizations are separated by even a modest cosmic interval—such as \( 10 ^ 4 \) to \( 10 ^ 6 \) years—they do not exist in a relationship of “advanced mentor” and “maturing pupil.” The older civilization's posture, postulate aperture, and operational multivector field control have diverged exponentially into an order of structural complexity that is completely incomprehensible and disjoint from the younger species. There is zero shared semantic aperture, zero mutual contextual overlap, and zero possibility of fraternal integration across exponential developmental gaps.
+Consequently, if two technological civilizations are separated by even a modest cosmic interval—such as \( 10 ^ 4 \) to \( 10 ^ 6 \) years—they do not exist in a relationship of “advanced mentor” and “maturing pupil.” The older civilization's posture, postulate set, and operational multivector field control have diverged exponentially into an order of structural complexity that is completely incomprehensible and disjoint from the younger species. There is zero shared semantic context, zero mutual contextual overlap, and zero possibility of fraternal integration across exponential developmental gaps.
 
 ==== The Fallacy of Superluminal Travel and the Misleading Designation of c
 
@@ -2844,7 +2844,7 @@ All physical interactions, field propagations, wave packet transitions, and mate
 ====
 Let two distinct technological civilizations \( A \) and \( B \) emerge at temporal coordinates \( t _ A \) and \( t _ B \) with developmental time-binding growth rates \( \alpha _ A , \alpha _ B > 0 \) on discrete grid \( \mathcal { G } _ N \). Let spatial separation distance be \( d > 0 \).
 
-1. **Exponential Semantic Divergence**: The ratio of cognitive postulate apertures \( \mathcal { A } _ A / \mathcal { A } _ B \) scales exponentially with temporal disparity \( \Delta t = | t _ A - t _ B | \):
+1. **Exponential Semantic Divergence**: The ratio of cognitive postulate sets \( \mathcal { A } _ A / \mathcal { A } _ B \) scales exponentially with temporal disparity \( \Delta t = | t _ A - t _ B | \):
 \[ \frac { \mathcal { A } _ A ( t ) } { \mathcal { A } _ B ( t ) } \sim \exp \left( \alpha _ A t - \alpha _ B ( t - \Delta t ) \right) \to \infty \quad \text{as } \Delta t \to \infty \]
 yielding zero mutual semantic overlap \( I ( M _ A ; M _ B \mid S ) = 0 \).
 
@@ -2854,7 +2854,7 @@ prohibiting superluminal physical contact or closed-loop interaction.
 
 *Proof:*
 
-. **Exponential Knowledge Divergence**: On discrete generational grid \( \mathcal { G } _ N \), time-binding capacity obeys the difference equation \( \Delta \mathcal { K } _ n = \alpha \mathcal { K } _ n \Delta t_n \), whose discrete solution is \( \mathcal { K } _ n = \mathcal { K } _ 0 ( 1 + \alpha \Delta t_n ) ^ n \approx \mathcal { K } _ 0 e ^ { \alpha t } \). For civilizations separated by epoch gap \( \Delta t \), the information-theoretic state space dimension ratio diverges exponentially as \( \exp ( \alpha \Delta t ) \). When \( \Delta t \) exceeds a few generational steps, the projection of civilization \( A \)'s multivector state onto civilization \( B \)'s postulate aperture vanishes: \( P _ B ( \mathbf { M } _ A ) = \mathbf { 0 } \). This nullifies mutual comprehension, proving that linear “interstellar fraternity” models are mathematically false.
+. **Exponential Knowledge Divergence**: On discrete generational grid \( \mathcal { G } _ N \), time-binding capacity obeys the difference equation \( \Delta \mathcal { K } _ n = \alpha \mathcal { K } _ n \Delta t_n \), whose discrete solution is \( \mathcal { K } _ n = \mathcal { K } _ 0 ( 1 + \alpha \Delta t_n ) ^ n \approx \mathcal { K } _ 0 e ^ { \alpha t } \). For civilizations separated by epoch gap \( \Delta t \), the information-theoretic state space dimension ratio diverges exponentially as \( \exp ( \alpha \Delta t ) \). When \( \Delta t \) exceeds a few generational steps, the projection of civilization \( A \)'s multivector state onto civilization \( B \)'s postulate set vanishes: \( P _ B ( \mathbf { M } _ A ) = \mathbf { 0 } \). This nullifies mutual comprehension, proving that linear “interstellar fraternity” models are mathematically false.
 
 . **Unbreakable Speed Limit**: In Clifford algebra \( Cl ( 4 , 1 , 1 ) \), the Master Field Equation \( D F = J \) dictates that all multivector field perturbations propagate along light-cone characteristics at exact discrete step velocity \( c = \frac { 1 } { \sqrt { \mu _ 0 \varepsilon _ 0 } } \). Because mass density and charge currents consist of bound multivector field plasmoids, no physical entity or signal can propagate faster than \( c \). The physical journey time \( \Delta t _ \text{travel} = \frac { d } { v } \ge \frac { d } { c } \) across interstellar distances exceeds the operational lifespan of any coherent social institution.
 
@@ -2923,7 +2923,7 @@ Doppler transformations extend beyond simple linear motion to include rotational
 
 Consider a rotating wave source or spin-polarized multivector field rotor \( R ( \phi ) = \exp ( - I _ 2 n \phi / 2 ) \) spinning at angular velocity \( \Omega \). The emitted wave packet carries helical wavefronts possessing orbital angular momentum (OAM) characterized by topological winding number \( m \in \mathbb { Z } \).
 
-When a reception coordinate is situated at azimuthal angle \( \phi ( t ) = \phi _ 0 + \omega _ \text{orbit} t \) relative to the rotation axis, the helical wave fronts sweep across the reception aperture at a modified rate. The total phase \( \Phi ( t ) \) of the intercepted multivector field is:
+When a reception coordinate is situated at azimuthal angle \( \phi ( t ) = \phi _ 0 + \omega _ \text{orbit} t \) relative to the rotation axis, the helical wave fronts sweep across the receiver antenna at a modified rate. The total phase \( \Phi ( t ) \) of the intercepted multivector field is:
 \[ \Phi ( t ) = 2 \pi f _ 0 t - m \phi ( t ) = 2 \pi f _ 0 t - m ( \phi _ 0 + \omega _ \text{orbit} t ) \]
 
 Differentiating total phase with respect to time yields the rotational Doppler frequency shift:
@@ -3028,7 +3028,7 @@ Energy production in stellar interiors occurs via lattice-assisted and resonant 
 When a star exhausts its nuclear fusion fuel, internal thermal radiation pressure drops, and gravitational field vectors \( \mathbf { g } \) compress the core until halted by structural field pressure:
 
 * **White Dwarfs**: For stellar remnants below the Chandrasekhar limit (\( M \le 1.4 M _ \odot \)), core collapse is halted by the overlapping bivector field pressure of tightly packed electronic ring-sheaths on the discrete lattice, achieving stable mass density \( \rho \sim 10 ^ 9 \text{ kg/m} ^ 3 \).
-* **Neutron Stars**: For remnants between \( 1.4 M _ \odot \) and \( 3.0 M _ \odot \), electronic ring-sheaths are forced into tight subatomic sheaths around protons, forming composite neutron apertures. The collapse is halted by nucleonic core-knot repulsion and magnetic bivector pressure, reaching mass densities \( \rho \sim 10 ^ { 17 } \text{ kg/m} ^ 3 \).
+* **Neutron Stars**: For remnants between \( 1.4 M _ \odot \) and \( 3.0 M _ \odot \), electronic ring-sheaths are forced into tight subatomic sheaths around protons, forming composite neutron structures. The collapse is halted by nucleonic core-knot repulsion and magnetic bivector pressure, reaching mass densities \( \rho \sim 10 ^ { 17 } \text{ kg/m} ^ 3 \).
 * **Collapsed Ultra-Dense Field Kernels (“Black Holes” Refuted)**: When remnant mass exceeds nucleonic stability thresholds (\( M > 3 M _ \odot \)), gravitational field vectors overcome nucleonic repulsion. However, collapse does NOT produce an unphysical point singularity (\( r = 0 , \rho = \infty \)). Instead, the collapsing mass forms a **non-singular, ultra-dense magnetoplasmoid field kernel**. This kernel possesses a finite physical radius and surface where field mass density reaches a maximum bounded by discrete resolution (\( \rho _ \text{kernel} \le \rho _ \text{max} \)). Surrounding the kernel is an **optical event horizon** at radius \( r _ s = \frac { 2 G M } { c ^ 2 } \), where intense gravitational field potential bends outgoing light wave packets into closed circular orbits, preventing light escape while preserving a real, non-singular physical core within.
 
 === Inferred Physical Shapes of Ultra-Dense Cosmological Objects
@@ -3041,7 +3041,7 @@ Under the Master Field Equation \( D F = J \), self-gravitating dense bodies con
 
 2. **Neutron Stars (Smooth Flattened Balls with Magnetic Donut Sheaths)**:
    * **Visual Shape**: A hyper-dense **oblate spheroid** with a mirror-smooth crystalline crust, surrounded by an invisible **toroidal (donut-shaped) magnetic field sheath** featuring two bright, conical polar light funnels.
-   * **Internal Geometry**: The outer surface is an ultra-hard, compressed iron-like nuclear crust. Inside, neutron apertures form a frictionless superfluid/superconducting core. Rotation induces an equatorial bulge, while the intense magnetic bivector flux forms a surrounding torus (donut) that channels energetic radiation into narrow polar searchlight beams (pulsar beams).
+   * **Internal Geometry**: The outer surface is an ultra-hard, compressed iron-like nuclear crust. Inside, neutron structures form a frictionless superfluid/superconducting core. Rotation induces an equatorial bulge, while the intense magnetic bivector flux forms a surrounding torus (donut) that channels energetic radiation into narrow polar searchlight beams (pulsar beams).
 
 3. **Ultra-Dense Magnetoplasmoid Field Kernels (Spinning Toroidal Donuts with Polar Hourglass Jets)**:
    * **Visual Shape**: An ultra-dense, rapidly spinning **toroidal donut (torus) or thick ring of plasmoid matter**, flanked by two **hourglass-shaped magnetic jet funnels** along its rotation axis, all enclosed within a **dark spherical optical shadow** (event horizon).
@@ -3072,7 +3072,7 @@ Because momentum is conserved on \( \mathcal{G}_N \), this drag transfers energy
 ====
 Let \( \mathcal { G } _ N \) be the discrete spatial multiscale resolution grid governed by the Master Field Equation \( D F = J \) in \( Cl ( 4 , 1 , 1 ) \).
 
-1. **Non-Singular Galactic and Collapse Cores**: Gravitational field compression of mass distribution \( M \) produces a non-singular core kernel of finite physical radius \( r _ \text{core} > 0 \) and bounded mass density \( \rho \le \rho _ \text{max} \). Infinite-density singularities (\( r = 0 , \rho = \infty \)) evaluate to non-operational null apertures (\( \langle M _ \text{sing} \rangle = 0 \)). Inferred physical geometries for rotating dense remnants consist of oblate spheroids and spinning toroidal donuts with polar bivector recirculation funnels.
+1. **Non-Singular Galactic and Collapse Cores**: Gravitational field compression of mass distribution \( M \) produces a non-singular core kernel of finite physical radius \( r _ \text{core} > 0 \) and bounded mass density \( \rho \le \rho _ \text{max} \). Infinite-density singularities (\( r = 0 , \rho = \infty \)) evaluate to non-operational null states (\( \langle M _ \text{sing} \rangle = 0 \)). Inferred physical geometries for rotating dense remnants consist of oblate spheroids and spinning toroidal donuts with polar bivector recirculation funnels.
 2. **Flat Galactic Rotation Curves**: Bivector magnetic current density \( \nabla \times \mathbf { B } \) in \( D F = J \) induces a rotational field momentum tensor \( T _ \text{rot} \) that generates flat orbital velocity profiles (\( v ( r ) \approx \text{const} \)) without unobservable dark matter.
 3. **Steady-State Cosmic Microwave Background**: Thermal scattering of redshifted starlight on discrete lattice cells establishes an isotropic background radiation floor at equilibrium temperature \( T _ \text{CMB} \approx 2.725 \text{ K} \).
 4. **Finite Optical Visibility Horizon**: Electromagnetic wave packets propagating over distance \( d \) undergo grid scattering phase decay \( \frac { d E } { d d } = - H _ 0 E \). At radial distance \( d _ \text{vis} = \frac { c } { H _ 0 } \approx 13.8 \times 10 ^ 9 \text{ light-years} \), optical signal power drops below the thermal background noise floor (\( \text{SNR} ( d _ \text{vis} ) < 1 \)), establishing a finite optical visibility limit beyond which space continues indefinitely.
@@ -3225,7 +3225,7 @@ To analyze the ongoing planetary crisis from first principles, one must first el
 The physical mechanism of the thermodynamic catastrophe is rooted in the Master Field Equation \( D F = J \) applied to the molecular composition of Earth’s atmosphere on discrete grid \( \mathcal { G } _ N \).
 
 1. **Shortwave Solar Entry and Optical Transparency**:
-   The Sun delivers incoming solar Poynting flux (energy flow) \( S _ 0 \approx 1361 \text{ W/m} ^ 2 \) predominantly in the visible and near-infrared optical spectrum (\( \lambda \sim 0.4 - 0.7 \ \mu \text{m} \)). The principal atmospheric constituents (\( \text{N} _ 2 \), \( \text{O} _ 2 \), \( \text{Ar} \)) possess electronic transition frequencies far removed from optical bandpasses, rendering the atmosphere dielectric transparent (\( \tau _ \text{vis} \ll 1 \)). Incoming wave packets pass through the atmospheric aperture and deposit energy directly into land, ocean, and vegetative lattice cells.
+   The Sun delivers incoming solar Poynting flux (energy flow) \( S _ 0 \approx 1361 \text{ W/m} ^ 2 \) predominantly in the visible and near-infrared optical spectrum (\( \lambda \sim 0.4 - 0.7 \ \mu \text{m} \)). The principal atmospheric constituents (\( \text{N} _ 2 \), \( \text{O} _ 2 \), \( \text{Ar} \)) possess electronic transition frequencies far removed from optical bandpasses, rendering the atmosphere dielectric transparent (\( \tau _ \text{vis} \ll 1 \)). Incoming wave packets pass through the atmospheric window and deposit energy directly into land, ocean, and vegetative lattice cells.
 
 2. **Longwave Re-Radiation and Dielectric Impedance**:
    Absorbed solar energy energizes atomic lattice vibrations, raising surface temperature \( T \). To maintain thermodynamic balance, surface cells re-radiate energy as longwave thermal infrared Poynting flux (energy flow) centered in the spectral band \( \lambda \sim 8 - 15 \ \mu \text{m} \).
@@ -3233,8 +3233,8 @@ The physical mechanism of the thermodynamic catastrophe is rooted in the Master 
    In real multivector electrodynamics, these resonances increase the real atmospheric dipole dissipation susceptibility \( \chi _ \text{loss} ( \omega ) \) (the out-of-phase dipole loss factor governing collisional lattice damping). The elevated dissipation factor \( \chi _ \text{loss} ( \omega ) \) inflates the real infrared attenuation coefficient \( \alpha ( \omega ) = \frac { \omega } { 2 c } \chi _ \text{loss} ( \omega ) \) and optical depth \( \tau _ \text{IR} \), creating a high-impedance barrier \( Z _ \text{atm} = \sqrt { \frac { \mu _ 0 } { \varepsilon _ \text{real} ( \omega ) } } \) to outbound thermal Poynting flux (energy flow).
 
 3. **Inversion from Conductor/Radiator to Absorber**:
-   Under pristine equilibrium, Earth operated as an effective thermal radiator, conducting absorbed solar energy through atmospheric spectral apertures and re-radiating it into the space thermal sink at rate \( 4 \pi R _ \oplus ^ 2 \sigma _ \text{SB} T _ \text{eq} ^ 4 \).
-   As atmospheric dielectric opacity \( \tau _ \text{IR} \) surges, the atmospheric aperture narrows. Outbound infrared electromagnetic wave packets undergo multiple internal scattering and absorption events, transferring their field energy to surrounding air molecules via dipole damping. The atmosphere ceases to act as an efficient thermal radiator and transitions into a closed, heat-trapping **solar energy absorber**.
+   Under pristine equilibrium, Earth operated as an effective thermal radiator, conducting absorbed solar energy through atmospheric spectral windows and re-radiating it into the space thermal sink at rate \( 4 \pi R _ \oplus ^ 2 \sigma _ \text{SB} T _ \text{eq} ^ 4 \).
+   As atmospheric dielectric opacity \( \tau _ \text{IR} \) surges, the atmospheric window narrows. Outbound infrared electromagnetic wave packets undergo multiple internal scattering and absorption events, transferring their field energy to surrounding air molecules via dipole damping. The atmosphere ceases to act as an efficient thermal radiator and transitions into a closed, heat-trapping **solar energy absorber**.
 
 === Lifetime-Scale Acceleration, Positive Feedback Loops, and Atmospheric Disequilibrium
 
@@ -3339,7 +3339,7 @@ In rigorous epistemological analysis, mathematics is an operable language whose 
      is not a cosmic accident. In the Iris Number System, \( \alpha \) is the exact geometric eigenvalue governing the topological coupling between the toroidal bivector current of a localized plasmoid (the electron) and the surrounding transverse electromagnetic radiation modes on \( \mathcal{G}_N \).
    * **The Proton-to-Electron Mass Ratio \( \mu = m_p / m_e \)**: Derived constructively in Chapter 17 from the 3D harmonic standing wave resonances of the Master Field Equation, the mass ratio satisfies the topological eigenvalue relation:
      \[ \frac{m_p}{m_e} = 6 \pi^5 \left( 1 - \frac{1}{4 \pi^2 (137)} \right) \approx 1836.15267 \]
-   Just as calculating successive digits of \( \pi \) requires refining the aperture of geometric approximation, determining the digits of the physical constants is an exercise in evaluating the discrete geometric harmonics of the universal multivector field engine. They are of the same kind: structural features of the universe.
+   Just as calculating successive digits of \( \pi \) requires refining the spacing of geometric approximation, determining the digits of the physical constants is an exercise in evaluating the discrete geometric harmonics of the universal multivector field engine. They are of the same kind: structural features of the universe.
 
 3. **Operability and Abductive Inference**:
    The Iris Number System provides the precise formal language that makes this reality operable. By grounding all deductions in finite discrete entities, multivector algebra, and direct contact interactions, the system reveals that nature possesses no arbitrary “free dials.” The universe is a single, self-consistent, self-sustaining multivector field engine whose operational parameters are mathematically necessitated by topological closure on \( \mathcal{G}_N \).
@@ -3389,7 +3389,7 @@ In the Counting-Iris framework, this interpretation is inverted and recognized a
 
 2. **Realistic Mathematics vs. Open-Ended Fantasy**:
    In stark contrast, a *realistic* mathematics—grounded in the Iris Number System, multiscale resolution grids \( \mathcal{G}_N \), and direct contact topology—deals strictly with finite numbers of finite entities and executable operations.
-   * In a constructive, operational system, every statement has an operable interpretation: an algorithm, a spatial aperture, a multivector transformation, or a discrete counting process.
+   * In a constructive, operational system, every statement has an operable interpretation: an algorithm, a spatial spacing, a multivector transformation, or a discrete counting process.
    * Because the universe contains no actual infinities, no zero-volume points, and no non-local magical influences, a realistic mathematics that mirrors this structure is constructive and self-consistent. The Iris Number System proves its own self-consistency constructively, demonstrating that Gödel's incompleteness is not an inescapable fate of all mathematical thought, but the specific pathology of unanchored Platonic games.
 
 3. **The Civic and Educational Indictment**:
@@ -3413,9 +3413,9 @@ Let \( \mathcal{G}_N \) be the discrete multiscale spatial-temporal lattice gove
 
 *Proof:*
 
-. **Structural Invariant Equivalence**: Consider the circle ratio \( \pi = C / (2 r) \). In the Counting-Iris framework, \( \pi \) is evaluated on grid \( \mathcal{G}_N \) as the limit of regular \( n \)-gon perimeters under discrete aperture refinement:
+. **Structural Invariant Equivalence**: Consider the circle ratio \( \pi = C / (2 r) \). In the Counting-Iris framework, \( \pi \) is evaluated on grid \( \mathcal{G}_N \) as the limit of regular \( n \)-gon perimeters under discrete grid refinement:
 \[ \pi_n = n \sin \left( \frac{\pi}{n} \right) \quad \text{with} \quad \pi_n \to \pi \text{ as } n \to \infty \]
-Now consider the electromagnetic coupling constant \( \alpha = \frac{e^2}{4 \pi \varepsilon_0 \hbar c} \). Under the Master Field Equation \( D F = J \), a localized, stable, charge-carrying plasmoid (the electron) satisfies the self-consistent boundary condition between its circulating bivector magnetic current \( \mathbf{J}_m = \nabla \times \mathbf{B} \) and its outward electrostatic flux \( \nabla \cdot \mathbf{E} = \rho / \varepsilon_0 \) across the closed discrete aperture \( \partial \Omega \). Integrating the Poynting stress multivector over the topological boundary yields an exact eigenvalue equation for the resonance modes of \( \mathcal{G}_N \):
+Now consider the electromagnetic coupling constant \( \alpha = \frac{e^2}{4 \pi \varepsilon_0 \hbar c} \). Under the Master Field Equation \( D F = J \), a localized, stable, charge-carrying plasmoid (the electron) satisfies the self-consistent boundary condition between its circulating bivector magnetic current \( \mathbf{J}_m = \nabla \times \mathbf{B} \) and its outward electrostatic flux \( \nabla \cdot \mathbf{E} = \rho / \varepsilon_0 \) across the closed discrete boundary \( \partial \Omega \). Integrating the Poynting stress multivector over the topological boundary yields an exact eigenvalue equation for the resonance modes of \( \mathcal{G}_N \):
 \[ \oint_{\partial \Omega} F d \mathbf{x} \tilde{F} = \lambda_0 \langle F \tilde{F} \rangle \Delta V \]
 The dimensionless ratio of the self-energy flux to the radiation quantum is determined entirely by the geometry of the Clifford torus in \( Cl(4,1,1) \), yielding \( \alpha^{-1} \approx 137.035999\dots \) as a fixed geometric eigenvalue. Likewise, the proton-to-electron mass ratio is the eigenvalue of the 3D harmonic standing wave modes in the nuclear lattice:
 \[ \frac{m_p}{m_e} = 6 \pi^5 \left( 1 - \frac{1}{4 \pi^2 (137)} \right) \approx 1836.15267 \]
@@ -3429,7 +3429,7 @@ As the radius approaches the structural kernel boundary \( r_\text{core} \), the
 \[ r_\text{core} = \left( \frac{\mu_0 G M^2}{4 \pi B_0^2} \right)^{1/4} > 0 \]
 Hence, contraction halts deterministically at a finite, non-singular toroidal or spheroidal kernel. The field variables, curvature invariants, and energy densities remain strictly bounded on \( \mathcal{G}_N \). The singularity is proven to be a mathematical artifact of the continuum delusion, having no existence in physical reality.
 
-. **Epistemological Accessibility and Demolition of the Specialization Myth**: The Master Field Equation and its structural invariants are formulated over a finite number of finite operations in \( Cl(4,1,1) \). The logic of the system is deductive, constructive, and complete. By Keyser's Theorem of Logical Destiny, once the postulate aperture is established on \( \mathcal{G}_N \), all physical deductions follow with mathematical inevitability. Because the rules of deductive inference and arithmetic are universal, the comprehension of natural law is an intrinsic capability of human reason, unencumbered by artificial institutional specialization or credentialist cartels. \( \square \)
+. **Epistemological Accessibility and Demolition of the Specialization Myth**: The Master Field Equation and its structural invariants are formulated over a finite number of finite operations in \( Cl(4,1,1) \). The logic of the system is deductive, constructive, and complete. By Keyser's Theorem of Logical Destiny, once the postulate set is established on \( \mathcal{G}_N \), all physical deductions follow with mathematical inevitability. Because the rules of deductive inference and arithmetic are universal, the comprehension of natural law is an intrinsic capability of human reason, unencumbered by artificial institutional specialization or credentialist cartels. \( \square \)
 ====
 
 == Index of Formal Statements
@@ -3492,21 +3492,21 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-discrete-nyquist-sampling[**Theorem: Discrete Nyquist Sampling Rate on Finite Resolution Grids**]  -- Chapter: *Deterministic Communication Theory and Discrete Channel Capacity* | Section: *Discrete Nyquist Sampling and Exact Signal Reconstruction on Grid Channels*
 * xref:theorem-hamming-sphere-packing-bound[**Theorem: The Discrete Hamming Sphere-Packing Bound for Error-Correcting Block Codes**]  -- Chapter: *Deterministic Communication Theory and Discrete Channel Capacity* | Section: *The Discrete Hamming Bound for Error-Correcting Block Codes*
 * xref:theorem-shannon-discrete-channel-capacity[**Theorem: Shannon Channel Capacity Theorem for Finite Discrete Channels**]  -- Chapter: *Deterministic Communication Theory and Discrete Channel Capacity* | Section: *Shannon Channel Capacity and Deterministic Combinatorial Bounds*
-* xref:theorem-doctrinal-function-aperture-mapping[**Theorem: Doctrinal Function Mapping and Deductive Orbit Conservation Theorem**]  -- Chapter: *Keyser’s Theory of Doctrinal Functions and Logical Destiny* | Section: *Doctrinal Functions and Postulate Apertures on Discrete Multivector Lattices*
+* xref:theorem-doctrinal-function-mapping[**Theorem: Doctrinal Function Mapping and Deductive Orbit Conservation Theorem**]  -- Chapter: *Keyser’s Theory of Doctrinal Functions and Logical Destiny* | Section: *Doctrinal Functions and Postulate Sets on Discrete Multivector Lattices*
 * xref:theorem-keyser-logical-destiny-deductive-closure[**Theorem: Keyser's Theorem of Logical Destiny and Postulate Independence**]  -- Chapter: *Keyser’s Theory of Doctrinal Functions and Logical Destiny* | Section: *The Mathematical Principle of Logical Destiny and Freedom of Postulation*
 * xref:theorem-keyser-time-binding-doctrinal-evolution[**Theorem: Doctrinal Time-Binding Invariance and Systemic Revision Theorem**]  -- Chapter: *Keyser’s Theory of Doctrinal Functions and Logical Destiny* | Section: *Time-Binding and Doctrinal Evolution across Generational Grids*
 * xref:theorem-organismal-meaning-indefinite-recursion[**Theorem: Organismal Meaning Transduction and Countably Indefinite Recursive Hierarchy Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Meanings as Primary Organismal Abstractions and Countably Indefinite Linguistic Recursion*
-* xref:theorem-phoneme-nyquist-aperture-encoding[**Theorem: Discrete Phoneme Nyquist-Aperture Encoding Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Discrete Acoustic Phoneme Modulation and Nyquist-Aperture Speech Encoding*
+* xref:theorem-phoneme-nyquist-sampling-encoding[**Theorem: Discrete Phoneme Nyquist-Sampling Encoding Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Discrete Acoustic Phoneme Modulation and Nyquist-Sampling Speech Encoding*
 * xref:theorem-linguistic-filter-bank-capacity[**Theorem: Linguistic Filter Bank Capacity and Semantic Resolution Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Symbolic Transduction, Contextual Filter Banks, and Information Capacity of Human Language*
 * xref:theorem-linguistic-error-correcting-redundancy[**Theorem: Linguistic Error-Correcting Redundancy and Channel Robustness Theorem**]  -- Chapter: *Signal Processing Theory of Human Language* | Section: *Time-Series Parsing, Noise Invariance, and Error-Correcting Linguistic Redundancy*
 * xref:theorem-korzybski-extensional-intensional-duality[**Theorem: Korzybskian Extensional Semantics and Intensional Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Korzybskian Extensional Semantics: Definition by Intension vs. Definition by Extension*
-* xref:theorem-semantic-cooptation-deductive-instability[**Theorem: Semantic Coöptation, Sub-Aperture Shift, and Deductive Instability Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Creeds as Rigid Postulate Sets and the Mathematical Mechanics of Semantic Coöptation*
+* xref:theorem-semantic-cooptation-deductive-instability[**Theorem: Semantic Coöptation, Sub-State Shift, and Deductive Instability Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Creeds as Rigid Postulate Sets and the Mathematical Mechanics of Semantic Coöptation*
 * xref:theorem-bohr-complementarity-doublethink[**Theorem: Socio-Linguistic Invalidation of Bohr's Complementarity via Signal Processing Theory**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Case Study: Deconstruction of Bohr's Complementarity as Linguistic Signal Processing Degradation*
 * xref:theorem-quantum-superposition-creed-refutation[**Theorem: Refutation of the Quantum Superposition Creed via Mid-Circuit Register Sampling Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Modern Case Study: The Creed of Quantum Superposition vs. Mid-Circuit Register Sampling in Recursive Digital Grover Factorization*
 * xref:theorem-consensus-creed-deductive-refutation[**Theorem: Epistemological Fallacy of Consensus Creeds and Deductive Priority Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Modern Case Study: The Creed of "Scientific Consensus" vs. Deductive Demonstration and Historical Galilean Observation*
 * xref:theorem-nobel-prize-social-role[**Theorem: Socio-Ecclesiastical Function and Epistemological Fallacy of Institutional Award Priesthoods**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Historical Analysis: The Track Record of the Nobel Prize in Physics and Its Socio-Ecclesiastical Role*
 * xref:theorem-ptolemaic-fourier-vs-posthoc-creeds[**Theorem: Ptolemaic Trigonometric Series Utility and Refutation of Post Hoc Particle Creeds Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *Historical Contrast: The Rigorous Fourier Utility of Ptolemaic Epicycles vs. Modern Post Hoc Epistemological Creeds*
-* xref:theorem-extensional-definition-creed-dissolution[**Theorem: Extensional Definition Invariance and Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Epistemological Safeguard of Extensional Definitions and Explicit Postulate Apertures*
+* xref:theorem-extensional-definition-creed-dissolution[**Theorem: Extensional Definition Invariance and Creed Dissolution Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Epistemological Safeguard of Extensional Definitions and Explicit Postulate Sets*
 * xref:theorem-extensional-definitions-time-binding[**Theorem: The Role of Extensional Definitions in Preserving Time-Binding Integrity Theorem**]  -- Chapter: *Creeds and the Coöptation of Terms* | Section: *The Vital Importance of Extensional Definitions for Time-Binding and Systemic Evolution*
 * xref:theorem-signal-attenuation-horizon[**Theorem: Discrete Electromagnetic Energy Attenuation and Signal-to-Noise Horizon Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Physics of Physical Horizons: Attenuation and Thermodynamic-Information Bounds*
 * xref:theorem-conformal-semiotic-horizon[**Theorem: Empirical Interpretation Horizon and Contextual Un-translatability Theorem**]  -- Chapter: *The Futility of CETI* | Section: *The Empirical Interpretation Horizon: Structure Detection versus Meaning*
