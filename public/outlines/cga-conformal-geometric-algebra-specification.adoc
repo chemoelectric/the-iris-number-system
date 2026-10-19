@@ -31,7 +31,7 @@ with mutual anti-commutation \( e _ i e _ j = - e _ j e _ i \) for \( i \neq j \
 \[ I _ 3 = e _ 1 \wedge e _ 2 \wedge e _ 3 = e _ 1 e _ 2 e _ 3 \]
 
 === The Null Causal Time Generator
-The temporal coordinate generator \( e _ 4 \) represents causal propagation duration at speed \( c \). In discrete operational mechanics, causal progression along the light cone is a null step:
+The temporal coordinate generator \( e _ 4 \) represents causal propagation duration at speed \( c \). In discrete operational mechanics, causal progression of an expanding spherical wavefront is a null step:
 
 \[ e _ 4 ^ 2 = 0 \]
 
