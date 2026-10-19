@@ -38,7 +38,7 @@ The temporal coordinate generator \( e _ 4 \) represents causal propagation dura
 orthogonal to the spatial generators and conformal plane.
 
 === The Conformal Null Pair: Origin and Infinity
-To eliminate the confusion between the letter “o” and the numeral zero, the point at the origin is designated by the astronomical solar symbol \( e _ \odot \), while the point at infinity is designated by \( e _ \infty \). Both are null vectors:
+The point at the origin might most naturally be designated by a subscripted letter “o”, but this is easily confused with the numeral zero. Thus instead the point at the origin is designated with a subscripted astronomical solar symbol: \( e _ \odot \). The point at infinity is designated \( e _ \infty \). Both are null vectors:
 
 \[ e _ \odot ^ 2 = 0 , \qquad e _ \infty ^ 2 = 0 \]
 
@@ -71,7 +71,7 @@ satisfying:
 
 \[ X ^ 2 = \mathbf { x } ^ 2 + \mathbf { x } ^ 2 ( e _ \odot \cdot e _ \infty ) = \mathbf { x } ^ 2 - \mathbf { x } ^ 2 = 0 \]
 
-The inner product of two point vectors yields their Euclidean distance:
+The dot product of two point vectors yields their Euclidean distance:
 
 \[ X _ 1 \cdot X _ 2 = - \frac { 1 } { 2 } \| \mathbf { x } _ 1 - \mathbf { x } _ 2 \| ^ 2 \]
 
