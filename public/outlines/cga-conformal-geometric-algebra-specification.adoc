@@ -123,7 +123,7 @@ the extra terms account for these non-Euclidean boundary variations:
 
 * \( \partial _ \infty \) measures the change in the field under spherical inversion (turning space inside-out toward the boundary at infinity).
 
-For physical localized fields on the discrete lattice \( \mathcal { G } _ N \), the total field energy is finite: fields fade to zero far from their sources rather than depositing energy at infinity, and material sources have finite spatial extent rather than unphysical point singularities at the origin. Because physical fields do not vary under these boundary transformations (\( \partial _ \odot F = 0 \) and \( \partial _ \infty F = 0 \)), the conformal boundary terms decouple, leaving the direct operational operator:
+For physical localized fields on the discrete lattice \( \mathcal { G } _ N \), the total field energy is finite: fields fade to zero far from their sources rather than depositing energy at infinity, and material sources have finite spatial extent rather than unphysical point singularities at the origin. Under realistic conditions the last two terms vanish, leaving:
 
 \[ D = \nabla + e _ 4 \frac { 1 } { c } D _ t \]
 
