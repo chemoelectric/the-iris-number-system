@@ -107,9 +107,23 @@ where:
 
 * \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) is the rate of change combining what is changing in place with what is brought in by motion at velocity \( u \).
 
-* \( - e _ \infty \partial _ \odot - e _ \odot \partial _ \infty \) represents conformal scale/inversion flux across the boundary at infinity and origin.
+=== The Conformal Boundary Terms and Spherical Inversion
 
-For physical localized fields on \( \mathcal { G } _ N \) with boundary regularity (vanishing flux at infinity), the operational operator is:
+In Conformal Geometric Algebra, the points at the origin \( e _ \odot \) and infinity \( e _ \infty \) allow non-linear spatial transformations—such as magnification and spherical inversion—to be treated as linear operations within the algebra.
+
+_Spherical inversion_ is reflection across a sphere rather than a flat plane. Given a sphere of radius \( R \) centered at the origin, a point at position \( \mathbf { x } \) is reflected along its radial line to a new position \( \mathbf { x } ' = \frac { R ^ 2 } { \| \mathbf { x } \| ^ 2 } \mathbf { x } \). This operation turns the space inside-out: points far away outside the sphere are mapped close to the center, points near the center are projected toward infinity, and the surface of the sphere remains fixed. In the conformal basis, this reflection simply interchanges the roles of the origin \( e _ \odot \) and infinity \( e _ \infty \).
+
+In the full conformal differential operator:
+
+\[ D = \nabla + e _ 4 \frac { 1 } { c } D _ t - e _ \infty \partial _ \odot - e _ \odot \partial _ \infty \]
+
+the extra terms account for these non-Euclidean boundary variations:
+
+* \( \partial _ \odot \) measures the change in a geometric field under radial magnification or contraction about the origin.
+
+* \( \partial _ \infty \) measures the change in the field under spherical inversion (turning space inside-out toward the boundary at infinity).
+
+For physical localized fields on the discrete lattice \( \mathcal { G } _ N \), the total field energy is finite: fields fade to zero far from their sources rather than depositing energy at infinity, and material sources have finite spatial extent rather than unphysical point singularities at the origin. Because physical fields do not vary under these boundary transformations (\( \partial _ \odot F = 0 \) and \( \partial _ \infty F = 0 \)), the conformal boundary terms decouple, leaving the direct operational operator:
 
 \[ D = \nabla + e _ 4 \frac { 1 } { c } D _ t \]
 
