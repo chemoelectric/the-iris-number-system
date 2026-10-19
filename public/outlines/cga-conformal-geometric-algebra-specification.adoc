@@ -105,7 +105,7 @@ where:
 
 * \( \nabla = \sum _ { a = 1 } ^ 3 e _ a \frac { \partial } { \partial x _ a } \) is the spatial gradient.
 
-* \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) is the convective temporal derivative with local advective velocity \( u \).
+* \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) is the rate of change combining what is changing in place with what is brought in by motion at velocity \( u \).
 
 * \( - e _ \infty \partial _ \odot - e _ \odot \partial _ \infty \) represents conformal scale/inversion flux across the boundary at infinity and origin.
 
