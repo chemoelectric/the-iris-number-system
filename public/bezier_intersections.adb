@@ -377,7 +377,6 @@ procedure bezier_intersections is
   type clipping_places is
     (clip_everywhere,
      clip_nowhere,
-     clip_overlapping,
      clip_left_and_right);
 
   type clipping_plan is
@@ -434,24 +433,11 @@ procedure bezier_intersections is
     function create_a_clipping_plan
     return clipping_plan is
       plan : clipping_plan;
-      clippehend_dy : lreal;
     begin
       if ncrossings = 2 and then dcrossings (1) /= dcrossings (2) then
         plan.where := clip_left_and_right;
         plan.t_lft := lreal'min (tcrossings (1), tcrossings (2));
         plan.t_rgt := lreal'max (tcrossings (1), tcrossings (2));
-      elsif ncrossings = 0 then
-        -- The clippehend does not cross either fat line boundary.
-        -- Check if it is completely inside the fat line strip [dmin, dmax],
-        -- indicating that both arcs are mutually overlapping/coincident.
-        clippehend_dy := abs (projected_clippehend.pt1.dy) / 4.0;
-        if clippehend_dy <= abs (dmax - dmin) then
-          plan.where := clip_overlapping;
-        else
-          plan.where := clip_nowhere;
-        end if;
-        plan.t_lft := 0.0;
-        plan.t_rgt := 0.0;
       else
         plan.where := clip_nowhere;
         plan.t_lft := 0.0;
@@ -766,10 +752,6 @@ procedure bezier_intersections is
           bisect_them;
         when clip_left_and_right =>
           clip_and_maybe_bisect (plan);
-        when clip_overlapping =>
-          -- Degenerate overlap detected: both arcs share the same fat line strip.
-          -- Prune this branch immediately to prevent tree explosion.
-          null;
       end case;
     end perform_clipping;
 
