@@ -134,7 +134,7 @@ The unified electromagnetic field multivector is:
 
 where:
 
-* \( E = \sum _ { a = 1 } ^ 3 E _ a e _ a \) is the electric vector, forming the electric bivectors \( E e _ 4 \).
+* \( E = \sum _ { a = 1 } ^ 3 E _ a e _ a \) is the electric vector, forming the electric bivector \( E e _ 4 \).
 
 * \( B = \sum _ { a = 1 } ^ 3 B _ a e _ a \) is the magnetic vector, and \( I _ 3 = e _ 1 e _ 2 e _ 3 \) is the spatial volume pseudoscalar, forming the dual magnetic spatial trivector flux \( c B I _ 3 \).
 
