@@ -21,16 +21,16 @@ Classical Euclidean geometry, when stripped of continuum idealizations and unmea
 
 In this formulation, geometric primitives—points, directed line segments, angles, directed areas, and oriented volumes—are not mysterious entities with zero spatial extent, but operational multivector measurements within discrete partition grids \( \mathcal { G } _ N \).
 
-Every classical geometric relation (such as the Pythagorean relation, Thales's right-angle relation, or the law of sines) is an algebraic identity (tautology) holding strictly within the Clifford bivector algebra \( Cl ( 2 , 0 ) \).
+Every classical geometric relation (such as the Pythagorean relation, Thales's right-angle relation, or the law of sines) is an algebraic identity (tautology) holding strictly within 2D geometric algebra.
 
 ==== Operational Primitives in Discrete Euclidean Multivector Space
 
-Let \( \mathcal { G } _ N \subset Cl ( 2 , 0 ) \) denote a discrete rational partition grid spanned by orthogonal basis vectors \( e _ 1 , e _ 2 \) satisfying \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } _ { Cl } \) and \( e _ 1 e _ 2 = - e _ 2 e _ 1 \).
+Let \( \mathcal { G } _ N \) denote a discrete rational partition grid spanned by orthogonal basis vectors \( e _ 1 , e _ 2 \) satisfying \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } \) and \( e _ 1 e _ 2 = - e _ 2 e _ 1 \).
 
 * **Discrete Position Vectors**: A point in the plane is operationalized by a position vector \( p = x e _ 1 + y e _ 2 \in \mathcal { G } _ N \), where \( x , y \in \mathbb { Q } \).
 * **Directed Line Segments**: A directed segment from \( p _ 1 \) to \( p _ 2 \) is the vector difference \( v = p _ 2 - p _ 1 \).
 * **Inner Scalar Product**: Metric distance and orthogonality are governed by the symmetric scalar product:
-\[ u \cdot v = \frac { 1 } { 2 } ( u v + v u ) \in \mathbb { Q } \mathbf { 1 } _ { Cl } \]
+\[ u \cdot v = \frac { 1 } { 2 } ( u v + v u ) \in \mathbb { Q } \mathbf { 1 } \]
 * **Directed Bivector Area**: Oriented planar area is governed by the anti-symmetric wedge product:
 \[ u \wedge v = \frac { 1 } { 2 } ( u v - v u ) = ( u _ 1 v _ 2 - u _ 2 v _ 1 ) e _ 1 e _ 2 \]
 
@@ -38,9 +38,9 @@ Let \( \mathcal { G } _ N \subset Cl ( 2 , 0 ) \) denote a discrete rational par
 
 [#theorem-tautological-pythagoras]
 [THEOREM]
-.Theorem: Tautological Pythagorean Identity in Cl(2,0)
+.Theorem: Tautological Pythagorean Identity in Geometric Algebra
 ====
-Let \( u , v \in \mathcal { G } _ N \) be two orthogonal vectors in \( Cl ( 2 , 0 ) \), so that \( u \cdot v = \frac { 1 } { 2 } ( u v + v u ) = 0 \). Then the square norm of the hypotenuse vector \( w = u + v \) satisfies the exact algebraic tautology:
+Let \( u , v \in \mathcal { G } _ N \) be two orthogonal vectors, so that \( u \cdot v = \frac { 1 } { 2 } ( u v + v u ) = 0 \). Then the square norm of the hypotenuse vector \( w = u + v \) satisfies the exact algebraic tautology:
 \[ \| w \| _ { \mathcal { I } } ^ 2 = w ^ 2 = \| u \| _ { \mathcal { I } } ^ 2 + \| v \| _ { \mathcal { I } } ^ 2 \]
 
 *Proof:*
@@ -50,7 +50,7 @@ Let \( u , v \in \mathcal { G } _ N \) be two orthogonal vectors in \( Cl ( 2 , 
 
 . **Substitution of Orthogonality**: By hypothesis, orthogonality implies \( u v + v u = 2 ( u \cdot v ) = 0 \).
 
-. **Algebraic Reduction**: Substituting \( u v + v u = 0 \) yields \( w ^ 2 = u ^ 2 + v ^ 2 \). Since for any vector \( x \), \( x ^ 2 = \| x \| _ { \mathcal { I } } ^ 2 \mathbf { 1 } _ { Cl } \), this establishes \( \| u + v \| _ { \mathcal { I } } ^ 2 = \| u \| _ { \mathcal { I } } ^ 2 + \| v \| _ { \mathcal { I } } ^ 2 \). \( \square \)
+. **Algebraic Reduction**: Substituting \( u v + v u = 0 \) yields \( w ^ 2 = u ^ 2 + v ^ 2 \). Since for any vector \( x \), \( x ^ 2 = \| x \| _ { \mathcal { I } } ^ 2 \mathbf { 1 } \), this establishes \( \| u + v \| _ { \mathcal { I } } ^ 2 = \| u \| _ { \mathcal { I } } ^ 2 + \| v \| _ { \mathcal { I } } ^ 2 \). \( \square \)
 ====
 
 [#theorem-tautological-thales]
@@ -98,7 +98,7 @@ Dividing by \( \| u \| \| v \| \| w \| \) produces the canonical Law of Sines. \
 
 === The Counting Process and the Integers
 
-Foundational definition of the discrete integer domain \( \mathbb { Z } \) and its canonical scalar embedding into Clifford Algebra Cl(4,1,1).
+Foundational definition of the discrete integer domain \( \mathbb { Z } \) and its canonical scalar embedding into Conformal Geometric Algebra (CGA).
 
 ==== Definition of the Integers
 
@@ -127,14 +127,14 @@ In this framework, every integer \( n \in \mathbb { Z } \) acts as an active **O
 In the Counting-Iris Number System, chapters and sections are un-numbered to emphasize conceptual cohesion and non-hierarchical tautological deduction over rigid ordinal indexing.
 ====
 
-==== Clifford Algebra Integration and Parity Algebra
+==== Geometric Algebra Integration and Parity Algebra
 
-Through Postulate 2 and Postulate 4, integer arithmetic in \( \mathbb { Z } \) is not merely isolated symbolic counting, but a projection of geometric operations in \( Cl ( 4 , 1 , 1 ) \).
+Through Postulate 2 and Postulate 4, integer arithmetic in \( \mathbb { Z } \) is not merely isolated symbolic counting, but a projection of geometric operations in Conformal Geometric Algebra.
 
-Let \( n , m \in \mathbb { Z } \). Consider their representation as bivector-graded multivectors: \[ M ( n ) = n \cdot \mathbf { 1 } _ { Cl } + \frac { 1 - ( - 1 ) ^ n } { 2 } e _ { 12 } \]
+Let \( n , m \in \mathbb { Z } \). Consider their representation as bivector-graded multivectors: \[ M ( n ) = n \cdot \mathbf { 1 } + \frac { 1 - ( - 1 ) ^ n } { 2 } e _ { 12 } \]
 
 
-When \( n \) is even, \( M ( n ) = n \mathbf { 1 } _ { Cl } \) is purely scalar. When \( n \) is odd, \( M ( n ) = n \mathbf { 1 } _ { Cl } + e _ { 12 } \) acquires a unit bivector component whose square is \( e _ { 12 } ^ 2 = - 1 \).
+When \( n \) is even, \( M ( n ) = n \mathbf { 1 } \) is purely scalar. When \( n \) is odd, \( M ( n ) = n \mathbf { 1 } + e _ { 12 } \) acquires a unit bivector component whose square is \( e _ { 12 } ^ 2 = - 1 \).
 
 [#theorem-parity-conservation]
 [THEOREM]
@@ -207,22 +207,22 @@ The domain \( ( \mathbb { Z } , + , \cdot , \le ) \) is a totally ordered commut
 
 [#postulate-2]
 [POSTULATE]
-.Postulate 2: Canonical Scalar Embedding into Clifford Algebra Cl(4,1,1)
+.Postulate 2: Canonical Scalar Embedding into Conformal Geometric Algebra
 ====
-There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of the 6-generator Clifford algebra \( Cl ( 4 , 1 , 1 ) \) with metric signature \( ( + + + + , - , 0 ) \): \[ \iota _ 0 : \mathbb { Z } \hookrightarrow Cl ( 4 , 1 , 1 ) , \quad n \mapsto n \cdot \mathbf { 1 } _ { Cl } \]
+There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of Conformal Geometric Algebra: \[ \iota _ 0 : \mathbb { Z } \hookrightarrow \mathbb { G } , \quad n \mapsto n \cdot \mathbf { 1 } \]
 
 
-where \( \mathbf { 1 } _ { Cl } \) is the Clifford unit scalar element satisfying \( \mathbf { 1 } _ { Cl } e _ A = e _ A \mathbf { 1 } _ { Cl } = e _ A \) for all basis elements \( e _ A \).
+where \( \mathbf { 1 } \) is the unit scalar element satisfying \( \mathbf { 1 } e _ A = e _ A \mathbf { 1 } = e _ A \) for all basis elements \( e _ A \).
 ====
 
 [#postulate-3]
 [POSTULATE]
 .Postulate 3: Metric Preservation of Quadratic Forms
 ====
-For any discrete tuple \( ( a , b ) \in \mathbb { Z } ^ 2 \), the Clifford metric norm over orthogonal basis generators \( e _ 1 , e _ 2 \) preserves exact integer quadratic forms: \[ \| a e _ 1 + b e _ 2 \| ^ 2 = ( a e _ 1 + b e _ 2 ) ( a e _ 1 + b e _ 2 ) ^ \dagger = a ^ 2 + b ^ 2 \in \mathbb { Z } _ { \ge 0 } \]
+For any discrete tuple \( ( a , b ) \in \mathbb { Z } ^ 2 \), the geometric metric norm over orthogonal basis generators \( e _ 1 , e _ 2 \) preserves exact integer quadratic forms: \[ \| a e _ 1 + b e _ 2 \| ^ 2 = ( a e _ 1 + b e _ 2 ) ( a e _ 1 + b e _ 2 ) ^ \dagger = a ^ 2 + b ^ 2 \in \mathbb { Z } _ { \ge 0 } \]
 
 
-This guarantees that diophantine norm equations in \( \mathbb { Z } \) map directly into geometric invariants of \( Cl ( 4 , 1 , 1 ) \).
+This guarantees that diophantine norm equations in \( \mathbb { Z } \) map directly into geometric invariants of the algebra.
 ====
 
 [#postulate-4]
@@ -262,7 +262,7 @@ All domain extensions, rational partition grids, and spectral operator spaces in
 ====
 All mathematical operations, operator field evolutions, and physical interactions in the Iris Number System are strictly governed by action by direct contact defined topologically via **Halos**.
 
-For every element or operator \( x \in \mathcal { D } _ { \text { Iris } } \), its **Topological Halo** \( \mathcal { H } ( x ) \) is defined as its local contiguous metric neighborhood and nilpotent perimeter boundary: \[ \mathcal { H } ( x ) = \left \{ y \in \mathcal { D } _ { \text { Iris } } \; \middle | \; d _ { Cl } ( x , y ) \le \epsilon _ { \text { local } } \text { or } ( x - y ) ^ 2 \in \text { span } ( \varpi , \vartheta ) \right \} \]
+For every element or operator \( x \in \mathcal { D } _ { \text { Iris } } \), its **Topological Halo** \( \mathcal { H } ( x ) \) is defined as its local contiguous metric neighborhood and boundary: \[ \mathcal { H } ( x ) = \left \{ y \in \mathcal { D } _ { \text { Iris } } \; \middle | \; d ( x , y ) \le \epsilon _ { \text { local } } \text { or } ( x - y ) ^ 2 \in \text { span } ( \varpi , \vartheta ) \right \} \]
 
 
 Physical and mathematical interactions between entities \( A \) and \( B \) occur if and only if their topological halos intersect: \[ \text { Interaction } ( A , B ) \neq 0 \iff \mathcal { H } ( A ) \cap \mathcal { H } ( B ) \neq \emptyset \]
@@ -275,10 +275,10 @@ Spectral density transfers and force couplings execute strictly through contiguo
 [POSTULATE]
 .Postulate 9: Formal Definition of the Iris Generator (\( \iota \))
 ====
-The fundamental Iris generator \( \iota \) is defined as a multivector operator in Clifford Algebra \( Cl ( 4 , 1 , 1 ) \) acting as an algebraic aperture whose quadratic constraint satisfies: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
+The fundamental Iris generator \( \iota \) is defined as a multivector operator in Conformal Geometric Algebra acting as an algebraic aperture whose quadratic constraint satisfies: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
 
 
-where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators (\( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \)) constituting the nilpotent perimeter boundary of the aperture, and \( \mathbf { 1 } \) is the Clifford scalar unit identity.
+where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators (\( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \)) constituting the perimeter boundary of the aperture, and \( \mathbf { 1 } \) is the scalar unit identity.
 ====
 
 [#chap-the-rational-numbers]
@@ -294,7 +294,7 @@ Following the formal definition of the Iris generator in Postulate 9 and the Pri
 Rather than abstract static fractions, a rational number represents the relative opening ratio or flux throughput fraction of an Iris aperture diaphragm: \[ \mathbb { Q } = \left \{ \frac { p } { q _ { \text { den } } } \; \middle | \; p , q _ { \text { den } } \in \mathbb { Z } , q _ { \text { den } } \neq \mathbf { 0 } \right \} \]
 
 
-In this optical-geometric model, the fully open reference Iris aperture corresponds to the unit scalar identity \( \mathbf { 1 } _ { Cl } \) (or primary unit counting step \( \bullet \)). An Iris aperture is divided sectorially by \( q _ { \text { den } } \in \mathbb { Z } _ { > 0 } \) overlapping aperture blades or grid steps. Selecting \( p \in \mathbb { Z } \) blade counting steps yields the fractional Iris aperture opening ratio:
+In this optical-geometric model, the fully open reference Iris aperture corresponds to the unit scalar identity \( \mathbf { 1 } \) (or primary unit counting step \( \bullet \)). An Iris aperture is divided sectorially by \( q _ { \text { den } } \in \mathbb { Z } _ { > 0 } \) overlapping aperture blades or grid steps. Selecting \( p \in \mathbb { Z } \) blade counting steps yields the fractional Iris aperture opening ratio:
 
 [#definition-rational-aperture-ratio]
 [DEFINITION]
@@ -376,9 +376,9 @@ Under this physical Iris aperture limit model:
 * **Bounded Iris Aperture Interval**: The normalized central aperture transmission parameter \( r \in [ - 1 , 1 ] \) spans a smooth interval of light flux across finite partition steps, bounded by total closure (\( r = - 1 \) or \( r = 0 \)) and full aperture opening (\( r = 1 \)).
 * **Exact Constructibility**: Every operational state in physics or computing corresponds to a finite grid truncation \( r _ N \in \mathcal { G } _ N \), ensuring that physical measurements remain free of actual infinity paradoxes.
 
-==== Real Aperture Dynamics, Transcendental Functions, and Clifford Rotations
+==== Real Aperture Dynamics, Transcendental Functions, and Geometric Rotations
 
-With real numbers \( \mathbb { R } \) established as constructive limits of Iris aperture partition measurements, real arithmetic and transcendental functions operate seamlessly within the Clifford Algebra \( Cl ( 4 , 1 , 1 ) \).
+With real numbers \( \mathbb { R } \) established as constructive limits of Iris aperture partition measurements, real arithmetic and transcendental functions operate seamlessly within Conformal Geometric Algebra.
 
 ==== Bivector Rotations and Transcendental Angles
 In the Iris generator operator \( \iota ( r , \theta ) \) defined in Postulate 9, the rotation angle \( \theta \in \mathbb { R } \) parameterizes the spatial orientation of the aperture plane along the Spin(2) bivector generator \( e _ { 12 } \): \[ R ( \theta ) = \exp \left ( \frac { \theta } { 2 } e _ { 12 } \right ) = \cos \left ( \frac { \theta } { 2 } \right ) + \sin \left ( \frac { \theta } { 2 } \right ) e _ { 12 } \]
@@ -391,16 +391,16 @@ The transcendental functions \( \cos \theta \) and \( \sin \theta \) are not mys
 [THEOREM]
 .Theorem: Constructive Completeness of Iris Grid Limits
 ====
-Every Cauchy sequence of rational Iris aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the Clifford multivector field \( \Psi \in Cl ( 4 , 1 , 1 ) \).
+Every Cauchy sequence of rational Iris aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the conformal multivector field \( \Psi \).
 
 Furthermore, the space of real aperture flux parameters \( [ - 1 , 1 ] \) is constructively complete: any smooth aperture modulation \( f ( r ) \) can be uniformly approximated to arbitrary precision \( \epsilon \in \mathbb { Q } _ { > 0 } \) by a finite rational polynomial operator on an Iris partition grid \( \mathcal { G } _ N \).
 ====
 
 ==== Multiplicative Real Inverse and Flux Conservation
-For any non-zero real aperture parameter \( x \in \mathbb { R } \setminus \{ 0 \} \), the multiplicative inverse \( x ^ { - 1 } \) represents the reciprocal aperture flux scaling that satisfies: \[ x \cdot x ^ { - 1 } = 1 \quad \implies \quad \left ( \lim _ { N \to \infty } r _ N \right ) \cdot \left ( \lim _ { N \to \infty } r _ N ^ { - 1 } \right ) = \mathbf { 1 } _ { Cl } \]
+For any non-zero real aperture parameter \( x \in \mathbb { R } \setminus \{ 0 \} \), the multiplicative inverse \( x ^ { - 1 } \) represents the reciprocal aperture flux scaling that satisfies: \[ x \cdot x ^ { - 1 } = 1 \quad \implies \quad r _ N \to x \text{ and } r _ N ^ { - 1 } \to x ^ { - 1 } \text{ as } N \text{ gets indefinitely large, yielding } x \cdot x ^ { - 1 } = \mathbf { 1 } \]
 
 
-This guarantees strict conservation of light flux and geometric scale invariance across all real transformations within the Counting-Iris Number System.
+This guarantees strict conservation of electromagnetic flux and geometric scale invariance across all real transformations within the Counting-Iris Number System.
 
 [#chap-the-multiscale-resolution-numbers]
 
@@ -456,7 +456,7 @@ The **Main Scale Projection** operator \( ( \downarrow ) : \text { Fin } ( \math
 For any finite multiscale vernier measurement operations \( x ^ { \ast } , y ^ { \ast } \in \text { Fin } ( \mathbb { R } ^ { \ast } ) \), the Main Scale Projection operator \( ( \downarrow ) \) is a ring homomorphism into the real field \( \mathbb { R } \): \[ ( \downarrow ) ( x ^ { \ast } + y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) + ( \downarrow ) ( y ^ { \ast } ) , \quad ( \downarrow ) ( x ^ { \ast } \cdot y ^ { \ast } ) = ( \downarrow ) ( x ^ { \ast } ) \cdot ( \downarrow ) ( y ^ { \ast } ) \]
 
 
-Furthermore, in MSRA, calculus differentials \( d \Psi \) and derivatives \( \frac { d \Psi } { dx } \) in the Clifford field are exact ratios of finite vernier grid displacements evaluated under Main Scale Projection over finite observation time intervals: \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Delta \Psi } { \delta _ \omega } \right ) \]
+Furthermore, in MSRA, calculus differentials \( d \Psi \) and derivatives \( \frac { d \Psi } { dx } \) in the multivector field are exact ratios of finite vernier grid displacements evaluated under Main Scale Projection over finite observation time intervals: \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Delta \Psi } { \delta _ \omega } \right ) \]
 
 
 This eliminates division-by-zero ambiguities by expressing all derivatives as ratios between measurement steps conducted in finite observation time.
@@ -466,7 +466,7 @@ This eliminates division-by-zero ambiguities by expressing all derivatives as ra
 
 === Complex Numbers and Quaternions
 
-Constructing complex numbers and quaternions directly within the Counting-Iris framework, establishing complex numbers via the fundamental Iris aperture generator \( \iota \) and quaternions as the spatial bivector subalgebra of \( Cl ( 4 , 1 , 1 ) \) without introducing non-constructive sets or ungrounded imaginary abstractions.
+Constructing complex numbers and quaternions directly within the Counting-Iris framework, establishing complex numbers via the fundamental Iris aperture generator \( \iota \) and quaternions as the spatial bivector subalgebra of Conformal Geometric Algebra without introducing non-constructive sets or ungrounded imaginary abstractions.
 
 ==== Complex Numbers in Counting-Iris
 
@@ -506,18 +506,18 @@ which is identical to the canonical field multiplication rule in \( \mathbb { C 
 establishing an exact ring isomorphism with the classical complex field \( \mathbb { C } \). \( \square \)
 ====
 
-==== Quaternions as Cl(4,1,1) Bivector Subalgebras
+==== Quaternions as Spatial Bivector Subalgebras
 
-Rather than postulating quaternions \( \mathbb { H } \) through abstract 4-tuples, Counting-Iris constructs quaternions directly as the Spin(2) spatial bivector subalgebra of the 6-generator Clifford Algebra \( Cl ( 4 , 1 , 1 ) \).
+Rather than postulating quaternions \( \mathbb { H } \) through abstract 4-tuples, Counting-Iris constructs quaternions directly as the Spin(2) spatial bivector subalgebra of Conformal Geometric Algebra.
 
 [#definition-iris-quaternion]
 [DEFINITION]
 .Definition: Counting-Iris Quaternion Bivector
 ====
-A quaternion \( q \in \mathbb { H } _ { \text { Iris } } \) in Counting-Iris is a multivector in the spatial bivector subalgebra of \( Cl ( 4 , 1 , 1 ) \): \[ q = q _ 0 + q _ 1 i + q _ 2 j + q _ 3 k \]
+A quaternion \( q \in \mathbb { H } _ { \text { Iris } } \) in Counting-Iris is a multivector in the spatial bivector subalgebra: \[ q = q _ 0 + q _ 1 i + q _ 2 j + q _ 3 k \]
 
 
-where \( q _ 0 , q _ 1 , q _ 2 , q _ 3 \in \mathbb { R } \) and \( i , j , k \) are spatial bivector aperture plane generators constructed from the spatial basis \( \{ e _ 1 , e _ 2 , e _ 3 \} \) of \( Cl ( 4 , 1 , 1 ) \): \[ i = e _ 2 \wedge e _ 3 , \qquad j = e _ 3 \wedge e _ 1 , \qquad k = e _ 1 \wedge e _ 2 \]
+where \( q _ 0 , q _ 1 , q _ 2 , q _ 3 \in \mathbb { R } \) and \( i , j , k \) are spatial bivector aperture plane generators constructed from the spatial basis \( \{ e _ 1 , e _ 2 , e _ 3 \} \): \[ i = e _ 2 \wedge e _ 3 , \qquad j = e _ 3 \wedge e _ 1 , \qquad k = e _ 1 \wedge e _ 2 \]
 ====
 
 [#theorem-quaternion-algebra-identities]
@@ -527,10 +527,10 @@ where \( q _ 0 , q _ 1 , q _ 2 , q _ 3 \in \mathbb { R } \) and \( i , j , k \) 
 The spatial bivector aperture generators \( i , j , k \) satisfy Hamilton's fundamental quaternion relations: \[ i ^ 2 = j ^ 2 = k ^ 2 = - 1 \]
 
 
-and non-commutative cyclic bivector product rules, establishing \( \mathbb { H } _ { \text { Iris } } \) as an exact Clifford sub-algebra of \( Cl ( 4 , 1 , 1 ) \).
+and non-commutative cyclic bivector product rules, establishing \( \mathbb { H } _ { \text { Iris } } \) as an exact geometric sub-algebra.
 
 *Proof:*
-In \( Cl ( 4 , 1 , 1 ) \), the spatial basis vectors satisfy \( e _ 1 ^ 2 = e _ 2 ^ 2 = e _ 3 ^ 2 = 1 \) and \( e _ a e _ b = - e _ b e _ a \) for \( a \neq b \).
+In the algebra, the spatial basis vectors satisfy \( e _ 1 ^ 2 = e _ 2 ^ 2 = e _ 3 ^ 2 = 1 \) and \( e _ a e _ b = - e _ b e _ a \) for \( a \neq b \).
 Evaluating the square of \( i = e _ 2 e _ 3 \): \[ i ^ 2 = ( e _ 2 e _ 3 ) ( e _ 2 e _ 3 ) = e _ 2 ( e _ 3 e _ 2 ) e _ 3 = - e _ 2 ( e _ 2 e _ 3 ) e _ 3 = - e _ 2 ^ 2 e _ 3 ^ 2 = - ( 1 ) ( 1 ) = - 1 \]
 
 
@@ -540,10 +540,10 @@ Evaluating the bivector product \( i j \): \[ i j = ( e _ 2 e _ 3 ) ( e _ 3 e _ 
 
 Cyclically evaluating \( j k \) and \( k i \) yields \( j k = - i \) and \( k i = - j \). Under standard right-handed orientation \( i = e _ 3 e _ 2 \), \( j = e _ 1 e _ 3 \), \( k = e _ 2 e _ 1 \), we obtain \( i ^ 2 = j ^ 2 = k ^ 2 = i j k = - 1 \).
 
-Quaternion conjugation corresponds to Clifford bivector reversal \( \tilde { q } = q _ 0 - q _ 1 i - q _ 2 j - q _ 3 k \), giving the positive-definite norm: \[ q \tilde { q } = q _ 0 ^ 2 + q _ 1 ^ 2 + q _ 2 ^ 2 + q _ 3 ^ 2 \]
+Quaternion conjugation corresponds to bivector reversal \( \tilde { q } = q _ 0 - q _ 1 i - q _ 2 j - q _ 3 k \), giving the positive-definite norm: \[ q \tilde { q } = q _ 0 ^ 2 + q _ 1 ^ 2 + q _ 2 ^ 2 + q _ 3 ^ 2 \]
 
 
-This proves that quaternions in Counting-Iris are exact spatial bivector rotations in \( Cl ( 4 , 1 , 1 ) \). \( \square \)
+This proves that quaternions in Counting-Iris are exact spatial bivector rotations. \( \square \)
 ====
 
 [#chap-how-to-do-differential-calculus]
@@ -638,12 +638,12 @@ Applying Main Scale Projection \( ( \downarrow ) \): \[ ( \downarrow ) \left ( \
 establishing the MSRA chain rule. \( \square \)
 ====
 
-==== Multivector Clifford Derivatives in Cl(4,1,1)
+==== Multivector Directional Derivatives
 
-Extending MSRA differential calculus to multivector field functions \( \Psi : \mathbb { R } ^ { \ast } \to Cl ( 4 , 1 , 1 ) \), spatial directional derivatives act as active bivector aperture shifts along orthogonal channels \( e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \): \[ \nabla \Psi = \sum _ { a = 1 } ^ 3 e _ a ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega e _ a ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
+Extending MSRA differential calculus to multivector field functions \( \Psi : \mathbb { R } ^ { \ast } \to \mathbb { G } \), spatial directional derivatives act as active bivector aperture shifts along orthogonal spatial channels: \[ \nabla \Psi = \sum _ { a = 1 } ^ 3 e _ a ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega e _ a ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
 
 
-Combining the spatial gradient \( \nabla \) with the convective time derivative \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) forms the full Clifford Dirac-Iris differential operator \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \), directly powering the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \).
+Combining the spatial gradient \( \nabla \) with the rate of change \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) forms the full Dirac-Iris differential operator \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \), directly powering the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \).
 
 ==== Worked Example: MSRA Derivative of a Quadratic Polynomial
 
@@ -748,17 +748,17 @@ This matches the anti-derivative calculation \( \left [ \frac { x ^ 2 } { 2 } \r
 
 === How to Compute a Contour Integral
 
-Formulating line integrals and contour integration across multivector paths in \( Cl ( 4 , 1 , 1 ) \) Clifford space, establishing the discrete MSRA Cauchy-Goursat analogue on ultra-refined vernier grids and residue-free aperture loop circulations.
+Formulating line integrals and contour integration across multivector paths in Conformal Geometric Algebra, establishing the discrete MSRA Cauchy-Goursat analogue on ultra-refined vernier grids and residue-free aperture loop circulations.
 
-==== Parameterized Paths and Line Integrals in Cl(4,1,1)
+==== Parameterized Paths and Line Integrals
 
-In multivector Clifford space \( Cl ( 4 , 1 , 1 ) \), a physical path \( \Gamma \) is represented as a parameterized multivector curve \( \gamma ( t ) \in Cl ( 4 , 1 , 1 ) \) for parameter \( t \in [ a , b ] \) on an ultra-refined grid \( \mathcal { G } _ \omega \).
+In Conformal Geometric Algebra, a physical path \( \Gamma \) is represented as a parameterized multivector curve \( \gamma ( t ) \in \mathbb { G } \) for parameter \( t \in [ a , b ] \) on an ultra-refined grid \( \mathcal { G } _ \omega \).
 
 [#definition-msra-contour-integral]
 [DEFINITION]
 .Definition: MSRA Contour Integral
 ====
-Let \( \Psi : Cl ( 4 , 1 , 1 ) \to Cl ( 4 , 1 , 1 ) \) be a multivector field and \( \Gamma \) a parameterized curve \( \gamma : [ a , b ] \to Cl ( 4 , 1 , 1 ) \). The MSRA contour integral of \( \Psi \) along \( \Gamma \) is defined as: \[ \int _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { M _ \omega - 1 } \Psi ( \gamma ( t _ k ) ) \cdot \Delta \gamma _ k \right ) \]
+Let \( \Psi : \mathbb { G } \to \mathbb { G } \) be a multivector field and \( \Gamma \) a parameterized curve \( \gamma : [ a , b ] \to \mathbb { G } \). The MSRA contour integral of \( \Psi \) along \( \Gamma \) is defined as: \[ \int _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { M _ \omega - 1 } \Psi ( \gamma ( t _ k ) ) \cdot \Delta \gamma _ k \right ) \]
 
 
 where \( t _ k = a + k \delta _ \omega \), \( \Delta \gamma _ k = \gamma ( t _ { k + 1 } ) - \gamma ( t _ k ) \), and \( M _ \omega = \frac { b - a } { \delta _ \omega } \) on the ultra-refined grid \( \mathcal { G } _ \omega \).
@@ -835,7 +835,7 @@ In conventional notation, the curl \( \nabla \times \mathbf { F } \) is artifici
 . **The Fragmentation of the Differential Operator**:
 Gibbs-Heaviside calculus separates spatial differentiation into three ad-hoc operations: the gradient (scalar to vector), the curl (vector to vector via cross product), and the divergence (vector to scalar via dot product).
 
-In the Iris Number System and Clifford geometric algebra \( Cl ( 4 , 1 , 1 ) \), there is only **one** unified geometric vector derivative \( \nabla \). When \( \nabla \) acts on a vector field \( \mathbf { F } \) through the Clifford geometric product, it decomposes naturally into its scalar (divergence) and bivector (circulation) components:
+In the Iris Number System and geometric algebra, there is only **one** unified geometric vector derivative \( \nabla \). When \( \nabla \) acts on a vector field \( \mathbf { F } \) through the geometric product, it decomposes naturally into its scalar (divergence) and bivector (circulation) components:
 \[ \nabla \mathbf { F } = \nabla \cdot \mathbf { F } + \nabla \wedge \mathbf { F } \]
 * The grade-0 scalar part \( \nabla \cdot \mathbf { F } \) is the Gauss flux divergence.
 * The grade-2 bivector part \( \nabla \wedge \mathbf { F } \) is the Stokes-Green circulation plane (the intrinsic curl).
@@ -858,7 +858,7 @@ where the discrete curl operator is defined across each elementary cell face by:
 +
 \[ \operatorname { curl } \mathbf { F } = \nabla \times \mathbf { F } = \left ( \frac { \Delta F _ z } { \Delta y } - \frac { \Delta F _ y } { \Delta z } \right ) \mathbf { e } _ 1 + \left ( \frac { \Delta F _ x } { \Delta z } - \frac { \Delta F _ z } { \Delta x } \right ) \mathbf { e } _ 2 + \left ( \frac { \Delta F _ y } { \Delta x } - \frac { \Delta F _ x } { \Delta y } \right ) \mathbf { e } _ 3 \]
 +
-In multivector Clifford algebra \( Cl ( 4 , 1 , 1 ) \), this is expressed coordinate-free via the bivector exterior derivative:
+In geometric algebra, this is expressed coordinate-free via the bivector exterior derivative:
 +
 \[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \nabla \wedge \mathbf { F } ) _ k \cdot d \mathbf { S } _ k = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
 
@@ -1003,18 +1003,18 @@ The outer boundary circulation equals 8, matching the interior curl summation id
 
 ==== The Vernier Cauchy-Goursat Theorem in MSRA
 
-In complex analysis and multivector Clifford analysis, closed-loop circulations quantify enclosed source density and bivector flux vorticity.
+In complex analysis and multivector geometric analysis, closed-loop circulations quantify enclosed source density and bivector flux vorticity.
 
 [#theorem-msra-cauchy-goursat]
 [THEOREM]
 .Theorem: MSRA Cauchy-Goursat Theorem
 ====
-Let \( \Gamma \) be a closed oriented contour in \( Cl ( 4 , 1 , 1 ) \) bounding a simple aperture region \( \mathcal { D } \). If \( \Psi \) is continuously differentiable and satisfies the source-free Dirac-Iris field condition \( D \Psi = 0 \) across \( \mathcal { D } \), then the closed contour integral vanishes identically: \[ \oint _ \Gamma \Psi ( z ) \, dz = 0 \]
+Let \( \Gamma \) be a closed oriented contour in Conformal Geometric Algebra bounding a simple aperture region \( \mathcal { D } \). If \( \Psi \) is continuously differentiable and satisfies the source-free Dirac-Iris field condition \( D \Psi = 0 \) across \( \mathcal { D } \), then the closed contour integral vanishes identically: \[ \oint _ \Gamma \Psi ( z ) \, dz = 0 \]
 
 
 
 *Proof:*
-Decompose the bounded region \( \mathcal { D } \) into a mesh of elementary ultra-refined grid cells \( \square _ { ij } \) with boundary steps \( \delta _ \omega \). Across adjacent internal cell boundaries, opposite orientations cancel the vernier path increments \( \Delta \gamma _ k \). By applying the MSRA Stokes-Clifford divergence theorem: \[ \oint _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { ij } \oint _ { \partial \square _ { ij } } \Psi ( z ) \, dz \right ) = ( \downarrow ) \left ( \iint _ { \mathcal { D } } D \Psi ( z ) \, d \mathcal { A } \right ) \]
+Decompose the bounded region \( \mathcal { D } \) into a mesh of elementary ultra-refined grid cells \( \square _ { ij } \) with boundary steps \( \delta _ \omega \). Across adjacent internal cell boundaries, opposite orientations cancel the vernier path increments \( \Delta \gamma _ k \). By applying the MSRA Stokes divergence theorem: \[ \oint _ \Gamma \Psi ( z ) \, dz = ( \downarrow ) \left ( \sum _ { ij } \oint _ { \partial \square _ { ij } } \Psi ( z ) \, dz \right ) = ( \downarrow ) \left ( \iint _ { \mathcal { D } } D \Psi ( z ) \, d \mathcal { A } \right ) \]
 
 
 Since \( D \Psi = 0 \) throughout \( \mathcal { D } \), the area summation vanishes identically, giving \( \oint _ \Gamma \Psi ( z ) \, dz = 0 \). \( \square \)
@@ -1022,20 +1022,20 @@ Since \( D \Psi = 0 \) throughout \( \mathcal { D } \), the area summation vanis
 
 ==== Residue-Free Loop Circulations and Bivector Spin(2) Conservation
 
-When a closed path \( \Gamma \) encloses an isolated Spin(2) bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete topological aperture charge \( Q _ \iota \): \[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } _ { Cl } \]
+When a closed path \( \Gamma \) encloses an isolated Spin(2) bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete topological aperture charge \( Q _ \iota \): \[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } \]
 
 
 This guarantees that circulation along closed observation loops measures exact, non-fractional topological winding numbers, establishing total conservation of electromagnetic flux in the Counting-Iris framework.
 
 ==== The MSRA Residue Theorem
 
-In digital signal processing, system analysis, and multivector aperture field theory, closed contour integrations frequently enclose isolated singular points or poles. The MSRA Residue Theorem generalizes Cauchy's residue formula to discrete vernier grid contours and multivector fields in \( Cl ( 4 , 1 , 1 ) \).
+In digital signal processing, system analysis, and multivector aperture field theory, closed contour integrations frequently enclose isolated singular points or poles. The MSRA Residue Theorem generalizes Cauchy's residue formula to discrete vernier grid contours and multivector fields in Conformal Geometric Algebra.
 
 [#theorem-msra-residue]
 [THEOREM]
 .Theorem: MSRA Residue Theorem
 ====
-Let \( \Gamma \) be a simple closed oriented contour in \( Cl ( 4 , 1 , 1 ) \) bounding a simple aperture region \( \mathcal { D } \). If a multivector field \( \Psi : Cl ( 4 , 1 , 1 ) \to Cl ( 4 , 1 , 1 ) \) is continuously differentiable in \( \mathcal { D } \) except at a finite set of isolated aperture pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \), then the closed contour integral evaluates to the discrete sum of multivector residues: \[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
+Let \( \Gamma \) be a simple closed oriented contour bounding a simple aperture region \( \mathcal { D } \). If a multivector field \( \Psi : \mathbb { G } \to \mathbb { G } \) is continuously differentiable in \( \mathcal { D } \) except at a finite set of isolated aperture pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \), then the closed contour integral evaluates to the discrete sum of multivector residues: \[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
 
 
 where the MSRA residue at an isolated singularity \( z _ k \) is defined by the coefficient \( a _ { - 1 } ^ { ( k ) } \) in the MSRA Laurent aperture expansion \( \Psi ( z ) = \sum _ { m = - \infty } ^ \infty a _ m ^ { ( k ) } ( z - z _ k ) ^ m \), or equivalently: \[ \text { Res } \left ( \Psi , z _ k \right ) = \frac { 1 } { 2 \pi i } \oint _ { \Gamma _ k } \Psi ( z ) \, dz \]
@@ -1160,13 +1160,13 @@ In the unified multivector field \( F _ { \text { total } } = E e _ 4 + c B I _ 
 . **Gravitation as Wave Refraction**: Gravity is not a fundamental force. It is wave refraction. Both radiation and matter are made of electromagnetic waves and are refracted. Gravitational deflection emerges naturally from the wave-speed gradient established by localized energy density, removing the necessity of independent metric assertions while establishing the equivalence of inertial and gravitational mass.
 . **Trapped Light Structure of Dense Fields**: Super-dense electromagnetic field configurations trap light within finite aperture boundaries without singular collapse, providing the physical mechanism for compact astrophysical bodies.
 . **Galactic Rotation and Cosmological Steady State**: Flux conservation under finite-duration observation processes accounts for galactic rotation curves without requiring dark matter, establishing a steady-state cosmological energy equilibrium.
-. **Newtonian Inertial Kinematics of Wave Propagation**: Due to the convective temporal operator \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) inside the Clifford Dirac-Iris differential operator \( D \), electromagnetic field perturbations propagate inertially across the discrete grid according to Newton's laws of motion via vector advection \( c + u \), rather than obeying an invariant speed constraint across coordinate transformations.
+. **Newtonian Inertial Kinematics of Wave Propagation**: Due to the convective temporal operator \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) inside the Conformal Geometric Algebra differential operator \( D \), electromagnetic field perturbations propagate inertially across the discrete grid according to Newton's laws of motion via vector advection \( c + u \), rather than obeying an invariant speed constraint across coordinate transformations.
 
 [#chap-completion-of-the-tautological-postulate-system]
 
 === Completion of the Tautological Postulate System
 
-In this chapter, the foundational postulates introduced in Chapter 3 are synthesized with the differential, integral, and multivector calculus developed across the preceding chapters, including the Master Field Equation. We establish that the Counting-Iris framework constitutes a closed, complete, and self-consistent tautological inference engine, and provide explicit, self-contained proofs for every structural component within the system—including the formal derivation of Clifford algebra \( Cl ( 4 , 1 , 1 ) \).
+In this chapter, the foundational postulates introduced in Chapter 3 are synthesized with the differential, integral, and multivector calculus developed across the preceding chapters, including the Master Field Equation. We establish that the Counting-Iris framework constitutes a closed, complete, and self-consistent tautological inference engine, and provide explicit, self-contained proofs for every structural component within the system—including the formal derivation of Conformal Geometric Algebra.
 
 ==== Synthesis of the Postulate System
 
@@ -1174,89 +1174,89 @@ The Counting-Iris Number System rests upon a finite, constructive foundation:
 
 . **Discrete Arithmetic Base (Postulates 0–1, 5, 7)**: The physical universe and mathematical calculation proceed strictly through finite discrete counting steps on multiscale resolution grids \( \mathcal { G } _ \omega \). Continua containing uncountably infinite point-sets are eliminated from linguistic and formal mathematical formulation.
 +
-. **Algebraic Geometry and Clifford Embedding (Postulates 2–4, 9)**: Multivector space \( Cl ( 4 , 1 , 1 ) \) provides the exact geometric container for physical fields, parity dualities, and Spin(2) bivector vortex structures generated by the Iris element \( \iota \).
+. **Algebraic Geometry and Conformal Embedding (Postulates 2–4, 9)**: Multivector space in Conformal Geometric Algebra (CGA) provides the exact geometric container for physical fields, parity dualities, and Spin(2) bivector vortex structures generated by the Iris element \( \iota \).
 +
 . **Observation and Main Scale Projection (Postulates 6, 8)**: Measurement operations over finite observation durations \( \tau _ { \text { obs } } \) map fine vernier readings \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) onto standard real flux values via the Main Scale Projection operator \( ( \downarrow ) \).
 
-==== Constructive Proof of Clifford Algebra Cl(4,1,1)
+==== Constructive Proof of Conformal Geometric Algebra
 
-To ensure that no geometric structure is taken as an unproved external assertion, we formally construct and prove the existence, uniqueness, and algebraic consistency of \( Cl ( 4 , 1 , 1 ) \) strictly from the Iris postulates.
+To ensure that no geometric structure is taken as an unproved external assertion, we formally construct and prove the existence, uniqueness, and algebraic consistency of Conformal Geometric Algebra strictly from the Iris postulates.
 
 [#theorem-cl411-existence]
 [THEOREM]
-.Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)
+.Theorem: Constructive Existence and Algebraicity of Conformal Geometric Algebra
 ====
-Let \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) be the discrete multiscale resolution ring induced by Postulates 1, 5, and 7. There exists a unique \( 2 ^ 6 = 64 \)-dimensional associative algebra \( Cl ( 4 , 1 , 1 ) \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) generated by six orthogonal basis elements \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) satisfying the metric quadratic form: \[ Q ( v ) = v _ 1 ^ 2 + v _ 2 ^ 2 + v _ 3 ^ 2 + v _ 5 ^ 2 - v _ 6 ^ 2 \quad \text { for } v = \sum _ { A = 1 } ^ 6 v _ A e _ A \]
+Let \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) be the discrete multiscale resolution ring induced by Postulates 1, 5, and 7. There exists a unique \( 2 ^ 6 = 64 \)-dimensional associative Conformal Geometric Algebra \( \mathbb { G } \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) generated by the six canonical basis elements \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \) where:
+* \( e _ 1 , e _ 2 , e _ 3 \) are Euclidean spatial directions satisfying \( e _ 1 ^ 2 = e _ 2 ^ 2 = e _ 3 ^ 2 = \mathbf { 1 } \),
+* \( e _ 4 \) is the null causal time step satisfying \( e _ 4 ^ 2 = 0 \),
+* \( \{ e _ \odot , e _ \infty \} \) is the conformal boundary pair consisting of the origin point and infinity point, both null (\( e _ \odot ^ 2 = 0 \), \( e _ \infty ^ 2 = 0 \)) and paired by the canonical non-diagonal metric \( e _ \odot \cdot e _ \infty = - \mathbf { 1 } \).
 
-Furthermore, the Iris generator \( \iota \) (Postulate 9) maps into the multivector algebra as \( \iota = e _ { 12 } + e _ 4 e _ 0 \), satisfying \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
+Furthermore, the Iris generator \( \iota \) (Postulate 9) maps into the multivector algebra as \( \iota = e _ { 12 } + e _ 4 e _ \odot \), satisfying \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
 
 *Proof:*
-. **Vector Space Construction**: Construct the 6-dimensional free module \( V = \text { span } _ { \text { Fin } ( \mathbb { R } ^ { \ast } ) } \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \). Define the symmetric bilinear form \( B ( u , v ) = \frac { 1 } { 2 } \left ( Q ( u + v ) - Q ( u ) - Q ( v ) \right ) \) with diagonal metric tensor \( g _ { AB } = \text { diag } ( 1 , 1 , 1 , 0 , 1 , - 1 ) \).
+. **Module Construction**: Construct the 6-dimensional free module \( V = \text { span } _ { \text { Fin } ( \mathbb { R } ^ { \ast } ) } \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \). The symmetric bilinear inner product \( \cdot \) on \( V \) is determined by the non-diagonal metric:
+\[ e _ i \cdot e _ j = \delta _ { ij } \quad ( i , j \in \{ 1 , 2 , 3 \} ) , \quad e _ 4 \cdot e _ A = 0 \quad ( \forall A ) , \quad e _ \odot \cdot e _ \odot = 0 , \quad e _ \infty \cdot e _ \infty = 0 , \quad e _ \odot \cdot e _ \infty = - 1 \]
 
-. **Tensor Algebra Quotient**: Form the tensor algebra \( T ( V ) = \bigoplus _ { k = 0 } ^ \infty V ^ { \otimes k } \). Let \( I ( Q ) \) be the two-sided ideal in \( T ( V ) \) generated by all elements of the form \( v \otimes v - Q ( v ) \mathbf { 1 } \) for \( v \in V \). Define \( Cl ( 4 , 1 , 1 ) \equiv T ( V ) / I ( Q ) \).
+. **Geometric Product and Quotient Construction**: Form the free tensor algebra \( T ( V ) = \bigoplus _ { k = 0 } ^ \infty V ^ { \otimes k } \). Let \( I \) be the two-sided ideal generated by elements of the form \( u \otimes v + v \otimes u - 2 ( u \cdot v ) \mathbf { 1 } \) for all \( u , v \in V \). Define Conformal Geometric Algebra as the quotient algebra:
+\[ \mathbb { G } \equiv T ( V ) / I \]
 
-. **Universal Mapping Property**: For any associative algebra \( A \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) and linear map \( f : V \to A \) satisfying \( f ( v ) ^ 2 = Q ( v ) \mathbf { 1 } _ A \), there exists a unique algebra homomorphism \( \tilde { f } : Cl ( 4 , 1 , 1 ) \to A \) extending \( f \). By standard universal algebra construction, this uniquely determines \( Cl ( 4 , 1 , 1 ) \) up to isomorphic equivalence.
+. **Universal Mapping Property**: For any associative algebra \( A \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) and linear map \( f : V \to A \) satisfying \( f ( u ) f ( v ) + f ( v ) f ( u ) = 2 ( u \cdot v ) \mathbf { 1 } _ A \), there exists a unique algebra homomorphism \( \tilde { f } : \mathbb { G } \to A \) extending \( f \). This uniquely determines Conformal Geometric Algebra up to structural equivalence.
 
-. **Dimension and Basis**: By the Constructive Clifford PBW Basis Theorem (proven below as Theorem 15), \( Cl ( 4 , 1 , 1 ) \) has exact dimension \( 2 ^ 6 = 64 \), spanned by the 64 strictly ordered basis multivectors \( e _ M = e _ { a _ 1 } e _ { a _ 2 } \cdots e _ { a _ k } \) with \( 1 \le a _ 1 < a _ 2 < \dots < a _ k \le 6 \).
+. **Dimension and Basis**: By the Constructive PBW Basis Theorem (Theorem 15), \( \mathbb { G } \) has exact dimension \( 2 ^ 6 = 64 \), spanned by the 64 strictly ordered basis blades \( e _ M = e _ { a _ 1 } e _ { a _ 2 } \cdots e _ { a _ k } \) formed from the six generators.
 
-. **Representation of the Iris Generator**: Set \( \iota = e _ 1 e _ 2 + e _ 4 e _ 0 \), where \( e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \). Using basis metrics \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } \), \( e _ 1 e _ 2 = - e _ 2 e _ 1 \), \( e _ 4 ^ 2 = 0 \) (identifying \( \varpi = e _ 4 \)), and \( e _ 0 ^ 2 = 0 \) (identifying \( \vartheta = e _ 0 \)), we evaluate: \[ \iota ^ 2 = ( e _ { 12 } + e _ 4 e _ 0 ) ^ 2 = e _ { 12 } ^ 2 + e _ { 12 } e _ 4 e _ 0 + e _ 4 e _ 0 e _ { 12 } + ( e _ 4 e _ 0 ) ^ 2 \]
-
-Since \( e _ { 12 } ^ 2 = e _ 1 e _ 2 e _ 1 e _ 2 = - e _ 1 ^ 2 e _ 2 ^ 2 = - \mathbf { 1 } \), \( e _ 4 e _ 0 \) commutes with spatial bivector \( e _ { 12 } \), and \( ( e _ 4 e _ 0 ) ^ 2 = e _ 4 e _ 0 e _ 4 e _ 0 = 0 \), this simplifies to: \[ \iota ^ 2 = - \mathbf { 1 } + 2 e _ 4 e _ 0 = - \mathbf { 1 } + \varpi \vartheta \]
-
-
-This completes the explicit proof of \( Cl ( 4 , 1 , 1 ) \) and its exact match with Postulate 9. \( \square \)
+. **Representation of the Iris Generator**: Set \( \iota = e _ 1 e _ 2 + e _ 4 e _ \odot \). Using canonical basis properties \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } \), \( e _ 1 e _ 2 = - e _ 2 e _ 1 \), \( e _ 4 ^ 2 = 0 \) (identifying \( \varpi = e _ 4 \)), and \( e _ \odot ^ 2 = 0 \) (identifying \( \vartheta = e _ \odot \)), we evaluate:
+\[ \iota ^ 2 = ( e _ { 12 } + e _ 4 e _ \odot ) ^ 2 = e _ { 12 } ^ 2 + e _ { 12 } e _ 4 e _ \odot + e _ 4 e _ \odot e _ { 12 } + ( e _ 4 e _ \odot ) ^ 2 \]
+Since \( e _ { 12 } ^ 2 = - \mathbf { 1 } \), \( e _ 4 e _ \odot \) commutes with spatial bivector \( e _ { 12 } \), and \( ( e _ 4 e _ \odot ) ^ 2 = 0 \), this evaluates to:
+\[ \iota ^ 2 = - \mathbf { 1 } + 2 e _ 4 e _ \odot = - \mathbf { 1 } + \varpi \vartheta \]
+This completes the constructive existence proof of Conformal Geometric Algebra and its exact match with Postulate 9. \( \square \)
 ====
 
-==== Proof of the Constructive Clifford PBW Basis Theorem
+==== Proof of the Constructive PBW Basis Theorem for Conformal Geometric Algebra
 
-[#theorem-clifford-pbw-basis]
+[#theorem-cga-pbw-basis]
 [THEOREM]
-.Theorem: Constructive Clifford PBW Basis Theorem for Cl(4,1,1)
+.Theorem: Constructive PBW Basis Theorem for Conformal Geometric Algebra
 ====
-Let \( V \) be the 6-dimensional generator module with orthogonal basis \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \). In the Clifford quotient algebra \( Cl ( 4 , 1 , 1 ) = T ( V ) / I ( Q ) \), every multivector is uniquely expressible as a linear combination of the \( 2 ^ 6 = 64 \) strictly ordered basis elements \( e _ M = e _ { a _ 1 } e _ { a _ 2 } \cdots e _ { a _ k } \) where \( 1 \le a _ 1 < a _ 2 < \dots < a _ k \le 6 \) (with \( k = 0 \) representing the scalar identity \( \mathbf { 1 } \)). Consequently, \( \dim Cl ( 4 , 1 , 1 ) = 64 \).
+Let \( V \) be the 6-dimensional generator module with canonical basis \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \). In the quotient algebra \( \mathbb { G } = T ( V ) / I \), every multivector is uniquely expressible as a linear combination of the \( 2 ^ 6 = 64 \) strictly ordered basis blades \( e _ M = e _ { a _ 1 } e _ { a _ 2 } \cdots e _ { a _ k } \) where the indices are strictly ascending. Consequently, \( \dim \mathbb { G } = 64 \).
 
 *Proof:*
 . **Constructive Spanning via Bubble-Sort Reduction**:
-Every element of the tensor algebra \( T ( V ) \) is a linear combination of word monomials \( e _ { i _ 1 } \otimes e _ { i _ 2 } \otimes \dots \otimes e _ { i _ m } \). In \( Cl ( 4 , 1 , 1 ) \), the quotient ideal \( I ( Q ) \) enforces the transposition identity \( e _ j e _ i = - e _ i e _ j + 2 g _ { ij } \mathbf { 1 } \).
-Define the inversion number of a word monomial as the number of pairs \( ( r , s ) \) with \( r < s \) such that \( i _ r > i _ s \).
-Applying adjacent transpositions \( e _ j e _ i \to - e _ i e _ j + 2 g _ { ij } \mathbf { 1 } \) for \( j > i \) strictly decreases the inversion count or decreases the word length by 2 (when \( i = j \), since \( e _ i ^ 2 = g _ { ii } \mathbf { 1 } \)).
-Because both word length and inversion count are non-negative integers, this bubble-sort reduction algorithm terminates constructively in a finite number of steps, reducing every word monomial to a linear combination of strictly ordered multivector basis elements \( e _ { a _ 1 } e _ { a _ 2 } \dots e _ { a _ k } \) with \( 1 \le a _ 1 < a _ 2 < \dots < a _ k \le 6 \). There are exactly \( \binom { 6 } { 0 } + \binom { 6 } { 1 } + \dots + \binom { 6 } { 6 } = 2 ^ 6 = 64 \) such ordered monomials, proving that they span \( Cl ( 4 , 1 , 1 ) \).
+Every element of the tensor algebra \( T ( V ) \) is a linear combination of word monomials \( e _ { i _ 1 } \otimes e _ { i _ 2 } \otimes \dots \otimes e _ { i _ m } \). In \( \mathbb { G } \), the quotient ideal enforces the transposition identity \( e _ j e _ i = - e _ i e _ j + 2 ( e _ i \cdot e _ j ) \mathbf { 1 } \).
+Applying adjacent transpositions \( e _ j e _ i \to - e _ i e _ j + 2 ( e _ i \cdot e _ j ) \mathbf { 1 } \) for \( j > i \) strictly decreases the inversion count or decreases word length by 2 when indices match.
+Because word length and inversion count are non-negative integers, this bubble-sort reduction terminates constructively in a finite number of steps, reducing every monomial to a linear combination of strictly ordered multivector basis blades. There are exactly \( \sum _ { k = 0 } ^ 6 \binom { 6 } { k } = 2 ^ 6 = 64 \) such ordered blades, proving that they span \( \mathbb { G } \).
 
-. **Linear Independence via Exterior Clifford Endomorphisms**:
-To prove that these 64 ordered basis elements are linearly independent, construct an explicit representation \( \rho : Cl ( 4 , 1 , 1 ) \to \text { End } ( \bigwedge V ) \) on the exterior algebra \( \bigwedge V \).
-For any vector generator \( v \in V \) and form \( w \in \bigwedge V \), define the linear operator: \[ \rho ( v ) w = v \wedge w + \iota _ v w \]
-
-where \( v \wedge w \) is exterior multiplication and \( \iota _ v w \) is interior metric contraction with tensor \( g _ { AB } \). Evaluating the square of this operator: \[ \rho ( v ) ^ 2 w = \rho ( v ) ( v \wedge w + \iota _ v w ) = v \wedge ( v \wedge w ) + v \wedge ( \iota _ v w ) + \iota _ v ( v \wedge w ) + \iota _ v ( \iota _ v w ) = \iota _ v ( v \wedge w ) = Q ( v ) w \]
-
-Since \( \rho ( v ) ^ 2 = Q ( v ) \mathbf { 1 } _ { \text { End } ( \bigwedge V ) } \), the universal mapping property of \( Cl ( 4 , 1 , 1 ) \) guarantees that \( \rho \) extends to a unique algebra homomorphism.
-Applying \( \rho \) for any ordered basis multivector \( e _ M = e _ { a _ 1 } \dots e _ { a _ k } \) to the scalar identity \( \mathbf { 1 } \in \bigwedge V \): \[ \rho ( e _ { a _ 1 } e _ { a _ 2 } \dots e _ { a _ k } ) \mathbf { 1 } = e _ { a _ 1 } \wedge e _ { a _ 2 } \wedge \dots \wedge e _ { a _ k } \]
-
-Because the 64 exterior products \( e _ { a _ 1 } \wedge \dots \wedge e _ { a _ k } \) are linearly independent in the exterior algebra \( \bigwedge V \), their preimages \( e _ { a _ 1 } e _ { a _ 2 } \dots e _ { a _ k } \) must be linearly independent in \( Cl ( 4 , 1 , 1 ) \).
-Therefore, the 64 ordered multivectors form an exact, linearly independent basis, establishing that \( \dim Cl ( 4 , 1 , 1 ) = 64 \). \( \square \)
+. **Linear Independence via Exterior Endomorphisms**:
+To prove that these 64 ordered basis elements are linearly independent, construct an explicit representation \( \rho : \mathbb { G } \to \text { End } ( \bigwedge V ) \) on the exterior algebra \( \bigwedge V \).
+For any vector generator \( v \in V \) and form \( w \in \bigwedge V \), define the linear operator:
+\[ \rho ( v ) w = v \wedge w + \iota _ v w \]
+where \( v \wedge w \) is exterior multiplication and \( \iota _ v w \) is interior metric contraction. Evaluating the square of this operator reproduces the metric quadratic form.
+Applying \( \rho \) for any ordered basis multivector \( e _ M = e _ { a _ 1 } \dots e _ { a _ k } \) to the scalar identity \( \mathbf { 1 } \in \bigwedge V \) yields \( e _ { a _ 1 } \wedge \dots \wedge e _ { a _ k } \).
+Because the 64 exterior products are linearly independent in \( \bigwedge V \), their preimages must be linearly independent in \( \mathbb { G } \).
+Therefore, the 64 ordered blades form an exact, linearly independent basis, establishing that \( \dim \mathbb { G } = 64 \). \( \square \)
 ====
 
-==== Proof of the Fundamental Anti-Commutation Law
+==== Proof of the Fundamental Commutation and Metric Rules of Conformal Geometric Algebra
 
 [#theorem-cl411-anticommutation]
 [THEOREM]
-.Theorem: Fundamental Anti-Commutation Law of Cl(4,1,1)
+.Theorem: Fundamental Commutation and Metric Rules of Conformal Geometric Algebra
 ====
-For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \) in \( Cl ( 4 , 1 , 1 ) \), the fundamental anti-commutation relation holds: \[ e _ A e _ B + e _ B e _ A = 2 g _ { AB } \mathbf { 1 } \]
-
+For any two generator basis elements \( e _ A , e _ B \in \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \) in Conformal Geometric Algebra, the fundamental geometric product relation holds:
+\[ e _ A e _ B + e _ B e _ A = 2 ( e _ A \cdot e _ B ) \mathbf { 1 } \]
 
 *Proof:*
-. Let \( u , v \in V \). By definition of the ideal quotient \( I ( Q ) \), we have \( ( u + v ) ^ 2 = Q ( u + v ) \mathbf { 1 } \).
+. Let \( u , v \in V \). By definition of the ideal quotient \( I \), we have \( ( u + v ) ^ 2 = ( u + v ) \cdot ( u + v ) \mathbf { 1 } \).
 
-. Expanding the left-hand side in \( Cl ( 4 , 1 , 1 ) \): \[ ( u + v ) ^ 2 = ( u + v ) ( u + v ) = u ^ 2 + u v + v u + v ^ 2 = Q ( u ) \mathbf { 1 } + u v + v u + Q ( v ) \mathbf { 1 } \]
+. Expanding the left-hand side in \( \mathbb { G } \):
+\[ ( u + v ) ^ 2 = ( u + v ) ( u + v ) = u ^ 2 + u v + v u + v ^ 2 = ( u \cdot u ) \mathbf { 1 } + u v + v u + ( v \cdot v ) \mathbf { 1 } \]
 
+. Expanding the right-hand side using linearity of the metric inner product:
+\[ ( u + v ) \cdot ( u + v ) \mathbf { 1 } = \left ( u \cdot u + v \cdot v + 2 ( u \cdot v ) \right ) \mathbf { 1 } \]
 
-. Expanding the right-hand side using linearity of the metric bilinear form: \[ Q ( u + v ) \mathbf { 1 } = \left ( Q ( u ) + Q ( v ) + 2 B ( u , v ) \right ) \mathbf { 1 } \]
+. Equating LHS and RHS and subtracting \( ( u \cdot u + v \cdot v ) \mathbf { 1 } \) from both sides yields:
+\[ u v + v u = 2 ( u \cdot v ) \mathbf { 1 } \]
 
-
-. Equating LHS and RHS and subtracting \( Q ( u ) \mathbf { 1 } + Q ( v ) \mathbf { 1 } \) from both sides yields: \[ u v + v u = 2 B ( u , v ) \mathbf { 1 } \]
-
-
-. Setting \( u = e _ A \) and \( v = e _ B \) gives \( B ( e _ A , e _ B ) = g _ { AB } \). Thus \( e _ A e _ B + e _ B e _ A = 2 g _ { AB } \mathbf { 1 } \). For distinct orthogonal generators (\( A \neq B \)), \( g _ { AB } = 0 \implies e _ A e _ B = - e _ B e _ A \). For equal generators, \( e _ A ^ 2 = g _ { AA } \mathbf { 1 } \). \( \square \)
+. Setting \( u = e _ A \) and \( v = e _ B \) gives \( e _ A e _ B + e _ B e _ A = 2 ( e _ A \cdot e _ B ) \mathbf { 1 } \). For orthogonal generators with \( e _ A \cdot e _ B = 0 \), this reduces to anti-commutation: \( e _ A e _ B = - e _ B e _ A \). For the conformal pair, \( e _ \odot e _ \infty + e _ \infty e _ \odot = - 2 \mathbf { 1 } \). \( \square \)
 ====
 
 ==== Proof of the MSRA Ring Homomorphism
@@ -1289,18 +1289,18 @@ Having established the explicit constructibility of \( Cl ( 4 , 1 , 1 ) \), its 
 [THEOREM]
 .Theorem: Formal Tautological Completeness of the Iris System
 ====
-Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the MSRA vernier differential and integral operators, and the \( Cl ( 4 , 1 , 1 ) \) Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \).
+Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the MSRA vernier differential and integral operators, and the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \) in Conformal Geometric Algebra.
 
 Then \( \mathcal { S } _ { \text { Iris } } \) is tautologically complete: every valid physical field law, conservation principle, and analytical identity in real, complex, and multivector analysis reduces to an exact algebraic identity over discrete counting operations under Main Scale Projection \( ( \downarrow ) \), without requiring non-constructive continuum axioms, completed infinities, or uncountably infinite sets.
 
 *Proof:*
 . **Discrete Representation**: By Postulates 0, 1, 5, and 7, every quantity, coordinate, and state vector is representable as a finite discrete multiscale grid element \( k _ \omega \cdot \delta _ \omega \) over the discrete ring \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \).
 
-. **Algebraic Geometric Completeness**: By Theorem 14 (\( Cl ( 4 , 1 , 1 ) \) existence) and Theorem 15 (Anti-commutation law), all spatial, temporal, bivector, and conformal field transformations are fully closed within the 64-dimensional Clifford algebra \( Cl ( 4 , 1 , 1 ) \).
+. **Algebraic Geometric Completeness**: By Theorem 14 (Conformal Geometric Algebra existence) and Theorem 15 (Commutation and metric rules), all spatial, temporal, bivector, and conformal field transformations are fully closed within the 64-dimensional Conformal Geometric Algebra.
 
 . **Calculus Tautology**: Under MSRA (Definitions 11–14), derivatives and integrals are exact discrete vernier difference ratios and sums. By Theorem 16 (Ring homomorphism of \( ( \downarrow ) \)), all operational identities—including the Product Rule (Theorem 8), Quotient Rule (Theorem 9), Chain Rule (Theorem 10), Fundamental Theorem of Calculus (Theorem 11), Cauchy-Goursat Theorem (Theorem 13), and Residue Theorem (Theorem 14)—hold as exact algebraic tautologies on the discrete grid \( \mathcal { G } _ \omega \).
 
-. **Physical Field Closure**: Coupling the discrete Clifford gradient \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) with the multivector field \( F _ { \text { total } } \) yields the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \), which fully accounts for electromagnetic, gravitational, and particle charge-to-mass dynamics without unproven external field assumptions.
+. **Physical Field Closure**: Coupling the discrete geometric gradient \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) with the multivector field \( F _ { \text { total } } \) yields the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \), which fully accounts for electromagnetic, gravitational, and particle charge-to-mass dynamics without unproven external field assumptions.
 
 Therefore, every theorem and physical law within the system is proven strictly from within the Iris postulate system, making \( \mathcal { S } _ { \text { Iris } } \) self-contained, paradox-free, and tautologically complete. \( \square \)
 ====
@@ -1331,22 +1331,22 @@ The constructive development of the Iris Number System reveals the profound fall
 [THEOREM]
 .Theorem: Constructive Self-Consistency of the Iris Tautological System
 ====
-Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the Multiscale Resolution Analysis (MSRA) operators, and the \( Cl ( 4 , 1 , 1 ) \) Master Field Equation.
+Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the Multiscale Resolution Analysis (MSRA) operators, and the Master Field Equation in Conformal Geometric Algebra.
 
 Then \( \mathcal { S } _ { \text { Iris } } \) constructively proves its own consistency: there exists no well-formed formula \( \Phi \) within the grammar of \( \mathcal { S } _ { \text { Iris } } \) such that both \( \mathcal { S } _ { \text { Iris } } \vdash \Phi \) and \( \mathcal { S } _ { \text { Iris } } \vdash \neg\, \Phi \).
 
 *Proof:*
 We proceed constructively and by contradiction.
 
-. **Finitary Grounding of Propositions**: Every legitimate proposition \( \Phi \) in \( \mathcal { S } _ { \text { Iris } } \) evaluates relations among finite discrete elements on a discrete aperture grid \( \mathcal { G } _ \omega \) over the discrete ring \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) under Main Scale Projection \( ( \downarrow ) \). By Postulates 0 and 1, the counting process is deterministic, strictly ordered, and terminates in a finite number of discrete operations for any given resolution scale \( \omega \).
+. **Finitary Grounding of Propositions**: Every legitimate proposition \( \Phi \) in \( \mathcal { S } _ { \text { Iris } } \) evaluates relations among finite discrete elements on a discrete aperture grid \( \mathcal { G } _ \omega \) over the discrete ring \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \). By Postulates 0 and 1, the counting process is deterministic, strictly ordered, and terminates in a finite number of discrete operations for any given resolution scale \( \omega \).
 
-. **Algebraic Invariance**: By Theorem 14 and Theorem 15, the Clifford algebra \( Cl ( 4 , 1 , 1 ) \) is an associative graded algebra whose basis elements satisfy the deterministic anti-commutation relations \( e _ i e _ j + e _ j e _ i = 2 \eta _ { i j } \). The signature \( ( + , + , + , + , - , - ) \) is fixed and bounded. Every multivector calculation reduces to finite matrix or blade arithmetic whose identities are formal tautologies.
+. **Algebraic Invariance**: By Theorem 14 and Theorem 15, Conformal Geometric Algebra is an associative graded algebra whose basis elements satisfy deterministic geometric product relations. Every multivector calculation reduces to finite blade arithmetic whose identities are formal tautologies.
 
 . **Contradiction Analysis**: Assume there exists a proposition \( \Phi \) such that both \( \Phi \) and \( \neg\, \Phi \) are theorems of \( \mathcal { S } _ { \text { Iris } } \). Under the Main Scale Projection homomorphism \( ( \downarrow ) \) (Theorem 16), the ring operations preserve equality:
 \[ ( \Phi \downarrow ) \iff ( ( \neg\, \Phi ) \downarrow ) \]
 However, on any finite discrete aperture grid \( \mathcal { G } _ \omega \), the valuation of an algebraic identity is a finite decision procedure evaluating to either \( 1 \) or \( 0 \) (true or false). The proposition \( \Phi \wedge \neg\, \Phi \) would require the existence of an aperture difference \( \Delta k _ \omega \cdot \delta _ \omega \) that is simultaneously zero and non-zero within the discrete ring \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \), violating the strict ordering of Postulate 1 and the Primordial Principle of Measurement (Postulate 0).
 
-. **Constructive Self-Verification**: Because the entire deduction framework of \( \mathcal { S } _ { \text { Iris } } \) is itself a finite, constructive sequence of Clifford multivector operations on the discrete grid \( \mathcal { G } _ \omega \), the proof that no contradictory state \( 1 = 0 \) can be generated is a finite theorem derived directly from Postulates 0 through 9 within \( \mathcal { S } _ { \text { Iris } } \) itself.
+. **Constructive Self-Verification**: Because the entire deduction framework of \( \mathcal { S } _ { \text { Iris } } \) is itself a finite, constructive sequence of multivector operations on the discrete grid \( \mathcal { G } _ \omega \), the proof that no contradictory state \( 1 = 0 \) can be generated is a finite theorem derived directly from Postulates 0 through 9 within \( \mathcal { S } _ { \text { Iris } } \) itself.
 
 Therefore, \( \mathcal { S } _ { \text { Iris } } \) proves its own formal consistency. \( \square \)
 ====
@@ -1365,11 +1365,11 @@ When mathematics is constructed properly—as an explicit, discrete tautological
 
 === Equivalent Informational Formulation of the Tautological System
 
-Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text { Iris } } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system unites Jaynesian Maximum Entropy probability theory and the Clifford \( Cl ( 4 , 1 , 1 ) \) Master Field Equation into a unified foundation, demonstrating that physical field dynamics and inductive scientific inference are two facets of the same mathematical structure.
+Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text { Iris } } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system unites Jaynesian Maximum Entropy probability theory and the Master Field Equation in Conformal Geometric Algebra into a unified foundation, demonstrating that physical field dynamics and inductive scientific inference are two facets of the same mathematical structure.
 
 ==== Synthesis of Jaynesian MaxEnt Inference and the Master Field Equation
 
-In the original presentation of the Iris Number System, the framework is developed from Postulates 0 through 9: measurement operations on discrete counting grids, algebraic embedding into the 64-dimensional Clifford algebra \( Cl ( 4 , 1 , 1 ) \), Multiscale Resolution Analysis (MSRA), and the Master Field Equation \( D F = J \). That formulation is completely intuitive, explicit, and grounded directly in the physical act of counting and aperture metrology.
+In the original presentation of the Iris Number System, the framework is developed from Postulates 0 through 9: measurement operations on discrete counting grids, algebraic embedding into 64-dimensional Conformal Geometric Algebra (CGA), Multiscale Resolution Analysis (MSRA), and the Master Field Equation \( D F = J \). That formulation is completely intuitive, explicit, and grounded directly in the physical act of counting and aperture metrology.
 
 An equivalent formulation emerges when one recognizes that Jaynesian probability theory—understood as the unique, consistent extension of Aristotelian logic to conditions of incomplete information—and the Master Field Equation are intimately unified. In this informational formulation, the physical plenum is formulated as an information-bearing aperture network on the discrete grid \( \mathcal { G } _ N \).
 
@@ -1395,9 +1395,9 @@ All mathematical and physical propositions evaluate states within a discrete ape
 
 [#postulate-info-1]
 [POSTULATE]
-.Postulate Info-1: Clifford Geometry of Multichannel Information Propagation
+.Postulate Info-1: Geometric Algebra of Multichannel Information Propagation
 ====
-Information channels and multivector flux states are geometrically closed within the 64-dimensional Clifford algebra \( Cl ( 4 , 1 , 1 ) \) over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \), with generator signature \( ( + , + , + , + , - , - ) \) spanned by \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ + , e _ - \} \). Causal state transitions and finite-duration signal propagation advance along the convective temporal direction \( e _ 4 \), while conformal boundary transformations are mediated by null aperture vectors \( e _ \infty = e _ + + e _ - \) and \( e _ 0 = \frac { 1 } { 2 } ( e _ - - e _ + ) \).
+Information channels and multivector flux states are geometrically closed within the 64-dimensional Conformal Geometric Algebra over \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \), spanned by the canonical basis \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \). Causal state transitions and finite-duration signal propagation advance along the convective temporal direction \( e _ 4 \), while conformal boundary transformations are mediated by null aperture vectors \( e _ \infty \) and \( e _ \odot \).
 ====
 
 [#postulate-info-2]
@@ -1415,7 +1415,7 @@ The probability distribution over microscopic field states on the discrete latti
 \[ S = - \sum _ { k } P _ k \ln P _ k \]
 subject strictly to the operational boundary constraints imposed by localized source currents \( J \). The expected field configuration under this distribution is the unique, least-biased field satisfying the Master Field Equation:
 \[ D F = J \]
-where \[ D = \nabla + e _ 4 \frac { 1 } { c } \,\mkern-1mu D _ t \] is the Clifford differential operator and \( J \) represents the total localized multivector source current.
+where \[ D = \nabla + e _ 4 \frac { 1 } { c } \,\mkern-1mu D _ t \] is the geometric differential operator and \( J \) represents the total localized multivector source current.
 ====
 
 ==== Proof of Equivalence Between the Original System and the Informational Formulation
@@ -1426,7 +1426,7 @@ We now state and prove the primary equivalence theorem connecting the two formal
 [THEOREM]
 .Theorem: Structural Equivalence of the Original Iris System and the Informational Formulation
 ====
-Let \( \mathcal { S } _ { \text { Iris } } \) be the original postulate system composed of Postulates 0 through 9, the Multiscale Resolution Analysis (MSRA) operators, and the \( Cl ( 4 , 1 , 1 ) \) Master Field Equation \( D F = J \).
+Let \( \mathcal { S } _ { \text { Iris } } \) be the original postulate system composed of Postulates 0 through 9, the Multiscale Resolution Analysis (MSRA) operators, and the Master Field Equation \( D F = J \) in Conformal Geometric Algebra.
 
 Let \( \mathcal { S } _ { \text { Info } } \) be the Informational Formulation defined by Postulates Info-0 through Info-3.
 
@@ -1444,7 +1444,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
 . **Derivation of Postulate Info-0**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 0 (Primordial Principle of Measurement) establishes that every mathematical entity corresponds to a finite measurement operation. Postulate 1 establishes the discrete successor order and ring properties of integers. Postulate 5 establishes exact rational partition grids \( \mathcal { G } _ N \), and Postulate 7 establishes the strict countability boundary eliminating completed infinities. The conjunction of Postulates 0, 1, 5, and 7 directly defines the discrete aperture information space of Postulate Info-0.
 
-. **Derivation of Postulate Info-1**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 2 embeds scalars into \( Cl ( 4 , 1 , 1 ) \), Postulate 3 preserves quadratic metric forms with signature \( ( + , + , + , + , - , - ) \), and Postulate 4 establishes bivector parity duality. Theorem 17 constructively proves the unique existence of the 64-dimensional Clifford algebra \( Cl ( 4 , 1 , 1 ) \). Postulate 9 defines the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ 0 \). The conjunction of these statements establishes the complete multichannel Clifford algebraic geometry of Postulate Info-1.
+. **Derivation of Postulate Info-1**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 2 embeds scalars into Conformal Geometric Algebra, Postulate 3 preserves quadratic metric forms, and Postulate 4 establishes bivector parity duality. Theorem 14 constructively proves the unique existence of the 64-dimensional Conformal Geometric Algebra. Postulate 9 defines the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ \odot \). The conjunction of these statements establishes the complete multichannel geometric algebra of Postulate Info-1.
 
 . **Derivation of Postulate Info-2**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 8 (Action by Direct Contact via Topological Halos) establishes that all physical interactions occur by direct contact across boundaries with finite propagation duration at speed \( c \), explicitly excluding non-local action-at-a-distance. This is identically Postulate Info-2.
 
@@ -1462,11 +1462,11 @@ Assume the validity of \( \mathcal { S } _ { \text { Info } } \).
   * Postulate 5 (discrete rational grid subdivisions \( k _ \omega \cdot \delta _ \omega \)), and
   * Postulate 7 (strict discrete countability boundary).
 
-. **Recovery of Postulates 2, 3, 4, and 9**: Postulate Info-1 specifies the Clifford algebra \( Cl ( 4 , 1 , 1 ) \) with metric signature \( ( + , + , + , + , - , - ) \). This directly recovers:
-  * Postulate 2 (scalar embedding into the Clifford identity grade),
+. **Recovery of Postulates 2, 3, 4, and 9**: Postulate Info-1 specifies Conformal Geometric Algebra. This directly recovers:
+  * Postulate 2 (scalar embedding into the geometric algebra identity grade),
   * Postulate 3 (quadratic metric preservation),
-  * Postulate 4 (bivector Hodge parity duality), and
-  * Postulate 9 (the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ 0 \), constructed directly from the basis generators).
+  * Postulate 4 (bivector parity duality), and
+  * Postulate 9 (the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ \odot \), constructed directly from the canonical basis generators).
 
 . **Recovery of Postulate 8**: Postulate Info-2 explicitly asserts action by direct contact across adjacent aperture boundaries with finite-duration propagation at velocity \( c \). This identically recovers Postulate 8.
 
@@ -1573,11 +1573,11 @@ The field of view of a measurement can be refined in discrete zoom steps \( m \i
 [POSTULATE]
 .Postulate Metro-3: The Inductive Field Reconstruction Postulate (MaxEnt and DF = J)
 ====
-Given the localized source readings \( J \) measured on the boundary of an aperture cell, the expected multivector field \( F \in Cl ( 4 , 1 , 1 ) \) inside the cell is the unique inductive inference that satisfies the boundary data while maximizing informational entropy over all unmeasured sub-vernier microstates. This unique, least-biased field satisfies the Master Field Equation:
+Given the localized source readings \( J \) measured on the boundary of an aperture cell, the expected multivector field \( F \) in Conformal Geometric Algebra inside the cell is the unique inductive inference that satisfies the boundary data while maximizing informational entropy over all unmeasured sub-vernier microstates. This unique, least-biased field satisfies the Master Field Equation:
 \[ D F = J \]
 where
 \[ D = \nabla + e _ 4 \frac { 1 } { c } \,\mkern-1mu D _ t \]
-is the Clifford differential operator and \( J \) represents the total localized multivector source current.
+is the geometric differential operator and \( J \) represents the total localized multivector source current.
 ====
 
 ==== Proof of Equivalence Among the Three Formulations
@@ -1602,7 +1602,7 @@ Therefore, to complete the triangular equivalence, it suffices to prove:
 
 Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
-. **Derivation of Postulate Metro-0**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 0 establishes measurement on counting grids, Postulates 1 through 4 establish the Euclidean embedding in \( Cl ( 4 , 1 , 1 ) \), and Postulate 8 establishes that all influences propagate by direct contact with finite duration at speed \( c \). Together with the Iris generator of Postulate 9, this identically recovers Postulate Metro-0.
+. **Derivation of Postulate Metro-0**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 0 establishes measurement on counting grids, Postulates 1 through 4 establish the Euclidean embedding in Conformal Geometric Algebra, and Postulate 8 establishes that all influences propagate by direct contact with finite duration at speed \( c \). Together with the Iris generator of Postulate 9, this identically recovers Postulate Metro-0.
 
 . **Derivation of Postulate Metro-1**: In \( \mathcal { S } _ { \text { Iris } } \), Chapter 4 establishes that real numbers are constructed as rational bounds on discrete counting grids with finite non-zero intervals \( [ x - \delta _ 1 , x + \delta _ 2 ] \). This satisfies Postulate Metro-1.
 
@@ -1618,7 +1618,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Metro } } \).
 
 . **Recovery of Postulates 0, 1, 5, 7, and 8**: Postulate Metro-0 establishes discrete counting against an Iris aperture in Euclidean 3-space with finite propagation delay at speed \( c \), recovering Postulates 0, 1, 7, and 8. Postulate Metro-2 establishes multiscale partition grids, recovering Postulate 5.
 
-. **Recovery of the Clifford Algebra \( Cl ( 4 , 1 , 1 ) \) and Geometric Postulates**: Postulate Metro-0 and Metro-3 require the multivector field \( F \in Cl ( 4 , 1 , 1 ) \) and the differential operator \( D \). The Clifford product, quadratic metric preservation, bivector parity duality, and the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ 0 \) are the unique algebra and generators satisfying these operational requirements, recovering Postulates 2, 3, 4, and 9.
+. **Recovery of Conformal Geometric Algebra and Geometric Postulates**: Postulate Metro-0 and Metro-3 require the multivector field \( F \) in Conformal Geometric Algebra and the differential operator \( D \). The geometric product, quadratic metric preservation, bivector parity duality, and the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ \odot \) are the unique algebra and generators satisfying these operational requirements, recovering Postulates 2, 3, 4, and 9.
 
 . **Recovery of Postulate 6 and the Master Field Equation**: Postulate Metro-3 assigns probabilities to sub-vernier microstates by maximizing informational entropy subject to known boundary constraints. In the absence of constraints, maximizing entropy yields the uniform prior, recovering Postulate 6. Under boundary source constraints \( J \), the expected field satisfies \( D F = J \), recovering the Master Field Equation of Chapter 10.
 
@@ -1668,7 +1668,7 @@ What conventional physics calls “fields”, “charges”, and “currents” 
 \[ F ( \mathbf { x } , t ) = \sum _ i ( \mathbf { c } _ i \wedge \mathbf { v } _ i ) n _ i ( \mathbf { x } , t ) \]
 where \( \mathbf { v } _ i \) represents the transverse orientation blade carried by channel \( i \).
 
-When we expand the discrete difference equation across the link on the m-res scale (\( \Delta x = \epsilon ^ m \), \( \tau = \epsilon ^ m / c \)), the finite differences become vernier derivatives. Summing over all channels weighted by their Clifford basis elements, the conservation laws ensure that the Master Field Equation:
+When we expand the discrete difference equation across the link on the m-res scale (\( \Delta x = \epsilon ^ m \), \( \tau = \epsilon ^ m / c \)), the finite differences become vernier derivatives. Summing over all channels weighted by their geometric algebra basis elements, the conservation laws ensure that the Master Field Equation:
 \[ D F = J \]
 emerges as the exact macroscopic transfer function of the underlying contact collisions.
 
@@ -1700,7 +1700,7 @@ where the collision operator \( \Omega _ i \) satisfies exact conservation of pa
 [POSTULATE]
 .Postulate Kinetic-2: The Multiscale Moment Projection Postulate
 ====
-The macroscopic scalar densities, vector currents, and bivector field tensors are the multivector moments of the discrete packet distribution \( n _ i \) at each vertex. At the m-res scale (\( \epsilon ^ m \)), the discrete difference equation projects into the Clifford differential relation:
+The macroscopic scalar densities, vector currents, and bivector field tensors are the multivector moments of the discrete packet distribution \( n _ i \) at each vertex. At the m-res scale (\( \epsilon ^ m \)), the discrete difference equation projects into the geometric differential relation:
 \[ D F = J \]
 where the Master Field Equation is the macroscopic transfer function of the underlying contact collisions.
 ====
@@ -1736,7 +1736,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 
 . **Derivation of Postulate Kinetic-0**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 0 establishes discrete counting grids, Postulate 5 establishes exact partition grids, and Postulate 8 establishes that all influences propagate by direct contact with finite duration at speed \( c \). This identically recovers the discrete scattering lattice and unit delays of Postulate Kinetic-0.
 
-. **Derivation of Postulate Kinetic-1**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 8 establishes that all physical interactions occur by direct contact over finite duration without action-at-a-distance, while Chapter 10 establishes the conservation of momentum and energy under the Clifford product. Expressed on the discrete lattice links, this yields the deterministic local collision difference equation, satisfying Postulate Kinetic-1.
+. **Derivation of Postulate Kinetic-1**: In \( \mathcal { S } _ { \text { Iris } } \), Postulate 8 establishes that all physical interactions occur by direct contact over finite duration without action-at-a-distance, while Chapter 10 establishes the conservation of momentum and energy under the geometric product. Expressed on the discrete lattice links, this yields the deterministic local collision difference equation, satisfying Postulate Kinetic-1.
 
 . **Derivation of Postulate Kinetic-2**: In \( \mathcal { S } _ { \text { Iris } } \), Chapter 5 constructs multiscale resolution numbers \( \text { Fin } ( \mathbb { R } ^ { \ast } ) \) via scale powers \( \epsilon ^ m \). Taking the low-order multivector moments of the discrete distribution and expanding across link length \( \Delta x = \epsilon ^ m \) yields the vernier derivatives and recovers the Master Field Equation \( D F = J \). This satisfies Postulate Kinetic-2.
 
@@ -1750,7 +1750,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Kinetic } } \).
 
 . **Recovery of Postulates 0, 1, 5, 7, and 8**: Postulate Kinetic-0 establishes discrete counting lattices with finite propagation delay at speed \( c \), recovering Postulates 0, 1, 7, and 8. Postulate Kinetic-2 establishes multiscale zoom grids, recovering Postulate 5.
 
-. **Recovery of Clifford Algebra \( Cl ( 4 , 1 , 1 ) \) and Geometric Postulates**: Postulate Kinetic-1 and Kinetic-2 define the multivector moments (scalar, vector, bivector) and their conservation under collision transformations. The Clifford product is the unique associative algebra preserving these quadratic forms and directional parity, recovering Postulates 2, 3, 4, and 9.
+. **Recovery of Conformal Geometric Algebra and Geometric Postulates**: Postulate Kinetic-1 and Kinetic-2 define the multivector moments (scalar, vector, bivector) and their conservation under collision transformations. The geometric product is the unique associative algebra preserving these quadratic forms and directional parity, recovering Postulates 2, 3, 4, and 9.
 
 . **Recovery of Postulate 6 and the Master Field Equation**: When the exact microstates of the collision operator are incomplete, maximizing informational entropy over the channel distributions subject to boundary flux constraints recovers the uniform prior of Postulate 6 and projects the difference equation into \( D F = J \), recovering the Master Field Equation.
 
@@ -1889,7 +1889,7 @@ Assume the validity of \( \mathcal { S } _ { \text { Iris } } \).
 \[ \mathbf { x } _ i [ k ] = \mathbf { x } _ i [ 0 ] + \sum _ { j = 0 } ^ { k - 1 } \Delta \mathbf { x } _ i [ j ] \]
 Because the lattice index set is strictly finite and recursively enumerable (Postulate 7), the past interaction history is a finite sequence of discrete steps. Reversing the sequence step by step constructs an exact hypothetical backtrace without singularities. This establishes Postulates History-4 and History-5.
 
-. **Derivation of Postulate History-6**: In \( \mathcal { S } _ { \text { Iris } } \), metric preservation in \( Cl ( 4 , 1 , 1 ) \) (Postulate 3) and the divergence theorem on the Clifford differential operator \( D ( D F ) = 0 \) guarantee exact multivector conservation of stress-energy-momentum:
+. **Derivation of Postulate History-6**: In \( \mathcal { S } _ { \text { Iris } } \), metric preservation in Conformal Geometric Algebra (Postulate 3) and the divergence theorem on the geometric differential operator \( D ( D F ) = 0 \) guarantee exact multivector conservation of stress-energy-momentum:
 \[ D \cdot T = 0 \]
 At each discrete direct-contact boundary, this yields exact conservation of incoming and outgoing momentum and energy, establishing Postulate History-6.
 
@@ -1909,11 +1909,11 @@ Assume the validity of \( \mathcal { S } _ { \text { History } } \).
 
 . **Recovery of Postulate 8 (Action by Direct Contact via Topological Halos)**: Postulates History-2 and History-3 explicitly specify that all interactions occur by direct contact across contiguous boundaries with finite-duration propagation at speed \( c \). This identically recovers Postulate 8.
 
-. **Recovery of Clifford Geometry and the Iris Generator (Postulates 2, 3, 4, and 9)**: Postulate History-6 mandates the conservation of directional multivector momentum and quadratic stress-energy across direct-contact encounters. The unique associative algebra that preserves quadratic metric forms under spatial rotations and Lorentz boosts with null boundary directions is \( Cl ( 4 , 1 , 1 ) \) with signature \( ( + , + , + , + , - , - ) \). This recovers:
-  * Postulate 2 (scalar embedding into the Clifford identity),
+. **Recovery of Conformal Geometric Algebra and the Iris Generator (Postulates 2, 3, 4, and 9)**: Postulate History-6 mandates the conservation of directional multivector momentum and quadratic stress-energy across direct-contact encounters. The unique associative algebra that preserves quadratic metric forms under spatial rotations and boosts with null boundary directions is Conformal Geometric Algebra. This recovers:
+  * Postulate 2 (scalar embedding into the identity blade),
   * Postulate 3 (metric preservation of quadratic forms),
   * Postulate 4 (bivector parity duality), and
-  * Postulate 9 (the Iris generator \( \iota \)).
+  * Postulate 9 (the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ \odot \)).
 
 . **Recovery of Postulate 6 and the Master Field Equation \( D F = J \)**: By Postulates History-4 and History-5, the state of any cell is the sum of its antecedent causal history. When reconstructing the expected field configuration from incomplete past boundary data, Jaynesian maximum entropy inference assigns equal prior probability to accessible microstates (Postulate 6). Maximizing entropy subject to the localized source conservation law of Postulate History-6 yields the unique least-biased multivector field relation:
 \[ D F = J \]
@@ -1975,9 +1975,9 @@ Whenever an operational distinction requires finer distinction than is discernib
 
 [#postulate-insight-2]
 [POSTULATE]
-.Postulate Insight-2: Invariance of Direct Contact and Clifford Multivectors Under Expansion
+.Postulate Insight-2: Invariance of Direct Contact and Multivectors Under Expansion
 ====
-The multivector algebra \( Cl ( 4 , 1 , 1 ) \), the Master Field Equation \( D F = J \), and the principle of direct contact action across contiguous boundaries are invariant in form across all levels of enlightenment. Expansion dilates the spatial and temporal coordinate metrics by \( \Lambda _ k \), while preserving the algebraic signatura \( ( + , + , + , + , - , - ) \) and the nilpotent boundary relations \( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \).
+Conformal Geometric Algebra \( \mathbb { G } \), the Master Field Equation \( D F = J \), and the principle of direct contact action across contiguous boundaries are invariant in form across all levels of enlightenment. Expansion dilates the spatial and temporal coordinate metrics by \( \Lambda _ k \), while preserving the canonical basis properties and the null boundary relations \( e _ 4 ^ 2 = 0 , e _ \odot ^ 2 = 0 , e _ \infty ^ 2 = 0 \).
 ====
 
 [#postulate-insight-3]
@@ -2003,19 +2003,19 @@ Profound Insight Analysis on the expanding universe hierarchy \( \{ \mathcal { E
 ====
 A **Profound Insight Number** \( X \in \mathbb { R } _ { \text { Insight } } \) is a sequence of measurement states \( ( X _ k ) _ { k \in \mathbb { Z } _ { \ge 0 } } \) evaluated across expanding universes \( \mathcal { E } _ k \), where each \( X _ k \) is a discrete coordinate on the illuminated lattice \( \mathcal { G } _ k \) satisfying:
 \[ X _ k = \Lambda _ k \cdot r + \Delta _ k \]
-where \( r \in \mathbb { R } \) is the baseline invariant value, \( \Lambda _ k \) is the discrete enlightenment expansion factor (with \( \lim _ { k \to \infty } \Lambda _ k = \infty \)), and \( \Delta _ k \) represents the residual insight perturbation satisfying \( | \Delta _ k | / \Lambda _ k \to 0 \) as \( k \) increases.
+where \( r \in \mathbb { R } \) is the baseline invariant value, \( \Lambda _ k \) is the discrete enlightenment expansion factor (where \( \Lambda _ k \) gets indefinitely large as \( k \) increases), and \( \Delta _ k \) represents the residual insight perturbation satisfying \( | \Delta _ k | / \Lambda _ k \to 0 \) as \( k \) increases.
 
 The baseline contraction operator \( ( \downarrow ) \) returns the ground-state invariant:
-\[ ( \downarrow ) ( X ) = \lim _ { k \to \infty } \frac { X _ k } { \Lambda _ k } = r \]
+\[ ( \downarrow ) ( X ) = r \quad \left( \frac { X _ k } { \Lambda _ k } \to r \text{ as } k \text{ gets indefinitely large} \right) \]
 ====
 
 [#definition-insight-derivative]
 [DEFINITION]
 .Definition: Profound Insight Derivative
 ====
-Let \( \Psi : \mathcal { U } _ 0 \to Cl ( 4 , 1 , 1 ) \) be a multivector field. In Profound Insight Analysis, the derivative of \( \Psi \) with respect to a spatial or temporal coordinate \( x \) is evaluated not by dividing by a vanishing infinitesimal, but by expanding the universe to enlightenment level \( \mathcal { E } _ k \) where the displacement becomes an integer step \( \Delta X _ k = 1 \):
+Let \( \Psi : \mathcal { U } _ 0 \to \mathbb { G } \) be a multivector field in Conformal Geometric Algebra. In Profound Insight Analysis, the derivative of \( \Psi \) with respect to a spatial or temporal coordinate \( x \) is evaluated not by dividing by a vanishing infinitesimal, but by expanding the universe to enlightenment level \( \mathcal { E } _ k \) where the displacement becomes an integer step \( \Delta X _ k = 1 \):
 \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi _ { \mathcal { E } _ k } ( X _ k + 1 ) - \Psi _ { \mathcal { E } _ k } ( X _ k ) } { \Lambda _ k ^ { - 1 } } \right ) \]
-where \( \Psi _ { \mathcal { E } _ k } \) is the field evaluated on the expanded universe lattice. When the universe is contracted via \( ( \downarrow ) \), the higher-order residual enlightenment corrections vanish, leaving the exact Clifford derivative.
+where \( \Psi _ { \mathcal { E } _ k } \) is the field evaluated on the expanded universe lattice. When the universe is contracted via \( ( \downarrow ) \), the higher-order residual enlightenment corrections vanish, leaving the exact multivector derivative in Conformal Geometric Algebra.
 ====
 
 ==== Proof of Equivalence with Multiscale Resolution Analysis (MSRA)
@@ -2282,7 +2282,7 @@ Taking the spatial curl of \( \mathbf{B} \) using the vector identity \( \nabla 
 
 which is the Ampère-Maxwell law in the absence of source currents.
 
-Newton's third law and momentum balance thus directly reproduce Maxwell's relations and the Clifford Master Field Equation:
+Newton's third law and momentum balance thus directly reproduce Maxwell's relations and the Master Field Equation in Conformal Geometric Algebra:
 
 \[ D F = J \]
 
@@ -2377,7 +2377,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 
 * xref:postulate-0[**Postulate 0: Primordial Principle of Measurement**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
 * xref:postulate-1[**Postulate 1: Successor Order and Discrete Ring Properties**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
-* xref:postulate-2[**Postulate 2: Canonical Scalar Embedding into Clifford Algebra Cl(4,1,1)**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
+* xref:postulate-2[**Postulate 2: Canonical Scalar Embedding into Conformal Geometric Algebra**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
 * xref:postulate-3[**Postulate 3: Metric Preservation of Quadratic Forms**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
 * xref:postulate-4[**Postulate 4: Bivector Parity Duality**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
 * xref:postulate-5[**Postulate 5: Discrete Scale Extension and Exact Rational Partition Grids**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
@@ -2386,7 +2386,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:postulate-8[**Postulate 8: Action by Direct Contact via Topological Halos**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
 * xref:postulate-iris-generator[**Postulate 9: Formal Definition of the Iris Generator (\( \iota \))**]  -- Chapter: *Initial Postulates of the Tautological Structure* | Section: *Initial Postulates of the Tautological Structure*
 * xref:postulate-info-0[**Postulate Info-0: Discrete Aperture Information Space**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
-* xref:postulate-info-1[**Postulate Info-1: Clifford Geometry of Multichannel Information Propagation**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
+* xref:postulate-info-1[**Postulate Info-1: Geometric Algebra of Multichannel Information Propagation**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 * xref:postulate-info-2[**Postulate Info-2: The Informational Principle of Direct Contact Action**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 * xref:postulate-info-3[**Postulate Info-3: Jaynesian Maximum Entropy Field Principle**]  -- Chapter: *Equivalent Informational Formulation of the Tautological System* | Section: *Postulate Set of the Informational Formulation*
 * xref:postulate-metro-0[**Postulate Metro-0: The Discrete Counting and Aperture Metrology Postulate**]  -- Chapter: *The Operational Metrological Formulation of the Tautological System* | Section: *Postulate Set of the Operational Metrological Formulation*
@@ -2407,7 +2407,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:postulate-history-7[**Postulate History-7: Matter-Field Unity and Bound Causal Loops**]  -- Chapter: *The Historical Causal Formulation of the Tautological System* | Section: *Postulate Set of the Historical Causal Formulation*
 * xref:postulate-insight-0[**Postulate Insight-0: The Discrete Ground Universe**]  -- Chapter: *Profound Insight Analysis* | Section: *Postulate Set of the Profound Insight Formulation*
 * xref:postulate-insight-1[**Postulate Insight-1: Universal Expansion to Higher Enlightenment**]  -- Chapter: *Profound Insight Analysis* | Section: *Postulate Set of the Profound Insight Formulation*
-* xref:postulate-insight-2[**Postulate Insight-2: Invariance of Direct Contact and Clifford Multivectors Under Expansion**]  -- Chapter: *Profound Insight Analysis* | Section: *Postulate Set of the Profound Insight Formulation*
+* xref:postulate-insight-2[**Postulate Insight-2: Invariance of Direct Contact and Multivectors Under Expansion**]  -- Chapter: *Profound Insight Analysis* | Section: *Postulate Set of the Profound Insight Formulation*
 * xref:postulate-insight-3[**Postulate Insight-3: The Contraction Operator (Downwards Arrow \( \downarrow ) \))**]  -- Chapter: *Profound Insight Analysis* | Section: *Postulate Set of the Profound Insight Formulation*
 * xref:postulate-insight-4[**Postulate Insight-4: Universal Enlightenment Duality**]  -- Chapter: *Profound Insight Analysis* | Section: *Postulate Set of the Profound Insight Formulation*
 * xref:postulate-dwa-1[**Postulate DWA-1: The Finite Aperture Bound**]  -- Chapter: *Discrete Weierstrass Analysis* | Section: *Postulates of Discrete Weierstrass Analysis*
@@ -2416,15 +2416,15 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 
 === Theorems
 
-* xref:theorem-tautological-pythagoras[**Theorem: Tautological Pythagorean Identity in Cl(2,0)**]  -- Chapter: *Euclidean Geometry as a Tautological System* | Section: *Core Theorems of Euclidean Geometry as Multivector Tautologies*
+* xref:theorem-tautological-pythagoras[**Theorem: Tautological Pythagorean Identity in Geometric Algebra**]  -- Chapter: *Euclidean Geometry as a Tautological System* | Section: *Core Theorems of Euclidean Geometry as Multivector Tautologies*
 * xref:theorem-tautological-thales[**Theorem: Tautological Thales Right-Angle Theorem**]  -- Chapter: *Euclidean Geometry as a Tautological System* | Section: *Core Theorems of Euclidean Geometry as Multivector Tautologies*
 * xref:theorem-tautological-sine-law[**Theorem: Tautological Directed Area Law of Sines**]  -- Chapter: *Euclidean Geometry as a Tautological System* | Section: *Core Theorems of Euclidean Geometry as Multivector Tautologies*
-* xref:theorem-parity-conservation[**Theorem: Parity Conservation in Geometric Products**]  -- Chapter: *The Counting Process and the Integers* | Section: *Clifford Algebra Integration and Parity Algebra*
+* xref:theorem-parity-conservation[**Theorem: Parity Conservation in Geometric Products**]  -- Chapter: *The Counting Process and the Integers* | Section: *Geometric Algebra Integration and Parity Algebra*
 * xref:theorem-rational-reciprocity[**Theorem: Scale-Invariant Rational Reciprocity**]  -- Chapter: *The Rational Numbers* | Section: *Multiplication as Composite Aperture Gating*
 * xref:theorem-real-aperture-completeness[**Theorem: Constructive Completeness of Iris Grid Limits**]  -- Chapter: *The Real Numbers* | Section: *Bivector Rotations and Transcendental Angles*
 * xref:theorem-vernier-flux-conservation[**Theorem: Vernier Flux Conservation and Main Scale Projection**]  -- Chapter: *The Multiscale Resolution Numbers* | Section: *Main Scale Projection (Downwards Arrow Operator \( \downarrow ) \))*
 * xref:theorem-complex-main-scale-field[**Theorem: Main Scale Complex Field Isomorphism**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Complex Numbers in Counting-Iris*
-* xref:theorem-quaternion-algebra-identities[**Theorem: Quaternion Bivector Algebraic Identities**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Quaternions as Cl(4,1,1) Bivector Subalgebras*
+* xref:theorem-quaternion-algebra-identities[**Theorem: Quaternion Bivector Algebraic Identities**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Quaternions as Spatial Bivector Subalgebras*
 * xref:theorem-msra-product-rule[**Theorem: MSRA Product Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
 * xref:theorem-msra-quotient-rule[**Theorem: MSRA Quotient Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
 * xref:theorem-msra-chain-rule[**Theorem: MSRA Chain Rule**]  -- Chapter: *How to do Differential Calculus* | Section: *Proofs of Fundamental Differentiation Rules in MSRA*
@@ -2433,9 +2433,9 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-msra-gauss-green-stokes[**Theorem: Discrete Gauss Divergence, Green's, and Stokes' Curl Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *Classical Vector Calculus and Electromagnetics: Green, Stokes, and Gauss Theorems in MSRA*
 * xref:theorem-msra-cauchy-goursat[**Theorem: MSRA Cauchy-Goursat Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The Vernier Cauchy-Goursat Theorem in MSRA*
 * xref:theorem-msra-residue[**Theorem: MSRA Residue Theorem**]  -- Chapter: *How to Compute a Contour Integral* | Section: *The MSRA Residue Theorem*
-* xref:theorem-cl411-existence[**Theorem: Constructive Existence and Algebraicity of Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Constructive Proof of Clifford Algebra Cl(4,1,1)*
-* xref:theorem-clifford-pbw-basis[**Theorem: Constructive Clifford PBW Basis Theorem for Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Constructive Clifford PBW Basis Theorem*
-* xref:theorem-cl411-anticommutation[**Theorem: Fundamental Anti-Commutation Law of Cl(4,1,1)**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Fundamental Anti-Commutation Law*
+* xref:theorem-cl411-existence[**Theorem: Constructive Existence and Algebraicity of Conformal Geometric Algebra**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Constructive Proof of Conformal Geometric Algebra*
+* xref:theorem-cga-pbw-basis[**Theorem: Constructive PBW Basis Theorem for Conformal Geometric Algebra**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Constructive PBW Basis Theorem for Conformal Geometric Algebra*
+* xref:theorem-cl411-anticommutation[**Theorem: Fundamental Commutation and Metric Rules of Conformal Geometric Algebra**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the Fundamental Commutation and Metric Rules of Conformal Geometric Algebra*
 * xref:theorem-msra-homomorphism[**Theorem: Ring Homomorphism Property of Main Scale Projection**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of the MSRA Ring Homomorphism*
 * xref:theorem-tautological-completeness[**Theorem: Formal Tautological Completeness of the Iris System**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Proof of Tautological Completeness*
 * xref:theorem-self-consistency-iris[**Theorem: Constructive Self-Consistency of the Iris Tautological System**]  -- Chapter: *Completion of the Tautological Postulate System* | Section: *Gödel’s Incompleteness Theorems and the Inherent Defectiveness of Conventional Mathematics*
@@ -2452,7 +2452,7 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:definition-multiscale-vernier-number[**Definition: Multiscale Vernier Measurement Number (m-res Number)**]  -- Chapter: *The Multiscale Resolution Numbers* | Section: *Vernier Scale Metrology and Multiscale Aperture Resolutions*
 * xref:definition-insight-number[**Definition: Profound Insight Number**]  -- Chapter: *Profound Insight Analysis* | Section: *Definitions and Calculus in Profound Insight Analysis*
 * xref:definition-complex-iris-number[**Definition: Counting-Iris Complex Number**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Complex Numbers in Counting-Iris*
-* xref:definition-iris-quaternion[**Definition: Counting-Iris Quaternion Bivector**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Quaternions as Cl(4,1,1) Bivector Subalgebras*
+* xref:definition-iris-quaternion[**Definition: Counting-Iris Quaternion Bivector**]  -- Chapter: *Complex Numbers and Quaternions* | Section: *Quaternions as Spatial Bivector Subalgebras*
 * xref:definition-msra-derivative[**Definition: MSRA Vernier Derivative**]  -- Chapter: *How to do Differential Calculus* | Section: *Vernier Differences and the MSRA Derivative*
 * xref:definition-insight-derivative[**Definition: Profound Insight Derivative**]  -- Chapter: *Profound Insight Analysis* | Section: *Definitions and Calculus in Profound Insight Analysis*
 * xref:definition-msra-definite-integral[**Definition: MSRA Definite Integral**]  -- Chapter: *How to do Integral Calculus* | Section: *Definite and Indefinite Integration as Vernier Aperture Sums*

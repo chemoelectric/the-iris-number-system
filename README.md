@@ -42,7 +42,7 @@ The **Iris Number System Deduction & Inference Engine** provides a constructive 
    - High-contrast formatted display with one-click **LaTeX Export** and JSON workspace state export/import.
 
 4. **Iris Calculator & Multivector Workbench**
-   - Full implementation of the Cl(4,1,1) 6-generator Clifford algebra signature (+,+,+,+,-,0).
+   - Full implementation of the 6-generator Conformal Geometric Algebra (CGA).
    - Embedded bivector quaternion algebra (i = e_23, j = e_31, k = e_12).
    - Discrete Spectrum Arithmetic \( ( x + \epsilon \cdot \text{residual} + \omega \cdot \text{scale} ) \) and Nonstandard Analysis Main Scale Projection operator \( ( \downarrow ) ( x ) \).
 
@@ -59,7 +59,7 @@ The **Iris Number System Deduction & Inference Engine** provides a constructive 
 
 6. **Theorem Library & Axiom Workbench**
    - Complete repository of formal axioms, postulates, definitions, and proven theorems.
-   - Filterable by domain (*Tautological Discrete Arithmetic*, *Clifford Algebra Cl(4,1,1)*, *Jaynesian MaxEnt Probability*, *Spectral Topology*, etc.).
+   - Filterable by domain (*Tautological Discrete Arithmetic*, *Conformal Geometric Algebra (CGA)*, *Jaynesian MaxEnt Probability*, *Spectral Topology*, etc.).
 
 ---
 
@@ -161,11 +161,10 @@ The inference engine operates strictly within the Counting-Iris number system:
 - **MSRA Calculus**: 
   - *Differential Calculus*: Constructive derivatives \( \frac{\mathrm{d} \Psi}{\mathrm{d} x} = ( \downarrow ) \left( \frac{\Psi ( x + \delta_\omega ) - \Psi ( x )}{\delta_\omega} \right) \) with exact proofs of product, quotient, and chain rules, plus step-by-step worked polynomial examples.
   - *Integral Calculus*: Indefinite and definite integrals defined as discrete vernier aperture sums with exact proof of the Fundamental Theorem of MSRA Calculus and explicit step-by-step sum calculations.
-  - *Contour Integration*: Multivector path line integrals in Cl(4,1,1) with the vernier Cauchy-Goursat theorem, MSRA Residue Theorem with explicit proof and worked pole examples, residue-free loop circulations, and closed circular path examples.
-  - *Master Field Equation*: Unified Clifford field dynamics DF_total = J_total in Cl(4,1,1), basis vector definitions, explicit electric vector E (spatial aperture bivectors E e4) and magnetic trivector flux B (spatial dual flux c B I3) definitions, self-generated inertial mass, gravitation as wave refraction, steady-state cosmological flux conservation, and Newtonian inertial wave kinematics (advective vector c+u propagation over invariant speed constraints).
-  - *Tautological System Completion*: Synthesis of Postulates 0–9, MSRA operators, and Master Field dynamics into a formally complete tautological inference engine, featuring explicit proofs of the existence and algebraicity of Clifford algebra Cl(4,1,1), constructive Clifford PBW basis theorem (64-dimensional basis reduction & linear independence), fundamental anti-commutation law, MSRA ring homomorphism, and elimination of continuum paradoxes (Zeno, singularities, non-measurable sets).
-- **Clifford Cl(4,1,1)**: 6 basis generators {e1, e2, e3, e4, e+, e-} satisfying e1²=e2²=e3²=1, e4²=0, e+²=1, e-²=-1.
-- **Conformal Null Vectors**: e_∞ = e_+ + e_-, e_0 = 1/2(e_- - e_+).
+  - *Contour Integration*: Multivector path line integrals in Conformal Geometric Algebra with the vernier Cauchy-Goursat theorem, MSRA Residue Theorem with explicit proof and worked pole examples, residue-free loop circulations, and closed circular path examples.
+  - *Master Field Equation*: Unified field dynamics DF_total = J_total in Conformal Geometric Algebra, basis vector definitions, explicit electric vector E and magnetic trivector flux B definitions, self-generated inertial mass, gravitation as wave refraction, steady-state cosmological flux conservation, and Newtonian inertial wave kinematics (advective vector c+u propagation over invariant speed constraints).
+  - *Tautological System Completion*: Synthesis of Postulates 0–9, MSRA operators, and Master Field dynamics into a formally complete tautological inference engine, featuring explicit proofs of the existence and algebraicity of Conformal Geometric Algebra, constructive PBW basis theorem (64-dimensional basis reduction & linear independence), fundamental commutation and metric rules, MSRA ring homomorphism, and elimination of continuum paradoxes (Zeno, singularities, non-measurable sets).
+- **Conformal Geometric Algebra (CGA)**: Canonical basis {e1, e2, e3, e4, e_odot, e_∞} where e1, e2, e3 are Euclidean spatial directions (e1² = e2² = e3² = 1), e4 is the null causal time step (e4² = 0), and {e_odot, e_∞} is the conformal boundary pair (e_odot² = 0, e_∞² = 0, e_odot · e_∞ = -1).
 - **Master Field Equation**: D F_total = J_total where D = ∇ + e4 (1/c) D_t.
 
 ---
@@ -208,7 +207,7 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── data/
 │   │   └── textbookData.ts       # Structured JSON textbook parser & AsciiDoc generator
 │   ├── lib/
-│   │   └── irisEngine.ts         # Clifford Cl(4,1,1) multivector math & Iris arithmetic engine
+│   │   └── irisEngine.ts         # Conformal Geometric Algebra multivector math & Iris arithmetic engine
 │   ├── types.ts                  # Shared TypeScript interfaces and domain models
 │   ├── App.tsx                   # Main React application shell
 │   └── main.tsx                  # Application entry point
