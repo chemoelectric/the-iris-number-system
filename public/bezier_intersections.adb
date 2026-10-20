@@ -40,10 +40,9 @@ pragma assertion_policy (check);
 -- [2] J. Sánchez-Reyes, ‘The symmetric analogue of the polynomial
 --     power basis’, ACM Transactions on Graphics, vol 16 no 3, July
 --     1997, page 319.
---
--- [3] J. Sánchez-Reyes, ‘Applications of the polynomial s-power basis
---     in geometry processing’, ACM Transactions on Graphics, vol 19
---     no 1, January 2000, page 35.
+-- [3] J. Sánchez-Reyes, ‘Applications of the polynomial
+--     s-power basis in geometry processing’, ACM Transactions on
+--     Graphics, vol 19 no 1, January 2000, page 35.
 --
 
 with ada.text_io;
@@ -588,6 +587,132 @@ procedure bezier_intersections is
       roles    : clipping_roles;
       next     : intersection_job_access;
     end record;
+  procedure check_curve_coincidence
+    (c1             : in geocurve;
+     c2             : in geocurve;
+     tolerance      : in lreal;
+     are_coincident : out boolean;
+     has_overlap    : out boolean;
+     overlap_min_t1 : out lreal;
+     overlap_max_t1 : out lreal)
+  with pre  => tolerance > 0.0,
+       post => (if not are_coincident then not has_overlap)
+  is
+    trans          : affine_projection;
+    p1_pt1         : dpoint;
+    dx1, dy1       : lreal;
+    s0, s1, s2     : opoint;
+    t0, t2         : lreal;
+    t0_found       : boolean;
+    t2_found       : boolean;
+    t1_expected    : lreal;
+    s1_expected    : opoint;
+    err_mid_x      : lreal;
+    err_mid_y      : lreal;
+    tmin, tmax     : lreal;
+    has_sm, has_lg : boolean;
+    sm, lg         : lreal;
+
+    procedure find_t_on_c1 (pt      : in opoint;
+                            found   : out boolean;
+                            t_param : out lreal) is
+      err_sm, err_lg : lreal;
+      exp_y          : lreal;
+      prev_err       : lreal;
+    begin
+      found := false;
+      t_param := 0.0;
+      quadratic_formula (-dx1, 1.0 + dx1, -pt.x,
+                         has_sm, sm, has_lg, lg);
+      if has_sm then
+        exp_y := sm * (1.0 - sm) * dy1;
+        err_sm := abs (pt.y - exp_y);
+        if err_sm <= tolerance then
+          found := true;
+          t_param := sm;
+        end if;
+      end if;
+      if has_lg then
+        exp_y := lg * (1.0 - lg) * dy1;
+        err_lg := abs (pt.y - exp_y);
+        if err_lg <= tolerance then
+          if not found then
+            found := true;
+            t_param := lg;
+          else
+            prev_err :=
+              abs (pt.y - (t_param * (1.0 - t_param) * dy1));
+            if err_lg < prev_err then
+              t_param := lg;
+            end if;
+          end if;
+        end if;
+      end if;
+    end find_t_on_c1;
+
+  begin
+    are_coincident := false;
+    has_overlap := false;
+    overlap_min_t1 := 0.0;
+    overlap_max_t1 := 0.0;
+
+    trans := skeleton_projection (c1);
+    p1_pt1 := project (c1.pt1, trans);
+    dx1 := p1_pt1.dx;
+    dy1 := p1_pt1.dy;
+
+    s0 := project (eval (c2, 0.0), trans);
+    s1 := project (eval (c2, 0.5), trans);
+    s2 := project (eval (c2, 1.0), trans);
+
+    find_t_on_c1 (s0, t0_found, t0);
+    find_t_on_c1 (s2, t2_found, t2);
+
+    if t0_found and t2_found then
+      t1_expected := 0.5 * (t0 + t2);
+      s1_expected.x :=
+        t1_expected + t1_expected * (1.0 - t1_expected) * dx1;
+      s1_expected.y := t1_expected * (1.0 - t1_expected) * dy1;
+      err_mid_x := abs (s1.x - s1_expected.x);
+      err_mid_y := abs (s1.y - s1_expected.y);
+      if err_mid_x <= tolerance and err_mid_y <= tolerance then
+        are_coincident := true;
+        tmin := lreal'min (t0, t2);
+        tmax := lreal'max (t0, t2);
+        overlap_min_t1 := lreal'max (0.0, tmin);
+        overlap_max_t1 := lreal'min (1.0, tmax);
+        if overlap_min_t1 <= overlap_max_t1 + tolerance then
+          has_overlap := true;
+        end if;
+      end if;
+    end if;
+  end check_curve_coincidence;
+
+  function are_curves_coincident
+    (c1        : in geocurve;
+     c2        : in geocurve;
+     tolerance : in lreal := 1.0e-5)
+  return boolean is
+    coincident   : boolean;
+    overlap      : boolean;
+    t_min, t_max : lreal;
+  begin
+    check_curve_coincidence
+      (c1, c2, tolerance,
+       coincident, overlap, t_min, t_max);
+    return coincident;
+  end are_curves_coincident;
+
+  function are_curves_coincident
+    (p         : in spower_curve;
+     q         : in spower_curve;
+     tolerance : in lreal := 1.0e-5)
+  return boolean is
+  begin
+    return are_curves_coincident
+      (to_geocurve (p), to_geocurve (q), tolerance);
+  end are_curves_coincident;
+
   procedure intersection_job_delete is
     new ada.unchecked_deallocation (intersection_job,
                                     intersection_job_access);
@@ -780,8 +905,30 @@ procedure bezier_intersections is
   p, q         : spower_curve;
   params, ptr  : t_pair_access;
 
+  procedure test_curve_coincidence is
+    p_curve, q_curve : spower_curve;
+    sub_p            : geocurve;
+  begin
+    p_curve := to_spower_curve
+      (((x => -1.0, y =>  0.0),
+        (x =>  0.0, y => 10.0),
+        (x =>  1.0, y =>  0.0)));
+    q_curve := to_spower_curve
+      (((x =>  2.0, y =>  1.0),
+        (x => -8.0, y =>  2.0),
+        (x =>  2.0, y =>  3.0)));
+
+    pragma assert (are_curves_coincident (p_curve, p_curve));
+    pragma assert (not are_curves_coincident (p_curve, q_curve));
+
+    sub_p := make_portion (to_geocurve (p_curve), 0.2, 0.7);
+    pragma assert
+      (are_curves_coincident (to_geocurve (p_curve), sub_p));
+  end test_curve_coincidence;
+
 begin
   test_segment_projection_to_0_1;
+  test_curve_coincidence;
   pctrl := ((x => -1.0, y =>  0.0),
             (x =>  0.0, y => 10.0),
             (x =>  1.0, y =>  0.0));
