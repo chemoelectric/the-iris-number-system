@@ -13,7 +13,7 @@ A Rigorous Constructive Foundation for Mathematics and Physics
 
 === Euclidean Geometry as a Tautological System
 
-Operational formulation of classical Euclidean geometry as an exact algebraic tautological system constructed over discrete rational partition grids \( \mathcal { G } _ N \) and multivector geometric algebra \( Cl ( 2 , 0 ) \subset Cl ( 4 , 1 , 1 ) \).
+Operational formulation of classical Euclidean geometry as an exact algebraic tautological system constructed over discrete rational partition grids \( \mathcal { G } _ N \) and two-dimensional planar geometric algebra over spatial generators \( \{ e _ 1 , e _ 2 \} \) within Conformal Geometric Algebra (CGA).
 
 ==== The Tautological Nature of Geometric Axiomatics
 
@@ -154,22 +154,22 @@ Conceptual introduction to the Iris optical-geometric analogy, variable aperture
 
 ==== Introduction to the Iris Analogy
 
-The Counting-Iris Number System takes its name and primary geometric conceptual framework from the optical **iris diaphragm**—a mechanical aperture composed of overlapping curved blades that expand and contract radially while rotating in phase space.
+The Counting-Iris Number System takes its name and primary geometric conceptual framework from the optical _iris diaphragm_—a mechanical aperture composed of overlapping curved blades that expand and contract radially while rotating in phase space.
 
 In physical optics and geometric field theory, an iris diaphragm does not merely truncate light; it dynamically regulates total flux, boundary curvature, and phase distribution across a finite aperture.
 
-In our mathematical unification, the **Iris** serves as a dynamic algebraic aperture bridging the discrete integers \( \mathbb { Z } \) with finite multivector space \( Cl ( 4 , 1 , 1 ) \).
+In our mathematical unification, the _Iris_ serves as a dynamic algebraic aperture bridging the discrete integers \( \mathbb { Z } \) with finite multivector space in Conformal Geometric Algebra (CGA).
 
 The primary physical and mathematical components of the Iris analogy are:
 
-* **Central Aperture Opening (\( \iota \))**: Represents the active field generator \( \iota \), whose aperture area corresponds to the scaling flux of discrete integer counts.
-* **Overlapping Aperture Blades**: Execute Spin(2) bivector plane rotations \( e _ { 12 } \) in \( Cl ( 4 , 1 , 1 ) \), imparting phase orientation and parity residue.
-* **Nilpotent Perimeter Boundary (\( \varpi \vartheta \))**: The microscopic perimeter contact boundary of the blades acts as a nilpotent boundary constraint satisfying \( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \), preventing singular boundary collapse while enforcing exact local contact.
-* **Variable Aperture Scaling**: Radial expansion and contraction \( r \) controls scaling dilatation, bridging discrete count states with smooth macro-level field density.
+* _Central Aperture Opening (\( \iota \))_: Represents the active field generator \( \iota \), whose aperture area corresponds to the scaling flux of discrete integer counts.
+* _Overlapping Aperture Blades_: Execute Spin(2) bivector plane rotations \( e _ { 12 } \) in Conformal Geometric Algebra, imparting phase orientation and parity residue.
+* _Nilpotent Perimeter Boundary (\( \varpi \vartheta \))_: The microscopic perimeter contact boundary of the blades acts as a nilpotent boundary constraint satisfying \( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \), preventing singular boundary collapse while enforcing exact local contact.
+* _Variable Aperture Scaling_: Radial expansion and contraction \( r \) controls scaling dilatation, bridging discrete count states with smooth macro-level field density.
 
 [IRIS_VISUALIZATION]
 
-As illustrated in the dynamic model above, adjusting the aperture opening magnitude \( r \) and phase angle \( \theta \) directly updates the multivector operator state: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } _ { Cl } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
+As illustrated in the dynamic model above, adjusting the aperture opening magnitude \( r \) and phase angle \( \theta \) directly updates the multivector operator state: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
 
 
 maintaining the exact quadratic aperture constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
@@ -340,7 +340,7 @@ The composite operation of scaling the Iris aperture down by \( q _ { \text { de
 ====
 
 ==== Modulation of the Iris Multivector Generator \( \iota \)
-Rational aperture scale factors \( r = p / q \) directly modulate the Iris field operator defined in Postulate 9: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } _ { Cl } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
+Rational aperture scale factors \( r = p / q \) directly modulate the Iris field operator defined in Postulate 9: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
 
 
 Varying the rational aperture ratio \( r \) adjusts the central flux transmission while maintaining the quadratic perimeter boundary constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
@@ -1057,7 +1057,7 @@ for an elementary ultra-refined boundary contour \( \Gamma _ k \subset \mathcal 
 
 ==== Worked Example 1: Circular Contour Integral of a Constant Vector Field
 
-To verify the MSRA Cauchy-Goursat theorem with an explicit example, evaluate the contour integral of a constant multivector field \( \Psi ( z ) = \mathbf { c } \in Cl ( 4 , 1 , 1 ) \) along a closed circular path \( \Gamma \) parameterized by \( \gamma ( t ) = R e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \).
+To verify the MSRA Cauchy-Goursat theorem with an explicit example, evaluate the contour integral of a constant multivector field \( \Psi ( z ) = \mathbf { c } \) in Conformal Geometric Algebra along a closed circular path \( \Gamma \) parameterized by \( \gamma ( t ) = R e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \).
 
 . **Parameter Derivative**: Compute the velocity vector along the curve: \[ \gamma ' ( t ) = \frac { d \gamma } { dt } = i R e ^ { i t } \]
 
@@ -1075,20 +1075,20 @@ This confirms that the closed circulation of any source-free constant field vani
 
 ==== Worked Example 2: Contour Integration with Isolated Poles via the MSRA Residue Theorem
 
-To demonstrate the application of the MSRA Residue Theorem, evaluate the closed contour integral of the aperture rational function \( \Psi ( z ) = \frac { \mathbf { 1 } _ { Cl } } { z ^ 2 + 1 } \) along a closed circular contour \( \Gamma \) centered at \( z = i \) with radius \( R = 1 \) oriented counterclockwise.
+To demonstrate the application of the MSRA Residue Theorem, evaluate the closed contour integral of the aperture rational function \( \Psi ( z ) = \frac { \mathbf { 1 } } { z ^ 2 + 1 } \) along a closed circular contour \( \Gamma \) centered at \( z = i \) with radius \( R = 1 \) oriented counterclockwise.
 
 . **Identify Poles**: The integrand has isolated poles where the denominator vanishes: \[ z ^ 2 + 1 = 0 \implies z _ 1 = i , \quad z _ 2 = - i \]
 The contour \( \Gamma \) (radius 1 centered at \( i \)) encloses only the pole \( z _ 1 = i \), while \( z _ 2 = - i \) lies outside \( \text { Int } ( \Gamma ) \).
 
-. **Compute MSRA Residue at \( z _ 1 = i \)**: Decompose \( \Psi ( z ) \) into partial fraction aperture components: \[ \Psi ( z ) = \frac { \mathbf { 1 } _ { Cl } } { ( z - i ) ( z + i ) } = \frac { \frac { \mathbf { 1 } _ { Cl } } { z + i } } { z - i } \]
+. **Compute MSRA Residue at \( z _ 1 = i \)**: Decompose \( \Psi ( z ) \) into partial fraction aperture components: \[ \Psi ( z ) = \frac { \mathbf { 1 } } { ( z - i ) ( z + i ) } = \frac { \frac { \mathbf { 1 } } { z + i } } { z - i } \]
 
-The residue at simple pole \( z _ 1 = i \) is: \[ \text { Res } \left ( \Psi , i \right ) = \left . ( z - i ) \Psi ( z ) \right | _ { z = i } = \left . \frac { \mathbf { 1 } _ { Cl } } { z + i } \right | _ { z = i } = \frac { \mathbf { 1 } _ { Cl } } { 2i } = - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \]
-
-
-. **Apply the MSRA Residue Theorem**: Substitute the computed residue into the residue sum formula: \[ \oint _ \Gamma \frac { 1 } { z ^ 2 + 1 } \, dz = 2 \pi i \, \text { Res } \left ( \Psi , i \right ) = 2 \pi i \left ( - \frac { i } { 2 } \mathbf { 1 } _ { Cl } \right ) = \pi \mathbf { 1 } _ { Cl } \]
+The residue at simple pole \( z _ 1 = i \) is: \[ \text { Res } \left ( \Psi , i \right ) = \left . ( z - i ) \Psi ( z ) \right | _ { z = i } = \left . \frac { \mathbf { 1 } } { z + i } \right | _ { z = i } = \frac { \mathbf { 1 } } { 2i } = - \frac { i } { 2 } \mathbf { 1 } \]
 
 
-. **Direct Parametric Verification**: Parameterize \( \Gamma \) as \( \gamma ( t ) = i + r e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \) with \( r = 1 \). Then \( \gamma ' ( t ) = i e ^ { i t } \, dt \). Substituting into the integral: \[ \oint _ \Gamma \frac { dz } { z ^ 2 + 1 } = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { ( i + e ^ { i t } ) ^ 2 + 1 } \, dt = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { 2i e ^ { i t } + e ^ { 2i t } } \, dt = \int _ 0 ^ { 2 \pi } \frac { i } { 2i + e ^ { i t } } \, dt = \pi \mathbf { 1 } _ { Cl } \]
+. **Apply the MSRA Residue Theorem**: Substitute the computed residue into the residue sum formula: \[ \oint _ \Gamma \frac { 1 } { z ^ 2 + 1 } \, dz = 2 \pi i \, \text { Res } \left ( \Psi , i \right ) = 2 \pi i \left ( - \frac { i } { 2 } \mathbf { 1 } \right ) = \pi \mathbf { 1 } \]
+
+
+. **Direct Parametric Verification**: Parameterize \( \Gamma \) as \( \gamma ( t ) = i + r e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \) with \( r = 1 \). Then \( \gamma ' ( t ) = i e ^ { i t } \, dt \). Substituting into the integral: \[ \oint _ \Gamma \frac { dz } { z ^ 2 + 1 } = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { ( i + e ^ { i t } ) ^ 2 + 1 } \, dt = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { 2i e ^ { i t } + e ^ { 2i t } } \, dt = \int _ 0 ^ { 2 \pi } \frac { i } { 2i + e ^ { i t } } \, dt = \pi \mathbf { 1 } \]
 
 This explicitly verifies the MSRA Residue Theorem for rational aperture field functions.
 
@@ -1283,7 +1283,7 @@ This proves that \( ( \downarrow ) \) is a complete ring homomorphism from \( \t
 
 ==== Proof of Tautological Completeness
 
-Having established the explicit constructibility of \( Cl ( 4 , 1 , 1 ) \), its anti-commutation relations, the MSRA differential/integral operators, and the Main Scale Projection homomorphism, we state and prove the central meta-theorem of the Counting-Iris framework.
+Having established the explicit constructibility of Conformal Geometric Algebra (CGA), its commutation and metric rules, the MSRA differential/integral operators, and the Main Scale Projection homomorphism, we state and prove the central meta-theorem of the Counting-Iris framework.
 
 [#theorem-tautological-completeness]
 [THEOREM]
