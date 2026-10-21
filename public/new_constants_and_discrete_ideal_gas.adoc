@@ -12,7 +12,7 @@ Frédéric Blondin Custer
 
 Within the Counting-Iris Number System, Conformal Geometric Algebra (CGA), and discrete multiscale resolution grids \( \mathcal{G}_N \), fundamental physical constants are proved to be exact geometric ratios and definite integrals relative to the true propagation speed \( c \), and the Ideal Gas Law is deduced as an exact theorem of discrete momentum flux conservation without continuum approximations:
 
-1. _The Fine-Structure Constant_ \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and discrete lattice dynamics on \( \mathcal{G}_N \), wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes discrete lattice reaction \( \Delta _ { \text{lattice} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} = \frac{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1} \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \).
+1. _The Fine-Structure Constant_ \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and discrete lattice dynamics on \( \mathcal{G}_N \), wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes discrete lattice reaction \( \Delta _ { \text{lattice} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \).
 2. _The Proton-to-Electron Mass Ratio_ \( m _ { p } / m _ { e } \) is calculated as the conformal \( 5 \)-sphere configuration volume \( 6 \pi ^ { 5 } \), reduced by a discrete lattice boundary reaction \( \Delta _ { \text{react} } = ({\alpha}/{4 \pi ^ { 2 }}) \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { -1 } dx\, dy = {\alpha}/{24} \), yielding \( m _ { p } / m _ { e } = 6 \pi ^ { 5 } ( 1 - \alpha / 24 ) \approx 1836.15267 \).
 3. _Newton's Gravitational Coupling_ \( G \) is derived from classical wave refraction in the universal electromagnetic field, where localized mass is equivalent to field energy \( E = m c ^ { 2 } \). Balancing refractive wave flux through discrete grid spacing \( \delta _ { \omega } \) by conservation of energy yields \( G = \hbox{\vrule width0pt height0.9\baselineskip depth0.5\baselineskip}{c ^ { 4 } \delta _ { \omega } ^ { 2 }}/({4 \pi E}) = {c ^ { 2 } \delta _ { \omega } ^ { 2 }}/({4 \pi m}) \), with classical circulation action \( S _ { \text{circ} } = \hbar = E / \omega \) canceling identically.
 4. _The Ideal Gas Law_ is deduced from elastic collisions of finite m-resolution entities transferring momentum \( \Delta p _ { x } = 2 (\Delta m) v _ { x } \) via direct contact action, yielding the state equation \( P V = ({2}/{3}) N \langle E _ { k } \rangle = N k _ { B } T = n R T \), where \( k _ { B } = {2 \langle E _ { k } \rangle}/({3 T}) \) and \( R = N _ { A } k _ { B } \) are extensional conversion factors calibrating macroscopic temperature to microscopic kinetic action.
@@ -94,15 +94,15 @@ I _ { \text{lattice} } = \sum _ { n = 1 } ^ { \infty } \frac{1}{n ^ { 2 }} = \fr
 \]
 Remarkably, this is the exact same lattice reaction factor \( 1/24 \) that appears in the proton-to-electron mass ratio \( m_p / m_e = 6 \pi^5 ( 1 - \alpha / 24 ) \), demonstrating profound mathematical consistency across the universal field engine.
 
-=== Physical Coupling Relation and Closed Rational Form
+=== Physical Coupling Relation and Closed Form
 
 The interaction between the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } \) and the discrete lattice reaction determines the physical inverse coupling constant:
 \[
-\alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} = \frac{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1}{24 \alpha _ { 0 } ^ { - 1 }}
+\alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }}
 \]
-Taking the reciprocal yields the fine-structure constant \( \alpha \) in exact closed rational form:
+Taking the reciprocal yields the fine-structure constant \( \alpha \):
 \[
-\alpha = \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1}
+\alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 }
 \]
 
 === Step-by-Step Numerical Evaluation
@@ -638,7 +638,7 @@ This unbroken derivation establishes the true physical nature of \( k _ { B } \)
 // | Classical
 
 | \( \alpha \)
-| \( \displaystyle \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1} \quad \left( \alpha _ { 0 } ^ { - 1 } = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \right) \)
+| \( \displaystyle \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \quad \left( \alpha _ { 0 } ^ { - 1 } = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \right) \)
 | Conformal phase action with discrete lattice reaction on \( \mathcal{G}_N \)
 | _[smallcaps]#new#_
 

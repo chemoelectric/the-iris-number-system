@@ -17,7 +17,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
   // Fine-structure constant alpha from Conformal Geometric Algebra action and discrete lattice reaction
   // alpha_0^(-1) = 4*pi^3 + pi^2 + pi
   // alpha^(-1) = alpha_0^(-1) - 1 / (24 * alpha_0^(-1))
-  // alpha = 24 * alpha_0^(-1) / (24 * (alpha_0^(-1))^2 - 1)
+  // alpha = 1 / alpha^(-1)
   const PI_2 = Math.PI * Math.PI;
   const PI_3 = PI_2 * Math.PI;
   const PI_5 = Math.pow(Math.PI, 5);

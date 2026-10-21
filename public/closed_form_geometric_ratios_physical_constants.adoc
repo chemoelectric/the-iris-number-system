@@ -8,7 +8,7 @@
 
 == Abstract
 
-Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \( c \) within the Counting-Iris Number System and Conformal Geometric Algebra (CGA), eliminating arbitrary empirical curve-fitting. The fine-structure constant \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and discrete lattice dynamics on \( \mathcal{G}_N \), wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes discrete lattice reaction \( \Delta _ { \text{lattice} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} = \frac{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1} \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \). The proton-to-electron mass ratio is calculated as the conformal \( 5 \)-sphere volume integral with discrete lattice reaction: \( m_p / m_e = 6 \pi^5 [ 1 - ({\alpha} / {4\pi^2}) \int_0^1 \int_0^1 (1 - x y) ^ {-1}{dx\,dy} ] = 6 \pi^5 ( 1 - {\alpha} / {24} ) \approx 1836.15267 \). Newton's gravitational coupling is derived as a refractive wave effect of the universal electromagnetic field, wherein matter occurs as knotted regions, and gravitation arises from refraction of wave fronts in the field's propagation gradient, yielding the exact gravitational coupling in terms of localized field mass \( m \) by conservation of energy: \( G = c^2 \delta_\omega^2 / (4 \pi m) \). Vortex circulation action \( S_{\text{circ}} = E / \omega \) (historically labeled \( \hbar \)) cancels out completely, demonstrating gravitation is a classical wave-refractive effect independent of quantum physics. All intrinsic electromagnetic standards are expressed directly in terms of \( c \) and these definite integrals: intrinsic magnetic permeability \( \mu_0 = {2 \alpha h} / {e^2 c} \), intrinsic wave impedance \( Z_0 = \mu_0 c = {2 \alpha h} / {e^2} \), intrinsic electric permittivity \( \varepsilon_0 = {1} / {\mu_0 c^2} \), the fundamental circulation impedance (von Klitzing constant) \( R_K = {h} / {e^2} ={Z_0} / {2 \alpha} \), and the unit of enclosed magnetic bivector flux circulation \( \Phi_0 = {h} / {2 e} \). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \( \mathcal{G}_N \) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \( k_B \) and molar gas constant \( R \) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
+Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \( c \) within the Counting-Iris Number System and Conformal Geometric Algebra (CGA), eliminating arbitrary empirical curve-fitting. The fine-structure constant \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and discrete lattice dynamics on \( \mathcal{G}_N \), wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes discrete lattice reaction \( \Delta _ { \text{lattice} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \). The proton-to-electron mass ratio is calculated as the conformal \( 5 \)-sphere volume integral with discrete lattice reaction: \( m_p / m_e = 6 \pi^5 [ 1 - ({\alpha} / {4\pi^2}) \int_0^1 \int_0^1 (1 - x y) ^ {-1}{dx\,dy} ] = 6 \pi^5 ( 1 - {\alpha} / {24} ) \approx 1836.15267 \). Newton's gravitational coupling is derived as a refractive wave effect of the universal electromagnetic field, wherein matter occurs as knotted regions, and gravitation arises from refraction of wave fronts in the field's propagation gradient, yielding the exact gravitational coupling in terms of localized field mass \( m \) by conservation of energy: \( G = c^2 \delta_\omega^2 / (4 \pi m) \). Vortex circulation action \( S_{\text{circ}} = E / \omega \) (historically labeled \( \hbar \)) cancels out completely, demonstrating gravitation is a classical wave-refractive effect independent of quantum physics. All intrinsic electromagnetic standards are expressed directly in terms of \( c \) and these definite integrals: intrinsic magnetic permeability \( \mu_0 = {2 \alpha h} / {e^2 c} \), intrinsic wave impedance \( Z_0 = \mu_0 c = {2 \alpha h} / {e^2} \), intrinsic electric permittivity \( \varepsilon_0 = {1} / {\mu_0 c^2} \), the fundamental circulation impedance (von Klitzing constant) \( R_K = {h} / {e^2} ={Z_0} / {2 \alpha} \), and the unit of enclosed magnetic bivector flux circulation \( \Phi_0 = {h} / {2 e} \). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \( \mathcal{G}_N \) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \( k_B \) and molar gas constant \( R \) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -119,15 +119,15 @@ I _ { \text{lattice} } = \sum _ { n = 1 } ^ { \infty } \frac{1}{n ^ { 2 }} = \fr
 \]
 Remarkably, this is the exact same lattice reaction factor \( 1/24 \) that appears in the proton-to-electron mass ratio \( m_p / m_e = 6 \pi^5 ( 1 - \alpha / 24 ) \), demonstrating profound mathematical consistency across the universal field engine.
 
-=== Physical Coupling Relation and Closed Rational Form
+=== Physical Coupling Relation and Closed Form
 
 The interaction between the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } \) and the discrete lattice reaction determines the physical inverse coupling constant:
 \[
-\alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} = \frac{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1}{24 \alpha _ { 0 } ^ { - 1 }}
+\alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }}
 \]
-Taking the reciprocal yields the fine-structure constant \( \alpha \) in exact closed rational form:
+Taking the reciprocal yields the fine-structure constant \( \alpha \):
 \[
-\alpha = \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1}
+\alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 }
 \]
 
 === Step-by-Step Numerical Evaluation
@@ -296,7 +296,7 @@ This derivation proves that “quantum physics” has nothing whatsoever to do w
 Having established the fundamental relations for \( \pi \) and \( \alpha \), all remaining physical constants of electrodynamics are expressed directly in terms of the true propagation velocity \( c \), unit action \( h \), and elementary charge \( e \).
 
 === Intrinsic Electromagnetic Wave Impedance (\( Z_0 \))
-\[ Z_0 = 2 \alpha R_K = 2 \alpha \left( \frac{h}{e ^ 2} \right) = \frac{2 h}{e ^ 2} \left[ \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1} \right] \]
+\[ Z_0 = 2 \alpha R_K = 2 \alpha \left( \frac{h}{e ^ 2} \right) = \frac{2 h}{e ^ 2} \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \]
 
 === Intrinsic Magnetic Permeability (\( \mu_0 \))
 Formulated strictly relative to true \( c \):
@@ -389,7 +389,7 @@ Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar mome
 //| Classical
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}\alpha \hfil \)
-| \( \displaystyle \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1} \quad \left( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \right) \)
+| \( \displaystyle \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \quad \left( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \right) \)
 //| Conformal phase action with discrete lattice reaction on \( \mathcal{G}_N \)
 //| _[smallcaps]#new formula#_
 
@@ -438,7 +438,7 @@ toroidal.
 
 By casting physical constants in terms of definite integrals and geometric ratios relative to the true propagation speed \( c \), the artificial division between mathematics and empirical physics dissolves:
 1. \( \pi \) is the definite integral of flat 1-dimensional curvature.
-2. \( \alpha \) is the exact rational invariant \( \alpha = \frac{24 \alpha _ { 0 } ^ { - 1 }}{24 ( \alpha _ { 0 } ^ { - 1 } ) ^ { 2 } - 1} \) combining the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) with discrete lattice reaction \( \frac{1}{24} \).
+2. \( \alpha \) is the exact geometric invariant \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \) combining the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) with discrete lattice reaction \( \frac{1}{24} \).
 3. \( m_p / m_e \) is the definite volume integral of the 5-dimensional conformal sphere.
 4. \( G \) is the classical wave-refractive coupling of the electromagnetic stress tensor scaled by \( c ^ 4 / E \).
 5. \( k_B \) and \( R \) are the geometric momentum flux ratios of the analytic ideal gas on the discrete m-resolution grid \( \mathcal{G}_N \).

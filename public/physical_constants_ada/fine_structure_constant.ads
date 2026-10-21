@@ -8,7 +8,6 @@ pragma ada_2022;
 -- mathematical form:
 --   alpha_0_inv = 4.0 * pi^3 + pi^2 + pi
 --   alpha_inv   = alpha_0_inv - 1.0 / (24.0 * alpha_0_inv)
---               = (24.0 * alpha_0_inv^2 - 1.0) / (24.0 * alpha_0_inv)
 --   alpha       = 1.0 / alpha_inv
 --   alpha     ~ 0.007297352535...
 --   alpha_inv ~ 137.03599973...
