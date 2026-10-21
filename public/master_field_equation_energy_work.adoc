@@ -1,0 +1,252 @@
+= Formulation of the Master Field Equation in Terms of Energy, Work, Position, and Time
+Frédéric Blondin Custer
+:doctype: article
+:stem: latexmath
+:toc: left
+:toc-title: Table of Contents
+:toclevels: 3
+:sectnums!:
+
+[preface]
+== Abstract
+Within the Counting-Iris Number System and Conformal Geometric Algebra (CGA) over canonical generators \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \), Maxwell's Master Field Equation \( D F = J \) is reformulated directly in terms of four observable physical primitives: Position \( \mathbf{x} \), Time \( t \), Energy \( u(\mathbf{x}, t) \) (the local energetic state stored in the field), and Work \( W \) (the dynamic transfer of energy between the field and matter or adjacent cells via direct local contact action). By evaluating the multivector Clifford product of the Master Field Equation with the field conjugate \( F ^ { \dagger } \), the complete electromagnetic and gravitational dynamics decouple into two mutually coupled balance relations:
+
+1. _The Scalar Energy-Work Conservation Law_:
+\[ \frac{\partial u(\mathbf{x}, t)}{\partial t} + \nabla \cdot \mathbf{S}(\mathbf{x}, t) + \dot{w}(\mathbf{x}, t) = 0 \]
+where \( u(\mathbf{x}, t) = \frac{1}{2} \varepsilon _ { 0 } \langle F F ^ { \dagger } \rangle = \frac{1}{2} \left( \varepsilon _ { 0 } | \mathbf{E} | ^ { 2 } + \frac{1}{\mu _ { 0 }} | \mathbf{B} | ^ { 2 } \right) \) represents the localized energy density of the field, \( \mathbf{S}(\mathbf{x}, t) = \frac{1}{\mu _ { 0 }} ( \mathbf{E} \times \mathbf{B} ) = c ^ { 2 } \mathbf{g}(\mathbf{x}, t) \) represents the energy flux density vector transporting stored work capacity across space per unit time, and \( \dot{w}(\mathbf{x}, t) = \mathbf{J}(\mathbf{x}, t) \cdot \mathbf{E}(\mathbf{x}, t) \) represents the rate of work transferred to matter per unit volume by direct contact stress.
+
+2. _The Vector Momentum-Stress and Contact Work Gradient Law_:
+\[ \nabla \cdot \mathbf{T}(\mathbf{x}, t) - \frac{1}{c ^ { 2 }} \frac{\partial \mathbf{S}(\mathbf{x}, t)}{\partial t} = \mathbf{f} _ { \text{contact} }(\mathbf{x}, t) = \nabla _ { \mathbf{x} } \left( \frac{\delta W}{\delta V} \right) \]
+where \( \mathbf{T}(\mathbf{x}, t) \) is the symmetric Maxwell stress tensor whose components describe the spatial distribution of anisotropic field energy density, and \( \mathbf{f} _ { \text{contact} } \) is the contact mechanical force density delivering spatial work per unit displacement.
+
+In Conformal Geometric Algebra, both sectors unite into a single rank-2 stress-energy multivector divergence operator \( D \cdot T = - \langle J F ^ { \dagger } \rangle _ 1 = - \left( \frac{\dot{w}}{c} \gamma _ 0 + \mathbf{f} _ { \text{contact} } \right) \), proving that the dynamics of physical reality are completely specified by the local gradients, fluxes, and direct contact exchanges of Energy and Work across Position and Time at finite propagation speed \( c \). All continuum abstractions are avoided: propagation proceeds across discrete multiscale m-resolution grids \( \mathcal{G}_N \) through finite duration \( \Delta t = \Delta x / c \), and statistical distributions of field microstates are determined by Jaynesian Maximum Entropy (MaxEnt) conditioned on energy expectation values.
+
+'''
+
+== 1. Introduction: Operational Primitives vs. Abstract Potentials
+
+In classical 19th- and 20th-century theoretical physics, electromagnetic theory is frequently obscured by unobservable mathematical scaffolding. Gauge potentials \( ( \phi, \mathbf{A} ) \), fictitious gauge freedoms (Coulomb, Lorenz, Lorenz-Weyl), and arbitrary coordinate frames are introduced to solve differential equations, creating an illusion that nature depends upon gauge choices. Furthermore, conventional physics often posits hypothetical point particles of zero spatial extent and an unphysical continuum of uncountably infinite points.
+
+When inspected from the standpoint of an engineer, draftsperson, or experimental architect working with a physical scale and calipers, physical measurements yield finite numbers at finite resolution. The fundamental observable quantities of physical nature are:
+
+1. _Position_ \( \mathbf{x} \): The spatial location determined by physical scale, calipers, or discrete coordinates on the m-resolution grid \( \mathcal{G}_N \).
+
+2. _Time_ \( t \): The chronological parameter measured by periodic oscillations or clock transitions, noting that all physical processes require finite duration.
+
+3. _Energy_ \( u(\mathbf{x}, t) \): The state function describing the work capacity stored locally within the universal electromagnetic field per unit volume.
+
+4. _Work_ \( W \) (and work rate density \( \dot{w} \)): The dynamic process function describing the transfer of energy between the field and matter (or between contiguous cells of the field) through direct local contact action.
+
+Energy is a property of the _state_ of the field at position \( \mathbf{x} \) and time \( t \). Work is a property of the _process_ by which that energy is transformed or transferred through finite displacement. 
+
+In this treatise, we show that the Master Field Equation of the Unified Field Theory:
+\[ D F = J \]
+can be formulated directly and completely in terms of Energy, Work, Position, and Time. This formulation is coordinate-free, eliminates unobservable gauge ambiguities, assumes causality strictly by direct contact, and respects the finite duration of all electromagnetic interactions propagating at speed \( c \).
+
+'''
+
+== 2. Conformal Geometric Algebra and the Master Field Equation
+
+The geometric framework of this analysis is Conformal Geometric Algebra (CGA), formulated over the canonical basis of six generators:
+\[ \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , \quad e _ \odot , e _ \infty \} \]
+where:
+* \( e _ 1 , e _ 2 , e _ 3 \) are Euclidean spatial vector directions satisfying \( e _ 1 ^ { 2 } = e _ 2 ^ { 2 } = e _ 3 ^ { 2 } = 1 \).
+* \( e _ 4 \) is the null causal time step generator satisfying \( e _ 4 ^ { 2 } = 0 \).
+* \( e _ \odot \) is the point at the origin (solar circle-dot symbol), representing gravitational weight and radial origin, satisfying \( e _ \odot ^ { 2 } = 0 \).
+* \( e _ \infty \) is the point at infinity, satisfying \( e _ \infty ^ { 2 } = 0 \).
+* The conformal boundary pair is paired by the canonical non-diagonal metric:
+\[ e _ \odot \cdot e _ \infty = -1 \]
+
+In this algebra, spherical wavefronts, planar boundaries, and point-pairs are first-class geometric blade elements. A spacetime position vector is represented in CGA as:
+\[ x = \mathbf{x} + c t e _ 4 + \frac{1}{2} | \mathbf{x} | ^ { 2 } e _ \infty + e _ \odot \]
+
+The vector derivative operator \( D \) on the discrete lattice \( \mathcal{G}_N \) is defined by:
+\[ D = \sum _ { a } e ^ { a } \partial _ { a } = \nabla + \frac{1}{c} e _ 4 \frac{\partial}{\partial t} \]
+and the total electromagnetic field multivector \( F \) combines the electric field vector \( \mathbf{E} \) and magnetic bivector \( I c \mathbf{B} \) into a unified grade-2 bivector:
+\[ F = \mathbf{E} + I c \mathbf{B} \]
+where \( I = e _ 1 e _ 2 e _ 3 \) is the spatial pseudoscalar.
+
+The Master Field Equation:
+\[ D F = J \]
+unifies the four classical relations into a single geometric equation. The source multivector \( J = c \rho - \mathbf{J} \) represents the localized charge density \( \rho \) and conduction current density \( \mathbf{J} \) arising from circulating wave packets of matter.
+
+'''
+
+== 3. Derivation of the Energy-Work Balance (Scalar Sector)
+
+To express the Master Field Equation in terms of Energy, Work, Position, and Time, we compute the multivector Clifford product of the conjugate field \( F ^ { \dagger } \) with \( D F = J \):
+\[ F ^ { \dagger } ( D F ) = F ^ { \dagger } J \]
+
+Using the reversion property of geometric products and separating grades, we extract the scalar projection \( \langle \dots \rangle \):
+\[ \langle F ^ { \dagger } ( D F ) \rangle = \langle F ^ { \dagger } J \rangle \]
+
+We examine the right-hand side first. Substituting \( F = \mathbf{E} + I c \mathbf{B} \) and \( J = c \rho - \mathbf{J} \):
+\[ F ^ { \dagger } = - \mathbf{E} + I c \mathbf{B} \]
+\[ \langle F ^ { \dagger } J \rangle = \langle ( - \mathbf{E} + I c \mathbf{B} ) ( c \rho - \mathbf{J} ) \rangle = \mathbf{E} \cdot \mathbf{J} \]
+
+The term \( \mathbf{E} \cdot \mathbf{J} \) is precisely the rate of mechanical work done per unit volume by the electromagnetic field on the localized charges and currents of matter:
+\[ \dot{w}(\mathbf{x}, t) = \frac{\delta W}{\delta V \, dt} = \mathbf{E}(\mathbf{x}, t) \cdot \mathbf{J}(\mathbf{x}, t) \]
+
+Next, we evaluate the left-hand side \( \langle F ^ { \dagger } ( D F ) \rangle \). Decomposing the derivative operator \( D = \frac{1}{c} \partial _ t + \nabla \):
+\[ \langle F ^ { \dagger } \frac{1}{c} \frac{\partial F}{\partial t} \rangle = \frac{1}{2 c} \frac{\partial}{\partial t} \langle F ^ { \dagger } F \rangle \]
+Since \( \langle F ^ { \dagger } F \rangle = | \mathbf{E} | ^ { 2 } + c ^ { 2 } | \mathbf{B} | ^ { 2 } \), multiplying by the field permittivity \( \varepsilon _ { 0 } \) yields:
+\[ \frac{1}{2} \varepsilon _ { 0 } \langle F ^ { \dagger } F \rangle = \frac{1}{2} \varepsilon _ { 0 } | \mathbf{E} | ^ { 2 } + \frac{1}{2 \mu _ { 0 }} | \mathbf{B} | ^ { 2 } = u(\mathbf{x}, t) \]
+where \( u(\mathbf{x}, t) \) is the _Energy density_ of the field at position \( \mathbf{x} \) and time \( t \).
+
+The spatial derivative term expands to:
+\[ \langle F ^ { \dagger } ( \nabla F ) \rangle = \frac{1}{c} \nabla \cdot \mathbf{S}(\mathbf{x}, t) \]
+where \( \mathbf{S}(\mathbf{x}, t) \) is the _Energy flux density_ vector:
+\[ \mathbf{S}(\mathbf{x}, t) = \frac{1}{\mu _ { 0 }} ( \mathbf{E} \times \mathbf{B} ) = c ^ { 2 } \mathbf{g}(\mathbf{x}, t) \]
+which represents the rate of energy (stored work capacity) transported across an area per unit time.
+
+Assembling these components, we obtain the fundamental Energy-Work balance equation:
+\[ \frac{\partial u(\mathbf{x}, t)}{\partial t} + \nabla \cdot \mathbf{S}(\mathbf{x}, t) + \dot{w}(\mathbf{x}, t) = 0 \]
+
+In integral form over any finite spatial domain \( \mathcal{V} \) with closed boundary surface \( \partial \mathcal{V} \):
+\[ \frac{d}{dt} \int _ { \mathcal{V} } u(\mathbf{x}, t) \, d V + \oint _ { \partial \mathcal{V} } \mathbf{S}(\mathbf{x}, t) \cdot d \mathbf{A} + \frac{d W _ { \text{matter} }}{d t} = 0 \]
+
+Every single term in this relation is formulated strictly in terms of Energy \( u \), Work \( W \), Position \( \mathbf{x} \), and Time \( t \):
+* \( \int _ { \mathcal{V} } u \, d V \): The total Energy stored in the field within domain \( \mathcal{V} \).
+* \( \oint _ { \partial \mathcal{V} } \mathbf{S} \cdot d \mathbf{A} \): The rate of Energy transported through the boundary surface by propagating wave packets.
+* \( \frac{d W _ { \text{matter} }}{d t} \): The rate of Work performed on matter via direct contact forces.
+
+'''
+
+== 4. Spatial Gradients, Stress Tensor, and Contact Forces (Vector Sector)
+
+The scalar sector accounts for the time rate of change of Energy and the scalar rate of Work delivery. The spatial vector sector accounts for the spatial gradients of Energy and the directional distribution of contact forces.
+
+In Conformal Geometric Algebra, the symmetric stress-energy multivector tensor \( T(n) \) is defined for any direction vector \( n \) by:
+\[ T(n) = - \frac{1}{2} \varepsilon _ { 0 } F n F ^ { \dagger } \]
+
+When evaluated on the temporal unit vector \( \gamma _ 0 = \frac{1}{c} \partial _ t \), the tensor yields the energy density and energy flux:
+\[ T(\gamma _ 0) = u(\mathbf{x}, t) \gamma _ 0 + \frac{1}{c} \mathbf{S}(\mathbf{x}, t) \]
+
+Evaluating the divergence of the stress-energy tensor across all coordinates yields the vector force density:
+\[ D \cdot T = - \langle J F ^ { \dagger } \rangle _ 1 = - \left( \frac{\dot{w}}{c} \gamma _ 0 + \mathbf{f} _ { \text{contact} } \right) \]
+where \( \mathbf{f} _ { \text{contact} } \) is the Lorentz contact force density:
+\[ \mathbf{f} _ { \text{contact} }(\mathbf{x}, t) = \rho(\mathbf{x}, t) \mathbf{E}(\mathbf{x}, t) + \mathbf{J}(\mathbf{x}, t) \times \mathbf{B}(\mathbf{x}, t) \]
+
+Expanding the spatial components of the tensor divergence:
+\[ \nabla \cdot \mathbf{T}(\mathbf{x}, t) - \frac{1}{c ^ { 2 }} \frac{\partial \mathbf{S}(\mathbf{x}, t)}{\partial t} = \mathbf{f} _ { \text{contact} }(\mathbf{x}, t) \]
+where \( \mathbf{T}(\mathbf{x}, t) \) is the Maxwell stress tensor:
+\[ T _ { i j } = \varepsilon _ { 0 } \left( E _ i E _ j - \frac{1}{2} \delta _ { i j } | \mathbf{E} | ^ { 2 } \right) + \frac{1}{\mu _ { 0 }} \left( B _ i B _ j - \frac{1}{2} \delta _ { i j } | \mathbf{B} | ^ { 2 } \right) \]
+
+Notice the physical dimensions of the components of \( \mathbf{T} \):
+\[ [ T _ { i j } ] = \frac{\text{N}}{\text{m} ^ { 2 }} = \frac{\text{J}}{\text{m} ^ { 3 }} \]
+The stress tensor is physically an _anisotropic energy density_ tensor. The diagonal elements \( T _ { i i } \) represent the mechanical pressure (energy density per unit length) exerted along coordinate axis \( i \), while the off-diagonal elements represent shear stress (transversal work capacity per unit area).
+
+Furthermore, the mechanical contact force density \( \mathbf{f} _ { \text{contact} } \) is the spatial gradient of work per unit volume:
+\[ \mathbf{f} _ { \text{contact} } \cdot d \mathbf{x} = d \left( \frac{\delta W}{\delta V} \right) \]
+
+Thus the vector balance equation expresses the exact distribution of spatial Work gradients:
+\[ \mathbf{f} _ { \text{contact} } = \nabla _ { \mathbf{x} } \left( \frac{\delta W}{\delta V} \right) = \nabla \cdot \mathbf{T}(\mathbf{x}, t) - \frac{1}{c ^ { 2 }} \frac{\partial \mathbf{S}(\mathbf{x}, t)}{\partial t} \]
+
+Both the scalar and vector sectors are now formulated entirely in terms of Energy densities, Energy fluxes, Work transfers, and spatial Work gradients across Position and Time.
+
+'''
+
+== 5. Complete Formulation in Terms of the Four Primitives
+
+We can now state the Master Field Equation directly in its integrated and localized forms using strictly Position, Time, Energy, and Work:
+
+[cols="1,3",options="header"]
+|===
+| Primitive | Physical Role in the Master Field Equation
+| *Position* \( \mathbf{x} \) | Spatial location on grid \( \mathcal{G}_N \); defines the boundaries of integration and gradient directions \( \nabla _ { \mathbf{x} } \).
+| *Time* \( t \) | Chronological duration parameter; governs finite propagation speed \( c = \Delta x / \Delta t \).
+| *Energy* \( u(\mathbf{x}, t) \) | State function of the field; stores work capacity per unit volume \( u = \frac{1}{2} \varepsilon _ { 0 } \langle F F ^ { \dagger } \rangle \).
+| *Work* \( W(\mathbf{x}, t) \) | Dynamic process function; characterizes the direct contact exchange of energy between field and matter \( \dot{w} = \mathbf{J} \cdot \mathbf{E} \), \( \mathbf{f} = \nabla _ { \mathbf{x} } ( \delta W / \delta V ) \).
+|===
+
+=== Localized Form
+For every point \( ( \mathbf{x}, t ) \) in spacetime:
+\[
+\begin{cases}
+\dfrac{\partial u(\mathbf{x}, t)}{\partial t} + \nabla \cdot \mathbf{S}(\mathbf{x}, t) + \dfrac{\partial w(\mathbf{x}, t)}{\partial t} = 0 & \text{(Scalar Sector: Energy Conservation)} \\
+\nabla \cdot \mathbf{T}(\mathbf{x}, t) - \dfrac{1}{c ^ { 2 }} \dfrac{\partial \mathbf{S}(\mathbf{x}, t)}{\partial t} = \nabla _ { \mathbf{x} } w _ { \text{contact} }(\mathbf{x}, t) & \text{(Vector Sector: Work Gradient and Stress)}
+\end{cases}
+\]
+
+=== Conformal Multivector Form
+In Conformal Geometric Algebra, these two coupled balance relations combine into the single multivector equation:
+\[ D \cdot T = - \left( \frac{1}{c} \frac{\partial w}{\partial t} \gamma _ 0 + \nabla _ { \mathbf{x} } w _ { \text{contact} } \right) \]
+where \( T = T(x) \) is the symmetric energy-stress tensor multivector, whose temporal contraction yields the field energy density and energy flux, and whose divergence yields the total spatial and temporal exchange of Work.
+
+'''
+
+== 6. Gravitation as Wave Refraction and Energy Density Gradients
+
+In the Unified Field Theory, gravitation is not a separate fundamental force, nor is it the geometric curvature of an empty continuum. Matter consists of localized circulations of electromagnetic wave energy:
+\[ E = m c ^ { 2 } \]
+The presence of localized field energy modifies the local propagation speed of the surrounding electromagnetic field, creating a refractive index gradient:
+\[ n(\mathbf{x}) = 1 + \frac{2 G m}{c ^ { 2 } | \mathbf{x} |} = 1 + \frac{2 U _ { \text{grav} }(\mathbf{x})}{c ^ { 2 }} \]
+
+The refractive wave deflection of wavefronts creates an effective contact stress:
+\[ \mathbf{g} _ { \text{grav} }(\mathbf{x}) = - \frac{c ^ { 2 }}{2} \nabla \ln n(\mathbf{x}) \approx - \frac{1}{2 u _ { \text{field} }} \nabla u(\mathbf{x}) \]
+
+When expressed in terms of Energy and Work:
+* The gravitational attraction experienced by a localized body of mass \( m \) is the spatial gradient of the interaction Energy:
+\[ \mathbf{F} _ { \text{grav} } = - \nabla E _ { \text{field} } = \nabla W _ { \text{grav} } \]
+* The work performed by gravitation during a displacement \( \Delta \mathbf{x} \) represents direct conversion of field Energy into kinetic energy of circulation:
+\[ \Delta W = \int \mathbf{F} _ { \text{grav} } \cdot d \mathbf{x} = - \Delta E _ { \text{field} } \]
+
+Thus gravitation and electromagnetism share identical foundations when formulated in terms of Energy, Work, Position, and Time: both are manifestations of the spatial gradients and temporal fluxes of field energy acting by direct contact.
+
+'''
+
+== 7. Discrete Multiscale Grid Formulation and Direct Contact Action
+
+Conventional differential calculus posits limits where \( \Delta x \to 0 \) and \( \Delta t \to 0 \). In physical actuality, space and matter are structured upon discrete multiscale resolution grids \( \mathcal{G}_N \). The static notation “lim” is strictly replaced by dynamic finite increments:
+\[ \Delta x \ge \ell _ { \text{min} }, \qquad \Delta t \ge \frac{\ell _ { \text{min} }}{c} \]
+
+On the discrete grid, the energy-work balance is formulated as exact finite differences across adjacent cells:
+\[ \frac{u(\mathbf{x}, t + \Delta t) - u(\mathbf{x}, t)}{\Delta t} + \sum _ { k = 1 } ^ { 3 } \frac{S _ k(\mathbf{x} + \frac{1}{2}\Delta x _ k \mathbf{e} _ k, t) - S _ k(\mathbf{x} - \frac{1}{2}\Delta x _ k \mathbf{e} _ k, t)}{\Delta x _ k} + \dot{w}(\mathbf{x}, t) = 0 \]
+
+This discrete equation possesses decisive operational advantages:
+1. _Strict Direct Contact Topology_: Every exchange of energy occurs solely between immediately adjacent lattice cells on \( \mathcal{G}_N \). There is zero telepathic action-at-a-distance.
+2. _Finite Interaction Duration_: The propagation of energy from cell \( \mathbf{x} _ i \) to cell \( \mathbf{x} _ { i+1 } \) requires finite time \( \Delta t = \Delta x / c \). Never is any interaction instantaneous.
+3. _Elimination of Continuum Singularities_: Because \( \Delta x \) is bounded below by the discrete m-resolution scale, self-energy integrals of point charges do not diverge to infinity. The energy density \( u(\mathbf{x}, t) \) remains strictly finite everywhere.
+
+'''
+
+== 8. Jaynesian Maximum Entropy and Statistical Inference
+
+When dealing with ensembles of discrete field configurations where exact microscopic state information is unavailable, knowledge must be obtained by inductive inference from testable expectation values. 
+
+In Jaynesian probability theory, probability distributions represent states of incomplete knowledge rather than physical frequencies of an imaginary ensemble. The scientific method consists of maximizing information entropy \( S \) subject to known physical constraints:
+\[ S = - k _ B \sum _ { i } p _ i \ln p _ i \]
+
+When the Master Field Equation is expressed in terms of Energy and Work, the testable information consists of:
+1. The expectation value of total field Energy:
+\[ \langle U \rangle = \sum _ { i } p _ i E _ i \]
+2. The expectation value of Work transferred to or from external boundaries:
+\[ \langle W \rangle = \sum _ { i } p _ i W _ i \]
+
+Maximizing entropy under these constraints yields the canonical distribution:
+\[ p _ i = \frac{1}{Z} \exp\left( - \beta E _ i - \lambda W _ i \right) \]
+where \( \beta = 1 / (k_B T) \) is the Lagrange multiplier conjugate to Energy, and \( \lambda \) is the multiplier conjugate to Work.
+
+Knowledge derived through Jaynesian MaxEnt inference constitutes rigorous scientific method, whereas relying on consensus of peers is unscientific and authoritarian. The arbiter of veracity is always the individual reader evaluating the evidence and deductive consistency of the mathematical derivations.
+
+'''
+
+== 9. Conclusion Pending New Information
+
+[#conclusion-pending-new-information-master-field-equation]
+[CONCLUSION PENDING NEW INFORMATION]
+.Formulation of the Master Field Equation in Terms of Energy, Work, Position, and Time
+====
+From the axiomatic foundations of Conformal Geometric Algebra over generators \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \) and direct contact causality on discrete resolution grids \( \mathcal{G}_N \), the following conclusions are established pending new empirical information:
+
+1. Maxwell's Master Field Equation \( D F = J \) is equivalent to the coupled system of scalar energy conservation and vector work-gradient relations:
+\[ \frac{\partial u(\mathbf{x}, t)}{\partial t} + \nabla \cdot \mathbf{S}(\mathbf{x}, t) + \frac{\partial w(\mathbf{x}, t)}{\partial t} = 0 \]
+\[ \nabla \cdot \mathbf{T}(\mathbf{x}, t) - \frac{1}{c ^ { 2 }} \frac{\partial \mathbf{S}(\mathbf{x}, t)}{\partial t} = \nabla _ { \mathbf{x} } w _ { \text{contact} }(\mathbf{x}, t) \]
+wherein the state of the field is described by Energy density \( u(\mathbf{x}, t) \), and the dynamic exchange with matter is described by Work \( W(\mathbf{x}, t) \).
+
+2. In Conformal Geometric Algebra, this system is encapsulated in the single rank-2 stress-energy multivector relation:
+\[ D \cdot T = - \left( \frac{\dot{w}}{c} \gamma _ 0 + \nabla _ { \mathbf{x} } w _ { \text{contact} } \right) \]
+eliminating unobservable gauge potentials \( ( \phi, \mathbf{A} ) \) and establishing that physical dynamics are described entirely by the four primitives: Position, Time, Energy, and Work.
+
+3. All physical interactions occur by direct contact across adjacent cells with finite propagation speed \( c \) and finite duration, fully compatible with discrete multiscale analysis and Jaynesian Maximum Entropy inference.
+====

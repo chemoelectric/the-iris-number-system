@@ -257,7 +257,7 @@ This section demonstrates that classical mechanical laws—including field momen
 [THEOREM]
 .Theorem: Derivation of Classical Field Momentum Laws from the Master Field Equation
 ====
-In any source-free spatial region where \( J = \mathbf { 0 } \), a localized self-trapped multivector field packet governed by \( D F = \mathbf { 0 } \) satisfies exact field momentum conservation, yielding the classical principles of inertia, force-momentum rate, and action-reaction equality.
+In any source-free spatial region where \( J = \mathbf { 0 } \), a localized self-trapped multivector field packet described by \( D F = \mathbf { 0 } \) satisfies exact field momentum conservation, yielding the classical principles of inertia, force-momentum rate, and action-reaction equality.
 
 *Proof:*
 
@@ -267,6 +267,25 @@ In any source-free spatial region where \( J = \mathbf { 0 } \), a localized sel
 
 . **Action and Reaction**: For two interacting localized field packets \( F _ 1 \) and \( F _ 2 \) in a closed grid domain \( \Omega \), global stress-energy conservation enforces \( \int _ { \Omega } \nabla \cdot ( T _ 1 + T _ 2 ) \, dV = \mathbf { 0 } \), establishing that \( F _ { 12 } = - F _ { 21 } \). \( \square \)
 ====
+
+=== Formulation of the Master Field Equation in Terms of Energy, Work, Position, and Time
+
+The Master Field Equation \( D F = J \) can be formulated directly in terms of four physical primitives: Position \( \mathbf{x} \), Time \( t \), Energy \( u(\mathbf{x}, t) \) (stored field state), and Work \( W \) (dynamic energy transfer by direct contact).
+
+Evaluating the multivector Clifford product \( F ^ { \dagger } ( D F ) = F ^ { \dagger } J \) and extracting the scalar part yields exact local energy-work conservation:
+\[ \frac{\partial u(\mathbf{x}, t)}{\partial t} + \nabla \cdot \mathbf{S}(\mathbf{x}, t) + \dot{w}(\mathbf{x}, t) = 0 \]
+where:
+* \( u(\mathbf{x}, t) = \frac{1}{2} \varepsilon _ 0 \langle F F ^ { \dagger } \rangle = \frac{1}{2} ( \varepsilon _ 0 | \mathbf{E} | ^ 2 + \mu _ 0 ^ { - 1 } | \mathbf{B} | ^ 2 ) \) is the local _Energy density_ of the field.
+* \( \mathbf{S}(\mathbf{x}, t) = \mu _ 0 ^ { - 1 } ( \mathbf{E} \times \mathbf{B} ) = c ^ 2 \mathbf{g}(\mathbf{x}, t) \) is the _Energy flux density_ vector transporting work capacity across space per unit time.
+* \( \dot{w}(\mathbf{x}, t) = \mathbf{J}(\mathbf{x}, t) \cdot \mathbf{E}(\mathbf{x}, t) \) is the rate of _Work_ transferred to matter per unit volume by direct contact stress.
+
+Evaluating the vector components of the stress-energy tensor divergence \( D \cdot T = - \langle J F ^ { \dagger } \rangle _ 1 \) yields the spatial distribution of Work gradients and contact forces:
+\[ \nabla \cdot \mathbf{T}(\mathbf{x}, t) - \frac{1}{c ^ 2} \frac{\partial \mathbf{S}(\mathbf{x}, t)}{\partial t} = \mathbf{f} _ { \text{contact} }(\mathbf{x}, t) = \nabla _ { \mathbf{x} } \left( \frac{\delta W}{\delta V} \right) \]
+where \( \mathbf{T}(\mathbf{x}, t) \) is the symmetric Maxwell stress tensor representing spatial distributions of anisotropic field energy density.
+
+In Conformal Geometric Algebra over generators \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \), both sectors unite into the single stress-energy multivector divergence:
+\[ D \cdot T = - \left( \frac{\dot{w}}{c} \gamma _ 0 + \nabla _ { \mathbf{x} } w _ { \text{contact} } \right) \]
+proving that the dynamics of physical reality are completely specified by the local gradients, fluxes, and direct contact exchanges of Energy and Work across Position and Time at finite propagation speed \( c \).
 
 [#chap-the-principle-of-least-action-and-variational-principles-in-multivector-mechanics]
 

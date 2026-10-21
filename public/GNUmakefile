@@ -21,6 +21,8 @@ VOLUMES += Iris_Number_System-Reference_Book
 PAPERS =
 PAPERS += m_res_numerical_analysis_and_statistical_mechanics
 PAPERS += closed_form_geometric_ratios_physical_constants
+PAPERS += new_constants_and_discrete_ideal_gas
+PAPERS += master_field_equation_energy_work
 
 default: all
 all: $(addsuffix .pdf, $(VOLUMES)) $(addsuffix .pdf, $(PAPERS))
