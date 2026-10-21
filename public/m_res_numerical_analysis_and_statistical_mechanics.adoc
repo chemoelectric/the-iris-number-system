@@ -52,7 +52,7 @@ Each discrete lattice position is addressed by an integer coordinate vector \( \
 [DEFINITION]
 .Definition: Aperture-Exact Discrete Multivector Difference Operators
 ====
-Let \( \Phi: \mathcal{G}_N ^ {(m)} \to Cl(4,1,1) \) be a discrete multivector field configuration.
+Let \( \Phi: \mathcal{G}_N ^ {(m)} \to \mathbb{G} \) be a discrete multivector field configuration in Conformal Geometric Algebra.
 The discrete spatial directional difference operator \( \Delta_k ^ {(m)} \) along the spatial basis vector \( e_k \) (\( k \in \{1, 2, 3\} \)) is defined by the central rational difference:
 \[ \Delta_k ^ {(m)} \Phi(\mathbf{x}) = \frac{\Phi(\mathbf{x} + \Delta x_{(m)} e_k) - \Phi(\mathbf{x} - \Delta x_{(m)} e_k)}{2 \Delta x_{(m)}} \]
 
@@ -67,11 +67,11 @@ which is an exact, rational multivector mapping on \( \mathcal{G}_N ^ {(m)} \) w
 ====
 Let \( \Phi ^ {(m)} \) and \( \Phi ^ {(m+1)} \) denote discrete multivector field configurations on nested grids \( \mathcal{G}_N ^ {(m)} \subset \mathcal{G}_N ^ {(m+1)} \), and let \( \mathcal{P}_m ^ {m+1}: \mathcal{G}_N ^ {(m+1)} \to \mathcal{G}_N ^ {(m)} \) denote the canonical projection operator.
 If the multivector field satisfies the bounded aperture variation condition:
-\[ \max _ {\mathbf{x} \in \mathcal{G} _ N ^ {(m)}} \left\| \Phi ^ {(m+1)}(\mathbf{x}) - \Phi ^ {(m)}(\mathbf{x}) \right\| _ {Cl} \le C \cdot 2 ^ {-(m \alpha)} \]
+\[ \max _ {\mathbf{x} \in \mathcal{G} _ N ^ {(m)}} \left\| \Phi ^ {(m+1)}(\mathbf{x}) - \Phi ^ {(m)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le C \cdot 2 ^ {-(m \alpha)} \]
 for positive constants \( C < \infty \) and \( \alpha \ge 1 \), then for any operational tolerance \( \epsilon _ {\text{res}} = 2 ^ {-M} \), there exists a finite integer resolution level:
 \[ m ^ \ast = \left\lceil \frac{1}{\alpha} \log _ 2 \left( \frac{C}{\epsilon _ {\text{res}}} \right) \right\rceil < \infty \]
 such that for all resolution levels \( m \ge m ^ \ast \), the field values are identically stable within the operational aperture:
-\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {Cl} \le \epsilon _ {\text{res}} \]
+\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le \epsilon _ {\text{res}} \]
 without requiring an unphysical infinite-resolution limit.
 
 *Proof:*
@@ -79,8 +79,8 @@ without requiring an unphysical infinite-resolution limit.
 1. Consider the telescopic expansion of the multivector difference across successive nested resolution levels:
 \[ \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) = \sum _ {j=m ^ \ast} ^ {m-1} \left( \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right) \]
 
-2. Applying the triangle inequality for the multivector norm in \( Cl(4,1,1) \):
-\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {Cl} \le \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {Cl} \]
+2. Applying the triangle inequality for the multivector norm in Conformal Geometric Algebra:
+\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {\mathcal{I}} \]
 
 3. Substituting the bounded aperture variation hypothesis:
 \[ \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {Cl} \le C \sum _ {j=m ^ \ast} ^ {m-1} 2 ^ {-j \alpha} = C \cdot 2 ^ {-m ^ \ast \alpha} \sum _ {k=0} ^ {m - 1 - m ^ \ast} 2 ^ {-k \alpha} \]
@@ -246,7 +246,7 @@ and \( \lambda _ r \) are Lagrange multipliers determined deductively by:
 
 In the Iris unified field theory, the fundamental law of physics is the Master Field Equation:
 \[ D F = J \]
-formulated in the Clifford geometric algebra \( Cl(4,1,1) \) with real-valued components.
+formulated in Conformal Geometric Algebra (CGA) over canonical basis \( \{ e_1, e_2, e_3, e_4, e_\odot, e_\infty \} \) with real-valued components.
 Here, \( F \) is the complete multivector field containing scalar, vector, bivector, trivector, and pseudoscalar components, \( D \) is the geometric derivative, and \( J \) is the multivector source current. This Master Field Equation amounts to Maxwell’s equations with geometric constraints required by the Michelson-Morley experimental result. From it can be derived not General Relativity, which is incorrect, but instead Gauss’s theory of gravity. The two “nuclear forces” are found to be mistakes.
 
 We wish to treat this Master Field Equation as a statistical mechanical system.
@@ -262,10 +262,10 @@ Instead, one must _make deductions_ about the motions of particles and field ker
 [DEFINITION]
 .Definition: Multivector Energy-Momentum Flux Tensor
 ====
-Let \( F \in Cl(4,1,1) \) be the multivector electromagnetic-gravitational field satisfying \( D F = J \) on the discrete lattice \( \mathcal{G} _ N ^ {(m)} \).
+Let \( F \) be the multivector electromagnetic-gravitational field satisfying \( D F = J \) in Conformal Geometric Algebra on the discrete lattice \( \mathcal{G} _ N ^ {(m)} \).
 The symmetric multivector energy-momentum-stress tensor \( T(a) \) acting on an arbitrary directional vector \( a \) is defined by:
 \[ T(a) = - \frac{1}{2} \left\langle F a \widetilde{F} \right\rangle _ 1 \]
-where \( \widetilde{F} \) denotes the Clifford reversion of \( F \), and \( \langle \dots \rangle _ 1 \) denotes the vector projection in \( Cl(4,1,1) \).
+where \( \widetilde{F} \) denotes the geometric reversion of \( F \), and \( \langle \dots \rangle _ 1 \) denotes the vector projection in Conformal Geometric Algebra.
 The local divergence of \( T \) on the discrete lattice satisfies the exact conservation law:
 \[ D \cdot T = \langle J \widetilde{F} \rangle _ 1 \]
 representing the direct contact momentum and energy transfer between field fluxes and localized currents.

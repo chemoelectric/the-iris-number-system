@@ -14,21 +14,14 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
   const E_EXACT = 1.602176634e-19; // C
   const KB_EXACT = 1.380649e-23; // J/K
 
-  // Fine-structure constant alpha from toroidal vortex aspect ratio
-  const K0_SQ = 1.0 - 1.0 / (4.0 * Math.PI * Math.PI);
-  // Elliptic hypergeometric series for alpha
-  let alphaSum = 0.25;
-  let term = 0.25;
-  for (let n = 0; n < 30; n++) {
-    const ratio = Math.pow((2 * n + 1) / (2 * n + 2), 2) * K0_SQ;
-    term *= ratio;
-    alphaSum += term;
-  }
-  const ALPHA = alphaSum;
+  // Fine-structure constant alpha as 5D bounded domain invariant in Conformal Geometric Algebra
+  // alpha = (9 / (8 * pi^4)) * (pi^5 / 1920)^(1/4)
+  const PI_4 = Math.pow(Math.PI, 4);
+  const PI_5 = Math.pow(Math.PI, 5);
+  const ALPHA = (9.0 / (8.0 * PI_4)) * Math.pow(PI_5 / 1920.0, 0.25);
   const INV_ALPHA = 1.0 / ALPHA;
 
   // Proton-to-electron mass ratio
-  const PI_5 = Math.pow(Math.PI, 5);
   const RECOIL = 1.0 - ALPHA / 24.0 + (ALPHA * ALPHA) / Math.PI;
   const MP_OVER_ME = 6.0 * PI_5 * RECOIL;
 
@@ -63,7 +56,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
               Fundamental Physical Constants on Discrete Resolution Grids
             </h2>
             <p className="text-sm text-slate-400 mt-1 max-w-3xl">
-              Fundamental constants evaluated as exact geometric definite integrals in \( Cl(4,1,1) \) relative to true speed \( c \).
+              Fundamental constants evaluated as exact geometric definite integrals in Conformal Geometric Algebra (CGA) relative to true speed \( c \).
               The precision of Newton's gravitational constant \( G \) is directly bounded by the caliper measurement of the Planck mass unit.
             </p>
           </div>
@@ -175,7 +168,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
                 <div>
                   <div className="text-xs font-mono text-indigo-300">Fine-Structure Constant \( \alpha \)</div>
                   <div className="text-[11px] text-slate-500 font-mono">
-                    Toroidal vortex elliptic integral: \( \alpha = \frac&#123;1&#125;&#123;4&#125; \sum [\frac&#123;(2n)!&#125;&#123;2^{'{'}2n{'}'}(n!)^2&#125;]^2 k_0^{'{'}2n{'}'} \)
+                    Conformal invariant: \( \alpha = \frac&#123;9&#125;&#123;8 \pi^4&#125; (\frac&#123;\pi^5&#125;&#123;1920&#125;)^&#123;1/4&#125; \)
                   </div>
                 </div>
                 <div className="text-right font-mono">

@@ -17,7 +17,7 @@ Operational formulation of classical Euclidean geometry as an exact algebraic ta
 
 ==== The Tautological Nature of Geometric Axiomatics
 
-Classical Euclidean geometry, when stripped of continuum idealizations and unmeasurable infinite point sets, reveals its true identity as a closed, operational **tautological system**.
+Classical Euclidean geometry, when stripped of continuum idealizations and unmeasurable infinite point sets, reveals its true identity as a closed, operational _tautological system_.
 
 In this formulation, geometric primitives—points, directed line segments, angles, directed areas, and oriented volumes—are not mysterious entities with zero spatial extent, but operational multivector measurements within discrete partition grids \( \mathcal { G } _ N \).
 
@@ -27,11 +27,11 @@ Every classical geometric relation (such as the Pythagorean relation, Thales's r
 
 Let \( \mathcal { G } _ N \) denote a discrete rational partition grid spanned by orthogonal basis vectors \( e _ 1 , e _ 2 \) satisfying \( e _ 1 ^ 2 = e _ 2 ^ 2 = \mathbf { 1 } \) and \( e _ 1 e _ 2 = - e _ 2 e _ 1 \).
 
-* **Discrete Position Vectors**: A point in the plane is operationalized by a position vector \( p = x e _ 1 + y e _ 2 \in \mathcal { G } _ N \), where \( x , y \in \mathbb { Q } \).
-* **Directed Line Segments**: A directed segment from \( p _ 1 \) to \( p _ 2 \) is the vector difference \( v = p _ 2 - p _ 1 \).
-* **Inner Scalar Product**: Metric distance and orthogonality are governed by the symmetric scalar product:
+* _Discrete Position Vectors_: A point in the plane is operationalized by a position vector \( p = x e _ 1 + y e _ 2 \in \mathcal { G } _ N \), where \( x , y \in \mathbb { Q } \).
+* _Directed Line Segments_: A directed segment from \( p _ 1 \) to \( p _ 2 \) is the vector difference \( v = p _ 2 - p _ 1 \).
+* _Inner Scalar Product_: Metric distance and orthogonality are defined by the symmetric scalar product:
 \[ u \cdot v = \frac { 1 } { 2 } ( u v + v u ) \in \mathbb { Q } \mathbf { 1 } \]
-* **Directed Bivector Area**: Oriented planar area is governed by the anti-symmetric wedge product:
+* _Directed Bivector Area_: Oriented planar area is defined by the anti-symmetric wedge product:
 \[ u \wedge v = \frac { 1 } { 2 } ( u v - v u ) = ( u _ 1 v _ 2 - u _ 2 v _ 1 ) e _ 1 e _ 2 \]
 
 ==== Core Theorems of Euclidean Geometry as Multivector Tautologies
