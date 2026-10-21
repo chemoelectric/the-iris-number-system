@@ -2,13 +2,16 @@ pragma ada_2022;
 
 -- fine_structure_constant.ads
 --
--- computes the fine-structure constant alpha as the 5d bounded domain
--- invariant in conformal geometric algebra (cga).
+-- computes the fine-structure constant alpha from first principles
+-- of conformal geometric algebra (cga) and discrete lattice reaction.
 --
 -- mathematical form:
---   alpha = (9.0 / (8.0 * pi^4)) * (pi^5 / 1920.0)**(1/4)
---   alpha ~ 0.007297348130...
---   alpha^(-1) ~ 137.03608245...
+--   alpha_0_inv = 4.0 * pi^3 + pi^2 + pi
+--   alpha_inv   = alpha_0_inv - 1.0 / (24.0 * alpha_0_inv)
+--               = (24.0 * alpha_0_inv^2 - 1.0) / (24.0 * alpha_0_inv)
+--   alpha       = 1.0 / alpha_inv
+--   alpha     ~ 0.007297352535...
+--   alpha_inv ~ 137.03599973...
 
 generic
    type real_type is digits <>;

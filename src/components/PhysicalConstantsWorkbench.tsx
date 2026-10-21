@@ -14,12 +14,16 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
   const E_EXACT = 1.602176634e-19; // C
   const KB_EXACT = 1.380649e-23; // J/K
 
-  // Fine-structure constant alpha as 5D bounded domain invariant in Conformal Geometric Algebra
-  // alpha = (9 / (8 * pi^4)) * (pi^5 / 1920)^(1/4)
-  const PI_4 = Math.pow(Math.PI, 4);
+  // Fine-structure constant alpha from Conformal Geometric Algebra action and discrete lattice reaction
+  // alpha_0^(-1) = 4*pi^3 + pi^2 + pi
+  // alpha^(-1) = alpha_0^(-1) - 1 / (24 * alpha_0^(-1))
+  // alpha = 24 * alpha_0^(-1) / (24 * (alpha_0^(-1))^2 - 1)
+  const PI_2 = Math.PI * Math.PI;
+  const PI_3 = PI_2 * Math.PI;
   const PI_5 = Math.pow(Math.PI, 5);
-  const ALPHA = (9.0 / (8.0 * PI_4)) * Math.pow(PI_5 / 1920.0, 0.25);
-  const INV_ALPHA = 1.0 / ALPHA;
+  const ALPHA_0_INV = 4.0 * PI_3 + PI_2 + Math.PI;
+  const INV_ALPHA = ALPHA_0_INV - 1.0 / (24.0 * ALPHA_0_INV);
+  const ALPHA = 1.0 / INV_ALPHA;
 
   // Proton-to-electron mass ratio
   const RECOIL = 1.0 - ALPHA / 24.0 + (ALPHA * ALPHA) / Math.PI;
@@ -168,7 +172,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
                 <div>
                   <div className="text-xs font-mono text-indigo-300">Fine-Structure Constant \( \alpha \)</div>
                   <div className="text-[11px] text-slate-500 font-mono">
-                    Conformal invariant: \( \alpha = \frac&#123;9&#125;&#123;8 \pi^4&#125; (\frac&#123;\pi^5&#125;&#123;1920&#125;)^&#123;1/4&#125; \)
+                    Conformal phase & lattice reaction: \( \alpha^&#123;-1&#125; = \alpha_0^&#123;-1&#125; - \frac&#123;1&#125;&#123;24 \alpha_0^&#123;-1&#125;&#125; \)
                   </div>
                 </div>
                 <div className="text-right font-mono">
