@@ -17,8 +17,8 @@ This directory contains standalone, human-readable Ada 2022 packages for computi
    - Functions accept an explicit `relative_tolerance` parameter, terminating iterative series when the fractional step falls below the threshold.
 
 4. **Purely Structural and Geometric Relations**:
-   - Constants like the fine-structure constant \( \alpha \) are computed from the unperturbed conformal phase action \( \alpha_0^{-1} = 4\pi^3 + \pi^2 + \pi \) and discrete lattice reaction \( 1/24 \).
-   - The proton-to-electron mass ratio \( m_p / m_e \) is computed from the conformal \( 5 \)-sphere volume with discrete lattice boundary recoil.
+   - Constants like the fine-structure constant \( \alpha \) are computed from the unperturbed conformal phase action \( \alpha_0^{-1} = 4\pi^3 + \pi^2 + \pi \) and field boundary reaction \( 1/24 \).
+   - The proton-to-electron mass ratio \( m_p / m_e \) is computed from the conformal \( 5 \)-sphere volume with field boundary recoil.
    - Field standards (\( Z_0, \mu_0, \varepsilon_0 \)) are computed in closed form relative to true \( c \).
    - SI fundamental conversion constants (\( c, e, h, k_B \)) are provided in their exact defined integer/fractional metrological form.
 
@@ -28,7 +28,7 @@ This directory contains standalone, human-readable Ada 2022 packages for computi
 |:---|:---|:---|
 | `speed_of_light.ads/.adb` | \( c \) | Exact speed of electromagnetic influences (\( 299\,792\,458 \text{ m/s} \)) |
 | `circle_constant_pi.ads/.adb` | \( \pi \) | Brent-Salamin (Gauss-Legendre AGM) algorithm |
-| `fine_structure_constant.ads/.adb` | \( \alpha \) & \( 1/\alpha \) | Conformal phase action \( \alpha_0^{-1} = 4\pi^3 + \pi^2 + \pi \) with lattice reaction \( 1/24 \) |
+| `fine_structure_constant.ads/.adb` | \( \alpha \) & \( 1/\alpha \) | Conformal phase action \( \alpha_0^{-1} = 4\pi^3 + \pi^2 + \pi \) with field boundary reaction \( 1/24 \) |
 | `proton_electron_mass_ratio.ads/.adb` | \( m_p / m_e \) | Conformal 5-sphere volume \( 6\pi^5(1 - \alpha/24 + \alpha^2/\pi) \) |
 | `elementary_charge.ads/.adb` | \( e \) | Exact SI elementary charge (\( 1.602176634 \times 10^{-19} \text{ C} \)) |
 | `planck_constant.ads/.adb` | \( h \) & \( \hbar \) | Exact SI Planck constant (\( 6.62607015 \times 10^{-34} \text{ J}\cdot\text{s} \)) |

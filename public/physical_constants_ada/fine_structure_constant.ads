@@ -3,7 +3,7 @@ pragma ada_2022;
 -- fine_structure_constant.ads
 --
 -- computes the fine-structure constant alpha from first principles
--- of conformal geometric algebra (cga) and discrete lattice reaction.
+-- of conformal geometric algebra (cga) and field boundary reaction.
 --
 -- mathematical form:
 --   alpha_0_inv = 4.0 * pi^3 + pi^2 + pi

@@ -14,7 +14,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
   const E_EXACT = 1.602176634e-19; // C
   const KB_EXACT = 1.380649e-23; // J/K
 
-  // Fine-structure constant alpha from Conformal Geometric Algebra action and discrete lattice reaction
+  // Fine-structure constant alpha from Conformal Geometric Algebra action and field boundary reaction
   // alpha_0^(-1) = 4*pi^3 + pi^2 + pi
   // alpha^(-1) = alpha_0^(-1) - 1 / (24 * alpha_0^(-1))
   // alpha = 1 / alpha^(-1)
@@ -172,7 +172,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
                 <div>
                   <div className="text-xs font-mono text-indigo-300">Fine-Structure Constant \( \alpha \)</div>
                   <div className="text-[11px] text-slate-500 font-mono">
-                    Conformal phase & lattice reaction: \( \alpha^&#123;-1&#125; = \alpha_0^&#123;-1&#125; - \frac&#123;1&#125;&#123;24 \alpha_0^&#123;-1&#125;&#125; \)
+                    Conformal phase & field boundary reaction: \( \alpha^&#123;-1&#125; = \alpha_0^&#123;-1&#125; - \frac&#123;1&#125;&#123;24 \alpha_0^&#123;-1&#125;&#125; \)
                   </div>
                 </div>
                 <div className="text-right font-mono">
