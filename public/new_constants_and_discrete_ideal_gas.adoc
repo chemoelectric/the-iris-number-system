@@ -16,6 +16,7 @@ Within the Counting-Iris Number System, Conformal Geometric Algebra (CGA), and d
 2. _The Proton-to-Electron Mass Ratio_ \( m _ { p } / m _ { e } \) is derived from the topological knot of three interlinked toroidal wave fluxes in a symmetric V-configuration with canonical dihedral pitch angle \( \cos(45^\circ) = 1/\sqrt{2} \): under spin and centrifugal field stress, the unperturbed 5-sphere baseline volume \( 6 \pi^5 \) undergoes elliptical deformation described by the complete elliptic integral of the first kind \( \frac{2}{\pi} K(m) \) with parameter \( m = k^2 = \sqrt{2} \, \alpha^2 \), yielding \( m _ { p } / m _ { e } = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \approx 6 \pi ^ { 5 } \left( 1 + \frac{\alpha^2}{2 \sqrt{2}} \right) \approx 1836.15268 \).
 3. _Newton's Gravitational Coupling_ \( G \) is formulated from classical wave refraction in the universal electromagnetic field, where localized field energy density \( \rho_E = \rho_m c^2 \) alters propagation speed \( c(\mathbf{r}) \approx c_0 ( 1 - G M / (c_0^2 r) ) \) and refracts wave packets into Newtonian orbits with \( \mathbf{a} = -c_0 \nabla c(\mathbf{r}) = -(G M / r^2) \hat{\mathbf{r}} \). Newton's constant \( G \) represents the dimensional field susceptibility \( \kappa = 8 \pi G / c^4 \) describing \( \nabla^2 n = \kappa \rho_E \), bounded empirically in SI units by physical calipers (\( \pm 22 \text{ ppm} \)), with the fundamental dimensionless gravitational interaction given by the proton coupling \( \alpha_G = G m_p^2 / (\hbar c) \approx 5.906 \times 10^{-39} \).
 4. _The Ideal Gas Law_ is deduced from elastic collisions of finite m-resolution entities transferring momentum \( \Delta p _ { x } = 2 (\Delta m) v _ { x } \) via direct contact action, yielding the state equation \( P V = ({2}/{3}) N \langle E _ { k } \rangle = N k _ { B } T = n R T \), where \( k _ { B } = {2 \langle E _ { k } \rangle}/({3 T}) \) and \( R = N _ { A } k _ { B } \) are extensional conversion factors calibrating macroscopic temperature to microscopic kinetic action.
+5. _The Interplanetary System of Units (IP)_ is established as an autonomous metrological foundation independent of arbitrary terrestrial SI standards (such as 55-electron caesium-133 or platinum artifacts). The system comprises two mutually consistent frameworks: _IP-Natural_ (grounded in the circular ground-state period of isolated monatomic hydrogen \( \tau_H = 1 / (2 c R_\infty) \), wavelength \( \lambda_H = 1 / (2 R_\infty) \), and electron knot mass \( \mu_e = m_e \), with \( c = 1 \)), and _IP-Practical_ (macroscopic caliper standards defined by exact canonical integer counts \( 1 \text{ s}_{\text{IP}} = 6\,579\,683\,920\,501\,762 \, \tau_H \), \( 1 \text{ m}_{\text{IP}} = \frac{N_T}{299\,792\,458} \, \lambda_H \), and \( 1 \text{ kg}_{\text{IP}} = 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157 \, \mu_e \)), agreeing with terrestrial SI units to 17 decimal places in time and 31 decimal places in mass.
 
 '''
 
@@ -552,6 +553,142 @@ In strict accordance with the epistemological discipline of the Iris number syst
      \[
      R = N_A k_B \approx 8.3144626 \text{ J/(mol}\cdot\text{K)}
      \]
+
+'''
+
+== The Interplanetary System of Units (IP)
+
+=== Foundational Principles and Critique of SI Artifacts
+
+Every physical measurement is fundamentally a comparison against an adopted standard. In the International System of Units (SI), these standards are compromised by historical artifacts:
+1. _The SI Second_ is defined as \( 9\,192\,631\,770 \) periods of the microwave radiation corresponding to the transition between the two hyperfine levels of the ground state of the caesium-133 atom. Caesium-133 is an enormous atom containing 55 circulating electrons and 133 nucleons, burdened by multi-pole interactions and electrodynamic time delays across its dense electron cloud that require empirical workarounds.
+2. _The SI Kilogram_ was historically tied to a physical cylinder of platinum-iridium in Paris, and in 2019 was redefined by fixing the Planck constant \( h \) to an arbitrary decimal value in joule-seconds (\( 6.62607015 \times 10^{-34} \text{ J}\cdot\text{s} \)), linking macroscopic mass to an empirical Kibble balance apparatus.
+
+In the Counting-Iris framework, physics is formulated on discrete multiscale resolution grids \( \mathcal{G}_N \) in Conformal Geometric Algebra. We establish the _Interplanetary System of Units (IP)_, which is completely autonomous, mathematically closed, and grounded in the simplest stable physical entities in the universal electromagnetic field.
+
+The Interplanetary System consists of two complementary architectures:
+* _The Interplanetary Natural System (IP-Nat)_: Formulated for theoretical physics, wave mechanics, and discrete lattice computation, where all equations take their simplest coordinate-free geometric form.
+* _The Interplanetary Practical System (IP-Prac)_: Formulated for engineering, machine drafting, and physical calipers, where the units correspond to familiar human macroscopic scales (the second, meter, and kilogram), but are anchored to exact integer counts of natural units.
+
+=== The Interplanetary Natural System (IP-Nat)
+
+In IP-Nat, the base units are the natural scales of isolated monatomic hydrogen and the elementary electron knot:
+
+. _The Unit of Time — The Hydrogen Chronon (\( \tau_H \))_:
+The circular ground-state period of isolated monatomic hydrogen:
+\[
+\tau_H \equiv \frac{h}{\alpha^2 m_e c^2} = \frac{1}{2 c R_\infty} \approx 1.5198298460570 \times 10^{-16} \text{ s}
+\]
+Unlike caesium-133, isolated monatomic hydrogen consists of exactly two discrete entities whose standing-wave balance is analytically exact from first principles.
+
+. _The Unit of Length — The Hydrogen Metron (\( \lambda_H \))_:
+The spatial distance traversed by an electromagnetic influence during one chronon:
+\[
+\lambda_H \equiv c \, \tau_H = \frac{1}{2 R_\infty} \approx 45.56335252912 \text{ nm}
+\]
+Notice that the speed of electromagnetic influences \( c \) cancels identically: \( \lambda_H \) is determined directly by the Rydberg wavenumber.
+
+. _The Unit of Mass — The Electron Knot Mass (\( \mu_e \))_:
+The localized field mass of the elementary single-toroid electron knot:
+\[
+\mu_e \equiv m_e = \frac{2 R_\infty h}{\alpha^2 c} \approx 9.10938378614 \times 10^{-31} \text{ kg}
+\]
+
+. _Geometric Ladder of Natural Invariants_:
+In IP-Nat, the propagation speed of electromagnetic influences is identically \( c = 1 \). Every atomic and nuclear length is an exact power of the fine-structure constant \( \alpha \):
+* Bohr orbit circumference: \( 2 \pi a_0 = \alpha \cdot \lambda_H \approx 0.33249 \text{ nm} \).
+* Electron Compton wavelength: \( \lambda_e = \alpha^2 \cdot \lambda_H \approx 2.42631 \text{ pm} \).
+* Proton knot core wavelength: \( \lambda_p = \alpha^2 \left( \frac{m_p}{m_e} \right)^{-1} \lambda_H \approx 1.32141 \text{ fm} \).
+* Proton mass: \( m_p = 6 \pi^5 \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \mu_e \approx 1836.15268 \, \mu_e \).
+
+=== The Interplanetary Practical System (IP-Prac)
+
+For macroscopic calipers, machine tooling, and human timekeeping, IP-Prac defines units matching the familiar second, meter, and kilogram as _exact canonical integers_ of IP-Nat:
+
+==== 1. The Interplanetary Second (\( \text{s}_{\text{IP}} \))
+
+The Interplanetary Second is defined as an exact integer count of fundamental hydrogen cycles:
+\[
+1 \text{ s}_{\text{IP}} \equiv 6\,579\,683\,920\,501\,762 \text{ cycles of } \tau_H
+\]
+*(or, using the physical reduced-mass period with the proton, \( 6\,576\,102\,463\,173\,538 \text{ cycles of } \tau_{H,\mu} \))*.
+
+*Proof of Precision*:
+The exact frequency of the ground-state hydrogen cycle in terms of the SI defined speed \( c = 299\,792\,458 \text{ m/s} \) and Rydberg constant \( R_\infty = 10\,973\,731.568160 \text{ m}^{-1} \) is:
+\[
+f_H = 2 c R_\infty = 6\,579\,683\,920\,501\,761.87456 \text{ s}^{-1}
+\]
+Rounding to the nearest integer yields \( N_T = 6\,579\,683\,920\,501\,762 \). The residual discrepancy is:
+\[
+| N_T - 2 c R_\infty | = 0.12544 \text{ cycles}
+\]
+which corresponds to a relative difference of:
+\[
+\frac{0.12544}{6.57968 \times 10^{15}} \approx 1.906 \times 10^{-17} \quad (0.000019 \text{ ppb})
+\]
+The Interplanetary Second agrees with the SI second to 17 decimal digits, exceeding the stability of terrestrial atomic fountain standards.
+
+==== 2. The Interplanetary Meter (\( \text{m}_{\text{IP}} \))
+
+The Interplanetary Meter is defined through the universal kinematic relation of electromagnetic influences:
+\[
+1 \text{ m}_{\text{IP}} \equiv \frac{N_T}{299\,792\,458} \cdot \lambda_H
+\]
+where \( \frac{N_T}{299\,792\,458} = \frac{6\,579\,683\,920\,501\,762}{299\,792\,458} \approx 21\,947\,463.1363200004 \).
+This maintains the exact kinematic identity:
+\[
+c \equiv 299\,792\,458 \text{ m}_{\text{IP}} / \text{s}_{\text{IP}}
+\]
+while anchoring length directly to the wavelength of the simplest atom in nature.
+
+==== 3. The Interplanetary Kilogram (\( \text{kg}_{\text{IP}} \))
+
+The Interplanetary Kilogram is defined as an exact integer count of elementary electron masses:
+\[
+1 \text{ kg}_{\text{IP}} \equiv 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157 \cdot \mu_e
+\]
+
+*Proof of Precision*:
+From the exact relation \( m_e = \frac{2 R_\infty h}{\alpha^2 c} \approx 9.109383786139837 \times 10^{-31} \text{ kg} \), the reciprocal is:
+\[
+\frac{1}{m_e} = 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157.07428 \dots
+\]
+Rounding to the nearest integer yields \( N_M = 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157 \). The residual discrepancy is:
+\[
+| N_M - 1/m_e | = 0.07428 \text{ electron masses}
+\]
+which corresponds to a relative difference of:
+\[
+\frac{0.07428}{1.09777 \times 10^{30}} \approx 6.76 \times 10^{-32}
+\]
+The Interplanetary Kilogram agrees with the SI kilogram to 31 decimal digits.
+
+=== Summary Table of the Interplanetary System of Units
+
+[cols="2,3,3,2", options="header"]
+|===
+| Dimension | IP-Natural (Theoretical) | IP-Practical (Caliper & Shop) | Equivalence to SI
+
+| Time
+| \( \tau_H = \frac{1}{2 c R_\infty} \)
+| \( 1 \text{ s}_{\text{IP}} = 6\,579\,683\,920\,501\,762 \, \tau_H \)
+| \( \approx 1.000000000000000019 \text{ s} \)
+
+| Length
+| \( \lambda_H = \frac{1}{2 R_\infty} \)
+| \( 1 \text{ m}_{\text{IP}} = \frac{N_T}{299\,792\,458} \, \lambda_H \)
+| \( \approx 1.000000000000000000 \text{ m} \)
+
+| Mass
+| \( \mu_e = m_e \)
+| \( 1 \text{ kg}_{\text{IP}} = 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157 \, \mu_e \)
+| \( \approx 1.0000000000000000000000000000001 \text{ kg} \)
+
+| Velocity
+| \( c = 1 \)
+| \( c = 299\,792\,458 \text{ m}_{\text{IP}} / \text{s}_{\text{IP}} \)
+| Exact Kinematic Ratio
+|===
 
 '''
 

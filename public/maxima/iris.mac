@@ -153,8 +153,23 @@ gravitational_susceptibility(G_val, c_val) :=
 gravitational_proton_coupling(G_val, mp_val, hbar_val, c_val) := 
   (G_val * mp_val^2) / (hbar_val * c_val)$
 
+/* -------------------------------------------------------------------------
+   5. Interplanetary System of Units (IP-Nat & IP-Prac)
+   ------------------------------------------------------------------------- */
+
+/* 5a. IP-Natural Base Units */
+ip_natural_time_tau_H(c_val, R_inf_val) := 1 / (2 * c_val * R_inf_val)$
+ip_natural_length_lambda_H(R_inf_val) := 1 / (2 * R_inf_val)$
+ip_natural_mass_mu_e(R_inf_val, h_val, alpha_val, c_val) := (2 * R_inf_val * h_val) / (alpha_val^2 * c_val)$
+
+/* 5b. IP-Practical Canonical Exact Integers */
+ip_practical_second_cycles: 6579683920501762$
+ip_practical_meter_wavelength_ratio: 6579683920501762 / 299792458$
+ip_practical_kg_electron_masses: 1097769095557842067257839129157$
+
 /* Print initialization banner */
 print("Iris Number System and Master Field Equation package loaded successfully.")$
 print("Basis vectors: {e1, e2, e3, e4, e_plus, e_minus}")$
 print("Metric: e1^2=e2^2=e3^2=1, e4^2=0, e_plus^2=1, e_minus^2=-1")$
 print("Conformal pair: e_inf = e_plus + e_minus (e_inf^2=0), e_0 = 1/2*(e_minus-e_plus) (e_0^2=0, e_0 . e_inf = -1)")$
+print("Interplanetary System of Units (IP-Nat & IP-Prac) initialized.")$
