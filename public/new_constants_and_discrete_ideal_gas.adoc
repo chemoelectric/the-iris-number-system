@@ -89,7 +89,12 @@ a _ { k + 1 } = \frac{a _ { k } + b _ { k }}{2}, \quad b _ { k + 1 } = \sqrt{a _
 \[
 \pi \approx \frac{( a _ { N } + b _ { N } ) ^ { 2 }}{4 t _ { N }}
 \]
-This guarantees that \( \pi \) is known and computable to any arbitrary precision desired.
+
+Furthermore, derived from the modular geometry of elliptic curves and hypergeometric functions, the Chudnovsky algorithm (1988) provides the world standard for hyper-convergent series computation, delivering approximately 14.1816 decimal digits per term:
+\[
+\frac{1}{\pi} = 12 \sum _ { q = 0 } ^ { \infty } \frac{(-1) ^ { q } (6 q)! (545140134 q + 13591409)}{(3 q)! (q!) ^ { 3 } (640320) ^ { 3 q + 3/2 }}
+\]
+This rapid convergence guarantees that \( \pi \) is known and computable to any arbitrary precision desired, providing the exact numerical fuel for every derived physical constant in the Iris number system.
 
 === The Computational Engine for All Physical Constants
 
