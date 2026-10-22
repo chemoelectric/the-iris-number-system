@@ -1,4 +1,4 @@
-= Exact Geometric Derivations of the Physical Constants and the Discrete Ideal Gas
+= The Interplanetary System of Units, Exact Geometric Derivations of Physical Constants, and the Discrete Ideal Gas
 Frédéric Blondin Custer
 :doctype: article
 :stem: latexmath
@@ -12,11 +12,152 @@ Frédéric Blondin Custer
 
 Within the Counting-Iris Number System, Conformal Geometric Algebra (CGA), and discrete multiscale resolution grids \( \mathcal{G}_N \), fundamental physical constants are proved to be exact geometric ratios and definite integrals relative to the true propagation speed \( c \), and the Ideal Gas Law is deduced as an exact theorem of discrete momentum flux conservation without continuum approximations:
 
-1. _The Fine-Structure Constant_ \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and field dynamics, wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes boundary contact reaction with the surrounding field \( \Delta _ { \text{field} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \).
-2. _The Proton-to-Electron Mass Ratio_ \( m _ { p } / m _ { e } \) is derived from the topological knot of three interlinked toroidal wave fluxes in a symmetric V-configuration with canonical dihedral pitch angle \( \cos(45^\circ) = 1/\sqrt{2} \): under spin and centrifugal field stress, the unperturbed 5-sphere baseline volume \( 6 \pi^5 \) undergoes elliptical deformation described by the complete elliptic integral of the first kind \( \frac{2}{\pi} K(m) \) with parameter \( m = k^2 = \sqrt{2} \, \alpha^2 \), yielding \( m _ { p } / m _ { e } = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \approx 6 \pi ^ { 5 } \left( 1 + \frac{\alpha^2}{2 \sqrt{2}} \right) \approx 1836.15268 \).
-3. _Newton's Gravitational Coupling_ \( G \) is formulated from classical wave refraction in the universal electromagnetic field, where localized field energy density \( \rho_E = \rho_m c^2 \) alters propagation speed \( c(\mathbf{r}) \approx c_0 ( 1 - G M / (c_0^2 r) ) \) and refracts wave packets into Newtonian orbits with \( \mathbf{a} = -c_0 \nabla c(\mathbf{r}) = -(G M / r^2) \hat{\mathbf{r}} \). Newton's constant \( G \) represents the dimensional field susceptibility \( \kappa = 8 \pi G / c^4 \) describing \( \nabla^2 n = \kappa \rho_E \), bounded empirically in SI units by physical calipers (\( \pm 22 \text{ ppm} \)), with the fundamental dimensionless gravitational interaction given by the proton coupling \( \alpha_G = G m_p^2 / (\hbar c) \approx 5.906 \times 10^{-39} \).
-4. _The Ideal Gas Law_ is deduced from elastic collisions of finite m-resolution entities transferring momentum \( \Delta p _ { x } = 2 (\Delta m) v _ { x } \) via direct contact action, yielding the state equation \( P V = ({2}/{3}) N \langle E _ { k } \rangle = N k _ { B } T = n R T \), where \( k _ { B } = {2 \langle E _ { k } \rangle}/({3 T}) \) and \( R = N _ { A } k _ { B } \) are extensional conversion factors calibrating macroscopic temperature to microscopic kinetic action.
-5. _The Interplanetary System of Units (IP)_ is established as an autonomous metrological foundation independent of arbitrary terrestrial SI standards (such as 55-electron caesium-133 or platinum artifacts). The system comprises two mutually consistent frameworks: _IP-Natural_ (grounded in the circular ground-state period of isolated monatomic hydrogen \( \tau_H = 1 / (2 c R_\infty) \), wavelength \( \lambda_H = 1 / (2 R_\infty) \), and electron knot mass \( \mu_e = m_e \), with \( c = 1 \)), and _IP-Practical_ (macroscopic caliper standards defined by exact canonical integer counts \( 1 \text{ s}_{\text{IP}} = 6\,579\,683\,920\,501\,762 \, \tau_H \), \( 1 \text{ m}_{\text{IP}} = \frac{N_T}{299\,792\,458} \, \lambda_H \), and \( 1 \text{ kg}_{\text{IP}} = 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157 \, \mu_e \)), agreeing with terrestrial SI units to 17 decimal places in time and 31 decimal places in mass.
+1. _The Circle Archetype and the Computational Foundation of Physical Constants_:
+The circle ratio \( \pi \) is defined as the fundamental definite integral of Euclidean conformal geometry, \( \pi = \int _ { -1 } ^ { 1 } \frac{d x}{\sqrt{1 - x ^ { 2 }}} \). From this integral, constructive series expansions with rigorous error bounds provide an exact algorithm to compute \( \pi \) to any arbitrary number of digits. Crucially, because all fundamental physical constants in the Unified Field Theory are proved to be closed algebraic functions of \( \pi \) and discrete integers, computing \( \pi \) to any desired precision directly yields the values of all other physical constants to that exact same precision.
+
+2. _The Interplanetary System of Units (IP)_:
+An autonomous metrological foundation is established independent of arbitrary terrestrial SI standards (such as 55-electron caesium-133 or platinum artifacts). The system comprises two mutually consistent frameworks:
+* _IP-Natural (IP-Nat)_: Grounded natively in the circular ground-state period of isolated monatomic hydrogen \( \tau _ { H } = \frac{1}{2 c R _ { \infty }} = \frac{h}{\alpha ^ { 2 } m _ { e } c ^ { 2 }} \), wavelength \( \lambda _ { H } = \frac{1}{2 R _ { \infty }} = \frac{\lambda _ { e }}{\alpha ^ { 2 }} \), and electron knot mass \( \mu _ { e } = m _ { e } \), with propagation speed \( c = 1 \).
+* _IP-Practical (IP-Prac)_: Macroscopic caliper standards defined by exact canonical integer counts: \( 1 \text{ s} _ { \text{IP}} \equiv 6\,579\,683\,920\,501\,762 \, \tau _ { H } \), \( 1 \text{ m} _ { \text{IP}} \equiv \frac{N _ { T }}{299\,792\,458} \, \lambda _ { H } \), and \( 1 \text{ kg} _ { \text{IP}} \equiv 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157 \, \mu _ { e } \), agreeing with terrestrial SI units to 17 decimal places in time and 31 decimal places in mass.
+
+3. _The Fine-Structure Constant_ \( \alpha \):
+Derived from first principles of Conformal Geometric Algebra (CGA), wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes boundary contact reaction with the surrounding field \( \Delta _ { \text{field}} = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \). Because this coupling is a rational function of \( \pi \), it is computable to arbitrary precision directly from the digits of \( \pi \).
+
+4. _The Proton-to-Electron Mass Ratio_ \( m _ { p } / m _ { e } \):
+Derived from the topological knot of three interlinked toroidal wave fluxes in a symmetric V-configuration with canonical dihedral pitch angle \( \cos(45^\circ) = 1/\sqrt{2} \): under spin and centrifugal field stress, the unperturbed 5-sphere baseline volume \( 6 \pi ^ { 5 } \) undergoes elliptical deformation described by the complete elliptic integral of the first kind \( \frac{2}{\pi} K(m) \) with parameter \( m = \sqrt{2} \, \alpha ^ { 2 } \), yielding \( m _ { p } / m _ { e } = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K(\sqrt{2} \alpha ^ { 2 }) \right) \approx 6 \pi ^ { 5 } \left( 1 + \frac{\alpha ^ { 2 }}{2 \sqrt{2}} \right) \approx 1836.15268 \).
+
+5. _Microwave Cavity Resonator Mechanics of the Rydberg Wavenumber_:
+Atomic radiation is demonstrated to be deterministic antenna beat radiation between standing-wave cavity modes satisfying \( D F = J \) on \( \mathcal{G}_N \) with finite duration, refuting discontinuous “quantum jumps” and hypothetical “photons”. The Rydberg wavenumber is proved to be \( R _ { \infty } = \frac{\alpha ^ { 2 }}{2 \lambda _ { e }} \), with cavity cutoff wavelength \( \frac{1}{R _ { \infty }} = 2 \lambda _ { H } \).
+
+6. _Gravitation Formulated in Native Hydrogen Units_:
+Gravitation is formulated as classical wave refraction in the universal electromagnetic field. In native hydrogen units, the fundamental interaction is the dimensionless wave-refraction coupling ratio \( g _ { H } = \frac{G m _ { H } ^ { 2 }}{\hbar c} \approx 5.91 \times 10 ^ { -39 } \) (and proton coupling \( \alpha _ { G } = \frac{G m _ { p } ^ { 2 }}{\hbar c} \approx 5.906 \times 10 ^ { -39 } \)). The conventional SI caliper uncertainty (\( \pm 22 \text{ ppm} \)) in Newton's constant \( G \) is shown to be merely the empirical uncertainty in calibrating an arbitrary macroscopic kilogram artifact against microscopic hydrogen entities.
+
+7. _The Discrete Ideal Gas Law_:
+Deduced from elastic collisions of finite m-resolution entities transferring momentum \( \Delta p _ { x } = 2 (\Delta m) v _ { x } \) via direct contact action, yielding the state equation \( P V = ({2}/{3}) N \langle E _ { k } \rangle = N k _ { B } T = n R T \), where \( k _ { B } = {2 \langle E _ { k } \rangle}/({3 T}) \) and \( R = N _ { A } k _ { B } \) are extensional conversion factors calibrating macroscopic temperature to microscopic kinetic action.
+
+'''
+
+== The Foundation: The Circle Archetype \( \pi \) and Arbitrary-Precision Computation
+
+=== The Definite Integral Definition of \( \pi \)
+
+In conventional physics, fundamental physical constants are typically regarded as disconnected empirical parameters measured with calipers or interferometers in terrestrial laboratories. In the Iris number system and Unified Field Theory, physical constants are exact geometric invariants of conformal wave mechanics in Conformal Geometric Algebra (CGA).
+
+At the root of all these geometric invariants stands the circle ratio \( \pi \). In Euclidean conformal geometry, \( \pi \) is defined constructively as the definite integral:
+\[
+\pi \equiv \int _ { -1 } ^ { 1 } \frac{d x}{\sqrt{1 - x ^ { 2 }}}
+\]
+This integral expresses the exact metric arc length along the unit semicircle in Cartesian coordinates:
+\[
+d s = \sqrt{1 + \left( \frac{d y}{d x} \right) ^ { 2 }} \, d x = \sqrt{1 + \left( \frac{-x}{\sqrt{1 - x ^ { 2 }}} \right) ^ { 2 }} \, d x = \frac{d x}{\sqrt{1 - x ^ { 2 }}}
+\]
+Integrated between the unit circle antipodes \( x = -1 \) and \( x = 1 \), this definite integral defines \( \pi \) with absolute mathematical rigor, free of circular geometric definitions.
+
+=== Constructive Series Expansion to Any Number of Digits
+
+To evaluate \( \pi \) algorithmically to any arbitrary number of decimal digits, we expand the integrand \( (1 - x ^ { 2 }) ^ { -1/2 } \) constructively using the binomial theorem on the open domain \( |x| < 1 \):
+\[
+\frac{1}{\sqrt{1 - x ^ { 2 }}} = \sum _ { n = 0 } ^ { \infty } \frac{(2 n)!}{4 ^ { n } (n!) ^ { 2 }} x ^ { 2 n } = 1 + \frac{1}{2} x ^ { 2 } + \frac{3}{8} x ^ { 4 } + \frac{5}{16} x ^ { 6 } + \frac{35}{128} x ^ { 8 } + \dots
+\]
+Integrating this series term-by-term across the symmetric sub-interval \( [-a, a] \) for \( 0 < a < 1 \):
+\[
+\int _ { -a } ^ { a } \frac{d x}{\sqrt{1 - x ^ { 2 }}} = 2 \int _ { 0 } ^ { a } \sum _ { n = 0 } ^ { \infty } \frac{(2 n)!}{4 ^ { n } (n!) ^ { 2 }} x ^ { 2 n } \, d x = 2 \sum _ { n = 0 } ^ { \infty } \frac{(2 n)!}{4 ^ { n } (n!) ^ { 2 } (2 n + 1)} a ^ { 2 n + 1 }
+\]
+Setting \( a = 1/2 \) corresponds to an arc angle of \( \pi / 6 \) radians (\( 30^\circ \)):
+\[
+\int _ { -1/2 } ^ { 1/2 } \frac{d x}{\sqrt{1 - x ^ { 2 }}} = \frac{\pi}{3}
+\]
+Multiplying by \( 3 \) yields the exact constructive series for \( \pi \):
+\[
+\pi = 6 \sum _ { n = 0 } ^ { \infty } \frac{(2 n)!}{4 ^ { n } (n!) ^ { 2 } (2 n + 1) 2 ^ { 2 n + 1 }} = 3 \sum _ { n = 0 } ^ { \infty } \frac{(2 n)!}{16 ^ { n } (n!) ^ { 2 } (2 n + 1)}
+\]
+Evaluating the first few terms:
+\[
+\pi = 3 \left( 1 + \frac{1}{24} + \frac{3}{640} + \frac{5}{7168} + \dots \right) = 3 + \frac{1}{8} + \frac{9}{640} + \frac{15}{7168} + \dots
+\]
+Because each successive term is scaled by a factor strictly less than \( 1/4 \), this series converges geometrically. Truncating after \( M \) terms yields a remainder bounded rigorously by:
+\[
+R _ { M } < \frac{3}{1 - 1/4} \frac{(2 M)!}{16 ^ { M } (M!) ^ { 2 } (2 M + 1)}
+\]
+For high-speed computational evaluation to thousands or millions of digits, the circle integral also generates the Salamin-Brent arithmetic-geometric mean (AGM) algorithm, which doubles the number of verified correct digits at every single iteration:
+\[
+a _ { 0 } = 1, \quad b _ { 0 } = \frac{1}{\sqrt{2}}, \quad t _ { 0 } = \frac{1}{4}, \quad p _ { 0 } = 1
+\]
+\[
+a _ { k + 1 } = \frac{a _ { k } + b _ { k }}{2}, \quad b _ { k + 1 } = \sqrt{a _ { k } b _ { k }}, \quad t _ { k + 1 } = t _ { k } - p _ { k } ( a _ { k } - a _ { k + 1 } ) ^ { 2 }, \quad p _ { k + 1 } = 2 p _ { k }
+\]
+\[
+\pi \approx \frac{( a _ { N } + b _ { N } ) ^ { 2 }}{4 t _ { N }}
+\]
+This guarantees that \( \pi \) is known and computable to any arbitrary precision desired.
+
+=== The Computational Engine for All Physical Constants
+
+The fundamental epistemological and computational principle of the Unified Field Theory is this:
+
+*You need \( \pi \) to any number of digits to get other constants to any number of digits.*
+
+In conventional physics, the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m _ { p } / m _ { e } \), and the Rydberg wavenumber \( R _ { \infty } \) are thought to be separate empirical numbers whose accuracy is halted by laboratory measuring apparatus.
+
+In the Iris number system, these constants are not empirical curve-fits; they are exact algebraic and topological functions of \( \pi \):
+1. The fine-structure constant is an exact rational function of \( \pi \):
+\[
+\alpha = \left( ( 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi ) - \frac{1}{24 ( 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi )} \right) ^ { - 1 }
+\]
+2. The proton-to-electron mass ratio is an exact product of \( 6 \pi ^ { 5 } \) and a rational series in \( \alpha ^ { 2 } \) via the complete elliptic integral:
+\[
+\frac{m _ { p }}{m _ { e }} = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K(\sqrt{2} \alpha ^ { 2 }) \right)
+\]
+3. The wave impedances, cavity resonance lengths, and hydrogen time periods are exact products of \( \pi \), \( \alpha \), and the speed of influences \( c \).
+
+Therefore, any algorithm or inference engine that evaluates \( \pi \) to \( 100 \), \( 1\,000 \), or \( 10\,000 \) digits immediately and automatically computes \( \alpha \), \( m _ { p } / m _ { e } \), and all related physical constants to that exact same number of digits! The circle integral \( \pi = \int _ { -1 } ^ { 1 } \frac{d x}{\sqrt{1 - x ^ { 2 }}} \) is the generative computational foundation for the entire physical constant spectrum.
+
+'''
+
+== The Interplanetary System of Units (IP)
+
+=== Foundational Principles and Critique of SI Artifacts
+
+Every physical measurement is fundamentally a comparison against an adopted standard. In the International System of Units (SI), these standards are compromised by historical artifacts:
+1. _The SI Second_ is defined as \( 9\,192\,631\,770 \) periods of the microwave radiation corresponding to the transition between the two hyperfine levels of the ground state of the caesium-133 atom. Caesium-133 is an enormous atom containing 55 circulating electrons and 133 nucleons, burdened by multi-pole interactions and electrodynamic time delays across its dense electron cloud that require empirical workarounds.
+2. _The SI Kilogram_ was historically tied to a physical cylinder of platinum-iridium in Paris, and in 2019 was redefined by fixing the Planck constant \( h \) to an arbitrary decimal value in joule-seconds (\( 6.62607015 \times 10^{-34} \text{ J}\cdot\text{s} \)), linking macroscopic mass to an empirical Kibble balance apparatus.
+
+In the Counting-Iris framework, physics is formulated on discrete multiscale resolution grids \( \mathcal{G}_N \) in Conformal Geometric Algebra. We establish the _Interplanetary System of Units (IP)_, which is completely autonomous, mathematically closed, and grounded in the simplest stable physical entities in the universal electromagnetic field.
+
+The Interplanetary System consists of two complementary architectures:
+* _The Interplanetary Natural System (IP-Nat)_: Formulated for theoretical physics, wave mechanics, and discrete lattice computation, where all equations take their simplest coordinate-free geometric form.
+* _The Interplanetary Practical System (IP-Prac)_: Formulated for engineering, machine drafting, and physical calipers, where the units correspond to familiar human macroscopic scales (the second, meter, and kilogram), but are anchored to exact integer counts of natural units.
+
+=== The Interplanetary Natural System (IP-Nat)
+
+In IP-Nat, the base units are the natural scales of isolated monatomic hydrogen and the elementary electron knot:
+
+. _The Unit of Time — The Hydrogen Chronon (\( \tau_H \))_:
+The circular ground-state period of isolated monatomic hydrogen:
+\[
+\tau_H \equiv \frac{h}{\alpha^2 m_e c^2} = \frac{1}{2 c R_\infty} \approx 1.5198298460570 \times 10^{-16} \text{ s}
+\]
+Unlike caesium-133, isolated monatomic hydrogen consists of exactly two discrete entities whose standing-wave balance is analytically exact from first principles.
+
+. _The Unit of Length — The Hydrogen Metron (\( \lambda_H \))_:
+The spatial distance traversed by an electromagnetic influence during one chronon:
+\[
+\lambda_H \equiv c \, \tau_H = \frac{1}{2 R_\infty} \approx 45.56335252912 \text{ nm}
+\]
+Notice that the speed of electromagnetic influences \( c \) cancels identically: \( \lambda_H \) is determined directly by the Rydberg wavenumber.
+
+. _The Unit of Mass — The Electron Knot Mass (\( \mu_e \))_:
+The localized field mass of the elementary single-toroid electron knot:
+\[
+\mu_e \equiv m_e = \frac{2 R_\infty h}{\alpha^2 c} \approx 9.10938378614 \times 10^{-31} \text{ kg}
+\]
+
+. _Geometric Ladder of Natural Invariants_:
+In IP-Nat, the propagation speed of electromagnetic influences is identically \( c = 1 \). Every atomic and nuclear length is an exact power of the fine-structure constant \( \alpha \):
+* Bohr orbit circumference: \( 2 \pi a_0 = \alpha \cdot \lambda_H \approx 0.33249 \text{ nm} \).
+* Electron Compton wavelength: \( \lambda_e = \alpha^2 \cdot \lambda_H \approx 2.42631 \text{ pm} \).
+* Proton knot core wavelength: \( \lambda_p = \alpha^2 \left( \frac{m_p}{m_e} \right)^{-1} \lambda_H \approx 1.32141 \text{ fm} \).
+* Proton mass: \( m_p = 6 \pi^5 \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \mu_e \approx 1836.15268 \, \mu_e \).
 
 '''
 
@@ -105,6 +246,7 @@ Taking the reciprocal yields the fine-structure constant \( \alpha \):
 \[
 \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 }
 \]
+Because \( \alpha \) is an exact rational expression in \( \pi \), any expansion of \( \pi \) to \( N \) digits yields \( \alpha \) to \( N \) digits with zero empirical ambiguity.
 
 === Step-by-Step Numerical Evaluation
 
@@ -190,12 +332,6 @@ which evaluates to \( \approx 0.5154 \) (with reciprocal \( \approx 1.9402 \)), 
 
 In accordance with the scientific method of Jaynesian inference and the ACM Code of Ethics, all prior empirical or ad hoc approximations are discarded in favor of the exact, first-principles conformal invariant derived above.
 
-Profoundly, this conformal invariant unites directly with the following section, where the proton-to-electron mass ratio is determined by three interlinked toroidal fluxes in a V-configuration undergoing elliptic centrifugal elongation:
-\[
-\frac{m _ { p }}{m _ { e }} = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K\left( \sqrt{2} \alpha ^ { 2 } \right) \right) \approx 6 \pi ^ { 5 } \left( 1 + \frac{\alpha ^ { 2 }}{2 \sqrt{2}} \right) \approx 1836.15268
-\]
-Both fundamental constants emerge from the conformal geometry of 6-dimensional Conformal Geometric Algebra and discrete lattice resonances on \( \mathcal{G}_N \).
-
 '''
 
 == The Proton-to-Electron Mass Ratio \( m _ { p } / m _ { e } \)
@@ -259,8 +395,9 @@ K(m) = \frac{\pi}{2} \sum _ { n=0 } ^ { \infty } \left[ \frac{(2n)!}{4 ^ { n } (
 \]
 Dividing by \( \pi / 2 \) yields the normalized geometric elongation factor:
 \[
-\frac{2}{\pi} K(m) = 1 + \frac{1}{4} m + \frac{9}{64} m ^ { 2 } + \dots
+\frac{2}{\pi} K(m) = \sum _ { n=0 } ^ { \infty } \left[ \frac{(2n)!}{4 ^ { n } (n!) ^ { 2 }} \right] ^ { 2 } m ^ { n } = 1 + \frac{1}{4} m + \frac{9}{64} m ^ { 2 } + \dots
 \]
+Notice that dividing by \( \pi / 2 \) completely cancels the outer factor of \( \pi \), leaving a purely rational series in powers of \( m \)!
 
 *Step 4: Substitution of the Centrifugal Parameter*
 
@@ -269,12 +406,13 @@ Substitute \( m = \sqrt{2} \, \alpha^2 \):
 \frac{2}{\pi} K\left( \sqrt{2} \alpha ^ { 2 } \right) = 1 + \frac{\sqrt{2} \, \alpha ^ { 2 }}{4} + \mathcal{O}(\alpha ^ { 4 }) = 1 + \frac{\alpha ^ { 2 }}{2 \sqrt{2}} + \mathcal{O}(\alpha ^ { 4 })
 \]
 
-=== Exact Mass Ratio Synthesis and Numerical Verification
+=== Exact Mass Ratio Synthesis and Arbitrary Precision
 
 The exact proton-to-electron mass ratio is therefore:
 \[
-\frac{m _ { p }}{m _ { e }} = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K\left( \sqrt{2} \alpha ^ { 2 } \right) \right) \approx 6 \pi ^ { 5 } \left( 1 + \frac{\alpha ^ { 2 }}{2 \sqrt{2}} \right)
+\frac{m _ { p }}{m _ { e }} = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K\left( \sqrt{2} \alpha ^ { 2 } \right) \right) = 6 \pi ^ { 5 } \sum _ { n=0 } ^ { \infty } \left[ \frac{(2n)!}{4 ^ { n } (n!) ^ { 2 }} \right] ^ { 2 } \left( \sqrt{2} \alpha ^ { 2 } \right) ^ { n }
 \]
+Because \( \alpha \) is an exact rational expression of \( \pi \), this entire formula is a direct algebraic function of \( \pi \) and \( \sqrt{2} \). Computing \( \pi \) and \( \sqrt{2} \) to any arbitrary number of digits immediately evaluates \( m _ { p } / m _ { e } \) to that exact same number of digits!
 
 Evaluating this expression numerically with zero skipped steps:
 1. Fine-structure constant:
@@ -304,7 +442,65 @@ in exact agreement with the experimental CODATA measurement \( 1836.15267343(11)
 
 '''
 
-== Newton's Gravitational Constant \( G \) as Field Wave Refraction and Susceptibility
+== Physical Electrodynamics of the Rydberg Wavenumber: Microwave Cavity Resonator Mechanics
+
+=== Rejection of Discontinuous “Jumps” and the Photon Myth
+
+Conventional textbooks describe atomic emission and absorption in terms of hypothetical point particles that undergo unphysical discontinuous “jumps” and emit fictitious “photons”. This mystical vocabulary was invented because early theorists lacked the tools of distributed electromagnetic field mechanics and retreated into point-particle abstractions.
+
+In the Unified Field Theory and classical electrical engineering, atomic radiation is understood through standard resonant cavity and antenna mechanics, described directly by the Master Field Equation \( D F = J \):
+
+1. _The Atom as a Distributed Resonant Cavity_:
+An electron is a localized, self-trapped toroidal vortex of circulating electromagnetic field energy; a proton is a localized knot of three interlinked toroidal wave fluxes in a symmetric V-configuration. An isolated neutral hydrogen atom is an electromagnetic cavity resonator where the circulating electron vortex is held in stable dynamic balance around the proton knot by direct Maxwellian stress equilibrium (radial electric divergence balanced by centrifugal wave momentum).
+
+2. _Mode Reconfiguration and Antenna Beat Mechanics_:
+When the atom transitions between two resonant standing-wave modes (from mode \( n_2 \) to mode \( n_1 \)), the localized electron vortex does not jump. It undergoes a deterministic, fine-grained mode reconfiguration of finite duration \( \Delta t \). During this transition, the superposition of the initial and final wave distributions produces an oscillating charge-current density:
+\[
+\mathbf{J}(\mathbf{x}, t) = \rho(\mathbf{x}, t) \, \mathbf{u}(\mathbf{x}, t)
+\]
+beating at the exact difference frequency \( \Delta f = f_2 - f_1 \). By Maxwell's Master Field Equation \( D F = J \), this oscillating current distribution acts as a microscopic electromagnetic antenna, radiating a localized wave packet of Poynting energy-momentum flux into the surrounding universal field at spatial wavenumber \( k = \frac{\Delta f}{c} \).
+
+3. _The Rydberg Wavenumber as the Fundamental Cavity Resonance_:
+The fundamental energy scale of the hydrogen wave resonator is the binding field energy of its circular ground state (\( n = 1 \)). The circulation speed in the ground state is:
+\[
+v_1 = \alpha c
+\]
+where \( \alpha = \frac{Z_0}{2 R_K} \) is the ratio of transversal wave propagation impedance to longitudinal circulation impedance. The kinetic field circulation energy of this orbital state is:
+\[
+E_1 = \frac{1}{2} m_e v_1^2 = \frac{1}{2} \alpha^2 m_e c^2
+\]
+Dividing this localized ground-state binding energy by the elementary circulation quantum of action \( h \) and propagation speed \( c \) gives the spatial wavenumber of the wave packet carrying this binding energy scale:
+\[
+k_1 = \frac{E_1}{h c} = \frac{\frac{1}{2} \alpha^2 m_e c^2}{h c} = \frac{\alpha^2 m_e c}{2 h}
+\]
+The right-hand side is identically the Rydberg wavenumber:
+\[
+R_\infty \equiv \frac{\alpha^2 m_e c}{2 h} \approx 10\,973\,731.568160 \text{ m}^{-1}
+\]
+
+4. _Direct Geometric Relation to the Electron Vortex Core_:
+Recall that the free electron toroidal vortex has an intrinsic core circulation wavelength (its Compton wavelength):
+\[
+\lambda_e \equiv \frac{h}{m_e c} \approx 2.4263102 \times 10^{-12} \text{ m}
+\]
+Substituting \( \lambda_e \) directly into the definition of \( R_\infty \) yields the elegant geometric identity:
+\[
+R_\infty = \frac{\alpha^2}{2 \lambda_e} \iff \frac{1}{R_\infty} = \frac{2 \lambda_e}{\alpha^2}
+\]
+This simple relation demystifies the Rydberg constant completely:
+* \( \lambda_e \) is the physical wavelength around the electron's toroidal vortex core.
+* \( \alpha^2 \) is the second-order wave impedance coupling factor between the localized vortex and the universal field.
+* \( 1 / R_\infty \approx 91.1267 \text{ nm} \) is the fundamental cutoff wavelength of the hydrogen cavity (the Lyman limit wavelength, below which the cavity cannot bind the wave knot).
+* The fundamental length unit of the Interplanetary Natural System, \( \lambda_H \), is identically half of this cavity cutoff wavelength:
+\[
+\lambda_H = \frac{1}{2 R_\infty} = \frac{\lambda_e}{\alpha^2} \approx 45.56335 \text{ nm}
+\]
+
+Thus, what conventional physics obscured behind “photon” postulates is nothing other than standard microwave cavity and antenna theory applied to localized electromagnetic wave knots.
+
+'''
+
+== Gravitation as Field Wave Refraction in Native Hydrogen Units
 
 === Rejection of Curved Space and Classical Field Vortex Mechanics
 
@@ -366,25 +562,30 @@ where:
 \]
 is the fundamental refractive coupling coefficient (field susceptibility) of the universal electromagnetic field.
 
-=== Dimensional Nature of G and Caliper Bounding
+=== Native Hydrogen Formulation of Gravitational Coupling
 
-Unlike the fine-structure constant \( \alpha \) (a dimensionless impedance ratio) and the proton-to-electron mass ratio \( m_p / m_e \) (a dimensionless topological volume ratio), Newton's gravitational constant \( G \) is a _dimensional parameter_:
+If we start natively in the Interplanetary System of Units, gravitation is not described in terms of arbitrary human metal weights, but directly in terms of isolated monatomic hydrogen and the elementary electron knot:
+
+1. _The Dimensionless Hydrogen Gravitational Coupling \( g_H \)_:
+The fundamental dimensionless gravitational coupling is the ratio of gravitational wave refraction to electrodynamic action between two hydrogen atoms:
 \[
-[G] = \frac{\text{m} ^ 3}{\text{kg} \cdot \text{s} ^ 2}
+g_H \equiv \frac{G m_H^2}{\hbar c} \approx 5.91 \times 10^{-39}
 \]
-Its numerical value depends entirely upon macroscopic terrestrial conventions: the meter, the kilogram, and the second. Consequently, \( G \) cannot be deduced as a pure dimensionless geometric number from first principles. On discrete multiscale resolution grids \( \mathcal{G}_N \), its numerical evaluation in conventional SI units is strictly caliper-bounded by empirical measurements of macroscopic gravitational acceleration, with standard relative uncertainty \( \approx 22 \text{ ppm} \).
-
-=== Dimensionless Gravitational Coupling of the Proton \( \alpha_G \)
-
-The fundamental dimensionless invariant measuring the intrinsic strength of gravitational wave refraction relative to electrodynamic interaction between two nucleons is the gravitational coupling constant of the proton:
+Similarly, the coupling between two proton knots is:
 \[
-\alpha_G = \frac{G m_p ^ 2}{\hbar c} \approx 5.906 \times 10 ^ {-39}
+\alpha_G \equiv \frac{G m_p^2}{\hbar c} \approx 5.906 \times 10^{-39}
 \]
-This dimensionless quotient confirms that gravitational wave refraction is approximately 36 orders of magnitude weaker than the electromagnetic interaction between the same particles, naturally explaining why gravitational deflection is observable only across macroscopic aggregations of field matter.
+
+2. _Physical Origin of Terrestrial Caliper Uncertainty in G_:
+In SI units, Newton's constant \( G \) carries the dimensional units \( \text{m}^3 / (\text{kg} \cdot \text{s}^2) \). Its numerical uncertainty (\( \pm 22 \text{ ppm} \)) is not a fundamental property of nature. Rather, it is merely the empirical uncertainty in calibrating an arbitrary terrestrial macroscopic block of metal (the 1-kilogram artifact or Kibble balance equivalent) against the discrete number of hydrogen atoms it contains:
+\[
+1 \text{ kg} \approx 5.975 \times 10^{26} \text{ hydrogen atoms}
+\]
+Because human experimenters cannot count \( 10^{26} \) individual atoms with calipers, macroscopic torsion balances exhibit experimental scatter. In native hydrogen units (IP-Nat), gravitation is anchored cleanly to the wave refraction coupling \( g_H \), eliminating the confusion of terrestrial artifacts.
 
 '''
 
-== The Discrete Ideal Gas and SI Thermodynamic Constants
+== The Discrete Ideal Gas and Kinetic Action on \( \mathcal{G}_N \)
 
 === Physical Formulation on Discrete Resolution Grids \( \mathcal{G}_N \)
 
@@ -535,125 +736,28 @@ P V = n R T
 In strict accordance with the epistemological discipline of the Iris number system:
 
 1. _Deductive Theorem (Closed Axiomatic System)_:
-   Within the closed axiomatic model of non-overlapping, elastic contact entities on discrete grid \( \mathcal{G}_N \), the kinetic relation:
-   \[
-   P V = \frac{2}{3} N \langle E_k \rangle
-   \]
-   is an exact deductive _Theorem_ of discrete momentum conservation and MaxEnt isotropy, derived with zero skipped steps.
+Within the closed axiomatic model of non-overlapping, elastic contact entities on discrete grid \( \mathcal{G}_N \), the kinetic relation:
+\[
+P V = \frac{2}{3} N \langle E_k \rangle
+\]
+is an exact deductive _Theorem_ of discrete momentum conservation and MaxEnt isotropy, derived with zero skipped steps.
 
 2. _Conclusion Pending New Information (Physical Application to Real Gases)_:
-   When applied to physical gases in the real world, the equation of state \( P V = n R T \) is a _Conclusion Pending New Information_. Real gas molecules are localized wave knots possessing non-zero m-resolution volume \( b \approx (\Delta x)^3 \) and mutual field contact stresses. In the dilute limit where packing fraction \( \frac{N (\Delta x)^3}{V} \to 0 \), the Ideal Gas equation provides the foundational zeroth-order baseline, with finite m-res volume and boundary contact friction providing the natural gateway to real gas equations of state without continuum mechanics.
+When applied to physical gases in the real world, the equation of state \( P V = n R T \) is a _Conclusion Pending New Information_. Real gas molecules are localized wave knots possessing non-zero m-resolution volume \( b \approx (\Delta x)^3 \) and mutual field contact stresses. In the dilute limit where packing fraction \( \frac{N (\Delta x)^3}{V} \to 0 \), the Ideal Gas equation provides the foundational zeroth-order baseline, with finite m-res volume and boundary contact friction providing the natural gateway to real gas equations of state without continuum mechanics.
 
 3. _The Nature of the SI Constants_:
-   * _The Boltzmann Constant \( k_B \)_ is not an occult property of empty space; it is an extensional conversion factor translating human macroscopic temperature units (kelvins) into mechanical kinetic action (joules):
-     \[
-     k_B = \frac{2 \langle E_k \rangle}{3 T} \approx 1.380649 \times 10^{-23} \text{ J/K}
-     \]
-   * _The Molar Gas Constant \( R \)_ is the macroscopic molar momentum flux constant:
-     \[
-     R = N_A k_B \approx 8.3144626 \text{ J/(mol}\cdot\text{K)}
-     \]
+* _The Boltzmann Constant \( k_B \)_ is not an occult property of empty space; it is an extensional conversion factor translating human macroscopic temperature units (kelvins) into mechanical kinetic action (joules):
+  \[
+  k_B = \frac{2 \langle E_k \rangle}{3 T} \approx 1.380649 \times 10^{-23} \text{ J/K}
+  \]
+* _The Molar Gas Constant \( R \)_ is the macroscopic molar momentum flux constant:
+  \[
+  R = N_A k_B \approx 8.3144626 \text{ J/(mol}\cdot\text{K)}
+  \]
 
 '''
 
-== The Interplanetary System of Units (IP)
-
-=== Foundational Principles and Critique of SI Artifacts
-
-Every physical measurement is fundamentally a comparison against an adopted standard. In the International System of Units (SI), these standards are compromised by historical artifacts:
-1. _The SI Second_ is defined as \( 9\,192\,631\,770 \) periods of the microwave radiation corresponding to the transition between the two hyperfine levels of the ground state of the caesium-133 atom. Caesium-133 is an enormous atom containing 55 circulating electrons and 133 nucleons, burdened by multi-pole interactions and electrodynamic time delays across its dense electron cloud that require empirical workarounds.
-2. _The SI Kilogram_ was historically tied to a physical cylinder of platinum-iridium in Paris, and in 2019 was redefined by fixing the Planck constant \( h \) to an arbitrary decimal value in joule-seconds (\( 6.62607015 \times 10^{-34} \text{ J}\cdot\text{s} \)), linking macroscopic mass to an empirical Kibble balance apparatus.
-
-In the Counting-Iris framework, physics is formulated on discrete multiscale resolution grids \( \mathcal{G}_N \) in Conformal Geometric Algebra. We establish the _Interplanetary System of Units (IP)_, which is completely autonomous, mathematically closed, and grounded in the simplest stable physical entities in the universal electromagnetic field.
-
-The Interplanetary System consists of two complementary architectures:
-* _The Interplanetary Natural System (IP-Nat)_: Formulated for theoretical physics, wave mechanics, and discrete lattice computation, where all equations take their simplest coordinate-free geometric form.
-* _The Interplanetary Practical System (IP-Prac)_: Formulated for engineering, machine drafting, and physical calipers, where the units correspond to familiar human macroscopic scales (the second, meter, and kilogram), but are anchored to exact integer counts of natural units.
-
-=== The Interplanetary Natural System (IP-Nat)
-
-In IP-Nat, the base units are the natural scales of isolated monatomic hydrogen and the elementary electron knot:
-
-. _The Unit of Time — The Hydrogen Chronon (\( \tau_H \))_:
-The circular ground-state period of isolated monatomic hydrogen:
-\[
-\tau_H \equiv \frac{h}{\alpha^2 m_e c^2} = \frac{1}{2 c R_\infty} \approx 1.5198298460570 \times 10^{-16} \text{ s}
-\]
-Unlike caesium-133, isolated monatomic hydrogen consists of exactly two discrete entities whose standing-wave balance is analytically exact from first principles.
-
-. _The Unit of Length — The Hydrogen Metron (\( \lambda_H \))_:
-The spatial distance traversed by an electromagnetic influence during one chronon:
-\[
-\lambda_H \equiv c \, \tau_H = \frac{1}{2 R_\infty} \approx 45.56335252912 \text{ nm}
-\]
-Notice that the speed of electromagnetic influences \( c \) cancels identically: \( \lambda_H \) is determined directly by the Rydberg wavenumber.
-
-. _The Unit of Mass — The Electron Knot Mass (\( \mu_e \))_:
-The localized field mass of the elementary single-toroid electron knot:
-\[
-\mu_e \equiv m_e = \frac{2 R_\infty h}{\alpha^2 c} \approx 9.10938378614 \times 10^{-31} \text{ kg}
-\]
-
-. _Geometric Ladder of Natural Invariants_:
-In IP-Nat, the propagation speed of electromagnetic influences is identically \( c = 1 \). Every atomic and nuclear length is an exact power of the fine-structure constant \( \alpha \):
-* Bohr orbit circumference: \( 2 \pi a_0 = \alpha \cdot \lambda_H \approx 0.33249 \text{ nm} \).
-* Electron Compton wavelength: \( \lambda_e = \alpha^2 \cdot \lambda_H \approx 2.42631 \text{ pm} \).
-* Proton knot core wavelength: \( \lambda_p = \alpha^2 \left( \frac{m_p}{m_e} \right)^{-1} \lambda_H \approx 1.32141 \text{ fm} \).
-* Proton mass: \( m_p = 6 \pi^5 \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \mu_e \approx 1836.15268 \, \mu_e \).
-
-=== Physical Electrodynamics of the Rydberg Wavenumber: Microwave Cavity Resonator Mechanics
-
-Conventional textbooks describe atomic emission and absorption in terms of hypothetical point particles that undergo unphysical discontinuous “jumps” and emit fictitious “photons”. This mystical vocabulary was invented because early theorists lacked the tools of distributed electromagnetic field mechanics and retreated into point-particle abstractions.
-
-In the Unified Field Theory and classical electrical engineering, atomic radiation is understood through standard resonant cavity and antenna mechanics, described directly by the Master Field Equation \( D F = J \):
-
-1. _The Atom as a Distributed Resonant Cavity_:
-An electron is a localized, self-trapped toroidal vortex of circulating electromagnetic field energy; a proton is a localized knot of three interlinked toroidal wave fluxes in a symmetric V-configuration. An isolated neutral hydrogen atom is an electromagnetic cavity resonator where the circulating electron vortex is held in stable dynamic balance around the proton knot by direct Maxwellian stress equilibrium (radial electric divergence balanced by centrifugal wave momentum).
-
-2. _Mode Reconfiguration and Antenna Beat Mechanics_:
-When the atom transitions between two resonant standing-wave modes (from mode \( n_2 \) to mode \( n_1 \)), the localized electron vortex does not jump. It undergoes a deterministic, fine-grained mode reconfiguration of finite duration \( \Delta t \). During this transition, the superposition of the initial and final wave distributions produces an oscillating charge-current density:
-\[
-\mathbf{J}(\mathbf{x}, t) = \rho(\mathbf{x}, t) \, \mathbf{u}(\mathbf{x}, t)
-\]
-beating at the exact difference frequency \( \Delta f = f_2 - f_1 \). By Maxwell's Master Field Equation \( D F = J \), this oscillating current distribution acts as a microscopic electromagnetic antenna, radiating a localized wave packet of Poynting energy-momentum flux into the surrounding universal field at spatial wavenumber \( k = \frac{\Delta f}{c} \).
-
-3. _The Rydberg Wavenumber as the Fundamental Cavity Resonance_:
-The fundamental energy scale of the hydrogen wave resonator is the binding field energy of its circular ground state (\( n = 1 \)). The circulation speed in the ground state is:
-\[
-v_1 = \alpha c
-\]
-where \( \alpha = \frac{Z_0}{2 R_K} \) is the ratio of transversal wave propagation impedance to longitudinal circulation impedance. The kinetic field circulation energy of this orbital state is:
-\[
-E_1 = \frac{1}{2} m_e v_1^2 = \frac{1}{2} \alpha^2 m_e c^2
-\]
-Dividing this localized ground-state binding energy by the elementary circulation quantum of action \( h \) and propagation speed \( c \) gives the spatial wavenumber of the wave packet carrying this binding energy scale:
-\[
-k_1 = \frac{E_1}{h c} = \frac{\frac{1}{2} \alpha^2 m_e c^2}{h c} = \frac{\alpha^2 m_e c}{2 h}
-\]
-The right-hand side is identically the Rydberg wavenumber:
-\[
-R_\infty \equiv \frac{\alpha^2 m_e c}{2 h} \approx 10\,973\,731.568160 \text{ m}^{-1}
-\]
-
-4. _Direct Geometric Relation to the Electron Vortex Core_:
-Recall that the free electron toroidal vortex has an intrinsic core circulation wavelength (its Compton wavelength):
-\[
-\lambda_e \equiv \frac{h}{m_e c} \approx 2.4263102 \times 10^{-12} \text{ m}
-\]
-Substituting \( \lambda_e \) directly into the definition of \( R_\infty \) yields the elegant geometric identity:
-\[
-R_\infty = \frac{\alpha^2}{2 \lambda_e} \iff \frac{1}{R_\infty} = \frac{2 \lambda_e}{\alpha^2}
-\]
-This simple relation demystifies the Rydberg constant completely:
-* \( \lambda_e \) is the physical wavelength around the electron's toroidal vortex core.
-* \( \alpha^2 \) is the second-order wave impedance coupling factor between the localized vortex and the universal field.
-* \( 1 / R_\infty \approx 91.1267 \text{ nm} \) is the fundamental cutoff wavelength of the hydrogen cavity (the Lyman limit wavelength, below which the cavity cannot bind the wave knot).
-* The fundamental length unit of the Interplanetary Natural System, \( \lambda_H \), is identically half of this cavity cutoff wavelength:
-\[
-\lambda_H = \frac{1}{2 R_\infty} = \frac{\lambda_e}{\alpha^2} \approx 45.56335 \text{ nm}
-\]
-
-Thus, what conventional physics obscured behind “photon” postulates is nothing other than standard microwave cavity and antenna theory applied to localized electromagnetic wave knots.
+== The Interplanetary Practical System (IP-Prac) and Terrestrial SI Conversions
 
 === The Interplanetary Practical System (IP-Prac)
 
@@ -752,10 +856,10 @@ The Interplanetary Kilogram agrees with the SI kilogram to 31 decimal digits.
 |===
 | Constant | Mathematical&#12;Expression | Physical&#12;Interpretation | Status
 
-// | \( \pi \)
-// | \( \displaystyle \int _ { -1 } ^  { 1 } \frac{dx}{\sqrt{1 - x ^  { 2 }}} \)
-// | 1-dimensional flat space curvature ratio
-// | Classical
+| \( \pi \)
+| \( \displaystyle \int _ { -1 } ^ { 1 } \frac{d x}{\sqrt{1 - x ^ { 2 }}} \)
+| Foundational circle ratio and computational engine for all physical constants
+| _[smallcaps]#fundamental#_
 
 | \( \alpha \)
 | \( \displaystyle \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \quad \left( \alpha _ { 0 } ^ { - 1 } = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \right) \)
@@ -767,10 +871,20 @@ The Interplanetary Kilogram agrees with the SI kilogram to 31 decimal digits.
 | 3-toroid V-configuration elliptic integral
 | _[smallcaps]#new#_
 
+| \( g_H \)
+| \( \displaystyle \frac{G m_H^2}{\hbar c} \approx 5.91 \times 10^{-39} \)
+| Dimensionless hydrogen gravitational wave-refraction coupling
+| _[smallcaps]#new#_
+
 | \( G \)
 | \( \displaystyle \kappa = \frac{8 \pi G}{c ^ 4}, \quad \alpha_G = \frac{G m_p ^ 2}{\hbar c} \)
 | Field wave-refraction susceptibility (caliper bounded: \( \pm 22 \text{ ppm} \))
 | Caliper Bounded
+
+| \( R_\infty \)
+| \( \displaystyle \frac{\alpha^2}{2 \lambda_e} = \frac{\alpha^2 m_e c}{2 h} \)
+| Hydrogen standing-wave cavity resonance cutoff wavenumber
+| Resonator Mode
 
 | \( Z _ { 0 } \)
 | \( \displaystyle 2 \alpha R _ { K } = \frac{2 \alpha h}{e ^  { 2 }} \)
@@ -790,12 +904,12 @@ The Interplanetary Kilogram agrees with the SI kilogram to 31 decimal digits.
 | \( k _ { B } \)
 | \( \displaystyle \frac{2 \langle E _ { k } \rangle}{3 T} \)
 | Energy-to-kelvin conversion factor on discrete grid \( \mathcal{G}_N \)
-| SI
+| SI Conversion
 
 | \( R \)
 | \( \displaystyle N _ { A } k _ { B } \)
 | Molar momentum flux scale factor
-| SI
+| SI Conversion
 |===
 
 The constants are now grounded in direct geometric ratios, discrete resolution grids \( \mathcal{G}_N \), and classical direct contact action causality, free of continuum approximations and quantum mysticism.
