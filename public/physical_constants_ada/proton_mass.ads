@@ -2,7 +2,7 @@ pragma ada_2022;
 
 -- proton_mass.ads
 --
--- computes the rest mass of the proton m_p in kilograms from:
+-- computes the mass of the proton m_p in kilograms from:
 --   m_p = (m_p / m_e) * m_e
 --
 -- where both (m_p / m_e) and m_e are computed to the given relative tolerance.

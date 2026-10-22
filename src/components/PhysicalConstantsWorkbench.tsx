@@ -30,7 +30,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
   // (2 / pi) * K(m) = 1 + alpha^2 / (2 * sqrt(2))
   const MP_OVER_ME = 6.0 * PI_5 * (1.0 + (ALPHA * ALPHA) / (2.0 * Math.SQRT2));
 
-  // Electron rest mass from Rydberg constant
+  // Electron mass from Rydberg constant
   const R_INF = 10973731.568160; // m^-1
   const ME = (2.0 * R_INF * H_EXACT) / (ALPHA * ALPHA * C_EXACT);
   const MP = MP_OVER_ME * ME;
@@ -211,7 +211,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
                 </div>
               </div>
 
-              {/* Electron rest mass */}
+              {/* Electron mass */}
               <div className="p-3 bg-slate-950 rounded-xl border border-slate-800/70 flex items-center justify-between">
                 <div>
                   <div className="text-xs font-mono text-indigo-300">Electron Mass \( m_e \)</div>
@@ -225,7 +225,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
                 </div>
               </div>
 
-              {/* Proton rest mass */}
+              {/* Proton mass */}
               <div className="p-3 bg-slate-950 rounded-xl border border-slate-800/70 flex items-center justify-between">
                 <div>
                   <div className="text-xs font-mono text-indigo-300">Proton Mass \( m_p \)</div>

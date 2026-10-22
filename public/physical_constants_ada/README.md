@@ -32,9 +32,9 @@ This directory contains standalone, human-readable Ada 2022 packages for computi
 | `proton_electron_mass_ratio.ads/.adb` | \( m_p / m_e \) | 3-toroid V-configuration complete elliptic integral \( 6\pi^5 (1 + \alpha^2 / (2\sqrt{2})) \approx 1836.15268 \) |
 | `elementary_charge.ads/.adb` | \( e \) | Exact SI elementary charge (\( 1.602176634 \times 10^{-19} \text{ C} \)) |
 | `planck_constant.ads/.adb` | \( h \) & \( \hbar \) | Exact SI Planck constant (\( 6.62607015 \times 10^{-34} \text{ J}\cdot\text{s} \)) |
-| `electron_mass.ads/.adb` | \( m_e \) | Metrological rest mass from Rydberg constant \( 2 R_\infty h / (\alpha^2 c) \) |
+| `electron_mass.ads/.adb` | \( m_e \) | Metrological mass from Rydberg constant \( 2 R_\infty h / (\alpha^2 c) \) |
 | `electron_charge_to_mass_ratio.ads/.adb` | \( e / m_e \) | Specific charge \( e / m_e \) |
-| `proton_mass.ads/.adb` | \( m_p \) | Rest mass from \( (m_p / m_e) \times m_e \) |
+| `proton_mass.ads/.adb` | \( m_p \) | Mass from \( (m_p / m_e) \times m_e \) |
 | `gravitational_constant.ads/.adb` | \( G \) | Wave refraction coupling with field susceptibility \( \kappa = 8\pi G / c^4 \); dimensional SI value explicitly caliper-bounded by empirical measurement (\( \pm 22 \text{ ppm} \)); dimensionless proton coupling \( \alpha_G = G m_p^2 / (\hbar c) \) |
 | `boltzmann_constant.ads/.adb` | \( k_B \) | Exact SI energy-to-temperature conversion factor (\( 1.380649 \times 10^{-23} \text{ J/K} \)) |
 | `molar_gas_constant.ads/.adb` | \( R \) | Exact molar momentum flux constant \( N_A k_B \) |

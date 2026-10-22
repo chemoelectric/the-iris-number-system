@@ -2,7 +2,7 @@ pragma ada_2022;
 
 -- electron_mass.ads
 --
--- computes the rest mass of the electron m_e in kilograms from the
+-- computes the mass of the electron m_e in kilograms from the
 -- exact definition of the rydberg constant and the fine-structure constant.
 --
 -- in metrology:
