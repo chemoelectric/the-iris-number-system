@@ -148,7 +148,7 @@ begin
    text_io.put_line ("  c                  = 299792458 m/s (exact)");
    text_io.put_line ("  pi                 = 3.14159265358979...");
    text_io.put_line ("  1/alpha            = 137.035999084...");
-   text_io.put_line ("  m_p / m_e          = 1836.15267...");
+   text_io.put_line ("  m_p / m_e          = 1836.15268...");
    text_io.put_line ("  e                  = 1.602176634e-19 C (exact)");
    text_io.put_line ("  h                  = 6.62607015e-34 J*s (exact)");
    text_io.put_line ("  m_e                = 9.1093837e-31 kg");

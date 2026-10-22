@@ -128,15 +128,27 @@ iris_pi: 22/7$
 /* 4a. Electron Specific Charge Ratio (e / m_e) */
 electron_specific_charge(charge_coupling, mass_density) := charge_coupling / mass_density$
 
-/* 4b. Proton-to-Electron Mass Ratio: m_p / m_e = 6 * pi^5 (geometric volume ratio) */
-proton_electron_mass_ratio() := 6 * (iris_pi)^5$
+/* 4b. Fine-Structure Constant Alpha Reciprocal and Coupling Alpha */
+alpha_0_reciprocal() := 4 * %pi^3 + %pi^2 + %pi$
+alpha_reciprocal() := alpha_0_reciprocal() - 1 / (24 * alpha_0_reciprocal())$
+alpha_coupling() := 1 / alpha_reciprocal()$
 
-/* 4c. Newton's Gravitational Constant G from discrete Master Field flux */
+/* 4c. Proton-to-Electron Mass Ratio: 3 Interlinked Toroids in V-Configuration */
+/* Canonical 45-degree pitch: m = k^2 = sqrt(2) * alpha^2 (parameter for elliptic_kc) */
+proton_electron_mass_ratio_exact() := 
+  block([a, m_param],
+    a: alpha_coupling(),
+    m_param: sqrt(2) * a^2,
+    6 * %pi^5 * (2 / %pi) * elliptic_kc(m_param))$
+
+proton_electron_mass_ratio_trunc() := 
+  block([a],
+    a: alpha_coupling(),
+    6 * %pi^5 * (1 + a^2 / (2 * sqrt(2))))$
+
+/* 4d. Newton's Gravitational Constant G from discrete Master Field flux */
 newton_g_constant(c_val, delta_omega, hbar_val, omega_val) := 
-  (c_val^4 * delta_omega^2) / (4 * iris_pi * hbar_val * omega_val)$
-
-/* 4d. Fine-Structure Constant Alpha Reciprocal */
-alpha_reciprocal() := 137036/1000$
+  (c_val^4 * delta_omega^2) / (4 * %pi * hbar_val * omega_val)$
 
 /* Print initialization banner */
 print("Iris Number System and Master Field Equation package loaded successfully.")$

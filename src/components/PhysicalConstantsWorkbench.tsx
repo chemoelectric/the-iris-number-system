@@ -25,9 +25,10 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
   const INV_ALPHA = ALPHA_0_INV - 1.0 / (24.0 * ALPHA_0_INV);
   const ALPHA = 1.0 / INV_ALPHA;
 
-  // Proton-to-electron mass ratio
-  const RECOIL = 1.0 - ALPHA / 24.0 + (ALPHA * ALPHA) / Math.PI;
-  const MP_OVER_ME = 6.0 * PI_5 * RECOIL;
+  // Proton-to-electron mass ratio from 3 interlinked toroidal fluxes in V-configuration
+  // Canonical pitch angle cos(45 deg) = 1/sqrt(2), elliptic deformation parameter m = sqrt(2)*alpha^2
+  // (2 / pi) * K(m) = 1 + alpha^2 / (2 * sqrt(2))
+  const MP_OVER_ME = 6.0 * PI_5 * (1.0 + (ALPHA * ALPHA) / (2.0 * Math.SQRT2));
 
   // Electron rest mass from Rydberg constant
   const R_INF = 10973731.568160; // m^-1
@@ -186,7 +187,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
                 <div>
                   <div className="text-xs font-mono text-indigo-300">Mass Ratio \( m_p / m_e \)</div>
                   <div className="text-[11px] text-slate-500 font-mono">
-                    Conformal 5-sphere volume: \( 6 \pi^5 ( 1 - \alpha / 24 ) \)
+                    3-toroid V-configuration: \( 6 \pi^5 \left( 1 + \frac&#123;\alpha^2&#125;&#123;2\sqrt&#123;2&#125;&#125; \right) \)
                   </div>
                 </div>
                 <div className="text-right font-mono">
