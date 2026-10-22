@@ -601,6 +601,60 @@ In IP-Nat, the propagation speed of electromagnetic influences is identically \(
 * Proton knot core wavelength: \( \lambda_p = \alpha^2 \left( \frac{m_p}{m_e} \right)^{-1} \lambda_H \approx 1.32141 \text{ fm} \).
 * Proton mass: \( m_p = 6 \pi^5 \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \mu_e \approx 1836.15268 \, \mu_e \).
 
+=== Physical Electrodynamics of the Rydberg Wavenumber: Microwave Cavity Resonator Mechanics
+
+Conventional textbooks describe atomic emission and absorption in terms of hypothetical point particles that undergo unphysical discontinuous “jumps” and emit fictitious “photons”. This mystical vocabulary was invented because early theorists lacked the tools of distributed electromagnetic field mechanics and retreated into point-particle abstractions.
+
+In the Unified Field Theory and classical electrical engineering, atomic radiation is understood through standard resonant cavity and antenna mechanics, described directly by the Master Field Equation \( D F = J \):
+
+1. _The Atom as a Distributed Resonant Cavity_:
+An electron is a localized, self-trapped toroidal vortex of circulating electromagnetic field energy; a proton is a localized knot of three interlinked toroidal wave fluxes in a symmetric V-configuration. An isolated neutral hydrogen atom is an electromagnetic cavity resonator where the circulating electron vortex is held in stable dynamic balance around the proton knot by direct Maxwellian stress equilibrium (radial electric divergence balanced by centrifugal wave momentum).
+
+2. _Mode Reconfiguration and Antenna Beat Mechanics_:
+When the atom transitions between two resonant standing-wave modes (from mode \( n_2 \) to mode \( n_1 \)), the localized electron vortex does not jump. It undergoes a deterministic, fine-grained mode reconfiguration of finite duration \( \Delta t \). During this transition, the superposition of the initial and final wave distributions produces an oscillating charge-current density:
+\[
+\mathbf{J}(\mathbf{x}, t) = \rho(\mathbf{x}, t) \, \mathbf{u}(\mathbf{x}, t)
+\]
+beating at the exact difference frequency \( \Delta f = f_2 - f_1 \). By Maxwell's Master Field Equation \( D F = J \), this oscillating current distribution acts as a microscopic electromagnetic antenna, radiating a localized wave packet of Poynting energy-momentum flux into the surrounding universal field at spatial wavenumber \( k = \frac{\Delta f}{c} \).
+
+3. _The Rydberg Wavenumber as the Fundamental Cavity Resonance_:
+The fundamental energy scale of the hydrogen wave resonator is the binding field energy of its circular ground state (\( n = 1 \)). The circulation speed in the ground state is:
+\[
+v_1 = \alpha c
+\]
+where \( \alpha = \frac{Z_0}{2 R_K} \) is the ratio of transversal wave propagation impedance to longitudinal circulation impedance. The kinetic field circulation energy of this orbital state is:
+\[
+E_1 = \frac{1}{2} m_e v_1^2 = \frac{1}{2} \alpha^2 m_e c^2
+\]
+Dividing this localized ground-state binding energy by the elementary circulation quantum of action \( h \) and propagation speed \( c \) gives the spatial wavenumber of the wave packet carrying this binding energy scale:
+\[
+k_1 = \frac{E_1}{h c} = \frac{\frac{1}{2} \alpha^2 m_e c^2}{h c} = \frac{\alpha^2 m_e c}{2 h}
+\]
+The right-hand side is identically the Rydberg wavenumber:
+\[
+R_\infty \equiv \frac{\alpha^2 m_e c}{2 h} \approx 10\,973\,731.568160 \text{ m}^{-1}
+\]
+
+4. _Direct Geometric Relation to the Electron Vortex Core_:
+Recall that the free electron toroidal vortex has an intrinsic core circulation wavelength (its Compton wavelength):
+\[
+\lambda_e \equiv \frac{h}{m_e c} \approx 2.4263102 \times 10^{-12} \text{ m}
+\]
+Substituting \( \lambda_e \) directly into the definition of \( R_\infty \) yields the elegant geometric identity:
+\[
+R_\infty = \frac{\alpha^2}{2 \lambda_e} \iff \frac{1}{R_\infty} = \frac{2 \lambda_e}{\alpha^2}
+\]
+This simple relation demystifies the Rydberg constant completely:
+* \( \lambda_e \) is the physical wavelength around the electron's toroidal vortex core.
+* \( \alpha^2 \) is the second-order wave impedance coupling factor between the localized vortex and the universal field.
+* \( 1 / R_\infty \approx 91.1267 \text{ nm} \) is the fundamental cutoff wavelength of the hydrogen cavity (the Lyman limit wavelength, below which the cavity cannot bind the wave knot).
+* The fundamental length unit of the Interplanetary Natural System, \( \lambda_H \), is identically half of this cavity cutoff wavelength:
+\[
+\lambda_H = \frac{1}{2 R_\infty} = \frac{\lambda_e}{\alpha^2} \approx 45.56335 \text{ nm}
+\]
+
+Thus, what conventional physics obscured behind “photon” postulates is nothing other than standard microwave cavity and antenna theory applied to localized electromagnetic wave knots.
+
 === The Interplanetary Practical System (IP-Prac)
 
 For macroscopic calipers, machine tooling, and human timekeeping, IP-Prac defines units matching the familiar second, meter, and kilogram as _exact canonical integers_ of IP-Nat:
