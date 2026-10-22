@@ -8,7 +8,7 @@ Frédéric Blondin Custer
 :experimental:
 
 [preface]
-== Abstract
+== Summary
 
 Within the Counting-Iris Number System, Conformal Geometric Algebra (CGA), and discrete multiscale resolution grids \( \mathcal{G}_N \), fundamental physical constants are proved to be exact geometric ratios and definite integrals relative to the true propagation speed \( c \), and the Ideal Gas Law is deduced as an exact theorem of discrete momentum flux conservation without continuum approximations:
 
