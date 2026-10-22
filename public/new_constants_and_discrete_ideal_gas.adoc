@@ -14,7 +14,7 @@ Within the Counting-Iris Number System, Conformal Geometric Algebra (CGA), and d
 
 1. _The Fine-Structure Constant_ \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and field dynamics, wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes boundary contact reaction with the surrounding field \( \Delta _ { \text{field} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \).
 2. _The Proton-to-Electron Mass Ratio_ \( m _ { p } / m _ { e } \) is derived from the topological knot of three interlinked toroidal wave fluxes in a symmetric V-configuration with canonical dihedral pitch angle \( \cos(45^\circ) = 1/\sqrt{2} \): under spin and centrifugal field stress, the unperturbed 5-sphere baseline volume \( 6 \pi^5 \) undergoes elliptical deformation described by the complete elliptic integral of the first kind \( \frac{2}{\pi} K(m) \) with parameter \( m = k^2 = \sqrt{2} \, \alpha^2 \), yielding \( m _ { p } / m _ { e } = 6 \pi ^ { 5 } \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \approx 6 \pi ^ { 5 } \left( 1 + \frac{\alpha^2}{2 \sqrt{2}} \right) \approx 1836.15268 \).
-3. _Newton's Gravitational Coupling_ \( G \) is formulated from classical wave refraction in the universal electromagnetic field, where localized field energy density \( \rho_E = \rho_m c^2 \) alters propagation speed \( c(\mathbf{r}) \approx c_0 ( 1 - G M / (c_0^2 r) ) \) and refracts wave packets into Newtonian orbits with \( \mathbf{a} = -c_0 \nabla c(\mathbf{r}) = -(G M / r^2) \hat{\mathbf{r}} \). Newton's constant \( G \) represents the dimensional field susceptibility \( \kappa = 8 \pi G / c^4 \) governing \( \nabla^2 n = \kappa \rho_E \), bounded empirically in SI units by physical calipers (\( \pm 22 \text{ ppm} \)), with the fundamental dimensionless gravitational interaction given by the proton coupling \( \alpha_G = G m_p^2 / (\hbar c) \approx 5.906 \times 10^{-39} \).
+3. _Newton's Gravitational Coupling_ \( G \) is formulated from classical wave refraction in the universal electromagnetic field, where localized field energy density \( \rho_E = \rho_m c^2 \) alters propagation speed \( c(\mathbf{r}) \approx c_0 ( 1 - G M / (c_0^2 r) ) \) and refracts wave packets into Newtonian orbits with \( \mathbf{a} = -c_0 \nabla c(\mathbf{r}) = -(G M / r^2) \hat{\mathbf{r}} \). Newton's constant \( G \) represents the dimensional field susceptibility \( \kappa = 8 \pi G / c^4 \) describing \( \nabla^2 n = \kappa \rho_E \), bounded empirically in SI units by physical calipers (\( \pm 22 \text{ ppm} \)), with the fundamental dimensionless gravitational interaction given by the proton coupling \( \alpha_G = G m_p^2 / (\hbar c) \approx 5.906 \times 10^{-39} \).
 4. _The Ideal Gas Law_ is deduced from elastic collisions of finite m-resolution entities transferring momentum \( \Delta p _ { x } = 2 (\Delta m) v _ { x } \) via direct contact action, yielding the state equation \( P V = ({2}/{3}) N \langle E _ { k } \rangle = N k _ { B } T = n R T \), where \( k _ { B } = {2 \langle E _ { k } \rangle}/({3 T}) \) and \( R = N _ { A } k _ { B } \) are extensional conversion factors calibrating macroscopic temperature to microscopic kinetic action.
 
 '''
@@ -203,7 +203,7 @@ Both fundamental constants emerge from the conformal geometry of 6-dimensional C
 
 In the Unified Field Theory, a baryon (proton) is not an indivisible point particle of zero spatial extent, nor is it an isotropic sphere. A proton is a localized topological knot of three toroidal wave fluxes interlinked in a symmetric V-configuration, formulated as a standing wave in Conformal Geometric Algebra over the six canonical generators \( \{ e_1, e_2, e_3, e_4, e_\odot, e_\infty \} \).
 
-When rotated and viewed in rotational equilibrium along its spin axis, two of the toroidal flux loops form the symmetric outward wings of a V-wedge meeting at a mutual circulation apex, while the third toroidal loop threads through and binds them across the apex. In high-frequency scattering experiments, wave pulses reflect off these three localized circulation centers. Particle physicists, unable to extract or isolate any individual lobe without destroying the entire standing-wave knot, invented the intensional creed of permanent “quark confinement” rather than recognizing that they were observing the three interlinked lobes of a single, continuous V-shaped toroidal standing wave.
+When rotated and viewed in rotational equilibrium along its spin axis, two of the toroidal flux loops form the symmetric outward wings of a V-wedge meeting at a mutual circulation apex, while the third toroidal loop threads through and binds them across the apex. In high-frequency scattering experiments, wave pulses reflect off these three localized circulation centers. Particle physicists, unable to extract or isolate any individual lobe without destroying the entire standing-wave knot, invented the intensional creed of permanent “quark confinement” rather than recognizing that they were observing the three interlinked lobes of a single, connected V-shaped toroidal standing wave.
 
 === The Unperturbed 5-Sphere Baseline Volume
 
@@ -389,196 +389,169 @@ This dimensionless quotient confirms that gravitational wave refraction is appro
 
 Conventional thermodynamics models an ideal gas as point particles moving through hypothetical continuum space and invokes uncountably infinite limits. In the Counting-Iris framework:
 * Reality consists of a finite number \( N \) of finite entities (gas molecules).
-* Each molecule is a localized wave knot with finite m-resolution spatial extent \( \Delta x \) and finite m-resolution mass \( \Delta m \).
-* Molecules interact strictly by _direct contact action causality_ with finite duration; action-at-a-distance is rejected.
+* Each molecule is a localized wave knot with finite m-resolution spatial extent \( \Delta x \in \mathcal{G}_N \) and finite m-resolution mass \( \Delta m \).
+* Molecules interact strictly by _direct contact action causality_ with finite interaction duration; action-at-a-distance is rejected.
+* Heat exchange between the container boundaries and gas molecules occurs strictly via direct mechanical collision events (isothermal contact transduction) with the vibrating atoms of the walls.
 * All motions take place on the discrete spatial-temporal resolution grid \( \mathcal{G}_N \) with spatial grid step \( \Delta x \) and time step \( \Delta t \).
 
-=== Exact Derivation of Kinetic Pressure from Momentum Flux Conservation
+=== Dual Exact Derivations of Kinetic Pressure from Momentum Flux Conservation
 
-Consider a macroscopic container of volume \( V \) bounded by rigid walls. Let a planar boundary of area \( A \) be oriented perpendicular to the \( x \)-axis at coordinate \( x = L \).
+We establish the equation of state through two complementary, constructive proofs on \( \mathcal{G}_N \): first by direct discrete molecule round-trip summation, and second by finite observation duration with discrete velocity partitions.
 
-*Step 1: Single Collision Contact Momentum Transfer*
+==== Formulation A: Discrete Molecule Round-Trip Summation on \( \mathcal{G}_N \)
 
-Let a gas molecule have discrete velocity vector:
-\[
-\mathbf{v} = (v _ { x }, v _ { y }, v _ { z })
-\]
-When the molecule collides with the planar boundary at \( x = L \), it undergoes an elastic specular collision via direct local contact with the atoms of the boundary.
+Consider a macroscopic container of volume \( V = A L_x \) bounded by rigid walls, with cross-sectional area \( A \) normal to the \( x \)-axis and length \( L_x \) along the \( x \)-axis.
 
-Before collision:
+. *Single Molecule Round-Trip Duration*:
+For each discrete molecule \( i \in \{1, 2, \dots, N\} \) having velocity component \( v_{x,i} \), the time between successive collisions with the planar boundary at \( x = L_x \) is the finite round-trip transit duration:
 \[
-p_{x,\text{initial}} = (\Delta m) v_x
-\]
-After collision (by momentum conservation with a macroscopic wall):
-\[
-p_{x,\text{final}} = -(\Delta m) v_x
-\]
-The momentum transferred to the wall in this single contact event is:
-\[
-\Delta p _ { x } = p _ { x,\text{initial }} - p _ { x,\text{final }} = (\Delta m) v _ { x } - (-(\Delta m) v _ { x }) = 2 (\Delta m) v _ { x }
+\Delta t_i = \frac{2 L_x}{|v_{x,i}|}
 \]
 
-*Step 2: Number of Contact Events in Finite Duration \( \tau \)*
-
-Consider a finite observation time duration \( \tau > 0 \). 
-
-A molecule with positive velocity component \( v _ { x } > 0 \) will reach the wall within duration \( \tau \) if and only if its initial distance from the wall is less than or equal to the distance traveled:
+. *Single Collision Contact Momentum Transfer*:
+When molecule \( i \) strikes the rigid boundary, it undergoes an elastic specular collision via direct local contact with boundary atoms. The initial momentum is \( p_{x,\text{initial}} = (\Delta m) |v_{x,i}| \) and the post-collision momentum is \( p_{x,\text{final}} = -(\Delta m) |v_{x,i}| \). The momentum transferred to the wall in this single contact event is:
 \[
-\Delta s _ { x } = v _ { x } \tau
-\]
-Therefore, all molecules with velocity component \( v _ { x } \) that hit the wall area \( A \) within duration \( \tau \) must reside within a collision cylinder of volume:
-\[
-\Delta V _ { \text{cyl }} = A \cdot \Delta s _ { x } = A v _ { x } \tau
-\]
-Let \( \rho _ { N } = \frac{N}{V} \) be the number density of gas molecules in the container.
-
-In an isotropic gas on the discrete grid \( \mathcal{G}_N \), velocity distributions are symmetric under spatial reflections: exactly half of the molecules with speed \( |v _ { x }| \) move in the positive \( +x \) direction toward the wall, and half move in the negative \( -x \) direction away from the wall.
-
-Therefore, the number of collisions with the wall of area \( A \) during duration \( \tau \) by molecules with velocity component \( v _ { x } \) is:
-\[
-\Delta N _ { c }(v _ { x }) = \frac{1}{2} \rho _ { N } \Delta V _ { \text{cyl }} = \frac{1}{2} \left( \frac{N}{V} \right) A v _ { x } \tau
+\Delta p_{x,i} = p_{x,\text{initial}} - p_{x,\text{final}} = 2 (\Delta m) |v_{x,i}|
 \]
 
-*Step 3: Total Momentum Transferred to the Wall*
+. *Time-Averaged Normal Force per Molecule*:
+The time-averaged force exerted by molecule \( i \) on the wall over its round-trip transit is:
+\[
+F_i = \frac{\Delta p_{x,i}}{\Delta t_i} = \frac{2 (\Delta m) |v_{x,i}|}{\displaystyle \frac{2 L_x}{|v_{x,i}|}} = \frac{(\Delta m) v_{x,i}^2}{L_x}
+\]
+Notice that the factor of \( 2 \) cancels identically.
 
-The total momentum \( \Delta P _ { \text{total }} \) transferred to area \( A \) during duration \( \tau \) is obtained by summing the momentum transfers of all arriving molecules:
+. *Total Force from All Discrete Molecules*:
+The total normal force exerted by all \( N \) discrete molecules on boundary \( A \) is the direct sum over the finite ensemble:
 \[
-\Delta P _ { \text{total }} = \sum _ { v _ { x  } > 0} \Delta N _ { c }(v _ { x }) \cdot \Delta p _ { x }
+F_{\text{normal}} = \sum_{i=1}^N F_i = \frac{\Delta m}{L_x} \sum_{i=1}^N v_{x,i}^2
 \]
-Substitute the expressions for \( \Delta N _ { c }(v _ { x }) \) and \( \Delta p _ { x } \):
+By definition of the ensemble mean-square velocity:
 \[
-\Delta P _ { \text{total }} = \sum _ { v _ { x  } > 0} \left[ \frac{1}{2} \left( \frac{N}{V} \right) A v _ { x } \tau \right] \cdot \left[ 2 (\Delta m) v _ { x } \right]
-\]
-Multiply the numerical constants:
-\[
-\frac{1}{2} \times 2 = 1
+\langle v_x^2 \rangle \equiv \frac{1}{N} \sum_{i=1}^N v_{x,i}^2 \implies \sum_{i=1}^N v_{x,i}^2 = N \langle v_x^2 \rangle
 \]
 Therefore:
 \[
-\Delta P _ { \text{total }} = \left( \frac{N}{V} \right) A \tau (\Delta m) \sum _ { v _ { x  } > 0} v _ { x } ^  { 2 }
-\]
-Averaging over the entire ensemble of \( N \) molecules, because \( v _ { x } ^  { 2 } \) is identical for positive and negative values, the sum over \( v _ { x } > 0 \) equals the ensemble mean:
-\[
-\sum _ { v _ { x  } > 0} v _ { x } ^  { 2 } = \frac{1}{2} N \langle v _ { x } ^  { 2 } \rangle \cdot 2 = N \langle v _ { x } ^  { 2 } \rangle
-\]
-Thus, the total momentum transfer simplifies to:
-\[
-\Delta P _ { \text{total }} = \left( \frac{N}{V} \right) A \tau (\Delta m) \langle v _ { x } ^  { 2 } \rangle
+F_{\text{normal}} = \frac{N (\Delta m) \langle v_x^2 \rangle}{L_x}
 \]
 
-*Step 4: Extension of Mechanical Pressure*
-
-Mechanical pressure \( P \) is defined extensionally as the time-averaged normal force per unit area:
+. *Mechanical Pressure*:
+Mechanical pressure \( P \) is defined extensionally as normal force per unit area:
 \[
-P \equiv \frac{F _ { \text{normal }}}{A} = \frac{1}{A} \left( \frac{\Delta P _ { \text{total }}}{\tau} \right)
+P \equiv \frac{F_{\text{normal}}}{A} = \frac{N (\Delta m) \langle v_x^2 \rangle}{A L_x} = \left( \frac{N}{V} \right) (\Delta m) \langle v_x^2 \rangle = \rho \langle v_x^2 \rangle
 \]
-Substitute the expression for \( \Delta P _ { \text{total }} \):
+where \( \rho = \frac{N (\Delta m)}{V} \) is the base-scale mass density.
+Multiplying both sides by container volume \( V \):
 \[
-P = \frac{1}{A \tau} \left[ \left( \frac{N}{V} \right) A \tau (\Delta m) \langle v _ { x } ^  { 2 } \rangle \right]
-\]
-Cancel \( A \) and \( \tau \) in the numerator and denominator:
-\[
-P = \left( \frac{N}{V} \right) (\Delta m) \langle v _ { x } ^  { 2 } \rangle
-\]
-Recall that the total mass of the gas is \( M = N (\Delta m) \), and the mass density is \( \rho = \frac{M}{V} = \frac{N (\Delta m)}{V} \). Therefore:
-\[
-P = \rho \langle v _ { x } ^  { 2 } \rangle
+P V = N (\Delta m) \langle v_x^2 \rangle
 \]
 
-*Step 5: Spatial Isotropy on the Grid \( \mathcal{G}_N \)*
+==== Formulation B: Finite Observation Duration \( \tau \) and Discrete Velocity Partitions
 
-The magnitude of the molecular velocity vector is:
+To verify this result independently, consider a finite observation time duration \( \tau > 0 \).
+
+. *Discrete Velocity Partition*:
+Partition the \( N \) discrete molecules into discrete velocity classes \( k \) on grid \( \mathcal{G}_N \), where class \( k \) has velocity component \( v_{x,k} \) and population count \( N_k \), satisfying \( \sum_k N_k = N \). The number density of class \( k \) is \( n_k = \frac{N_k}{V} \).
+
+. *Collision Cylinder and Arrival Count*:
+Molecules of class \( k \) with positive velocity \( v_{x,k} > 0 \) that strike boundary area \( A \) within duration \( \tau \) must reside within a collision cylinder of volume:
 \[
-v ^  { 2 } = v _ { x } ^  { 2 } + v _ { y } ^  { 2 } + v _ { z } ^  { 2 }
+\Delta V_k = A v_{x,k} \tau
 \]
-Taking the ensemble expectation value on both sides:
+The number of contact collisions from class \( k \) during duration \( \tau \) is:
 \[
-\langle v ^  { 2 } \rangle = \langle v _ { x } ^  { 2 } \rangle + \langle v _ { y } ^  { 2 } \rangle + \langle v _ { z } ^  { 2 } \rangle
-\]
-Because the discrete grid \( \mathcal{G}_N \) has orthogonal symmetry in three spatial dimensions, there is no preferred coordinate axis:
-\[
-\langle v _ { x } ^  { 2 } \rangle = \langle v _ { y } ^  { 2 } \rangle = \langle v _ { z } ^  { 2 } \rangle
-\]
-Substitute this equality into the sum:
-\[
-\langle v ^  { 2 } \rangle = \langle v _ { x } ^  { 2 } \rangle + \langle v _ { x } ^  { 2 } \rangle + \langle v _ { x } ^  { 2 } \rangle = 3 \langle v _ { x } ^  { 2 } \rangle
-\]
-Divide both sides by 3:
-\[
-\langle v _ { x } ^  { 2 } \rangle = \frac{1}{3} \langle v ^  { 2 } \rangle
-\]
-Substitute \( \langle v _ { x } ^  { 2 } \rangle = \frac{1}{3} \langle v ^  { 2 } \rangle \) into the pressure equation:
-\[
-P = \frac{1}{3} \rho \langle v ^  { 2 } \rangle = \frac{1}{3} \left( \frac{N (\Delta m)}{V} \right) \langle v ^  { 2 } \rangle
+\Delta N_c(v_{x,k}) = n_k \Delta V_k = \left( \frac{N_k}{V} \right) A v_{x,k} \tau
 \]
 
-*Step 6: Relation to Kinetic Energy and the Equation of State*
+. *Total Momentum Transferred during Duration \( \tau \)*:
+Each contact collision imparts momentum \( \Delta p_{x,k} = 2 (\Delta m) v_{x,k} \). Summing over all positive velocity classes:
+\[
+\Delta P_{\text{total}} = \sum_{v_{x,k} > 0} \Delta N_c(v_{x,k}) \cdot \Delta p_{x,k} = \sum_{v_{x,k} > 0} \left[ \left( \frac{N_k}{V} \right) A v_{x,k} \tau \right] \cdot \left[ 2 (\Delta m) v_{x,k} \right] = \frac{2 A \tau (\Delta m)}{V} \sum_{v_{x,k} > 0} N_k v_{x,k}^2
+\]
 
-Rewrite the right-hand side by factoring out \( \frac{2}{3} \):
+. *Spatial Reflection Symmetry on \( \mathcal{G}_N \)*:
+In an isotropic ensemble on the discrete lattice, spatial reflection symmetry dictates that exactly half of the molecules with speed \( |v_{x,k}| \) travel in the positive \( +x \) direction toward the boundary:
 \[
-P = \frac{2}{3} \left( \frac{N}{V} \right) \left[ \frac{1}{2} (\Delta m) \langle v ^  { 2 } \rangle \right]
+\sum_{v_{x,k} > 0} N_k v_{x,k}^2 = \frac{1}{2} \sum_{\text{all } k} N_k v_{x,k}^2 = \frac{1}{2} \sum_{i=1}^N v_{x,i}^2 = \frac{1}{2} N \langle v_x^2 \rangle
 \]
-The term in brackets is the mean translational kinetic energy per molecule:
+Substituting this reflection symmetry factor:
 \[
-\langle E _ { k } \rangle \equiv \frac{1}{2} (\Delta m) \langle v ^  { 2 } \rangle
+\Delta P_{\text{total}} = \frac{2 A \tau (\Delta m)}{V} \left[ \frac{1}{2} N \langle v_x^2 \rangle \right] = \left( \frac{N}{V} \right) A \tau (\Delta m) \langle v_x^2 \rangle
 \]
-Therefore:
-\[
-P = \frac{2}{3} \left( \frac{N}{V} \right) \langle E _ { k } \rangle
-\]
-Multiply both sides of the equation by volume \( V \):
-\[
-P V = \frac{2}{3} N \langle E _ { k } \rangle
-\]
-This is the _exact fundamental equation of state_ for the discrete Ideal Gas. Not a single continuum approximation was made.
+The factor of \( 2 \) from elastic momentum reversal and the factor of \( 1/2 \) from spatial reflection cancel cleanly to unity.
 
-=== Extension of Temperature and the SI Constants \( k _ { B } \) and \( R \)
+. *Extensional Pressure Evaluation*:
+Dividing the total momentum transfer by \( A \tau \):
+\[
+P = \frac{\Delta P_{\text{total}}}{A \tau} = \left( \frac{N}{V} \right) (\Delta m) \langle v_x^2 \rangle
+\]
+Both derivations agree with absolute algebraic precision.
 
-In physical metrology, the kelvin unit of thermodynamic temperature \( T \) is calibrated by partitioning mean translational kinetic energy equally among the three spatial translational degrees of freedom:
+=== Spatial Isotropy via Jaynesian Maximum Entropy (MaxEnt)
+
+The discrete magnitude of molecular velocity is:
 \[
-\frac{1}{2} k _ { B } T \equiv \frac{1}{3} \langle E _ { k } \rangle = \frac{1}{2} (\Delta m) \langle v _ { x } ^  { 2 } \rangle
+v^2 = v_x^2 + v_y^2 + v_z^2 \implies \langle v^2 \rangle = \langle v_x^2 \rangle + \langle v_y^2 \rangle + \langle v_z^2 \rangle
 \]
-Multiply both sides of this definition by 3:
+Under spatial rotational symmetry on the discrete lattice \( \mathcal{G}_N \) and given fixed total translational kinetic energy \( \langle E_k \rangle = \frac{1}{2} (\Delta m) \langle v^2 \rangle \), Jaynes's Principle of Maximum Entropy (MaxEnt) uniquely assigns equal expectation values to the three orthogonal spatial axes:
 \[
-\frac{3}{2} k _ { B } T = \langle E _ { k } \rangle
+\langle v_x^2 \rangle = \langle v_y^2 \rangle = \langle v_z^2 \rangle = \frac{1}{3} \langle v^2 \rangle
 \]
-Now substitute this exact physical definition into the equation of state \( P V = \frac{2}{3} N \langle E _ { k } \rangle \):
+Substituting \( \langle v_x^2 \rangle = \frac{1}{3} \langle v^2 \rangle \) into the pressure equation:
 \[
-P V = \frac{2}{3} N \left( \frac{3}{2} k _ { B } T \right)
+P = \frac{1}{3} \left( \frac{N}{V} \right) (\Delta m) \langle v^2 \rangle = \frac{2}{3} \left( \frac{N}{V} \right) \left[ \frac{1}{2} (\Delta m) \langle v^2 \rangle \right]
 \]
-The fractions cancel completely:
+Defining the mean translational kinetic energy per molecule as \( \langle E_k \rangle \equiv \frac{1}{2} (\Delta m) \langle v^2 \rangle \):
 \[
-\frac{2}{3} \times \frac{3}{2} = 1
+P = \frac{2}{3} \left( \frac{N}{V} \right) \langle E_k \rangle \implies P V = \frac{2}{3} N \langle E_k \rangle
 \]
-Therefore:
+
+=== Extension of Temperature and the SI Constants \( k_B \) and \( R \)
+
+In physical metrology, the kelvin unit of thermodynamic temperature \( T \) is calibrated by partitioning translational kinetic energy equally among the three spatial translational degrees of freedom:
 \[
-P V = N k _ { B } T
+\frac{1}{2} k_B T \equiv \frac{1}{3} \langle E_k \rangle = \frac{1}{2} (\Delta m) \langle v_x^2 \rangle \implies \langle E_k \rangle = \frac{3}{2} k_B T
 \]
-For a sample of gas containing \( n \) moles, where Avogadro's constant \( N _ { A } \) defines the molar entity count (\( N = n N _ { A } \)):
+Substituting this definition into \( P V = \frac{2}{3} N \langle E_k \rangle \):
 \[
-P V = (n N _ { A }) k _ { B } T = n (N _ { A } k _ { B }) T
+P V = \frac{2}{3} N \left( \frac{3}{2} k_B T \right) = N k_B T
 \]
-Define the molar gas constant:
+For a sample containing \( n \) moles, where Avogadro's constant \( N_A \) defines the molar entity count (\( N = n N_A \)):
+\[
+P V = (n N_A) k_B T = n (N_A k_B) T
+\]
+Defining the molar gas constant:
 \[
 R \equiv N_A k_B
 \]
-Substituting \( R \) yields the familiar molar equation of state:
+yields the molar equation of state:
 \[
 P V = n R T
 \]
 
-=== Nature of the Thermodynamic Constants
+=== Epistemological Grounding: Theorem vs. Conclusion Pending New Information
 
-This unbroken derivation establishes the true physical nature of \( k _ { B } \) and \( R \):
-1. _The Boltzmann Constant \( k _ { B } \)_ is not a mysterious universal property of nature; it is a _conversion factor_ that translates the human macroscopic scale of temperature (kelvins, historically tied to the thermal expansion of mercury and ice-water phase changes) into mechanical kinetic energy (joules):
+In strict accordance with the epistemological discipline of the Iris number system:
+
+1. _Deductive Theorem (Closed Axiomatic System)_:
+   Within the closed axiomatic model of non-overlapping, elastic contact entities on discrete grid \( \mathcal{G}_N \), the kinetic relation:
    \[
-   k _ { B } = \frac{2 \langle E _ { k } \rangle}{3 T} \approx 1.380649 \times 10 ^  { -23 } \text{ J/K}
+   P V = \frac{2}{3} N \langle E_k \rangle
    \]
-2. _The Molar Gas Constant \( R \)_ is the macroscopic molar momentum flux constant:
-   \[
-   R = N_A k_B \approx 8.3144626 \text{ J/(mol}\cdot\text{K)}
-   \]
-3. The Ideal Gas Law is not an empirical curve-fit; it is an exact theorem of discrete momentum conservation and contact dynamics on the resolution grid \( \mathcal{G}_N \).
+   is an exact deductive _Theorem_ of discrete momentum conservation and MaxEnt isotropy, derived with zero skipped steps.
+
+2. _Conclusion Pending New Information (Physical Application to Real Gases)_:
+   When applied to physical gases in the real world, the equation of state \( P V = n R T \) is a _Conclusion Pending New Information_. Real gas molecules are localized wave knots possessing non-zero m-resolution volume \( b \approx (\Delta x)^3 \) and mutual field contact stresses. In the dilute limit where packing fraction \( \frac{N (\Delta x)^3}{V} \to 0 \), the Ideal Gas equation provides the foundational zeroth-order baseline, with finite m-res volume and boundary contact friction providing the natural gateway to real gas equations of state without continuum mechanics.
+
+3. _The Nature of the SI Constants_:
+   * _The Boltzmann Constant \( k_B \)_ is not an occult property of empty space; it is an extensional conversion factor translating human macroscopic temperature units (kelvins) into mechanical kinetic action (joules):
+     \[
+     k_B = \frac{2 \langle E_k \rangle}{3 T} \approx 1.380649 \times 10^{-23} \text{ J/K}
+     \]
+   * _The Molar Gas Constant \( R \)_ is the macroscopic molar momentum flux constant:
+     \[
+     R = N_A k_B \approx 8.3144626 \text{ J/(mol}\cdot\text{K)}
+     \]
 
 '''
 
