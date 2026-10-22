@@ -39,8 +39,9 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
   const mPlanck = parseFloat(mPlanckStr) || 2.176434e-8;
 
   // Calculate Newton's G directly from wave refraction: G = (hbar * c) / (m_Planck^2)
-  // Or equivalently G = (c^4 * delta_omega^2) / (4 * pi * E) where delta_omega = l_Planck
   const gComputed = (HBAR_EXACT * C_EXACT) / (mPlanck * mPlanck);
+  const alphaG = (gComputed * MP * MP) / (HBAR_EXACT * C_EXACT);
+  const kappaField = (8.0 * Math.PI * gComputed) / Math.pow(C_EXACT, 4);
 
   // Since G scales as m_Planck^-2, the relative uncertainty of G is twice that of m_Planck:
   // delta_G / G = 2 * (delta_m_Planck / m_Planck)
@@ -62,7 +63,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
             </h2>
             <p className="text-sm text-slate-400 mt-1 max-w-3xl">
               Fundamental constants evaluated as exact geometric definite integrals in Conformal Geometric Algebra (CGA) relative to true speed \( c \).
-              The precision of Newton's gravitational constant \( G \) is directly bounded by the caliper measurement of the Planck mass unit.
+              The precision of Newton's gravitational constant \( G \) is dimensional and caliper-bounded by empirical measurements of macroscopic standards.
             </p>
           </div>
           <div className="flex items-center gap-2 bg-amber-950/40 border border-amber-800/60 text-amber-300 px-3.5 py-2 rounded-xl text-xs font-mono shrink-0">
@@ -85,23 +86,35 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
                 </h3>
               </div>
               <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-800/50 text-emerald-300">
-                G = \frac&#123;c^4 \delta_\omega^2&#125;&#123;4 \pi E&#125; = \frac&#123;\hbar c&#125;&#123;m_P^2&#125;
+                \kappa = \frac&#123;8\pi G&#125;&#123;c^4&#125;, \quad \alpha_G = \frac&#123;G m_p^2&#125;&#123;\hbar c&#125;
               </span>
             </div>
 
             <div className="bg-slate-950 p-4 rounded-xl border border-slate-800/60 space-y-3">
               <div className="text-xs text-slate-400 leading-relaxed">
-                In classical wave refraction, gravitation emerges from the gradient of propagation phase speed in the electromagnetic field.
-                Circulation action \( \hbar \) cancels out in the universal wave flux balance, leaving \( G \) inversely proportional to the square of the Planck mass aperture \( m_P \):
+                In classical wave refraction, gravitation emerges from the propagation speed gradient \( c(\mathbf&#123;r&#125;) \approx c_0 (1 - G M / (c_0^2 r)) \) induced by field energy density. As a dimensional parameter in SI units, \( G \) is calibrated by empirical calipers, yielding field susceptibility \( \kappa \) and dimensionless proton coupling \( \alpha_G \):
               </div>
               
-              <div className="p-3 bg-slate-900/90 rounded-lg border border-slate-800 font-mono text-center">
-                <div className="text-xs text-slate-500 mb-1">Computed Coupling Value \( G \)</div>
-                <div className="text-lg text-emerald-400 font-medium">
-                  {gComputed.toExponential(7)} <span className="text-xs text-slate-400 font-normal">m³ / (kg · s²)</span>
+              <div className="p-3 bg-slate-900/90 rounded-lg border border-slate-800 font-mono text-center space-y-2">
+                <div>
+                  <div className="text-xs text-slate-500 mb-0.5">Caliper-Bounded Constant \( G \)</div>
+                  <div className="text-lg text-emerald-400 font-medium">
+                    {gComputed.toExponential(7)} <span className="text-xs text-slate-400 font-normal">m³ / (kg · s²)</span>
+                  </div>
+                  <div className="text-[11px] text-amber-400/90 mt-0.5">
+                    ± {gAbsoluteUncertainty.toExponential(2)} ({gUncertaintyPpm.toFixed(1)} ppm relative standard error)
+                  </div>
                 </div>
-                <div className="text-[11px] text-amber-400/90 mt-1">
-                  ± {gAbsoluteUncertainty.toExponential(2)} ({gUncertaintyPpm.toFixed(1)} ppm relative standard error)
+
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800/80 text-left text-xs">
+                  <div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-wider">Field Susceptibility \( \kappa \)</div>
+                    <div className="text-slate-200 font-medium">{kappaField.toExponential(5)} <span className="text-[10px] text-slate-500">s²/(kg·m)</span></div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-wider">Proton Coupling \( \alpha_G \)</div>
+                    <div className="text-slate-200 font-medium">{alphaG.toExponential(5)}</div>
+                  </div>
                 </div>
               </div>
             </div>

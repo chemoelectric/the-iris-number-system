@@ -7,25 +7,24 @@ pragma ada_2022;
 --
 -- physical & metrological reality:
 --   in the unified field theory, gravitation is classical wave refraction
---   with exact coupling relation:
---     G = (hbar * c) / (m_planck^2) = (c^4 * delta_omega^2) / (4 * pi * E)
+--   with field susceptibility:
+--     kappa = (8.0 * pi * G) / (c^4)
+--   and dimensionless proton coupling:
+--     alpha_G = (G * m_p^2) / (hbar * c)
 --
---   unlike the fine-structure constant alpha or proton-to-electron mass ratio
---   m_p / m_e, which are exact geometric invariants of the toroidal vortex
---   and conformal 5-sphere in Cl(4,1,1), G is expressed in conventional SI
---   units (meters, kilograms, seconds) that are calibrated to macroscopic
---   terrestrial artifacts.
+--   unlike the fine-structure constant alpha or proton-to-electron mass
+--   ratio m_p / m_e, which are exact geometric invariants of the field,
+--   G is expressed in conventional SI units (m^3 / (kg * s^2)) that
+--   are calibrated to macroscopic terrestrial artifacts.
 --
---   furthermore, the defined SI "c" is an operational vacuum standard
---   (pseudo-c) rather than the true propagation speed of an isolated
---   electromagnetic field. Consequently, the numerical precision of G
---   in SI units is strictly bounded by the empirical caliper measurement
---   of the Planck mass unit (codata standard uncertainty ~ 2.2e-5 relative).
+--   consequently, the numerical evaluation of G in SI units is strictly
+--   bounded by empirical caliper measurements of gravitational
+--   acceleration and macroscopic mass (relative uncertainty ~ 2.2e-5).
 --
---   calling compute with a relative_tolerance tighter than the empirical
---   caliper bound (empirical_precision_limit) raises an exception or
---   returns an explicit uncertainty interval, warning the caller that
---   conventional metrology cannot ground additional digits.
+--   calling compute with a relative_tolerance tighter than the
+--   empirical caliper bound (empirical_precision_limit) clamps to the
+--   empirical caliper boundary, warning the caller that conventional
+--   metrology cannot ground additional digits.
 
 generic
    type real_type is digits <>;

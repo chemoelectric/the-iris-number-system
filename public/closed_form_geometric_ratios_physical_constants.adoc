@@ -8,7 +8,7 @@
 
 == Abstract
 
-Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \( c \) within the Counting-Iris Number System and Conformal Geometric Algebra (CGA), eliminating arbitrary empirical curve-fitting. The fine-structure constant \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and field dynamics, wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes boundary contact reaction with the surrounding field \( \Delta _ { \text{field} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \). The proton-to-electron mass ratio \( m_p / m_e \) is derived from the topological knot of three interlinked toroidal wave fluxes in a symmetric V-configuration with canonical dihedral pitch angle \( \cos(45^\circ) = 1/\sqrt{2} \): under spin and centrifugal field stress, the unperturbed 5-sphere baseline volume \( 6 \pi^5 \) undergoes elliptical deformation described by the complete elliptic integral of the first kind \( \frac{2}{\pi} K(m) \) with parameter \( m = k^2 = \sqrt{2} \, \alpha^2 \), yielding \( m_p / m_e = 6 \pi^5 \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \approx 6 \pi^5 \left( 1 + \frac{\alpha^2}{2 \sqrt{2}} \right) \approx 1836.15268 \). Newton's gravitational coupling is derived as a refractive wave effect of the universal electromagnetic field, wherein matter occurs as knotted regions, and gravitation arises from refraction of wave fronts in the field's propagation gradient, yielding the exact gravitational coupling in terms of localized field mass \( m \) by conservation of energy: \( G = c^2 \delta_\omega^2 / (4 \pi m) \). Vortex circulation action \( S_{\text{circ}} = E / \omega \) (historically labeled \( \hbar \)) cancels out completely, demonstrating gravitation is a classical wave-refractive effect independent of quantum physics. All intrinsic electromagnetic standards are expressed directly in terms of \( c \) and these definite integrals: intrinsic magnetic permeability \( \mu_0 = {2 \alpha h} / {e^2 c} \), intrinsic wave impedance \( Z_0 = \mu_0 c = {2 \alpha h} / {e^2} \), intrinsic electric permittivity \( \varepsilon_0 = {1} / {\mu_0 c^2} \), the fundamental circulation impedance (von Klitzing constant) \( R_K = {h} / {e^2} ={Z_0} / {2 \alpha} \), and the unit of enclosed magnetic bivector flux circulation \( \Phi_0 = {h} / {2 e} \). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \( \mathcal{G}_N \) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \( k_B \) and molar gas constant \( R \) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
+Fundamental physical constants are formulated strictly as definite integrals and geometric ratios relative to the true propagation speed \( c \) within the Counting-Iris Number System and Conformal Geometric Algebra (CGA), eliminating arbitrary empirical curve-fitting. The fine-structure constant \( \alpha \) is derived from first principles of Conformal Geometric Algebra (CGA) and field dynamics, wherein the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = \int _ { 0 } ^ { \pi } ( 12 x ^ { 2 } + 2 x + 1 ) \, d x = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) undergoes boundary contact reaction with the surrounding field \( \Delta _ { \text{field} } = \frac{1}{4 \pi ^ { 2 }} \int _ { 0 } ^ { 1 } \int _ { 0 } ^ { 1 } (1 - x y) ^ { - 1 } \, d x \, d y = \frac{1}{24} \), yielding the exact rational coupling relation \( \alpha ^ { - 1 } = \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \approx 137.0359997 \) and \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \approx 0.0072973525 \), expressing the fundamental ratio between transversal radiation impedance \( Z _ { 0 } \) and longitudinal circulation impedance \( 2 R _ { K } \). The proton-to-electron mass ratio \( m_p / m_e \) is derived from the topological knot of three interlinked toroidal wave fluxes in a symmetric V-configuration with canonical dihedral pitch angle \( \cos(45^\circ) = 1/\sqrt{2} \): under spin and centrifugal field stress, the unperturbed 5-sphere baseline volume \( 6 \pi^5 \) undergoes elliptical deformation described by the complete elliptic integral of the first kind \( \frac{2}{\pi} K(m) \) with parameter \( m = k^2 = \sqrt{2} \, \alpha^2 \), yielding \( m_p / m_e = 6 \pi^5 \left( \frac{2}{\pi} K(\sqrt{2} \alpha^2) \right) \approx 6 \pi^5 \left( 1 + \frac{\alpha^2}{2 \sqrt{2}} \right) \approx 1836.15268 \). Gravitation is formulated as classical wave refraction in the universal electromagnetic field described by the Master Field Equation \( D F = J \), wherein localized mass concentrations establish a wave-speed gradient \( c(\mathbf{r}) \approx c_0 ( 1 - G M / (c_0^2 r) ) \) whose refractive steering yields Newton's inverse-square acceleration \( \mathbf{a} = -c_0 \nabla c(\mathbf{r}) = -(G M / r^2) \hat{\mathbf{r}} \). Newton's constant \( G \) represents the dimensional field susceptibility \( \kappa = 8 \pi G / c^4 \) governing \( \nabla^2 n = \kappa \rho_E \), whose numerical value in human SI units is bounded by empirical calipers (CODATA uncertainty \( \approx 22 \text{ ppm} \)), with the fundamental dimensionless gravitational interaction characterized by the proton coupling \( \alpha_G = G m_p^2 / (\hbar c) \approx 5.906 \times 10^{-39} \). All intrinsic electromagnetic standards are expressed directly in terms of \( c \) and these definite integrals: intrinsic magnetic permeability \( \mu_0 = {2 \alpha h} / {e^2 c} \), intrinsic wave impedance \( Z_0 = \mu_0 c = {2 \alpha h} / {e^2} \), intrinsic electric permittivity \( \varepsilon_0 = {1} / {\mu_0 c^2} \), the fundamental circulation impedance (von Klitzing constant) \( R_K = {h} / {e^2} ={Z_0} / {2 \alpha} \), and the unit of enclosed magnetic bivector flux circulation \( \Phi_0 = {h} / {2 e} \). Finally, by decomposing the Ideal Gas into its logically analytic components on the multiscale m-resolution grid \( \mathcal{G}_N \) through m-res dimensions, m-res mass, and base-scale ratios, the Boltzmann constant \( k_B \) and molar gas constant \( R \) are deduced as exact geometric scale invariants of discrete momentum flux conservation, eliminating unphysical continuum approximations.
 
 == 1. Introduction: Geometric Ratios and the Circle Archetype
 
@@ -255,45 +255,39 @@ Applying the Euler-Maclaurin expansion provides higher-order asymptotic error ca
 \[ R_N = \frac{1}{N} - \frac{1}{2 N ^ 2} + \frac{1}{6 N ^ 3} - \frac{1}{30 N ^ 5} + \mathcal{O}\left( \frac{1}{N ^ 7} \right) \]
 enabling exact rational bounding of the proton-to-electron mass ratio to arbitrary precision on discrete computational grids.
 
-== 4. Newton's Gravitational Constant \( G \) as a Classical Wave Refraction Coupling ([smallcaps]#new formula#)
+== 4. Gravitation as Classical Wave Refraction and Field Susceptibility
 
 === Gravitation as Wave Refraction in the Unified Field
 
-In the Unified Field Theory, gravitation is not a fundamental force, nor is it “curved space-time.” We do not appeal to “rubber sheet physics” but instead to classical wave optics. The universe is represented in the unified theory as an enormous electromagnetic field, defined by the Master Field Equation \( D F = J \). What we observe as matter consists of densely knotted, very active regions within this field. Near a dense knot, the concentration of field energy alters the speed of electromagnetic activity, introducing a differential delay across wave fronts. Gravitation is the refraction of waves toward the region of higher field density, producing the familiar inverse-square acceleration.
+In the Unified Field Theory, gravitation is not an independent fundamental force, nor is it “curved space-time.” We do not appeal to “rubber sheet physics” but instead to classical wave optics. The universe is represented in the unified theory as an enormous electromagnetic field, defined by the Master Field Equation \( D F = J \). What we observe as matter consists of densely knotted, localized circulating wave flux regions within this field. Near a dense knot of mass \( M \), the concentration of field energy \( E = M c^2 \) establishes a gradient in the local wave propagation speed:
+\[ c(\mathbf{r}) \approx c_0 \left( 1 - \frac{G M}{c_0^2 r} \right) \]
+When a traveling wave packet or circulating knot passes through this non-uniform field, the differential phase delay across its physical extent continuously refracts its trajectory inward toward the denser region:
+\[ \mathbf{a} = - c_0 \nabla c(\mathbf{r}) = - \frac{G M}{r^2} \hat{\mathbf{r}} \]
+which produces the exact radial inverse-square acceleration field of Newton and Gauss.
 
 In short, _all gravitation is gravitational lensing_. _Radiation and matter alike are made of electromagnetic waves and are refracted towards massive bodies._
 
-Gravity turns out to be an intuitively explicable consequence of Maxwell’s theory.footnote:[Gravity is famously a far more feeble force than direct electric and magnetic interactions. Indeed, it is not the fall due to gravity that hurts so much as the immense electrostatic repulsion encountered at the end of the fall.]
+=== Refractive Index Gradient and Field Susceptibility
 
-=== Localized Knot Energy, Circulation Action, and Rejection of Quantum Black Boxes
+The inhomogeneous refractive index of the field around a mass concentration is:
+\[ n(\mathbf{r}) = 1 + \frac{2}{c^2} \Phi(\mathbf{r}) \]
+where \( \Phi(\mathbf{r}) = - \frac{G M}{r} \) is the gravitational potential. In terms of localized field energy density \( \rho_E(\mathbf{r}) = \rho_m(\mathbf{r}) c^2 \), the refractive index satisfies the field susceptibility equation:
+\[ \nabla^2 n(\mathbf{r}) = \frac{8 \pi G}{c^4} \rho_E(\mathbf{r}) = \kappa \, \rho_E(\mathbf{r}) \]
+where:
+\[ \kappa = \frac{8 \pi G}{c^4} \]
+is the fundamental refractive coupling coefficient (field susceptibility) of the universal electromagnetic field.
 
-A localized knot of matter has a total localized field energy:
-\[ E = \int_{\Omega} \frac{1}{2} \langle F \tilde{F} \rangle \, dV = m c^2 \]
-where \( m \) is the localized field mass. 
+=== Dimensional Nature of G and Caliper Bounding
 
-As a stationary, self-sustaining topological vortex, the knot has an internal circulation frequency \( \omega \). The circulation action per radian of the field bivector around the vortex core is defined mechanically:
-\[ S_{\text{circ}} = \frac{E}{\omega} = \frac{m c^2}{\omega} \]
-This is the classical circulation action of the field vortex, analogous to hydrodynamic vortex circulation:
-\[ S_{\text{circ}} = \frac{1}{c} \oint_{\partial \Omega} \mathbf{A} \cdot d\mathbf{x} \]
-Historical physics labeled this circulation action for elementary particles with the symbol \( \hbar \) and treated it as an occult, acausal “quantum” black box. In the Counting-Iris framework, there are no black boxes: \( S_{\text{circ}} \) is simply the deterministic ratio of localized field energy to internal circulation frequency in a deterministic field vortex.
+Unlike the fine-structure constant \( \alpha \) (the dimensionless ratio of transversal radiation impedance \( Z_0 \) to longitudinal circulation impedance \( 2 R_K \)) and the proton-to-electron mass ratio \( m_p / m_e \) (the dimensionless ratio of two geometric field knot eigenvalues), Newton's constant \( G \) is a _dimensional quantity_ with units \( \text{m}^3 / (\text{kg} \cdot \text{s}^2) \).
 
-=== Derivation of Gravitational Coupling \( G \) by Conservation of Energy
+Its numerical value depends directly upon the arbitrary historical definitions of terrestrial units: the meter, the kilogram, and the second. Consequently, \( G \) cannot be extracted as a pure dimensionless geometric number like \( \pi \) or \( \alpha \). On discrete multiscale resolution grids \( \mathcal{G}_N \), its numerical evaluation in SI units is strictly caliper-bounded by empirical measurements of gravitational acceleration and macroscopic mass standards (with standard relative uncertainty \( \approx 22 \text{ ppm} \)).
 
-The effective gravitational coupling \( G \) is derived directly by balancing the refractive wave-speed gradient against the source field energy \( E \). By conservation of energy, the integrated spectral partition across all wave modes of the localized field configuration is identically unity: the total field energy is strictly conserved and equal to the localized knot energy \( E \).
+=== The Fundamental Dimensionless Gravitational Coupling \( \alpha_G \)
 
-Balancing the refractive wave flux through discrete grid spacing \( \delta_\omega \) directly against source energy \( E \) yields:
-\[ G = \frac{c^4 \delta_\omega^2}{4 \pi E} \]
-
-Because \( E = m c^2 \), this establishes the exact closed relationship directly in terms of localized field mass \( m \):
-\[ G = \frac{c^2 \, \delta_\omega^2}{4 \pi m} \quad \Longleftrightarrow \quad G m = \frac{c^2 \, \delta_\omega^2}{4 \pi} \]
-
-Alternatively, expressing the knot's field energy in terms of its internal circulation frequency \( \omega \) and vortex action \( S_{\text{circ}} \) (where \( E = S_{\text{circ}} \omega \)):
-\[ G = \frac{c^4 \, \delta_\omega^2}{4 \pi S_{\text{circ}} \, \omega} \]
-
-This derivation proves that “quantum physics” has nothing whatsoever to do with gravitation:
-1. Gravitational coupling \( G \) is expressed directly in terms of \( c^2 \), discrete grid spacing \( \delta_\omega \), and localized field mass \( m \) without any action constant.
-2. The action scale \( S_{\text{circ}} \) (historically labeled \( \hbar \)) appears only when field mass-energy is decomposed into circulation frequency and vortex action, and it cancels out identically (\( S_{\text{circ}} \omega = E = m c^2 \)).
-3. Gravitation is entirely a classical wave-refractive consequence of the unified electromagnetic field described by the Master Field Equation \( D F = J \).
+The genuine dimensionless invariant of gravitation in the unified field—measuring the intrinsic ratio of gravitational wave refraction to electrodynamic interaction between two fundamental nucleons—is the gravitational coupling constant of the proton:
+\[ \alpha_G = \frac{G m_p^2}{\hbar c} \approx 5.906 \times 10^{-39} \]
+Expressed in terms of the fine-structure constant \( \alpha \) and the proton mass eigenvalue \( m_p \), \( \alpha_G \) quantifies the extreme feebleness of wave-refractive gradients relative to direct circulation stresses. In the Counting-Iris framework, there are no occult quantum gravity paradoxes: gravitation is entirely the classical wave-refractive consequence of the unified electromagnetic field described by \( D F = J \).
 
 == 5. All Field Constants Expressed Relative to True c and Definite Integrals
 
@@ -403,9 +397,9 @@ Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar mome
 //| _[smallcaps]#new formula#_
 
 | \( \hfil\hbox{\vrule height1.3\baselineskip depth1.3\baselineskip width0pt}G \hfil \)
-| \( \displaystyle \frac{c ^ 4 \delta_\omega ^ 2}{4 \pi \hbar \omega} \left( \frac{15}{\pi ^ 4} \int_0 ^ \infty \frac{u ^ 3 \, du}{e ^ u - 1} \right) \)
-//| Proportional to \( c ^ 4 \) via MaxEnt Covariance
-//| _[smallcaps]#new formula#_
+| \( \displaystyle \kappa = \frac{8 \pi G}{c ^ 4}, \quad \alpha_G = \frac{G m_p ^ 2}{\hbar c} \) (caliper bounded: \( \pm 22 \text{ ppm} \))
+//| Wave Refraction Susceptibility & Dimensionless Nucleon Coupling
+//| Empirical Caliper
 
 | \( \hfil\hbox{\vrule height1.1\baselineskip depth1.1\baselineskip width0pt}Z_0 \hfil \)
 | \( \displaystyle 2 \alpha R_K \)
@@ -433,9 +427,9 @@ Likewise, the molar gas constant \( R = N_A k_B \) is the macroscopic molar mome
 //| SI Fundamental
 |===
 
-The formulas for \( \alpha \), \( {m_p} / {m_e} \), and \( G \) are
+The geometric derivations for \( \alpha \) and \( {m_p} / {m_e} \) are
 new. Indirectly they confirm, for example, that an electron is
-toroidal.
+toroidal and a nucleon is a 3-toroid knot.
 
 
 == 8. Conclusion
@@ -444,7 +438,7 @@ By casting physical constants in terms of definite integrals and geometric ratio
 1. \( \pi \) is the definite integral of flat 1-dimensional curvature.
 2. \( \alpha \) is the exact geometric invariant \( \alpha = \left( \alpha _ { 0 } ^ { - 1 } - \frac{1}{24 \alpha _ { 0 } ^ { - 1 }} \right) ^ { - 1 } \) combining the unperturbed conformal phase action \( \alpha _ { 0 } ^ { - 1 } = 4 \pi ^ { 3 } + \pi ^ { 2 } + \pi \) with field boundary reaction \( \frac{1}{24} \).
 3. \( m_p / m_e \) is the elliptic circulation integral of the three interlinked toroidal fluxes in a V-configuration: \( m_p / m_e = 6 \pi^5 \left( \frac{2}{\pi} K(\sqrt{2}\alpha^2) \right) \approx 6 \pi^5 \left( 1 + \frac{\alpha^2}{2\sqrt{2}} \right) \).
-4. \( G \) is the classical wave-refractive coupling of the electromagnetic stress tensor scaled by \( c ^ 4 / E \).
+4. \( G \) is the classical wave-refractive coupling of the electromagnetic field whose susceptibility \( \kappa = 8 \pi G / c^4 \) steers wave packets into Newtonian orbits, with fundamental dimensionless nucleon coupling \( \alpha_G = G m_p^2 / (\hbar c) \).
 5. \( k_B \) and \( R \) are the geometric momentum flux ratios of the analytic ideal gas on the discrete m-resolution grid \( \mathcal{G}_N \).
 
 All other electromagnetic constants (\( Z_0, \mu_0, \varepsilon_0 \)) emerge directly from these definite integrals when gauged against the single fundamental kinematic speed \( c \).

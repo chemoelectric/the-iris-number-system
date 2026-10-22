@@ -535,39 +535,44 @@
   (and (> (proton-electron-mass-ratio-geometric) 1800)
        (< (proton-electron-mass-ratio-geometric) 1850)))
 
-;; 5c. Newton's Gravitational Constant G from Master Field Coupling
-;; Gravitation emerges as the scalar trace component of D F = J.
-;; G = c^4 * delta_omega^2 / (4 * pi * hbar * omega) where c, delta, hbar are rational.
-(defun newton-gravitational-constant-derived (c-speed delta-omega hbar omega)
-  "Derives Newton's gravitational constant G from discrete space-time cell parameters."
-  (declare (xargs :guard (and (rationalp c-speed)
-                              (rationalp delta-omega)
+;; 5c. Gravitational Wave Refraction Susceptibility and Proton Coupling
+;; Gravitation emerges as wave refraction in the gradient of D F = J.
+;; Refractive susceptibility kappa = 8 * pi * G / c^4.
+;; Dimensionless proton coupling alpha_G = (G * m_p^2) / (hbar * c).
+(defun gravitational-susceptibility-derived (g-val c-speed)
+  "Derives the field wave-refraction susceptibility kappa = 8 * pi * G / c^4."
+  (declare (xargs :guard (and (rationalp g-val)
+                              (rationalp c-speed)
+                              (> c-speed 0))))
+  (let ((pi-val (pi-rational-approx)))
+    (/ (* 8 (* pi-val g-val))
+       (* c-speed (* c-speed (* c-speed c-speed))))))
+
+(defthm gravitational-susceptibility-is-rational
+  (implies (and (rationalp g-val)
+                (rationalp c-speed)
+                (> c-speed 0))
+           (rationalp (gravitational-susceptibility-derived g-val c-speed))))
+
+(defun gravitational-proton-coupling-derived (g-val mp-mass hbar c-speed)
+  "Computes dimensionless proton gravitational coupling alpha_G = (G * m_p^2) / (hbar * c)."
+  (declare (xargs :guard (and (rationalp g-val)
+                              (rationalp mp-mass)
                               (rationalp hbar)
                               (> hbar 0)
-                              (posp omega))))
-  (let ((pi-val (pi-rational-approx)))
-    (/ (* (* c-speed (* c-speed (* c-speed c-speed)))
-          (* delta-omega delta-omega))
-       (* 4 (* pi-val (* hbar omega))))))
+                              (rationalp c-speed)
+                              (> c-speed 0))))
+  (/ (* g-val (* mp-mass mp-mass))
+     (* hbar c-speed)))
 
-(defthm newton-g-constant-is-rational
-  (implies (and (rationalp c-speed)
-                (rationalp delta-omega)
+(defthm gravitational-proton-coupling-is-rational
+  (implies (and (rationalp g-val)
+                (rationalp mp-mass)
                 (rationalp hbar)
                 (> hbar 0)
-                (posp omega))
-           (rationalp (newton-gravitational-constant-derived c-speed delta-omega hbar omega))))
-
-(defthm newton-g-constant-strictly-positive
-  (implies (and (rationalp c-speed)
-                (> c-speed 0)
-                (rationalp delta-omega)
-                (> delta-omega 0)
-                (rationalp hbar)
-                (> hbar 0)
-                (posp omega))
-           (> (newton-gravitational-constant-derived c-speed delta-omega hbar omega) 0))
-  :hints (("Goal" :in-theory (enable newton-gravitational-constant-derived pi-rational-approx))))
+                (rationalp c-speed)
+                (> c-speed 0))
+           (rationalp (gravitational-proton-coupling-derived g-val mp-mass hbar c-speed))))
 
 ;; 5d. Fine-Structure Constant Alpha Reciprocal
 (defun fine-structure-alpha-reciprocal ()

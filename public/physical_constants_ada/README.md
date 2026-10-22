@@ -29,13 +29,13 @@ This directory contains standalone, human-readable Ada 2022 packages for computi
 | `speed_of_light.ads/.adb` | \( c \) | Exact speed of electromagnetic influences (\( 299\,792\,458 \text{ m/s} \)) |
 | `circle_constant_pi.ads/.adb` | \( \pi \) | Brent-Salamin (Gauss-Legendre AGM) algorithm |
 | `fine_structure_constant.ads/.adb` | \( \alpha \) & \( 1/\alpha \) | Conformal phase action \( \alpha_0^{-1} = 4\pi^3 + \pi^2 + \pi \) with field boundary reaction \( 1/24 \) |
-| `proton_electron_mass_ratio.ads/.adb` | \( m_p / m_e \) | Conformal 5-sphere volume \( 6\pi^5(1 - \alpha/24 + \alpha^2/\pi) \) |
+| `proton_electron_mass_ratio.ads/.adb` | \( m_p / m_e \) | 3-toroid V-configuration complete elliptic integral \( 6\pi^5 (1 + \alpha^2 / (2\sqrt{2})) \approx 1836.15268 \) |
 | `elementary_charge.ads/.adb` | \( e \) | Exact SI elementary charge (\( 1.602176634 \times 10^{-19} \text{ C} \)) |
 | `planck_constant.ads/.adb` | \( h \) & \( \hbar \) | Exact SI Planck constant (\( 6.62607015 \times 10^{-34} \text{ J}\cdot\text{s} \)) |
 | `electron_mass.ads/.adb` | \( m_e \) | Metrological rest mass from Rydberg constant \( 2 R_\infty h / (\alpha^2 c) \) |
 | `electron_charge_to_mass_ratio.ads/.adb` | \( e / m_e \) | Specific charge \( e / m_e \) |
 | `proton_mass.ads/.adb` | \( m_p \) | Rest mass from \( (m_p / m_e) \times m_e \) |
-| `gravitational_constant.ads/.adb` | \( G \) | Wave refraction coupling \( G = \hbar c / m_P^2 \); explicitly caliper-bounded by Planck mass empirical measurement (cannot exceed NIST/CODATA precision) |
+| `gravitational_constant.ads/.adb` | \( G \) | Wave refraction coupling with field susceptibility \( \kappa = 8\pi G / c^4 \); dimensional SI value explicitly caliper-bounded by empirical measurement (\( \pm 22 \text{ ppm} \)); dimensionless proton coupling \( \alpha_G = G m_p^2 / (\hbar c) \) |
 | `boltzmann_constant.ads/.adb` | \( k_B \) | Exact SI energy-to-temperature conversion factor (\( 1.380649 \times 10^{-23} \text{ J/K} \)) |
 | `molar_gas_constant.ads/.adb` | \( R \) | Exact molar momentum flux constant \( N_A k_B \) |
 | `intrinsic_impedance.ads/.adb` | \( Z_0 \) | Intrinsic wave impedance of the microwave-rich EM field \( 2 \alpha R_K \) |
@@ -48,13 +48,13 @@ This directory contains standalone, human-readable Ada 2022 packages for computi
 There is a fundamental epistemological distinction between:
 1. **Geometric Invariants of Nature**:
    - The fine-structure constant \( \alpha \) is an exact geometric invariant: \( \alpha^{-1} = \alpha_0^{-1} - 1 / (24 \alpha_0^{-1}) \) where \( \alpha_0^{-1} = 4\pi^3 + \pi^2 + \pi \).
-   - The proton-to-electron mass ratio \( m_p / m_e \) is an exact ratio derived from the conformal 5-sphere volume and lattice boundary reaction \( 6\pi^5 (1 - \alpha/24 + \alpha^2/\pi) \).
+   - The proton-to-electron mass ratio \( m_p / m_e \) is an exact ratio derived from the 3-toroid V-configuration complete elliptic integral: \( 6\pi^5 (1 + \alpha^2 / (2\sqrt{2})) \approx 1836.15268 \).
 2. **Conventional SI Units and "Pseudo-c"**:
    - In conventional metrology (NIST, BIPM, CODATA), the base units (meter, second, kilogram) are calibrated against operational terrestrial standards.
    - The defined SI speed of light \( c = 299\,792\,458 \text{ m/s} \) is an operational vacuum standard ("pseudo-c") calibrated to caesium hyperfine transitions and laboratory interferometers—**not** the true propagation speed of causation in an isolated, undisturbed electromagnetic field.
    - Newton's constant \( G \) has units of \( \text{m}^3 / (\text{kg} \cdot \text{s}^2) \). In the wave refraction framework:
      \[
-     G = \frac{\hbar c}{m_P^2}
+     \nabla^2 n(\mathbf{r}) = \frac{8 \pi G}{c^4} \rho_E(\mathbf{r}) = \kappa \, \rho_E(\mathbf{r})
      \]
-     Because \( G \) is coupled to the empirical definition of the kilogram through the Planck mass aperture \( m_P \approx 2.176434(24) \times 10^{-8} \text{ kg} \), **no algorithm can compute a numerical value of \( G \) in SI units that is more precise than NIST's empirical measurement of \( m_P \)**.
+     Because \( G \) is dimensional and coupled to the empirical definition of the kilogram, **no algorithm can compute a numerical value of \( G \) in SI units that is more precise than empirical caliper measurements of gravitational acceleration and mass standards (\( \pm 22 \text{ ppm} \))**.
    - In `gravitational_constant.ads/.adb`, the subroutine explicitly provides `empirical_precision_limit` (clamping precision to \( 10^{-5} \)) and a `compute_with_uncertainty` procedure returning a `calibrated_result` record, warning callers that attempting to compute \( G \) to \( 10^{-15} \) in conventional SI units is an illusion of precision unsupported by physical measurement.

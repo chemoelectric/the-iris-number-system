@@ -146,9 +146,12 @@ proton_electron_mass_ratio_trunc() :=
     a: alpha_coupling(),
     6 * %pi^5 * (1 + a^2 / (2 * sqrt(2))))$
 
-/* 4d. Newton's Gravitational Constant G from discrete Master Field flux */
-newton_g_constant(c_val, delta_omega, hbar_val, omega_val) := 
-  (c_val^4 * delta_omega^2) / (4 * %pi * hbar_val * omega_val)$
+/* 4d. Gravitational Wave Refraction Susceptibility and Dimensionless Proton Coupling */
+gravitational_susceptibility(G_val, c_val) := 
+  (8 * %pi * G_val) / (c_val^4)$
+
+gravitational_proton_coupling(G_val, mp_val, hbar_val, c_val) := 
+  (G_val * mp_val^2) / (hbar_val * c_val)$
 
 /* Print initialization banner */
 print("Iris Number System and Master Field Equation package loaded successfully.")$

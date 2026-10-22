@@ -61,9 +61,11 @@ where:
   - `iris_grid_val(k, omega)`: Rational coordinate $k/\omega$ on discrete resolution grid $\mathcal{G}_\Omega$.
   - `msra_diff(f, x, omega)`: Exact discrete vernier difference quotient $\omega \cdot [f(x + 1/\omega) - f(x)]$.
 - **Fundamental Physical Constant Derivations**:
-  - `proton_electron_mass_ratio()`: Exact rational geometric volume calculation of $m_p / m_e = 6\pi^5$.
+  - `alpha_reciprocal()` and `alpha_coupling()`: Closed-form fine-structure constant from conformal phase action and lattice reaction.
+  - `proton_electron_mass_ratio_exact()` and `proton_electron_mass_ratio_trunc()`: 3-toroid V-configuration complete elliptic integral and truncated series ($1836.15268$).
+  - `gravitational_susceptibility(G, c)`: Field wave-refraction susceptibility coefficient $\kappa = 8\pi G / c^4$.
+  - `gravitational_proton_coupling(G, mp, hbar, c)`: Dimensionless proton gravitational coupling $\alpha_G = (G m_p^2) / (\hbar c)$.
   - `electron_specific_charge(q, m)`: Scale-invariant charge-to-mass coupling ratio.
-  - `newton_g_constant(c, delta_omega, hbar, omega)`: Derives Newton's gravitational constant $G$ from discrete field cell flux.
 
 ---
 
