@@ -1930,6 +1930,101 @@ All five formulations of the Iris Number System are completely and rigorously eq
 ====
 
 
+== Alternative Formulations for the Integers
+
+[#chap-the-integers-constructed-from-the-radius-of-a-circle]
+
+=== The Integers Constructed From the Radius of a Circle
+
+The foundational definition of the integers within the Counting Iris System is established via discrete counting operations—tallies of physical dots \( \bullet \) and directional measurement steps radiating from the origin. We now present an alternative, purely geometric formulation: _The Integers Constructed From the Radius of a Circle_.
+
+==== The Foundational Co-Constituents \( 1 \) and \( \pi \)
+
+In contemplating the fundamental structure of the physical universe, one might initially wonder whether \( \pi \) could serve as the sole foundational constituent from which all mathematical and physical relations are derived. However, the Fundamental Theorem of Arithmetic informs us that \( \pi \) cannot be the sole constituent: there is also \( 1 \), which serves as the foundation of the integers and the prime numbers.
+
+Neither of these two constituents can be subordinated to or eliminated by the other. The geometric circle connects them in physical actuality through an explicit operational relation of direct contact.
+
+Consider any circle scribed on paper or drafted upon an engineering layout table. We begin by designating the circumference of the circle as \( 2 \pi \). This operational designation defines the symbol \( \pi \) without assigning any pre-computed, static numerical value to it. Next, we define \( 1 \) as the length of that circle’s radius. This operational designation likewise assigns no absolute value to \( 1 \). In physical drafting and engineering practice, the length of \( 1 \) is arbitrary: to a draftsperson, toolmaker, or architect, the numerical value of \( 1 \) is simply a mark on a physical scale, whose actual length is established by a legend drawn in the corner of the sheet or by a setting locked into a pair of divider calipers.
+
+==== Linear Coordinate Transformation Between Circumference and Radius
+
+Let a circle be drawn in the plane with center \( O \) and circumference path \( C \). In the physical coordinate system of the circle, the complete perimeter constitutes a closed boundary path of measure \( 2 \pi \).
+
+There exists a direct linear transformation of coordinates from that circumference to any radius of that circle extending from the center \( O \) to a point on the circumference:
+\[ T : [ 0 , 2 \pi ] \to [ 0 , 1 ] \]
+Under this linear coordinate transformation:
+
+. The center point \( O \) corresponds to the coordinate origin \( 0 \) (the point of zero radial displacement).
+. The intersection of the radius with the circumference corresponds to coordinate \( 2 \pi \) under circumferential scaling, but along the radial ray itself, the length of this radius is defined as unit length \( 1 \).
+
+Thus, the center is \( 0 \) and the point on the circumference is \( 2 \pi \), while the radial interval between them defines the unit segment \( [ 0 , 1 ] \). The ratio of circumference to radius is fixed by the coordinate scaling relation \( 2 \pi / 1 = 2 \pi \). Neither the circumference nor the radius requires the prior assumption of an uncountably infinite continuum of dimensionless points; both are finite, discrete geometric entities established by physical instruments in direct contact.
+
+==== Straightedge and Compass Construction of the Integer Line
+
+Once that radius of length \( 1 \) is established from the center \( 0 \) to the circle perimeter, one can construct the number line with a straight edge and compass—the classical tools of Euclid.
+
+This geometric construction proceeds through an elementary sequence of direct contact operations:
+
+. _The Baseline Ray_: Using the straightedge, draw a straight line passing through the center \( 0 \) and the radial terminus \( 1 \), extending indefinitely outward in both directions.
+. _Successor Contact Stepping_: Keeping the compass or divider calipers locked to the unit radial length \( 1 \), place the fixed pivot at the point \( 1 \) and scribe an arc intersecting the extended line forward at a direct contact point. This point of intersection is designated \( 2 \).
+. _Inductive Caliper Extension_: Repeating this direct contact stepping operation along the forward line generates the successor points:
+\[ 0 \to 1 \to 2 \to 3 \to \dots \to n \to \text { etc } \]
+. _Negative Integer Construction_: Placing the compass pivot at the origin \( 0 \) and stepping off the identical locked caliper span in the opposite direction along the straightedge line generates the negative integers:
+\[ 0 \to - 1 \to - 2 \to - 3 \to \dots \to - n \to \text { etc } \]
+
+Every integer is thus generated as a finite sequence of direct physical caliper steps of unit length \( 1 \) along a straight edge. This provides an alternative construction of the integers that is obvious to anyone fond of geometry, proceeding directly from straightedge and compass.
+
+==== Comparison with the Counting Iris System and Physical Peano Formulations
+
+This compass-and-straightedge construction stands alongside the Counting Iris System as an alternative formulation of the integers.
+
+In the Counting Iris System, counting is rooted in physical operations of measurement: notches carved into a stick of wood, marks inscribed in wax, or discrete pencil dots \( \bullet \) laid down on paper. In electronic computing, Peano integers are realized physically as discrete bistable flip-flop states within digital registers (as seen, for instance, in Scheme's SRFI-148 integer representations, where numbers correspond to physical hardware flip-flop configurations, evaluated via discrete decimal arithmetic). The Counting Iris framework never treats Peano axioms as if they were ungrounded _abstract set theory_ (such as chains of empty sets nested in curly brackets \( \emptyset , \{ \emptyset \} , \text { etc } \)). In physical actuality, every number is an operation of measurement.
+
+The circle-radius formulation and the Counting Iris formulation share identical physical and epistemological grounding:
+
+. _Rejection of Continuum Mystification_: Neither formulation presumes an uncountably infinite continuum or dimensionless points. Each number corresponds to a finite number of finite entities or operations.
+. _Physical Scalability_: The unit \( 1 \) is in both cases an operational calibration—whether a mark on a draftsperson’s scale, a locked caliper setting, or a single discrete notch or electronic pulse.
+. _Direct Contact Causality_: Every successor step is established by direct local contact—the physical scribe of a compass point or the physical carving of a notch.
+
+While the Counting Iris System begins with the discrete dot count \( \bullet \) and builds up through directional measurement steps, the Circle Radius formulation begins with the primary geometric constituents \( 1 \) and \( \pi \), demonstrating that the integers arise naturally from the radius of a circle through classical Euclidean geometry.
+
+[#theorem-geometric-integer-construction]
+[THEOREM]
+.Theorem: Geometric Integer Construction by Caliper Stepping
+====
+Let a circle have circumference designated as \( 2 \pi \) and radius defined as unit length \( 1 \). Let a straight line be drawn passing through the center \( 0 \) and the radial boundary point \( 1 \). Let the compass opening be locked to length \( 1 \).
+
+The set of points \( \mathcal { P } = \{ P _ n \} _ { n \in \mathbb { Z } } \) constructed along the straight line by iterative caliper contact stepping:
+\[ P _ 0 = 0 , \quad P _ { n + 1 } = P _ n + 1 \quad ( \text { for } n \ge 0 ) , \quad P _ { n - 1 } = P _ n - 1 \quad ( \text { for } n \le 0 ) \]
+satisfies the discrete ordered ring properties of the integers \( \mathbb { Z } \), where each integer \( n \) corresponds to exactly \( | n | \) direct contact caliper steps from the center \( 0 \).
+
+_Proof._
+
+By Euclidean Postulate 1, a unique straight line connects the center \( 0 \) and the circumference point \( 1 \), which by Euclidean Postulate 2 extends indefinitely in both directions.
+
+By Euclidean Postulate 3, a circle of fixed radius \( 1 \) may be drawn with its center at any previously constructed point \( P _ n \). By direct geometric contact, this circle intersects the extended straight line at exactly two points: \( P _ n + 1 \) (in the forward direction) and \( P _ n - 1 \) (in the reverse direction).
+
+Starting at \( P _ 0 = 0 \), forward iteration generates the sequence of equidistant marks \( P _ 1 , P _ 2 , P _ 3 , \dots \), while reverse iteration generates \( P _ { - 1 } , P _ { - 2 } , P _ { - 3 } , \dots \).
+
+Addition of two positions \( P _ a \) and \( P _ b \) corresponds to translating the caliper step sequence of length \( b \) from origin \( P _ a \), yielding \( P _ { a + b } \). This operation is associative, commutative, has identity \( P _ 0 = 0 \), and every element \( P _ a \) has inverse \( P _ { - a } \). Multiplication corresponds to repeated stepping of interval \( a \) for \( b \) iterations, which is distributive over addition.
+
+The constructed points therefore satisfy the discrete ordered ring properties of \( \mathbb { Z } \). \( \square \)
+====
+
+[#conclusion-physical-equivalence-tally-and-radius]
+[CONCLUSION PENDING NEW INFORMATION]
+.Conclusion Pending New Information: Physical Equivalence of Caliper Stepping and Discrete Tally Registers
+====
+The geometric construction of integers via straightedge-and-compass caliper stepping along a line and the discrete physical tallying of marks (such as wooden notches, wax incisions, paper dots \( \bullet \), or bistable electronic flip-flop registers in decimal arithmetic) are physically equivalent operational representations of the integers \( \mathbb { Z } \).
+
+_Deduction from Partial Background Information._
+
+In physical measurement, the integer \( n \) represents an operation of counting \( n \) discrete units. In the caliper-and-compass construction, the unit is the physical distance between caliper points set to the circle radius \( 1 \). In tally systems, the unit is a physical mark, notch, or bistable electronic pulse.
+
+Because a one-to-one correspondence exists between the \( n \)-th caliper arc mark on the straight line and the \( n \)-th notch on a tally stick (or the \( n \)-th state transition of an electronic register), both systems execute the same operational measurement task on the physical level. This inference is conditional upon the background information that the physical caliper setting remains rigid and the tally marks remain discrete and distinct. Should new physical evidence show microscopic variability in rigid scales relative to discrete electronic counts, this operational equivalence remains subject to revision. \( \blacksquare \)
+====
+
+
 == Alternative Formulations for Analysis
 
 [#chap-profound-insight-analysis]
@@ -2443,7 +2538,12 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-metrological-equivalence[**Theorem: Structural Equivalence of the Operational Metrological Formulation, the Original Iris System, and the Informational Formulation**]  -- Chapter: *The Operational Metrological Formulation of the Tautological System* | Section: *Proof of Equivalence Among the Three Formulations*
 * xref:theorem-kinetic-equivalence[**Theorem: Structural Equivalence of the Discrete Kinetic Formulation, the Operational Metrological Formulation, the Original Iris System, and the Informational Formulation**]  -- Chapter: *The Discrete Kinetic Formulation of the Tautological System* | Section: *Proof of Equivalence Among the Four Formulations*
 * xref:theorem-history-equivalence[**Theorem: Structural Equivalence of the Historical Causal Formulation, the Discrete Kinetic Formulation, the Operational Metrological Formulation, the Informational Formulation, and the Original Iris System**]  -- Chapter: *The Historical Causal Formulation of the Tautological System* | Section: *Proof of Equivalence Among the Five Formulations*
+* xref:theorem-geometric-integer-construction[_Theorem: Geometric Integer Construction by Caliper Stepping_]  -- Chapter: _The Integers Constructed From the Radius of a Circle_ | Section: _Straightedge and Compass Construction of the Integer Line_
 * xref:theorem-pia-msra-equivalence[**Theorem: Equivalence of Profound Insight Analysis and Multiscale Resolution Analysis (MSRA)**]  -- Chapter: *Profound Insight Analysis* | Section: *Proof of Equivalence with Multiscale Resolution Analysis (MSRA)*
+
+=== Conclusions Pending New Information
+
+* xref:conclusion-physical-equivalence-tally-and-radius[_Conclusion Pending New Information: Physical Equivalence of Caliper Stepping and Discrete Tally Registers_]  -- Chapter: _The Integers Constructed From the Radius of a Circle_ | Section: _Comparison with the Counting Iris System and Physical Peano Formulations_
 
 === Definitions
 
