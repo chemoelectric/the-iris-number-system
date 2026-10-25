@@ -308,5 +308,5 @@ A monumental historical and philosophical exposition of the human ascent through
 _Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. San Francisco, CA: Morgan Kaufmann Publishers. ISBN: 978-0-12-369461-4.
 
 _Annotation:_
-The foundational treatise on Conformal Geometric Algebra (CGA) and its computational implementation. Establishes the canonical non-diagonal null basis representation for spheres, planes, circles, and point pairs, formulating geometric transformations through rotors and direct multivector products rather than coordinate matrices.
+The foundational treatise on Conformal Geometric Algebra (CGA) and its computational implementation. Establishes the canonical non-diagonal null basis representation for spheres, planes, circles, and point pairs, formulating geometric transformations through rotors and direct multivector products rather than coordinate matrices. We sometimes include a sixth, null-magnitude basis vector representing the time dimension.
 
