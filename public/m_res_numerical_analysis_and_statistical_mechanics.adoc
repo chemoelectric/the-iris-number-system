@@ -12,7 +12,7 @@ Conventional numerical solution of stiff differential equations can
 require millions of tiny, roundoff-plagued steps. The difficulty
 disappears if continuous real numbers are discarded in favor of jets
 of discrete Iris real and \( m \)-resolution numbers. Stiff transients
-vanish in a single step at the discrete aperture threshold, and the
+vanish in a single step at the resolution threshold, and the
 remaining response is evaluated in closed algebraic form without
 division.
 
@@ -33,14 +33,14 @@ Equation predicts viscosity and resistivity from first principles.
 Conventional numerical analysis is historically abstracted backwards: an unmeasurable, uncountably infinite “continuum” is postulated as if it were known to exist in the external world, and finite discrete computations are denigrated as mere “approximations” plagued by truncation and roundoff errors. However, the only reason to believe a “continuum” exists is conventional mathematics _has words for it_. There is no empirical evidence for such a thing, and the “continuum” provably brings numerous pathologies into mathematics.
 
 In the Iris number system, realities are represented instead at discrete, finite spatial and temporal resolutions.
-The discrete lattice \( \mathcal{G}_N \) and its finite aperture scale \( l_{\text{res}} \) provide a language in which it is impossible for the fantasy of a “continuum” to interfere with logical reasoning.
+The discrete lattice \( \mathcal{G}_N \) and its finite resolution \( l_{\text{res}} \) provide a language in which it is impossible for the fantasy of a “continuum” to interfere with logical reasoning.
 
 
 [#definition-m-res-lattice-mesh]
 [DEFINITION]
 .Definition: \( m \)-Resolution Lattice Mesh and Metric Resolution
 ====
-Let \( \mathcal{G}_N ^ {(m)} \subset \mathbb{Q} ^ d \) denote the \( m \)-resolution spatial grid in \( d \) spatial dimensions defined by a finite resolution increment \( \Delta x_{(m)} = 2 ^ {-m} l_0 \), where \( l_0 \) is the fundamental macroscopic aperture scale and \( m \in \mathbb{N}_0 \) designates the finite Vernier resolution level.
+Let \( \mathcal{G}_N ^ {(m)} \subset \mathbb{Q} ^ d \) denote the \( m \)-resolution spatial grid in \( d \) spatial dimensions defined by a finite resolution increment \( \Delta x_{(m)} = 2 ^ {-m} l_0 \), where \( l_0 \) is the coarse grid spacing and \( m \in \mathbb{N}_0 \) designates the finite Vernier resolution level.
 The spatial domain is bounded within a finite box \( \Omega = [-L, L] ^ d \) such that the total number of discrete grid locations is strictly finite:
 \[ N_{(m)} = \left( \frac{2 L}{\Delta x_{(m)}} + 1 \right) ^ d = \left( \frac{2 L}{l_0} 2 ^ m + 1 \right) ^ d < \infty \]
 
@@ -48,9 +48,9 @@ Each discrete lattice position is addressed by an integer coordinate vector \( \
 \[ \mathbf{x}_{\mathbf{n}} = \mathbf{n} \Delta x_{(m)} \in \mathcal{G}_N ^ {(m)} \]
 ====
 
-[#definition-aperture-exact-discrete-differential]
+[#definition-discrete-multivector-difference-operators]
 [DEFINITION]
-.Definition: Aperture-Exact Discrete Multivector Difference Operators
+.Definition: Discrete Multivector Difference Operators
 ====
 Let \( \Phi: \mathcal{G}_N ^ {(m)} \to \mathbb{G} \) be a discrete multivector field configuration in Conformal Geometric Algebra.
 The discrete spatial directional difference operator \( \Delta_k ^ {(m)} \) along the spatial basis vector \( e_k \) (\( k \in \{1, 2, 3\} \)) is defined by the central rational difference:
@@ -61,16 +61,16 @@ The discrete multivector gradient operator on \( \mathcal{G}_N ^ {(m)} \) is the
 which is an exact, rational multivector mapping on \( \mathcal{G}_N ^ {(m)} \) without appeal to limits \( \Delta x_{(m)} \to 0 \).
 ====
 
-[#theorem-vernier-aperture-stability]
+[#theorem-vernier-stability]
 [THEOREM]
-.Theorem: Vernier Aperture Stability and Exact Finite Convergence
+.Theorem: Vernier Stability and Exact Finite Convergence
 ====
 Let \( \Phi ^ {(m)} \) and \( \Phi ^ {(m+1)} \) denote discrete multivector field configurations on nested grids \( \mathcal{G}_N ^ {(m)} \subset \mathcal{G}_N ^ {(m+1)} \), and let \( \mathcal{P}_m ^ {m+1}: \mathcal{G}_N ^ {(m+1)} \to \mathcal{G}_N ^ {(m)} \) denote the canonical projection operator.
-If the multivector field satisfies the bounded aperture variation condition:
+If the multivector field satisfies the bounded variation condition:
 \[ \max _ {\mathbf{x} \in \mathcal{G} _ N ^ {(m)}} \left\| \Phi ^ {(m+1)}(\mathbf{x}) - \Phi ^ {(m)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le C \cdot 2 ^ {-(m \alpha)} \]
 for positive constants \( C < \infty \) and \( \alpha \ge 1 \), then for any operational tolerance \( \epsilon _ {\text{res}} = 2 ^ {-M} \), there exists a finite integer resolution level:
 \[ m ^ \ast = \left\lceil \frac{1}{\alpha} \log _ 2 \left( \frac{2 C}{\epsilon _ {\text{res}}} \right) \right\rceil < \infty \]
-such that for all resolution levels \( m \ge m ^ \ast \), the field values are identically stable within the operational aperture:
+such that for all resolution levels \( m \ge m ^ \ast \), the field values are identically stable within the specified tolerance:
 \[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le \epsilon _ {\text{res}} \]
 without requiring an unphysical infinite-resolution limit.
 
@@ -82,7 +82,7 @@ _Proof:_
 2. Applying the triangle inequality for the multivector norm in Conformal Geometric Algebra:
 \[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {\mathcal{I}} \]
 
-3. Substituting the bounded aperture variation hypothesis:
+3. Substituting the bounded variation hypothesis:
 \[ \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le C \sum _ {j=m ^ \ast} ^ {m-1} 2 ^ {-j \alpha} = C \cdot 2 ^ {-m ^ \ast \alpha} \sum _ {k=0} ^ {m - 1 - m ^ \ast} 2 ^ {-k \alpha} \]
 
 4. For \( \alpha \ge 1 \), the geometric series sum satisfies \( \sum _ {k=0} ^ {\infty} 2 ^ {-k \alpha} = ( 1 - 2 ^ {-\alpha} ) ^ {-1} \le 2 \). Therefore:
@@ -91,7 +91,7 @@ _Proof:_
 5. Setting \( 2 C \cdot 2 ^ {-m ^ \ast \alpha} \le \epsilon _ {\text{res}} \) and taking logarithms base 2 yields:
 \[ m ^ \ast \ge \frac{1}{\alpha} \log _ 2 \left( \frac{2 C}{\epsilon _ {\text{res}}} \right) \]
 which is an explicit, finite integer.
-At resolution level \( m ^ \ast \), the computational state is mathematically exact and invariant under further Vernier refinement relative to the operational aperture \( \epsilon _ {\text{res}} \).
+At resolution level \( m ^ \ast \), the computational state is mathematically exact and invariant under further Vernier refinement relative to the resolution \( \epsilon _ {\text{res}} \).
 This completes the proof.
 ====
 
@@ -174,7 +174,7 @@ Then:
 
 1. _Fast Transient Decomposition_: Across a macroscopic step \( \Delta t \gg {1} / {\lambda} \), the transient component decays exponentially onto the discrete lattice:
 \[ y_{\text{transient}}(t + \Delta t) = (y(t) - g(t)) \exp(-\lambda \Delta t) \]
-When \( \lambda \Delta t \ge 50 \), the transient falls below the fundamental discrete aperture threshold and is rounded to zero on \( \mathcal{G}_N \) in a single Vernier step.
+When \( \lambda \Delta t \ge 50 \), the transient falls below the resolution threshold and is rounded to zero on \( \mathcal{G}_N \) in a single Vernier step.
 
 2. _Closed-Form Solution_: The driven response is obtained in _closed algebraic form_ in the graded \( m \)-res jet without time stepping:
 \[ Y_{\text{closed}}(t) = \sum_{k=0}^K (-1)^k g^{(k)}(t) \, \epsilon^k \]
@@ -189,7 +189,7 @@ For the persistent driven response where \( \frac{dy}{dt} \) is bounded, expandi
 \[ y_0 = g(t), \quad y_k = -y_{k-1}' = (-1)^k g^{(k)}(t) \]
 This series is exact up to order \( K \).
 
-2. On the discrete lattice \( \mathcal{G}_N \), any transient term with magnitude less than the discrete resolution aperture \( 2^{-M} \) is operationally indistinguishable from zero.
+2. On the discrete lattice \( \mathcal{G}_N \), any transient term with magnitude less than the discrete resolution \( 2^{-M} \) is operationally indistinguishable from zero.
 For \( \lambda \Delta t \ge 50 \), \( \exp(-\lambda \Delta t) \le \exp(-50) < 2 \cdot 10^{-22} \), which is strictly smaller than double-precision machine epsilon.
 Therefore, downarrow projection to \( \mathcal{G}_N \) evaluates the transient to zero in a single step without numerical oscillation.
 
@@ -217,7 +217,7 @@ The order of abstracting is correct: phase space is recognized as _language that
 [DEFINITION]
 .Definition: Discrete \( m \)-Resolution Phase Space Cell Network
 ====
-Let an isolated physical system composed of \( K \) localized field packets reside within a spatial bounding aperture \( \Omega \) on the discrete lattice \( \mathcal{G} _ N ^ {(m)} \).
+Let an isolated physical system composed of \( K \) localized field packets reside within a finite box \( \Omega \) on the discrete lattice \( \mathcal{G} _ N ^ {(m)} \).
 Let the momentum of each field packet be bounded within a finite multivector momentum range \( \mathcal{P} = [-P _ {\max}, P _ {\max}] ^ d \) with discrete momentum resolution \( \Delta p _ {(m)} = 2 ^ {-m} p _ 0 \).
 The one-particle phase space is partitioned into a finite number of discrete cells:
 \[ W _ 1 = \left( \frac{2 L}{\Delta x _ {(m)}} \right) ^ d \times \left( \frac{2 P _ {\max}}{\Delta p _ {(m)}} \right) ^ d < \infty \]
@@ -317,7 +317,7 @@ Then the macroscopic Master Field Equation satisfies:
 \[ D _ {(m)} \langle F(\mathbf{x}) \rangle = \langle J(\mathbf{x}) \rangle \]
 and the macroscopic energy-momentum transport equation deduced from the ensemble average contains an exact, non-zero viscous dissipation tensor:
 \[ D _ {(m)} \cdot \langle T \rangle = \langle J \rangle \cdot \langle F \rangle + \mathbf{C} _ {\text{visc}} \]
-where the correlation tensor \( \mathbf{C} _ {\text{visc}} \) arises entirely from finite-aperture microscopic covariance:
+where the correlation tensor \( \mathbf{C} _ {\text{visc}} \) arises entirely from microscopic covariance:
 \[ \mathbf{C} _ {\text{visc}}(\mathbf{x}) = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \left( J _ i(\mathbf{x}) - \langle J(\mathbf{x}) \rangle \right) \left( \widetilde{F} _ i(\mathbf{x}) - \langle \widetilde{F}(\mathbf{x}) \rangle \right) \]
 which is identically the physical origin of viscosity, electrical resistivity, and thermal relaxation in macroscopic matter, deduced without phenomenological damping constants.
 
@@ -362,7 +362,7 @@ This completes the deduction.
 
 We have established a unified, constructive formulation of numerical analysis and statistical mechanics rooted in the Iris number system:
 
-1. _\( m \)-res Numerical Analysis_: Computational algorithms on discrete lattices \( \mathcal{G} _ N \) are recognized as fundamental and exact operators, replacing illusory continuum limits with finite Vernier aperture stability bounds. By replacing continuous real numbers with graded \( m \)-resolution jets, stiff transients vanish at the discrete aperture threshold in a single step, and the remaining response is evaluated in closed algebraic form without division.
+1. _\( m \)-res Numerical Analysis_: Computational algorithms on discrete lattices \( \mathcal{G} _ N \) are recognized as fundamental and exact operators, replacing illusory continuum limits with finite Vernier stability bounds. By replacing continuous real numbers with graded \( m \)-resolution jets, stiff transients vanish at the resolution threshold in a single step, and the remaining response is evaluated in closed algebraic form without division.
 2. _\( m \)-res Statistical Mechanics_: Phase space is partitioned into finite combinatorial cells, and probability distributions are established strictly as Jaynesian deductive inferences derived from Maximum Entropy subject to operational constraints.
 3. _Deductive Field Reformulation_: When applied to the Master Field Equation \( D F = J \), the motions of particles are rigorously deduced from the surface flux of the multivector stress tensor and causally delayed wave propagation, while macroscopic dissipative laws (viscosity, resistivity) emerge deductively as the covariance of unresolved microscopic fluctuations.
 By eliminating unphysical continuum infinities and fictitious action-at-a-distance, physical and numerical mechanics are united in a single, operational deductive discipline.
