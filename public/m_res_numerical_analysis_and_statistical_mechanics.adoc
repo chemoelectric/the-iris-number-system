@@ -41,7 +41,7 @@ The discrete lattice \( \mathcal{G}_N \) and its finite aperture scale \( l_{\te
 .Definition: \( m \)-Resolution Lattice Mesh and Metric Resolution
 ====
 Let \( \mathcal{G}_N ^ {(m)} \subset \mathbb{Q} ^ d \) denote the \( m \)-resolution spatial grid in \( d \) spatial dimensions defined by a finite resolution increment \( \Delta x_{(m)} = 2 ^ {-m} l_0 \), where \( l_0 \) is the fundamental macroscopic aperture scale and \( m \in \mathbb{N}_0 \) designates the finite Vernier resolution level.
-The spatial domain is bounded within a finite aperture box \( \Omega = [-L, L] ^ d \) such that the total number of discrete grid locations is strictly finite:
+The spatial domain is bounded within a finite box \( \Omega = [-L, L] ^ d \) such that the total number of discrete grid locations is strictly finite:
 \[ N_{(m)} = \left( \frac{2 L}{\Delta x_{(m)}} + 1 \right) ^ d = \left( \frac{2 L}{l_0} 2 ^ m + 1 \right) ^ d < \infty \]
 
 Each discrete lattice position is addressed by an integer coordinate vector \( \mathbf{n} = (n_1, \dots, n_d) \in \mathbb{Z} ^ d \) yielding the position vector:
