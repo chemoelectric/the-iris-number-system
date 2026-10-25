@@ -14,7 +14,7 @@ double classical_euler_step(mres_stiff_system_t *sys,
   if (source != NULL) {
     s_val = source(sys->t);
   }
-  dy = (-sys->lambda * sys->y) + s_val;
+  dy = -sys->lambda * (sys->y - s_val);
   y_next = sys->y + (sys->dt_macro * dy);
   sys->y = y_next;
   sys->t = sys->t + sys->dt_macro;
@@ -27,6 +27,7 @@ double mres_stiff_step(mres_stiff_system_t *sys,
   double dt;
   double eps;
   double decay;
+  double g_curr;
   double transient;
   double manifold;
   double y_next;
@@ -40,7 +41,11 @@ double mres_stiff_step(mres_stiff_system_t *sys,
   if ((lam * dt) < 700.0) {
     decay = exp(-lam * dt);
   }
-  transient = sys->y * decay;
+  g_curr = 0.0;
+  if (source != NULL) {
+    g_curr = source(sys->t);
+  }
+  transient = (sys->y - g_curr) * decay;
 
   /* Slow manifold evaluation via m-res jet in eps = 1/lambda */
   manifold = 0.0;

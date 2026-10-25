@@ -321,7 +321,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
               {/* Second */}
               <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-indigo-300 font-medium">Interplanetary Second (\( \text{s}_&#123;\text{IP}&#125; \))</span>
+                  <span className="font-mono text-indigo-300 font-medium">{"Interplanetary Second (\\( \\text{s}_{\\text{IP}} \\))"}</span>
                   <span className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-emerald-950 border border-emerald-800 text-emerald-300">
                     Exact Integer
                   </span>
@@ -341,7 +341,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
               {/* Meter */}
               <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-indigo-300 font-medium">Interplanetary Meter (\( \text{m}_&#123;\text{IP}&#125; \))</span>
+                  <span className="font-mono text-indigo-300 font-medium">{"Interplanetary Meter (\\( \\text{m}_{\\text{IP}} \\))"}</span>
                   <span className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-emerald-950 border border-emerald-800 text-emerald-300">
                     Kinematic Ratio
                   </span>
@@ -361,7 +361,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
               {/* Kilogram */}
               <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-indigo-300 font-medium">Interplanetary Kilogram (\( \text{kg}_&#123;\text{IP}&#125; \))</span>
+                  <span className="font-mono text-indigo-300 font-medium">{"Interplanetary Kilogram (\\( \\text{kg}_{\\text{IP}} \\))"}</span>
                   <span className="px-1.5 py-0.5 text-[10px] font-mono rounded bg-emerald-950 border border-emerald-800 text-emerald-300">
                     Exact Integer
                   </span>

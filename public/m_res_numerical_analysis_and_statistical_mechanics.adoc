@@ -69,12 +69,12 @@ Let \( \Phi ^ {(m)} \) and \( \Phi ^ {(m+1)} \) denote discrete multivector fiel
 If the multivector field satisfies the bounded aperture variation condition:
 \[ \max _ {\mathbf{x} \in \mathcal{G} _ N ^ {(m)}} \left\| \Phi ^ {(m+1)}(\mathbf{x}) - \Phi ^ {(m)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le C \cdot 2 ^ {-(m \alpha)} \]
 for positive constants \( C < \infty \) and \( \alpha \ge 1 \), then for any operational tolerance \( \epsilon _ {\text{res}} = 2 ^ {-M} \), there exists a finite integer resolution level:
-\[ m ^ \ast = \left\lceil \frac{1}{\alpha} \log _ 2 \left( \frac{C}{\epsilon _ {\text{res}}} \right) \right\rceil < \infty \]
+\[ m ^ \ast = \left\lceil \frac{1}{\alpha} \log _ 2 \left( \frac{2 C}{\epsilon _ {\text{res}}} \right) \right\rceil < \infty \]
 such that for all resolution levels \( m \ge m ^ \ast \), the field values are identically stable within the operational aperture:
 \[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le \epsilon _ {\text{res}} \]
 without requiring an unphysical infinite-resolution limit.
 
-*Proof:*
+_Proof:_
 
 1. Consider the telescopic expansion of the multivector difference across successive nested resolution levels:
 \[ \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) = \sum _ {j=m ^ \ast} ^ {m-1} \left( \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right) \]
@@ -83,10 +83,10 @@ without requiring an unphysical infinite-resolution limit.
 \[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {\mathcal{I}} \]
 
 3. Substituting the bounded aperture variation hypothesis:
-\[ \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {Cl} \le C \sum _ {j=m ^ \ast} ^ {m-1} 2 ^ {-j \alpha} = C \cdot 2 ^ {-m ^ \ast \alpha} \sum _ {k=0} ^ {m - 1 - m ^ \ast} 2 ^ {-k \alpha} \]
+\[ \sum _ {j=m ^ \ast} ^ {m-1} \left\| \Phi ^ {(j+1)}(\mathbf{x}) - \Phi ^ {(j)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le C \sum _ {j=m ^ \ast} ^ {m-1} 2 ^ {-j \alpha} = C \cdot 2 ^ {-m ^ \ast \alpha} \sum _ {k=0} ^ {m - 1 - m ^ \ast} 2 ^ {-k \alpha} \]
 
 4. For \( \alpha \ge 1 \), the geometric series sum satisfies \( \sum _ {k=0} ^ {\infty} 2 ^ {-k \alpha} = ( 1 - 2 ^ {-\alpha} ) ^ {-1} \le 2 \). Therefore:
-\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {Cl} \le 2 C \cdot 2 ^ {-m ^ \ast \alpha} \]
+\[ \left\| \Phi ^ {(m)}(\mathbf{x}) - \Phi ^ {(m ^ \ast)}(\mathbf{x}) \right\| _ {\mathcal{I}} \le 2 C \cdot 2 ^ {-m ^ \ast \alpha} \]
 
 5. Setting \( 2 C \cdot 2 ^ {-m ^ \ast \alpha} \le \epsilon _ {\text{res}} \) and taking logarithms base 2 yields:
 \[ m ^ \ast \ge \frac{1}{\alpha} \log _ 2 \left( \frac{2 C}{\epsilon _ {\text{res}}} \right) \]
@@ -130,7 +130,7 @@ All product terms of order \( n \ge K + 1 \) vanish identically by discrete latt
 \[ A^{-1} = \frac{1}{a_0} \left( 1 + \delta \right)^{-1} = \frac{1}{a_0} \sum_{m=0}^K (-1)^m \delta^m \]
 where \( \delta = \sum_{j=1}^K \frac{a_j}{a_0} \mu^j \) is strictly nilpotent (\( \delta^{K+1} \equiv 0 \)).
 
-*Proof:*
+_Proof:_
 
 1. The Cauchy convolution follows directly from the distributive law over the graded basis \( \{ \mu^0, \mu^1, \dots, \mu^K \} \) modulo the discrete lattice ideal \( \langle \mu^{K+1} \rangle \).
 
@@ -165,15 +165,15 @@ Extracts the exact \( k \)-th order rate of variation without dividing by any sm
 [THEOREM]
 .Theorem: Exact Algebraic Solution of Stiff Systems and Singular Perturbations
 ====
-Consider a stiff differential equation governing boundary layers, relaxation processes, or reaction networks:
-\[ \frac{dy}{dt} = -\lambda y + g(t), \quad \lambda \gg 1, \quad y(0) = y_0 \]
+Consider a stiff differential equation describing boundary layers, relaxation processes, or reaction networks:
+\[ \frac{dy}{dt} = -\lambda (y - g(t)), \quad \lambda \gg 1, \quad y(0) = y_0 \]
 In classical numerical analysis, explicit stepping schemes explode into catastrophic instability unless \( \Delta t < {2} / {\lambda} \), forcing millions of tiny steps that accumulate roundoff error.
 
 In \( m \)-res numerical analysis, the stiffness is reparameterized by the pure first-order resolution generator \( \epsilon = \mu / {\lambda} \).
 Then:
 
 1. _Fast Transient Decomposition_: Across a macroscopic step \( \Delta t \gg {1} / {\lambda} \), the transient component decays exponentially onto the discrete lattice:
-\[ y_{\text{transient}}(t + \Delta t) = y(t) \exp(-\lambda \Delta t) \]
+\[ y_{\text{transient}}(t + \Delta t) = (y(t) - g(t)) \exp(-\lambda \Delta t) \]
 When \( \lambda \Delta t \ge 50 \), the transient falls below the fundamental discrete aperture threshold and is rounded to zero on \( \mathcal{G}_N \) in a single Vernier step.
 
 2. _Closed-Form Solution_: The driven response is obtained in _closed algebraic form_ in the graded \( m \)-res jet without time stepping:
@@ -182,9 +182,9 @@ The state at macroscopic time \( t + \Delta t \) is evaluated unconditionally st
 \[ y(t + \Delta t) = y_{\text{transient}}(t + \Delta t) + \downarrow_{\epsilon} Y_{\text{closed}}(t + \Delta t) \]
 yielding unconditional stability for arbitrarily large macroscopic time increments \( \Delta t \).
 
-*Proof:*
+_Proof:_
 
-1. In the singular perturbation formulation, write the ODE as \( \epsilon \frac{dy}{dt} = -y + \epsilon g(t) \), where \( \epsilon = \frac{1}{\lambda} \mu \).
+1. In the singular perturbation formulation, write the ODE as \( \epsilon \frac{dy}{dt} = -(y - g(t)) \), where \( \epsilon = \frac{1}{\lambda} \mu \).
 For the persistent driven response where \( \frac{dy}{dt} \) is bounded, expanding \( Y = \sum_{k=0}^K y_k \epsilon^k \) and equating coefficients of \( \epsilon^k \) yields the algebraic recurrence:
 \[ y_0 = g(t), \quad y_k = -y_{k-1}' = (-1)^k g^{(k)}(t) \]
 This series is exact up to order \( K \).
@@ -210,7 +210,7 @@ In \( m \)-resolution statistical mechanics, we adhere strictly to the foundatio
 probability distributions are not physical fluids; they are explicit, deductive representations of our state of knowledge given incomplete macroscopic information.
 Phase space is not a continuum of uncountably infinite points, but a finite combinatorial grid of discrete state cells partitioned by the fundamental spatial and momentum resolution scales \( (\Delta x _ {(m)}, \Delta p _ {(m)}) \). Furthermore, phase space is a linguistic entity, not a physical one. It would not exist if no one ever thought it up and wrote it down.
 
-The the order of abstracting is correct: phase space is recognized as _language that talks about_ physical realities, whereas physical realities _are not and cannot be words_.
+The order of abstracting is correct: phase space is recognized as _language that talks about_ physical realities, whereas physical realities _are not and cannot be words_.
 
 
 [#definition-m-res-phase-space]
@@ -271,9 +271,9 @@ The local divergence of \( T \) on the discrete lattice satisfies the exact cons
 representing the direct contact momentum and energy transfer between field fluxes and localized currents.
 ====
 
-[#theorem-deduction-of-particle-motion]
-[THEOREM]
-.Theorem: Deductive Derivation of Particle Trajectory from Boundary Flux Balance
+[#conclusion-deduction-of-particle-motion]
+[CONCLUSION]
+.Conclusion Pending New Information: Deductive Derivation of Particle Trajectory from Boundary Flux Balance
 ====
 Let a localized hypothetical object or particle occupy a discrete spatial domain \( \Omega _ k \subset \mathcal{G} _ N ^ {(m)} \) bounded by the discrete surface boundary \( \partial \Omega _ k \).
 Let \( P _ k = \sum _ {\mathbf{x} \in \Omega _ k} \rho _ {\text{field}}(\mathbf{x}) \Delta x _ {(m)} ^ d \) denote the net multivector field momentum contained within \( \Omega _ k \).
@@ -286,7 +286,7 @@ Thus, the field \( F(\mathbf{x}, t) \) acting on the surface at time \( t \) dep
 \[ t' = t - \frac{\| \mathbf{x} - \mathbf{x}' \|}{c} \]
 when their influence was first sent out.
 
-*Proof:*
+_Deduction:_
 
 1. On the discrete lattice \( \mathcal{G} _ N ^ {(m)} \), sum the discrete divergence of the multivector stress tensor \( T \) over all cells inside \( \Omega _ k \):
 \[ \sum _ {\mathbf{x} \in \Omega _ k} (D \cdot T)(\mathbf{x}) \Delta x _ {(m)} ^ d = \sum _ {\mathbf{x} \in \Omega _ k} \langle J \widetilde{F} \rangle _ 1 (\mathbf{x}) \Delta x _ {(m)} ^ d \]
@@ -296,20 +296,20 @@ when their influence was first sent out.
 
 3. The total current \( J \) decomposes into localized internal binding current \( J _ {\text{internal}} \) and external convective/field current. The time rate of change of the enclosed momentum within the finite cell domain \( \Omega _ k \) is:
 \[ \frac{\Delta P _ k}{\Delta t} = \sum _ {\mathbf{x} \in \Omega _ k} \frac{\Delta}{\Delta t} \left( \frac{1}{c ^ 2} \mathbf{S}(\mathbf{x}) \right) \Delta x _ {(m)} ^ d \]
-where \( \mathbf{S} = \langle F e _ 0 \widetilde{F} \rangle _ 1 \) is the Poynting momentum flux density.
+where \( \mathbf{S} = \langle F e _ 4 \widetilde{F} \rangle _ 1 \) is the Poynting momentum flux density.
 
 4. Equating the internal time rate of momentum change with the net balance of incoming/outgoing boundary stress and internal current forces:
 \[ \frac{\Delta P _ k}{\Delta t} = - \sum _ {\mathbf{s} \in \partial \Omega _ k} T(n(\mathbf{s})) \Delta A(\mathbf{s}) + \sum _ {\mathbf{x} \in \Omega _ k} \langle J _ {\text{internal}} \widetilde{F} \rangle _ 1 \Delta x _ {(m)} ^ d \]
 
 5. Because all wave packet interactions travel at finite speed \( c \), the field values \( F(\mathbf{s}) \) arriving at the boundary \( \partial \Omega _ k \) from any other source \( k' \) at distance \( r _ {k k'} \) require finite propagation time:
 \[ \Delta t _ {\text{prop}} = \frac{r _ {k k'}}{c} > 0 \]
-The acceleration and subsequent displacement \( \Delta \mathbf{x} _ k = \frac{P _ k}{M _ k} \Delta t \) of the object are thus uniquely deduced from the field stress balance without introducing unphysical instantaneous action-at-a-distance or arbitrary kinematic axioms.
+The acceleration and subsequent displacement \( \Delta \mathbf{x} _ k = \frac{P _ k}{M _ k} \Delta t \) of the object are thus uniquely deduced from the field stress balance without introducing unphysical zero-duration action-at-a-distance or arbitrary kinematic axioms.
 This completes the deduction.
 ====
 
-[#theorem-maxent-macroscopic-field-reformulation]
-[THEOREM]
-.Theorem: MaxEnt Reformulation of the Master Field Equation over Discrete Ensembles
+[#conclusion-maxent-macroscopic-field-reformulation]
+[CONCLUSION]
+.Conclusion Pending New Information: MaxEnt Reformulation of the Master Field Equation over Discrete Ensembles
 ====
 Let an ensemble of microscopic field kernels and current trajectories be distributed over \( \mathcal{G} _ N ^ {(m)} \) according to the Jaynesian MaxEnt probability distribution \( p _ i \).
 Let \( \langle F(\mathbf{x}) \rangle = \sum _ i p _ i F _ i(\mathbf{x}) \) and \( \langle J(\mathbf{x}) \rangle = \sum _ i p _ i J _ i(\mathbf{x}) \) denote the macroscopic MaxEnt expectation fields.
@@ -321,7 +321,7 @@ where the correlation tensor \( \mathbf{C} _ {\text{visc}} \) arises entirely fr
 \[ \mathbf{C} _ {\text{visc}}(\mathbf{x}) = \sum _ {i=1} ^ {\Omega _ {\text{micro}}} p _ i \left( J _ i(\mathbf{x}) - \langle J(\mathbf{x}) \rangle \right) \left( \widetilde{F} _ i(\mathbf{x}) - \langle \widetilde{F}(\mathbf{x}) \rangle \right) \]
 which is identically the physical origin of viscosity, electrical resistivity, and thermal relaxation in macroscopic matter, deduced without phenomenological damping constants.
 
-*Proof:*
+_Deduction:_
 
 1. The microscopic Master Field Equation holds in every discrete microstate configuration \( i \in \{1, \dots, \Omega _ {\text{micro}}\} \) on \( \mathcal{G} _ N ^ {(m)} \):
 \[ D _ {(m)} F _ i(\mathbf{x}) = J _ i(\mathbf{x}) \]
@@ -355,7 +355,7 @@ Because wave packet propagation requires finite duration at speed \( c \), delay
 \[ \sum _ {\mathbf{x} \in \mathcal{G} _ N ^ {(m)}} \mathbf{C} _ {\text{visc}}(\mathbf{x}) \cdot \langle \mathbf{v} \rangle \ge 0 \]
 This is the rigorous first-principles derivation of macroscopic shear viscosity, bulk viscosity, and Ohm's law resistivity.
 Every macroscopic dissipative parameter is deduced from the underlying field dynamics and incomplete state information, without ever postulating phenomenological friction.
-This completes the proof.
+This completes the deduction.
 ====
 
 == Conclusion
