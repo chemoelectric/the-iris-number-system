@@ -161,23 +161,26 @@ Evaluates the jet at physical lattice increment \( \Delta x \) and snaps determi
 Extracts the exact \( k \)-th order rate of variation without dividing by any small step size \( \Delta t \), completely avoiding floating-point subtractive cancellation and \( 0/0 \) indeterminate forms.
 ====
 
-[#digression-jets-and-taylor-series]
-=== Digression: The Relationship Between Jets and Taylor Series
+[#digression-jets-and-taylor-theorem]
+=== Digression: The Relationship Between Jets and Taylor’s Theorem
 
-To clarify the constructive foundations of \( m \)-res numerical analysis for readers unfamiliar with differential algebra or jet geometry, we provide a direct exposition of the structural relationship between classical Taylor series and finite graded jets.
+To clarify the constructive foundations of \( m \)-res numerical analysis for readers unfamiliar with differential algebra or jet geometry, we examine the direct structural relationship between Taylor’s theorem and finite graded jets.
 
-In classical analysis, one represents the local behavior of an ordinary function \( f(t) \) around a point \( t \) by its formal Taylor series:
-\[ f(t + \Delta t) = f(t) + f'(t) \Delta t + \frac{f''(t)}{2!} (\Delta t) ^ {2} + \dots + \frac{f ^ {(k)}(t)}{k!} (\Delta t) ^ {k} + \dots \]
-In the conventional continuum paradigm, this formulation is laden with unphysical infinities: it is presented as an infinite sum of infinitesimal entities, requiring philosophical appeals to limits \( \Delta t \to 0 \) and convergence tests over uncountable domains. Furthermore, in practical computation on digital computers, attempting to evaluate derivatives by finite differences:
+Taylor’s theorem is fundamentally an exact statement about a finite polynomial of degree \( K \) accompanied by an explicit error term (remainder):
+\[ f(t + \Delta t) = \sum _ {k=0} ^ {K} \frac{f ^ {(k)}(t)}{k!} (\Delta t) ^ {k} + R _ K(\Delta t) \]
+Taylor’s theorem does not require an infinite series, nor does it require any continuum. It is an operational decomposition of a local variation into a finite polynomial of degree \( K \) and a bounded residual \( R _ K \).
+
+However, in classical numerical computation on digital machines, practitioners often discard the polynomial structure and instead approximate individual derivatives using finite difference quotients:
 \[ \frac{f(t + \Delta t) - f(t)}{\Delta t} \]
-causes catastrophic cancellation when \( \Delta t \) is small, yielding subtractive noise and ill-posed \( 0/0 \) indeterminate forms.
+When \( \Delta t \) is made small in an effort to minimize truncation error, subtractive cancellation rapidly destroys precision, creating ill-conditioned numerical instability and \( 0/0 \) indeterminate forms.
 
-A _jet_ (introduced geometrically by Charles Ehresmann and formalized in constructive algebra) resolves this problem by replacing the infinite series with a finite, exact algebraic bundle. Rather than pretending that reality contains an infinity of terms, an \( m \)-resolution jet of order \( K \) truncates the representation at the finite resolution threshold of the discrete lattice \( \mathcal{G} _ N \). It is written as a single algebraic object:
+A _jet_ (introduced geometrically by Charles Ehresmann and formalized algebraically in differential algebra) provides the natural, intrinsic representation of Taylor’s theorem. Rather than treating \( \Delta t \) as a numerical increment whose powers must be repeatedly calculated, a jet isolates the finite polynomial itself into a structured algebraic bundle:
 \[ X = x _ 0 + x _ 1 \mu + x _ 2 \mu ^ {2} + \dots + x _ K \mu ^ {K} \]
-where \( \mu \) is a formal resolution generator whose powers keep the rates of variation separated into distinct, unmixed grades, satisfying the exact discrete nilpotency condition:
+where \( \mu \) is a formal resolution generator whose powers keep the rates of variation separated into distinct, unmixed grades. In this ring, the remainder term \( R _ K \) is represented algebraically by the discrete nilpotency condition:
 \[ \mu ^ {K+1} \equiv 0 \]
+which reflects the physical reality of the discrete lattice \( \mathcal{G} _ N \): variations beyond the \( K \)-th resolution order are sub-resolution fluctuations that vanish identically into the lattice threshold.
 
-The relationship between the jet coordinates \( x _ k \) and the derivatives \( f ^ {(k)} \) is established by the progression of lowering degrees under repeated differentiation:
+The explicit relationship between the jet coordinates \( x _ k \) and the derivatives \( f ^ {(k)} \) is determined by the progression of lowering degrees under repeated differentiation:
 
 1. _Descent of Degrees by Differentiation_: Consider an elementary monomial \( \mu ^ {k} \). Each successive differentiation lowers the algebraic exponent by one and multiplies by the current power:
 \[ \frac{d}{d\mu} (\mu ^ {k}) = k \mu ^ {k-1} \]
@@ -186,18 +189,18 @@ Differentiating \( k \) times reduces the power to \( \mu ^ {0} = 1 \), accumula
 \[ \frac{d ^ {k}}{d\mu ^ {k}} (\mu ^ {k}) = k \cdot (k-1) \cdot (k-2) \cdots 1 = k! \]
 Any subsequent differentiation of this term yields zero identically.
 
-2. _The Taylor Factorial Denominator_: If a polynomial function \( P(\mu) = \sum _ {k=0} ^ {K} x _ k \mu ^ {k} \) is differentiated \( k \) times and evaluated at \( \mu = 0 \), all terms with degree less than \( k \) have vanished to zero, and all terms with degree greater than \( k \) retain at least one factor of \( \mu \) (which vanishes at \( \mu = 0 \)). The only surviving term is the \( k \)-th term:
+2. _The Taylor Factorial Denominator_: If a polynomial function \( P(\mu) = \sum _ {k=0} ^ {K} x _ k \mu ^ {k} \) is differentiated \( k \) times and evaluated at \( \mu = 0 \), all terms with degree less than \( k \) have vanished to zero, and all terms with degree greater than \( k \) retain at least one factor of \( \mu \) (which evaluates to zero at \( \mu = 0 \)). The only surviving term is the \( k \)-th term:
 \[ \left. \frac{d ^ {k} P}{d\mu ^ {k}} \right| _ {\mu = 0} = k! \cdot x _ k \]
-To ensure that the polynomial’s \( k \)-th rate of change matches the physical derivative \( f ^ {(k)}(t) \), the coordinate \( x _ k \) must equal the normalized Taylor coefficient:
+In order for the polynomial’s \( k \)-th rate of change to match the derivative \( f ^ {(k)}(t) \) given by Taylor’s theorem, the coordinate \( x _ k \) must be the normalized Taylor coefficient:
 \[ x _ k = \frac{f ^ {(k)}(t)}{k!} \]
 
-3. _Algebraic Arithmetic Without Limits_: In this graded jet ring, all elementary operations (addition, scalar multiplication, Cauchy multiplication, and reciprocal inversion) proceed purely by polynomial algebra modulo \( \mu ^ {K+1} \). When two jets multiply, their components combine according to the discrete Cauchy convolution:
+3. _Exact Polynomial Algebra_: In the graded jet ring \( \mathbb{R}[\mu] / \langle \mu ^ {K+1} \rangle \), operations (addition, Cauchy multiplication, and nilpotent series inversion) proceed purely by polynomial algebra. When two jets multiply, their components combine according to the discrete Cauchy convolution:
 \[ c _ n = \sum _ {j=0} ^ {n} a _ j b _ {n-j} \]
-which automatically computes the exact product-rule derivatives of all orders up to \( K \) simultaneously. No step sizes \( \Delta t \) are introduced, and no limits are taken.
+which automatically computes the exact product-rule derivatives of all orders up to \( K \) simultaneously. No step sizes are introduced, and no limits are evaluated.
 
 4. _Recovery of Derivatives via Downarrow Extraction_: When a computation in the jet ring is complete, the physical rates of variation are extracted by the typed downarrow operator \( \downarrow _ k \):
 \[ \downarrow _ k(X) = k! \cdot x _ k = k! \left( \frac{f ^ {(k)}(t)}{k!} \right) = f ^ {(k)}(t) \]
-The multiplication by \( k! \) precisely undoes the factorial divisor that arose from the progression of lowering degrees. This yields the exact \( k \)-th physical rate of variation in closed form, completely eliminating floating-point cancellation and difference-quotient division.
+The multiplication by \( k! \) simply inverts the factorial divisor that arose from the progression of descending exponents during differentiation. This extracts the exact \( k \)-th physical rate of variation in closed algebraic form directly from the jet components, without division by small increments and without subtractive cancellation.
 
 [#theorem-m-res-stiff-differential-solver]
 [THEOREM]
