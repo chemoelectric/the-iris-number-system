@@ -209,7 +209,7 @@ The domain \( ( \mathbb { Z } , + , \cdot , \le ) \) is a totally ordered commut
 [POSTULATE]
 .Postulate 2: Canonical Scalar Embedding into Conformal Geometric Algebra
 ====
-There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of Conformal Geometric Algebra: \[ \iota _ 0 : \mathbb { Z } \hookrightarrow \mathbb { G } , \quad n \mapsto n \cdot \mathbf { 1 } \]
+There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of Conformal Geometric Algebra:footnote:[Leo Dorst, Daniel Fontijne, and Stephen Mann. 2007. _Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. Morgan Kaufmann Publishers, San Francisco, CA. ISBN: 978-0-12-369461-4.] \[ \iota _ 0 : \mathbb { Z } \hookrightarrow \mathbb { G } , \quad n \mapsto n \cdot \mathbf { 1 } \]
 
 
 where \( \mathbf { 1 } \) is the unit scalar element satisfying \( \mathbf { 1 } e _ A = e _ A \mathbf { 1 } = e _ A \) for all basis elements \( e _ A \).

@@ -301,3 +301,12 @@ A rigorous pedagogical and forensic investigation of engineering mechanics and s
 *Annotation:*
 A monumental historical and philosophical exposition of the human ascent through constructive craft, metallurgy, architecture, physics, and mathematical geometry. Bronowski presents scientific discovery not as an insular academic bureaucracy or static body of dogmatic knowledge, but as an ongoing, creative, and humane time-binding endeavor rooted in direct physical engagement with material reality and tool-making. Bronowski’s exposition provides an inspiring epistemological demonstration of humanity's capacity to transcend animal limits through the cumulative evaluation, transmission, and refinement of structural and intellectual abstractions.
 
+== Conformal Geometric Algebra and Computational Geometry
+
+[#entry-dorst-fontijne-mann-2007]
+=== Dorst, Leo; Fontijne, Daniel; and Mann, Stephen (2007)
+_Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. San Francisco, CA: Morgan Kaufmann Publishers. ISBN: 978-0-12-369461-4.
+
+_Annotation:_
+The foundational treatise on Conformal Geometric Algebra (CGA) and its computational implementation. Establishes the canonical non-diagonal null basis representation for spheres, planes, circles, and point pairs, formulating geometric transformations through rotors and direct multivector products rather than coordinate matrices.
+
