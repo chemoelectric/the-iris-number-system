@@ -52,7 +52,7 @@ Each discrete lattice position is addressed by an integer coordinate vector \( \
 [DEFINITION]
 .Definition: Discrete Multivector Difference Operators
 ====
-Let \( \Phi: \mathcal{G}_N ^ {(m)} \to \mathbb{G} \) be a discrete multivector field configuration in Conformal Geometric Algebra.footnote:[Leo Dorst, Daniel Fontijne, and Stephen Mann. 2007. _Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. Morgan Kaufmann Publishers, San Francisco, CA. ISBN: 978-0-12-369461-4. We include a sixth, null-magnitude basis vector representing the time dimension.]
+Let \( \Phi: \mathcal{G}_N ^ {(m)} \to \mathbb{G} \) be a discrete multivector field configuration in Conformal Geometric Algebra.footnote:[Leo Dorst, Daniel Fontijne, and Stephen Mann. 2007. _Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. Morgan Kaufmann Publishers, San Francisco, CA. ISBN: 978-0-12-369461-4. In this paper we extend Conformal Geometric Algebra with a sixth, null-magnitude basis vector representing the time dimension.]
 The discrete spatial directional difference operator \( \Delta_k ^ {(m)} \) along the spatial basis vector \( e_k \) (\( k \in \{1, 2, 3\} \)) is defined by the central rational difference:
 \[ \Delta_k ^ {(m)} \Phi(\mathbf{x}) = \frac{\Phi(\mathbf{x} + \Delta x_{(m)} e_k) - \Phi(\mathbf{x} - \Delta x_{(m)} e_k)}{2 \Delta x_{(m)}} \]
 
@@ -206,11 +206,11 @@ In conventional physics, statistical mechanics commits the following errors:
 
 . It fantasizes matter as point particles with zero volume undergoing an infinite number of collisions. However, if one knows the structure of matter, then this structure must be accounted for. At the very least, matter has spatial extent and cannot undergo infinite numbers of collisions!
 
-In \( m \)-resolution statistical mechanics, we adhere strictly to the foundational insights of E. T. Jaynes:
+In \( m \)-resolution statistical mechanics, we adhere strictly to the foundational insights of E. T. Jaynes:footnote:[Edwin T. Jaynes. 2003. _Probability Theory: The Logic of Science._ Cambridge University Press, Cambridge, UK. &#x5B;Edited by G. Larry Bretthorst&#x5D;.]
 probability distributions are not physical fluids; they are explicit, deductive representations of our state of knowledge given incomplete macroscopic information.
 Phase space is not a continuum of uncountably infinite points, but a finite combinatorial grid of discrete state cells partitioned by the fundamental spatial and momentum resolution scales \( (\Delta x _ {(m)}, \Delta p _ {(m)}) \). Furthermore, phase space is a linguistic entity, not a physical one. It would not exist if no one ever thought it up and wrote it down.
 
-The order of abstracting is correct: phase space is recognized as _language that talks about_ physical realities, whereas physical realities _are not and cannot be words_.
+The order of abstracting is correct: phase space is recognized as _language that talks about_ physical realities, whereas physical realities _are not and cannot be words_.footnote:[Alfred Korzybski. 1941. _Science and Sanity: An Introduction to Non-Aristotelian Systems and General Semantics (2nd ed.)._ International Non-Aristotelian Library Publishing Company. Be aware much of the science related in _Science and Sanity_ is incorrect. For instance, Korzybski should have recognized immediately that Special and General Relativity involve reversals of the correct order of abstracting, thus must be wrong. _A change of coordinate system cannot affect the physical world!_ The Unified Field Theory that Einstein never found is simply Maxwell’s equations, but accounting for mass-energy equivalence (about which Einstein was correct). Rather than recite word magic, we must _explain_ Michelson-Morley. _The reason no “ether wind” was detected is Earth and the Michelson-Morley apparatus themselves are_ part of _the “ether”_—what we more properly call _the universal electromagnetic field._]
 
 
 [#definition-m-res-phase-space]
@@ -366,8 +366,3 @@ We have established a unified, constructive formulation of numerical analysis an
 2. _\( m \)-res Statistical Mechanics_: Phase space is partitioned into finite combinatorial cells, and probability distributions are established strictly as Jaynesian deductive inferences derived from Maximum Entropy subject to operational constraints.
 3. _Deductive Field Reformulation_: When applied to the Master Field Equation \( D F = J \), the motions of particles are rigorously deduced from the surface flux of the multivector stress tensor and causally delayed wave propagation, while macroscopic dissipative laws (viscosity, resistivity) emerge deductively as the covariance of unresolved microscopic fluctuations.
 By eliminating unphysical continuum infinities and fictitious action-at-a-distance, physical and numerical mechanics are united in a single, operational deductive discipline.
-
-== References
-
-* Leo Dorst, Daniel Fontijne, and Stephen Mann. 2007. _Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. Morgan Kaufmann Publishers, San Francisco, CA. ISBN: 978-0-12-369461-4. We include a sixth, null-magnitude basis vector representing the time dimension.
-* Daniel Fontijne. 2006. Gaigen 2: a geometric algebra implementation generator. In _Proceedings of the 5th international conference on Generative programming and component engineering_ (GPCE '06). Association for Computing Machinery, New York, NY, USA, 141–150. https://doi.org/10.1145/1173706.1173728
