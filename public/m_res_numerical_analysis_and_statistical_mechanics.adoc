@@ -168,7 +168,7 @@ To clarify the constructive foundations of \( m \)-res numerical analysis for re
 
 Taylor’s theorem is fundamentally an exact statement about a finite polynomial of degree \( K \) accompanied by an explicit error term (remainder):
 \[ f(t + \Delta t) = \sum _ {k=0} ^ {K} \frac{f ^ {(k)}(t)}{k!} (\Delta t) ^ {k} + R _ K(\Delta t) \]
-Taylor’s theorem does not require an infinite series, nor does it require any continuum. It is an operational decomposition of a local variation into a finite polynomial of degree \( K \) and a bounded residual \( R _ K \).
+Taylor’s theorem does not require an infinite series, nor does it require any continuum.footnote:[Brook Taylor published this relation in his 1715 treatise _Methodus Incrementorum Directa et Inversa_, investigating the calculus of finite differences and finite increments. The widespread modern academic belief that Taylor’s theorem is an “infinite sum” requiring uncountable continuum limits is an anachronism: Taylor died in 1731, more than a century before the set-theoretic continuum dogmas of Dedekind and Cantor were conceived. Taylor’s theorem establishes the exact existence of a remainder number for any chosen finite number of terms.] It is an operational decomposition of a local variation into a finite polynomial of degree \( K \) and a bounded residual \( R _ K \).
 
 However, in classical numerical computation on digital machines, practitioners often discard the polynomial structure and instead approximate individual derivatives using finite difference quotients:
 \[ \frac{f(t + \Delta t) - f(t)}{\Delta t} \]
