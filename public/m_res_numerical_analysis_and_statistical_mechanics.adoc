@@ -100,16 +100,16 @@ This completes the proof.
 .Definition: Genuine Graded \( m \)-res Numerical Types and Composite Jets
 ====
 To formulate a truly novel numerical analysis that departs from classical floating-point approximations, we establish a strict _Gaigen_-style graded algebraic typing discipline.footnote:[Daniel Fontijne. 2006. Gaigen 2: a geometric algebra implementation generator. In Proceedings of the 5th international conference on Generative programming and component engineering (GPCE '06). Association for Computing Machinery, New York, NY, USA, 141–150. https://doi.org/10.1145/1173706.1173728]
-Terminology is kept mathematically sharp: a number of resolution order \( k \) consists strictly and exclusively of terms of grade \( k \).
-A structure containing terms of mixed resolution orders is designated an \( m \)-_resolution jet_ (or composite jet), whereas an \( m \)-_resolution number_ is strictly of a single resolution order.
+Terminology is kept mathematically sharp: a number of resolution tier \( k \) consists strictly and exclusively of terms of grade \( k \).
+A structure containing terms of mixed resolution tiers is designated an \( m \)-_resolution jet_ (or composite jet), whereas an \( m \)-_resolution number_ is strictly of a single resolution tier.
 
 The foundational types are stratified as follows:
 
 * _Grade 0 (Macroscopic Observable)_: Denoted \( \mathtt{real\_t} \), representing macroscopic scalar observables \( x_0 \in \mathbb{R} \) on the grid.
-* _Grade 1 (Pure First-Order \( m \)-res Number)_: Denoted \( \mathtt{mres1\_t} \), representing pure first-order resolution quantities \( x_1 \mu \), possessing no macroscopic real component.
-* _Grade 2 (Pure Second-Order \( m \)-res Number)_: Denoted \( \mathtt{mres2\_t} \), representing pure second-order quantities \( x_2 \mu^2 \).
-* _Grade 3 (Pure Third-Order \( m \)-res Number)_: Denoted \( \mathtt{mres3\_t} \), representing pure third-order quantities \( x_3 \mu^3 \).
-* _Composite Resolution Jet_: Denoted \( \mathtt{mjet}_K \), aggregating distinct homogeneous grades up to order \( K \):
+* _Grade 1 (Pure Tier-1 \( m \)-res Number)_: Denoted \( \mathtt{mres1\_t} \), representing pure Tier-1 resolution quantities \( x_1 \mu \), possessing no macroscopic real component.
+* _Grade 2 (Pure Tier-2 \( m \)-res Number)_: Denoted \( \mathtt{mres2\_t} \), representing pure Tier-2 quantities \( x_2 \mu^2 \).
+* _Grade 3 (Pure Tier-3 \( m \)-res Number)_: Denoted \( \mathtt{mres3\_t} \), representing pure Tier-3 quantities \( x_3 \mu^3 \).
+* _Composite Resolution Jet_: Denoted \( \mathtt{mjet}_K \), aggregating distinct homogeneous grades up to tier \( K \):
 \[ X = x _ 0 + x _ 1 \mu + x _ 2 \mu ^ 2 + \dots + x _ K \mu ^ K \]
 where \( \mu \) is the canonical resolution generator satisfying discrete lattice nilpotency \( \mu ^ {K+1} \equiv 0 \).
 ====
