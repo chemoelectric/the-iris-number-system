@@ -19,6 +19,7 @@ export async function exportCompleteWorkspaceZip(): Promise<void> {
     'closed_form_geometric_ratios_physical_constants.adoc',
     'new_constants_and_discrete_ideal_gas.adoc',
     'master_field_equation_energy_work.adoc',
+    'gravitation_as_refraction_in_the_unified_field.adoc',
     'mres_numerical_analysis/mres_types.h',
     'mres_numerical_analysis/mres_types.c',
     'mres_numerical_analysis/mres_stiff_solver.h',
