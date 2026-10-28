@@ -2,15 +2,15 @@
 Frédéric Blondin Custer
 :doctype: article
 :stem: latexmath
+:toc-title: Contents
 :toc: left
-:toc-title: Table of Contents
 :toclevels: 3
-:sectnums!:
 
 [preface]
 == Abstract
 
-Gravitation is classical wave refraction in a universal
+The Unified Field Theory is Maxwell’s electromagnetic theory, and
+gravitation is classical wave refraction in a universal
 electromagnetic field. Everything in the universe consists of direct
 contact electromagnetic field activity (“waves”). Concentrations of
 the field’s energy modify the local dielectric permittivity and
@@ -27,9 +27,8 @@ deflection of light as it passes massive bodies, the perihelion
 precession of planetary orbits, and galactic dynamics.
 
 
-'''
 
-== 1. Introduction: The Universal Field, Maxwell’s Medium, and the Fallacy of Relativity
+== Maxwell’s Medium Restored to its Rightful Place
 
 The Unified Field Theory upon which this paper is based consists of a
 Master Field Equation \[ D F = J \] written in Conformal Geometric
@@ -38,11 +37,25 @@ Algebra (CGA).footnote:[Leo Dorst, Daniel Fontijne, and Stephen Mann.
 Approach to Geometry._ Morgan Kaufmann, San Francisco, CA. In addition
 to the five basis vectors of the original CGA, we include a
 null-magnitude vector \( e_4 \) to represent time. Furthermore, we
-write the point at the origin as \( e _ { \odot } \).] This equation
-is merely Maxwell’s equations, carefully taking into account the
-Michelson–Morley results.footnote:[A. A. Michelson and E. W. Morley.
-1887. On the relative motion of the Earth and the Luminiferous Ether.
-_American Journal of Science_ s3-34, 203 (Nov. 1887), 333–345.
+write the point at the origin as \( e _ { \odot } \) instead of \( e _
+{\text{o}} \). The full set of basis vectors is \( \{ e_1, e_2, e_3,
+e_4, e _ {\plus}, e _ {\minus} \} \) with diagonal metric \(
+(1,1,1,0,1,-1) \). However, this basis set is used only for numerical
+calculations, to take advantage of the diagonal metric. Instead of \(
+e _ {\plus} \) and \( e _ {\minus} \) one uses the point at origin \(
+e _ {\odot} = (e _ {\minus} - e _ {\plus}) / 2 \) and point at
+infinity \( e _ {\infty} = e _ {\plus} + e _ {\minus} \). The Master
+Field Equation, however, is in terms of \( \{e_1,e_2,e_3,e_4\} \)
+only. It is \( DF = J \) where \( D = \nabla + e_4 D_t/c,\ D_t =
+\partial/{\partial t} - u\cdot\nabla,\ F = E e_4 + c B e_1 e_2 e_3,\
+J= \rho_0U,\ U = u + c e_4 \). Here \( E \) and{nbsp}\( B \) are
+vectors representing electric and magnetic field magnitudes. Charge
+density is represented by \( \rho_0 \), and \( u \) represents the
+velocity vector of a transmission.] This equation is merely Maxwell’s
+equations, carefully taking into account the Michelson–Morley
+results.footnote:[A. A. Michelson and E. W. Morley. 1887. On the
+relative motion of the Earth and the Luminiferous Ether. _American
+Journal of Science_ s3-34, 203 (Nov. 1887), 333–345.
 https://doi.org/10.2475/ajs.s3-34.203.333] We posit that the entire
 universe should be visualized as an electromagnetic field and that it
 should be described by this Master Field Equation.
@@ -90,24 +103,65 @@ exhibiting the same overall inertial motion as those light waves. The
 speed of light is once again the speed of propagation of waves in the
 medium.
 
-. _Setting the Stage for a New Theory of Gravity_:
-Once it is recognized that the universal electromagnetic field is Maxwell’s medium, and that all physical entities consist of localized circulating waves interacting exclusively by direct contact action within it, the stage is set for a true, physical theory of gravitation:
+. _A New Theory of Gravity_:
+If there is a universal electromagnetic field that is Maxwell’s
+medium, and matter and radiation alike are direct-contact
+electromagnetic activity in the medium, _and entities having common
+origin also have a common inertial motion_, then several consequences
+follow.
 
-  * There is no need for hypothetical gravitons, extra dimensions, or curved spacetime.
+  * Einstein’s proportionality of inertial mass density to energy
+    density{empty}footnote:[Albert Einstein. 1905. Does the Inertia of
+    a Body Depend Upon Its Energy Content? _Annalen der Physik_ 323,
+    13 (1905), 639–641. https://doi.org/10.1002/andp.19053231314] must
+    be correct, for otherwise Newton’s laws of motions could not be
+    correct. Some additive quantity must be proportional to inertial
+    mass. That quantity is energy. Inertia arises from the work
+    required to change the motion of an electromagnetic wave. _Both
+    matter and radiation have inertia._
 
-  * Because every material body is a localized wave packet, any alteration in the physical qualities of Maxwell’s medium that modifies the local speed of electromagnetic propagation must continuously refract and steer those wave packets.
+  * If inertial mass density is proportional to energy density, then
+    so is gravitational mass density. To date the equality of
+    gravitational mass and inertial mass has been a mystery, but it is
+    known empirically. Herein the mystery is solved.
 
-  * Gravitation is nothing more and nothing less than the optical wave refraction of localized circulating wave packets moving through an inhomogeneous field density gradient.
+  * An alteration in the medium that modifies the local speed of
+    direct-contact propagation must cause refraction. Parts of
+    wavefronts in a region of faster propagation will move ahead of
+    those in the nearby slower region, steering the wave’s motion
+    towards the slower region.
 
-'''
+  * Should it turn out the kinetic energy of electromagnetic activity
+    generates not only inertial mass, but also these gradients of
+    propagation speed in the electromagnetic field, and if the numbers
+    work out correctly, then gravitation is explained. _Gravitation
+    would be caused by refraction._ Thus there would be no fundamental
+    force of gravity, nor “curved space-time,” nor “gravitons,” nor
+    extra dimensions from the _Twilight Zone_,footnote:[Rod Serling
+    (Creator). 1959–1964. _The Twilight Zone._ Video. Cayuga
+    Productions; CBS Productions, New York, NY.] etc. Gravity would be
+    an extremely weak force attributable to a kind of friction that
+    reduced the so-called “speed of light” to below{nbsp}\( c \), and
+    the direction of the force would be towards the entity that was
+    generating the gradient.
 
-== 2. Energetic Alteration of the Local Propagation Speed
+  * Where the speed of propagation is slower, all things will move
+    more slowly. This includes clocks. It also includes one of a pair
+    of twins. Thus a gravitational gradient would be a way to achieve
+    asymmetric aging without paradox.
 
-In Conformal Geometric Algebra, the energetic state of the universal field at any location on \( \mathcal{G} _ N \) is given by the localized scalar energy density:
-\[ u ( \mathbf{r} , t ) = \frac{1}{2} \varepsilon _ { 0 } \langle F F ^ { \dagger } \rangle = \frac{1}{2} \left( \varepsilon _ { 0 } | \mathbf{E} | ^ { 2 } + \frac{1}{\mu _ { 0 }} | \mathbf{B} | ^ { 2 } \right) \]
-When a localized mass knot containing total mass-energy \( M = \int \rho _ m \, dV \) is formed, it concentrates an immense quantity of field energy:
-\[ E = M c ^ { 2 } \]
-within a finite region.
+
+== Energetic Alteration of the Local Propagation Speed
+
+In Conformal Geometric Algebra, the energetic state of the universal
+field at any location on \( \mathcal{G} _ N \) is given by the
+localized scalar energy density: \[ u ( \mathbf{r} , t ) = \frac{1}{2}
+\varepsilon _ { 0 } \langle F F ^ { \dagger } \rangle = \frac{1}{2}
+\left( \varepsilon _ { 0 } | \mathbf{E} | ^ { 2 } + \frac{1}{\mu _ { 0
+}} | \mathbf{B} | ^ { 2 } \right) \] When a localized mass knot
+containing total mass-energy \( M = \int \rho _ m \, dV \) is formed,
+it concentrates an immense quantity of field energy: \[ E = M c ^ { 2
+} \] within a finite region.
 
 Through direct contact stresses between adjacent discrete cells on \( \mathcal{G} _ N \), this intense localized energy concentration polarizes and stresses the surrounding field. The constitutive parameters of the field—its electric permittivity \( \varepsilon ( \mathbf{r} ) \) and magnetic permeability \( \mu ( \mathbf{r} ) \)—are modified from their unperturbed baseline values \( \varepsilon _ 0 \) and \( \mu _ 0 \):
 \[ \varepsilon ( \mathbf{r} ) = \varepsilon _ 0 \cdot n ( \mathbf{r} ), \quad \mu ( \mathbf{r} ) = \mu _ 0 \cdot n ( \mathbf{r} ) \]
@@ -125,9 +179,9 @@ Consequently, the local speed of electromagnetic wave propagation in the stresse
 \[ v ( \mathbf{r} ) = \frac{c}{n ( \mathbf{r} )} \approx c \left( 1 - \frac{G M}{r c ^ { 2 }} \right) \]
 The speed of wave propagation is slightly lower near the mass knot than far away from it. This spatial gradient in propagation speed is the sole physical cause of gravitation.
 
-'''
 
-== 3. Derivation of Gravitational Acceleration from Differential Phase Delay
+
+== Derivation of Gravitational Acceleration from Differential Phase Delay
 
 We now prove that when a circulating wave packet moves through this wave-speed gradient, differential phase delay across its finite physical extent steers the packet into the exact trajectory prescribed by Newton’s gravitational acceleration.
 
@@ -176,9 +230,9 @@ yields directly:
 This establishes that gravitational acceleration is the exact refractive steering of circulating wave packets across the wave-speed gradient of the universal field.
 ====
 
-'''
 
-== 4. Derivation of Gauss’s Law and Newton’s Mutual Force Law
+
+== Derivation of Gauss’s Law and Newton’s Mutual Force Law
 
 From the fundamental relation \( \mathbf{a} = - c \nabla v ( \mathbf{r} ) \), we can now deduce the classical field equations of gravitation without postulating an independent gravitational field.
 
@@ -199,9 +253,9 @@ When a second localized mass knot of mass \( m _ 2 \) and finite density distrib
 \[ \mathbf{F} = \int _ { \Omega _ 2 } \rho _ { m 2 } \mathbf{g} \, dV = m _ 2 \mathbf{g} = - G \frac{M m _ 2}{r ^ { 2 }} \hat{\mathbf{r}} \]
 Because both knots interact symmetrically through the mutual deformation of the surrounding field on \( \mathcal{G} _ N \), global field momentum conservation guarantees \( \mathbf{F} _ { 12 } = - \mathbf{F} _ { 21 } \), satisfying Newton’s third law without action-at-a-distance.
 
-'''
 
-== 5. Wave Bending and Perihelion Precession from Refractive Index Terms
+
+== Wave Bending and Perihelion Precession from Refractive Index Terms
 
 A crucial triumph of the wave-refraction formulation is that it evaluates relativistic phenomena directly as optical effects in the field, without requiring Riemannian metrics or curved space-time.
 
@@ -226,11 +280,11 @@ where \( h \) is the angular momentum per unit mass, the operator \( \frac{d^2}{
 The degree-2 perturbation \( \frac{3 G M}{c ^ { 2 }} u ^ { 2 } \) introduces a small, cumulative phase shift per orbital revolution:
 \[ \Delta \omega = \frac{6 \pi G M}{a ( 1 - e ^ { 2 } ) c ^ { 2 }} \]
 where \( a \) is the semi-major axis and \( e \) is the orbital eccentricity.
-For Mercury, this refractive phase shift evaluates to exactly \( 43'' \) of arc per century. In the Unified Field Theory, planetary perihelion precession is recognized as a classical optical dispersion-like effect: circulating wave packets in an eccentric orbit experience slightly greater refractive delay at perihelion than at aphelion, resulting in an exact, precessing rosette trajectory without curved spacetime.
+For Mercury, this refractive phase shift evaluates to exactly \( 43'' \) of arc per century. In the Unified Field Theory, planetary perihelion precession is recognized as a classical optical dispersion-like effect: circulating wave packets in an eccentric orbit experience slightly greater refractive delay at perihelion than at aphelion, resulting in an exact, precessing rosette trajectory without curved space-time.
 
-'''
 
-== 6. Deceleration of Physical Motion vs. the Myth of “Time Dilation”
+
+== Deceleration of Physical Motion vs. the Myth of “Time Dilation”
 
 An essential consequence of the wave-refraction formulation is the physical demystification of what twentieth-century physics mislabeled “gravitational time dilation”.
 
@@ -348,11 +402,10 @@ and declaring that the metric coefficient \( g _ { 00 } = - ( 1 - 2 G M / ( r c 
 Time does not possess mass, spatial extent, elastic tensile strength, or physical moving parts; it cannot be dilated, bent, warped, or curved. What actually occurs in the real world is that _motion slows down_.
 A clock placed deep in a gravitational field ticks fewer times in a given astronomical period simply because the electromagnetic wave currents driving its gears and atomic transitions are propagating through a medium of higher refractive index \( n ( r ) > 1 \), where the speed of electromagnetic waves is lower.
 
-Calling this physical deceleration of motion “time dilation” is a textbook Korzybskian confusion of the map with the territory. When an automobile’s wheels rotate more slowly in deep mud, engineers do not claim that “distance has dilated”; they recognize that physical resistance has reduced the speed of the axle. In the universal electromagnetic field, gravitation is the optical and refractive deceleration of physical wave motion, completely dispelling the mystical metaphysics of curved spacetime.
+Calling this physical deceleration of motion “time dilation” is a textbook Korzybskian confusion of the map with the territory. When an automobile’s wheels rotate more slowly in deep mud, engineers do not claim that “distance has dilated”; they recognize that physical resistance has reduced the speed of the axle. In the universal electromagnetic field, gravitation is the optical and refractive deceleration of physical wave motion, completely dispelling the mystical metaphysics of curved space-time.
 
-'''
 
-== 7. Extended Mass Clouds and Galactic Dynamics
+== Extended Mass Clouds and Galactic Dynamics
 
 When applied to macroscopic astronomical systems, the wave-refraction formulation resolves long-standing paradoxes of galactic structure and galaxy collisions.
 
@@ -383,25 +436,23 @@ Stars on the far side of Galaxy 1’s disk experience a weaker refractive gradie
 3. _Wavefield Interpenetration and Dynamic Friction_:
 Unlike hypothetical non-interacting point particles, the extended energy density clouds of colliding galaxies directly overlap on the discrete lattice \( \mathcal{G} _ N \). The interpenetration of their electromagnetic fields creates mutual phase interference and wave-packet deformation. This converts coherent orbital kinetic energy into diffuse field stress and heat, acting as dynamical friction that causes the galactic cores to spiral inward and merge into a single elliptical knot surrounded by expanding tidal debris.
 
-'''
 
-== 8. Epistemological Synthesis: The Elimination of Spacetime Curvature
+== Epistemological Synthesis: The Elimination of Space-time Curvature
 
 We summarize the physical and philosophical conclusions established in this treatise:
 
 1. _Ontological Simplicity_: There is only one physical field in nature: the universal electromagnetic field. Gravitation is not an independent fundamental force, nor does it require hypothetical gravitons or quantum gravity formalisms.
 2. _Strict Contact Causality_: All gravitation occurs through direct local contact action between contiguous cells of the field on discrete grids \( \mathcal{G} _ N \). Matter knots are steered because their internal circulating waves experience differential propagation delays across their finite physical extent.
-3. _The Elimination of Curved Spacetime_: Space is Euclidean, three-dimensional, and flat, formulated rigorously in Conformal Geometric Algebra. Time is the chronological parameter measuring the finite duration of physical processes. General Relativity’s mathematical metric tensor \( g _ { \mu \nu } \) was simply an indirect, clumsy way of describing the scalar refractive index field \( n ( \mathbf{r} ) \) of the universal electromagnetic field.
+3. _The Elimination of Curved Space-Time_: Space is Euclidean, three-dimensional, and flat, formulated rigorously in Conformal Geometric Algebra. Time is the chronological parameter measuring the finite duration of physical processes. General Relativity’s mathematical metric tensor \( g _ { \mu \nu } \) was simply an indirect, clumsy way of describing the scalar refractive index field \( n ( \mathbf{r} ) \) of the universal electromagnetic field.
 4. _Unified Mechanics_: From planetary orbits to the majestic collisions of spiral galaxies, all gravitational phenomena are unified with optics, electrodynamics, and thermodynamics under the single Master Field Equation \( D F = J \).
 
-'''
 
 == Appendix: Empirical Evidence from Atomic Clocks and Cosmic Relativity
 
 The theoretical deduction that gravitation—and not kinematic relative motion—is the sole physical mechanism capable of producing asymmetric aging is directly supported by experimental physics and real-world precision timekeeping.
-In particular, the foundational analyses and experimental evaluations by physicist C. S. Unnikrishnan (Tata Institute of Fundamental Research) demonstrate that observed clock rate modifications are gravitational in origin, resolving the paradoxes created by twentieth-century spacetime kinematics.
+In particular, the foundational analyses and experimental evaluations by physicist C. S. Unnikrishnan (Tata Institute of Fundamental Research) demonstrate that observed clock rate modifications are gravitational in origin, resolving the paradoxes created by twentieth-century space-time kinematics.
 
-=== 1. The Hafele–Keating Global Clock Circulation
+=== The Hafele–Keating Global Clock Circulation
 
 In the classical experiment performed by J. C. Hafele and R. E. Keating (1971–1972), four portable cesium atomic clocks were flown around the globe twice on commercial jet flights, once eastward and once westward, and compared with reference clocks at the U.S. Naval Observatory:
 
@@ -417,7 +468,7 @@ where \( v _ 0 = \Omega _ E R _ E \cos \lambda \) is the tangential speed of the
 Because the westward flight reduced the net speed relative to the non-rotating gravitational center (\( v _ { \text{west} } < v _ 0 \)), its atomic transitions were less decelerated, resulting in a net clock gain.
 Relative motion between the two physical bodies (the ground observer and the airplane) is completely inert; the clock rates respond only to their position and motion relative to the actual gravitational field.
 
-=== 2. Operational Evidence from the Global Positioning System (GPS)
+=== Operational Evidence from the Global Positioning System (GPS)
 
 The operational engineering of the Global Positioning System provides continuous, 24-hour empirical verification of clock rate physics:
 
@@ -432,7 +483,7 @@ No such symmetrical ambiguity exists in operational engineering.
 The satellite clock runs demonstrably faster than the ground clock in absolute terms.
 The offset is strictly unidirectional and is determined entirely by the gravitational field configuration of the Earth.
 
-=== 3. Cosmic Relativity and the Origin of “Velocity Dilation”
+=== Cosmic Relativity and the Origin of “Velocity Dilation”
 
 In a sequence of foundational treatises—including _Cosmic Relativity: The Fundamental Theory of Relativity, its Implications, and Experimental Tests_ (2004/2005), _On Einstein's resolution of the twin clock paradox_ (_Current Science_, Vol. 89, No. 12, 2005, pp. 2009–2015), and the monograph _Gravity’s Time_ (2021)—C. S. Unnikrishnan demonstrated that what twentieth-century physics mislabeled as “kinematic time dilation” in empty space is in truth a gravitational interaction with the matter-filled universe:
 
@@ -448,6 +499,6 @@ Unnikrishnan proved that the second-order Doppler factor \( \sqrt{1 - v ^ { 2 } 
 \[ \Phi _ { \text{eff} } = \Phi _ { \text{cosmos} } \left( 1 - \frac{v ^ { 2 }}{2 c ^ { 2 }} \right) \]
 Consequently, the slowing down of a moving clock is not a kinematic consequence of relative velocity in abstract coordinates; it is a physical, dynamical interaction with the cosmic gravitational field.
 
-=== 4. Empirical Synthesis
+=== Empirical Synthesis
 
 _Conclusion Pending New Information_: _Precision clock experiments and satellite navigation systems establish that gravitation is the sole physical agent that modifies clock rates._ Pure kinematic motion between two isolated observers free of field alterations produces zero physical asymmetric aging. All observed alterations in clock rates—whether attributed to altitude or to motion relative to gravitational mass centers—arise from changes in the local refractive properties of the universal electromagnetic field, where the speed of electromagnetic waves \( v ( \mathbf{r} ) = c / n ( \mathbf{r} ) \) determines the rate of direct contact interactions on discrete grids \( \mathcal{G} _ N \).
