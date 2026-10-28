@@ -1,4 +1,4 @@
-= Gravitation as Wave Refraction in the Unified Field
+= Gravitation as Wave Refraction in the pass:[<br>] Unified Field
 Frédéric Blondin Custer
 :doctype: article
 :stem: latexmath
@@ -9,7 +9,23 @@ Frédéric Blondin Custer
 
 [preface]
 == Abstract
-Within the Unified Field Theory formulated in the Counting-Iris Number System and Conformal Geometric Algebra (CGA) over canonical generators \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \), gravitation is shown to be not an independent fundamental force, nor a curvature of abstract “space-time”, but classical wave refraction occurring through direct contact action in the universal electromagnetic field. All constituents of the universe—including radiation, elementary particles, atomic nuclei, macroscopic bodies, planets, stars, and measuring instruments—consist of localized, circulating wave packets (matter knots, vortices, and topological field configurations) in direct mechanical contact with adjacent cells of the universal field described by the Master Field Equation \( D F = J \). Localized concentrations of field energy density \( \rho _ E ( \mathbf{r} ) = \rho _ m ( \mathbf{r} ) c ^ { 2 } \) modify the local dielectric permittivity and magnetic permeability of the surrounding field, establishing an inhomogeneous wave-speed distribution \( v ( \mathbf{r} ) \approx c \left( 1 - \frac{G M}{r c ^ { 2 }} \right) \) and an effective optical refractive index gradient \( n ( \mathbf{r} ) = c / v ( \mathbf{r} ) \approx 1 + \frac{G M}{r c ^ { 2 }} \). Because circulating matter knots possess finite physical extent measured with calipers (spatial diameter \( 2 R \)), the portion of the circulating wave packet positioned closer to the mass concentration moves through a region of lower propagation speed than the outer portion. This differential phase delay continuously tilts the packet's forward momentum vector inward toward the region of higher field density, producing the exact radial acceleration \( \mathbf{a} = -c \nabla v ( \mathbf{r} ) = - \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \). Newton's inverse-square force law and Gauss's gravitational flux law \( \nabla \cdot \mathbf{g} = - 4 \pi G \rho _ m \) are deduced directly from the surface divergence of the multivector stress-energy tensor. Crucially, the reduced local propagation speed \( v(\mathbf{r}) \) in the denser field slows down all internal wave circulations, atomic transitions, and mechanical oscillations within physical clocks, directly accounting for gravitational clock deceleration without the metaphysical reification of general-relativistic “time dilation”. Furthermore, by reasoning backwards from direct contact causality, it is deduced as a Conclusion Pending New Information that gravitation is the only physical mechanism capable of producing asymmetric aging, because genuine asymmetric aging requires slowing the rate of contact activity, which requires altering the constitutive qualities of the field, creating a refracting gradient \( \nabla n \) that is gravitation itself. Furthermore, wave refraction rigorously evaluates the optical deflection of traveling wave packets past massive bodies, while the quadratic (degree-2) term in the refractive index expansion produces the classical anomalous perihelion precession of planetary orbits (rosette paths) in the second-order radial differential equation without appealing to curved four-dimensional pseudo-Riemannian geometries. Extending this contact wave refraction to distributed energy density clouds provides a direct physical explanation of galactic dynamics, including flat rotation curves, tidal bridges, and sweeping trailing tails during galaxy mergers.
+
+Gravitation is classical wave refraction in a universal
+electromagnetic field. Everything in the universe consists of direct
+contact electromagnetic field activity (“waves”). Concentrations of
+the field’s energy modify the local dielectric permittivity and
+magnetic permeability, creating a gradient in the speed of
+electromagnetic field activity and thus in the refractive index.
+Matter comprises circulating field activity that is slower the nearer
+it is towards the concentration of field energy, and thus the
+circulation as a whole is steered towards the concentration. The
+mathematics reproduces Newton’s law of gravitation and Gauss's
+gravitational flux law. The reduced speed of field activity also
+accounts for clock deceleration under the influence of gravity,
+debunking “time dilation.” The new theory of gravitation explains the
+deflection of light as it passes massive bodies, the perihelion
+precession of planetary orbits, and galactic dynamics.
+
 
 '''
 
