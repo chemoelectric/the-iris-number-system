@@ -31,27 +31,73 @@ precession of planetary orbits, and galactic dynamics.
 
 == 1. Introduction: The Universal Field, Maxwell’s Medium, and the Fallacy of Relativity
 
-In nineteenth- and twentieth-century theoretical physics, gravitation was severed from electromagnetism, culminating in the geometric abstraction of General Relativity. In that paradigm, physical forces were replaced by the curvature of an unobservable four-dimensional spacetime continuum. However, as general semantics reminds us, coordinate systems and tensor indices are language that talks about physical reality; physical reality itself _is not and cannot be words or coordinates_. A change of coordinate system cannot affect the physical world.
+The Unified Field Theory upon which this paper is based consists of a
+Master Field Equation \[ D F = J \] written in Conformal Geometric
+Algebra (CGA).footnote:[Leo Dorst, Daniel Fontijne, and Stephen Mann.
+2007. _Geometric Algebra for Computer Science: An Object-Oriented
+Approach to Geometry._ Morgan Kaufmann, San Francisco, CA. In addition
+to the five basis vectors of the original CGA, we include a
+null-magnitude vector \( e_4 \) to represent time. Furthermore, we
+write the point at the origin as \( e _ { \odot } \).] This equation
+is merely Maxwell’s equations, carefully taking into account the
+Michelson–Morley results.footnote:[A. A. Michelson and E. W. Morley.
+1887. On the relative motion of the Earth and the Luminiferous Ether.
+_American Journal of Science_ s3-34, 203 (Nov. 1887), 333–345.
+https://doi.org/10.2475/ajs.s3-34.203.333] We posit that the entire
+universe should be visualized as an electromagnetic field and that it
+should be described by this Master Field Equation.
 
-The Unified Field Theory established in this opus restores physics to operational, constructive reality. There is only one field in physical actuality: the universal electromagnetic field, described by the Master Field Equation:
-\[ D F = J \]
-formulated in Conformal Geometric Algebra (CGA).
+This universal electromagnetic field may be regarded as the “medium”
+James Clerk Maxwell proposed in 1865:footnote:[James Clerk Maxwell.
+1865. A Dynamical Theory of the Electromagnetic Field. _Philosophical
+Transactions of the Royal Society of London_ 155 (Jan. 1865), 459–512.
+https://doi.org/10.1098/rstl.1865.0008] a substantive dynamical medium
+that can receive, store, and communicate energy by immediate contact
+action. It is in this medium that light travels, as electromagnetic
+waves.
 
-This universal electromagnetic field is precisely the physical “medium” that James Clerk Maxwell originally proposed in 1865: a substantive dynamical medium capable of receiving, storing, and communicating energy through contiguous contact action across adjacent parts.
+In the early twentieth century, however, physics made a profound
+detour into Special Relativity. It did so by misunderstanding the
+Michelson–Morley experiment:
 
-The historical detour of twentieth-century relativity arose from a profound misunderstanding of the Michelson–Morley experiment:
+. _The False Dilemma of the “Ether Wind”_: Late nineteenth-century
+physicists imagined Michelson–Morley apparatus as being like a rock
+past which the electromagnetic medium must be flowing, as air flows
+past it. Light waves would be carried off, just as sound waves are.
+The interferometer within the apparatus was expected to detect an
+“ether wind,” via a fringe shift. No fringe shift was observed. _The
+incorrect conclusion was drawn that there is no medium for light._
+That conclusion led to the abandonment of Maxwell’s theory by
+physicists (although not by electrical engineers). Instead physicists
+imagined light as rays or pellets traveling in a “vacuum,” and the
+result was Special Relativity.footnote:[Albert Einstein. 1905. On the
+Electrodynamics of Moving Bodies. _Ann. Phys._ 322, 10 (Sept. 1905),
+891–921. http://doi.org/10.1002/andp.19053221004] The speed of light
+was no longer the speed of wave propagation in a medium but the speed
+of a “photon” in a “vacuum.”
 
-1. _The False Dilemma of the “Ether Wind”_:
-Late nineteenth-century physicists conceptualized matter as independent, impenetrable billiard balls moving _through_ a passive, mechanical background medium like a ship through water. Under that flawed assumption, an interferometer moving through the medium was expected to detect an “ether wind”. When no fringe shift was observed, the academic establishment embraced a false dilemma: either an ether wind exists, or there is no physical medium at all and spacetime coordinates must bend relativistically.
+. _A Correct Explanation of the Michelson–Morley Effect_:
+The medium, however, does exist. The reason no “ether wind” was
+detected is not that the medium does not exist, but that _everything
+in the universe is made of electromagnetic activity._ Thus everything,
+everywhere, is waves in the medium. The Earth, the pool of mercury,
+the massive stone, the interferometer, and Michelson and Morley
+themselves, were not rocks past which an “ether wind” was blowing.
+They were all themselves dense hives of electromagnetic activity,
+electromagnetic waves moving around and around in exactly the same
+medium as Michelson’s and Morley’s transmitted light waves, and
+exhibiting the same overall inertial motion as those light waves. The
+speed of light is once again the speed of propagation of waves in the
+medium.
 
-2. _The Physical Reality of the Michelson–Morley Effect_:
-Relativity is wrong because its foundational premise is false. The reason no “ether wind” was detected is not that the medium does not exist, but that _everything in the universe is due to direct contact action—Maxwell’s “undulations”—in that medium._ The Earth, the laboratory bench, the interferometer mirrors, the glass lenses, and the human observer are not foreign objects sailing through the field; they are themselves localized, circulating wave packets (matter knots) composed entirely of electromagnetic undulations in that selfsame medium.
-
-3. _Setting the Stage for a New Theory of Gravity_:
+. _Setting the Stage for a New Theory of Gravity_:
 Once it is recognized that the universal electromagnetic field is Maxwell’s medium, and that all physical entities consist of localized circulating waves interacting exclusively by direct contact action within it, the stage is set for a true, physical theory of gravitation:
-* There is no need for hypothetical gravitons, extra dimensions, or curved spacetime.
-* Because every material body is a localized wave packet, any alteration in the physical qualities of Maxwell’s medium that modifies the local speed of electromagnetic propagation must continuously refract and steer those wave packets.
-* Gravitation is nothing more and nothing less than the optical wave refraction of localized circulating wave packets moving through an inhomogeneous field density gradient.
+
+  * There is no need for hypothetical gravitons, extra dimensions, or curved spacetime.
+
+  * Because every material body is a localized wave packet, any alteration in the physical qualities of Maxwell’s medium that modifies the local speed of electromagnetic propagation must continuously refract and steer those wave packets.
+
+  * Gravitation is nothing more and nothing less than the optical wave refraction of localized circulating wave packets moving through an inhomogeneous field density gradient.
 
 '''
 
