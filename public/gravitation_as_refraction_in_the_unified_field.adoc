@@ -225,19 +225,15 @@ electromagnetic kinetic energy) is described by the local parameters:
 \[ v ( \mathbf{r} ) = \frac{1}{\sqrt{\varepsilon ( \mathbf{r} ) \mu (
 \mathbf{r} )}} = \frac{c}{n ( \mathbf{r} )} \] The refractive index
 field satisfies the fundamental susceptibility Poisson equation on \(
-\mathcal{G} _ N \): \[ \nabla ^ { 2 } n ( \mathbf{r} ) = \kappa \rho _
-E ( \mathbf{r} ) \] where \( \rho _ E ( \mathbf{r} ) = \rho _ m (
-\mathbf{r} ) c ^ { 2 } \) is the localized mass-energy density, and \(
-\kappa \) is the dimensional gravitational susceptibility of the
-universal electromagnetic field: \[ \kappa = \frac{8 \pi G}{c ^ { 4 }}
-\] For an isolated, spherically symmetric mass knot of mass \( M \),
-integrating the susceptibility equation across the surrounding space
-yields: \[ n ( \mathbf {r} ) \approx 1 \plus \frac {G M} {r c ^ { 2 }}
-\] Consequently, the local speed of electromagnetic wave propagation
-in the stressed field surrounding the mass knot is: \[ v ( \mathbf{r}
-) = \frac{c}{n ( \mathbf{r} )} \approx c \left( 1 - \frac{G M}{r c ^ {
-2 }} \right) \] The speed of propagation is slightly lower nearer the
-mass knot than farther from it.
+\mathcal{G} _ N \): \[ \nabla ^ { 2 } n ( \mathbf{r} ) = - \frac{4 \pi G}{c ^ { 2 }} \rho _ m ( \mathbf{r} ) = - \kappa _ 0 \rho _ E ( \mathbf{r} ) \]
+where \( \rho _ E ( \mathbf{r} ) = \rho _ m ( \mathbf{r} ) c ^ { 2 } \) is the localized mass-energy density, and \( \kappa _ 0 \) is the dimensional gravitational susceptibility of the universal electromagnetic field:
+\[ \kappa _ 0 = \frac{4 \pi G}{c ^ { 4 }} \]
+The negative sign reflects that \( n ( \mathbf{r} ) \) attains a localized maximum at the mass knot and decreases outward toward unity.
+For an isolated, spherically symmetric mass knot of mass \( M \), integrating the susceptibility equation across the surrounding space yields:
+\[ n ( \mathbf{r} ) \approx 1 + \frac{G M}{r c ^ { 2 }} \]
+Consequently, the local speed of electromagnetic wave propagation in the stressed field surrounding the mass knot is:
+\[ v ( \mathbf{r} ) = \frac{c}{n ( \mathbf{r} )} \approx c \left( 1 - \frac{G M}{r c ^ { 2 }} \right) \]
+The speed of propagation is slightly lower nearer the mass knot than farther from it.
 
 
 
@@ -252,7 +248,7 @@ Assume a small, circulating electromagnetic wavelike entity of finite
 diameter \( 2 R \). Place its center of mass at distance \( r \) from
 a significant mass (electromagnetic energy concentration) \( M \). The
 gradient of wave propagation speed \[ \nabla v ( \mathbf{r} ) {empty}=
-\frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \] causes different delays
+\frac{G M}{r ^ { 2 } c} \hat{\mathbf{r}} \] causes different delays
 across the wavelike entity’s physical diameter, bending the wavefront
 towards the mass \( M \). The result is an acceleration \[ \mathbf{a}
 {empty}= - \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \] which is
@@ -316,59 +312,96 @@ directly: \[ \mathbf{a} {empty}= - c \left( \frac{G M}{r ^ { 2 } c}
 
 == Maxwell’s Electromagnetic Theory Contains Newton’s Gravitational Theory
 
-From the fundamental relation \( \mathbf{a} = - c \nabla v (
-\mathbf{r} ) \), we can now deduce Gauss’s and Newton’s equations of
-gravitation without postulating any field but Maxwell’s medium (the
-universal electromagnetic field).
+From the fundamental steering relation \( \mathbf{a} = - c \nabla v ( \mathbf{r} ) \), we can now deduce Gauss’s and Newton’s equations of gravitation without postulating any field other than Maxwell’s medium (the universal electromagnetic field).
 
-Let the gravitational field vector \( \mathbf{g} ( \mathbf{r} ) \) be
-defined as the acceleration imparted to any unit mass knot
-(concentration of electromagnetic activity): \[ \mathbf{g} (
-\mathbf{r} ) = - c \nabla v ( \mathbf{r} ) = c ^ { 2 } \nabla \left(
-\frac{1}{n ( \mathbf{r} )} \right) \approx - c ^ { 2 } \nabla n (
-\mathbf{r} ) \] Taking the spatial divergence of this field: \[ \nabla
-\cdot \mathbf{g} = - c ^ { 2 } \nabla ^ { 2 } n ( \mathbf{r} ) \]
-Substituting the field susceptibility equation \( \nabla ^ { 2 } n (
-\mathbf{r} ) = \kappa \rho _ E ( \mathbf{r} ) = \frac{8 \pi G}{c ^ { 4
-}} \left( \rho _ m c ^ { 2 } \right) \): \[ \nabla \cdot \mathbf{g} =
-- c ^ { 2 } \left( \frac{8 \pi G \rho _ m}{c ^ { 2 }} \right) \cdot
-\frac{1}{2} = - 4 \pi G \rho _ m \] where the factor of \( \frac{1}{2}
-\) arises from the isotropic decomposition of the symmetric
-stress-energy tensor. This is Gauss’s law for gravitation in
-differential form, deduced strictly as the divergence of the
-wave-refraction field.
+_The Exact Gradient and the Weak-Field Expansion._
+Because the local wave propagation speed in the stressed medium is \( v ( \mathbf{r} ) = c / n ( \mathbf{r} ) \), its spatial gradient is given rigorously by the chain rule:
+\[ \nabla v ( \mathbf{r} ) = c \nabla \left( \frac{1}{n ( \mathbf{r} )} \right) = - \frac{c}{n ^ { 2 } ( \mathbf{r} )} \nabla n ( \mathbf{r} ) \]
+The question naturally arises: why should \( \nabla ( 1 / n ( \mathbf{r} ) ) \) equal \( \nabla ( - n ( \mathbf{r} ) ) \)?
+In physical reality, the gravitational perturbation to the field is extraordinarily small. We write:
+\[ n ( \mathbf{r} ) = 1 + \chi ( \mathbf{r} ) \]
+where \( \chi ( \mathbf{r} ) = \frac{G M}{r c ^ { 2 }} \ll 1 \) is the dimensionless refractive susceptibility of the field (on Earth's surface \( \chi \approx 7 \times 10 ^ { - 10 } \), and at the solar limb \( \chi \approx 2 \times 10 ^ { - 6 } \)).
+Expanding the reciprocal index as a power series:
+\[ \frac{1}{n ( \mathbf{r} )} = \frac{1}{1 + \chi ( \mathbf{r} )} = 1 - \chi ( \mathbf{r} ) + \chi ^ { 2 } ( \mathbf{r} ) - \dots = 2 - n ( \mathbf{r} ) + ( n ( \mathbf{r} ) - 1 ) ^ { 2 } - \dots \]
+Taking the spatial gradient of both sides:
+\[ \nabla \left( \frac{1}{n ( \mathbf{r} )} \right) = \nabla \left( 2 - n ( \mathbf{r} ) \right) + \mathcal{O} \left( | n - 1 | \cdot | \nabla n | \right) = - \nabla n ( \mathbf{r} ) + \mathcal{O} \left( | n - 1 | \cdot | \nabla n | \right) \]
+Because the gradient of a constant is zero (\( \nabla ( 2 ) = 0 \)), we have \( - \nabla n ( \mathbf{r} ) = \nabla ( - n ( \mathbf{r} ) ) \).
+Equivalently, from the exact derivative:
+\[ \nabla \left( \frac{1}{n ( \mathbf{r} )} \right) = - \frac{1}{n ^ { 2 } ( \mathbf{r} )} \nabla n ( \mathbf{r} ) = - \frac{1}{( 1 + \chi ( \mathbf{r} ) ) ^ { 2 }} \nabla n ( \mathbf{r} ) = - \left( 1 - 2 \chi ( \mathbf{r} ) + \dots \right) \nabla n ( \mathbf{r} ) \]
+Hence, to first order in the weak-field expansion, the factor \( 1 / n ^ { 2 } ( \mathbf{r} ) \approx 1 \), yielding:
+\[ \nabla \left( \frac{1}{n ( \mathbf{r} )} \right) \approx - \nabla n ( \mathbf{r} ) = \nabla ( - n ( \mathbf{r} ) ) \]
+The identity \( \nabla ( 1 / n ) = \nabla ( - n ) \) is therefore the linearized, weak-field approximation of the exact relation \( \nabla ( 1 / n ) = - \nabla n / n ^ { 2 } \). In strong fields or when evaluating second-order orbital precession, the higher-order terms in \( 1 / n ^ { 2 } \) become significant and cannot be neglected.
+
+_Gravitational Acceleration Vector._
+Substituting the exact velocity gradient into the wave-steering acceleration \( \mathbf{g} ( \mathbf{r} ) = - c \nabla v ( \mathbf{r} ) \):
+\[ \mathbf{g} ( \mathbf{r} ) = - c \left( - \frac{c}{n ^ { 2 } ( \mathbf{r} )} \nabla n ( \mathbf{r} ) \right) = \frac{c ^ { 2 }}{n ^ { 2 } ( \mathbf{r} )} \nabla n ( \mathbf{r} ) \]
+In the weak-field regime where \( n ( \mathbf{r} ) \approx 1 \):
+\[ \mathbf{g} ( \mathbf{r} ) \approx c ^ { 2 } \nabla n ( \mathbf{r} ) \]
+Notice the physical direction: because the refractive index \( n ( \mathbf{r} ) \approx 1 + \frac{G M}{r c ^ { 2 }} \) is greatest near the mass knot and decreases with radial distance, its spatial gradient points radially inward toward the mass:
+\[ \nabla n ( \mathbf{r} ) = \frac{\partial n}{\partial r} \hat{\mathbf{r}} = - \frac{G M}{r ^ { 2 } c ^ { 2 }} \hat{\mathbf{r}} \]
+Consequently:
+\[ \mathbf{g} ( \mathbf{r} ) \approx c ^ { 2 } \left( - \frac{G M}{r ^ { 2 } c ^ { 2 }} \hat{\mathbf{r}} \right) = - \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \]
+The acceleration is directed inward toward the mass concentration, reproducing Newton’s universal law of gravitation directly from wave refraction.
+
+_Deduction of Gauss’s Law for Gravitation._
+Taking the spatial divergence of the gravitational acceleration field:
+\[ \nabla \cdot \mathbf{g} ( \mathbf{r} ) = \nabla \cdot \left( \frac{c ^ { 2 }}{n ^ { 2 } ( \mathbf{r} )} \nabla n ( \mathbf{r} ) \right) \approx c ^ { 2 } \nabla ^ { 2 } n ( \mathbf{r} ) \]
+Substituting the field susceptibility Poisson equation \( \nabla ^ { 2 } n ( \mathbf{r} ) = - \frac{4 \pi G}{c ^ { 2 }} \rho _ m ( \mathbf{r} ) \):
+\[ \nabla \cdot \mathbf{g} ( \mathbf{r} ) = c ^ { 2 } \left( - \frac{4 \pi G}{c ^ { 2 }} \rho _ m ( \mathbf{r} ) \right) = - 4 \pi G \rho _ m ( \mathbf{r} ) \]
+This is Gauss’s law for gravitation in exact differential form, deduced strictly as the divergence of the wave-refraction field in Maxwell's medium.
 
 Integrating Gauss’s law over a closed discrete boundary surface \( \partial \Omega \) enclosing a total mass \( M = \int _ { \Omega } \rho _ m \, dV \) on \( \mathcal{G} _ N \):
-\[ \oint _ { \partial \Omega } \mathbf{g} \cdot d \mathbf{A} = - 4 \pi G M \]
+\[ \oint _ { \partial \Omega } \mathbf{g} \cdot d \mathbf{A} = \int _ { \Omega } \nabla \cdot \mathbf{g} \, dV = - 4 \pi G \int _ { \Omega } \rho _ m \, dV = - 4 \pi G M \]
 For a spherically symmetric mass distribution, this recovers:
 \[ \mathbf{g} ( \mathbf{r} ) = - \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \]
 
-When a second localized mass knot of mass \( m _ 2 \) and finite density distribution \( \rho _ { m 2 } \) enters this region, each discrete element of its circulating wave structure experiences the local refractive acceleration. Integrating over the finite volume of the knot gives the total mutual contact force:
-\[ \mathbf{F} = \int _ { \Omega _ 2 } \rho _ { m 2 } \mathbf{g} \, dV = m _ 2 \mathbf{g} = - G \frac{M m _ 2}{r ^ { 2 }} \hat{\mathbf{r}} \]
-Because both knots interact symmetrically through the mutual deformation of the surrounding field on \( \mathcal{G} _ N \), global field momentum conservation guarantees \( \mathbf{F} _ { 12 } = - \mathbf{F} _ { 21 } \), satisfying Newton’s third law without action-at-a-distance.
+_Mutual Contact Interaction and Newton’s Third Law._
+When a second localized mass knot of mass \( m _ 2 \) and finite density distribution \( \rho _ { m 2 } \) enters this refractive field, each discrete element of its circulating wave structure experiences the local refractive acceleration. Integrating over the finite volume of the knot gives the total mutual contact force:
+\[ \mathbf{F} _ { 12 } = \int _ { \Omega _ 2 } \rho _ { m 2 } \mathbf{g} \, dV = m _ 2 \mathbf{g} = - G \frac{M m _ 2}{r ^ { 2 }} \hat{\mathbf{r}} \]
+Symmetrically, the mass knot \( m _ 2 \) alters the field in its own vicinity, producing a mutual refractive gradient that steers mass \( M \). Because both knots interact through contiguous contact stresses across the shared field lattice \( \mathcal{G} _ N \), global field momentum conservation guarantees \( \mathbf{F} _ { 12 } = - \mathbf{F} _ { 21 } \), satisfying Newton’s third law without action-at-a-distance.
 
 
 
 == Wave Bending and Perihelion Precession from Refractive Index Terms
 
-A crucial triumph of the wave-refraction formulation is that it evaluates relativistic phenomena directly as optical effects in the field, without requiring Riemannian metrics or curved space-time.
+A crucial triumph of the wave-refraction formulation is that it evaluates relativistic phenomena directly as optical effects in the medium, without requiring Riemannian metrics or curved space-time.
 
 === Deflection of Traveling Wave Packets (Radiation)
+
+Why does grazing radiation experience twice the angular deflection predicted by a naive scalar potential?
+In the Unified Field Theory, the answer is found in the physical optics of Maxwell's medium.
+
+For a localized matter knot at low orbital velocity, constituent wave undulations circulate in closed loops in all directions. The forward and backward spatial stresses average out over a closed circulation cycle, so that the center of the circulating knot responds solely to the scalar energy density gradient, corresponding to the effective index:
+\[ n _ { \text{matter} } ( \mathbf{r} ) \approx 1 + \frac{G M}{r c ^ { 2 }} \]
+In contrast, an open, traveling wave packet (radiation) traverses the field unidirectionally at the speed of wave propagation \( c \).
+As the wave packet moves through the medium, it couples simultaneously to both the electric permittivity perturbation \( \delta \varepsilon / \varepsilon _ 0 = \frac{G M}{r c ^ { 2 }} \) and the magnetic permeability perturbation \( \delta \mu / \mu _ 0 = \frac{G M}{r c ^ { 2 }} \), while also experiencing the longitudinal Maxwell stress along its trajectory.
+These isotropic and spatial stress contributions act in direct phase alignment, doubling the effective refractive index encountered by grazing radiation:
+\[ n _ { \text{wave} } ( \mathbf{r} ) \approx 1 + \frac{2 G M}{r c ^ { 2 }} \]
 
 Consider a traveling wave packet passing a central mass knot \( M \) with impact parameter \( b \).
 The total angular deflection is computed directly from classical physical optics using Fermat's principle on the discrete grid \( \mathcal{G} _ N \):
 \[ \delta = \int _ { - \infty } ^ { \infty } \frac{1}{n} \left( \frac{\partial n}{\partial y} \right) \, dx \]
-Using the refractive index \( n ( \mathbf{r} ) \approx 1 + \frac{2 G M}{r c ^ { 2 }} \) (accounting for both scalar pressure and longitudinal field stress):
+Using the effective wave refractive index \( n _ { \text{wave} } ( \mathbf{r} ) \approx 1 + \frac{2 G M}{r c ^ { 2 }} \):
 \[ \frac{\partial n}{\partial y} = \frac{2 G M y}{( x ^ { 2 } + y ^ { 2 } ) ^ { 3 / 2 } c ^ { 2 }} \]
 Evaluating along the trajectory at closest approach \( y \approx b \):
 \[ \delta = \frac{2 G M b}{c ^ { 2 }} \int _ { - \infty } ^ { \infty } \frac{dx}{( x ^ { 2 } + b ^ { 2 } ) ^ { 3 / 2 }} = \frac{4 G M}{b c ^ { 2 }} \]
-This matches the exact deflection measured empirically during solar eclipses, demonstrated purely as optical wave refraction across the field gradient.
+This reproduces the exact deflection measured empirically during solar eclipses, demonstrated purely as optical wave refraction across the field gradient without curved space-time.
 
 === Perihelion Advance from the Quadratic Refractive Term
 
-In the orbit of a circulating matter knot around a central mass, the non-linear expansion of the refractive index includes the quadratic (degree-2) field stress term:
+When a circulating matter knot orbits in an eccentric trajectory around a central mass, we can no longer truncate the exact acceleration to its first-order weak-field approximation.
+Recall the exact wave-steering acceleration deduced earlier:
+\[ \mathbf{a} ( \mathbf{r} ) = \frac{c ^ { 2 }}{n ^ { 2 } ( \mathbf{r} )} \nabla n ( \mathbf{r} ) \]
+Expanding the non-linear refractive index to second order (including the quadratic field stress):
 \[ n ( r ) = 1 + \frac{G M}{r c ^ { 2 }} + \frac{3}{2} \left( \frac{G M}{r c ^ { 2 }} \right) ^ { 2 } + \dots \]
-Writing the second-order differential equation for the inverse radial coordinate \( u ( \theta ) = 1 / r ( \theta ) \) in this refractive medium yields the Binet-type equation:
+The radial gradient is:
+\[ \frac{\partial n}{\partial r} = - \left( \frac{G M}{r ^ { 2 } c ^ { 2 }} + \frac{3 G ^ { 2 } M ^ { 2 }}{r ^ { 3 } c ^ { 4 }} \right) \]
+Meanwhile, the leading reciprocal factor expands as:
+\[ \frac{1}{n ^ { 2 } ( r )} = \left( 1 + \frac{G M}{r c ^ { 2 }} + \dots \right) ^ { - 2 } \approx 1 - \frac{2 G M}{r c ^ { 2 }} \]
+Multiplying these factors to evaluate the exact acceleration:
+\[ a _ r = \frac{c ^ { 2 }}{n ^ { 2 } ( r )} \frac{\partial n}{\partial r} \approx - \frac{G M}{r ^ { 2 }} - \frac{3 G ^ { 2 } M ^ { 2 }}{c ^ { 2 } r ^ { 3 }} \]
+The non-linear terms in Maxwell's medium generate an additional attractive radial acceleration proportional to \( 1 / r ^ { 3 } \).
+Writing the orbital equation of motion in terms of the inverse radial coordinate \( u ( \theta ) = 1 / r ( \theta ) \) yields the Binet-type equation:
 \[ \frac{d ^ { 2 } u}{d \theta ^ { 2 }} + u = \frac{G M}{h ^ { 2 }} + \frac{3 G M}{c ^ { 2 }} u ^ { 2 } \]
 where \( h \) is the angular momentum per unit mass, the operator \( \frac{d^2}{d\theta^2} \) represents the derivative taken twice with respect to the angular coordinate \( \theta \), and \( u^2 \) is the degree-2 non-linear perturbation term.
 The degree-2 perturbation \( \frac{3 G M}{c ^ { 2 }} u ^ { 2 } \) introduces a small, cumulative phase shift per orbital revolution:
@@ -514,7 +547,8 @@ The total refractive potential \( \Phi ( \mathbf{r} ) \) is determined by solvin
 \[ \nabla ^ { 2 } \Phi ( \mathbf{r} ) = 4 \pi G \rho _ m ( \mathbf{r} ) \]
 across the extended disk.
 Each star is an enormously complex, localized circulation of electromagnetic wave packets. When a star orbits within the galactic disk, the local refractive gradient steers the star:
-\[ \mathbf{a} ( \mathbf{r} ) = - \frac{c ^ { 2 }}{2 n ( \mathbf{r} )} \nabla n ( \mathbf{r} ) \approx - \nabla \Phi ( \mathbf{r} ) \]
+\[ \mathbf{a} ( \mathbf{r} ) = \frac{c ^ { 2 }}{n ^ { 2 } ( \mathbf{r} )} \nabla n ( \mathbf{r} ) \approx c ^ { 2 } \nabla n ( \mathbf{r} ) = - \nabla \Phi ( \mathbf{r} ) \]
+where \( n ( \mathbf{r} ) \approx 1 - \Phi ( \mathbf{r} ) / c ^ { 2 } \).
 Because the extended disk of field energy contributes directly to the refractive index gradient at large radii, the effective refractive force does not fall off as a simple Keplerian point-mass \( 1 / r ^ 2 \), producing flat circular orbital velocities \( v _ { \text{circ} } \approx \text{constant} \) without unobservable exotic particles.
 
 === Galaxy Collisions, Tidal Bridges, and Trailing Tails
