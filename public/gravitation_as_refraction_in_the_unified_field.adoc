@@ -241,71 +241,102 @@ mass knot than farther from it.
 
 
 
-== Gravitational Acceleration from Differential Phase Delay
+== Gravitational Acceleration from Propagation Delays
 
-We now prove that when a circulating wave packet moves through this
-wave-speed gradient, differential phase delay across its finite
-physical extent steers the packet into the exact trajectory prescribed
-by Newton’s gravitational acceleration.
+When a wavelike front of activity moves through a propagation-speeds
+gradient, the differences in delay steer the wavefront exactly
+according to Newton’s law of gravitation. We will demonstrate this
+below.
 
-[#conclusion-gravitation-as-wave-refraction]
-[CONCLUSION]
-.Conclusion Pending New Information: Gravitational Acceleration as Direct Contact Wave Refraction
-====
-Let a localized material entity be modeled as a circulating electromagnetic wave packet of finite spatial caliper diameter \( 2 R \), whose center of mass is located at radial coordinate \( r \) from a central mass knot \( M \).
-The spatial gradient of wave propagation speed:
-\[ \nabla v ( \mathbf{r} ) = \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \]
-induces a differential phase delay across the packet's physical diameter, producing a continuous inward steering acceleration:
-\[ \mathbf{a} = - \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \]
-which is identical in form to Newton's universal gravitational acceleration.
+Assume a small, circulating electromagnetic wavelike entity of finite
+diameter \( 2 R \). Place its center of mass at distance \( r \) from
+a significant mass (electromagnetic energy concentration) \( M \). The
+gradient of wave propagation speed \[ \nabla v ( \mathbf{r} ) {empty}=
+\frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \] causes different delays
+across the wavelike entity’s physical diameter, bending the wavefront
+towards the mass \( M \). The result is an acceleration \[ \mathbf{a}
+{empty}= - \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \] which is
+the same as Newton’s empirical law.
 
-_Deductive Inference and Demonstration:_
+_Spatial Extent of Matter Knots._
+Point particles that have “uncountably infinite” mass density are an
+epistemological abomination, and we simply deny their existence. It is
+not something the author is willing to argue about, because he
+considers the contrary view a cheap cop-out by intellectually
+unserious persons. Thus all entities that have physical existence also
+have spatial extent. This is accepted as a postulate. An entity such
+as an electron, proton, or neutron has a non-zero physical diameter \(
+2 R \). Let the entity move transversely to the radial direction of
+the central mass \( M \), with velocity \( \mathbf{u},\ |
+\mathbf{u} | \le c \). The inner boundary of the entity sits at radial
+position \( r - R \), the outer boundary at \( r + R \).
 
-1. _Finite Caliper Extent of Matter Knots_:
-In the Iris Number System, we work with physical scales and calipers, rejecting point particles of zero spatial extent. A circulating wave knot (such as an electron or nucleon) has a non-zero physical diameter \( 2 R \).
-Let the packet propagate transverse to the radial direction with forward convective velocity \( \mathbf{u} \) (where \( | \mathbf{u} | \le c \)).
-The inner boundary of the wave packet resides at radial position \( r - R \), while the outer boundary resides at \( r + R \).
-
-2. _Differential Wave Speed Across the Packet_:
+_Difference of Wave Speeds Across the Entity._
 Evaluating the local propagation speed across the two boundaries:
+  +
 \[ v _ { \text{inner} } = v ( r - R ) \approx v ( r ) - R \frac{\partial v}{\partial r} \]
 \[ v _ { \text{outer} } = v ( r + R ) \approx v ( r ) + R \frac{\partial v}{\partial r} \]
-The difference in wave speed between the outer and inner boundaries is:
-\[ \Delta v = v _ { \text{outer} } - v _ { \text{inner} } = 2 R \frac{\partial v}{\partial r} \]
-Because \( \frac{\partial v}{\partial r} = \frac{G M}{r ^ { 2 }} > 0 \), the outer edge of the circulating wave packet travels faster through the field than the inner edge.
+  +
+//
+The difference in wave speed between the outer and inner boundaries
+is: \[ \Delta v = v _ { \text{outer} } - v _ { \text{inner} } = 2 R
+\frac{\partial v}{\partial r} \] Because \( {\partial v}/{\partial r}
+{empty}= {G M}/{r ^ { 2 }} > 0 \), the outer edge of the entity
+travels more quickly through the field than does the inner edge.
 
-3. _Wavefront Angular Tilting_:
-By Huygens’ wave construction, when one side of a coherent wavefront moves faster than the opposite side across a baseline width \( 2 R \), the entire wavefront rotates.
-During a finite time interval \( \Delta t \), the outer edge advances a distance \( v _ { \text{outer} } \Delta t \), while the inner edge advances \( v _ { \text{inner} } \Delta t \).
-The differential advance distance is:
-\[ \Delta s = \Delta v \, \Delta t = \left( 2 R \frac{\partial v}{\partial r} \right) \Delta t \]
-This differential advance tilts the circulating wave packet's orientation by an angle \( \Delta \theta \):
-\[ \Delta \theta = \frac{\Delta s}{2 R} = \left( \frac{\partial v}{\partial r} \right) \Delta t \]
+_Wavefront Tilting_.
+By Huygens’ wave construction,footnote:[Christiaan Huygens. 1912.
+_Treatise on Light_ (S. P. Thompson, Transl.). Macmillan, London, UK.]
+when one side of a coherent wavefront moves faster than the opposite
+side across a baseline width \( 2 R \), the entire wavefront rotates.
+During a finite time \( \Delta t \), the outer edge advances a
+distance \( ( v _ { \text{outer} } ) \Delta t \), whereas the inner
+edge advances \( ( v _ { \text{inner} } ) \Delta t \). The difference
+in advance is \[ \Delta s = \Delta v \, \Delta t {empty}= \left( 2 R
+\frac{\partial v}{\partial r} \right) \Delta t \] This difference in
+advance tilts the entity by an angle \( \Delta \theta \): \[ \Delta
+\theta = \frac{\Delta s}{2 R} = \left( \frac{\partial v}{\partial r}
+\right) \Delta t \]
 
-4. _Steering of the Convective Momentum Vector_:
-Because the packet's convective momentum vector \( \mathbf{p} = m \mathbf{u} \) is locked to the phase front of its internal circulating waves, rotating the phase front tilts the velocity vector \( \mathbf{u} \) toward the slower, inner region.
-The resulting rate of change of the velocity vector is directed radially inward toward the mass knot:
-\[ \mathbf{a} = \frac{d \mathbf{u}}{d t} = - c \left( \frac{\Delta \theta}{\Delta t} \right) \hat{\mathbf{r}} = - c \left( \frac{\partial v}{\partial r} \right) \hat{\mathbf{r}} \]
-Substituting the wave-speed gradient:
-\[ \frac{\partial v}{\partial r} = \frac{\partial}{\partial r} \left[ c \left( 1 - \frac{G M}{r c ^ { 2 }} \right) \right] = \frac{G M}{r ^ { 2 } c} \]
-yields directly:
-\[ \mathbf{a} = - c \left( \frac{G M}{r ^ { 2 } c} \right) \hat{\mathbf{r}} = - \frac{G M}{r ^ { 2 }} \hat{\mathbf{r}} \]
-This establishes that gravitational acceleration is the exact refractive steering of circulating wave packets across the wave-speed gradient of the universal field.
-====
+_Steering of Momentum._
+The entity’s momentum \( \mathbf{p} = m \mathbf{u} \) is an integral
+over the momenta of the wavefronts within with entity. Rotating the
+wavefronts thus rotates the entity’s momentum. The resulting
+acceleration is towards the central mass \( M \): \[ \mathbf{a}
+{empty}= \frac{d \mathbf{u}}{d t} {empty}= - c \left( \frac{\Delta
+\theta}{\Delta t} \right) \hat{\mathbf{r}} {empty}= - c \left(
+\frac{\partial v}{\partial r} \right) \hat{\mathbf{r}} \] Substituting
+the wave-speed gradient: \[ \frac{\partial v}{\partial r} {empty}=
+\frac{\partial}{\partial r} \left[ c \left( 1 - \frac{G M}{r c ^ { 2
+}} \right) \right] {empty}= \frac{G M}{r ^ { 2 } c} \] yields
+directly: \[ \mathbf{a} {empty}= - c \left( \frac{G M}{r ^ { 2 } c}
+\right) \hat{\mathbf{r}} {empty}= - \frac{G M}{r ^ { 2 }}
+\hat{\mathbf{r}} \]
 
 
+== Maxwell’s Electromagnetic Theory Contains Newton’s Gravitational Theory
 
-== Derivation of Gauss’s Law and Newton’s Mutual Force Law
+From the fundamental relation \( \mathbf{a} = - c \nabla v (
+\mathbf{r} ) \), we can now deduce Gauss’s and Newton’s equations of
+gravitation without postulating any field but Maxwell’s medium (the
+universal electromagnetic field).
 
-From the fundamental relation \( \mathbf{a} = - c \nabla v ( \mathbf{r} ) \), we can now deduce the classical field equations of gravitation without postulating an independent gravitational field.
-
-Let the gravitational field vector \( \mathbf{g} ( \mathbf{r} ) \) be defined as the acceleration imparted to any unit mass knot:
-\[ \mathbf{g} ( \mathbf{r} ) = - c \nabla v ( \mathbf{r} ) = c ^ { 2 } \nabla \left( \frac{1}{n ( \mathbf{r} )} \right) \approx - c ^ { 2 } \nabla n ( \mathbf{r} ) \]
-Taking the spatial divergence of this field:
-\[ \nabla \cdot \mathbf{g} = - c ^ { 2 } \nabla ^ { 2 } n ( \mathbf{r} ) \]
-Substituting the field susceptibility equation \( \nabla ^ { 2 } n ( \mathbf{r} ) = \kappa \rho _ E ( \mathbf{r} ) = \frac{8 \pi G}{c ^ { 4 }} \left( \rho _ m c ^ { 2 } \right) \):
-\[ \nabla \cdot \mathbf{g} = - c ^ { 2 } \left( \frac{8 \pi G \rho _ m}{c ^ { 2 }} \right) \cdot \frac{1}{2} = - 4 \pi G \rho _ m \]
-where the factor of \( \frac{1}{2} \) arises from the isotropic decomposition of the symmetric stress-energy tensor. This is Gauss’s law for gravitation in differential form, deduced strictly as the divergence of the wave-refraction field.
+Let the gravitational field vector \( \mathbf{g} ( \mathbf{r} ) \) be
+defined as the acceleration imparted to any unit mass knot
+(concentration of electromagnetic activity): \[ \mathbf{g} (
+\mathbf{r} ) = - c \nabla v ( \mathbf{r} ) = c ^ { 2 } \nabla \left(
+\frac{1}{n ( \mathbf{r} )} \right) \approx - c ^ { 2 } \nabla n (
+\mathbf{r} ) \] Taking the spatial divergence of this field: \[ \nabla
+\cdot \mathbf{g} = - c ^ { 2 } \nabla ^ { 2 } n ( \mathbf{r} ) \]
+Substituting the field susceptibility equation \( \nabla ^ { 2 } n (
+\mathbf{r} ) = \kappa \rho _ E ( \mathbf{r} ) = \frac{8 \pi G}{c ^ { 4
+}} \left( \rho _ m c ^ { 2 } \right) \): \[ \nabla \cdot \mathbf{g} =
+- c ^ { 2 } \left( \frac{8 \pi G \rho _ m}{c ^ { 2 }} \right) \cdot
+\frac{1}{2} = - 4 \pi G \rho _ m \] where the factor of \( \frac{1}{2}
+\) arises from the isotropic decomposition of the symmetric
+stress-energy tensor. This is Gauss’s law for gravitation in
+differential form, deduced strictly as the divergence of the
+wave-refraction field.
 
 Integrating Gauss’s law over a closed discrete boundary surface \( \partial \Omega \) enclosing a total mass \( M = \int _ { \Omega } \rho _ m \, dV \) on \( \mathcal{G} _ N \):
 \[ \oint _ { \partial \Omega } \mathbf{g} \cdot d \mathbf{A} = - 4 \pi G M \]
