@@ -193,7 +193,7 @@ The inference engine operates strictly within the Counting-Iris number system:
 │   ├── closed_form_geometric_ratios_physical_constants.adoc # Standalone paper on closed-form physical constants (AsciiDoc)
 │   ├── new_constants_and_discrete_ideal_gas.adoc # Exact step-by-step mathematical monograph on new constants and discrete Ideal Gas
 │   ├── master_field_equation_energy_work.adoc # Standalone paper formulating Master Field Equation in terms of Energy, Work, Position, Time (AsciiDoc)
-│   ├── gravitation_as_refraction_in_the_unified_field.adoc # Standalone paper deriving gravitation from wave refraction via direct contact in the unified field (AsciiDoc)
+│   ├── gravitation_as_refraction_in_the_unified_field.adoc # Technical treatise and 1985 electrical engineering lecture presentation deriving gravitation from classical wave refraction in Maxwell's medium, establishing wave-packet steering via phase delays across physical calipers, proving the weak-field expansion \nabla(1/n) \approx -\nabla n, resolving the Twin Paradox via contact activity deceleration, and reviewing experimental evidence from GPS and Unnikrishnan's Cosmic Relativity (AsciiDoc)
 │   ├── physical_constants_ada/ # Standalone human-readable Ada 2022 packages for physical constants (ALGOL 60 style)
 │   ├── gnuplot/                 # 3D parametric wireframe gnuplot scripts and rendered high-res snapshots
 │   │   ├── volume_04/nuclei/    # Nuclear electromagnetic toroidal architectures for Elements 1–10 (H to Ne)
