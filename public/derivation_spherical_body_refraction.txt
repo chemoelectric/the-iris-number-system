@@ -1,0 +1,396 @@
+DERIVATION OF GRAVITATIONAL ACCELERATION OF A FINITE SPHERICAL BODY
+VIA ELECTROMAGNETIC WAVE REFRACTION ON DISCRETE m-RESOLUTION CELLS
+
+======================================================================
+1. MOMENTUM DENSITY FUNCTION OF THE BODY
+======================================================================
+
+Consider a neutral body of total mass m occupying a spherical volume
+of radius R centered at position r_0 = (0, 0, d) relative to a large
+mass M at the origin (0, 0, 0).
+
+By the Principle of Maximum Entropy (Least Information), knowing only
+that the material is indistinct and neutral without phase boundaries,
+the intrinsic mass density is uniform:
+
+    rho_m(r) = rho_0 = m / ((4/3) * pi * R^3)   for |r - r_0| <= R
+             = 0                                 for |r - r_0| > R
+
+In the Unified Field Theory, all mass is circulating electromagnetic
+activity described by the Master Field Equation D F = J. All energy
+is kinetic wave motion. The local energy density at every m-res point
+inside the sphere is:
+
+    u(r) = rho_m(r) * c^2
+
+The Poynting momentum density vector of an electromagnetic wave packet
+carrying energy density u at local wave speed c has magnitude:
+
+    |g| = u / c = rho_m * c
+
+For a stationary body, the net macroscopic momentum is zero.
+By MaxEnt, the direction of internal wave propagation is isotropic
+over the 4*pi steradians of solid angle:
+
+    dg / dOmega = (rho_m * c / (4 * pi)) * k_hat
+
+where k_hat is the unit direction vector. The integral of dg/dOmega over
+all solid angles yields zero net momentum, while the root-mean-square
+kinetic energy flux density matches u = rho_m * c^2.
+
+
+======================================================================
+2. REFRACTION OF A SINGLE MOMENTUM DENSITY VECTOR
+======================================================================
+
+A large mass M at the origin creates a localized stress in the field,
+yielding an effective refractive index:
+
+    n(r) = 1 + (G * M) / (r * c^2)
+
+The local propagation speed of electromagnetic waves is:
+
+    v(r) = c / n(r) = c * (1 - (G * M) / (r * c^2))
+
+The gradient of wave speed is directed radially outward from M:
+
+    grad(v(r)) = (G * M / r^2) * r_hat
+
+By Huygens' construction and wave mechanics, an inhomogeneous wave
+speed creates a transverse velocity gradient across a wave packet,
+deflecting its direction of propagation toward the region of slower
+wave speed (toward M).
+
+The time rate of change of momentum density for a localized wave
+packet carrying energy density u in a refractive index gradient grad(n)
+is given by:
+
+    dg/dt = u * grad(n) / n^2 = u * grad(n)
+
+Substituting u = rho_m * c^2 and grad(n) = - (G * M / (c^2 * r^2)) * r_hat:
+
+    dg/dt = (rho_m * c^2) * [ - (G * M / (c^2 * r^2)) * r_hat ]
+          = - rho_m * (G * M / r^2) * r_hat
+
+The factor c^2 cancels identically. Every circulating wave packet
+experiences a time rate of change of momentum directed toward M,
+proportional to the local mass density rho_m and the local inverse-square
+gradient, regardless of its instantaneous direction of circulation.
+
+
+======================================================================
+3. COMPONENTWISE ADDITIVITY
+======================================================================
+
+On the discrete m-resolution grid G_N, the sphere is partitioned into
+discrete cells of volume Delta_V. The total momentum P of the body is
+the vector sum over all cells:
+
+    P = sum_i g(r_i) * Delta_V_i
+
+In Cartesian components:
+
+    P_x = sum_i g_x(r_i) * Delta_V_i
+    P_y = sum_i g_y(r_i) * Delta_V_i
+    P_z = sum_i g_z(r_i) * Delta_V_i
+
+Because vector addition is componentwise linear, and the time derivative
+is linear, the net force F on the body is the componentwise sum of the
+refracted momentum rates:
+
+    F = dP/dt = sum_i (dg(r_i)/dt) * Delta_V_i
+
+In the fine-grained m-res representation, this sum corresponds to the
+volume integral of calculus:
+
+    F = integral_V (dg/dt) dV
+
+
+======================================================================
+4. INTEGRAL OF REFRACTED MOMENTUM DENSITIES OVER THE SPHERE
+======================================================================
+
+Let the center of the sphere of radius R be at (0, 0, d) on the z-axis,
+with d > R. An internal point is given by:
+
+    r = r_0 + s
+
+where s is the position vector from the sphere's center, with |s| <= R.
+In spherical coordinates centered at (0, 0, d):
+    s in [0, R]
+    theta in [0, pi] (measured from the z-axis)
+    phi in [0, 2*pi]
+    dV = s^2 * sin(theta) * ds * dtheta * dphi
+
+The distance r from the origin to the internal point is:
+
+    r = sqrt(d^2 + 2 * d * s * cos(theta) + s^2)
+
+The total force integral is:
+
+    F = - G * M * rho_0 * integral_V [ (r_0 + s) / |r_0 + s|^3 ] dV
+
+Transverse Components:
+    The x and y components involve cos(phi) and sin(phi).
+    Integrating from phi = 0 to 2*pi:
+        integral_0^(2*pi) cos(phi) dphi = 0
+        integral_0^(2*pi) sin(phi) dphi = 0
+    Therefore:
+        F_x = 0
+        F_y = 0
+
+Axial (z) Component:
+    The z-component of (r_0 + s) is d + s * cos(theta).
+    Integrating over phi yields a factor of 2*pi:
+
+    F_z = - 2 * pi * G * M * rho_0 *
+          integral_(s=0)^R s^2 ds *
+          integral_(theta=0)^pi [ (d + s * cos(theta)) * sin(theta) /
+                                  (d^2 + 2*d*s*cos(theta) + s^2)^(3/2) ] dtheta
+
+Evaluating the Angular Integral:
+    Let mu = cos(theta), so d_mu = - sin(theta) dtheta.
+    The angular integral is:
+
+        I(s) = integral_(mu=-1)^(+1) [ (d + s * mu) /
+                                       (d^2 + 2*d*s*mu + s^2)^(3/2) ] d_mu
+
+    Substitute w = d^2 + 2*d*s*mu + s^2, so d_mu = dw / (2 * d * s).
+    The numerator is:
+        d + s * mu = (w + d^2 - s^2) / (2 * d)
+
+    At mu = -1: w_1 = (d - s)^2,  sqrt(w_1) = d - s  (since d > s).
+    At mu = +1: w_2 = (d + s)^2,  sqrt(w_2) = d + s.
+
+    The integral becomes:
+
+        I(s) = [1 / (4 * d^2 * s)] *
+               integral_((d-s)^2)^((d+s)^2) [ w^(-1/2) + (d^2 - s^2) * w^(-3/2) ] dw
+
+    The antiderivative is:
+        2 * sqrt(w) - 2 * (d^2 - s^2) / sqrt(w)
+
+    At upper limit w_2:
+        2 * (d + s) - 2 * (d - s) = 4 * s
+
+    At lower limit w_1:
+        2 * (d - s) - 2 * (d + s) = - 4 * s
+
+    Difference (upper minus lower):
+        4 * s - (- 4 * s) = 8 * s
+
+    Therefore:
+        I(s) = (1 / (4 * d^2 * s)) * (8 * s) = 2 / d^2
+
+    Notice that I(s) is strictly constant for every concentric shell of
+    radius s.
+
+Evaluating the Radial Integral:
+    Substituting I(s) = 2 / d^2 back into F_z:
+
+    F_z = - 2 * pi * G * M * rho_0 * integral_(s=0)^R s^2 * (2 / d^2) ds
+        = - (4 * pi * G * M * rho_0 / d^2) * [ s^3 / 3 ]_0^R
+        = - (G * M / d^2) * [ (4/3) * pi * R^3 * rho_0 ]
+
+    Since the total mass of the sphere is m = (4/3) * pi * R^3 * rho_0:
+
+    F_z = - (G * M * m) / d^2
+
+In vector notation:
+
+    F = - ((G * M * m) / d^2) * z_hat
+
+The resulting acceleration of the spherical body as a whole is:
+
+    a = F / m = - (G * M / d^2) * z_hat
+
+======================================================================
+6. TIDAL FORCES AND PHYSICAL DISTORTION (REAL BODY VS. SPHERICAL COW)
+======================================================================
+
+An idealized "spherical cow" or point particle of conventional physics
+is assumed to experience a single, uniform acceleration across its
+non-existent or infinitely rigid boundary.
+
+In physical reality, an actual body has finite spatial extent across
+discrete m-res cells on grid G_N. Because the refractive gradient
+grad(v(r)) varies inversely with r^2, the local acceleration varies
+across the physical dimensions of the sphere.
+
+Let s = (s_x, s_y, s_z) denote the position of an m-res cell within
+the body relative to the body's center of mass r_0 = (0, 0, d).
+The local refractive acceleration at point r_0 + s is:
+
+    g(r_0 + s) = - (G * M / |r_0 + s|^3) * (r_0 + s)
+
+Expanding in a Taylor series in powers of s/d (where |s| <= R << d):
+
+    g_z(r_0 + s) = - (G * M / d^2) + (2 * G * M / d^3) * s_z + O(s^2 / d^4)
+    g_x(r_0 + s) = - (G * M / d^3) * s_x + O(s^2 / d^4)
+    g_y(r_0 + s) = - (G * M / d^3) * s_y + O(s^2 / d^4)
+
+Notice the two distinct physical consequences:
+
+1. Net Center-of-Mass Motion (Experiences Gravity as Expected):
+   When integrated over the volume of the sphere, the first-order
+   linear terms in s_x, s_y, s_z integrate to zero identically because
+   the origin of s is the center of mass:
+
+       integral (s_i * rho_0) dV = 0
+
+   Thus, the net translational acceleration of the body as a whole is
+   strictly:
+
+       a_CM = - (G * M / d^2) * z_hat
+
+   The body as a whole falls toward M exactly as expected from Newton's
+   gravitational law.
+
+2. Internal Tidal Acceleration and Elastic Distortion:
+   In the reference frame falling with the center of mass, each m-res
+   cell experiences an internal differential acceleration:
+
+       a_tidal(s) = g(r_0 + s) - a_CM
+                  = (G * M / d^3) * [ 2 * s_z * z_hat - s_x * x_hat - s_y * y_hat ]
+
+   Evaluating this at the physical boundaries of the body:
+
+   a) Radial Elongation (Tension):
+      At the near point facing M (s_z = -R):
+          a_tidal = - (2 * G * M * R / d^3) * z_hat
+      This point is pulled toward M more strongly than the center of mass.
+
+      At the far point away from M (s_z = +R):
+          a_tidal = + (2 * G * M * R / d^3) * z_hat
+      This point is pulled toward M less strongly than the center of mass,
+      meaning it lags behind the center of mass.
+
+      Both faces are pulled outward relative to the center of mass.
+      The body is under physical tensile stress along the radial z-axis.
+
+   b) Lateral Compression (Squeeze):
+      At the equatorial perimeter (s_z = 0, s_x^2 + s_y^2 = R^2):
+          a_tidal_perp = - (G * M / d^3) * s_perp
+      Because the field lines of grad(v) converge toward the center of M,
+      the lateral boundaries are squeezed inward toward the z-axis.
+
+   c) Volume Conservation (Traceless Tidal Tensor):
+      The divergence of the tidal acceleration field in the empty space
+      around the body is:
+
+          div(a_tidal) = (G * M / d^3) * [ - 1 - 1 + 2 ] = 0
+
+      To first order, the tidal force preserves the body's volume while
+      shearing its geometry.
+
+3. Internal Stress-Strain Equilibrium:
+   The circulating electromagnetic wave activity composing the body is
+   held together by internal electromagnetic binding stresses described
+   by the Master Field Equation D F = J (elastic lattice stresses in a
+   solid, or hydrostatic pressure in a fluid).
+
+   Under the external tidal acceleration a_tidal, an internal stress
+   tensor sigma_ij develops within the body:
+
+       partial_j sigma_ij + rho_0 * a_tidal,i = 0
+
+   This internal stress stretches the sphere into a prolate spheroid
+   whose major axis is aligned along the radial line toward M:
+
+       z-semiaxis:  a_z = R * [ 1 + (G * M / d^3) * (rho_0 * R^2 / E_eff) ]
+       transverse:  a_x = a_y = R * [ 1 - (1/2) * (G * M / d^3) * (rho_0 * R^2 / E_eff) ]
+
+   where E_eff is the effective elastic bulk/shear modulus of the material.
+
+If the tidal stress exceeds the internal material tensile strength
+(the Roche limit), the body fractures or ruptures. If the internal
+electromagnetic binding stress is sufficient, the body reaches static
+elastic equilibrium in this distorted prolate ellipsoidal shape.
+
+
+======================================================================
+SUMMARY & CONCLUSION PENDING NEW INFORMATION
+======================================================================
+1. The body is NOT an unphysical "spherical cow" or point mass: it has
+   finite spatial extent on the discrete m-res lattice G_N.
+2. The body is physically distorted by the inhomogeneous wave-speed
+   gradient: it is stretched radially and compressed laterally by tidal
+   stresses into a prolate spheroid.
+3. Simultaneously, because the first-order tidal terms integrate to
+   zero across the center of mass, the net translational acceleration of
+   the body as a whole is strictly:
+
+       a_CM = - (G * M / d^2) * z_hat
+
+   The body experiences gravity exactly as expected.
+4. Both the net orbital acceleration and the internal tidal distortion
+   arise from one and the same direct-contact mechanism: the spatial
+   variation of wave propagation speed v(r) = c / n(r) in Maxwell's
+   universal electromagnetic medium.
+
+
+======================================================================
+7. INERTIAL RESISTANCE AS CONSERVATION-ENFORCED DIRECTED WORK AND IMPULSE
+======================================================================
+
+Bypassing internal rotational models and gyroscopic precession, inertial
+mass is formulated directly from the fundamental conservation laws of
+energy and momentum under direct contact action.
+
+Consider a localized region of electromagnetic activity within a discrete
+m-resolution cell or collection of cells on grid G_N. By the Master
+Field Equation D F = J, the circulating electromagnetic wave motion
+possesses a definite energy density:
+
+    u = (1/2) * (epsilon_0 * E^2 + mu_0 * H^2)
+
+and a localized Poynting momentum density vector:
+
+    g = (1 / c^2) * S = (1 / c^2) * (E x H)
+
+When an external influence acts upon the body to alter its state of
+motion, the fundamental conservation laws demand:
+
+1. Finite Impulse for Momentum Transfer:
+   Momentum cannot change ex nihilo. Altering the net momentum vector
+   Delta_P requires an external momentum flux transferred across physical
+   boundaries by direct contact over a finite duration Delta_t:
+
+       Delta_P = integral_(0)^(Delta_t) F dt
+
+   Because physical interactions require finite time and direct contact,
+   a momentum change demands the prolonged application of a force.
+
+2. Directed Work for Energy Transfer:
+   Altering the momentum vector also changes the kinetic energy of the
+   circulating distribution. By the conservation of energy, this change
+   requires the physical expenditure of directed work:
+
+       W = integral F . dx
+
+   Energy cannot be transferred into or out of the field configuration
+   without pushing against a physical displacement over time.
+
+3. Inertial Resistance as the Sum of Local Reaction Forces:
+   As the applied force enters the boundary of the body via direct
+   contact, it propagates cell by adjacent cell across the discrete
+   lattice. At each m-res cell, work is performed to alter the local field
+   momentum density g_i.
+
+   By local contact balance (Newton's third law), each discrete cell
+   resists this alteration with an equal and opposing reaction force:
+
+       F_i = - d p_i / dt
+
+   The macroscopic resistance felt when pushing an object—what classical
+   physics calls "inertial mass"—is simply the aggregate sum of all these
+   microscopic contact reaction forces required to perform directed work
+   and transfer momentum:
+
+       F_resistance = - sum_i (d p_i / dt) = - m_inertial * a
+
+CONCLUSION PENDING NEW INFORMATION:
+Inertial mass is not an ungrounded intrinsic property or a complex gimbaled
+mechanism. It is the tangible, cumulative reaction force demanded by the
+conservation laws of energy and momentum when directed work is performed
+over a finite duration to shift localized electromagnetic wave packets.
