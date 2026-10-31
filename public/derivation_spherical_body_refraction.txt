@@ -409,6 +409,21 @@ motion, the fundamental conservation laws demand:
    That reaction force is what we feel as the resistance of an inertial
    mass to move.
 
+   A concrete mechanical illustration is the classic bicycle bottle dynamo
+   (as when Bart Simpson switches on his bicycle generator): while
+   disengaged, the wheel spins freely against minor mechanical friction.
+   The moment the generator roller is engaged against the tire and begins
+   pumping energy and momentum into the electromagnetic field to excite
+   currents in the coils and power the lamp, the electromagnetic field
+   exerts an immediate counter-electromotive back-torque against the wheel.
+   The cyclist's legs instantly feel stiff, tangible mechanical resistance
+   at the pedals.
+   In exact physical equivalence, whenever an external force acts to
+   accelerate a material body, it is pumping energy and momentum into the
+   localized electromagnetic wave packets on lattice G_N; the reaction
+   force exerted back by the electromagnetic field against that pumping
+   action is precisely what we feel as inertial resistance.
+
 
 CONCLUSION PENDING NEW INFORMATION:
 Inertial mass is neither an ungrounded, mystical "intrinsic property" of
