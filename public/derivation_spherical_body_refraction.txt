@@ -75,7 +75,8 @@ Substituting u = rho_m * c^2 and grad(n) = - (G * M / (c^2 * r^2)) * r_hat:
 The factor c^2 cancels identically. Every circulating wave packet
 experiences a time rate of change of momentum directed toward M,
 proportional to the local mass density rho_m and the local inverse-square
-gradient, regardless of its instantaneous direction of circulation.
+gradient, regardless of its local direction of circulation at any given
+time step.
 
 
 ======================================================================
@@ -389,8 +390,32 @@ motion, the fundamental conservation laws demand:
 
        F_resistance = - sum_i (d p_i / dt) = - m_inertial * a
 
+4. Fundamental Summary: Pumping Energy and Momentum into the Field:
+   The entire physical phenomenon of inertial resistance can be
+   summarized in a single concrete principle:
+
+       The resistance is the reaction force from pumping energy and
+       momentum into the electromagnetic field.
+
+   Because every material body is an electromagnetic wave-packet
+   configuration on the discrete lattice G_N, accelerating that body
+   means pumping additional energy and momentum into its localized field
+   distribution. By the conservation laws and direct-contact action,
+   energy and momentum cannot be injected in zero time or without cost;
+   every physical transfer requires finite duration, so prolonged directed
+   work and finite impulse must be delivered.
+   As this work is performed, the electromagnetic field pushes back
+   with an equal and opposite reaction force at every contact boundary.
+   That reaction force is what we feel as the resistance of an inertial
+   mass to move.
+
+
 CONCLUSION PENDING NEW INFORMATION:
-Inertial mass is not an ungrounded intrinsic property or a complex gimbaled
-mechanism. It is the tangible, cumulative reaction force demanded by the
-conservation laws of energy and momentum when directed work is performed
-over a finite duration to shift localized electromagnetic wave packets.
+Inertial mass is neither an ungrounded, mystical "intrinsic property" of
+matter nor an elaborate gyroscopic gimbal mechanism. It is summarized
+completely as the reaction force from pumping energy and momentum into
+the electromagnetic field. When directed work is performed over a finite
+duration to alter the state of localized wave packets across discrete
+lattice G_N, the conservation laws demand prolonged contact force; the
+accumulated reaction force exerted by the electromagnetic field against
+that pumping action is precisely what constitutes inertial resistance.
