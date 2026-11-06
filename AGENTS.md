@@ -64,7 +64,7 @@ Mandatory completion protocol after modifying code or textbooks:
 - **Zero Extent/Mass Claims**: Abductively remind that such entities consist of m-res numbers.
 - **Consolidated Banned Words & Replacements**:
   - No "lim": use dynamic notation (\( z \to w \text{ as } x \to y \), "for large \( a \)").
-  - No "continuity" / "continuous": use "piecewise connected" (curves/splines), "fine-grained", "discrete", "dense", "analog/m-res".
+  - No "continuity" / "continuous" / "smooth": strictly banned. Use "piecewise connected" (curves/splines), "fine-grained", "discrete", "dense", "analog/m-res".
   - No "governs": use "describes", "defines", "models".
   - No "retarded" / "tardive": use "time-delayed", "causally delayed", "phase-delayed", "decelerating".
   - No "aperture": permanently retired; use "window", "sampling window", "interval", "grid cell", "boundary", "finite span".
