@@ -178,6 +178,13 @@ Formulates probability theory as an extension of Aristotelian logic under uncert
 *Annotation:*
 The landmark keynote address disproving the mystical claims surrounding Bell's theorem and quantum "non-locality." Jaynes demonstrated with rigorous probability algebra that Bell committed a fatal probabilistic blunder: conflating conditional independence (information updating) with physical causality (signaling). Opening an envelope in one city instantly updating one's probability distribution for an envelope in another city involves no superluminal physical interaction; it is merely Bayesian state-of-knowledge conditioning.
 
+[#entry-orfanidis-1988]
+=== Orfanidis, Sophocles J. (1988)
+*Optimum Signal Processing: An Introduction*. Second Edition. New York: Macmillan Publishing Company.
+
+*Annotation:*
+Rigorous and practical engineering treatise on optimum linear estimation, Wiener filtering, Kalman state-space estimation, linear prediction, and spectral analysis. Develops Burg’s Maximum Entropy method as strictly noncommittal data windowing, demonstrating that maximizing the entropy rate subject to measured autocorrelation lags avoids the spurious spectral distortions and resolution degradation caused by arbitrary tapering outside the measurement interval. Establishes the direct connection between Jaynesian Maximum Entropy inference and discrete lattice-filter predictive architectures.
+
 == Foundations of Local Realism, Classical Electrodynamics, and Wave Optics
 
 [#entry-kracklauer-2000]

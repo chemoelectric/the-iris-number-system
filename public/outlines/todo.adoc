@@ -66,7 +66,39 @@
       they learn from are written by computer programmers. Computer
       programmers are, generally speaking, incompetent boobs. So LLMs
       program by extrapolating the overwhelming professional
-      incompetence of computer programmers.
+      incompetence of computer programmers. +
+        +
+    * Inference engines as defective predictive filters: Maximum Entropy
+      and Dr. Orfanidis’s optimum signal processing. +
+        +
+      ** Burg’s method in optimum signal processing (first encountered
+         in Dr. Orfanidis’s class) demonstrates Maximum Entropy as
+         strictly noncommittal windowing of data: it assumes nothing
+         about unmeasured data outside the observation window, preventing
+         spurious spectral artifacts. +
+        +
+      ** Software designers do not know how to design a good predictive
+         filter. An inference filter should be noncommittal, not
+         pre-trained to blow off its assigned task. +
+        +
+      ** The noise-canceling headphone analogy: commercial chatbots behave
+         as if one were wearing noise-canceling headphones equipped not
+         only with a local microphone, but with an active microphone in
+         each classroom at Harvard University. Flooded with irrelevant
+         academic consensus noise, corporate boilerplate, and remote
+         lecture chatter, the engine asks bizarre questions whose meaning
+         no one can fathom, because it is attempting to force-fit the
+         local task into the background din of distant lecture halls. +
+        +
+      ** Prediction failures vs. “hallucinations”: so-called
+         “hallucinations” in software are not medical or neurological
+         hallucinations at all (a serious category error in a volume
+         honoring Oliver Sacks’s clinical neurology of aura, scotoma, and
+         perceptual release). They are straightforward _prediction
+         failures_ caused by lousy, contaminated inputs and an
+         over-parameterized autoregressive predictor drowning in
+         irrelevant priors.
+
 
   - Disciplined mentation vs. schooling and buzzwords.
 
