@@ -183,3 +183,25 @@
     * An atomic clock in circular orbit measures the local gravitational potential directly in its cabin; its exact physical position across the cabin matters because of the radial wave speed gradient \( \nabla c ( r ) \).
     * Aligns with the experimental realizations of gravitation researchers like C. S. Unnikrishnan: clocks slow down not from abstract relative speed, but from actual physical gravitational potentials and contact stresses in the plenum.
 
+
+* Definition of Pace \( t _ p \) and the Elimination of Objectified “Time Dilation”.
+  - The coordinate transformation from clock reading \( t \) to pace \( t _ p \):
+    * Define the invariant progression coordinate \( t _ p \) (“pace”):
+
++
+\[ d t _ p = \frac{c ( r )}{c _ 0} \, d t \iff d t = n ( r ) \, d t _ p \quad \text{where } n ( r ) = \frac{c _ 0}{c ( r )} \approx 1 + \frac{G M}{c _ 0 ^ 2 r} \]
++
+    * Under this coordinate transformation, the pace \( t _ p \) does not change under the influence of gravitation. It progresses uniformly throughout the universe, completely immune to the presence of mass concentrations.
+    * The physical slowing down of clocks in a gravitational field is then recognized for what it actually is: gravitation does not alter the progression of coordinate pace \( t _ p \); it alters the physical wave speed \( c ( r ) \) and mechanical oscillation rates of physical clocks relative to that invariant pace.
+
+  - Reversal of the correct order of abstracting (Korzybskian objectification):
+    * Academic physicists _objectify_ (Korzybski’s term) what is merely a coordinate transformation.
+    * E. T. Jaynes called this the “Mind Projection Fallacy”; Werner A. Hofer called it “Mathematical Creationism”.
+    * Korzybski’s formulation provides the clearest diagnostic: it diagnoses the neuro-linguistic defect as a fatal reversal of the natural order of abstracting (confusing silent, objective-level physical processes with higher-order mathematical symbols and coordinates).
+    * Instead of recognizing that physical wave packets propagate slower in a gravitational medium while coordinate pace remains invariant, physicists treat the coordinate transformation as if “time itself” were an elastic, physical fabric that stretches.
+
+  - Restoring Einstein’s partial return to reality:
+    * This transformation is key to showing that Einstein was not entirely out of his gourd with relativity: General Relativity represented a partial, halting attempt to return to physical reality by acknowledging that physical processes in a gravitational field do undergo real physical alterations.
+    * While Einstein’s geometric and kinematic approach remained flawed by confusing coordinate transformations with physical space-time curvature, the underlying recognition that physical clock rates depend on the local gravitational potential points directly toward wave refraction in a physical plenum.
+
+
