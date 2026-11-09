@@ -991,37 +991,32 @@ Since \( D \Psi = 0 \) throughout \( \mathcal { D } \), the area summation vanis
 
 ==== Residue-Free Loop Circulations and Bivector Spin(2) Conservation
 
-When a closed path \( \Gamma \) encloses an isolated Spin(2) bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete topological aperture charge \( Q _ \iota \): \[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } \]
+When a closed path \( \Gamma \) encloses an isolated Spin(2) bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete total charge \( Q _ \iota \): \[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } \]
 
 
 This guarantees that circulation along closed observation loops measures exact, non-fractional topological winding numbers, establishing total conservation of electromagnetic flux in the Counting-Iris framework.
 
 ==== The MSRA Residue Theorem
 
-In digital signal processing, system analysis, and multivector aperture field theory, closed contour integrations frequently enclose isolated singular points or poles. The MSRA Residue Theorem generalizes Cauchy's residue formula to discrete vernier grid contours and multivector fields in Conformal Geometric Algebra.
+In digital signal processing, system analysis, and multivector field theory, closed contour integrations frequently enclose isolated poles, where the magnitude of a function has no assumed upper bound. The MSRA Residue Theorem generalizes Cauchy’s residue formula to discrete vernier grid contours and multivector fields in Conformal Geometric Algebra.
 
 [#theorem-msra-residue]
 [THEOREM]
 .Theorem: MSRA Residue Theorem
 ====
-Let \( \Gamma \) be a simple closed oriented contour bounding a simple aperture region \( \mathcal { D } \). If a multivector field \( \Psi : \mathbb { G } \to \mathbb { G } \) is continuously differentiable in \( \mathcal { D } \) except at a finite set of isolated aperture pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \), then the closed contour integral evaluates to the discrete sum of multivector residues: \[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
-
-
-where the MSRA residue at an isolated singularity \( z _ k \) is defined by the coefficient \( a _ { - 1 } ^ { ( k ) } \) in the MSRA Laurent aperture expansion \( \Psi ( z ) = \sum _ { m = - \infty } ^ \infty a _ m ^ { ( k ) } ( z - z _ k ) ^ m \), or equivalently: \[ \text { Res } \left ( \Psi , z _ k \right ) = \frac { 1 } { 2 \pi i } \oint _ { \Gamma _ k } \Psi ( z ) \, dz \]
-
-
+Let \( \Gamma \) be a simple closed oriented contour bounding a simple region \( \mathcal { D } \). If a multivector field \( \Psi : \mathbb { G } \to \mathbb { G } \) is differentiable throughout \( \mathcal { D } \) except at a finite set of isolated pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \) (points where the field’s magnitude has no assumed upper bound), then the closed contour integral evaluates to the discrete sum of multivector residues: \[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
+where the MSRA residue at an isolated pole \( z _ k \) is defined by the coefficient \( a _ { - 1 } ^ { ( k ) } \) in the MSRA Laurent expansion \( \Psi ( z ) = \sum _ { m = - \infty } ^ \infty a _ m ^ { ( k ) } ( z - z _ k ) ^ m \), or equivalently: \[ \text { Res } \left ( \Psi , z _ k \right ) = \frac { 1 } { 2 \pi i } \oint _ { \Gamma _ k } \Psi ( z ) \, dz \]
 for an elementary ultra-refined boundary contour \( \Gamma _ k \subset \mathcal { D } \) encircling only \( z _ k \).
 
 __Proof:__
+
 . Construct non-overlapping elementary ultra-refined contours \( \Gamma _ 1 , \Gamma _ 2 , \dots , \Gamma _ n \) around each isolated singularity \( z _ 1 , z _ 2 , \dots , z _ n \) in \( \text { Int } ( \mathcal { D } ) \), each oriented counterclockwise.
 
-. Form the multiply-connected aperture region \( \mathcal { D } ' = \mathcal { D } \setminus \bigcup _ { k = 1 } ^ n \text { Int } ( \Gamma _ k ) \). Within \( \mathcal { D } ' \), \( \Psi \) is everywhere continuously differentiable with source-free condition \( D \Psi = 0 \).
+. Form the multiply-connected region \( \mathcal { D } ' = \mathcal { D } \setminus \bigcup _ { k = 1 } ^ n \text { Int } ( \Gamma _ k ) \). Within \( \mathcal { D } ' \), \( \Psi \) is everywhere differentiable with source-free condition \( D \Psi = 0 \).
 
 . Apply the MSRA Cauchy-Goursat Theorem (Theorem 13) to the boundary \( \partial \mathcal { D } ' = \Gamma \cup \bigcup _ { k = 1 } ^ n ( - \Gamma _ k ) \): \[ \oint _ { \partial \mathcal { D } ' } \Psi ( z ) \, dz = \oint _ \Gamma \Psi ( z ) \, dz - \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 0 \]
 
-
-
-. Rearranging terms and substituting the definition of the MSRA aperture residue \( \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \, \text { Res } ( \Psi , z _ k ) \) yields: \[ \oint _ \Gamma \Psi ( z ) \, dz = \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \qquad \square \]
+. Rearranging terms and substituting the definition of the MSRA residue \( \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \, \text { Res } ( \Psi , z _ k ) \) yields: \[ \oint _ \Gamma \Psi ( z ) \, dz = \sum _ { k = 1 } ^ n \oint _ { \Gamma _ k } \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \qquad \square \]
 ====
 
 ==== Worked Example 1: Circular Contour Integral of a Constant Vector Field
@@ -1034,7 +1029,7 @@ To verify the MSRA Cauchy-Goursat theorem with an explicit example, evaluate the
 . __Set up Parameterized Integral__: Substitute \( \Psi ( \gamma ( t ) ) = \mathbf { c } \) and \( \gamma ' ( t ) \) into the MSRA line integral formula: \[ \oint _ \Gamma \mathbf { c } \, dz = \int _ 0 ^ { 2 \pi } \mathbf { c } \cdot ( i R e ^ { i t } ) \, dt = \mathbf { c } \cdot i R \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt \]
 
 
-. __Evaluate MSRA Integral__: Integrate \( e ^ { i t } \) using its anti-derivative aperture function \( \frac { e ^ { i t } } { i } \): \[ \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt = \left [ \frac { e ^ { i t } } { i } \right ] _ 0 ^ { 2 \pi } = \frac { e ^ { 2 \pi i } - e ^ 0 } { i } = \frac { 1 - 1 } { i } = 0 \]
+. __Evaluate MSRA Integral__: Integrate \( e ^ { i t } \) using its anti-derivative function \( { e ^ { i t } } / { i }\, \): \[ \int _ 0 ^ { 2 \pi } e ^ { i t } \, dt = \left [ \frac { e ^ { i t } } { i } \right ] _ 0 ^ { 2 \pi } = \frac { e ^ { 2 \pi i } - e ^ 0 } { i } = \frac { 1 - 1 } { i } = 0 \]
 
 
 . __Result__: \[ \oint _ \Gamma \mathbf { c } \, dz = \mathbf { c } \cdot i R \cdot 0 = 0 \]
@@ -1044,12 +1039,12 @@ This confirms that the closed circulation of any source-free constant field vani
 
 ==== Worked Example 2: Contour Integration with Isolated Poles via the MSRA Residue Theorem
 
-To demonstrate the application of the MSRA Residue Theorem, evaluate the closed contour integral of the aperture rational function \( \Psi ( z ) = \frac { \mathbf { 1 } } { z ^ 2 + 1 } \) along a closed circular contour \( \Gamma \) centered at \( z = i \) with radius \( R = 1 \) oriented counterclockwise.
+To demonstrate the application of the MSRA Residue Theorem, evaluate the closed contour integral of the rational function \( \Psi ( z ) = { \mathbf { 1 } } / ( z ^ 2 + 1 ) \) along a closed circular contour \( \Gamma \) centered at \( z = i \) with radius \( R = 1 \) oriented counterclockwise.
 
 . __Identify Poles__: The integrand has isolated poles where the denominator vanishes: \[ z ^ 2 + 1 = 0 \implies z _ 1 = i , \quad z _ 2 = - i \]
 The contour \( \Gamma \) (radius 1 centered at \( i \)) encloses only the pole \( z _ 1 = i \), while \( z _ 2 = - i \) lies outside \( \text { Int } ( \Gamma ) \).
 
-. __Compute MSRA Residue at \( z _ 1 = i \)__: Decompose \( \Psi ( z ) \) into partial fraction aperture components: \[ \Psi ( z ) = \frac { \mathbf { 1 } } { ( z - i ) ( z + i ) } = \frac { \frac { \mathbf { 1 } } { z + i } } { z - i } \]
+. __Compute MSRA Residue at \( z _ 1 = i \)__: Decompose \( \Psi ( z ) \) into partial fraction components: \[ \Psi ( z ) = \frac { \mathbf { 1 } } { ( z - i ) ( z + i ) } = \frac { \frac { \mathbf { 1 } } { z + i } } { z - i } \]
 
 The residue at simple pole \( z _ 1 = i \) is: \[ \text { Res } \left ( \Psi , i \right ) = \left . ( z - i ) \Psi ( z ) \right | _ { z = i } = \left . \frac { \mathbf { 1 } } { z + i } \right | _ { z = i } = \frac { \mathbf { 1 } } { 2i } = - \frac { i } { 2 } \mathbf { 1 } \]
 
@@ -1059,7 +1054,7 @@ The residue at simple pole \( z _ 1 = i \) is: \[ \text { Res } \left ( \Psi , i
 
 . __Direct Parametric Verification__: Parameterize \( \Gamma \) as \( \gamma ( t ) = i + r e ^ { i t } \) for \( t \in [ 0 , 2 \pi ] \) with \( r = 1 \). Then \( \gamma ' ( t ) = i e ^ { i t } \, dt \). Substituting into the integral: \[ \oint _ \Gamma \frac { dz } { z ^ 2 + 1 } = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { ( i + e ^ { i t } ) ^ 2 + 1 } \, dt = \int _ 0 ^ { 2 \pi } \frac { i e ^ { i t } } { 2i e ^ { i t } + e ^ { 2i t } } \, dt = \int _ 0 ^ { 2 \pi } \frac { i } { 2i + e ^ { i t } } \, dt = \pi \mathbf { 1 } \]
 
-This explicitly verifies the MSRA Residue Theorem for rational aperture field functions.
+This explicitly verifies the MSRA Residue Theorem for rational field functions.
 
 [#chap-the-master-field-equation]
 

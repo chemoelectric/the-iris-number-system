@@ -34,6 +34,9 @@ all: $(addsuffix .pdf, $(VOLUMES)) $(addsuffix .pdf, $(PAPERS))
 define preprocess-adoc
 $(AWK) < $(1) > $(2) ' \
 /^\*Proof:\*$$/ { print; print ""; next } \
+/^\*\*Proof:\*\*$$/ { print; print ""; next } \
+/^_Proof:_$$/ { print; print ""; next } \
+/^__Proof:__$$/ { print; print ""; next } \
 /^\* **[^[:space:]]/ { print ""; print; next } \
 /^1\. **[^[:space:]]/ { print ""; print; next } \
 /^=[[:space:]]+The Iris Number System: Fundamentals[[:space:]]*$$/ { \
