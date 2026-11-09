@@ -207,7 +207,7 @@ The domain \( ( \mathbb { Z } , + , \cdot , \le ) \) is a totally ordered commut
 [POSTULATE]
 .Postulate 2: Canonical Scalar Embedding into Conformal Geometric Algebra
 ====
-There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of Conformal Geometric Algebra:footnote:[Leo Dorst, Daniel Fontijne, and Stephen Mann. 2007. _Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. Morgan Kaufmann Publishers, San Francisco, CA. ISBN: 978-0-12-369461-4. To accommodate the needs of science and engineering, we will add to the original CGA a basis vector for _time_. Thus there will be six geometric dimensions instead of the original five. The basis vector for time will be a null vector.] \[ \iota _ 0 : \mathbb { Z } \hookrightarrow \mathbb { G } , \quad n \mapsto n \cdot \mathbf { 1 } \]
+There exists a canonical ring monomorphism embedding the integers into the grade-0 scalar subalgebra of Conformal Geometric Algebra:footnote:DorstEtAl[Leo Dorst, Daniel Fontijne, and Stephen Mann. 2007. _Geometric Algebra for Computer Science: An Object-Oriented Approach to Geometry_. Morgan Kaufmann Publishers, San Francisco, CA. ISBN: 978-0-12-369461-4. To accommodate the needs of science and engineering, we will add to the original CGA a basis vector for _time_. Thus there will be six geometric dimensions instead of the original five. The basis vector for time will be a null vector. Furthermore we have changed the notation for the point at the origin from \( e _ \text {o} \) to the more clearly distinguishable \( e _ \odot \).] \[ \iota _ 0 : \mathbb { Z } \hookrightarrow \mathbb { G } , \quad n \mapsto n \cdot \mathbf { 1 } \]
 
 
 where \( \mathbf { 1 } \) is the unit scalar element satisfying \( \mathbf { 1 } e _ A = e _ A \mathbf { 1 } = e _ A \) for all basis elements \( e _ A \).
@@ -1060,50 +1060,71 @@ This explicitly verifies the MSRA Residue Theorem for rational field functions.
 
 === The Master Field Equation
 
-Formulation of the Master Field Equation in Conformal Geometric Algebra (CGA), establishing unified field dynamics, direct basis blade definitions, self-generated mass, gravitation as wave refraction, and steady-state cosmological flux conservation under finite-duration observation processes.
+Formulation of the Master Field Equation in Conformal Geometric Algebra (CGA), establishing unified field dynamics, direct basis blade definitions, self-generated mass, gravitation as wave refraction, and steady-state cosmological flux conservation. No speculations are made about the origins of the universe.footnote:[It is no mere accident that the “Big Bang” resembles the “Origin of the Gods” of some epic fantasy novel. Such a theory has _no other appeal_. _Any other explanation_ would be far more likely for every observation attributed to such a “Bang.” The red shift and Cosmic Microwave Background, for instance, both are easily explained as the dissipation and wavelength-stretching of spherical wavefronts from distant galaxies crashing through each other.]
 
 ==== The Conformal Geometric Algebra Basis Vectors
 
-The unified field theory within the Counting-Iris framework expresses all fundamental physical interactions—electromagnetism, gravitation, particle charge-to-mass ratios, and field rotations—through a single, exact differential operation in Conformal Geometric Algebra (CGA).
+The unified field theory within the Counting-Iris framework expresses all fundamental physical interactions—electromagnetism, gravitation, particle charge-to-mass ratios, and field rotations—through a single, exact differential operation in Conformal Geometric Algebra (CGA). This is a geometric algebra that was developed by Dorst, Fontijne, and Mann for computer graphics,footnote:DorstEtAl[] though without the time dimension that we include. (The time dimension was not needed for such applications as ray tracing.)
 
-The canonical basis spanning this geometric space consists of six generators ordered with the spatial coordinates, followed by the null causal time step, and terminated by the conformal boundary pair:
-\[ \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , \quad e _ \odot , e _ \infty \} \]
-
+The canonical basis spanning this geometric space consists of six basis vectors:
+\[ \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \]
 satisfying the metric signatures:
 \[ e _ 1 ^ 2 = e _ 2 ^ 2 = e _ 3 ^ 2 = 1 \]
 \[ e _ 4 ^ 2 = 0 \]
-\[ e _ \odot ^ 2 = 0 , \qquad e _ \infty ^ 2 = 0 \]
+\[ e _ \odot ^ 2 = e _ \infty ^ 2 = 0 \]
 
-The conformal boundary pair forms a hyperbolic plane with the canonical non-diagonal metric:
+The set \( \{ e _ 1 , e _ 2 , e _ 3 \} \) formalizes ordinary Euclidean space.
+
+The null basis vector \( e _ 4 \) represents time. (There is no “space-time.” “Time” may be visualized as an absolute gauge of the sequences of causation.)
+
+The conformal boundary pair \( \{  e _ \odot, e _ \infty \} \) forms a hyperbolic plane with the canonical non-diagonal metric:
 \[ e _ \odot \cdot e _ \infty = e _ \infty \cdot e _ \odot = - 1 \]
 
-with all other basis pairings being mutually orthogonal:
-\[ e _ i \cdot e _ 4 = 0 , \quad e _ i \cdot e _ \odot = 0 , \quad e _ i \cdot e _ \infty = 0 \qquad ( i \in \{ 1 , 2 , 3 \} ) \]
+All other basis pairings are mutually orthogonal:
+\[ e _ i \cdot e _ 4 = 0 , \quad e _ i \cdot e _ \odot = 0 , \quad e _ i \cdot e _ \infty = 0 \qquad (\, i \in \{ 1 , 2 , 3 \}\, ) \]
 \[ e _ 4 \cdot e _ \odot = 0 , \quad e _ 4 \cdot e _ \infty = 0 \]
 
-The diagonal basis \( \{ e _ + , e _ - \} \) (where \( e _ \infty = e _ + + e _ - \) and \( e _ \odot = \frac{1}{2}(e _ - - e _ +) \)) is strictly an internal computational implementation device and is never used as the language of exposition.
+The metric is thus:
+\[
+\left (
+\begin{array}{ccc|c|cc}
+1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\ \hline
+0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+0 & 0 & 0 & 0 & 0 & -1 \\
+0 & 0 & 0 & 0 & -1 & 0
+\end{array}
+\right )
+\]
+
+To perform calculations it is convenient to work with a diagonal metric. A non-diagonal metric can be “diagonalized” by linear algebraic methods, with tranformation matrices used to convert between the basis vector sets. The preferred diagonal basis is \( \{  e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ {\plus} , e _ {\minus} \} \), where \( e _ \infty = e _ {\plus} + e _ {\minus} \) and \( e _ \odot = \frac{1}{2}(e _ {\minus} - e _ {\plus}) \). This is used for computation but never as the language of exposition.
+
+The Master Field Equation itself requires only the “physical” dimensions \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 \} \). These form a Euclidean Geometric Algebra (EGA) subspace. The full CGA is, however, extremely useful mathematically.
+
+The Master Field Equation is essentially Maxwell’s equations written in geometric algebra. The chief difficulty in doing this correctly is the Michelson-Morley experiment has to be taken into account. __This is done by realizing that everything in the universe is electromagnetic activity.__ Thus the reason an interferometer detects no appreciable “ether wind” is simply __the interferometer is itself moving with the medium, because it is made of activity within that medium!__{nbsp}footnote:[It is left as an exercise for the reader to convince themself that this realization is equivalent to Albert Einstein’s intuition that energycontent is proportional to a mass content. Consider what Einstein himself ignored would be the effect of the energy of the electromagnetic waves transmitted by the Michelson-Morley apparatus, if it were equivalent to an inertial mass.]
+
+“Frames of reference” are a red herring that have no place in physics. In mathematics they are called “coordinate systems” and are recognized as arbitrary manners of speech. Special Relativity is wrong.
+
 
 [#definition-master-field-equation]
 [DEFINITION]
 .Definition: The Master Field Equation
 ====
-In Conformal Geometric Algebra, the __Master Field Equation__ is defined as:
-\[ D F _ { \text { total } } = J _ { \text { total } } \]
-
+The __Master Field Equation__ is written:
+\[ D F _ { \text {total} } = J _ { \text {total} } \]
 where the Dirac-Iris differential operator \( D \) and the rate of change \( D _ t \) are given by:
-\[ D = \nabla + e _ 4 \frac { 1 } { c } D _ t \qquad D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \]
-
-the total electromagnetic field \( F _ { \text { total } } \) is a multivector combining the electric bivector and the spatial magnetic bivector:
-\[ F _ { \text { total } } = E e _ 4 + c B I _ 3 \]
+\[ D = \nabla + e _ 4 \frac { 1 } { c } D _ t\,,\mkern10mu D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \]
+The total electromagnetic field \( F _ { \text {total} } \) is a multivector combining the electric bivector and the spatial magnetic bivector:
+\[ F _ { \text {total} } = E e _ 4 + c B I _ 3 \]
 where \( I _ 3 = e _ 1 \wedge e _ 2 \wedge e _ 3 = e _ 1 e _ 2 e _ 3 \) is the spatial volume trivector,
-
-and the total source current density \( J _ { \text { total } } \) and velocity multivector \( U \) are given by:
-\[ J _ { \text { total } } = \rho _ 0 U \qquad U = u + c e _ 4 \]
+and the total source current density \( J _ { \text {total} } \) and velocity multivector \( U \) are given by:
+\[ J _ { \text {total} } = \rho _ 0 U,\mkern10mu U = u + c e _ 4 \]
 ====
 
-==== Description of Electric Field \( E \) and Magnetic Field \( B \)
+==== Description of the Electric Field \( E \) and Magnetic Field \( B \)
 
-In the unified multivector field \( F _ { \text { total } } = E e _ 4 + c B I _ 3 \), the terms \( E \) and \( B \) describe the two fundamental manifestations of the electromagnetic field within Conformal Geometric Algebra:
+In the unified multivector field \( F _ { \text {total} } = E e _ 4 + c B I _ 3 \), the terms \( E \) and \( B \) describe the two familiar manifestations of the electromagnetic field:
 
 . __Electric Field Vector \( E \)__:
    The electric field \( E = \sum _ { a = 1 } ^ 3 E _ a e _ a = E _ 1 e _ 1 + E _ 2 e _ 2 + E _ 3 e _ 3 \) is a 3-dimensional spatial vector. When coupled with the null causal time-step generator \( e _ 4 \) (where \( e _ 4 ^ 2 = 0 \)), the product \( E e _ 4 = E _ 1 ( e _ 1 \wedge e _ 4 ) + E _ 2 ( e _ 2 \wedge e _ 4 ) + E _ 3 ( e _ 3 \wedge e _ 4 ) \) forms the electric bivector. This term represents spatial potential gradients, directional field lines, and direct flux displacements across finite discrete grid points.
@@ -1112,19 +1133,24 @@ In the unified multivector field \( F _ { \text { total } } = E e _ 4 + c B I _ 
    The magnetic field is represented by the 3-dimensional spatial vector \( B = B _ 1 e _ 1 + B _ 2 e _ 2 + B _ 3 e _ 3 \). In the Master Field Equation, multiplication by the spatial volume trivector \( I _ 3 = e _ 1 e _ 2 e _ 3 \) produces the spatial magnetic bivector \( c B I _ 3 = c ( B _ 1 e _ 2 e _ 3 + B _ 2 e _ 3 e _ 1 + B _ 3 e _ 1 e _ 2 ) \). This term represents closed-loop spatial flux circulation, rotational magnetic flux density, and Spin(2) bivector vortex geometries.
 
 . __Unified Multivector Synthesis__:
-   The combination of \( E e _ 4 \) (the electric bivector) and \( c B I _ 3 \) (the spatial magnetic bivector) merges electric and magnetic interactions into a single, closed multivector entity \( F _ { \text { total } } \). Applying the Dirac-Iris differential operator \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) directly yields Maxwell's field equations, Lorentz force dynamics, self-trapped mass energy densities, and gravitation as wave refraction as exact algebraic consequences of a single fundamental law.
+   The combination of \( E e _ 4 \) (the electric bivector) and \( c B I _ 3 \) (the spatial magnetic bivector) merges electric and magnetic interactions into a single, closed multivector entity \( F _ { \text {total} } \). Applying the Dirac-Iris differential operator \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) directly yields Maxwell’s field equations, Lorentz force dynamics, self-trapped mass energy densities, and gravitation as wave refraction. These and other physical predictions follow inexorably from a single fundamental law.
 
 ==== Key Physical Consequences of the Master Field Equation
 
-. __Self-Generated Mass and Charge-to-Mass Ratios__: Particle masses (including electron, proton, and neutron structures) emerge directly from self-trapped electromagnetic energy density trapped in closed Spin(2) bivector aperture vortex geometries, yielding the electron charge-to-mass ratio from first principles.
-. __Newtonian Laws of Motion Implied from First Principles__: Newton's three laws of motion emerge as direct, exact consequences of the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \):
-   * *First Law (Inertia)*: In a source-free region (\( J _ { \text { total } } = \mathbf { 0 } \)), a localized self-trapped multivector field packet maintains a constant convective velocity vector \( u \), moving in a straight grid trajectory in the absence of external aperture flux gradients.
-   * *Second Law (\( F = \frac { d p } { d t } \))*: Spatial potential gradients and aperture field interactions exert a net multivector force \( F = D _ t p \) on a localized packet, driving the rate of change of total field momentum \( p = \int T \cdot e _ 4 \, dV \).
-   * *Third Law (Action and Reaction)*: Multivector field conservation in the Master Field Equation enforces strict field momentum conservation across interacting localized packets, guaranteeing that every action force is matched by an equal and opposite reaction force in the field momentum exchange.
-. __Gravitation as Wave Refraction__: Gravity is not a fundamental force. It is wave refraction. Both radiation and matter are made of electromagnetic waves and are refracted. Gravitational deflection emerges naturally from the wave-speed gradient established by localized energy density, removing the necessity of independent metric assertions while establishing the equivalence of inertial and gravitational mass.
-. __Trapped Light Structure of Dense Fields__: Super-dense electromagnetic field configurations trap light within finite aperture boundaries without singular collapse, providing the physical mechanism for compact astrophysical bodies.
-. __Galactic Rotation and Cosmological Steady State__: Flux conservation under finite-duration observation processes accounts for galactic rotation curves without requiring dark matter, establishing a steady-state cosmological energy equilibrium.
-. __Newtonian Inertial Kinematics of Wave Propagation__: Due to the convective temporal operator \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \) inside the Conformal Geometric Algebra differential operator \( D \), electromagnetic field perturbations propagate inertially across the discrete grid according to Newton's laws of motion via vector advection \( c + u \), rather than obeying an invariant speed constraint across coordinate transformations.
+. __Self-Generated Mass and Charge-to-Mass Ratios__: Particle masses (including electron, proton, and neutron structures) emerge directly from self-trapped electromagnetic energy density trapped in closed Spin(2) bivector vortex geometries, yielding the electron charge-to-mass ratio from first principles.
+. __Newtonian Laws of Motion Implied from First Principles__: Newton’s three laws of motion emerge as direct, exact consequences of the Master Field Equation \( D F _ { \text {total} } = J _ { \text {total} } \):
+   * *First Law (Inertia)*: In a source-free region (\(\, J _ { \text {total} } = \mathbf { 0 } \)) with no external flux gradients, a bit of electromagnetic activity maintains a constant velocity vector \( u \), moving in a straight trajectory.
+   * *Second Law (\( F = \frac { d p } { d t } \))*: Spatial potential gradients and field interactions exert a net multivector force \( F = D _ t p \) on a bit of electromagnetic activity, driving the rate of change of total field momentum \( p = \int T \cdot e _ 4 \, dV \).
+   * *Third Law (Action and Reaction)*: Momentum is conserved across interacting bits of electromagnetic activity, guaranteeing that every action force is matched by an equal and opposite reaction force.
+. __Gravitation as Wave Refraction__: Gravity is not a fundamental force. Gravity also is not an incomprehensible and magical warping of the fabric of reality. __Gravity is ordinary, everyday refraction.__ Both radiation and matter are made of electromagnetic undulations and are refracted. Gravitational deflection emerges naturally from the wave-speed gradient established by localized energy density. The mechanism of gravity is intuitive, as is the proportionality of inertial and gravitational mass.
+. __Trapped Light Structure of Dense Fields__: Super-dense electromagnetic fields trap light within finite boundaries without collapsing into physically impossible and mathematically speculative “singularities.” Therefore there is a _realistic_ description of compact astrophysical bodies (commonly known as “black holes,” but this name should be discarded, as they are not “holes”). Indeed, because the physics is described by Maxwell’s equations (the Master Field Equation), it is possible to infer much of the internal structure of these bodies, even though this cannot be observed.
+. __Galactic Rotation and Cosmological Steady State__: Flux conservation accounts for galactic rotation curves without requiring speculative “dark matter,” establishing a steady-state cosmological energy equilibrium.
+. __Newtonian Inertial Kinematics of Wave Propagation__: Due to the operator \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \), electromagnetic field perturbations propagate inertially at velocity \( c + u \). They _do not_ propagate at a constant speed \( c \) relative to all “observers.” One may ask why relative speeds faster than \( c \) are not observed empirically, but the answer is they _are_ observed—they are seen as changes in wavelength. That is, they are Doppler shifts.
+
+One might ask why the Master Field Equation is included in a number system. Numbers and physics alike are things of the universe. The separation of these two is an artifact of “pure mathematics,” which was invented by people detached from digging holes, driving piles, or pouring concrete, who did not care about how to erect a truss or land on the Moon. But there used to be no separation between mathematics and engineering. The etymology of “geometry” is “land surveying,” and Carl Friedrich Gauss was a land surveyor. It will turn out, for instance (in Volume II), that a concise and insightful solution to the Riemann hypothesis is none other than Shannon’s channel capacity theorem from electrical engineering.
+
+Furthermore, \( \pi \) is a physical constant. It describes the relationship between circular objects and their radii. Due to a prevalence of toroids in Nature, \( \pi \) appears in the formulae for other physical constants, such as the fine structure constant and proton-electron mass ratio. (These formulae will appear in other writings.) Thus what conventionally is considered “only mathematics,” \( \pi \), is really also physics and engineering.
+
 
 [#chap-completion-of-the-tautological-postulate-system]
 
@@ -1253,7 +1279,7 @@ Having established the explicit constructibility of Conformal Geometric Algebra 
 [THEOREM]
 .Theorem: Formal Tautological Completeness of the Iris System
 ====
-Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the MSRA vernier differential and integral operators, and the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \) in Conformal Geometric Algebra.
+Let \( \mathcal { S } _ { \text { Iris } } \) be the formal postulate system composed of Postulates 0 through 9, the MSRA vernier differential and integral operators, and the Master Field Equation \( D F _ { \text {total} } = J _ { \text {total} } \) in Conformal Geometric Algebra.
 
 Then \( \mathcal { S } _ { \text { Iris } } \) is tautologically complete: every valid physical field law, conservation principle, and analytical identity in real, complex, and multivector analysis reduces to an exact algebraic identity over discrete counting operations under Main Scale Projection \( ( \downarrow ) \), without requiring non-constructive continuum axioms, completed infinities, or uncountably infinite sets.
 
@@ -1264,7 +1290,7 @@ __Proof:__
 
 . __Calculus Tautology__: Under MSRA (Definitions 11–14), derivatives and integrals are exact discrete vernier difference ratios and sums. By Theorem 16 (Ring homomorphism of \( ( \downarrow ) \)), all operational identities—including the Product Rule (Theorem 8), Quotient Rule (Theorem 9), Chain Rule (Theorem 10), Fundamental Theorem of Calculus (Theorem 11), Cauchy-Goursat Theorem (Theorem 13), and Residue Theorem (Theorem 14)—hold as exact algebraic tautologies on the discrete grid \( \mathcal { G } _ \omega \).
 
-. __Physical Field Closure__: Coupling the discrete geometric gradient \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) with the multivector field \( F _ { \text { total } } \) yields the Master Field Equation \( D F _ { \text { total } } = J _ { \text { total } } \), which fully accounts for electromagnetic, gravitational, and particle charge-to-mass dynamics without unproven external field assumptions.
+. __Physical Field Closure__: Coupling the discrete geometric gradient \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) with the multivector field \( F _ { \text {total} } \) yields the Master Field Equation \( D F _ { \text {total} } = J _ { \text {total} } \), which fully accounts for electromagnetic, gravitational, and particle charge-to-mass dynamics without unproven external field assumptions.
 
 Therefore, every theorem and physical law within the system is proven strictly from within the Iris postulate system, making \( \mathcal { S } _ { \text { Iris } } \) self-contained, paradox-free, and tautologically complete. \( \square \)
 ====
@@ -2432,7 +2458,7 @@ Physics is thus completely described by motion and work, demonstrating that forc
 ==== Epistemological Rationale: Eliminating the Additive Split
 
 In the canonical presentation of the Master Field Equation (xref:definition-master-field-equation[_Definition: The Master Field Equation_]), the total electromagnetic field is expressed as an additive sum:
-\[ F _ { \text { total } } = E e _ { 4 } + c B I _ { 3 } \]
+\[ F _ { \text {total} } = E e _ { 4 } + c B I _ { 3 } \]
 where \( E e _ { 4 } \) is the electric bivector (formed from spatial vector \( E \) and null causal time-step generator \( e _ { 4 } \)) and \( c B I _ { 3 } \) is the spatial magnetic bivector.
 
 While this additive decomposition matches the dual instruments of legacy experimental metrology (which measure linear electrostatic deflection with charged test bodies and rotational magnetic torque with loop needles), it introduces an uneasy mathematical compromise: it connects two distinct geometric grades with a plus sign ( \( + \) ).
@@ -2484,10 +2510,10 @@ The multivector field generator \( F \) is the localized rotor derivative:
 \[ F = 2 ( D R ) R ^ { \dagger } \]
 
 The _Rotor Master Field Equation_ is defined as:
-\[ D \left[ 2 ( D R ) R ^ { \dagger } \right] = J _ { \text { total } } \]
-where \( J _ { \text { total } } \) is the localized source current multivector on \( \mathcal { G } _ { N } \).
+\[ D \left[ 2 ( D R ) R ^ { \dagger } \right] = J _ { \text {total} } \]
+where \( J _ { \text {total} } \) is the localized source current multivector on \( \mathcal { G } _ { N } \).
 
-In source-free regions of the lattice ( \( J _ { \text { total } } = \mathbf { 0 } \) ), the rotor equation of motion simplifies to:
+In source-free regions of the lattice ( \( J _ { \text {total} } = \mathbf { 0 } \) ), the rotor equation of motion simplifies to:
 \[ D \left[ ( D R ) R ^ { \dagger } \right] = \mathbf { 0 } \]
 ====
 
@@ -2507,8 +2533,8 @@ Decomposing \( \Omega \) into its geometric components in the canonical basis:
 . The projection along the spatial volume trivector \( I _ { 3 } = e _ { 1 } e _ { 2 } e _ { 3 } \) defines the magnetic induction vector:
 \[ B = - \frac { 1 } { c } \langle \Omega \cdot I _ { 3 } \rangle _ { 1 } \]
 
-Thus, the canonical bivector \( F _ { \text { total } } = E e _ { 4 } + c B I _ { 3 } \) is recovered identically as the Darboux bivector generator of the underlying rotor field:
-\[ F _ { \text { total } } = 2 ( D R ) R ^ { \dagger } \]
+Thus, the canonical bivector \( F _ { \text {total} } = E e _ { 4 } + c B I _ { 3 } \) is recovered identically as the Darboux bivector generator of the underlying rotor field:
+\[ F _ { \text {total} } = 2 ( D R ) R ^ { \dagger } \]
 The canonical formulation with its familiar \( E \) and \( B \) is therefore an exact metrological projection of the rotor field, retained for direct comparison with legacy measuring instruments that record push and torque along separate axes.
 
 [#conclusion-rotor-unification-fields]
@@ -2518,7 +2544,7 @@ The canonical formulation with its familiar \( E \) and \( B \) is therefore an 
 The dual appearance of electric and magnetic fields joined by an addition sign ( \( + \) ) in the canonical Master Field Equation is an artifact of measuring instruments that record linear push and circulating torque separately. When formulated in Conformal Geometric Algebra over \( \{ e _ { 1 } , e _ { 2 } , e _ { 3 } , e _ { 4 } , e _ { \odot } , e _ { \infty } \} \), the physical state of the field is an undivided conformal rotor \( R \) satisfying \( R R ^ { \dagger } = \mathbf { 1 } \).
 
 The rotor field contains translation (electric displacement), rotation (magnetic circulation), and dilation within a single multiplicative group element. The Rotor Master Field Equation:
-\[ D \left[ 2 ( D R ) R ^ { \dagger } \right] = J _ { \text { total } } \]
+\[ D \left[ 2 ( D R ) R ^ { \dagger } \right] = J _ { \text {total} } \]
 describes all physical dynamics on the discrete grid \( \mathcal { G } _ { N } \) by direct contact action over finite duration without an additive split.
 ====
 
