@@ -37,7 +37,7 @@ $(AWK) < $(1) > $(2) ' \
 /^\* **[^[:space:]]/ { print ""; print; next } \
 /^1\. **[^[:space:]]/ { print ""; print; next } \
 /^=[[:space:]]+The Iris Number System: Fundamentals[[:space:]]*$$/ { \
-  print "= The Iris Number System, Volume I: Fundamentals"; \
+  print "= The Iris Number System, Volume I: pass:[<br>] Fundamentals"; \
   next \
 } \
 /^=[[:space:]]+The Iris Number System: Applications to Number Theory, Analysis, Probability Theory, Statistics[[:space:]]*$$/ { \
