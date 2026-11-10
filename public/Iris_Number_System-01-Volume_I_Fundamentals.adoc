@@ -1502,44 +1502,44 @@ The Iris Number System—both in its original operational form \( \mathcal { S }
 
 Having proven the equivalence between the original constructive system ( \( \mathcal { S } _ { \text {Iris} } \) ) and the informational formulation ( \( \mathcal { S } _ { \text {Info} } \) ), we now present a third equivalent formulation: the __Operational Metrological Formulation__ ( \( \mathcal { S } _ { \text {Metro} } \) ).
 
-While the original system begins with geometric counting grids and the informational formulation begins with probability over discrete states, this third formulation begins directly with the physical act of measurement. It is the formulation closest to practical engineering and laboratory practice. It ensures that mathematical descriptions remain tied to what physical instruments actually do, guaranteeing that calculations correspond to the physical world so that bridges and structures do not fall down.
+While the original system begins with geometric counting grids and the informational formulation begins with probability over discrete states, this third formulation begins directly with the physical act of measurement. It is the formulation closest to practical engineering and laboratory practice. It ensures that mathematical descriptions remain tied to what physical instruments actually do, guaranteeing that calculations correspond to the physical world so bridges and buildings do not fall down.
+
+(Conventional mathematics, in contrast, contains the Banach-Tarski paradox, where mass appears out of nowhere. _Thus conventional mathematics is unsafe for engineering._ Engineering faculties should therefore defy mathematics faculties and start teaching students that there are no such things as uncountable infinities or limits, that the Axiom of Choice must be rejected, etc.)
 
 ==== The Four Practical Tools of Real-World Measurement
 
-Every physical measurement made in an engineering laboratory or machine shop relies on four fundamental tools:
+Every measurement made in a laboratory or machine shop relies on four fundamental tools:
 
-. __Counting (Whole Numbers)__: The simplest act of measurement is counting discrete events or items: five steel bolts, twelve gear teeth, or three pulses detected across a sensor terminal. Counting produces the natural numbers \( 0, 1, 2, \dots, N \). Whether we regard a count as an ordinal position in a sequence or as a cardinal tally of quantity is a philosophical distinction; in practical measurement, counting simply tells us how many discrete steps or events have occurred. _The smallest counting numbers precede language. In their recursive linguistic form they are foundational._
+. __Counting (Whole Numbers)__: The simplest act of measurement is counting discrete events or items: five steel bolts, twelve gear teeth, or three pulses detected across a sensor terminal. Counting produces the natural numbers \( 0, 1, 2, \dots, N \). Whether we regard a count as an ordinal position in a sequence or as a cardinal tally of quantity is a philosophical distinction; in practical measurement, counting simply tells us how many discrete steps or events have occurred. _The smallest counting numbers precede language and belong even to animals. In their indefinitely recursive linguistic form they are foundational._
 
-. __The Unit Aperture and Length (Rational Numbers)__: To measure length, we compare an unknown physical interval against a standard reference aperture—the Iris. This is like using a metric ruler, giving a decimal representation. Furthermore, a fraction \( p / q \) is not the supernal marriage of whole number numerator and denominator; it is a ratio of lengths. Stating that a rod has length \( 3 / 4 \) means three copies of a unit of length are geometrically congruent to four copies of the rod.footnote:[This is the ancient meaning of a ratio of two lengths.] _Lengths precede language. Rational numbers should be visualized as lengths._
+. __The Unit Reference and Length (Rational Numbers)__: To measure length, we compare an unknown physical interval against a standard reference—the Iris. This is like using a metric ruler, giving a decimal representation. Furthermore, a fraction \( p / q \) is not the supernal marriage of whole number numerator and denominator; it is a ratio of lengths. Stating that a rod has length \( 3 / 4 \) means three copies of a unit of length are geometrically congruent to four copies of the rod.footnote:[This is the ancient meaning of a ratio of two lengths.] _Lengths precede language. They can be felt or seen. Rational numbers should be visualized as lengths._
 
-. __Precision and Tolerances (The Real Numbers)__: In real-world engineering, no instrument has infinite precision. Every micrometer, caliper, or sensor reading carries an unavoidable amount of variation in its readings:
+. __Precision and Tolerances (The Real Numbers)__: In real-world engineering, no instrument has “infinite” precision. Every micrometer, caliper, or sensor reading carries an unavoidable amount of variation in its readings:
 \[ [ x - \delta _ 1 ( t ) , x + \delta _ 2 ( t ) ] \]
-where \( \delta _ 1 ( t ) , \delta _ 2 ( t ) > 0 \). Conventional mathematics falls into confusion because it assumes real numbers possess uncountably infinite precision, pretending an uncountably infinite string of decimal digits corresponds to a physical length. In the real world, this is equivalent to assuming we are divine beings who know everything all at once.footnote:[This assumption is commonly considered “normal” for mathematics. Gödel’s theorem shows it is pathological.] _We are not divine beings. We must account for our own limitations._ To do _theoretical_ mathematics we must account for the variation of measurement, while also having _some_ kind of infinite precision that _human beings_ can fathom. Thus we give real numbers _countably_ infinite precision.  +
-   +
-Real numbers are added to the language as a convenience, so we do not have to say again and again that there is this arbitrarily miniscule interval of precision. The reals are not Platonic entities. They are a sophisticated elaboration on the notion of length, oversimplified by conventional mathematics. _Visualize a real number as a rational number precise to within an arbitrarily small interval._
+where \( \delta _ 1 ( t ) , \delta _ 2 ( t ) > 0 \). Conventional mathematics falls into confusion because it assumes real numbers possess uncountably infinite precision, pretending an uncountably infinite string of decimal digits corresponds to a physical length. In the real world, this is equivalent to assuming we are divine beings who know everything all at once. _We are not divine beings. We must account for our own limitations._ To do _theoretical_ mathematics we must account for the variation of measurement, while also having _some_ kind of infinite precision that _human beings_ can fathom. Thus we give real numbers _countably_ infinite precision.
+Real numbers are added to the language as a convenience, so we do not have to say again and again that there is this arbitrarily miniscule interval of precision. _Visualize a real number as a rational number precise to within an arbitrarily small interval._
 
 . __Adjustable Field of View (m-res Numbers)__: When an engineer or microscopist needs to examine a part more closely, they do not imagine collapsing space into a dimensionless point. They switch to a higher-magnification lens on the microscope turret, or select a finer vernier scale on the instrument. This adjusts the field of view, stepping the measurement resolution down by a factor of \( \epsilon \):
 \[ \Delta x_m = \epsilon^m \]
-We can zoom in as many times as our instruments allow, but at any specific stage \( m \), our field of view remains a finite window with a finite resolution. This discrete zoom capability is the practical meaning of multiscale resolution (m-res) numbers. _The m-res numbers let us do calculus without the unrealistic notion of a “limit.” One instead zooms in more closely, does the calculation, then zooms back out._
+We can zoom in as many times as our instruments allow, but at any specific stage \( m \), our field of view remains a finite window with a finite resolution. This discrete zoom capability is the practical meaning of multiscale resolution (m-res) numbers. _The m-res numbers let us do calculus without the unrealistic notion of a “limit.” One instead zooms in, does the calculation, then zooms out._
 
 ==== Why Real-World Measurement Requires Probability and Scientific Inference
 
-Recognizing that measurement always has finite precision reveals immediately why probability theory and inductive inference are necessary in natural science:
+Recognizing that measurement always has finite precision shows why probability theory and plausible inference are necessary in natural science:
 
 * If an instrument had magical, infinite precision, an observer would know every microscopic motion in the universe down to the finest detail. Under such an imaginary condition, there would be no incomplete knowledge and no need for probability.
 
-* In physical actuality, because our measuring instruments have a finite aperture and finite precision, they can only measure macroscopic averages across the boundary of an aperture cell.
+* In fact, because our measuring instruments have finite scope and finite precision, they can measure only approximations of submicroscopically detailed realities.
 
-* Inside any measurement cell, there are many different microscopic arrangements of the plenum that are compatible with the exact same dial reading on our instrument.
+* Inside any measured region, there are many different submicroscopic arrangements compatible with the same reading on our instrument.
 
-* Under Jaynesian inference, the only honest way to reason about those unmeasured microscopic arrangements is to spread our probability distribution as evenly as the facts allow, maximizing the informational entropy:
+* Under Jaynesian inference, the only honest way to reason about those unmeasured submicroscopic arrangements is to spread our probability distribution as evenly as the facts allow, maximizing the informational entropy:
 \[ S = - \sum _ { k } P _ k \ln P _ k \]
 without inventing fairy tales about phantom particles or arbitrary ripples that we have not measured.
 
-When we measure the net source currents \( J \) entering and leaving a physical aperture, the unique, least-biased estimate for the internal field \( F \) that satisfies those boundary readings is the solution to the Master Field Equation:
+When we measure the net source currents \( J \) entering and leaving a region, the unique, least-biased estimate for the internal field \( F \) that satisfies those boundary readings is the solution to the Master Field Equation:
 \[ D F = J \]
-
-Physics and scientific inference are therefore united at the workbench: the sources \( J \) record our actual readings on the instrument dials, and the field \( F \) represents our honest, unbiased state of knowledge about what connects those readings across the aperture.
+Physics and scientific inference are therefore united at the workbench: the sources{nbsp}\( J \) give us readings on instrument dials, and the field{nbsp}\( F \) represents our honest, unbiased state of knowledge about what is going on between points of measurement.
 
 ==== Postulate Set of the Operational Metrological Formulation
 
@@ -1547,9 +1547,9 @@ We formalize these engineering principles into four explicit postulates:
 
 [#postulate-metro-0]
 [POSTULATE]
-.Postulate Metro-0: The Discrete Counting and Aperture Metrology Postulate
+.Postulate Metro-0: The Discrete Counting and Metrology Postulate
 ====
-Every physical measurement consists of a finite count of discrete events across a physical aperture calibrated against a standard unit length (the Iris). The spatial geometry of physical measuring apparatuses satisfies three-dimensional Euclidean geometry, extended to spacetime by the finite propagation duration of electromagnetic influences at speed \( c \).
+Every physical measurement consists of a finite count of discrete events across a physical distance calibrated against a standard unit length (the Iris). Measurement assumes three-dimensional Euclidean geometry, and it assumes temporal extent regulated by the speed of propagation of electromagnetic activity \( c \).
 ====
 
 [#postulate-metro-1]
@@ -1570,18 +1570,18 @@ The field of view of a measurement can be refined in discrete zoom steps \( m \i
 
 [#postulate-metro-3]
 [POSTULATE]
-.Postulate Metro-3: The Inductive Field Reconstruction Postulate (MaxEnt and DF = J)
+.Postulate Metro-3: The Inductive Field Reconstruction Postulate (MaxEnt and \( DF = J \))
 ====
-Given the localized source readings \( J \) measured on the boundary of an aperture cell, the expected multivector field \( F \) in Conformal Geometric Algebra inside the cell is the unique inductive inference that satisfies the boundary data while maximizing informational entropy over all unmeasured sub-vernier microstates. This unique, least-biased field satisfies the Master Field Equation:
+Given the localized source readings \( J \) measured on the boundary of a region, the expected multivector field \( F \) in Conformal Geometric Algebra inside the region is the unique plausible inference that satisfies the boundary data while maximizing informational entropy over all unmeasured sub-vernier microstates. This unique, least-biased field satisfies the Master Field Equation:
 \[ D F = J \]
 where
 \[ D = \nabla + e _ 4 \frac { 1 } { c } \,\mkern-1mu D _ t \]
 is the geometric differential operator and \( J \) represents the total localized multivector source current.
 ====
 
-==== Proof of Equivalence Among the Three Formulations
+==== Proof of Equivalence Between the Three Formulations
 
-We now establish the complete equivalence between all three formulations of the Iris Number System.
+We now establish equivalence between the three formulations of the Iris Number System.
 
 [#theorem-metrological-equivalence]
 [THEOREM]
@@ -1644,13 +1644,13 @@ The kinetic formulation models the universe as a discrete lattice of vertices co
 \[ \tau = \frac { \Delta x } { c } \]
 which acts as a unit delay operator in a digital lattice network.footnote:[A unit delay operator in a digital lattice is often written \( z ^ { - 1 } \). Here \( z \) is the complex-valued independent variable of the \( z \)-transform, and division by \( z \) corresponds to a unit delay.]
 
-When discrete wave packets meet at a lattice vertex, they undergo direct physical contact. They cannot pass through each other unaffected or act across empty space. Instead, they undergo a deterministic, local scattering transformation:
+When discrete “wave packets” (bits of electromagnetic activity) meet at a lattice vertex, they undergo direct physical contact. They cannot pass through each other unaffected or act across empty space. Instead, they undergo a deterministic, local scattering transformation:
 \[ n _ i ( \mathbf { x } + \mathbf { c } _ i \tau , t + \tau ) - n _ i ( \mathbf { x } , t ) = \Omega _ i ( n ) \]
 where \( n _ i \) is the count of discrete wave packets moving along channel direction \( \mathbf { c } _ i \), and \( \Omega _ i \) is the local collision operator.
 
 ==== Conservation and the Emergence of the Multivector Field
 
-The collision operator \( \Omega _ i \) is governed strictly by the physical requirements of direct contact:
+The collision operator \( \Omega _ i \) is constrained by the necessities of direct contact:
 
 . __Conservation of Total Count (Energy)__: The total number of incoming packets equals the total number of outgoing packets across the collision:
 \[ \sum _ i \Omega _ i ( n ) = 0 \]
@@ -1690,7 +1690,7 @@ Physical space will be represented by a discrete lattice of nodes, which are con
 [POSTULATE]
 .Postulate Kinetic-1: The Direct Contact Collision Postulate
 ====
-When discrete wave packets meet at a lattice vertex, interaction occurs strictly by direct physical contact over finite duration \( \tau \). The interaction is governed by a deterministic, local scattering transformation:
+When discrete wave packets meet at a lattice vertex, interaction occurs by direct physical contact over finite duration \( \tau \). The interaction is written as a deterministic, local scattering transformation:
 \[ n _ i ( \mathbf { x } + \mathbf { c } _ i \tau , t + \tau ) - n _ i ( \mathbf { x } , t ) = \Omega _ i ( n ) \]
 where the collision operator \( \Omega _ i \) satisfies exact conservation of packet count and contact momentum. No action-at-a-distance exists.
 ====
@@ -1708,12 +1708,12 @@ where the Master Field Equation is the macroscopic transfer function of the unde
 [POSTULATE]
 .Postulate Kinetic-3: The Persistent Wave Loop Postulate (Material Entities)
 ====
-Material entities are localized, self-sustaining standing loops of wave packets governed by the scattering operator \( \Omega \). They maintain a stable periodic circulation pattern across lattice vertices, exchanging momentum and energy with propagating signals strictly through direct contact collisions.
+Material entities are localized, self-sustaining standing loops of wave packets outlined by the scattering operator \( \Omega \). They maintain a stable periodic circulation pattern across lattice vertices, exchanging momentum and energy by direct contact collisions.
 ====
 
 ==== Proof of Equivalence Among the Four Formulations
 
-We now establish the complete equivalence across all four formulations of the Iris Number System.
+We now establish equivalence across the four formulations of the Iris Number System.
 
 [#theorem-kinetic-equivalence]
 [THEOREM]
@@ -1759,7 +1759,7 @@ Therefore, \( \mathcal { S } _ { \text {Kinetic} } \implies \mathcal { S } _ { \
 
 Combining Parts 1 and 2 with the previous equivalence, we conclude:
 \[ \mathcal { S } _ { \text {Iris} } \iff \mathcal { S } _ { \text {Info} } \iff \mathcal { S } _ { \text {Metro} } \iff \mathcal { S } _ { \text {Kinetic} } \]
-All four formulations of the Iris Number System are completely equivalent. \( \square \)
+All four formulations of the Iris Number System are equivalent. \( \square \)
 ====
 
 [#chap-historical-causal-formulation]
