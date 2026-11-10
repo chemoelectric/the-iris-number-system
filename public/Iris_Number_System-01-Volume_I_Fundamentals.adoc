@@ -1319,90 +1319,89 @@ A foundational milestone of twentieth-century mathematical logic was Kurt Gödel
 
 . Any consistent formal axiomatic system \( \mathcal { F } \) capable of carrying out elementary arithmetic cannot be syntactically complete; that is, there exist arithmetical propositions \( G \) formulated within the language of \( \mathcal { F } \) such that neither \( G \) nor \( \neg\, G \) is provable within \( \mathcal { F } \).
 
-. Moreover, such a system \( \mathcal { F } \) cannot prove its own formal consistency; a proof of \( \text { Cons } ( \mathcal { F } ) \) within \( \mathcal { F } \) can exist only if \( \mathcal { F } \) is inconsistent.footnote:[Because an inconsistent formal system can prove itself consistent, any self-consistency proof from a consistent formal system would have meant nothing, anyway. Was not the whole exercise a waste of time?]
+. Moreover, such a system \( \mathcal { F } \) cannot prove its own formal consistency; a proof of \( \text {Cons} ( \mathcal { F } ) \) within \( \mathcal { F } \) can exist only if \( \mathcal { F } \) is inconsistent.footnote:[Because an inconsistent formal system can prove itself consistent, any self-consistency proof from a consistent formal system would have meant nothing, anyway. Was not the whole exercise a waste of time?]
 
-The sociological and philosophical reaction of establishment academia to these results was extraordinary. Rather than treating unprovable consistency as an alarming symptom of defective foundational axioms, mathematicians came to treat the inability to prove consistency as a routine, inevitable property of mathematical thought. In the conventional milieu—governed by the authoritarian method of knowledge by consensus of peers rather than disciplined scientific inference—proving mathematics consistent was simply abandoned as an objective. It became open, official doctrine that should an inconsistency ever be discovered in conventional set theory or arithmetic, mathematicians would merely patch the axioms ad hoc and proceed as before.
+The sociological and philosophical reaction of establishment academia to these results was extraordinary. Rather than treating unprovable consistency as an alarming symptom of defective foundational axioms, mathematicians came to treat the inability to prove consistency as a routine, inevitable property of mathematical thought. In the conventional milieu—ruled by consensus of peers rather than disciplined scientific inference—proving mathematics consistent was abandoned as an objective. It became open doctrine that should inconsistency be discovered in conventional set theory-based mathematics, mathematicians would merely patch the axioms ad hoc and proceed as before.
 
-The constructive development of the Iris Number System reveals the profound fallacy of that resignation. The Iris Number System is an explicit, constructive mathematical structure that _proves itself consistent_:
+The constructive development of the Iris Number System reveals the profound fallacy of that resignation. The Iris Number System _can prove itself consistent_, while independently being known to be consistent, because it is tautologically complete:
 
 [#theorem-self-consistency-iris]
 [THEOREM]
 .Theorem: Constructive Self-Consistency of the Iris Tautological System
 ====
-Let \( \mathcal { S } _ { \text {Iris} } \) be the formal postulate system composed of Postulates 0 through 9, the Multiscale Resolution Analysis (MSRA) operators, and the Master Field Equation in Conformal Geometric Algebra.
+Let \( \mathcal { S } _ { \text {Iris} } \) be the postulate system composed of Postulates 0 through 9, the Multiscale Resolution Analysis (MSRA) operators, and the Master Field Equation written in Conformal Geometric Algebra.
 
 Then \( \mathcal { S } _ { \text {Iris} } \) constructively proves its own consistency: there exists no well-formed formula \( \Phi \) within the grammar of \( \mathcal { S } _ { \text {Iris} } \) such that both \( \mathcal { S } _ { \text {Iris} } \vdash \Phi \) and \( \mathcal { S } _ { \text {Iris} } \vdash \neg\, \Phi \).
 
 __Proof:__
 We proceed constructively and by contradiction.
 
-. __Finitary Grounding of Propositions__: Every legitimate proposition \( \Phi \) in \( \mathcal { S } _ { \text {Iris} } \) evaluates relations among finite discrete elements on a discrete aperture grid \( \mathcal { G } _ \omega \) over the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). By Postulates 0 and 1, the counting process is deterministic, strictly ordered, and terminates in a finite number of discrete operations for any given resolution scale \( \omega \).
+. __Finitary Grounding of Propositions__: Every legitimate proposition \( \Phi \) in \( \mathcal { S } _ { \text {Iris} } \) evaluates relations among finite discrete elements on a discrete grid \( \mathcal { G } _ \omega \) over the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). By Postulates 0 and 1, the counting process is deterministic and ordered, and it terminates in a finite number of discrete operations for any given resolution scale \( \omega \).
 
-. __Algebraic Invariance__: By Theorem 14 and Theorem 15, Conformal Geometric Algebra is an associative graded algebra whose basis elements satisfy deterministic geometric product relations. Every multivector calculation reduces to finite blade arithmetic whose identities are formal tautologies.
+. __Algebraic Invariance__: By Theorems 14 and{nbsp}15, Conformal Geometric Algebra is an associative graded algebra whose basis elements satisfy deterministic geometric product relations. Every multivector calculation reduces to finite blade arithmetic whose identities are tautologies.
 
 . __Contradiction Analysis__: Assume there exists a proposition \( \Phi \) such that both \( \Phi \) and \( \neg\, \Phi \) are theorems of \( \mathcal { S } _ { \text {Iris} } \). Under the Main Scale Projection homomorphism \( ( \downarrow ) \) (Theorem 16), the ring operations preserve equality:
 \[ ( \Phi \downarrow ) \iff ( ( \neg\, \Phi ) \downarrow ) \]
-However, on any finite discrete aperture grid \( \mathcal { G } _ \omega \), the valuation of an algebraic identity is a finite decision procedure evaluating to either \( 1 \) or \( 0 \) (true or false). The proposition \( \Phi \wedge \neg\, \Phi \) would require the existence of an aperture difference \( \Delta k _ \omega \cdot \delta _ \omega \) that is simultaneously zero and non-zero within the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \), violating the strict ordering of Postulate 1 and the Primordial Principle of Measurement (Postulate 0).
+However, on any finite discrete grid \( \mathcal { G } _ \omega \), the valuation of an algebraic identity is a finite decision procedure evaluating to either \( 1 \) or \( 0 \) (true or false). The proposition \( \Phi \wedge \neg\, \Phi \) would require the existence of a grid spacing \( \Delta k _ \omega \cdot \delta _ \omega \) that is simultaneously zero and non-zero within the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \), violating the strict ordering of Postulate 1 and the Primordial Principle of Measurement (Postulate 0).
 
-. __Constructive Self-Verification__: Because the entire deduction framework of \( \mathcal { S } _ { \text {Iris} } \) is itself a finite, constructive sequence of multivector operations on the discrete grid \( \mathcal { G } _ \omega \), the proof that no contradictory state \( 1 = 0 \) can be generated is a finite theorem derived directly from Postulates 0 through 9 within \( \mathcal { S } _ { \text {Iris} } \) itself.
-
-Therefore, \( \mathcal { S } _ { \text {Iris} } \) proves its own formal consistency. \( \square \)
+. __Constructive Self-Verification__: Because the entire deduction framework of \( \mathcal { S } _ { \text {Iris} } \) is itself a finite, constructive sequence of multivector operations on the discrete grid \( \mathcal { G } _ \omega \), the proof that no contradictory state \( 1 = 0 \) can be generated is a finite theorem derived directly from Postulates 0 through 9 within \( \mathcal { S } _ { \text {Iris} } \) itself. Therefore, \( \mathcal { S } _ { \text {Iris} } \) proves its own formal consistency. \( \square \)
 ====
 
 The crucial insight revealed by this theorem is that Gödel’s Second Incompleteness Theorem is not an inescapable barrier of all possible mathematical reasoning. Rather, Gödel’s result is a specific indictment: _conventional mathematics is defective_.
 
 The conditions that yield Gödelian undecidability and the impossibility of proving consistency are not universal features of number systems, but artifacts of two fatal errors introduced into conventional foundational mathematics:
 
-. __The Assumption of Completed Infinities and Non-Constructive Sets__: Conventional set theory (ZFC) and Peano arithmetic introduce uncountably infinite domains, the axiom of choice, and completed actual infinities. By departing from finitary counting and discrete aperture verification, conventional systems divorce mathematical truth from constructive procedure, introducing self-referential semantic loops (such as Gödel sentence construction via unbounded arithmetization) that cannot be resolved within the system.
+. __The Assumption of Completed Infinities and Non-Constructive Sets__: Conventional set theory (ZFC) and Peano arithmetic introduce uncountably infinite domains, the Axiom of Choice, and “completed infinities.” By departing from the finite and countably infinite, conventional systems introduce self-referential loops (such as Gödel sentence construction via unbounded arithmetization) that cannot be resolved within the system.
 
-. __The Reification of Continuum Axioms__: In conventional analysis, the continuum is treated as an actual infinity of dimensionless points. As demonstrated in our analysis of continuum paradoxes, this ungrounded metaphysical assumption generates non-measurable sets, divergent field singularities, and undecidable propositions.
+. __The Reification of Continuum Axioms__: In conventional analysis, the continuum is treated as an “actual infinity” of “dimensionless points.” As demonstrated in our analysis of continuum paradoxes, this ungrounded metaphysical assumption generates non-measurable sets, divergent field singularities, and undecidable propositions.
 
-When mathematics is constructed properly—as an explicit, discrete tautological system grounded in physical measurement, multiscale aperture verification, and Jaynesian scientific inference—Gödel’s dilemma evaporates. The system proves its own consistency because every theorem is a constructive identity of measurement, leaving no room for unprovable arithmetical inconsistencies or self-referential paradoxes. Gödel did not prove that mathematics cannot prove itself consistent; he proved that conventional mathematics is built on broken foundations.
+When mathematics is constructed properly—as an explicit, discrete tautological system grounded in physical measurement, multiscale analysis, and scientific inference based on axiomatic probability theory and the principle of maximum entropy—Gödel’s dilemma evaporates. The system proves its own consistency because every theorem is a constructive identity of measurement, leaving no room for unprovable arithmetical inconsistencies or self-referential paradoxes.
+
 
 [#chap-equivalent-informational-formulation]
 
 === Equivalent Informational Formulation of the Tautological System
 
-Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text {Iris} } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system unites Jaynesian Maximum Entropy probability theory and the Master Field Equation in Conformal Geometric Algebra into a unified foundation, demonstrating that physical field dynamics and inductive scientific inference are two facets of the same mathematical structure.
+Having established the complete constructive proof of the original Iris Number System ( \( \mathcal { S } _ { \text {Iris} } \) ), we now present an equivalent formulation of the tautological structure. This equivalent system unites Jaynesian Maximum Entropy probability theory and the Master Field Equation into a unified foundation, demonstrating that physical field dynamics and inductive scientific inference are two facets of the same mathematical structure.
 
 ==== Synthesis of Jaynesian MaxEnt Inference and the Master Field Equation
 
-In the original presentation of the Iris Number System, the framework is developed from Postulates 0 through 9: measurement operations on discrete counting grids, algebraic embedding into 64-dimensional Conformal Geometric Algebra (CGA), Multiscale Resolution Analysis (MSRA), and the Master Field Equation \( D F = J \). That formulation is completely intuitive, explicit, and grounded directly in the physical act of counting and aperture metrology.
+In the original presentation of the Iris Number System, the framework is developed from Postulates 0 through 9: measurement operations on discrete counting grids, algebraic embedding into 64-dimensional Conformal Geometric Algebra (CGA), Multiscale Resolution Analysis (MSRA), and the Master Field Equation \( D F = J \). That formulation is completely intuitive, explicit, and grounded directly in the physical acts of counting and discrete metrology.
 
-An equivalent formulation emerges when one recognizes that Jaynesian probability theory—understood as the unique, consistent extension of Aristotelian logic to conditions of incomplete information—and the Master Field Equation are intimately unified. In this informational formulation, the physical plenum is formulated as an information-bearing aperture network on the discrete grid \( \mathcal { G } _ N \).
+An equivalent formulation emerges when one recognizes that Jaynesian probability theory—understood as the unique, consistent extension of Aristotelian logic to conditions of incomplete information—and the Master Field Equation are intimately unified. In this informational formulation, the physical plenum is formulated as a discrete grid of informational snippets, \( \mathcal { G } _ N \).
 
-When we have incomplete knowledge of the microscopic field states within a discrete aperture cell, there are typically many different microscopic configurations that could produce the same macroscopic measurements. To make a scientific inference without pretending to know details we have not measured, we must assign probabilities to these possibilities. E. T. Jaynes proved that the only honest, unbiased probability assignment is the one that maximizes the Shannon informational entropy:
+When we have incomplete knowledge of the microscopic field states within a discrete region, there are typically many different microscopic configurations that could produce the same macroscopic measurements. To make a scientific inference without pretending to know details we have not measured, we must assign probabilities to these possibilities. E. T. Jaynes proved that the only honest, unbiased probability assignment is the one that maximizes the Shannon informational entropy:
 \[ S = - \sum _ { k } P _ k \ln P _ k \]
-Here \( P _ k \) is the probability assigned to microscopic configuration \( k \), and the entropy \( S \) is simply a number that measures how spread out or uncertain the probability distribution is. Maximizing \( S \) means making the distribution as spread out and impartial as possible, subject strictly to the facts we actually know from measurement.
+Here \( P _ k \) is the probability assigned to microscopic configuration \( k \), and the entropy \( S \) is a number that measures how spread out or uncertain the probability distribution is. Maximizing \( S \) means making the distribution as spread out and impartial as possible, subject to what we know from measurement.
 
-If our only measurement on an aperture cell is the net source current \( J \) across its boundary, then what is our best estimate for the field \( F \) inside? The boundary constraints require that the divergence and curl of the field match the source: \( D F = J \). The expected field configuration \( F \) that satisfies this constraint while maximizing entropy—that is, without assuming any arbitrary, unmeasured microscopic ripples or phantom sources—is the solution to:
+If our only measurement is the net source current \( J \) across the region’s boundary, then what is our best estimate for the field \( F \) inside? The boundary constraints require the divergence and curl of the field match the source: \( D F = J \). The expected field configuration \( F \) that satisfies this constraint while maximizing entropy—that is, without assuming any arbitrary, unmeasured microscopic ripples or phantom sources—is the solution to:
 \[ D F = J \]
+The Master Field Equation is the uniquely least-biased plausible inference. We are _compelled_ to use the Master Field Equation, if we model the universe as source currents and a field. To use any other equation would be irrational.
 
-Thus, the Master Field Equation is not an arbitrary empirical assertion; it is simply the unique, least-biased inductive inference possible given the localized source boundary constraints. Physics and Jaynesian scientific inference become structurally identical.
 
 ==== Postulate Set of the Informational Formulation
 
-The equivalent informational system, denoted \( \mathcal { S } _ { \text {Info} } \), is defined by four streamlined postulates:
+The equivalent informational system, denoted \( \mathcal { S } _ { \text {Info} } \), is defined by four condensed postulates:
 
 [#postulate-info-0]
 [POSTULATE]
-.Postulate Info-0: Discrete Aperture Information Space
+.Postulate Info-0: Discrete Information Space
 ====
-All mathematical and physical propositions evaluate states within a discrete aperture information space defined over multiscale resolution grids \( \mathcal { G } _ N \) in the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). The system admits no completed actual infinities, non-constructive sets, or dimensionless point continua. Every measurable quantity is a finite digital signal or analog m-res vernier count.
+All mathematical and physical propositions evaluate states within a discrete information space defined over multiscale resolution grids \( \mathcal { G } _ N \) in the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). The system admits no completed “actual infinities,” non-constructive sets, or dimensionless point continua. Every measurable quantity is a finite digital signal or analog m-res vernier count.
 ====
 
 [#postulate-info-1]
 [POSTULATE]
 .Postulate Info-1: Geometric Algebra of Multichannel Information Propagation
 ====
-Information channels and multivector flux states are geometrically closed within the 64-dimensional Conformal Geometric Algebra over \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \), spanned by the canonical basis \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \). Causal state transitions and finite-duration signal propagation advance along the convective temporal direction \( e _ 4 \), while conformal boundary transformations are mediated by null aperture vectors \( e _ \infty \) and \( e _ \odot \).
+Information channels and multivector flux states are geometrically closed within the 64-dimensional Conformal Geometric Algebra over \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \), spanned by the canonical basis \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \). Causal state transitions and finite-duration signal propagation advance along the temporal direction \( e _ 4 \), whereas conformal boundary transformations are mediated by null vectors \( e _ \infty \) and \( e _ \odot \).
 ====
 
 [#postulate-info-2]
 [POSTULATE]
 .Postulate Info-2: The Informational Principle of Direct Contact Action
 ====
-Information transfer, field coupling, and causal state updates occur exclusively via direct topological contact across adjacent aperture boundaries on \( \mathcal { G } _ N \). All physical influences propagate across the lattice with finite velocity bounded by the speed of electromagnetic waves relative to their source of transmission, designated \( c \), over finite non-zero duration. Non-local action-at-a-distance, unmediated interactions, and instantaneous phase changes are strictly eliminated.
+Information transfer, field coupling, and causal state updates occur exclusively via direct topological contact across adjacent boundaries on \( \mathcal { G } _ N \). All physical influences propagate across the lattice with finite velocity bounded by the speed of electromagnetic waves relative to their source of transmission, designated \( c \). Such activities always require a finite positive duration. Non-local action-at-a-distance, unmediated interactions, and instantaneous phase changes are things that do not happen. The very notion is abhorrent.
 ====
 
 [#postulate-info-3]
@@ -1427,7 +1426,6 @@ We now state and prove the primary equivalence theorem connecting the two formal
 Let \( \mathcal { S } _ { \text {Iris} } \) be the original postulate system composed of Postulates 0 through 9, the Multiscale Resolution Analysis (MSRA) operators, and the Master Field Equation \( D F = J \) in Conformal Geometric Algebra.
 
 Let \( \mathcal { S } _ { \text {Info} } \) be the Informational Formulation defined by Postulates Info-0 through Info-3.
-
 Then the two formal systems are structurally equivalent:
 \[ \mathcal { S } _ { \text {Iris} } \iff \mathcal { S } _ { \text {Info} } \]
 
@@ -1440,7 +1438,7 @@ The proof requires demonstrating two-way logical implication between the two for
 
 Assume the validity of \( \mathcal { S } _ { \text {Iris} } \).
 
-. __Derivation of Postulate Info-0__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 0 (Primordial Principle of Measurement) establishes that every mathematical entity corresponds to a finite measurement operation. Postulate 1 establishes the discrete successor order and ring properties of integers. Postulate 5 establishes exact rational partition grids \( \mathcal { G } _ N \), and Postulate 7 establishes the strict countability boundary eliminating completed infinities. The conjunction of Postulates 0, 1, 5, and 7 directly defines the discrete aperture information space of Postulate Info-0.
+. __Derivation of Postulate Info-0__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 0 (Primordial Principle of Measurement) establishes that every mathematical entity corresponds to a finite measurement operation. Postulate 1 establishes the discrete successor order and ring properties of integers. Postulate 5 establishes exact rational partition grids \( \mathcal { G } _ N \), and Postulate 7 establishes the strict countability boundary eliminating completed infinities. The conjunction of Postulates 0, 1, 5, and 7 directly defines the discrete information space of Postulate Info-0.
 
 . __Derivation of Postulate Info-1__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 2 embeds scalars into Conformal Geometric Algebra, Postulate 3 preserves quadratic metric forms, and Postulate 4 establishes bivector parity duality. Theorem 14 constructively proves the unique existence of the 64-dimensional Conformal Geometric Algebra. Postulate 9 defines the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ \odot \). The conjunction of these statements establishes the complete multichannel geometric algebra of Postulate Info-1.
 
@@ -1454,7 +1452,7 @@ Therefore, \( \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \tex
 
 Assume the validity of \( \mathcal { S } _ { \text {Info} } \).
 
-. __Recovery of Postulates 0, 1, 5, and 7__: Postulate Info-0 restricts all admissible propositions to finite counting operations and vernier aperture steps on discrete grids \( \mathcal { G } _ N \) over \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). This directly recovers:
+. __Recovery of Postulates 0, 1, 5, and 7__: Postulate Info-0 restricts all admissible propositions to finite counting operations and to vernier steps on discrete grids \( \mathcal { G } _ N \) over \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). This directly recovers:
   * Postulate 0 (measurement operation primacy),
   * Postulate 1 (discrete successor ordering and integer ring properties),
   * Postulate 5 (discrete rational grid subdivisions \( k _ \omega \cdot \delta _ \omega \)), and
@@ -1466,7 +1464,7 @@ Assume the validity of \( \mathcal { S } _ { \text {Info} } \).
   * Postulate 4 (bivector parity duality), and
   * Postulate 9 (the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ \odot \), constructed directly from the canonical basis generators).
 
-. __Recovery of Postulate 8__: Postulate Info-2 explicitly asserts action by direct contact across adjacent aperture boundaries with finite-duration propagation at velocity \( c \). This identically recovers Postulate 8.
+. __Recovery of Postulate 8__: Postulate Info-2 explicitly asserts action by direct contact across adjacent locations, with finite-duration propagation at velocity \( c \). This identically recovers Postulate 8.
 
 . __Recovery of Postulate 6 and the Master Field Equation__: Postulate Info-3 assigns probabilities to microscopic field states by maximizing informational entropy subject to known source constraints. In the absence of source constraints, maximizing entropy assigns equal probability to all accessible microscopic configurations, which directly recovers Postulate 6 (the Jaynesian Maximum Entropy Prior). When source current constraints \( J \) are present, the expected field that satisfies the boundary conditions without assuming any phantom or unmeasured variations is the field satisfying:
 \[ D F = J \]
@@ -1478,24 +1476,27 @@ Therefore, \( \mathcal { S } _ { \text {Info} } \implies \mathcal { S } _ { \tex
 
 Combining Parts 1 and 2, we conclude:
 \[ \mathcal { S } _ { \text {Iris} } \iff \mathcal { S } _ { \text {Info} } \]
-The original system and the informational formulation are completely equivalent. \( \square \)
+The original system and the informational formulation are equivalent. \( \square \)
 ====
 
 ==== Jaynesian Inference versus the Authoritarian Method of Knowledge by Consensus of Peers
 
-The equivalence demonstrated in the preceding theorem underscores a profound epistemological distinction: knowledge acquired through Jaynesian inference is the true scientific method, whereas the doctrine of “knowledge by consensus of peers” is authoritarian and unscientific.
+The equivalence demonstrated in the preceding theorem underscores an epistemological distinction: knowledge acquired through Jaynesian inference is the true scientific method, whereas the doctrine of “knowledge by consensus of peers” is authoritarian and unscientific.
 
-In the Jaynesian paradigm, probability is recognized as extended logic. As rigorously demonstrated by Richard T. Cox and Edwin T. Jaynes, whenever one demands that reasoning under uncertainty satisfy basic consistency requirements (such as transitivity, structural non-contradiction, and invariance under alternative groupings of equivalent evidence), the mathematical rules of probability theory are the unique, unavoidable consequence. There is no freedom to invent arbitrary alternative rules. Every scientific inference is an exact deduction from explicitly stated prior information and operational data.
+Beginning with the geophysicist Harold Jeffreys, probability has been recognized as the generalization of Aristotelian logic to scientifically rational plausible inference. Richard T. Cox and Edwin T. Jaynes showed meticulously that, when one demands certain obviously desirable things (such as transitivity, structural non-contradiction, and invariance under alternative groupings of equivalent evidence), probability theory becomes the unique, unavoidable consequence. There is no freedom to invent alternative rules.
 
-In sharp contrast, the authoritarian method of “knowledge by consensus of peers” operates on political and sociological principles:
+Thus a plausible inference made using probability theory and maximum entropy should not be argued against. The data may be wrong or incomplete. There may be false assumptions injected somewhere. The entire framework of the problem may be a misapprehension. The conclusion may be doubted, but the plausible inference itself should not be, and if the data and assumptions are not doubted, then neither should be the conclusion by plausible inference. It does not matter what anyone says, whether they be your prankish cousin or the president of the AAAS.
 
-. __Substitution of Votes for Evidence__: Under consensus doctrine, the validity of a mathematical or physical claim is judged not by deductive proof or operational measurement, but by whether a designated majority of academic peers or institutional committees approve of the conclusion.
+In contrast, the authoritarian method of “knowledge by consensus of peers” operates on political and sociological principles:
 
-. __Institutional Gatekeeping__: Consensus creates a self-reinforcing priesthood where funding, publication, and credentials are conditioned upon adhering to established paradigms. Dissenting proofs—regardless of mathematical rigor—are dismissed as unorthodox.
+. __Substitution of Votes for Evidence__: Under consensus doctrine, the validity of a mathematical or physical claim is judged not by plausible inference, but by whether some particular mass of “peers” or committees approves.
 
-. __Vulnerability to the Sunk Cost Fallacy__: As documented in our epistemological analysis, academic communities invest decades of career prestige, computational software, and financial resources into bankrupt continuum formalisms and unphysical particle creeds. Institutional consensus acts as a defense mechanism to shield those sunk costs from refutation.
+. __Institutional Gatekeeping__: Consensus creates a self-reinforcing priesthood where funding, publication, and credentials are conditioned upon adhering to established doctrines. Dissenting demonstrations—no matter how meticulously they be done—are dismissed with a wave of the hand, or sometimes with vicious polemic.
 
-The Iris Number System—both in its original operational form \( \mathcal { S } _ { \text {Iris} } \) and in its equivalent informational form \( \mathcal { S } _ { \text {Info} } \)—repudiates the consensus method entirely. Truth in mathematics and natural science is not determined by committee ballots or majority opinion. The Master Field Equation \( D F = J \) and the theorems of the Iris system stand because they are inescapable deductive consequences of finite counting, direct contact action, and the laws of scientific inference.
+. __Vulnerability to the Sunk Cost Fallacy__: Academic, government, and business communities invest decades of career prestige, computational software, and financial resources into bankrupt continuum formalisms and unphysical particle creeds. Institutional consensus acts as a defense mechanism to shield those sunk costs from refutation.
+
+The Iris Number System—both in its original operational form \( \mathcal { S } _ { \text {Iris} } \) and in its equivalent informational form \( \mathcal { S } _ { \text {Info} } \)—exists apart from the consensus method. Nothing herein is done with the hope of Fred Custer getting his picture in _Science_ magazine, soon to be renamed _Science Prize Announcements Weekly_. Truth in mathematics and natural science is not determined by committee ballots or majority opinion. The Master Field Equation \( D F = J \) and the theorems of the Iris system stand because they are the best inferences possible if we model the universe as source currents and a field, the way James Clerk Maxwell did.
+
 
 === The Operational Metrological Formulation of the Tautological System
 
