@@ -1768,43 +1768,42 @@ All four formulations of the Iris Number System are equivalent. \( \square \)
 
 Having established the original constructive system (\( \mathcal { S } _ { \text {Iris} } \)), the informational formulation (\( \mathcal { S } _ { \text {Info} } \)), the operational metrological formulation (\( \mathcal { S } _ { \text {Metro} } \)), and the discrete kinetic formulation (\( \mathcal { S } _ { \text {Kinetic} } \)), we now present a fifth equivalent formulation: the __Historical Causal Formulation__ (\( \mathcal { S } _ { \text {History} } \)).
 
-While conventional physics commonly sets up dynamic problems looking forward—prescribing initial positions and velocities at an arbitrary starting instant and then attempting to integrate differential equations into the future—the physical world operates through the accumulated convergence of past interactions. Because electromagnetic influences propagate with finite speed, any physical entity at coordinates \( ( \mathbf { x } , t ) \) is responding strictly to finite-time wavefronts and direct-contact encounters originating from its past.
+Although conventional physics almost always imagines initial positions and velocities and attempts to predict the future, the world we actually live in does not operate by predicting the future. It is, rather, the accumulated result of past interactions. Any physical entity at coordinates \( ( \mathbf { x } , t ) \) got there thanks to _past_ finite-time wavefronts and direct-contact encounters. So why not formulate physics to match?
 
-In this formulation, causation is understood retrospectively: matter is where it is at a given moment because a specific countable sequence of events brought it there. When mathematical formulations reject uncountable infinities, this retrospective perspective becomes exact: the past of any entity is—in the Iris Numbers _theory_—a finite, discrete causal chain, permitting an exact backtrace.footnote:[The actual physical plenum _is not words_. It can be described, and it can be modeled—but it _cannot be said_. Whether it “_is_” or “_is not_” “a finite, discrete causal chain” is a meaningless question.]
+In such a formulation, causation is understood retrospectively: matter is where it is at a given moment because some countable sequence of events brought it there. When mathematical formulations reject uncountable infinities, this retrospective perspective becomes exact: the past of any entity is formulated as a finite, discrete causal chain, permitting an exact backtrace.footnote:[This formulation is a _description_ of the physical world. It is _not_ the physical world as such. The actual physical plenum _is not words or formulae_. It must be passed over in silence. Unlike Wittgenstein’s demand for silence in his _Tractatus_, this silence is experimentally demonstrable. Get together any group of people and ask them to _speak_ or _write_ the physical plenum. Count how many succeed. If you count even one success, you have discovered a genie escaped from their magic lamp.]
 
 ==== Retrospective Causation and the Hypothetical Backtrace
 
 In the conventional view, derived from seventeenth-century mechanics, the universe is imagined as an initial-value problem. In the “modern” version of this view, employing defective mathematics, one assumes an uncountably infinite continuum of real coordinates \( \mathbb { R } ^ 3 \) and a continuous time parameter \( t \). Forces are imagined to push matter forward into the next infinitesimal moment \( t + dt \). Diagrams depict differentials such as \( dt \) as straight lines that disappear “in the limit.” Motion forwards is a motion that exists and yet disappears “in the limit” (supposedly resolving Zeno’s paradoxes). This forward-looking viewpoint that occurs in uncountable infinities of no-time conceals the physical mechanism of force transmission, encouraging the belief that forces act without duration or that objects possess abstract, ungrounded velocities disconnected from their interaction history.
 
-In the real world, no interaction occurs without duration. Every push, pull, deflection, wave emission, or wave absorption requires an amount of time. The maximum speed at which any physical influence or wave packet can travel relative to its source is designated \( c \). We may call \( c \) the __fundamental speed of causation__. Indeed, all units of speed should be defined in terms of it, rather than in terms of the SI constant mislabeled \( c \) (which is called by the meaningless name “speed of light in a vacuum”).
+In the real world, no interaction occurs without duration. Every push, pull, deflection, wave emission, or wave absorption requires an amount of time. The maximum speed at which any physical influence or wave packet can travel relative to its source is designated \( c \). We may call \( c \) the __fundamental speed of causation__. Indeed, all units of speed should be defined in terms of it, rather than in terms of the SI constant mislabeled \( c \). This SI constant is called by the name “speed of light in a vacuum,” which is meaningless: light exists only in an uninterrupted medium, the field. The term “vacuum,” meaning absence of air, has no application in this context.footnote:[Imagining radiation as little pellets moving through “empty space” is the only way such ridiculous fantasies as “the Cosmic Microwave Background is a remnant of the Big Bang” can come to be. They make no sense once one realizes space is filled with an electromagnetic medium, and radiation is not pellets but waves in that medium, which spread and dissipate and crash through each other.]
 
-Consequently, an entity located at position \( \mathbf { x } \) at time step \( t \) does not exist in isolation. It is the destination point of influences that left other entities at earlier time steps:
-\[ t _ { \text { causal } } = t - \frac { r } { c } \]
-
-The entity does not need to guess the future; its present location, momentum, and internal stress state are the exact sum total of the finite sequence of causal arrivals that have reached it from the past:
+Consequently, an entity located at position \( \mathbf { x } \) at time step \( t \) does not exist in isolation. It is the destination point of influences that departed other entities at earlier time steps:
+\[ t _ { \text {causal} } = t - \frac { r } { c } \]
+The entity does not need to guess the future. Its present location, momentum, and internal stress state are the exact sum total of the finite sequence of causal arrivals that have reached it from the past:
 \[ \mathbf { x } _ i [ k ] = \mathbf { x } _ i [ 0 ] + \sum _ { j = 0 } ^ { k - 1 } \Delta \mathbf { x } _ i [ j ] \]
 where each displacement \( \Delta \mathbf { x } _ i [ j ] \) is determined entirely by direct-contact momentum exchanges with incoming wave packets during step \( j \).
 
-Because space and time in the Iris Number System are discrete at the m-res scale on the lattice \( \mathcal { G } _ N \), this history is not an intractable continuum of states. It is a strictly countable, finite tree of discrete events. Starting from any observed present configuration, one can, in principle, carry out a complete, step-by-step hypothetical backtrace:
-\[ \text { State } [ k ] \xrightarrow { \text { backtrace } } \text { State } [ k - 1 ] \xrightarrow { \text { backtrace } } \dots \xrightarrow { \text { backtrace } } \text { State } [ 0 ] \]
+Because space and time in the Iris Number System are discrete at the m-res scale on the lattice \( \mathcal { G } _ N \), this history is not an intractable continuum of states. It is a countable, finite tree of discrete events. Starting from any observed present configuration, one can, in principle, carry out a complete, step-by-step hypothetical backtrace:
+\[ \text {State} [ k ] \xrightarrow { \text {backtrace} } \text {State} [ k - 1 ] \xrightarrow { \text {backtrace} } \dots \xrightarrow { \text {backtrace} } \text {State} [ 0 ] \]
 Every particle position, molecular configuration, and wave distribution is fully accounted for by the finite chain of past interactions that constructed it.
 
 ==== Postulate Set of the Historical Causal Formulation
 
-To formulate this perspective with utmost clarity, we present an expanded set of eight foundational postulates. We do not seek artificial brevity, but rather complete physical transparency:
+To formulate this perspective more clearly, we present a less compressed set of eight foundational postulates:
 
 [#postulate-history-0]
 [POSTULATE]
 .Postulate History-0: Non-Zero Spatial Extent and Non-Zero Mass
 ====
-Every physical entity possesses a strictly non-zero spatial extent and a strictly non-zero mass. Entities of purported zero spatial extent or zero mass do not exist in the real world; by abductive reasoning, any such entities actually consist of m-resolution vernier numbers on the multiscale grid \( \mathcal { G } _ N \). (They may, for instance, be associated with _density functions_.)
+Every physical entity possesses non-zero spatial extent and non-zero mass. Entities of purported zero spatial extent or zero mass do not exist in the real world. By abductive reasoning, any such purported entities _actually_ should be regarded as m-resolution vernier numbers on the multiscale grid \( \mathcal { G } _ N \). (They may, for instance, be associated with _density functions_.)
 ====
 
 [#postulate-history-1]
 [POSTULATE]
 .Postulate History-1: The Discrete Lattice Stage
 ====
-Physical space and the succession of physical events exist at a definite discrete scale on the multiscale resolution grid \( \mathcal { G } _ N \). Physical displacements and clock ticks occur in discrete, finite m-resolution steps. There is no uncountably infinite continuum of spatial points or temporal “instants.”
+Physical space and the succession of physical events exist at a definite discrete scale on the multiscale resolution grid \( \mathcal { G } _ N \). Physical displacements and clock ticks occur in discrete, finite m-resolution steps. There is no uncountably infinite continuum of flyspeck “points” or temporal “instants.”
 ====
 
 [#postulate-history-2]
@@ -1818,42 +1817,47 @@ Every physical influence, wave packet, and field disturbance propagates across s
 [POSTULATE]
 .Postulate History-3: Action by Direct Contact
 ====
-Physical entities interact if and only if their localized field boundaries or topological halos touch directly in the same discrete spatial cell during the same discrete time step. There is no non-local action at a distance and no influence across intervening empty space without physical wave propagation.
+Physical entities interact if and only if their localized field boundaries or topological halos touch directly in the same discrete spatial cell (maximally localized region) during the same discrete time step. There is no non-local action at a distance and no influence across intervening empty space without physical wave propagation.
 ====
 
 [#postulate-history-4]
 [POSTULATE]
 .Postulate History-4: The Principle of Historical Determination
 ====
-Any piece of matter or localized wave structure is located where it is at a given time step strictly because of the finite history of physical pushes, direct-contact interactions, and wave absorptions it has experienced. The position and motion of an entity at step \( k \) are the cumulative consequence of its antecedent causal history:
+Any piece of matter or localized wave structure is located where it is at a given time step because of the finite history of physical pushes, direct-contact interactions, and wave absorptions it has experienced. The position and motion of an entity at step \( k \) are the cumulative consequence of its antecedent causal history:
 \[ \mathbf { x } _ i [ k ] = \mathbf { x } _ i [ 0 ] + \sum _ { j = 0 } ^ { k - 1 } \Delta \mathbf { x } _ i [ j ] \]
-where each displacement \( \Delta \mathbf { x } _ i [ j ] \) is governed by direct-contact momentum transfers from incoming wave packets.
+where the displacements \( \Delta \mathbf { x } _ i [ j ] \) are incoming wave packets transferring momentum by direct contact.
 ====
 
 [#postulate-history-5]
 [POSTULATE]
-.Postulate History-5: Strict Finite Traceability (The Hypothetical Backtrace)
+.Postulate History-5: Finite Traceability (The Hypothetical Backtrace)
 ====
-Because all physical entities possess finite non-zero spatial extent and advance by finite discrete steps over finite durations, the past causal history of any physical configuration is a finite, recursively enumerable sequence of interactions. It is always possible to perform an exact hypothetical backtrace from any present configuration to reconstruct its antecedent causal chain without encountering mathematical singularities, divergent integrals, or continuum infinities.
+Because all physical entities possess finite non-zero spatial extent and advance by finite discrete steps over finite durations, the past causal history of any physical configuration is a finite, recursively enumerable sequence of interactions. It is always possible to perform a probabilistic hypothetical backtrace from any present configuration to reconstruct its antecedent causal chain without encountering mathematical singularities, divergent integrals, or continuum infinities.
 ====
 
 [#postulate-history-6]
 [POSTULATE]
-.Postulate History-6: Historical Conservation of Stress-Energy
+.Postulate History-6: Historical Conservation of Momentum and Energy
 ====
-At every discrete direct-contact encounter, the total multivector momentum and stress-energy handed off from antecedent steps is strictly conserved. No energy or momentum is created out of nothing or lost to nowhere; the causal balance sheet across all history sums exactly to zero net creation.
+At every discrete direct-contact encounter, the total multivector momentum and stress-energy (energy stored in the elastic undulation of the electromagnetic field) handed off from antecedent steps is conserved. No momentum or energy is created or lost.
 ====
 
 [#postulate-history-7]
 [POSTULATE]
 .Postulate History-7: Matter-Field Unity and Bound Causal Loops
 ====
-Matter and electromagnetic radiation are structures of the very same localized electromagnetic field governed by the Master Field Equation \( D F = J \). A material entity is a persistent, self-sustaining loop of wave packets whose internal direct-contact scattering maintains its structural boundary while tracing its path through the discrete lattice.
+Matter and electromagnetic radiation alike are structural configurations within the electromagnetic field, which we describe via the Master Field Equation \( D F = J \), which is Maxwell’s equations written in geometric algebra on the assumption the field were one and everywhere (or, equivalently, that matter was made of the same energy as radiation, and that all radiation was waves, not “photons”). _No representation of the universe shall be used unless it be equivalent to Maxwell’s equations, with the electromagnetic field being unitary and universal._ A material entity is a persistent, self-sustaining loop of wave packets whose internal direct-contact scattering maintains its structural boundary while tracing its path through the discrete lattice. “Photons” are not allowed. “Quarks” are not allowed. “Neutrinos” are not allowed. “Frames of reference” are not allowed. And so on with nearly everything familiar from 1905 or later. Only Maxwell’s theory is allowed.
+
+_The results of the Michelson-Morley experiment are accounted for automatically, because the Michelson-Morley apparatus was a configuration within the medium and thus moved with it._
+
+There was never a need for Special Relativity, which was a terrible mistake. The “ether wind” kerfuffle arose from failure to imagine matter might be electromagnetic.
+
 ====
 
-==== Proof of Equivalence Among the Five Formulations
+==== Proof of Equivalence of the Five Formulations
 
-We now establish the complete constructive equivalence connecting the Historical Causal Formulation with the previous four formulations of the Iris Number System.
+We now establish equivalence of the Historical Causal Formulation with the previous four formulations of the Iris Number System.
 
 [#theorem-history-equivalence]
 [THEOREM]
@@ -1873,26 +1877,26 @@ __Proof:__
 We have already established in xref:theorem-kinetic-equivalence[Theorem: Structural Equivalence of the Discrete Kinetic Formulation, the Operational Metrological Formulation, the Original Iris System, and the Informational Formulation] that the first four systems are mutually equivalent:
 \[ \mathcal { S } _ { \text {Iris} } \iff \mathcal { S } _ { \text {Info} } \iff \mathcal { S } _ { \text {Metro} } \iff \mathcal { S } _ { \text {Kinetic} } \]
 
-Therefore, to establish the five-way equivalence, it is necessary and sufficient to prove the two-way implication:
+Therefore, to establish the five-way equivalence, it suffices to prove the two-way implication:
 \[ \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \text {History} } \quad \text{and} \quad \mathcal { S } _ { \text {History} } \implies \mathcal { S } _ { \text {Iris} } \]
 
 __Part 1: Forward Implication (\( \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \text {History} } \))__
 
 Assume the validity of \( \mathcal { S } _ { \text {Iris} } \).
 
-. __Derivation of Postulates History-0 and History-1__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 0 establishes that all quantities represent discrete measurement operations. Postulate 1 establishes the discrete ring of integers with unit successor step. Postulate 5 establishes exact rational partition grids \( \mathcal { G } _ N \), and Postulate 7 enforces the strict discrete countability boundary, completely eliminating completed infinities and zero-dimensional continuum points. Chapter 5 constructs m-res numbers \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \) with non-zero scale factor \( \epsilon ^ m \). Thus, all physical entities possess finite non-zero spatial extent and non-zero mass, and space-time forms a discrete lattice stage \( \mathcal { G } _ N \). This establishes Postulates History-0 and History-1.
+. __Derivation of Postulates History-0 and History-1__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 0 establishes that all quantities represent discrete measurement operations. Postulate 1 establishes the discrete ring of integers with unit successor step. Postulate 5 establishes exact rational partition grids \( \mathcal { G } _ N \), and Postulate 7 enforces the strict discrete countability boundary, completely eliminating completed infinities and zero-dimensional continuum points. Chapter 5 constructs m-res numbers \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \) with non-zero scale factor \( \epsilon ^ m \). Thus, all physical entities possess finite non-zero spatial extent and non-zero mass, and space along with time forms a discrete lattice stage \( \mathcal { G } _ N \). This establishes Postulates History-0 and History-1.
 
 . __Derivation of Postulates History-2 and History-3__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 8 (Action by Direct Contact via Topological Halos) explicitly establishes that all physical interactions occur by direct contiguous contact across halo boundaries over finite duration, with causal propagation bounded by \( c \), the speed of electromagnetic influences relative to their source. This establishes Postulates History-2 and History-3.
 
 . __Derivation of Postulates History-4 and History-5__: In \( \mathcal { S } _ { \text {Iris} } \), physical dynamics are governed by the Master Field Equation \( D F = J \) on discrete grids \( \mathcal { G } _ N \). Because all interactions propagate with finite velocity \( c \) across discrete links, the field arriving at any cell at step \( k \) is the convolution of localized source emissions from past finite-time steps \( k - r / ( c \tau ) \). Integrating the momentum transfer over discrete time yields the cumulative displacement equation:
 \[ \mathbf { x } _ i [ k ] = \mathbf { x } _ i [ 0 ] + \sum _ { j = 0 } ^ { k - 1 } \Delta \mathbf { x } _ i [ j ] \]
-Because the lattice index set is strictly finite and recursively enumerable (Postulate 7), the past interaction history is a finite sequence of discrete steps. Reversing the sequence step by step constructs an exact hypothetical backtrace without singularities. This establishes Postulates History-4 and History-5.
+Because the lattice index set is finite and recursively enumerable (Postulate 7), the past interaction history is a finite sequence of discrete steps. Reversing the sequence step by step constructs a hypothetical backtrace without singularities. This establishes Postulates History-4 and History-5.
 
 . __Derivation of Postulate History-6__: In \( \mathcal { S } _ { \text {Iris} } \), metric preservation in Conformal Geometric Algebra (Postulate 3) and the divergence theorem on the geometric differential operator \( D ( D F ) = 0 \) guarantee exact multivector conservation of stress-energy-momentum:
 \[ D \cdot T = 0 \]
 At each discrete direct-contact boundary, this yields exact conservation of incoming and outgoing momentum and energy, establishing Postulate History-6.
 
-. __Derivation of Postulate History-7__: In \( \mathcal { S } _ { \text {Iris} } \), Chapter 10 and Volume IV establish that electrons, protons, and all material particles are localized, self-sustaining standing electromagnetic field configurations governed by \( D F = J \). This establishes Postulate History-7.
+. __Derivation of Postulate History-7__: In \( \mathcal { S } _ { \text {Iris} } \), within this volume and especially in Volume IV of this series (where, for instance, electrons are found to be toroidal), it is established that electrons, protons, neutrons, and all material particles are localized, self-sustaining standing electromagnetic field configurations described by \( D F = J \). This establishes Postulate History-7.
 
 Therefore, \( \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \text {History} } \).
 
@@ -1925,7 +1929,7 @@ Therefore, \( \mathcal { S } _ { \text {History} } \implies \mathcal { S } _ { \
 Combining Parts 1 and 2 with the established equivalence among the first four formulations, we conclude:
 \[ \mathcal { S } _ { \text {Iris} } \iff \mathcal { S } _ { \text {Info} } \iff \mathcal { S } _ { \text {Metro} } \iff \mathcal { S } _ { \text {Kinetic} } \iff \mathcal { S } _ { \text {History} } \]
 
-All five formulations of the Iris Number System are completely and rigorously equivalent. \( \square \)
+All five formulations of the Iris Number System are equivalent. \( \square \)
 ====
 
 
