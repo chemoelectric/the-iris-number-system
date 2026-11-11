@@ -2092,7 +2092,7 @@ Profound Insight Analysis on the expanding universe hierarchy \( \{ \mathcal { E
 [DEFINITION]
 .Definition: Profound Insight Number
 ====
-A __Profound Insight Number__ \( X \in \mathbb { R } _ { \text { Insight } } \) is a sequence of measurement states \( ( X _ k ) _ { k \in \mathbb { Z } _ { \ge 0 } } \) evaluated across expanding universes \( \mathcal { E } _ k \), where each \( X _ k \) is a discrete coordinate on the illuminated lattice \( \mathcal { G } _ k \) satisfying:
+A __Profound Insight Number__ \( X \in \mathbb { R } _ { \text {Insight} } \) is a sequence of measurement states \( ( X _ k ) _ { k \in \mathbb { Z } _ { \ge 0 } } \) evaluated across expanding universes \( \mathcal { E } _ k \), where each \( X _ k \) is a discrete coordinate on the illuminated lattice \( \mathcal { G } _ k \) satisfying:
 \[ X _ k = \Lambda _ k \cdot r + \Delta _ k \]
 where \( r \in \mathbb { R } \) is the baseline invariant value, \( \Lambda _ k \) is the discrete enlightenment expansion factor (where \( \Lambda _ k \) gets indefinitely large as \( k \) increases), and \( \Delta _ k \) represents the residual insight perturbation satisfying \( | \Delta _ k | / \Lambda _ k \to 0 \) as \( k \) increases.
 
@@ -2106,7 +2106,7 @@ The baseline contraction operator \( ( \downarrow ) \) returns the ground-state 
 ====
 Let \( \Psi : \mathcal { U } _ 0 \to \mathbb { G } \) be a multivector field in Conformal Geometric Algebra. In Profound Insight Analysis, the derivative of \( \Psi \) with respect to a spatial or temporal coordinate \( x \) is evaluated not by dividing by a vanishing infinitesimal, but by expanding the universe to enlightenment level \( \mathcal { E } _ k \) where the displacement becomes an integer step \( \Delta X _ k = 1 \):
 \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi _ { \mathcal { E } _ k } ( X _ k + 1 ) - \Psi _ { \mathcal { E } _ k } ( X _ k ) } { \Lambda _ k ^ { - 1 } } \right ) \]
-where \( \Psi _ { \mathcal { E } _ k } \) is the field evaluated on the expanded universe lattice. When the universe is contracted via \( ( \downarrow ) \), the higher-order residual enlightenment corrections vanish, leaving the exact multivector derivative in Conformal Geometric Algebra.
+where \( \Psi _ { \mathcal { E } _ k } \) is the field evaluated on the expanded universe lattice. When the universe is contracted via \( ( \downarrow ) \), the higher-tier residual enlightenment corrections vanish, leaving the exact multivector derivative.
 ====
 
 ==== Proof of Equivalence with Multiscale Resolution Analysis (MSRA)
@@ -2115,42 +2115,40 @@ where \( \Psi _ { \mathcal { E } _ k } \) is the field evaluated on the expanded
 [THEOREM]
 .Theorem: Equivalence of Profound Insight Analysis and Multiscale Resolution Analysis (MSRA)
 ====
-Let \( \mathcal { A } _ { \text { Insight } } \) denote the analytical framework of Profound Insight Analysis defined by Postulates Insight-0 through Insight-4, Profound Insight numbers, and derivatives evaluated via universal expansion \( \Uparrow _ k \) and the contraction operator \( ( \downarrow ) \).
+Let \( \mathcal { A } _ { \text {Insight} } \) denote the analytical framework of Profound Insight Analysis defined by Postulates Insight-0 through Insight-4, Profound Insight numbers, and derivatives evaluated via universal expansion \( \Uparrow _ k \) and the contraction operator \( ( \downarrow ) \).
 
-Let \( \mathcal { A } _ { \text { MSRA } } \) denote the analytical framework of Multiscale Resolution Analysis defined over discrete grid hierarchies \( \{ \mathcal { G } _ \omega \} \) via vernier apertures \( \delta _ \omega = 1 / \omega \) and the Main Scale Projection operator \( ( \downarrow ) \).
+Let \( \mathcal { A } _ { \text {MSRA} } \) denote the analytical framework of Multiscale Resolution Analysis defined over discrete grid hierarchies \( \{ \mathcal { G } _ \omega \} \) via vernier spacings \( \delta _ \omega = 1 / \omega \) and the Main Scale Projection operator \( ( \downarrow ) \).
 
 Then Profound Insight Analysis and Multiscale Resolution Analysis are constructively, algebraically, and analytically equivalent:
-\[ \mathcal { A } _ { \text { Insight } } \iff \mathcal { A } _ { \text { MSRA } } \]
+\[ \mathcal { A } _ { \text {Insight} } \iff \mathcal { A } _ { \text {MSRA} } \]
 
 Every derivative, integral, series expansion, and analytical calculation in MSRA has an exact, bijective counterpart in Profound Insight Analysis, and vice versa.
 
-*Proof.*
+__Proof.__
 
-We prove the two-way analytical equivalence between \( \mathcal { A } _ { \text { MSRA } } \) and \( \mathcal { A } _ { \text { Insight } } \):
+We prove the two-way analytical equivalence between \( \mathcal { A } _ { \text {MSRA} } \) and \( \mathcal { A } _ { \text {Insight} } \):
 
-. __Part 1: Forward Implication (\( \mathcal { A } _ { \text { MSRA } } \implies \mathcal { A } _ { \text { Insight } } \))__:
-Assume the validity of Multiscale Resolution Analysis \( \mathcal { A } _ { \text { MSRA } } \). In MSRA, a multiscale measurement quantity is given by \( x ^ \ast = r + \epsilon ^ \ast \) on vernier grid \( \mathcal { G } _ \omega \) with grid aperture \( \delta _ \omega = 1 / \omega \), where Main Scale Projection satisfies \( ( \downarrow ) ( x ^ \ast ) = r \).
-
-Define the enlightenment dilation factor \( \Lambda _ k = \omega _ k \). Under the universal expansion \( \Uparrow _ k \), the spatial coordinate scales by \( \Lambda _ k \), yielding expanded state \( X _ k = \Lambda _ k x ^ \ast = \Lambda _ k r + \Lambda _ k \epsilon ^ \ast \). Setting \( \Delta _ k = \Lambda _ k \epsilon ^ \ast \), since \( | \epsilon ^ \ast | < 1 / N \) for all finite \( N \), the ratio \( | \Delta _ k | / \Lambda _ k = | \epsilon ^ \ast | \to 0 \) as \( k \to \infty \), satisfying Definition: Profound Insight Number. The contraction operator \( ( \downarrow ) \) yields:
-\[ ( \downarrow ) ( X ) = \lim _ { k \to \infty } \frac { X _ k } { \Lambda _ k } = r = ( \downarrow ) ( x ^ \ast ) \]
-
+. __Part 1: Forward Implication (\( \mathcal { A } _ { \text {MSRA} } \implies \mathcal { A } _ { \text {Insight} } \))__:
+Assume the validity of Multiscale Resolution Analysis \( \mathcal { A } _ { \text {MSRA} } \). In MSRA, a multiscale measurement quantity is given by \( x ^ \ast = r + \epsilon ^ \ast \) on vernier grid \( \mathcal { G } _ \omega \) with grid spacing \( \delta _ \omega = 1 / \omega \), where Main Scale Projection satisfies \( ( \downarrow ) ( x ^ \ast ) = r \).  +
+  +
+Define the enlightenment dilation factor \( \Lambda _ k = \omega _ k \). Under the universal expansion \( \Uparrow _ k \), the spatial coordinate scales by \( \Lambda _ k \), yielding expanded state \( X _ k = \Lambda _ k x ^ \ast = \Lambda _ k r + \Lambda _ k \epsilon ^ \ast \). Setting \( \Delta _ k = \Lambda _ k \epsilon ^ \ast \), since \( | \epsilon ^ \ast | < 1 / N \) for all finite \( N \), the ratio \( | \Delta _ k | / \Lambda _ k = | \epsilon ^ \ast | \to 0 \) as \( k \to \infty \), satisfying Definition: Profound Insight Number. The contraction operator \( ( \downarrow ) \) yields:footnote:[We avoid the notation “\( \lim \)” here, in favor of the vertical line.]
+\[ ( \downarrow ) ( X ) = \left. \frac { X _ k } { \Lambda _ k }\right| _ {k \to \infty}\mkern-20mu = r = ( \downarrow ) ( x ^ \ast ) \]  +
+  +
 Furthermore, for any multivector field \( \Psi \), the MSRA vernier derivative is:
 \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
 Setting \( \delta _ \omega = \Lambda _ k ^ { - 1 } \) and expressing the displacement in expanded coordinates where \( \Delta X _ k = \Lambda _ k \delta _ \omega = 1 \) yields identically the Profound Insight derivative:
 \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi _ { \mathcal { E } _ k } ( X _ k + 1 ) - \Psi _ { \mathcal { E } _ k } ( X _ k ) } { \Lambda _ k ^ { - 1 } } \right ) \]
-Thus, every analytical operation in MSRA maps directly to an operation in Profound Insight Analysis. Hence \( \mathcal { A } _ { \text { MSRA } } \implies \mathcal { A } _ { \text { Insight } } \).
+Thus, every analytical operation in MSRA maps directly to an operation in Profound Insight Analysis. Hence \( \mathcal { A } _ { \text {MSRA} } \implies \mathcal { A } _ { \text {Insight} } \).
 
-. __Part 2: Reverse Implication (\( \mathcal { A } _ { \text { Insight } } \implies \mathcal { A } _ { \text { MSRA } } \))__:
-Assume the validity of Profound Insight Analysis \( \mathcal { A } _ { \text { Insight } } \). Given a sequence of expanded states \( X _ k = \Lambda _ k r + \Delta _ k \) in enlightenment universes \( \mathcal { E } _ k \), define the vernier scale parameter \( \omega _ k = \Lambda _ k \) and vernier aperture \( \delta _ { \omega _ k } = 1 / \Lambda _ k \). Then the scaled ratio \( x _ k ^ \ast = X _ k / \Lambda _ k = r + \Delta _ k / \Lambda _ k \) forms a Cauchy-convergent sequence of vernier aperture measurements on \( \mathcal { G } _ { \omega _ k } \), defining an m-res number \( x ^ \ast \in \mathbb { R } ^ \ast \).
+. __Part 2: Reverse Implication (\( \mathcal { A } _ { \text {Insight} } \implies \mathcal { A } _ { \text {MSRA} } \))__:
+Assume the validity of Profound Insight Analysis \( \mathcal { A } _ { \text {Insight} } \). Given a sequence of expanded states \( X _ k = \Lambda _ k r + \Delta _ k \) in enlightenment universes \( \mathcal { E } _ k \), define the vernier scale parameter \( \omega _ k = \Lambda _ k \) and vernier \( \delta _ { \omega _ k } = 1 / \Lambda _ k \). Then the scaled ratio \( x _ k ^ \ast = X _ k / \Lambda _ k = r + \Delta _ k / \Lambda _ k \) forms a Cauchy-convergent sequence of vernier measurements on \( \mathcal { G } _ { \omega _ k } \), defining an m-res number \( x ^ \ast \in \mathbb { R } ^ \ast \).  +
+  +
+The contraction operator \( ( \downarrow ) \) of Postulate Insight-3 maps \( X \) to \( r \), which is identical to the Main Scale Projection \( ( \downarrow ) ( x ^ \ast ) = r \). The Profound Insight derivative over unit step \( \Delta X _ k = 1 \) transforms under scale contraction into the MSRA difference quotient across spacing \( \delta _ \omega = 1 / \Lambda _ k \). By the Ring Homomorphism Property (Theorem 16), the algebraic rules of differentiation, integration as finite summation, and contour integration hold identically in both formulations.  +
+  +
+Thus, \( \mathcal { A } _ { \text {Insight} } \implies \mathcal { A } _ { \text {MSRA} } \).
 
-The contraction operator \( ( \downarrow ) \) of Postulate Insight-3 maps \( X \) to \( r \), which is identical to the Main Scale Projection \( ( \downarrow ) ( x ^ \ast ) = r \). The Profound Insight derivative over unit step \( \Delta X _ k = 1 \) transforms under scale contraction into the MSRA difference quotient across aperture \( \delta _ \omega = 1 / \Lambda _ k \). By the Ring Homomorphism Property (Theorem 16), the algebraic rules of differentiation, integration as finite aperture summation, and contour integration hold identically in both formulations.
-
-Thus, \( \mathcal { A } _ { \text { Insight } } \implies \mathcal { A } _ { \text { MSRA } } \).
-
-Combining Parts 1 and 2, we conclude:
-\[ \mathcal { A } _ { \text { Insight } } \iff \mathcal { A } _ { \text { MSRA } } \]
-
-Profound Insight Analysis and Multiscale Resolution Analysis are exact dual mathematical equivalents for analysis on discrete grids. \( \square \)
+Combining Parts 1 and 2:
+\[ \mathcal { A } _ { \text {Insight} } \iff \mathcal { A } _ { \text {MSRA} } \qquad \square \]
 ====
 
 
@@ -2159,23 +2157,19 @@ Profound Insight Analysis and Multiscale Resolution Analysis are exact dual math
 
 The second alternative formulation of analysis within the Iris framework is __Discrete Weierstrass Analysis (DWA)__. 
 
-Historically, Karl Weierstrass sought to purge calculus of hazy infinitesimals and kinematic fluxions by introducing the static \( arepsilon \)-\( \delta \) formalism:
-\[
-\forall \varepsilon > 0, \; \exists \delta > 0 \text{ such that } 0 < | x - c | < \delta \implies | f(x) - L | < \varepsilon
-\]
-However, conventional nineteenth- and twentieth-century analysis committed a fatal epistemological error: it coupled the \( arepsilon \)-\( \delta \) quantifier structure to the ungrounded metaphysics of the continuum, taking the limit as \( \delta \to 0 \) through an uncountably infinite sequence of points of zero spatial extent.
+Karl Weierstrass sought to purge calculus of hazy infinitesimals and kinematic fluxions by introducing the \( \varepsilon \)-\( \delta \) formalism:
+\[ \forall \varepsilon > 0, \; \exists\,\delta > 0 \text{ such that } 0 < | x - c | < \delta \implies |\, f(x) - L\, | < \varepsilon \]
+However, conventional nineteenth- and twentieth-century mathematics committed an epistemological error: it coupled the \( \varepsilon \)-\( \delta \) quantifier structure to speculative “continuum” metaphysics, taking the limit as \( \delta \to 0 \) through an uncountably infinite sequence of points of zero spatial extent.
 
-In __Discrete Weierstrass Analysis__, we retain the rigor of the \( arepsilon \)-\( \delta \) bounded inequality structure, but __completely eliminate the limit__. Instead of allowing \( \delta \) to shrink to non-existent zero points, the analysis __stops at an arbitrary, finite real interval size__ \( \delta > 0 \).
+In __Discrete Weierstrass Analysis__, we retain the rigor of the \( \varepsilon \)-\( \delta \) bounded inequality structure, but __eliminate the limit__. Instead of \( \delta \) shrinking a nothing, \( \delta \) shrinks until it __stops__ at some interval size \( \delta > 0 \). This action hinders practical calculus in no way. The “limit”-taking of conventional mathematics is _superfluous_, except perhaps in the student loan-funded parlor games of mathematics professors.
 
 ==== Foundational Principles of Discrete Weierstrass Analysis
 
-1. _No Infinitesimals and No Zero-Limits_: The interval size \( \delta \) is a finite real caliper measurement (an aperture on the resolution grid \( \mathcal { G } _ N \)). We never take \( \delta \to 0 \); we evaluate inequalities at a given, chosen finite resolution \( \delta \).
-2. _Strictly Countable Infinities and Finite Calculations_: Because the process never descends into an uncountably infinite continuum, all calculations across bounded domains evaluate a finite number of discrete functional steps. Infinities appear strictly as potential, countable enumeration indexes—never as completed actual infinities.
-3. _No Division by Zero_: Because \( \delta > 0 \) is finite and strictly bounded away from zero, the difference quotient:
-\[
-\frac{\Delta f}{\delta} = \frac{f(x + \delta) - f(x)}{\delta}
-\]
-never involves division by zero. Division by zero can only occur if the function \( f(x) \) itself contains an intrinsic singularity (such as \( f(x) = 1/x \) evaluated at \( x = 0 \)), which causes an identical division by zero in standard MSRA.
+1. _No Infinitesimals and No Zero-Limits_: The interval size \( \delta \) is a finite real caliper measurement (a spacing on the resolution grid \( \mathcal { G } _ N \)). We never take \( \delta \to 0 \). We evaluate inequalities at a finite resolution \( \delta \).
+2. _Strictly Countable Infinities and Finite Calculations_: Because the process never descends into an uncountably infinite continuum, all calculations across bounded domains evaluate a finite number of discrete functional steps. Infinities appear strictly as potential, countable enumeration indexes—never as “completed actual infinities.”
+3. _No Division by Zero_: Because \( \delta > 0 \) is finite and bounded away from zero, the difference quotient:
+\[ \frac{\Delta f}{\delta} = \frac{f(x + \delta) - f(x)}{\delta} \]
+never involves division by zero. Division by zero can occur only if the function \( f(x) \) itself contains a pole (such as \( f(x) = 1/x \) evaluated at \( x = 0 \)), which causes an identical division by zero in standard MSRA.
 
 ==== Postulates of Discrete Weierstrass Analysis
 
