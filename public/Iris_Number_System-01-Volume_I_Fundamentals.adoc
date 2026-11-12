@@ -998,13 +998,13 @@ This guarantees that circulation along closed observation loops measures exact, 
 
 ==== The MSRA Residue Theorem
 
-In digital signal processing, system analysis, and multivector field theory, closed contour integrations frequently enclose isolated poles, where the magnitude of a function has no assumed upper bound. The MSRA Residue Theorem generalizes Cauchy’s residue formula to discrete vernier grid contours and multivector fields in Conformal Geometric Algebra.
+In digital signal processing, system analysis, and multivector field theory, closed contour integrations frequently enclose isolated poles, where the magnitude of a function becomes indefinitely large at surrounding points. The MSRA Residue Theorem generalizes Cauchy’s residue formula to discrete vernier grid contours and multivector fields in Conformal Geometric Algebra.
 
 [#theorem-msra-residue]
 [THEOREM]
 .Theorem: MSRA Residue Theorem
 ====
-Let \( \Gamma \) be a simple closed oriented contour bounding a simple region \( \mathcal { D } \). If a multivector field \( \Psi : \mathbb { G } \to \mathbb { G } \) is differentiable throughout \( \mathcal { D } \) except at a finite set of isolated pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \) (points where the field’s magnitude has no assumed upper bound), then the closed contour integral evaluates to the discrete sum of multivector residues: \[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
+Let \( \Gamma \) be a simple closed oriented contour bounding a simple region \( \mathcal { D } \). If a multivector field \( \Psi : \mathbb { G } \to \mathbb { G } \) is differentiable throughout \( \mathcal { D } \) except at a finite set of isolated pole points \( \{ z _ 1 , z _ 2 , \dots , z _ n \} \subset \text { Int } ( \mathcal { D } ) \), then the closed contour integral evaluates to the discrete sum of multivector residues: \[ \oint _ \Gamma \Psi ( z ) \, dz = 2 \pi i \sum _ { k = 1 } ^ n \text { Res } \left ( \Psi , z _ k \right ) \]
 where the MSRA residue at an isolated pole \( z _ k \) is defined by the coefficient \( a _ { - 1 } ^ { ( k ) } \) in the MSRA Laurent expansion \( \Psi ( z ) = \sum _ { m = - \infty } ^ \infty a _ m ^ { ( k ) } ( z - z _ k ) ^ m \), or equivalently: \[ \text { Res } \left ( \Psi , z _ k \right ) = \frac { 1 } { 2 \pi i } \oint _ { \Gamma _ k } \Psi ( z ) \, dz \]
 for an elementary ultra-refined boundary contour \( \Gamma _ k \subset \mathcal { D } \) encircling only \( z _ k \).
 
