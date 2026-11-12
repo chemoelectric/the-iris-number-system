@@ -2250,7 +2250,7 @@ Thus, division by zero occurs in Discrete Weierstrass Analysis if and only if it
 This part presents alternative mathematical perspectives and physical reductions of the Unified Field Theory. In particular, we demonstrate how the unified field dynamics, Maxwellian electrodynamics, and gravitation as wave refraction emerge directly from Newton's laws of motion and the principle of work, and how the electromagnetic field is formulated without an additive split as an undivided conformal rotor field.
 
 [#chap-theory-newtons-laws-are-fundamental]
-=== Theory of Newton's Laws of Motion are the Fundamental Laws of Physics
+=== Theory of “Newton’s Laws of Motion are the Fundamental Laws of Physics”
 
 ==== Foundational Postulate and Epistemological Rationale
 
@@ -2264,7 +2264,7 @@ This formulation establishes that the entirety of the Unified Field Theory—inc
 \[ W = \int \mathbf{F} \cdot d \mathbf{x} \]
 where force \( \mathbf{F} \) is defined by Newton's second law as rate of change of momentum:
 \[ \mathbf{F} = \frac{d \mathbf{p}}{d t} = \frac{d (m \mathbf{v})}{d t} \]
-Thus “energy density” is a “manner of speaking” for “spatial accumulation of momentum flux and localized contact stresses per unit volume.” So it goes with the rest of physics. Physics terminology, when boiled down, becomes just the laws of motion.
+Thus “energy density” is a “manner of speaking” for “spatial accumulation of momentum flux and localized contact stresses per unit volume.” Likewise on and on with the rest of physics. Physics terminology, when boiled down, becomes just the laws of motion.
 
 ==== Reduction of Electrodynamics to Contact Momentum Flux
 
@@ -2272,104 +2272,72 @@ Consider a discrete lattice \( \mathcal{G} _ N \) of resolution \( \delta \). Le
 
 . _Newton's First Law (Inertial Conservation)_:
 In the absence of external contact stresses, total momentum is conserved across discrete lattice cells:
-
 \[ \sum _ { k } \mathbf{p} _ k = \text{constant} \]
 
 . _Newton's Second Law (Stress-Strain Acceleration)_:
 The net force acting on any discrete cell volume \( \Delta V \) is the closed surface integral of the local contact stress tensor \( \mathbf{T} \):
-
 \[ \frac{d \mathbf{p}}{d t} = \oint _ { \partial \Delta V } \mathbf{T} \cdot d \mathbf{A} \]
 
 . _Newton's Third Law (Pairwise Direct Contact Action)_:
 All stress interactions occur strictly between contiguous cells with finite duration and finite propagation speed \( c \). Every stress exerted by cell \( A \) upon adjacent cell \( B \) is matched by an equal and opposite reaction stress exerted by cell \( B \) upon cell \( A \):
-
 \[ \mathbf{F} _ { A \to B } + \mathbf{F} _ { B \to A } = 0 \]
 
-===== Direct Derivation of the Wave Equation from Newton's Laws
+&#x2767;{nbsp}__Derivation of the Wave Equation from Newton’s Laws__
 
-To see how the wave equation arises directly from these contact laws, consider a small cubic element of the medium having side length \( \Delta x \) and mass density \( \rho \), so that its mass is:
-
+To see how the wave equation arises directly from these contact laws, consider a small cubic element of the medium having side length \( \Delta x \) and mass density \( \rho \), so its mass is:
 \[ \Delta m = \rho \, ( \Delta x ) ^ 3 \]
-
 Let \( \mathbf{s} ( \mathbf{x} , t ) \) be the local displacement vector of the medium from equilibrium. When the element is displaced, adjacent faces experience contact forces through the internal shear stress.
 
 Consider the net force in the \( y \)-direction acting on the element due to variations in transverse displacement \( s _ y \) along the \( x \)-axis.
-
-The face at \( x + \Delta x \) experiences a shearing force:
-
+The face at \( x + \Delta x \) experiences a shear force:
 \[ F _ y ( x + \Delta x ) = G \, ( \Delta x ) ^ 2 \, \left. \frac{\partial s _ y}{\partial x} \right| _ { x + \Delta x } \]
-
 where \( G \) is the shear modulus (elastic stiffness) of the medium, and \( ( \Delta x ) ^ 2 \) is the face area.
 
 By Newton's third law of direct contact action, the opposing face at \( x \) experiences a reaction force in the opposite direction:
-
 \[ F _ y ( x ) = - G \, ( \Delta x ) ^ 2 \, \left. \frac{\partial s _ y}{\partial x} \right| _ { x } \]
-
 The net transverse contact force acting on the entire element is the sum of these two opposing surface forces:
-
 \[ F _ { y , \text{net} } = G \, ( \Delta x ) ^ 2 \, \left[ \left. \frac{\partial s _ y}{\partial x} \right| _ { x + \Delta x } - \left. \frac{\partial s _ y}{\partial x} \right| _ { x } \right] \]
 
 Multiplying and dividing by \( \Delta x \):
-
 \[ F _ { y , \text{net} } = G \, ( \Delta x ) ^ 3 \, \frac{1}{\Delta x} \left[ \left. \frac{\partial s _ y}{\partial x} \right| _ { x + \Delta x } - \left. \frac{\partial s _ y}{\partial x} \right| _ { x } \right] = G \, ( \Delta x ) ^ 3 \, \frac{\partial ^ 2 s _ y}{\partial x ^ 2} \]
-
 Now apply Newton's second law, \( F _ { y , \text{net} } = \Delta m \, a _ y \). Because acceleration is the second time derivative of displacement, \( a _ y = D _ t ^ 2 s _ y \), we have:
-
 \[ G \, ( \Delta x ) ^ 3 \, \frac{\partial ^ 2 s _ y}{\partial x ^ 2} = \left( \rho \, ( \Delta x ) ^ 3 \right) D _ t ^ 2 s _ y \]
-
 The volume factor \( ( \Delta x ) ^ 3 \) cancels completely on both sides:
-
 \[ G \, \frac{\partial ^ 2 s _ y}{\partial x ^ 2} = \rho \, D _ t ^ 2 s _ y \]
-
 Dividing through by \( G \):
-
 \[ \frac{\partial ^ 2 s _ y}{\partial x ^ 2} - \frac{\rho}{G} D _ t ^ 2 s _ y = 0 \]
-
 Defining the propagation speed \( c \) through the ratio of the medium's elastic shear stiffness to its mass density:
-
 \[ c = \sqrt{\frac{G}{\rho}} \implies \frac{1}{c ^ 2} = \frac{\rho}{G} \]
-
 Summing the contact forces across all three spatial coordinate axes yields the general three-dimensional vector wave equation for the displacement field \( \mathbf{s} \):
-
 \[ \nabla ^ 2 \mathbf{s} - \frac{1}{c ^ 2} D _ t ^ 2 \mathbf{s} = 0 \]
 
-===== Correspondence to Electrodynamics and the Master Field Equation
+&#x2767;{nbsp}__Correspondence to Electrodynamics and the Master Field Equation__
 
 When an observer measures macroscopic field variables without complete microstate phase information, Jaynesian Maximum Entropy mandates assigning the least-biased probability distribution over discrete momentum states subject to Newton's momentum and stress constraints, confirming this linear wave mode as the expectation value of localized undulations:
-
 \[ S = - \sum _ i P _ i \ln P _ i \]
-
 From this wave equation, electrodynamics emerges by recognizing the physical components of the displacement velocity and rotation:
 
 . The _electric field vector_ is the negative temporal rate of shear displacement:
-
 \[ \mathbf{E} = - D _ t \mathbf{s} \]
 
 . The _magnetic field bivector_ is the spatial curl (rotational vorticity) of the displacement:
-
 \[ \mathbf{B} = \nabla \times \mathbf{s} \]
 
 Taking the time derivative of \( \mathbf{B} \):
-
 \[ D _ t \mathbf{B} = D _ t ( \nabla \times \mathbf{s} ) = \nabla \times ( D _ t \mathbf{s} ) = - \nabla \times \mathbf{E} \]
-
 which is Faraday's induction law \( \nabla \times \mathbf{E} + D _ t \mathbf{B} = 0 \).
 
 Taking the spatial curl of \( \mathbf{B} \) using the vector identity \( \nabla \times ( \nabla \times \mathbf{s} ) = \nabla ( \nabla \cdot \mathbf{s} ) - \nabla ^ 2 \mathbf{s} \): for transverse waves (\( \nabla \cdot \mathbf{s} = 0 \)),
-
 \[ \nabla \times \mathbf{B} = - \nabla ^ 2 \mathbf{s} = - \frac{1}{c ^ 2} D _ t ^ 2 \mathbf{s} = \frac{1}{c ^ 2} D _ t \mathbf{E} \]
-
 which is the Ampère-Maxwell law in the absence of source currents.
 
 Newton's third law and momentum balance thus directly reproduce Maxwell's relations and the Master Field Equation in Conformal Geometric Algebra:
-
 \[ D F = J \]
-
 without postulating independent electrical fluids or action-at-a-distance.
 
 ==== Derivation of Gravitational Refraction from Contact Stress Gradients
 
-Under the _Theory of Newton's Laws of Motion are the Fundamental Laws of Physics_, gravitation is not an independent fundamental “pull,” nor is it curvature of space-time “fabric.” It is direct consequence of Newtonian stress concentration altering local wave speed.
+In consequence of the _Theory of “Newton’s Laws of Motion are the Fundamental Laws of Physics,”_ gravitation is not a fundamental “pull,” nor is it curvature of space-time “fabric.” Instead gravitation is caused by concentration of stresses altering local wave speeds.
 
 . _Mass as Localized Circulating Wave Energy_:
 By Newton's second law, an aggregate body of mass \( M \) at rest represents a concentration of localized, circulating momentum and contact stresses within the discrete lattice \( \mathcal{G} _ N \).
@@ -2406,26 +2374,25 @@ Both force \( F \) and mass \( m \) are completely eliminated as primitive subst
 
 Consider a body accelerated from rest by constant contact action over duration \( t \) through distance \( x \). The kinematic relations are:
 \[ a = \frac{F}{m} \]
-\[ v = a t = \frac{F t}{m} \]
-\[ x = \frac{1}{2} a t ^ 2 = \frac{F t ^ 2}{2 m} \]
+\[ v = a t = \frac{\mkern1mu F t}{m} \]
+\[ x = \frac{1}{2} a t ^ 2 = \frac{\;F t ^ 2}{2 m} \]
 The mechanical work \( W \) performed upon the body is the product of force and distance:
-\[ W = F x = F \left( \frac{F t ^ 2}{2 m} \right) = \frac{F ^ 2 t ^ 2}{2 m} \]
+\[ W = F x = F \left( \frac{\;F t ^ 2}{2 m} \right) = \frac{\;F ^ 2 t ^ 2}{2 m} \]
 From these identities, force \( F \) and mass \( m \) are explicitly expressible in terms of work \( W \) and kinematic motion:
 
 . _Force as Spatial Gradient of Work_:
 From \( W = F x \), force is defined as the spatial density of work:
-\[ F = \frac{W}{x} \quad \left( \text{or in general vector form, } \mathbf{F} = \nabla W \right) \]
+\[ F = \frac{\;W}{x\,} \quad \left( \text{or in general vector form, } \mathbf{F} = \nabla W \right) \]
 
 . _Mass as the Kinematic Quotient of Work_:
 Expressing distance as \( x = \frac{1}{2} v t \), substitution into the work expression yields:
 \[ W = \frac{1}{2} m v ^ 2 \]
-
 Solving directly for mass \( m \):
-\[ m = \frac{2 W}{v ^ 2} \]
+\[ m = \frac{\,2 W}{v ^ 2} \]
 
 . _Momentum as the Velocity Ratio of Work_:
 The classical momentum \( p = m v \) becomes:
-\[ p = \left( \frac{2 W}{v ^ 2} \right) v = \frac{2 W}{v} \]
+\[ p = \left( \frac{\,2 W}{v ^ 2} \right) v = \frac{\,2 W}{v} \]
 Under this formulation, mass is not an innate metaphysical substance residing within matter, but the ratio \( 2 W / v ^ 2 \) quantifying the work required to produce a unit squared velocity. Force is not an independent entity, but the spatial gradient of work transfer.
 
 ==== Reformulation of the Master Field Equation in Work Coordinates
@@ -2455,21 +2422,21 @@ In the canonical presentation of the Master Field Equation (xref:definition-mast
 \[ F _ { \text {total} } = E e _ { 4 } + c B I _ { 3 } \]
 where \( E e _ { 4 } \) is the electric bivector (formed from spatial vector \( E \) and null causal time-step generator \( e _ { 4 } \)) and \( c B I _ { 3 } \) is the spatial magnetic bivector.
 
-While this additive decomposition matches the dual instruments of legacy experimental metrology (which measure linear electrostatic deflection with charged test bodies and rotational magnetic torque with loop needles), it introduces an uneasy mathematical compromise: it connects two distinct geometric grades with a plus sign ( \( + \) ).
+Although this additive decomposition matches the dual instruments of legacy experimental metrology (which measure linear electrostatic deflection with charged test bodies and rotational magnetic torque with loop needles), it introduces an uneasy mathematical compromise: it connects two distinct geometric grades with a plus sign{nbsp}(\( + \)).
 
-Conventional physics attempted to explain this dual character by asserting coordinate mixing within Special Relativity, claiming that moving past a source converts an electric field into a magnetic field. However, empirical measurement by physical scale and calipers reveals this assertion to be an ungrounded artifact of coordinate manipulation:
+Conventional physics has tried to explain this dual character by asserting that moving past a source transforms an electric field into a magnetic field—though only for the person moving past the source!—and not for any empirical reason, but only because the mathematics of Special Relativity says so. However, empirical measurement shows this bizarre attempt at word magic is a failure:
 
 . A permanent magnet (such as lodestone or magnetized iron) is a physical, material structure composed of microscopic, aligned circulating Ampèrian loops of bound charge within its crystal lattice.
 
 . A rubbed amber rod is an electrostatic electret, characterized by macroscopic surface charge separation and longitudinal potential gradients.
 
-. An arbitrary change of coordinates or the motion of a measuring device cannot physically alter the material constitution of either body. A lodestone does not suddenly transform into rubbed amber that attracts paper scraps isotropically, nor does an amber rod acquire magnetic dipole poles. Coordinates possess no direct contact causal agency over physical matter.
+. An arbitrary change of coordinates or the motion of a measuring device cannot physically alter the material constitution of either body. A lodestone does not suddenly transform into rubbed amber that attracts paper scraps isotropically, nor does an amber rod acquire magnetic dipole poles. Performing a Lorentz transformation cannot change physical realities any more than can reciting a magic spell.
 
-In Conformal Geometric Algebra, this additive split is not an inescapable law of nature, but a legacy artifact. The Master Field Equation can be formulated completely and rigorously without a plus sign through the algebra of rotors.
+In Conformal Geometric Algebra, the additive split is not an inescapable law of nature, but merely one way of writing things. The Master Field Equation can also be written _without the plus sign_, by using _rotors_.
 
 ==== The Conformal Rotor Field as an Undivided Physical State
 
-In Conformal Geometric Algebra over the canonical basis \( \{ e _ { 1 } , e _ { 2 } , e _ { 3 } , e _ { 4 } , \quad e _ { \odot } , e _ { \infty } \} \), an even multivector \( R \) is a _conformal rotor_ if it satisfies the strict unitary condition:
+In Conformal Geometric Algebra over the canonical basis \( \{ e _ { 1 } , e _ { 2 } , e _ { 3 } , e _ { 4 } , e _ { \odot } , e _ { \infty } \} \), an even multivector \( R \) is a _conformal rotor_ if it satisfies the strict unitary condition:
 \[ R R ^ { \dagger } = \mathbf { 1 } \]
 where \( R ^ { \dagger } \) denotes the multivector reversion.
 
@@ -2484,7 +2451,7 @@ The rotor components generated by the null bivectors \( \mathbf { a } \wedge e _
 . _Radial Scaling and Conformal Transduction_:
 The rotor components generated by the conformal hyperbolic bivector \( e _ { \odot } \wedge e _ { \infty } \) describe uniform dilations and radial scale transformations across adjacent cells, providing the mechanism for isothermal energy transduction.
 
-All of these physical effects reside within the single multiplicative group element \( R \). There is no plus sign separating disparate physical entities; magnetic circulation and electric displacement are simply distinct geometric projections of an undivided conformal rotor.
+All of these physical effects reside within the single multiplicative group element \( R \). There is no plus sign separating disparate physical entities. Magnetic circulation and electric displacement are distinct geometric projections of an undivided conformal rotor.
 
 ==== Physical Interaction via Direct Contact Transformation
 
@@ -2531,16 +2498,6 @@ Thus, the canonical bivector \( F _ { \text {total} } = E e _ { 4 } + c B I _ { 
 \[ F _ { \text {total} } = 2 ( D R ) R ^ { \dagger } \]
 The canonical formulation with its familiar \( E \) and \( B \) is therefore an exact metrological projection of the rotor field, retained for direct comparison with legacy measuring instruments that record push and torque along separate axes.
 
-[#conclusion-rotor-unification-fields]
-[CONCLUSION PENDING NEW INFORMATION]
-.Conclusion Pending New Information: Unification of Fields via Conformal Rotors Without Additive Splitting
-====
-The dual appearance of electric and magnetic fields joined by an addition sign ( \( + \) ) in the canonical Master Field Equation is an artifact of measuring instruments that record linear push and circulating torque separately. When formulated in Conformal Geometric Algebra over \( \{ e _ { 1 } , e _ { 2 } , e _ { 3 } , e _ { 4 } , e _ { \odot } , e _ { \infty } \} \), the physical state of the field is an undivided conformal rotor \( R \) satisfying \( R R ^ { \dagger } = \mathbf { 1 } \).
-
-The rotor field contains translation (electric displacement), rotation (magnetic circulation), and dilation within a single multiplicative group element. The Rotor Master Field Equation:
-\[ D \left[ 2 ( D R ) R ^ { \dagger } \right] = J _ { \text {total} } \]
-describes all physical dynamics on the discrete grid \( \mathcal { G } _ { N } \) by direct contact action over finite duration without an additive split.
-====
 
 [#chap-index]
 
@@ -2620,10 +2577,6 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-history-equivalence[__Theorem: Structural Equivalence of the Historical Causal Formulation, the Discrete Kinetic Formulation, the Operational Metrological Formulation, the Informational Formulation, and the Original Iris System__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Proof of Equivalence Among the Five Formulations_
 * xref:theorem-geometric-integer-construction[_Theorem: Geometric Integer Construction by Caliper Stepping_]  -- Chapter: _The Integers Constructed From the Radius of a Circle_ | Section: _Straightedge and Compass Construction of the Integer Line_
 * xref:theorem-pia-msra-equivalence[__Theorem: Equivalence of Profound Insight Analysis and Multiscale Resolution Analysis (MSRA)__]  -- Chapter: _Profound Insight Analysis_ | Section: _Proof of Equivalence with Multiscale Resolution Analysis (MSRA)_
-
-=== Conclusions Pending New Information
-
-* xref:conclusion-rotor-unification-fields[_Conclusion Pending New Information: Unification of Fields via Conformal Rotors Without Additive Splitting_]  -- Chapter: _The Rotor Formulation of the Master Field Equation_ | Section: _Recovery of the Canonical Field Decomposition_
 
 === Definitions
 
