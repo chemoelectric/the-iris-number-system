@@ -10,8 +10,7 @@ import {
   Wind,
   Download,
   Info,
-  Archive,
-  GitBranch
+  Archive
 } from 'lucide-react';
 import { ActiveView } from '../types';
 import { exportCompleteWorkspaceZip } from '../lib/exportProjectZip';
@@ -21,7 +20,6 @@ interface NavbarProps {
   setActiveTab: (tab: ActiveView['tab']) => void;
   onOpenInfoModal: () => void;
   onExportWorkspace: () => void;
-  onOpenGitHubModal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -29,7 +27,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   setActiveTab,
   onOpenInfoModal,
   onExportWorkspace,
-  onOpenGitHubModal,
 }) => {
   const navItems = [
     {
@@ -136,20 +133,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Quick Actions */}
           <div className="flex items-center space-x-2">
             <button
-              onClick={onOpenGitHubModal}
-              title="Sync & Push to GitHub"
-              className="flex items-center space-x-1.5 px-3 py-1.5 bg-[#242424] hover:bg-[#333333] text-slate-200 text-xs font-semibold transition"
-            >
-              <GitBranch className="w-3.5 h-3.5 text-slate-200" />
-              <span className="hidden sm:inline">GitHub</span>
-            </button>
-            <button
               onClick={() => exportCompleteWorkspaceZip()}
               title="Download Complete Workspace (.zip)"
               className="flex items-center space-x-1.5 px-3 py-1.5 bg-[#242424] hover:bg-[#333333] border border-neutral-700 text-slate-200 text-xs font-semibold transition"
             >
               <Archive className="w-3.5 h-3.5 text-slate-200" />
-              <span className="hidden sm:inline">Download Project ZIP</span>
+              <span>Download Project ZIP</span>
             </button>
             <button
               onClick={onOpenInfoModal}

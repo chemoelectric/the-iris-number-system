@@ -18,7 +18,31 @@ async function startServer() {
 
   app.use(express.json());
 
-  app.get("/api/github/status", async (_req, res) => {
+  const requireLocalhostOnly = (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    const remoteAddr = req.socket?.remoteAddress || "";
+    const isLoopback =
+      remoteAddr === "127.0.0.1" ||
+      remoteAddr === "::1" ||
+      remoteAddr === "::ffff:127.0.0.1";
+    const hostHeader = req.headers.host || "";
+    const isLocalHostHeader =
+      hostHeader === `localhost:${PORT}` || hostHeader === `127.0.0.1:${PORT}`;
+    const hasProxyHeaders = Boolean(
+      req.headers["x-forwarded-for"] ||
+        req.headers["x-forwarded-host"] ||
+        req.headers["forwarded"]
+    );
+    if (!isLoopback || !isLocalHostHeader || hasProxyHeaders) {
+      return res.status(403).json({ error: "Forbidden: localhost access only." });
+    }
+    return next();
+  };
+
+  app.get("/api/github/status", requireLocalhostOnly, async (_req, res) => {
     try {
       const status = await getGitHubStatus();
       return res.json(status);
@@ -27,7 +51,7 @@ async function startServer() {
     }
   });
 
-  app.get("/api/github/diff", async (req, res) => {
+  app.get("/api/github/diff", requireLocalhostOnly, async (req, res) => {
     try {
       const branch = typeof req.query.branch === "string" ? req.query.branch : "main";
       const diff = await previewWorkspaceChanges(branch);
@@ -37,7 +61,7 @@ async function startServer() {
     }
   });
 
-  app.post("/api/github/push", async (req, res) => {
+  app.post("/api/github/push", requireLocalhostOnly, async (req, res) => {
     try {
       const { branch, message } = req.body || {};
       const result = await pushWorkspaceToGitHub(branch || "main", message || "");
