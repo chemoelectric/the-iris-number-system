@@ -85,7 +85,7 @@ A real bivector phase rotor \( e ^ { \mathbf { I } \theta } = \cos \theta + \mat
 The Fourier decomposition of a complex spatial-temporal signal \( x [ n ] \) into orthogonal harmonic rotors is similar in structure to sending a fluid pressure impulse down a stepped hydraulic conduit or array of acoustic organ pipes.
 * **Fundamental Resonance**: A fluid column of length \( L \) selectively resonates at discrete harmonic acoustic frequencies \( f_k = \frac { k c_\text{fluid} } { 2 L } \).
 * **Scalar and Bivector Fluid Components**: At a pressure sensor tap located along the acoustic pipe, fluid pressure oscillation represents the real scalar cosine harmonic component \( \cos \left( \frac { 2 \pi n k } { N } \right) \), while volumetric fluid velocity oscillation represents the orthogonal bivector sine component \( \mathbf { I } \sin \left( \frac { 2 \pi n k } { N } \right) \).
-* **Parseval-Plancherel Energy Equivalence**: Total acoustic fluid kinetic and potential energy stored across all resonant pipe taps equals the total fluid kinetic energy of the initial pressure pulse injected at the entry aperture, providing a direct mechanical demonstration of Parseval-Plancherel energy conservation.
+* **Parseval-Plancherel Energy Equivalence**: Total acoustic fluid kinetic and potential energy stored across all resonant pipe taps equals the total fluid kinetic energy of the initial pressure pulse injected at the entry port, providing a direct mechanical demonstration of Parseval-Plancherel energy conservation.
 
 === Unified Operator Kernel Formulation for Conventional Transforms
 
@@ -126,10 +126,10 @@ The unified transformation of a real analog or digital signal \( x [ n ] \) into
    Mapping the spatial-temporal index logarithmically onto a discrete radial grid \( n = e ^ u \) transforms scale-dilation operators into linear phase shifts, yielding scale-invariant power spectrum analysis.
 
 7. **Hankel (Bessel) Transform**:
-   Representing the 2D spatial Fourier transform under rotational symmetry in a bivector plane \( e _ 1 \wedge e _ 2 \). Integrating the bivector phase rotor over all polar angles \( \phi \) yields real zero-order Bessel functions \( J _ 0 ( k r ) \) as orthogonal radial eigenfunctions over discrete circular apertures.
+   Representing the 2D spatial Fourier transform under rotational symmetry in a bivector plane \( e _ 1 \wedge e _ 2 \). Integrating the bivector phase rotor over all polar angles \( \phi \) yields real zero-order Bessel functions \( J _ 0 ( k r ) \) as orthogonal radial eigenfunctions over discrete circular domains.
 
 8. **Radon Transform**:
-   Projecting 2D spatial mass or field distributions along directional line apertures on a 2D discrete grid \( \mathcal { G } _ N \), mapping spatial structures into projection angles \( \theta \) and radial offsets \( s \).
+   Projecting 2D spatial mass or field distributions along directional line paths on a 2D discrete grid \( \mathcal { G } _ N \), mapping spatial structures into projection angles \( \theta \) and radial offsets \( s \).
 
 9. **Wavelet Transform**:
    Applying localized multiscale bandpass windowing \( \psi _ { a , b } [ n ] = \frac { 1 } { \sqrt { a } } \psi \left( \frac { n \delta - b } { a } \right) \) to the discrete kernel, providing joint spatial-temporal and spectral-resolution localization over multiscale grid tiers.
@@ -140,7 +140,7 @@ The unified transformation of a real analog or digital signal \( x [ n ] \) into
 11. **Homomorphic Cepstral Analysis**:
     Evaluating the real natural logarithm of the bivector spectral magnitude \( \| \hat { X } [ k ] \| = \sqrt { ( \operatorname { Sc } ( \hat { X } [ k ] ) ) ^ 2 + ( \operatorname { Biv } ( \hat { X } [ k ] ) ) ^ 2 } \) yields a purely real logarithmic scalar sequence \( L [ k ] = \ln ( \| \hat { X } [ k ] \| ) \). Inverse-transforming \( L [ k ] \) back to the spatial-temporal grid via the real cosine kernel maps multiplicative system operations (such as lattice echo reflections or vocal tract filtering) into additive linear components in the discrete quefrency domain \( q \in \mathcal { G } _ N \), completely avoiding complex logarithms and multi-valued phase branch cuts.
 
-=== 2D and 3D Spectral Typography: Spatial Interference Mitigation and Master Field Equation Optimization on Discrete Aperture Grids
+=== 2D and 3D Spectral Typography: Spatial Interference Mitigation and Master Field Equation Optimization on Discrete Page Grids
 
 Digital paragraph composition reveals an essential evolutionary distinction between primitive one-dimensional formatters, two-dimensional combinatorial dynamic programming, and global two-dimensional spectral field optimization:
 
@@ -161,13 +161,13 @@ Crucially, the Knuth-Plass algorithm is explicitly **designed to reduce rivers**
 
 3. **Contrasting Dynamic Programming with 2D/3D Spectral and Field Analysis**:
 +
-While two-dimensional dynamic programming is specifically designed to reduce rivers by enforcing line-level fitness compatibility and global graph-level demerit minimization, its optimization operates on discrete scalar graph edges, line-level adjustment ratios, and heuristic penalty weights. It does not directly compute or manipulate the two-dimensional spatial frequency spectrum of the rendered ink-and-whitespace field across the full page aperture \( \mathcal { G } _ \text{page} \).
+While two-dimensional dynamic programming is specifically designed to reduce rivers by enforcing line-level fitness compatibility and global graph-level demerit minimization, its optimization operates on discrete scalar graph edges, line-level adjustment ratios, and heuristic penalty weights. It does not directly compute or manipulate the two-dimensional spatial frequency spectrum of the rendered ink-and-whitespace field across the full page domain \( \mathcal { G } _ \text{page} \).
 +
-In human visual perception, reading is conducted over discrete single-page aperture boundaries \( \mathcal { G } _ \text{page} \subset \mathcal { G } _ N \). A human reader perceives an entire page aperture simultaneously. Even when dynamic programming balances line-level badness, subtle spatial frequency resonances—periodic alignments of inter-word voids, optical grating patterns, or directional energy peaks—can still emerge across extended blocks of text. For individuals with visual hypersensitivity, these subtle 2D spatial periodicities trigger acute visual noise, perceptual distortion, and reading fatigue.
+In human visual perception, reading is conducted over discrete single-page field boundaries \( \mathcal { G } _ \text{page} \subset \mathcal { G } _ N \). A human reader perceives an entire page simultaneously. Even when dynamic programming balances line-level badness, subtle spatial frequency resonances—periodic alignments of inter-word voids, optical grating patterns, or directional energy peaks—can still emerge across extended blocks of text. For individuals with visual hypersensitivity, these subtle 2D spatial periodicities trigger acute visual noise, perceptual distortion, and reading fatigue.
 +
-**2D and 3D Spectral Typography** complements dynamic programming by formulating page layout directly as a 2D spatial field energy minimization problem governed by the Master Field Equation \( D F = J \) and real bivector Fourier/Hartley spectral operators evaluated over discrete single-page aperture grids \( \mathcal { G } _ \text{page} \). Where dynamic programming establishes optimal discrete combinatorial line-break topologies, spectral analysis evaluates the 2D power spectral density \( P [ k_x , k_y ] \), identifying directional energy spikes and applying microtypographic perturbations to whitespace centroids to enforce a natural \( 1 / f ^ \alpha \) (pink-noise) spatial flux that completely eliminates periodic visual interference.
+**2D and 3D Spectral Typography** complements dynamic programming by formulating page layout directly as a 2D spatial field energy minimization problem described by the Master Field Equation \( D F = J \) and real bivector Fourier/Hartley spectral operators evaluated over discrete single-page grids \( \mathcal { G } _ \text{page} \). Where dynamic programming establishes optimal discrete combinatorial line-break topologies, spectral analysis evaluates the 2D power spectral density \( P [ k_x , k_y ] \), identifying directional energy spikes and applying microtypographic perturbations to whitespace centroids to enforce a natural \( 1 / f ^ \alpha \) (pink-noise) spatial flux that completely eliminates periodic visual interference.
 
-==== Discrete Single-Page Aperture Grid and Glyph Density Fields
+==== Discrete Single-Page Grid and Glyph Density Fields
 
 Let \( \mathcal { G } _ \text{page} = \{ ( x_n , y_m ) \mid n \in \{ 0 , 1 , \dots , N_x - 1 \} , m \in \{ 0 , 1 , \dots , N_y - 1 \} \} \) be a 2D discrete spatial grid representing a single page boundary with uniform grid spacing \( \delta \). A page layout is defined by its spatial ink-and-whitespace field distribution \( f ( x_n , y_m ) \):
 
@@ -181,7 +181,7 @@ Iris Spectral Typography supports two primary modes of field representation:
    Glyphs are modeled by their bounding width metrics \( W_k \), inter-word spacing intervals \( s_k \), and line heights \( h_l \). The whitespace distribution \( f ( x_n , y_m ) \) is discretized as rectangular spatial potential wells corresponding to word gaps across line indices \( l \).
 
 2. **Full 2D/3D Glyph Shape Density Mode**:
-   Each glyph \( g \) is represented directly by its rasterized 2D contour density field \( I_g ( x - x_0 , y - y_0 ) \) (or 3D spatial intensity distribution \( I_g ( x , y , z ) \) when accounting for multi-threshold display rendering or ink-spread dynamics). This mode captures exact OpenType glyph outlines, subtle stem weights, serifs, kerning cuts, and inter-letter aperture geometry.
+   Each glyph \( g \) is represented directly by its rasterized 2D contour density field \( I_g ( x - x_0 , y - y_0 ) \) (or 3D spatial intensity distribution \( I_g ( x , y , z ) \) when accounting for multi-threshold display rendering or ink-spread dynamics). This mode captures exact OpenType glyph outlines, subtle stem weights, serifs, kerning cuts, and inter-letter spacing geometry.
 
 ==== 2D Bivector Fourier Spectral Decomposition of Page Whitespace
 
@@ -198,7 +198,7 @@ The 2D spatial power spectrum \( P [ k_x , k_y ] = \| \hat { F } [ k_x , k_y ] \
 
 ==== Human Visual System Weighting and Spatial Interference Action Functional
 
-Human visual sensitivity to spatial luminance variations is governed by the Human Visual Contrast Sensitivity Function (CSF) filter \( H _ \text{CSF} ( k_x , k_y ) \). The total spatial interference field energy \( U _ \text{spectral} \) over the single-page aperture \( \mathcal { G } _ \text{page} \) is defined by the weighted inner product:
+Human visual sensitivity to spatial luminance variations is described by the Human Visual Contrast Sensitivity Function (CSF) filter \( H _ \text{CSF} ( k_x , k_y ) \). The total spatial interference field energy \( U _ \text{spectral} \) over the single-page domain \( \mathcal { G } _ \text{page} \) is defined by the weighted inner product:
 
 \[ U _ \text{spectral} = \sum _ { k_x = 0 } ^ { N_x - 1 } \sum _ { k_y = 0 } ^ { N_y - 1 } H _ \text{CSF} ( k_x , k_y ) \left\| \hat { F } [ k_x , k_y ] \right\| ^ 2 \]
 
@@ -215,7 +215,7 @@ When full 2D/3D glyph shape density fields are available, the layout engine appl
    Scaling line tracking and word gaps by a continuous factor \( \alpha _ l \in [ 1 - \eta , 1 + \eta ] \) (typically \( \eta \approx 0.02 \), corresponding to a \( \pm 2 \% \) adjustment).
 
 3. **Subtle Glyph Outline Profile Perturbations \( \beta _ g \)**:
-   In full glyph shape density mode, slightly widening or narrowing the horizontal outline profile of individual glyphs by factor \( \beta _ g \in [ 0.98 , 1.02 ] \). Because glyph shapes are known, this subtle shape adaptation alters letterform apertures without distorting stroke proportions, shifting whitespace centroids on adjacent lines to disrupt vertical river resonance.
+   In full glyph shape density mode, slightly widening or narrowing the horizontal outline profile of individual glyphs by factor \( \beta _ g \in [ 0.98 , 1.02 ] \). Because glyph shapes are known, this subtle shape adaptation alters letterform counters without distorting stroke proportions, shifting whitespace centroids on adjacent lines to disrupt vertical river resonance.
 
 Because single-page boundaries isolate independent page field domains, candidate line-break topologies and microtypographic perturbations are evaluated in parallel across vector processors using fast real 2D Hartley or Fourier transforms.
 
@@ -278,7 +278,7 @@ where \( \left\| \hat { X } [ k ] \right\| ^ 2 = \left( \operatorname { Sc } ( \
 [THEOREM]
 .Theorem: Master Field Equation Optimization of Single-Page 2D Spectral Typography and Spatial Interference Mitigation Theorem
 ====
-Let \( \mathcal { G } _ \text{page} = \{ ( x_n , y_m ) \mid n \in \{ 0 , 1 , \dots , N_x - 1 \} , m \in \{ 0 , 1 , \dots , N_y - 1 \} \} \) be a 2D discrete single-page aperture grid with uniform step spacing \( \delta \). Let \( f ( x_n , y_m ) = 1 - I ( x_n , y_m ) \) be the page whitespace distribution generated by rendering text with ink density field \( I ( x_n , y_m ) \).
+Let \( \mathcal { G } _ \text{page} = \{ ( x_n , y_m ) \mid n \in \{ 0 , 1 , \dots , N_x - 1 \} , m \in \{ 0 , 1 , \dots , N_y - 1 \} \} \) be a 2D discrete single-page grid with uniform step spacing \( \delta \). Let \( f ( x_n , y_m ) = 1 - I ( x_n , y_m ) \) be the page whitespace distribution generated by rendering text with ink density field \( I ( x_n , y_m ) \).
 
 The 2D spatial visual interference field energy \( U _ \text{spectral} \) weighted by the Human Visual Contrast Sensitivity Function \( H _ \text{CSF} ( k_x , k_y ) \):
 \[ U _ \text{spectral} = \sum _ { k_x = 0 } ^ { N_x - 1 } \sum _ { k_y = 0 } ^ { N_y - 1 } H _ \text{CSF} ( k_x , k_y ) \left\| \hat { F } [ k_x , k_y ] \right\| ^ 2 \]
@@ -286,7 +286,7 @@ is strictly minimized over single-page layout topologies via microtypographic pe
 
 *Proof:*
 
-. **Single-Page Aperture Domain Isolation**: Because a human reader processes text within a single-page visual boundary, the spatial field distribution \( f ( x_n , y_m ) \) vanishes outside \( \mathcal { G } _ \text{page} \). Page layout optimization is decoupled into independent single-page field domains, enabling parallel evaluation across vector units.
+. **Single-Page Domain Isolation**: Because a human reader processes text within a single-page visual boundary, the spatial field distribution \( f ( x_n , y_m ) \) vanishes outside \( \mathcal { G } _ \text{page} \). Page layout optimization is decoupled into independent single-page field domains, enabling parallel evaluation across vector units.
 
 . **2D Real Bivector Spectral Representation**: The 2D Discrete Fourier Transform of the page whitespace field \( f ( x_n , y_m ) \) in real Clifford algebra \( Cl ( 2 , 0 ) \) is given by:
   \[ \hat { F } [ k_x , k_y ] = \sum _ { n = 0 } ^ { N_x - 1 } \sum _ { m = 0 } ^ { N_y - 1 } f ( x_n , y_m ) \left( \cos \left( \frac { 2 \pi k_x n } { N_x } + \frac { 2 \pi k_y m } { N_y } \right) + \mathbf { I } \sin \left( \frac { 2 \pi k_x n } { N_x } + \frac { 2 \pi k_y m } { N_y } \right) \right) \delta ^ 2 \]
@@ -294,7 +294,7 @@ is strictly minimized over single-page layout topologies via microtypographic pe
 
 . **Microtypographic Perturbation Response**: Applying microtypographic adjustments—OpenType kerning shifts \( \Delta x _ { i j } \), line tracking factors \( \alpha _ l \), and glyph outline shape profile modifications \( \beta _ g \in [ 0.98 , 1.02 ] \)—shifts the spatial coordinates of whitespace centroids by \( ( \Delta x_n , 0 ) \). The perturbed 2D Fourier spectrum satisfies:
   \[ \hat { F } _ {\mathbf { p }} [ k_x , k_y ] = \hat { F } [ k_x , k_y ] + \sum _ { n , m } \left( \nabla f ( x_n , y_m ) \cdot \Delta \mathbf { r } _ n \right) e ^ { \mathbf { I } ( \frac { 2 \pi k_x n } { N_x } + \frac { 2 \pi k_y m } { N_y } ) } \]
-  Adjusting glyph outline shape profiles \( \beta _ g \) modulates the spatial gradient \( \nabla f ( x_n , y_m ) \) directly at letterform aperture edges.
+  Adjusting glyph outline shape profiles \( \beta _ g \) modulates the spatial gradient \( \nabla f ( x_n , y_m ) \) directly at letterform counter edges.
 
 . **Spectral Energy Minimization**: Setting the gradient of the Human Visual weighted action functional \( \nabla _ {\mathbf { p }} U _ \text{spectral} = \mathbf { 0 } \) establishes a convex quadratic minimization over the bounded microtypographic search space \( | \beta _ g - 1 | \le 0.02 \). Because the perturbation disrupts phase alignment across adjacent lines \( m \) and \( m + 1 \), the peak interference spectral density drops below the human visual perception threshold \( H _ \text{CSF} ( k_x , k_y ) \), eliminating 2D rivers and spatial noise. \( \square \)
 ====
@@ -349,8 +349,8 @@ is strictly minimized over single-page layout topologies via microtypographic pe
   \[ E _ \text{spectral} = \frac { 1 } { 4 } \sum _ { k = 0 } ^ { 3 } \| \hat { X } [ k ] \| ^ 2 = \frac { 1 } { 4 } ( 4 + 2 + 0 + 2 ) = \frac { 8 } { 4 } = 2 \]
   Thus, \( E _ \text{grid} = E _ \text{spectral} = 2 \), confirming exact discrete energy conservation.
 
-==== Example 2: 2D Bivector Spectral Analysis and Microtypographic Interference Mitigation of a Page Aperture Snippet
-**Problem Statement:** Consider a 2D page aperture grid snippet \( \mathcal { G } _ { 4 \times 4 } \) containing a 4-line text layout. The rendered whitespace field \( f ( x_n , y_m ) \) across grid coordinates \( n \in \{ 0 , 1 , 2 , 3 \} \) (horizontal) and \( m \in \{ 0 , 1 , 2 , 3 \} \) (vertical lines) exhibits a vertical whitespace river along column index \( n = 2 \), where inter-word gaps align perfectly:
+==== Example 2: 2D Bivector Spectral Analysis and Microtypographic Interference Mitigation of a Page Grid Snippet
+**Problem Statement:** Consider a 2D page grid snippet \( \mathcal { G } _ { 4 \times 4 } \) containing a 4-line text layout. The rendered whitespace field \( f ( x_n , y_m ) \) across grid coordinates \( n \in \{ 0 , 1 , 2 , 3 \} \) (horizontal) and \( m \in \{ 0 , 1 , 2 , 3 \} \) (vertical lines) exhibits a vertical whitespace river along column index \( n = 2 \), where inter-word gaps align perfectly:
 \[ f ( x_n , y_m ) = \begin {pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 \end {pmatrix} \]
 
 1. Compute the 2D real bivector Fourier spectrum \( \hat { F } [ k_x , k_y ] \) of this unadjusted layout and demonstrate the presence of the vertical river spectral spike.
@@ -379,7 +379,7 @@ Compute the new 2D spectrum \( \hat { F } ' [ k_x , k_y ] \) and show the reduct
    The perturbed spectral energy power at \( ( 2 , 0 ) \) is \( P ' [ 2 , 0 ] = | 2 | ^ 2 = \mathbf { 4 } \).
 
 3. **Conclusion**:
-   The single microtypographic shift reduced the peak vertical river spectral energy from **16** down to **4** (a 75% energy reduction), successfully disrupting the 2D spatial interference pattern and demonstrating the power of Master Field Equation spectral typography on discrete aperture grids.
+   The single microtypographic shift reduced the peak vertical river spectral energy from **16** down to **4** (a 75% energy reduction), successfully disrupting the 2D spatial interference pattern and demonstrating the power of Master Field Equation spectral typography on discrete page grids.
 
 == Circuit Theory: Kirchhoff’s Laws, Lumped Circuit Elements, and Shielded Enclosures
 
@@ -390,11 +390,11 @@ This chapter formulates classical and high-frequency circuit theory from first p
 Linear circuit theory is the lumped-parameter projection of the Master Field Equation \( D F = J \) on discrete spatial-temporal resolution grids \( \mathcal { G } _ N \). When physical circuit dimensions are small relative to the wavelength of field oscillations (\( d / \lambda \ll 1 \)), electric and magnetic field energy distributions compress into lumped nodes and branches.
 
 ==== Derivation of Kirchhoff’s Voltage Law (KVL)
-In a quasi-static multivector field configuration, the electric vector field \( \mathbf { E } \) is the gradient of a discrete scalar potential field \( \Phi \) on \( \mathcal { G } _ N \) (\( \mathbf { E } = - \nabla \Phi - \frac { \partial \mathbf { A } } { \partial t } \)). Integrating the electric field along any closed loop aperture \( \mathcal { C } \) composed of discrete circuit branches yields:
+In a quasi-static multivector field configuration, the electric vector field \( \mathbf { E } \) is the gradient of a discrete scalar potential field \( \Phi \) on \( \mathcal { G } _ N \) (\( \mathbf { E } = - \nabla \Phi - \frac { \partial \mathbf { A } } { \partial t } \)). Integrating the electric field along any closed circuit loop \( \mathcal { C } \) composed of discrete circuit branches yields:
 \[ \oint _ { \mathcal { C } } \mathbf { E } \cdot d \mathbf { l } = - \oint _ { \mathcal { C } } \nabla \Phi \cdot d \mathbf { l } - \frac { d } { d t } \iint _ { \mathcal { S } } \mathbf { B } \cdot d \mathbf { A } \]
-When magnetic flux linkage inside the loop aperture is localized within discrete magnetic components (such as inductors or transformers), the line integral of \( - \nabla \Phi \) around the loop vanishes identically:
+When magnetic flux linkage inside the loop interior is localized within discrete magnetic components (such as inductors or transformers), the line integral of \( - \nabla \Phi \) around the loop vanishes identically:
 \[ \sum _ { k = 1 } ^ { M } V _ k = 0 \]
-stating that the sum of potential differences around any closed circuit loop is zero. When time-varying magnetic flux cuts across the loop aperture, Faraday's law of induction produces a non-conservative loop electromotive force \( \mathcal { E } _ \text{loop} = - \frac { d \Phi _ B } { d t } \).
+stating that the sum of potential differences around any closed circuit loop is zero. When time-varying magnetic flux cuts across the enclosed loop area, Faraday's law of induction produces a non-conservative loop electromotive force \( \mathcal { E } _ \text{loop} = - \frac { d \Phi _ B } { d t } \).
 
 ==== Derivation of Kirchhoff’s Current Law (KCL)
 The current density vector \( \mathbf { J } \) satisfies local charge conservation governed by the discrete charge-conservation balance equation \( \nabla \cdot \mathbf { J } + \frac { \partial \rho } { \partial t } = 0 \) on the discrete grid \( \mathcal { G } _ N \). Integrating this charge-conservation relation over a closed spatial surface \( \mathcal { S } \) enclosing a circuit junction node yields:
@@ -787,7 +787,7 @@ This chapter formulates the linear theory of physical systems, impulse responses
 
 In 19th and 20th-century engineering, linear system theory was divided into two disparate domains: “analog” signals defined over an uncountably infinite time continuum \( \mathbb{R} \), and “digital” signals defined over discrete sequence indices \( \mathbb{Z} \). This division created false mathematical dichotomies, requiring separate integration theory for analog differential equations and summation theory for digital difference equations.
 
-In the Iris Number System, all physical systems—whether electrical circuits, mechanical acoustic wave guides, or digital microprocessor algorithms—operate over discrete spatial-temporal resolution grids \( \mathcal { G } _ N = \{ n \delta \mid n \in \{ 0 , 1 , \dots , N - 1 \} \} \). An m-resolution (analog) signal is simply a physical field distribution evaluated at fine grid steps \( \delta \), while a digital signal is an aperture-sampled sequence over coarse grid steps. Because both reside on finite resolution grids, a single, unified mathematical framework governs all linear system dynamics.
+In the Iris Number System, all physical systems—whether electrical circuits, mechanical acoustic wave guides, or digital microprocessor algorithms—operate over discrete spatial-temporal resolution grids \( \mathcal { G } _ N = \{ n \delta \mid n \in \{ 0 , 1 , \dots , N - 1 \} \} \). An m-resolution (analog) signal is simply a physical field distribution evaluated at fine grid steps \( \delta \), while a digital signal is a sampled sequence over coarse grid steps. Because both reside on finite resolution grids, a single, unified mathematical framework models all linear system dynamics.
 
 A physical system \( \mathcal{S} \) maps an input grid signal \( x [ n ] \) to an output grid signal \( y [ n ] \). The system is defined as **linear** if it obeys the principle of superposition:
 \[ \mathcal{S} \left\{ a x_1 [ n ] + b x_2 [ n ] \right\} = a \mathcal{S} \left\{ x_1 [ n ] \right\} + b \mathcal{S} \left\{ x_2 [ n ] \right\} \]
@@ -796,7 +796,7 @@ The system is defined as **shift-invariant** (time-invariant) if a temporal grid
 
 === Shift-Invariant Systems, Difference Convolution, and Bivector Transfer Functions
 
-A Linear Shift-Invariant (LSI) system is completely and uniquely characterized by its response to a unit aperture impulse \( \delta_0 [ n ] \), where \( \delta_0 [ 0 ] = 1 / \delta \) and \( \delta_0 [ n ] = 0 \) for \( n \neq 0 \). This characteristic response is the **unit impulse response** \( h [ n ] = \mathcal{S} \{ \delta_0 [ n ] \} \).
+A Linear Shift-Invariant (LSI) system is completely and uniquely characterized by its response to a unit grid impulse \( \delta_0 [ n ] \), where \( \delta_0 [ 0 ] = 1 / \delta \) and \( \delta_0 [ n ] = 0 \) for \( n \neq 0 \). This characteristic response is the **unit impulse response** \( h [ n ] = \mathcal{S} \{ \delta_0 [ n ] \} \).
 
 Any arbitrary input signal \( x [ n ] \) on grid \( \mathcal { G } _ N \) can be expressed as a linear superposition of scaled, shifted unit impulses:
 \[ x [ n ] = \sum _ { m = 0 } ^ { N - 1 } x [ m ] \delta_0 [ n - m ] \delta \]
@@ -854,7 +854,7 @@ Let \( x [ n ] \) and \( h [ n ] \) be finite signal sequences defined on the di
 . **Interchange of Summation Order**: Because all grid sums contain a finite number of physical terms on grid \( \mathcal { G } _ N \), interchanging the order of summation is strictly valid without convergence subtleties:
   \[ Y ( z ) = \sum _ { m = 0 } ^ { N - 1 } x [ m ] \delta \left( \sum _ { n = 0 } ^ { N - 1 } h [ n - m ] z ^ { - n } \delta \right) \]
 
-. **Grid Shift Variable Substitution**: Let \( k = n - m \). As \( n \) ranges over the grid, \( k \) ranges over the shifted grid aperture. Re-writing the inner summation in terms of \( k \):
+. **Grid Shift Variable Substitution**: Let \( k = n - m \). As \( n \) ranges over the grid, \( k \) ranges over the shifted grid domain. Re-writing the inner summation in terms of \( k \):
   \[ \sum _ { k } h [ k ] z ^ { - ( k + m ) } \delta = z ^ { - m } \left( \sum _ { k } h [ k ] z ^ { - k } \delta \right) = z ^ { - m } H ( z ) \]
 
 . **Factorization**: Substituting this result back into the outer sum yields:
@@ -3485,7 +3485,7 @@ Any discrete \( n \)-qubit “quantum” algorithm composed of a sequence of \( 
 [THEOREM]
 .Theorem: Hobbyist State-Vector Scalability and Signal-to-Noise Ratio Invariance Theorem
 ====
-For a DIY coupled-oscillator state-vector processor with \( N = 2 ^ n \) state channels operating at multiscale resolution \( m \)-res aperture precision \( \delta_\omega \), the minimum channel voltage dynamic range required to distinguish target signal amplification from baseline noise scales as \( O(2 ^ {-n/2}) \). A desktop analog-digital processor operating with channel noise floor \( V_\text{noise} < V_\text{ref} / 2 ^ {n/2} \) achieves 100% exact algorithm convergence.
+For a DIY coupled-oscillator state-vector processor with \( N = 2 ^ n \) state channels operating at multiscale resolution \( m \)-res interval precision \( \delta_\omega \), the minimum channel voltage dynamic range required to distinguish target signal amplification from baseline noise scales as \( O(2 ^ {-n/2}) \). A desktop analog-digital processor operating with channel noise floor \( V_\text{noise} < V_\text{ref} / 2 ^ {n/2} \) achieves 100% exact algorithm convergence.
 
 *Proof:*
 

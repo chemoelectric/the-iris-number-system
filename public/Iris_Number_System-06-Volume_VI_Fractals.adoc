@@ -13,11 +13,11 @@ A Rigorous Application of the Counting-Iris Number System and the Master Field E
 
 For more than half a century, the study of fractals has been obscured by the uncritical importation of uncountably infinite continuum axioms. Conventional mathematics asserted that geometric objects such as the Mandelbrot set, Julia sets, the Koch curve, and the Sierpiński gasket possess “infinitely detailed boundaries of non-integer Hausdorff dimension enclosing finite area” or contain an actual infinity of infinitesimal structures existing beyond all physical scales.
 
-Volume VI establishes that this formulation is an artifact of the continuum fallacy. Physical, computational, and geometric systems operate on discrete spatial-temporal grids \( \mathcal { G } _ N \) characterized by a finite minimum aperture or resolution limit (the m-resolution, \( m \text {-res} \)). When recursive nonlinear iterations are formulated strictly over discrete multivectors in the real Clifford geometric algebra \( Cl ( 2 , 0 ) \), fractals emerge not as paradoxical entities of infinite length and zero area, but as deterministic, scale-invariant discrete phase boundaries between confined periodic standing-wave orbits and escaping radiative field flows.
+Volume VI establishes that this formulation is an artifact of the continuum fallacy. Physical, computational, and geometric systems operate on discrete spatial-temporal grids \( \mathcal { G } _ N \) characterized by a finite minimum scale or resolution limit (the m-resolution, \( m \text {-res} \)). When recursive nonlinear iterations are formulated strictly over discrete multivectors in the real Clifford geometric algebra \( Cl ( 2 , 0 ) \), fractals emerge not as paradoxical entities of infinite length and zero area, but as deterministic, scale-invariant discrete phase boundaries between confined periodic standing-wave orbits and escaping radiative field flows.
 
 In this unified framework:
 
-1. **Discrete Scale Invariance over Grid Hierarchies**: Self-similarity is formulated as an algebraic invariance under discrete dilation operators \( \mathcal { S } _ \lambda : \mathcal { G } _ N \to \mathcal { G } _ { N ' } \). There are no dimensionless mathematical points or infinitesimal voids; every structure is composed of a finite number of discrete aperture cells with strictly finite, well-defined discrete measure.
+1. **Discrete Scale Invariance over Grid Hierarchies**: Self-similarity is formulated as an algebraic invariance under discrete dilation operators \( \mathcal { S } _ \lambda : \mathcal { G } _ N \to \mathcal { G } _ { N ' } \). There are no dimensionless mathematical points or infinitesimal voids; every structure is composed of a finite number of discrete grid cells with strictly finite, well-defined discrete measure.
 
 2. **Real Bivector Planar Iteration in \( Cl ( 2 , 0 ) \)**: The unphysical imaginary unit \( i = \sqrt { - 1 } \) is eliminated. Planar iterations \( z _ { n + 1 } = z _ n ^ 2 + c \) are evaluated as multivectors \( z = x + y \, e _ { 12 } \) in real Euclidean geometric algebra \( Cl ( 2 , 0 ) \), where the squaring operation represents the exact geometric composition of a hyperbolic strain and an orthogonal planar rotation.
 
@@ -30,7 +30,7 @@ Volume VI provides the rigorous theorems, constructive algorithms, and physical 
 [#chap-foundations-discrete-scale-invariance]
 == Foundations of Discrete Scale Invariance and Multiscale Geometric Algebra
 
-This chapter establishes the axiomatic foundation of fractal geometry on discrete spatial grids \( \mathcal { G } _ N \), replacing continuum measure theory and Hausdorff dimensions with Multiscale Resolution Analysis (MSRA) and finite aperture scaling laws in Clifford geometric algebra \( Cl ( 2 , 0 ) \).
+This chapter establishes the axiomatic foundation of fractal geometry on discrete spatial grids \( \mathcal { G } _ N \), replacing continuum measure theory and Hausdorff dimensions with Multiscale Resolution Analysis (MSRA) and finite scaling laws in Clifford geometric algebra \( Cl ( 2 , 0 ) \).
 
 === Discrete Iteration and Geometric Algebra in \( Cl(2,0) \)
 
@@ -174,9 +174,9 @@ Then:
 
 . **Cauchy Sequence Property**: For any integer \( p \ge 1 \), applying the triangle inequality yields:
 \[ d ( x _ n , x _ { n + p } ) \le \sum _ { j = 0 } ^ { p - 1 } d ( x _ { n + j } , x _ { n + j + 1 } ) \le d ( x _ 0 , x _ 1 ) \sum _ { j = 0 } ^ { p - 1 } s ^ { n + j } = s ^ n d ( x _ 0 , x _ 1 ) \frac { 1 - s ^ p } { 1 - s } \]
-Because \( 0 \le s < 1 \), the upper bound contracts below any chosen grid aperture \( h = 2 ^ { - N } \) after finite index \( n _ \text{term} \). Thus \( ( x _ n ) \) forms an aperture-contracting sequence in \( X \).
+Because \( 0 \le s < 1 \), the upper bound contracts below any chosen grid resolution \( h = 2 ^ { - N } \) after finite index \( n _ \text{term} \). Thus \( ( x _ n ) \) forms a scale-contracting sequence in \( X \).
 
-. **Existence and Invariance by MSRA Aperture Completeness**: By MSRA aperture completeness on \( \mathcal { G } _ N \) (Volume I), the nested sequence of metric intervals isolates a unique grid invariant \( x _ \ast \). By the Lipschitz contraction property:
+. **Existence and Invariance by MSRA Grid Completeness**: By MSRA grid completeness on \( \mathcal { G } _ N \) (Volume I), the nested sequence of metric intervals isolates a unique grid invariant \( x _ \ast \). By the Lipschitz contraction property:
 \[ d ( T ( x _ \ast ) , x _ \ast ) \le d ( T ( x _ \ast ) , T ( x _ n ) ) + d ( x _ { n + 1 } , x _ n ) + d ( x _ n , x _ \ast ) \le ( 1 + s ) d ( x _ n , x _ \ast ) + s ^ n d ( x _ 0 , x _ 1 ) \]
 Evaluating at \( n = n _ \text{term} \) yields \( d ( T ( x _ \ast ) , x _ \ast ) \le h \), which identifies \( T ( x _ \ast ) = x _ \ast \) on \( \mathcal { G } _ N \).
 
@@ -196,7 +196,7 @@ For any finite contractive IFS on \( Cl ( 2 , 0 ) \) defined over resolution gri
 
 *Proof:*
 
-. **Grid Mask Distance**: Let \( \mathcal { P } ( \mathcal { G } _ N ) \) be the collection of finite grid configurations within a bounded domain on \( \mathcal { G } _ N \). Define the discrete aperture metric \( d _ \text{grid} ( \mathcal { A } , \mathcal { B } ) \) as the maximum coordinate separation between matching occupied cells on grid \( \mathcal { G } _ N \).
+. **Grid Mask Distance**: Let \( \mathcal { P } ( \mathcal { G } _ N ) \) be the collection of finite grid configurations within a bounded domain on \( \mathcal { G } _ N \). Define the discrete grid metric \( d _ \text{grid} ( \mathcal { A } , \mathcal { B } ) \) as the maximum coordinate separation between matching occupied cells on grid \( \mathcal { G } _ N \).
 
 . **Hutchinson Operator Contraction**: The set-valued union operator \( \mathcal { W } ( \mathcal { S } ) = \bigcup _ { j = 1 } ^ M w _ j ( \mathcal { S } ) \pmod { \mathcal { G } _ N } \) maps cell configurations under contractive affine mappings \( w_j \). For any two cell configurations \( \mathcal { A } , \mathcal { B } \):
 \[ d _ \text{grid} ( \mathcal { W } ( \mathcal { A } ) , \mathcal { W } ( \mathcal { B } ) ) \le s _ \text{max} \cdot d _ \text{grid} ( \mathcal { A } , \mathcal { B } ) \]
@@ -525,11 +525,11 @@ When joining two surfaces of machined timber, the nominal planar joint consists 
 The physical effectiveness of wet polyvinyl acetate (PVA) wood glue under mechanical clamping arises from discrete multiscale capillary and contact dynamics:
 
 1. **Hydrodynamic Wetting and Capillary Pressure**:
-Wet water-borne PVA glue possesses low dynamic viscosity and high polar affinity for the hydrophilic cellulose and lignin matrix. By the Young-Laplace relation on discrete aperture grid \( \mathcal { G } _ N \), the capillary suction pressure \( \Delta P _ \text{cap} \) inside a porous cell lumen of effective radius \( r \) is:
+Wet water-borne PVA glue possesses low dynamic viscosity and high polar affinity for the hydrophilic cellulose and lignin matrix. By the Young-Laplace relation on discrete pore grid \( \mathcal { G } _ N \), the capillary suction pressure \( \Delta P _ \text{cap} \) inside a porous cell lumen of effective radius \( r \) is:
 \[ \Delta P _ \text{cap} = \frac { 2 \gamma \cos \theta } { r } \]
 where \( \gamma \) is the surface tension of the aqueous emulsion and \( \theta \) is the contact wetting angle. Because cell lumens and microscopic surface fissures have small effective radii (\( r \sim 1 \mu\text{m} \) to \( 50 \mu\text{m} \)), capillary forces actively draw the aqueous PVA dispersion deep into the open fractured tracheids.
 
-2. **Mechanical Clamping and Compression of Fractal Void Apertures**:
+2. **Mechanical Clamping and Compression of Fractal Void Pores**:
 Unassisted capillary action alone leaves macroscopic pockets between misaligned asperities. Applying external mechanical clamping pressure accomplishes two essential mechanical functions:
    * It compresses macroscopic waviness and yields microscopic asperity summits, reducing the inter-surface gap down to the scale of the fluid emulsion boundary layer.
    * It expels excess bulk glue out of the macroscopic seam (preventing thick, brittle glue lines) while driving the adhesive into the hierarchical pores of both adjoining timber faces under hydrostatic pressure.
@@ -661,7 +661,7 @@ where \( d \) is the spatial embedding dimension (\( d = 2 \) or \( d = 3 \)).
 
 . **Hierarchical Load Splitting**: At each particle layer, a downward force vector \( \mathbf { f } \) splits into \( k \) branch vectors with random geometric split ratios determined by grain packing geometry. This is structurally identical to a discrete branching process.
 
-. **Aperture Filtering**: When we filter the system to consider only the network carrying strong forces (\( | \mathbf { f } | > \langle \sigma \rangle \)), low-stress branches terminate. The surviving high-stress network is a self-similar sparse tree spanning the container height.
+. **Threshold Filtering**: When we filter the system to consider only the network carrying strong forces (\( | \mathbf { f } | > \langle \sigma \rangle \)), low-stress branches terminate. The surviving high-stress network is a self-similar sparse tree spanning the container height.
 
 . **Box Counting**: Covering this tree with cubic measurement boxes of size \( \epsilon \) yields \( \mathcal { N } ( \epsilon ) \propto \epsilon ^ { - D } \) with \( D \approx 1.7 \) in 2D and \( D \approx 2.4 \) in 3D, proving that the stress distribution is a discrete fractal network. \( \square \)
 ====
@@ -797,19 +797,19 @@ From the viewpoint of the Iris number system and search-and-inference engineerin
 
 If an investigator attempts to reconstruct a past sequence of events purely from physical mechanics without prior information, the raw pre-image tree \( f ^ { - k } ( \text { Clues } ) \) branches exponentially, producing millions of kinematically possible past histories.
 
-==== The Solution: Hierarchical Aperture Pruning
+==== The Solution: Hierarchical Branch Pruning
 
-Human abductive reasoning succeeds because background knowledge (Jaynesian prior information \( I \)) acts as an aperture filter that prunes the tree at high levels:
+Human abductive reasoning succeeds because background knowledge (Jaynesian prior information \( I \)) acts as an evidence filter that prunes the tree at high levels:
 
-1. **Aperture Testing**: At generation \( k \), a candidate branch represents a family of past configurations. If physical evidence (such as a footprint, a chemical trace, or a time constraint) contradicts a high-level parent node, that node is discarded.
+1. **Evidence Testing**: At generation \( k \), a candidate branch represents a family of past configurations. If physical evidence (such as a footprint, a chemical trace, or a time constraint) contradicts a high-level parent node, that node is discarded.
 2. **Sub-Tree Elimination**: Discarding a single node at depth \( m \) instantly eliminates all \( 2 ^ { k - m } \) descendant branches beneath it.
 3. **Logarithmic Search**: Because the hypothesis space is a self-similar fractal tree, hierarchical pruning reduces an exponential search over \( N \) leaves to an efficient path traversal of length \( \mathcal { O } ( \log N ) \).
 
 [#thm-hierarchical-abduction-complexity]
 [THEOREM]
-.Theorem: Hierarchical Aperture Pruning Complexity on Discrete Pre-Image Trees
+.Theorem: Hierarchical Branch Pruning Complexity on Discrete Pre-Image Trees
 ====
-Let a discrete dynamical system have average backward branching factor \( b > 1 \), so that the unconstrained historical state space at past depth \( K \) contains \( N = b ^ K \) candidate trajectories. If an abductive inference engine applies discrete evidence aperture tests of selectivity \( \sigma \) (\( 0 < \sigma < 1 \)) at each backward step, the expected number of surviving candidate histories \( M ( K ) \) scales as:
+Let a discrete dynamical system have average backward branching factor \( b > 1 \), so that the unconstrained historical state space at past depth \( K \) contains \( N = b ^ K \) candidate trajectories. If an abductive inference engine applies discrete evidence tests of selectivity \( \sigma \) (\( 0 < \sigma < 1 \)) at each backward step, the expected number of surviving candidate histories \( M ( K ) \) scales as:
 \[ M ( K ) = ( \sigma \cdot b ) ^ K \]
 When \( \sigma < 1 / b \), the search space contracts exponentially to a single, uniquely determined historical trajectory in \( \mathcal { O } ( K ) = \mathcal { O } ( \log N ) \) computational operations.
 
@@ -862,7 +862,7 @@ The mathematics of backward fractal trees applies directly across numerous pract
 | **Direction** | Past \( \to \) Future | Present Observation \( \to \) Past Cause
 | **Mapping Characteristic** | Many-to-One (Dissipative Contraction) | One-to-Many (Pre-Image Tree Expansion)
 | **Geometric Structure** | Point trajectories settling onto attractors | Self-similar branching trees & Julia boundaries
-| **Combinatorial Nature** | Deterministic single path | Branching forest requiring aperture pruning
+| **Combinatorial Nature** | Deterministic single path | Branching forest requiring branch pruning
 | **Guiding Principle** | Master Field Equation \( DF = J \) | Jaynesian Inverse Probability & MaxEnt
 | **Optimal Algorithm** | Forward time-stepping (Runge-Kutta / Vernier) | Hierarchical tree pruning \( \mathcal { O } ( \log N ) \)
 |===
@@ -881,7 +881,7 @@ Lewis described empirical knowledge as follows. [_The exposition is interleaved 
 
 3. **The Act of [_further_] Abstraction**: The operational process by which an organism or inference engine separates the invariant structural signal from extraneous, fluctuating background variation across scales. [_In the Iris numbers system, this is recognized as application of abstractions (2) to abstractions (1), resulting in yet newer abstractions._]
 
-Order is not an uninterpreted property lying naked in raw sensation; order is the invariant formulational structure extracted through scale-invariant aperture filtering.
+Order is not an uninterpreted property lying naked in raw sensation; order is the invariant formulational structure extracted through scale-invariant resolution filtering.
 
 === The Ishikawa Diagram as an Explicit Backward Pre-Image Fractal Tree
 
@@ -911,7 +911,7 @@ Let an observed manufacturing defect \( \Delta \) be represented as a root node 
 
 . **Formal Tree Representation**: Let the causal operator be \( \mathcal { I } ^ { - 1 } : \mathcal { Q } \to \mathcal { P } ( \mathcal { Q } ) \), where \( \mathcal { I } ^ { - 1 } ( Q ) \) maps a quality characteristic to its set of \( b \) direct contributing factors.
 . **Recursive Tier Expansion**: After \( K \) tiers of backward expansion, the total number of candidate micro-causes is \( N_K = b ^ K \).
-. **Aperture Filtering**: At each tier \( j \), an operational test (e.g., verifying metallurgical composition with a spectrometer) either confirms or rejects that branch. With selectivity \( \sigma < 1 / b \), the expected number of surviving branches after \( K \) tiers is:
+. **Evidence Filtering**: At each tier \( j \), an operational test (e.g., verifying metallurgical composition with a spectrometer) either confirms or rejects that branch. With selectivity \( \sigma < 1 / b \), the expected number of surviving branches after \( K \) tiers is:
 \[ M ( K ) = b ^ K \cdot \sigma ^ K = ( b \cdot \sigma ) ^ K < 1 \]
 . **Complexity Bound**: The total number of physical measurements required to isolate the singular assignable cause is bounded by the geometric series:
 \[ T _ \text { inspect } = \sum _ { j = 0 } ^ { K - 1 } b \cdot ( b \cdot \sigma ) ^ j = b \cdot \frac { 1 - ( b \cdot \sigma ) ^ K } { 1 - b \cdot \sigma } = \mathcal { O } ( 1 ) \text{ to } \mathcal { O } ( K ) \]
@@ -930,7 +930,7 @@ Walter Shewhart recognized that physical variation is fundamentally divided into
    * Arises from a specific, localized physical occurrence that alters the underlying system equations (a fractured cutting insert, a blocked cooling nozzle, an uncalibrated batch of reagent).
    * Represents a **topological boundary breach** that violates scale invariance.
 
-==== The Shewhart Control Chart as a Discrete Aperture Filter
+==== The Shewhart Control Chart as a Discrete Decision Filter
 
 The Shewhart control chart establishes upper and lower control limits (traditionally \( \pm 3 \sigma \) from the central process line \( \mu \)):
 \[ \text { UCL } = \mu + 3 \cdot \frac { \sigma } { \sqrt { n } } , \qquad \text { LCL } = \mu - 3 \cdot \frac { \sigma } { \sqrt { n } } \]
@@ -938,11 +938,11 @@ where \( n \) is the subgroup sample size.
 
 From the viewpoint of the Iris number system:
 
-* **The \( 3 \sigma \) Aperture**: The \( 3 \sigma \) boundary is not a magical probabilistic constant; it is an **economic aperture filter** that balances two opposing costs:
+* **The \( 3 \sigma \) Control Limit**: The \( 3 \sigma \) boundary is not a magical probabilistic constant; it is an **economic decision filter** that balances two opposing costs:
   1. *Type I Error Cost (Alpha Risk / Over-reaction)*: The cost of looking for an assignable cause when only common-cause fractal noise is present (tampering).
   2. *Type II Error Cost (Beta Risk / Under-reaction)*: The cost of failing to look for an assignable cause when the physical process has actually suffered a structural shift.
 
-* **Non-Random Run Rules as Topological Apertures**: Runs of 8 consecutive points on one side of the centerline, or 6 consecutive increasing points, detect scale-breaking trends on grid \( \mathcal { G } _ N \) before individual points cross the \( \pm 3 \sigma \) limits.
+* **Non-Random Run Rules as Topological Filters**: Runs of 8 consecutive points on one side of the centerline, or 6 consecutive increasing points, detect scale-breaking trends on grid \( \mathcal { G } _ N \) before individual points cross the \( \pm 3 \sigma \) limits.
 
 [#thm-shewhart-multiscale-invariance]
 [THEOREM]
@@ -1055,7 +1055,7 @@ The system becomes a non-stationary brownian random walk, drifting off the table
 [THEOREM]
 .Theorem: Tampering-Induced Feigenbaum Period-Doubling and Chaotic Variance Explosion
 ====
-Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with common-cause noise \( \epsilon_k \) be subjected to continuous proportional feedback adjustment \( x _ { k + 1 } = x_k - \beta \cdot ( z_k - z _ \text { target } ) \). As the tampering gain \( \beta \) increases beyond the critical threshold \( \beta _ \text { crit } = 2 / | F ' ( x ^ * ) | \), the process undergoes a sequence of Feigenbaum period-doubling bifurcations on discrete grid \( \mathcal { G } _ N \), culminating in deterministic chaotic variance explosion where the process scatter spans the entire physical boundary aperture.
+Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with common-cause noise \( \epsilon_k \) be subjected to continuous proportional feedback adjustment \( x _ { k + 1 } = x_k - \beta \cdot ( z_k - z _ \text { target } ) \). As the tampering gain \( \beta \) increases beyond the critical threshold \( \beta _ \text { crit } = 2 / | F ' ( x ^ * ) | \), the process undergoes a sequence of Feigenbaum period-doubling bifurcations on discrete grid \( \mathcal { G } _ N \), culminating in deterministic chaotic variance explosion where the process scatter spans the entire physical boundary span.
 
 *Proof:*
 
@@ -1079,7 +1079,7 @@ Let a non-linear process \( z _ { k + 1 } = F ( x_k ) + \epsilon_k \) with commo
 | **Level 0** | Uninterpreted Given | Raw unmonitored process | High-dimensional uncalibrated noise | Apply sensor grid \( \mathcal { G } _ N \)
 | **Level 1** | Formulational Baseline | System in Statistical Control | Stationary self-similar \( 1/f^\alpha \) noise | Maintain standard process (Do not tamper!)
 | **Level 2** | Anomaly Detection | Assignable Special Cause | Scale-breaking boundary breach (\( \pm 3 \sigma \)) | Trigger backward Ishikawa pre-image search
-| **Level 3** | Abductive Deduction | Root-Cause Isolation | Hierarchical aperture tree pruning | Eliminate assignable physical cause
+| **Level 3** | Abductive Deduction | Root-Cause Isolation | Hierarchical branch tree pruning | Eliminate assignable physical cause
 | **Level 4** | Formulational Synthesis | PDSA Process Improvement | Contraction to higher-order fixed point \( \theta ^ * \) | Standardize new operational baseline
 |===
 
@@ -1106,7 +1106,7 @@ Conventional analysis formulates fractals by reifying the infinite limit operati
 
 In contrast, within the Iris number system:
 
-1. **Discrete Vernier Resolution Grids**: Every fractal is defined strictly as an iterative sequence of discrete state multivectors on a finite resolution grid \( \mathcal { G } _ N \) characterized by a minimum aperture \( h = 2 ^ { - N } \).
+1. **Discrete Vernier Resolution Grids**: Every fractal is defined strictly as an iterative sequence of discrete state multivectors on a finite resolution grid \( \mathcal { G } _ N \) characterized by a minimum step size \( h = 2 ^ { - N } \).
 
 2. **Well-Defined Discrete Difference Quotients**: At any finite scale \( m \le N \), every boundary element possesses well-defined, computable discrete difference quotients. The alleged “nowhere-differentiability” of orthodox analysis is exposed as a fallacy resulting from attempting to evaluate ratios beyond the resolution grid (dividing by zero spatial extent).
 
@@ -1134,15 +1134,15 @@ These continuum assertions are structurally self-contradictory:
 
 . **Surface Energy Conservation Violation**: The formation of any physical boundary requires a finite thermodynamic work of cohesion \( W = \gamma \cdot A \), where \( \gamma \) is the finite surface tension. Asserting that \( \mathcal { H } ^ 1 ( \mathcal { B } ) = \infty \) in a finite volume requires infinite surface formation energy, violating the First Law of Thermodynamics.
 
-. **Aperture Cutoff Inconsistency**: In any physical medium, self-similarity terminates at the atomic lattice spacing \( \ell_0 > 0 \). Continuum measure theory asserts both that its mathematical formulations describe the physical boundary and that its theorems require structural details at scales \( \epsilon < \ell_0 \) where the physical medium does not exist.
+. **Scale Cutoff Inconsistency**: In any physical medium, self-similarity terminates at the atomic lattice spacing \( \ell_0 > 0 \). Continuum measure theory asserts both that its mathematical formulations describe the physical boundary and that its theorems require structural details at scales \( \epsilon < \ell_0 \) where the physical medium does not exist.
 
-. **Non-Constructive Measure Annihilation**: In the Iris number system, for any finite aperture \( \epsilon = 2 ^ { - m } \ge \ell_0 \), the discrete boundary count \( N ( \epsilon ) \) and boundary measure \( M ( \epsilon ) = N ( \epsilon ) \cdot \epsilon ^ d \) are exact rational numbers. The continuum limit \( \lim _ { \epsilon \to 0 } \) is an unconstructive operation that destroys operational information.
+. **Non-Constructive Measure Annihilation**: In the Iris number system, for any finite scale \( \epsilon = 2 ^ { - m } \ge \ell_0 \), the discrete boundary count \( N ( \epsilon ) \) and boundary measure \( M ( \epsilon ) = N ( \epsilon ) \cdot \epsilon ^ d \) are exact rational numbers. The continuum limit \( \lim _ { \epsilon \to 0 } \) is an unconstructive operation that destroys operational information.
 
 *Proof:*
 
 . **Thermodynamic Energy Balance**: Let a solid or fluid body undergo fracture or branching breakdown on grid \( \mathcal { G } _ N \). The total energy supplied to create the fracture surface is bounded by the applied external strain energy \( E _ \text { strain } < \infty \). If the true physical boundary had infinite 1-dimensional Hausdorff measure \( \mathcal { H } ^ 1 = \infty \), the surface energy would evaluate to \( E _ \text { surface } = \gamma \int _ { \mathcal { B } } d \mathcal { H } ^ 1 = \infty \), requiring an infinite energy source to produce a microscopic fracture. This is a direct physical and logical contradiction.
 
-. **Operational Decidability on \( \mathcal { G } _ N \)**: By Theorem `xref:theorem-simd-fractal-throughput[Multi-Grid Complexity]`, every physical boundary is fully characterized by a finite sequence of discrete aperture counts \( \{ N ( 2 ^ { - m } ) \} _ { m = 0 } ^ N \). The Hausdorff dimension \( D \) is the rational slope of the Vernier scaling line over the finite physical range \( [ \ell_0 , L_0 ] \):
+. **Operational Decidability on \( \mathcal { G } _ N \)**: By Theorem `xref:theorem-simd-fractal-throughput[Multi-Grid Complexity]`, every physical boundary is fully characterized by a finite sequence of discrete grid counts \( \{ N ( 2 ^ { - m } ) \} _ { m = 0 } ^ N \). The Hausdorff dimension \( D \) is the rational slope of the Vernier scaling line over the finite physical range \( [ \ell_0 , L_0 ] \):
 \[ D = \frac { \ln N ( \ell_0 ) - \ln N ( L_0 ) } { \ln ( L_0 / \ell_0 ) } \]
 Extrapolating this slope to \( \epsilon \to 0 \) is a non-constructive reification that violates the finite boundary conditions of the discrete grid \( \mathcal { G } _ N \), completing the proof. \( \square \)
 ====
@@ -1177,7 +1177,7 @@ Had mainstream mathematics followed the constructivist route:
 
 1. A fractal would have been defined from the outset as a **discrete multiscale recurrence relation on finite lattices** \( \mathbb { Z } ^ d \) or \( \mathcal { G } _ N \).
 2. The Mandelbrot set would have been recognized not as a mysterious continuum object whose boundary connectedness required decades of non-constructive topological proofs, but as an **exact algebraic bifurcation locus of discrete standing-wave limit cycles in real Clifford algebra** \( Cl ( 2 , 0 ) \).
-3. The alleged paradoxes of infinite length and zero area would never have arisen, because scale-invariance would be recognized as a property of discrete dilation operators across finite measurement apertures.
+3. The alleged paradoxes of infinite length and zero area would never have arisen, because scale-invariance would be recognized as a property of discrete dilation operators across finite measurement scales.
 
 Instead, 20th-century conventional mathematics chose to preserve the dogma of the continuum at all costs. Whenever a newly discovered physical or computational phenomenon conflicted with continuum assumptions, a new mathematical "epicycle" was introduced:
 * When derivatives failed on fractals, *fractional calculus* and *distribution theory* were patched onto the framework.
@@ -1211,7 +1211,7 @@ This index lists all formal Definitions and Theorems established across this vol
 * xref:theorem-knot-capstan-cascade[**Theorem: Multiscale Capstan Friction Cascade and Topological Self-Locking**] -- Section: *Hierarchical Topological Friction, Capstan Cascades, and the Discrete Mechanics of Knots*
 * xref:thm-granular-force-chain-fractal[**Theorem: Discrete Fractal Scaling of Force Chains in Granular Media**] -- Section: *Granular Force Chains and Compaction Arches*
 * xref:thm-preimage-fractal-convergence[**Theorem: Discrete Pre-Image Tree Convergence to Julia Basin Boundaries**] -- Section: *The Geometry of Pre-Image Trees*
-* xref:thm-hierarchical-abduction-complexity[**Theorem: Hierarchical Aperture Pruning Complexity on Discrete Pre-Image Trees**] -- Section: *Sherlock Holmes and the Geometry of Abductive Tree Pruning*
+* xref:thm-hierarchical-abduction-complexity[**Theorem: Hierarchical Branch Pruning Complexity on Discrete Pre-Image Trees**] -- Section: *Sherlock Holmes and the Geometry of Abductive Tree Pruning*
 * xref:thm-ishikawa-fractal-pruning[**Theorem: Discrete Ishikawa Tree Abductive Pruning and Root-Cause Isolation**] -- Section: *The Ishikawa Diagram as an Explicit Backward Pre-Image Fractal Tree*
 * xref:thm-shewhart-multiscale-invariance[**Theorem: Multiscale Self-Similarity of Stable Common-Cause Variation**] -- Section: *Shewhart Quality Control and Multiscale Physical Noise*
 * xref:thm-pdsa-contraction-convergence[**Theorem: PDSA Operational Contraction and Convergence to Target Invariants**] -- Section: *The Shewhart-Deming Cycle (PDSA) as a Discrete Contraction Iteration*

@@ -9,7 +9,7 @@
 
 A Rigorous Foundation for Geometry, Algebra, Representations, Topology, Lattices, Categories, and Combinatorics in the Iris Number System
 
-== Constructive Clifford Geometry and Aperture Metrics
+== Constructive Clifford Geometry and Discrete Metrics
 
 In this chapter, geometry is constructed strictly within the Iris number system and \( Cl ( 4 , 1 , 1 ) \) multivector space without appealing to uncountable geometric continua. 2D Euclidean Geometric Algebra \( Cl ( 2 , 0 ) \), 3D Euclidean Geometric Algebra \( Cl ( 3 , 0 ) \), and 4D Homogeneous Projective Geometric Algebra \( Cl ( 3 , 0 , 1 ) \) are constructed directly as sub-algebras, along with metric spaces and conformal null-geometries on discrete rational partition grids \( \mathcal { G } _ N \).
 
@@ -158,14 +158,14 @@ Taking the geometric product \( D F = ( D \cdot F ) + ( D \wedge F ) \) and equa
    - Pseudoscalar grade: \( \nabla \cdot \mathbf { B } = 0 \) (Gauss's law for magnetostatics).
 
 4. **By the way: Derivation of Newton's Law of Universal Gravitation**:
-   By direct mathematical analogy in static conditions (\( \frac { \partial } { \partial t } = 0 \)), consider a static scalar mass density field \( \rho _ m \) generating a static vector gravitational acceleration field \( F _ g = \mathbf { g } \). Setting derivative operator \( D = \nabla \) and scalar mass source \( J _ g = - 4 \pi G \rho _ m \mathbf { 1 } _ { Cl } \), the static field equation \( D F _ g = J _ g \) reduces to scalar grade projection \( \nabla \cdot \mathbf { g } = - 4 \pi G \rho _ m \) (Gauss's law for gravitation). For a finite localized mass aperture \( m _ 1 = \int \rho _ m \, d V \), radial symmetry and aperture flux conservation demand field intensity \( \mathbf { g } ( r ) = - \frac { G m _ 1 } { r ^ 2 } \hat { \mathbf { r } } \). Coupling to a second finite mass \( m _ 2 \) yields Newton's law of universal gravitation:
+   By direct mathematical analogy in static conditions (\( \frac { \partial } { \partial t } = 0 \)), consider a static scalar mass density field \( \rho _ m \) generating a static vector gravitational acceleration field \( F _ g = \mathbf { g } \). Setting derivative operator \( D = \nabla \) and scalar mass source \( J _ g = - 4 \pi G \rho _ m \mathbf { 1 } _ { Cl } \), the static field equation \( D F _ g = J _ g \) reduces to scalar grade projection \( \nabla \cdot \mathbf { g } = - 4 \pi G \rho _ m \) (Gauss's law for gravitation). For a finite localized mass distribution \( m _ 1 = \int \rho _ m \, d V \), radial symmetry and flux conservation demand field intensity \( \mathbf { g } ( r ) = - \frac { G m _ 1 } { r ^ 2 } \hat { \mathbf { r } } \). Coupling to a second finite mass \( m _ 2 \) yields Newton's law of universal gravitation:
 \[ \mathbf { F } _ g = m _ 2 \mathbf { g } ( r ) = - \frac { G m _ 1 m _ 2 } { r ^ 2 } \hat { \mathbf { r } } \]
 proving that static universal gravitation is derived as a direct static scalar-source corollary within the unified Master Field Equation framework.
 ====
 
-=== Multivector Metric Spaces and Discrete Aperture Norms
+=== Multivector Metric Spaces and Discrete Norms
 
-In this section, distance metrics and aperture norms are defined on finite discrete grids \( \mathcal { G } _ N \), establishing constructive completeness without uncountable infinite limits.
+In this section, distance metrics and norms are defined on finite discrete grids \( \mathcal { G } _ N \), establishing constructive completeness without uncountable infinite limits.
 
 [#theorem-multivector-metric-completeness]
 [THEOREM]
@@ -277,7 +277,7 @@ terminating at non-zero constant polynomial \( S _ r ( x ) \in \mathbb { Q } \se
 2. **Exact Real Root Isolation**: For any interval \( [ a , b ] \) on grid \( \mathcal { G } _ N \), let \( V ( c ) \) denote the number of sign variations in the sequence of values \( ( S _ 0 ( c ) , S _ 1 ( c ) , \dots , S _ r ( c ) ) \). The exact number of distinct real roots of \( P ( x ) \) in \( ( a , b ] \) is given strictly by the integer difference:
 \[ N _ { \text { roots } } ( a , b ) = V ( a ) - V ( b ) \]
 
-3. **Vernier Root Refinement and Factorization**: If \( N _ { \text { roots } } ( a , b ) = 1 \), the unique root \( x ^ { \ast } \in ( a , b ] \) is isolated and refined to aperture precision \( \Delta x = ( b - a ) / 2 ^ k \le 2 ^ { - N } \) via binary interval bisection or quadratic \( s \)-power clipping in at most \( k \le \lceil N + \log _ 2 ( b - a ) \rceil \) steps, factoring \( P ( x ) = ( x - x ^ { \ast } ) Q ( x ) + \mathbf { 0 } _ { Cl } \) exactly on extended grid \( \mathcal { G } _ { N ' } \).
+3. **Vernier Root Refinement and Factorization**: If \( N _ { \text { roots } } ( a , b ) = 1 \), the unique root \( x ^ { \ast } \in ( a , b ] \) is isolated and refined to grid precision \( \Delta x = ( b - a ) / 2 ^ k \le 2 ^ { - N } \) via binary interval bisection or quadratic \( s \)-power clipping in at most \( k \le \lceil N + \log _ 2 ( b - a ) \rceil \) steps, factoring \( P ( x ) = ( x - x ^ { \ast } ) Q ( x ) + \mathbf { 0 } _ { Cl } \) exactly on extended grid \( \mathcal { G } _ { N ' } \).
 
 *Proof:*
 
@@ -351,7 +351,7 @@ Let \( P ( x ) = \sum _ { k = 0 } ^ m b _ k B _ { k , m } ( x ) \) be a polynomi
    - If \( P ( r _ i ) = 0 \), \( r _ i \) is identified as a critical root (local extremum touching zero).
    - If \( P ( r _ i ) \cdot P ( r _ { i + 1 } ) > 0 \), \( P ( x ) \) contains no real roots on \( ( r _ i , r _ { i + 1 } ) \).
 
-4. **ITP (Interpolate, Truncate, Project) Refinement**: On each sub-interval containing a sign change, the unique real root is refined to target aperture precision \( \epsilon = 2 ^ { - N } \) via the ITP algorithm (Oliveira & Takahashi, 2021), achieving super-linear / secant convergence speed while maintaining strict worst-case bisection guarantees \( k \le \lceil \log _ 2 ( ( r _ { i + 1 } - r _ i ) / \epsilon ) \rceil \).
+4. **ITP (Interpolate, Truncate, Project) Refinement**: On each sub-interval containing a sign change, the unique real root is refined to target grid precision \( \epsilon = 2 ^ { - N } \) via the ITP algorithm (Oliveira & Takahashi, 2021), achieving super-linear / secant convergence speed while maintaining strict worst-case bisection guarantees \( k \le \lceil \log _ 2 ( ( r _ { i + 1 } - r _ i ) / \epsilon ) \rceil \).
 
 *Proof:*
 
@@ -1133,7 +1133,7 @@ Let \( P ( x ) \) be a polynomial of degree \( m \ge 1 \) defined over discrete 
 
 2. **Maximum Entropy Sub-Interval Division**: The mutual information \( I ( X ; Y ) = H ( Y ) - H ( Y \mid X ) \) gained per sign query is maximized when the binary query entropy \( H ( Y ) = - p \log _ 2 ( p ) - ( 1 - p ) \log _ 2 ( 1 - p ) \) satisfies \( p = P ( P ( c ) > 0 ) = 1 / 2 \), achieving the maximum channel capacity \( C = 1 \text{ bit per query} \). On monotonic sub-intervals, \( p = 1 / 2 \) corresponds to selecting sample point \( c \) at the median of the prior root probability density, matching Vernier bisection or weighted ITP interpolation.
 
-3. **Multi-Grid Channel Capacity Limit**: For parallel root isolation across \( M \) execution lanes, the total information acquisition capacity is bounded strictly by Shannon's channel capacity formula \( C _ { \text { total } } = M \log _ 2 ( 1 + \text { SNR } ) \text{ bits/cycle} \), where \( \text { SNR } = 2 ^ { 2 F } / \sigma _ { \text { round } } ^ 2 \) is the signal-to-quantization-noise ratio of fixed-point Q\( M.F \) or floating-point evaluation. This establishes the absolute lower bound on computational steps required to achieve target aperture precision \( \epsilon = 2 ^ { - N } \):
+3. **Multi-Grid Channel Capacity Limit**: For parallel root isolation across \( M \) execution lanes, the total information acquisition capacity is bounded strictly by Shannon's channel capacity formula \( C _ { \text { total } } = M \log _ 2 ( 1 + \text { SNR } ) \text{ bits/cycle} \), where \( \text { SNR } = 2 ^ { 2 F } / \sigma _ { \text { round } } ^ 2 \) is the signal-to-quantization-noise ratio of fixed-point Q\( M.F \) or floating-point evaluation. This establishes the absolute lower bound on computational steps required to achieve target grid precision \( \epsilon = 2 ^ { - N } \):
    \[ k _ { \text { min } } \ge \left\lceil \frac { \log _ 2 ( ( b - a ) / \epsilon ) } { \log _ 2 ( 1 + \text { SNR } ) } \right\rceil \]
 
 *Proof:*
@@ -1161,7 +1161,7 @@ To prevent zero-information evaluation loops near quantization noise floors, the
 [EXAMPLE]
 .Example Problem 10: Information-Theoretic Channel Capacity Analysis of Root Isolation
 ====
-*Problem*: Calculate the minimum number of parallel queries \( k _ { \text { min } } \) required to isolate a root of \( P ( x ) \) on \( [ 0 , 1 ] \) to aperture precision \( \epsilon = 2 ^ { - 32 } \) on an \( M = 4 \) lane parallel hardware pipeline operating with fixed-point fractional bit-depth \( F = 32 \) (\( \text { SNR } = 2 ^ { 64 } \)).
+*Problem*: Calculate the minimum number of parallel queries \( k _ { \text { min } } \) required to isolate a root of \( P ( x ) \) on \( [ 0 , 1 ] \) to grid precision \( \epsilon = 2 ^ { - 32 } \) on an \( M = 4 \) lane parallel hardware pipeline operating with fixed-point fractional bit-depth \( F = 32 \) (\( \text { SNR } = 2 ^ { 64 } \)).
 
 *Solution*:
 
@@ -1214,7 +1214,7 @@ Let \( P ( z ) \) be a polynomial or multivector field over discrete rational gr
 
 === Numerical Stability Safeguards for BFGS Quasi-Newton Iterations
 
-To guarantee numerical stability and exact aperture convergence when executing BFGS quasi-Newton updates on discrete rational grid \( \mathcal { G } _ N \), the following execution safeguards are recommended:
+To guarantee numerical stability and exact interval convergence when executing BFGS quasi-Newton updates on discrete rational grid \( \mathcal { G } _ N \), the following execution safeguards are recommended:
 
 1. **Curvature Condition Verification and Powell Damping**:
    - Before applying the BFGS update (link:https://doi.org/10.1090/S0025-5718-1970-0274029-X[Shanno, 1970]), evaluate inner product \( \mathbf { y } _ k ^ T \mathbf { s } _ k \). If \( \mathbf { y } _ k ^ T \mathbf { s } _ k < \theta \mathbf { s } _ k ^ T \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) with threshold \( \theta = 0.2 \), replace \( \mathbf { y } _ k \) with damped vector \( \mathbf { r } _ k = \theta \mathbf { y } _ k + ( 1 - \theta ) \mathbf { H } _ k ^ { - 1 } \mathbf { s } _ k \) to enforce strict positive-definiteness.
@@ -1754,19 +1754,19 @@ Let \( \chi _ i , \chi _ j \) be the multivector characters of two irreducible r
 . **Character Trace Sum**: Taking the scalar trace of the intertwining projection operator directly yields \( \delta _ { ij } \cdot \mathbf { 1 } _ { Cl } \). \( \square \)
 ====
 
-[#chap-constructive-discrete-topology-and-aperture-coverings]
+[#chap-constructive-discrete-topology-and-coverings]
 
-== Constructive Discrete Topology and Aperture Coverings
+== Constructive Discrete Topology and Coverings
 
 In this chapter, topology is developed without infinite point sets. Open sets, neighborhood bases, Vernier compactness, and discrete fixed-point contractive theorems are established on finite rational partition grids \( \mathcal { G } _ N \).
 
-=== Discrete Aperture Topologies and Neighborhood Bases
+=== Discrete Topologies and Neighborhood Bases
 
 [#theorem-discrete-topology-closure]
 [THEOREM]
-.Theorem: Finite Discrete Topology Aperture Closure Theorem
+.Theorem: Finite Discrete Topology Closure Theorem
 ====
-On any finite discrete grid \( \mathcal { G } _ N \), the collection of aperture open sets \( \tau _ { \mathcal { I } } \) generated by open metric balls \( B _ r ( x ) = \{ y \in \mathcal { G } _ N \mid d _ { \mathcal { I } } ( x , y ) < r \} \) satisfies the exact axioms of a finite topology, where every subset is both open and closed (clopen).
+On any finite discrete grid \( \mathcal { G } _ N \), the collection of open sets \( \tau _ { \mathcal { I } } \) generated by open metric balls \( B _ r ( x ) = \{ y \in \mathcal { G } _ N \mid d _ { \mathcal { I } } ( x , y ) < r \} \) satisfies the exact axioms of a finite topology, where every subset is both open and closed (clopen).
 
 *Proof:*
 
@@ -1890,7 +1890,7 @@ When evaluating topological invariants, helicity sums, and defect indices on dis
 
 In this chapter, order theory and lattice structures are established on finite rational grids \( \mathcal { G } _ N \), defining join (\( \vee \)), meet (\( \wedge \)), and Boolean sublattices.
 
-=== Aperture Partial Orders and Lattice Homomorphisms
+=== Partial Orders and Lattice Homomorphisms
 
 [#theorem-iris-lattice-isomorphism]
 [THEOREM]
@@ -1911,7 +1911,7 @@ The finite grid \( \mathcal { G } _ N \) ordered by component-wise rational magn
 
 [#theorem-boolean-sublattice-modularity]
 [THEOREM]
-.Theorem: Modular Aperture Sublattice Theorem
+.Theorem: Modular Sublattice Theorem
 ====
 The set of idempotents in \( Cl ( 4 , 1 , 1 ) \) satisfying \( P ^ 2 = P \) forms a modular Boolean sublattice under multivector operations \( P \vee Q = P + Q - P Q \) and \( P \wedge Q = P Q \).
 
@@ -2116,15 +2116,15 @@ The extremal antichain theorem on finite Boolean lattices was established by:
 
 == Constructive Categories and Multivector Functors
 
-In this chapter, category theory is constructed over finite rational aperture spaces, multivector functors, Yoneda aperture embedding, and monoidal coherence.
+In this chapter, category theory is constructed over finite rational grid spaces, multivector functors, Yoneda embedding, and monoidal coherence.
 
-=== The Category of Finite Iris Aperture Spaces
+=== The Category of Finite Iris Grid Spaces
 
 [#theorem-iris-category-duality]
 [THEOREM]
 .Theorem: Constructive Iris Category Duality Theorem
 ====
-The category \( \mathbf { Iris } _ N \) whose objects are finite discrete grids \( \mathcal { G } _ N \) and whose morphisms are MSRA linear aperture operators admits an exact contravariant duality functor \( T : \mathbf { Iris } _ N \to \mathbf { Iris } _ N ^ { \text { op } } \) mapping grid spaces to their multivector dual spaces.
+The category \( \mathbf { Iris } _ N \) whose objects are finite discrete grids \( \mathcal { G } _ N \) and whose morphisms are MSRA linear grid operators admits an exact contravariant duality functor \( T : \mathbf { Iris } _ N \to \mathbf { Iris } _ N ^ { \text { op } } \) mapping grid spaces to their multivector dual spaces.
 
 *Proof:*
 
@@ -2135,11 +2135,11 @@ The category \( \mathbf { Iris } _ N \) whose objects are finite discrete grids 
 . **Functoriality Tautology**: \( T ( \text { id } ) = \text { id } \) and \( T ( g \circ f ) = T ( f ) \circ T ( g ) \), establishing exact category duality. \( \square \)
 ====
 
-=== Yoneda Aperture Embedding and Natural Transformations
+=== Yoneda Embedding and Natural Transformations
 
-[#theorem-yoneda-aperture-embedding]
+[#theorem-yoneda-embedding]
 [THEOREM]
-.Theorem: Constructive Yoneda Aperture Embedding Lemma
+.Theorem: Constructive Yoneda Embedding Lemma
 ====
 For any object \( A \in \mathbf { Iris } _ N \) and any contravariant functor \( F : \mathbf { Iris } _ N ^ { \text { op } } \to \mathbf { Set } \), the set of natural transformations \( \text { Nat } ( h _ A , F ) \) from the representable hom-functor \( h _ A = \text { Hom } ( - , A ) \) to \( F \) is in exact rational bijection with the set \( F ( A ) \).
 
@@ -2156,7 +2156,7 @@ For any object \( A \in \mathbf { Iris } _ N \) and any contravariant functor \(
 
 [#theorem-monoidal-functor-coherence]
 [THEOREM]
-.Theorem: Monoidal Aperture Functor Coherence
+.Theorem: Monoidal Functor Coherence
 ====
 The tensor product of multivector spaces \( \mathcal { G } _ M \otimes \mathcal { G } _ N \) equips \( \mathbf { Iris } _ N \) with a symmetric monoidal category structure satisfying Mac Lane's pentagon and hexagon coherence diagrams tautologically.
 
@@ -2504,18 +2504,18 @@ where \( S ( n ) \) is the total number of distinct solutions to the \( n \)-que
 
 [#theorem-vernier-knights-tour]
 [THEOREM]
-.Theorem: Deterministic Vernier-Aperture Knight's Tour Construction Theorem
+.Theorem: Deterministic Vernier Knight's Tour Construction Theorem
 ====
 Let \( G = ( V , E ) \) be the knight's graph on an \( n \times n \) board (\( n \ge 5 \)) on discrete grid \( \mathcal { G } _ N \), where vertex set \( V = \{ ( x , y ) : 1 \le x , y \le n \} \) has cardinality \( | V | = n ^ 2 \), and edge set \( E \) consists of valid knight moves \( \Delta v \in \{ ( \pm 1 , \pm 2 ) , ( \pm 2 , \pm 1 ) \} \).
 
-1. **Aperture Degree Hierarchy**: For any vertex \( v \in V \), let \( \text{deg} ( v ) = | \{ u \in V : ( v , u ) \in E \} | \) denote its primary degree, and let \( \text{deg} _ 2 ( v ) = \sum _ { u \in N ( v ) } \text{deg} ( u ) \) denote its second-order onward degree.
+1. **Vertex Degree Hierarchy**: For any vertex \( v \in V \), let \( \text{deg} ( v ) = | \{ u \in V : ( v , u ) \in E \} | \) denote its primary degree, and let \( \text{deg} _ 2 ( v ) = \sum _ { u \in N ( v ) } \text{deg} ( u ) \) denote its second-order onward degree.
 
 2. **Deterministic Tie-Breaking Invariance**: In the modified Warnsdorff-Vernier construction algorithm, given current position \( v _ k \):
    - Select onward candidate \( v _ { k + 1 } \in N ( v _ k ) \setminus \{ v _ 1 , \dots , v _ k \} \) that minimizes primary degree \( \text{deg} ( u ) \).
    - If a tie occurs between candidates minimizing primary degree, select the candidate minimizing second-order degree \( \text{deg} _ 2 ( u ) \).
    - If a tie persists, resolve deterministically using the discrete lexicographical orientation ordering \( ( x , y ) \) in \( Cl ( 4 , 1 , 1 ) \).
 
-3. **Linear-Time Guaranteed Hamiltonian Completion**: For all board sizes \( n \ge 5 \), the Vernier Warnsdorff-Aperture construction terminates without a single backtrack in exactly \( n ^ 2 \) steps, producing a valid Hamiltonian path (Open Knight's Tour). Furthermore, when \( n \) is even, augmenting the terminal move to target starting vertex \( v _ 1 \) yields a re-entrant closed Hamiltonian cycle (Closed Knight's Tour) in \( O ( n ^ 2 ) \) time.
+3. **Linear-Time Guaranteed Hamiltonian Completion**: For all board sizes \( n \ge 5 \), the Vernier Warnsdorff construction terminates without a single backtrack in exactly \( n ^ 2 \) steps, producing a valid Hamiltonian path (Open Knight's Tour). Furthermore, when \( n \) is even, augmenting the terminal move to target starting vertex \( v _ 1 \) yields a re-entrant closed Hamiltonian cycle (Closed Knight's Tour) in \( O ( n ^ 2 ) \) time.
 
 *Proof:*
 
@@ -2523,14 +2523,14 @@ Let \( G = ( V , E ) \) be the knight's graph on an \( n \times n \) board (\( n
 
 . **Second-Order Degree Conservation**: The second-order degree \( \text{deg} _ 2 ( u ) \) measures the total connectivity of onward neighbors. Minimizing \( \text{deg} _ 2 ( u ) \) prioritizes vertices whose neighbors are most constrained, preventing early isolation of perimeter and sub-perimeter squares.
 
-. **Global Induction on Discrete Grid**: On any finite discrete board \( n \ge 5 \), board vertices form an aperture covering with bounded maximum degree 8. Since every local decision is uniquely determined by discrete aperture norms \( \text{deg} ( u ) \) and \( \text{deg} _ 2 ( u ) \), state transitions are strictly deterministic, completing a full \( n ^ 2 \)-vertex Hamiltonian cycle without encountering dead-ends. \( \square \)
+. **Global Induction on Discrete Grid**: On any finite discrete board \( n \ge 5 \), board vertices form a finite covering with bounded maximum degree 8. Since every local decision is uniquely determined by discrete degree norms \( \text{deg} ( u ) \) and \( \text{deg} _ 2 ( u ) \), state transitions are strictly deterministic, completing a full \( n ^ 2 \)-vertex Hamiltonian cycle without encountering dead-ends. \( \square \)
 ====
 
 [#example-8x8-knights-tour]
 [EXAMPLE]
 .Example Problem 8: Exact Linear-Time Deterministic Closed Knight's Tour Construction on an 8x8 Grid
 ====
-*Problem*: Apply the Vernier Warnsdorff-Aperture deterministic algorithm to construct a complete re-entrant closed Knight's Tour on a standard \( 8 \times 8 \) board (\( n = 8 \), 64 squares), starting at position \( ( 1 , 1 ) \).
+*Problem*: Apply the Vernier Warnsdorff deterministic algorithm to construct a complete re-entrant closed Knight's Tour on a standard \( 8 \times 8 \) board (\( n = 8 \), 64 squares), starting at position \( ( 1 , 1 ) \).
 
 1. Formulate the initial degree distribution and first 3 knight steps.
 2. Demonstrate how second-order tie-breaking resolves potential dead-ends.
@@ -2550,7 +2550,7 @@ Let \( G = ( V , E ) \) be the knight's graph on an \( n \times n \) board (\( n
    - From \( v _ 2 = ( 2 , 3 ) \), candidates are \( ( 1 , 1 ) \) [visited], \( ( 1 , 5 ) \) [deg 4], \( ( 3 , 1 ) \) [deg 3], \( ( 3 , 5 ) \) [deg 8], \( ( 4 , 2 ) \) [deg 8], \( ( 4 , 4 ) \) [deg 8].
    - Minimum degree candidate is \( v _ 3 = ( 3 , 1 ) \) with degree 3.
    - Moving from \( v _ 3 = ( 3 , 1 ) \) targets \( v _ 4 = ( 1 , 2 ) \) (degree 3).
-   - Proceeding iteratively following the deterministic Vernier Warnsdorff-Aperture rule yields the sequence of 64 distinct coordinates:
+   - Proceeding iteratively following the deterministic Vernier Warnsdorff rule yields the sequence of 64 distinct coordinates:
      \( ( 1 , 1 ) \to ( 2 , 3 ) \to ( 3 , 1 ) \to ( 1 , 2 ) \to ( 2 , 4 ) \to ( 1 , 6 ) \to ( 2 , 8 ) \to ( 3 , 6 ) \to ( 1 , 7 ) \to ( 2 , 5 ) \to ( 1 , 3 ) \to ( 2 , 1 ) \to ( 4 , 2 ) \to ( 3 , 4 ) \to ( 1 , 5 ) \to ( 2 , 7 ) \to ( 1 , 8 ) \to ( 3 , 7 ) \to ( 2 , 6 ) \to ( 1 , 4 ) \to ( 3 , 3 ) \to ( 4 , 1 ) \to ( 2 , 2 ) \to ( 4 , 3 ) \to ( 3 , 5 ) \to ( 1 , 4 ) \dots \) reaching square \( v _ { 64 } = ( 3 , 2 ) \).
 
 3. **Tour Closure Verification**:
@@ -2561,21 +2561,21 @@ Let \( G = ( V , E ) \) be the knight's graph on an \( n \times n \) board (\( n
 
 [#theorem-multivector-chess-game-theory]
 [THEOREM]
-.Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem
+.Theorem: Multivector Position Evaluation and Deterministic Game-Tree Search Theorem
 ====
-Let \( \mathcal { S } \) be a finite discrete state space of valid game configurations (such as standard chess positions on grid \( \mathcal { G } _ N \)), where each board state \( s \in \mathcal { S } \) is mapped to a state-transition multivector \( \psi_s \in Cl ( 4 , 1 , 1 ) \) encoding material balance, mobility, board apertures, and king safety fields.
+Let \( \mathcal { S } \) be a finite discrete state space of valid game configurations (such as standard chess positions on grid \( \mathcal { G } _ N \)), where each board state \( s \in \mathcal { S } \) is mapped to a state-transition multivector \( \psi_s \in Cl ( 4 , 1 , 1 ) \) encoding material balance, mobility, open lines, and king safety fields.
 
-1. **Exact Multivector Position Evaluation**: A state position multivector \( \psi_s \) is evaluated via scalar aperture contraction \( v ( s ) = \langle \Omega \cdot \psi_s \rangle _ 0 \in \mathbb { Q } \cdot \mathbf { 1 } _ { Cl } \), where \( \Omega \in Cl ( 4 , 1 , 1 ) \) is a fixed linear aperture valuation operator.
+1. **Exact Multivector Position Evaluation**: A state position multivector \( \psi_s \) is evaluated via scalar contraction \( v ( s ) = \langle \Omega \cdot \psi_s \rangle _ 0 \in \mathbb { Q } \cdot \mathbf { 1 } _ { Cl } \), where \( \Omega \in Cl ( 4 , 1 , 1 ) \) is a fixed linear valuation operator.
 
-2. **Discrete Minimax Aperture Recurrence**: For a two-player zero-sum finite game, the exact minimax aperture value \( V ( s , d ) \) at search depth \( d \in \mathbb { N } _ 0 \) is defined recursively by:
+2. **Discrete Minimax Recurrence**: For a two-player zero-sum finite game, the exact minimax value \( V ( s , d ) \) at search depth \( d \in \mathbb { N } _ 0 \) is defined recursively by:
 \[ V ( s , d ) = \begin{cases} v ( s ) & \text{if } d = 0 \text{ or } A ( s ) = \emptyset \\ \max _ { a \in A ( s ) } \{ - V ( \text{succ} ( s , a ) , d - 1 ) \} & \text{if } d > 0 \end{cases} \]
 where \( A ( s ) \) denotes the finite set of legal candidate moves at state \( s \), and \( \text{succ} ( s , a ) \) is the deterministic successor state following move \( a \).
 
-3. **Alpha-Beta Aperture Pruning Invariance**: During depth-first tree traversal over search interval \( [ \alpha , \beta ] \), if candidate moves \( a \in A ( s ) \) are ordered by descending immediate move mobility \( | A ( \text{succ} ( s , a ) ) | \), any subtree branch where current value exceeds \( \beta \) is pruned without altering the minimax evaluation \( V ( s , d ) \). The pruning optimization reduces evaluated nodes from \( O ( b ^ d ) \) to \( O ( b ^ { d / 2 } ) \) while maintaining exact algebraic equivalence.
+3. **Alpha-Beta Pruning Invariance**: During depth-first tree traversal over search interval \( [ \alpha , \beta ] \), if candidate moves \( a \in A ( s ) \) are ordered by descending immediate move mobility \( | A ( \text{succ} ( s , a ) ) | \), any subtree branch where current value exceeds \( \beta \) is pruned without altering the minimax evaluation \( V ( s , d ) \). The pruning optimization reduces evaluated nodes from \( O ( b ^ d ) \) to \( O ( b ^ { d / 2 } ) \) while maintaining exact algebraic equivalence.
 
 4. **Deterministic Optimal Move Decision**: The optimal move \( a ^ { \ast } \in A ( s ) \) is selected as:
 \[ a ^ { \ast } = \arg\max _ { a \in A ( s ) } \{ - V ( \text{succ} ( s , a ) , d - 1 ) \} \]
-where ties in minimax aperture value are resolved strictly by discrete lexicographical orientation ordering in \( Cl ( 4 , 1 , 1 ) \).
+where ties in minimax value are resolved strictly by discrete lexicographical orientation ordering in \( Cl ( 4 , 1 , 1 ) \).
 
 *Proof:*
 
@@ -2621,7 +2621,7 @@ where ties in minimax aperture value are resolved strictly by discrete lexicogra
 4. **Optimal Decision**:
    - Comparing root move evaluations: \( V ( s _ 1 ) = +0.80 \), \( V ( s _ 2 ) = +1.75 \), \( V ( s _ 3 ) \le +0.40 \).
    - Maximum value is achieved by move \( a _ 2 \).
-   - Optimal move decision: \( a ^ { \ast } = a _ 2 \) with exact minimax aperture value \( V ( s _ 0 , 2 ) = +1.75 \cdot \mathbf { 1 } _ { Cl } \).
+   - Optimal move decision: \( a ^ { \ast } = a _ 2 \) with exact minimax value \( V ( s _ 0 , 2 ) = +1.75 \cdot \mathbf { 1 } _ { Cl } \).
 ====
 
 [#chap-index]
@@ -2632,12 +2632,12 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 
 === Theorems
 
-* xref:theorem-2d-euclidean-rotor[**Theorem: Constructive 2D Euclidean Rotor Equivalence Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Constructive 2D Euclidean Geometric Algebra Cl(2,0) and Planar Rotors*
-* xref:theorem-3d-euclidean-rotor[**Theorem: Constructive 3D Euclidean Rotor Isomorphism Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Constructive 3D Euclidean Geometric Algebra Cl(3,0) and Spatial Quaternionic Rotations*
-* xref:theorem-4d-homogeneous-motor[**Theorem: Constructive 4D Homogeneous Projective Duality and Dual Basis Motor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Constructive 4D Homogeneous Geometric Algebra: Null and Ordinary-Magnitude Basis Formulations*
-* xref:theorem-multivector-field-mechanics[**Theorem: Coordinate-Free Geometric Multivector Supremacy over Tensor Formulations in Field Mechanics and Media Dynamics**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
-* xref:theorem-multivector-metric-completeness[**Theorem: Constructive Multivector Metric Space Completeness**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Multivector Metric Spaces and Discrete Aperture Norms*
-* xref:theorem-conformal-spinor-invariance[**Theorem: Conformal Null Geometry Spinor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Aperture Metrics* | Section: *Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)*
+* xref:theorem-2d-euclidean-rotor[**Theorem: Constructive 2D Euclidean Rotor Equivalence Theorem**]  -- Chapter: *Constructive Clifford Geometry and Discrete Metrics* | Section: *Constructive 2D Euclidean Geometric Algebra Cl(2,0) and Planar Rotors*
+* xref:theorem-3d-euclidean-rotor[**Theorem: Constructive 3D Euclidean Rotor Isomorphism Theorem**]  -- Chapter: *Constructive Clifford Geometry and Discrete Metrics* | Section: *Constructive 3D Euclidean Geometric Algebra Cl(3,0) and Spatial Quaternionic Rotations*
+* xref:theorem-4d-homogeneous-motor[**Theorem: Constructive 4D Homogeneous Projective Duality and Dual Basis Motor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Discrete Metrics* | Section: *Constructive 4D Homogeneous Geometric Algebra: Null and Ordinary-Magnitude Basis Formulations*
+* xref:theorem-multivector-field-mechanics[**Theorem: Coordinate-Free Geometric Multivector Supremacy over Tensor Formulations in Field Mechanics and Media Dynamics**]  -- Chapter: *Constructive Clifford Geometry and Discrete Metrics* | Section: *Multivector Field Mechanics: Coordinate-Free Unified Statics, Dynamics, and Electromagnetics*
+* xref:theorem-multivector-metric-completeness[**Theorem: Constructive Multivector Metric Space Completeness**]  -- Chapter: *Constructive Clifford Geometry and Discrete Metrics* | Section: *Multivector Metric Spaces and Discrete Norms*
+* xref:theorem-conformal-spinor-invariance[**Theorem: Conformal Null Geometry Spinor Invariance Theorem**]  -- Chapter: *Constructive Clifford Geometry and Discrete Metrics* | Section: *Conformal Null Geometry and Spinor Transformations in Cl(4,1,1)*
 * xref:theorem-clifford-module-decomposition[**Theorem: Clifford Blade Ideal Direct Sum Decomposition**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Clifford Module Structure and Blade Ideal Decompositions*
 * xref:theorem-fundamental-theorem-rational-algebra[**Theorem: Fundamental Theorem of Constructive Rational Algebra**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Fundamental Theorem of Constructive Rational Algebra*
 * xref:theorem-iris-ring-homomorphism[**Theorem: Multivector Ring Homomorphism Invariance**]  -- Chapter: *Multivector Algebra and Structural Tautologies* | Section: *Ring Homomorphisms and Multiplicative Invariants*
@@ -2653,21 +2653,21 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-spower-degree-elevation-reduction[**Theorem: s-Power Trivial Degree Elevation and Geometric Degree Reduction**]  -- Chapter: *Geometric-Algebraic Polynomial Curve Intersections and s-Power Bézier Clipping* | Section: *Trivial Degree Elevation and Geometric Piecewise Degree Reduction*
 * xref:theorem-iris-irreducible-representation-decomposition[**Theorem: Irreducible Multivector Representation Decomposition Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Discrete Multivector Spinor Modules and Irreducible Representations*
 * xref:theorem-character-orthogonality[**Theorem: Multivector Character Orthogonality Theorem**]  -- Chapter: *Multivector Representation Theory and Character Orthogonality* | Section: *Character Orthogonality and Schur's Lemma in Cl(4,1,1)*
-* xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Aperture Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Aperture Topologies and Neighborhood Bases*
-* xref:theorem-vernier-compactness[**Theorem: Constructive Vernier Compactness Equivalence**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Vernier Compactness and Finite Covering Theorems*
-* xref:theorem-vernier-fixed-point[**Theorem: Discrete Vernier Fixed-Point Invariance Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Discrete Vernier Fixed-Point Contractive Invariance*
-* xref:theorem-practical-multivector-field-topology[**Theorem: Practical Multivector Field Topology, Helicity Invariance, and Defect Index Quantization Theorem**]  -- Chapter: *Constructive Discrete Topology and Aperture Coverings* | Section: *Practical Multivector Field Topology for Plasmas, Media, and Engineering Dynamics*
-* xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Aperture Partial Orders and Lattice Homomorphisms*
-* xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Aperture Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*
+* xref:theorem-discrete-topology-closure[**Theorem: Finite Discrete Topology Closure Theorem**]  -- Chapter: *Constructive Discrete Topology and Coverings* | Section: *Discrete Topologies and Neighborhood Bases*
+* xref:theorem-vernier-compactness[**Theorem: Constructive Vernier Compactness Equivalence**]  -- Chapter: *Constructive Discrete Topology and Coverings* | Section: *Vernier Compactness and Finite Covering Theorems*
+* xref:theorem-vernier-fixed-point[**Theorem: Discrete Vernier Fixed-Point Invariance Theorem**]  -- Chapter: *Constructive Discrete Topology and Coverings* | Section: *Discrete Vernier Fixed-Point Contractive Invariance*
+* xref:theorem-practical-multivector-field-topology[**Theorem: Practical Multivector Field Topology, Helicity Invariance, and Defect Index Quantization Theorem**]  -- Chapter: *Constructive Discrete Topology and Coverings* | Section: *Practical Multivector Field Topology for Plasmas, Media, and Engineering Dynamics*
+* xref:theorem-iris-lattice-isomorphism[**Theorem: Iris Grid Lattice Completeness Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Partial Orders and Lattice Homomorphisms*
+* xref:theorem-boolean-sublattice-modularity[**Theorem: Modular Sublattice Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Boolean Sublattices and Modular Multivector Structure*
 * xref:theorem-birkhoff-representation[**Theorem: Birkhoff Representation Theorem for Finite Distributive Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Birkhoff Representation Theorem for Finite Distributive Lattices*
 * xref:theorem-frankl-lattice-density[**Theorem: Frankl Join-Irreducible Lattice Density Theorem**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Frankl Join-Irreducible Density Theorem on Finite Grid Lattices*
 * xref:theorem-dedekind-jordan-chain[**Theorem: Dedekind-Jordan Chain Condition for Finite Modular Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Dedekind-Jordan Chain Condition for Finite Modular Lattices*
 * xref:theorem-boolean-power-set-isomorphism[**Theorem: Fundamental Structure Theorem of Finite Boolean Lattices**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Fundamental Structure Theorem of Finite Boolean Lattices*
 * xref:theorem-dilworth-poset-decomposition[**Theorem: Dilworth Antichain Partition Theorem for Finite Posets**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Dilworth Antichain Partition Theorem for Finite Posets*
 * xref:theorem-sperner-antichain-bound[**Theorem: Sperner Maximum Antichain Theorem on Discrete Boolean Grids**]  -- Chapter: *Order Theory and Discrete Iris Lattices* | Section: *Sperner Maximum Antichain Theorem on Discrete Boolean Grids*
-* xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Aperture Spaces*
-* xref:theorem-yoneda-aperture-embedding[**Theorem: Constructive Yoneda Aperture Embedding Lemma**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Yoneda Aperture Embedding and Natural Transformations*
-* xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Aperture Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
+* xref:theorem-iris-category-duality[**Theorem: Constructive Iris Category Duality Theorem**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *The Category of Finite Iris Grid Spaces*
+* xref:theorem-yoneda-embedding[**Theorem: Constructive Yoneda Embedding Lemma**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Yoneda Embedding and Natural Transformations*
+* xref:theorem-monoidal-functor-coherence[**Theorem: Monoidal Functor Coherence**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Monoidal Structures and Multivector Functorial Mapping*
 * xref:theorem-freyd-finite-adjoint-functor[**Theorem: Freyd Adjoint Functor Theorem for Finite Categories**]  -- Chapter: *Constructive Categories and Multivector Functors* | Section: *Freyd Adjoint Functor Theorem for Finite Categories*
 * xref:theorem-multivector-permutation-invariance[**Theorem: Multivector Permutation Group Invariance**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Multivector Permutations and Finite Grid Enumeration*
 * xref:theorem-constructive-partition-tautology[**Theorem: Constructive Partition Function Identity**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Constructive Partition Identities and Generating Tautologies*
@@ -2676,5 +2676,5 @@ This index lists all formal Postulates, Theorems, and Definitions established ac
 * xref:theorem-ramsey-finite-graph[**Theorem: Ramsey's Finite Graph Clique-Independent Set Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Ramsey's Finite Graph Clique-Independent Set Theorem*
 * xref:theorem-n-queens-algebraic-permutation[**Theorem: Algebraic Solvability and Permutation Characterization of the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
 * xref:theorem-wave-mechanical-n-queens[**Theorem: Constructive Wave-Mechanical Solvability and Destructive Interference Phase-Closure Theorem for the n-Queens Problem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
-* xref:theorem-vernier-knights-tour[**Theorem: Deterministic Vernier-Aperture Knight's Tour Construction Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
-* xref:theorem-multivector-chess-game-theory[**Theorem: Multivector Aperture Evaluation and Deterministic Game-Tree Search Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
+* xref:theorem-vernier-knights-tour[**Theorem: Deterministic Vernier Knight's Tour Construction Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*
+* xref:theorem-multivector-chess-game-theory[**Theorem: Multivector Position Evaluation and Deterministic Game-Tree Search Theorem**]  -- Chapter: *Constructive Discrete Combinatorics and Partition Tautologies* | Section: *Primary References and Citations for Ramsey's Theorem*

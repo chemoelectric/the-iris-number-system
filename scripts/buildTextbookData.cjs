@@ -164,7 +164,7 @@ const vol7 = parseAdocFile(
   "The Iris Number System",
   "Volume VII: Applications to Digital Typeface Design",
   "Frédéric Blondin Custer",
-  "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Coordinate Curves, Multi-Aperture Font Outlines, and Digital Typeface Design"
+  "A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Coordinate Curves, Multiscale Font Outlines, and Digital Typeface Design"
 );
 
 const vol8 = parseAdocFile(

@@ -1439,7 +1439,7 @@ In the Counting-Iris framework, the Brown-Chattopadhyay interfacial enzyme syste
 Let \( \mathcal{M} \subset \mathcal{G}_N \) represent a two-dimensional lipid-protein boundary membrane, and let \( \mathcal{E}_{\text{bound}} \) be an enzyme macromolecule anchored to \( \mathcal{M} \) at anchor loci \( \{ \mathbf{R}_{\text{anc}, k} \} \). The **Matrix-Supported Enzyme System** is the restricted-degree-of-freedom interfacial engine characterized by:
 
 . A non-uniform vicinal dielectric gradient \( \varepsilon_r(z) \) transitioning from the membrane interior (\( \varepsilon_{\text{mem}} \approx 2 \)) across the boundary water layer (\( \varepsilon_{\text{vic}} \approx 30 \)) to the bulk cytosol (\( \varepsilon_{\text{bulk}} \approx 80 \));
-. An anchored active-site cleft \( \Omega_{\text{active}} \) with constrained dihedral aperture vectors \( \{ \mathbf{n}_j \} \);
+. An anchored active-site cleft \( \Omega_{\text{active}} \) with constrained dihedral orientation vectors \( \{ \mathbf{n}_j \} \);
 . A microcalorimetric enthalpy flux \( dQ / dt \) directly coupling substrate binding to localized mechanical conformational deformation.
 ====
 
@@ -1455,7 +1455,7 @@ where \( \lambda_{\text{surface}} \ll \lambda_{\text{bulk}} \) is the reduced me
 ====
 
 *Proof:*
-In bulk three-dimensional solution, the encounter rate between enzyme and substrate is bounded by 3D isotropic Brownian diffusion across volume \( V \propto R^3 \). On the matrix surface \( \mathcal{M} \), substrate molecules entering the vicinal boundary layer undergo direct adsorption into a two-dimensional manifold of area \( A \propto R^2 \). As established in Keyser's and Jaynes's MaxEnt reduction on discrete grids, restricting the search aperture to two dimensions reduces the search entropy by \( \Delta S_{\text{search}} = -k_B \ln(V/A \lambda_{\text{m-res}}) \). Furthermore, the reduced dielectric constant \( \varepsilon_{\text{vic}} \approx 30 \) amplifies the electrostatic Coulomb steering field between the substrate dipole and active-site residues, directly lowering the activation barrier \( \Delta G^{\ddagger} \). \( \square \)
+In bulk three-dimensional solution, the encounter rate between enzyme and substrate is bounded by 3D isotropic Brownian diffusion across volume \( V \propto R^3 \). On the matrix surface \( \mathcal{M} \), substrate molecules entering the vicinal boundary layer undergo direct adsorption into a two-dimensional manifold of area \( A \propto R^2 \). As established in Keyser's and Jaynes's MaxEnt reduction on discrete grids, restricting the search domain to two dimensions reduces the search entropy by \( \Delta S_{\text{search}} = -k_B \ln(V/A \lambda_{\text{m-res}}) \). Furthermore, the reduced dielectric constant \( \varepsilon_{\text{vic}} \approx 30 \) amplifies the electrostatic Coulomb steering field between the substrate dipole and active-site residues, directly lowering the activation barrier \( \Delta G^{\ddagger} \). \( \square \)
 
 === Standalone Ada 2022 Implementation: Discrete Chemical Bond and Interfacial Engine
 

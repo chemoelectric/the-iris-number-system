@@ -7,11 +7,11 @@
 :stem: latexmath
 :sectnums!:
 
-A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Coordinate Curves, Multi-Aperture Font Outlines, and Digital Typeface Design
+A Rigorous Application of the Counting-Iris Number System and the Master Field Equation to Discrete Coordinate Curves, Multiscale Font Outlines, and Digital Typeface Design
 
 == Prelude: Foundations of Digital Typeface Design in the Iris Framework
 
-Digital typeface design and font outline geometry operate inherently within discrete coordinate grids \( \mathcal{G}_N \) and multiscale rasterization apertures. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization strictly within the Counting-Iris framework and the planar geometric algebra \( Cl(2,0) \).
+Digital typeface design and font outline geometry operate inherently within discrete coordinate grids \( \mathcal{G}_N \) and multiscale rasterization grids. This volume establishes the rigorous mathematical and algorithmic principles of digital letterform design, curve formulation, and discrete metric rasterization strictly within the Counting-Iris framework and the planar geometric algebra \( Cl(2,0) \).
 
 === Digital Typeface Design and Typesetting as Multidimensional Image Processing
 
@@ -21,7 +21,7 @@ In this treatise, we fundamentally recast both **digital typeface design** and *
 
 1. **The Letterform as a 2D Spatial Density Signal**:
 +
-A glyph outline is not merely a list of drawing instructions or an isolated vector path. In digital realization, a letterform is a two-dimensional spatial distribution of opacity or ink density \( I(x, y) \) defined over a discrete aperture grid \( \mathcal{G}_N \). The placement of on-curve knots, off-curve Bézier handles, stem thicknesses, inner counter apertures, and serifs functions as spatial filter synthesis. Every stroke contour modulates the high-frequency and low-frequency components of the optical wave front that reaches the retina.
+A glyph outline is not merely a list of drawing instructions or an isolated vector path. In digital realization, a letterform is a two-dimensional spatial distribution of opacity or ink density \( I(x, y) \) defined over a discrete coordinate grid \( \mathcal{G}_N \). The placement of on-curve knots, off-curve Bézier handles, stem thicknesses, inner counter openings, and serifs functions as spatial filter synthesis. Every stroke contour modulates the high-frequency and low-frequency components of the optical wave front that reaches the retina.
 +
 Designing a digital typeface is therefore an inverse problem in image synthesis: determining the boundary curves of two-dimensional spatial signals such that, under discrete rasterization across varying display scales and resolutions, the glyph preserves its geometric invariants, optical balance, and legibility without introducing spurious phase distortions or high-frequency aliasing artifacts.
 
@@ -39,7 +39,7 @@ Viewed through the discipline of multidimensional signal processing, common typo
 +
 Rather than evaluating typography through arbitrary heuristic penalties (such as ungrounded integer badness exponents or empirical demerit weights), numerical analysis approaches the page as an energy minimization problem subject to geometric boundary conditions. 
 +
-The layout of a page—including paragraph lineation, inter-word spacing, peg-based contact dynamics, and microtypographic adjustments—is formulated as the minimization of an action functional governed by the Master Field Equation \( D F = J \) and weighted by the Human Visual Contrast Sensitivity Function (CSF). By measuring the two-dimensional power spectral density \( P [ k_x , k_y ] \) across the page aperture, the numerical layout engine suppresses spurious periodic spikes and shapes the whitespace field toward a natural \( 1 / f^\alpha \) (pink-noise) spatial flux.
+The layout of a page—including paragraph lineation, inter-word spacing, peg-based contact dynamics, and microtypographic adjustments—is formulated as the minimization of an action functional described by the Master Field Equation \( D F = J \) and weighted by the Human Visual Contrast Sensitivity Function (CSF). By measuring the two-dimensional power spectral density \( P [ k_x , k_y ] \) across the page frame, the numerical layout engine suppresses spurious periodic spikes and shapes the whitespace field toward a natural \( 1 / f^\alpha \) (pink-noise) spatial flux.
 
 By grounding digital typeface design and document typesetting in signal processing, image synthesis, and numerical field analysis, we bridge the gap between microscopic letterform geometry and macroscopic page harmony. The tools developed throughout this volume—from Hobby splines and singular value decomposition to discrete contact mechanics and the OpenType PEGS table—unify the shaping of individual glyph contours with the global spectral equilibrium of the printed and displayed page.
 
@@ -108,7 +108,7 @@ where:
 and the complementary velocity function is symmetric:
 \[ \sigma(\theta, \psi) = \rho(\psi, \theta) \]
 
-These formulas ensure that when four knots are placed at the corners of a square, the resulting curve matches a true circle to within \( 0.06\% \) optical aperture deviation—an imperceptible discrepancy in digital typography.
+These formulas ensure that when four knots are placed at the corners of a square, the resulting curve matches a true circle to within \( 0.06\% \) optical circle deviation—an imperceptible discrepancy in digital typography.
 
 ==== The Golden Ratio and Harmonic Weighting in Hobby’s Denominator
 
@@ -210,7 +210,7 @@ where:
 
 ==== The Moore-Penrose Pseudoinverse
 
-The Moore-Penrose pseudoinverse \( K^+ \) is computed by inverting only the non-zero singular values exceeding the finite m-resolution aperture \( \varepsilon_{\text{tol}} \):
+The Moore-Penrose pseudoinverse \( K^+ \) is computed by inverting only the non-zero singular values exceeding the finite m-resolution threshold \( \varepsilon_{\text{tol}} \):
 \[ K^+ = V \, \Sigma^+ \, U^T \]
 where:
 \[ \Sigma ^ + _ {ii} = \begin{cases} \frac{1}{\sigma_i} & \text{if } \sigma_i > \varepsilon_{\text{tol}} \\ 0 & \text{if } \sigma_i \le \varepsilon_{\text{tol}} \end{cases} \]
@@ -246,7 +246,7 @@ with equality if and only if \( w = 0 \). Hence, \( \theta ^ { \ast } \) is the 
 
 In production software, mathematical elegance must be backed by strict floating-point hygiene. The SVD-Hobby engine implements four specific defensive safeguards:
 
-1. **Aperture Coalescence for Coincident Knots**: If the distance between two consecutive knots is less than an aperture threshold \( d_k < 10^{-10} \), the engine does not perform division. It collapses the duplicate knot and sets the corresponding row in \( K \) to an identity constraint \( \theta_k = 0 \).
+1. **Knot Coalescence for Coincident Knots**: If the distance between two consecutive knots is less than a distance threshold \( d_k < 10^{-10} \), the engine does not perform division. It collapses the duplicate knot and sets the corresponding row in \( K \) to an identity constraint \( \theta_k = 0 \).
 2. **Velocity Clamping against Singular Angles**: If a designer creates an extreme acute fold (\( \theta \to \pi \) or \( \psi \to \pi \)), the denominator of Hobby’s velocity function \( \rho(\theta, \psi) \) can approach zero. The engine clamps the computed velocity:
 \[ \rho_{\text{safe}} = \max(0.05, \, \min(4.0, \, \rho(\theta, \psi))) \]
 This guarantees that Bézier handles never shoot across the canvas or invert through the knot.
@@ -2674,7 +2674,7 @@ In the Iris Typesetter, typography is not treated as the passive placement of st
 
 Furthermore, traditional engines ignore the physical transfer function of the output medium. A glyph rendered on an electrostatic laser engine, an offset lithographic press, an ink-jet nozzle array, or an emissive display panel undergoes non-linear physical distortions: ink spread (*dot gain*), toner scattering, corner rounding, and optical irradiation.
 
-The Iris Typesetter unifies **Volume VI (Discrete Iterated Function Systems on \( \mathcal{G}_N \))** and **Volume VII (Micro-Segment Typeface Geometry)** into a real-time **microtypographic shape deformation and physical device transduction engine**. By modifying the actual internal geometry of glyph outlines—modulating stroke weights, counter apertures, serif flares, and corner ink-traps on the discrete grid \( \mathcal{G}_N \)—the typesetter guarantees optical harmony and physical fidelity tailored to the exact output device.
+The Iris Typesetter unifies **Volume VI (Discrete Iterated Function Systems on \( \mathcal{G}_N \))** and **Volume VII (Micro-Segment Typeface Geometry)** into a real-time **microtypographic shape deformation and physical device transduction engine**. By modifying the actual internal geometry of glyph outlines—modulating stroke weights, counter openings, serif flares, and corner ink-traps on the discrete grid \( \mathcal{G}_N \)—the typesetter guarantees optical harmony and physical fidelity tailored to the exact output device.
 
 === Typefaces as Finite Discrete Iterated Function Systems
 
@@ -2711,7 +2711,7 @@ where \( \gamma_k(\tau) \) is the non-linear stroke-preservation scalar ensuring
 \[ \frac{\partial W_{\text{stroke}}}{\partial \tau} \equiv 0, \qquad \frac{\partial W_{\text{counter}}}{\partial \tau} = \kappa_{\text{opt}} \]
 
 *Proof:*
-Under standard affine horizontal scaling \( (x, y) \to ((1+\tau)x, y) \), vertical stems thicken by factor \( (1+\tau) \) while horizontal hairlines remain unchanged, destroying the calligraphic contrast ratio \( W_{\text{vert}} / W_{\text{horiz}} \). By decomposing the glyph into baseline chords and orthogonal deviation vectors \( \mathbf{P}_k^\Delta \), the deformation operator \( \mathcal{D}_\tau \) translates the baseline endpoints while applying compensating normal shifts \( \gamma_k \) to the internal muscle nodes. This leaves the outer normal boundary offset invariant while transferring all dimensional strain \( \tau \) strictly into the white counter aperture. \( \square \)
+Under standard affine horizontal scaling \( (x, y) \to ((1+\tau)x, y) \), vertical stems thicken by factor \( (1+\tau) \) while horizontal hairlines remain unchanged, destroying the calligraphic contrast ratio \( W_{\text{vert}} / W_{\text{horiz}} \). By decomposing the glyph into baseline chords and orthogonal deviation vectors \( \mathbf{P}_k^\Delta \), the deformation operator \( \mathcal{D}_\tau \) translates the baseline endpoints while applying compensating normal shifts \( \gamma_k \) to the internal muscle nodes. This leaves the outer normal boundary offset invariant while transferring all dimensional strain \( \tau \) strictly into the white counter opening. \( \square \)
 ====
 
 === Physical Device Transduction & Non-Linear Print Compensation
@@ -2751,7 +2751,7 @@ When the physical ink expands during printing, it fills the excavated ink-trap e
 
 When microtypographic shape deformation and device transduction are active across a full page:
 * **Spatial Frequency Equilibrium**: The typesetter evaluates the 2D power spectral density \( S(\omega_x, \omega_y) \) of the page layout.
-* **Pink-Noise (\( 1/f \)) Convergence**: The inter-glyph peg clearances and counter-aperture deformations are jointly adjusted so that the spatial frequency distribution across text blocks converges to a **\( 1/f \) power spectrum**, eliminating optical rivers, clumping, and white voids.
+* **Pink-Noise (\( 1/f \)) Convergence**: The inter-glyph peg clearances and counter-opening deformations are jointly adjusted so that the spatial frequency distribution across text blocks converges to a **\( 1/f \) power spectrum**, eliminating optical rivers, clumping, and white voids.
 
 === Standalone Ada 2022 Implementation: Microtypographic Device Transduction Engine
 
@@ -2953,7 +2953,7 @@ end iris_microtypographic_transduction;
 
 The development of high-quality book typefaces has historically been viewed as the exclusive domain of manual artisanship, requiring designers to painstakingly draw hundreds of individual glyph contours by hand. Yet, an analysis of the historic masterworks of book typography—such as the Dutch and English oldstyles of the seventeenth and eighteenth centuries (epitomized by the matrices of Miklós Kis, William Caslon, and the French Renaissance masters)—reveals that these letterforms are not arbitrary freehand sketches. Rather, they represent the rigorous realization of a **finite, deterministic geometric grammar**.
 
-Earlier attempts to parameterize typography mathematically, most notably Donald Knuth's METAFONT system, sought to generate typefaces programmatically. However, METAFONT's underlying geometric model was fundamentally misaligned with the nature of letterforms. METAFONT modeled characters primarily as the stroke envelopes of moving circular or elliptical pens (central skeletons with constant or continuously varying pen offsets), combined with ad-hoc equation solving for cubic spline control points. This model struggled with optical corrections, asymmetrical serifs, non-uniform counter apertures, and calligraphic transitions, frequently producing awkward shapes that lacked the organic optical balance of classical punchcutting.
+Earlier attempts to parameterize typography mathematically, most notably Donald Knuth's METAFONT system, sought to generate typefaces programmatically. However, METAFONT's underlying geometric model was fundamentally misaligned with the nature of letterforms. METAFONT modeled characters primarily as the stroke envelopes of moving circular or elliptical pens (central skeletons with constant or continuously varying pen offsets), combined with ad-hoc equation solving for cubic spline control points. This model struggled with optical corrections, asymmetrical serifs, non-uniform counter openings, and calligraphic transitions, frequently producing awkward shapes that lacked the organic optical balance of classical punchcutting.
 
 By contrast, formulating typeface design through **Fractal Geometry and Discrete Iterated Function Systems (IFS) on \( \mathcal{G}_N \)** treats the letterform not as an arbitrary stroked skeleton, but as the **deterministic attractor of a structured set of generator kernels and affine boundary operators**. This enables fully automated, high-precision parametric generation of book faces directly from a compact set of typographic invariants.
 
@@ -2995,7 +2995,7 @@ In physical molding crafts, attempting to shape or polish an object by working d
 * **The Smooth Mold**: An optically brilliant, mirror-finish epoxy casting is not achieved by polishing the cured resin; it is achieved by polishing the *interior surface of the mold*. The liquid resin conforms precisely to the mold's boundary interface.
 * **Surface Layer Transduction (The Mica Effect)**: If a lustrous, metallic surface is required, one does not mix metallic pigment into the resin bulk (which muddies the transparency and scatters light randomly). Rather, one dusts a microscopic layer of metallic powder directly onto the mold walls before pouring dark epoxy behind it—analogous to dramatic nighttime cosmetic eyeshadow. The dark backing absorbs internal scatter while the boundary layer creates high-specular reflectance.
 
-In Edward de Bono's terminology of *lateral thinking*, the problem is solved not by brute-force addition to the center, but by inverting perspective to govern the **boundary constraints that contain the material**. The Iris Typesetter applies this exact principle: glyphs and text blocks are governed directly as discrete boundary contours and contact peg envelopes on \( \mathcal{G}_N \), leaving internal bulk and counter apertures mathematically pristine.
+In Edward de Bono's terminology of *lateral thinking*, the problem is solved not by brute-force addition to the center, but by inverting perspective to govern the **boundary constraints that contain the material**. The Iris Typesetter applies this exact principle: glyphs and text blocks are governed directly as discrete boundary contours and contact peg envelopes on \( \mathcal{G}_N \), leaving internal bulk and counter openings mathematically pristine.
 
 [#thm-counter-punch-duality]
 [NOTE]
@@ -3081,7 +3081,7 @@ Under the fractal framework, this multiscale optical variation is governed by a 
 Let \( \mathbf{\Theta}_0 \) be the master parameter tuple defined at nominal text size \( s_0 = 12\,\text{pt} \). The continuous parameter state \( \mathbf{\Theta}(s) \) at target design scale \( s \) is governed by the sub-linear scaling laws:
 \[ W_{\text{{st}em}}(s) = W_{\text{{st}em}, 0} \cdot \left( \frac{s}{s_0} \right)^{\alpha_{\text{{st}em}}}, \qquad \alpha_{\text{{st}em}} \in [0.75, \, 0.85] \]
 \[ W_{\text{hair}}(s) = W_{\text{hair}, 0} \cdot \left( \frac{s}{s_0} \right)^{\alpha_{\text{hair}}}, \qquad \alpha_{\text{hair}} \in [0.65, \, 0.75] \]
-\[ \text{Aperture}_{\text{counter}}(s) = \text{Aperture}_0 \cdot \left( \frac{s}{s_0} \right)^{\beta_{\text{counter}}}, \qquad \beta_{\text{counter}} \in [0.90, \, 0.98] \]
+\[ \text{Opening}_{\text{counter}}(s) = \text{Opening}_0 \cdot \left( \frac{s}{s_0} \right)^{\beta_{\text{counter}}}, \qquad \beta_{\text{counter}} \in [0.90, \, 0.98] \]
 \[ \text{Tracking}_{\text{margin}}(s) = \text{Tracking}_0 \cdot \left( \frac{s}{s_0} \right)^{\gamma_{\text{space}}}, \qquad \gamma_{\text{space}} \in [0.80, \, 0.88] \]
 
 *Proof:*
@@ -3270,7 +3270,7 @@ The masterwork of the Hungarian punchcutter Nicholas Kis (Tótfalusi Kis Miklós
 In Kis’s original punchcut letterforms, the stress axis is never a global constant. Instead, each character possesses its own discrete stress orientation tailored strictly to its internal counter equilibrium and spatial packing requirements:
 
 1. **Lowercase “o”**: Exhibits a forward-leaning internal stress axis of \( \approx 14^\circ \), producing an asymmetrical counter that guides the reader’s eye horizontally along the line of text.
-2. **Lowercase “e”**: Features an aggressive diagonal counter crossbar inclined at \( \approx 18^\circ \) to \( 22^\circ \), paired with a high-set, compact eye that leaves maximum open space for the lower aperture.
+2. **Lowercase “e”**: Features an aggressive diagonal counter crossbar inclined at \( \approx 18^\circ \) to \( 22^\circ \), paired with a high-set, compact eye that leaves maximum open space for the lower counter.
 3. **Lowercase “c” and “d”**: Employ opposing, complementary stress angles that balance the asymmetrical pull of adjacent straight stems without requiring wide side-bearings.
 4. **Vertical Stems and Serifs**: While the internal curved counters tilt dynamically, the main load-bearing stems remain strictly perpendicular (\( 90^\circ \)), anchored by flat, horizontal baseline serifs.
 
@@ -3341,7 +3341,7 @@ where \( \delta_\text{serif} > 0 \) represents the horizontal space reclaimed by
 ==== Proof
 A flat-base horizontal serif terminates at a sharp \( 90^\circ \) vertical plane, reducing the required glyph side-bearing by \( \Delta s = r_\text{cup} (1 - \cos \phi) \). Over an entire text line of \( N_\text{char} \) characters, the accumulated advance width reduction is \( \Delta W = 2 N_\text{char} \Delta s \). 
 
-Simultaneously, tilting the counter axis by the optimal glyph rotor \( R_g \) expands the effective vertical aperture height without increasing total glyph width, increasing \( A_\text{counter} \) by factor \( \sec(\theta_g - \theta_\text{global}) \). Dividing the increased counter luminance by the reduced total advance width establishes the strict inequality \( \eta_\text{Kis} > \eta_\text{standard} \). \( \square \)
+Simultaneously, tilting the counter axis by the optimal glyph rotor \( R_g \) expands the effective vertical counter height without increasing total glyph width, increasing \( A_\text{counter} \) by factor \( \sec(\theta_g - \theta_\text{global}) \). Dividing the increased counter luminance by the reduced total advance width establishes the strict inequality \( \eta_\text{Kis} > \eta_\text{standard} \). \( \square \)
 
 === Standalone Ada 2022 Implementation: The Chiseled Dynamic-Axis Typeface Engine
 
