@@ -11,6 +11,7 @@ import { AIProofAssistant } from './components/AIProofAssistant';
 import { AxiomWorkbench } from './components/AxiomWorkbench';
 import { WingAeroSimulator } from './components/WingAeroSimulator';
 import { InfoModal } from './components/InfoModal';
+import { GitHubSyncModal } from './components/GitHubSyncModal';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveView['tab']>('textbook');
@@ -18,6 +19,7 @@ export default function App() {
     PRESET_THEOREMS[0] as TheoremProof
   );
   const [infoModalOpen, setInfoModalOpen] = useState<boolean>(false);
+  const [githubModalOpen, setGithubModalOpen] = useState<boolean>(false);
 
   // Assistant prompt state for passing from library or deduction
   const [assistantPrompt, setAssistantPrompt] = useState<string>('');
@@ -66,6 +68,7 @@ export default function App() {
         setActiveTab={setActiveTab}
         onOpenInfoModal={() => setInfoModalOpen(true)}
         onExportWorkspace={handleExportWorkspace}
+        onOpenGitHubModal={() => setGithubModalOpen(true)}
       />
 
       {/* Main Content Workspace */}
@@ -108,6 +111,9 @@ export default function App() {
 
       {/* Info Modal */}
       <InfoModal isOpen={infoModalOpen} onClose={() => setInfoModalOpen(false)} />
+
+      {/* GitHub Sync Modal */}
+      <GitHubSyncModal isOpen={githubModalOpen} onClose={() => setGithubModalOpen(false)} />
 
       {/* Footer */}
       <footer className="bg-[#121212] py-6 text-center text-xs text-slate-500">

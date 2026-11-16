@@ -4,6 +4,11 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import { generateFullAsciiDoc } from "./src/data/textbookData";
+import {
+  getGitHubStatus,
+  previewWorkspaceChanges,
+  pushWorkspaceToGitHub,
+} from "./githubSync";
 
 dotenv.config();
 
@@ -12,6 +17,35 @@ async function startServer() {
   const PORT = 3000;
 
   app.use(express.json());
+
+  app.get("/api/github/status", async (_req, res) => {
+    try {
+      const status = await getGitHubStatus();
+      return res.json(status);
+    } catch (err: any) {
+      return res.status(500).json({ error: err?.message || "Failed to check GitHub status." });
+    }
+  });
+
+  app.get("/api/github/diff", async (req, res) => {
+    try {
+      const branch = typeof req.query.branch === "string" ? req.query.branch : "main";
+      const diff = await previewWorkspaceChanges(branch);
+      return res.json(diff);
+    } catch (err: any) {
+      return res.status(400).json({ error: err?.message || "Failed to inspect workspace diff." });
+    }
+  });
+
+  app.post("/api/github/push", async (req, res) => {
+    try {
+      const { branch, message } = req.body || {};
+      const result = await pushWorkspaceToGitHub(branch || "main", message || "");
+      return res.json(result);
+    } catch (err: any) {
+      return res.status(400).json({ error: err?.message || "Failed to push to GitHub." });
+    }
+  });
 
   // Initialize Gemini AI Client lazily/safely
   const getGenAI = () => {
