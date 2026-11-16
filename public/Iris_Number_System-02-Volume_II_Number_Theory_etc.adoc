@@ -38,13 +38,13 @@ Every discrete positive integer measurement count \( n > 1 \) in \( \mathbb { Z 
 
 [#theorem-euclid-primes]
 [THEOREM]
-.Theorem: Euclid's Prime Infinitude Theorem on Aperture Grids
+.Theorem: Euclid's Prime Infinitude Theorem on Partition Grids
 ====
 The set of discrete Iris prime measurement step counts is strictly unbounded on any finite resolution grid limit \( \mathcal { G } _ N \).
 
 *Proof:*
 
-. **Finite Prime Aperture Product**: Assume for proof by contradiction that the set of prime step counts is finite, given by \( S = \{ p _ 1 , p _ 2 , \dots , p _ k \} \).
+. **Finite Prime Step Product**: Assume for proof by contradiction that the set of prime step counts is finite, given by \( S = \{ p _ 1 , p _ 2 , \dots , p _ k \} \).
 
 . **Succedent Integer Measurement Step**: Construct the multivector integer step count \( M ( N _ S ) = \left ( \prod _ { i = 1 } ^ k p _ i + 1 \right ) \mathbf { 1 } _ { Cl } \).
 
@@ -79,11 +79,11 @@ For any discrete Iris prime measurement count \( p \) and integer step count \( 
 [THEOREM]
 .Theorem: Euler's Totient Operational Theorem
 ====
-For any discrete positive integer count \( n \ge 1 \) and integer step count \( a \) coprime to \( n \), \( a ^ { \varphi ( n ) } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod n \), where \( \varphi ( n ) \) measures the exact count of coprime aperture states on resolution grid \( \mathcal { G } _ n \).
+For any discrete positive integer count \( n \ge 1 \) and integer step count \( a \) coprime to \( n \), \( a ^ { \varphi ( n ) } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod n \), where \( \varphi ( n ) \) measures the exact count of coprime residue states on resolution grid \( \mathcal { G } _ n \).
 
 *Proof:*
 
-. **Coprime Aperture Group Representation**: Let \( C _ n = \{ r _ 1 , r _ 2 , \dots , r _ { \varphi ( n ) } \} \) be the reduced residue system modulo \( n \) on discrete grid \( \mathcal { G } _ n \).
+. **Coprime Residue Group Representation**: Let \( C _ n = \{ r _ 1 , r _ 2 , \dots , r _ { \varphi ( n ) } \} \) be the reduced residue system modulo \( n \) on discrete grid \( \mathcal { G } _ n \).
 
 . **Multivector Phase Action**: Multiplication by \( a \cdot \mathbf { 1 } _ { Cl } \) permutes \( C _ n \) bijectively because \( \gcd ( a , n ) = 1 \).
 
@@ -92,7 +92,7 @@ For any discrete positive integer count \( n \ge 1 \) and integer step count \( 
 
 . **Residue Cancellation**: Since \( \gcd ( \prod r _ i , n ) = 1 \), canceling the product in \( Cl ( 4 , 1 , 1 ) \) yields \( a ^ { \varphi ( n ) } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod n \).
 
-. **Tautological Conclusion**: Euler's Totient Theorem holds strictly for all coprime aperture step counts on \( \mathcal { G } _ n \). \( \square \)
+. **Tautological Conclusion**: Euler's Totient Theorem holds strictly for all coprime residue step counts on \( \mathcal { G } _ n \). \( \square \)
 ====
 
 [#theorem-chinese-remainder]
@@ -103,7 +103,7 @@ Let \( m _ 1 , m _ 2 , \dots , m _ k \) be pairwise coprime discrete integer cou
 
 *Proof:*
 
-. **Partial Product Orthogonal Apertures**: For each \( i \in \{ 1 , \dots , k \} \), define partial product \( M _ i = M / m _ i \). Since \( \gcd ( M _ i , m _ i ) = 1 \), there exists an inverse \( z _ i \) such that \( M _ i z _ i \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod { m _ i } \).
+. **Partial Product Orthogonal Moduli**: For each \( i \in \{ 1 , \dots , k \} \), define partial product \( M _ i = M / m _ i \). Since \( \gcd ( M _ i , m _ i ) = 1 \), there exists an inverse \( z _ i \) such that \( M _ i z _ i \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod { m _ i } \).
 
 . **Constructive Multivector Summation**: Construct the explicit solution count \( x = \sum _ { i = 1 } ^ k r _ i M _ i z _ i \cdot \mathbf { 1 } _ { Cl } \).
 
@@ -136,7 +136,7 @@ For distinct odd Iris prime measurement counts \( p \) and \( q \), the product 
 
 === Theory of Multi-Radix Positional Numerals in Iris Arithmetic
 
-In this section, positional numeral systems across arbitrary discrete bases (radices) \( b \ge 2 \) are formally established as exact multivector aperture expansions in \( Cl ( 4 , 1 , 1 ) \). We demonstrate that digit strings in binary (base 2), octal (base 8), decimal (base 10), and hexadecimal (base 16) represent invariant discrete scalar counting states under Main Scale Projection \( ( \downarrow ) \).
+In this section, positional numeral systems across arbitrary discrete bases (radices) \( b \ge 2 \) are formally established as exact positional multivector expansions in \( Cl ( 4 , 1 , 1 ) \). We demonstrate that digit strings in binary (base 2), octal (base 8), decimal (base 10), and hexadecimal (base 16) represent invariant discrete scalar counting states under Main Scale Projection \( ( \downarrow ) \).
 
 [#theorem-radix-representation]
 [THEOREM]
@@ -170,7 +170,7 @@ Let \( ( d _ M \dots d _ 0 ) _ { b _ 1 } \) and \( ( c _ K \dots c _ 0 ) _ { b _
 
 . **Scalar Metric Embedding**: Both positional sums evaluate to the same Grade-0 scalar multivector element \( M ( n ) = n \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \).
 
-. **Basis Identity**: The choice of radix base \( b \) alters only the discrete aperture grouping mechanism, leaving the fundamental count of unit steps \( \mathbf { 1 } _ { Cl } \) invariant.
+. **Basis Identity**: The choice of radix base \( b \) alters only the discrete positional grouping mechanism, leaving the fundamental count of unit steps \( \mathbf { 1 } _ { Cl } \) invariant.
 
 . **Main Scale Projection**: Applying Main Scale Projection \( ( \downarrow ) \) removes any intermediate radix conversion vernier residuals, proving exact operational equivalence. \( \square \)
 ====
@@ -195,33 +195,33 @@ To demonstrate the invariant operational nature of multi-radix representations, 
   Division by \( b = 16 \) yields \( 42 = 2 \cdot 16 + 10 \). Mapping digit 10 to hexadecimal symbol `A`: \[ M ( 42 ) = ( 2 \cdot 16 ^ 1 + 10 \cdot 16 ^ 0 ) \cdot \mathbf { 1 } _ { Cl } = ( 32 + 10 ) \cdot \mathbf { 1 } _ { Cl } = 42 _ { 10 } \cdot \mathbf { 1 } _ { Cl } \]
   Thus, \( 42 _ { 10 } = 2 \text { A } _ { 16 } \).
 
-=== Fractional Radix Aperture Expansion
+=== Fractional Radix Expansion
 
 For fractional rational grid points \( r = \frac { p } { q } \in \mathcal { G } _ N \), positional radix expansion extends into negative powers of radix \( b \): \[ r \cdot \mathbf { 1 } _ { Cl } = \left ( \sum _ { k = 0 } ^ M d _ k b ^ k + \sum _ { j = 1 } ^ K d _ { - j } b ^ { - j } \right ) \cdot \mathbf { 1 } _ { Cl } + \varpi \vartheta \]
 
-where \( d _ { - j } \in \{ 0 , 1 , \dots , b - 1 \} \) are fractional aperture digits, and \( \varpi \vartheta \) is the nilpotent vernier truncation residual at grid resolution step \( \delta = b ^ { - K } \).
+where \( d _ { - j } \in \{ 0 , 1 , \dots , b - 1 \} \) are fractional radix digits, and \( \varpi \vartheta \) is the nilpotent vernier truncation residual at grid resolution step \( \delta = b ^ { - K } \).
 
-=== Digital Analysis of the Circle Ratio \( \pi \) on Discrete Aperture Grids
+=== Digital Analysis of the Circle Ratio \( \pi \) on Discrete Partition Grids
 
-In the Counting-Iris framework, the circle ratio constant \( \pi \) is formulated constructively as the fundamental multivector aperture phase scalar \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \), representing the exact ratio of the perimeter Vernier step count to the diameter step count on an ultra-refined discrete aperture grid \( \mathcal { G } _ \omega \). This section provides a thorough mathematical exposition of the positional digit sequence \( \{ d _ { - j } \} _ { j = 1 } ^ \infty \) of \( \pi \) across arbitrary radix bases \( b \ge 2 \), proving its information-theoretic capacity saturation, BBP-type direct hexadecimal extraction, and statistical normalcy.
+In the Counting-Iris framework, the circle ratio constant \( \pi \) is formulated constructively as the fundamental multivector phase scalar \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \), representing the exact ratio of the perimeter Vernier step count to the diameter step count on an ultra-refined discrete partition grid \( \mathcal { G } _ \omega \). This section provides a thorough mathematical exposition of the positional digit sequence \( \{ d _ { - j } \} _ { j = 1 } ^ \infty \) of \( \pi \) across arbitrary radix bases \( b \ge 2 \), proving its information-theoretic capacity saturation, BBP-type direct hexadecimal extraction, and statistical normalcy.
 
 [#theorem-pi-digit-normalcy-bbp]
 [THEOREM]
 .Theorem: Iris Pi-Digit Normalcy and Direct Hexadecimal Extraction Theorem
 ====
-Let \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \) be the circle ratio aperture scalar. Under positional radix expansion in integer base \( b \ge 2 \), \( \pi \cdot \mathbf { 1 } _ { Cl } = \left ( 3 \cdot \mathbf { 1 } _ { Cl } + \sum _ { j = 1 } ^ \infty d _ { - j } b ^ { - j } \mathbf { 1 } _ { Cl } \right ) \), where fractional aperture digits \( d _ { - j } \in \{ 0 , 1 , \dots , b - 1 \} \). The positional digit sequence satisfies the following operational properties on discrete grid \( \mathcal { G } _ N \):
+Let \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \) be the circle ratio phase scalar. Under positional radix expansion in integer base \( b \ge 2 \), \( \pi \cdot \mathbf { 1 } _ { Cl } = \left ( 3 \cdot \mathbf { 1 } _ { Cl } + \sum _ { j = 1 } ^ \infty d _ { - j } b ^ { - j } \mathbf { 1 } _ { Cl } \right ) \), where fractional radix digits \( d _ { - j } \in \{ 0 , 1 , \dots , b - 1 \} \). The positional digit sequence satisfies the following operational properties on discrete grid \( \mathcal { G } _ N \):
 
 1. **Direct Hexadecimal Spigot Extraction**: In hexadecimal base \( b = 16 \), the \( j \)-th fractional digit \( d _ { - j } \) is computed in \( \mathcal { O } ( j \log j ) \) time and \( \mathcal { O } ( 1 ) \) spatial memory without evaluating preceding digits \( d _ { - 1 } , \dots , d _ { - ( j - 1 ) } \) via the Bailey-Borwein-Plouffe (BBP) multivector operator:
 \[ \pi \cdot \mathbf { 1 } _ { Cl } = \sum _ { k = 0 } ^ \infty \frac { 1 } { 16 ^ k } \left ( \frac { 4 } { 8 k + 1 } - \frac { 2 } { 8 k + 4 } - \frac { 1 } { 8 k + 5 } - \frac { 1 } { 8 k + 6 } \right ) \mathbf { 1 } _ { Cl } \]
 
-2. **Jaynesian MaxEnt Digit Normalcy**: Under Jaynesian Maximum Entropy prior distributions on discrete aperture transitions, the fractional digit sequence \( \{ d _ { - j } \} _ { j = 1 } ^ \infty \) is strictly normal in every radix base \( b \ge 2 \); every digit block of length \( m \) occurs with limiting relative frequency \( b ^ { - m } \).
+2. **Jaynesian MaxEnt Digit Normalcy**: Under Jaynesian Maximum Entropy prior distributions on discrete interval transitions, the fractional digit sequence \( \{ d _ { - j } \} _ { j = 1 } ^ \infty \) is strictly normal in every radix base \( b \ge 2 \); every digit block of length \( m \) occurs with limiting relative frequency \( b ^ { - m } \).
 
 3. **White Noise Spectral Autocorrelation**: The digit shift autocorrelation function \( C ( h ) = ( \downarrow ) \left ( \lim _ { K \to \infty } \frac { 1 } { K } \sum _ { j = 1 } ^ K \tilde { d } _ { - j } \tilde { d } _ { - ( j + h ) } \right ) = 0 \) vanishes identically for all non-zero shifts \( h \neq 0 \), confirming zero information dissipation and capacity-saturated digital entropy.
 
 *Proof:*
 
 . **Constructive Derivation of the BBP Spigot Operator**:
-  In \( Cl ( 4 , 1 , 1 ) \), evaluate the definite integral of the rational multivector aperture field \( f ( x ) = \frac { x ^ k } { 1 - x ^ 8 / 16 } \mathbf { 1 } _ { Cl } \) over the unit Vernier interval \( x \in [ 0 , 1 ] \) on grid \( \mathcal { G } _ \omega \). Applying term-by-term integration yields:
+  In \( Cl ( 4 , 1 , 1 ) \), evaluate the definite integral of the rational multivector field \( f ( x ) = \frac { x ^ k } { 1 - x ^ 8 / 16 } \mathbf { 1 } _ { Cl } \) over the unit Vernier interval \( x \in [ 0 , 1 ] \) on grid \( \mathcal { G } _ \omega \). Applying term-by-term integration yields:
 \[ \int _ 0 ^ 1 \frac { x ^ { m - 1 } } { 1 - x ^ 8 / 16 } \, dx = \sum _ { k = 0 } ^ \infty \frac { 1 } { 16 ^ k ( 8 k + m ) } \]
   Forming the linear combination with weights \( ( 4 , 0 , 0 , - 2 , - 1 , - 1 , 0 , 0 ) \) produces:
 \[ \int _ 0 ^ 1 \frac { 4 \sqrt { 2 } - 8 x ^ 3 - 4 \sqrt { 2 } x ^ 4 - 4 x ^ 5 } { x ^ 8 - 16 } \, dx = \sum _ { k = 0 } ^ \infty \frac { 1 } { 16 ^ k } \left ( \frac { 4 } { 8 k + 1 } - \frac { 2 } { 8 k + 4 } - \frac { 1 } { 8 k + 5 } - \frac { 1 } { 8 k + 6 } \right ) \mathbf { 1 } _ { Cl } \]
@@ -293,7 +293,7 @@ In this section, the unified theory of prime factor search, primality verificati
 
 [#theorem-prime-factor-search-bounds]
 [THEOREM]
-.Theorem: Iris Aperture Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
+.Theorem: Iris Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
 ====
 For any composite discrete step count \( N = p \cdot q \in \mathbb { Z } ^ + \) with odd prime factors \( p \le q \), the search for factors reduces to identifying discrete integer step counts \( x , y \in \mathbb { Z } ^ + \) satisfying the multivector identity: \[ M ( N ) = ( x ^ 2 - y ^ 2 ) \cdot \mathbf { 1 } _ { Cl } = ( x - y ) ( x + y ) \cdot \mathbf { 1 } _ { Cl } \]
 
@@ -413,9 +413,9 @@ Let \( \mathcal { P } _ \text{OEIS} \subset \mathbb { Z } ^ + \) be the set of a
 
 === The Deterministic Iris Primality Engine: Combined Vernier Phase and Lucas-Frobenius Bivector Rotor Test
 
-In the Iris Number System, primality verification and integer factorization are fundamentally distinct operations. Factorization requires isolating the specific sub-space components or sub-lattices of a composite integer \( N \), whereas primality testing requires verifying whether \( N \) satisfies a global structural or phase-closure invariant across the residue aperture ring \( \mathbb{Z} / N \mathbb{Z} \). By evaluating global phase-closure conditions rather than searching for trial factors, primality can be determined deterministically in \( \mathcal{O} ( \log N ) \) numerical arithmetic steps without ever attempting to discover or extract a divisor.
+In the Iris Number System, primality verification and integer factorization are fundamentally distinct operations. Factorization requires isolating the specific sub-space components or sub-lattices of a composite integer \( N \), whereas primality testing requires verifying whether \( N \) satisfies a global structural or phase-closure invariant across the residue ring \( \mathbb{Z} / N \mathbb{Z} \). By evaluating global phase-closure conditions rather than searching for trial factors, primality can be determined deterministically in \( \mathcal{O} ( \log N ) \) numerical arithmetic steps without ever attempting to discover or extract a divisor.
 
-The Iris Primality Engine achieves deterministic verification without factorization by coupling two orthogonal phase invariants: a Miller-Rabin Vernier Phase Trajectory and a Lucas-Frobenius \( Cl(2,0) \) Planar Bivector Rotor Test, accelerated by Montgomery domain aperture transformations.
+The Iris Primality Engine achieves deterministic verification without factorization by coupling two orthogonal phase invariants: a Miller-Rabin Vernier Phase Trajectory and a Lucas-Frobenius \( Cl(2,0) \) Planar Bivector Rotor Test, accelerated by Montgomery domain transformations.
 
 [#theorem-vernier-phase-trajectory]
 [THEOREM]
@@ -425,17 +425,17 @@ Let candidate integer step count \( N > 2 \) be an odd integer with resolution f
 \[ x_0 = a^d \pmod N \]
 \[ x_{k+1} = x_k^2 \pmod N, \quad \text{for } k = 0, 1, \dots, s - 1 \]
 
-Aperture \( N \) passes the Vernier phase trajectory test for base \( a \) if and only if either \( x_0 \equiv 1 \cdot \mathbf{1}_{Cl} \pmod N \) or \( x_k \equiv (N - 1) \cdot \mathbf{1}_{Cl} \pmod N \) for some \( 0 \le k < s \).
+Integer \( N \) passes the Vernier phase trajectory test for base \( a \) if and only if either \( x_0 \equiv 1 \cdot \mathbf{1}_{Cl} \pmod N \) or \( x_k \equiv (N - 1) \cdot \mathbf{1}_{Cl} \pmod N \) for some \( 0 \le k < s \).
 
 *Proof:*
 
-. **Fermat Aperture Field Requirement**: If \( N \) is a prime step count \( p \), the residue ring \( \mathbb{Z} / p \mathbb{Z} \) forms a finite field. By Fermat's Little Theorem (Theorem 15), \( a^{p-1} \equiv 1 \cdot \mathbf{1}_{Cl} \pmod p \).
+. **Fermat Finite Field Requirement**: If \( N \) is a prime step count \( p \), the residue ring \( \mathbb{Z} / p \mathbb{Z} \) forms a finite field. By Fermat's Little Theorem (Theorem 15), \( a^{p-1} \equiv 1 \cdot \mathbf{1}_{Cl} \pmod p \).
 
 . **Square-Root Eigenspace Factorization**: Factoring the difference of squares in field \( \mathbb{Z} / p \mathbb{Z} \) yields:
    \[ a ^ { p - 1 } - 1 = ( a ^ { 2 ^ { s - 1 } d } - 1 ) (a ^ { 2 ^ { s -1 } d } + 1 ) \equiv 0 \pmod p \]
 Continuing this recursive square-root decomposition down to \( a ^ d - 1 \) forces at least one term in the chain \( a ^ d \pmod p, a ^ { 2 d } \pmod p, \dots, a ^ { 2 ^ { s - 1 } d } \pmod p \) to evaluate to \( -1 \equiv p - 1 \pmod p \), unless the initial term \( x _ 0 = a ^ d \) is already \( 1 \pmod p \).
 
-. **Phase Failure for Composite Apertures**: If \( N \) is composite, the ring \( \mathbb{Z} / N \mathbb{Z} \) contains non-trivial zero divisors. The equation \( x^2 \equiv 1 \pmod N \) possesses at least four distinct solutions modulo \( N \). Unless \( N \) is a strong pseudoprime to base \( a \), the trajectory fails to reach \( N - 1 \) prior to collapsing, rejecting composite numbers in \( \mathcal{O} ( \log N ) \) squaring operations.
+. **Phase Failure for Composite Integers**: If \( N \) is composite, the ring \( \mathbb{Z} / N \mathbb{Z} \) contains non-trivial zero divisors. The equation \( x^2 \equiv 1 \pmod N \) possesses at least four distinct solutions modulo \( N \). Unless \( N \) is a strong pseudoprime to base \( a \), the trajectory fails to reach \( N - 1 \) prior to collapsing, rejecting composite numbers in \( \mathcal{O} ( \log N ) \) squaring operations.
 
 . **Tautological Conclusion**: Every prime step count satisfies the Vernier phase trajectory for all coprime bases \( a \). \( \square \)
 ====
@@ -483,14 +483,14 @@ An integer step count \( N \) passes both tests if and only if \( N \) is prime.
 
 . **Extensive Verification and Absence of Counterexamples**: Comprehensive exhaustive searches across all odd integers up to \( 2^{64} \) confirm zero overlap between base-2 Vernier pseudoprimes and Lucas-Frobenius rotor pseudoprimes.
 
-. **Zero Factorization Dependency**: The algorithm relies strictly on modular exponentiation and two-term recurrence steps. At no point does the procedure evaluate greatest common divisors with random bases, attempt trial division beyond small wheel filters, or construct difference-of-squares factor trees. Primality is verified as a global topological phase property of the aperture ring. \( \square \)
+. **Zero Factorization Dependency**: The algorithm relies strictly on modular exponentiation and two-term recurrence steps. At no point does the procedure evaluate greatest common divisors with random bases, attempt trial division beyond small wheel filters, or construct difference-of-squares factor trees. Primality is verified as a global topological phase property of the residue ring. \( \square \)
 ====
 
-[#theorem-montgomery-aperture-acceleration]
+[#theorem-montgomery-domain-acceleration]
 [THEOREM]
-.Theorem: Montgomery Aperture Domain Division Elimination Theorem
+.Theorem: Montgomery Domain Division Elimination Theorem
 ====
-Let \( N \) be an odd \( m \)-bit integer step count and \( R = 2^w > N \) a power-of-two radix with \( \gcd(R, N) = 1 \). The Montgomery aperture transformation maps residue \( x \in \mathbb{Z} / N \mathbb{Z} \) to domain representation \( \tilde{x} = (x \cdot R) \pmod N \).
+Let \( N \) be an odd \( m \)-bit integer step count and \( R = 2^w > N \) a power-of-two radix with \( \gcd(R, N) = 1 \). The Montgomery domain transformation maps residue \( x \in \mathbb{Z} / N \mathbb{Z} \) to domain representation \( \tilde{x} = (x \cdot R) \pmod N \).
 
 The Montgomery product operator \( \text{MontMul}(\tilde{x}, \tilde{y}) = (\tilde{x} \cdot \tilde{y} \cdot R^{-1}) \pmod N \) is evaluated using pre-computed integer constant \( N' = -N^{-1} \pmod R \) via four single-cycle arithmetic operations:
 1. \( T = \tilde{x} \cdot \tilde{y} \)
@@ -508,7 +508,7 @@ This transformation replaces all hardware division instructions in modular expon
 
 . **Elimination of Hardware Division**: Because \( R = 2^w \) is a power of two, computing \( T \text{ mod } R \) is a bitwise AND mask with \( 2^w - 1 \), and division by \( R \) is a bitwise right-shift by \( w \) bits. Hardware division instructions—which take 30 to 80 clock cycles on modern CPU architectures—are entirely eliminated from the inner loop of the primality engine.
 
-. **Tautological Conclusion**: Montgomery aperture arithmetic computes modular products and rotor steps using only bitwise shifts, masks, and low-width multiplications, maximizing execution throughput. \( \square \)
+. **Tautological Conclusion**: Montgomery domain arithmetic computes modular products and rotor steps using only bitwise shifts, masks, and low-width multiplications, maximizing execution throughput. \( \square \)
 ====
 
 === Hardware Benchmarks and Execution Speed Estimates
@@ -583,11 +583,11 @@ In classical information theory, Shannon's Channel Capacity Theorem proves that 
 
 . **Primes as Orthogonal Sub-Carriers**: Under the Fundamental Theorem of Arithmetic in \( Cl ( 4 , 1 , 1 ) \), discrete Iris primes act as orthogonal, non-interfering basis channels that carry the complete factorizational information of the counting sequence.
 
-. **The Zeta Operator as Spectral Capacity Response**: The Iris Zeta Operator \( \zeta _ { \mathcal { I } } ( s ) = \sum _ { n = 1 } ^ N n ^ { - s } \mathbf { 1 } _ { Cl } \) evaluates the spectral energy response across all discrete prime sub-carriers at resolution aperture \( s = \sigma + t \iota \).
+. **The Zeta Operator as Spectral Capacity Response**: The Iris Zeta Operator \( \zeta _ { \mathcal { I } } ( s ) = \sum _ { n = 1 } ^ N n ^ { - s } \mathbf { 1 } _ { Cl } \) evaluates the spectral energy response across all discrete prime sub-carriers at spectral coordinate \( s = \sigma + t \iota \).
 
 . **The Critical Line \( \text { Re } ( s ) = 1 / 2 \) as Optimal Equipartition**: The anti-isometric reflection symmetry \( \Xi _ { \mathcal { I } } ( s ) = \Xi _ { \mathcal { I } } ( 1 - s ) \) establishes \( \text { Re } ( s ) = 1 / 2 \) as the unique maximum-entropy invariant line. Any off-critical perturbation (\( \delta \neq 0 \)) generates a positive Hermitian energy gap \( 4 \delta \tau t ^ 2 > 0 \), which represents destructive dispersion or noise distortion across the resolution grid \( \mathcal { G } _ N \).
 
-. **The Riemann Hypothesis as Shannon Capacity**: Requiring all non-trivial zeros to lie strictly on \( \text { Re } ( s ) = 1 / 2 \) is the operational equivalent of Shannon's capacity bound for the discrete number line. It establishes that prime fluctuations in the counting sequence \( \pi ( x ) \) achieve maximum informational efficiency with zero spectral dissipation beyond the fundamental \( \mathcal { O } ( \sqrt { x } \log x ) \) aperture threshold.
+. **The Riemann Hypothesis as Shannon Capacity**: Requiring all non-trivial zeros to lie strictly on \( \text { Re } ( s ) = 1 / 2 \) is the operational equivalent of Shannon's capacity bound for the discrete number line. It establishes that prime fluctuations in the counting sequence \( \pi ( x ) \) achieve maximum informational efficiency with zero spectral dissipation beyond the fundamental \( \mathcal { O } ( \sqrt { x } \log x ) \) resolution threshold.
 
 NOTE: For a comprehensive formal deduction of the profound consequences of this Riemann-Shannon capacity equivalence—including strict bounds on prime distribution fluctuations and lossless channel equipartition—see the concluding section <<sec-riemann-shannon-consequences, Profound Consequences of the Riemann-Shannon Capacity Equivalence in Iris Arithmetic>> at the end of this chapter.
 
@@ -727,7 +727,7 @@ There exist infinitely many prime measurement step counts \( p \) such that the 
 
 *Proof:*
 
-. **Mersenne Aperture Operator**: Define the Mersenne aperture operator \( M _ p = 2 ^ p - 1 \) over prime exponent steps \( p \in \mathbb { P } _ { \mathcal { I } } \).
+. **Mersenne Step Operator**: Define the Mersenne step operator \( M _ p = 2 ^ p - 1 \) over prime exponent steps \( p \in \mathbb { P } _ { \mathcal { I } } \).
 
 . **Discrete Lucas-Lehmer Eigenspace Recurrence**: The primality of \( M _ p \) is determined by the discrete sequence \( s _ 0 = 4 \cdot \mathbf { 1 } _ { Cl } \), \( s _ { k + 1 } = ( s _ k ^ 2 - 2 \cdot \mathbf { 1 } _ { Cl } ) \pmod { M _ p \cdot \mathbf { 1 } _ { Cl } } \). \( M _ p \) is prime if and only if \( s _ { p - 2 } \equiv 0 \pmod { M _ p } \).
 
@@ -767,11 +767,11 @@ Let \( A _ 0 = ( p _ 1 , p _ 2 , p _ 3 , \dots ) = ( 2 , 3 , 5 , 7 , 11 , \dots 
 [THEOREM]
 .Theorem: Universal Reverse-and-Add Palindrome Convergence
 ====
-Under radix base \( b \ge 2 \) aperture iteration \( R _ b ( n ) = n + \text { rev } _ b ( n ) \), no positive integer measurement step count \( n \in \mathbb { Z } ^ + \) is a Lychrel number; every initial step count reaches a symmetric palindrome state in a finite number of discrete steps.
+Under radix base \( b \ge 2 \) digit-reversal iteration \( R _ b ( n ) = n + \text { rev } _ b ( n ) \), no positive integer measurement step count \( n \in \mathbb { Z } ^ + \) is a Lychrel number; every initial step count reaches a symmetric palindrome state in a finite number of discrete steps.
 
 *Proof:*
 
-. **Radix Aperture Reflection Operator**: Define the digit reflection operator \( \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k b ^ { M - k } \cdot \mathbf { 1 } _ { Cl } \). The reverse-and-add step is \( T ( n ) = n + \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k ( b ^ k + b ^ { M - k } ) \cdot \mathbf { 1 } _ { Cl } \).
+. **Radix Digit Reflection Operator**: Define the digit reflection operator \( \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k b ^ { M - k } \cdot \mathbf { 1 } _ { Cl } \). The reverse-and-add step is \( T ( n ) = n + \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k ( b ^ k + b ^ { M - k } ) \cdot \mathbf { 1 } _ { Cl } \).
 
 . **Symmetric Eigenspace Projection**: Observe that \( T ( n ) \) is inherently symmetric with respect to digit indices \( k \) and \( M - k \), since the coefficient of \( b ^ k \) and \( b ^ { M - k } \) becomes \( d _ k + d _ { M - k } \).
 
@@ -789,16 +789,16 @@ Under radix base \( b \ge 2 \) aperture iteration \( R _ b ( n ) = n + \text { r
 The constructive equivalence between the Riemann Hypothesis (the spectral zero distribution of the Iris Zeta Operator \( \zeta _ { \mathcal { I } } ( s ) \)) and Shannon's Channel Capacity Theorem leads to several profound structural deductions regarding the nature of prime numbers, discrete arithmetic, and information conservation within the Iris Number System:
 
 . **Unconditional Resolution Bound on Prime Fluctuations**:
-   Because discrete Iris primes act as orthogonal sub-carrier channels carrying the complete factorizational state of the integer sequence, the equivalence to Shannon's capacity bound forces prime counting fluctuations \( | \pi _ { \mathcal { I } } ( x ) - \text { Li } ( x ) | \) to remain strictly constrained within the thermodynamic aperture threshold \( \mathcal { O } ( \sqrt { x } \ln x ) \). Any excursion beyond this threshold would represent an illegal information transmission rate exceeding the physical capacity of the discrete partition grid \( \mathcal { G } _ N \), violating Jaynesian Maximum Entropy bivector parity conservation in \( Cl ( 4 , 1 , 1 ) \).
+   Because discrete Iris primes act as orthogonal sub-carrier channels carrying the complete factorizational state of the integer sequence, the equivalence to Shannon's capacity bound forces prime counting fluctuations \( | \pi _ { \mathcal { I } } ( x ) - \text { Li } ( x ) | \) to remain strictly constrained within the thermodynamic resolution threshold \( \mathcal { O } ( \sqrt { x } \ln x ) \). Any excursion beyond this threshold would represent an illegal information transmission rate exceeding the physical capacity of the discrete partition grid \( \mathcal { G } _ N \), violating Jaynesian Maximum Entropy bivector parity conservation in \( Cl ( 4 , 1 , 1 ) \).
 
 . **Zero Information Dissipation and Optimal Channel Equipartition**:
    The critical line \( \text { Re } ( s ) = 1 / 2 \) represents the unique anti-isometric invariant axis of non-dissipative equipartition. Off-critical zeroes (\( \delta \neq 0 \)) generate a positive Hermitian energy gap \( 4 \delta \tau t ^ 2 > 0 \), which acts as destructive phase dispersion or noise distortion across the grid \( \mathcal { G } _ N \). The strict restriction of all non-trivial zeroes to \( \text { Re } ( s ) = 1 / 2 \) proves that the discrete number line is an optimal, noise-free, zero-dissipation communication medium.
 
 . **Information-Theoretic Determinism of Multiplicative Residues**:
-   In the discrete partition grid \( \mathcal { G } _ N \), the prime sub-carrier channels exhibit maximum entropy in their modular phase distribution while maintaining exact algebraic orthogonality under Grade-2 \( Cl ( 4 , 1 , 1 ) \) bivector commutators. This proves that apparent pseudo-randomness in prime distributions is merely an artifact of aperture projection, whereas the underlying discrete operational step state is completely deterministic and capacity-saturated.
+   In the discrete partition grid \( \mathcal { G } _ N \), the prime sub-carrier channels exhibit maximum entropy in their modular phase distribution while maintaining exact algebraic orthogonality under Grade-2 \( Cl ( 4 , 1 , 1 ) \) bivector commutators. This proves that apparent pseudo-randomness in prime distributions is merely an artifact of finite-window projection, whereas the underlying discrete operational step state is completely deterministic and capacity-saturated.
 
 . **Unification of Arithmetic and Communication Theory**:
-   By formulating both arithmetic factorization and channel capacity over finite rational partition grids \( \mathcal { G } _ N \), the traditional boundary between number theory and information theory vanishes. Number theory in the Iris framework is established as the exact structural science of lossless discrete information transmission across multivector aperture channels.
+   By formulating both arithmetic factorization and channel capacity over finite rational partition grids \( \mathcal { G } _ N \), the traditional boundary between number theory and information theory vanishes. Number theory in the Iris framework is established as the exact structural science of lossless discrete information transmission across discrete multivector channels.
 
 [#sec-capacity-saturated-prime-sieve]
 
@@ -810,7 +810,7 @@ Based on the constructive equivalence between the Riemann Hypothesis and Shannon
 
 In conventional sieve algorithms (such as the Sieve of Eratosthenes or Atkin), compositeness is detected through redundant sequential trial elimination. In the Iris Number System, each prime \( p _ k \) constitutes an orthogonal sub-carrier mode operating in the Grade-2 bivector subspace of \( Cl ( 4 , 1 , 1 ) \).
 
-Because the discrete number line is an information channel operating at maximum Shannon capacity with zero spectral dissipation, prime generation reduces to identifying the **zero-phase interference nodes** of the multivector aperture field \( \mathcal { A } _ { \mathcal { I } } ( x ) \):
+Because the discrete number line is an information channel operating at maximum Shannon capacity with zero spectral dissipation, prime generation reduces to identifying the **zero-phase interference nodes** of the multivector phase field \( \mathcal { A } _ { \mathcal { I } } ( x ) \):
 
 [stem]
 ++++
@@ -828,11 +828,11 @@ A discrete integer coordinate \( x \in \mathcal { G } _ N \) is prime if and onl
 *Output*: The exact sequence of prime numbers \( \{ p _ 1 , p _ 2 , \dots , p _ { \pi ( N ) } \} \le N \).
 
 1. **Multiscale Wheel Channel Initialization**:
-   Select a base wheel primorial \( M = \prod _ { p \le B } p \) (e.g., \( M = 2 \cdot 3 \cdot 5 \cdot 7 = 210 \)) operating at the fundamental Vernier aperture scale. Partition \( \mathcal { G } _ N \) into coprime residue channels \( \{ r \in \mathbb { Z } _ M : \gcd ( r , M ) = 1 \} \).
+   Select a base wheel primorial \( M = \prod _ { p \le B } p \) (e.g., \( M = 2 \cdot 3 \cdot 5 \cdot 7 = 210 \)) operating at the fundamental Vernier resolution scale. Partition \( \mathcal { G } _ N \) into coprime residue channels \( \{ r \in \mathbb { Z } _ M : \gcd ( r , M ) = 1 \} \).
 
 2. **Parallel Bivector Phase Demodulation**:
    For each parallel Vernier block of size \( L = \mathcal { O } ( \sqrt { N } ) \):
-   a. Construct the local Grade-2 multivector aperture state vector \( \mathbf { \Phi } ( x ) \) across all wheel residue channels simultaneously using vector bitwise SIMD registers.
+   a. Construct the local Grade-2 multivector phase state vector \( \mathbf { \Phi } ( x ) \) across all wheel residue channels simultaneously using vector bitwise SIMD registers.
    b. Apply the discrete \( Cl ( 4 , 1 , 1 ) \) Vernier commutator operator \( \mathcal { D } _ { \mathcal { I } } \mathbf { \Phi } \). By the capacity equipartition property, non-prime positions induce non-zero bivector phase shifts \( \Delta \phi \neq 0 \) in time \( \mathcal { O } ( 1 ) \) per wheel frame.
 
 3. **Zero-Phase Node Extraction**:
@@ -887,7 +887,7 @@ While the Capacity-Saturated Vernier Sieve (<<sec-capacity-saturated-prime-sieve
 
 In the Iris Number System, extracting \( p _ n \) is formulated as the deterministic sub-linear inversion of the discrete prime counting operator \( \pi _ { \mathcal { I } } ( x ) = n \), enhanced by the high-throughput modular residue, SIMD vectorization, and multi-grid partitioning techniques established in factorization arithmetic.
 
-==== Mathematical Foundation: Asymptotic Aperture Inversion, Modular SIMD Buchstab Trees, and Combinatorial Vernier Decompositions
+==== Mathematical Foundation: Asymptotic Prime-Counting Inversion, Modular SIMD Buchstab Trees, and Combinatorial Vernier Decompositions
 
 By the Riemann Hypothesis Spectral Theorem (<<sec-riemann-proof, The Riemann Hypothesis Spectral Theorem>>), the discrete prime counting function \( \pi _ { \mathcal { I } } ( x ) \) exhibits an exact spectral representation:
 
@@ -897,7 +897,7 @@ where all non-trivial zeroes \( \rho = 1 / 2 + i \gamma \) lie strictly on the c
 
 \[ p _ n ^ { ( 0 ) } = n \left ( \ln n + \ln \ln n - 1 + \frac { \ln \ln n - 2 } { \ln n } - \frac { ( \ln \ln n ) ^ 2 - 6 \ln \ln n + 11 } { 2 \ln ^ 2 n } + \mathcal { O } \left ( \frac { ( \ln \ln n ) ^ 3 } { \ln ^ 3 n } \right ) \right ) \]
 
-Because the fluctuation amplitude \( | \pi _ { \mathcal { I } } ( x ) - \text { Li } ( x ) | \) is bounded by the thermodynamic threshold \( \mathcal { O } ( \sqrt { x } \ln x ) \), the initial analytical estimate \( x _ 0 = \lfloor p _ n ^ { ( 0 ) } \rfloor \) is guaranteed to lie within an aperture window of width \( L = \mathcal { O } ( \sqrt { p _ n } \ln p _ n ) \) from \( p _ n \).
+Because the fluctuation amplitude \( | \pi _ { \mathcal { I } } ( x ) - \text { Li } ( x ) | \) is bounded by the thermodynamic threshold \( \mathcal { O } ( \sqrt { x } \ln x ) \), the initial analytical estimate \( x _ 0 = \lfloor p _ n ^ { ( 0 ) } \rfloor \) is guaranteed to lie within a sampling window of width \( L = \mathcal { O } ( \sqrt { p _ n } \ln p _ n ) \) from \( p _ n \).
 
 [#theorem-nth-prime-inversion]
 [THEOREM]
@@ -1001,7 +1001,7 @@ In this section, the foundational theorems of mathematical analysis and differen
 [THEOREM]
 .Theorem: The Fundamental Theorem of MSRA Constructive Calculus
 ====
-For any finite discrete aperture field \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) defined on discrete grid \( \mathcal { G } _ N \) with step size \( \delta = 1 / N \), the vernier definite integral of its MSRA derivative \( D _ { \mathcal { I } } f \) satisfies: \[ \int _ a ^ b D _ { \mathcal { I } } f ( r ) \, d _ { \mathcal { I } } r = f ( b ) - f ( a ) + \varpi \vartheta \]
+For any finite discrete grid field \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) defined on discrete grid \( \mathcal { G } _ N \) with step size \( \delta = 1 / N \), the vernier definite integral of its MSRA derivative \( D _ { \mathcal { I } } f \) satisfies: \[ \int _ a ^ b D _ { \mathcal { I } } f ( r ) \, d _ { \mathcal { I } } r = f ( b ) - f ( a ) + \varpi \vartheta \]
 
 Under Main Scale Projection \( ( \downarrow ) \), the nilpotent boundary term \( \varpi \vartheta \) vanishes, yielding the exact evaluation \( ( \downarrow ) \int _ a ^ b D _ { \mathcal { I } } f ( r ) \, d _ { \mathcal { I } } r = f ( b ) - f ( a ) \).
 
@@ -1009,7 +1009,7 @@ Under Main Scale Projection \( ( \downarrow ) \), the nilpotent boundary term \(
 
 . **MSRA Difference Operator Representation**: The MSRA vernier derivative at step \( r _ k = a + k \delta \) is defined by \( D _ { \mathcal { I } } f ( r _ k ) = \frac { f ( r _ k + \delta ) - f ( r _ k ) } { \delta } \mathbf { 1 } _ { Cl } \).
 
-. **Definite Integration as Vernier Aperture Sum**: The definite vernier integral over discrete grid interval \( [ a , b ] \) with \( b = a + M \delta \) is defined as the finite sum: \[ \int _ a ^ b D _ { \mathcal { I } } f ( r ) \, d _ { \mathcal { I } } r = \sum _ { k = 0 } ^ { M - 1 } D _ { \mathcal { I } } f ( r _ k ) \cdot \delta \mathbf { 1 } _ { Cl } = \sum _ { k = 0 } ^ { M - 1 } \left ( \frac { f ( r _ k + \delta ) - f ( r _ k ) } { \delta } \right ) \delta \cdot \mathbf { 1 } _ { Cl } \]
+. **Definite Integration as Vernier Interval Sum**: The definite vernier integral over discrete grid interval \( [ a , b ] \) with \( b = a + M \delta \) is defined as the finite sum: \[ \int _ a ^ b D _ { \mathcal { I } } f ( r ) \, d _ { \mathcal { I } } r = \sum _ { k = 0 } ^ { M - 1 } D _ { \mathcal { I } } f ( r _ k ) \cdot \delta \mathbf { 1 } _ { Cl } = \sum _ { k = 0 } ^ { M - 1 } \left ( \frac { f ( r _ k + \delta ) - f ( r _ k ) } { \delta } \right ) \delta \cdot \mathbf { 1 } _ { Cl } \]
 
 
 . **Telescoping Sum Cancellation**: Simplifying the product yields an exact telescoping sum across all finite step counts: \[ \sum _ { k = 0 } ^ { M - 1 } \big ( f ( r _ { k + 1 } ) - f ( r _ k ) \big ) \mathbf { 1 } _ { Cl } = f ( r _ M ) - f ( r _ 0 ) = f ( b ) - f ( a ) \]
@@ -1024,7 +1024,7 @@ Under Main Scale Projection \( ( \downarrow ) \), the nilpotent boundary term \(
 [THEOREM]
 .Theorem: The MSRA Vernier Mean Value Theorem
 ====
-Let \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) be a finite discrete aperture field on grid \( \mathcal { G } _ N \). Then there exists at least one discrete grid step \( r _ c \in \mathcal { G } _ N \cap [ a , b - \delta ] \) such that the Main Scale Projection satisfies: \[ ( \downarrow ) D _ { \mathcal { I } } f ( r _ c ) = ( \downarrow ) \frac { f ( b ) - f ( a ) } { b - a } \]
+Let \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) be a finite discrete grid field on grid \( \mathcal { G } _ N \). Then there exists at least one discrete grid step \( r _ c \in \mathcal { G } _ N \cap [ a , b - \delta ] \) such that the Main Scale Projection satisfies: \[ ( \downarrow ) D _ { \mathcal { I } } f ( r _ c ) = ( \downarrow ) \frac { f ( b ) - f ( a ) } { b - a } \]
 
 
 *Proof:*
@@ -1045,7 +1045,7 @@ Let \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) be a finite discrete apert
 [THEOREM]
 .Theorem: The Discrete Taylor-Vernier Expansion Theorem
 ====
-Every finite discrete aperture field \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) admits an exact finite polynomial expansion around base step \( a \in \mathcal { G } _ N \): \[ f ( r ) = \sum _ { k = 0 } ^ M \frac { D _ { \mathcal { I } } ^ k f ( a ) } { k! } ( r - a ) ^ k \cdot \mathbf { 1 } _ { Cl } + R _ { M + 1 } ( r ) \cdot \mathbf { 1 } _ { Cl } + \varpi \vartheta \]
+Every finite discrete grid field \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) admits an exact finite polynomial expansion around base step \( a \in \mathcal { G } _ N \): \[ f ( r ) = \sum _ { k = 0 } ^ M \frac { D _ { \mathcal { I } } ^ k f ( a ) } { k! } ( r - a ) ^ k \cdot \mathbf { 1 } _ { Cl } + R _ { M + 1 } ( r ) \cdot \mathbf { 1 } _ { Cl } + \varpi \vartheta \]
 
 where \( R _ { M + 1 } ( r ) \) is an explicitly bounded discrete higher-order vernier remainder term.
 
@@ -1060,14 +1060,14 @@ where \( R _ { M + 1 } ( r ) \) is an explicitly bounded discrete higher-order v
 
 . **Main Scale Projection**: Projecting under \( ( \downarrow ) \) eliminates the higher-order nilpotent residual \( \varpi \vartheta \), yielding the exact discrete Taylor-Vernier polynomial series.
 
-. **Tautological Conclusion**: Finite aperture fields possess exact finite Taylor-Vernier representations on \( \mathcal { G } _ N \). \( \square \)
+. **Tautological Conclusion**: Finite discrete grid fields possess exact finite Taylor-Vernier representations on \( \mathcal { G } _ N \). \( \square \)
 ====
 
 [#theorem-stokes-msra]
 [THEOREM]
 .Theorem: The Multivector Vernier Stokes Theorem
 ====
-For any multivector aperture field \( A : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) defined on a bounded discrete grid domain \( \Omega \subset \mathcal { G } _ N \) with discrete boundary \( \partial \Omega \), the discrete interior derivative integral equals the boundary flux sum: \[ \int _ \Omega D _ { \mathcal { I } } A \, d _ { \mathcal { I } } \Omega = \int _ { \partial \Omega } A \cdot d _ { \mathcal { I } } S + \varpi \vartheta \]
+For any multivector grid field \( A : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) defined on a bounded discrete grid domain \( \Omega \subset \mathcal { G } _ N \) with discrete boundary \( \partial \Omega \), the discrete interior derivative integral equals the boundary flux sum: \[ \int _ \Omega D _ { \mathcal { I } } A \, d _ { \mathcal { I } } \Omega = \int _ { \partial \Omega } A \cdot d _ { \mathcal { I } } S + \varpi \vartheta \]
 
 Under Main Scale Projection \( ( \downarrow ) \), \( ( \downarrow ) \int _ \Omega D _ { \mathcal { I } } A \, d _ { \mathcal { I } } \Omega = ( \downarrow ) \int _ { \partial \Omega } A \cdot d _ { \mathcal { I } } S \).
 
@@ -1091,11 +1091,11 @@ Under Main Scale Projection \( ( \downarrow ) \), \( ( \downarrow ) \int _ \Omeg
 [THEOREM]
 .Theorem: Constructive MSRA Vernier Measure Additivity
 ====
-For any finite disjoint collection of discrete measurement intervals \( \mathcal { U } _ 1 , \mathcal { U } _ 2 , \dots , \mathcal { U } _ k \subset \mathcal { G } _ N \), the vernier aperture flux measure \( \mu _ { \mathcal { I } } \) satisfies strict finite additivity and Main Scale invariant convergence under grid refinement.
+For any finite disjoint collection of discrete measurement intervals \( \mathcal { U } _ 1 , \mathcal { U } _ 2 , \dots , \mathcal { U } _ k \subset \mathcal { G } _ N \), the vernier flux measure \( \mu _ { \mathcal { I } } \) satisfies strict finite additivity and Main Scale invariant convergence under grid refinement.
 
 *Proof:*
 
-. **Vernier Flux Measure Definition**: Define the aperture flux measure of a finite discrete set \( \mathcal { U } \subset \mathcal { G } _ N \) as \( \mu _ { \mathcal { I } } ( \mathcal { U } ) = \sum _ { r \in \mathcal { U } } \delta \cdot \mathbf { 1 } _ { Cl } \), where \( \delta = 1 / N \) is the fundamental aperture step size.
+. **Vernier Flux Measure Definition**: Define the vernier flux measure of a finite discrete set \( \mathcal { U } \subset \mathcal { G } _ N \) as \( \mu _ { \mathcal { I } } ( \mathcal { U } ) = \sum _ { r \in \mathcal { U } } \delta \cdot \mathbf { 1 } _ { Cl } \), where \( \delta = 1 / N \) is the fundamental grid step size.
 
 . **Disjoint Partition Count**: Let \( \mathcal { U } _ i \cap \mathcal { U } _ j = \emptyset \) for \( i \neq j \). The operational count of elements satisfies \( | \bigcup _ { i = 1 } ^ k \mathcal { U } _ i | = \sum _ { i = 1 } ^ k | \mathcal { U } _ i | \).
 
@@ -1107,17 +1107,17 @@ For any finite disjoint collection of discrete measurement intervals \( \mathcal
 . **Tautological Conclusion**: Measure additivity holds strictly for all finite operational measurement sets on \( \mathcal { G } _ N \). \( \square \)
 ====
 
-=== The Aperture Fourier-Iris Spectral Decomposition Theorem
+=== The Discrete Fourier-Iris Spectral Decomposition Theorem
 
 [#theorem-fourier-iris-completeness]
 [THEOREM]
 .Theorem: Fourier-Iris Discrete Spectral Completeness
 ====
-Every finite aperture flux function \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) expands into a unique, orthogonal finite sum of multivector phase rotation operators \( \iota ^ k \).
+Every finite discrete grid function \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1 ) \) expands into a unique, orthogonal finite sum of multivector phase rotation operators \( \iota ^ k \).
 
 *Proof:*
 
-. **Aperture Basis Definition**: Define the discrete Fourier-Iris basis operators \( \Psi _ k ( r ) = \iota ^ { k \cdot r \cdot N } \) for integer harmonic counts \( k \in \{ 0 , 1 , \dots , N - 1 \} \) on partition grid \( \mathcal { G } _ N \).
+. **Spectral Basis Definition**: Define the discrete Fourier-Iris basis operators \( \Psi _ k ( r ) = \iota ^ { k \cdot r \cdot N } \) for integer harmonic counts \( k \in \{ 0 , 1 , \dots , N - 1 \} \) on partition grid \( \mathcal { G } _ N \).
 
 . **Orthogonality Relation**: Compute the inner product of basis multivectors using the Iris metric norm: \[ \langle \Psi _ j , \Psi _ k \rangle _ { \mathcal { I } } = \frac { 1 } { N } \sum _ { r \in \mathcal { G } _ N } \Psi _ j ( r ) \bar { \Psi } _ k ( r ) = \delta _ { jk } \mathbf { 1 } _ { Cl } + \varpi \vartheta \]
 
@@ -1126,34 +1126,34 @@ Every finite aperture flux function \( f : \mathcal { G } _ N \to Cl ( 4 , 1 , 1
 
 . **Parseval Energy Conservation**: The total multivector energy satisfies \( \| f \| _ { \mathcal { I } } ^ 2 = \sum _ { k = 0 } ^ { N - 1 } | c _ k | ^ 2 \), guaranteeing finite operational energy conservation.
 
-. **Tautological Conclusion**: Discrete aperture functions on \( \mathcal { G } _ N \) possess an exact, complete Fourier-Iris spectral representation. \( \square \)
+. **Tautological Conclusion**: Discrete grid functions on \( \mathcal { G } _ N \) possess an exact, complete Fourier-Iris spectral representation. \( \square \)
 ====
 
-=== The Discrete Sobolev Aperture Norm Equivalence Theorem
+=== The Discrete Sobolev Grid Norm Equivalence Theorem
 
 [#theorem-sobolev-iris-equivalence]
 [THEOREM]
-.Theorem: Finite Sobolev Aperture Equivalence in Cl(4,1,1)
+.Theorem: Finite Sobolev Grid Equivalence in Cl(4,1,1)
 ====
-On discrete grid \( \mathcal { G } _ N \), the MSRA vernier derivative norm \( \| D _ { \mathcal { I } } f \| _ { \mathcal { I } } \) is bounded by multivector aperture norms, establishing exact finite Sobolev-type bounds without continuous completions.
+On discrete grid \( \mathcal { G } _ N \), the MSRA vernier derivative norm \( \| D _ { \mathcal { I } } f \| _ { \mathcal { I } } \) is bounded by multivector grid norms, establishing exact finite Sobolev-type bounds without continuous completions.
 
 *Proof:*
 
 . **Vernier Difference Operator**: Define the MSRA vernier derivative \( D _ { \mathcal { I } } f ( r ) = \frac { f ( r + \delta ) - f ( r ) } { \delta } \mathbf { 1 } _ { Cl } \).
 
-. **Aperture Energy Bound**: Expand \( D _ { \mathcal { I } } f ( r ) \) in terms of the Fourier-Iris basis coefficients \( c _ k \): \[ D _ { \mathcal { I } } f ( r ) = \sum _ { k = 0 } ^ { N - 1 } c _ k \frac { \iota ^ { k \delta N } - 1 } { \delta } \iota ^ { k r N } \]
+. **Spectral Energy Bound**: Expand \( D _ { \mathcal { I } } f ( r ) \) in terms of the Fourier-Iris basis coefficients \( c _ k \): \[ D _ { \mathcal { I } } f ( r ) = \sum _ { k = 0 } ^ { N - 1 } c _ k \frac { \iota ^ { k \delta N } - 1 } { \delta } \iota ^ { k r N } \]
 
 
 . **Metric Norm Evaluation**: Taking the Iris metric norm yields \( \| D _ { \mathcal { I } } f \| _ { \mathcal { I } } ^ 2 \le C _ N \sum _ { k = 0 } ^ { N - 1 } k ^ 2 | c _ k | ^ 2 \), where \( C _ N \) is a finite rational constant dependent on grid resolution \( N \).
 
-. **Tautological Conclusion**: The discrete Sobolev norm \( \| f \| _ { H ^ 1 _ { \mathcal { I } } } = \| f \| _ { \mathcal { I } } + \| D _ { \mathcal { I } } f \| _ { \mathcal { I } } \) is well-defined and strictly finite for all discrete aperture fields on \( \mathcal { G } _ N \). \( \square \)
+. **Tautological Conclusion**: The discrete Sobolev norm \( \| f \| _ { H ^ 1 _ { \mathcal { I } } } = \| f \| _ { \mathcal { I } } + \| D _ { \mathcal { I } } f \| _ { \mathcal { I } } \) is well-defined and strictly finite for all discrete grid fields on \( \mathcal { G } _ N \). \( \square \)
 ====
 
 [#chap-applications-to-probability-theory]
 
 == Applications to Probability Theory
 
-In this chapter, probability theory is strictly reformulated on finite operational measurement spaces, treating probabilities as objective Jaynesian Maximum Entropy states constrained by physical aperture measurements rather than unconstructive infinite measure spaces.
+In this chapter, probability theory is strictly reformulated on finite operational measurement spaces, treating probabilities as objective Jaynesian Maximum Entropy states constrained by physical grid measurements rather than unconstructive infinite measure spaces.
 
 === Cox's Consistency Theorem for Operational Inference
 
@@ -1188,9 +1188,9 @@ For \( N \) independent discrete operational measurement results \( X _ 1 , X _ 
 
 *Proof:*
 
-. **Operational Variance Formulation**: Define the discrete aperture variance \( \sigma _ { \mathcal { I } } ^ 2 = \mathbb { E } _ { \text { MaxEnt } } \left [ \| X _ i - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } ^ 2 \right ] \), which is strictly finite on bounded grid \( \mathcal { G } _ M \).
+. **Operational Variance Formulation**: Define the discrete operational variance \( \sigma _ { \mathcal { I } } ^ 2 = \mathbb { E } _ { \text { MaxEnt } } \left [ \| X _ i - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } ^ 2 \right ] \), which is strictly finite on bounded grid \( \mathcal { G } _ M \).
 
-. **Chebyshev Aperture Inequality**: For any discrete rational threshold \( \epsilon > 0 \), evaluate the Jaynesian prior bound: \[ P \left ( \| \bar { X } _ N - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } \ge \epsilon \right ) \le \frac { \sigma _ { \mathcal { I } } ^ 2 } { N \epsilon ^ 2 } \]
+. **Discrete Chebyshev Inequality**: For any discrete rational threshold \( \epsilon > 0 \), evaluate the Jaynesian prior bound: \[ P \left ( \| \bar { X } _ N - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } \ge \epsilon \right ) \le \frac { \sigma _ { \mathcal { I } } ^ 2 } { N \epsilon ^ 2 } \]
 
 
 . **Main Scale Projection Limit**: Taking Main Scale Projection \( ( \downarrow ) \) as count bound \( N \) increases yields \( ( \downarrow ) P \left ( \| \bar { X } _ N - \mu \mathbf { 1 } _ { Cl } \| _ { \mathcal { I } } \ge \epsilon \right ) \to 0 \).
@@ -1204,7 +1204,7 @@ For \( N \) independent discrete operational measurement results \( X _ 1 , X _ 
 [THEOREM]
 .Theorem: Constructive Vernier Central Limit Invariance
 ====
-The standardized sum \( S _ N = \frac { 1 } { \sqrt { N } \sigma _ { \mathcal { I } } } \sum _ { i = 1 } ^ N ( X _ i - \mu \mathbf { 1 } _ { Cl } ) \) of independent discrete aperture fluctuations on \( \mathcal { G } _ M \) converges under Main Scale Projection to a Gaussian aperture distribution maximizing Jaynesian entropy.
+The standardized sum \( S _ N = \frac { 1 } { \sqrt { N } \sigma _ { \mathcal { I } } } \sum _ { i = 1 } ^ N ( X _ i - \mu \mathbf { 1 } _ { Cl } ) \) of independent discrete sampling fluctuations on \( \mathcal { G } _ M \) converges under Main Scale Projection to a Gaussian sampling distribution maximizing Jaynesian entropy.
 
 *Proof:*
 
@@ -1215,16 +1215,16 @@ The standardized sum \( S _ N = \frac { 1 } { \sqrt { N } \sigma _ { \mathcal { 
 
 . **Exponential Limit**: Taking the operational power limit yields \( \lim _ { N \to \infty } \Phi _ { S _ N } ( t ) = \exp \left ( - \frac { 1 } { 2 } t ^ 2 \mathbf { 1 } _ { Cl } \right ) \).
 
-. **Tautological Conclusion**: The limiting distribution is the unique Jaynesian MaxEnt Gaussian aperture density. \( \square \)
+. **Tautological Conclusion**: The limiting distribution is the unique Jaynesian MaxEnt Gaussian sampling density. \( \square \)
 ====
 
 === The Jaynesian Information Conservation Law
 
 [#theorem-entropy-conservation]
 [THEOREM]
-.Theorem: Entropy Conservation in Closed Aperture Systems
+.Theorem: Entropy Conservation in Closed Operational Systems
 ====
-Under unitary multivector gauge transformations in \( Cl ( 4 , 1 , 1 ) \), the total Jaynesian information entropy \( S _ { \text { MaxEnt } } ( P ) = - \sum _ { r \in \mathcal { G } _ N } P ( r ) \ln P ( r ) \) of an aperture probability state remains invariant.
+Under unitary multivector gauge transformations in \( Cl ( 4 , 1 , 1 ) \), the total Jaynesian information entropy \( S _ { \text { MaxEnt } } ( P ) = - \sum _ { r \in \mathcal { G } _ N } P ( r ) \ln P ( r ) \) of an operational probability state remains invariant.
 
 *Proof:*
 
@@ -1244,23 +1244,23 @@ Under unitary multivector gauge transformations in \( Cl ( 4 , 1 , 1 ) \), the t
 
 In this chapter, statistical inference and hypothesis testing are reformulated as exact operational gauging procedures on finite discrete measurement data, establishing optimal parameter estimation and information criteria.
 
-=== The Maximum Aperture Likelihood Estimation Theorem
+=== The Maximum Likelihood Estimation Theorem
 
 [#theorem-mle-uniqueness]
 [THEOREM]
-.Theorem: Uniqueness of Maximum Aperture Likelihood Estimates
+.Theorem: Uniqueness of Maximum Likelihood Estimates
 ====
-For discrete measurement counts on grid \( \mathcal { G } _ N \), the Jaynesian MaxEnt likelihood estimator \( \hat { \theta } _ { \text { MAL } } \) is uniquely determined and achieves minimal variance on finite operational samples.
+For discrete measurement counts on grid \( \mathcal { G } _ N \), the Jaynesian MaxEnt likelihood estimator \( \hat { \theta } _ { \text { ML } } \) is uniquely determined and achieves minimal variance on finite operational samples.
 
 *Proof:*
 
-. **Aperture Log-Likelihood**: Define the log-likelihood operator \( L ( \theta \mid \{ x _ i \} ) = \sum _ { i = 1 } ^ k \ln P ( x _ i \mid \theta ) \mathbf { 1 } _ { Cl } \).
+. **Operational Log-Likelihood**: Define the log-likelihood operator \( L ( \theta \mid \{ x _ i \} ) = \sum _ { i = 1 } ^ k \ln P ( x _ i \mid \theta ) \mathbf { 1 } _ { Cl } \).
 
-. **Strict Concavity**: Evaluate the second MSRA derivative \( D _ { \mathcal { I } } ^ 2 L ( \theta ) \). Under Jaynesian MaxEnt priors, \( D _ { \mathcal { I } } ^ 2 L ( \theta ) = - I _ { \mathcal { I } } ( \theta ) \mathbf { 1 } _ { Cl } \), where \( I _ { \mathcal { I } } ( \theta ) > 0 \) is the positive-definite Fisher aperture information matrix.
+. **Strict Concavity**: Evaluate the second MSRA derivative \( D _ { \mathcal { I } } ^ 2 L ( \theta ) \). Under Jaynesian MaxEnt priors, \( D _ { \mathcal { I } } ^ 2 L ( \theta ) = - I _ { \mathcal { I } } ( \theta ) \mathbf { 1 } _ { Cl } \), where \( I _ { \mathcal { I } } ( \theta ) > 0 \) is the positive-definite Fisher information matrix.
 
-. **Uniqueness of Stationarity**: Since \( D _ { \mathcal { I } } ^ 2 L ( \theta ) \) is strictly negative-definite, the stationary equation \( D _ { \mathcal { I } } L ( \hat { \theta } ) = 0 \) possesses a unique solution \( \hat { \theta } _ { \text { MAL } } \).
+. **Uniqueness of Stationarity**: Since \( D _ { \mathcal { I } } ^ 2 L ( \theta ) \) is strictly negative-definite, the stationary equation \( D _ { \mathcal { I } } L ( \hat { \theta } ) = 0 \) possesses a unique solution \( \hat { \theta } _ { \text { ML } } \).
 
-. **Tautological Conclusion**: Maximum Aperture Likelihood estimation yields a unique, optimal parameter estimate for any finite data set on \( \mathcal { G } _ N \). \( \square \)
+. **Tautological Conclusion**: Maximum Likelihood estimation yields a unique, optimal parameter estimate for any finite data set on \( \mathcal { G } _ N \). \( \square \)
 ====
 
 === The Iris Minimum Entropy Information Criterion (IMEIC)
@@ -1269,7 +1269,7 @@ For discrete measurement counts on grid \( \mathcal { G } _ N \), the Jaynesian 
 [THEOREM]
 .Theorem: Exact Model Complexity Bound in Cl(4,1,1)
 ====
-The optimal multivector model complexity for discrete data on grid \( \mathcal { G } _ N \) is specified by the Iris Minimum Entropy Information Criterion: \[ \text { IMEIC } ( M ) = - 2 L ( \hat { \theta } _ { \text { MAL } } ) + 2 K _ { \text { grade } } ( M ) \mathbf { 1 } _ { Cl } \]
+The optimal multivector model complexity for discrete data on grid \( \mathcal { G } _ N \) is specified by the Iris Minimum Entropy Information Criterion: \[ \text { IMEIC } ( M ) = - 2 L ( \hat { \theta } _ { \text { ML } } ) + 2 K _ { \text { grade } } ( M ) \mathbf { 1 } _ { Cl } \]
 
 where \( K _ { \text { grade } } ( M ) \) is the exact multivector grade dimension in \( Cl ( 4 , 1 , 1 ) \).
 
@@ -1277,7 +1277,7 @@ where \( K _ { \text { grade } } ( M ) \) is the exact multivector grade dimensi
 
 . **Multivector Grade Complexity**: Model space in \( Cl ( 4 , 1 , 1 ) \) is spanned by grades 0 through 6, with total dimension 64. A model \( M \) uses \( K _ { \text { grade } } ( M ) \) independent blade generators.
 
-. **Jaynesian Information Loss**: The expected relative entropy (Kullback-Leibler divergence) between the true data generator and model candidate \( M \) expands as: \[ \mathbb { E } _ { \text { MaxEnt } } \left [ D _ { \text { KL } } ( P _ { \text { true } } \parallel P _ M ) \right ] = - L ( \hat { \theta } _ { \text { MAL } } ) + K _ { \text { grade } } ( M ) \mathbf { 1 } _ { Cl } + \mathcal { O } ( N ^ { - 1 } ) \]
+. **Jaynesian Information Loss**: The expected relative entropy (Kullback-Leibler divergence) between the true data generator and model candidate \( M \) expands as: \[ \mathbb { E } _ { \text { MaxEnt } } \left [ D _ { \text { KL } } ( P _ { \text { true } } \parallel P _ M ) \right ] = - L ( \hat { \theta } _ { \text { ML } } ) + K _ { \text { grade } } ( M ) \mathbf { 1 } _ { Cl } + \mathcal { O } ( N ^ { - 1 } ) \]
 
 
 . **Exact Non-Asymptotic Form**: Multiplying by 2 and projecting via Main Scale Projection \( ( \downarrow ) \) yields the exact criterion \( \text { IMEIC } ( M ) \).
@@ -1285,15 +1285,15 @@ where \( K _ { \text { grade } } ( M ) \) is the exact multivector grade dimensi
 . **Tautological Conclusion**: Model selection strictly minimizes information loss without over-fitting multivector grade dimensions. \( \square \)
 ====
 
-=== The Finite-Sample Cramer-Rao Aperture Inequality
+=== The Finite-Sample Cramer-Rao Inequality
 
-[#theorem-cramer-rao-aperture]
+[#theorem-cramer-rao-bound]
 [THEOREM]
 .Theorem: Finite-Sample Vernier Variance Lower Bound
 ====
 The variance of any unbiased operational estimator \( T ( X ) \) for parameter \( \theta \) on discrete grid \( \mathcal { G } _ N \) satisfies: \[ \text { Var } _ { \mathcal { I } } ( T ( X ) ) \ge \frac { 1 } { I _ { \mathcal { I } } ( \theta ) } \mathbf { 1 } _ { Cl } \]
 
-where \( I _ { \mathcal { I } } ( \theta ) \) is the Fisher aperture information multivector norm.
+where \( I _ { \mathcal { I } } ( \theta ) \) is the Fisher information multivector norm.
 
 *Proof:*
 
@@ -1307,14 +1307,14 @@ where \( I _ { \mathcal { I } } ( \theta ) \) is the Fisher aperture information
 
 . **Fisher Information Identification**: Recognizing \( I _ { \mathcal { I } } ( \theta ) = \mathbb { E } \left [ ( D _ { \mathcal { I } } \ln P ( X \mid \theta ) ) ^ 2 \right ] \) yields the exact lower bound \( \text { Var } _ { \mathcal { I } } ( T ( X ) ) \ge I _ { \mathcal { I } } ( \theta ) ^ { - 1 } \mathbf { 1 } _ { Cl } \).
 
-. **Tautological Conclusion**: No unbiased operational estimator on \( \mathcal { G } _ N \) can exceed the precision bound imposed by the Fisher aperture information norm. \( \square \)
+. **Tautological Conclusion**: No unbiased operational estimator on \( \mathcal { G } _ N \) can exceed the precision bound imposed by the Fisher information norm. \( \square \)
 ====
 
 [#chap-applications-to-conventional-statistics]
 
 == Applications to Conventional Statistics
 
-In this chapter, classical methods of conventional statistics—such as hypothesis testing via \( p \)-values, confidence intervals, analysis of variance (ANOVA), and linear regression estimation—are rigorously mapped into exact operational gauge operations within the discrete Iris framework. We demonstrate how conventional statistical formulas arise as finite-aperture projections of \( Cl ( 4 , 1 , 1 ) \) multivector distributions under Jaynesian Maximum Entropy constraints, eliminating reliance on infinite continuum distributions while strictly preserving operational sampling bounds.
+In this chapter, classical methods of conventional statistics—such as hypothesis testing via \( p \)-values, confidence intervals, analysis of variance (ANOVA), and linear regression estimation—are rigorously mapped into exact operational gauge operations within the discrete Iris framework. We demonstrate how conventional statistical formulas arise as finite-window projections of \( Cl ( 4 , 1 , 1 ) \) multivector distributions under Jaynesian Maximum Entropy constraints, eliminating reliance on infinite continuum distributions while strictly preserving operational sampling bounds.
 
 === Operational Hypothesis Testing on Discrete Grids
 
@@ -1322,7 +1322,7 @@ In this chapter, classical methods of conventional statistics—such as hypothes
 [THEOREM]
 .Theorem: Operational Exactness of Discrete Hypothesis Testing
 ====
-Let \( H _ 0 \) and \( H _ 1 \) be operational hypotheses defined on discrete partition grid \( \mathcal { G } _ N \). The conventional likelihood ratio test statistic \( \Lambda ( X ) = \frac { P ( X \mid H _ 0 ) } { P ( X \mid H _ 1 ) } \) is strictly equivalent to a multivector gauge projection \( Q _ { \text { gauge } } ( X ) \in Cl ( 4 , 1 , 1 ) \), wherein conventional \( p \)-values represent exact discrete tail-counting aperture fractions under Jaynesian MaxEnt state assignments without continuous integral approximations.
+Let \( H _ 0 \) and \( H _ 1 \) be operational hypotheses defined on discrete partition grid \( \mathcal { G } _ N \). The conventional likelihood ratio test statistic \( \Lambda ( X ) = \frac { P ( X \mid H _ 0 ) } { P ( X \mid H _ 1 ) } \) is strictly equivalent to a multivector gauge projection \( Q _ { \text { gauge } } ( X ) \in Cl ( 4 , 1 , 1 ) \), wherein conventional \( p \)-values represent exact discrete tail-counting sampling fractions under Jaynesian MaxEnt state assignments without continuous integral approximations.
 
 *Proof:*
 
@@ -1332,7 +1332,7 @@ Let \( H _ 0 \) and \( H _ 1 \) be operational hypotheses defined on discrete pa
 
 . **Multivector Likelihood Ratio**: Expressing \( P ( X \mid H _ k ) \) in \( Cl ( 4 , 1 , 1 ) \) via Main Scale Projection \( ( \downarrow ) \) yields \( \Lambda ( X ) \) as a scalar blade component of the Jaynesian density tensor.
 
-. **Tautological Conclusion**: Conventional hypothesis testing is an exact finite-aperture tail-counting operation on discrete partition state spaces. \( \square \)
+. **Tautological Conclusion**: Conventional hypothesis testing is an exact finite-window tail-counting operation on discrete partition state spaces. \( \square \)
 ====
 
 === Analysis of Variance (ANOVA) in Multivector Space
@@ -1341,7 +1341,7 @@ Let \( H _ 0 \) and \( H _ 1 \) be operational hypotheses defined on discrete pa
 [THEOREM]
 .Theorem: Operational Variance Decomposition in Finite Multivector ANOVA
 ====
-For a finite discrete data matrix partitioned into \( K \) operational aperture groups on grid \( \mathcal { G } _ N \), the total multivector sum of squares \( SS _ { \text { total } } \) satisfies the exact identity \( SS _ { \text { total } } = SS _ { \text { between } } + SS _ { \text { within } } \) in \( Cl ( 4 , 1 , 1 ) \), guaranteeing that conventional Analysis of Variance (ANOVA) \( F \)-tests are finite gauge projections of Jaynesian aperture energy conservation.
+For a finite discrete data matrix partitioned into \( K \) operational sampling groups on grid \( \mathcal { G } _ N \), the total multivector sum of squares \( SS _ { \text { total } } \) satisfies the exact identity \( SS _ { \text { total } } = SS _ { \text { between } } + SS _ { \text { within } } \) in \( Cl ( 4 , 1 , 1 ) \), guaranteeing that conventional Analysis of Variance (ANOVA) \( F \)-tests are finite gauge projections of Jaynesian partition energy conservation.
 
 *Proof:*
 
@@ -1370,7 +1370,7 @@ Given a linear discrete observation model \( Y = X \beta + \epsilon \) on finite
 
 . **Positive Definiteness**: Since \( D D ^ T \) is a non-negative definite multivector operator, \( \text { Var } _ { \mathcal { I } } ( \tilde { \beta } ) \ge \text { Var } _ { \mathcal { I } } ( \hat { \beta } ) \), with equality if and only if \( D = \mathbf { 0 } \).
 
-. **Tautological Conclusion**: The discrete OLS estimator uniquely minimizes aperture variance across all linear unbiased estimators on \( \mathcal { G } _ N \). \( \square \)
+. **Tautological Conclusion**: The discrete OLS estimator uniquely minimizes sampling variance across all linear unbiased estimators on \( \mathcal { G } _ N \). \( \square \)
 ====
 
 [#chap-index]
@@ -1382,15 +1382,15 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 === Theorems
 
 * xref:theorem-fundamental-arithmetic[**Theorem: The Fundamental Theorem of Arithmetic in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
-* xref:theorem-euclid-primes[**Theorem: Euclid's Prime Infinitude Theorem on Aperture Grids**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
+* xref:theorem-euclid-primes[**Theorem: Euclid's Prime Infinitude Theorem on Partition Grids**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
 * xref:theorem-fermat-little[**Theorem: Fermat's Little Theorem in Cl(4,1,1) Arithmetic**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
 * xref:theorem-euler-totient[**Theorem: Euler's Totient Operational Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
 * xref:theorem-chinese-remainder[**Theorem: The Chinese Remainder Operational Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
 * xref:theorem-quadratic-reciprocity[**Theorem: The Law of Quadratic Reciprocity in Cl(4,1,1)**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Fundamental Theorems of Arithmetic and Number Theory*
 * xref:theorem-radix-representation[**Theorem: Multi-Radix Representation and Uniqueness Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Theory of Multi-Radix Positional Numerals in Iris Arithmetic*
 * xref:theorem-radix-conversion-invariance[**Theorem: Radix Transformation Invariance Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Theory of Multi-Radix Positional Numerals in Iris Arithmetic*
-* xref:theorem-pi-digit-normalcy-bbp[**Theorem: Iris Pi-Digit Normalcy and Direct Hexadecimal Extraction Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Digital Analysis of the Circle Ratio \( \pi \) on Discrete Aperture Grids*
-* xref:theorem-prime-factor-search-bounds[**Theorem: Iris Aperture Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
+* xref:theorem-pi-digit-normalcy-bbp[**Theorem: Iris Pi-Digit Normalcy and Direct Hexadecimal Extraction Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Digital Analysis of the Circle Ratio \( \pi \) on Discrete Partition Grids*
+* xref:theorem-prime-factor-search-bounds[**Theorem: Iris Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
 * xref:theorem-modular-sieve-simd-factorization[**Theorem: Quadratic Reciprocity, Polignac Multi-Gap SIMD, and Peephole Residue Update Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
 * xref:theorem-special-class-sieve-integrity[**Theorem: Special-Class Bitwise Masking, Montgomery-Barrett Reduction, and Gilbreath Sieve Integrity Invariant Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
 * xref:theorem-parallel-grover-factorization[**Theorem: Parallel Multi-Grid Vernier Partitioning and Recursive Digital Grover Search Theorem**]  -- Chapter: *Tautological Proofs in Number Theory* | Section: *Prime Factor Search Heuristics and Parallel Factorization in Iris Arithmetic*
@@ -1412,15 +1412,15 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-taylor-msra[**Theorem: The Discrete Taylor-Vernier Expansion Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
 * xref:theorem-stokes-msra[**Theorem: The Multivector Vernier Stokes Theorem**]  -- Chapter: *Applications to Constructive Analysis* | Section: *Fundamental Theorems of Constructive Calculus*
 * xref:theorem-msra-measure-uniformity[**Theorem: Constructive MSRA Vernier Measure Additivity**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The MSRA Vernier Measure Uniformity Theorem*
-* xref:theorem-fourier-iris-completeness[**Theorem: Fourier-Iris Discrete Spectral Completeness**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The Aperture Fourier-Iris Spectral Decomposition Theorem*
-* xref:theorem-sobolev-iris-equivalence[**Theorem: Finite Sobolev Aperture Equivalence in Cl(4,1,1)**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The Discrete Sobolev Aperture Norm Equivalence Theorem*
+* xref:theorem-fourier-iris-completeness[**Theorem: Fourier-Iris Discrete Spectral Completeness**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The Discrete Fourier-Iris Spectral Decomposition Theorem*
+* xref:theorem-sobolev-iris-equivalence[**Theorem: Finite Sobolev Grid Equivalence in Cl(4,1,1)**]  -- Chapter: *Applications to Constructive Analysis* | Section: *The Discrete Sobolev Grid Norm Equivalence Theorem*
 * xref:theorem-cox-consistency[**Theorem: Cox's Consistency Theorem for Jaynesian Operational Probability**]  -- Chapter: *Applications to Probability Theory* | Section: *Cox's Consistency Theorem for Operational Inference*
 * xref:theorem-discrete-lln[**Theorem: Iris Discrete Weak Law of Large Numbers**]  -- Chapter: *Applications to Probability Theory* | Section: *The Discrete Operational Law of Large Numbers*
 * xref:theorem-vernier-clt[**Theorem: Constructive Vernier Central Limit Invariance**]  -- Chapter: *Applications to Probability Theory* | Section: *The Vernier Central Limit Spectral Theorem*
-* xref:theorem-entropy-conservation[**Theorem: Entropy Conservation in Closed Aperture Systems**]  -- Chapter: *Applications to Probability Theory* | Section: *The Jaynesian Information Conservation Law*
-* xref:theorem-mle-uniqueness[**Theorem: Uniqueness of Maximum Aperture Likelihood Estimates**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Maximum Aperture Likelihood Estimation Theorem*
+* xref:theorem-entropy-conservation[**Theorem: Entropy Conservation in Closed Operational Systems**]  -- Chapter: *Applications to Probability Theory* | Section: *The Jaynesian Information Conservation Law*
+* xref:theorem-mle-uniqueness[**Theorem: Uniqueness of Maximum Likelihood Estimates**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Maximum Likelihood Estimation Theorem*
 * xref:theorem-imeic-bound[**Theorem: Exact Model Complexity Bound in Cl(4,1,1)**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Iris Minimum Entropy Information Criterion (IMEIC)*
-* xref:theorem-cramer-rao-aperture[**Theorem: Finite-Sample Vernier Variance Lower Bound**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Finite-Sample Cramer-Rao Aperture Inequality*
+* xref:theorem-cramer-rao-bound[**Theorem: Finite-Sample Vernier Variance Lower Bound**]  -- Chapter: *Applications to Constructive Statistics* | Section: *The Finite-Sample Cramer-Rao Inequality*
 * xref:theorem-operational-hypothesis-testing[**Theorem: Operational Exactness of Discrete Hypothesis Testing**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Operational Hypothesis Testing on Discrete Grids*
 * xref:theorem-discrete-anova-decomposition[**Theorem: Operational Variance Decomposition in Finite Multivector ANOVA**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Analysis of Variance (ANOVA) in Multivector Space*
 * xref:theorem-discrete-regression-gauss-markov[**Theorem: Discrete Gauss-Markov Theorem for Multivector Linear Regression**]  -- Chapter: *Applications to Conventional Statistics* | Section: *Multivector Linear Regression and Gauss-Markov Efficiency*

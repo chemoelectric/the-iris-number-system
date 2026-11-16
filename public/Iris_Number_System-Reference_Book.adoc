@@ -30,17 +30,17 @@ Every discrete positive integer measurement count \( n > 1 \) in \( \mathbb { Z 
 . **Tautological Conclusion**: Integer measurement step counts possess a unique prime factor decomposition in \( Cl ( 4 , 1 , 1 ) \). \( \square \)
 ====
 
-=== Euclid's Prime Infinitude Theorem on Aperture Grids
+=== Euclid's Prime Infinitude Theorem on Partition Grids
 
 // [#ref-th-euclid-s-prime-infinitude-theorem-on]
 [THEOREM]
-.Theorem: Euclid's Prime Infinitude Theorem on Aperture Grids
+.Theorem: Euclid's Prime Infinitude Theorem on Partition Grids
 ====
 The set of discrete Iris prime measurement step counts is strictly unbounded on any finite resolution grid limit \( \mathcal { G } _ N \).
 
 *Proof:*
 
-. **Finite Prime Aperture Product**: Assume for proof by contradiction that the set of prime step counts is finite, given by \( S = \{ p _ 1 , p _ 2 , \dots , p _ k \} \).
+. **Finite Prime Step Product**: Assume for proof by contradiction that the set of prime step counts is finite, given by \( S = \{ p _ 1 , p _ 2 , \dots , p _ k \} \).
 
 . **Succedent Integer Measurement Step**: Construct the multivector integer step count \( M ( N _ S ) = \left ( \prod _ { i = 1 } ^ k p _ i + 1 \right ) \mathbf { 1 } _ { Cl } \).
 
@@ -79,11 +79,11 @@ For any discrete Iris prime measurement count \( p \) and integer step count \( 
 [THEOREM]
 .Theorem: Euler's Totient Operational Theorem
 ====
-For any discrete positive integer count \( n \ge 1 \) and integer step count \( a \) coprime to \( n \), \( a ^ { \varphi ( n ) } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod n \), where \( \varphi ( n ) \) measures the exact count of coprime aperture states on resolution grid \( \mathcal { G } _ n \).
+For any discrete positive integer count \( n \ge 1 \) and integer step count \( a \) coprime to \( n \), \( a ^ { \varphi ( n ) } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod n \), where \( \varphi ( n ) \) measures the exact count of coprime residue states on resolution grid \( \mathcal { G } _ n \).
 
 *Proof:*
 
-. **Coprime Aperture Group Representation**: Let \( C _ n = \{ r _ 1 , r _ 2 , \dots , r _ { \varphi ( n ) } \} \) be the reduced residue system modulo \( n \) on discrete grid \( \mathcal { G } _ n \).
+. **Coprime Residue Group Representation**: Let \( C _ n = \{ r _ 1 , r _ 2 , \dots , r _ { \varphi ( n ) } \} \) be the reduced residue system modulo \( n \) on discrete grid \( \mathcal { G } _ n \).
 
 . **Multivector Phase Action**: Multiplication by \( a \cdot \mathbf { 1 } _ { Cl } \) permutes \( C _ n \) bijectively because \( \gcd ( a , n ) = 1 \).
 
@@ -92,7 +92,7 @@ For any discrete positive integer count \( n \ge 1 \) and integer step count \( 
 
 . **Residue Cancellation**: Since \( \gcd ( \prod r _ i , n ) = 1 \), canceling the product in \( Cl ( 4 , 1 , 1 ) \) yields \( a ^ { \varphi ( n ) } \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod n \).
 
-. **Tautological Conclusion**: Euler's Totient Theorem holds strictly for all coprime aperture step counts on \( \mathcal { G } _ n \). \( \square \)
+. **Tautological Conclusion**: Euler's Totient Theorem holds strictly for all coprime residue step counts on \( \mathcal { G } _ n \). \( \square \)
 ====
 
 === The Chinese Remainder Operational Theorem
@@ -105,7 +105,7 @@ Let \( m _ 1 , m _ 2 , \dots , m _ k \) be pairwise coprime discrete integer cou
 
 *Proof:*
 
-. **Partial Product Orthogonal Apertures**: For each \( i \in \{ 1 , \dots , k \} \), define partial product \( M _ i = M / m _ i \). Since \( \gcd ( M _ i , m _ i ) = 1 \), there exists an inverse \( z _ i \) such that \( M _ i z _ i \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod { m _ i } \).
+. **Partial Product Orthogonal Moduli**: For each \( i \in \{ 1 , \dots , k \} \), define partial product \( M _ i = M / m _ i \). Since \( \gcd ( M _ i , m _ i ) = 1 \), there exists an inverse \( z _ i \) such that \( M _ i z _ i \equiv 1 \cdot \mathbf { 1 } _ { Cl } \pmod { m _ i } \).
 
 . **Constructive Multivector Summation**: Construct the explicit solution count \( x = \sum _ { i = 1 } ^ k r _ i M _ i z _ i \cdot \mathbf { 1 } _ { Cl } \).
 
@@ -174,7 +174,7 @@ Let \( ( d _ M \dots d _ 0 ) _ { b _ 1 } \) and \( ( c _ K \dots c _ 0 ) _ { b _
 
 . **Scalar Metric Embedding**: Both positional sums evaluate to the same Grade-0 scalar multivector element \( M ( n ) = n \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \).
 
-. **Basis Identity**: The choice of radix base \( b \) alters only the discrete aperture grouping mechanism, leaving the fundamental count of unit steps \( \mathbf { 1 } _ { Cl } \) invariant.
+. **Basis Identity**: The choice of radix base \( b \) alters only the discrete positional grouping mechanism, leaving the fundamental count of unit steps \( \mathbf { 1 } _ { Cl } \) invariant.
 
 . **Main Scale Projection**: Applying Main Scale Projection \( ( \downarrow ) \) removes any intermediate radix conversion vernier residuals, proving exact operational equivalence. \( \square \)
 ====
@@ -185,19 +185,19 @@ Let \( ( d _ M \dots d _ 0 ) _ { b _ 1 } \) and \( ( c _ K \dots c _ 0 ) _ { b _
 [THEOREM]
 .Theorem: Iris Pi-Digit Normalcy and Direct Hexadecimal Extraction Theorem
 ====
-Let \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \) be the circle ratio aperture scalar. Under positional radix expansion in integer base \( b \ge 2 \), \( \pi \cdot \mathbf { 1 } _ { Cl } = \left ( 3 \cdot \mathbf { 1 } _ { Cl } + \sum _ { j = 1 } ^ \infty d _ { - j } b ^ { - j } \mathbf { 1 } _ { Cl } \right ) \), where fractional aperture digits \( d _ { - j } \in \{ 0 , 1 , \dots , b - 1 \} \). The positional digit sequence satisfies the following operational properties on discrete grid \( \mathcal { G } _ N \):
+Let \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \) be the circle ratio phase scalar. Under positional radix expansion in integer base \( b \ge 2 \), \( \pi \cdot \mathbf { 1 } _ { Cl } = \left ( 3 \cdot \mathbf { 1 } _ { Cl } + \sum _ { j = 1 } ^ \infty d _ { - j } b ^ { - j } \mathbf { 1 } _ { Cl } \right ) \), where fractional radix digits \( d _ { - j } \in \{ 0 , 1 , \dots , b - 1 \} \). The positional digit sequence satisfies the following operational properties on discrete grid \( \mathcal { G } _ N \):
 
 1. **Direct Hexadecimal Spigot Extraction**: In hexadecimal base \( b = 16 \), the \( j \)-th fractional digit \( d _ { - j } \) is computed in \( \mathcal { O } ( j \log j ) \) time and \( \mathcal { O } ( 1 ) \) spatial memory without evaluating preceding digits \( d _ { - 1 } , \dots , d _ { - ( j - 1 ) } \) via the Bailey-Borwein-Plouffe (BBP) multivector operator:
 \[ \pi \cdot \mathbf { 1 } _ { Cl } = \sum _ { k = 0 } ^ \infty \frac { 1 } { 16 ^ k } \left ( \frac { 4 } { 8 k + 1 } - \frac { 2 } { 8 k + 4 } - \frac { 1 } { 8 k + 5 } - \frac { 1 } { 8 k + 6 } \right ) \mathbf { 1 } _ { Cl } \]
 
-2. **Jaynesian MaxEnt Digit Normalcy**: Under Jaynesian Maximum Entropy prior distributions on discrete aperture transitions, the fractional digit sequence \( \{ d _ { - j } \} _ { j = 1 } ^ \infty \) is strictly normal in every radix base \( b \ge 2 \); every digit block of length \( m \) occurs with limiting relative frequency \( b ^ { - m } \).
+2. **Jaynesian MaxEnt Digit Normalcy**: Under Jaynesian Maximum Entropy prior distributions on discrete interval transitions, the fractional digit sequence \( \{ d _ { - j } \} _ { j = 1 } ^ \infty \) is strictly normal in every radix base \( b \ge 2 \); every digit block of length \( m \) occurs with limiting relative frequency \( b ^ { - m } \).
 
 3. **White Noise Spectral Autocorrelation**: The digit shift autocorrelation function \( C ( h ) = ( \downarrow ) \left ( \lim _ { K \to \infty } \frac { 1 } { K } \sum _ { j = 1 } ^ K \tilde { d } _ { - j } \tilde { d } _ { - ( j + h ) } \right ) = 0 \) vanishes identically for all non-zero shifts \( h \neq 0 \), confirming zero information dissipation and capacity-saturated digital entropy.
 
 *Proof:*
 
 . **Constructive Derivation of the BBP Spigot Operator**:
-  In \( Cl ( 4 , 1 , 1 ) \), evaluate the definite integral of the rational multivector aperture field \( f ( x ) = \frac { x ^ k } { 1 - x ^ 8 / 16 } \mathbf { 1 } _ { Cl } \) over the unit Vernier interval \( x \in [ 0 , 1 ] \) on grid \( \mathcal { G } _ \omega \). Applying term-by-term integration yields:
+  In \( Cl ( 4 , 1 , 1 ) \), evaluate the definite integral of the rational multivector field \( f ( x ) = \frac { x ^ k } { 1 - x ^ 8 / 16 } \mathbf { 1 } _ { Cl } \) over the unit Vernier interval \( x \in [ 0 , 1 ] \) on grid \( \mathcal { G } _ \omega \). Applying term-by-term integration yields:
 \[ \int _ 0 ^ 1 \frac { x ^ { m - 1 } } { 1 - x ^ 8 / 16 } \, dx = \sum _ { k = 0 } ^ \infty \frac { 1 } { 16 ^ k ( 8 k + m ) } \]
   Forming the linear combination with weights \( ( 4 , 0 , 0 , - 2 , - 1 , - 1 , 0 , 0 ) \) produces:
 \[ \int _ 0 ^ 1 \frac { 4 \sqrt { 2 } - 8 x ^ 3 - 4 \sqrt { 2 } x ^ 4 - 4 x ^ 5 } { x ^ 8 - 16 } \, dx = \sum _ { k = 0 } ^ \infty \frac { 1 } { 16 ^ k } \left ( \frac { 4 } { 8 k + 1 } - \frac { 2 } { 8 k + 4 } - \frac { 1 } { 8 k + 5 } - \frac { 1 } { 8 k + 6 } \right ) \mathbf { 1 } _ { Cl } \]
@@ -221,11 +221,11 @@ Let \( \pi \cdot \mathbf { 1 } _ { Cl } \in Cl ( 4 , 1 , 1 ) \) be the circle ra
 . **Tautological Conclusion**: The digits of \( \pi \) are strictly normal, capacity-saturated, and directly extractable at arbitrary positional offsets in hexadecimal space. \( \square \)
 ====
 
-=== Iris Aperture Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
+=== Iris Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
 
-// [#ref-th-iris-aperture-difference-of-squares-factorization]
+// [#ref-th-iris-difference-of-squares-factorization]
 [THEOREM]
-.Theorem: Iris Aperture Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
+.Theorem: Iris Difference-of-Squares Factorization, Legendre-Windowing, and Goldbach Probing Theorem
 ====
 For any composite discrete step count \( N = p \cdot q \in \mathbb { Z } ^ + \) with odd prime factors \( p \le q \), the search for factors reduces to identifying discrete integer step counts \( x , y \in \mathbb { Z } ^ + \) satisfying the multivector identity: \[ M ( N ) = ( x ^ 2 - y ^ 2 ) \cdot \mathbf { 1 } _ { Cl } = ( x - y ) ( x + y ) \cdot \mathbf { 1 } _ { Cl } \]
 
@@ -357,17 +357,17 @@ Let candidate integer step count \( N > 2 \) be an odd integer with resolution f
 \[ x_0 = a^d \pmod N \]
 \[ x_{k+1} = x_k^2 \pmod N, \quad \text{for } k = 0, 1, \dots, s - 1 \]
 
-Aperture \( N \) passes the Vernier phase trajectory test for base \( a \) if and only if either \( x_0 \equiv 1 \cdot \mathbf{1}_{Cl} \pmod N \) or \( x_k \equiv (N - 1) \cdot \mathbf{1}_{Cl} \pmod N \) for some \( 0 \le k < s \).
+Integer \( N \) passes the Vernier phase trajectory test for base \( a \) if and only if either \( x_0 \equiv 1 \cdot \mathbf{1}_{Cl} \pmod N \) or \( x_k \equiv (N - 1) \cdot \mathbf{1}_{Cl} \pmod N \) for some \( 0 \le k < s \).
 
 *Proof:*
 
-. **Fermat Aperture Field Requirement**: If \( N \) is a prime step count \( p \), the residue ring \( \mathbb{Z} / p \mathbb{Z} \) forms a finite field. By Fermat's Little Theorem (Theorem 15), \( a^{p-1} \equiv 1 \cdot \mathbf{1}_{Cl} \pmod p \).
+. **Fermat Finite Field Requirement**: If \( N \) is a prime step count \( p \), the residue ring \( \mathbb{Z} / p \mathbb{Z} \) forms a finite field. By Fermat's Little Theorem (Theorem 15), \( a^{p-1} \equiv 1 \cdot \mathbf{1}_{Cl} \pmod p \).
 
 . **Square-Root Eigenspace Factorization**: Factoring the difference of squares in field \( \mathbb{Z} / p \mathbb{Z} \) yields:
    \[ a ^ { p - 1 } - 1 = ( a ^ { 2 ^ { s - 1 } d } - 1 ) (a ^ { 2 ^ { s -1 } d } + 1 ) \equiv 0 \pmod p \]
 Continuing this recursive square-root decomposition down to \( a ^ d - 1 \) forces at least one term in the chain \( a ^ d \pmod p, a ^ { 2 d } \pmod p, \dots, a ^ { 2 ^ { s - 1 } d } \pmod p \) to evaluate to \( -1 \equiv p - 1 \pmod p \), unless the initial term \( x _ 0 = a ^ d \) is already \( 1 \pmod p \).
 
-. **Phase Failure for Composite Apertures**: If \( N \) is composite, the ring \( \mathbb{Z} / N \mathbb{Z} \) contains non-trivial zero divisors. The equation \( x^2 \equiv 1 \pmod N \) possesses at least four distinct solutions modulo \( N \). Unless \( N \) is a strong pseudoprime to base \( a \), the trajectory fails to reach \( N - 1 \) prior to collapsing, rejecting composite numbers in \( \mathcal{O} ( \log N ) \) squaring operations.
+. **Phase Failure for Composite Integers**: If \( N \) is composite, the ring \( \mathbb{Z} / N \mathbb{Z} \) contains non-trivial zero divisors. The equation \( x^2 \equiv 1 \pmod N \) possesses at least four distinct solutions modulo \( N \). Unless \( N \) is a strong pseudoprime to base \( a \), the trajectory fails to reach \( N - 1 \) prior to collapsing, rejecting composite numbers in \( \mathcal{O} ( \log N ) \) squaring operations.
 
 . **Tautological Conclusion**: Every prime step count satisfies the Vernier phase trajectory for all coprime bases \( a \). \( \square \)
 ====
@@ -419,16 +419,16 @@ An integer step count \( N \) passes both tests if and only if \( N \) is prime.
 
 . **Extensive Verification and Absence of Counterexamples**: Comprehensive exhaustive searches across all odd integers up to \( 2^{64} \) confirm zero overlap between base-2 Vernier pseudoprimes and Lucas-Frobenius rotor pseudoprimes.
 
-. **Zero Factorization Dependency**: The algorithm relies strictly on modular exponentiation and two-term recurrence steps. At no point does the procedure evaluate greatest common divisors with random bases, attempt trial division beyond small wheel filters, or construct difference-of-squares factor trees. Primality is verified as a global topological phase property of the aperture ring. \( \square \)
+. **Zero Factorization Dependency**: The algorithm relies strictly on modular exponentiation and two-term recurrence steps. At no point does the procedure evaluate greatest common divisors with random bases, attempt trial division beyond small wheel filters, or construct difference-of-squares factor trees. Primality is verified as a global topological phase property of the residue ring. \( \square \)
 ====
 
-=== Montgomery Aperture Domain Division Elimination Theorem
+=== Montgomery Domain Division Elimination Theorem
 
-// [#ref-th-montgomery-aperture-domain-division-elimination-theorem]
+// [#ref-th-montgomery-domain-division-elimination-theorem]
 [THEOREM]
-.Theorem: Montgomery Aperture Domain Division Elimination Theorem
+.Theorem: Montgomery Domain Division Elimination Theorem
 ====
-Let \( N \) be an odd \( m \)-bit integer step count and \( R = 2^w > N \) a power-of-two radix with \( \gcd(R, N) = 1 \). The Montgomery aperture transformation maps residue \( x \in \mathbb{Z} / N \mathbb{Z} \) to domain representation \( \tilde{x} = (x \cdot R) \pmod N \).
+Let \( N \) be an odd \( m \)-bit integer step count and \( R = 2^w > N \) a power-of-two radix with \( \gcd(R, N) = 1 \). The Montgomery domain transformation maps residue \( x \in \mathbb{Z} / N \mathbb{Z} \) to domain representation \( \tilde{x} = (x \cdot R) \pmod N \).
 
 The Montgomery product operator \( \text{MontMul}(\tilde{x}, \tilde{y}) = (\tilde{x} \cdot \tilde{y} \cdot R^{-1}) \pmod N \) is evaluated using pre-computed integer constant \( N' = -N^{-1} \pmod R \) via four single-cycle arithmetic operations:
 1. \( T = \tilde{x} \cdot \tilde{y} \)
@@ -446,7 +446,7 @@ This transformation replaces all hardware division instructions in modular expon
 
 . **Elimination of Hardware Division**: Because \( R = 2^w \) is a power of two, computing \( T \text{ mod } R \) is a bitwise AND mask with \( 2^w - 1 \), and division by \( R \) is a bitwise right-shift by \( w \) bits. Hardware division instructions—which take 30 to 80 clock cycles on modern CPU architectures—are entirely eliminated from the inner loop of the primality engine.
 
-. **Tautological Conclusion**: Montgomery aperture arithmetic computes modular products and rotor steps using only bitwise shifts, masks, and low-width multiplications, maximizing execution throughput. \( \square \)
+. **Tautological Conclusion**: Montgomery domain arithmetic computes modular products and rotor steps using only bitwise shifts, masks, and low-width multiplications, maximizing execution throughput. \( \square \)
 ====
 
 === Goldbach Partition Tautology in Cl(4,1,1)
@@ -629,7 +629,7 @@ There exist infinitely many prime measurement step counts \( p \) such that the 
 
 *Proof:*
 
-. **Mersenne Aperture Operator**: Define the Mersenne aperture operator \( M _ p = 2 ^ p - 1 \) over prime exponent steps \( p \in \mathbb { P } _ { \mathcal { I } } \).
+. **Mersenne Step Operator**: Define the Mersenne step operator \( M _ p = 2 ^ p - 1 \) over prime exponent steps \( p \in \mathbb { P } _ { \mathcal { I } } \).
 
 . **Discrete Lucas-Lehmer Eigenspace Recurrence**: The primality of \( M _ p \) is determined by the discrete sequence \( s _ 0 = 4 \cdot \mathbf { 1 } _ { Cl } \), \( s _ { k + 1 } = ( s _ k ^ 2 - 2 \cdot \mathbf { 1 } _ { Cl } ) \pmod { M _ p \cdot \mathbf { 1 } _ { Cl } } \). \( M _ p \) is prime if and only if \( s _ { p - 2 } \equiv 0 \pmod { M _ p } \).
 
@@ -669,11 +669,11 @@ Let \( A _ 0 = ( p _ 1 , p _ 2 , p _ 3 , \dots ) = ( 2 , 3 , 5 , 7 , 11 , \dots 
 [THEOREM]
 .Theorem: Universal Reverse-and-Add Palindrome Convergence
 ====
-Under radix base \( b \ge 2 \) aperture iteration \( R _ b ( n ) = n + \text { rev } _ b ( n ) \), no positive integer measurement step count \( n \in \mathbb { Z } ^ + \) is a Lychrel number; every initial step count reaches a symmetric palindrome state in a finite number of discrete steps.
+Under radix base \( b \ge 2 \) digit-reversal iteration \( R _ b ( n ) = n + \text { rev } _ b ( n ) \), no positive integer measurement step count \( n \in \mathbb { Z } ^ + \) is a Lychrel number; every initial step count reaches a symmetric palindrome state in a finite number of discrete steps.
 
 *Proof:*
 
-. **Radix Aperture Reflection Operator**: Define the digit reflection operator \( \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k b ^ { M - k } \cdot \mathbf { 1 } _ { Cl } \). The reverse-and-add step is \( T ( n ) = n + \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k ( b ^ k + b ^ { M - k } ) \cdot \mathbf { 1 } _ { Cl } \).
+. **Radix Digit Reflection Operator**: Define the digit reflection operator \( \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k b ^ { M - k } \cdot \mathbf { 1 } _ { Cl } \). The reverse-and-add step is \( T ( n ) = n + \text { rev } _ b ( n ) = \sum _ { k = 0 } ^ M d _ k ( b ^ k + b ^ { M - k } ) \cdot \mathbf { 1 } _ { Cl } \).
 
 . **Symmetric Eigenspace Projection**: Observe that \( T ( n ) \) is inherently symmetric with respect to digit indices \( k \) and \( M - k \), since the coefficient of \( b ^ k \) and \( b ^ { M - k } \) becomes \( d _ k + d _ { M - k } \).
 
