@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   IrisNumber,
-  Cl411Multivector,
+  CgaMultivector,
   NonstandardNumber,
   MaxEntState
 } from '../types';
@@ -13,13 +13,13 @@ import {
   irisMultiply,
   irisScale,
   irisPhase,
-  createZeroCl411,
-  createQuaternionCl411,
-  createComplexCl411,
-  multiplyCl411,
-  addCl411,
-  scaleCl411,
-  cl411Norm,
+  createZeroCga,
+  createQuaternionCga,
+  createComplexCga,
+  multiplyCga,
+  addCga,
+  scaleCga,
+  cgaNorm,
   createNonstandardNumber,
   standardPart,
   addNonstandardNumber,
@@ -65,16 +65,16 @@ export const IrisSandbox: React.FC = () => {
   const resultNorm = irisNorm(result4D);
   const resultPhase = irisPhase(result4D);
 
-  // ================= Cl(4,1,1) STATE =================
+  // ================= 6D CGA STATE =================
   const [clType, setClType] = useState<'quaternion' | 'complex' | 'multivector'>('quaternion');
   // Quaternions Q1, Q2
   const [q1, setQ1] = useState({ w: 1, i: 2, j: -1, k: 0.5 });
   const [q2, setQ2] = useState({ w: 0.5, i: 1, j: 1, k: -1 });
 
-  const mvA = createQuaternionCl411(q1.w, q1.i, q1.j, q1.k);
-  const mvB = createQuaternionCl411(q2.w, q2.i, q2.j, q2.k);
-  const mvProd = multiplyCl411(mvA, mvB);
-  const mvNormProd = cl411Norm(mvProd);
+  const mvA = createQuaternionCga(q1.w, q1.i, q1.j, q1.k);
+  const mvB = createQuaternionCga(q2.w, q2.i, q2.j, q2.k);
+  const mvProd = multiplyCga(mvA, mvB);
+  const mvNormProd = cgaNorm(mvProd);
 
   // ================= NONSTANDARD STATE =================
   const [hr1, setHr1] = useState<NonstandardNumber>({ st: 5, eps: 2, omega: 0 });
@@ -101,7 +101,7 @@ export const IrisSandbox: React.FC = () => {
               <h2 className="text-xl font-bold text-white">Counting-Iris Multi-Algebra Calculator</h2>
             </div>
             <p className="text-slate-400 text-sm mt-1 max-w-2xl">
-              Compute over 4D basis, Clifford Algebra Cl(4,1,1) multivectors, exact discrete spectrum grids, and Jaynesian MaxEnt probability fields.
+              Compute over 4D basis, 6D Conformal Geometric Algebra (CGA) multivectors, exact discrete spectrum grids, and Jaynesian MaxEnt probability fields.
             </p>
           </div>
 
@@ -125,7 +125,7 @@ export const IrisSandbox: React.FC = () => {
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              Clifford Cl(4,1,1)
+              6D CGA
             </button>
             <button
               onClick={() => setActiveSubTab('nonstandard')}
@@ -346,13 +346,13 @@ export const IrisSandbox: React.FC = () => {
         </div>
       )}
 
-      {/* CLIFFORD Cl(4,1,1) SECTION */}
+      {/* 6D CGA SECTION */}
       {activeSubTab === 'cl411' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-6 space-y-6">
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-xl">
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h3 className="font-bold text-white text-sm">Quaternion Subalgebra H ⊂ Cl(4,1,1)</h3>
+                <h3 className="font-bold text-white text-sm">Quaternion Subalgebra H ⊂ 6D CGA</h3>
                 <span className="text-xs font-mono text-indigo-400">bivectors {`{e23, e31, e12}`}</span>
               </div>
 
@@ -393,7 +393,7 @@ export const IrisSandbox: React.FC = () => {
           <div className="lg:col-span-6 space-y-6">
             <div className="bg-slate-900 border border-indigo-500/30 rounded-2xl p-6 shadow-2xl space-y-4">
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h3 className="font-bold text-white text-base">Clifford Geometric Product Q₁ · Q₂</h3>
+                <h3 className="font-bold text-white text-base">CGA Geometric Product Q₁ · Q₂</h3>
                 <span className="text-xs font-mono text-emerald-400">Norm: {mvNormProd.toFixed(4)}</span>
               </div>
 
@@ -413,7 +413,7 @@ export const IrisSandbox: React.FC = () => {
               </div>
 
               <p className="text-xs text-slate-400 leading-relaxed">
-                Notice that i² = (e₂₃)² = e₂₃ e₂₃ = -e₂ e₃ e₃ e₂ = -1, validating standard quaternion Hamilton dynamics within the 6-dimensional Clifford algebra Cl(4,1,1).
+                Notice that i² = (e₂₃)² = e₂₃ e₂₃ = -e₂ e₃ e₃ e₂ = -1, validating Hamilton quaternion dynamics within 6-dimensional Conformal Geometric Algebra (CGA) over {'{e₁, e₂, e₃, e₄, e_⊙, e_∞}'}.
               </p>
             </div>
           </div>
@@ -580,7 +580,7 @@ export const IrisSandbox: React.FC = () => {
               </div>
 
               <p className="text-xs text-slate-400 leading-relaxed">
-                Objective Jaynesian distribution maximizes Shannon entropy S[P] = -∑ P_i ln P_i subject to mean energy constraints, guaranteeing tautological non-biased priors in Iris number theory.
+                The unbiased Jaynesian logical distribution maximizes discrete entropy S[P] = -∑ P_i ln P_i subject to mean energy constraints, yielding tautological non-biased priors in Iris number theory.
               </p>
             </div>
           </div>

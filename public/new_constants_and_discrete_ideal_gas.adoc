@@ -10,7 +10,7 @@ Frédéric Blondin Custer
 [preface]
 == Summary
 
-Within the Counting-Iris Number System, Conformal Geometric Algebra (CGA), and discrete multiscale resolution grids \( \mathcal{G}_N \), fundamental physical constants are proved to be exact geometric ratios and definite integrals relative to the true propagation speed \( c \), and the Ideal Gas Law is deduced as an exact theorem of discrete momentum flux conservation without continuum approximations:
+Within the Counting-Iris Number System, Conformal Geometric Algebra (CGA), and discrete multiscale resolution grids \( \mathcal{G}_N \), fundamental physical constants are proved to be exact geometric ratios and definite integrals relative to the true propagation speed \( c \), and the Ideal Gas Law is deduced as an exact theorem of discrete momentum flux conservation without infinite-divisibility approximations:
 
 1. _The Circle Archetype and the Computational Foundation of Physical Constants_:
 The circle ratio \( \pi \) is defined as the fundamental definite integral of Euclidean conformal geometry, \( \pi = \int _ { -1 } ^ { 1 } \frac{d x}{\sqrt{1 - x ^ { 2 }}} \). From this integral, constructive series expansions with rigorous error bounds provide an exact algorithm to compute \( \pi \) to any arbitrary number of digits. Crucially, because all fundamental physical constants in the Unified Field Theory are proved to be closed algebraic functions of \( \pi \) and discrete integers, computing \( \pi \) to any desired precision directly yields the values of all other physical constants to that exact same precision.
@@ -100,7 +100,7 @@ This rapid convergence guarantees that \( \pi \) is known and computable to any 
 
 The fundamental epistemological and computational principle of the Unified Field Theory is this:
 
-*You need \( \pi \) to any number of digits to get other constants to any number of digits.*
+_You need \( \pi \) to any number of digits to get other constants to any number of digits._
 
 In conventional physics, the fine-structure constant \( \alpha \), the proton-to-electron mass ratio \( m _ { p } / m _ { e } \), and the Rydberg wavenumber \( R _ { \infty } \) are thought to be separate empirical numbers whose accuracy is halted by laboratory measuring apparatus.
 
@@ -378,21 +378,21 @@ where \( \alpha \) is the fine-structure constant.
 
 === Step-by-Step Evaluation of the Complete Elliptic Integral Factor
 
-*Step 1: Definition of the Complete Elliptic Integral*
+_Step 1: Definition of the Complete Elliptic Integral_
 
 The complete elliptic integral of the first kind with parameter \( m = k^2 \) is defined as:
 \[
 K(m) = \int_0 ^ { \pi/2 } \frac{d\theta}{\sqrt{1 - m \sin ^ { 2 } \theta}}
 \]
 
-*Step 2: Binomial Series Expansion of the Integrand*
+_Step 2: Binomial Series Expansion of the Integrand_
 
 For \( |m| < 1 \), expanding \( (1 - m \sin^2\theta)^{-1/2} \) via the binomial theorem:
 \[
 \frac{1}{\sqrt{1 - m \sin ^ { 2 } \theta}} = \sum _ { n=0 } ^ { \infty } \frac{(2n)!}{4 ^ { n } (n!) ^ { 2 }} m ^ { n } \sin ^ { 2n } \theta = 1 + \frac{1}{2} m \sin ^ { 2 } \theta + \frac{3}{8} m ^ { 2 } \sin ^ { 4 } \theta + \dots
 \]
 
-*Step 3: Term-by-Term Wallis Integration*
+_Step 3: Term-by-Term Wallis Integration_
 
 Integrating each term over \( [0, \pi/2] \) using Wallis's formula \( \int_0^{\pi/2} \sin^{2n}\theta \, d\theta = \frac{\pi}{2} \frac{(2n)!}{4^n (n!)^2} \):
 \[
@@ -404,7 +404,7 @@ Dividing by \( \pi / 2 \) yields the normalized geometric elongation factor:
 \]
 Notice that dividing by \( \pi / 2 \) completely cancels the outer factor of \( \pi \), leaving a purely rational series in powers of \( m \)!
 
-*Step 4: Substitution of the Centrifugal Parameter*
+_Step 4: Substitution of the Centrifugal Parameter_
 
 Substitute \( m = \sqrt{2} \, \alpha^2 \):
 \[
@@ -449,9 +449,9 @@ in exact agreement with the experimental CODATA measurement \( 1836.15267343(11)
 
 == Physical Electrodynamics of the Rydberg Wavenumber: Microwave Cavity Resonator Mechanics
 
-=== Rejection of Discontinuous “Jumps” and the Photon Myth
+=== Rejection of Discrete Instantaneity “Jumps” and the Photon Myth
 
-Conventional textbooks describe atomic emission and absorption in terms of hypothetical point particles that undergo unphysical discontinuous “jumps” and emit fictitious “photons”. This mystical vocabulary was invented because early theorists lacked the tools of distributed electromagnetic field mechanics and retreated into point-particle abstractions.
+Conventional textbooks describe atomic emission and absorption in terms of hypothetical point particles that undergo unphysical zero-duration “jumps” and emit fictitious “photons”. This mystical vocabulary was invented because early theorists lacked the tools of distributed electromagnetic field mechanics and retreated into point-particle abstractions.
 
 In the Unified Field Theory and classical electrical engineering, atomic radiation is understood through standard resonant cavity and antenna mechanics, described directly by the Master Field Equation \( D F = J \):
 
@@ -523,7 +523,7 @@ As a self-sustaining vortex, the knot has an internal circulation frequency \( \
 \[
 S_{\text{circ}} = \frac{E}{\omega} = \frac{M c ^ { 2 }}{\omega}
 \]
-This classical circulation action for elementary entities is equal to \( \hbar \), which conventional physics treats as an occult "quantum" black box. In the Counting-Iris framework, \( S _ { \text{circ }} = \hbar \) is _by definition_ the deterministic ratio of field energy to circulation frequency.
+This classical circulation action for elementary entities is equal to \( \hbar \), which conventional physics treats as an occult “quantum” black box. In the Counting-Iris framework, \( S _ { \text{circ }} = \hbar \) is _by definition_ the deterministic ratio of field energy to circulation frequency.
 
 === Refractive Wave Speed Gradient in the Electromagnetic Field
 
@@ -594,7 +594,7 @@ Because human experimenters cannot count \( 10^{26} \) individual atoms with cal
 
 === Physical Formulation on Discrete Resolution Grids \( \mathcal{G}_N \)
 
-Conventional thermodynamics models an ideal gas as point particles moving through hypothetical continuum space and invokes uncountably infinite limits. In the Counting-Iris framework:
+Conventional thermodynamics models an ideal gas as point particles moving through hypothetical infinite-divisibility space and invokes uncountably infinite limits. In the Counting-Iris framework:
 * Reality consists of a finite number \( N \) of finite entities (gas molecules).
 * Each molecule is a localized wave knot with finite m-resolution spatial extent \( \Delta x \in \mathcal{G}_N \) and finite m-resolution mass \( \Delta m \).
 * Molecules interact strictly by _direct contact action causality_ with finite interaction duration; action-at-a-distance is rejected.
@@ -609,26 +609,26 @@ We establish the equation of state through two complementary, constructive proof
 
 Consider a macroscopic container of volume \( V = A L_x \) bounded by rigid walls, with cross-sectional area \( A \) normal to the \( x \)-axis and length \( L_x \) along the \( x \)-axis.
 
-. *Single Molecule Round-Trip Duration*:
+. _Single Molecule Round-Trip Duration_:
 For each discrete molecule \( i \in \{1, 2, \dots, N\} \) having velocity component \( v_{x,i} \), the time between successive collisions with the planar boundary at \( x = L_x \) is the finite round-trip transit duration:
 \[
 \Delta t_i = \frac{2 L_x}{|v_{x,i}|}
 \]
 
-. *Single Collision Contact Momentum Transfer*:
+. _Single Collision Contact Momentum Transfer_:
 When molecule \( i \) strikes the rigid boundary, it undergoes an elastic specular collision via direct local contact with boundary atoms. The initial momentum is \( p_{x,\text{initial}} = (\Delta m) |v_{x,i}| \) and the post-collision momentum is \( p_{x,\text{final}} = -(\Delta m) |v_{x,i}| \). The momentum transferred to the wall in this single contact event is:
 \[
 \Delta p_{x,i} = p_{x,\text{initial}} - p_{x,\text{final}} = 2 (\Delta m) |v_{x,i}|
 \]
 
-. *Time-Averaged Normal Force per Molecule*:
+. _Time-Averaged Normal Force per Molecule_:
 The time-averaged force exerted by molecule \( i \) on the wall over its round-trip transit is:
 \[
 F_i = \frac{\Delta p_{x,i}}{\Delta t_i} = \frac{2 (\Delta m) |v_{x,i}|}{\displaystyle \frac{2 L_x}{|v_{x,i}|}} = \frac{(\Delta m) v_{x,i}^2}{L_x}
 \]
 Notice that the factor of \( 2 \) cancels identically.
 
-. *Total Force from All Discrete Molecules*:
+. _Total Force from All Discrete Molecules_:
 The total normal force exerted by all \( N \) discrete molecules on boundary \( A \) is the direct sum over the finite ensemble:
 \[
 F_{\text{normal}} = \sum_{i=1}^N F_i = \frac{\Delta m}{L_x} \sum_{i=1}^N v_{x,i}^2
@@ -642,7 +642,7 @@ Therefore:
 F_{\text{normal}} = \frac{N (\Delta m) \langle v_x^2 \rangle}{L_x}
 \]
 
-. *Mechanical Pressure*:
+. _Mechanical Pressure_:
 Mechanical pressure \( P \) is defined extensionally as normal force per unit area:
 \[
 P \equiv \frac{F_{\text{normal}}}{A} = \frac{N (\Delta m) \langle v_x^2 \rangle}{A L_x} = \left( \frac{N}{V} \right) (\Delta m) \langle v_x^2 \rangle = \rho \langle v_x^2 \rangle
@@ -657,10 +657,10 @@ P V = N (\Delta m) \langle v_x^2 \rangle
 
 To verify this result independently, consider a finite observation time duration \( \tau > 0 \).
 
-. *Discrete Velocity Partition*:
+. _Discrete Velocity Partition_:
 Partition the \( N \) discrete molecules into discrete velocity classes \( k \) on grid \( \mathcal{G}_N \), where class \( k \) has velocity component \( v_{x,k} \) and population count \( N_k \), satisfying \( \sum_k N_k = N \). The number density of class \( k \) is \( n_k = \frac{N_k}{V} \).
 
-. *Collision Cylinder and Arrival Count*:
+. _Collision Cylinder and Arrival Count_:
 Molecules of class \( k \) with positive velocity \( v_{x,k} > 0 \) that strike boundary area \( A \) within duration \( \tau \) must reside within a collision cylinder of volume:
 \[
 \Delta V_k = A v_{x,k} \tau
@@ -670,13 +670,13 @@ The number of contact collisions from class \( k \) during duration \( \tau \) i
 \Delta N_c(v_{x,k}) = n_k \Delta V_k = \left( \frac{N_k}{V} \right) A v_{x,k} \tau
 \]
 
-. *Total Momentum Transferred during Duration \( \tau \)*:
+. _Total Momentum Transferred during Duration \( \tau \)*_:
 Each contact collision imparts momentum \( \Delta p_{x,k} = 2 (\Delta m) v_{x,k} \). Summing over all positive velocity classes:
 \[
 \Delta P_{\text{total}} = \sum_{v_{x,k} > 0} \Delta N_c(v_{x,k}) \cdot \Delta p_{x,k} = \sum_{v_{x,k} > 0} \left[ \left( \frac{N_k}{V} \right) A v_{x,k} \tau \right] \cdot \left[ 2 (\Delta m) v_{x,k} \right] = \frac{2 A \tau (\Delta m)}{V} \sum_{v_{x,k} > 0} N_k v_{x,k}^2
 \]
 
-. *Spatial Reflection Symmetry on \( \mathcal{G}_N \)*:
+. _Spatial Reflection Symmetry on \( \mathcal{G}_N \)_:
 In an isotropic ensemble on the discrete lattice, spatial reflection symmetry dictates that exactly half of the molecules with speed \( |v_{x,k}| \) travel in the positive \( +x \) direction toward the boundary:
 \[
 \sum_{v_{x,k} > 0} N_k v_{x,k}^2 = \frac{1}{2} \sum_{\text{all } k} N_k v_{x,k}^2 = \frac{1}{2} \sum_{i=1}^N v_{x,i}^2 = \frac{1}{2} N \langle v_x^2 \rangle
@@ -687,7 +687,7 @@ Substituting this reflection symmetry factor:
 \]
 The factor of \( 2 \) from elastic momentum reversal and the factor of \( 1/2 \) from spatial reflection cancel cleanly to unity.
 
-. *Extensional Pressure Evaluation*:
+. _Extensional Pressure Evaluation_:
 Dividing the total momentum transfer by \( A \tau \):
 \[
 P = \frac{\Delta P_{\text{total}}}{A \tau} = \left( \frac{N}{V} \right) (\Delta m) \langle v_x^2 \rangle
@@ -748,7 +748,7 @@ P V = \frac{2}{3} N \langle E_k \rangle
 is an exact deductive _Theorem_ of discrete momentum conservation and MaxEnt isotropy, derived with zero skipped steps.
 
 2. _Conclusion Pending New Information (Physical Application to Real Gases)_:
-When applied to physical gases in the real world, the equation of state \( P V = n R T \) is a _Conclusion Pending New Information_. Real gas molecules are localized wave knots possessing non-zero m-resolution volume \( b \approx (\Delta x)^3 \) and mutual field contact stresses. In the dilute limit where packing fraction \( \frac{N (\Delta x)^3}{V} \to 0 \), the Ideal Gas equation provides the foundational zeroth-order baseline, with finite m-res volume and boundary contact friction providing the natural gateway to real gas equations of state without continuum mechanics.
+When applied to physical gases in the real world, the equation of state \( P V = n R T \) is a _Conclusion Pending New Information_. Real gas molecules are localized wave knots possessing non-zero m-resolution volume \( b \approx (\Delta x)^3 \) and mutual field contact stresses. In the dilute limit where packing fraction \( \frac{N (\Delta x)^3}{V} \to 0 \), the Ideal Gas equation provides the foundational zeroth-order baseline, with finite m-res volume and boundary contact friction providing the natural gateway to real gas equations of state without infinite-divisibility mechanics.
 
 3. _The Nature of the SI Constants_:
 * _The Boltzmann Constant \( k_B \)_ is not an occult property of empty space; it is an extensional conversion factor translating human macroscopic temperature units (kelvins) into mechanical kinetic action (joules):
@@ -774,9 +774,9 @@ The Interplanetary Second is defined as an exact integer count of fundamental hy
 \[
 1 \text{ s}_{\text{IP}} \equiv 6\,579\,683\,920\,501\,762 \text{ cycles of } \tau_H
 \]
-*(or, using the physical reduced-mass period with the proton, \( 6\,576\,102\,463\,173\,538 \text{ cycles of } \tau_{H,\mu} \))*.
+_(or, using the physical reduced-mass period with the proton, \( 6\,576\,102\,463\,173\,538 \text{ cycles of } \tau_{H,\mu} \))_.
 
-*Proof of Precision*:
+_Proof of Precision_:
 The exact frequency of the ground-state hydrogen cycle in terms of the SI defined speed \( c = 299\,792\,458 \text{ m/s} \) and Rydberg constant \( R_\infty = 10\,973\,731.568160 \text{ m}^{-1} \) is:
 \[
 f_H = 2 c R_\infty = 6\,579\,683\,920\,501\,761.87456 \text{ s}^{-1}
@@ -811,7 +811,7 @@ The Interplanetary Kilogram is defined as an exact integer count of elementary e
 1 \text{ kg}_{\text{IP}} \equiv 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157 \cdot \mu_e
 \]
 
-*Proof of Precision*:
+_Proof of Precision_:
 From the exact relation \( m_e = \frac{2 R_\infty h}{\alpha^2 c} \approx 9.109383786139837 \times 10^{-31} \text{ kg} \), the reciprocal is:
 \[
 \frac{1}{m_e} = 1\,097\,769\,095\,557\,842\,067\,257\,839\,129\,157.07428 \dots
@@ -917,4 +917,4 @@ The Interplanetary Kilogram agrees with the SI kilogram to 31 decimal digits.
 | SI Conversion
 |===
 
-The constants are now grounded in direct geometric ratios, discrete resolution grids \( \mathcal{G}_N \), and classical direct contact action causality, free of continuum approximations and quantum mysticism.
+The constants are now grounded in direct geometric ratios, discrete resolution grids \( \mathcal{G}_N \), and classical direct contact action causality, free of infinite-divisibility approximations and quantum mysticism.

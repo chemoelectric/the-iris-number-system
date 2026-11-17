@@ -1066,7 +1066,7 @@ export const WingAeroSimulator: React.FC = () => {
                 <span>The Mathematical Universal Downwash Principle</span>
               </div>
               <p>
-                <RenderMath text="In the Iris Number System framework and momentum conservation laws, aerodynamic lift is strictly governed by the downward momentum imparted to the surrounding air stream tube of effective diameter equal to span \( b \):" />
+                <RenderMath text="In the Iris Number System framework and momentum conservation laws, aerodynamic lift is strictly determined by the downward momentum imparted to the surrounding air stream tube of effective diameter equal to span \( b \):" />
               </p>
               <div className="bg-[#0f0f11] p-3 rounded border border-neutral-800 text-center font-mono text-amber-200 my-2">
                 <RenderMath text="\( w_{\text{downwash}} = \frac{2 M g}{\pi \rho b^2 U_0} \quad \implies \quad F_{\text{lift}} = \dot{m} \cdot w_{\text{downwash}} = M g \)" displayMode={true} />

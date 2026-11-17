@@ -146,7 +146,7 @@ const vol5 = parseAdocFile(
   "The Iris Number System",
   "Volume V: Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, Computing",
   "Frédéric Blondin Custer",
-  "Advanced Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, and Computing in Cl(4,1,1)"
+  "Advanced Applications to Spectral Theory, Circuit Theory, Transmission Theory, Electronics, and Computing in Conformal Geometric Algebra (CGA)"
 );
 
 const vol6 = parseAdocFile(
@@ -239,7 +239,7 @@ function generateFormalIndexChapterObj(chapters) {
   if (postulates.length > 0) {
     indexAdoc += "=== Postulates\n\n";
     postulates.forEach((e) => {
-      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+      indexAdoc += `* xref:${e.anchorId}[_${e.title}_]  -- Chapter: _${e.chapterTitle}_ | Section: _${e.sectionTitle}_\n`;
     });
     indexAdoc += "\n";
   }
@@ -247,7 +247,7 @@ function generateFormalIndexChapterObj(chapters) {
   if (theorems.length > 0) {
     indexAdoc += "=== Theorems\n\n";
     theorems.forEach((e) => {
-      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+      indexAdoc += `* xref:${e.anchorId}[_${e.title}_]  -- Chapter: _${e.chapterTitle}_ | Section: _${e.sectionTitle}_\n`;
     });
     indexAdoc += "\n";
   }
@@ -255,7 +255,7 @@ function generateFormalIndexChapterObj(chapters) {
   if (definitions.length > 0) {
     indexAdoc += "=== Definitions\n\n";
     definitions.forEach((e) => {
-      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+      indexAdoc += `* xref:${e.anchorId}[_${e.title}_]  -- Chapter: _${e.chapterTitle}_ | Section: _${e.sectionTitle}_\n`;
     });
     indexAdoc += "\n";
   }
@@ -263,7 +263,7 @@ function generateFormalIndexChapterObj(chapters) {
   if (others.length > 0) {
     indexAdoc += "=== Other Formal Statements\n\n";
     others.forEach((e) => {
-      indexAdoc += `* xref:${e.anchorId}[**${e.title}**]  -- Chapter: *${e.chapterTitle}* | Section: *${e.sectionTitle}*\n`;
+      indexAdoc += `* xref:${e.anchorId}[_${e.title}_]  -- Chapter: _${e.chapterTitle}_ | Section: _${e.sectionTitle}_\n`;
     });
     indexAdoc += "\n";
   }
@@ -345,7 +345,7 @@ export function generateFormalIndexChapter(chapters: TextbookChapter[]): Textboo
   if (postulates.length > 0) {
     indexAdoc += "=== Postulates\\n\\n";
     postulates.forEach((e) => {
-      indexAdoc += \`* xref:\${e.anchorId}[**\${e.title}**]  -- Chapter: *\${e.chapterTitle}* | Section: *\${e.sectionTitle}*\\n\`;
+      indexAdoc += \`* xref:\${e.anchorId}[_\${e.title}_]  -- Chapter: _\${e.chapterTitle}_ | Section: _\${e.sectionTitle}_\\n\`;
     });
     indexAdoc += "\\n";
   }
@@ -353,7 +353,7 @@ export function generateFormalIndexChapter(chapters: TextbookChapter[]): Textboo
   if (theorems.length > 0) {
     indexAdoc += "=== Theorems\\n\\n";
     theorems.forEach((e) => {
-      indexAdoc += \`* xref:\${e.anchorId}[**\${e.title}**]  -- Chapter: *\${e.chapterTitle}* | Section: *\${e.sectionTitle}*\\n\`;
+      indexAdoc += \`* xref:\${e.anchorId}[_\${e.title}_]  -- Chapter: _\${e.chapterTitle}_ | Section: _\${e.sectionTitle}_\\n\`;
     });
     indexAdoc += "\\n";
   }
@@ -361,7 +361,7 @@ export function generateFormalIndexChapter(chapters: TextbookChapter[]): Textboo
   if (definitions.length > 0) {
     indexAdoc += "=== Definitions\\n\\n";
     definitions.forEach((e) => {
-      indexAdoc += \`* xref:\${e.anchorId}[**\${e.title}**]  -- Chapter: *\${e.chapterTitle}* | Section: *\${e.sectionTitle}*\\n\`;
+      indexAdoc += \`* xref:\${e.anchorId}[_\${e.title}_]  -- Chapter: _\${e.chapterTitle}_ | Section: _\${e.sectionTitle}_\\n\`;
     });
     indexAdoc += "\\n";
   }
@@ -369,7 +369,7 @@ export function generateFormalIndexChapter(chapters: TextbookChapter[]): Textboo
   if (others.length > 0) {
     indexAdoc += "=== Other Formal Statements\\n\\n";
     others.forEach((e) => {
-      indexAdoc += \`* xref:\${e.anchorId}[**\${e.title}**]  -- Chapter: *\${e.chapterTitle}* | Section: *\${e.sectionTitle}*\\n\`;
+      indexAdoc += \`* xref:\${e.anchorId}[_\${e.title}_]  -- Chapter: _\${e.chapterTitle}_ | Section: _\${e.sectionTitle}_\\n\`;
     });
     indexAdoc += "\\n";
   }

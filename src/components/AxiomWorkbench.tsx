@@ -50,7 +50,7 @@ export const AxiomWorkbench: React.FC = () => {
               <h2 className="text-xl font-bold text-white">Iris System Axiom Workbench</h2>
             </div>
             <p className="text-slate-400 text-sm mt-1 max-w-2xl">
-              Inspect and extend fundamental axioms governing algebraic relations, spectral norms, and discrete operators in the Iris framework.
+              Inspect and extend fundamental axioms defining algebraic relations, spectral norms, and discrete operators in the Iris framework.
             </p>
           </div>
 
@@ -66,7 +66,7 @@ export const AxiomWorkbench: React.FC = () => {
 
       {/* Category Pills */}
       <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
-        {['All', 'Fundamental', 'Duality', 'Convergence', 'Modular', 'Differential'].map((cat) => (
+        {['All', 'Fundamental', 'CGA', 'Jaynesian', 'Bounded Rational', 'Duality', 'Convergence', 'Modular', 'Differential'].map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}

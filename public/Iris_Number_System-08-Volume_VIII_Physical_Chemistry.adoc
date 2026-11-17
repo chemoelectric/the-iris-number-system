@@ -11,9 +11,9 @@ A Rigorous Application of the Counting-Iris Number System and the Master Field E
 
 == Prelude: Foundations of Physical Chemistry in the Iris Framework
 
-Physical chemistry and chemical physics study the structure of molecules, the forces of chemical bonding, and the energetic transitions governing molecular assemblies. Historically, twentieth-century chemistry inherited continuum wave mechanics, unnormalizable continuum electron clouds, and speculative orbital hybridization models that assume continuous probability distributions and instantaneous point-particle collapses.
+Physical chemistry and chemical physics study the structure of molecules, the forces of chemical bonding, and the energetic transitions describing molecular assemblies. Historically, twentieth-century chemistry inherited infinitely divisible wave mechanics, unnormalizable fluid electron clouds, and speculative orbital hybridization models that assume infinitely divisible probability distributions and zero-duration point-particle collapses.
 
-In the Counting-Iris framework, chemical interactions are governed by the exact, discrete solutions of the \( Cl(4,1,1) \) Master Field Equation across discrete multiscale spatial grids \( \mathcal{G}_N \). Chemical bonds are not abstract cloud probabilities, but discrete, topological electromagnetic current vortex structures that transmit forces with finite duration at the speed of electromagnetic influences \( c \). Every atom consists of a finite number of discrete, localized m-resolution current configurations, and every chemical reaction represents a discrete, finite-duration isothermal state transition governed by Jaynesian Maximum Entropy (MaxEnt) principles on finite phase spaces.
+In the Counting-Iris framework, chemical interactions are described by the exact, discrete solutions of the Master Field Equation \( D F = J \) in 6D Conformal Geometric Algebra (CGA) across discrete multiscale spatial grids \( \mathcal{G}_N \). Chemical bonds are not abstract cloud probabilities, but discrete, topological electromagnetic current vortex structures that transmit forces with finite duration at the speed of electromagnetic influences \( c \). Every atom consists of a finite number of discrete, localized m-resolution current configurations, and every chemical reaction represents a discrete, finite-duration isothermal state transition described by Jaynesian Maximum Entropy (MaxEnt) principles on finite phase spaces.
 
 This volume establishes the constructive mathematical foundations, algebraic formulations, standalone Ada 2022 computational packages, and exact 3D wireframe meshwork visualizations for discrete physical chemistry.
 
@@ -21,17 +21,17 @@ This volume establishes the constructive mathematical foundations, algebraic for
 
 === The Physical Nature of Electron Pairing and Contact Exclusion
 
-In conventional quantum chemistry, the pairing of electrons and the formation of covalent bonds are often attributed to abstract exchange integrals and the non-spatial spin-statistics theorem. In the Iris geometric algebra \( Cl(4,1,1) \), electrons are localized topological vortex solitons possessing finite spatial extent at the m-resolution scale on \( \mathcal{G}_N \).
+In conventional quantum chemistry, the pairing of electrons and the formation of covalent bonds are often attributed to abstract exchange integrals and the non-spatial spin-statistics theorem. In the 6D Conformal Geometric Algebra (CGA) of the Iris system, electrons are localized topological vortex solitons possessing finite spatial extent at the m-resolution scale on \( \mathcal{G}_N \).
 
-When two electrons approach one another, their interaction is governed by direct contact topology and the localized Poynting flux bivector \( \mathbf{S} = \mathbf{E} \wedge \mathbf{H} \). Two circulating current vortices of opposite helicity (corresponding to opposite magnetic dipole orientations) generate constructive flux cancellation along their mutual interface, lowering the localized magnetic field energy density:
+When two electrons approach one another, their interaction is described by direct contact topology and the localized Poynting flux bivector \( \mathbf{S} = \mathbf{E} \wedge \mathbf{H} \). Two circulating current vortices of opposite helicity (corresponding to opposite magnetic dipole orientations) generate constructive flux cancellation along their mutual interface, lowering the localized magnetic field energy density:
 
 \[ \mathcal{E}_{\text{mag}} = \frac{1}{2} \sum_{\mathbf{x} \in \mathcal{G}_N} \left| \mathbf{B}_1(\mathbf{x}) + \mathbf{B}_2(\mathbf{x}) \right|^2 \Delta V \]
 
 [#def-discrete-covalent-bond]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Discrete Covalent Bond Vortex Pair
-Let \( \mathbf{J}_1(\mathbf{x}, t) \) and \( \mathbf{J}_2(\mathbf{x}, t) \) be two localized m-resolution current density distributions on the discrete grid \( \mathcal{G}_N \), representing two valence electrons in the internuclear corridor between nuclei \( A \) and \( B \) positioned at \( \mathbf{R}_A \) and \( \mathbf{R}_B \). The **Discrete Covalent Bond** is the stable, coupled limit-cycle attractor \( \mathbf{J}_{\text{bond}} = \mathbf{J}_1 + \mathbf{J}_2 \) satisfying the mutual flux-trapping condition:
+====
+Let \( \mathbf{J}_1(\mathbf{x}, t) \) and \( \mathbf{J}_2(\mathbf{x}, t) \) be two localized m-resolution current density distributions on the discrete grid \( \mathcal{G}_N \), representing two valence electrons in the internuclear corridor between nuclei \( A \) and \( B \) positioned at \( \mathbf{R}_A \) and \( \mathbf{R}_B \). The _Discrete Covalent Bond_ is the stable, coupled limit-cycle attractor \( \mathbf{J}_{\text{bond}} = \mathbf{J}_1 + \mathbf{J}_2 \) satisfying the mutual flux-trapping condition:
 
 \[ \oint_{\partial \Omega_{\text{bond}}} \left( \mathbf{A}_1 + \mathbf{A}_2 \right) \cdot d\mathbf{l} = n \cdot \Phi_0, \qquad n \in \mathbb{Z} \]
 
@@ -42,13 +42,13 @@ The covalent bond is thus an electrodynamic bridge: the shared electron pair for
 
 === The Monatomic Hydrogen Molecule (\( \text{H} \)): Solitary 1s Valence Vortex and Nuclear Core
 
-The simplest elementary chemical entity is the isolated monatomic hydrogen molecule (\( \text{H} \), \( Z=1 \)). Rather than a continuous probability wave or dimensionless point charge, monatomic hydrogen is an exact, finite electrodynamic system: a single positive nuclear proton locus at \( \mathbf{R}_p = (0,0,0) \) coupled to a solitary localized toroidal electron current vortex orbiting at the discrete Bohr equilibrium radius \( r_0 = a_0 \approx 0.529\,\text{\AA} \) on \( \mathcal{G}_N \).
+The simplest elementary chemical entity is the isolated monatomic hydrogen molecule (\( \text{H} \), \( Z=1 \)). Rather than an infinitely divisible probability wave or dimensionless point charge, monatomic hydrogen is an exact, finite electrodynamic system: a single positive nuclear proton locus at \( \mathbf{R}_p = (0,0,0) \) coupled to a solitary localized toroidal electron current vortex orbiting at the discrete Bohr equilibrium radius \( r_0 = a_0 \approx 0.529\,\text{\AA} \) on \( \mathcal{G}_N \).
 
 [#def-monatomic-hydrogen-molecule]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Monatomic Hydrogen Molecule System
-Let \( \mathbf{R}_p = (0,0,0) \) be the localized nuclear core coordinate of the proton on \( \mathcal{G}_N \). The **Monatomic Hydrogen Molecule** (\( \text{H} \), \( Z=1 \)) is the autonomous, self-resonant two-body electrodynamic system consisting of:
+====
+Let \( \mathbf{R}_p = (0,0,0) \) be the localized nuclear core coordinate of the proton on \( \mathcal{G}_N \). The _Monatomic Hydrogen Molecule_ (\( \text{H} \), \( Z=1 \)) is the autonomous, self-resonant two-body electrodynamic system consisting of:
 
 . A localized positive nuclear core well of finite radius \( r_p \approx 0.16\,a_0 \);
 . A single 1s valence electron forming a toroidal current vortex \( \mathbf{J}_e(\mathbf{x}, t) \) with major radius \( R_e \approx 0.28\,a_0 \) and minor core thickness \( r_e \approx 0.12\,a_0 \);
@@ -178,10 +178,10 @@ if (!exists("OUTFILE")) {
 When two hydrogen atoms bond to form molecular hydrogen (\( \text{H}_2 \)), the two 1s valence vortices interlock along the internuclear axis to form a single, cohesive cylindrical \( \sigma \)-bonding sheath containing two electrons of opposite spin.
 
 [#def-diatomic-hydrogen-molecule]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Diatomic Hydrogen Molecule System
-Let \( \mathbf{R}_1 = (-d_{\text{HH}}/2, 0, 0) \) and \( \mathbf{R}_2 = (+d_{\text{HH}}/2, 0, 0) \) be the localized nuclear core coordinates of the two protons at equilibrium separation \( d_{\text{HH}} \approx 1.40\,a_0 \approx 0.741\,\text{\AA} \) on \( \mathcal{G}_N \). The **Diatomic Hydrogen Molecule** (\( \text{H}_2 \)) is the stable two-center, two-electron electrodynamic system characterized by:
+====
+Let \( \mathbf{R}_1 = (-d_{\text{HH}}/2, 0, 0) \) and \( \mathbf{R}_2 = (+d_{\text{HH}}/2, 0, 0) \) be the localized nuclear core coordinates of the two protons at equilibrium separation \( d_{\text{HH}} \approx 1.40\,a_0 \approx 0.741\,\text{\AA} \) on \( \mathcal{G}_N \). The _Diatomic Hydrogen Molecule_ (\( \text{H}_2 \)) is the stable two-center, two-electron electrodynamic system characterized by:
 
 . Two localized positive proton nuclear potential wells of finite screening radius \( r_p \approx 0.15\,a_0 \);
 . A shared interlocking \( \sigma \)-bonding vortex sheath \( \mathbf{J}_{\sigma}(\mathbf{x}, t) \) containing \( 2e^- \) that bulges at the internuclear midpoint to screen the mutual nuclear repulsion;
@@ -292,9 +292,9 @@ When the constituent atoms differ in nuclear charge \( Z_A \neq Z_B \) and core 
 Consider the hydrogen fluoride molecule (\( \text{HF} \)). The fluorine nucleus (\( Z = 9 \)) is shielded by its tight \( 1s^2 \) core toroid, leaving a strong effective nuclear core potential that pulls the shared valence pair into its immediate proximity. The hydrogen nucleus (\( Z = 1 \)), having no inner core screening, presents a bare proton coordinate.
 
 [#thm-polar-asymmetry-flux]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Internuclear Polarization Flux Asymmetry
+====
 Let \( \mathbf{R}_e = \mathbf{R}_{\text{H}} - \mathbf{R}_{\text{F}} = R_e \, \mathbf{e}_3 \) be the equilibrium bond vector on \( \mathcal{G}_N \), and let \( \rho_{\text{bond}}(z) \) be the linear projection of the valence charge density along the bond axis. The molecular dipole moment \( \mathbf{\mu} = \mu \, \mathbf{e}_3 \) is the discrete spatial moment:
 
 \[ \mu = e \left( Z_{\text{H}} z_{\text{H}} + Z_{\text{F, eff}} z_{\text{F}} - \sum_{z \in \mathcal{G}_N} z \, \rho_{\text{bond}}(z) \Delta z \right) \]
@@ -306,25 +306,25 @@ In the equilibrium ground state, the centroid of the bonding vortex \( \bar{z}_{
 inducing a permanent discrete dipole moment \( \mu \approx 1.82\,\text{D} \) without requiring unphysical point-charge singularities.
 ====
 
-*Proof:*
+_Proof:_
 The total electrostatic potential energy on \( \mathcal{G}_N \) is the discrete Coulomb-Poynting sum:
 \[ U(z) = \frac{e^2}{4\pi\epsilon_0} \left[ \frac{Z_{\text{F, eff}} Z_{\text{H}}}{R_e} - \sum_{\mathbf{x} \in \mathcal{G}_N} \rho_{\text{bond}}(\mathbf{x}) \left( \frac{Z_{\text{F, eff}}}{\left| \mathbf{x} - \mathbf{R}_{\text{F}} \right|} + \frac{Z_{\text{H}}}{\left| \mathbf{x} - \mathbf{R}_{\text{H}} \right|} \right) \Delta V \right] \]
 Since \( Z_{\text{F, eff}} > Z_{\text{H}} = 1 \), the potential well depth at \( \mathbf{R}_{\text{F}} \) is strictly deeper than at \( \mathbf{R}_{\text{H}} \). Minimizing \( U \) over the discrete variational space of bounded m-resolution current configurations shifts the valence current density toward \( \mathbf{R}_{\text{F}} \), terminating at the balance point where the kinetic repulsion of localized confinement equals the asymmetric electrostatic gradient. \( \square \)
 
 === Trigonal Lone-Pair Geometry and Non-Bonding Electron Lobes
 
-In addition to the bonding pair along the internuclear axis, the fluorine atom possesses six valence electrons organized into three distinct non-bonding lone pairs. In the geometric algebra \( Cl(4,1,1) \), each lone pair forms an autonomous current loop oriented to minimize mutual inductive and electrostatic repulsion.
+In addition to the bonding pair along the internuclear axis, the fluorine atom possesses six valence electrons organized into three distinct non-bonding lone pairs. In 6D CGA, each lone pair forms an autonomous current loop oriented to minimize mutual inductive and electrostatic repulsion.
 
 By the discrete Thomson-MaxEnt configuration theorem on the sphere \( S^2 \subset \mathcal{G}_N \), four localized charge lobes (one bonding bridge and three lone pairs) naturally settle into a modified tetrahedral geometry. Because the bonding pair is drawn outward along \( +\mathbf{e}_3 \) toward the proton, the three lone-pair lobes expand into the rear hemisphere of the fluorine atom, adopting a trigonal back-lobe orientation with polar angle \( \theta_{\text{lp}} \approx 112^\circ \) relative to the bond axis and azimuthal spacing \( \Delta\phi = 120^\circ \).
 
-=== 3D Gnuplot Visualization of the Instantaneous HF Electron Vortex Meshwork
+=== 3D Gnuplot Visualization of the Concurrent HF Electron Vortex Meshwork
 
-The following script renders the complete 3D wireframe meshwork of the interacting electron pairs, core toroid, and lone pairs in hydrogen fluoride, illustrating the instantaneous electromagnetic structure:
+The following script renders the complete 3D wireframe meshwork of the interacting electron pairs, core toroid, and lone pairs in hydrogen fluoride, illustrating the concurrent electromagnetic structure:
 
 [source,gnuplot]
 ----
 # Gnuplot: 3D High-Detail Close-Up Wireframe of HF Electron Interactions
-# Depicts the instantaneous electromagnetic vortex meshwork of interacting electrons on G_N:
+# Depicts the concurrent electromagnetic vortex meshwork of interacting electrons on G_N:
 # - Shared polar covalent bonding electron pair bridging H and F
 # - Three fluorine 2p lone-pair lobes in trigonal back-lobe orientation
 # - Localized 1s^2 fluorine core toroid and proton screening locus
@@ -337,7 +337,7 @@ if (exists("OUTFILE")) {
     set output OUTFILE
 }
 
-set title "Instantaneous Electron Interactions in Hydrogen Fluoride (HF)\n{/*0.85High-Magnification 3D Wireframe Meshwork on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
+set title "Concurrent Electron Interactions in Hydrogen Fluoride (HF)\n{/*0.85High-Magnification 3D Wireframe Meshwork on Discrete Grid G_N}" font "Sans-Bold,13" offset 0,-0.5
 
 set parametric
 set hidden3d
@@ -443,10 +443,10 @@ For the water molecule (\( \text{H}_2\text{O} \)), the oxygen nucleus (\( Z = 8 
 However, the lone-pair current loops are anchored solely to the oxygen nucleus and occupy a wider spatial angular volume than the bonding pairs, which are pulled outward by the proton potentials. The increased inductive and electrostatic repulsive pressure between the two lone pairs compresses the \( \text{H-O-H} \) bonding angle to the observed value \( \theta_{\text{bond}} \approx 104.45^\circ \).
 
 [#def-bent-polyatomic-potential]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Discrete Angular Bond Potential
-Let \( \mathbf{u}_1 \) and \( \mathbf{u}_2 \) be unit vectors along the two \( \text{O-H} \) bonding axes on \( \mathcal{G}_N \), with bond angle \( \theta = \arccos(\mathbf{u}_1 \cdot \mathbf{u}_2) \). The **Discrete Angular Strain Energy** is the finite-difference harmonic potential:
+====
+Let \( \mathbf{u}_1 \) and \( \mathbf{u}_2 \) be unit vectors along the two \( \text{O-H} \) bonding axes on \( \mathcal{G}_N \), with bond angle \( \theta = \arccos(\mathbf{u}_1 \cdot \mathbf{u}_2) \). The _Discrete Angular Strain Energy_ is the finite-difference harmonic potential:
 
 \[ V_{\theta}(\theta) = \frac{1}{2} k_{\theta} \left( \theta - \theta_e \right)^2 + \frac{1}{2} k_{\text{lp}} \sum_{i=1}^2 \sum_{j=1}^2 \frac{1}{\left| \mathbf{u}_i - \mathbf{v}_j \right|^2} \]
 
@@ -570,10 +570,10 @@ splot x_b1(u, v),    y_b1(u, v),    z_b1(u, v)    with lines ls 1 title "O-H Pol
 In the methane molecule (\( \text{CH}_4 \)), the central carbon atom (\( Z = 6 \)) distributes its four valence electrons into four equivalent \( \sigma \)-bonding vortex tubes pointing toward the vertices of a regular tetrahedron on \( \mathcal{G}_N \).
 
 [#def-tetrahedral-methane]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Tetrahedral Methane Molecular Architecture
-Let the Carbon-12 nucleus be located at the origin \( \mathbf{R}_{\text{C}} = (0,0,0) \) on \( \mathcal{G}_N \). The **Tetrahedral Methane Architecture** (\( \text{CH}_4 \)) is the highly symmetric five-center electrodynamic system consisting of:
+====
+Let the Carbon-12 nucleus be located at the origin \( \mathbf{R}_{\text{C}} = (0,0,0) \) on \( \mathcal{G}_N \). The _Tetrahedral Methane Architecture_ (\( \text{CH}_4 \)) is the highly symmetric five-center electrodynamic system consisting of:
 
 . A Carbon \( 1s^2 \) core current toroid of major radius \( R_{\text{core}} \approx 0.22\,a_0 \);
 . Four equivalent proton loci \( \mathbf{R}_{\text{H}, k} \) at equilibrium distance \( d_{\text{CH}} \approx 2.06\,a_0 \approx 1.09\,\text{\AA} \) oriented along tetrahedral unit vectors:
@@ -709,10 +709,10 @@ if (!exists("OUTFILE")) {
 In the carbon dioxide molecule (\( \text{CO}_2 \)), the central carbon atom forms two collinear double bonds (\( \text{O=C=O} \)) with terminal oxygen atoms at \( 180^\circ \). Each double bond consists of an axial \( \sigma \)-bonding bridge interlocked with orthogonal \( \pi \)-vortex current sheets.
 
 [#def-carbon-dioxide-linear]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Linear Carbon Dioxide Double-Bond Architecture
-Let the Carbon nucleus be at \( \mathbf{R}_{\text{C}} = (0,0,0) \) and the two Oxygen nuclei be located along the \( X \)-axis at \( \mathbf{R}_{\text{O}, 1} = (-d_{\text{CO}}, 0, 0) \) and \( \mathbf{R}_{\text{O}, 2} = (+d_{\text{CO}}, 0, 0) \) with \( d_{\text{CO}} \approx 2.19\,a_0 \approx 1.16\,\text{\AA} \) on \( \mathcal{G}_N \). The **Linear Carbon Dioxide System** (\( \text{CO}_2 \)) is characterized by:
+====
+Let the Carbon nucleus be at \( \mathbf{R}_{\text{C}} = (0,0,0) \) and the two Oxygen nuclei be located along the \( X \)-axis at \( \mathbf{R}_{\text{O}, 1} = (-d_{\text{CO}}, 0, 0) \) and \( \mathbf{R}_{\text{O}, 2} = (+d_{\text{CO}}, 0, 0) \) with \( d_{\text{CO}} \approx 2.19\,a_0 \approx 1.16\,\text{\AA} \) on \( \mathcal{G}_N \). The _Linear Carbon Dioxide System_ (\( \text{CO}_2 \)) is characterized by:
 
 . A central Carbon \( 1s^2 \) core toroid aligned perpendicular to the molecular axis;
 . Two terminal Oxygen \( 1s^2 \) core toroids at \( \pm d_{\text{CO}} \);
@@ -852,10 +852,10 @@ if (!exists("OUTFILE")) {
 In the methanol molecule (\( \text{CH}_3\text{OH} \)), a tetrahedral methyl group (\( -\text{CH}_3 \)) is joined via a polar covalent \( \text{C-O} \) bond to a bent hydroxyl group (\( -\text{OH} \)).
 
 [#def-methanol-molecular-junction]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Methanol Methyl-Hydroxyl Molecular Junction
-Let the Carbon nucleus be at \( \mathbf{R}_{\text{C}} = (0,0,0) \) and the Oxygen nucleus be at \( \mathbf{R}_{\text{O}} = (d_{\text{CO}}, 0, 0) \) with \( d_{\text{CO}} \approx 2.70\,a_0 \approx 1.43\,\text{\AA} \) on \( \mathcal{G}_N \). The **Methanol Molecular Junction** (\( \text{CH}_3\text{OH} \)) consists of:
+====
+Let the Carbon nucleus be at \( \mathbf{R}_{\text{C}} = (0,0,0) \) and the Oxygen nucleus be at \( \mathbf{R}_{\text{O}} = (d_{\text{CO}}, 0, 0) \) with \( d_{\text{CO}} \approx 2.70\,a_0 \approx 1.43\,\text{\AA} \) on \( \mathcal{G}_N \). The _Methanol Molecular Junction_ (\( \text{CH}_3\text{OH} \)) consists of:
 
 . A Carbon \( 1s^2 \) core toroid coupled to three pyramidal \( \text{C-H} \) \( \sigma \)-bonding vortex tubes (\( d_{\text{CH}} \approx 2.06\,a_0 \));
 . A central \( \text{C-O} \) covalent bonding tube along \( \mathbf{e}_1 \);
@@ -1033,20 +1033,20 @@ if (!exists("OUTFILE")) {
 
 === Delocalized \(\pi\)-Electron Vortices in Benzene (\( \text{C}_6\text{H}_6 \))
 
-In aromatic ring systems such as benzene (\( \text{C}_6\text{H}_6 \)), six \( 2p_z \) valence electrons form a continuous, delocalized circular current sheet above and below the hexagonal carbon framework.
+In aromatic ring systems such as benzene (\( \text{C}_6\text{H}_6 \)), six \( 2p_z \) valence electrons form a connected, delocalized circular current sheet above and below the hexagonal carbon framework.
 
 [#thm-aromatic-ring-current]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Discrete Aromatic Ring-Current Quantization
-Let \( \mathcal{C}_{\text{ring}} \) be the hexagonal boundary contour of the benzene carbon frame in \( Cl(2,0) \subset Cl(4,1,1) \). The delocalized \( \pi \)-electron current density \( \mathbf{J}_{\pi}(\mathbf{x}) \) consists of two counter-rotating toroidal vortex layers at \( z = \pm z_{\pi} \) whose circulating magnetic moment satisfies:
+====
+Let \( \mathcal{C}_{\text{ring}} \) be the hexagonal boundary contour of the benzene carbon frame in the planar subalgebra \( \{ e_1, e_2 \} \) of 6D CGA. The delocalized \( \pi \)-electron current density \( \mathbf{J}_{\pi}(\mathbf{x}) \) consists of two counter-rotating toroidal vortex layers at \( z = \pm z_{\pi} \) whose circulating magnetic moment satisfies:
 
 \[ \mathbf{m}_{\pi} = \frac{1}{2} \sum_{\mathbf{x} \in \mathcal{G}_N} \left( \mathbf{x} \wedge \mathbf{J}_{\pi}(\mathbf{x}) \right) \Delta V = - \chi_{\text{ring}} \mathbf{B}_{\text{ext}} \]
 
-generating the characteristic diatropic chemical shift shielding without requiring non-constructive continuum wavefunction superpositions.
+generating the characteristic diatropic chemical shift shielding without requiring non-constructive infinitely divisible wavefunction superpositions.
 ====
 
-*Proof:*
+_Proof:_
 Applying the Master Field Equation \( \nabla \mathcal{F} = \mathcal{J} \) to the closed hexagonal polygon on \( \mathcal{G}_N \), the single-valuedness of the discrete electromagnetic potential \( \mathcal{A} \) around the closed loop enforces phase closure over the \( N = 6 \) carbon vertices. The induced current responds to an external magnetic field by producing a shielding flux opposing the perturbation, in direct accordance with Lenz's law on the discrete lattice. \( \square \)
 
 ==== 3D Gnuplot Visualization of the Benzene Molecule
@@ -1133,15 +1133,15 @@ if (!exists("OUTFILE")) {
 
 === Jaynesian Maximum Entropy on Discrete Phase Space
 
-In conventional physical chemistry, statistical mechanics is frequently framed around continuous phase-space integrals \( \int dp \, dq \) that require arbitrary division by \( h^3 \) to avoid ultraviolet divergences and infinite state densities.
+In conventional physical chemistry, statistical mechanics is frequently framed around infinitely divisible phase-space integrals \( \int dp \, dq \) that require arbitrary division by \( h^3 \) to avoid ultraviolet divergences and infinite state densities.
 
 In the Counting-Iris framework, phase space is inherently discrete: a system of \( K \) molecular entities on the spatial grid \( \mathcal{G}_N \) possesses a finite, countable number of microstates \( \Omega = \{ s_1, s_2, \dots, s_M \} \).
 
 [#def-discrete-maxent-distribution]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Discrete MaxEnt Probability Distribution
-Let \( E(s_i) \) and \( N_j(s_i) \) be the discrete energy and particle counts of microstate \( s_i \in \Omega \). Given macroscopic expectation constraints \( \langle E \rangle = \bar{E} \) and \( \langle N_j \rangle = \bar{N}_j \), the **Jaynesian Maximum Entropy Probability Distribution** \( p(s_i) \) is the unique distribution that maximizes the discrete Shannon-Jaynes information entropy:
+====
+Let \( E(s_i) \) and \( N_j(s_i) \) be the discrete energy and particle counts of microstate \( s_i \in \Omega \). Given macroscopic expectation constraints \( \langle E \rangle = \bar{E} \) and \( \langle N_j \rangle = \bar{N}_j \), the _Jaynesian Maximum Entropy Probability Distribution_ \( p(s_i) \) is the unique distribution that maximizes the discrete Shannon-Jaynes information entropy:
 
 \[ S[p] = - \sum_{i=1}^M p(s_i) \ln p(s_i) \]
 
@@ -1152,14 +1152,14 @@ subject to the normalization constraint \( \sum_{i=1}^M p(s_i) = 1 \). The resul
 where \( \Xi = \sum_{i=1}^M \exp\left( -\beta E(s_i) + \sum_j \alpha_j N_j(s_i) \right) \) is the discrete partition sum.
 ====
 
-=== Isothermal Transduction and Reaction Rates Without Continuum Limits
+=== Isothermal Transduction and Reaction Rates on Finite Grids
 
 Chemical reaction kinetics describes the rate at which reactants transition into products over energy barriers. In the Iris framework, all transitions take finite duration at the speed of electromagnetic influences \( c \).
 
 [#thm-discrete-reaction-rate]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Discrete Transition State Rate Law
+====
 Let \( \Delta G^{\ddagger} \) be the discrete free energy barrier separating the reactant basin \( \mathcal{R} \) from the product basin \( \mathcal{P} \) on the discrete energy grid \( \mathcal{E}_N \). The reaction rate constant \( k_{\text{rxn}} \) is given by the finite-duration flux ratio:
 
 \[ k_{\text{rxn}} = \nu_0 \cdot \exp\left( - \frac{\Delta G^{\ddagger}}{k_B T} \right) \]
@@ -1167,7 +1167,7 @@ Let \( \Delta G^{\ddagger} \) be the discrete free energy barrier separating the
 where \( \nu_0 = c / \lambda_{\text{m-res}} \) is the fundamental discrete transmission frequency across the m-resolution transition corridor.
 ====
 
-*Proof:*
+_Proof:_
 The net flux of probability across the dividing hypersurface \( \Sigma_{\text{TS}} \) on \( \mathcal{G}_N \) is the product of the probability density at the saddle point and the average forward crossing velocity. Because spatial propagation is bounded by \( c \), the maximum crossing frequency is finite and equal to \( \nu_0 \). Integrating over the discrete MaxEnt distribution yields the finite Eyring-Polanyi rate equation without infinite acceleration paradoxes. \( \square \)
 
 == Physical Organic Chemistry: Conformational Topologies and Reaction Mechanisms
@@ -1181,10 +1181,10 @@ Consider the ethane molecule (\( \text{C}_2\text{H}_6 \)). The carbon-carbon sin
 At the eclipsed conformation (\( \phi = 0^\circ, 120^\circ, 240^\circ \)), the three pairs of \( \text{C–H} \) bonding vortex tubes are mutually aligned. Because each bonding sheath confines an identical negative charge flux of \( 2e \), the direct electrostatic and magnetic repulsion between the parallel current sheaths reaches a sharp maximum. At the staggered conformation (\( \phi = 60^\circ, 180^\circ, 300^\circ \)), the spatial separation between adjacent \( \text{C–H} \) vortex centroids is maximized, minimizing the total field energy density on \( \mathcal{G}_N \).
 
 [#def-ethane-torsional-potential]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Discrete Torsional Barrier Potential
-Let \( \phi \) be the relative dihedral angle between two adjacent tetrahedral vertex clusters about a discrete \( \sigma \)-bonding axis on \( \mathcal{G}_N \). The **Discrete Torsional Barrier Potential** \( V_{\text{tors}}(\phi) \) is the discrete angular summation of pairwise vortex sheath repulsion energies:
+====
+Let \( \phi \) be the relative dihedral angle between two adjacent tetrahedral vertex clusters about a discrete \( \sigma \)-bonding axis on \( \mathcal{G}_N \). The _Discrete Torsional Barrier Potential_ \( V_{\text{tors}}(\phi) \) is the discrete angular summation of pairwise vortex sheath repulsion energies:
 
 \[ V_{\text{tors}}(\phi) = \frac{V_0}{2} \left( 1 - \cos(n \phi) \right) \]
 
@@ -1298,24 +1298,24 @@ if (!exists("OUTFILE")) {
 
 In organic synthesis, pericyclic transformations (such as the Diels-Alder \([4+2]\) cycloaddition) and bimolecular nucleophilic substitutions (\(\text{S}_\text{N}2\)) proceed through concerted, highly organized transition geometries without radical intermediates.
 
-In the Iris framework, a pericyclic reaction is the continuous topological reconnection of closed bivector current loops. In the Diels-Alder reaction between 1,3-butadiene (\( 4\pi \) electrons) and ethylene (\( 2\pi \) electrons), the supra-facial approach allows the terminal \( p \)-orbital vortex loops to establish phase coherence around a closed six-vertex perimeter. The reaction is an isothermal topological transition from two decoupled \( \pi \)-electron systems into a cyclic cyclohexene system possessing two new \( \sigma \)-bonds and one remaining \( \pi \)-bond.
+In the Iris framework, a pericyclic reaction is the unbroken topological reconnection of closed bivector current loops. In the Diels-Alder reaction between 1,3-butadiene (\( 4\pi \) electrons) and ethylene (\( 2\pi \) electrons), the supra-facial approach allows the terminal \( p \)-orbital vortex loops to establish phase coherence around a closed six-vertex perimeter. The reaction is an isothermal topological transition from two decoupled \( \pi \)-electron systems into a cyclic cyclohexene system possessing two new \( \sigma \)-bonds and one remaining \( \pi \)-bond.
 
-Similarly, the \(\text{S}_\text{N}2\) nucleophilic substitution represents a collinear electrostatic displacement on \( \mathcal{G}_N \). As the incoming nucleophile \( \text{Nu}^- \) approaches the electrophilic carbon along the backside axis opposite the leaving group \( \text{X} \), the central carbon undergoes a continuous geometric planar inversion (Walden inversion), passing through a trigonal bipyramidal transition state of finite duration:
+Similarly, the \(\text{S}_\text{N}2\) nucleophilic substitution represents a collinear electrostatic displacement on \( \mathcal{G}_N \). As the incoming nucleophile \( \text{Nu}^- \) approaches the electrophilic carbon along the backside axis opposite the leaving group \( \text{X} \), the central carbon undergoes a gradual geometric planar inversion (Walden inversion), passing through a trigonal bipyramidal transition state of finite duration:
 
 \[ \tau_{\text{transit}} = \frac{d_{\text{traverse}}}{v_{\text{ion}}} \ge \frac{d_{\text{traverse}}}{c} \]
 
 [#thm-pericyclic-topological-closure]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Pericyclic Bivector Loop Conservation
+====
 Let \( \mathcal{C}_{\text{peri}} \) be the closed topological perimeter formed by the interacting reacting centers on \( \mathcal{G}_N \). In any concerted pericyclic transition state, the total magnetic flux linking the reaction perimeter is strictly conserved:
 
 \[ \oint_{\mathcal{C}_{\text{peri}}} \mathbf{A}(\mathbf{x}, t) \cdot d\mathbf{l} = \sum_{k=1}^{N_{\text{pairs}}} \Phi_0 = N_e \frac{h}{4e} \]
 
-enforcing the Woodward-Hoffmann stereochemical selection rules through discrete electromagnetic phase continuity.
+enforcing the Woodward-Hoffmann stereochemical selection rules through discrete electromagnetic phase closure.
 ====
 
-*Proof:*
+_Proof:_
 Applying the Master Field Equation \( \nabla \mathcal{F} = \mathcal{J} \) to the closed multi-center reaction loop \( \mathcal{C}_{\text{peri}} \), the circulation of the magnetic vector potential \( \mathbf{A} \) must remain single-valued at every intermediate time step \( t \in [0, \tau_{\text{transit}}] \). Phase-matched constructive interference occurs exclusively when the total number of conjugated electron pairs satisfies the topological closure criterion \( 4n + 2 \), preserving the discrete flux quantum without vortex boundary tearing. \( \square \)
 
 == Biochemistry, Macromolecular Networks, and Interfacial Enzymology
@@ -1324,15 +1324,15 @@ Applying the Master Field Equation \( \nabla \mathcal{F} = \mathcal{J} \) to the
 
 Biological macromolecules operate as exquisite multi-scale electromagnetic machines. Proteins, nucleic acids, and lipid bilayers are constructed from repeating molecular monomers linked into directional structural lattices.
 
-In the secondary structure of proteins, the polypeptide backbone folds into periodic geometries: the right-handed \( \alpha \)-helix and the pleated \( \beta \)-sheet. Rather than being governed by mysterious biological forces, these structures are stabilized by an interlocking discrete network of \( \text{C=O}\cdots\text{H–N} \) hydrogen bonds.
+In the secondary structure of proteins, the polypeptide backbone folds into periodic geometries: the right-handed \( \alpha \)-helix and the pleated \( \beta \)-sheet. Rather than being driven by mysterious biological forces, these structures are stabilized by an interlocking discrete network of \( \text{C=O}\cdots\text{H–N} \) hydrogen bonds.
 
 In an \( \alpha \)-helix, each carbonyl oxygen of residue \( i \) acts as a localized negative electrostatic attractor pointing along the helical cylinder axis, directly engaging the amide proton of residue \( i+4 \). With a characteristic pitch of \( P = 10.2\,a_0 \) (\( 5.4\,\text{\AA} \)) and \( 3.6 \) residues per turn, the dipole moments of all peptide bonds align in parallel, creating a macroscopic electrostatic dipole across the helix axis.
 
 [#def-alpha-helix-backbone]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Discrete Alpha-Helix Backbone Architecture
-Let \( \mathbf{R}_i = (x_i, y_i, z_i) \) be the coordinates of the \( \alpha \)-carbon of residue \( i \) on \( \mathcal{G}_N \). The **Discrete Alpha-Helix** is the regular cylindrical helical trajectory satisfying:
+====
+Let \( \mathbf{R}_i = (x_i, y_i, z_i) \) be the coordinates of the \( \alpha \)-carbon of residue \( i \) on \( \mathcal{G}_N \). The _Discrete Alpha-Helix_ is the regular cylindrical helical trajectory satisfying:
 
 \[ x_i = R_0 \cos(i \cdot \Delta \theta), \quad y_i = R_0 \sin(i \cdot \Delta \theta), \quad z_i = i \cdot \Delta z \]
 
@@ -1420,23 +1420,23 @@ if (!exists("OUTFILE")) {
 
 === Interfacial Catalysis and Biochemical Microcalorimetry: The Brown-Chattopadhyay Formalism
 
-A foundational milestone in understanding cellular enzymology was established by the pioneering investigations of **Harry Darrow Brown** (1925–2014) and **Swaraj K. Chattopadhyay** on the physical chemistry of the biological interface (*Biochemical Microcalorimetry*, Academic Press, 1969; *Chemistry of the Cell Interface*, Academic Press, 1971).
+A foundational milestone in understanding cellular enzymology was established by the pioneering investigations of _Harry Darrow Brown_ (1925–2014) and _Swaraj K. Chattopadhyay_ on the physical chemistry of the biological interface (_Biochemical Microcalorimetry_, Academic Press, 1969; _Chemistry of the Cell Interface_, Academic Press, 1971).
 
-Historically, classical biochemistry treated enzymes as isotropic, freely diffusing point catalysts floating in a homogeneous continuum solution (described by simplified Michaelis-Menten kinetics). However, Brown and his collaborators demonstrated experimentally that in living cells, enzymes are overwhelmingly **organelle-bound**, **matrix-supported**, and confined to solid-liquid lipid interfaces possessing restricted spatial degrees of freedom.
+Historically, classical biochemistry treated enzymes as isotropic, freely diffusing point catalysts floating in a homogeneous bulk solution (described by simplified Michaelis-Menten kinetics). However, Brown and his collaborators demonstrated experimentally that in living cells, enzymes are overwhelmingly _organelle-bound_, _matrix-supported_, and confined to solid-liquid lipid interfaces possessing restricted spatial degrees of freedom.
 
 When an enzyme is tethered to a cellular membrane or polymeric matrix:
 
-. **Aqueous Phase Structuring at Interfaces**: The water molecules immediately adjacent to the biological membrane do not behave as bulk liquid water. Instead, they form a structured, oriented vicinal water layer with significantly reduced dielectric permittivity and elevated viscosity.
-. **Conformational Micro-Environment Stabilization**: Matrix attachment imposes steric and electrostatic boundary constraints that modify the enzyme’s catalytic active-site cleft, altering both the binding enthalpy \( \Delta H^{\circ} \) and activation entropy \( \Delta S^{\ddagger} \).
-. **Direct Microcalorimetric Energy Tracking**: Utilizing high-precision biochemical microcalorimetry, Brown established that the heat of reaction \( Q_{\text{rxn}} \) in interfacial enzyme systems reflects direct conformational work and interfacial proton exchange rather than unconstrained bulk thermalization.
+. _Aqueous Phase Structuring at Interfaces_: The water molecules immediately adjacent to the biological membrane do not behave as bulk liquid water. Instead, they form a structured, oriented vicinal water layer with significantly reduced dielectric permittivity and elevated viscosity.
+. _Conformational Micro-Environment Stabilization_: Matrix attachment imposes steric and electrostatic boundary constraints that modify the enzyme’s catalytic active-site cleft, altering both the binding enthalpy \( \Delta H^{\circ} \) and activation entropy \( \Delta S^{\ddagger} \).
+. _Direct Microcalorimetric Energy Tracking_: Utilizing high-precision biochemical microcalorimetry, Brown established that the heat of reaction \( Q_{\text{rxn}} \) in interfacial enzyme systems reflects direct conformational work and interfacial proton exchange rather than unconstrained bulk thermalization.
 
 In the Counting-Iris framework, the Brown-Chattopadhyay interfacial enzyme system is formulated as a discrete contact-action transducer on \( \mathcal{G}_N \). The membranous matrix provides a fixed electrostatic reference plane that eliminates translational dispersion, channeling substrate flux directly into the active site via one-dimensional surface diffusion.
 
 [#def-matrix-supported-enzyme]
-[NOTE]
-====
+[DEFINITION]
 .Definition: Matrix-Supported Enzyme Interface
-Let \( \mathcal{M} \subset \mathcal{G}_N \) represent a two-dimensional lipid-protein boundary membrane, and let \( \mathcal{E}_{\text{bound}} \) be an enzyme macromolecule anchored to \( \mathcal{M} \) at anchor loci \( \{ \mathbf{R}_{\text{anc}, k} \} \). The **Matrix-Supported Enzyme System** is the restricted-degree-of-freedom interfacial engine characterized by:
+====
+Let \( \mathcal{M} \subset \mathcal{G}_N \) represent a two-dimensional lipid-protein boundary membrane, and let \( \mathcal{E}_{\text{bound}} \) be an enzyme macromolecule anchored to \( \mathcal{M} \) at anchor loci \( \{ \mathbf{R}_{\text{anc}, k} \} \). The _Matrix-Supported Enzyme System_ is the restricted-degree-of-freedom interfacial engine characterized by:
 
 . A non-uniform vicinal dielectric gradient \( \varepsilon_r(z) \) transitioning from the membrane interior (\( \varepsilon_{\text{mem}} \approx 2 \)) across the boundary water layer (\( \varepsilon_{\text{vic}} \approx 30 \)) to the bulk cytosol (\( \varepsilon_{\text{bulk}} \approx 80 \));
 . An anchored active-site cleft \( \Omega_{\text{active}} \) with constrained dihedral orientation vectors \( \{ \mathbf{n}_j \} \);
@@ -1444,9 +1444,9 @@ Let \( \mathcal{M} \subset \mathcal{G}_N \) represent a two-dimensional lipid-pr
 ====
 
 [#thm-interfacial-catalytic-acceleration]
-[NOTE]
-====
+[THEOREM]
 .Theorem: Brown Interfacial Catalytic Acceleration
+====
 Let \( k_{\text{bulk}} \) be the second-order rate constant of a free, isotropic enzyme in bulk solution, and let \( k_{\text{interface}} \) be the rate constant of the same enzyme bound to the membrane matrix \( \mathcal{M} \) on \( \mathcal{G}_N \). The interfacial catalytic rate is strictly accelerated by dimensional reduction of the substrate search space and localized dielectric field focusing:
 
 \[ k_{\text{interface}} = k_{\text{bulk}} \cdot \left( \frac{\lambda_{\text{bulk}}}{\lambda_{\text{surface}}} \right) \cdot \exp\left( \frac{\Delta G_{\text{desolv}} + \Delta G_{\text{strain}}}{k_B T} \right) \]
@@ -1454,7 +1454,7 @@ Let \( k_{\text{bulk}} \) be the second-order rate constant of a free, isotropic
 where \( \lambda_{\text{surface}} \ll \lambda_{\text{bulk}} \) is the reduced mean free path of two-dimensional interfacial surface diffusion.
 ====
 
-*Proof:*
+_Proof:_
 In bulk three-dimensional solution, the encounter rate between enzyme and substrate is bounded by 3D isotropic Brownian diffusion across volume \( V \propto R^3 \). On the matrix surface \( \mathcal{M} \), substrate molecules entering the vicinal boundary layer undergo direct adsorption into a two-dimensional manifold of area \( A \propto R^2 \). As established in Keyser's and Jaynes's MaxEnt reduction on discrete grids, restricting the search domain to two dimensions reduces the search entropy by \( \Delta S_{\text{search}} = -k_B \ln(V/A \lambda_{\text{m-res}}) \). Furthermore, the reduced dielectric constant \( \varepsilon_{\text{vic}} \approx 30 \) amplifies the electrostatic Coulomb steering field between the substrate dipole and active-site residues, directly lowering the activation barrier \( \Delta G^{\ddagger} \). \( \square \)
 
 === Standalone Ada 2022 Implementation: Discrete Chemical Bond and Interfacial Engine
@@ -1617,29 +1617,30 @@ begin
 end Discrete_Chemistry_Engine;
 ----
 
+[#chap-index]
 == Index of Formal Statements
 
 This index lists all formal Postulates, Theorems, and Definitions established across Volume VIII.
 
 === Definitions
 
-* xref:def-discrete-covalent-bond[**Definition: Discrete Covalent Bond Vortex Pair**] -- Section: *Electromagnetic Topology of the Chemical Bond*
-* xref:def-monatomic-hydrogen-molecule[**Definition: Monatomic Hydrogen Molecule System**] -- Section: *Electromagnetic Topology of the Chemical Bond*
-* xref:def-diatomic-hydrogen-molecule[**Definition: Diatomic Hydrogen Molecule System**] -- Section: *Electromagnetic Topology of the Chemical Bond*
-* xref:def-bent-polyatomic-potential[**Definition: Discrete Angular Bond Potential**] -- Section: *Polyatomic Architectures and Conjugated Systems*
-* xref:def-tetrahedral-methane[**Definition: Tetrahedral Methane Molecular Architecture**] -- Section: *Polyatomic Architectures and Conjugated Systems*
-* xref:def-carbon-dioxide-linear[**Definition: Linear Carbon Dioxide Double-Bond Architecture**] -- Section: *Polyatomic Architectures and Conjugated Systems*
-* xref:def-methanol-molecular-junction[**Definition: Methanol Methyl-Hydroxyl Molecular Junction**] -- Section: *Polyatomic Architectures and Conjugated Systems*
-* xref:def-discrete-maxent-distribution[**Definition: Discrete MaxEnt Probability Distribution**] -- Section: *Finite-State Thermodynamics and Reaction Kinetics*
-* xref:def-ethane-torsional-potential[**Definition: Discrete Torsional Barrier Potential**] -- Section: *Physical Organic Chemistry: Conformational Topologies and Reaction Mechanisms*
-* xref:def-alpha-helix-backbone[**Definition: Discrete Alpha-Helix Backbone Architecture**] -- Section: *Biochemistry, Macromolecular Networks, and Interfacial Enzymology*
-* xref:def-matrix-supported-enzyme[**Definition: Matrix-Supported Enzyme Interface**] -- Section: *Biochemistry, Macromolecular Networks, and Interfacial Enzymology*
+* xref:def-discrete-covalent-bond[_Definition: Discrete Covalent Bond Vortex Pair_] -- Section: _The Physical Nature of Electron Pairing and Contact Exclusion_
+* xref:def-monatomic-hydrogen-molecule[_Definition: Monatomic Hydrogen Molecule System_] -- Section: _The Monatomic Hydrogen Molecule (\( \text{H} \)): Solitary 1s Valence Vortex and Nuclear Core_
+* xref:def-diatomic-hydrogen-molecule[_Definition: Diatomic Hydrogen Molecule System_] -- Section: _Diatomic Hydrogen (\( \text{H}_2 \)): Interlocking Dual-Vortex Covalent Bond Sheath_
+* xref:def-bent-polyatomic-potential[_Definition: Discrete Angular Bond Potential_] -- Section: _Water (\( \text{H}_2\text{O} \)): The Bent Electrodynamic Dipole_
+* xref:def-tetrahedral-methane[_Definition: Tetrahedral Methane Molecular Architecture_] -- Section: _Methane (\( \text{CH}_4 \)): Regular Tetrahedral Coordinate Symmetry_
+* xref:def-carbon-dioxide-linear[_Definition: Linear Carbon Dioxide Double-Bond Architecture_] -- Section: _Carbon Dioxide (\( \text{CO}_2 \)): Linear Double-Bond Cylinders_
+* xref:def-methanol-molecular-junction[_Definition: Methanol Methyl-Hydroxyl Molecular Junction_] -- Section: _Methanol (\( \text{CH}_3\text{OH} \)): Asymmetric Methyl-Hydroxyl Solvation Architecture_
+* xref:def-discrete-maxent-distribution[_Definition: Discrete MaxEnt Probability Distribution_] -- Section: _Jaynesian Maximum Entropy on Discrete Phase Space_
+* xref:def-ethane-torsional-potential[_Definition: Discrete Torsional Barrier Potential_] -- Section: _Conformational Barriers, Torsional Strain, and Stereoelectronic Repulsion_
+* xref:def-alpha-helix-backbone[_Definition: Discrete Alpha-Helix Backbone Architecture_] -- Section: _Protein Secondary and Tertiary Architecture: The Hydrogen-Bonded Dipole Lattice_
+* xref:def-matrix-supported-enzyme[_Definition: Matrix-Supported Enzyme Interface_] -- Section: _Interfacial Catalysis and Biochemical Microcalorimetry: The Brown-Chattopadhyay Formalism_
 
 === Theorems
 
-* xref:thm-polar-asymmetry-flux[**Theorem: Internuclear Polarization Flux Asymmetry**] -- Section: *Electromagnetic Topology of the Chemical Bond*
-* xref:thm-aromatic-ring-current[**Theorem: Discrete Aromatic Ring-Current Quantization**] -- Section: *Polyatomic Architectures and Conjugated Systems*
-* xref:thm-discrete-reaction-rate[**Theorem: Discrete Transition State Rate Law**] -- Section: *Finite-State Thermodynamics and Reaction Kinetics*
-* xref:thm-pericyclic-topological-closure[**Theorem: Pericyclic Bivector Loop Conservation**] -- Section: *Physical Organic Chemistry: Conformational Topologies and Reaction Mechanisms*
-* xref:thm-interfacial-catalytic-acceleration[**Theorem: Brown Interfacial Catalytic Acceleration**] -- Section: *Biochemistry, Macromolecular Networks, and Interfacial Enzymology*
+* xref:thm-polar-asymmetry-flux[_Theorem: Internuclear Polarization Flux Asymmetry_] -- Section: _Polar Covalence and Asymmetric Charge Polarization in Diatomic Halides_
+* xref:thm-aromatic-ring-current[_Theorem: Discrete Aromatic Ring-Current Quantization_] -- Section: _Delocalized \(\pi\)-Electron Vortices in Benzene (\( \text{C}_6\text{H}_6 \))_
+* xref:thm-discrete-reaction-rate[_Theorem: Discrete Transition State Rate Law_] -- Section: _Isothermal Transduction and Reaction Rates on Finite Grids_
+* xref:thm-pericyclic-topological-closure[_Theorem: Pericyclic Bivector Loop Conservation_] -- Section: _Pericyclic Reactions, Woodward-Hoffmann Topologies, and Walden Inversions_
+* xref:thm-interfacial-catalytic-acceleration[_Theorem: Brown Interfacial Catalytic Acceleration_] -- Section: _Interfacial Catalysis and Biochemical Microcalorimetry: The Brown-Chattopadhyay Formalism_
 

@@ -8,13 +8,16 @@ export interface IrisNumber {
   label?: string;
 }
 
-// Clifford Algebra Cl(4,1,1) Multivector
-// Signature: 4 positive basis (e1, e2, e3, e4), 1 negative basis (e5), 1 null basis (e0)
-export interface Cl411Multivector {
+// 6D Conformal Geometric Algebra (CGA) Multivector
+// Canonical generators: {e_1, e_2, e_3, e_4, e_⊙, e_∞}
+// Metric: e_1^2 = e_2^2 = e_3^2 = 1, e_4^2 = 0, e_⊙^2 = e_∞^2 = 0, e_⊙ · e_∞ = -1
+export interface CgaMultivector {
   scalar: number; // Grade 0
-  e0: number; e1: number; e2: number; e3: number; e4: number; e5: number; // Grade 1
-  e12: number; e23: number; e31: number; e14: number; e24: number; e34: number; e15: number; e25: number; e35: number; e45: number; e01: number; e05: number; // Grade 2 (Bivectors / Quaternions)
-  e123: number; e125: number; e124: number; e234: number; e314: number; // Grade 3
+  e1: number; e2: number; e3: number; e4: number; eOdot: number; eInf: number; // Grade 1
+  e12: number; e23: number; e31: number; e14: number; e24: number; e34: number;
+  e1Odot: number; e2Odot: number; e3Odot: number; e1Inf: number; e2Inf: number; e3Inf: number;
+  e4Odot: number; e4Inf: number; eOdotInf: number; // Grade 2 (Bivectors / Quaternions)
+  e123: number; e124: number; e234: number; e314: number; // Grade 3
   pseudoscalar: number; // Grade 6
   label?: string;
 }
@@ -42,11 +45,14 @@ export interface MaxEntState {
 export type IrisDomain =
   | 'Tautological Discrete Arithmetic'
   | 'Discrete Spectrum Algebra'
-  | 'Clifford Algebra Cl(4,1,1)'
+  | 'Conformal Geometric Algebra (CGA)'
   | 'Jaynesian MaxEnt Probability'
   | 'Bounded Rational Algebra'
   | 'Spectral Topology'
-  | 'Quantum Iris Field';
+  | 'Unified Field Theory (D F = J)'
+  | 'Number Theory'
+  | 'Discrete Analysis'
+  | 'Abstract Algebra';
 
 export interface IrisAxiom {
   id: string;
@@ -54,14 +60,14 @@ export interface IrisAxiom {
   latex: string;
   domain: IrisDomain;
   description: string;
-  category: 'Fundamental' | 'Clifford' | 'Jaynesian' | 'Bounded Rational' | 'Duality' | 'Convergence' | 'Modular' | 'Differential';
+  category: 'Fundamental' | 'CGA' | 'Jaynesian' | 'Bounded Rational' | 'Duality' | 'Convergence' | 'Modular' | 'Differential';
 }
 
 export interface DeductionStep {
   id: string;
   stepNumber: number;
   statement: string; // Plain math or LaTeX notation
-  ruleUsed: string; // e.g. "Clifford Cl(4,1,1) Geometric Product Tautology"
+  ruleUsed: string; // e.g. "6D CGA Geometric Product Tautology"
   justification: string;
   status: 'valid' | 'invalid' | 'hypothetical' | 'pending';
   dependencies: number[]; // Step numbers this step depends on

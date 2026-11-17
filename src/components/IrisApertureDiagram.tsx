@@ -26,7 +26,7 @@ export const IrisApertureDiagram: React.FC = () => {
   const maxRadius = 130;
   const currentInnerR = Math.max(15, radius * maxRadius);
 
-  // Generate aperture blades
+  // Generate diaphragm blades
   const blades = Array.from({ length: numBlades }).map((_, index) => {
     const baseAngle = (index * 2 * Math.PI) / numBlades + phaseAngle;
     const nextAngle = ((index + 1) * 2 * Math.PI) / numBlades + phaseAngle;
@@ -64,13 +64,13 @@ export const IrisApertureDiagram: React.FC = () => {
           </div>
           <div>
             <h3 className="text-base font-bold text-white tracking-wide flex items-center space-x-2">
-              <span>Dynamic Iris Aperture Model</span>
+              <span>Dynamic Iris Window Model</span>
               <span className="px-2 py-0.5 bg-[#222222] text-slate-300 text-[10px] font-mono uppercase">
                 Visual Analogy
               </span>
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
-              Geometric projection of the Iris generator <span className="font-mono text-slate-200">\iota</span> via variable aperture blades and Clifford bivector plane <span className="font-mono text-slate-300">e₁₂</span>.
+              Geometric projection of the Iris generator <span className="font-mono text-slate-200">\iota</span> via variable diaphragm blades and CGA bivector plane <span className="font-mono text-slate-300">e₁₂</span>.
             </p>
           </div>
         </div>
@@ -88,13 +88,13 @@ export const IrisApertureDiagram: React.FC = () => {
         </button>
       </div>
 
-      {/* Main Grid: SVG Aperture Canvas + Control & HUD Panel */}
+      {/* Main Grid: SVG Window Canvas + Control & HUD Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        {/* SVG Aperture Graphic */}
+        {/* SVG Window Graphic */}
         <div className="lg:col-span-6 flex flex-col items-center justify-center relative bg-[#121212] p-4 min-h-[320px]">
           <svg viewBox="0 0 300 300" className="w-full max-w-[300px] h-auto">
             <defs>
-              {/* Radial gradient for central aperture core (\iota field) */}
+              {/* Radial gradient for central window core (\iota field) */}
               <radialGradient id="irisCoreGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
                 <stop offset="45%" stopColor="#a3a3a3" stopOpacity="0.5" />
@@ -126,10 +126,10 @@ export const IrisApertureDiagram: React.FC = () => {
               opacity="0.6"
             />
 
-            {/* Central Iris Aperture Field Glow (\iota core) */}
+            {/* Central Iris Window Field Glow (\iota core) */}
             <circle cx="150" cy="150" r={currentInnerR} fill="url(#irisCoreGlow)" />
 
-            {/* Mechanical Iris Aperture Blades */}
+            {/* Mechanical Iris Diaphragm Blades */}
             {blades.map((b) => (
               <path
                 key={b.id}
@@ -142,7 +142,7 @@ export const IrisApertureDiagram: React.FC = () => {
               />
             ))}
 
-            {/* Inner Aperture Boundary Ring (\varpi \vartheta Nilpotent Boundary) */}
+            {/* Inner Window Boundary Ring (\varpi \vartheta Nilpotent Boundary) */}
             <circle
               cx="150"
               cy="150"
@@ -196,7 +196,7 @@ export const IrisApertureDiagram: React.FC = () => {
           </svg>
 
           <div className="absolute bottom-2 right-3 text-[10px] font-mono text-slate-500">
-            Aperture r = {radius.toFixed(2)} | \theta = {((phaseAngle * 180) / Math.PI).toFixed(0)}°
+            Window r = {radius.toFixed(2)} | \theta = {((phaseAngle * 180) / Math.PI).toFixed(0)}°
           </div>
         </div>
 
@@ -207,7 +207,7 @@ export const IrisApertureDiagram: React.FC = () => {
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono font-bold text-slate-200 uppercase flex items-center space-x-1.5">
                 <Sliders className="w-3.5 h-3.5 text-slate-400" />
-                <span>Aperture Parameters</span>
+                <span>Window Parameters</span>
               </span>
               <button
                 onClick={() => setShowBoundaryFlux(!showBoundaryFlux)}
@@ -220,7 +220,7 @@ export const IrisApertureDiagram: React.FC = () => {
             {/* Radius Slider */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-mono text-slate-300">
-                <span>Aperture Opening (Magnitude r):</span>
+                <span>Window Opening (Magnitude r):</span>
                 <span className="text-white font-bold">{radius.toFixed(2)}</span>
               </div>
               <input
@@ -285,7 +285,7 @@ export const IrisApertureDiagram: React.FC = () => {
             </div>
 
             <p className="text-[10px] text-slate-400 leading-snug pt-1 font-sans">
-              As the iris opens and closes, the central aperture area represents the scaling flux of discrete integers ℤ, while blade rotations execute Spin(2) bivector phases in Cl(4,1,1).
+              As the iris opens and closes, the central sampling window area represents the scaling flux of discrete integers ℤ, while blade rotations execute planar rotor phases in e₁₂ within 6D Conformal Geometric Algebra (CGA).
             </p>
           </div>
         </div>

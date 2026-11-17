@@ -85,7 +85,7 @@ physicists (although not by electrical engineers). Instead physicists
 imagined light as rays or pellets traveling in a “vacuum,” and the
 result was Special Relativity.footnote:[Albert Einstein. 1905. On the
 Electrodynamics of Moving Bodies. _Ann. Phys._ 322, 10 (Sept. 1905),
-891–921. http://doi.org/10.1002/andp.19053221004] The speed of light
+891–921. http://doi.org/10.1002/andp.19053221004] The propagation speed of radiation
 was no longer the speed of wave propagation in a medium but the speed
 of a “photon” in a “vacuum.”
 
@@ -100,7 +100,7 @@ They were all themselves dense hives of electromagnetic activity,
 electromagnetic waves moving around and around in exactly the same
 medium as Michelson’s and Morley’s transmitted light waves, and
 exhibiting the same overall inertial motion as those light waves. The
-speed of light is once again the speed of propagation of waves in the
+propagation speed of radiation is once again the speed of wave travel in the
 medium.
 
 . _A New Theory of Gravity_:
@@ -141,7 +141,7 @@ follow.
     (Creator). 1959–1964. _The Twilight Zone._ Video. Cayuga
     Productions; CBS Productions, New York, NY.] etc. Gravity would be
     an extremely weak force attributable to a kind of friction that
-    reduced the so-called “speed of light” to below{nbsp}\( c \), and
+    reduced the local electromagnetic propagation speed to below{nbsp}\( c \), and
     the direction of the force would be towards the entity that was
     generating the gradient.
 
@@ -186,12 +186,12 @@ of _nonstandard analysis_ with Iris numbers. It is possible to do
 conventional epsilon–delta analysis with Iris real numbers only, but
 nonstandard analysis with multiple scale resolution tiers is easier.]
 
-The Iris number system containing only _countable_ infinities, and
-thus is _discrete_ rather than “continuous.” Irrational numbers are
+The Iris number system contains only _countable_ infinities, and
+thus is _discrete_ rather than “infinite-divisibility.” Irrational numbers are
 not numbers on the number line, but rather represent the ability to
 produce smaller and smaller intervals of rational numbers (which _do_
 lie on the number line). Thus the electromagnetic field is represented
-not in a “continuous” three-dimensional space, but instead on a
+not in an “infinite-divisibility” three-dimensional space, but instead on a
 _discrete_ three-dimensional lattice or grid \( \mathcal{G} _ N \).
 
 The energetic state of the universal field at any location on \(
@@ -219,7 +219,7 @@ unperturbed baseline values \( \varepsilon _ 0 \) and \( \mu _ 0 \):
 \( n ( \mathbf{r} ) \) is the effective refractive index of the field.
 Our goal is to determine \( n ( \mathbf{r} ) \).
 
-The local speed of electromagnetic influences (“speed of light”)
+The local speed of electromagnetic influences
 relative to the mass center (center of a great amount of
 electromagnetic kinetic energy) is described by the local parameters:
 \[ v ( \mathbf{r} ) = \frac{1}{\sqrt{\varepsilon ( \mathbf{r} ) \mu (
@@ -384,7 +384,7 @@ An essential consequence of the wave-refraction formulation is the physical demy
 
 === Clocks as Physical Machines of Circulating Motion
 
-In operational physics, time is not an elastic continuum, a flowing substance, or a geometric dimension that can warp, dilate, or curve. Time is a chronological counting parameter—a linguistic abstraction used to order and compare the duration of physical events.
+In operational physics, time is not an elastic medium, a flowing substance, or a geometric dimension that can warp, dilate, or curve. Time is a chronological counting parameter—a linguistic abstraction used to order and compare the duration of physical events.
 
 Every clock in physical existence—whether a cesium-beam atomic clock, a rubidium vapor cell, a quartz crystal oscillator, a mechanical pendulum, or a biological heartbeat—is a physical machine composed of matter. Because all matter consists of localized circulating electromagnetic wave packets, the operation of every clock relies upon the internal propagation of electromagnetic interactions across finite physical dimensions:
 
@@ -564,7 +564,7 @@ Relative motion between the two physical bodies (the ground observer and the air
 
 === Operational Evidence from the Global Positioning System (GPS)
 
-The operational engineering of the Global Positioning System provides continuous, 24-hour empirical verification of clock rate physics:
+The operational engineering of the Global Positioning System provides uninterrupted, 24-hour empirical verification of clock rate physics:
 
 1. _Unidirectional Asymmetry in Orbit_:
 Atomic clocks onboard GPS satellites orbit at an altitude of approximately \( 20,200 \text{ km} \) with an orbital radius \( r \approx 26,600 \text{ km} \) and speed \( v \approx 3.874 \text{ km/s} \).

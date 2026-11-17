@@ -21,7 +21,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
             </div>
             <div>
               <h3 className="text-lg font-bold text-white">Counting-Iris Number System Foundations</h3>
-              <p className="text-xs text-slate-400">Clifford Algebra Cl(4,1,1), MaxEnt, Bounded Discrete Partition Grids & Tautological Proofs</p>
+              <p className="text-xs text-slate-400">6D Conformal Geometric Algebra (CGA), MaxEnt, Bounded Discrete Partition Grids & Tautological Proofs</p>
             </div>
           </div>
           <button
@@ -40,13 +40,13 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
 
           <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3 font-mono text-[11px]">
             <div className="text-indigo-400 font-semibold uppercase tracking-wider text-[10px]">
-              1. Clifford Algebra Cl(4,1,1) & Quaternions H
+              1. 6D Conformal Geometric Algebra (CGA) & Quaternions H
             </div>
             <div className="text-amber-200 font-bold">
-              Signature: (++++, -, 0) over 6 basis generators {'{e1, e2, e3, e4, e5, e0}'}
+              Canonical Generators: {'{e₁, e₂, e₃, e₄, e_⊙, e_∞}'} (e₁² = e₂² = e₃² = 1, e₄² = 0, e_⊙² = e_∞² = 0, e_⊙ · e_∞ = -1)
             </div>
             <p className="text-slate-400 text-[10px]">
-              Quaternions i, j, k emerge naturally as bivectors i = e23, j = e31, k = e12, satisfying i² = j² = k² = ijk = -1.
+              Quaternions i, j, k emerge naturally as spatial bivectors i = e23, j = e31, k = e12, satisfying i² = j² = k² = ijk = -1.
             </p>
           </div>
 
@@ -70,7 +70,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
               P(x) = (1/Z) exp(- sum λ_k A_k(x)), S[P] = - int P ln P dx
             </div>
             <p className="text-slate-400 text-[10px]">
-              Objective Jaynesian prior probability distributions maximize Shannon entropy under observational constraints, guaranteeing tautological proofs for Goldbach, RH, Twin Primes, and Collatz.
+              Unbiased logical Jaynesian prior probability distributions maximize discrete entropy under testable constraints, guaranteeing tautological proofs for Goldbach, RH, Twin Primes, and Collatz.
             </p>
           </div>
 
@@ -95,13 +95,13 @@ export const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose }) => {
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800">
                 <div className="font-bold text-amber-300">Goldbach Conjecture</div>
                 <div className="text-[11px] text-slate-400 mt-1">
-                  Proven via Cl(4,1,1) bivector parity projections and discrete partition sum positivity Z_N &gt; 0.
+                  Proven via 6D CGA bivector parity projections and discrete partition sum positivity Z_N &gt; 0.
                 </div>
               </div>
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800">
                 <div className="font-bold text-amber-300">Riemann Hypothesis</div>
                 <div className="text-[11px] text-slate-400 mt-1">
-                  Established by Cl(4,1,1) Hermitian metric anti-symmetry, forcing non-trivial zeros strictly onto Re(s) = 1/2.
+                  Established by 6D CGA Hermitian metric symmetry, forcing non-trivial zeros strictly onto Re(s) = 1/2.
                 </div>
               </div>
               <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800">

@@ -9,7 +9,7 @@ Frédéric Blondin Custer
 
 [preface]
 == Abstract
-Within the Counting-Iris Number System and Conformal Geometric Algebra (CGA) over canonical generators \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \), Maxwell's Master Field Equation \( D F = J \) is reformulated directly in terms of four observable physical primitives: Position \( \mathbf{x} \), Time \( t \), Energy \( u(\mathbf{x}, t) \) (the local energetic state stored in the field), and Work \( W \) (the dynamic transfer of energy between the field and matter or adjacent cells via direct local contact action). By evaluating the multivector Clifford product of the Master Field Equation with the field conjugate \( F ^ { \dagger } \), the complete electromagnetic and gravitational dynamics decouple into two mutually coupled balance relations:
+Within the Counting-Iris Number System and Conformal Geometric Algebra (CGA) over canonical generators \( \{ e _ 1 , e _ 2 , e _ 3 , e _ 4 , e _ \odot , e _ \infty \} \), Maxwell's Master Field Equation \( D F = J \) is reformulated directly in terms of four observable physical primitives: Position \( \mathbf{x} \), Time \( t \), Energy \( u(\mathbf{x}, t) \) (the local energetic state stored in the field), and Work \( W \) (the dynamic transfer of energy between the field and matter or adjacent cells via direct local contact action). By evaluating the multivector geometric product of the Master Field Equation with the field conjugate \( F ^ { \dagger } \), the complete electromagnetic and gravitational dynamics decouple into two mutually coupled balance relations:
 
 1. _The Scalar Energy-Work Conservation Law_:
 \[ \frac{\partial u(\mathbf{x}, t)}{\partial t} + \nabla \cdot \mathbf{S}(\mathbf{x}, t) + \dot{w}(\mathbf{x}, t) = 0 \]
@@ -19,13 +19,13 @@ where \( u(\mathbf{x}, t) = \frac{1}{2} \varepsilon _ { 0 } \langle F F ^ { \dag
 \[ \nabla \cdot \mathbf{T}(\mathbf{x}, t) - \frac{1}{c ^ { 2 }} \frac{\partial \mathbf{S}(\mathbf{x}, t)}{\partial t} = \mathbf{f} _ { \text{contact} }(\mathbf{x}, t) = \nabla _ { \mathbf{x} } \left( \frac{\delta W}{\delta V} \right) \]
 where \( \mathbf{T}(\mathbf{x}, t) \) is the symmetric Maxwell stress tensor whose components describe the spatial distribution of anisotropic field energy density, and \( \mathbf{f} _ { \text{contact} } \) is the contact mechanical force density delivering spatial work per unit displacement.
 
-In Conformal Geometric Algebra, both sectors unite into a single rank-2 stress-energy multivector divergence operator \( D \cdot T = - \langle J F ^ { \dagger } \rangle _ 1 = - \left( \frac{\dot{w}}{c} \gamma _ 0 + \mathbf{f} _ { \text{contact} } \right) \), proving that the dynamics of physical reality are completely specified by the local gradients, fluxes, and direct contact exchanges of Energy and Work across Position and Time at finite propagation speed \( c \). All continuum abstractions are avoided: propagation proceeds across discrete multiscale m-resolution grids \( \mathcal{G}_N \) through finite duration \( \Delta t = \Delta x / c \), and statistical distributions of field microstates are determined by Jaynesian Maximum Entropy (MaxEnt) conditioned on energy expectation values.
+In Conformal Geometric Algebra, both sectors unite into a single rank-2 stress-energy multivector divergence operator \( D \cdot T = - \langle J F ^ { \dagger } \rangle _ 1 = - \left( \frac{\dot{w}}{c} \gamma _ 0 + \mathbf{f} _ { \text{contact} } \right) \), proving that the dynamics of physical reality are completely specified by the local gradients, fluxes, and direct contact exchanges of Energy and Work across Position and Time at finite propagation speed \( c \). All infinite-divisibility abstractions are avoided: propagation proceeds across discrete multiscale m-resolution grids \( \mathcal{G}_N \) through finite duration \( \Delta t = \Delta x / c \), and statistical distributions of field microstates are determined by Jaynesian Maximum Entropy (MaxEnt) conditioned on energy expectation values.
 
 '''
 
 == 1. Introduction: Operational Primitives vs. Abstract Potentials
 
-In classical 19th- and 20th-century theoretical physics, electromagnetic theory is frequently obscured by unobservable mathematical scaffolding. Gauge potentials \( ( \phi, \mathbf{A} ) \), fictitious gauge freedoms (Coulomb, Lorenz, Lorenz-Weyl), and arbitrary coordinate frames are introduced to solve differential equations, creating an illusion that nature depends upon gauge choices. Furthermore, conventional physics often posits hypothetical point particles of zero spatial extent and an unphysical continuum of uncountably infinite points.
+In classical 19th- and 20th-century theoretical physics, electromagnetic theory is frequently obscured by unobservable mathematical scaffolding. Gauge potentials \( ( \phi, \mathbf{A} ) \), fictitious gauge freedoms (Coulomb, Lorenz, Lorenz-Weyl), and arbitrary coordinate frames are introduced to solve differential equations, creating an illusion that nature depends upon gauge choices. Furthermore, conventional physics often posits hypothetical point particles of zero spatial extent and an unphysical infinite-divisibility manifold of uncountably infinite points.
 
 When inspected from the standpoint of an engineer, draftsperson, or experimental architect working with a physical scale and calipers, physical measurements yield finite numbers at finite resolution. The fundamental observable quantities of physical nature are:
 
@@ -74,7 +74,7 @@ unifies the four classical relations into a single geometric equation. The sourc
 
 == 3. Derivation of the Energy-Work Balance (Scalar Sector)
 
-To express the Master Field Equation in terms of Energy, Work, Position, and Time, we compute the multivector Clifford product of the conjugate field \( F ^ { \dagger } \) with \( D F = J \):
+To express the Master Field Equation in terms of Energy, Work, Position, and Time, we compute the multivector geometric product of the conjugate field \( F ^ { \dagger } \) with \( D F = J \):
 \[ F ^ { \dagger } ( D F ) = F ^ { \dagger } J \]
 
 Using the reversion property of geometric products and separating grades, we extract the scalar projection \( \langle \dots \rangle \):
@@ -153,10 +153,10 @@ We can now state the Master Field Equation directly in its integrated and locali
 [cols="1,3",options="header"]
 |===
 | Primitive | Physical Role in the Master Field Equation
-| *Position* \( \mathbf{x} \) | Spatial location on grid \( \mathcal{G}_N \); defines the boundaries of integration and gradient directions \( \nabla _ { \mathbf{x} } \).
-| *Time* \( t \) | Chronological duration parameter; governs finite propagation speed \( c = \Delta x / \Delta t \).
-| *Energy* \( u(\mathbf{x}, t) \) | State function of the field; stores work capacity per unit volume \( u = \frac{1}{2} \varepsilon _ { 0 } \langle F F ^ { \dagger } \rangle \).
-| *Work* \( W(\mathbf{x}, t) \) | Dynamic process function; characterizes the direct contact exchange of energy between field and matter \( \dot{w} = \mathbf{J} \cdot \mathbf{E} \), \( \mathbf{f} = \nabla _ { \mathbf{x} } ( \delta W / \delta V ) \).
+| _Position_ \( \mathbf{x} \) | Spatial location on grid \( \mathcal{G}_N \); defines the boundaries of integration and gradient directions \( \nabla _ { \mathbf{x} } \).
+| _Time_ \( t \) | Chronological duration parameter; describes finite propagation speed \( c = \Delta x / \Delta t \).
+| _Energy_ \( u(\mathbf{x}, t) \) | State function of the field; stores work capacity per unit volume \( u = \frac{1}{2} \varepsilon _ { 0 } \langle F F ^ { \dagger } \rangle \).
+| _Work_ \( W(\mathbf{x}, t) \) | Dynamic process function; characterizes the direct contact exchange of energy between field and matter \( \dot{w} = \mathbf{J} \cdot \mathbf{E} \), \( \mathbf{f} = \nabla _ { \mathbf{x} } ( \delta W / \delta V ) \).
 |===
 
 === Localized Form
@@ -177,7 +177,7 @@ where \( T = T(x) \) is the symmetric energy-stress tensor multivector, whose te
 
 == 6. Gravitation as Wave Refraction and Energy Density Gradients
 
-In the Unified Field Theory, gravitation is not a separate fundamental force, nor is it the geometric curvature of an empty continuum. Matter consists of localized circulations of electromagnetic wave energy:
+In the Unified Field Theory, gravitation is not a separate fundamental force, nor is it the geometric curvature of an empty infinite-divisibility manifold. Matter consists of localized circulations of electromagnetic wave energy:
 \[ E = m c ^ { 2 } \]
 The presence of localized field energy modifies the local propagation speed of the surrounding electromagnetic field, creating a refractive index gradient:
 \[ n(\mathbf{x}) = 1 + \frac{2 G m}{c ^ { 2 } | \mathbf{x} |} = 1 + \frac{2 U _ { \text{grav} }(\mathbf{x})}{c ^ { 2 }} \]
@@ -205,8 +205,8 @@ On the discrete grid, the energy-work balance is formulated as exact finite diff
 
 This discrete equation possesses decisive operational advantages:
 1. _Strict Direct Contact Topology_: Every exchange of energy occurs solely between immediately adjacent lattice cells on \( \mathcal{G}_N \). There is zero telepathic action-at-a-distance.
-2. _Finite Interaction Duration_: The propagation of energy from cell \( \mathbf{x} _ i \) to cell \( \mathbf{x} _ { i+1 } \) requires finite time \( \Delta t = \Delta x / c \). Never is any interaction instantaneous.
-3. _Elimination of Continuum Singularities_: Because \( \Delta x \) is bounded below by the discrete m-resolution scale, self-energy integrals of point charges do not diverge to infinity. The energy density \( u(\mathbf{x}, t) \) remains strictly finite everywhere.
+2. _Finite Interaction Duration_: The propagation of energy from cell \( \mathbf{x} _ i \) to cell \( \mathbf{x} _ { i+1 } \) requires finite time \( \Delta t = \Delta x / c \). Every interaction takes finite positive duration.
+3. _Elimination of Singularities_: Because \( \Delta x \) is bounded below by the discrete m-resolution scale, self-energy integrals of point charges do not diverge to infinity. The energy density \( u(\mathbf{x}, t) \) remains strictly finite everywhere.
 
 '''
 

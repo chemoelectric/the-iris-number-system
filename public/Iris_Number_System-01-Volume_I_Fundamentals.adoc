@@ -17,9 +17,9 @@ Classical Euclidean geometry as an exact algebraic tautological system construct
 
 ==== The Tautological Nature of Geometric Axiomatics
 
-Classical Euclidean geometry, stripped of “continuum” speculations and unmeasurably “infinite” point sets, reveals itself as a closed _tautological system_.
+Classical Euclidean geometry, stripped of “infinite-divisibility” speculations and unmeasurably “infinite” point sets, reveals itself as a closed _tautological system_.
 
-In this formulation, geometric primitives—points, directed line segments, angles, directed areas, and oriented volumes—are not mysterious entities with zero spatial extent. They are multivector _measurements_ within discrete grids \( \mathcal { G } _ N \). They are idealizations of straightedges, compasses, rulers, protractors, etc. Nothing within the system has zero spatial extent. There is no such thing as a “limit,” nor is there need for such a thing, because everything is finite.
+In this formulation, geometric primitives—points, directed line segments, angles, directed areas, and oriented volumes—are not mysterious entities with zero spatial extent. They are multivector _measurements_ within discrete grids \( \mathcal { G } _ N \). They are idealizations of straightedges, compasses, rulers, protractors, etc. Because straightedges and compasses are physical drafting instruments, it was always a convention rather than a necessity of nature to admit them while excluding physical vanishing under measurement; in our Euclidist approach, physical vanishing under measurement is admitted on equal footing through _Primordial Postulate 0_. Nothing within the system has zero spatial extent. There is no such thing as a “limit,” nor is there need for such a thing, because everything is finite.
 
 The only infinities are _countable infinities_: indefinite numbers of finite entities. This is the only kind of infinity known to be of practical use in engineering, the sciences, and everyday life. It is the only kind that corresponds to any kind of measurement instrument, tool, or construction material. The other “infinities” are fantasies. A yardstick made of “infinite” “dimensionless points” is not something real. There is nothing remotely like it in the universe. Mathematicians wasting resources on “uncountable infinities” that are like nothing in the universe are a large part of why the planet is increasingly a gigantic heat sink. They _should_ be developing _practical_ mathematics, but instead are playing the Bourbaki version of _Dungeons & Dragons_.
 
@@ -118,7 +118,7 @@ Under this directional measurement representation:
 * \( ( \bullet \bullet ) _ { \to } \): Two discrete measurement steps in the forward direction.
 * \( \bullet _ { \leftarrow } \): A single discrete measurement step in the opposite direction (replacing the abstract '-1' symbol).
 * \( ( \bullet \bullet ) _ { \leftarrow } \): Two discrete measurement steps in the opposite direction.
-* **etc** (*et cetera*): Explicitly utilized in place of standard mathematical ellipsis dots \( ( \dots ) \) to represent countable infinity, reminding the reader that **etc** signifies __"and indefinitely onwards in similar fashion"__, denoting an active, open-ended operational process of step-by-step measurement carrying none of the conventional mathematical assumptions or completed-infinity abstractions found in set theory and classical real analysis.
+* __etc__ (_et cetera_): Explicitly utilized in place of standard mathematical ellipsis dots \( ( \dots ) \) to represent countable infinity, reminding the reader that __etc__ signifies __“and indefinitely onwards in similar fashion”__, denoting an active, open-ended operational process of step-by-step measurement carrying none of the conventional mathematical assumptions or completed-infinity abstractions found in set theory and classical real analysis.
 
 Positive integers represent measurement operations counting steps in the forward direction, while negative integers represent identical measurement steps in the opposite spatial/algebraic direction from the zero origin.
 
@@ -146,46 +146,46 @@ For any two integers \( n , m \in \mathbb { Z } \), the geometric product \( M (
 
 ====
 
-__This algebraic duality provides the structural foundation for proving parity-based number theory conjectures (such as Goldbach’s Partition Problem) without relying on heuristic approximations.__footnote:[That the Goldbach conjecture should be proved in an insightful way by using a geometric algebra _designed for computer graphics_ (CGA) makes perfect sense. Computer graphics requires mathematics that corresponds to the structure of the _real_ universe, and thus this mathematics not only _proves_ a conjecture, but provides _real_ insight into _why_ a conjecture is true. One can use a computer inference engine to find the proof, and yet still get a concise, insightful proof, not pages of unfathomable notation. One can even command the computer to remove jargon and phrase the proof in fairly plain language. (A proof of Goldbach via CGA will be in a forthcoming _Volume{nbsp}II_ of this series. The current _Volume{nbsp}II_ contains a proof via a related geometric algebra.)]
+__This algebraic duality provides the structural foundation for proving parity-based number theory conjectures (such as Goldbach’s Partition Problem) without relying on heuristic approximations.__footnote:[That the Goldbach conjecture should be proved in an insightful way by using a geometric algebra _designed for computer graphics_ (CGA) makes perfect sense. Computer graphics requires mathematics that corresponds to the structure of the _real_ universe, and thus this mathematics not only _proves_ a conjecture, but provides _real_ insight into _why_ a conjecture is true. One can use a computer inference engine to find the proof, and yet still get a concise, insightful proof, not pages of unfathomable notation. One can even command the computer to remove jargon and phrase the proof in fairly plain language. Volume{nbsp}II of this series provides this proof directly in 6D Conformal Geometric Algebra (CGA).]
 
 [#chap-the-iris]
 
 === The Iris
 
-The _Iris_ optical-geometric analogy, variable aperture flux gating, Spin(2) bivector rotation planes, and the nilpotent perimeter boundary.
+The _Iris_ optical-geometric analogy, variable iris window flux gating, planar bivector rotation planes, and the nilpotent perimeter boundary.
 
 ==== Introduction to the Iris Analogy
 
-The Counting-Iris Number System takes its name and one of its core visualizations from the optical _iris diaphragm_—a mechanical aperture composed of overlapping curved blades that expand and contract radially while rotating in a “phase space”—which is just jargon for the ability to turn things by the same angle concentrically.
+The Counting-Iris Number System takes its name and one of its core visualizations from the optical _iris diaphragm_—a mechanical window composed of overlapping curved blades that expand and contract radially while rotating in a “phase space”—which is just jargon for the ability to turn things by the same angle concentrically.
 
-In physical optics and geometric field theory, an iris diaphragm does not merely truncate light; it dynamically regulates total flux, boundary curvature, and phase distribution across a finite aperture.
+In physical optics and geometric field theory, an iris diaphragm does not merely truncate light; it dynamically regulates total flux, boundary curvature, and phase distribution across a finite sampling window.
 
-In our mathematical unification, the _Iris_ serves as a dynamic algebraic “aperture” bridging the discrete integers \( \mathbb { Z } \) with finite multivector space in Conformal Geometric Algebra (CGA).
+In our mathematical unification, the _Iris_ serves as a dynamic algebraic “window” bridging the discrete integers \( \mathbb { Z } \) with finite multivector space in Conformal Geometric Algebra (CGA).
 
 The primary physical and mathematical components of the Iris analogy are:
 
-* _Central Aperture Opening (\( \iota \))_: Represents the active field generator \( \iota \), whose aperture area corresponds to the scaling flux of discrete integer counts.
-* _Overlapping Aperture Blades_: Execute Spin(2) bivector plane rotations \( e _ { 12 } \) in Conformal Geometric Algebra, imparting phase orientation and parity residue.
+* _Central Window Opening (\( \iota \))_: Represents the active field generator \( \iota \), whose window area corresponds to the scaling flux of discrete integer counts.
+* _Overlapping Diaphragm Blades_: Execute planar bivector rotations \( e _ { 12 } \) in Conformal Geometric Algebra, imparting phase orientation and parity residue.
 * _Nilpotent Perimeter Boundary (\( \varpi \vartheta \))_: The microscopic perimeter contact boundary of the blades acts as a nilpotent boundary constraint satisfying \( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \), preventing singular boundary collapse while enforcing exact local contact.
-* _Variable Aperture Scaling_: Radial expansion and contraction \( r \) controls scaling dilatation, bridging discrete count states with smooth macro-level field density.
+* _Variable Window Scaling_: Radial expansion and contraction \( r \) controls scaling dilatation, bridging discrete count states with fine-grained macro-level field density.
 
 [IRIS_VISUALIZATION]
 
-As illustrated in the dynamic model above, adjusting the aperture opening magnitude \( r \) and phase angle \( \theta \) directly updates the multivector operator state: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
+As illustrated in the dynamic model above, adjusting the window opening magnitude \( r \) and phase angle \( \theta \) directly updates the multivector operator state: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
 
 
-maintaining the exact quadratic aperture constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
+maintaining the exact quadratic window constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
 
 [#chap-initial-postulates-of-the-tautological-structure]
 
 === Initial Postulates of the Tautological Structure
 
-Essential postulates governing the tautological structure of the Counting-Iris Number System.
+Essential postulates defining the tautological structure of the Counting-Iris Number System.
 
 ==== Initial Postulates of the Tautological Structure
 
 
-To establish the tautological engine of the Iris Number System starting strictly from the integers \( \mathbb { Z } \), we postulate the following foundational axioms:footnote:[These axioms are called __"Initial Postulates"__ because, once the tautological structure of the Counting-Iris system is complete, any sufficient set of facts within the system can form a postulate set. Such a tautological axiomatic system is guaranteed to be free of contradictions and paradoxes and therefore is unusually reliable. The conventional mathematics of our times offers no such reliability. It freely uses such wild speculations as the Axiom of Choice. It admits more and more and more inventions, without ever attaining a proof there are no contradictions. It contains known paradoxes—entities that make no sense—and yet these are tolerated. To use such mathematics for engineering is to gamble with lives. (One should ask oneself what the attitude of the founders of this kind of mathematics was towards draftspersons and people with grease on their hands.)]
+To establish the tautological engine of the Iris Number System starting strictly from the integers \( \mathbb { Z } \), we postulate the following foundational axioms:footnote:[These axioms are called __“Initial Postulates”__ because, once the tautological structure of the Counting-Iris system is complete, any sufficient set of facts within the system can form a postulate set. Such a tautological axiomatic system is guaranteed to be free of contradictions and paradoxes and therefore is unusually reliable. The conventional mathematics of our times offers no such reliability. It freely uses such wild speculations as the Axiom of Choice. It admits more and more and more inventions, without ever attaining a proof there are no contradictions. It contains known paradoxes—entities that make no sense—and yet these are tolerated. To use such mathematics for engineering is to gamble with lives. (One should ask oneself what the attitude of the founders of this kind of mathematics was towards draftspersons and people with grease on their hands.)]
 
 [#postulate-0]
 [POSTULATE]
@@ -193,7 +193,7 @@ To establish the tautological engine of the Iris Number System starting strictly
 ====
 __Everything in the system is an Operation of Measurement.__
 
-Every entity, integer count, operator, multivector element, and topological halo boundary interaction in the Counting-Iris Number System is explicitly defined as an active physical or algebraic operation of measurement. Mathematical quantities do not exist as passive static values, but as the exact scalar or multivector outcome of a discrete gauging process executed upon a physical or geometric domain.
+Every entity, integer count, operator, multivector element, and topological halo boundary interaction in the Counting-Iris Number System is explicitly defined as an active physical or algebraic operation of measurement. Mathematical quantities do not exist as passive static values, but as the exact scalar or multivector outcome of a discrete gauging process executed upon a physical or geometric domain. Consequently, any mathematical term representing a physically impossible configuration—such as a state violating Newton’s laws of motion, mass-energy conservation, or Jaynesian maximum-entropy inference—vanishes identically under physical measurement and drops out under Main Scale Projection \( ( \downarrow ) \); thus physical vanishing under measurement serves directly as an admissible deductive rule in theorems.
 ====
 
 [#postulate-1]
@@ -227,7 +227,7 @@ This guarantees that diophantine norm equations in \( \mathbb { Z } \) map direc
 [POSTULATE]
 .Postulate 4: Bivector Parity Duality
 ====
-Every integer \( n \in \mathbb { Z } \) possesses a canonical parity projection into the bivector subalgebra \( e _ { 23 } , e _ { 31 } , e _ { 12 } \) (isomorphic to quaternions \( \mathbf { H } \)). Even integers \( n = 2k \) yield zero bivector commutator residue, whereas odd integers \( n = 2k + 1 \) yield a unit parity residue \( e _ { 23 } \wedge e _ { 31 } \).
+Every integer \( n \in \mathbb { Z } \) possesses a canonical parity projection into the bivector subalgebra \( e _ { 23 } , e _ { 31 } , e _ { 12 } \) (structurally equivalent to quaternions \( \mathbf { H } \)). Even integers \( n = 2k \) yield zero bivector commutator residue, whereas odd integers \( n = 2k + 1 \) yield a unit parity residue \( e _ { 23 } \wedge e _ { 31 } \).
 ====
 
 [#postulate-5]
@@ -273,87 +273,87 @@ Spectral density transfers and force couplings execute strictly through contiguo
 [POSTULATE]
 .Postulate 9: Formal Definition of the Iris Generator (\( \iota \))
 ====
-The fundamental Iris generator \( \iota \) is defined as a multivector operator in Conformal Geometric Algebra acting as an algebraic “aperture” whose quadratic constraint satisfies: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
+The fundamental Iris generator \( \iota \) is defined as a multivector operator in Conformal Geometric Algebra acting as an algebraic “sampling window” whose quadratic constraint satisfies: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
 
 
-where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators (\( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \)) constituting the perimeter boundary of the “aperture,” and \( \mathbf { 1 } \) is the scalar unit identity.
+where \( \varpi \) and \( \vartheta \) are orthogonal nilpotent basis generators (\( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \)) constituting the perimeter boundary of the “window,” and \( \mathbf { 1 } \) is the scalar unit identity.
 ====
 
 [#chap-the-rational-numbers]
 
 === The Rational Numbers
 
-Constructing the rational numbers \( \mathbb { Q } \) using the Iris optical-geometric aperture analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating.
+Constructing the rational numbers \( \mathbb { Q } \) using the Iris optical-geometric window analogy as fractional opening ratios of discrete measurement operations, sectorial blade partitions, and scale-invariant flux gating.
 
-==== Iris Aperture Ratios and Fractional Measurement Operations
+==== Iris Window Ratios and Fractional Measurement Operations
 
-Following the formal definition of the Iris generator in Postulate 9 and the Primordial Principle of Measurement (Postulate 0), the domain of __Rational Numbers__, denoted by \( \mathbb { Q } \), is constructed directly using the __Iris Optical-Geometric Aperture Analogy__.
+Following the formal definition of the Iris generator in Postulate 9 and the Primordial Principle of Measurement (Postulate 0), the domain of __Rational Numbers__, denoted by \( \mathbb { Q } \), is constructed directly using the __Iris Optical-Geometric Window Analogy__.
 
-Rather than abstract static fractions, a rational number represents the relative opening ratio or flux throughput fraction of an Iris aperture diaphragm: \[ \mathbb { Q } = \left \{ \frac { p } { q _ { \text { den } } } \; \middle | \; p , q _ { \text { den } } \in \mathbb { Z } , q _ { \text { den } } \neq \mathbf { 0 } \right \} \]
+Rather than abstract static fractions, a rational number represents the relative opening ratio or flux throughput fraction of an Iris diaphragm window: \[ \mathbb { Q } = \left \{ \frac { p } { q _ { \text { den } } } \; \middle | \; p , q _ { \text { den } } \in \mathbb { Z } , q _ { \text { den } } \neq \mathbf { 0 } \right \} \]
 
 
-In this optical-geometric model, the fully open reference Iris aperture corresponds to the unit scalar identity \( \mathbf { 1 } \) (or primary unit counting step \( \bullet \)). An Iris aperture is divided sectorially by \( q _ { \text { den } } \in \mathbb { Z } _ { > 0 } \) overlapping aperture blades or grid steps. Selecting \( p \in \mathbb { Z } \) blade counting steps yields the fractional Iris aperture opening ratio:
+In this optical-geometric model, the fully open reference Iris window corresponds to the unit scalar identity \( \mathbf { 1 } \) (or primary unit counting step \( \bullet \)). An Iris window is divided sectorially by \( q _ { \text { den } } \in \mathbb { Z } _ { > 0 } \) overlapping diaphragm blades or grid steps. Selecting \( p \in \mathbb { Z } \) blade counting steps yields the fractional Iris window opening ratio:
 
-[#definition-rational-aperture-ratio]
+[#definition-rational-window-ratio]
 [DEFINITION]
-.Definition: Iris Aperture Rational Ratio
+.Definition: Iris Window Rational Ratio
 ====
-A rational number \( r = \frac { p } { q _ { \text { den } } } \) is an active Iris aperture measurement operator that partitions the primary unit aperture flux \( \bullet \) into \( q _ { \text { den } } \) equal radial blade sub-intervals, and iterates that sub-step \( p \) times along the directional measurement axis: \[ r = \frac { p } { q _ { \text { den } } } \equiv \text { ApertureFlux } _ { q _ { \text { den } } } \left ( p \cdot \bullet _ { \to / \leftarrow } \right ) \]
+A rational number \( r = \frac { p } { q _ { \text { den } } } \) is an active Iris window measurement operator that partitions the primary unit window flux \( \bullet \) into \( q _ { \text { den } } \) equal radial blade sub-intervals, and iterates that sub-step \( p \) times along the directional measurement axis: \[ r = \frac { p } { q _ { \text { den } } } \equiv \text { WindowFlux } _ { q _ { \text { den } } } \left ( p \cdot \bullet _ { \to / \leftarrow } \right ) \]
 
 ====
 
-Under this directional Iris aperture measurement representation:
+Under this directional Iris window measurement representation:
 
-* \( \frac { \bullet _ { \to } } { ( \bullet \bullet ) _ { \to } } \): A half-open Iris aperture step in the forward direction (\( r = 1 / 2 \)).
-* \( \frac { ( \bullet \bullet \bullet ) _ { \leftarrow } } { ( \bullet \bullet ) _ { \to } } \): A three-halves Iris aperture opening in the reverse direction (\( r = - 3 / 2 \)).
-* \( \frac { \mathbf { 0 } } { q _ { \text { den } } } \): A completely closed Iris aperture state (\( r = 0 \)).
+* \( \frac { \bullet _ { \to } } { ( \bullet \bullet ) _ { \to } } \): A half-open Iris window step in the forward direction (\( r = 1 / 2 \)).
+* \( \frac { ( \bullet \bullet \bullet ) _ { \leftarrow } } { ( \bullet \bullet ) _ { \to } } \): A three-halves Iris window opening in the reverse direction (\( r = - 3 / 2 \)).
+* \( \frac { \mathbf { 0 } } { q _ { \text { den } } } \): A completely closed Iris window state (\( r = 0 \)).
 
-==== Discrete Partition Grids as Iris Aperture Grid Resolutions
-As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { > 0 } \) corresponds to an \( N \)-blade Iris aperture resolution level, inducing an exact, bounded discrete rational partition grid: \[ \mathcal { G } _ N = \left \{ \frac { k } { N } \; \middle | \; k \in \mathbb { Z } , | k | \le N ^ 2 \right \} \]
+==== Discrete Partition Grids as Iris Window Grid Resolutions
+As established in Postulate 5, every discrete resolution count \( N \in \mathbb { Z } _ { > 0 } \) corresponds to an \( N \)-blade Iris window resolution level, inducing an exact, bounded discrete rational partition grid: \[ \mathcal { G } _ N = \left \{ \frac { k } { N } \; \middle | \; k \in \mathbb { Z } , | k | \le N ^ 2 \right \} \]
 
 
-The elementary grid resolution step size \( \delta = \frac { \bullet } { N } \) represents a single blade's aperture sector, satisfying exact integer reciprocity \( \delta \cdot N = \bullet \), guaranteeing that all measurement quantities in \( \mathcal { G } _ N \) are exact, constructible discrete states free of truncation errors, rounding noise, or reliance on unconstructive non-denumerable continua.
+The elementary grid resolution step size \( \delta = \frac { \bullet } { N } \) represents a single blade's window sector, satisfying exact integer reciprocity \( \delta \cdot N = \bullet \), guaranteeing that all measurement quantities in \( \mathcal { G } _ N \) are exact, constructible discrete states free of truncation errors, rounding noise, or reliance on unconstructive non-denumerable point-sets.
 
-==== Rational Arithmetic as Iris Aperture Composition and Scale Refinement
+==== Rational Arithmetic as Iris Window Composition and Scale Refinement
 
-Arithmetic operations over rational numbers \( \mathbb { Q } \) are physical and algebraic operations of Iris aperture composition, blade alignment, and scale refinement.
+Arithmetic operations over rational numbers \( \mathbb { Q } \) are physical and algebraic operations of Iris window composition, blade alignment, and scale refinement.
 
 ==== Addition as Iris Blade Alignment
-Adding two rational aperture ratios \( \frac { a } { b } \) and \( \frac { c } { d } \) aligns their respective blade subdivisions to a common resolution count \( b \cdot d \) across the Iris aperture perimeter: \[ \frac { a } { b } + \frac { c } { d } = \frac { ( a \cdot d ) _ { \to / \leftarrow } + ( b \cdot c ) _ { \to / \leftarrow } } { ( b \cdot d ) _ { \to } } \]
+Adding two rational window ratios \( \frac { a } { b } \) and \( \frac { c } { d } \) aligns their respective blade subdivisions to a common resolution count \( b \cdot d \) across the Iris window perimeter: \[ \frac { a } { b } + \frac { c } { d } = \frac { ( a \cdot d ) _ { \to / \leftarrow } + ( b \cdot c ) _ { \to / \leftarrow } } { ( b \cdot d ) _ { \to } } \]
 
 
-This process aligns discrete aperture measurement steps onto a single common partition grid without altering the total measured flux distance from the reference origin.
+This process aligns discrete window measurement steps onto a single common partition grid without altering the total measured flux distance from the reference origin.
 
-==== Multiplication as Composite Aperture Gating
-Multiplication \( \frac { a } { b } \cdot \frac { c } { d } = \frac { a \cdot c } { b \cdot d } \) represents the sequential composition of two Iris aperture flux gating operations: first partitioning the aperture light flux by \( b \cdot d \) sub-steps, and then iterating by \( a \cdot c \) blade steps.
+==== Multiplication as Composite Window Gating
+Multiplication \( \frac { a } { b } \cdot \frac { c } { d } = \frac { a \cdot c } { b \cdot d } \) represents the sequential composition of two Iris window flux gating operations: first partitioning the window light flux by \( b \cdot d \) sub-steps, and then iterating by \( a \cdot c \) blade steps.
 
 [#theorem-rational-reciprocity]
 [THEOREM]
 .Theorem: Scale-Invariant Rational Reciprocity
 ====
-For every non-zero rational aperture ratio \( r = \frac { p } { q _ { \text { den } } } \in \mathbb { Q } \setminus \{ \mathbf { 0 } \} \), there exists an exact multiplicative inverse aperture gating \( r ^ { - 1 } = \frac { q _ { \text { den } } } { p } \) such that: \[ r \cdot r ^ { - 1 } = \frac { p \cdot q _ { \text { den } } } { q _ { \text { den } } \cdot p } = \frac { \bullet } { \bullet } = \mathbf { 1 } \]
+For every non-zero rational window ratio \( r = \frac { p } { q _ { \text { den } } } \in \mathbb { Q } \setminus \{ \mathbf { 0 } \} \), there exists an exact multiplicative inverse window gating \( r ^ { - 1 } = \frac { q _ { \text { den } } } { p } \) such that: \[ r \cdot r ^ { - 1 } = \frac { p \cdot q _ { \text { den } } } { q _ { \text { den } } \cdot p } = \frac { \bullet } { \bullet } = \mathbf { 1 } \]
 
 
-The composite operation of scaling the Iris aperture down by \( q _ { \text { den } } \) and scaling up by \( p \), followed by its inverse, exactly restores the primary unit aperture flux state \( \bullet \).
+The composite operation of scaling the Iris window down by \( q _ { \text { den } } \) and scaling up by \( p \), followed by its inverse, exactly restores the primary unit window flux state \( \bullet \).
 ====
 
 ==== Modulation of the Iris Multivector Generator \( \iota \)
-Rational aperture scale factors \( r = p / q \) directly modulate the Iris field operator defined in Postulate 9: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
+Rational window scale factors \( r = p / q \) directly modulate the Iris field operator defined in Postulate 9: \[ \iota ( r , \theta ) = r \left ( \cos \theta \cdot \mathbf { 1 } + \sin \theta \cdot e _ { 12 } \right ) + \sqrt { 1 - r ^ 2 } \cdot \varpi \vartheta \]
 
 
-Varying the rational aperture ratio \( r \) adjusts the central flux transmission while maintaining the quadratic perimeter boundary constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
+Varying the rational window ratio \( r \) adjusts the central flux transmission while maintaining the quadratic perimeter boundary constraint \( \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \).
 
 [#chap-the-real-numbers]
 
 === The Real Numbers
 
-Constructing the real numbers \( \mathbb { R } \) through constructive Iris aperture refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations.
+Constructing the real numbers \( \mathbb { R } \) through constructive Iris window refinements and convergent Cauchy sequences of rational partition grid measurements, establishing dense flux parameters and transcendental bivector rotations.
 
-==== Constructive Iris Aperture Convergences and Rational Grid Refinement
+==== Constructive Iris Window Convergences and Rational Grid Refinement
 
-In the Counting-Iris framework, __The Real Numbers__, denoted by \( \mathbb { R } \), are constructed directly from the Iris optical-geometric aperture model as constructive convergences of discrete rational grid measurement operations.
+In the Counting-Iris framework, __The Real Numbers__, denoted by \( \mathbb { R } \), are constructed directly from the Iris optical-geometric window model as constructive convergences of discrete rational grid measurement operations.
 
-While classical analysis often relies on non-constructive completed infinities (such as undenumerable Dedekind cuts or non-computable real sets), the Counting-Iris system adheres strictly to the Primordial Principle of Measurement (Postulate 0) and the Discrete Countability Boundary (Postulate 7). A real number is defined as an active, convergent sequence of finite rational measurement operations performed across a family of refining Iris aperture partition grids \( \mathcal { G } _ N \).
+While classical analysis often relies on non-constructive completed infinities (such as undenumerable Dedekind cuts or non-computable real sets), the Counting-Iris system adheres strictly to the Primordial Principle of Measurement (Postulate 0) and the Discrete Countability Boundary (Postulate 7). A real number is defined as an active, convergent sequence of finite rational measurement operations performed across a family of refining Iris window partition grids \( \mathcal { G } _ N \).
 
 To put it more comprehensibly: __real numbers are shorthand for interval arithmetic that is assumed to be as precise as needed for the given task.__
 
@@ -370,48 +370,48 @@ ____
 One is merely _used to_ regarding real numbers as “true numbers.” That here we regard them as “numbers in name only” should make no difference. A real number by any other word would be the same entity.
 
 
-[#definition-real-aperture-convergence]
+[#definition-real-window-convergence]
 [DEFINITION]
-.Definition: Constructive Iris Aperture Real Number
+.Definition: Constructive Iris Window Real Number
 ====
-A real number \( x \in \mathbb { R } \) is an active measurement process defined as an equivalence class of Cauchy sequences of rational aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \), where each \( r _ N \in \mathcal { G } _ N \) represents an exact rational measurement state on an \( N \)-blade Iris aperture grid, satisfying the Cauchy convergence criterion: \[ \forall \epsilon = \frac { 1 } { M } \in \mathbb { Q } _ { > 0 } , \quad \exists K \in \mathbb { Z } _ { > 0 } \quad \text { s.t. } \quad \forall n , m > K , \quad \left | r _ n - r _ m \right | < \frac { 1 } { M } \]
+A real number \( x \in \mathbb { R } \) is an active measurement process defined as an equivalence class of Cauchy sequences of rational window ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \), where each \( r _ N \in \mathcal { G } _ N \) represents an exact rational measurement state on an \( N \)-blade Iris window grid, satisfying the Cauchy convergence criterion: \[ \forall \epsilon = \frac { 1 } { M } \in \mathbb { Q } _ { > 0 } , \quad \exists K \in \mathbb { Z } _ { > 0 } \quad \text { s.t. } \quad \forall n , m > K , \quad \left | r _ n - r _ m \right | < \frac { 1 } { M } \]
 
 
-The real quantity \( x \) is the main scale aperture flux throughput value under Main Scale Projection (an operator more thoroughly introduced later, in a constructive analog of nonstandard analysis):
-\[ x \equiv ( \downarrow ) ( r _ \omega ) = ( \downarrow ) \left ( \text { ApertureFlux } _ \omega \left ( k _ \omega \cdot \delta _ \omega \right ) \right ) \]
+The real quantity \( x \) is the main scale window flux throughput value under Main Scale Projection (an operator more thoroughly introduced later, in a constructive analog of nonstandard analysis):
+\[ x \equiv ( \downarrow ) ( r _ \omega ) = ( \downarrow ) \left ( \text { WindowFlux } _ \omega \left ( k _ \omega \cdot \delta _ \omega \right ) \right ) \]
 
 
 where \( r _ \omega = \frac { k _ \omega } { \omega } \in \mathcal { G } _ \omega \) is an ultra-refined vernier rational measurement state satisfying \( | r _ N - x | < \frac { 1 } { N } \) for all finite grid stages \( N \in \mathbb { Z } _ { > 0 } \).
 
 ====
 
-Under this physical Iris aperture convergence model:
+Under this physical Iris window convergence model:
 
-* __Bounded Iris Aperture Interval__: The normalized central aperture transmission parameter \( r \in [ - 1 , 1 ] \) spans an otherwise uninterrupted interval of light flux across finite partition steps, bounded by total closure (\( r = - 1 \) or \( r = 0 \)) and full aperture opening (\( r = 1 \)).
+* __Bounded Iris Window Interval__: The normalized central window transmission parameter \( r \in [ - 1 , 1 ] \) spans an otherwise uninterrupted interval of light flux across finite partition steps, bounded by total closure (\( r = - 1 \) or \( r = 0 \)) and full window opening (\( r = 1 \)).
 * __Exact Constructibility__: Every operational state in physics or computing corresponds to a finite grid truncation \( r _ N \in \mathcal { G } _ N \), eliminating paradoxes due to speculative “infinities.”
 
-==== Real Aperture Dynamics, Transcendental Functions, and Geometric Rotations
+==== Real Window Dynamics, Transcendental Functions, and Geometric Rotations
 
-With real numbers \( \mathbb { R } \) established as constructive convergences of Iris aperture partition measurements, real arithmetic and transcendental functions operate seamlessly within Conformal Geometric Algebra.
+With real numbers \( \mathbb { R } \) established as constructive convergences of Iris window partition measurements, real arithmetic and transcendental functions operate seamlessly within Conformal Geometric Algebra.
 
 ==== Bivector Rotations and Transcendental Angles
-In the Iris generator operator \( \iota ( r , \theta ) \) defined in Postulate 9, the rotation angle \( \theta \in \mathbb { R } \) parameterizes the spatial orientation of the aperture plane along the Spin(2) bivector generator \( e _ { 12 } \): \[ R ( \theta ) = \exp \left ( \frac { \theta } { 2 } e _ { 12 } \right ) = \cos \left ( \frac { \theta } { 2 } \right ) + \sin \left ( \frac { \theta } { 2 } \right ) e _ { 12 } \]
+In the Iris generator operator \( \iota ( r , \theta ) \) defined in Postulate 9, the rotation angle \( \theta \in \mathbb { R } \) parameterizes the spatial orientation of the sampling window plane along the planar bivector generator \( e _ { 12 } \): \[ R ( \theta ) = \exp \left ( \frac { \theta } { 2 } e _ { 12 } \right ) = \cos \left ( \frac { \theta } { 2 } \right ) + \sin \left ( \frac { \theta } { 2 } \right ) e _ { 12 } \]
 
 
-The transcendental functions \( \cos \theta \) and \( \sin \theta \) are not mystical “infinite” non-repeating decimals, but exact geometric series convergences of composite rational blade rotations on the Iris aperture perimeter:footnote:[We may note also that Taylor series are _not_ “infinite” series, but finite series of indefinite length. That is, they are _countably_ infinite. Those who imagine Taylor series converge to a “limit” must be unfamiliar with Taylor’s theorem.] \[ \cos \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k } } { ( 2k ) ! } , \quad \sin \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k + 1 } } { ( 2k + 1 ) ! } \]
+The transcendental functions \( \cos \theta \) and \( \sin \theta \) are not mystical “infinite” non-repeating decimals, but exact geometric series convergences of composite rational blade rotations on the Iris window perimeter:footnote:[We may note also that Taylor series are _not_ “infinite” series, but finite series of indefinite length. That is, they are _countably_ infinite. Those who imagine Taylor series converge to a “limit” must be unfamiliar with Taylor’s theorem.] \[ \cos \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k } } { ( 2k ) ! } , \quad \sin \theta = \sum _ { k = 0 } ^ { \infty } \frac { ( - 1 ) ^ k \theta ^ { 2k + 1 } } { ( 2k + 1 ) ! } \]
 
 
-[#theorem-real-aperture-completeness]
+[#theorem-real-window-completeness]
 [THEOREM]
 .Theorem: Constructive Completeness of Iris Grid Convergences
 ====
-Every Cauchy sequence of rational Iris aperture ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the conformal multivector field \( \Psi \).
+Every Cauchy sequence of rational Iris window ratios \( ( r _ N ) _ { N \in \mathbb { Z } _ { > 0 } } \) converges to a unique real measurement state \( x \in \mathbb { R } \) that acts upon the conformal multivector field \( \Psi \).
 
-Furthermore, the space of real aperture flux parameters \( [ - 1 , 1 ] \) is constructively complete: any uninterrupted aperture modulation \( f ( r ) \) can be uniformly approximated to arbitrary precision \( \epsilon \in \mathbb { Q } _ { > 0 } \) by a finite rational polynomial operator on an Iris partition grid \( \mathcal { G } _ N \).
+Furthermore, the space of real window flux parameters \( [ - 1 , 1 ] \) is constructively complete: any uninterrupted window modulation \( f ( r ) \) can be uniformly approximated to arbitrary precision \( \epsilon \in \mathbb { Q } _ { > 0 } \) by a finite rational polynomial operator on an Iris partition grid \( \mathcal { G } _ N \).
 ====
 
 ==== Multiplicative Real Inverse and Flux Conservation
-For any non-zero real aperture parameter \( x \in \mathbb { R } \setminus \{ 0 \} \), the multiplicative inverse \( x ^ { - 1 } \) represents the reciprocal aperture flux scaling that satisfies:
+For any non-zero real window parameter \( x \in \mathbb { R } \setminus \{ 0 \} \), the multiplicative inverse \( x ^ { - 1 } \) represents the reciprocal window flux scaling that satisfies:
 \[
 \begin{aligned}
 & x \cdot x ^ { - 1 } = 1 \quad \implies  \\
@@ -426,19 +426,19 @@ This guarantees strict conservation of electromagnetic flux and geometric scale 
 
 === The Multiscale Resolution Numbers
 
-Constructing multiscale resolution numbers as measurement quantities evaluated across finer and finer vernier scales on the Iris aperture grid, establishing Multiscale Resolution Analysis (MSRA) with exact finite-duration observation steps and extended temporal scale parameters.
+Constructing multiscale resolution numbers as measurement quantities evaluated across finer and finer vernier scales on the Iris sampling window grid, establishing Multiscale Resolution Analysis (MSRA) with exact finite-duration observation steps and extended temporal scale parameters.
 
-==== Vernier Scale Metrology and Multiscale Aperture Resolutions
+==== Vernier Scale Metrology and Multiscale Window Resolutions
 
 In the Counting-Iris framework, __Multiscale Resolution Analysis (MSRA)__ serves the same role as conventional nonstandard analysis. However, the foundations of MSRA, unlike those of conventional nonstandard analysis, are intuitive and reliable. __The Multiscale Resolution Numbers__ (or simply __m-res numbers__) are constructed as physical measurements on __finer and finer vernier scales__ of the Iris partition grid.
 Rather than invoking non-constructive model-theoretic ultrafilters or external star-maps, MSRA provides a unified metrological foundation: multiscale resolution numbers (m-res numbers) are to real numbers what fine vernier gauge readings are to coarse main-scale ruler marks.
-Much as a vernier caliper uses an auxiliary sliding scale aligned with a main scale to measure displacements finer than the main scale’s smallest tick mark, m-res numbers represent increments evaluated at ultra-refined vernier aperture resolutions \( \mathcal { G } _ { \omega } \).
+Much as a vernier caliper uses an auxiliary sliding scale aligned with a main scale to measure displacements finer than the main scale’s smallest tick mark, m-res numbers represent increments evaluated at ultra-refined vernier window resolutions \( \mathcal { G } _ { \omega } \).
 
 [#definition-multiscale-vernier-number]
 [DEFINITION]
 .Definition: Multiscale Vernier Measurement Number (m-res Number)
 ====
-A multiscale resolution number (or __m-res number__) \( x ^ { \ast } \in \mathbb { R } ^ { \ast } \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier aperture grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { > 0 } \): \[ x ^ { \ast } = \frac { k } { \omega } \equiv \text { VernierApertureFlux } _ { \omega } \left ( k \cdot \delta _ \omega \right ) \quad \text { where } \quad \delta _ \omega = \frac { \bullet } { \omega } \]
+A multiscale resolution number (or __m-res number__) \( x ^ { \ast } \in \mathbb { R } ^ { \ast } \) is an active measurement operation defined under Multiscale Resolution Analysis (MSRA) on an ultra-refined vernier sampling window grid \( \mathcal { G } _ { \omega } \), where \( \omega \) is an unbounded grid resolution parameter exceeding any standard integer count \( N \in \mathbb { Z } _ { > 0 } \): \[ x ^ { \ast } = \frac { k } { \omega } \equiv \text { VernierWindowFlux } _ { \omega } \left ( k \cdot \delta _ \omega \right ) \quad \text { where } \quad \delta _ \omega = \frac { \bullet } { \omega } \]
 
 
 
@@ -451,7 +451,7 @@ An elementary finite-duration step is executed by a physical measurement process
 
 ==== The Vernier Metrology Analogy in MSRA
 
-* __Main Scale__: The standard rational/real partition grid \( \mathcal { G } _ N \), providing macro-level aperture flux readings \( r \in \mathbb { R } \).
+* __Main Scale__: The standard rational/real partition grid \( \mathcal { G } _ N \), providing macro-level window flux readings \( r \in \mathbb { R } \).
 * __Vernier Auxiliary Scale__: The ultra-refined sub-grid \( \mathcal { G } _ { \omega } \), providing micro-level sub-blade displacements \( \delta _ \omega \) measured over finite observation time intervals.
 * __Measurement Precision__: Any physical flux value or multivector field perturbation can be measured at arbitrary vernier resolution depths by physical observation processes conducted over finite duration time intervals, without introducing unconstructive set axioms.
 
@@ -460,7 +460,7 @@ An elementary finite-duration step is executed by a physical measurement process
 Arithmetic operations on multiscale resolution numbers \( \mathbb { R } ^ { \ast } \) operate under MSRA as composite measurement operations on aligned vernier scales, preserving exact algebraic ring and field properties.
 
 ==== Main Scale Projection (Downwards Arrow Operator \( \downarrow \))
-Under Multiscale Resolution Analysis (MSRA), every finite multiscale vernier reading \( x ^ { \ast } \in \mathbb { R } ^ { \ast } \) decomposes uniquely into a main scale real aperture reading \( r \in \mathbb { R } \) plus a finite-duration observation residual \( \epsilon ^ { \ast } \) resulting from a measurement process conducted over a finite temporal duration: \[ x ^ { \ast } = r + \epsilon ^ { \ast } , \quad r \in \mathbb { R } , \quad | \epsilon ^ { \ast } | < \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { > 0 } ) \]
+Under Multiscale Resolution Analysis (MSRA), every finite multiscale vernier reading \( x ^ { \ast } \in \mathbb { R } ^ { \ast } \) decomposes uniquely into a main scale real window reading \( r \in \mathbb { R } \) plus a finite-duration observation residual \( \epsilon ^ { \ast } \) resulting from a measurement process conducted over a finite temporal duration: \[ x ^ { \ast } = r + \epsilon ^ { \ast } , \quad r \in \mathbb { R } , \quad | \epsilon ^ { \ast } | < \frac { 1 } { N } \; ( \forall N \in \mathbb { Z } _ { > 0 } ) \]
 
 
 The __Main Scale Projection__ operator \( ( \downarrow ) : \text {Fin} ( \mathbb { R } ^ { \ast } ) \to \mathbb { R } \) maps the fine vernier reading back to its unique nearest main scale real flux value: \[ ( \downarrow ) ( x ^ { \ast } ) = ( \downarrow ) ( r + \epsilon ^ { \ast } ) = r \]
@@ -483,7 +483,7 @@ This eliminates division-by-zero ambiguities by expressing all derivatives as ra
 
 === Complex Numbers and Quaternions
 
-Constructing complex numbers and quaternions directly within the Counting-Iris framework, establishing complex numbers via the fundamental Iris aperture generator \( \iota \) and quaternions as the spatial bivector subalgebra of Conformal Geometric Algebra.
+Constructing complex numbers and quaternions directly within the Counting-Iris framework, establishing complex numbers via the fundamental Iris window generator \( \iota \) and quaternions as the spatial bivector subalgebra of Conformal Geometric Algebra.
 
 ==== Complex Numbers in Counting-Iris
 
@@ -496,17 +496,17 @@ In traditional mathematics, the complex field \( \mathbb { C } \) is introduced 
 A complex number \( z \in \mathbb { C } _ { \text {Iris} } \) in the Counting-Iris framework is a multivector: \[ z = a + b \iota \]
 
 
-where \( a , b \in \mathbb { R } \) (or discrete rational partition grids \( \mathcal { G } _ N \)) and \( \iota \) is the fundamental Iris generator (Postulate 9) satisfying the quadratic aperture relation: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
+where \( a , b \in \mathbb { R } \) (or discrete rational partition grids \( \mathcal { G } _ N \)) and \( \iota \) is the fundamental Iris generator (Postulate 9) satisfying the quadratic window relation: \[ \iota ^ 2 = - \mathbf { 1 } + \varpi \vartheta \]
 
 
 with \( \varpi , \vartheta \) being orthogonal nilpotent boundary generators (\( \varpi ^ 2 = 0 , \vartheta ^ 2 = 0 \)).
 ====
 
-The imaginary unit \( \iota \) in Counting-Iris represents an active, physical aperture phase rotation operator across orthogonal measurement axes, whose square differs from \( - \mathbf { 1 } \) by a nilpotent perimeter boundary flux \( \varpi \vartheta \).
+The imaginary unit \( \iota \) in Counting-Iris represents an active, physical phase rotation operator across orthogonal measurement axes, whose square differs from \( - \mathbf { 1 } \) by a nilpotent perimeter boundary flux \( \varpi \vartheta \).
 
 [#theorem-complex-main-scale-field]
 [THEOREM]
-.Theorem: Main Scale Complex Field Isomorphism
+.Theorem: Main Scale Complex Field Structural Equivalence
 ====
 Under Main Scale Projection \( ( \downarrow ) ( \iota ^ 2 ) = - 1 \), the Counting-Iris complex domain \( \mathbb { C } _ { \text {Iris} } \) maps directly onto the classical field of complex numbers \( \mathbb { C } \), preserving addition, multiplication, and modulus operations.
 
@@ -515,15 +515,15 @@ Let \( z _ 1 = a _ 1 + b _ 1 \iota \) and \( z _ 2 = a _ 2 + b _ 2 \iota \) be t
 
 
 Applying the Main Scale Projection operator \( ( \downarrow ) \) (Postulate 8 / MSRA) removes the nilpotent boundary residual \( \varpi \vartheta \), yielding: \[ ( \downarrow ) ( z _ 1 z _ 2 ) = ( a _ 1 a _ 2 - b _ 1 b _ 2 ) + ( a _ 1 b _ 2 + a _ 2 b _ 1 ) i \]
-which is identical to the canonical field multiplication rule in \( \mathbb { C } \). Furthermore, complex conjugation is defined as the aperture inversion operator \( \bar { z } = a - b \iota \), giving the aperture norm squared: \[ z \bar { z } = a ^ 2 - b ^ 2 \iota ^ 2 = a ^ 2 + b ^ 2 - b ^ 2 \varpi \vartheta \implies ( \downarrow ) ( z \bar { z } ) = a ^ 2 + b ^ 2 \]
+which is identical to the canonical field multiplication rule in \( \mathbb { C } \). Furthermore, complex conjugation is defined as the window inversion operator \( \bar { z } = a - b \iota \), giving the squared norm: \[ z \bar { z } = a ^ 2 - b ^ 2 \iota ^ 2 = a ^ 2 + b ^ 2 - b ^ 2 \varpi \vartheta \implies ( \downarrow ) ( z \bar { z } ) = a ^ 2 + b ^ 2 \]
 
 
-establishing an exact ring isomorphism with the classical complex field \( \mathbb { C } \). \( \square \)
+establishing an exact ring structural equivalence with the classical complex field \( \mathbb { C } \). \( \square \)
 ====
 
 ==== Quaternions as Spatial Bivector Subalgebras
 
-Rather than postulating quaternions \( \mathbb { H } \) through abstract 4-tuples, Counting-Iris constructs quaternions directly as the Spin(2) spatial bivector subalgebra of Conformal Geometric Algebra.
+Rather than postulating quaternions \( \mathbb { H } \) through abstract 4-tuples, Counting-Iris constructs quaternions directly as the spatial bivector rotor subalgebra of Conformal Geometric Algebra.
 
 [#definition-iris-quaternion]
 [DEFINITION]
@@ -532,14 +532,14 @@ Rather than postulating quaternions \( \mathbb { H } \) through abstract 4-tuple
 A quaternion \( q \in \mathbb { H } _ { \text {Iris} } \) in Counting-Iris is a multivector in the spatial bivector subalgebra: \[ q = q _ 0 + q _ 1 i + q _ 2 j + q _ 3 k \]
 
 
-where \( q _ 0 , q _ 1 , q _ 2 , q _ 3 \in \mathbb { R } \) and \( i , j , k \) are spatial bivector aperture plane generators constructed from the spatial basis \( \{ e _ 1 , e _ 2 , e _ 3 \} \): \[ i = e _ 2 \wedge e _ 3 , \qquad j = e _ 3 \wedge e _ 1 , \qquad k = e _ 1 \wedge e _ 2 \]
+where \( q _ 0 , q _ 1 , q _ 2 , q _ 3 \in \mathbb { R } \) and \( i , j , k \) are spatial bivector plane generators constructed from the spatial basis \( \{ e _ 1 , e _ 2 , e _ 3 \} \): \[ i = e _ 2 \wedge e _ 3 , \qquad j = e _ 3 \wedge e _ 1 , \qquad k = e _ 1 \wedge e _ 2 \]
 ====
 
 [#theorem-quaternion-algebra-identities]
 [THEOREM]
 .Theorem: Quaternion Bivector Algebraic Identities
 ====
-The spatial bivector aperture generators \( i , j , k \) satisfy Hamilton's fundamental quaternion relations: \[ i ^ 2 = j ^ 2 = k ^ 2 = - 1 \]
+The spatial bivector plane generators \( i , j , k \) satisfy Hamilton's fundamental quaternion relations: \[ i ^ 2 = j ^ 2 = k ^ 2 = - 1 \]
 
 
 and non-commutative cyclic bivector product rules, establishing \( \mathbb { H } _ { \text {Iris} } \) as an exact geometric sub-algebra.
@@ -565,23 +565,23 @@ This proves that quaternions in Counting-Iris are exact spatial bivector rotatio
 
 === How to do Differential Calculus
 
-Constructing differential calculus and real analysis within Multiscale Resolution Analysis (MSRA) without continuum limit paradoxes or uncountably infinite point-sets. Derivatives are defined as exact vernier aperture difference ratios projected onto the main-scale real domain via the Main Scale Projection operator \( ( \downarrow ) \).
+Constructing differential calculus and real analysis within Multiscale Resolution Analysis (MSRA) without infinite-divisibility limit paradoxes or uncountably infinite point-sets. Derivatives are defined as exact vernier window difference ratios projected onto the main-scale real domain via the Main Scale Projection operator \( ( \downarrow ) \).
 
 ==== Vernier Differences and the MSRA Derivative
 
-In the Counting-Iris framework, differential calculus is formulated constructively on discrete Multiscale Resolution Analysis (MSRA) grids \( \mathcal { G } _ \omega \). Instead of taking limits to uncountably infinite continua, derivatives are computed as exact ratios of vernier aperture differences divided by an ultra-refined discrete grid step size \( \delta _ \omega = \frac { \bullet } { \omega } \), followed by Main Scale Projection \( ( \downarrow ) \) (Postulate 8 / MSRA).
+In the Counting-Iris framework, differential calculus is formulated constructively on discrete Multiscale Resolution Analysis (MSRA) grids \( \mathcal { G } _ \omega \). Instead of taking limits to uncountably infinite point-sets, derivatives are computed as exact ratios of vernier window differences divided by an ultra-refined discrete grid step size \( \delta _ \omega = \frac { \bullet } { \omega } \), followed by Main Scale Projection \( ( \downarrow ) \) (Postulate 8 / MSRA).
 
 [#definition-msra-derivative]
 [DEFINITION]
 .Definition: MSRA Vernier Derivative
 ====
-Let \( \Psi : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be a finite multiscale aperture function. The MSRA derivative of \( \Psi \) at a main-scale real point \( x \in \mathbb { R } \) with respect to a discrete ultra-refined grid resolution \( \omega \in \mathbb { Z } ^ { \ast } \setminus \mathbb { Z } \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \) is defined as: \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
+Let \( \Psi : \mathbb { R } ^ { \ast } \to \mathbb { R } ^ { \ast } \) be a finite multiscale window function. The MSRA derivative of \( \Psi \) at a main-scale real point \( x \in \mathbb { R } \) with respect to a discrete ultra-refined grid resolution \( \omega \in \mathbb { Z } ^ { \ast } \setminus \mathbb { Z } \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \) is defined as: \[ \frac { d \Psi } { dx } = ( \downarrow ) \left ( \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } \right ) \]
 
 
 where \( ( \downarrow ) : \mathbb { R } ^ { \ast } \to \mathbb { R } \) is the Main Scale Projection Operator mapping finite multiscale vernier readings to standard main-scale real numbers.
 ====
 
-Because \( \delta _ \omega \neq 0 \) on the ultra-refined grid \( \mathcal { G } _ \omega \), the ratio \( \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } \) is an exact, finite algebraic expression in the MSRA ring. The derivative is therefore free of indeterminate \( 0 / 0 \) paradoxes or non-constructive point-set continuum assumptions.
+Because \( \delta _ \omega \neq 0 \) on the ultra-refined grid \( \mathcal { G } _ \omega \), the ratio \( \frac { \Psi ( x + \delta _ \omega ) - \Psi ( x ) } { \delta _ \omega } \) is an exact, finite algebraic expression in the MSRA ring. The derivative is therefore free of indeterminate \( 0 / 0 \) paradoxes or non-constructive point-set assumptions.
 
 ==== Proofs of Fundamental Differentiation Rules in MSRA
 
@@ -661,7 +661,7 @@ Extending MSRA differential calculus to multivector field functions \( \Psi : \m
 
 ==== Worked Example: MSRA Derivative of a Quadratic Polynomial
 
-To illustrate the MSRA vernier derivative in practice, consider the multiscale aperture function \( \Psi ( x ) = x ^ 2 \) at a main-scale point \( x \in \mathbb { R } \).
+To illustrate the MSRA vernier derivative in practice, consider the multiscale window function \( \Psi ( x ) = x ^ 2 \) at a main-scale point \( x \in \mathbb { R } \).
 
 . __Evaluate Vernier Shift__: On an ultra-refined grid \( \mathcal { G } _ \omega \) with step size \( \delta _ \omega = \frac { \bullet } { \omega } \), compute the shifted value: \[ \Psi ( x + \delta _ \omega ) = ( x + \delta _ \omega ) ^ 2 = x ^ 2 + 2x \delta _ \omega + \delta _ \omega ^ 2 \]
 
@@ -672,23 +672,23 @@ To illustrate the MSRA vernier derivative in practice, consider the multiscale a
 . __Apply Main Scale Projection__: Project the finite vernier reading back to the main-scale real domain: \[ \frac { d } { dx } ( x ^ 2 ) = ( \downarrow ) ( 2x + \delta _ \omega ) = ( \downarrow ) ( 2x ) + ( \downarrow ) ( \delta _ \omega ) = 2x + 0 = 2x \]
 
 
-This demonstrates how MSRA derivatives compute exact standard values purely through discrete algebraic steps without continuum limits or indeterminate forms.
+This demonstrates how MSRA derivatives compute exact standard values purely through discrete algebraic steps without infinite-divisibility limits or indeterminate forms.
 
 [#chap-how-to-do-integral-calculus]
 
 === How to do Integral Calculus
 
-Constructing indefinite and definite integration within Multiscale Resolution Analysis (MSRA) as exact vernier aperture summations over discrete partition grids \( \mathcal { G } _ \omega \), proving the Fundamental Theorem of MSRA Calculus.
+Constructing indefinite and definite integration within Multiscale Resolution Analysis (MSRA) as exact vernier window summations over discrete partition grids \( \mathcal { G } _ \omega \), proving the Fundamental Theorem of MSRA Calculus.
 
 ==== Definite and Indefinite Integration as Vernier Sums
 
-In Multiscale Resolution Analysis, integration is defined constructively as a discrete sum of vernier elements across a fine partition grid \( \mathcal { G } _ \omega \), bypassing non-constructive “continuum” measure theory and “completed infinite” point-sets.
+In Multiscale Resolution Analysis, integration is defined constructively as a discrete sum of vernier elements across a fine partition grid \( \mathcal { G } _ \omega \), bypassing non-constructive “infinite-divisibility” measure theory and “completed infinite” point-sets.
 
 [#definition-msra-definite-integral]
 [DEFINITION]
 .Definition: MSRA Definite Integral
 ====
-Let \( f : \mathbb { R } \to \mathbb { R } \) be a continuous function on a finite interval \( [ a , b ] \). The MSRA definite integral is defined as the Main Scale Projection of the discrete vernier sum over \( N _ \omega = \frac { b - a } { \delta _ \omega } \) grid partitions: \[ \int _ a ^ b f ( x ) \, dx = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { N _ \omega - 1 } f ( a + k \delta _ \omega ) \cdot \delta _ \omega \right ) \]
+Let \( f : \mathbb { R } \to \mathbb { R } \) be an uninterrupted function on a finite interval \( [ a , b ] \). The MSRA definite integral is defined as the Main Scale Projection of the discrete vernier sum over \( N _ \omega = \frac { b - a } { \delta _ \omega } \) grid partitions: \[ \int _ a ^ b f ( x ) \, dx = ( \downarrow ) \left ( \sum _ { k = 0 } ^ { N _ \omega - 1 } f ( a + k \delta _ \omega ) \cdot \delta _ \omega \right ) \]
 where \( \delta _ \omega = \frac { \bullet } { \omega } \) is the ultra-refined grid step size.
 
 ====
@@ -874,7 +874,7 @@ In geometric algebra, this is expressed coordinate-free via the bivector exterio
 +
 \[ \sum _ { \mathcal { C } _ k \subset \mathcal { S } } ( \nabla \wedge \mathbf { F } ) _ k \cdot d \mathbf { S } _ k = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
 
-. __Part 2: Discrete Green’s Circulation Identity (2D Planar Aperture)__:
+. __Part 2: Discrete Green’s Circulation Identity (2D Planar Window)__:
 +
 When the surface \( \mathcal { S } \) is planar and aligned with the \( xy \)-coordinate plane, the mesh consists of rectangular cells \( \mathcal { C } _ { ij } = [ x _ i , x _ { i + 1 } ] \times [ y _ j , y _ { j + 1 } ] \), and Stokes’ theorem reduces to Green’s identity:
 +
@@ -890,7 +890,7 @@ where the discrete divergence is defined by:
 +
 \[ \nabla \cdot \mathbf { F } = \frac { \Delta F _ x } { \Delta x } + \frac { \Delta F _ y } { \Delta y } + \frac { \Delta F _ z } { \Delta z } \]
 
-Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \), these discrete lattice identities yield the classical continuum integral equations without remainder:
+Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \), these discrete lattice identities yield the classical macroscopic integral equations without remainder:
 \[ \iint _ { \mathcal { S } } ( \nabla \times \mathbf { F } ) \cdot \hat { \mathbf { n } } \, dS = \oint _ { \partial \mathcal { S } } \mathbf { F } \cdot d \mathbf { r } \]
 \[ \iint _ \Omega \left ( \frac { \partial F _ y } { \partial x } - \frac { \partial F _ x } { \partial y } \right ) dx \, dy = \oint _ { \partial \Omega } \left ( F _ x \, dx + F _ y \, dy \right ) \]
 \[ \iiint _ { \mathcal { V } } ( \nabla \cdot \mathbf { F } ) \, dV = \oiint _ { \partial \mathcal { V } } \mathbf { F } \cdot \hat { \mathbf { n } } \, dS \]
@@ -935,7 +935,7 @@ All internal interface fluxes cancel identically. The summation reduces strictly
 This proves the discrete Gauss divergence theorem.
 
 . __Main Scale Projection__:
-Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \) where mesh resolution \( \Delta x , \Delta y , \Delta z \to \delta _ \omega \) approaches the vernier limit, the discrete sums project to the standard Riemann-Stieltjes macroscopic field integrals without remainder, establishing the continuum theorems as exact constructive consequences of discrete cell telescoping. \( \square \)
+Under Main Scale Projection \( ( \downarrow ) \) on an ultra-refined grid \( \mathcal { G } _ \omega \) where mesh resolution \( \Delta x , \Delta y , \Delta z \to \delta _ \omega \) approaches the vernier scale, the discrete sums project to the standard Riemann-Stieltjes macroscopic field integrals without remainder, establishing the macroscopic integral theorems as exact constructive consequences of discrete cell telescoping. \( \square \)
 
 ====
 
@@ -968,7 +968,7 @@ The uncancelled outer boundary forms a square of side length 2 running along ver
 * Left edge ( \( x = 0 , y \in [ 2 , 0 ] \) ): \( \int E _ y \, dy = 0 \).
 * Total perimeter circulation: \( 0 + 4 + 4 + 0 = 8 \).
 
-The outer boundary circulation equals 8, matching the interior curl summation identically. Every internal calculation in discrete electromagnetics, from digital signal transmission lines to microwave antennas, operates on this exact telescoping principle without needing continuous infinities.
+The outer boundary circulation equals 8, matching the interior curl summation identically. Every internal calculation in discrete electromagnetics, from digital signal transmission lines to microwave antennas, operates on this exact telescoping principle without needing uncountable infinities.
 
 ==== The Vernier Cauchy-Goursat Theorem in MSRA
 
@@ -989,9 +989,9 @@ Decompose the bounded region \( \mathcal { D } \) into a mesh of elementary ultr
 Since \( D \Psi = 0 \) throughout \( \mathcal { D } \), the area summation vanishes identically, giving \( \oint _ \Gamma \Psi ( z ) \, dz = 0 \). \( \square \)
 ====
 
-==== Residue-Free Loop Circulations and Bivector Spin(2) Conservation
+==== Residue-Free Loop Circulations and Planar Bivector Conservation
 
-When a closed path \( \Gamma \) encloses an isolated Spin(2) bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete total charge \( Q _ \iota \): \[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } \]
+When a closed path \( \Gamma \) encloses an isolated planar bivector vortex core (such as the Iris generator \( \iota \)), the contour integral captures the discrete total charge \( Q _ \iota \): \[ \frac { 1 } { 2 \pi i } \oint _ \Gamma \frac { 1 } { z - z _ 0 } \, dz = \mathbf { 1 } \]
 
 
 This guarantees that circulation along closed observation loops measures exact, non-fractional topological winding numbers, establishing total conservation of electromagnetic flux in the Counting-Iris framework.
@@ -1130,26 +1130,26 @@ In the unified multivector field \( F _ { \text {total} } = E e _ 4 + c B I _ 3 
    The electric field \( E = \sum _ { a = 1 } ^ 3 E _ a e _ a = E _ 1 e _ 1 + E _ 2 e _ 2 + E _ 3 e _ 3 \) is a 3-dimensional spatial vector. When coupled with the null causal time-step generator \( e _ 4 \) (where \( e _ 4 ^ 2 = 0 \)), the product \( E e _ 4 = E _ 1 ( e _ 1 \wedge e _ 4 ) + E _ 2 ( e _ 2 \wedge e _ 4 ) + E _ 3 ( e _ 3 \wedge e _ 4 ) \) forms the electric bivector. This term represents spatial potential gradients, directional field lines, and direct flux displacements across finite discrete grid points.
 
 . __Magnetic Field Vector \( B \) and Spatial Bivector__:
-   The magnetic field is represented by the 3-dimensional spatial vector \( B = B _ 1 e _ 1 + B _ 2 e _ 2 + B _ 3 e _ 3 \). In the Master Field Equation, multiplication by the spatial volume trivector \( I _ 3 = e _ 1 e _ 2 e _ 3 \) produces the spatial magnetic bivector \( c B I _ 3 = c ( B _ 1 e _ 2 e _ 3 + B _ 2 e _ 3 e _ 1 + B _ 3 e _ 1 e _ 2 ) \). This term represents closed-loop spatial flux circulation, rotational magnetic flux density, and Spin(2) bivector vortex geometries.
+   The magnetic field is represented by the 3-dimensional spatial vector \( B = B _ 1 e _ 1 + B _ 2 e _ 2 + B _ 3 e _ 3 \). In the Master Field Equation, multiplication by the spatial volume trivector \( I _ 3 = e _ 1 e _ 2 e _ 3 \) produces the spatial magnetic bivector \( c B I _ 3 = c ( B _ 1 e _ 2 e _ 3 + B _ 2 e _ 3 e _ 1 + B _ 3 e _ 1 e _ 2 ) \). This term represents closed-loop spatial flux circulation, rotational magnetic flux density, and planar bivector vortex geometries.
 
 . __Unified Multivector Synthesis__:
    The combination of \( E e _ 4 \) (the electric bivector) and \( c B I _ 3 \) (the spatial magnetic bivector) merges electric and magnetic interactions into a single, closed multivector entity \( F _ { \text {total} } \). Applying the Dirac-Iris differential operator \( D = \nabla + e _ 4 \frac { 1 } { c } D _ t \) directly yields Maxwell’s field equations, Lorentz force dynamics, self-trapped mass energy densities, and gravitation as wave refraction. These and other physical predictions follow inexorably from a single fundamental law.
 
 ==== Key Physical Consequences of the Master Field Equation
 
-. __Self-Generated Mass and Charge-to-Mass Ratios__: Particle masses (including electron, proton, and neutron structures) emerge directly from self-trapped electromagnetic energy density trapped in closed Spin(2) bivector vortex geometries, yielding the electron charge-to-mass ratio from first principles.
+. __Self-Generated Mass and Charge-to-Mass Ratios__: Particle masses (including electron, proton, and neutron structures) emerge directly from self-trapped electromagnetic energy density trapped in closed planar bivector vortex geometries, yielding the electron charge-to-mass ratio from first principles.
 . __Newtonian Laws of Motion Implied from First Principles__: Newton’s three laws of motion emerge as direct, exact consequences of the Master Field Equation \( D F _ { \text {total} } = J _ { \text {total} } \):
-   * *First Law (Inertia)*: In a source-free region (\(\, J _ { \text {total} } = \mathbf { 0 } \)) with no external flux gradients, a bit of electromagnetic activity maintains a constant velocity vector \( u \), moving in a straight trajectory.
-   * *Second Law (\( F = \frac { d p } { d t } \))*: Spatial potential gradients and field interactions exert a net multivector force \( F = D _ t p \) on a bit of electromagnetic activity, driving the rate of change of total field momentum \( p = \int T \cdot e _ 4 \, dV \).
-   * *Third Law (Action and Reaction)*: Momentum is conserved across interacting bits of electromagnetic activity, guaranteeing that every action force is matched by an equal and opposite reaction force.
+   * _First Law (Inertia)_: In a source-free region (\(\, J _ { \text {total} } = \mathbf { 0 } \)) with no external flux gradients, a bit of electromagnetic activity maintains a constant velocity vector \( u \), moving in a straight trajectory.
+   * _Second Law (\( F = \frac { d p } { d t } \))_: Spatial potential gradients and field interactions exert a net multivector force \( F = D _ t p \) on a bit of electromagnetic activity, driving the rate of change of total field momentum \( p = \int T \cdot e _ 4 \, dV \).
+   * _Third Law (Action and Reaction)_: Momentum is conserved across interacting bits of electromagnetic activity, guaranteeing that every action force is matched by an equal and opposite reaction force.
 . __Gravitation as Wave Refraction__: Gravity is not a fundamental force. Gravity also is not an incomprehensible and magical warping of the fabric of reality. __Gravity is ordinary, everyday refraction.__ Both radiation and matter are made of electromagnetic undulations and are refracted. Gravitational deflection emerges naturally from the wave-speed gradient established by localized energy density. The mechanism of gravity is intuitive, as is the proportionality of inertial and gravitational mass.
 . __Trapped Light Structure of Dense Fields__: Super-dense electromagnetic fields trap light within finite boundaries without collapsing into physically impossible and mathematically speculative “singularities.” Therefore there is a _realistic_ description of compact astrophysical bodies (commonly known as “black holes,” but this name should be discarded, as they are not “holes”). Indeed, because the physics is described by Maxwell’s equations (the Master Field Equation), it is possible to infer much of the internal structure of these bodies, even though this cannot be observed.
 . __Galactic Rotation and Cosmological Steady State__: Flux conservation accounts for galactic rotation curves without requiring speculative “dark matter,” establishing a steady-state cosmological energy equilibrium.
 . __Newtonian Inertial Kinematics of Wave Propagation__: Due to the operator \( D _ t = \frac { \partial } { \partial t } - u \cdot \nabla \), electromagnetic field perturbations propagate inertially at velocity \( c + u \). They _do not_ propagate at a constant speed \( c \) relative to all “observers.” One may ask why relative speeds faster than \( c \) are not observed empirically, but the answer is they _are_ observed—they are seen as changes in wavelength. That is, they are Doppler shifts.
 
-One might ask why the Master Field Equation is included in a number system. Numbers and physics alike are things of the universe. The separation of these two is an artifact of “pure mathematics,” which was invented by people detached from digging holes, driving piles, or pouring concrete, who did not care about how to erect a truss or land on the Moon. But there used to be no separation between mathematics and engineering. The etymology of “geometry” is “land surveying,” and Carl Friedrich Gauss was a land surveyor. It will turn out, for instance (in Volume II), that a concise and insightful solution to the Riemann hypothesis is none other than Shannon’s channel capacity theorem from electrical engineering.
+One might ask why the Master Field Equation is included in a number system. The Iris Number System explicitly includes the Unified Field Theory—Newton’s laws of motion, Newton’s universal law of gravitation, Maxwell’s equations, and the laws of conservation—as integral parts of the mathematics itself. Numbers and physics alike are things of the universe. The separation of these two is an artifact of “pure mathematics,” invented by people detached from digging holes, driving piles, or pouring concrete, who did not care about how to erect a truss or land on the Moon. Historically, there was no separation between mathematics and engineering: the etymology of “geometry” is “land surveying,” and Carl Friedrich Gauss was a land surveyor. Splitting natural philosophy into tiny, insulated academic departments is a sign of intellectual and social decay—visible even between physicists who model radiation as “photons” and electrical, radio, and radar engineers who use Maxwell’s wave theory, obtaining completely different physical predictions (for instance, explaining the cosmic microwave background effortlessly as starlight from distant galaxies traveling through a thin soup of such waves, whereas particle dogma cannot). It turns out (in Volume{nbsp}II), for example, that a concise and insightful proof of the Riemann hypothesis is none other than Shannon’s channel capacity theorem from electrical engineering.
 
-Furthermore, \( \pi \) is a physical constant. It describes the relationship between circular objects and their radii. Due to a prevalence of toroids in Nature, \( \pi \) appears in the formulae for other physical constants, such as the fine structure constant and proton-electron mass ratio. (These formulae will appear in other writings.) Thus what conventionally is considered “only mathematics,” \( \pi \), is really also physics and engineering.
+Furthermore, \( \pi \) is a physical constant. It describes the relationship between circular objects and their radii. Due to a prevalence of toroids in Nature, \( \pi \) appears in the formulae for other physical constants, such as the fine structure constant and proton-electron mass ratio. (These formulae appear in companion writings and Volume{nbsp}IV.) Thus what conventionally is considered “only mathematics,” \( \pi \), is really also physics and engineering.
 
 
 [#chap-completion-of-the-tautological-postulate-system]
@@ -1160,7 +1160,7 @@ In this chapter, the foundational postulates introduced in Chapter 3 are synthes
 
 The purpose _is not_ to produce a neverending cycle of theorems that somehow transcends axiomatic methods. Rather, once the tautological system is closed, the following is achieved:
 
-* Consistency is ensured for all _practical_ purposes, without need for Gödelian “self-reference.” Even if scholastics somewhere do not find this kind of assurance satisfactory, it should be satisfactory for engineers, scientists, businesses, government agencies, etc.
+* Consistency is ensured for all _practical_ purposes, without need for Gödelian self-citation. Even if scholastics somewhere do not find this kind of assurance satisfactory, it should be satisfactory for engineers, scientists, businesses, government agencies, etc.
 
 * A user of the system may choose any sufficient set of facts from within the system as a new set of foundational postulates.
 
@@ -1170,9 +1170,9 @@ The purpose _is not_ to produce a neverending cycle of theorems that somehow tra
 
 The Counting-Iris Number System rests upon a finite, constructive foundation:
 
-. __Discrete Arithmetic Base (Postulates 0–1, 5, 7)__: The physical universe and mathematical calculation proceed through finite discrete counting steps on multiscale resolution grids \( \mathcal { G } _ \omega \). Uncountably infinite point-sets are excluded. There is no such thing as “continuity.”footnote:[Any use of the term “continuous” in this work is most likely a slip-up by a computerized writing aid, and the correct word may have been something such as “uninterrupted” or “connected.” The author is disabled and could not write so much text on his own. This also explains why the text can be opaque, speaking of Spin(2) time-travel vortices and cosmic transocean whirligigs. The author writes more clearly than that, but does not have the time or energy to clarify everything. Similarly, he has not had the time or energy to make diagrams. It is not that, like his distant cousin Nicolas Bourbaki, he prides himself on not having any diagrams in a book on “geometry.” Fred Custer simply does not have as much access to pain-killing calvados as did his cousin.]
+. __Discrete Arithmetic Base (Postulates 0–1, 5, 7)__: The physical universe and mathematical calculation proceed through finite discrete counting steps on multiscale resolution grids \( \mathcal { G } _ \omega \). Uncountably infinite point-sets and infinite-divisibility abstractions are excluded.footnote:[Any stray phrasing in older drafts such as “endless divisibility” is most likely a slip-up by a computerized writing aid, and the intended word was “uninterrupted” or “piecewise connected.” The author is disabled and could not write so much text on his own. This also explains why the text can be opaque, speaking of planar bivector time-travel vortices and cosmic transocean whirligigs. The author writes more clearly than that, but does not have the time or energy to clarify everything. Similarly, he has not had the time or energy to make diagrams. It is not that, like his distant cousin Nicolas Bourbaki, he prides himself on not having any diagrams in a book on “geometry.” Fred Custer simply does not have as much access to pain-killing calvados as did his cousin.]
 
-. __Algebraic Geometry and Conformal Embedding (Postulates 2–4, 9)__: Multivector space in Conformal Geometric Algebra (CGA) provides the geometry for physical fields, parity dualities, and Spin(2) bivector vortex structures generated by the Iris element \( \iota \).
+. __Algebraic Geometry and Conformal Embedding (Postulates 2–4, 9)__: Multivector space in Conformal Geometric Algebra (CGA) provides the geometry for physical fields, parity dualities, and planar bivector vortex structures generated by the Iris element \( \iota \).
 
 . __Observation and Main Scale Projection (Postulates 6, 8)__: Measurement operations over finite observation durations \( \tau _ { \text {obs} } \) map fine vernier readings \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \) onto standard real flux values via the Main Scale Projection operator \( ( \downarrow ) \).
 
@@ -1180,7 +1180,7 @@ The Counting-Iris Number System rests upon a finite, constructive foundation:
 
 To ensure no geometric structure is taken as an unproved external assertion, we construct and prove the existence, uniqueness, and algebraic consistency of Conformal Geometric Algebra strictly from the Iris postulates.
 
-[#theorem-cl411-existence]
+[#theorem-cga-existence]
 [THEOREM]
 .Theorem: Constructive Existence and Algebraicity of Conformal Geometric Algebra
 ====
@@ -1235,7 +1235,7 @@ Therefore, the 64 ordered blades form an exact, linearly independent basis, esta
 
 ==== Proof of the Fundamental Commutation and Metric Rules of Conformal Geometric Algebra
 
-[#theorem-cl411-anticommutation]
+[#theorem-cga-anticommutation]
 [THEOREM]
 .Theorem: Fundamental Commutation and Metric Rules of Conformal Geometric Algebra
 ====
@@ -1289,7 +1289,7 @@ Having established the explicit constructibility of Conformal Geometric Algebra 
 ====
 Let \( \mathcal { S } _ { \text {Iris} } \) be the postulate system composed of Postulates 0 through 9, the MSRA vernier differential and integral operators, and the Master Field Equation \( D F _ { \text {total} } = J _ { \text {total} } \) written in Conformal Geometric Algebra.
 
-Then \( \mathcal { S } _ { \text {Iris} } \) is tautologically complete: every valid physical field law, conservation principle, and analytical identity in real, complex, and multivector analysis reduces to an exact algebraic identity over discrete counting operations under Main Scale Projection \( ( \downarrow ) \), without requiring non-constructive continuum axioms, completed infinities, or uncountably infinite sets.
+Then \( \mathcal { S } _ { \text {Iris} } \) is tautologically complete: every valid physical field law, conservation principle, and analytical identity in real, complex, and multivector analysis reduces to an exact algebraic identity over discrete counting operations under Main Scale Projection \( ( \downarrow ) \), without requiring non-constructive infinite-divisibility axioms, completed infinities, or uncountably infinite sets.
 
 __Proof:__
 . __Discrete Representation__: By Postulates 0, 1, 5, and 7, every quantity, coordinate, and state vector is representable as a finite discrete multiscale grid element \( k _ \omega \cdot \delta _ \omega \) over the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \).
@@ -1303,13 +1303,13 @@ __Proof:__
 Therefore, every theorem and physical law within the system is proven strictly from within the Iris postulate system, making \( \mathcal { S } _ { \text {Iris} } \) self-contained, paradox-free, and tautologically complete. \( \square \)
 ====
 
-==== Elimination of Continuum Paradoxes
-d
-By grounding all analysis in discrete Multiscale Resolution Analysis (MSRA) and the Main Scale Projection operator \( ( \downarrow ) \), classic paradoxes of continuum mathematics are resolved:
+==== Elimination of Infinite-Divisibility Paradoxes
+
+By grounding all analysis in discrete Multiscale Resolution Analysis (MSRA) and the Main Scale Projection operator \( ( \downarrow ) \), classic paradoxes of infinite-divisibility mathematics are resolved:
 
 . __Zeno’s Motion Paradoxes__: Iris numbers resolve Zeno’s verbal paradoxes by formulating motion constructively as discrete vernier (m-res) step sequences \( k _ \omega \cdot \delta _ \omega \) on the discrete grid \( \mathcal { G } _ \omega \). To put it more colloquially: however fine an Iris you choose, you can always see a little motion.footnote:[More fundamentally, a structural solution has always existed that prevents paradoxes in general from being mistakenly applied to non-verbal levels: paradoxes are strictly characteristics of symbolic structures, formal notations, and verbal formulations. Neither the physical plenum nor our non-verbal abstractions are words or symbols. Therefore neither the physical plenum nor non-verbal abstractions can contain even a single paradox. There are optical illusions, but to call these “paradoxes” is a different usage.]
 
-. __Singularities and Infinite Densities__: Field quantities remain strictly finite on the ultra-refined grid \( \mathcal { G } _ \omega \). Singular collapses in field theory or gravitation are prevented by finite bounds and Spin(2) bivector vortex structures. Or, to put it another way: all the infinities are _countable infinities_. That is, to be “infinitely large” does not mean “to be on the next plane of existence” but merely “to have no _particular_ upper bound,” and to be “infinitely small” does not mean “to lose all extent in a limit process” but “to have no _particular_ lower bound.”
+. __Singularities and Infinite Densities__: Field quantities remain strictly finite on the ultra-refined grid \( \mathcal { G } _ \omega \). Singular collapses in field theory or gravitation are prevented by finite bounds and planar bivector vortex structures. Or, to put it another way: all the infinities are _countable infinities_. That is, to be “infinitely large” does not mean “to be on the next plane of existence” but merely “to have no _particular_ upper bound,” and to be “infinitely small” does not mean “to lose all extent in a limit process” but “to have no _particular_ lower bound.”
 
 . __Non-Measurable Sets__: Because every set of physical or mathematical interest is constructed via finite discrete counting operations, non-measurable sets (such as those in the Banach-Tarski paradox, _which defies conservation of mass and so proves conventional mathematics unsafe for engineering_) cannot be formulated within the Iris number system.
 
@@ -1321,7 +1321,7 @@ A foundational milestone of twentieth-century mathematical logic was Kurt Gödel
 
 . Moreover, such a system \( \mathcal { F } \) cannot prove its own formal consistency; a proof of \( \text {Cons} ( \mathcal { F } ) \) within \( \mathcal { F } \) can exist only if \( \mathcal { F } \) is inconsistent.footnote:[Because an inconsistent formal system can prove itself consistent, any self-consistency proof from a consistent formal system would have meant nothing, anyway. Was not the whole exercise a waste of time?]
 
-The sociological and philosophical reaction of establishment academia to these results was extraordinary. Rather than treating unprovable consistency as an alarming symptom of defective foundational axioms, mathematicians came to treat the inability to prove consistency as a routine, inevitable property of mathematical thought. In the conventional milieu—ruled by consensus of peers rather than disciplined scientific inference—proving mathematics consistent was abandoned as an objective. It became open doctrine that should inconsistency be discovered in conventional set theory-based mathematics, mathematicians would merely patch the axioms ad hoc and proceed as before.
+The sociological and philosophical reaction of establishment academia to these results was extraordinary. Rather than treating unprovable consistency as an alarming symptom of defective foundational axioms, mathematicians came to treat the inability to prove consistency as a routine, inevitable property of mathematical thought. In the conventional milieu—ruled by consensus of peers rather than disciplined scientific inference—proving mathematics consistent was abandoned as a goal. It became open doctrine that should inconsistency be discovered in conventional set theory-based mathematics, mathematicians would merely patch the axioms ad hoc and proceed as before.
 
 The constructive development of the Iris Number System reveals the profound fallacy of that resignation. The Iris Number System _can prove itself consistent_, while independently being known to be consistent, because it is tautologically complete:
 
@@ -1351,11 +1351,11 @@ The crucial insight revealed by this theorem is that Gödel’s Second Incomplet
 
 The conditions that yield Gödelian undecidability and the impossibility of proving consistency are not universal features of number systems, but artifacts of two fatal errors introduced into conventional foundational mathematics:
 
-. __The Assumption of Completed Infinities and Non-Constructive Sets__: Conventional set theory (ZFC) and Peano arithmetic introduce uncountably infinite domains, the Axiom of Choice, and “completed infinities.” By departing from the finite and countably infinite, conventional systems introduce self-referential loops (such as Gödel sentence construction via unbounded arithmetization) that cannot be resolved within the system.
+. __The Assumption of Completed Infinities and Non-Constructive Sets__: Conventional set theory (ZFC) and Peano arithmetic introduce uncountably infinite domains, the Axiom of Choice, and “completed infinities.” By departing from the finite and countably infinite, conventional systems introduce self-citing loops (such as Gödel sentence construction via unbounded arithmetization) that cannot be resolved within the system.
 
-. __The Reification of Continuum Axioms__: In conventional analysis, the continuum is treated as an “actual infinity” of “dimensionless points.” As demonstrated in our analysis of continuum paradoxes, this ungrounded metaphysical assumption generates non-measurable sets, divergent field singularities, and undecidable propositions.
+. __The Reification of Infinite-Divisibility Axioms__: In conventional analysis, infinite divisibility is treated as an “actual infinity” of “dimensionless points.” As demonstrated in our analysis of infinite-divisibility paradoxes, this ungrounded metaphysical assumption generates non-measurable sets, divergent field singularities, and undecidable propositions.
 
-When mathematics is constructed properly—as an explicit, discrete tautological system grounded in physical measurement, multiscale analysis, and scientific inference based on axiomatic probability theory and the principle of maximum entropy—Gödel’s dilemma evaporates. The system proves its own consistency because every theorem is a constructive identity of measurement, leaving no room for unprovable arithmetical inconsistencies or self-referential paradoxes.
+When mathematics is constructed properly—as an explicit, discrete tautological system grounded in physical measurement, multiscale analysis, and scientific inference based on axiomatic probability theory and the principle of maximum entropy—Gödel’s dilemma evaporates. The system proves its own consistency because every theorem is a constructive identity of measurement, leaving no room for unprovable arithmetical inconsistencies or circular paradoxes.
 
 
 [#chap-equivalent-informational-formulation]
@@ -1387,7 +1387,7 @@ The equivalent informational system, denoted \( \mathcal { S } _ { \text {Info} 
 [POSTULATE]
 .Postulate Info-0: Discrete Information Space
 ====
-All mathematical and physical propositions evaluate states within a discrete information space defined over multiscale resolution grids \( \mathcal { G } _ N \) in the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). The system admits no completed “actual infinities,” non-constructive sets, or dimensionless point continua. Every measurable quantity is a finite digital signal or analog m-res vernier count.
+All mathematical and physical propositions evaluate states within a discrete information space defined over multiscale resolution grids \( \mathcal { G } _ N \) in the discrete ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). The system admits no completed “actual infinities,” non-constructive sets, or dimensionless point-sets. Every measurable quantity is a finite digital signal or analog m-res vernier count.
 ====
 
 [#postulate-info-1]
@@ -1401,7 +1401,7 @@ Information channels and multivector flux states are geometrically closed within
 [POSTULATE]
 .Postulate Info-2: The Informational Principle of Direct Contact Action
 ====
-Information transfer, field coupling, and causal state updates occur exclusively via direct topological contact across adjacent boundaries on \( \mathcal { G } _ N \). All physical influences propagate across the lattice with finite velocity bounded by the speed of electromagnetic waves relative to their source of transmission, designated \( c \). Such activities always require a finite positive duration. Non-local action-at-a-distance, unmediated interactions, and instantaneous phase changes are things that do not happen. The very notion is abhorrent.
+Information transfer, field coupling, and causal state updates occur exclusively via direct topological contact across adjacent boundaries on \( \mathcal { G } _ N \). All physical influences propagate across the lattice with finite velocity bounded by the speed of electromagnetic waves relative to their source of transmission, designated \( c \). Such activities always require a finite positive duration. Non-local action-at-a-distance, unmediated interactions, and zero-duration phase changes are things that do not happen. The very notion is abhorrent.
 ====
 
 [#postulate-info-3]
@@ -1434,7 +1434,7 @@ Every theorem, conservation principle, multivector identity, and physical field 
 __Proof:__
 The proof requires demonstrating two-way logical implication between the two formal systems.
 
-*Part 1: Forward Implication ( \( \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \text {Info} } \) )*
+_Part 1: Forward Implication ( \( \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \text {Info} } \) )_
 
 Assume the validity of \( \mathcal { S } _ { \text {Iris} } \).
 
@@ -1448,7 +1448,7 @@ Assume the validity of \( \mathcal { S } _ { \text {Iris} } \).
 
 Therefore, \( \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \text {Info} } \).
 
-*Part 2: Reverse Implication ( \( \mathcal { S } _ { \text {Info} } \implies \mathcal { S } _ { \text {Iris} } \) )*
+_Part 2: Reverse Implication ( \( \mathcal { S } _ { \text {Info} } \implies \mathcal { S } _ { \text {Iris} } \) )_
 
 Assume the validity of \( \mathcal { S } _ { \text {Info} } \).
 
@@ -1493,7 +1493,7 @@ In contrast, the authoritarian method of “knowledge by consensus of peers” o
 
 . __Institutional Gatekeeping__: Consensus creates a self-reinforcing priesthood where funding, publication, and credentials are conditioned upon adhering to established doctrines. Dissenting demonstrations—no matter how meticulously they be done—are dismissed with a wave of the hand, or sometimes with vicious polemic.
 
-. __Vulnerability to the Sunk Cost Fallacy__: Academic, government, and business communities invest decades of career prestige, computational software, and financial resources into bankrupt continuum formalisms and unphysical particle creeds. Institutional consensus acts as a defense mechanism to shield those sunk costs from refutation.
+. __Vulnerability to the Sunk Cost Fallacy__: Academic, government, and business communities invest decades of career prestige, computational software, and financial resources into bankrupt infinite-divisibility formalisms and unphysical particle creeds. Institutional consensus acts as a defense mechanism to shield those sunk costs from refutation.
 
 The Iris Number System—both in its original operational form \( \mathcal { S } _ { \text {Iris} } \) and in its equivalent informational form \( \mathcal { S } _ { \text {Info} } \)—exists apart from the consensus method. Nothing herein is done with the hope of Fred Custer getting his picture in _Science_ magazine, soon to be renamed _Science Prize Announcements Weekly_. Truth in mathematics and natural science is not determined by committee ballots or majority opinion. The Master Field Equation \( D F = J \) and the theorems of the Iris system stand because they are the best inferences possible if we model the universe as source currents and a field, the way James Clerk Maxwell did.
 
@@ -1565,7 +1565,7 @@ where \( \delta _ 1 , \delta _ 2 > 0 \), consisting of a rational scale reading 
 [POSTULATE]
 .Postulate Metro-2: The Multiscale Vernier Zoom Postulate (m-res Numbers)
 ====
-The field of view of a measurement can be refined in discrete zoom steps \( m \in \mathbb { Z } \) to an order of resolution \( \epsilon^m \), forming the discrete multiscale resolution ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). Mathematical analysis consists strictly of comparing measurements across finite vernier zoom steps, without invoking continuum limits or dimensionless points.
+The field of view of a measurement can be refined in discrete zoom steps \( m \in \mathbb { Z } \) to an order of resolution \( \epsilon^m \), forming the discrete multiscale resolution ring \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \). Mathematical analysis consists strictly of comparing measurements across finite vernier zoom steps, without invoking infinite-divisibility limits or dimensionless points.
 ====
 
 [#postulate-metro-3]
@@ -1590,7 +1590,7 @@ We now establish equivalence between the three formulations of the Iris Number S
 Let \( \mathcal { S } _ { \text {Metro} } \) be the Operational Metrological Formulation defined by Postulates Metro-0 through Metro-3. Let \( \mathcal { S } _ { \text {Iris} } \) be the original Iris Number System defined by Postulates 0 through 9, and let \( \mathcal { S } _ { \text {Info} } \) be the Informational Formulation defined by Postulates Info-0 through Info-3. Then all three systems are constructively and deductively equivalent:
 \[ \mathcal { S } _ { \text {Iris} } \iff \mathcal { S } _ { \text {Info} } \iff \mathcal { S } _ { \text {Metro} } \]
 
-*Proof.*
+_Proof._
 
 We have already established in xref:theorem-informational-equivalence[Theorem: Structural Equivalence of the Original Iris System and the Informational Formulation] that:
 \[ \mathcal { S } _ { \text {Iris} } \iff \mathcal { S } _ { \text {Info} } \]
@@ -1615,7 +1615,7 @@ __Part 2: \( \mathcal { S } _ { \text {Metro} } \implies \mathcal { S } _ { \tex
 
 Assume the validity of \( \mathcal { S } _ { \text {Metro} } \).
 
-. __Recovery of Postulates 0, 1, 5, 7, and 8__: Postulate Metro-0 establishes discrete counting against an Iris aperture in Euclidean 3-space with finite propagation delay at speed \( c \), recovering Postulates 0, 1, 7, and 8. Postulate Metro-2 establishes multiscale partition grids, recovering Postulate 5.
+. __Recovery of Postulates 0, 1, 5, and 7__: Postulate Metro-0 establishes discrete counting against an Iris sampling window in Euclidean 3-space with finite propagation delay at speed \( c \), recovering Postulates 0, 1, 7, and 8. Postulate Metro-2 establishes multiscale partition grids, recovering Postulate 5.
 
 . __Recovery of Conformal Geometric Algebra and Geometric Postulates__: Postulate Metro-0 and Metro-3 require the multivector field \( F \) in Conformal Geometric Algebra and the differential operator \( D \). The geometric product, quadratic metric preservation, bivector parity duality, and the Iris generator \( \iota = e _ { 12 } + e _ 4 e _ \odot \) are the unique algebra and generators satisfying these operational requirements, recovering Postulates 2, 3, 4, and 9.
 
@@ -1634,7 +1634,7 @@ All three formulations of the Iris Number System are completely equivalent. \( \
 
 Having established the original constructive system (\( \mathcal { S } _ { \text {Iris} } \)), the informational formulation (\( \mathcal { S } _ { \text {Info} } \)), and the operational metrological formulation (\( \mathcal { S } _ { \text {Metro} } \)), we now present a fourth equivalent formulation: the __Discrete Kinetic Formulation__ (\( \mathcal { S } _ { \text {Kinetic} } \)).
 
-While the metrological formulation views the system through the four tools of the laboratory workbench, the kinetic formulation expresses the system at its deepest submicroscopic mechanics. In this formulation, we discard the higher-order abstractions of fields (imagined as “continuous”), currents (that flow like rivers), and charges (resembling ponds and lakes). We deal strictly with individual entities, discrete difference equations, and direct physical contact at lattice vertices.
+While the metrological formulation views the system through the four tools of the laboratory workbench, the kinetic formulation expresses the system at its deepest submicroscopic mechanics. In this formulation, we discard the higher-order abstractions of fields (imagined as “infinitely divisible”), currents (that flow like rivers), and charges (resembling ponds and lakes). We deal strictly with individual entities, discrete difference equations, and direct physical contact at lattice vertices.
 
 ==== Physical Motivation: Difference Equations and Direct Contact Collisions
 
@@ -1739,7 +1739,7 @@ Assume the validity of \( \mathcal { S } _ { \text {Iris} } \).
 
 . __Derivation of Postulate Kinetic-2__: In \( \mathcal { S } _ { \text {Iris} } \), Chapter 5 constructs multiscale resolution numbers \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \) via scale powers \( \epsilon ^ m \). Taking the low-order multivector moments of the discrete distribution and expanding across link length \( \Delta x = \epsilon ^ m \) yields the vernier derivatives and recovers the Master Field Equation \( D F = J \). This satisfies Postulate Kinetic-2.
 
-. __Derivation of Postulate Kinetic-3__: In \( \mathcal { S } _ { \text {Iris} } \), Chapter 10 and Volume IV demonstrate that particles are localized standing electromagnetic wave knots governed by \( D F = J \). On the discrete lattice, these knots are stable recirculating loops of wave packets endlessly scattering at lattice vertices. This satisfies Postulate Kinetic-3.
+. __Derivation of Postulate Kinetic-3__: In \( \mathcal { S } _ { \text {Iris} } \), Chapter 10 and Volume IV demonstrate that particles are localized standing electromagnetic wave knots described by \( D F = J \). On the discrete lattice, these knots are stable recirculating loops of wave packets endlessly scattering at lattice vertices. This satisfies Postulate Kinetic-3.
 
 Therefore, \( \mathcal { S } _ { \text {Iris} } \implies \mathcal { S } _ { \text {Kinetic} } \).
 
@@ -1774,9 +1774,9 @@ In such a formulation, causation is understood retrospectively: matter is where 
 
 ==== Retrospective Causation and the Hypothetical Backtrace
 
-In the conventional view, derived from seventeenth-century mechanics, the universe is imagined as an initial-value problem. In the “modern” version of this view, employing defective mathematics, one assumes an uncountably infinite continuum of real coordinates \( \mathbb { R } ^ 3 \) and a continuous time parameter \( t \). Forces are imagined to push matter forward into the next infinitesimal moment \( t + dt \). Diagrams depict differentials such as \( dt \) as straight lines that disappear “in the limit.” Motion forwards is a motion that exists and yet disappears “in the limit” (supposedly resolving Zeno’s paradoxes). This forward-looking viewpoint that occurs in uncountable infinities of no-time conceals the physical mechanism of force transmission, encouraging the belief that forces act without duration or that objects possess abstract, ungrounded velocities disconnected from their interaction history.
+In the conventional view, derived from seventeenth-century mechanics, the universe is imagined as an initial-value problem. In the “modern” version of this view, employing defective mathematics, one assumes an uncountably infinite manifold of real coordinates \( \mathbb { R } ^ 3 \) and an infinitely-divisible time parameter \( t \). Forces are imagined to push matter forward into the next infinitesimal moment \( t + dt \). Diagrams depict differentials such as \( dt \) as straight lines that disappear “in the limit.” Motion forwards is a motion that exists and yet disappears “in the limit” (supposedly resolving Zeno’s paradoxes). This forward-looking viewpoint that occurs in uncountable infinities of no-time conceals the physical mechanism of force transmission, encouraging the belief that forces act without duration or that objects possess abstract, ungrounded velocities disconnected from their interaction history.
 
-In the real world, no interaction occurs without duration. Every push, pull, deflection, wave emission, or wave absorption requires an amount of time. The maximum speed at which any physical influence or wave packet can travel relative to its source is designated \( c \). We may call \( c \) the __fundamental speed of causation__. Indeed, all units of speed should be defined in terms of it, rather than in terms of the SI constant mislabeled \( c \). This SI constant is called by the name “speed of light in a vacuum,” which is meaningless: light exists only in an uninterrupted medium, the field. The term “vacuum,” meaning absence of air, has no application in this context.footnote:[Imagining radiation as little pellets moving through “empty space” is the only way such ridiculous fantasies as “the Cosmic Microwave Background is a remnant of the Big Bang” can come to be. They make no sense once one realizes space is filled with an electromagnetic medium, and radiation is not pellets but waves in that medium, which spread and dissipate and crash through each other.]
+In the real world, no interaction occurs without duration. Every push, pull, deflection, wave emission, or wave absorption requires an amount of time. The maximum speed at which any physical influence or wave packet can travel relative to its source is designated \( c \). We may call \( c \) the __fundamental speed of causation__. Indeed, all units of speed should be defined in terms of it, rather than in terms of the SI constant mislabeled \( c \). This SI constant is misnamed the “velocity of light in a vacuum,” which is meaningless: light exists only in an uninterrupted medium, the field. The term “vacuum,” meaning absence of air, has no application in this context.footnote:[Imagining radiation as little pellets moving through “empty space” is the only way such ridiculous fantasies as “the Cosmic Microwave Background is a remnant of the Big Bang” can come to be. They make no sense once one realizes space is filled with an electromagnetic medium, and radiation is not pellets but waves in that medium, which spread and dissipate and crash through each other.]
 
 Consequently, an entity located at position \( \mathbf { x } \) at time step \( t \) does not exist in isolation. It is the destination point of influences that departed other entities at earlier time steps:
 \[ t _ { \text {causal} } = t - \frac { r } { c } \]
@@ -1784,7 +1784,7 @@ The entity does not need to guess the future. Its present location, momentum, an
 \[ \mathbf { x } _ i [ k ] = \mathbf { x } _ i [ 0 ] + \sum _ { j = 0 } ^ { k - 1 } \Delta \mathbf { x } _ i [ j ] \]
 where each displacement \( \Delta \mathbf { x } _ i [ j ] \) is determined entirely by direct-contact momentum exchanges with incoming wave packets during step \( j \).
 
-Because space and time in the Iris Number System are discrete at the m-res scale on the lattice \( \mathcal { G } _ N \), this history is not an intractable continuum of states. It is a countable, finite tree of discrete events. Starting from any observed present configuration, one can, in principle, carry out a complete, step-by-step hypothetical backtrace:
+Because space and time in the Iris Number System are discrete at the m-res scale on the lattice \( \mathcal { G } _ N \), this history is not an intractable point-set of states. It is a countable, finite tree of discrete events. Starting from any observed present configuration, one can, in principle, carry out a complete, step-by-step hypothetical backtrace:
 \[ \text {State} [ k ] \xrightarrow { \text {backtrace} } \text {State} [ k - 1 ] \xrightarrow { \text {backtrace} } \dots \xrightarrow { \text {backtrace} } \text {State} [ 0 ] \]
 Every particle position, molecular configuration, and wave distribution is fully accounted for by the finite chain of past interactions that constructed it.
 
@@ -1803,7 +1803,7 @@ Every physical entity possesses non-zero spatial extent and non-zero mass. Entit
 [POSTULATE]
 .Postulate History-1: The Discrete Lattice Stage
 ====
-Physical space and the succession of physical events exist at a definite discrete scale on the multiscale resolution grid \( \mathcal { G } _ N \). Physical displacements and clock ticks occur in discrete, finite m-resolution steps. There is no uncountably infinite continuum of flyspeck “points” or temporal “instants.”
+Physical space and the succession of physical events exist at a definite discrete scale on the multiscale resolution grid \( \mathcal { G } _ N \). Physical displacements and clock ticks occur in discrete, finite m-resolution steps. There is no uncountably infinite set of flyspeck “points” or temporal “instants.”
 ====
 
 [#postulate-history-2]
@@ -1833,7 +1833,7 @@ where the displacements \( \Delta \mathbf { x } _ i [ j ] \) are incoming wave p
 [POSTULATE]
 .Postulate History-5: Finite Traceability (The Hypothetical Backtrace)
 ====
-Because all physical entities possess finite non-zero spatial extent and advance by finite discrete steps over finite durations, the past causal history of any physical configuration is a finite, recursively enumerable sequence of interactions. It is always possible to perform a probabilistic hypothetical backtrace from any present configuration to reconstruct its antecedent causal chain without encountering mathematical singularities, divergent integrals, or continuum infinities.
+Because all physical entities possess finite non-zero spatial extent and advance by finite discrete steps over finite durations, the past causal history of any physical configuration is a finite, recursively enumerable sequence of interactions. It is always possible to perform a probabilistic hypothetical backtrace from any present configuration to reconstruct its antecedent causal chain without encountering mathematical singularities, divergent integrals, or infinite-divisibility infinities.
 ====
 
 [#postulate-history-6]
@@ -1884,11 +1884,11 @@ __Part 1: Forward Implication (\( \mathcal { S } _ { \text {Iris} } \implies \ma
 
 Assume the validity of \( \mathcal { S } _ { \text {Iris} } \).
 
-. __Derivation of Postulates History-0 and History-1__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 0 establishes that all quantities represent discrete measurement operations. Postulate 1 establishes the discrete ring of integers with unit successor step. Postulate 5 establishes exact rational partition grids \( \mathcal { G } _ N \), and Postulate 7 enforces the strict discrete countability boundary, completely eliminating completed infinities and zero-dimensional continuum points. Chapter 5 constructs m-res numbers \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \) with non-zero scale factor \( \epsilon ^ m \). Thus, all physical entities possess finite non-zero spatial extent and non-zero mass, and space along with time forms a discrete lattice stage \( \mathcal { G } _ N \). This establishes Postulates History-0 and History-1.
+. __Derivation of Postulates History-0 and History-1__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 0 establishes that all quantities represent discrete measurement operations. Postulate 1 establishes the discrete ring of integers with unit successor step. Postulate 5 establishes exact rational partition grids \( \mathcal { G } _ N \), and Postulate 7 enforces the strict discrete countability boundary, completely eliminating completed infinities and zero-dimensional point-sets. Chapter 5 constructs m-res numbers \( \text {Fin} ( \mathbb { R } ^ { \ast } ) \) with non-zero scale factor \( \epsilon ^ m \). Thus, all physical entities possess finite non-zero spatial extent and non-zero mass, and space along with time forms a discrete lattice stage \( \mathcal { G } _ N \). This establishes Postulates History-0 and History-1.
 
 . __Derivation of Postulates History-2 and History-3__: In \( \mathcal { S } _ { \text {Iris} } \), Postulate 8 (Action by Direct Contact via Topological Halos) explicitly establishes that all physical interactions occur by direct contiguous contact across halo boundaries over finite duration, with causal propagation bounded by \( c \), the speed of electromagnetic influences relative to their source. This establishes Postulates History-2 and History-3.
 
-. __Derivation of Postulates History-4 and History-5__: In \( \mathcal { S } _ { \text {Iris} } \), physical dynamics are governed by the Master Field Equation \( D F = J \) on discrete grids \( \mathcal { G } _ N \). Because all interactions propagate with finite velocity \( c \) across discrete links, the field arriving at any cell at step \( k \) is the convolution of localized source emissions from past finite-time steps \( k - r / ( c \tau ) \). Integrating the momentum transfer over discrete time yields the cumulative displacement equation:
+. __Derivation of Postulates History-4 and History-5__: In \( \mathcal { S } _ { \text {Iris} } \), physical dynamics are described by the Master Field Equation \( D F = J \) on discrete grids \( \mathcal { G } _ N \). Because all interactions propagate with finite velocity \( c \) across discrete links, the field arriving at any cell at step \( k \) is the convolution of localized source emissions from past finite-time steps \( k - r / ( c \tau ) \). Integrating the momentum transfer over discrete time yields the cumulative displacement equation:
 \[ \mathbf { x } _ i [ k ] = \mathbf { x } _ i [ 0 ] + \sum _ { j = 0 } ^ { k - 1 } \Delta \mathbf { x } _ i [ j ] \]
 Because the lattice index set is finite and recursively enumerable (Postulate 7), the past interaction history is a finite sequence of discrete steps. Reversing the sequence step by step constructs a hypothetical backtrace without singularities. This establishes Postulates History-4 and History-5.
 
@@ -1904,7 +1904,7 @@ __Part 2: Reverse Implication (\( \mathcal { S } _ { \text {History} } \implies 
 
 Assume the validity of \( \mathcal { S } _ { \text {History} } \).
 
-. __Recovery of Postulates 0, 1, 5, and 7__: Postulates History-0 and History-1 establish that all entities possess non-zero spatial extent and exist on a discrete multiscale grid \( \mathcal { G } _ N \), with no continuum infinities or zero-dimensional points. This directly recovers:
+. __Recovery of Postulates 0, 1, 5, and 7__: Postulates History-0 and History-1 establish that all entities possess non-zero spatial extent and exist on a discrete multiscale grid \( \mathcal { G } _ N \), with no infinite-divisibility infinities or zero-dimensional points. This directly recovers:
   * Postulate 0 (all quantities are finite measurement operations),
   * Postulate 1 (discrete successor ordering and integer ring properties),
   * Postulate 5 (discrete rational partition grids \( \mathcal { G } _ N \)), and
@@ -1960,7 +1960,7 @@ Under this linear coordinate transformation:
 . The center point \( O \) corresponds to the coordinate origin \( 0 \) (the point of zero radial displacement).
 . The intersection of the radius with the circumference corresponds to coordinate \( 2 \pi \) under circumferential scaling, but along the radial ray itself, the length of this radius is defined as unit length \( 1 \).
 
-Thus, the center is \( 0 \) and the point on the circumference is \( 2 \pi \), while the radial interval between them defines the unit segment \( [ 0 , 1 ] \). The “ratio” of circumference to radius is fixed by the coordinate scaling relation \( 2 \pi / 1 = 2 \pi \). Neither the circumference nor the radius requires the prior assumption of an uncountably infinite continuum of dimensionless points; both are finite, discrete geometric entities established by physical instruments in direct contact.
+Thus, the center is \( 0 \) and the point on the circumference is \( 2 \pi \), while the radial interval between them defines the unit segment \( [ 0 , 1 ] \). The “ratio” of circumference to radius is fixed by the coordinate scaling relation \( 2 \pi / 1 = 2 \pi \). Neither the circumference nor the radius requires the prior assumption of an uncountably infinite set of dimensionless points; both are finite, discrete geometric entities established by physical instruments in direct contact.
 
 The above serves as definition of \( 2 \pi \) as _the circle ratio_.footnote:[Usually \( \pi \) is call the circle ratio, but we prefer{nbsp}\( 2 \pi \). Also some have used the notation \( \tau = 2\pi \), but we prefer the notation \( \texttt{&#x262E;} = 2\pi \) and call the circle ratio by the alternate name _peace_. In this volume, however, we shall stay with{nbsp}\( 2\pi \).]
 
@@ -1987,7 +1987,7 @@ In the Counting-Iris System, counting is rooted in physical operations of measur
 
 The circle-radius formulation and the Counting-Iris formulation share identical physical and epistemological grounding, based on _living_ numbers:
 
-. _Rejection of Continuum Mystification_: Neither formulation presumes an uncountably infinite continuum or dimensionless points. Each number corresponds to a finite number of finite entities or operations.
+. _Rejection of Infinite-Divisibility Mystification_: Neither formulation presumes an uncountably infinite set or dimensionless points. Each number corresponds to a finite number of finite entities or operations.
 . _Physical Scalability_: The unit \( 1 \) is in both cases an operational calibration—whether a mark on a draftsperson’s scale, a locked caliper setting, a notch, an electronic pulse, a node in a linked list, etc.
 . _Direct Contact Causality_: Every successor step is established by direct local contact—for instance, the physical scribe of a compass point, the physical carving of a notch, the physical linking of another node in a list.footnote:[There are those who will insist that constructing a linked list in a computer is an “abstract” activity, not a physical one. There is probably no point in arguing. Their brain is not really functioning. At least it is not as bad as if they believed “quantum teleportation” were actually that, or that “entangled particles” could exist.]
 
@@ -2029,17 +2029,17 @@ The constructed points therefore satisfy the discrete ordered ring properties of
 
 Here __Profound Insight Analysis (PIA)__ is introduced as a dual of Multiscale Resolution Analysis (MSRA). It is a second way to do calculus that is complementary to the first.
 
-In standard MSRA, when closer examination or finer distinction is required, one holds the universe fixed and introduces a finer vernier subdivision—narrowing the aperture slit \( \delta _ \omega = \bullet / \omega \) to probe finer sub-blade intervals on the discrete grid \( \mathcal { G } _ \omega \). 
+In standard MSRA, when closer examination or finer distinction is required, one holds the universe fixed and introduces a finer vernier subdivision—narrowing the sampling window slit \( \delta _ \omega = \bullet / \omega \) to probe finer sub-blade intervals on the discrete grid \( \mathcal { G } _ \omega \). 
 
-In __Profound Insight Analysis__, by contrast, the viewpoint is inverted. One does not switch to a finer scale, but instead lets one’s insight dwell upon the universe, so the universe may expand to a __greater level of enlightenment__ \( \mathcal { E } _ k \). In this expanded cosmological state, what was previously unabstractable or micro-vernier is brought into clear, standard-scale view. If a given level of insight does not suffice to resolve a question or distinguish two configurations, the domain expands once more to a yet greater level of enlightenment \( \mathcal { E } _ { k + 1 } \), continuing as greatly as needed.
+In __Profound Insight Analysis__, by contrast, the viewpoint is inverted. One does not switch to a finer scale, but instead lets one’s insight dwell upon the universe, so the universe may expand to a __greater level of enlightenment__ \( \mathcal { E } _ k \). In this expanded cosmological state, what was previously unabstractable or micro-vernier is brought into clear, standard-scale view. If a given level of insight does not suffice to resolve a question or distinguish two configurations, the domain expands once more to a yet greater level of enlightenment \( \mathcal { E } _ { k + 1 } \), proceeding as greatly as needed.
 
 The downwards arrow operator \( ( \downarrow ) \) takes on a new meaning: instead of projecting from a finer scale to a coarser main scale, the downwards arrow shrinks the expanded universe to its normal size. The greater levels of enlightenment disappear from view and mathematically vanish.
 
 ==== The Metaphor of Enlightenment and Universal Scale Dilation
 
-Mathematicians have frequently succumbed to the fallacy that the only way to analyze fine structure is to imagine an uncountably infinite continuum of points with zero spatial extent. In the Iris Number System, as we have seen repeatedly, such continua are unnecessary. We do calculus perfectly well, despite that continua do not exist in the language, and there is no such thing as a “limit” of interval length zero. We in fact straightforwardly do the equivalent of nonstandard analysis, which in conventional mathematics requires an array of speculative “infinities” and the Axiom of Choice.
+Mathematicians have frequently succumbed to the fallacy that the only way to analyze fine structure is to imagine an uncountably infinite set of points with zero spatial extent. In the Iris Number System, as we have seen repeatedly, such infinite-divisibility point-sets are unnecessary. We do calculus perfectly well, despite that infinite divisibility does not exist in the language, and there is no such thing as a “limit” of interval length zero. We in fact straightforwardly do the equivalent of nonstandard analysis, which in conventional mathematics requires an array of speculative “infinities” and the Axiom of Choice.
 
-Profound Insight Analysis makes it very clear there are no continua involved. Differential calculus is done by transforming the scale of the function until fine enough detail is revealed to plain sight:
+Profound Insight Analysis makes it very clear there is no infinite divisibility involved. Differential calculus is done by transforming the scale of the function until fine enough detail is revealed to plain sight:
 
 * __The Ground Universe (\( \mathcal { U } _ 0 \))__: The baseline discrete lattice \( \mathcal { G } _ 0 \) upon which standard integer counts and baseline rational measurements are directly observed.
 * __The Expansion Operator (\( \Uparrow _ k \))__: An operational transformation that inflates the metric frame by a discrete scale factor \( \Lambda _ k \in \mathbb { Z } _ { > 0 } \), mapping the universe \( \mathcal { U } _ 0 \) to the __\( k \)-th Level of Enlightenment__ \( \mathcal { E } _ k \). Under this expansion, fine differences of tier \( 1 / \Lambda _ k \) expand into unit integer steps on the illuminated lattice \( \mathcal { G } _ k \).
@@ -2054,7 +2054,7 @@ Profound Insight Analysis is built from five postulates of dilation and contract
 [POSTULATE]
 .Postulate Insight-0: The Discrete Ground Universe
 ====
-The universe starts on a discrete, finite-step ground grid \( \mathcal { G } _ 0 \). All baseline quantities represent discrete steps. No infinite continua or zero-dimensional entities exist.
+The universe starts on a discrete, finite-step ground grid \( \mathcal { G } _ 0 \). All baseline quantities represent discrete steps. No infinitely divisible point-sets or zero-dimensional entities exist.
 ====
 
 [#postulate-insight-1]
@@ -2131,7 +2131,7 @@ We prove the two-way analytical equivalence between \( \mathcal { A } _ { \text 
 . __Part 1: Forward Implication (\( \mathcal { A } _ { \text {MSRA} } \implies \mathcal { A } _ { \text {Insight} } \))__:
 Assume the validity of Multiscale Resolution Analysis \( \mathcal { A } _ { \text {MSRA} } \). In MSRA, a multiscale measurement quantity is given by \( x ^ \ast = r + \epsilon ^ \ast \) on vernier grid \( \mathcal { G } _ \omega \) with grid spacing \( \delta _ \omega = 1 / \omega \), where Main Scale Projection satisfies \( ( \downarrow ) ( x ^ \ast ) = r \).  +
   +
-Define the enlightenment dilation factor \( \Lambda _ k = \omega _ k \). Under the universal expansion \( \Uparrow _ k \), the spatial coordinate scales by \( \Lambda _ k \), yielding expanded state \( X _ k = \Lambda _ k x ^ \ast = \Lambda _ k r + \Lambda _ k \epsilon ^ \ast \). Setting \( \Delta _ k = \Lambda _ k \epsilon ^ \ast \), since \( | \epsilon ^ \ast | < 1 / N \) for all finite \( N \), the ratio \( | \Delta _ k | / \Lambda _ k = | \epsilon ^ \ast | \to 0 \) as \( k \to \infty \), satisfying Definition: Profound Insight Number. The contraction operator \( ( \downarrow ) \) yields:footnote:[We avoid the notation “\( \lim \)” here, in favor of the vertical line.]
+Define the enlightenment dilation factor \( \Lambda _ k = \omega _ k \). Under the universal expansion \( \Uparrow _ k \), the spatial coordinate scales by \( \Lambda _ k \), yielding expanded state \( X _ k = \Lambda _ k x ^ \ast = \Lambda _ k r + \Lambda _ k \epsilon ^ \ast \). Setting \( \Delta _ k = \Lambda _ k \epsilon ^ \ast \), since \( | \epsilon ^ \ast | < 1 / N \) for all finite \( N \), the ratio \( | \Delta _ k | / \Lambda _ k = | \epsilon ^ \ast | \to 0 \) as \( k \to \infty \), satisfying Definition: Profound Insight Number. The contraction operator \( ( \downarrow ) \) yields:footnote:[We avoid static limit-operator notation here, in favor of the vertical line.]
 \[ ( \downarrow ) ( X ) = \left. \frac { X _ k } { \Lambda _ k }\right| _ {k \to \infty}\mkern-20mu = r = ( \downarrow ) ( x ^ \ast ) \]  +
   +
 Furthermore, for any multivector field \( \Psi \), the MSRA vernier derivative is:
@@ -2159,14 +2159,14 @@ The second alternative formulation of analysis within the Iris framework is __Di
 
 Karl Weierstrass sought to purge calculus of hazy infinitesimals and kinematic fluxions by introducing the \( \varepsilon \)-\( \delta \) formalism:
 \[ \forall \varepsilon > 0, \; \exists\,\delta > 0 \text{ such that } 0 < | x - c | < \delta \implies |\, f(x) - L\, | < \varepsilon \]
-However, conventional nineteenth- and twentieth-century mathematics committed an epistemological error: it coupled the \( \varepsilon \)-\( \delta \) quantifier structure to speculative “continuum” metaphysics, taking the limit as \( \delta \to 0 \) through an uncountably infinite sequence of points of zero spatial extent.
+However, conventional nineteenth- and twentieth-century mathematics committed an epistemological error: it coupled the \( \varepsilon \)-\( \delta \) quantifier structure to speculative “infinite-divisibility” metaphysics, taking the limit as \( \delta \to 0 \) through an uncountably infinite sequence of points of zero spatial extent.
 
 In __Discrete Weierstrass Analysis__, we retain the rigor of the \( \varepsilon \)-\( \delta \) bounded inequality structure, but __eliminate the limit__. Instead of \( \delta \) shrinking a nothing, \( \delta \) shrinks until it __stops__ at some interval size \( \delta > 0 \). This action hinders practical calculus in no way. The “limit”-taking of conventional mathematics is _superfluous_, except perhaps in the student loan-funded parlor games of mathematics professors.
 
 ==== Foundational Principles of Discrete Weierstrass Analysis
 
 1. _No Infinitesimals and No Zero-Limits_: The interval size \( \delta \) is a finite real caliper measurement (a spacing on the resolution grid \( \mathcal { G } _ N \)). We never take \( \delta \to 0 \). We evaluate inequalities at a finite resolution \( \delta \).
-2. _Strictly Countable Infinities and Finite Calculations_: Because the process never descends into an uncountably infinite continuum, all calculations across bounded domains evaluate a finite number of discrete functional steps. Infinities appear strictly as potential, countable enumeration indexes—never as “completed actual infinities.”
+2. _Strictly Countable Infinities and Finite Calculations_: Because the process never descends into an uncountably infinite point-set, all calculations across bounded domains evaluate a finite number of discrete functional steps. Infinities appear strictly as potential, countable enumeration indexes—never as “completed actual infinities.”
 3. _No Division by Zero_: Because \( \delta > 0 \) is finite and bounded away from zero, the difference quotient:
 \[ \frac{\Delta f}{\delta} = \frac{f(x + \delta) - f(x)}{\delta} \]
 never involves division by zero. Division by zero can occur only if the function \( f(x) \) itself has a singularity that causes the blow-up. An example is \( f(x) = 1/x \) evaluated at \( x = 0 \), which in Multiscale Resolution Analysis and Profound Insight Analysis also causes division by zero.footnote:[The values of \( (d/dx)(1/x) \) become indefinitely large negative as{nbsp}\( x \to 0 \) from either direction. Thus it seems natural there should be no meaningful derivative at zero itself.]
@@ -2517,11 +2517,11 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:postulate-7[__Postulate 7: Strict Discrete Countability Boundary__]  -- Chapter: _Initial Postulates of the Tautological Structure_ | Section: _Initial Postulates of the Tautological Structure_
 * xref:postulate-8[__Postulate 8: Action by Direct Contact via Topological Halos__]  -- Chapter: _Initial Postulates of the Tautological Structure_ | Section: _Initial Postulates of the Tautological Structure_
 * xref:postulate-iris-generator[__Postulate 9: Formal Definition of the Iris Generator (\( \iota \))__]  -- Chapter: _Initial Postulates of the Tautological Structure_ | Section: _Initial Postulates of the Tautological Structure_
-* xref:postulate-info-0[__Postulate Info-0: Discrete Aperture Information Space__]  -- Chapter: _Equivalent Informational Formulation of the Tautological System_ | Section: _Postulate Set of the Informational Formulation_
+* xref:postulate-info-0[__Postulate Info-0: Discrete Information Space__]  -- Chapter: _Equivalent Informational Formulation of the Tautological System_ | Section: _Postulate Set of the Informational Formulation_
 * xref:postulate-info-1[__Postulate Info-1: Geometric Algebra of Multichannel Information Propagation__]  -- Chapter: _Equivalent Informational Formulation of the Tautological System_ | Section: _Postulate Set of the Informational Formulation_
 * xref:postulate-info-2[__Postulate Info-2: The Informational Principle of Direct Contact Action__]  -- Chapter: _Equivalent Informational Formulation of the Tautological System_ | Section: _Postulate Set of the Informational Formulation_
 * xref:postulate-info-3[__Postulate Info-3: Jaynesian Maximum Entropy Field Principle__]  -- Chapter: _Equivalent Informational Formulation of the Tautological System_ | Section: _Postulate Set of the Informational Formulation_
-* xref:postulate-metro-0[__Postulate Metro-0: The Discrete Counting and Aperture Metrology Postulate__]  -- Chapter: _The Operational Metrological Formulation of the Tautological System_ | Section: _Postulate Set of the Operational Metrological Formulation_
+* xref:postulate-metro-0[__Postulate Metro-0: The Discrete Counting and Metrology Postulate__]  -- Chapter: _The Operational Metrological Formulation of the Tautological System_ | Section: _Postulate Set of the Operational Metrological Formulation_
 * xref:postulate-metro-1[__Postulate Metro-1: The Finite Precision Postulate (The Real Number as a Measurement)__]  -- Chapter: _The Operational Metrological Formulation of the Tautological System_ | Section: _Postulate Set of the Operational Metrological Formulation_
 * xref:postulate-metro-2[__Postulate Metro-2: The Multiscale Vernier Zoom Postulate (m-res Numbers)__]  -- Chapter: _The Operational Metrological Formulation of the Tautological System_ | Section: _Postulate Set of the Operational Metrological Formulation_
 * xref:postulate-metro-3[__Postulate Metro-3: The Inductive Field Reconstruction Postulate (MaxEnt and DF = J)__]  -- Chapter: _The Operational Metrological Formulation of the Tautological System_ | Section: _Postulate Set of the Operational Metrological Formulation_
@@ -2534,15 +2534,15 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:postulate-history-2[__Postulate History-2: The Fundamental Speed of Causation__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
 * xref:postulate-history-3[__Postulate History-3: Action by Direct Contact__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
 * xref:postulate-history-4[__Postulate History-4: The Principle of Historical Determination__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
-* xref:postulate-history-5[__Postulate History-5: Strict Finite Traceability (The Hypothetical Backtrace)__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
-* xref:postulate-history-6[__Postulate History-6: Historical Conservation of Stress-Energy__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
+* xref:postulate-history-5[__Postulate History-5: Finite Traceability (The Hypothetical Backtrace)__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
+* xref:postulate-history-6[__Postulate History-6: Historical Conservation of Momentum and Energy__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
 * xref:postulate-history-7[__Postulate History-7: Matter-Field Unity and Bound Causal Loops__]  -- Chapter: _The Historical Causal Formulation of the Tautological System_ | Section: _Postulate Set of the Historical Causal Formulation_
 * xref:postulate-insight-0[__Postulate Insight-0: The Discrete Ground Universe__]  -- Chapter: _Profound Insight Analysis_ | Section: _Postulate Set of the Profound Insight Formulation_
 * xref:postulate-insight-1[__Postulate Insight-1: Universal Expansion to Higher Enlightenment__]  -- Chapter: _Profound Insight Analysis_ | Section: _Postulate Set of the Profound Insight Formulation_
 * xref:postulate-insight-2[__Postulate Insight-2: Invariance of Direct Contact and Multivectors Under Expansion__]  -- Chapter: _Profound Insight Analysis_ | Section: _Postulate Set of the Profound Insight Formulation_
 * xref:postulate-insight-3[__Postulate Insight-3: The Contraction Operator (Downwards Arrow \( \downarrow ) \))__]  -- Chapter: _Profound Insight Analysis_ | Section: _Postulate Set of the Profound Insight Formulation_
 * xref:postulate-insight-4[__Postulate Insight-4: Universal Enlightenment Duality__]  -- Chapter: _Profound Insight Analysis_ | Section: _Postulate Set of the Profound Insight Formulation_
-* xref:postulate-dwa-1[__Postulate DWA-1: The Finite Aperture Bound__]  -- Chapter: _Discrete Weierstrass Analysis_ | Section: _Postulates of Discrete Weierstrass Analysis_
+* xref:postulate-dwa-1[__Postulate DWA-1: The Finite Grid Spacing Bound__]  -- Chapter: _Discrete Weierstrass Analysis_ | Section: _Postulates of Discrete Weierstrass Analysis_
 * xref:postulate-dwa-2[__Postulate DWA-2: Discrete Bounded Variation__]  -- Chapter: _Discrete Weierstrass Analysis_ | Section: _Postulates of Discrete Weierstrass Analysis_
 * xref:postulate-dwa-3[__Postulate DWA-3: The Discrete Differential Quotient__]  -- Chapter: _Discrete Weierstrass Analysis_ | Section: _Postulates of Discrete Weierstrass Analysis_
 
@@ -2552,10 +2552,10 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-tautological-thales[__Theorem: Tautological Thales Right-Angle Theorem__]  -- Chapter: _Euclidean Geometry as a Tautological System_ | Section: _Core Theorems of Euclidean Geometry as Multivector Tautologies_
 * xref:theorem-tautological-sine-law[__Theorem: Tautological Directed Area Law of Sines__]  -- Chapter: _Euclidean Geometry as a Tautological System_ | Section: _Core Theorems of Euclidean Geometry as Multivector Tautologies_
 * xref:theorem-parity-conservation[__Theorem: Parity Conservation in Geometric Products__]  -- Chapter: _The Counting Process and the Integers_ | Section: _Geometric Algebra Integration and Parity Algebra_
-* xref:theorem-rational-reciprocity[__Theorem: Scale-Invariant Rational Reciprocity__]  -- Chapter: _The Rational Numbers_ | Section: _Multiplication as Composite Aperture Gating_
-* xref:theorem-real-aperture-completeness[__Theorem: Constructive Completeness of Iris Grid Limits__]  -- Chapter: _The Real Numbers_ | Section: _Bivector Rotations and Transcendental Angles_
+* xref:theorem-rational-reciprocity[__Theorem: Scale-Invariant Rational Reciprocity__]  -- Chapter: _The Rational Numbers_ | Section: _Multiplication as Composite Window Gating_
+* xref:theorem-real-window-completeness[__Theorem: Constructive Completeness of Iris Grid Convergences__]  -- Chapter: _The Real Numbers_ | Section: _Bivector Rotations and Transcendental Angles_
 * xref:theorem-vernier-flux-conservation[__Theorem: Vernier Flux Conservation and Main Scale Projection__]  -- Chapter: _The Multiscale Resolution Numbers_ | Section: _Main Scale Projection (Downwards Arrow Operator \( \downarrow ) \))_
-* xref:theorem-complex-main-scale-field[__Theorem: Main Scale Complex Field Isomorphism__]  -- Chapter: _Complex Numbers and Quaternions_ | Section: _Complex Numbers in Counting-Iris_
+* xref:theorem-complex-main-scale-field[__Theorem: Main Scale Complex Field Structural Equivalence__]  -- Chapter: _Complex Numbers and Quaternions_ | Section: _Complex Numbers in Counting-Iris_
 * xref:theorem-quaternion-algebra-identities[__Theorem: Quaternion Bivector Algebraic Identities__]  -- Chapter: _Complex Numbers and Quaternions_ | Section: _Quaternions as Spatial Bivector Subalgebras_
 * xref:theorem-msra-product-rule[__Theorem: MSRA Product Rule__]  -- Chapter: _How to do Differential Calculus_ | Section: _Proofs of Fundamental Differentiation Rules in MSRA_
 * xref:theorem-msra-quotient-rule[__Theorem: MSRA Quotient Rule__]  -- Chapter: _How to do Differential Calculus_ | Section: _Proofs of Fundamental Differentiation Rules in MSRA_
@@ -2565,9 +2565,9 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 * xref:theorem-msra-gauss-green-stokes[__Theorem: Discrete Gauss Divergence, Green's, and Stokes' Curl Theorem__]  -- Chapter: _How to Compute a Contour Integral_ | Section: _Classical Vector Calculus and Electromagnetics: Green, Stokes, and Gauss Theorems in MSRA_
 * xref:theorem-msra-cauchy-goursat[__Theorem: MSRA Cauchy-Goursat Theorem__]  -- Chapter: _How to Compute a Contour Integral_ | Section: _The Vernier Cauchy-Goursat Theorem in MSRA_
 * xref:theorem-msra-residue[__Theorem: MSRA Residue Theorem__]  -- Chapter: _How to Compute a Contour Integral_ | Section: _The MSRA Residue Theorem_
-* xref:theorem-cl411-existence[__Theorem: Constructive Existence and Algebraicity of Conformal Geometric Algebra__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Constructive Proof of Conformal Geometric Algebra_
+* xref:theorem-cga-existence[__Theorem: Constructive Existence and Algebraicity of Conformal Geometric Algebra__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Constructive Proof of Conformal Geometric Algebra_
 * xref:theorem-cga-pbw-basis[__Theorem: Constructive PBW Basis Theorem for Conformal Geometric Algebra__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Proof of the Constructive PBW Basis Theorem for Conformal Geometric Algebra_
-* xref:theorem-cl411-anticommutation[__Theorem: Fundamental Commutation and Metric Rules of Conformal Geometric Algebra__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Proof of the Fundamental Commutation and Metric Rules of Conformal Geometric Algebra_
+* xref:theorem-cga-anticommutation[__Theorem: Fundamental Commutation and Metric Rules of Conformal Geometric Algebra__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Proof of the Fundamental Commutation and Metric Rules of Conformal Geometric Algebra_
 * xref:theorem-msra-homomorphism[__Theorem: Ring Homomorphism Property of Main Scale Projection__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Proof of the MSRA Ring Homomorphism_
 * xref:theorem-tautological-completeness[__Theorem: Formal Tautological Completeness of the Iris System__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Proof of Tautological Completeness_
 * xref:theorem-self-consistency-iris[__Theorem: Constructive Self-Consistency of the Iris Tautological System__]  -- Chapter: _Completion of the Tautological Postulate System_ | Section: _Gödel’s Incompleteness Theorems and the Inherent Defectiveness of Conventional Mathematics_
@@ -2580,15 +2580,15 @@ Index of all formal Postulates, Theorems, and Definitions in the Iris Number Sys
 
 === Definitions
 
-* xref:definition-rational-aperture-ratio[__Definition: Iris Aperture Rational Ratio__]  -- Chapter: _The Rational Numbers_ | Section: _Iris Aperture Ratios and Fractional Measurement Operations_
-* xref:definition-real-aperture-convergence[__Definition: Constructive Iris Aperture Real Number__]  -- Chapter: _The Real Numbers_ | Section: _Constructive Iris Aperture Convergences and Rational Grid Refinement_
-* xref:definition-multiscale-vernier-number[__Definition: Multiscale Vernier Measurement Number (m-res Number)__]  -- Chapter: _The Multiscale Resolution Numbers_ | Section: _Vernier Scale Metrology and Multiscale Aperture Resolutions_
+* xref:definition-rational-window-ratio[__Definition: Iris Window Rational Ratio__]  -- Chapter: _The Rational Numbers_ | Section: _Iris Window Ratios and Fractional Measurement Operations_
+* xref:definition-real-window-convergence[__Definition: Constructive Iris Window Real Number__]  -- Chapter: _The Real Numbers_ | Section: _Constructive Iris Window Convergences and Rational Grid Refinement_
+* xref:definition-multiscale-vernier-number[__Definition: Multiscale Vernier Measurement Number (m-res Number)__]  -- Chapter: _The Multiscale Resolution Numbers_ | Section: _Vernier Scale Metrology and Multiscale Window Resolutions_
 * xref:definition-insight-number[__Definition: Profound Insight Number__]  -- Chapter: _Profound Insight Analysis_ | Section: _Definitions and Calculus in Profound Insight Analysis_
 * xref:definition-complex-iris-number[__Definition: Counting-Iris Complex Number__]  -- Chapter: _Complex Numbers and Quaternions_ | Section: _Complex Numbers in Counting-Iris_
 * xref:definition-iris-quaternion[__Definition: Counting-Iris Quaternion Bivector__]  -- Chapter: _Complex Numbers and Quaternions_ | Section: _Quaternions as Spatial Bivector Subalgebras_
 * xref:definition-msra-derivative[__Definition: MSRA Vernier Derivative__]  -- Chapter: _How to do Differential Calculus_ | Section: _Vernier Differences and the MSRA Derivative_
 * xref:definition-insight-derivative[__Definition: Profound Insight Derivative__]  -- Chapter: _Profound Insight Analysis_ | Section: _Definitions and Calculus in Profound Insight Analysis_
-* xref:definition-msra-definite-integral[__Definition: MSRA Definite Integral__]  -- Chapter: _How to do Integral Calculus_ | Section: _Definite and Indefinite Integration as Vernier Aperture Sums_
-* xref:definition-msra-indefinite-integral[__Definition: MSRA Indefinite Integral__]  -- Chapter: _How to do Integral Calculus_ | Section: _Definite and Indefinite Integration as Vernier Aperture Sums_
+* xref:definition-msra-definite-integral[__Definition: MSRA Definite Integral__]  -- Chapter: _How to do Integral Calculus_ | Section: _Definite and Indefinite Integration as Vernier Summations_
+* xref:definition-msra-indefinite-integral[__Definition: MSRA Indefinite Integral__]  -- Chapter: _How to do Integral Calculus_ | Section: _Definite and Indefinite Integration as Vernier Summations_
 * xref:definition-master-field-equation[__Definition: The Master Field Equation__]  -- Chapter: _The Master Field Equation_ | Section: _The Conformal Geometric Algebra Basis Vectors_
 * xref:definition-rotor-master-field-equation[_Definition: The Rotor Formulation of the Master Field Equation_]  -- Chapter: _The Rotor Formulation of the Master Field Equation_ | Section: _Physical Interaction via Direct Contact Transformation_

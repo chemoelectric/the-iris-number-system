@@ -180,7 +180,7 @@ export const PhysicalConstantsWorkbench: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-indigo-400" />
                 <h3 className="text-sm font-medium text-slate-200">
-                  Geometric Invariants in \( Cl(4,1,1) \)
+                  Geometric Invariants in 6D CGA
                 </h3>
               </div>
               <span className="text-xs font-mono px-2 py-0.5 rounded bg-indigo-950/60 border border-indigo-800/50 text-indigo-300">

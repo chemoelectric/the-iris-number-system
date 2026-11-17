@@ -119,7 +119,7 @@ export const AIProofAssistant: React.FC<AIProofAssistantProps> = ({
               <h2 className="text-xl font-bold text-white">Theorem Prover & Search-and-Inference Engine</h2>
             </div>
             <p className="text-slate-300 text-sm mt-1 max-w-2xl">
-              Powered by Gemini 3.6 Flash server-side engine. Formulate any conjecture in Number Theory or Analysis to generate rigorous multi-step Iris proofs.
+              Powered by Gemini 3.6 Flash server-side engine. Formulate any conjecture in Number Theory, Discrete Analysis, or the Unified Field to generate multi-step Iris deductions.
             </p>
           </div>
 
@@ -159,11 +159,11 @@ export const AIProofAssistant: React.FC<AIProofAssistantProps> = ({
             >
               <option value="Tautological Discrete Arithmetic">Tautological Discrete Arithmetic</option>
               <option value="Discrete Spectrum Algebra">Discrete Spectrum Algebra</option>
-              <option value="Clifford Algebra Cl(4,1,1)">Clifford Algebra Cl(4,1,1)</option>
+              <option value="Conformal Geometric Algebra (CGA)">Conformal Geometric Algebra (CGA)</option>
               <option value="Jaynesian MaxEnt Probability">Jaynesian MaxEnt Probability</option>
               <option value="Bounded Rational Algebra">Bounded Rational Algebra</option>
               <option value="Spectral Topology">Spectral Topology</option>
-              <option value="Quantum Iris Field">Quantum Iris Field</option>
+              <option value="Unified Field Theory (D F = J)">Unified Field Theory (D F = J)</option>
             </select>
           </div>
 
