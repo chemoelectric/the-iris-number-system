@@ -205,3 +205,13 @@
     * While Einstein’s geometric and kinematic approach remained flawed by confusing coordinate transformations with physical space-time curvature, the underlying recognition that physical clock rates depend on the local gravitational potential points directly toward wave refraction in a physical plenum.
 
 
+* Nature of \( \pi \) and \( 2 \pi \) as Proportions Rather Than Rational Ratios.
+  - Misnomer of calling \( \pi \) and \( 2 \pi \) “ratios”:
+    * Neither \( \pi \) nor \( 2 \pi \) is a ratio in the sense of a rational number \( p / q \) of counting integers.
+    * Calling them “ratios” invites conflation between a rational fraction and a geometric scaling invariant, even though replacing the entrenched word “ratio” everywhere may not be worth the trouble.
+  - True characterization as _proportions_ (“\( A \) is to \( B \) as \( C \) is to \( D \)”):
+    * \( \pi \) and \( 2 \pi \) express scale-invariant Euclidean geometric proportions across circles of any physical size:
++
+\[ C _ { 1 } : D _ { 1 } :: C _ { 2 } : D _ { 2 } \quad ( \text{captured by } \pi ) , \qquad C _ { 1 } : R _ { 1 } :: C _ { 2 } : R _ { 2 } \quad ( \text{captured by } 2 \pi ) . \]
++
+    * Directly aligns with Euclidean Book V magnitude proportion and with the compass-and-calipers geometric stepping construction in Volume I, where setting radius \( R = 1 \) and circumference \( C = 2 \pi \) defines a linear scale proportion without assigning a prior rational fraction to \( \pi \).
