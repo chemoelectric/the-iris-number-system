@@ -215,3 +215,12 @@
 \[ C _ { 1 } : D _ { 1 } :: C _ { 2 } : D _ { 2 } \quad ( \text{captured by } \pi ) , \qquad C _ { 1 } : R _ { 1 } :: C _ { 2 } : R _ { 2 } \quad ( \text{captured by } 2 \pi ) . \]
 +
     * Directly aligns with Euclidean Book V magnitude proportion and with the compass-and-calipers geometric stepping construction in Volume I, where setting radius \( R = 1 \) and circumference \( C = 2 \pi \) defines a linear scale proportion without assigning a prior rational fraction to \( \pi \).
+
+
+* Euclidism (Living Mathematics) vs. Constructivism (Formalism).
+  - Constructivism as a detached formalism:
+    * Constructivism (Brouwer, Bishop, intuitionistic type theory) restricts syntactic proof rules and rejects proof by contradiction, yet still treats mathematics as an isolated symbol-manipulation discipline cut off from physics and engineering.
+  - Defining pillars of _Euclidism_ (living mathematics in the Iris Number System):
+    * _Primordial Postulate 0_: Grounds mathematics in physical operations of measurement—extending Euclid’s admission of physical drafting instruments (straightedge, compass, and locked calipers) to admit finite resolution and physical vanishing under measurement directly as mathematical entities.
+    * _Inclusion of the Unified Field Theory_: Integrates Newton’s laws of motion, Maxwell’s equations ( \( D F = J \) in 6D Conformal Geometric Algebra ), gravitation as wave refraction, conservation laws, and direct contact causality on discrete grids \( \mathcal{G} _ { N } \) directly inside the mathematical system rather than cordoning off “pure mathematics” from nature.
+    * _Proof by Contradiction Admitted_: Unlike intuitionistic Constructivism, Euclidism explicitly allows proof by contradiction ( _reductio ad absurdum_ ), just as Euclid himself did in the _Elements_.
