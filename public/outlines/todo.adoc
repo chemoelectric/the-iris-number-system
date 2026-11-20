@@ -224,3 +224,15 @@
     * _Primordial Postulate 0_: Grounds mathematics in physical operations of measurement—extending Euclid’s admission of physical drafting instruments (straightedge, compass, and locked calipers) to admit finite resolution and physical vanishing under measurement directly as mathematical entities.
     * _Inclusion of the Unified Field Theory_: Integrates Newton’s laws of motion, Maxwell’s equations ( \( D F = J \) in 6D Conformal Geometric Algebra ), gravitation as wave refraction, conservation laws, and direct contact causality on discrete grids \( \mathcal{G} _ { N } \) directly inside the mathematical system rather than cordoning off “pure mathematics” from nature.
     * _Proof by Contradiction Admitted_: Unlike intuitionistic Constructivism, Euclidism explicitly allows proof by contradiction ( _reductio ad absurdum_ ), just as Euclid himself did in the _Elements_.
+
+
+* Epistemological Postulates, Theory of Knowledge, and Proofs as Engineering Problems.
+  - Epistemological status of the Iris postulates:
+    * The postulates of the Iris Number System are to be regarded as _postulates in an epistemological sense_, and are therefore not vulnerable to objections that they do not resemble what “pure mathematicians” regard as postulates.
+    * The system is not concerned with the _Theory of Sets_—which it explicitly aims to dispense with—but with the _Theory of Knowledge_: _How do we know something?_
+  - Solving conjectures as _engineering problems_:
+    * The Iris postulate system is deliberately designed to yield proofs that resemble proofs in _engineering problems_.
+    * To know whether the Riemann Hypothesis _is true_, it is appropriate to solve the conjecture _as an engineering problem_, eliminating terms that have no measurable existence (via Primordial Postulate 0).
+  - Contrast with opaque stacks of formal proof code:
+    * Claims of solving the Riemann Hypothesis via massive stacks of dense formal proof code (such as Anthropic’s reported formal-code “proof”) raise a basic epistemological question: _what knowledge is actually gained?_
+    * An opaque pile of machine-checked syntactic code that imparts little understanding is of far less epistemological value than a transparent, engineering-style proof that directly establishes _that_ and _why_ the proposition holds.
