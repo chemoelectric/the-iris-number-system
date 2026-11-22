@@ -286,15 +286,17 @@ incompetence of computer programmers.
 
 * Discrete Number Line, Shannon Capacity, and Vanishing Hypersphere Contact.
 
-** Geometric meaning of the vanishing terms eliminated under _Primordial Postulate 0_:
+** Geometric meaning of sphere hardening and vanishing terms eliminated under _Primordial Postulate 0_:
 
-*** In Shannon’s sphere-packing proof of channel capacity, lossless separation requires the noise hypersphere shell thickness and inter-sphere contact between distinct codewords to be negligible.
+*** In Shannon’s linear-signals geometric derivation of channel capacity, signals are componentwise linear mixtures of orthogonal _basis vectors_ (not “signal carriers”), and _sphere hardening_ is the property that separation improves as the number \( D \) of basis vectors grows: the relative radial thickness of the noise hypersphere shell shrinks as \( 1 / \sqrt { D } \) and mutual overlap between distinct signal spheres falls away.
+
+*** With the prime numbers, the orthogonal basis vectors are countably infinite in numbers (using the plural “numbers” in the Korzybskian manner to indicate an unbounded progression of finite numbers \( D \) ). Thus the prime basis is not merely better than a finite-dimensional basis, but the best possible basis—strictly invulnerable to noise.
 
 *** On the discrete number line, integer arithmetic admits zero disturbance: multiplying \( 2 \times 3 \) always yields \( 6 \) and can never be perturbed into \( 5 \) or \( 7 \) .
 
-*** The vanishing hypersphere-contact and inter-channel overlap terms under _Primordial Postulate 0_ correspond directly to the super-threshold prime dispersion terms eliminated in the Riemann Hypothesis proof and the coordinated composite blockades eliminated in the Goldbach Partition proof (also recorded in the Shannon Capacity commentary of Volume II).
+*** The vanishing sphere-hardening hypersphere-contact and inter-basis overlap terms under _Primordial Postulate 0_ correspond directly to the super-threshold prime dispersion terms eliminated in the Riemann Hypothesis proof and the coordinated composite blockades eliminated in the Goldbach Partition proof (also recorded in the Shannon Capacity commentary of Volume II).
 
-*** Plain meaning of “sphere hardening” under Jaynesian probability theory: simply make the basis signals as mutually distinct as possible—on the number line, integers are distinguished clearly by their prime factorizations (analogous to distinguishing real polynomials by their irreducible linear and quadratic factors, handled in numerical work either with exact arithmetic or a symmetric basis).
+*** Plain meaning of “sphere hardening” under Jaynesian probability theory: make the orthogonal basis vectors as mutually distinct and numerous as possible—on the number line, integers are distinguished cleanly by their prime factorizations (analogous to distinguishing real polynomials by their irreducible linear and quadratic factors, handled in numerical work either with exact arithmetic or a symmetric basis).
 
 ** Jaynesian truth-value justification ( _probability 0 = FALSE_, _probability 1 = TRUE_ ) for setting vanishing terms to zero:
 
