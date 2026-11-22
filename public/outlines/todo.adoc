@@ -292,6 +292,8 @@ incompetence of computer programmers.
 
 *** With the prime numbers, the orthogonal basis vectors are countably infinite in numbers (using the plural “numbers” in the Korzybskian manner to indicate an unbounded progression of finite numbers \( D \) ). Thus the prime basis is not merely better than a finite-dimensional basis, but the best possible basis—strictly invulnerable to noise.
 
+*** _Abstract linear space without logarithms_: Treat integer multiplication directly as vector “addition” ( \( u \oplus v = u \cdot v \) ), with \( 1 \) as the zero vector, reciprocals \( 1 / u \) as additive inverses in \( \mathbb { Q } ^ { + } \) , and exponentiation \( a \odot u = u ^ { a } \) as scalar multiplication—do not force logarithms into the discussion. The primes \( \{ 2 , 3 , 5 , 7 , \dots \} \) themselves are the orthonormal basis vectors under \( \langle n , m \rangle = \sum _ { k } a _ { k } b _ { k } \) , and orthogonality of positive integers is directly coprimality \( \gcd ( n , m ) = 1 \) . Linear spaces should be viewed more abstractly than they commonly are.
+
 *** On the discrete number line, integer arithmetic admits zero disturbance: multiplying \( 2 \times 3 \) always yields \( 6 \) and can never be perturbed into \( 5 \) or \( 7 \) .
 
 *** The vanishing sphere-hardening hypersphere-contact and inter-basis overlap terms under _Primordial Postulate 0_ correspond directly to the super-threshold prime dispersion terms eliminated in the Riemann Hypothesis proof and the coordinated composite blockades eliminated in the Goldbach Partition proof (also recorded in the Shannon Capacity commentary of Volume II).
