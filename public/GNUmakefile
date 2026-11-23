@@ -39,6 +39,10 @@ $(AWK) < $(1) > $(2) ' \
 /^__Proof:__$$/ { print; print ""; next } \
 /^\* **[^[:space:]]/ { print ""; print; next } \
 /^1\. **[^[:space:]]/ { print ""; print; next } \
+/^=[[:space:]]+A Concise Proof of the Riemann Hypothesis in Conformal Geometric Algebra and Jaynesian Inference[[:space:]]*$$/ { \
+  print "= A Concise Proof of the Riemann Hypothesis in Conformal Geometric Algebra and pass:[<br>] Jaynesian Inference"; \
+  next \
+} \
 /^=[[:space:]]+The Iris Number System: Fundamentals[[:space:]]*$$/ { \
   print "= The Iris Number System, Volume I: pass:[<br>] Fundamentals"; \
   next \
