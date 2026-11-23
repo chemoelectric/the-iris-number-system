@@ -45,7 +45,7 @@ Reversing \( t \mapsto - t \) conjugates the 4-blade sign. Consequently, any off
 
 == 4. Explicit Prime-Counting Formula and Probability&#x202F;1 Basis-Vector Equipartition
 
-Writing \( ( \downarrow ) \) for the Main Scale Projection (which drops terms that vanish at every finite measurement scale under _Primordial Postulate 0_), evaluating the discrete logarithmic derivative of the Euler-product prime-basis representation on \( \mathcal { G } _ { \omega } \) expresses the weighted prime-power count \( \psi _ { \mkern-5mu\text {prime} } ( x ) = \sum _ { n \le x } \Lambda ( n ) \) in terms of the spectral zeros \( ( \delta _ { m } , t _ { m } ) \):
+Writing \( ( \downarrow ) \) for the Main Scale Projection (which extracts the primary finite-scale part on \( \mathcal { G } _ { \omega } \)), evaluating the discrete logarithmic derivative of the Euler-product prime-basis representation on \( \mathcal { G } _ { \omega } \) expresses the weighted prime-power count \( \psi _ { \mkern-5mu\text {prime} } ( x ) = \sum _ { n \le x } \Lambda ( n ) \) in terms of the spectral zeros \( ( \delta _ { m } , t _ { m } ) \):
 \[ ( \downarrow ) \left ( \psi _ { \mkern-5mu\text {prime} } ( x ) - x \right ) = - \sum _ { m } \frac { x ^ { 1 / 2 + \delta _ { m } } \exp ( t _ { m } \ln x \cdot e _ { 12 } ) } { 1 / 2 + \delta _ { m } + t _ { m } e _ { 12 } } + \mathcal { O } ( 1 ) . \]
 Under Main Scale Projection \( ( \downarrow ) \), the primes act as mutually distinct, orthogonal basis vectors in linear signal space across \( \mathcal { G } _ { \omega } \) with zero arithmetic cross-talk:
 \[ ( \downarrow ) \langle p _ { j } , p _ { k } \rangle = \delta _ { j k } . \]
