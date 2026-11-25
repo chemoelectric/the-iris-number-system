@@ -852,6 +852,31 @@ _Proof:_
 . _Failure of the Inequality_: Because the normalization denominator depends explicitly on the analyzer settings \( ( a , b ) \), the four terms in Clauser-Horne-Shimony-Holt (CHSH) sums do not share a common integration measure. Re-establishing the complete measure space preserved by Nature demonstrates that the bound of 2 is an artifact of data-erasure, disproving non-local action at a distance. \( \square \)
 ====
 
+=== The Nuisance-Parameter Blunder: Holding \( \lambda \) Fixed as Controls in Bell’s Lille-and-Lyon Argument
+
+This section exposes a basic procedural error in John S. Bell’s celebrated Lille-and-Lyon exposition—an error that every statistical and engineering discipline outside theoretical physics recognizes immediately: treating an unobserved _nuisance parameter_ \( \lambda \) as if it were held fixed as experimental “controls.”
+
+[#theorem-bell-nuisance-parameter-blunder]
+[THEOREM]
+.Theorem: Invalidation of Bell’s Lille-and-Lyon Control Argument via Nuisance-Parameter Marginalization
+====
+In Bell-type correlation experiments, any unobserved emission variable \( \lambda \) (such as the absolute plane of polarization of emitted electromagnetic wave packets) on which the observed correlation function does not depend is a _nuisance parameter_. Holding \( \lambda \) fixed as experimental “controls” in Bell’s Lille-and-Lyon factorization argument violates the sum rule of Jaynesian probability theory; valid inference requires either marginalizing over all possible values of \( \lambda \) on discrete grid \( \mathcal { G } _ { N } \) or eliminating \( \lambda \) up front via rotational invariance.
+
+_Proof:_
+
+. _Identification of \( \lambda \) as a Nuisance Parameter_: In physicists’ terminology, \( \lambda \) denotes “hidden variables”; in optical correlation tests, the absolute plane of polarization of the emitted wave packets qualifies as \( \lambda \) precisely because the measured correlation depends only on the relative analyzer angle \( \theta _ { a } - \theta _ { b } \) and not on the absolute orientation \( \lambda \) . In any discipline outside physics—statistics, signal processing, econometrics, or experimental engineering—an unobserved variable absent from the target correlation is classified strictly as a _nuisance parameter_.
+
+. _The Lille-and-Lyon Control Fallacy_: In his Lille-and-Lyon illustration of local causality, Bell explicitly claims to hold \( \lambda \) fixed as experimental “controls” and argues that, once \( \lambda \) is held fixed, the distant measurements \( A \) (in Lille) and \( B \) (in Lyon) must factorize independently. This analysis is procedurally invalid on two counts: first, an unmeasured emission angle \( \lambda \) is never held fixed as a laboratory control in the actual experiment; second, even conditionally, Jaynesian probability theory forbids substituting a frozen-control assumption for the sum rule over unobserved states.
+
+. _Mandatory Marginalization Under the Sum Rule_: By the sum and product rules of Jaynesian probability theory over the discrete state grid \( \mathcal { G } _ { N } \) , the observable joint probability for settings \( ( a , b ) \) is obtained strictly by summing (integrating) over all possible values of the nuisance parameter \( \lambda \) :
++
+\[ P ( A , B \mid a , b ) = \sum _ { \lambda \in \mathcal { G } _ { N } } P ( A , B , \lambda \mid a , b ) = \sum _ { \lambda \in \mathcal { G } _ { N } } P ( A , B \mid a , b , \lambda ) \, P ( \lambda \mid a , b ) . \]
++
+Freezing \( \lambda \) as a nominal “control” drops the marginalization structure demanded by probability theory and misstates what the experiment measures.
+
+. _Bookkeeping Burden vs. Elimination by Rotational Invariance_: Carrying the nuisance parameter \( \lambda \) explicitly through the derivation and integrating over all possible values of \( \lambda \) at the end is mathematically valid, but imposes heavy algebraic bookkeeping across angular windows, domain boundaries, and sign conventions—bookkeeping in which minor, hard-to-spot logical slips readily accumulate. As established in the following section, invoking _rotational invariance_ (origin independence under joint shift \( ( \theta _ { a } , \theta _ { b } ) \mapsto ( \theta _ { a } + \theta _ { 0 } , \theta _ { b } + \theta _ { 0 } ) \) ) eliminates the nuisance parameter \( \lambda \) cleanly before the calculation begins, collapsing the correlation directly to the single invariant \( \Delta \theta = \theta _ { a } - \theta _ { b } \) . \( \square \)
+====
+
 === Rotational Invariance and Origin-Independence of Angular Channel Correlations
 
 This section proves that EPR-Bohm correlations depend strictly on the relative angular difference between analyzer channels and are invariant under shift of the angular origin, a fundamental property of phase-matched random processes ignored by Bell.
@@ -3476,6 +3501,7 @@ Index of all formal Theorems and Conclusions Pending New Information in Volume I
 * xref:theorem-domain-agnosticism-structure-preserving-mapping[_Theorem: Domain Agnosticism of Mathematics and Dissolution of Quantum Pseudo-Physics_] -- Chapter: _Quantum Pseudo-Physics_ | Section: _Structure-Preserving Problem Mapping and the Domain Agnosticism of Mathematics_
 * xref:theorem-bell-causation-correlation-fallacy[_Theorem: Flaw of Bell's Inequality via Causation-Correlation Fallacy and Conditional Probability Misattribution_] -- Chapter: _Quantum Pseudo-Physics_ | Section: _Deconstruction of Bell's Theorem: The Causation-Correlation Fallacy and Conditional Probability Substitution_
 * xref:theorem-bell-data-erasure-flaw[_Theorem: Invalidation of Bell's Bound via Sub-Ensemble Data Erasure_] -- Chapter: _Quantum Pseudo-Physics_ | Section: _The Data-Erasure Flaw: Suppression of Nature's Complete Sub-Microstate Record_
+* xref:theorem-bell-nuisance-parameter-blunder[_Theorem: Invalidation of Bell’s Lille-and-Lyon Control Argument via Nuisance-Parameter Marginalization_] -- Chapter: _Quantum Pseudo-Physics_ | Section: _The Nuisance-Parameter Blunder: Holding \( \lambda \) Fixed as Controls in Bell’s Lille-and-Lyon Argument_
 * xref:theorem-rotational-invariance-epr-bohm[_Theorem: Origin Independence and Rotational Invariance of EPR-Bohm Correlations_] -- Chapter: _Quantum Pseudo-Physics_ | Section: _Rotational Invariance and Origin-Independence of Angular Channel Correlations_
 * xref:theorem-direct-contact-differential-contradiction[_Theorem: Incompatibility of Local Differential Field Equations with Non-Local Action-at-a-Distance_] -- Chapter: _Quantum Pseudo-Physics_ | Section: _The Direct-Contact Contradiction of Action-at-a-Distance with Local Differential Equations_
 * xref:theorem-action-at-distance-structural-destruction[_Theorem: Destruction of Structural Integrity and Material Cohesion under Non-Local Forces_] -- Chapter: _Quantum Pseudo-Physics_ | Section: _Destruction of Material Cohesion and Structural Integrity under Non-Local Action-at-a-Distance_
