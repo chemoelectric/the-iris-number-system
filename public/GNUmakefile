@@ -25,6 +25,7 @@ PAPERS += new_constants_and_discrete_ideal_gas
 PAPERS += master_field_equation_energy_work
 PAPERS += gravitation_as_refraction_in_the_unified_field
 PAPERS += riemann_hypothesis_concise_proof
+PAPERS += zoom_lens_analysis
 
 default: all
 all: $(addsuffix .pdf, $(VOLUMES)) $(addsuffix .pdf, $(PAPERS))
